@@ -1,11 +1,11 @@
 ## 1. Change Setup
 
-- [ ] 1.1 Create and validate OpenSpec artifacts for the handover visuals refinement
+- [x] 1.1 Create and validate OpenSpec artifacts for the handover visuals refinement
 
 ## 2. Local Draft Update
 
-- [ ] 2.1 Add a milestone-progress drift visual section to the local handover markdown
-- [ ] 2.2 Add a project team member section to the local handover markdown
+- [x] 2.1 Add a milestone-progress drift visual section to the local handover markdown
+- [x] 2.2 Add a project team member section to the local handover markdown
 
 ## 3. Feishu Sync
 
