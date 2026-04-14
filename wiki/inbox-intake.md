@@ -22,10 +22,10 @@
 当前仓库已经提供一个最小脚本入口：
 
 ```bash
-python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources
+python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources --ops wiki/ops
 ```
 
-这个版本只负责把 `inbox/` 中的文本类文件转换成 `source` 草稿，还不会自动升级成 `intake / focus-thread / reminder / codex-handoff`。
+这个版本会把 `inbox/` 中的文本类文件转换成 `source` 草稿和 `intake` 草稿，但还不会自动升级成 `focus-thread / reminder / codex-handoff`。
 
 ## 必填分类字段
 

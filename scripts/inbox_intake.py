@@ -82,7 +82,77 @@ Capture the minimum useful context even if the full body stays external.
     return output_path
 
 
-def process_inbox(inbox_dir: Path, wiki_sources_dir: Path) -> list[Path]:
+def generate_intake_draft(source_file: Path, wiki_ops_dir: Path) -> Path:
+    text = source_file.read_text(encoding="utf-8")
+    language = _detect_language(text)
+    title = source_file.stem.replace("_", " ").replace("-", " ").strip() or "untitled"
+    slug = _slugify(source_file.stem)
+    output_path = wiki_ops_dir / f"{slug}-intake.md"
+
+    summary = (
+        "待补充：请基于英文原文整理这条输入的中文操作摘要。"
+        if language == "en"
+        else "待补充：请基于原始输入整理这条输入的中文操作摘要。"
+    )
+    english_notes = text.strip() if language == "en" else ""
+
+    content = f"""---
+title: {title}
+type: intake
+language: {language}
+source_path: inbox/{source_file.name}
+source_type: note
+audience: self
+knowledge_level: working
+domain: unclassified
+period: evergreen
+confidence: low
+status: active
+updated_at: YYYY-MM-DD
+ai_generated: true
+related_sources:
+  - ../sources/{slug}.md
+related_focus_threads: []
+related_reminders: []
+---
+
+# {title}
+
+## 输入摘要
+
+{summary}
+
+## 输入类型判断
+
+- 行为类型：待判断
+- 来源类型：raw inbox input
+- 受众判断：self
+- 当前置信度：low
+
+## 建议关联
+
+- 来源页：../sources/{slug}.md
+- 主线页：
+- 提醒页：
+
+## 待确认项
+
+- 待 agent 进一步判断是否应升级为 focus-thread、reminder 或 codex-handoff
+
+## English Notes
+
+{english_notes}
+"""
+    wiki_ops_dir.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(content, encoding="utf-8")
+    return output_path
+
+
+def process_inbox(
+    inbox_dir: Path,
+    wiki_sources_dir: Path,
+    wiki_ops_dir: Path | None = None,
+) -> list[Path]:
     output_paths: list[Path] = []
     supported_suffixes = {".md", ".txt"}
 
@@ -94,6 +164,8 @@ def process_inbox(inbox_dir: Path, wiki_sources_dir: Path) -> list[Path]:
         if source_file.suffix.lower() not in supported_suffixes:
             continue
         output_paths.append(generate_source_draft(source_file, wiki_sources_dir))
+        if wiki_ops_dir is not None:
+            output_paths.append(generate_intake_draft(source_file, wiki_ops_dir))
 
     return output_paths
 
@@ -102,9 +174,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Generate source drafts from inbox files.")
     parser.add_argument("--inbox", type=Path, default=Path("inbox"))
     parser.add_argument("--sources", type=Path, default=Path("wiki/sources"))
+    parser.add_argument("--ops", type=Path, default=Path("wiki/ops"))
     args = parser.parse_args()
 
-    output_paths = process_inbox(args.inbox, args.sources)
+    output_paths = process_inbox(args.inbox, args.sources, args.ops)
     for output_path in output_paths:
         print(output_path)
     return 0

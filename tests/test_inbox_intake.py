@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 
-from scripts.inbox_intake import generate_source_draft, process_inbox
+from scripts.inbox_intake import generate_intake_draft, generate_source_draft, process_inbox
 
 
 class InboxIntakeTest(unittest.TestCase):
@@ -63,6 +63,21 @@ class InboxIntakeTest(unittest.TestCase):
         )
         self.assertTrue((self.wiki_sources_dir / "todo.md").exists())
         self.assertTrue((self.wiki_sources_dir / "notes.md").exists())
+
+    def test_generates_intake_draft_linked_to_source(self) -> None:
+        source_file = self.inbox_dir / "routing_note.txt"
+        source_file.write_text("Need to route engineering todos to codex", encoding="utf-8")
+        wiki_ops_dir = self.tmpdir / "wiki" / "ops"
+        wiki_ops_dir.mkdir(parents=True)
+
+        output_path = generate_intake_draft(source_file, wiki_ops_dir)
+
+        self.assertEqual(output_path, wiki_ops_dir / "routing-note-intake.md")
+        content = output_path.read_text(encoding="utf-8")
+        self.assertIn("type: intake", content)
+        self.assertIn("related_sources:", content)
+        self.assertIn("../sources/routing-note.md", content)
+        self.assertIn("## 输入摘要", content)
 
 
 if __name__ == "__main__":

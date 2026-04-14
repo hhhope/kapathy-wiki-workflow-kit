@@ -23,10 +23,10 @@
 可以先用下面这个命令做最小草稿生成：
 
 ```bash
-python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources
+python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources --ops wiki/ops
 ```
 
-当前脚本会扫描 `inbox/` 下的 `.md` 和 `.txt` 文件，跳过 `README.md`，并在 `wiki/sources/` 生成来源页草稿。
+当前脚本会扫描 `inbox/` 下的 `.md` 和 `.txt` 文件，跳过 `README.md`，并同时在 `wiki/sources/` 生成来源页草稿、在 `wiki/ops/` 生成 intake 草稿。
 
 ## 常见去向
 
