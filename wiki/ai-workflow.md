@@ -2,6 +2,12 @@
 
 This repository separates durable knowledge from AI-generated assistance. AI can help prepare content, but final knowledge and report output still require human review.
 
+## Role Boundary
+
+- Project owners use this wiki as a working layer for sources, drafts, period pages, and active report assembly.
+- Team members should consume only reusable knowledge that has been distilled out of project-specific material.
+- AI helps in both places, but the project wiki is for production work while team lore is for proven, reusable patterns.
+
 ## Workflow Stages
 
 ### 1. Ingestion
@@ -39,6 +45,7 @@ This repository separates durable knowledge from AI-generated assistance. AI can
 - `type`
 - `domain`
 - `audience`
+- `knowledge_level`
 - `period`
 - `source_links`
 - `status`
@@ -50,3 +57,4 @@ This repository separates durable knowledge from AI-generated assistance. AI can
 - Feishu source registration helper
 - Summary generation helper for source pages
 - Draft assembly helper for weekly and monthly reports
+- Candidate promotion helper for team lore handoff

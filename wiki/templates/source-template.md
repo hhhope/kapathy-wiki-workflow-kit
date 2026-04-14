@@ -2,7 +2,8 @@
 title: <Source Title>
 type: source
 domain: <domain-slug>
-audience: internal
+audience: project
+knowledge_level: working
 period: <period-slug>
 source_links:
   - "<external-link>"
@@ -19,6 +20,11 @@ ai_generated: false
 - Source class:
 - Ownership hint:
 - Sync state:
+
+## Audience Decision
+
+- Source pages are usually for `self` or `project`, not `team`.
+- Keep `knowledge_level: working` because source pages are evidence, not promoted team knowledge.
 
 ## Summary Context
 

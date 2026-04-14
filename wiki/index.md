@@ -16,6 +16,11 @@ This wiki organizes reporting knowledge across four stable views so the same mat
 3. Reuse those links inside `Timeline` pages for each reporting period.
 4. Assemble audience-ready drafts under `Reports`.
 
+## Governance Aids
+
+- [Role Boundaries](role-boundaries.md): decide whether a page serves project delivery or team reuse
+- [Team Lore Candidates](team-lore-candidates.md): stage reusable content before promoting it to team lore
+
 ## Starter Example
 
 Use the linked sample pages below to understand the intended chain:

@@ -2,7 +2,8 @@
 title: <Period Title>
 type: timeline
 domain: <domain-slug>
-audience: internal
+audience: project
+knowledge_level: working
 period: <period-slug>
 source_links: []
 status: draft
@@ -15,6 +16,11 @@ ai_generated: false
 ## Period Summary
 
 Summarize what changed in this period.
+
+## Audience Decision
+
+- Timeline pages are usually for `self` or `project`.
+- Keep `knowledge_level: working` unless the page is later distilled into a reusable lesson elsewhere.
 
 ## Linked Pages
 
