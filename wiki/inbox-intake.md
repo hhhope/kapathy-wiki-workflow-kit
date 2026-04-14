@@ -17,6 +17,16 @@
 3. 相关页面链接建议
 4. 低置信度时的待确认问题
 
+## 当前最小自动化入口
+
+当前仓库已经提供一个最小脚本入口：
+
+```bash
+python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources
+```
+
+这个版本只负责把 `inbox/` 中的文本类文件转换成 `source` 草稿，还不会自动升级成 `intake / focus-thread / reminder / codex-handoff`。
+
 ## 必填分类字段
 
 - `source_path`：文件在 `inbox/` 下的原始路径

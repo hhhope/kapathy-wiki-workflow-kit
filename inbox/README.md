@@ -18,6 +18,16 @@
 4. 把来源页关联到相关的 domain、timeline 和 report 页面
 5. 对低置信度内容输出待人工确认项，而不是强行猜测
 
+## 最小运行方式
+
+可以先用下面这个命令做最小草稿生成：
+
+```bash
+python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources
+```
+
+当前脚本会扫描 `inbox/` 下的 `.md` 和 `.txt` 文件，跳过 `README.md`，并在 `wiki/sources/` 生成来源页草稿。
+
 ## 常见去向
 
 - 飞书导出或会议笔记 -> source 页面
