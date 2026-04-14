@@ -5,9 +5,9 @@
 
 ## 2. Wiki Skeleton
 
-- [ ] 2.1 Create `wiki/index.md` with navigation to the four top-level knowledge domains
-- [ ] 2.2 Create root index pages for `domains`, `reports`, `timeline`, and `sources`
-- [ ] 2.3 Add starter overview pages and sample entries that demonstrate multidimensional linking
+- [x] 2.1 Create `wiki/index.md` with navigation to the four top-level knowledge domains
+- [x] 2.2 Create root index pages for `domains`, `reports`, `timeline`, and `sources`
+- [x] 2.3 Add starter overview pages and sample entries that demonstrate multidimensional linking
 
 ## 3. Templates And Workflow Scaffolding
 
