@@ -10,10 +10,10 @@
 
 ## 3. Feishu Delivery
 
-- [ ] 3.1 Publish the handover document to Feishu
-- [ ] 3.2 Verify the published document title and content structure
+- [x] 3.1 Publish the handover document to Feishu
+- [x] 3.2 Verify the published document title and content structure
 
 ## 4. Final Verification
 
-- [ ] 4.1 Confirm the document answers takeover-critical questions for the account owner
-- [ ] 4.2 Mark tasks complete and report the delivery result
+- [x] 4.1 Confirm the document answers takeover-critical questions for the account owner
+- [x] 4.2 Mark tasks complete and report the delivery result
