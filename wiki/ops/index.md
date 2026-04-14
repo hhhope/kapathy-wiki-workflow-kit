@@ -24,6 +24,11 @@
 - [sample-reminder](sample-reminder.md)
 - [sample-codex-handoff](sample-codex-handoff.md)
 
+## 当前真实记录
+
+- [涅槃项目周推进 intake 2026-04-13](nirvana-weekly-intake-2026-04-13.md)
+- [涅槃项目本周跟进提醒 2026-04-13](nirvana-weekly-reminder-2026-04-13.md)
+
 ## 推荐流转
 
 1. 新材料或新行为先进入 intake。

@@ -38,6 +38,16 @@
 - stale 状态：fresh
 - 是否适合升级为 Codex 任务：no
 
+### 涅槃项目本周跟进
+
+- 状态：open
+- 优先级：high
+- 下一步：跟进网关对客方式、商用范围、账户联调、`NACOS` 回归和 `AI` 提效结论统筹
+- 关联主线：[主线面板](main-thread.md)
+- 关联记录：[涅槃项目本周跟进提醒 2026-04-13](nirvana-weekly-reminder-2026-04-13.md)
+- stale 状态：fresh
+- 是否适合升级为 Codex 任务：no
+
 ## Stale 区
 
 当提醒满足以下任一条件时，应进入 stale 视图：
