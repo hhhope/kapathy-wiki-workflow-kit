@@ -11,6 +11,6 @@
 
 ## 3. Templates And Workflow Scaffolding
 
-- [ ] 3.1 Add reusable templates for source, report, timeline, and domain pages with shared frontmatter
-- [ ] 3.2 Add an AI workflow guide that explains ingestion, summarization, drafting, and review stages
-- [ ] 3.3 Verify the wiki skeleton and mark all completed tasks in this file
+- [x] 3.1 Add reusable templates for source, report, timeline, and domain pages with shared frontmatter
+- [x] 3.2 Add an AI workflow guide that explains ingestion, summarization, drafting, and review stages
+- [x] 3.3 Verify the wiki skeleton and mark all completed tasks in this file
