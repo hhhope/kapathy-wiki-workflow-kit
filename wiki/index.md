@@ -20,6 +20,7 @@ This wiki organizes reporting knowledge across four stable views so the same mat
 
 - [Role Boundaries](role-boundaries.md): decide whether a page serves project delivery or team reuse
 - [Team Lore Candidates](team-lore-candidates.md): stage reusable content before promoting it to team lore
+- [Inbox Intake](inbox-intake.md): define how agents should scan and classify files dropped into `inbox/`
 
 ## Starter Example
 

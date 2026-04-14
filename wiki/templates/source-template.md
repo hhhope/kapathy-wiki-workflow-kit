@@ -1,6 +1,8 @@
 ---
 title: <Source Title>
 type: source
+source_path: inbox/<file-name>
+source_type: <source-type>
 domain: <domain-slug>
 audience: project
 knowledge_level: working
@@ -20,6 +22,7 @@ ai_generated: false
 - Source class:
 - Ownership hint:
 - Sync state:
+- Intake confidence: high | medium | low
 
 ## Audience Decision
 

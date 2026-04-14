@@ -2,7 +2,8 @@
 title: Account and Clearing
 type: domain
 domain: account-clearing
-audience: internal
+audience: project
+knowledge_level: reusable
 period: evergreen
 source_links:
   - ../sources/feishu-weekly-sync-sample.md

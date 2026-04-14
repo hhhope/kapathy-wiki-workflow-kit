@@ -3,6 +3,7 @@ title: Management Weekly Operations
 type: report
 domain: account-clearing
 audience: management
+knowledge_level: working
 period: weekly
 source_links:
   - ../sources/feishu-weekly-sync-sample.md

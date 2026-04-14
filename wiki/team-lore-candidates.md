@@ -2,6 +2,8 @@
 
 Use this page as a staging area instead of sending project pages directly into team lore.
 
+Files arriving from `inbox/` may become candidates, but they should first be classified and rewritten inside project wiki before promotion is considered.
+
 ## Candidate Fields
 
 - Source page or topic

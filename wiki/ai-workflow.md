@@ -12,9 +12,11 @@ This repository separates durable knowledge from AI-generated assistance. AI can
 
 ### 1. Ingestion
 
+- Scan the fixed `inbox/` folder for newly dropped files.
 - Register a Feishu or external document as a local source page.
 - Record source link, source class, owner hint, and sync state.
 - Keep the source valid even when the body remains external.
+- If confidence is low, create a minimal source page and surface review questions.
 
 ### 2. Summarization
 
@@ -42,6 +44,8 @@ This repository separates durable knowledge from AI-generated assistance. AI can
 
 ## Minimum Metadata For Future Automation
 
+- `source_path`
+- `source_type`
 - `type`
 - `domain`
 - `audience`
@@ -54,6 +58,7 @@ This repository separates durable knowledge from AI-generated assistance. AI can
 
 ## First Automation Targets
 
+- Inbox scan and intake helper
 - Feishu source registration helper
 - Summary generation helper for source pages
 - Draft assembly helper for weekly and monthly reports

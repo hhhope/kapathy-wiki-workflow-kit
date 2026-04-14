@@ -1,8 +1,11 @@
 ---
 title: Feishu Weekly Sync Sample
 type: source
+source_path: inbox/feishu-weekly-sync-sample.md
+source_type: note
 domain: account-clearing
-audience: internal
+audience: project
+knowledge_level: working
 period: 2026-q2
 source_links:
   - "feishu://example/weekly-sync"
@@ -19,6 +22,7 @@ ai_generated: false
 - Source class: weekly sync note
 - Ownership hint: reporting owner to be assigned
 - Sync state: manual placeholder
+- Intake confidence: medium
 
 ## Summary Context
 
