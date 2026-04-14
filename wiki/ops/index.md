@@ -9,6 +9,11 @@
 - `reminder`：待办、提醒、阻塞和 stale 项
 - `codex-handoff`：已经成熟到可以交给 Codex 执行的研发任务
 
+## 当前入口
+
+- [主线面板](main-thread.md)
+- [提醒面板](reminders.md)
+
 ## 推荐流转
 
 1. 新材料或新行为先进入 intake。

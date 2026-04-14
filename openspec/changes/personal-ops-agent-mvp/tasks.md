@@ -5,8 +5,8 @@
 
 ## 2. Focus And Reminder Layer
 
-- [ ] 2.1 Add a main-thread page that highlights active focus threads, linked evidence, and unresolved actions
-- [ ] 2.2 Add a reminder/todo view that separates actionable items from raw intake and can mark stale unresolved work
+- [x] 2.1 Add a main-thread page that highlights active focus threads, linked evidence, and unresolved actions
+- [x] 2.2 Add a reminder/todo view that separates actionable items from raw intake and can mark stale unresolved work
 
 ## 3. Codex Handoff Layer
 
