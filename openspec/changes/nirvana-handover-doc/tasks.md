@@ -1,12 +1,12 @@
 ## 1. Change Setup
 
-- [ ] 1.1 Create and validate OpenSpec artifacts for the Nirvana handover document change
-- [ ] 1.2 Extract milestone, module, owner, risk, and testing facts from the provided spreadsheets
+- [x] 1.1 Create and validate OpenSpec artifacts for the Nirvana handover document change
+- [x] 1.2 Extract milestone, module, owner, risk, and testing facts from the provided spreadsheets
 
 ## 2. Local Draft
 
-- [ ] 2.1 Create a local markdown handover draft for the incoming account engineering owner
-- [ ] 2.2 Include takeover summary, unfinished items, risks, dual-baseline drift analysis, and item-level acceptance matrix
+- [x] 2.1 Create a local markdown handover draft for the incoming account engineering owner
+- [x] 2.2 Include takeover summary, unfinished items, risks, dual-baseline drift analysis, and item-level acceptance matrix
 
 ## 3. Feishu Delivery
 
