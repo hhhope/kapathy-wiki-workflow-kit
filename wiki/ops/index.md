@@ -14,6 +14,7 @@
 - [主线面板](main-thread.md)
 - [提醒面板](reminders.md)
 - [Codex Handoff 规则](codex-handoff-rules.md)
+- [Scope Drift 复盘](scope-drift-retro.md)
 
 ## 样例链路
 

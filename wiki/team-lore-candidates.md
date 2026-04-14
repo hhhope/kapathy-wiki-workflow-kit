@@ -19,6 +19,7 @@
 | `wiki/templates/report-template.md` | template | 可以沉淀成跨项目汇报模板 | 项目专有例子 | draft |
 | `wiki/role-boundaries.md` | workflow | 可以沉淀成项目 wiki 与 team lore 的分层方法 | 当前仓库专有措辞 | draft |
 | `wiki/ai-workflow.md` | workflow | 可以沉淀成 AI 辅助汇报的通用流程 | 当前项目内路径与场景 | draft |
+| `wiki/ops/scope-drift-retro.md` | principle / workflow | 可以沉淀成 OpenSpec 完成边界与防偏移规则 | 本次项目和文件名细节 | draft |
 
 ## 晋升检查表
 
