@@ -13,6 +13,7 @@
 
 - [主线面板](main-thread.md)
 - [提醒面板](reminders.md)
+- [项目管理周推进循环](project-management-weekly-loop.md)
 - [Codex Handoff 规则](codex-handoff-rules.md)
 - [Scope Drift 复盘](scope-drift-retro.md)
 
@@ -27,8 +28,9 @@
 
 1. 新材料或新行为先进入 intake。
 2. agent 判断它是否关联现有主线或待办。
-3. 真正需要推进的事项进入 reminder。
-4. 明确属于研发执行的待办，再晋升为 Codex handoff。
+3. 项目管理类周推进材料先走“周推进循环”，再判断是否进入 reminder。
+4. 真正需要推进的事项进入 reminder。
+5. 明确属于研发执行的待办，再晋升为 Codex handoff。
 
 ## 约束
 

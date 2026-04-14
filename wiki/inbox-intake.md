@@ -80,6 +80,28 @@ python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources --ops wiki/
 - 明确需要跟进的动作 -> `reminder`
 - 已成熟的研发任务 -> `codex-handoff`
 
+### 路由到项目管理周推进循环
+
+当文件本身是项目管理类周推进材料，且其价值不只是“存档证据”，而是要驱动本周判断、提醒和承接时，优先关联到 [项目管理周推进循环](ops/project-management-weekly-loop.md)。
+
+典型例子：
+
+- 周报
+- 项目排期
+- 风险清单
+- 里程碑对比表
+- 测试推进表
+- 周会后的问题追踪表
+
+这类材料至少还要补充：
+
+- `project_name`
+- `milestone`
+- `weekly_status`
+- `drift_signal`
+- `next_week_actions`
+- `codex_handoff_candidate`
+
 ## 置信度规则
 
 - `high`：主题和目标位置清晰，可以安全创建或更新 wiki 页面
