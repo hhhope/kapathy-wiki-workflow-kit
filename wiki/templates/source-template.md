@@ -34,6 +34,10 @@ ai_generated: false
 
 Capture the minimum useful context even if the full body stays external.
 
+## 中文摘要
+
+无论原始材料是什么语言，这里都应该提供中文主摘要。
+
 ## English Notes
 
 Use this section only when the source contains important English wording that should be preserved separately from the Chinese summary.

@@ -29,6 +29,10 @@ ai_generated: false
 
 This page is a sample evidence record for a Feishu-originated reporting document. It is intentionally lightweight: the body can remain in Feishu while the wiki captures summary, lineage, and reuse targets.
 
+## 中文摘要
+
+这是一条示例来源页，表示即使原始材料还在飞书中，wiki 也应先沉淀中文摘要、来源关系和下游复用位置。
+
 ## English Notes
 
 Keep any future English source excerpt in this section instead of mixing it into the main Chinese summary.
