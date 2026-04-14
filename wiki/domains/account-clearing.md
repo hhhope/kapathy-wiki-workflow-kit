@@ -1,6 +1,7 @@
 ---
 title: Account and Clearing
 type: domain
+language: zh-CN
 domain: account-clearing
 audience: project
 knowledge_level: reusable
@@ -32,3 +33,7 @@ This page groups durable knowledge related to account operations, clearing progr
 
 - [2026 Q2 timeline view](../timeline/2026-q2.md)
 - [Management Weekly Operations](../reports/management-weekly-ops.md)
+
+## English Notes
+
+Reserve this section for separate English terminology or appendix content if needed later.

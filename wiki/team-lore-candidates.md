@@ -1,28 +1,28 @@
 # Team Lore Candidates
 
-Use this page as a staging area instead of sending project pages directly into team lore.
+这页是晋升缓冲区，不要把项目页直接送进 team lore。
 
-Files arriving from `inbox/` may become candidates, but they should first be classified and rewritten inside project wiki before promotion is considered.
+从 `inbox/` 进来的文件，即使看起来可复用，也要先在项目 wiki 里完成分类和提炼，再考虑晋升。
 
-## Candidate Fields
+## 候选字段
 
-- Source page or topic
-- Intended team lore form
-- Why it is reusable
-- What project-specific detail must be removed
-- Status: draft / ready / promoted
+- 来源页面或主题
+- 目标 team lore 形态
+- 为什么可复用
+- 晋升前需要去掉哪些项目细节
+- 状态：`draft / ready / promoted`
 
-## Current Candidates
+## 当前候选
 
-| Source | Intended form | Why reusable | Remove before promotion | Status |
+| 来源 | 目标形态 | 可复用原因 | 晋升前需去除内容 | 状态 |
 | --- | --- | --- | --- | --- |
-| `wiki/templates/report-template.md` | template | Can standardize report assembly across projects | Project-specific examples | draft |
-| `wiki/role-boundaries.md` | workflow | Explains project wiki vs team lore separation | Repo-specific wording if needed | draft |
-| `wiki/ai-workflow.md` | workflow | Defines AI-assisted reporting lifecycle | Project-local file path references | draft |
+| `wiki/templates/report-template.md` | template | 可以沉淀成跨项目汇报模板 | 项目专有例子 | draft |
+| `wiki/role-boundaries.md` | workflow | 可以沉淀成项目 wiki 与 team lore 的分层方法 | 当前仓库专有措辞 | draft |
+| `wiki/ai-workflow.md` | workflow | 可以沉淀成 AI 辅助汇报的通用流程 | 当前项目内路径与场景 | draft |
 
-## Promotion Checklist
+## 晋升检查表
 
-- Audience is `team`
-- Knowledge level is `reusable`
-- Content is rewritten as a stable pattern, not copied as a raw project page
-- Links to project-only sources are removed or generalized
+- `audience` 已经切到 `team`
+- `knowledge_level` 已经是 `reusable`
+- 内容是提炼后的稳定模式，而不是项目页原文复制
+- 已移除或泛化项目内专有链接

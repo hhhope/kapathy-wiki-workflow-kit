@@ -3,6 +3,7 @@ title: <Source Title>
 type: source
 source_path: inbox/<file-name>
 source_type: <source-type>
+language: zh-CN
 domain: <domain-slug>
 audience: project
 knowledge_level: working
@@ -32,6 +33,10 @@ ai_generated: false
 ## Summary Context
 
 Capture the minimum useful context even if the full body stays external.
+
+## English Notes
+
+Use this section only when the source contains important English wording that should be preserved separately from the Chinese summary.
 
 ## Reused By
 

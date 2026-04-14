@@ -1,6 +1,7 @@
 ---
 title: <Period Title>
 type: timeline
+language: zh-CN
 domain: <domain-slug>
 audience: project
 knowledge_level: working
@@ -29,3 +30,7 @@ Summarize what changed in this period.
 ## Notes
 
 - Record period-specific observations and carry-forward items
+
+## English Notes
+
+Use this section only for separated English appendix content.

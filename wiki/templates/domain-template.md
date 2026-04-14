@@ -1,6 +1,7 @@
 ---
 title: <Domain Title>
 type: domain
+language: zh-CN
 domain: <domain-slug>
 audience: project
 knowledge_level: reusable
@@ -33,3 +34,7 @@ Describe the durable business theme covered by this page.
 ## Used By
 
 - Add report or timeline pages that reuse this domain page
+
+## English Notes
+
+Use this section only for separate English terminology, citations, or appendix content.

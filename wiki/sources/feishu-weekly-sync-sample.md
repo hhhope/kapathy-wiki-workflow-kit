@@ -3,6 +3,7 @@ title: Feishu Weekly Sync Sample
 type: source
 source_path: inbox/feishu-weekly-sync-sample.md
 source_type: note
+language: zh-CN
 domain: account-clearing
 audience: project
 knowledge_level: working
@@ -27,6 +28,10 @@ ai_generated: false
 ## Summary Context
 
 This page is a sample evidence record for a Feishu-originated reporting document. It is intentionally lightweight: the body can remain in Feishu while the wiki captures summary, lineage, and reuse targets.
+
+## English Notes
+
+Keep any future English source excerpt in this section instead of mixing it into the main Chinese summary.
 
 ## Reused By
 

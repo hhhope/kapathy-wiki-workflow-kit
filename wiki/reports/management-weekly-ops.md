@@ -1,6 +1,7 @@
 ---
 title: Management Weekly Operations
 type: report
+language: zh-CN
 domain: account-clearing
 audience: management
 knowledge_level: working
@@ -32,3 +33,7 @@ Account and clearing updates should be presented as a stable weekly narrative bu
 ## Review Status
 
 - Human review required before this page is treated as a finalized report
+
+## English Notes
+
+If an English version is needed later, place it here as a separate section.

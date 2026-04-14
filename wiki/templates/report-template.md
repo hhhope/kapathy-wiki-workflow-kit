@@ -1,6 +1,7 @@
 ---
 title: <Report Title>
 type: report
+language: zh-CN
 domain: <domain-slug>
 audience: <audience>
 knowledge_level: working
@@ -34,3 +35,7 @@ Write the current synthesized summary here.
 ## Review Status
 
 - Record human review state and approval notes
+
+## English Notes
+
+Use this section only when the report must preserve an English version or quoted English material separately.

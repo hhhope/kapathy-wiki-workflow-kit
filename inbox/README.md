@@ -1,31 +1,31 @@
 # Inbox
 
-Drop raw files here for agent-driven intake.
+把原始文件放到这里，供 agent 自动 intake。
 
-## Intended Use
+## 用途
 
-- Put newly exported documents, notes, screenshots, or attachments into this folder.
-- Keep the original filenames when possible.
-- Treat this directory as the landing zone, not the final knowledge location.
+- 新导出的文档、笔记、截图、附件统一先放进这个目录
+- 尽量保留原始文件名
+- 这里是投递区，不是最终知识落点
 
-## Agent Intake Expectation
+## Agent Intake 预期
 
-When an agent scans this folder, it should:
+当 agent 扫描这个目录时，应该：
 
-1. Identify file type and likely source class.
-2. Extract enough context to classify audience, domain, and period.
-3. Create or update a source page under `wiki/sources/`.
-4. Link the source to relevant domain, timeline, and report pages.
-5. Add uncertain items to a manual review section instead of guessing.
+1. 识别文件类型和可能的来源类别
+2. 提取足够上下文来判断 audience、domain 和 period
+3. 在 `wiki/sources/` 下创建或更新来源页
+4. 把来源页关联到相关的 domain、timeline 和 report 页面
+5. 对低置信度内容输出待人工确认项，而不是强行猜测
 
-## Typical Outcomes
+## 常见去向
 
-- Feishu export or note file -> source page
-- Periodic report draft -> report page or report candidate
-- Stable method or template -> team lore candidate, not direct promotion
+- 飞书导出或会议笔记 -> source 页面
+- 周报或月报草稿 -> report 页面或 report 候选
+- 稳定方法或模板 -> team lore candidate，而不是直接晋升
 
 ## Guardrails
 
-- Do not delete raw files from `inbox/` automatically.
-- Do not write directly into team lore from inbox intake.
-- If confidence is low, keep the result in project wiki with `knowledge_level: working`.
+- 不要自动删除 `inbox/` 中的原始文件
+- 不要从 intake 直接写入 team lore
+- 如果置信度低，先留在项目 wiki，并标记 `knowledge_level: working`
