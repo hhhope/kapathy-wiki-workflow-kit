@@ -12,7 +12,7 @@
 
 对于 `inbox/` 中的每一个新文件，agent 至少要产出：
 
-1. 一个来源页或目标去向判断
+1. 一个来源页、intake 页或目标去向判断
 2. 一组分类元数据
 3. 相关页面链接建议
 4. 低置信度时的待确认问题
@@ -26,6 +26,7 @@
 - `domain`：推测的业务主题
 - `period`：推测的时间周期，或 `evergreen`
 - `suggested_targets`：建议关联的 domain、report、timeline 或 candidate 页面
+- `ops_targets`：建议关联的 intake、focus-thread、reminder 或 codex-handoff 页面
 - `confidence`：`high / medium / low`
 - `language`：默认 `zh-CN`，如果原文主要是英文，也要先产出中文摘要
 
@@ -59,6 +60,16 @@
 - 稳定的总结流程
 - 已验证的坑点或原则
 
+### 路由到 Ops 记录
+
+当文件或行为本身更像个人工作流输入，而不是纯证据页时，优先生成 ops 记录。
+
+典型例子：
+- 临时想法和行为记录 -> `intake`
+- 已经形成持续推进方向 -> `focus-thread`
+- 明确需要跟进的动作 -> `reminder`
+- 已成熟的研发任务 -> `codex-handoff`
+
 ## 置信度规则
 
 - `high`：主题和目标位置清晰，可以安全创建或更新 wiki 页面
@@ -87,3 +98,4 @@
 - 不要仅凭 `inbox/` 文件就直接写入 team lore。
 - 不要用新投递的原始文件覆盖已经确认过的 wiki 结论。
 - 不要在 intake 阶段过早抹掉项目上下文。
+- 不要把每一条输入都自动升级成主线、提醒或 Codex handoff。

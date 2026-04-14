@@ -8,6 +8,7 @@
 - [Reports](reports/index.md)：按汇报对象组织的产出页与草稿页
 - [Timeline](timeline/index.md)：按周期组织的回顾与归档页
 - [Sources](sources/index.md)：飞书文档和其他上游证据页
+- [Personal Ops](ops/index.md)：个人行为落地、主线、提醒与 Codex handoff
 
 ## 推荐流转方式
 
