@@ -13,6 +13,14 @@
 
 - [主线面板](main-thread.md)
 - [提醒面板](reminders.md)
+- [Codex Handoff 规则](codex-handoff-rules.md)
+
+## 样例链路
+
+- [sample-intake](sample-intake.md)
+- [sample-focus-thread](sample-focus-thread.md)
+- [sample-reminder](sample-reminder.md)
+- [sample-codex-handoff](sample-codex-handoff.md)
 
 ## 推荐流转
 
