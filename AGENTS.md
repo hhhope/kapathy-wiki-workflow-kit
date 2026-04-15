@@ -36,3 +36,5 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - When handling meeting notes or transcripts, use the repository's fixed meeting-note format rather than a generic summary layout.
 - The main meeting-note output must include: meeting metadata, core agenda, numbered topic sections, explicit final/rejected options when applicable, a structured action-item table, and a closing summary.
 - Treat note text as the primary output and transcript text as supporting evidence for disputes or rationale.
+- Default to a review version first. Review versions must include `待确认` and `需你澄清`.
+- Do not publish or sync a final Feishu meeting note until unresolved confirmation items are either answered or explicitly marked as pending.
