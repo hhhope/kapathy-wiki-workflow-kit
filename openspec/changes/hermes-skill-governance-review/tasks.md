@@ -5,13 +5,15 @@
 
 ## 2. Repository Baseline Review
 
-- [ ] 2.1 Summarize the current repository strengths already present in `AGENTS.md`, local skills, and skill-edit TDD rules
-- [ ] 2.2 Summarize the main gaps that remain relative to Hermes-style skill governance
+- [ ] 2.1 Summarize the current repository strengths already present in `AGENTS.md`, local skills, skill-edit TDD rules, and retro capture
+- [ ] 2.2 Summarize the main gaps that remain relative to Hermes-style agent self-evolution
+- [ ] 2.3 Explicitly capture the missing incremental-refresh model for already-structured versus not-yet-structured material
 
-## 3. Follow-up Boundary
+## 3. ADR And Follow-up Boundary
 
-- [ ] 3.1 Define concrete follow-up change candidates instead of mixing implementation into this review
-- [ ] 3.2 Confirm the review does not silently modify current skill behavior
+- [ ] 3.1 Record ADR-level decisions from this review so they are visible separately from retros
+- [ ] 3.2 Define concrete follow-up change candidates instead of mixing implementation into this review
+- [ ] 3.3 Confirm the review does not silently modify current agent behavior
 
 ## 4. Validation
 
