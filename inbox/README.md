@@ -30,9 +30,20 @@ python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources --ops wiki/
 
 ## 常见去向
 
+- 会议纪要原始文件 -> 先放 `inbox/<项目或主题>/`
+- 会议纪要整理结果 -> `wiki/sources/<meeting-slug>.md`
 - 飞书导出或会议笔记 -> source 页面
 - 周报或月报草稿 -> report 页面或 report 候选
 - 稳定方法或模板 -> team lore candidate，而不是直接晋升
+
+## 会议纪要建议放法
+
+如果你现在要整理会议纪要，按两层放：
+
+1. 原始文件、截图、导出附件先放 `inbox/`
+2. 长期可引用的整理页放 `wiki/sources/`
+
+不要直接把会议纪要放进 `wiki/reports/`。`reports` 是面向受众的输出层，不是原始纪要的归档层。
 
 ## Guardrails
 

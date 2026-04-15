@@ -12,3 +12,15 @@ Source pages represent upstream evidence such as Feishu documents, meeting notes
 
 - Record source metadata even when the body stays external.
 - Track which domain, report, and timeline pages depend on the source.
+
+## 会议纪要放置规则
+
+- 原始会议纪要文件先进入 `inbox/`
+- 会议纪要的长期整理页放在 `wiki/sources/`
+- 如果纪要进一步被提炼成管理汇报或项目汇报，再在 `wiki/reports/` 里组装输出
+- 如果纪要触发了个人待办、提醒或 handoff，再额外链接到 `wiki/ops/`
+
+推荐命名：
+
+- 文件投递：`inbox/<project-or-topic>/<原始文件名>`
+- 来源页：`wiki/sources/<project-or-topic>-meeting-YYYY-MM-DD.md`
