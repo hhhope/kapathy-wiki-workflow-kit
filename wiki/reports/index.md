@@ -7,6 +7,7 @@ Report pages are audience-oriented outputs or draft workspaces built from source
 - [Management Weekly Operations](management-weekly-ops.md): sample report draft assembled from linked source and timeline pages
 - [Nirvana Handover For Account Owner](nirvana-handover-account-owner.md): takeover-oriented project handover focused on milestone drift, unfinished work, and owner alignment
 - [Nirvana Feature Tech Alignment](nirvana-feature-tech-alignment.md): project-management base sheet for aligning product functions, technical coverage, confirmation points, and delivery boundaries
+- [Nirvana Delivery Board](nirvana-delivery-board.md): phase-one delivery board for separating committed, in-progress, and pending-confirmation scopes
 
 ## Usage Notes
 
