@@ -150,8 +150,8 @@
 <div class="wrap">
   <div class="header">
     <h1>涅槃一期直销模式全景图</h1>
-    <p>汇报范围：<b>直销模式业务支持</b>。状态日期：<b>2026-04-15</b>。原业务里程碑：<b>2026-06-30</b>（当前已偏离）。产品关键节点：<b>协议支付退款测试完成 2026-07-10</b>，<b>协议支付基础能力上线 2026-07-23</b>。</p>
-    <p>本页以《里程碑版》《协议支付交易》《统一网关》《涅槃账户》为基线，只展示一期承诺、当前状态、直销对标代销的能力差距和当前资源决策项。代销模式只用于能力对标，不纳入本页一期承诺。</p>
+    <p>汇报范围：<b>直销模式业务支持</b>。状态日期：<b>2026-04-15</b>。原业务里程碑：<b>2026-06-30</b>（当前已偏离）。关键业务节点：<b>2026-04-30 支持分账聚合</b>，<b>2026-06 启动惠收钱四方收单产品</b>，<b>收单能力退款测试完成 2026-07-10</b>，<b>收单基础能力上线 2026-07-23</b>。</p>
+    <p>本页以《里程碑版》《协议支付交易》《统一网关》《涅槃账户》为基线，按直销模式对客能力组织：产品上架、收单能力、账户承接、基础退款、分账、BM。代销模式只用于能力对标，不纳入本页一期承诺。</p>
   </div>
 
   <div class="cards">
@@ -161,23 +161,23 @@
       <div class="muted">来自《里程碑版》的原计划完成时间，当前已偏离。代销模式原里程碑为 2026-09-30，不计入当前一期承诺。</div>
     </div>
     <div class="card">
-      <h3>协议支付关键节点</h3>
-      <div class="big">07-10 → 07-23</div>
-      <div class="muted">协议支付退款测试完成到协议支付基础能力上线只有 13 天。退款、补单、补发清算都落在同一后段窗口。</div>
+      <h3>收单能力关键节点</h3>
+      <div class="big">04-30 / 06月 / 07-23</div>
+      <div class="muted">4 月底支持分账聚合，6 月启动惠收钱四方收单产品，当前收单能力退款测试完成到基础能力上线只有 13 天。</div>
     </div>
     <div class="card">
       <h3>一期承诺范围</h3>
-      <div class="big">会员开通 / 协议支付 / 基础退款</div>
-      <div class="muted">一期按最小业务路径组织，不包含 BM 对账回单、分账、代销层级能力和完整收益计费能力。</div>
+      <div class="big">产品上架 / 收单能力 / 基础退款</div>
+      <div class="muted">一期按直销模式对客最小业务路径组织，不包含 BM 对账回单、分账、代销层级能力和完整收益计费能力。</div>
     </div>
     <div class="card">
       <h3>当前拍板事项</h3>
       <div class="big">BM 范围 / 分账范围 / 资源投入</div>
-      <div class="muted">2026-04-18 前明确 BM 一期范围、分账是否进入一期、协议支付研发位和测试窗口是否补足。</div>
+      <div class="muted">2026-04-18 前明确 BM 一期范围、分账是否进入一期、收单能力研发位和测试窗口是否补足。</div>
     </div>
   </div>
 
-  <div class="note">结论：直销模式一期已具备会员开通、统一网关、协议支付和账户承接基础；BM 对账回单、分账、代销层级能力不纳入当前一期承诺。</div>
+  <div class="note">结论：直销模式一期已具备产品上架、统一网关、收单能力和账户承接基础；BM 对账回单、分账、代销层级能力不纳入当前一期承诺。</div>
 
   <div class="section">
     <h2>一、直销模式业务支持排期总览</h2>
@@ -200,11 +200,12 @@
         <div class="cell head">2026-08</div>
         <div class="cell head">2026-09</div>
 
-        <div class="cell left">会员开通</div>
+        <div class="cell left">产品上架</div>
         <div class="cell phase m1">M1/M2</div>
-        <div class="cell sub">产品子服务、产品定价、开通账户配置、会员入网和开户前置已完成，可直接支撑直销模式会员开通和产品开通</div>
-        <div class="bar-cell"><div class="bar done">已上线</div></div>
-        <div class="bar-cell"><div class="bar done">已完成</div></div>
+        <div class="cell sub">产品子服务、产品定价、开通账户配置已完成；协议支付产品上架已经纳入当前一期，4 月底支持分账聚合</div>
+        <div class="bar-cell"><div class="bar done">子服务/定价</div></div>
+        <div class="bar-cell"><div class="bar done">产品上架</div></div>
+        <div class="bar-cell"><div class="bar doing risk">04-30分账聚合</div></div>
         <div class="bar-cell"></div>
         <div class="bar-cell"></div>
         <div class="bar-cell"></div>
@@ -213,7 +214,7 @@
 
         <div class="cell left">统一网关</div>
         <div class="cell phase m2">M2</div>
-        <div class="cell sub">应用管理、接口路由配置、HTTP / Dubbo 服务、错误码映射、字段元数据、环境配置已测试完成；Nacos、IP 白名单、压力测试、协议支付产品集成、会员入网集成、merchant-api 和多渠道收款 API 迁移仍在排期</div>
+        <div class="cell sub">应用管理、接口路由配置、HTTP / Dubbo 服务、错误码映射、字段元数据、环境配置已测试完成；Nacos、IP 白名单、压力测试、收单产品集成、merchant-api 和多渠道收款 API 迁移仍在排期</div>
         <div class="bar-cell"><div class="bar done">测试完成</div></div>
         <div class="bar-cell"><div class="bar todo">Nacos/IP</div></div>
         <div class="bar-cell"><div class="bar todo">压测</div></div>
@@ -233,20 +234,31 @@
         <div class="bar-cell"><div class="bar todo">冻结能力</div></div>
         <div class="bar-cell"><div class="bar todo">统一账户</div></div>
 
-        <div class="cell left">协议支付</div>
+        <div class="cell left">收单能力</div>
         <div class="cell phase m2">M2</div>
-        <div class="cell sub">一步支付、预支付、确认支付、支付订单查询、结果通知、通知清算、补单、补发清算共同组成协议支付一期交付范围；基础能力上线窗口为 2026-07-23</div>
-        <div class="bar-cell"><div class="bar doing">一步支付</div></div>
-        <div class="bar-cell"><div class="bar doing">预支付</div></div>
-        <div class="bar-cell"><div class="bar doing">确认支付</div></div>
-        <div class="bar-cell"><div class="bar doing risk">结果/补单</div></div>
+        <div class="cell sub">当前收单能力以协议支付为主，一步支付、预支付、确认支付、支付订单查询、结果通知、通知清算、补单、补发清算纳入一期；后续继续扩展支付宝、微信等收单能力</div>
+        <div class="bar-cell"><div class="bar doing">协议支付</div></div>
+        <div class="bar-cell"><div class="bar doing">预/确认支付</div></div>
+        <div class="bar-cell"><div class="bar doing">订单查询</div></div>
+        <div class="bar-cell"><div class="bar doing risk">通知/补单</div></div>
         <div class="bar-cell"><div class="bar doing risk">07-23上线</div></div>
+        <div class="bar-cell"></div>
+        <div class="bar-cell"></div>
+
+        <div class="cell left">惠收钱四方收单</div>
+        <div class="cell phase m2">M2</div>
+        <div class="cell sub">惠收钱四方收单产品按当前口述从 2026-06 启动，属于直销模式后续收单能力扩展，不纳入当前一期最小承诺范围</div>
+        <div class="bar-cell"></div>
+        <div class="bar-cell"></div>
+        <div class="bar-cell"></div>
+        <div class="bar-cell"><div class="bar todo">06月启动</div></div>
+        <div class="bar-cell"><div class="bar todo">能力扩展</div></div>
         <div class="bar-cell"></div>
         <div class="bar-cell"></div>
 
         <div class="cell left">基础退款</div>
         <div class="cell phase m2">M2</div>
-        <div class="cell sub">协议支付退款当前未开始，预计测试完成时间为 2026-07-10；退款分页查询和退款详情查询属于 M3，不纳入当前一期承诺</div>
+        <div class="cell sub">当前基础退款以协议支付退款为主，尚未开始；预计测试完成时间为 2026-07-10；退款分页查询和退款详情查询属于 M3，不纳入当前一期承诺</div>
         <div class="bar-cell"></div>
         <div class="bar-cell"></div>
         <div class="bar-cell"><div class="bar todo">退款开发</div></div>
@@ -289,7 +301,7 @@
         <div class="bar-cell"><div class="bar todo">09-30节点</div></div>
       </div>
     </div>
-    <div class="note">时间口径：2026-06-30 和 2026-09-30 属于业务原里程碑，当前已不能直接作为实际交付基线；当前实际判断以协议支付、退款、统一网关、分账的功能排期和状态为准。</div>
+    <div class="note">时间口径：2026-06-30 和 2026-09-30 属于业务原里程碑，当前已不能直接作为实际交付基线；当前实际判断以产品上架、收单能力、退款、统一网关、账户、分账的功能排期和状态为准。</div>
   </div>
 
   <div class="section">
@@ -314,13 +326,13 @@
       </thead>
       <tbody>
         <tr>
-          <td><b>产品开通域</b></td>
-          <td>产品权限、开通准备、接入前置</td>
-          <td><span class="tag t-done">已具备</span><br>开通前置、权限准备、账户底座承接已具备，能支撑直销客户进入接入准备</td>
+          <td><b>产品上架域</b></td>
+          <td>产品子服务、产品定价、产品开通</td>
+          <td><span class="tag t-done">已具备</span><br>产品子服务、产品定价、产品开通配置已经具备，能支撑当前直销模式产品上架</td>
           <td><span class="tag t-doing">代销目标</span><br>支持服务商 / 代理商 / 门店总多层级开通、会员与商户映射、层级权限可见</td>
           <td><span class="tag t-risk">当前差距</span><br>缺层级会员映射、缺代理视角下权限和可见范围</td>
           <td><span class="tag t-doing">低影响</span><br>当前不影响直销主路径，但不能讲“已具备代销级开通能力”</td>
-          <td><span class="tag t-doing">部分进入</span><br>只保直销开通准备</td>
+          <td><span class="tag t-doing">部分进入</span><br>只保直销产品上架</td>
         </tr>
         <tr>
           <td><b>接入网关域</b></td>
@@ -332,13 +344,13 @@
           <td><span class="tag t-doing">部分进入</span><br>只保直销接入</td>
         </tr>
         <tr>
-          <td><b>交易域</b></td>
-          <td>一步支付、预支付、确认支付、支付结果查询</td>
-          <td><span class="tag t-done">已具备</span><br>一步支付主路径、最小支付发起能力已经成立</td>
-          <td><span class="tag t-doing">代销目标</span><br>代销模式下支持代理 / 会员 / 商户多身份映射的交易发起和归属</td>
-          <td><span class="tag t-risk">当前差距</span><br>缺多身份交易归属映射，当前只适合讲直销商户直连口径</td>
+          <td><b>收单域</b></td>
+          <td>当前协议支付收单、后续支付宝/微信收单</td>
+          <td><span class="tag t-done">已具备</span><br>当前以协议支付收单为主，最小收单发起能力已经成立</td>
+          <td><span class="tag t-doing">代销目标</span><br>代销模式下支持代理 / 会员 / 商户多身份映射的收单发起和归属</td>
+          <td><span class="tag t-risk">当前差距</span><br>缺多身份收单归属映射，当前只适合讲直销商户直连接入；支付宝、微信等后续收单能力还未纳入一期</td>
           <td><span class="tag t-done">可对客讲</span><br>直销可讲，代销不能讲成已追平</td>
-          <td><span class="tag t-done">进入一期</span><br>保直销支付交易</td>
+          <td><span class="tag t-done">进入一期</span><br>保当前收单能力</td>
         </tr>
         <tr>
           <td><b>结果反馈域</b></td>
@@ -404,8 +416,8 @@
           <td><span class="tag t-doing">部分进入</span><br>只保基础查询与入口方向</td>
         </tr>
         <tr>
-          <td><b>协议支付分账域</b></td>
-          <td>协议支付用于分账、分账校验接口、分账退款</td>
+          <td><b>分账域</b></td>
+          <td>分账、分账校验接口、分账退款</td>
           <td><span class="tag t-todo">当前不具备</span><br>当前没有完整稳定交付包</td>
           <td><span class="tag t-doing">代销目标</span><br>支持代理收益分配、分账关系配置、退款回退、校验和计费归属</td>
           <td><span class="tag t-risk">当前差距</span><br>边界未稳、方案待重评，是直销和代销共同的最大结构性差距</td>
@@ -432,7 +444,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="note">对客最小业务路径：会员开通 → 协议支付 → 基础退款。BM 对账回单、分账和代销层级能力不在当前一期承诺范围内。</div>
+    <div class="note">对客最小业务路径：产品上架 → 收单能力 → 基础退款。BM 对账回单、分账和代销层级能力不在当前一期承诺范围内。</div>
   </div>
 
   <div class="section">
@@ -454,13 +466,13 @@
               <td><b>接入层</b></td>
               <td>统一网关 / Nacos</td>
               <td>承接签名、路由、字段校验、接口适配、Nacos 注册、IP 白名单和压力测试</td>
-              <td>决定协议支付和会员入网能否通过统一入口交付</td>
+              <td>决定收单产品和多渠道收款 API 能否通过统一入口交付</td>
             </tr>
             <tr>
               <td><b>交易层</b></td>
-              <td>协议支付</td>
-              <td>承接一步支付、预支付、确认支付、订单查询、结果通知、通知清算、补单和补发清算</td>
-              <td>决定协议支付基础能力能否在 2026-07-23 上线</td>
+              <td>收单能力</td>
+              <td>承接当前协议支付主能力，并为支付宝、微信等后续收单能力预留扩展路径</td>
+              <td>决定当前直销模式收单基础能力能否在 2026-07-23 上线</td>
             </tr>
             <tr>
               <td><b>结果反馈层</b></td>
@@ -484,7 +496,7 @@
               <td><b>计费 / 分账层</b></td>
               <td>分账、失败计费、分账校验、分账退款</td>
               <td>承接分账关系、分账退款、计费模型和计费归属</td>
-              <td>边界不清会持续挤占协议支付、退款和 BM 的资源</td>
+              <td>边界不清会持续挤占收单能力、退款和 BM 的资源</td>
             </tr>
           </tbody>
         </table>
@@ -502,20 +514,20 @@
           </thead>
           <tbody>
             <tr>
-              <td><b>协议支付研发位</b></td>
-              <td>协议支付与分账共用关键研发，补单、补发清算、订单查询、结果通知容易被继续挤压</td>
+              <td><b>收单能力研发位</b></td>
+              <td>当前收单能力与分账共用关键研发，补单、补发清算、订单查询、结果通知容易被继续挤压</td>
               <td><span class="tag t-risk">补 1 个</span></td>
-              <td>协议支付继续被动延后</td>
+              <td>收单能力继续被动延后</td>
             </tr>
             <tr>
               <td><b>BM 研发位</b></td>
               <td>BM 查询、对账、回单、退款入口没有完整独立承接带</td>
               <td><span class="tag t-risk">补 1 个</span></td>
-              <td>BM 范围持续排在协议支付后面</td>
+              <td>BM 范围持续排在收单能力后面</td>
             </tr>
             <tr>
               <td><b>测试倾斜</b></td>
-              <td>退款、绑卡、协议支付都压在后段回归窗口</td>
+              <td>退款、绑卡、收单能力都压在后段回归窗口</td>
               <td><span class="tag t-risk">补 1 个测试窗口</span></td>
               <td>07 月缓冲直接被吃掉</td>
             </tr>
@@ -527,13 +539,13 @@
             </tr>
             <tr>
               <td><b>排期拆分</b></td>
-              <td>协议支付、基础退款、BM、分账仍在共用同一条排期表达</td>
-              <td><span class="tag t-doing">拆支付 / 拆 BM / 拆分账</span></td>
+              <td>收单能力、基础退款、BM、分账仍在共用同一条排期表达</td>
+              <td><span class="tag t-doing">拆收单 / 拆 BM / 拆分账</span></td>
               <td>研发和测试节奏持续互相干扰</td>
             </tr>
           </tbody>
         </table>
-        <div class="note">当前问题不是平均缺人，而是协议支付、基础退款、BM、分账共用关键研发和测试窗口。资源动作要围绕协议支付上线窗口组织，不按功能平均铺开。</div>
+        <div class="note">当前问题不是平均缺人，而是收单能力、基础退款、BM、分账共用关键研发和测试窗口。资源动作要围绕收单能力上线窗口组织，不按功能平均铺开。</div>
       </div>
     </div>
   </div>
@@ -541,9 +553,9 @@
   <div class="section">
     <h2>四、管理结论</h2>
     <div class="foot">
-      <p><span class="strong">1. 当前能力覆盖：</span>当前可对客表达的能力集中在会员开通、统一网关基础能力、协议支付和账户底座；BM 对账回单、分账、代销层级能力不在一期承诺内。</p>
-      <p><span class="strong">2. 当前核心约束：</span>基础退款测试完成时间距离协议支付基础能力上线只有 13 天；补单、补发清算、BM、分账共用同一后段窗口。</p>
-      <p><span class="strong">3. 下一步重点：</span>锁定会员开通、协议支付、基础退款的一期范围；单列 BM 和分账排期；在 2026-04-18 前完成资源投入和范围拍板。</p>
+      <p><span class="strong">1. 当前能力覆盖：</span>当前可对客表达的能力集中在产品上架、统一网关基础能力、收单能力和账户底座；BM 对账回单、分账、代销层级能力不在一期承诺内。</p>
+      <p><span class="strong">2. 当前核心约束：</span>基础退款测试完成时间距离收单基础能力上线只有 13 天；补单、补发清算、BM、分账共用同一后段窗口。</p>
+      <p><span class="strong">3. 下一步重点：</span>锁定产品上架、收单能力、基础退款的一期范围；单列 BM 和分账排期；在 2026-04-18 前完成资源投入和范围拍板。</p>
     </div>
   </div>
 </div>
