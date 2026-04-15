@@ -150,7 +150,7 @@
 <div class="wrap">
   <div class="header">
     <h1>涅槃一期直销模式全景图</h1>
-    <p>汇报范围：<b>直销模式业务支持</b>。状态日期：<b>2026-04-15</b>。原业务里程碑：<b>2026-06-30</b>（当前已偏离）。关键业务节点：<b>2026-04-30 支持分账聚合</b>，<b>2026-06 启动惠收钱四方收单产品</b>，<b>收单能力退款测试完成 2026-07-10</b>，<b>收单基础能力上线 2026-07-23</b>。</p>
+    <p>汇报范围：<b>直销模式业务支持</b>。状态日期：<b>2026-04-15</b>。原业务里程碑：<b>2026-06-30</b>（当前已偏离）。当前 7 月窗口关键节点：<b>协议支付退款测试完成 2026-07-10</b>，<b>协议支付基础能力上线 2026-07-23</b>。</p>
     <p>本页以《里程碑版》《协议支付交易》《统一网关》《涅槃账户》为基线，按直销模式对客能力组织：产品上架、收单能力、账户承接、基础退款、分账、BM。代销模式只用于能力对标，不纳入本页一期承诺。</p>
   </div>
 
@@ -161,9 +161,9 @@
       <div class="muted">来自《里程碑版》的原计划完成时间，当前已偏离。代销模式原里程碑为 2026-09-30，不计入当前一期承诺。</div>
     </div>
     <div class="card">
-      <h3>收单能力关键节点</h3>
-      <div class="big">04-30 / 06月 / 07-23</div>
-      <div class="muted">4 月底支持分账聚合，6 月启动惠收钱四方收单产品，当前收单能力退款测试完成到基础能力上线只有 13 天。</div>
+      <h3>协议支付关键节点</h3>
+      <div class="big">07-10 → 07-23</div>
+      <div class="muted">协议支付退款测试完成到基础能力上线只有 13 天。当前 7 月窗口内的收单主线以协议支付为主。</div>
     </div>
     <div class="card">
       <h3>一期承诺范围</h3>
@@ -202,10 +202,10 @@
 
         <div class="cell left">产品货架与上架</div>
         <div class="cell phase m1">M1/M2</div>
-        <div class="cell sub">产品子服务、产品定价、开通账户配置已完成；协议支付产品上架已经纳入当前一期，4 月底支持分账聚合</div>
+        <div class="cell sub">产品子服务、产品定价、开通账户配置已完成；协议支付产品上架已经纳入当前一期</div>
         <div class="bar-cell"><div class="bar done">子服务/定价</div></div>
         <div class="bar-cell"><div class="bar done">产品上架</div></div>
-        <div class="bar-cell"><div class="bar doing risk">04-30分账聚合</div></div>
+        <div class="bar-cell"></div>
         <div class="bar-cell"></div>
         <div class="bar-cell"></div>
         <div class="bar-cell"></div>
@@ -235,11 +235,11 @@
 
         <div class="cell left">收单能力</div>
         <div class="cell phase m2">M2</div>
-        <div class="cell sub">当前按阶段支持：第一阶段是自营收单，当前以协议支付为主；第二阶段是聚合收单，4 月底支持分账聚合，6 月启动惠收钱四方收单，后续再扩展支付宝、微信等收单能力</div>
+        <div class="cell sub">当前 7 月窗口内的收单能力以协议支付为主，一步支付、预支付、确认支付、结果通知、通知清算、补单、订单查询纳入当前主线；其他收单产品暂不纳入这张甘特的当前主线</div>
         <div class="bar-cell"><div class="bar doing">自营收单</div></div>
         <div class="bar-cell"><div class="bar doing">协议支付</div></div>
-        <div class="bar-cell"><div class="bar doing risk">04-30分账聚合</div></div>
-        <div class="bar-cell"><div class="bar todo">06月四方收单</div></div>
+        <div class="bar-cell"><div class="bar doing">预/确认支付</div></div>
+        <div class="bar-cell"><div class="bar doing risk">通知/补单</div></div>
         <div class="bar-cell"><div class="bar doing risk">07-23基础上线</div></div>
         <div class="bar-cell"></div>
         <div class="bar-cell"></div>
@@ -333,10 +333,10 @@
         </tr>
         <tr>
           <td><b>收单域</b></td>
-          <td>当前协议支付收单、后续支付宝/微信收单</td>
+          <td>当前协议支付收单</td>
           <td><span class="tag t-done">已具备</span><br>当前以协议支付收单为主，最小收单发起能力已经成立</td>
           <td><span class="tag t-doing">代销目标</span><br>代销模式下支持代理 / 会员 / 商户多身份映射的收单发起和归属</td>
-          <td><span class="tag t-risk">当前差距</span><br>缺多身份收单归属映射，当前只适合讲直销商户直连接入；支付宝、微信等后续收单能力还未纳入一期</td>
+          <td><span class="tag t-risk">当前差距</span><br>缺多身份收单归属映射，当前只适合讲直销商户直连接入</td>
           <td><span class="tag t-done">可对客讲</span><br>直销可讲，代销不能讲成已追平</td>
           <td><span class="tag t-done">进入一期</span><br>保当前收单能力</td>
         </tr>
@@ -459,7 +459,7 @@
             <tr>
               <td><b>交易层</b></td>
               <td>收单能力</td>
-              <td>承接当前协议支付主能力，并为支付宝、微信等后续收单能力预留扩展路径</td>
+              <td>承接当前协议支付主能力</td>
               <td>决定当前直销模式收单基础能力能否在 2026-07-23 上线</td>
             </tr>
             <tr>
