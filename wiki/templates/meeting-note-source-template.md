@@ -18,7 +18,11 @@ updated_at: YYYY-MM-DD
 ai_generated: false
 ---
 
-# <会议主题> <YYYY-MM-DD>
+# 会议纪要：<会议主题>
+
+会议时间：<YYYY-MM-DD HH:mm>
+主 持 人：<主持人>
+参会人员：<参会人列表>
 
 ## Source Metadata
 
@@ -29,21 +33,40 @@ ai_generated: false
 - Sync state:
 - Intake confidence: high | medium | low
 
-## Meeting Context
+## 核心议题
 
-说明这次会议的背景、目的，以及它为什么值得在 wiki 中保留。
+1. 
+2. 
 
-## 中文摘要
+## 一、 <主题一>
 
-先写中文主摘要，概括关键结论、进展、风险和待办。
+### 1. 最终方案
 
-## 关键结论
+-
 
-- 
+### 2. 被否决方案
 
-## 待跟进事项
+-
 
-- 
+## 二、 <主题二>
+
+### 1. 规则与结论
+
+-
+
+### 2. 风险点
+
+-
+
+## 三、 待办事项
+
+| 待办事项内容 | 负责人 | 截止时间 |
+|---|---|---|
+|  |  |  |
+
+## 四、 总结与后续步骤
+
+-
 
 ## English Notes
 

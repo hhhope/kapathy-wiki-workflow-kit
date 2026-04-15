@@ -30,3 +30,9 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - When the user drops materials and asks Codex to process them, do not stop at placeholder intake output.
 - Default completion means readable `source` output first, then linked `ops` output when the material contains action signals.
 - Ask the user only at real output fork-points, such as whether to update `html/h5/preview` artifacts in addition to wiki records.
+
+## Meeting Note Output
+
+- When handling meeting notes or transcripts, use the repository's fixed meeting-note format rather than a generic summary layout.
+- The main meeting-note output must include: meeting metadata, core agenda, numbered topic sections, explicit final/rejected options when applicable, a structured action-item table, and a closing summary.
+- Treat note text as the primary output and transcript text as supporting evidence for disputes or rationale.
