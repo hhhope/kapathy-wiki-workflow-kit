@@ -103,6 +103,18 @@ description: Use when the user asks about 项目管理, 周报, 里程碑, 风�
 5. 再写 `reminder`
 6. 最后只判断要不要进入 `Codex handoff candidate`
 
+如果本轮要改可编辑的结构性周视图文件，例如 `html / h5 / gantt`：
+
+1. 先做结构性失败检查（RED）
+2. 再改文件本体
+3. 再做结构性通过检查（GREEN）
+
+这里的结构性检查至少覆盖：
+
+- 时间轴月份列数量
+- 每条主线的 `bar-cell` 数量
+- 关键主线是否出现视觉错位
+
 ## Common Mistakes
 
 - 只写总结，不保留来源页
@@ -128,3 +140,6 @@ description: Use when the user asks about 项目管理, 周报, 里程碑, 风�
 - 时间轴月份列数量是否一致
 - 每条主线的 bar cell 数量是否与时间轴对齐
 - `M2-M3` 这类跨阶段主线有没有因为空格缺失而视觉错位
+
+并且不能只做修后校验。
+必须先拿到一次失败检查结果，再改，再验证通过。
