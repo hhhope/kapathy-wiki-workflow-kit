@@ -25,7 +25,7 @@ class InboxIntakeTest(unittest.TestCase):
             encoding="utf-8",
         )
 
-        output_path = generate_source_draft(source_file, self.wiki_sources_dir)
+        output_path = generate_source_draft(source_file, self.wiki_sources_dir, self.inbox_dir)
 
         self.assertEqual(output_path, self.wiki_sources_dir / "weekly-update.md")
         self.assertTrue(output_path.exists())
@@ -43,7 +43,7 @@ class InboxIntakeTest(unittest.TestCase):
             encoding="utf-8",
         )
 
-        output_path = generate_source_draft(source_file, self.wiki_sources_dir)
+        output_path = generate_source_draft(source_file, self.wiki_sources_dir, self.inbox_dir)
 
         content = output_path.read_text(encoding="utf-8")
         self.assertIn("language: zh-CN", content)
@@ -70,7 +70,7 @@ class InboxIntakeTest(unittest.TestCase):
         wiki_ops_dir = self.tmpdir / "wiki" / "ops"
         wiki_ops_dir.mkdir(parents=True)
 
-        output_path = generate_intake_draft(source_file, wiki_ops_dir)
+        output_path = generate_intake_draft(source_file, wiki_ops_dir, self.inbox_dir)
 
         self.assertEqual(output_path, wiki_ops_dir / "routing-note-intake.md")
         content = output_path.read_text(encoding="utf-8")
@@ -78,6 +78,42 @@ class InboxIntakeTest(unittest.TestCase):
         self.assertIn("related_sources:", content)
         self.assertIn("../sources/routing-note.md", content)
         self.assertIn("## 输入摘要", content)
+
+    def test_detects_meeting_note_from_name_and_content(self) -> None:
+        source_file = self.inbox_dir / "nirvana-weekly-sync.txt"
+        source_file.write_text(
+            "项目周会纪要\n结论：本周先补 intake 路由，再整理管理周报。\n",
+            encoding="utf-8",
+        )
+
+        output_path = generate_source_draft(source_file, self.wiki_sources_dir, self.inbox_dir)
+
+        content = output_path.read_text(encoding="utf-8")
+        self.assertIn("source_type: meeting-note", content)
+        self.assertIn("Source class: meeting note", content)
+        self.assertIn("Intake confidence: high", content)
+
+    def test_process_inbox_recurses_and_uses_folder_as_domain_hint(self) -> None:
+        nested_dir = self.inbox_dir / "nirvana"
+        nested_dir.mkdir(parents=True)
+        source_file = nested_dir / "meeting-note.md"
+        source_file.write_text("会议纪要\n需要跟进排期偏差。", encoding="utf-8")
+        wiki_ops_dir = self.tmpdir / "wiki" / "ops"
+        wiki_ops_dir.mkdir(parents=True)
+
+        output_paths = process_inbox(self.inbox_dir, self.wiki_sources_dir, wiki_ops_dir)
+
+        self.assertEqual(
+            [path.name for path in output_paths],
+            ["nirvana-meeting-note.md", "nirvana-meeting-note-intake.md"],
+        )
+        source_content = (self.wiki_sources_dir / "nirvana-meeting-note.md").read_text(encoding="utf-8")
+        intake_content = (wiki_ops_dir / "nirvana-meeting-note-intake.md").read_text(encoding="utf-8")
+        self.assertIn("source_path: inbox/nirvana/meeting-note.md", source_content)
+        self.assertIn("domain: nirvana", source_content)
+        self.assertIn("source_type: meeting-note", source_content)
+        self.assertIn("source_path: inbox/nirvana/meeting-note.md", intake_content)
+        self.assertIn("domain: nirvana", intake_content)
 
 
 if __name__ == "__main__":

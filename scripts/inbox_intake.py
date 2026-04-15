@@ -5,6 +5,46 @@ import re
 from pathlib import Path
 
 
+MEETING_KEYWORDS = (
+    "会议纪要",
+    "纪要",
+    "周会",
+    "例会",
+    "晨会",
+    "晚会",
+    "sync",
+    "weekly sync",
+    "meeting",
+    "minutes",
+    "review",
+    "retro",
+    "复盘",
+    "对齐",
+    "kickoff",
+)
+
+REPORT_KEYWORDS = (
+    "周报",
+    "月报",
+    "日报",
+    "汇报",
+    "总结",
+    "weekly report",
+    "monthly report",
+    "status report",
+)
+
+ATTACHMENT_KEYWORDS = (
+    "截图",
+    "附件",
+    "录音",
+    "导出",
+    "export",
+    "image",
+    "attachment",
+)
+
+
 def _slugify(name: str) -> str:
     slug = re.sub(r"[^a-zA-Z0-9]+", "-", name.strip().lower()).strip("-")
     return slug or "untitled"
@@ -16,11 +56,48 @@ def _detect_language(text: str) -> str:
     return "en"
 
 
-def generate_source_draft(source_file: Path, wiki_sources_dir: Path) -> Path:
+def _contains_keywords(text: str, keywords: tuple[str, ...]) -> bool:
+    normalized = text.lower()
+    return any(keyword.lower() in normalized for keyword in keywords)
+
+
+def _infer_domain(source_file: Path, inbox_dir: Path) -> str:
+    try:
+        relative_parent = source_file.relative_to(inbox_dir).parent
+    except ValueError:
+        relative_parent = source_file.parent
+    if str(relative_parent) in {".", ""}:
+        return "unclassified"
+    return _slugify(relative_parent.parts[0])
+
+
+def _classify_source(source_file: Path, text: str) -> tuple[str, str, str]:
+    haystack = f"{source_file.stem}\n{text}"
+    if _contains_keywords(haystack, MEETING_KEYWORDS):
+        return "meeting-note", "high", "meeting note"
+    if _contains_keywords(haystack, REPORT_KEYWORDS):
+        return "report", "medium", "report draft or report input"
+    if _contains_keywords(haystack, ATTACHMENT_KEYWORDS):
+        return "attachment", "medium", "supporting attachment"
+    return "note", "low", "raw intake"
+
+
+def generate_source_draft(
+    source_file: Path,
+    wiki_sources_dir: Path,
+    inbox_dir: Path | None = None,
+) -> Path:
     text = source_file.read_text(encoding="utf-8")
     language = _detect_language(text)
+    source_type, confidence, source_class = _classify_source(source_file, text)
     title = source_file.stem.replace("_", " ").replace("-", " ").strip() or "untitled"
-    slug = _slugify(source_file.stem)
+    inbox_root = inbox_dir or source_file.parent
+    source_path = source_file.relative_to(inbox_root).as_posix()
+    domain = _infer_domain(source_file, inbox_root)
+    slug_parts = list(Path(source_path).parts)
+    if slug_parts:
+        slug_parts[-1] = Path(slug_parts[-1]).stem
+    slug = _slugify("-".join(slug_parts))
     output_path = wiki_sources_dir / f"{slug}.md"
 
     english_notes = text.strip() if language == "en" else ""
@@ -33,10 +110,10 @@ def generate_source_draft(source_file: Path, wiki_sources_dir: Path) -> Path:
     content = f"""---
 title: {title}
 type: source
-source_path: inbox/{source_file.name}
-source_type: note
+source_path: inbox/{source_path}
+source_type: {source_type}
 language: {language}
-domain: unclassified
+domain: {domain}
 audience: project
 knowledge_level: working
 period: evergreen
@@ -51,10 +128,10 @@ ai_generated: true
 ## Source Metadata
 
 - Source system: inbox
-- Source class: raw intake
+- Source class: {source_class}
 - Ownership hint:
 - Sync state: manual placeholder
-- Intake confidence: low
+- Intake confidence: {confidence}
 
 ## Audience Decision
 
@@ -82,11 +159,22 @@ Capture the minimum useful context even if the full body stays external.
     return output_path
 
 
-def generate_intake_draft(source_file: Path, wiki_ops_dir: Path) -> Path:
+def generate_intake_draft(
+    source_file: Path,
+    wiki_ops_dir: Path,
+    inbox_dir: Path | None = None,
+) -> Path:
     text = source_file.read_text(encoding="utf-8")
     language = _detect_language(text)
+    source_type, confidence, source_class = _classify_source(source_file, text)
     title = source_file.stem.replace("_", " ").replace("-", " ").strip() or "untitled"
-    slug = _slugify(source_file.stem)
+    inbox_root = inbox_dir or source_file.parent
+    source_path = source_file.relative_to(inbox_root).as_posix()
+    domain = _infer_domain(source_file, inbox_root)
+    slug_parts = list(Path(source_path).parts)
+    if slug_parts:
+        slug_parts[-1] = Path(slug_parts[-1]).stem
+    slug = _slugify("-".join(slug_parts))
     output_path = wiki_ops_dir / f"{slug}-intake.md"
 
     summary = (
@@ -100,13 +188,13 @@ def generate_intake_draft(source_file: Path, wiki_ops_dir: Path) -> Path:
 title: {title}
 type: intake
 language: {language}
-source_path: inbox/{source_file.name}
-source_type: note
+source_path: inbox/{source_path}
+source_type: {source_type}
 audience: self
 knowledge_level: working
-domain: unclassified
+domain: {domain}
 period: evergreen
-confidence: low
+confidence: {confidence}
 status: active
 updated_at: YYYY-MM-DD
 ai_generated: true
@@ -125,9 +213,9 @@ related_reminders: []
 ## 输入类型判断
 
 - 行为类型：待判断
-- 来源类型：raw inbox input
+- 来源类型：{source_class}
 - 受众判断：self
-- 当前置信度：low
+- 当前置信度：{confidence}
 
 ## 建议关联
 
@@ -156,16 +244,16 @@ def process_inbox(
     output_paths: list[Path] = []
     supported_suffixes = {".md", ".txt"}
 
-    for source_file in sorted(inbox_dir.iterdir()):
+    for source_file in sorted(inbox_dir.rglob("*")):
         if not source_file.is_file():
             continue
         if source_file.name.lower() == "readme.md":
             continue
         if source_file.suffix.lower() not in supported_suffixes:
             continue
-        output_paths.append(generate_source_draft(source_file, wiki_sources_dir))
+        output_paths.append(generate_source_draft(source_file, wiki_sources_dir, inbox_dir))
         if wiki_ops_dir is not None:
-            output_paths.append(generate_intake_draft(source_file, wiki_ops_dir))
+            output_paths.append(generate_intake_draft(source_file, wiki_ops_dir, inbox_dir))
 
     return output_paths
 
