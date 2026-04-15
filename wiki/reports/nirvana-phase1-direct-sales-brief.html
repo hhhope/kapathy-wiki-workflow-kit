@@ -293,181 +293,150 @@
   </div>
 
   <div class="section">
-    <h2>二、模式能力抽象</h2>
+    <h2>二、直销对标代销差距与对客能力地图</h2>
     <div class="legend">
-      <span><span class="tag t-done">共性底座</span></span>
-      <span><span class="tag t-doing">直销当前重点</span></span>
-      <span><span class="tag t-todo">代销复用 / 后续承接</span></span>
-      <span><span class="tag t-risk">当前差异约束</span></span>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th style="width:14%">能力层</th>
-          <th style="width:24%">共性底座</th>
-          <th style="width:22%">直销当前重点</th>
-          <th style="width:20%">代销对应能力</th>
-          <th style="width:20%">当前差异点</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><b>产品与会员</b></td>
-          <td><span class="tag t-done">共性</span><br>产品权限、会员主体、账户承接、基础开通底座</td>
-          <td><span class="tag t-doing">直销重点</span><br>客户直接开通、直接接入、直接发起交易</td>
-          <td><span class="tag t-todo">代销复用</span><br>服务商 / 代理商 / 门店总层级、代销链路映射</td>
-          <td><span class="tag t-risk">差异</span><br>当前页面还没把层级代理能力并入直销一期主路径，只能按底座复用表达</td>
-        </tr>
-        <tr>
-          <td><b>接入交易</b></td>
-          <td><span class="tag t-done">共性</span><br>统一网关、协议支付框架、账户底座、结果通知框架</td>
-          <td><span class="tag t-doing">直销重点</span><br>一步支付、预支付、确认支付、最小支付闭环</td>
-          <td><span class="tag t-todo">代销复用</span><br>代销模式下交易发起、会员与代理视角下的交易映射</td>
-          <td><span class="tag t-risk">差异</span><br>直销当前保主链路，代销模式下的多层身份映射没有纳入当前一期主表达</td>
-        </tr>
-        <tr>
-          <td><b>结果与清算</b></td>
-          <td><span class="tag t-done">共性</span><br>查询、通知、通知清算、补单补发机制</td>
-          <td><span class="tag t-doing">直销重点</span><br>把支付结果反馈和基础清算收口到 M2</td>
-          <td><span class="tag t-todo">代销复用</span><br>会员、代理商、商户多角色下的结果通知和链路透传</td>
-          <td><span class="tag t-risk">差异</span><br>直销先保商户直连口径，代销多角色通知链路还不是当前一期主口径</td>
-        </tr>
-        <tr>
-          <td><b>退款与运营</b></td>
-          <td><span class="tag t-doing">共性</span><br>API 退款、退款查询、BM/AD 查询框架、基础运营入口</td>
-          <td><span class="tag t-doing">直销重点</span><br>先保基础退款和基础查询</td>
-          <td><span class="tag t-todo">代销复用</span><br>代理体系下退款权限、账单回单、运营侧可见范围</td>
-          <td><span class="tag t-risk">差异</span><br>BM、对账、回单是当前直销也没收口的点，代销更不能提前讲完整能力</td>
-        </tr>
-        <tr>
-          <td><b>分账与收益</b></td>
-          <td><span class="tag t-doing">共性</span><br>待分账户、分账接收户、统一动账、计费模型、分账规则基础</td>
-          <td><span class="tag t-risk">直销约束</span><br>协议支付用于分账、分账退款、计费归属仍待边界冻结</td>
-          <td><span class="tag t-todo">代销复用</span><br>代销模式下分账关系、代理收益、层级计费映射</td>
-          <td><span class="tag t-risk">差异</span><br>这一层现在是最大结构性约束，直销和代销都不能直接讲“已具备完整闭环”</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="note">管理上可以直接这么讲：直销不是从零开始做一套，底层大量复用了产品、会员、账户、网关、分账和计费底座；当前真正新增和最需要保的是“直销主链路收口”和“直销口径下的最小可交付路径”，代销差异能力不应混入这次一期主承诺。</div>
-  </div>
-
-  <div class="section">
-    <h2>三、对客能力地图</h2>
-    <div class="legend">
-      <span><span class="tag t-done">当前能对客讲</span></span>
-      <span><span class="tag t-doing">当前在推进</span></span>
-      <span><span class="tag t-todo">当前不能稳定承诺</span></span>
-      <span><span class="tag t-risk">当前约束点</span></span>
+      <span><span class="tag t-done">直销当前能力</span></span>
+      <span><span class="tag t-doing">代销目标能力</span></span>
+      <span><span class="tag t-risk">当前差距 / 对客影响</span></span>
+      <span><span class="tag t-todo">一期处理口径</span></span>
     </div>
     <table>
       <thead>
         <tr>
           <th style="width:12%">领域</th>
-          <th style="width:18%">能力主题</th>
-          <th style="width:22%">当前能做什么</th>
-          <th style="width:24%">当前在推进什么</th>
-          <th style="width:24%">当前缺什么 / 不能怎么讲</th>
+          <th style="width:14%">能力主题</th>
+          <th style="width:20%">直销当前能力</th>
+          <th style="width:18%">代销目标能力</th>
+          <th style="width:18%">当前差距</th>
+          <th style="width:10%">对客影响</th>
+          <th style="width:8%">一期处理口径</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><b>产品开通域</b></td>
           <td>产品权限、开通准备、接入前置</td>
-          <td><span class="tag t-done">能讲</span><br>开通前置、权限准备、账户底座承接已具备</td>
-          <td><span class="tag t-doing">推进中</span><br>对客开通口径与接口粒度继续收口</td>
-          <td><span class="tag t-risk">约束</span><br>当前能讲“具备接入准备”，不能讲“全量开通闭环已验收”</td>
+          <td><span class="tag t-done">当前能讲</span><br>开通前置、权限准备、账户底座承接已具备，能支撑直销客户进入接入准备</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持服务商 / 代理商 / 门店总多层级开通、会员与商户映射、层级权限可见</td>
+          <td><span class="tag t-risk">当前差距</span><br>缺层级会员映射、缺代理视角下权限和可见范围</td>
+          <td>当前不影响直销主路径，但不能讲“已具备代销级开通能力”</td>
+          <td>一期只保直销开通准备，不承诺代销层级开通闭环</td>
         </tr>
         <tr>
           <td><b>接入网关域</b></td>
           <td>统一网关、签名、路由、商用范围</td>
-          <td><span class="tag t-doing">部分能讲</span><br>统一接入方向明确，网关已进入回归和压测承接</td>
-          <td><span class="tag t-doing">推进中</span><br>NACOS 回归、对客方式、商用范围、压测收口</td>
-          <td><span class="tag t-risk">约束</span><br>不能把网关讲成已完全释放资源的稳定入口</td>
+          <td><span class="tag t-done">当前能讲</span><br>统一接入方向明确，网关已进入回归和压测承接</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持多角色接入、不同层级签名密钥与代理视角映射下的统一接入</td>
+          <td><span class="tag t-risk">当前差距</span><br>商用范围和多角色接入口径未统一，不能按代销成熟入口表达</td>
+          <td>对直销当前接入有约束，对代销接入暂不具备表达条件</td>
+          <td>一期保直销接入，不纳入代销入口闭环</td>
         </tr>
         <tr>
           <td><b>交易域</b></td>
           <td>一步支付、预支付、确认支付、支付结果查询</td>
-          <td><span class="tag t-done">能讲</span><br>一步支付主路径、最小支付发起能力</td>
-          <td><span class="tag t-doing">推进中</span><br>预支付、确认支付、结果反馈、状态查询</td>
-          <td><span class="tag t-risk">约束</span><br>周报 `100%` 不能等同于可交付</td>
+          <td><span class="tag t-done">当前能讲</span><br>一步支付主路径、最小支付发起能力已经成立</td>
+          <td><span class="tag t-doing">代销目标</span><br>代销模式下支持代理 / 会员 / 商户多身份映射的交易发起和归属</td>
+          <td><span class="tag t-risk">当前差距</span><br>缺多身份交易归属映射，当前只适合讲直销商户直连口径</td>
+          <td>直销可讲，代销不能讲成已追平</td>
+          <td>一期保直销交易主链路</td>
         </tr>
         <tr>
           <td><b>结果反馈域</b></td>
           <td>异步通知、通知清算、补单、补发清算</td>
-          <td><span class="tag t-doing">部分可讲</span><br>查询、通知、通知清算方向已承接</td>
-          <td><span class="tag t-doing">推进中</span><br>补单、补发清算、商户结果反馈</td>
-          <td><span class="tag t-risk">约束</span><br>当前最容易先滑的主链路收尾项</td>
+          <td><span class="tag t-doing">当前能讲部分</span><br>查询、通知、通知清算方向已承接</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持会员、代理商、商户多角色结果通知和清算透传</td>
+          <td><span class="tag t-risk">当前差距</span><br>补单、补发清算仍在近端收口，多角色通知链路未建立</td>
+          <td>当前最容易先滑，不能把代销通知链路混进一期汇报</td>
+          <td>一期只保直销结果反馈收尾</td>
         </tr>
         <tr>
           <td><b>退款域</b></td>
           <td>API 退款、退款查询、退款治理</td>
-          <td><span class="tag t-doing">部分可讲</span><br>基础退款方向已纳入一期</td>
-          <td><span class="tag t-doing">推进中</span><br>API 退款、退款查询基础能力</td>
-          <td><span class="tag t-risk">约束</span><br>退款审核、批量退款、手续费展示不能混讲成一期已具备</td>
+          <td><span class="tag t-doing">当前能讲部分</span><br>基础退款方向已纳入一期，API 退款和退款查询基础能力在推进</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持代理体系下退款权限、审核、批量退款、手续费口径和回单口径</td>
+          <td><span class="tag t-risk">当前差距</span><br>退款治理能力没成包，代销视角下权限和手续费口径都未具备</td>
+          <td>当前只能讲基础退款，不能讲代销级退款运营</td>
+          <td>一期只保基础退款</td>
         </tr>
         <tr>
           <td><b>绑卡签约域</b></td>
           <td>预签约、确认签约、解绑、一键绑卡、绑卡查询</td>
-          <td><span class="tag t-todo">暂不主讲</span><br>当前不作为最小可交付路径</td>
-          <td><span class="tag t-doing">推进中</span><br>一键绑卡、解绑、查询后段排期</td>
-          <td><span class="tag t-todo">缺口</span><br>不能按主线能力对客承诺完整绑卡包</td>
+          <td><span class="tag t-todo">当前不主讲</span><br>不是最小可交付路径，后段排期为主</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持不同角色下签约、绑卡、解绑、签约流水和可见性控制</td>
+          <td><span class="tag t-risk">当前差距</span><br>绑卡本身还未闭环，更不用说代销多角色签约口径</td>
+          <td>当前不能对客承诺完整绑卡包</td>
+          <td>一期后段能力，不作主承诺</td>
         </tr>
         <tr>
           <td><b>账户域</b></td>
           <td>待分账户、分账接收户、统一动账、分录</td>
-          <td><span class="tag t-done">能讲</span><br>账户底座、统一动账、分账接收承接基础较稳</td>
-          <td><span class="tag t-doing">推进中</span><br>账户联调、查询解耦、链路回归收口</td>
-          <td><span class="tag t-risk">约束</span><br>不能因为单点能力完成，就把全链路账务闭环讲成已稳定</td>
+          <td><span class="tag t-done">当前能讲</span><br>账户底座、统一动账、分账接收承接基础较稳</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持代理层级账户承接、代销可见范围、不同主体下账户和收益归属</td>
+          <td><span class="tag t-risk">当前差距</span><br>底座可复用，但层级主体和可见范围能力还没纳入一期</td>
+          <td>当前能讲底座，不应讲代销层级账户闭环</td>
+          <td>一期保底座复用</td>
         </tr>
         <tr>
           <td><b>结算域</b></td>
           <td>通知清算、未结算、账期、结算承接</td>
-          <td><span class="tag t-doing">部分可讲</span><br>通知清算和部分账务承接方向已经建立</td>
-          <td><span class="tag t-doing">推进中</span><br>未结算明细、账期口径、清算链路继续收口</td>
-          <td><span class="tag t-risk">约束</span><br>清算口径、结果反馈和退款口径还没有完全统一</td>
+          <td><span class="tag t-doing">当前能讲部分</span><br>通知清算和部分账务承接方向已经建立</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持多主体账期、结算明细、回单、账单可见性和一致性表达</td>
+          <td><span class="tag t-risk">当前差距</span><br>清算口径本身还没完全统一，代销多主体结算更远</td>
+          <td>当前不宜对客讲代销级结算闭环</td>
+          <td>一期保直销清算承接</td>
         </tr>
         <tr>
           <td><b>收益计费域</b></td>
           <td>计费模型、退款手续费、失败计费、计费归属</td>
-          <td><span class="tag t-todo">暂不主讲</span><br>当前不适合作为稳定对客能力表达</td>
-          <td><span class="tag t-doing">推进中</span><br>计费模型、退款手续费、分账计费归属讨论</td>
-          <td><span class="tag t-risk">约束</span><br>失败计费和计费归属未冻结前，不能对外给确定口径</td>
+          <td><span class="tag t-todo">当前不主讲</span><br>当前不适合作为稳定对客能力表达</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持代理收益映射、层级计费、退款手续费和失败计费完整口径</td>
+          <td><span class="tag t-risk">当前差距</span><br>计费模型和收益归属都未冻结，和代销目标差距最大</td>
+          <td>当前不能给确定对客口径</td>
+          <td>一期以边界确认为主</td>
         </tr>
         <tr>
           <td><b>BM / 资金管理域</b></td>
           <td>BM 查询、BM 对账、BM 回单、BM 退款入口</td>
-          <td><span class="tag t-doing">部分可讲</span><br>部分交易查询和详情能力</td>
-          <td><span class="tag t-doing">推进中</span><br>查询、详情、退款入口、脱敏展示</td>
-          <td><span class="tag t-risk">约束</span><br>对账下载、回单下载、完整运营闭环还不能稳定承诺</td>
+          <td><span class="tag t-doing">当前能讲部分</span><br>部分交易查询和详情能力</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持代理体系下查询、对账、回单、退款入口和可见范围治理</td>
+          <td><span class="tag t-risk">当前差距</span><br>直销自己的 BM 都没收口，代销视角下资金管理更不能提前讲</td>
+          <td>当前对客感知最强，但也最容易失真</td>
+          <td>一期只保基础查询与入口方向</td>
         </tr>
         <tr>
           <td><b>分账耦合域</b></td>
           <td>协议支付用于分账、分账校验接口、分账退款</td>
-          <td><span class="tag t-todo">不能讲</span><br>当前没有完整稳定交付包</td>
-          <td><span class="tag t-doing">推进中</span><br>分账关系、校验方向、方案评审</td>
-          <td><span class="tag t-risk">约束</span><br>边界未稳、方案待重评，不能直接算一期稳定能力</td>
+          <td><span class="tag t-todo">当前不能讲</span><br>当前没有完整稳定交付包</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持代理收益分配、分账关系配置、退款回退、校验和计费归属</td>
+          <td><span class="tag t-risk">当前差距</span><br>边界未稳、方案待重评，是直销和代销共同的最大结构性差距</td>
+          <td>当前不能按“支持分账”对客稳定表达</td>
+          <td>一期只保边界确认和底座</td>
         </tr>
         <tr>
           <td><b>合规治理域</b></td>
           <td>权限校验、参数规范、通知口径、资料一致性</td>
-          <td><span class="tag t-doing">部分可讲</span><br>基础校验和接口方向有承接</td>
-          <td><span class="tag t-doing">推进中</span><br>异步通知参数整理、字段口径、权限规则继续统一</td>
-          <td><span class="tag t-risk">约束</span><br>没有统一口径前，汇报和对客表达容易失真</td>
+          <td><span class="tag t-doing">当前能讲部分</span><br>基础校验和接口方向有承接</td>
+          <td><span class="tag t-doing">代销目标</span><br>支持多主体权限、参数一致性、通知口径和资料可追溯性</td>
+          <td><span class="tag t-risk">当前差距</span><br>字段和权限口径仍在统一，代销多主体治理还没进入一期主表达</td>
+          <td>当前汇报和对客口径都容易失真</td>
+          <td>一期以直销口径统一为主</td>
         </tr>
         <tr>
           <td><b>扩展能力域</b></td>
           <td>失败计费、撞库、签约支付、新代收、路由重发</td>
-          <td><span class="tag t-todo">不能讲</span><br>当前不纳入最小交付表达</td>
-          <td><span class="tag t-todo">待确认</span><br>只有需求提出，没有稳定成包承接</td>
-          <td><span class="tag t-todo">缺口</span><br>如果不先冻结边界，会继续拉宽一期口径</td>
+          <td><span class="tag t-todo">当前不能讲</span><br>当前不纳入最小交付表达</td>
+          <td><span class="tag t-todo">代销目标</span><br>作为未来模式扩展能力池，支撑更复杂产品和路由能力</td>
+          <td><span class="tag t-risk">当前差距</span><br>当前连直销一期都不应纳入，更不适合拿来对标代销成熟度</td>
+          <td>不应进入当前对客承诺口径</td>
+          <td>一期不处理</td>
         </tr>
       </tbody>
     </table>
-    <div class="note">对客最小路径只有 5 步：开通接入 → 发起支付 → 获取结果 → 发起基础退款 → 运营闭环。现在稳定可讲的是前 2 步和底座，后 3 步还在不同程度收口。</div>
+    <div class="note">这张表现在可以直接回答两个问题：第一，直销和代销每个领域到底差多远；第二，这个差距会不会影响当前对客表达。对客最小路径仍然只有 5 步：开通接入 → 发起支付 → 获取结果 → 发起基础退款 → 运营闭环。</div>
   </div>
 
   <div class="section">
-    <h2>四、技术建设与资源动作</h2>
+    <h2>三、技术建设与资源动作</h2>
     <div class="two-col">
       <div>
         <h3>技术建设</h3>
@@ -570,7 +539,7 @@
   </div>
 
   <div class="section">
-    <h2>五、管理结论</h2>
+    <h2>四、管理结论</h2>
     <div class="foot">
       <p><span class="strong">1. 当前能力覆盖：</span>直销模式下一期当前稳定可对客表达的能力约 40%，主要集中在开通接入、一步支付主路径和账户/网关底座。</p>
       <p><span class="strong">2. 当前核心约束：</span>基础退款到 M2 只有 13 天缓冲，补单和补发清算已经进入近端承压区，BM 和分账耦合又没有形成同等成熟度的收口。</p>
