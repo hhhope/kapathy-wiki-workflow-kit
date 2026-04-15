@@ -9,6 +9,21 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - Do not ship temporary wiki-only or skill-draft-only fixes first and backfill OpenSpec later.
 - If the user asks to change how Codex should usually behave in this repository, assume it is a workflow change unless the request is explicitly limited to one page or one one-off run.
 
+## Decision Observability
+
+- For workflow-level changes, record the decision in an ADR file under the active OpenSpec change rather than leaving the rationale only in chat history.
+- If the work is interrupted, blocked, or leaves an unresolved branch, write a checkpoint note in the active change artifacts or linked repo guidance before stopping.
+- A valid checkpoint must state:
+  - what was decided
+  - what is still open
+  - what the next action is
+- Do not claim a future “tighter process” unless the new constraint is written into repo-visible artifacts.
+
+## Scope Of Policy
+
+- Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
+- Only promote a policy to global guidance when it has been shown to generalize beyond this repository's material-processing workflow.
+
 ## Material Processing Default
 
 - When the user drops materials and asks Codex to process them, do not stop at placeholder intake output.
