@@ -39,3 +39,9 @@ The system SHALL translate current constraints into concrete management actions,
 - **WHEN** a user reviews the final sections of the PM brief
 - **THEN** the document SHALL list resource constraints, requested support, and decision items with explicit business impact
 
+### Requirement: Direct-sales phase1 PM brief SHALL show distance from resale capability
+The system SHALL include a management-facing comparison that explains how far direct-sales phase1 currently is from resale target capability by major domain.
+
+#### Scenario: Reader asks how far direct-sales is from resale
+- **WHEN** a user reviews the comparison section of the PM brief
+- **THEN** the document SHALL show by domain the current direct-sales capability, the resale target capability, the current difference, customer-facing impact, and whether phase1 handles that difference
