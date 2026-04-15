@@ -89,3 +89,29 @@ The system SHALL avoid pseudo-precise capability coverage percentages when no in
 - **WHEN** the source materials do not provide a rigorous interface-level completion model
 - **THEN** the page SHALL describe capability coverage using scope language such as committed, currently customer-facing, or not included in phase1
 - **AND** the page SHALL not invent percentage figures such as `40%` as if they were measured facts
+
+### Requirement: Direct-sales HTML brief SHALL classify oral inputs before rendering them
+The system SHALL classify orally supplied or chat-supplemented information into current facts, directional notes, or clarification-needed items before deciding whether the information can enter the primary gantt.
+
+#### Scenario: User gives additional oral milestones or business context
+- **WHEN** a user supplements the source materials with oral information during iteration
+- **THEN** the page SHALL only render that information in the primary gantt if it is confirmed as a current reporting fact
+- **AND** the page SHALL place directional context in explanatory text or comparison sections instead of the primary gantt
+- **AND** the page SHALL explicitly mark missing-data items as pending clarification rather than turning them into timeline facts
+
+### Requirement: Direct-sales HTML brief SHALL keep the primary gantt focused on current direct-sales workstreams
+The system SHALL keep the primary gantt focused on current direct-sales phase1 workstreams and SHALL not mix resale targets, member-progress placeholders, or later-mode planning items into the same timeline unless they are explicitly in-scope and data-backed.
+
+#### Scenario: Resale or member-related information is available but current scope is direct-sales phase1
+- **WHEN** the page is built for direct-sales phase1 review
+- **THEN** the primary gantt SHALL show only the current direct-sales workstreams that matter to this phase
+- **AND** resale targets or member-progress notes SHALL appear only in comparison or clarification areas when supported
+- **AND** unsupported member-progress content SHALL be labeled as clarification-needed rather than presented as progress
+
+### Requirement: Direct-sales HTML brief SHALL use presentation-safe gantt labels
+The system SHALL use presentation-safe gantt labels that can be spoken directly in a management review and SHALL avoid unexplained shorthand, suffix labels, or cryptic tail markers.
+
+#### Scenario: Page is projected in a management review
+- **WHEN** a reader scans the gantt labels on screen
+- **THEN** each label SHALL be interpretable as a business object, milestone, or work item without additional context
+- **AND** the page SHALL avoid labels such as unexplained abbreviations, isolated month-node tails, or orphaned stage markers
