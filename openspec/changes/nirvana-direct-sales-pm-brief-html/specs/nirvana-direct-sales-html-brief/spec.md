@@ -34,3 +34,18 @@ The system SHALL use management-oriented labels and section titles instead of an
 - **WHEN** a user uses the HTML brief as a presentation aid
 - **THEN** section titles and labels SHALL align with management language such as committed scope, current delivery, delivery constraints, resource configuration constraints, and management decisions
 
+### Requirement: Direct-sales HTML brief SHALL show direct-sales versus resale distance
+The system SHALL include a management-facing comparison that shows how far direct-sales capabilities are from resale target capabilities for each major domain, rather than only showing abstract mode descriptions.
+
+#### Scenario: Reader wants to understand distance between direct-sales and resale
+- **WHEN** a user reviews the comparison section
+- **THEN** the HTML SHALL show per domain the current direct-sales capability, the resale target capability, the current difference, customer-facing impact, and whether phase1 handles that difference
+
+### Requirement: Direct-sales HTML brief SHALL separate mode comparison from customer-facing map
+The system SHALL separate the “direct-sales versus resale distance” view from the “current customer-facing capability” view so that the reader can independently understand strategic distance and current external commitment.
+
+#### Scenario: Reader wants to know both strategic distance and customer commitment
+- **WHEN** a user scans the HTML brief
+- **THEN** the page SHALL provide one section for direct-sales versus resale capability distance
+- **AND** another section for current customer-facing capability coverage
+- **AND** the two sections SHALL not collapse into a single ambiguous table
