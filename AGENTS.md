@@ -11,13 +11,14 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 
 ## Decision Observability
 
-- For workflow-level changes, record the decision in an ADR file under the active OpenSpec change rather than leaving the rationale only in chat history.
+- For workflow-level changes, record stable decisions in `wiki/adr/` rather than leaving the rationale only in chat history.
 - If the work is interrupted, blocked, or leaves an unresolved branch, write a checkpoint note in the active change artifacts or linked repo guidance before stopping.
 - A valid checkpoint must state:
   - what was decided
   - what is still open
   - what the next action is
 - Do not claim a future “tighter process” unless the new constraint is written into repo-visible artifacts.
+- OpenSpec change artifacts still own current scope, task progress, and interruption checkpoints; `wiki/adr/` owns stable project decisions.
 
 ## Scope Of Policy
 

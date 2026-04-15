@@ -20,6 +20,7 @@
 ## 治理辅助页
 
 - [Role Boundaries](role-boundaries.md)：判断页面是服务当前项目，还是服务团队复用
+- [ADR Index](adr/index.md)：项目级稳定决策与治理边界
 - [Team Lore Candidates](team-lore-candidates.md)：暂存可能晋升到 team lore 的内容
 - [Inbox Intake](inbox-intake.md)：定义 agent 如何扫描并分类 `inbox/` 中的新文件
 - [Language Policy](language-policy.md)：定义中文主写、英文分栏的写法规范
