@@ -304,7 +304,7 @@
       <thead>
         <tr>
           <th style="width:12%">领域</th>
-          <th style="width:18%">产品承诺接口包</th>
+          <th style="width:18%">能力主题</th>
           <th style="width:22%">当前能做什么</th>
           <th style="width:24%">当前在推进什么</th>
           <th style="width:24%">当前缺什么 / 不能怎么讲</th>
@@ -312,56 +312,91 @@
       </thead>
       <tbody>
         <tr>
-          <td><b>开通接入</b></td>
-          <td>开通、权限、接入准备</td>
-          <td><span class="tag t-done">能讲</span><br>开通前置、网关接入准备、账户底座承接</td>
-          <td><span class="tag t-doing">推进中</span><br>统一网关回归、对客方式和商用范围收口</td>
-          <td><span class="tag t-risk">约束</span><br>不能把网关直接讲成“全闭环可释放”</td>
+          <td><b>产品开通域</b></td>
+          <td>产品权限、开通准备、接入前置</td>
+          <td><span class="tag t-done">能讲</span><br>开通前置、权限准备、账户底座承接已具备</td>
+          <td><span class="tag t-doing">推进中</span><br>对客开通口径与接口粒度继续收口</td>
+          <td><span class="tag t-risk">约束</span><br>当前能讲“具备接入准备”，不能讲“全量开通闭环已验收”</td>
         </tr>
         <tr>
-          <td><b>支付主链路</b></td>
+          <td><b>接入网关域</b></td>
+          <td>统一网关、签名、路由、商用范围</td>
+          <td><span class="tag t-doing">部分能讲</span><br>统一接入方向明确，网关已进入回归和压测承接</td>
+          <td><span class="tag t-doing">推进中</span><br>NACOS 回归、对客方式、商用范围、压测收口</td>
+          <td><span class="tag t-risk">约束</span><br>不能把网关讲成已完全释放资源的稳定入口</td>
+        </tr>
+        <tr>
+          <td><b>交易域</b></td>
           <td>一步支付、预支付、确认支付、支付结果查询</td>
           <td><span class="tag t-done">能讲</span><br>一步支付主路径、最小支付发起能力</td>
           <td><span class="tag t-doing">推进中</span><br>预支付、确认支付、结果反馈、状态查询</td>
           <td><span class="tag t-risk">约束</span><br>周报 `100%` 不能等同于可交付</td>
         </tr>
         <tr>
-          <td><b>结果反馈</b></td>
+          <td><b>结果反馈域</b></td>
           <td>异步通知、通知清算、补单、补发清算</td>
           <td><span class="tag t-doing">部分可讲</span><br>查询、通知、通知清算方向已承接</td>
           <td><span class="tag t-doing">推进中</span><br>补单、补发清算、商户结果反馈</td>
           <td><span class="tag t-risk">约束</span><br>当前最容易先滑的主链路收尾项</td>
         </tr>
         <tr>
-          <td><b>基础退款</b></td>
-          <td>API 退款、退款查询</td>
+          <td><b>退款域</b></td>
+          <td>API 退款、退款查询、退款治理</td>
           <td><span class="tag t-doing">部分可讲</span><br>基础退款方向已纳入一期</td>
           <td><span class="tag t-doing">推进中</span><br>API 退款、退款查询基础能力</td>
           <td><span class="tag t-risk">约束</span><br>退款审核、批量退款、手续费展示不能混讲成一期已具备</td>
         </tr>
         <tr>
-          <td><b>绑卡签约</b></td>
+          <td><b>绑卡签约域</b></td>
           <td>预签约、确认签约、解绑、一键绑卡、绑卡查询</td>
           <td><span class="tag t-todo">暂不主讲</span><br>当前不作为最小可交付路径</td>
           <td><span class="tag t-doing">推进中</span><br>一键绑卡、解绑、查询后段排期</td>
           <td><span class="tag t-todo">缺口</span><br>不能按主线能力对客承诺完整绑卡包</td>
         </tr>
         <tr>
-          <td><b>BM 运营</b></td>
+          <td><b>账户域</b></td>
+          <td>待分账户、分账接收户、统一动账、分录</td>
+          <td><span class="tag t-done">能讲</span><br>账户底座、统一动账、分账接收承接基础较稳</td>
+          <td><span class="tag t-doing">推进中</span><br>账户联调、查询解耦、链路回归收口</td>
+          <td><span class="tag t-risk">约束</span><br>不能因为单点能力完成，就把全链路账务闭环讲成已稳定</td>
+        </tr>
+        <tr>
+          <td><b>结算域</b></td>
+          <td>通知清算、未结算、账期、结算承接</td>
+          <td><span class="tag t-doing">部分可讲</span><br>通知清算和部分账务承接方向已经建立</td>
+          <td><span class="tag t-doing">推进中</span><br>未结算明细、账期口径、清算链路继续收口</td>
+          <td><span class="tag t-risk">约束</span><br>清算口径、结果反馈和退款口径还没有完全统一</td>
+        </tr>
+        <tr>
+          <td><b>收益计费域</b></td>
+          <td>计费模型、退款手续费、失败计费、计费归属</td>
+          <td><span class="tag t-todo">暂不主讲</span><br>当前不适合作为稳定对客能力表达</td>
+          <td><span class="tag t-doing">推进中</span><br>计费模型、退款手续费、分账计费归属讨论</td>
+          <td><span class="tag t-risk">约束</span><br>失败计费和计费归属未冻结前，不能对外给确定口径</td>
+        </tr>
+        <tr>
+          <td><b>BM / 资金管理域</b></td>
           <td>BM 查询、BM 对账、BM 回单、BM 退款入口</td>
           <td><span class="tag t-doing">部分可讲</span><br>部分交易查询和详情能力</td>
           <td><span class="tag t-doing">推进中</span><br>查询、详情、退款入口、脱敏展示</td>
           <td><span class="tag t-risk">约束</span><br>对账下载、回单下载、完整运营闭环还不能稳定承诺</td>
         </tr>
         <tr>
-          <td><b>分账耦合</b></td>
+          <td><b>分账耦合域</b></td>
           <td>协议支付用于分账、分账校验接口、分账退款</td>
           <td><span class="tag t-todo">不能讲</span><br>当前没有完整稳定交付包</td>
           <td><span class="tag t-doing">推进中</span><br>分账关系、校验方向、方案评审</td>
           <td><span class="tag t-risk">约束</span><br>边界未稳、方案待重评，不能直接算一期稳定能力</td>
         </tr>
         <tr>
-          <td><b>扩展能力</b></td>
+          <td><b>合规治理域</b></td>
+          <td>权限校验、参数规范、通知口径、资料一致性</td>
+          <td><span class="tag t-doing">部分可讲</span><br>基础校验和接口方向有承接</td>
+          <td><span class="tag t-doing">推进中</span><br>异步通知参数整理、字段口径、权限规则继续统一</td>
+          <td><span class="tag t-risk">约束</span><br>没有统一口径前，汇报和对客表达容易失真</td>
+        </tr>
+        <tr>
+          <td><b>扩展能力域</b></td>
           <td>失败计费、撞库、签约支付、新代收、路由重发</td>
           <td><span class="tag t-todo">不能讲</span><br>当前不纳入最小交付表达</td>
           <td><span class="tag t-todo">待确认</span><br>只有需求提出，没有稳定成包承接</td>
