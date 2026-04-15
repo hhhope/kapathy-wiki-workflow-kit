@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>涅槃一期直销模式项目管理汇报</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --surface-soft: #f8faff;
+      --text: #111827;
+      --muted: #667085;
+      --line: #d9deea;
+      --blue: #2563eb;
+      --green: #16a34a;
+      --yellow: #d97706;
+      --red: #dc2626;
+      --gray: #94a3b8;
+      --header-a: #0b1220;
+      --header-b: #1d4ed8;
+      --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --maxw: 1360px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "DIN Alternate", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 30%),
+        linear-gradient(180deg, #f7f9fd 0%, #eef3fb 100%);
+      color: var(--text);
+    }
+
+    .page {
+      width: min(var(--maxw), calc(100vw - 32px));
+      margin: 24px auto 48px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--header-a), var(--header-b));
+      color: #fff;
+      border-radius: 24px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.3fr auto;
+      gap: 18px;
+      align-items: start;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0));
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(32px, 4vw, 56px);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 66ch;
+      color: rgba(255,255,255,0.84);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .hero-badge {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.1);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card, .section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+    }
+
+    .card { padding: 18px; }
+
+    .summary-card .label,
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .summary-card .value {
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      margin-bottom: 8px;
+    }
+
+    .summary-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .accent-green { color: var(--green); }
+    .accent-yellow { color: var(--yellow); }
+    .accent-red { color: var(--red); }
+    .accent-blue { color: var(--blue); }
+
+    .mvp-band {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+    }
+
+    .mvp-card {
+      background: linear-gradient(135deg, #0f172a, #1f2937);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mvp-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20px -30px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.28), rgba(59, 130, 246, 0));
+    }
+
+    .mvp-card .section-kicker { color: rgba(255,255,255,0.68); }
+    .mvp-card h2 { margin: 0 0 10px; font-size: 28px; line-height: 1.05; }
+    .mvp-card p { margin: 0 0 14px; color: rgba(255,255,255,0.84); line-height: 1.65; }
+
+    .ratio-band {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ratio-cell {
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .ratio-cell strong {
+      display: block;
+      font-size: 26px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .ratio-cell span {
+      display: block;
+      font-size: 12px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.5;
+    }
+
+    .milestone-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .milestone-item {
+      display: grid;
+      grid-template-columns: 88px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface-soft);
+    }
+
+    .milestone-time {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .milestone-main {
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .milestone-main strong { display: block; }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .status-completed { background: rgba(22, 163, 74, 0.12); color: #15803d; }
+    .status-progress { background: rgba(217, 119, 6, 0.14); color: #b45309; }
+    .status-planned { background: rgba(148, 163, 184, 0.16); color: #475569; }
+    .status-risk { background: rgba(220, 38, 38, 0.1); color: #b91c1c; border-color: rgba(220, 38, 38, 0.28); }
+
+    .section { padding: 20px; }
+
+    .section h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .section p.lead {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .gantt {
+      display: grid;
+      gap: 10px;
+    }
+
+    .gantt-head,
+    .gantt-row {
+      display: grid;
+      grid-template-columns: 180px repeat(4, minmax(0, 1fr)) 96px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .gantt-head div {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .gantt-head div:first-child,
+    .gantt-row .name {
+      text-align: left;
+    }
+
+    .gantt-row {
+      padding: 12px 0;
+      border-top: 1px solid #edf1f7;
+    }
+
+    .name {
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .month-cell {
+      height: 20px;
+      border-radius: 999px;
+      background: #eef2f7;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .month-cell > span {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      display: block;
+    }
+
+    .fill-completed { background: var(--green); }
+    .fill-progress { background: linear-gradient(90deg, #f59e0b, #facc15); }
+    .fill-planned { background: var(--gray); }
+    .fill-risk { background: linear-gradient(90deg, #f59e0b, #facc15); box-shadow: inset 0 0 0 2px var(--red); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #edf1f7;
+      vertical-align: top;
+      font-size: 14px;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    td:first-child { font-weight: 700; }
+
+    .inline-note {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #991b1b;
+      background: #fee2e2;
+    }
+
+    .ops-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 0 0 16px;
+    }
+
+    .ops-card {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(180deg, #fbfdff 0%, #f5f8fe 100%);
+    }
+
+    .ops-card h4 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .ops-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .conclusion {
+      display: grid;
+      gap: 12px;
+    }
+
+    .conclusion-item {
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-soft);
+      border: 1px solid #e7ecf4;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-4,
+      .mvp-band,
+      .ops-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .gantt-head,
+      .gantt-row {
+        grid-template-columns: 140px repeat(4, minmax(46px, 1fr)) 84px;
+      }
+
+      .ratio-band {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <div class="section-kicker">Direct Sales Phase 1</div>
+        <h1>涅槃一期直销模式<br>项目管理汇报</h1>
+        <p>截至 2026-04-15，这次汇报只讲直销模式下一期。页面核心回答 5 件事：产品承诺了哪些接口包、当前最小可交付路径是什么、现在到底能稳定提供多少能力、当前交付约束集中在哪、接下来需要什么资源和拍板动作。</p>
+      </div>
+      <div class="hero-badge">Management View</div>
+    </section>
+
+    <section class="grid-4">
+      <article class="card summary-card">
+        <div class="label">Base Capability</div>
+        <div class="value accent-green">40 / 40 / 20</div>
+        <p>稳定可对客表达约 40%，已进入开发承接但未到交付表达约 40%，仍缺稳定边界或稳定承接约 20%。当前提供的是主链路能力，不是完整运营闭环。</p>
+      </article>
+      <article class="card summary-card">
+        <div class="label">Current Workstream</div>
+        <div class="value accent-blue">4 条线</div>
+        <p>当前管理重点不是继续扩需求，而是把主链路收尾、基础退款、BM 运营拆包、分账耦合隔离四条线按一期节奏分别收口。</p>
+      </article>
+      <article class="card summary-card">
+        <div class="label">Account Status</div>
+        <div class="value accent-yellow">黄偏稳</div>
+        <p>账户底座、统一动账、待分账户能力基础较强，但账户联调窗口、对外口径和全链路回归还没有一起闭环，不能直接按“绿灯”表达。</p>
+      </article>
+      <article class="card summary-card">
+        <div class="label">Risk Focus</div>
+        <div class="value accent-red">13 天</div>
+        <p>基础退款测试完成点 2026-07-10，距离 M2 2026-07-23 只剩 13 天。补单和补发清算已经压到近端窗口，缓冲非常薄。</p>
+      </article>
+    </section>
+
+    <section class="mvp-band">
+      <article class="mvp-card">
+        <div class="section-kicker">Minimum Deliverable Path</div>
+        <h2>开通 → 支付 → 结果反馈 → 基础退款</h2>
+        <p>一期直销模式下的最小可交付路径，不应该按“完整运营能力”讲，而应该按“客户能不能接入、能不能付、能不能拿到结果、能不能走基础退款”来讲。BM、对账回单和分账耦合不属于当前稳定可对客表达区。</p>
+        <div class="ratio-band">
+          <div class="ratio-cell">
+            <strong>40%</strong>
+            <span>稳定可对客表达：开通、一步支付主路径、网关/账户底座</span>
+          </div>
+          <div class="ratio-cell">
+            <strong>40%</strong>
+            <span>已进入承接但未到交付表达：结果反馈、基础退款、后段查询</span>
+          </div>
+          <div class="ratio-cell">
+            <strong>20%</strong>
+            <span>仍待边界和资源：BM、分账耦合、退款治理、失败计费</span>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="section-kicker">Milestones</div>
+        <div class="milestone-list">
+          <div class="milestone-item">
+            <div class="milestone-time">04-15</div>
+            <div class="milestone-main"><strong>补发清算启动点</strong>原计划已到点，但周报状态已出现暂停风险。</div>
+            <div class="status-pill status-risk">当前红项</div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-time">04-30</div>
+            <div class="milestone-main"><strong>补单测试完成窗</strong>已经进入近端窗口，最容易先发生滑动。</div>
+            <div class="status-pill status-risk">高压窗口</div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-time">05-14</div>
+            <div class="milestone-main"><strong>预支付测试完成</strong>仍在可控窗，但需要真实推进证据支持。</div>
+            <div class="status-pill status-progress">推进中</div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-time">06-23</div>
+            <div class="milestone-main"><strong>绑卡测试完成</strong>属于后段能力包，当前不是主链路优先级。</div>
+            <div class="status-pill status-planned">后段排期</div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-time">07-10</div>
+            <div class="milestone-main"><strong>基础退款测试完成</strong>离 M2 只剩 13 天，意味着退款治理不能继续并入主线。</div>
+            <div class="status-pill status-risk">缓冲过薄</div>
+          </div>
+          <div class="milestone-item">
+            <div class="milestone-time">07-23</div>
+            <div class="milestone-main"><strong>M2 基础协议支付</strong>仍可作为管理目标，但已不是“自然可达”的状态。</div>
+            <div class="status-pill status-risk">黄偏红</div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">Schedule Control</div>
+      <h3>2026-04 到 2026-07 收口节奏</h3>
+      <p class="lead">红框不是事故结论，而是按当前排期和资源配置做出的交付约束判断。这里的重点不是“做没做”，而是“能不能在一期承诺窗口里收得住”。</p>
+      <div class="gantt">
+        <div class="gantt-head">
+          <div>工作流</div>
+          <div>2026-04</div>
+          <div>2026-05</div>
+          <div>2026-06</div>
+          <div>2026-07</div>
+          <div>状态</div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="name">支付主链路</div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="status-pill status-progress">主推进带</div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="name">结果反馈与清算收尾</div>
+          <div class="month-cell"><span class="fill-risk"></span></div>
+          <div class="month-cell"><span class="fill-risk"></span></div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="month-cell"></div>
+          <div class="status-pill status-risk">近端承压</div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="name">基础退款</div>
+          <div class="month-cell"></div>
+          <div class="month-cell"><span class="fill-planned"></span></div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="month-cell"><span class="fill-risk"></span></div>
+          <div class="status-pill status-risk">压到末端</div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="name">BM 运营能力</div>
+          <div class="month-cell"><span class="fill-planned"></span></div>
+          <div class="month-cell"><span class="fill-planned"></span></div>
+          <div class="month-cell"><span class="fill-planned"></span></div>
+          <div class="month-cell"><span class="fill-planned"></span></div>
+          <div class="status-pill status-risk">需单独成包</div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="name">分账耦合项</div>
+          <div class="month-cell"><span class="fill-risk"></span></div>
+          <div class="month-cell"><span class="fill-risk"></span></div>
+          <div class="month-cell"><span class="fill-risk"></span></div>
+          <div class="month-cell"><span class="fill-planned"></span></div>
+          <div class="status-pill status-risk">持续吞资源</div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="name">网关 / NACOS 回归</div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="month-cell"><span class="fill-risk"></span></div>
+          <div class="month-cell"></div>
+          <div class="status-pill status-progress">需重回归</div>
+        </div>
+
+        <div class="gantt-row">
+          <div class="name">账户联调与回归</div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="month-cell"><span class="fill-progress"></span></div>
+          <div class="month-cell"></div>
+          <div class="status-pill status-progress">底座较稳</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">Committed Scope vs Current Delivery</div>
+      <h3>产品承诺接口包与当前承接状态</h3>
+      <p class="lead">这一页不是功能清单堆砌，而是把产品承诺接口按管理粒度重组。重点看“已经能讲什么”“正在推进什么”“什么还不能按一期稳定承诺对客表达”。</p>
+      <table>
+        <thead>
+          <tr>
+            <th>领域</th>
+            <th>已能对客表达</th>
+            <th>当前在推进</th>
+            <th>待闭环 / 待拍板</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>支付主链路</td>
+            <td>一步支付主路径、接入准备、账户底座</td>
+            <td>预支付、确认支付、支付结果查询</td>
+            <td>测试口径统一 <span class="inline-note">“100%”不可直接对外</span></td>
+          </tr>
+          <tr>
+            <td>结果反馈</td>
+            <td>基础查询、通知、通知清算方向成立</td>
+            <td>补单、补发清算、商户结果反馈</td>
+            <td>近端窗口收口、字段口径统一</td>
+          </tr>
+          <tr>
+            <td>绑卡签约</td>
+            <td></td>
+            <td>预签约、确认签约、解绑、一键绑卡</td>
+            <td>绑卡查询、计费规则、是否纳入当前对客主口径</td>
+          </tr>
+          <tr>
+            <td>基础退款</td>
+            <td>退款方向已纳入一期</td>
+            <td>API 退款、退款查询基础能力</td>
+            <td>退款审核、批量退款、BM 退款入口</td>
+          </tr>
+          <tr>
+            <td>BM 运营能力</td>
+            <td>部分交易查询能力</td>
+            <td>详情查询、退款入口、脱敏展示</td>
+            <td>对账下载、回单下载、完整运营闭环</td>
+          </tr>
+          <tr>
+            <td>分账耦合</td>
+            <td></td>
+            <td>分账校验接口方向、关系管理讨论</td>
+            <td>协议支付用于分账、分账退款、计费归属</td>
+          </tr>
+          <tr>
+            <td>扩展能力</td>
+            <td></td>
+            <td></td>
+            <td>失败计费、撞库、签约支付、新代收、路由重发</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">Technical Construction and Management Actions</div>
+      <h3>技术建设、资源配置约束与当前所需支持</h3>
+      <p class="lead">技术建设要回答的是“为什么这些能力能保住一期主线”，资源动作要回答的是“为什么现有资源配置不足以同时平滑覆盖主链路、退款、BM 和分账耦合四条线”。</p>
+
+      <div class="ops-grid">
+        <article class="ops-card">
+          <h4>资源配置约束</h4>
+          <ul>
+            <li>协议支付主链路与分账核心共用关键研发，主链路收口持续被挤压。</li>
+            <li>网关还在做 NACOS 回归和压测，不能视为已释放资源。</li>
+            <li>BM 没有完整独立承接带，导致运营闭环总被放到主链路后面。</li>
+            <li>退款、绑卡和主链路测试都压在后段窗口，回归缓冲容易被吃掉。</li>
+          </ul>
+        </article>
+        <article class="ops-card">
+          <h4>当前所需支持</h4>
+          <ul>
+            <li>补 1 个协议支付主链路研发位，保护补单、补发清算、查询和通知收尾。</li>
+            <li>补 1 个 BM / 运营侧研发位，把查询、对账、回单、退款入口独立成包。</li>
+            <li>补 1 个测试倾斜窗口或专门测试位，优先保障主链路和基础退款回归。</li>
+            <li>要求产品一号位和项目负责人在 2026-04-18 前完成一期边界拍板。</li>
+          </ul>
+        </article>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>技术层</th>
+            <th>组件</th>
+            <th>当前角色</th>
+            <th>价值</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>交易层</td>
+            <td>协议支付主链路</td>
+            <td>承接开通后的支付发起、支付确认和最小交易闭环</td>
+            <td>保住直销模式下一期最小可交付路径</td>
+          </tr>
+          <tr>
+            <td>接入层</td>
+            <td>统一网关 + NACOS 回归</td>
+            <td>统一路由、鉴权、签名、商用范围和对客接入口径</td>
+            <td>解决对客接入不一致和回归不透明问题</td>
+          </tr>
+          <tr>
+            <td>账户层</td>
+            <td>待分账户、分账接收户、统一动账、分录</td>
+            <td>承接资金记账、账户承接和分账接收能力</td>
+            <td>保证账务一致性，不让交易和资金链路脱节</td>
+          </tr>
+          <tr>
+            <td>通知层</td>
+            <td>结果通知、通知清算、补单链路</td>
+            <td>承接支付结果回传和清算收尾</td>
+            <td>减少客户侧对人工补单的依赖，补齐主链路末端能力</td>
+          </tr>
+          <tr>
+            <td>运营层</td>
+            <td>BM / AD 查询、退款入口、对账回单</td>
+            <td>承接运营查询和客户日常操作能力</td>
+            <td>补齐对客最容易感知的运营闭环缺口</td>
+          </tr>
+          <tr>
+            <td>计费层</td>
+            <td>计费模型、退款手续费、失败计费边界</td>
+            <td>承接手续费展示和计费归属口径</td>
+            <td>防止退款和分账场景出现口径失真</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">Conclusion</div>
+      <h3>管理结论</h3>
+      <div class="conclusion">
+        <div class="conclusion-item">1. 当前能力覆盖：直销模式下一期稳定可对客表达的能力约 40%，主要集中在开通、一步支付主路径和账户/网关底座，不是完整运营闭环。</div>
+        <div class="conclusion-item">2. 当前核心约束：退款、BM 和分账耦合的收口速度慢于一期承诺节奏，其中基础退款到 M2 仅剩 13 天缓冲，补单和补发清算已进入近端承压区。</div>
+        <div class="conclusion-item">3. 下一步重点：保主链路、拆退款层级、BM 独立成包、分账耦合隔离管理，并在 2026-04-18 前完成边界拍板和测试资源倾斜。</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
