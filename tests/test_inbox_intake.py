@@ -1,6 +1,7 @@
 import shutil
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 
@@ -17,6 +18,35 @@ class InboxIntakeTest(unittest.TestCase):
 
     def tearDown(self) -> None:
         shutil.rmtree(self.tmpdir)
+
+    def _write_docx(self, path: Path, text: str) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with zipfile.ZipFile(path, "w") as archive:
+            archive.writestr(
+                "[Content_Types].xml",
+                """<?xml version="1.0" encoding="UTF-8"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+</Types>""",
+            )
+            archive.writestr(
+                "_rels/.rels",
+                """<?xml version="1.0" encoding="UTF-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>""",
+            )
+            archive.writestr(
+                "word/document.xml",
+                f"""<?xml version="1.0" encoding="UTF-8"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:body>
+    <w:p><w:r><w:t>{text}</w:t></w:r></w:p>
+  </w:body>
+</w:document>""",
+            )
 
     def test_generates_chinese_summary_for_english_source(self) -> None:
         source_file = self.inbox_dir / "weekly_update.txt"
@@ -114,6 +144,68 @@ class InboxIntakeTest(unittest.TestCase):
         self.assertIn("source_type: meeting-note", source_content)
         self.assertIn("source_path: inbox/nirvana/meeting-note.md", intake_content)
         self.assertIn("domain: nirvana", intake_content)
+
+    def test_process_inbox_reads_docx_content_and_classifies_meeting_note(self) -> None:
+        source_file = self.inbox_dir / "project-sync.docx"
+        self._write_docx(source_file, "项目周会纪要 需要跟进对齐和风险")
+
+        output_paths = process_inbox(self.inbox_dir, self.wiki_sources_dir)
+
+        self.assertEqual([path.name for path in output_paths], ["project-sync.md"])
+        content = (self.wiki_sources_dir / "project-sync.md").read_text(encoding="utf-8")
+        self.assertIn("source_type: meeting-note", content)
+        self.assertIn("Intake confidence: high", content)
+
+    def test_process_inbox_skips_existing_source_path(self) -> None:
+        source_file = self.inbox_dir / "nirvana" / "meeting-note.md"
+        source_file.parent.mkdir(parents=True)
+        source_file.write_text("会议纪要\n已经整理过。", encoding="utf-8")
+        (self.wiki_sources_dir / "existing.md").write_text(
+            """---
+title: Existing
+source_path: inbox/nirvana/meeting-note.md
+---
+""",
+            encoding="utf-8",
+        )
+
+        output_paths = process_inbox(self.inbox_dir, self.wiki_sources_dir)
+
+        self.assertEqual(output_paths, [])
+
+    def test_process_inbox_preserves_non_ascii_names_to_avoid_slug_collisions(self) -> None:
+        file_a = self.inbox_dir / "转写-会议纪要.docx"
+        file_b = self.inbox_dir / "转写-逐字稿.docx"
+        self._write_docx(file_a, "会议纪要 结论整理")
+        self._write_docx(file_b, "逐字稿 原始记录")
+
+        output_paths = process_inbox(self.inbox_dir, self.wiki_sources_dir)
+
+        self.assertEqual(
+            [path.name for path in output_paths],
+            ["转写-会议纪要.md", "转写-逐字稿.md"],
+        )
+
+    def test_process_inbox_links_new_intake_to_existing_source_file(self) -> None:
+        source_file = self.inbox_dir / "nirvana" / "preview .html"
+        source_file.parent.mkdir(parents=True)
+        source_file.write_text("<html><body>周视图会议材料</body></html>", encoding="utf-8")
+        (self.wiki_sources_dir / "nirvana-weekly-view-2026-04-13.md").write_text(
+            """---
+title: Existing View
+source_path: inbox/nirvana/preview .html
+---
+""",
+            encoding="utf-8",
+        )
+        wiki_ops_dir = self.tmpdir / "wiki" / "ops"
+        wiki_ops_dir.mkdir(parents=True)
+
+        output_paths = process_inbox(self.inbox_dir, self.wiki_sources_dir, wiki_ops_dir)
+
+        self.assertEqual([path.name for path in output_paths], ["nirvana-preview-intake.md"])
+        intake_content = (wiki_ops_dir / "nirvana-preview-intake.md").read_text(encoding="utf-8")
+        self.assertIn("../sources/nirvana-weekly-view-2026-04-13.md", intake_content)
 
 
 if __name__ == "__main__":

@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import argparse
 import re
+import zipfile
+from html import unescape
 from pathlib import Path
+from xml.etree import ElementTree
 
 
 MEETING_KEYWORDS = (
@@ -46,7 +49,9 @@ ATTACHMENT_KEYWORDS = (
 
 
 def _slugify(name: str) -> str:
-    slug = re.sub(r"[^a-zA-Z0-9]+", "-", name.strip().lower()).strip("-")
+    normalized = name.strip().lower().replace("_", "-")
+    slug = re.sub(r"[^\w\-]+", "-", normalized, flags=re.UNICODE)
+    slug = re.sub(r"[-_]+", "-", slug).strip("-")
     return slug or "untitled"
 
 
@@ -54,6 +59,41 @@ def _detect_language(text: str) -> str:
     if re.search(r"[\u4e00-\u9fff]", text):
         return "zh-CN"
     return "en"
+
+
+def _strip_html(html: str) -> str:
+    without_script = re.sub(r"<script[\s\S]*?</script>", " ", html, flags=re.IGNORECASE)
+    without_style = re.sub(r"<style[\s\S]*?</style>", " ", without_script, flags=re.IGNORECASE)
+    text = re.sub(r"<[^>]+>", " ", without_style)
+    return re.sub(r"\s+", " ", unescape(text)).strip()
+
+
+def _extract_xml_text(xml_text: str) -> str:
+    root = ElementTree.fromstring(xml_text)
+    return " ".join(part.strip() for part in root.itertext() if part.strip())
+
+
+def _read_source_text(source_file: Path) -> str:
+    suffix = source_file.suffix.lower()
+    if suffix in {".md", ".txt"}:
+        return source_file.read_text(encoding="utf-8")
+    if suffix == ".html":
+        return _strip_html(source_file.read_text(encoding="utf-8", errors="ignore"))
+    if suffix in {".docx", ".xlsx"}:
+        with zipfile.ZipFile(source_file) as archive:
+            xml_names = [
+                name
+                for name in archive.namelist()
+                if name.endswith(".xml") and (name.startswith("word/") or name.startswith("xl/"))
+            ]
+            chunks: list[str] = []
+            for name in xml_names:
+                try:
+                    chunks.append(_extract_xml_text(archive.read(name).decode("utf-8")))
+                except (UnicodeDecodeError, ElementTree.ParseError):
+                    continue
+        return "\n".join(chunk for chunk in chunks if chunk.strip())
+    return ""
 
 
 def _contains_keywords(text: str, keywords: tuple[str, ...]) -> bool:
@@ -87,7 +127,7 @@ def generate_source_draft(
     wiki_sources_dir: Path,
     inbox_dir: Path | None = None,
 ) -> Path:
-    text = source_file.read_text(encoding="utf-8")
+    text = _read_source_text(source_file)
     language = _detect_language(text)
     source_type, confidence, source_class = _classify_source(source_file, text)
     title = source_file.stem.replace("_", " ").replace("-", " ").strip() or "untitled"
@@ -163,8 +203,9 @@ def generate_intake_draft(
     source_file: Path,
     wiki_ops_dir: Path,
     inbox_dir: Path | None = None,
+    related_source_ref: str | None = None,
 ) -> Path:
-    text = source_file.read_text(encoding="utf-8")
+    text = _read_source_text(source_file)
     language = _detect_language(text)
     source_type, confidence, source_class = _classify_source(source_file, text)
     title = source_file.stem.replace("_", " ").replace("-", " ").strip() or "untitled"
@@ -176,6 +217,7 @@ def generate_intake_draft(
         slug_parts[-1] = Path(slug_parts[-1]).stem
     slug = _slugify("-".join(slug_parts))
     output_path = wiki_ops_dir / f"{slug}-intake.md"
+    source_ref = related_source_ref or f"../sources/{slug}.md"
 
     summary = (
         "待补充：请基于英文原文整理这条输入的中文操作摘要。"
@@ -199,7 +241,7 @@ status: active
 updated_at: YYYY-MM-DD
 ai_generated: true
 related_sources:
-  - ../sources/{slug}.md
+  - {source_ref}
 related_focus_threads: []
 related_reminders: []
 ---
@@ -219,7 +261,7 @@ related_reminders: []
 
 ## 建议关联
 
-- 来源页：../sources/{slug}.md
+- 来源页：{source_ref}
 - 主线页：
 - 提醒页：
 
@@ -242,7 +284,10 @@ def process_inbox(
     wiki_ops_dir: Path | None = None,
 ) -> list[Path]:
     output_paths: list[Path] = []
-    supported_suffixes = {".md", ".txt"}
+    supported_suffixes = {".md", ".txt", ".html", ".docx", ".xlsx"}
+    existing_source_refs = _collect_existing_source_refs(wiki_sources_dir)
+    existing_source_paths = set(existing_source_refs)
+    existing_intake_paths = set(_collect_existing_source_refs(wiki_ops_dir)) if wiki_ops_dir is not None else set()
 
     for source_file in sorted(inbox_dir.rglob("*")):
         if not source_file.is_file():
@@ -251,11 +296,37 @@ def process_inbox(
             continue
         if source_file.suffix.lower() not in supported_suffixes:
             continue
-        output_paths.append(generate_source_draft(source_file, wiki_sources_dir, inbox_dir))
-        if wiki_ops_dir is not None:
-            output_paths.append(generate_intake_draft(source_file, wiki_ops_dir, inbox_dir))
+        source_path = f"inbox/{source_file.relative_to(inbox_dir).as_posix()}"
+        if source_path not in existing_source_paths:
+            output_paths.append(generate_source_draft(source_file, wiki_sources_dir, inbox_dir))
+        if wiki_ops_dir is not None and source_path not in existing_intake_paths:
+            output_paths.append(
+                generate_intake_draft(
+                    source_file,
+                    wiki_ops_dir,
+                    inbox_dir,
+                    existing_source_refs.get(source_path),
+                )
+            )
 
     return output_paths
+
+
+def _collect_existing_source_refs(target_dir: Path | None) -> dict[str, str]:
+    if target_dir is None or not target_dir.exists():
+        return {}
+    source_refs: dict[str, str] = {}
+    for markdown_file in target_dir.rglob("*.md"):
+        content = markdown_file.read_text(encoding="utf-8", errors="ignore")
+        match = re.search(r"^source_path:\s*(.+)\s*$", content, flags=re.MULTILINE)
+        if match:
+            source_path = match.group(1).strip()
+            relative_ref = f"../sources/{markdown_file.name}"
+            if target_dir.name == "sources":
+                source_refs[source_path] = relative_ref
+            else:
+                source_refs[source_path] = markdown_file.name
+    return source_refs
 
 
 def main() -> int:
