@@ -293,7 +293,66 @@
   </div>
 
   <div class="section">
-    <h2>二、对客能力地图</h2>
+    <h2>二、模式能力抽象</h2>
+    <div class="legend">
+      <span><span class="tag t-done">共性底座</span></span>
+      <span><span class="tag t-doing">直销当前重点</span></span>
+      <span><span class="tag t-todo">代销复用 / 后续承接</span></span>
+      <span><span class="tag t-risk">当前差异约束</span></span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:14%">能力层</th>
+          <th style="width:24%">共性底座</th>
+          <th style="width:22%">直销当前重点</th>
+          <th style="width:20%">代销对应能力</th>
+          <th style="width:20%">当前差异点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>产品与会员</b></td>
+          <td><span class="tag t-done">共性</span><br>产品权限、会员主体、账户承接、基础开通底座</td>
+          <td><span class="tag t-doing">直销重点</span><br>客户直接开通、直接接入、直接发起交易</td>
+          <td><span class="tag t-todo">代销复用</span><br>服务商 / 代理商 / 门店总层级、代销链路映射</td>
+          <td><span class="tag t-risk">差异</span><br>当前页面还没把层级代理能力并入直销一期主路径，只能按底座复用表达</td>
+        </tr>
+        <tr>
+          <td><b>接入交易</b></td>
+          <td><span class="tag t-done">共性</span><br>统一网关、协议支付框架、账户底座、结果通知框架</td>
+          <td><span class="tag t-doing">直销重点</span><br>一步支付、预支付、确认支付、最小支付闭环</td>
+          <td><span class="tag t-todo">代销复用</span><br>代销模式下交易发起、会员与代理视角下的交易映射</td>
+          <td><span class="tag t-risk">差异</span><br>直销当前保主链路，代销模式下的多层身份映射没有纳入当前一期主表达</td>
+        </tr>
+        <tr>
+          <td><b>结果与清算</b></td>
+          <td><span class="tag t-done">共性</span><br>查询、通知、通知清算、补单补发机制</td>
+          <td><span class="tag t-doing">直销重点</span><br>把支付结果反馈和基础清算收口到 M2</td>
+          <td><span class="tag t-todo">代销复用</span><br>会员、代理商、商户多角色下的结果通知和链路透传</td>
+          <td><span class="tag t-risk">差异</span><br>直销先保商户直连口径，代销多角色通知链路还不是当前一期主口径</td>
+        </tr>
+        <tr>
+          <td><b>退款与运营</b></td>
+          <td><span class="tag t-doing">共性</span><br>API 退款、退款查询、BM/AD 查询框架、基础运营入口</td>
+          <td><span class="tag t-doing">直销重点</span><br>先保基础退款和基础查询</td>
+          <td><span class="tag t-todo">代销复用</span><br>代理体系下退款权限、账单回单、运营侧可见范围</td>
+          <td><span class="tag t-risk">差异</span><br>BM、对账、回单是当前直销也没收口的点，代销更不能提前讲完整能力</td>
+        </tr>
+        <tr>
+          <td><b>分账与收益</b></td>
+          <td><span class="tag t-doing">共性</span><br>待分账户、分账接收户、统一动账、计费模型、分账规则基础</td>
+          <td><span class="tag t-risk">直销约束</span><br>协议支付用于分账、分账退款、计费归属仍待边界冻结</td>
+          <td><span class="tag t-todo">代销复用</span><br>代销模式下分账关系、代理收益、层级计费映射</td>
+          <td><span class="tag t-risk">差异</span><br>这一层现在是最大结构性约束，直销和代销都不能直接讲“已具备完整闭环”</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">管理上可以直接这么讲：直销不是从零开始做一套，底层大量复用了产品、会员、账户、网关、分账和计费底座；当前真正新增和最需要保的是“直销主链路收口”和“直销口径下的最小可交付路径”，代销差异能力不应混入这次一期主承诺。</div>
+  </div>
+
+  <div class="section">
+    <h2>三、对客能力地图</h2>
     <div class="legend">
       <span><span class="tag t-done">当前能对客讲</span></span>
       <span><span class="tag t-doing">当前在推进</span></span>
@@ -408,7 +467,7 @@
   </div>
 
   <div class="section">
-    <h2>三、技术建设与资源动作</h2>
+    <h2>四、技术建设与资源动作</h2>
     <div class="two-col">
       <div>
         <h3>技术建设</h3>
@@ -511,7 +570,7 @@
   </div>
 
   <div class="section">
-    <h2>四、管理结论</h2>
+    <h2>五、管理结论</h2>
     <div class="foot">
       <p><span class="strong">1. 当前能力覆盖：</span>直销模式下一期当前稳定可对客表达的能力约 40%，主要集中在开通接入、一步支付主路径和账户/网关底座。</p>
       <p><span class="strong">2. 当前核心约束：</span>基础退款到 M2 只有 13 天缓冲，补单和补发清算已经进入近端承压区，BM 和分账耦合又没有形成同等成熟度的收口。</p>
