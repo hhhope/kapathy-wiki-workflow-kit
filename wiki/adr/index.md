@@ -17,6 +17,7 @@
 - [ADR-0005 Incremental Refresh Over Full Reprocessing](0005-incremental-refresh-over-full-reprocessing.md)
 - [ADR-0006 Formal Project-Local Skills Over Draft Skill Docs](0006-formal-project-local-skills-over-drafts.md)
 - [ADR-0007 Archive Review Before Archive](0007-archive-review-before-archive.md)
+- [ADR-0008 Human Governance Before Self-Evolution Promotion](0008-human-governance-before-self-evolution-promotion.md)
 - [ADR-0007 Retire Draft Skills As Runtime Surface](0007-retire-draft-skills-as-runtime-surface.md)
 
 ## 非目标
