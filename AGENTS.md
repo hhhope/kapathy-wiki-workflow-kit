@@ -20,6 +20,14 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - Do not claim a future “tighter process” unless the new constraint is written into repo-visible artifacts.
 - OpenSpec change artifacts still own current scope, task progress, and interruption checkpoints; `wiki/adr/` owns stable project decisions.
 
+## Archive Review Default
+
+- In this repository, when an OpenSpec change becomes `complete`, the default next action is `archive review`.
+- `complete` means stop implementation; it does not mean the change is already archive-ready.
+- If archive review finds an ordinary closing tail such as missing sync or final verification, keep the blocker visible in `tasks.md` and explain the reason and next action in git history.
+- If archive review depends on scope ambiguity, reusable governance judgment, or context that would be hard to recover from `tasks.md` and git history alone, add `archive-review.md` inside the current change directory.
+- Only archive a change after archive review passes.
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
