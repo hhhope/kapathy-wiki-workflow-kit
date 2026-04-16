@@ -16,6 +16,7 @@
 - [项目管理周推进循环](project-management-weekly-loop.md)
 - [Codex Handoff 规则](codex-handoff-rules.md)
 - [Scope Drift 复盘](scope-drift-retro.md)
+- [Karpathy Skills 学习复盘 2026-04-16](karpathy-skills-learning-retro-2026-04-16.md)
 
 ## 样例链路
 

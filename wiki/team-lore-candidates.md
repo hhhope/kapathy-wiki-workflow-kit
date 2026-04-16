@@ -20,6 +20,7 @@
 | `wiki/role-boundaries.md` | workflow | 可以沉淀成项目 wiki 与 team lore 的分层方法 | 当前仓库专有措辞 | draft |
 | `wiki/ai-workflow.md` | workflow | 可以沉淀成 AI 辅助汇报的通用流程 | 当前项目内路径与场景 | draft |
 | `wiki/ops/scope-drift-retro.md` | principle / workflow | 可以沉淀成 OpenSpec 完成边界与防偏移规则 | 本次项目和文件名细节 | draft |
+| `wiki/ops/karpathy-skills-learning-retro-2026-04-16.md` | principle / workflow | 可以沉淀成 agent 治理中的“短原则卡 + anti-pattern 样例库”方法 | 当前仓库的 skill 路径、OpenSpec 和 repo 细节 | draft |
 
 ## 晋升检查表
 
