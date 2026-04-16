@@ -30,6 +30,14 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - Use `surgical-changes` when the edit risks expanding into unrelated cleanup, formatting, or adjacent refactors.
 - Use `verify-before-claiming` when the agent is about to say something is complete, fixed, or synced without a fresh check.
 
+## Skill Authoring Contract
+
+- Repo-local `.codex/skills/*` files are English-first behavior assets. Do not let the wiki's Chinese-first policy bleed into `SKILL.md`.
+- Keep repo-local `SKILL.md` files compact. Put only trigger conditions, hard rules, anti-patterns, and short loading pointers in the main body.
+- Move long examples, templates, or heavy format details into linked `references/` files when they would bloat trigger-time retrieval.
+- Before authoring or editing a repo-local skill, read this repo `AGENTS.md` and any repo pages that define delivery boundaries for that workflow.
+- If a skill affects Feishu-facing, reader-facing, or other delivery-sensitive outputs, make the repo boundary explicit in the skill or reference the governing repo document directly.
+
 ## Archive Review Default
 
 - In this repository, when an OpenSpec change becomes `complete`, the default next action is `archive review`.

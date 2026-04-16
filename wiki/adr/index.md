@@ -20,6 +20,7 @@
 - [ADR-0008 Human Governance Before Self-Evolution Promotion](0008-human-governance-before-self-evolution-promotion.md)
 - [ADR-0007 Retire Draft Skills As Runtime Surface](0007-retire-draft-skills-as-runtime-surface.md)
 - [ADR-0009 Explore Trace Before OpenSpec Explore](0009-explore-trace-before-openspec-explore.md)
+- [ADR-0010 Shared Skill Authoring Contract Before Repo-Local Overrides](0010-shared-skill-authoring-contract-before-repo-local-overrides.md)
 
 ## 非目标
 

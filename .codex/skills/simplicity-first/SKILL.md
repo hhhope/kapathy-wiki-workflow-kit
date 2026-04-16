@@ -7,27 +7,27 @@ description: Use when a solution is growing speculative abstractions, extra conf
 
 ## Overview
 
-先做最小可验证解，不为未来需求提前设计。
+Build the smallest verifiable solution first. Do not prepay complexity for imaginary future needs.
 
 ## Use When
 
-- 代码或规则开始为“以后可能会用”而膨胀
-- 单次需求被包装成多层抽象
-- 一个小改动正在长成框架
+- The solution is growing around hypothetical future reuse
+- A one-off need is turning into multiple abstraction layers
+- A small change is drifting toward framework building
 
 ## Rules
 
-- 只实现当前任务要求的能力
-- 单次使用不要提前抽象
-- 没有重复，不先做通用层
-- 如果 200 行能变 50 行，先怀疑自己写复杂了
+- Implement only the capability required by the current task.
+- Do not generalize a one-time path before repetition exists.
+- No repeated need, no shared abstraction yet.
+- If 200 lines can become 50, first suspect unnecessary complexity.
 
 ## Anti-Patterns
 
-- 为一个函数先上 strategy / manager / config 层
-- 把“灵活性”当成默认优点
-- 用未来假设给当前复杂度找理由
+- Adding strategy, manager, or config layers for a single function
+- Treating “flexibility” as a default virtue
+- Justifying present complexity with future guesses
 
 ## Self-Check
 
-`这是不是在解决今天的问题，还是在幻想明天的问题？`
+`Is this solving today's task, or fantasizing about tomorrow's?`
