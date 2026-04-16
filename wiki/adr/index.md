@@ -16,6 +16,7 @@
 - [ADR-0004 Agent Self-Evolution Over Skill Governance](0004-agent-self-evolution-over-skill-governance.md)
 - [ADR-0005 Incremental Refresh Over Full Reprocessing](0005-incremental-refresh-over-full-reprocessing.md)
 - [ADR-0006 Formal Project-Local Skills Over Draft Skill Docs](0006-formal-project-local-skills-over-drafts.md)
+- [ADR-0007 Retire Draft Skills As Runtime Surface](0007-retire-draft-skills-as-runtime-surface.md)
 
 ## 非目标
 

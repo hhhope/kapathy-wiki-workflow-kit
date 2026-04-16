@@ -27,6 +27,9 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 
 ## Material Processing Default
 
+- Formal material-processing workflow publication uses `.codex/skills/material-collaboration-defaults/SKILL.md`.
+- `skills-drafts/` is draft space only; workflow changes cannot stop with an active draft `SKILL.md`.
+- Before a workflow-level skill change is complete, every draft skill must be either promoted into `.codex/skills/` or explicitly retired.
 - When the user drops materials and asks Codex to process them, do not stop at placeholder intake output.
 - Default completion means readable `source` output first, then linked `ops` output when the material contains action signals.
 - Ask the user only at real output fork-points, such as whether to update `html/h5/preview` artifacts in addition to wiki records.

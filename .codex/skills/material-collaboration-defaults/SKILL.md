@@ -1,20 +1,20 @@
 ---
 name: material-collaboration-defaults
-description: Use when the user drops meeting notes, weekly materials, reports, attachments, preview html, or other source files and expects Codex to process them without repeated workflow confirmation
+description: Use when the user drops meeting notes, weekly materials, reports, attachments, preview html, or other source files and expects Codex to process them without repeated workflow confirmation.
 ---
 
 # Material Collaboration Defaults
 
 ## Overview
 
-这个 skill 约束“用户把材料给过来后，Codex 默认要做什么”，避免停留在空壳 intake 或反复向用户确认基础流程。
+把用户刚投递进仓库的材料继续处理成可读结果，不要停在占位 intake 或重复确认整套流程。
 
 核心原则：
 
 - 默认先处理材料，再提问
-- `source` 不能只落占位文本，必须补中文摘要或明确结论
+- `source` 不能只留占位文本，必须补可读中文结论
 - 同一批材料按增量处理，不重复全量重做
-- 只有在输出形态会明显分叉时，才问一次
+- 只有在输出路径真实分叉时，才问一次
 
 ## When to Use
 
@@ -22,7 +22,7 @@ description: Use when the user drops meeting notes, weekly materials, reports, a
 
 - 用户把会议纪要、逐字稿、周报、附件、飞书导出、截图、`html/preview` 文件放进仓库
 - 用户说“你去处理”“整理一下”“归档一下”“帮我看这些材料”
-- 用户没有明确给出输出步骤，但明显期望 Codex 主动完成整理
+- 用户没有显式写步骤，但明显期望 Codex 主动完成整理
 
 不适用于：
 
@@ -33,7 +33,7 @@ description: Use when the user drops meeting notes, weekly materials, reports, a
 
 收到材料后，默认按这个顺序执行：
 
-1. 判断是否为新材料还是已整理材料的补充
+1. 判断是新材料还是已整理材料的补充
 2. 建或更新 `source`
 3. 补真正的中文摘要、关键结论、风险、待办
 4. 判断是否需要 `ops` 层输出
@@ -81,6 +81,14 @@ description: Use when the user drops meeting notes, weekly materials, reports, a
 - 已有结论时，默认增量补充，不整页重写
 - 新材料比旧材料更完整时，更新摘要并保留原有链接关系
 - 不要每次全量重跑整个 `inbox/`
+
+## Repo Pattern
+
+当前 repo 的固定约束：
+
+- [AGENTS.md](../../../AGENTS.md)
+- [ADR-0006](../../../wiki/adr/0006-formal-project-local-skills-over-drafts.md)
+- [ADR-0007](../../../wiki/adr/0007-retire-draft-skills-as-runtime-surface.md)
 
 ## Ask-Once Boundaries
 
