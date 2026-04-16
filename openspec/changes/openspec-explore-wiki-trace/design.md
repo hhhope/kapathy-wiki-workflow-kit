@@ -101,6 +101,7 @@ Body:
 
 - Before: `AGENTS.md` had no repository-default `openspec-explore -> wiki/ops/` trace rule, and `wiki/ops/index.md` did not expose an explore-trace sample.
 - After: `AGENTS.md` defines the default explore-trace rule, `wiki/ops/index.md` points to a trace sample, and `wiki/ops/sample-explore-trace.md` shows the minimum shape.
+- `openspec validate openspec-explore-wiki-trace` passes after the guidance, ADR, sample, and task updates.
 
 ### Scope boundary confirmation
 

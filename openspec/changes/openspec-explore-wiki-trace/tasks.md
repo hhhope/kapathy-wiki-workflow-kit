@@ -17,5 +17,5 @@
 ## 4. Validation
 
 - [x] 4.1 Record a before/after scenario for `openspec-explore` with and without the repo trace
-- [ ] 4.2 Validate the new OpenSpec change structure
+- [x] 4.2 Validate the new OpenSpec change structure
 - [x] 4.3 Confirm the rule does not force every explore thread into a formal proposal or handoff
