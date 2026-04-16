@@ -20,6 +20,14 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - Do not claim a future “tighter process” unless the new constraint is written into repo-visible artifacts.
 - OpenSpec change artifacts still own current scope, task progress, and interruption checkpoints; `wiki/adr/` owns stable project decisions.
 
+## High-Frequency Principles
+
+- The repo's principle-skills layer lives under `.codex/skills/` and complements, but does not replace, repo governance or workflow skills.
+- Use `clarify-before-acting` when a request still has material ambiguity and the agent is about to silently choose an interpretation.
+- Use `simplicity-first` when the solution is starting to grow speculative abstractions or future-proofing not required by the task.
+- Use `surgical-changes` when the edit risks expanding into unrelated cleanup, formatting, or adjacent refactors.
+- Use `verify-before-claiming` when the agent is about to say something is complete, fixed, or synced without a fresh check.
+
 ## Archive Review Default
 
 - In this repository, when an OpenSpec change becomes `complete`, the default next action is `archive review`.
