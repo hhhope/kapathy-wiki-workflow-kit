@@ -13,5 +13,5 @@
 
 - [x] 3.1 Record baseline and after-change evaluation results for the archive review behavior change
 - [x] 3.2 Validate the new OpenSpec change and repository guidance updates
-- [ ] 3.3 Sync the same policy into global `~/.codex/AGENTS.md`
+- [x] 3.3 Sync the same policy into global `~/.codex/AGENTS.md`
 - [x] 3.4 Confirm this change does not silently rewrite local OpenSpec skill behavior

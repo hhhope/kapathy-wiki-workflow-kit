@@ -104,3 +104,4 @@ Alternative considered:
 - `openspec validate archive-review-defaults` returns `Change 'archive-review-defaults' is valid`.
 - `openspec status --change "archive-review-defaults" --json` reports all spec-driven artifacts as `done`.
 - `git diff --name-only -- .codex/skills` returns no changed skill files, confirming this change published policy without silently rewriting local skill behavior.
+- `sed -n '112,136p' /home/yan/.codex/AGENTS.md` shows the same archive-review defaults in the global OpenSpec boundary section.
