@@ -5,6 +5,7 @@
 ## 页面类型
 
 - `intake`：新输入、新行为、新事件的落地点
+- `intake` 也是 `openspec-explore` 的默认留痕容器；进入探索前先创建或更新对应 trace
 - `focus-thread`：当前主线与正在推进的关键主题
 - `reminder`：待办、提醒、阻塞和 stale 项
 - `codex-handoff`：已经成熟到可以交给 Codex 执行的研发任务
@@ -21,6 +22,7 @@
 ## 样例链路
 
 - [sample-intake](sample-intake.md)
+- [sample-explore-trace](sample-explore-trace.md)
 - [sample-focus-thread](sample-focus-thread.md)
 - [sample-reminder](sample-reminder.md)
 - [sample-codex-handoff](sample-codex-handoff.md)
@@ -33,13 +35,16 @@
 ## 推荐流转
 
 1. 新材料或新行为先进入 intake。
-2. agent 判断它是否关联现有主线或待办。
-3. 项目管理类周推进材料先走“周推进循环”，再判断是否进入 reminder。
-4. 真正需要推进的事项进入 reminder。
-5. 明确属于研发执行的待办，再晋升为 Codex handoff。
+2. `openspec-explore` 先检查同主题 trace，存在则更新，不存在则新建。
+3. explore trace 只负责打开问题，不等于正式 OpenSpec change。
+4. agent 判断它是否关联现有主线或待办。
+5. 项目管理类周推进材料先走“周推进循环”，再判断是否进入 reminder。
+6. 真正需要推进的事项进入 reminder。
+7. 明确属于研发执行的待办，再晋升为 Codex handoff。
 
 ## 约束
 
 - intake 是入口，不等于主线
+- explore trace 是入口，不等于 proposal / design / tasks
 - reminder 是动作层，不等于来源页
 - Codex handoff 只接收研发任务，不接收泛化待办

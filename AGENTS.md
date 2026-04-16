@@ -28,6 +28,14 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - If archive review depends on scope ambiguity, reusable governance judgment, or context that would be hard to recover from `tasks.md` and git history alone, add `archive-review.md` inside the current change directory.
 - Only archive a change after archive review passes.
 
+## Explore Trace Default
+
+- In this repository, every `openspec-explore` run must leave a repo-visible trace in `wiki/ops/` before the exploration continues.
+- The trace reuses the existing `intake` page type instead of creating a new page type.
+- If the explore request clearly continues the same topic thread, update the existing `wiki/ops/` trace instead of creating a duplicate page.
+- The explore trace records the opening context for the topic; it does not replace formal OpenSpec artifacts when the work later becomes a scoped change.
+- The explore trace should stay lightweight and capture at least the trigger question, current focus, current hypotheses, open questions, and next step.
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.

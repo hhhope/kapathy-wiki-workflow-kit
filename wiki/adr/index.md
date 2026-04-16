@@ -19,6 +19,7 @@
 - [ADR-0007 Archive Review Before Archive](0007-archive-review-before-archive.md)
 - [ADR-0008 Human Governance Before Self-Evolution Promotion](0008-human-governance-before-self-evolution-promotion.md)
 - [ADR-0007 Retire Draft Skills As Runtime Surface](0007-retire-draft-skills-as-runtime-surface.md)
+- [ADR-0009 Explore Trace Before OpenSpec Explore](0009-explore-trace-before-openspec-explore.md)
 
 ## 非目标
 

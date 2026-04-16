@@ -93,3 +93,17 @@ Body:
 
 - Before-change repo guidance lacks a mandatory `openspec-explore -> wiki/ops/` rule
 - After-change repo guidance and `wiki/ops/` sample make the new behavior explicit
+- After-change policy still keeps `proposal.md`, `design.md`, and `tasks.md` as the formal source of truth for scoped changes
+
+## Recorded Validation
+
+### Before / after evidence
+
+- Before: `AGENTS.md` had no repository-default `openspec-explore -> wiki/ops/` trace rule, and `wiki/ops/index.md` did not expose an explore-trace sample.
+- After: `AGENTS.md` defines the default explore-trace rule, `wiki/ops/index.md` points to a trace sample, and `wiki/ops/sample-explore-trace.md` shows the minimum shape.
+
+### Scope boundary confirmation
+
+- The new rule requires a lightweight `wiki/ops/` trace before exploration continues.
+- It does not require every explore thread to become a formal proposal, design, task list, or Codex handoff.
+- Formal OpenSpec artifacts still begin only when the work becomes a scoped repository change.
