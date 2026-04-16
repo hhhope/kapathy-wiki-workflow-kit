@@ -61,6 +61,40 @@ class RepoHealthCheckTest(unittest.TestCase):
             encoding="utf-8",
         )
         (change_dir / "evaluation.md").write_text(
+            """## Pressure Scenarios
+
+Case
+
+## RED Baseline
+
+Before
+
+## GREEN Result
+
+After
+
+## Residual Risks
+
+Risk
+""",
+            encoding="utf-8",
+        )
+
+        results = run_health_checks(self.tmpdir)
+
+        self.assertEqual(len(results), 2)
+        self.assertTrue(results[0].passed)
+        self.assertTrue(results[1].passed)
+        self.assertEqual(results[1].details, [])
+
+    def test_reports_fail_for_skill_change_without_pressure_test_sections(self) -> None:
+        change_dir = self.tmpdir / "openspec" / "changes" / "example-skill-change"
+        change_dir.mkdir(parents=True)
+        (change_dir / "proposal.md").write_text(
+            "Publish .codex/skills/example-skill/SKILL.md\n",
+            encoding="utf-8",
+        )
+        (change_dir / "evaluation.md").write_text(
             """## Baseline Scenarios
 
 Case
@@ -84,8 +118,8 @@ Risk
 
         self.assertEqual(len(results), 2)
         self.assertTrue(results[0].passed)
-        self.assertTrue(results[1].passed)
-        self.assertEqual(results[1].details, [])
+        self.assertFalse(results[1].passed)
+        self.assertEqual(results[1].details, ["openspec/changes/example-skill-change"])
 
 
 if __name__ == "__main__":

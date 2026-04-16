@@ -37,6 +37,8 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - Move long examples, templates, or heavy format details into linked `references/` files when they would bloat trigger-time retrieval.
 - Before authoring or editing a repo-local skill, read this repo `AGENTS.md` and any repo pages that define delivery boundaries for that workflow.
 - If a skill affects Feishu-facing, reader-facing, or other delivery-sensitive outputs, make the repo boundary explicit in the skill or reference the governing repo document directly.
+- Semantic skill changes must include local pressure-test evidence in `evaluation.md`: `Pressure Scenarios`, `RED Baseline`, `GREEN Result`, and `Residual Risks`.
+- Multi-end or rollout proof is optional follow-up evidence, not the minimum completion gate for a semantic skill change.
 
 ## Archive Review Default
 

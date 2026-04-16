@@ -11,9 +11,9 @@ if __package__ in {None, ""}:
 from scripts.repo_policy_check import find_draft_skill_violations
 
 REQUIRED_EVALUATION_SECTIONS = (
-    "## Baseline Scenarios",
-    "## Before Results",
-    "## After Results",
+    "## Pressure Scenarios",
+    "## RED Baseline",
+    "## GREEN Result",
     "## Residual Risks",
 )
 

@@ -1,18 +1,18 @@
 # Evaluation
 
-## Baseline Scenarios
+## Pressure Scenarios
 
 1. active change 引用了 `.codex/skills/`，但没有 `evaluation.md`
 2. active change 引用了 `.codex/skills/`，且 `evaluation.md` 含完整行为证据段落
 
-## Before Results
+## RED Baseline
 
 - `python3 -m unittest tests.test_repo_health_check`
 - 结果：4 个测试全部失败，因为 `repo_health_check` 只返回 `draft-skill-runtime-surface`，还没有 `skill-evaluation-evidence` 这条检查
 - `python3 scripts/repo_health_check.py --repo-root .`
 - 旧实现不会暴露缺失的行为证据文件
 
-## After Results
+## GREEN Result
 
 - `python3 -m unittest tests.test_repo_health_check`
 - 结果：通过，health-check 现在会对缺失 `evaluation.md` 的 skill change 报错
