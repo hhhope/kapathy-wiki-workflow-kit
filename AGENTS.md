@@ -23,6 +23,8 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 ## High-Frequency Principles
 
 - The repo's principle-skills layer lives under `.codex/skills/` and complements, but does not replace, repo governance or workflow skills.
+- Any active change that publishes or semantically edits `.codex/skills/` must include `evaluation.md` in the change directory.
+- `evaluation.md` is the behavior-proof artifact and must include: `Baseline Scenarios`, `Before Results`, `After Results`, and `Residual Risks`.
 - Use `clarify-before-acting` when a request still has material ambiguity and the agent is about to silently choose an interpretation.
 - Use `simplicity-first` when the solution is starting to grow speculative abstractions or future-proofing not required by the task.
 - Use `surgical-changes` when the edit risks expanding into unrelated cleanup, formatting, or adjacent refactors.
