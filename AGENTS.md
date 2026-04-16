@@ -33,6 +33,9 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 
 ## Meeting Note Output
 
+- Formal meeting-note workflow publication uses `.codex/skills/meeting-note-output/SKILL.md`.
+- `skills-drafts/meeting-note-output/` is draft space only; it does not count as a formally published repo skill.
+- Manual agent role templates are not a substitute for meeting-note workflow routing.
 - When handling meeting notes or transcripts, use the repository's fixed meeting-note format rather than a generic summary layout.
 - The main meeting-note output must include: meeting metadata, core agenda, numbered topic sections, explicit final/rejected options when applicable, a structured action-item table, and a closing summary.
 - Treat note text as the primary output and transcript text as supporting evidence for disputes or rationale.

@@ -15,6 +15,7 @@
 - [ADR-0003 Retros Stay Separate From ADRs](0003-retros-stay-separate-from-adrs.md)
 - [ADR-0004 Agent Self-Evolution Over Skill Governance](0004-agent-self-evolution-over-skill-governance.md)
 - [ADR-0005 Incremental Refresh Over Full Reprocessing](0005-incremental-refresh-over-full-reprocessing.md)
+- [ADR-0006 Formal Project-Local Skills Over Draft Skill Docs](0006-formal-project-local-skills-over-drafts.md)
 
 ## 非目标
 
