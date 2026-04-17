@@ -81,3 +81,7 @@
 - 来源页中文摘要助手
 - 周报和月报草稿组装助手
 - team lore 候选晋升助手
+
+## Cross-Runtime Installer
+
+- [AI Chat Workflow Installer](ai-chat-workflow-installer.md)：定义 canonical workflow source、Codex / Cursor / Claude adapter，以及飞书分享边界

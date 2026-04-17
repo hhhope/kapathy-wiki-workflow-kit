@@ -11,6 +11,7 @@ Report pages are audience-oriented outputs or draft workspaces built from source
 - [Nirvana Phase1 PM Review](nirvana-phase1-pm-review.md): phase-one direct-sales PM baseline covering committed scope, current workstreams, key dates, current constraints, resource asks, and approvals
 - [Nirvana Phase1 Leadership Brief](nirvana-phase1-leadership-brief.md): one-page leadership brief for direct-sales phase1 judgment, committed scope, key dates, current constraints, resource asks, and approvals
 - [Nirvana Phase1 Direct Sales Brief H5](nirvana-phase1-direct-sales-brief.html): single-page direct-sales management H5 aligned to the PM baseline and current workstream control
+- [AI Chat Workflow Installer Feishu Share](ai-chat-workflow-installer-feishu-share.md): share-ready explanation of the cross-runtime installer model, platform mappings, and scope boundaries
 
 ## Usage Notes
 
