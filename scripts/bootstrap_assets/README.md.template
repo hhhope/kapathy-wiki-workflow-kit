@@ -1,53 +1,99 @@
 # {{PROJECT_NAME}}
 
-## 中文说明
+把原始材料、流程知识和 agent 入口放进同一个可安装的 Markdown 工作台。
 
-这是一个基于 Markdown 的工作流知识库模板，用来把原始材料、过程记录、汇报草稿和稳定决策整理到同一个仓库里。
+This repository is a Markdown-first workflow workspace for source intake, knowledge pages, report assembly, and agent-facing runtime guidance.
 
-### 快速开始
+---
 
-1. 先阅读 `PROJECT.md`
-2. 再阅读 `wiki/index.md`
-3. 如果要处理新材料，先看 `inbox/README.md`
-4. 如果要做流程级改动，先走 `openspec/`
-5. 运行 `python3 scripts/verify_wiki_workflow_kit.py` 检查安装是否完整
+## 中文入口
 
-### 关键入口
+### 这是什么
 
-- `AGENTS.md`：Codex / Cursor 侧入口
-- `CLAUDE.md`：Claude 侧入口
-- `wiki/index.md`：知识库导航
-- `wiki/ai-workflow.md`：AI workflow 总览
-- `inbox/README.md`：原始材料投递说明
+这是一个工作流知识库模板，适合把：
 
-### 可选能力
+- 原始材料放进 `inbox/`
+- 长期知识整理进 `wiki/`
+- 流程级改动收进 `openspec/`
+- agent 入口暴露给 `AGENTS.md` 和 `CLAUDE.md`
 
-- 如果要把仓库作为 Obsidian vault 使用，再启用 `.obsidian/`
-- 如果要使用飞书 / Lark 自动化，再安装并登录 `lark-cli`
-- 如果要走 OpenSpec 变更治理，再安装 `openspec` CLI
+### Quick Install
+
+```bash
+python3 scripts/verify_wiki_workflow_kit.py --help
+```
+
+### Getting Started
+
+```bash
+sed -n '1,200p' PROJECT.md
+sed -n '1,200p' wiki/index.md
+sed -n '1,200p' inbox/README.md
+python3 scripts/verify_wiki_workflow_kit.py
+```
+
+### Runtime Quick Reference
+
+| 场景 | 入口 |
+|---|---|
+| Codex / Cursor | `AGENTS.md` |
+| Claude | `CLAUDE.md` |
+| 流程变更治理 | `openspec/` |
+| 原始材料投递 | `inbox/README.md` |
+| 知识导航 | `wiki/index.md` |
+
+### Documentation
+
+| 文档 | 内容 |
+|---|---|
+| `PROJECT.md` | 项目边界 |
+| `wiki/index.md` | wiki 导航 |
+| `wiki/ai-workflow.md` | AI workflow 总览 |
+| `inbox/README.md` | intake 入口 |
+
+---
 
 ## English Guide
 
-This repository is a Markdown-first workflow knowledge base for source material, operating traces, report drafts, and stable decisions.
+### What This Is
 
-### Quick Start
+This is a workflow knowledge-base template for:
 
-1. Read `PROJECT.md`
-2. Read `wiki/index.md`
-3. Read `inbox/README.md` before dropping new source material
-4. Use `openspec/` for workflow-level changes
-5. Run `python3 scripts/verify_wiki_workflow_kit.py` to verify the installation
+- raw intake in `inbox/`
+- durable pages in `wiki/`
+- workflow-level change governance in `openspec/`
+- runtime entrypoints in `AGENTS.md` and `CLAUDE.md`
 
-### Key Entry Points
+### Quick Install
 
-- `AGENTS.md`: Codex / Cursor entrypoint
-- `CLAUDE.md`: Claude entrypoint
-- `wiki/index.md`: wiki navigation
-- `wiki/ai-workflow.md`: AI workflow guide
-- `inbox/README.md`: intake landing page
+```bash
+python3 scripts/verify_wiki_workflow_kit.py --help
+```
 
-### Optional Surfaces
+### Getting Started
 
-- Enable `.obsidian/` if you want to use the repo as an Obsidian vault
-- Install and authenticate `lark-cli` if you need Feishu / Lark automation
-- Install the `openspec` CLI if you want change-governance workflows
+```bash
+sed -n '1,200p' PROJECT.md
+sed -n '1,200p' wiki/index.md
+sed -n '1,200p' inbox/README.md
+python3 scripts/verify_wiki_workflow_kit.py
+```
+
+### Runtime Quick Reference
+
+| Use Case | Entry |
+|---|---|
+| Codex / Cursor | `AGENTS.md` |
+| Claude | `CLAUDE.md` |
+| Workflow changes | `openspec/` |
+| Raw intake | `inbox/README.md` |
+| Knowledge navigation | `wiki/index.md` |
+
+### Documentation
+
+| Document | Coverage |
+|---|---|
+| `PROJECT.md` | repository boundaries |
+| `wiki/index.md` | wiki navigation |
+| `wiki/ai-workflow.md` | AI workflow overview |
+| `inbox/README.md` | intake landing page |
