@@ -135,9 +135,11 @@ This repository uses the wiki workflow kit to organize source material, operatin
 def install_entrypoints(target_root: Path, project_name: str, project_slug: str) -> None:
     replacements = {"PROJECT_NAME": project_name, "PROJECT_SLUG": project_slug}
     readme = render_template(ASSET_ROOT / "README.md.template", replacements)
+    readme_en = render_template(ASSET_ROOT / "README.en.md.template", replacements)
     agents = render_template(ASSET_ROOT / "AGENTS.md.template", replacements)
     claude = render_template(ASSET_ROOT / "CLAUDE.md.template", replacements)
     write_text(target_root / "README.md", readme)
+    write_text(target_root / "README.en.md", readme_en)
     write_text(target_root / "AGENTS.md", agents)
     write_text(target_root / "CLAUDE.md", claude)
 
@@ -183,7 +185,7 @@ def install_scripts(target_root: Path) -> None:
 def print_next_steps(target_root: Path, *, with_obsidian: bool) -> None:
     print("Initialized wiki workflow kit:")
     print(f"- target: {target_root}")
-    print("- next: review README.md for the bilingual onboarding flow")
+    print("- next: review README.md and README.en.md for the language-switch onboarding flow")
     print("- next: review inbox/README.md and wiki/index.md for the intake flow")
     print("- next: review PROJECT.md, AGENTS.md, CLAUDE.md")
     print("- next: run scripts/verify_wiki_workflow_kit.py")
