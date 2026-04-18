@@ -115,6 +115,22 @@ Alternative considered:
 - Make a strict two-round counter the only trigger.
   - Rejected because it is too mechanical and misses the actual user intent: repeated gravitational pull toward the same goal.
 
+### Decision: Implement handoff entry as a weighted in-session state transition
+
+The first version should not implement handoff entry as a literal turn counter.
+
+Instead, it should maintain lightweight in-session state and evaluate a set of signals after each user turn. The important shift is not “this topic appeared N times,” but “the user keeps pulling the discussion back to the same north-star goal.”
+
+This lets the repository optimize for the user's actual priorities:
+
+- high recall
+- low drift
+
+Alternative considered:
+
+- Trigger handoff mode only when the same topic appears beyond a hard turn threshold.
+  - Rejected because it creates false positives for ordinary follow-up questions and false negatives when a single strong correction clearly reveals the real objective.
+
 ## Handoff Mode Shape
 
 ### Detection signals
@@ -126,6 +142,68 @@ The first version may use lightweight signals such as:
 - the user rejects local optimization and reasserts a larger intent
 - the user explicitly says the topic should be remembered, recorded, or made reusable
 - the topic passes a “same subject beyond two rounds” threshold
+
+These signals should not all have equal importance.
+
+The strongest signals are:
+
+- `goal_repull`
+  - the user explicitly pulls the discussion back to the same intended outcome
+- `framing_correction`
+  - the user rejects the current framing and corrects what the discussion is really about
+- `local_fix_rejected`
+  - the user refuses a local answer and continues steering toward the larger goal
+
+Lower-weight but still useful signals include:
+
+- `memory_request`
+  - the user explicitly asks for durable recording or future reuse
+- `process_dispute`
+  - the conversation becomes about workflow, boundary, or operating behavior
+- `topic_recurrence`
+  - the same topic continues beyond two rounds
+
+The design intent is clear:
+
+- “same topic beyond two rounds” is a strong heuristic
+- but “north-star pull” is the real primary condition
+
+### In-session state model
+
+The first version should maintain lightweight session state for the current conversation, not just emit final summaries.
+
+That state may include:
+
+- `north_star_candidates`
+- `active_handoff_topic`
+- `signal_history`
+- `preferences`
+- `disagreements`
+- `open_questions`
+- `repo_target_hint`
+
+After each user turn, the system should:
+
+1. extract handoff-related signals
+2. update candidate north-star state
+3. decide whether the conversation is still loose Q&A or has entered handoff mode
+4. if handoff mode is active, update the slot structure instead of treating the next turn as isolated chat
+
+### Mode-entry behavior
+
+The first version should behave like a small state transition:
+
+- default state: ordinary Q&A
+- transition condition: weighted evidence that the same north-star goal is actively pulling the conversation back
+- target state: handoff mode
+
+Once in handoff mode:
+
+- later turns should attach to the active operating context
+- the system should prefer structured slot updates over fresh disconnected summaries
+- durable repo-visible output may begin before the conversation is fully complete
+
+This keeps the system conversation-native instead of archive-native.
 
 ### Minimum record contents
 
@@ -140,6 +218,12 @@ The durable record for a handoff topic should preserve:
 ### Mode behavior
 
 Once a handoff topic is recognized, the conversation should stop behaving like disconnected Q&A and start behaving like a coherent thread that can be resumed, promoted, or closed later.
+
+More concretely:
+
+- answering the immediate question is still allowed
+- but the system must also preserve the active north star and attach new information to it
+- the conversation should accumulate structured state instead of repeatedly rebuilding context from scratch
 
 ## Evaluation Plan
 
