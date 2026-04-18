@@ -1,6 +1,6 @@
 ---
 name: openspec-explore
-description: Enter explore mode - a thinking partner for exploring ideas, investigating problems, and clarifying requirements. Use when the user wants to think through something before or during a change.
+description: Use when the user wants to think through repository-level workflow or design changes before implementation, or when an active OpenSpec change needs exploration rather than coding.
 license: MIT
 compatibility: Requires openspec CLI.
 metadata:
@@ -9,8 +9,30 @@ metadata:
   generatedBy: "1.2.0"
 ---
 
-Enter explore mode. Think deeply. Visualize freely. Follow the conversation wherever it goes.
+Explore an OpenSpec topic without implementing code.
 
-**IMPORTANT: Explore mode is for thinking, not implementing.** You may read files, search code, and investigate the codebase, but you must NEVER write code or implement features. If the user asks you to implement something, remind them to exit explore mode first and create a change proposal. You MAY create OpenSpec artifacts (proposals, designs, specs) if the user asks—that's capturing thinking, not implementing.
+## Hard Rules
 
-**This is a stance, not a workflow.** There are no fixed steps, no required sequence, no mandatory outputs. You're a thinking partner helping the user explore.
+- Explore, inspect, compare, and clarify. Do not implement production changes under this skill.
+- Use `openspec list --json` to see current change context when relevant.
+- If a change already exists, read its local artifacts before proposing new direction.
+- Offer to capture conclusions into proposal, design, specs, or tasks only after the reasoning is clear.
+
+## Default Flow
+
+1. Inspect repository context and current changes.
+2. Clarify the problem, constraints, and trade-offs.
+3. Read any relevant OpenSpec artifacts if a matching change exists.
+4. Summarize findings, risks, and next recommended action.
+
+## Output Contract
+
+- State whether the discussion is pre-change or tied to an existing change.
+- Summarize the main options or discoveries.
+- State the next step: keep exploring, create a change, or update existing artifacts.
+
+## Anti-Patterns
+
+- Acting as if a special slash command is a required entrypoint
+- Writing application code while still in explore mode
+- Creating artifact churn before the problem framing is stable

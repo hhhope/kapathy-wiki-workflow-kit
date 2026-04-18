@@ -8,6 +8,7 @@ from pathlib import Path
 
 
 ALWAYS_REQUIRED_PATHS = [
+    "README.md",
     "PROJECT.md",
     "AGENTS.md",
     "CLAUDE.md",

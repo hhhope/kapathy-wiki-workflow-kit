@@ -30,6 +30,7 @@ class BootstrapWikiWorkflowKitTest(unittest.TestCase):
         )
 
         self.assertEqual(exit_code, 0)
+        self.assertTrue((target_dir / "README.md").exists())
         self.assertTrue((target_dir / "inbox" / "README.md").exists())
         self.assertTrue((target_dir / "scripts" / "inbox_intake.py").exists())
         self.assertTrue((target_dir / "wiki" / "sources" / "index.md").exists())
