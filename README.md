@@ -1,235 +1,227 @@
 # kapathy-wiki-workflow-kit
 
-## 中文说明
+## 中文入口
 
-这是一个面向汇报知识、会议材料和 AI workflow 的 Markdown 工作台。仓库把上游材料、过程留痕、汇报草稿和稳定决策拆成可复用的层次，避免同一份材料反复复制。
+把飞书材料、会议纪要、汇报草稿和 AI workflow 规则放进同一个可安装、可复用、可追踪的 Markdown 工作台。
 
-### 适合谁用
+### 这是什么
 
-- 需要把飞书文档、会议纪要、周报素材沉淀成长期可复用 wiki 的个人或项目组
-- 需要把 Codex / Cursor / Claude 的仓库级 workflow 固化为可安装说明的团队
-- 需要先手工整理材料、后续再补自动化的场景
+这是一个给个人和项目组使用的工作流知识库模板：
 
-### 快速开始
+- 用 [inbox/README.md](inbox/README.md) 接原始材料
+- 用 [wiki/index.md](wiki/index.md) 导航长期知识、报告草稿和过程留痕
+- 用 [openspec/](openspec/) 管仓库级 workflow 变更
+- 用 [AGENTS.md](AGENTS.md) / [CLAUDE.md](CLAUDE.md) 把仓库规则暴露给不同 agent 运行面
 
-1. 阅读 [PROJECT.md](/mnt/d/github/kapathy-wiki-workflow-kit/PROJECT.md) 了解仓库边界和治理模型。
-2. 阅读 [wiki/index.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/index.md) 进入 wiki 主导航。
-3. 如果要投递原始材料，先看 [inbox/README.md](/mnt/d/github/kapathy-wiki-workflow-kit/inbox/README.md)。
-4. 如果要改仓库默认 workflow、入口规则或 skills，先在 `openspec/` 下开 change。
-5. 跑 `python3 scripts/verify_wiki_workflow_kit.py` 检查当前仓库或 bootstrap 产物是否完整。
+它不是单纯的 wiki 样板，也不是只给某一个 AI 平台用的 prompt 仓库。
 
-### 环境依赖
+### Quick Install
 
-必需：
-
-- `python3`
-- `node` / `npm`
-
-按需：
-
-- `openspec` CLI：用于 change proposal、status、instructions、archive
-- `lark-cli`：用于 Feishu / Lark 文档、日历、通讯录、消息等自动化
-- Obsidian：把仓库作为 vault 浏览和维护
-
-当前环境中的全局安装示例：
+如果你只是想先把依赖装起来并确认命令可用，最小准备是：
 
 ```bash
 npm install -g @fission-ai/openspec @larksuite/cli
-```
-
-安装后可检查：
-
-```bash
+python3 scripts/verify_wiki_workflow_kit.py --help
 openspec --help
 lark-cli --help
-python3 scripts/verify_wiki_workflow_kit.py --help
 ```
 
-如果要使用 Feishu / Lark 自动化，还需要完成 `lark-cli` 的登录和配置：
+如果你要初始化一个新仓库来复用这套 kit：
 
 ```bash
-lark-cli auth --help
-lark-cli doctor
+python3 scripts/bootstrap_wiki_workflow_kit.py \
+  --project-name "My Workflow Repo" \
+  --target-dir /path/to/target \
+  --owner your-name
 ```
 
-### 运行面入口
-
-Codex：
-
-- 入口文件：`AGENTS.md`
-- repo-local skills：`.codex/skills/`
-- OpenSpec CLI 可直接在仓库内使用
-
-Cursor：
-
-- 当前仓库把 Cursor 视为 adapter 目标，而不是已经生成完整 `.cursor/rules/` 的原生安装物
-- 使用时应先参考 `AGENTS.md`、`wiki/ai-chat-workflow-installer.md` 和相关 ADR
-
-Claude：
-
-- 入口文件：`CLAUDE.md`
-- 与 Codex 共用 `wiki/`、`openspec/`、模板和大部分 workflow 资产
-
-### 核心路径
-
-- `PROJECT.md`：项目身份、边界和 source of truth
-- `wiki/`：长期知识页、模板、示例和 workflow 指南
-- `inbox/`：原始材料投递区
-- `openspec/`：变更提案、设计、规格和任务
-- `scripts/`：bootstrap、intake、verify 等脚本
-
-### 推荐使用路径
-
-1. 新材料先进入 `inbox/` 或 `wiki/sources/`
-2. 再根据内容整理到 `wiki/domains/`、`wiki/reports/`、`wiki/timeline/`、`wiki/ops/`
-3. 如果要改仓库默认行为、skills 或治理规则，先走 OpenSpec change
-4. 如果要跨运行面安装，先看 [wiki/ai-chat-workflow-installer.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/ai-chat-workflow-installer.md)
-
-### 安装后验证
-
-默认模式验证：
+### Getting Started
 
 ```bash
+# 1. 看项目边界
+sed -n '1,200p' PROJECT.md
+
+# 2. 看 wiki 主导航
+sed -n '1,200p' wiki/index.md
+
+# 3. 看原始材料投递说明
+sed -n '1,200p' inbox/README.md
+
+# 4. 检查当前安装是否完整
 python3 scripts/verify_wiki_workflow_kit.py
+
+# 5. 如果要处理 inbox 文本材料
+python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources --ops wiki/ops
 ```
 
-如果目标仓库没有安装 Obsidian：
+### Runtime Quick Reference
+
+| 场景 | 入口 / 命令 | 说明 |
+|---|---|---|
+| Codex 仓库入口 | [AGENTS.md](AGENTS.md) | 仓库级默认规则、边界和路由 |
+| Claude 仓库入口 | [CLAUDE.md](CLAUDE.md) | Claude 侧入口说明 |
+| 仓库级流程变更 | [openspec/](openspec/) | proposal / design / tasks / specs |
+| 原始材料投递 | [inbox/README.md](inbox/README.md) | 先投递，再整理 |
+| 知识导航 | [wiki/index.md](wiki/index.md) | domains / reports / timeline / sources / ops |
+| 安装校验 | `python3 scripts/verify_wiki_workflow_kit.py` | 支持 `--without-obsidian` 等模式 |
+| 飞书 / Lark 自动化 | `lark-cli` | 需要额外登录与配置 |
+
+### CLI And Tooling
+
+常用命令：
 
 ```bash
-python3 scripts/verify_wiki_workflow_kit.py --without-obsidian
-```
+openspec list --json
+openspec status --change <name> --json
+openspec instructions apply --change <name> --json
 
-如果目标仓库没有安装 OpenSpec 或 examples，也可以用对应开关验证实际模式：
-
-```bash
-python3 scripts/verify_wiki_workflow_kit.py --without-openspec --without-examples
-```
-
-### Feishu 来源说明
-
-你提供的 Feishu 文章目前在这个执行环境里拿不到正文，所以仓库先按现有 wiki、脚本和技能资产完成入口说明，并把对齐状态记录在来源页中：
-
-- [wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md)
-
-这页会说明：
-
-- 原始链接
-- 仓库已反映的内容
-- 仍待同步的正文点
-
-## English Guide
-
-This repository is a Markdown-first workspace for report knowledge, meeting material, and AI workflow guidance. It separates upstream evidence, operating traces, report drafts, and durable decisions so the same source material can be reused instead of copied repeatedly.
-
-### Who This Is For
-
-- Individuals or project teams turning Feishu docs, meeting notes, and reporting inputs into a reusable wiki
-- Teams that want repository-level workflow guidance for Codex, Cursor, and Claude
-- Workflows that start manual-first and add automation later
-
-### Quick Start
-
-1. Read [PROJECT.md](/mnt/d/github/kapathy-wiki-workflow-kit/PROJECT.md) for repository scope and governance.
-2. Read [wiki/index.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/index.md) for wiki navigation.
-3. Read [inbox/README.md](/mnt/d/github/kapathy-wiki-workflow-kit/inbox/README.md) before dropping raw source material.
-4. Create an OpenSpec change before editing default workflow rules, entry guidance, or repo-local skills.
-5. Run `python3 scripts/verify_wiki_workflow_kit.py` to verify the current repository or a bootstrap output.
-
-### Environment Setup
-
-Required:
-
-- `python3`
-- `node` / `npm`
-
-Optional:
-
-- `openspec` CLI for change lifecycle workflows
-- `lark-cli` for Feishu / Lark automation
-- Obsidian for vault-style browsing and editing
-
-Example global install:
-
-```bash
-npm install -g @fission-ai/openspec @larksuite/cli
-```
-
-Sanity checks:
-
-```bash
-openspec --help
-lark-cli --help
-python3 scripts/verify_wiki_workflow_kit.py --help
-```
-
-If you want Feishu / Lark automation, finish CLI auth and diagnostics:
-
-```bash
-lark-cli auth --help
 lark-cli doctor
+lark-cli auth --help
+lark-cli docs --help
+lark-cli calendar --help
 ```
 
-### Runtime Entry Points
+说明：
 
-Codex:
+- `python3`、`node` / `npm` 是基础依赖
+- `openspec` 是 workflow-level 变更治理 CLI
+- `lark-cli` 是飞书 / Lark 自动化 CLI，不装也能使用本仓库的大部分 wiki workflow
+- Obsidian 是可选表层，不是仓库可用性的前提
 
-- entry file: `AGENTS.md`
-- repo-local skills: `.codex/skills/`
-- OpenSpec CLI is available directly in the repository
+### Documentation
 
-Cursor:
-
-- this repository documents Cursor as an adapter target, not as a fully generated `.cursor/rules/` installation in this change
-- use `AGENTS.md`, `wiki/ai-chat-workflow-installer.md`, and the related ADR pages as the current canonical source
-
-Claude:
-
-- entry file: `CLAUDE.md`
-- shares `wiki/`, `openspec/`, templates, and most workflow assets with Codex-facing environments
-
-### Core Paths
-
-- `PROJECT.md`: repository identity, boundaries, and source of truth
-- `wiki/`: durable knowledge pages, templates, examples, and workflow guidance
-- `inbox/`: raw material drop zone
-- `openspec/`: proposals, design docs, specs, and task tracking
-- `scripts/`: bootstrap, intake, and verification tooling
-
-### Recommended Flow
-
-1. Start new material in `inbox/` or `wiki/sources/`
-2. Link or refine it into `wiki/domains/`, `wiki/reports/`, `wiki/timeline/`, and `wiki/ops/`
-3. Use an OpenSpec change before modifying repository-default workflow behavior
-4. See [wiki/ai-chat-workflow-installer.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/ai-chat-workflow-installer.md) for the canonical cross-runtime installer model
-
-### Verification
-
-Default verification:
-
-```bash
-python3 scripts/verify_wiki_workflow_kit.py
-```
-
-Without Obsidian:
-
-```bash
-python3 scripts/verify_wiki_workflow_kit.py --without-obsidian
-```
-
-Without OpenSpec or examples:
-
-```bash
-python3 scripts/verify_wiki_workflow_kit.py --without-openspec --without-examples
-```
+| 文档 | 内容 |
+|---|---|
+| [PROJECT.md](PROJECT.md) | 项目身份、边界、source of truth |
+| [wiki/index.md](wiki/index.md) | 知识导航总入口 |
+| [wiki/ai-workflow.md](wiki/ai-workflow.md) | AI workflow 总览 |
+| [wiki/ai-chat-workflow-installer.md](wiki/ai-chat-workflow-installer.md) | Codex / Cursor / Claude 安装模型 |
+| [wiki/ops/index.md](wiki/ops/index.md) | intake、focus-thread、reminder、handoff |
+| [wiki/reports/index.md](wiki/reports/index.md) | 面向受众的输出页 |
+| [wiki/sources/index.md](wiki/sources/index.md) | 来源页与证据页 |
+| [inbox/README.md](inbox/README.md) | 原始文件投递规则 |
 
 ### Feishu Source Note
 
-The Feishu article referenced for this repo cannot be fully fetched from the current execution environment, so the repository now documents the current onboarding flow from the repo itself and records source alignment separately:
+你给的 Feishu 文章现在仍然无法从当前执行环境直接取回正文，所以 README 先按仓库现状组织。来源对齐状态记录在：
 
-- [wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md)
+- [wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md](wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md)
+
+这页负责记录：
+
+- 原始 Feishu 链接
+- 当前仓库已反映的内容
+- 还没完成的正文同步点
+
+---
+
+## English Guide
+
+### What This Is
+
+This repository is a workflow kit for teams or individuals who want one Markdown workspace for:
+
+- raw source intake in [inbox/README.md](inbox/README.md)
+- durable knowledge and report assembly in [wiki/index.md](wiki/index.md)
+- repository-level workflow governance in [openspec/](openspec/)
+- agent-facing runtime entrypoints through [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md)
+
+It is not just a passive wiki skeleton, and it is not a single-platform prompt repo.
+
+### Quick Install
+
+If you only want the minimum tooling installed first:
+
+```bash
+npm install -g @fission-ai/openspec @larksuite/cli
+python3 scripts/verify_wiki_workflow_kit.py --help
+openspec --help
+lark-cli --help
+```
+
+If you want to initialize a new repository from this kit:
+
+```bash
+python3 scripts/bootstrap_wiki_workflow_kit.py \
+  --project-name "My Workflow Repo" \
+  --target-dir /path/to/target \
+  --owner your-name
+```
+
+### Getting Started
+
+```bash
+# 1. Read repository boundaries
+sed -n '1,200p' PROJECT.md
+
+# 2. Open the wiki index
+sed -n '1,200p' wiki/index.md
+
+# 3. Review intake rules before dropping raw files
+sed -n '1,200p' inbox/README.md
+
+# 4. Verify the current install
+python3 scripts/verify_wiki_workflow_kit.py
+
+# 5. Process text material from inbox
+python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources --ops wiki/ops
+```
+
+### Runtime Quick Reference
+
+| Use Case | Entry / Command | Notes |
+|---|---|---|
+| Codex repo entry | [AGENTS.md](AGENTS.md) | repository-level rules and routing |
+| Claude repo entry | [CLAUDE.md](CLAUDE.md) | Claude-facing startup file |
+| Workflow change governance | [openspec/](openspec/) | proposal / design / tasks / specs |
+| Raw source intake | [inbox/README.md](inbox/README.md) | drop first, refine later |
+| Knowledge navigation | [wiki/index.md](wiki/index.md) | domains / reports / timeline / sources / ops |
+| Installation verification | `python3 scripts/verify_wiki_workflow_kit.py` | supports optional-mode flags |
+| Feishu / Lark automation | `lark-cli` | requires separate auth and setup |
+
+### CLI And Tooling
+
+Common commands:
+
+```bash
+openspec list --json
+openspec status --change <name> --json
+openspec instructions apply --change <name> --json
+
+lark-cli doctor
+lark-cli auth --help
+lark-cli docs --help
+lark-cli calendar --help
+```
+
+Notes:
+
+- `python3` and `node` / `npm` are the base prerequisites
+- `openspec` governs workflow-level changes
+- `lark-cli` enables Feishu / Lark automation but is optional for core wiki usage
+- Obsidian is an optional surface, not a hard requirement for the repository
+
+### Documentation
+
+| Document | What It Covers |
+|---|---|
+| [PROJECT.md](PROJECT.md) | repository identity, scope, and source of truth |
+| [wiki/index.md](wiki/index.md) | top-level knowledge navigation |
+| [wiki/ai-workflow.md](wiki/ai-workflow.md) | overall AI workflow model |
+| [wiki/ai-chat-workflow-installer.md](wiki/ai-chat-workflow-installer.md) | Codex / Cursor / Claude installer model |
+| [wiki/ops/index.md](wiki/ops/index.md) | intake, focus threads, reminders, handoff |
+| [wiki/reports/index.md](wiki/reports/index.md) | audience-facing outputs |
+| [wiki/sources/index.md](wiki/sources/index.md) | evidence and source pages |
+| [inbox/README.md](inbox/README.md) | raw intake rules |
+
+### Feishu Source Note
+
+The referenced Feishu article is still unavailable from the current execution environment, so the README reflects the repository itself first. Source alignment is tracked in:
+
+- [wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md](wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md)
 
 That page records:
 
-- the original link
-- what is already reflected in the repository
-- what still needs to be synced from the source article
+- the original source link
+- what is already reflected in this repository
+- what still needs a later sync pass
