@@ -1,0 +1,52 @@
+# {{PROJECT_NAME}}
+
+[中文](README.md) | [English](README.en.md)
+
+Put source materials, workflow knowledge, and agent entrypoints into one installable, reusable, traceable Markdown workspace.
+
+[Install](#install) · [Quick Start](#quick-start) · [Runtime](#runtime) · [Documentation](#documentation)
+
+## Install
+
+```bash
+python3 scripts/verify_wiki_workflow_kit.py --help
+```
+
+## Quick Start
+
+### What This Is
+
+This is a workflow knowledge-base template for:
+
+- raw intake in [inbox/README.md](inbox/README.md)
+- durable pages in [wiki/index.md](wiki/index.md)
+- workflow-level change governance in [openspec/](openspec/)
+- runtime entrypoints in [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md)
+
+### Suggested Order
+
+```bash
+sed -n '1,200p' PROJECT.md
+sed -n '1,200p' wiki/index.md
+sed -n '1,200p' inbox/README.md
+python3 scripts/verify_wiki_workflow_kit.py
+```
+
+## Runtime
+
+| Use Case | Entry |
+|---|---|
+| Codex | [AGENTS.md](AGENTS.md) |
+| Claude | [CLAUDE.md](CLAUDE.md) |
+| Workflow changes | [openspec/](openspec/) |
+| Raw intake | [inbox/README.md](inbox/README.md) |
+| Knowledge navigation | [wiki/index.md](wiki/index.md) |
+
+## Documentation
+
+| Document | Coverage |
+|---|---|
+| [PROJECT.md](PROJECT.md) | repository boundaries |
+| [wiki/index.md](wiki/index.md) | wiki navigation |
+| [wiki/ai-workflow.md](wiki/ai-workflow.md) | AI workflow overview |
+| [inbox/README.md](inbox/README.md) | intake landing page |

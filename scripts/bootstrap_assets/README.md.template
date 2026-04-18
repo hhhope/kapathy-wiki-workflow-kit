@@ -1,10 +1,18 @@
 # {{PROJECT_NAME}}
 
----
+[中文](README.md) | [English](README.en.md)
 
-## 中文入口
+把原始材料、流程知识和 agent 入口放进同一个可安装、可复用、可追踪的 Markdown 工作台。
 
-把原始材料、流程知识和 agent 入口放进同一个可安装的 Markdown 工作台。
+[安装](#安装) · [快速开始](#快速开始) · [运行面](#运行面) · [文档](#文档)
+
+## 安装
+
+```bash
+python3 scripts/verify_wiki_workflow_kit.py --help
+```
+
+## 快速开始
 
 ### 这是什么
 
@@ -15,13 +23,7 @@
 - 流程级改动收进 [openspec/](openspec/)
 - agent 入口暴露给 [AGENTS.md](AGENTS.md) 和 [CLAUDE.md](CLAUDE.md)
 
-### Quick Install
-
-```bash
-python3 scripts/verify_wiki_workflow_kit.py --help
-```
-
-### Getting Started
+### 上手顺序
 
 ```bash
 sed -n '1,200p' PROJECT.md
@@ -30,17 +32,17 @@ sed -n '1,200p' inbox/README.md
 python3 scripts/verify_wiki_workflow_kit.py
 ```
 
-### Runtime Quick Reference
+## 运行面
 
 | 场景 | 入口 |
 |---|---|
-| Codex / Cursor | [AGENTS.md](AGENTS.md) |
+| Codex | [AGENTS.md](AGENTS.md) |
 | Claude | [CLAUDE.md](CLAUDE.md) |
 | 流程变更治理 | [openspec/](openspec/) |
 | 原始材料投递 | [inbox/README.md](inbox/README.md) |
 | 知识导航 | [wiki/index.md](wiki/index.md) |
 
-### Documentation
+## 文档
 
 | 文档 | 内容 |
 |---|---|
@@ -48,52 +50,3 @@ python3 scripts/verify_wiki_workflow_kit.py
 | [wiki/index.md](wiki/index.md) | wiki 导航 |
 | [wiki/ai-workflow.md](wiki/ai-workflow.md) | AI workflow 总览 |
 | [inbox/README.md](inbox/README.md) | intake 入口 |
-
----
-
-## English Guide
-
-This repository is a Markdown-first workflow workspace for source intake, knowledge pages, report assembly, and agent-facing runtime guidance.
-
-### What This Is
-
-This is a workflow knowledge-base template for:
-
-- raw intake in [inbox/README.md](inbox/README.md)
-- durable pages in [wiki/index.md](wiki/index.md)
-- workflow-level change governance in [openspec/](openspec/)
-- runtime entrypoints in [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md)
-
-### Quick Install
-
-```bash
-python3 scripts/verify_wiki_workflow_kit.py --help
-```
-
-### Getting Started
-
-```bash
-sed -n '1,200p' PROJECT.md
-sed -n '1,200p' wiki/index.md
-sed -n '1,200p' inbox/README.md
-python3 scripts/verify_wiki_workflow_kit.py
-```
-
-### Runtime Quick Reference
-
-| Use Case | Entry |
-|---|---|
-| Codex / Cursor | [AGENTS.md](AGENTS.md) |
-| Claude | [CLAUDE.md](CLAUDE.md) |
-| Workflow changes | [openspec/](openspec/) |
-| Raw intake | [inbox/README.md](inbox/README.md) |
-| Knowledge navigation | [wiki/index.md](wiki/index.md) |
-
-### Documentation
-
-| Document | Coverage |
-|---|---|
-| [PROJECT.md](PROJECT.md) | repository boundaries |
-| [wiki/index.md](wiki/index.md) | wiki navigation |
-| [wiki/ai-workflow.md](wiki/ai-workflow.md) | AI workflow overview |
-| [inbox/README.md](inbox/README.md) | intake landing page |
