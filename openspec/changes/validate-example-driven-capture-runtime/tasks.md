@@ -11,4 +11,4 @@
 ## 3. Validation
 
 - [x] 3.1 Validate the change structure
-- [x] 3.2 Confirm the replay change is validation-only and ready to archive with `--skip-specs`
+- [x] 3.2 Confirm the replay change adds only a narrow replay-evidence delta and is ready to archive
