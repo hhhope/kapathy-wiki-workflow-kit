@@ -31,6 +31,10 @@ ADR_FILES = [
     "wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md",
 ]
 
+ROOT_FILES = [
+    "inbox/README.md",
+]
+
 SKILL_DIRS = [
     ".codex/skills/material-collaboration-defaults",
     ".codex/skills/meeting-note-output",
@@ -47,7 +51,7 @@ SKILL_DIRS = [
 ]
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Bootstrap the wiki workflow kit.")
     parser.add_argument("--project-name", required=True, help="Project display name.")
     parser.add_argument("--target-dir", required=True, help="Target directory to initialize.")
@@ -59,7 +63,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--with-examples", dest="with_examples", action="store_true")
     parser.add_argument("--without-examples", dest="with_examples", action="store_false")
     parser.set_defaults(with_obsidian=True, with_openspec=True, with_examples=True)
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
 def slugify(name: str) -> str:
@@ -130,13 +134,17 @@ This repository uses the wiki workflow kit to organize source material, operatin
 
 def install_entrypoints(target_root: Path, project_name: str, project_slug: str) -> None:
     replacements = {"PROJECT_NAME": project_name, "PROJECT_SLUG": project_slug}
+    readme = render_template(ASSET_ROOT / "README.md.template", replacements)
     agents = render_template(ASSET_ROOT / "AGENTS.md.template", replacements)
     claude = render_template(ASSET_ROOT / "CLAUDE.md.template", replacements)
+    write_text(target_root / "README.md", readme)
     write_text(target_root / "AGENTS.md", agents)
     write_text(target_root / "CLAUDE.md", claude)
 
 
 def install_wiki(target_root: Path, with_examples: bool) -> None:
+    for rel_path in ROOT_FILES:
+        copy_file(rel_path, target_root)
     for rel_path in WIKI_FILES:
         copy_file(rel_path, target_root)
     for rel_path in WIKI_DIRS:
@@ -168,19 +176,23 @@ def install_obsidian(target_root: Path) -> None:
 def install_scripts(target_root: Path) -> None:
     target_scripts = target_root / "scripts"
     target_scripts.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(REPO_ROOT / "scripts" / "inbox_intake.py", target_scripts / "inbox_intake.py")
     shutil.copy2(REPO_ROOT / "scripts" / "verify_wiki_workflow_kit.py", target_scripts / "verify_wiki_workflow_kit.py")
 
 
-def print_next_steps(target_root: Path) -> None:
+def print_next_steps(target_root: Path, *, with_obsidian: bool) -> None:
     print("Initialized wiki workflow kit:")
     print(f"- target: {target_root}")
-    print("- next: open the repository in Obsidian")
+    print("- next: review README.md for the bilingual onboarding flow")
+    print("- next: review inbox/README.md and wiki/index.md for the intake flow")
     print("- next: review PROJECT.md, AGENTS.md, CLAUDE.md")
     print("- next: run scripts/verify_wiki_workflow_kit.py")
+    if with_obsidian:
+        print("- next: open the repository in Obsidian")
 
 
-def main() -> int:
-    args = parse_args()
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
     target_root = Path(args.target_dir).resolve()
     project_slug = slugify(args.project_name)
 
@@ -194,7 +206,7 @@ def main() -> int:
         install_openspec(target_root)
     if args.with_obsidian:
         install_obsidian(target_root)
-    print_next_steps(target_root)
+    print_next_steps(target_root, with_obsidian=args.with_obsidian)
     return 0
 
 

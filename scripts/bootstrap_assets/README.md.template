@@ -1,0 +1,53 @@
+# {{PROJECT_NAME}}
+
+## 中文说明
+
+这是一个基于 Markdown 的工作流知识库模板，用来把原始材料、过程记录、汇报草稿和稳定决策整理到同一个仓库里。
+
+### 快速开始
+
+1. 先阅读 `PROJECT.md`
+2. 再阅读 `wiki/index.md`
+3. 如果要处理新材料，先看 `inbox/README.md`
+4. 如果要做流程级改动，先走 `openspec/`
+5. 运行 `python3 scripts/verify_wiki_workflow_kit.py` 检查安装是否完整
+
+### 关键入口
+
+- `AGENTS.md`：Codex / Cursor 侧入口
+- `CLAUDE.md`：Claude 侧入口
+- `wiki/index.md`：知识库导航
+- `wiki/ai-workflow.md`：AI workflow 总览
+- `inbox/README.md`：原始材料投递说明
+
+### 可选能力
+
+- 如果要把仓库作为 Obsidian vault 使用，再启用 `.obsidian/`
+- 如果要使用飞书 / Lark 自动化，再安装并登录 `lark-cli`
+- 如果要走 OpenSpec 变更治理，再安装 `openspec` CLI
+
+## English Guide
+
+This repository is a Markdown-first workflow knowledge base for source material, operating traces, report drafts, and stable decisions.
+
+### Quick Start
+
+1. Read `PROJECT.md`
+2. Read `wiki/index.md`
+3. Read `inbox/README.md` before dropping new source material
+4. Use `openspec/` for workflow-level changes
+5. Run `python3 scripts/verify_wiki_workflow_kit.py` to verify the installation
+
+### Key Entry Points
+
+- `AGENTS.md`: Codex / Cursor entrypoint
+- `CLAUDE.md`: Claude entrypoint
+- `wiki/index.md`: wiki navigation
+- `wiki/ai-workflow.md`: AI workflow guide
+- `inbox/README.md`: intake landing page
+
+### Optional Surfaces
+
+- Enable `.obsidian/` if you want to use the repo as an Obsidian vault
+- Install and authenticate `lark-cli` if you need Feishu / Lark automation
+- Install the `openspec` CLI if you want change-governance workflows
