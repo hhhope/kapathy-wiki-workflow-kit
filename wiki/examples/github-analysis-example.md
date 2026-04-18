@@ -37,3 +37,4 @@ ai_generated: true
 
 - `material-collaboration-defaults`
 - `openspec-explore`
+- `readme-learning-capture`
