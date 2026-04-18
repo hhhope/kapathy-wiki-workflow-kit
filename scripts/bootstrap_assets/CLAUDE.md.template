@@ -1,0 +1,39 @@
+# {{PROJECT_NAME}}
+
+Use this repository as a structured wiki workflow workspace.
+
+## Startup
+
+Before substantial work:
+
+1. Read `PROJECT.md`
+2. Read `wiki/index.md`
+3. Read `wiki/ai-workflow.md`
+4. Check repo-local skills under `.codex/skills/`
+
+## Structure
+
+- `wiki/sources/`: upstream material and evidence
+- `wiki/ops/`: intake, explore traces, reminders, handoff preparation
+- `wiki/reports/`: audience-facing outputs
+- `wiki/adr/`: stable decisions
+- `openspec/`: workflow-level change governance
+
+## Expected Behavior
+
+- Start from `source` when processing new material.
+- Use installed workflow skills before improvising a new process.
+- Keep markdown outputs suitable for Obsidian.
+- Treat workflow-default changes as OpenSpec-level work.
+- Use lightweight explore traces before a scoped workflow change when the shape is still unclear.
+
+## Compatibility
+
+This file is the Claude-facing entrypoint.
+
+The repository shares its workflow assets with AGENTS-driven environments:
+
+- shared wiki structure
+- shared skills
+- shared templates and examples
+- shared OpenSpec governance
