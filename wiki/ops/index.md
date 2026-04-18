@@ -20,6 +20,7 @@
 - [Codex Handoff 规则](codex-handoff-rules.md)
 - [会话承接模式](conversation-handoff-mode.md)
 - [例子驱动的 Wiki 留痕](example-driven-wiki-capture.md)
+- [例子驱动留痕运行时验证 2026-04-18](example-driven-capture-runtime-validation-2026-04-18.md)
 - [Scope Drift 复盘](scope-drift-retro.md)
 - [Agent 治理 gate 缺口复盘 2026-04-18](agent-governance-gate-gap-retro-2026-04-18.md)
 - [gstack 与 larksuite CLI 学习复盘 2026-04-18](gstack-lark-learning-retro-2026-04-18.md)
