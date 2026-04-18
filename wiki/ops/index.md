@@ -7,6 +7,7 @@
 - `intake`：新输入、新行为、新事件的落地点
 - `intake` 也是 `openspec-explore` 的默认留痕容器；进入探索前先创建或更新对应 trace
 - `handoff mode`：当会话里同一个北极星反复牵引讨论时，agent 应切换到持续承接，而不是继续当作离散问答
+- `example-driven capture`：当外部 repo、README 或聊天例子已经产出可复用学习时，agent 应默认留下 wiki 记录
 - `focus-thread`：当前主线与正在推进的关键主题
 - `reminder`：待办、提醒、阻塞和 stale 项
 - `codex-handoff`：已经成熟到可以交给 Codex 执行的研发任务
@@ -18,8 +19,10 @@
 - [项目管理周推进循环](project-management-weekly-loop.md)
 - [Codex Handoff 规则](codex-handoff-rules.md)
 - [会话承接模式](conversation-handoff-mode.md)
+- [例子驱动的 Wiki 留痕](example-driven-wiki-capture.md)
 - [Scope Drift 复盘](scope-drift-retro.md)
 - [Agent 治理 gate 缺口复盘 2026-04-18](agent-governance-gate-gap-retro-2026-04-18.md)
+- [gstack 与 larksuite CLI 学习复盘 2026-04-18](gstack-lark-learning-retro-2026-04-18.md)
 - [Karpathy Skills 学习复盘 2026-04-16](karpathy-skills-learning-retro-2026-04-16.md)
 
 ## 样例链路
@@ -43,10 +46,11 @@
 2. `openspec-explore` 先检查同主题 trace，存在则更新，不存在则新建。
 3. 如果用户在当前会话里反复把讨论拉回同一个北极星，agent 进入 `handoff mode`。
 4. handoff mode 先维护 north star、constraints、failure modes、preferences、disagreements、open questions 和 repo targets。
-5. explore trace 只负责打开问题，不等于正式 OpenSpec change。
-6. 项目管理类周推进材料先走“周推进循环”，再判断是否进入 reminder。
-7. 真正需要推进的事项进入 reminder。
-8. 明确属于研发执行的待办，再晋升为 Codex handoff。
+5. 如果外部 repo、README 或聊天例子已经产出可复用学习，agent 在同轮默认写 wiki 记录，不等用户再提醒。
+6. explore trace 只负责打开问题，不等于正式 OpenSpec change。
+7. 项目管理类周推进材料先走“周推进循环”，再判断是否进入 reminder。
+8. 真正需要推进的事项进入 reminder。
+9. 明确属于研发执行的待办，再晋升为 Codex handoff。
 
 ## 约束
 

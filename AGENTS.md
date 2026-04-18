@@ -81,6 +81,28 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - `OpenSpec change` for scoped workflow or implementation changes
   - `archive-review.md` for governance-heavy closure reasoning on a current change
 
+## Example-Driven Capture Default
+
+- When the user provides an external repo, README, article, or concrete in-chat example and the discussion extracts a reusable learning, the default behavior is to create or update a repo-visible wiki record in the same turn.
+- Do not wait for an extra reminder such as `write this to wiki` when the discussion has already clarified:
+  - what was reused
+  - what was modified or rejected
+  - what is still not formalized
+  - what the next step is
+- This rule is about extracted learning, not raw link presence. Do not create a wiki page for every external link or pasted example.
+- Minimum record fields for example-driven capture:
+  - time
+  - source reference
+  - what was reused
+  - what was modified
+  - what was not yet formalized
+  - repo target
+  - next step
+- Default routing:
+  - `wiki/ops` for workflow, governance, and operating learnings
+  - `wiki/examples` for validated output-shape examples
+  - `wiki/team-lore-candidates.md` only after a project-local page already exists and the learning appears reusable across projects
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
