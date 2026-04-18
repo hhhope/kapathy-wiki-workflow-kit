@@ -34,6 +34,11 @@ class BootstrapWikiWorkflowKitTest(unittest.TestCase):
         self.assertTrue((target_dir / "inbox" / "README.md").exists())
         self.assertTrue((target_dir / "scripts" / "inbox_intake.py").exists())
         self.assertTrue((target_dir / "wiki" / "sources" / "index.md").exists())
+        readme = (target_dir / "README.md").read_text(encoding="utf-8")
+        self.assertIn("## 中文入口", readme)
+        self.assertIn("## English Guide", readme)
+        self.assertNotIn("This repository is", readme.split("## 中文入口", 1)[0])
+        self.assertIn("[PROJECT.md]", readme)
 
     def test_verify_accepts_install_without_obsidian_when_mode_disables_it(self) -> None:
         target_dir = self.tmpdir / "kit-no-obsidian"

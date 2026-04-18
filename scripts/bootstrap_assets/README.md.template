@@ -1,21 +1,19 @@
 # {{PROJECT_NAME}}
 
-把原始材料、流程知识和 agent 入口放进同一个可安装的 Markdown 工作台。
-
-This repository is a Markdown-first workflow workspace for source intake, knowledge pages, report assembly, and agent-facing runtime guidance.
-
 ---
 
 ## 中文入口
+
+把原始材料、流程知识和 agent 入口放进同一个可安装的 Markdown 工作台。
 
 ### 这是什么
 
 这是一个工作流知识库模板，适合把：
 
-- 原始材料放进 `inbox/`
-- 长期知识整理进 `wiki/`
-- 流程级改动收进 `openspec/`
-- agent 入口暴露给 `AGENTS.md` 和 `CLAUDE.md`
+- 原始材料放进 [inbox/README.md](inbox/README.md)
+- 长期知识整理进 [wiki/index.md](wiki/index.md)
+- 流程级改动收进 [openspec/](openspec/)
+- agent 入口暴露给 [AGENTS.md](AGENTS.md) 和 [CLAUDE.md](CLAUDE.md)
 
 ### Quick Install
 
@@ -36,33 +34,35 @@ python3 scripts/verify_wiki_workflow_kit.py
 
 | 场景 | 入口 |
 |---|---|
-| Codex / Cursor | `AGENTS.md` |
-| Claude | `CLAUDE.md` |
-| 流程变更治理 | `openspec/` |
-| 原始材料投递 | `inbox/README.md` |
-| 知识导航 | `wiki/index.md` |
+| Codex / Cursor | [AGENTS.md](AGENTS.md) |
+| Claude | [CLAUDE.md](CLAUDE.md) |
+| 流程变更治理 | [openspec/](openspec/) |
+| 原始材料投递 | [inbox/README.md](inbox/README.md) |
+| 知识导航 | [wiki/index.md](wiki/index.md) |
 
 ### Documentation
 
 | 文档 | 内容 |
 |---|---|
-| `PROJECT.md` | 项目边界 |
-| `wiki/index.md` | wiki 导航 |
-| `wiki/ai-workflow.md` | AI workflow 总览 |
-| `inbox/README.md` | intake 入口 |
+| [PROJECT.md](PROJECT.md) | 项目边界 |
+| [wiki/index.md](wiki/index.md) | wiki 导航 |
+| [wiki/ai-workflow.md](wiki/ai-workflow.md) | AI workflow 总览 |
+| [inbox/README.md](inbox/README.md) | intake 入口 |
 
 ---
 
 ## English Guide
 
+This repository is a Markdown-first workflow workspace for source intake, knowledge pages, report assembly, and agent-facing runtime guidance.
+
 ### What This Is
 
 This is a workflow knowledge-base template for:
 
-- raw intake in `inbox/`
-- durable pages in `wiki/`
-- workflow-level change governance in `openspec/`
-- runtime entrypoints in `AGENTS.md` and `CLAUDE.md`
+- raw intake in [inbox/README.md](inbox/README.md)
+- durable pages in [wiki/index.md](wiki/index.md)
+- workflow-level change governance in [openspec/](openspec/)
+- runtime entrypoints in [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md)
 
 ### Quick Install
 
@@ -83,17 +83,17 @@ python3 scripts/verify_wiki_workflow_kit.py
 
 | Use Case | Entry |
 |---|---|
-| Codex / Cursor | `AGENTS.md` |
-| Claude | `CLAUDE.md` |
-| Workflow changes | `openspec/` |
-| Raw intake | `inbox/README.md` |
-| Knowledge navigation | `wiki/index.md` |
+| Codex / Cursor | [AGENTS.md](AGENTS.md) |
+| Claude | [CLAUDE.md](CLAUDE.md) |
+| Workflow changes | [openspec/](openspec/) |
+| Raw intake | [inbox/README.md](inbox/README.md) |
+| Knowledge navigation | [wiki/index.md](wiki/index.md) |
 
 ### Documentation
 
 | Document | Coverage |
 |---|---|
-| `PROJECT.md` | repository boundaries |
-| `wiki/index.md` | wiki navigation |
-| `wiki/ai-workflow.md` | AI workflow overview |
-| `inbox/README.md` | intake landing page |
+| [PROJECT.md](PROJECT.md) | repository boundaries |
+| [wiki/index.md](wiki/index.md) | wiki navigation |
+| [wiki/ai-workflow.md](wiki/ai-workflow.md) | AI workflow overview |
+| [inbox/README.md](inbox/README.md) | intake landing page |

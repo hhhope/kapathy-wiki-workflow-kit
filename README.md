@@ -1,21 +1,17 @@
 # kapathy-wiki-workflow-kit
 
-把飞书材料、会议纪要、汇报草稿和 AI workflow 规则放进同一个可安装、可复用、可追踪的 Markdown 工作台。
-
-This repository is a Markdown-first workflow kit for source evidence, report drafting, operating traces, and repository-level AI workflow guidance.
-
----
-
 ## 中文入口
+
+把飞书材料、会议纪要、汇报草稿和 AI workflow 规则放进同一个可安装、可复用、可追踪的 Markdown 工作台。
 
 ### 这是什么
 
 这是一个给个人和项目组使用的工作流知识库模板：
 
-- 用 `inbox/` 接原始材料
-- 用 `wiki/` 沉淀长期知识、报告草稿和过程留痕
-- 用 `openspec/` 管仓库级 workflow 变更
-- 用 `AGENTS.md` / `CLAUDE.md` 把仓库规则暴露给不同 agent 运行面
+- 用 [inbox/README.md](inbox/README.md) 接原始材料
+- 用 [wiki/index.md](wiki/index.md) 导航长期知识、报告草稿和过程留痕
+- 用 [openspec/](openspec/) 管仓库级 workflow 变更
+- 用 [AGENTS.md](AGENTS.md) / [CLAUDE.md](CLAUDE.md) 把仓库规则暴露给不同 agent 运行面
 
 它不是单纯的 wiki 样板，也不是只给某一个 AI 平台用的 prompt 仓库。
 
@@ -62,11 +58,11 @@ python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources --ops wiki/
 
 | 场景 | 入口 / 命令 | 说明 |
 |---|---|---|
-| Codex 仓库入口 | `AGENTS.md` | 仓库级默认规则、边界和路由 |
-| Claude 仓库入口 | `CLAUDE.md` | Claude 侧入口说明 |
-| 仓库级流程变更 | `openspec/` | proposal / design / tasks / specs |
-| 原始材料投递 | `inbox/README.md` | 先投递，再整理 |
-| 知识导航 | `wiki/index.md` | domains / reports / timeline / sources / ops |
+| Codex 仓库入口 | [AGENTS.md](AGENTS.md) | 仓库级默认规则、边界和路由 |
+| Claude 仓库入口 | [CLAUDE.md](CLAUDE.md) | Claude 侧入口说明 |
+| 仓库级流程变更 | [openspec/](openspec/) | proposal / design / tasks / specs |
+| 原始材料投递 | [inbox/README.md](inbox/README.md) | 先投递，再整理 |
+| 知识导航 | [wiki/index.md](wiki/index.md) | domains / reports / timeline / sources / ops |
 | 安装校验 | `python3 scripts/verify_wiki_workflow_kit.py` | 支持 `--without-obsidian` 等模式 |
 | 飞书 / Lark 自动化 | `lark-cli` | 需要额外登录与配置 |
 
@@ -96,20 +92,20 @@ lark-cli calendar --help
 
 | 文档 | 内容 |
 |---|---|
-| [PROJECT.md](/mnt/d/github/kapathy-wiki-workflow-kit/PROJECT.md) | 项目身份、边界、source of truth |
-| [wiki/index.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/index.md) | 知识导航总入口 |
-| [wiki/ai-workflow.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/ai-workflow.md) | AI workflow 总览 |
-| [wiki/ai-chat-workflow-installer.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/ai-chat-workflow-installer.md) | Codex / Cursor / Claude 安装模型 |
-| [wiki/ops/index.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/ops/index.md) | intake、focus-thread、reminder、handoff |
-| [wiki/reports/index.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/reports/index.md) | 面向受众的输出页 |
-| [wiki/sources/index.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/sources/index.md) | 来源页与证据页 |
-| [inbox/README.md](/mnt/d/github/kapathy-wiki-workflow-kit/inbox/README.md) | 原始文件投递规则 |
+| [PROJECT.md](PROJECT.md) | 项目身份、边界、source of truth |
+| [wiki/index.md](wiki/index.md) | 知识导航总入口 |
+| [wiki/ai-workflow.md](wiki/ai-workflow.md) | AI workflow 总览 |
+| [wiki/ai-chat-workflow-installer.md](wiki/ai-chat-workflow-installer.md) | Codex / Cursor / Claude 安装模型 |
+| [wiki/ops/index.md](wiki/ops/index.md) | intake、focus-thread、reminder、handoff |
+| [wiki/reports/index.md](wiki/reports/index.md) | 面向受众的输出页 |
+| [wiki/sources/index.md](wiki/sources/index.md) | 来源页与证据页 |
+| [inbox/README.md](inbox/README.md) | 原始文件投递规则 |
 
 ### Feishu Source Note
 
 你给的 Feishu 文章现在仍然无法从当前执行环境直接取回正文，所以 README 先按仓库现状组织。来源对齐状态记录在：
 
-- [wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md)
+- [wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md](wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md)
 
 这页负责记录：
 
@@ -125,10 +121,10 @@ lark-cli calendar --help
 
 This repository is a workflow kit for teams or individuals who want one Markdown workspace for:
 
-- raw source intake in `inbox/`
-- durable knowledge and report assembly in `wiki/`
-- repository-level workflow governance in `openspec/`
-- agent-facing runtime entrypoints through `AGENTS.md` and `CLAUDE.md`
+- raw source intake in [inbox/README.md](inbox/README.md)
+- durable knowledge and report assembly in [wiki/index.md](wiki/index.md)
+- repository-level workflow governance in [openspec/](openspec/)
+- agent-facing runtime entrypoints through [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md)
 
 It is not just a passive wiki skeleton, and it is not a single-platform prompt repo.
 
@@ -175,11 +171,11 @@ python3 -m scripts.inbox_intake --inbox inbox --sources wiki/sources --ops wiki/
 
 | Use Case | Entry / Command | Notes |
 |---|---|---|
-| Codex repo entry | `AGENTS.md` | repository-level rules and routing |
-| Claude repo entry | `CLAUDE.md` | Claude-facing startup file |
-| Workflow change governance | `openspec/` | proposal / design / tasks / specs |
-| Raw source intake | `inbox/README.md` | drop first, refine later |
-| Knowledge navigation | `wiki/index.md` | domains / reports / timeline / sources / ops |
+| Codex repo entry | [AGENTS.md](AGENTS.md) | repository-level rules and routing |
+| Claude repo entry | [CLAUDE.md](CLAUDE.md) | Claude-facing startup file |
+| Workflow change governance | [openspec/](openspec/) | proposal / design / tasks / specs |
+| Raw source intake | [inbox/README.md](inbox/README.md) | drop first, refine later |
+| Knowledge navigation | [wiki/index.md](wiki/index.md) | domains / reports / timeline / sources / ops |
 | Installation verification | `python3 scripts/verify_wiki_workflow_kit.py` | supports optional-mode flags |
 | Feishu / Lark automation | `lark-cli` | requires separate auth and setup |
 
@@ -209,20 +205,20 @@ Notes:
 
 | Document | What It Covers |
 |---|---|
-| [PROJECT.md](/mnt/d/github/kapathy-wiki-workflow-kit/PROJECT.md) | repository identity, scope, and source of truth |
-| [wiki/index.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/index.md) | top-level knowledge navigation |
-| [wiki/ai-workflow.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/ai-workflow.md) | overall AI workflow model |
-| [wiki/ai-chat-workflow-installer.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/ai-chat-workflow-installer.md) | Codex / Cursor / Claude installer model |
-| [wiki/ops/index.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/ops/index.md) | intake, focus threads, reminders, handoff |
-| [wiki/reports/index.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/reports/index.md) | audience-facing outputs |
-| [wiki/sources/index.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/sources/index.md) | evidence and source pages |
-| [inbox/README.md](/mnt/d/github/kapathy-wiki-workflow-kit/inbox/README.md) | raw intake rules |
+| [PROJECT.md](PROJECT.md) | repository identity, scope, and source of truth |
+| [wiki/index.md](wiki/index.md) | top-level knowledge navigation |
+| [wiki/ai-workflow.md](wiki/ai-workflow.md) | overall AI workflow model |
+| [wiki/ai-chat-workflow-installer.md](wiki/ai-chat-workflow-installer.md) | Codex / Cursor / Claude installer model |
+| [wiki/ops/index.md](wiki/ops/index.md) | intake, focus threads, reminders, handoff |
+| [wiki/reports/index.md](wiki/reports/index.md) | audience-facing outputs |
+| [wiki/sources/index.md](wiki/sources/index.md) | evidence and source pages |
+| [inbox/README.md](inbox/README.md) | raw intake rules |
 
 ### Feishu Source Note
 
 The referenced Feishu article is still unavailable from the current execution environment, so the README reflects the repository itself first. Source alignment is tracked in:
 
-- [wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md](/mnt/d/github/kapathy-wiki-workflow-kit/wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md)
+- [wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md](wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md)
 
 That page records:
 
