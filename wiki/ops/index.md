@@ -6,6 +6,7 @@
 
 - `intake`：新输入、新行为、新事件的落地点
 - `intake` 也是 `openspec-explore` 的默认留痕容器；进入探索前先创建或更新对应 trace
+- `handoff mode`：当会话里同一个北极星反复牵引讨论时，agent 应切换到持续承接，而不是继续当作离散问答
 - `focus-thread`：当前主线与正在推进的关键主题
 - `reminder`：待办、提醒、阻塞和 stale 项
 - `codex-handoff`：已经成熟到可以交给 Codex 执行的研发任务
@@ -16,13 +17,16 @@
 - [提醒面板](reminders.md)
 - [项目管理周推进循环](project-management-weekly-loop.md)
 - [Codex Handoff 规则](codex-handoff-rules.md)
+- [会话承接模式](conversation-handoff-mode.md)
 - [Scope Drift 复盘](scope-drift-retro.md)
+- [Agent 治理 gate 缺口复盘 2026-04-18](agent-governance-gate-gap-retro-2026-04-18.md)
 - [Karpathy Skills 学习复盘 2026-04-16](karpathy-skills-learning-retro-2026-04-16.md)
 
 ## 样例链路
 
 - [sample-intake](sample-intake.md)
 - [sample-explore-trace](sample-explore-trace.md)
+- [sample-handoff-topic](sample-handoff-topic.md)
 - [sample-focus-thread](sample-focus-thread.md)
 - [sample-reminder](sample-reminder.md)
 - [sample-codex-handoff](sample-codex-handoff.md)
@@ -31,16 +35,18 @@
 
 - [涅槃项目周推进 intake 2026-04-13](nirvana-weekly-intake-2026-04-13.md)
 - [涅槃项目本周跟进提醒 2026-04-13](nirvana-weekly-reminder-2026-04-13.md)
+- [Agent 治理 gate 缺口探索 2026-04-18](agent-governance-gate-gap-explore-2026-04-18.md)
 
 ## 推荐流转
 
 1. 新材料或新行为先进入 intake。
 2. `openspec-explore` 先检查同主题 trace，存在则更新，不存在则新建。
-3. explore trace 只负责打开问题，不等于正式 OpenSpec change。
-4. agent 判断它是否关联现有主线或待办。
-5. 项目管理类周推进材料先走“周推进循环”，再判断是否进入 reminder。
-6. 真正需要推进的事项进入 reminder。
-7. 明确属于研发执行的待办，再晋升为 Codex handoff。
+3. 如果用户在当前会话里反复把讨论拉回同一个北极星，agent 进入 `handoff mode`。
+4. handoff mode 先维护 north star、constraints、failure modes、preferences、disagreements、open questions 和 repo targets。
+5. explore trace 只负责打开问题，不等于正式 OpenSpec change。
+6. 项目管理类周推进材料先走“周推进循环”，再判断是否进入 reminder。
+7. 真正需要推进的事项进入 reminder。
+8. 明确属于研发执行的待办，再晋升为 Codex handoff。
 
 ## 约束
 

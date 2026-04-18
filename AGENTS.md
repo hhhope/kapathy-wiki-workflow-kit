@@ -56,6 +56,31 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - The explore trace records the opening context for the topic; it does not replace formal OpenSpec artifacts when the work later becomes a scoped change.
 - The explore trace should stay lightweight and capture at least the trigger question, current focus, current hypotheses, open questions, and next step.
 
+## Conversation Handoff Default
+
+- When the live conversation repeatedly converges on the same north-star goal, the default behavior is to enter `handoff mode` rather than keep treating the exchange as disconnected Q&A.
+- Handoff mode is triggered by repeated north-star pull, not by a single hard counter. Same-topic discussion beyond two rounds is a strong signal, but not the only trigger.
+- Higher-priority signals include:
+  - the user repeatedly correcting the framing back to the same goal
+  - the user rejecting local fixes and restating the larger objective
+  - the user explicitly asking for the topic to be remembered, reused, or made durable
+- Handoff mode should preserve at least:
+  - north star
+  - constraints
+  - failure modes
+  - preferences
+  - disagreements
+  - open questions
+  - candidate practices
+  - repo targets
+- The first version of handoff mode is capture-and-structure only. It must not auto-edit `.codex/skills/*`, `AGENTS.md`, or other repository-default rules directly from conversation state.
+- Durable output should go to the lowest layer that preserves recovery:
+  - `trace / intake` for newly opened operating topics
+  - `retro` for drift, disagreement, or repeated process confusion
+  - `ADR` for stable cross-change decisions
+  - `OpenSpec change` for scoped workflow or implementation changes
+  - `archive-review.md` for governance-heavy closure reasoning on a current change
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
