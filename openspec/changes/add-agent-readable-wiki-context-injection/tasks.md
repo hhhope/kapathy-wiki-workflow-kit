@@ -1,7 +1,7 @@
 ## 1. Define the workflow
 
-- [ ] 1.1 Finalize the automatic context-injection contract and bundle model
-- [ ] 1.2 Publish repository-visible guidance for automatic context-injection usage
+- [x] 1.1 Finalize the automatic context-injection contract and bundle model
+- [x] 1.2 Publish repository-visible guidance for automatic context-injection usage
 
 ## 2. Implement context injection
 

@@ -377,6 +377,36 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - unresolved page understanding
   - rollout proof
 
+## Wiki Context Injection Default
+
+- Automatic context injection is downstream of:
+  - the wiki naming model
+  - the wiki frontmatter model
+  - wiki graph extraction
+  - wiki relation analysis
+  - wiki semantic scoring
+  - wiki utilization layer
+  - wiki runtime context
+  - wiki runtime-context source integration
+  - wiki runtime auto routing
+- Version 1 automatic context injection should preserve distinct sections such as:
+  - `injected_first_pass`
+  - `secondary_context`
+  - `excluded_objects`
+  - `injection_notes`
+- Version 1 automatic context injection must map only from repository-local runtime auto-routing output
+- Runtime context-injection output must preserve:
+  - concrete page-path references
+  - source-layer identity
+  - artifact-type identity
+  - bounded excerpts
+  - proof-boundary notes
+- Runtime context-injection output must not overclaim:
+  - external retrieval readiness
+  - autonomous execution
+  - unresolved page understanding
+  - rollout proof
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
