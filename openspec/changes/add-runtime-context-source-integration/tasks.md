@@ -5,8 +5,8 @@
 
 ## 2. Implement source integration
 
-- [ ] 2.1 Add a script or workflow that resolves runtime-context objects into concrete source references
-- [ ] 2.2 Generate a sample source-integrated runtime artifact from the current repository state
+- [x] 2.1 Add a script or workflow that resolves runtime-context objects into concrete source references
+- [x] 2.2 Generate a sample source-integrated runtime artifact from the current repository state
 
 ## 3. Verify
 

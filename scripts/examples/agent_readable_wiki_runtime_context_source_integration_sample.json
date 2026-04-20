@@ -1,0 +1,229 @@
+{
+  "generated_at": "2026-04-20T06:54:39.275236+00:00",
+  "source_runtime_summary": {
+    "preferred_count": 1,
+    "supporting_count": 4,
+    "blocked_count": 5,
+    "caution_active": true
+  },
+  "summary": {
+    "preferred_count": 1,
+    "supporting_count": 4,
+    "blocked_count": 5,
+    "caution_active": true,
+    "direct_source_inspection_required": true
+  },
+  "preferred_sources": [
+    {
+      "canonical_object": "disagreement-management",
+      "usage_guidance": "Use as a first-pass high-confidence context candidate, but keep direct source inspection for final claims.",
+      "reasons": [
+        "strong bounded semantic score",
+        "cross-layer evidence is present",
+        "formalization depth is sufficient",
+        "repository-wide unresolved pressure is high"
+      ],
+      "resolved_sources": [
+        {
+          "page_path": "wiki/ops/disagreement-management-method.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops"
+        },
+        {
+          "page_path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
+          "artifact_type": "adr",
+          "source_layer": "wiki/adr"
+        },
+        {
+          "page_path": "openspec/specs/disagreement-management-method/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs"
+        },
+        {
+          "page_path": "wiki/ops/disagreement-management-replay-harness.md",
+          "artifact_type": "replay-harness",
+          "source_layer": "wiki/ops"
+        },
+        {
+          "page_path": "wiki/ops/disagreement-management-replay-validation-2026-04-20.md",
+          "artifact_type": "replay-validation",
+          "source_layer": "wiki/ops"
+        }
+      ]
+    }
+  ],
+  "supporting_sources": [
+    {
+      "canonical_object": "conversation-handoff",
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "resolved_sources": [
+        {
+          "page_path": "wiki/ops/conversation-handoff-mode.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops"
+        },
+        {
+          "page_path": "openspec/specs/conversation-north-star-handoff/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs"
+        },
+        {
+          "page_path": "wiki/ops/sample-handoff-topic.md",
+          "artifact_type": "sample",
+          "source_layer": "wiki/ops"
+        }
+      ]
+    },
+    {
+      "canonical_object": "example-driven-capture",
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "resolved_sources": [
+        {
+          "page_path": "wiki/ops/example-driven-wiki-capture.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops"
+        },
+        {
+          "page_path": "openspec/specs/example-driven-wiki-capture/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs"
+        },
+        {
+          "page_path": "wiki/examples/github-analysis-example.md",
+          "artifact_type": "example",
+          "source_layer": "wiki/examples"
+        },
+        {
+          "page_path": "wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md",
+          "artifact_type": "runtime-validation",
+          "source_layer": "wiki/ops"
+        }
+      ]
+    },
+    {
+      "canonical_object": "wiki-frontmatter-model",
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "resolved_sources": [
+        {
+          "page_path": "wiki/ops/agent-readable-wiki-frontmatter.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops"
+        },
+        {
+          "page_path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
+          "artifact_type": "adr",
+          "source_layer": "wiki/adr"
+        },
+        {
+          "page_path": "openspec/specs/wiki-frontmatter-model/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs"
+        }
+      ]
+    },
+    {
+      "canonical_object": "wiki-naming-model",
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "resolved_sources": [
+        {
+          "page_path": "wiki/ops/agent-readable-wiki-naming-model.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops"
+        },
+        {
+          "page_path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
+          "artifact_type": "adr",
+          "source_layer": "wiki/adr"
+        },
+        {
+          "page_path": "openspec/specs/wiki-naming-model/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs"
+        }
+      ]
+    }
+  ],
+  "blocked_objects": [
+    {
+      "canonical_object": "wiki-runtime-context-source-integration",
+      "usage_guidance": "Do not treat this object as a strong context anchor yet.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "resolution_skipped": true
+    },
+    {
+      "canonical_object": "wiki-relation-analysis",
+      "usage_guidance": "Do not treat this object as a strong context anchor yet.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "resolution_skipped": true
+    },
+    {
+      "canonical_object": "wiki-runtime-context",
+      "usage_guidance": "Do not treat this object as a strong context anchor yet.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "resolution_skipped": true
+    },
+    {
+      "canonical_object": "wiki-semantic-scoring",
+      "usage_guidance": "Do not treat this object as a strong context anchor yet.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "resolution_skipped": true
+    },
+    {
+      "canonical_object": "wiki-utilization-layer",
+      "usage_guidance": "Do not treat this object as a strong context anchor yet.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "resolution_skipped": true
+    }
+  ],
+  "source_resolution_notes": [
+    "Version 1 resolves repository-local sources only.",
+    "Resolved sources are ordered deterministically by artifact priority and path.",
+    "Blocked objects remain isolated from first-pass source selection."
+  ],
+  "proof_boundary_notes": [
+    "This output is bounded repository-local source guidance only.",
+    "It does not prove external retrieval integration.",
+    "It does not prove autonomous runtime context loading.",
+    "It does not prove semantic understanding of unresolved pages."
+  ]
+}
