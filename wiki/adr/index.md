@@ -29,6 +29,7 @@
 - [ADR-0016 Agent-Readable Wiki Relation Analysis After Extraction](0016-agent-readable-wiki-relation-analysis-after-extraction.md)
 - [ADR-0017 Agent-Readable Wiki Semantic Scoring After Relation Analysis](0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md)
 - [ADR-0018 Agent-Readable Wiki Utilization Layer After Semantic Scoring](0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md)
+- [ADR-0019 Agent-Readable Wiki Runtime Context After Utilization](0019-agent-readable-wiki-runtime-context-after-utilization.md)
 
 ## 非目标
 
