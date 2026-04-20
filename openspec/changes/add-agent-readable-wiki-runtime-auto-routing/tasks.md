@@ -10,6 +10,6 @@
 
 ## 3. Verify
 
-- [ ] 3.1 Confirm the sample artifact separates open-first, open-next, and blocked routing states
-- [ ] 3.2 Document proof boundaries and residual risks
-- [ ] 3.3 Run `openspec validate add-agent-readable-wiki-runtime-auto-routing`
+- [x] 3.1 Confirm the sample artifact separates open-first, open-next, and blocked routing states
+- [x] 3.2 Document proof boundaries and residual risks
+- [x] 3.3 Run `openspec validate add-agent-readable-wiki-runtime-auto-routing`
