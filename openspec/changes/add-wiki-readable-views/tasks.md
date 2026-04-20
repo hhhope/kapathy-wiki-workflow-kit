@@ -19,6 +19,6 @@
 
 ## 5. Validation
 
-- [ ] 5.1 Record before/after evidence for the missing reading views
+- [x] 5.1 Record before/after evidence for the missing reading views
 - [x] 5.2 Validate the OpenSpec change
-- [ ] 5.3 Confirm that the change does not modify `openspec-explore` or continue the runtime stack
+- [x] 5.3 Confirm that the change does not modify `openspec-explore` or continue the runtime stack
