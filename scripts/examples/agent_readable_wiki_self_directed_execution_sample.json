@@ -1,0 +1,350 @@
+{
+  "generated_at": "2026-04-20T07:28:31.383704+00:00",
+  "source_injection_summary": {
+    "injected_first_pass_count": 4,
+    "secondary_context_count": 4,
+    "excluded_count": 5,
+    "injected_first_pass_source_count": 14,
+    "secondary_context_source_count": 13,
+    "caution_active": true,
+    "direct_source_inspection_required": true
+  },
+  "summary": {
+    "execute_now_count": 4,
+    "deferred_count": 4,
+    "blocked_count": 5,
+    "execute_now_source_count": 14,
+    "deferred_source_count": 13,
+    "caution_active": true,
+    "direct_source_inspection_required": true
+  },
+  "execute_now": [
+    {
+      "canonical_object": "wiki-context-injection",
+      "execution_guidance": "Inspect these injected sources and apply them as the first-pass execution basis.",
+      "reasons": [
+        "strong bounded semantic score",
+        "cross-layer evidence is present",
+        "formalization depth is sufficient",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "inspect_and_apply_context",
+      "action_sources": [
+        {
+          "page_path": "wiki/ops/agent-readable-wiki-context-injection.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops",
+          "title": "wiki-context-injection / method"
+        },
+        {
+          "page_path": "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md",
+          "artifact_type": "adr",
+          "source_layer": "wiki/adr",
+          "title": "wiki-context-injection / adr"
+        },
+        {
+          "page_path": "openspec/specs/wiki-context-injection/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs",
+          "title": "wiki-context-injection / spec"
+        }
+      ]
+    },
+    {
+      "canonical_object": "wiki-runtime-auto-routing",
+      "execution_guidance": "Inspect these injected sources and apply them as the first-pass execution basis.",
+      "reasons": [
+        "strong bounded semantic score",
+        "cross-layer evidence is present",
+        "formalization depth is sufficient",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "inspect_and_apply_context",
+      "action_sources": [
+        {
+          "page_path": "wiki/ops/agent-readable-wiki-runtime-auto-routing.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops",
+          "title": "wiki-runtime-auto-routing / method"
+        },
+        {
+          "page_path": "wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md",
+          "artifact_type": "adr",
+          "source_layer": "wiki/adr",
+          "title": "wiki-runtime-auto-routing / adr"
+        },
+        {
+          "page_path": "openspec/specs/wiki-runtime-auto-routing/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs",
+          "title": "wiki-runtime-auto-routing / spec"
+        }
+      ]
+    },
+    {
+      "canonical_object": "wiki-runtime-context-source-integration",
+      "execution_guidance": "Inspect these injected sources and apply them as the first-pass execution basis.",
+      "reasons": [
+        "strong bounded semantic score",
+        "cross-layer evidence is present",
+        "formalization depth is sufficient",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "inspect_and_apply_context",
+      "action_sources": [
+        {
+          "page_path": "wiki/ops/agent-readable-wiki-runtime-context-source-integration.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops",
+          "title": "wiki-runtime-context-source-integration / method"
+        },
+        {
+          "page_path": "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md",
+          "artifact_type": "adr",
+          "source_layer": "wiki/adr",
+          "title": "wiki-runtime-context-source-integration / adr"
+        },
+        {
+          "page_path": "openspec/specs/wiki-runtime-context-source-integration/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs",
+          "title": "wiki-runtime-context-source-integration / spec"
+        }
+      ]
+    },
+    {
+      "canonical_object": "disagreement-management",
+      "execution_guidance": "Inspect these injected sources and apply them as the first-pass execution basis.",
+      "reasons": [
+        "strong bounded semantic score",
+        "cross-layer evidence is present",
+        "formalization depth is sufficient",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "inspect_and_apply_context",
+      "action_sources": [
+        {
+          "page_path": "wiki/ops/disagreement-management-method.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops",
+          "title": "分歧管理方法"
+        },
+        {
+          "page_path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
+          "artifact_type": "adr",
+          "source_layer": "wiki/adr",
+          "title": "ADR-0012 Disagreement Management Before Conclusion Promotion"
+        },
+        {
+          "page_path": "openspec/specs/disagreement-management-method/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs",
+          "title": "disagreement-management-method Specification"
+        },
+        {
+          "page_path": "wiki/ops/disagreement-management-replay-harness.md",
+          "artifact_type": "replay-harness",
+          "source_layer": "wiki/ops",
+          "title": "分歧管理 Replay Harness"
+        },
+        {
+          "page_path": "wiki/ops/disagreement-management-replay-validation-2026-04-20.md",
+          "artifact_type": "replay-validation",
+          "source_layer": "wiki/ops",
+          "title": "分歧管理 Replay 验证 2026-04-20"
+        }
+      ]
+    }
+  ],
+  "defer_for_followup": [
+    {
+      "canonical_object": "conversation-handoff",
+      "execution_guidance": "Inspect these injected sources only after first-pass execution is stable.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "inspect_before_followup",
+      "action_sources": [
+        {
+          "page_path": "wiki/ops/conversation-handoff-mode.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops",
+          "title": "conversation-handoff / method"
+        },
+        {
+          "page_path": "openspec/specs/conversation-north-star-handoff/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs",
+          "title": "conversation-north-star-handoff Specification"
+        },
+        {
+          "page_path": "wiki/ops/sample-handoff-topic.md",
+          "artifact_type": "sample",
+          "source_layer": "wiki/ops",
+          "title": "conversation-handoff / sample"
+        }
+      ]
+    },
+    {
+      "canonical_object": "example-driven-capture",
+      "execution_guidance": "Inspect these injected sources only after first-pass execution is stable.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "inspect_before_followup",
+      "action_sources": [
+        {
+          "page_path": "wiki/ops/example-driven-wiki-capture.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops",
+          "title": "例子驱动的 Wiki 留痕"
+        },
+        {
+          "page_path": "openspec/specs/example-driven-wiki-capture/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs",
+          "title": "example-driven-wiki-capture Specification"
+        },
+        {
+          "page_path": "wiki/examples/github-analysis-example.md",
+          "artifact_type": "example",
+          "source_layer": "wiki/examples",
+          "title": "GitHub Analysis Example"
+        },
+        {
+          "page_path": "wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md",
+          "artifact_type": "runtime-validation",
+          "source_layer": "wiki/ops",
+          "title": "例子驱动留痕运行时验证 2026-04-18"
+        }
+      ]
+    },
+    {
+      "canonical_object": "wiki-frontmatter-model",
+      "execution_guidance": "Inspect these injected sources only after first-pass execution is stable.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "inspect_before_followup",
+      "action_sources": [
+        {
+          "page_path": "wiki/ops/agent-readable-wiki-frontmatter.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops",
+          "title": "Agent-Readable Wiki Frontmatter"
+        },
+        {
+          "page_path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
+          "artifact_type": "adr",
+          "source_layer": "wiki/adr",
+          "title": "ADR-0014 Agent-Readable Wiki Frontmatter Before Graph Automation"
+        },
+        {
+          "page_path": "openspec/specs/wiki-frontmatter-model/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs",
+          "title": "wiki-frontmatter-model"
+        }
+      ]
+    },
+    {
+      "canonical_object": "wiki-naming-model",
+      "execution_guidance": "Inspect these injected sources only after first-pass execution is stable.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "inspect_before_followup",
+      "action_sources": [
+        {
+          "page_path": "wiki/ops/agent-readable-wiki-naming-model.md",
+          "artifact_type": "method",
+          "source_layer": "wiki/ops",
+          "title": "Agent-Readable Wiki Naming Model"
+        },
+        {
+          "page_path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
+          "artifact_type": "adr",
+          "source_layer": "wiki/adr",
+          "title": "ADR-0013 Agent-Readable Wiki Naming Before Graph Growth"
+        },
+        {
+          "page_path": "openspec/specs/wiki-naming-model/spec.md",
+          "artifact_type": "spec",
+          "source_layer": "openspec/specs",
+          "title": "wiki-naming-model"
+        }
+      ]
+    }
+  ],
+  "do_not_execute": [
+    {
+      "canonical_object": "wiki-self-directed-execution",
+      "execution_guidance": "Do not execute from this object during first-pass execution.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "blocked_from_first_pass_execution"
+    },
+    {
+      "canonical_object": "wiki-relation-analysis",
+      "execution_guidance": "Do not execute from this object during first-pass execution.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "blocked_from_first_pass_execution"
+    },
+    {
+      "canonical_object": "wiki-runtime-context",
+      "execution_guidance": "Do not execute from this object during first-pass execution.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "blocked_from_first_pass_execution"
+    },
+    {
+      "canonical_object": "wiki-semantic-scoring",
+      "execution_guidance": "Do not execute from this object during first-pass execution.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "blocked_from_first_pass_execution"
+    },
+    {
+      "canonical_object": "wiki-utilization-layer",
+      "execution_guidance": "Do not execute from this object during first-pass execution.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "action_type": "blocked_from_first_pass_execution"
+    }
+  ],
+  "execution_notes": [
+    "Version 1 derives bounded actions from injected context only.",
+    "Execute-now actions come only from injected_first_pass context.",
+    "Blocked objects remain outside first-pass execution."
+  ],
+  "proof_boundary_notes": [
+    "This output is bounded repository-local execution guidance only.",
+    "It does not prove unrestricted agent autonomy.",
+    "It does not prove external retrieval integration.",
+    "It does not prove unresolved-page understanding."
+  ]
+}

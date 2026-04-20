@@ -5,8 +5,8 @@
 
 ## 2. Implement bounded self-directed execution
 
-- [ ] 2.1 Add a script or workflow that derives a deterministic execution-plan bundle from automatic context injection output
-- [ ] 2.2 Generate a sample bounded self-directed execution artifact from current repository state
+- [x] 2.1 Add a script or workflow that derives a deterministic execution-plan bundle from automatic context injection output
+- [x] 2.2 Generate a sample bounded self-directed execution artifact from current repository state
 
 ## 3. Verify
 
