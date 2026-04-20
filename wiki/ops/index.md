@@ -18,7 +18,7 @@
 - [提醒面板](reminders.md)
 - [项目管理周推进循环](project-management-weekly-loop.md)
 - [Codex Handoff 规则](codex-handoff-rules.md)
-- [会话承接模式](conversation-handoff-mode.md)
+- [conversation-handoff / method](conversation-handoff-mode.md)
 - [例子驱动的 Wiki 留痕](example-driven-wiki-capture.md)
 - [分歧管理方法](disagreement-management-method.md)
 - [Agent-Readable Wiki Naming Model](agent-readable-wiki-naming-model.md)
@@ -36,7 +36,7 @@
 
 - [sample-intake](sample-intake.md)
 - [sample-explore-trace](sample-explore-trace.md)
-- [sample-handoff-topic](sample-handoff-topic.md)
+- [conversation-handoff / sample](sample-handoff-topic.md)
 - [sample-disagreement-retro](sample-disagreement-retro.md)
 - [sample-focus-thread](sample-focus-thread.md)
 - [sample-reminder](sample-reminder.md)

@@ -1,4 +1,11 @@
-# 会话承接模式
+---
+canonical_object: conversation-handoff
+artifact_type: method
+formalizes:
+- conversation-handoff
+---
+
+# conversation-handoff / method
 
 这页定义什么情况下，agent 不应继续把当前对话当成普通问答，而应切换到“围绕同一北极星持续承接”的工作模式。
 

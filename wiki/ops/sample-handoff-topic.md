@@ -1,5 +1,5 @@
 ---
-title: 会话承接样例：agent 自进化不是噱头
+title: conversation-handoff / sample
 type: intake
 language: zh-CN
 source_path: chat://handoff-mode/sample-north-star
@@ -17,12 +17,18 @@ related_focus_threads:
   - main-thread.md
 related_reminders: []
 handoff_mode: true
+canonical_object: conversation-handoff
+artifact_type: sample
+derived_from:
+- chat://handoff-mode/sample-north-star
+validates:
+- conversation-handoff
 repo_targets:
   - retro
   - openspec-change
 ---
 
-# 会话承接样例：agent 自进化不是噱头
+# conversation-handoff / sample
 
 ## 时间
 
