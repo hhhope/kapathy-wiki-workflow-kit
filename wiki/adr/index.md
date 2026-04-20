@@ -31,6 +31,7 @@
 - [ADR-0018 Agent-Readable Wiki Utilization Layer After Semantic Scoring](0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md)
 - [ADR-0019 Agent-Readable Wiki Runtime Context After Utilization](0019-agent-readable-wiki-runtime-context-after-utilization.md)
 - [ADR-0020 Agent-Readable Wiki Runtime Context Source Integration After Runtime Context](0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md)
+- [ADR-0021 Agent-Readable Wiki Runtime Auto Routing After Source Integration](0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md)
 
 ## 非目标
 
