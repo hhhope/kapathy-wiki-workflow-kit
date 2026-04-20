@@ -26,6 +26,7 @@
 - [Language Policy](language-policy.md)：定义中文主写、英文分栏的写法规范
 - [Examples](examples/index.md)：当前已验证能力的最佳实践样例
 - [Agent-Readable Wiki Naming Model](ops/agent-readable-wiki-naming-model.md)：定义演变型页面的对象化命名模型
+- [Agent-Readable Wiki Frontmatter](ops/agent-readable-wiki-frontmatter.md)：定义演变型页面的最小结构字段模型
 
 ## 示例链路
 
