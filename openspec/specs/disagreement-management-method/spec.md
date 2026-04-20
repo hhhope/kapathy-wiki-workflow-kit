@@ -65,23 +65,10 @@ The repository SHALL treat the disagreement-management method as a mirror of dis
 
 When the repository validates disagreement-management behavior, it SHALL provide a reusable replay harness that keeps replay proof distinct from rollout proof.
 
-#### Scenario: Future contributor replays a disagreement thread
-- **WHEN** a contributor validates the method on a disagreement thread
-- **THEN** the repository SHALL provide a harness that captures at least:
-  - disagreement shape
-  - rejected framing
-  - correction pressure
-  - redirection moment
-  - clarity state
-  - protected target, if visible
-  - RED baseline
-  - GREEN result
-  - residual risk
-
-#### Scenario: Replay validation is recorded
-- **WHEN** the repository records replay validation evidence
-- **THEN** it SHALL state that replay / harness validation is stronger than narrative design-only reasoning
-- **AND** it SHALL NOT claim rollout proof from replay evidence alone
+#### Scenario: Executable replay record is validated
+- **WHEN** the repository validates a structured disagreement replay record
+- **THEN** the repository SHALL provide an executable checker for the replay record shape
+- **AND** the checker SHALL fail when required replay fields or required pass-condition checks are missing
 
 ### Requirement: Archive review SHALL check disagreement preservation and promotion
 
@@ -93,4 +80,13 @@ When an OpenSpec change reaches archive review, the repository SHALL check wheth
   - should remain in method or retro form
   - should be promoted to ADR
   - was flattened away without a durable record
+
+### Requirement: Executable replay proof SHALL stay structural and honest
+
+When the repository provides an executable replay harness, it SHALL keep the proof boundary explicit and avoid pretending to semantically understand the underlying disagreement.
+
+#### Scenario: Checker passes on a replay record
+- **WHEN** the executable harness passes on a replay record
+- **THEN** that pass SHALL mean the structured replay contract is satisfied
+- **AND** it SHALL NOT claim that the disagreement itself has been semantically validated automatically
 
