@@ -317,6 +317,37 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - unresolved page understanding
   - rollout proof
 
+## Wiki Runtime Context Source Integration Default
+
+- Runtime-context source integration is downstream of:
+  - the wiki naming model
+  - the wiki frontmatter model
+  - wiki graph extraction
+  - wiki relation analysis
+  - wiki semantic scoring
+  - wiki utilization layer
+  - wiki runtime context
+- Version 1 source integration should preserve distinct sections such as:
+  - `preferred_sources`
+  - `supporting_sources`
+  - `blocked_objects`
+  - `source_resolution_notes`
+- Version 1 source integration must resolve only repository-local sources from:
+  - `wiki/ops`
+  - `wiki/adr`
+  - `openspec/specs`
+  - `wiki/examples`
+- Source-integration output must preserve:
+  - concrete page-path references
+  - source-layer identity
+  - artifact-type identity
+  - proof-boundary notes
+- Source-integration output must not overclaim:
+  - external retrieval readiness
+  - runtime autonomy
+  - unresolved page understanding
+  - rollout proof
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.

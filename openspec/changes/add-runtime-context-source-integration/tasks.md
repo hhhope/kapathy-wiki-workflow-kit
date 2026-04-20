@@ -1,7 +1,7 @@
 ## 1. Define the workflow
 
-- [ ] 1.1 Finalize the source-integration contract and resolution model
-- [ ] 1.2 Publish repository-visible guidance for source-integrated runtime usage
+- [x] 1.1 Finalize the source-integration contract and resolution model
+- [x] 1.2 Publish repository-visible guidance for source-integrated runtime usage
 
 ## 2. Implement source integration
 

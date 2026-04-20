@@ -32,6 +32,7 @@
 - [Agent-Readable Wiki Semantic Scoring](ops/agent-readable-wiki-semantic-scoring.md)：定义演变型页面的最小语义评分合同
 - [Agent-Readable Wiki Utilization Layer](ops/agent-readable-wiki-utilization-layer.md)：定义 agent 如何利用这些分析产物
 - [Agent-Readable Wiki Runtime Context](ops/agent-readable-wiki-runtime-context.md)：定义 runtime-ready context bundle
+- [Agent-Readable Wiki Runtime Context Source Integration](ops/agent-readable-wiki-runtime-context-source-integration.md)：定义 runtime context 如何解析到 repo-local source refs
 
 ## 示例链路
 
