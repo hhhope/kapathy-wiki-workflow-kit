@@ -26,6 +26,7 @@
 - [ADR-0013 Agent-Readable Wiki Naming Before Graph Growth](0013-agent-readable-wiki-naming-before-graph-growth.md)
 - [ADR-0014 Agent-Readable Wiki Frontmatter Before Graph Automation](0014-agent-readable-wiki-frontmatter-before-graph-automation.md)
 - [ADR-0015 Agent-Readable Wiki Graph Extraction After Structure](0015-agent-readable-wiki-graph-extraction-after-structure.md)
+- [ADR-0016 Agent-Readable Wiki Relation Analysis After Extraction](0016-agent-readable-wiki-relation-analysis-after-extraction.md)
 
 ## 非目标
 
