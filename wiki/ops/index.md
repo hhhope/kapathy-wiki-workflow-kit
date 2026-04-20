@@ -24,6 +24,7 @@
 - [Agent-Readable Wiki Naming Model](agent-readable-wiki-naming-model.md)
 - [Agent-Readable Wiki Frontmatter](agent-readable-wiki-frontmatter.md)
 - [Agent-Readable Wiki Graph Extraction](agent-readable-wiki-graph-extraction.md)
+- [Agent-Readable Wiki Relation Analysis](agent-readable-wiki-relation-analysis.md)
 - [分歧管理 Replay Harness](disagreement-management-replay-harness.md)
 - [分歧管理 Replay 验证 2026-04-20](disagreement-management-replay-validation-2026-04-20.md)
 - [例子驱动留痕运行时验证 2026-04-18](example-driven-capture-runtime-validation-2026-04-18.md)

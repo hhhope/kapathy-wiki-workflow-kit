@@ -224,6 +224,29 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - graph UI readiness
 - Unresolved pages may emit warnings; version 1 does not require semantic guessing to force full node coverage
 
+## Wiki Relation Analysis Default
+
+- Relation analysis is downstream of:
+  - the wiki naming model
+  - the wiki frontmatter model
+  - wiki graph extraction
+- Version 1 relation analysis only covers the graph extraction surface:
+  - `wiki/ops`
+  - `wiki/adr`
+  - `openspec/specs`
+  - `wiki/examples`
+- Relation analysis output should preserve at least:
+  - object coverage summary
+  - artifact-type distribution
+  - relation-type distribution
+  - unresolved warning summary
+  - proof-boundary notes
+- Relation analysis may aggregate unresolved structure by layer, but it must not:
+  - invent semantic identities for unresolved pages
+  - overclaim retrieval quality
+  - overclaim runtime routing readiness
+  - treat structural analysis as rollout proof
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
