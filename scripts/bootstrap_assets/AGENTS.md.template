@@ -1,0 +1,46 @@
+# Repo Instructions
+
+This file adds repository-specific constraints for `{{PROJECT_SLUG}}`.
+
+## Project Anchors
+
+- Read `PROJECT.md` before substantial work.
+- Treat `wiki/` as the durable knowledge and workflow workspace.
+- Treat `openspec/` as the change-governance layer for workflow-level changes.
+
+## Workflow Routing
+
+- Use `wiki/index.md` as the top-level navigation page.
+- Use `wiki/ai-workflow.md` as the default workflow guide.
+- Use `wiki/ops/` for intake, explore traces, reminders, and handoff preparation.
+- Use `wiki/sources/` for upstream evidence.
+- Use `wiki/reports/` for audience-facing outputs.
+- Use `wiki/adr/` for stable decisions that outlive one change.
+
+## Installed Skills
+
+This kit installs repo-local skills under `.codex/skills/`, including:
+
+- workflow skills for material collaboration, meeting notes, project management, Weixin reading, and OpenSpec actions
+- principle skills for clarification, simplicity, surgical changes, and verification
+
+Check the installed skill directories before inventing a new workflow.
+
+## OpenSpec Boundary
+
+- Changes to repository-default workflow, routing, collaboration behavior, or output rules must go through OpenSpec.
+- Explore first when the shape of the change is still unclear.
+- Use `proposal.md`, `design.md`, and `tasks.md` for scoped changes.
+
+## Obsidian Compatibility
+
+- The repository is designed to work as an Obsidian vault.
+- Keep markdown structure and links human-readable.
+- Prefer linked pages over duplicated prose.
+
+## Output Discipline
+
+- Start from `source` when processing new material.
+- Use `ops` pages when action signals, reminders, or focus tracking are needed.
+- Build audience-facing outputs in `reports`.
+- Move stable process decisions into `ADR`.

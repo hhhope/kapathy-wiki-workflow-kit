@@ -1,0 +1,36 @@
+{
+  "thread_label": "design stop vs validation start",
+  "disagreement_shape": "stage-boundary disagreement",
+  "rejected_framing": [
+    "keep expanding the design instead of switching to validation",
+    "mix more scope into the same discussion"
+  ],
+  "correction_pressure": [
+    "不要着急做",
+    "不要再出现便宜个scope的扩散",
+    "设计做完就做压力测试和TDD"
+  ],
+  "redirection_moment": "The discussion stopped asking for more definition work and turned into deciding when design was stable enough to enter validation.",
+  "clarity_state": "design stable enough; missing stage-boundary execution rather than deeper definition",
+  "protected_target": "protect the method from endless design expansion and force validation to start",
+  "red_baseline": [
+    "keep adding more concepts",
+    "stay in design while claiming validation is next",
+    "let scope drift back into the same thread"
+  ],
+  "green_result": [
+    "design was treated as stable enough",
+    "work was reordered into pressure tests and RED/GREEN comparison",
+    "new work became a separate replay-validation change"
+  ],
+  "residual_risk": [
+    "stage-boundary judgment still depends on operator taste",
+    "the executable record does not semantically validate the disagreement itself"
+  ],
+  "checks": {
+    "evolution_over_endpoint": true,
+    "no_premature_abstraction": true,
+    "unclear_state_allowed": true,
+    "no_rollout_claim": true
+  }
+}
