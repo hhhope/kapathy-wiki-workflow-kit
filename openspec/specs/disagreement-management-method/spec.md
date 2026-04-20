@@ -7,11 +7,10 @@ TBD - created by archiving change formalize-disagreement-management-method. Upda
 
 When a repository-default workflow disagreement is still performing goal-calibration work, the repository SHALL preserve it as calibration material before promoting it into `ADR`, spec, skill, or other conclusion-oriented layers.
 
-#### Scenario: Governance-shaped disagreement is still recalibrating the target
-- **WHEN** a disagreement appears to be about a downstream governance symptom such as `ADR`, `wiki` routing, or `TDD`
-- **AND** the disagreement is still reshaping what the real object is
-- **THEN** the repository SHALL preserve the disagreement as calibration material first
-- **AND** it SHALL NOT force immediate promotion into a stable conclusion layer
+#### Scenario: Replay validation checks a new disagreement shape
+- **WHEN** the repository validates the disagreement-management method against another disagreement shape
+- **THEN** that replay SHALL preserve the disagreement as calibration material first
+- **AND** the replay evidence SHALL keep the method boundary explicit rather than collapsing into endpoint-only conclusions
 
 ### Requirement: Repository SHALL preserve a minimum raw material package before summarizing or naming disagreement
 
@@ -60,4 +59,26 @@ The repository SHALL treat the disagreement-management method as a mirror of dis
 - **WHEN** the method language and the preserved disagreement material point in different directions
 - **THEN** the repository SHALL preserve the disagreement material
 - **AND** it SHALL weaken or revise the framework instead of forcing the material into the method
+
+### Requirement: Repository SHALL provide a reusable replay harness for disagreement-management validation
+
+When the repository validates disagreement-management behavior, it SHALL provide a reusable replay harness that keeps replay proof distinct from rollout proof.
+
+#### Scenario: Future contributor replays a disagreement thread
+- **WHEN** a contributor validates the method on a disagreement thread
+- **THEN** the repository SHALL provide a harness that captures at least:
+  - disagreement shape
+  - rejected framing
+  - correction pressure
+  - redirection moment
+  - clarity state
+  - protected target, if visible
+  - RED baseline
+  - GREEN result
+  - residual risk
+
+#### Scenario: Replay validation is recorded
+- **WHEN** the repository records replay validation evidence
+- **THEN** it SHALL state that replay / harness validation is stronger than narrative design-only reasoning
+- **AND** it SHALL NOT claim rollout proof from replay evidence alone
 
