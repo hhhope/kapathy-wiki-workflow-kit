@@ -24,6 +24,7 @@
 - [ADR-0011 Canonical AI Chat Installer Source With Platform Adapters](0011-canonical-ai-chat-installer-source-with-platform-adapters.md)
 - [ADR-0012 Disagreement Management Before Conclusion Promotion](0012-disagreement-management-before-conclusion-promotion.md)
 - [ADR-0013 Agent-Readable Wiki Naming Before Graph Growth](0013-agent-readable-wiki-naming-before-graph-growth.md)
+- [ADR-0014 Agent-Readable Wiki Frontmatter Before Graph Automation](0014-agent-readable-wiki-frontmatter-before-graph-automation.md)
 
 ## 非目标
 
