@@ -5,6 +5,7 @@ Timeline pages group report knowledge by period so recurring updates can be revi
 ## Current Pages
 
 - [2026 Q2](2026-q2.md): starter quarter view showing how sources and reports connect in one period
+- [2026-04-20 Agent-Readable Wiki Evolution Timeline](2026-04-20-agent-readable-wiki-evolution.md): readable chronology for the current wiki governance and drift thread
 
 ## Usage Notes
 

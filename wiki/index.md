@@ -29,6 +29,9 @@
 - [Agent-Readable Wiki Frontmatter](ops/agent-readable-wiki-frontmatter.md)：定义演变型页面的最小结构字段模型
 - [Agent-Readable Wiki Graph Extraction](ops/agent-readable-wiki-graph-extraction.md)：定义演变型页面的最小图提取合同
 - [Agent-Readable Wiki Relation Analysis](ops/agent-readable-wiki-relation-analysis.md)：定义演变型页面的最小关系分析合同
+- [2026-04-20 Agent-Readable Wiki Evolution Timeline](timeline/2026-04-20-agent-readable-wiki-evolution.md)：按时间回看今天这条 wiki 主线如何推进与偏移
+- [wiki-readable-views / artifact-grouping-view](ops/agent-readable-wiki-artifact-grouping.md)：按 artifact type 分组查看同类文档
+- [wiki-readable-views / relation-reading-view](ops/agent-readable-wiki-relation-reading-view.md)：把 graph / relation 结构结果翻成可读层
 - [Agent-Readable Wiki Semantic Scoring](ops/agent-readable-wiki-semantic-scoring.md)：定义演变型页面的最小语义评分合同
 - [Agent-Readable Wiki Utilization Layer](ops/agent-readable-wiki-utilization-layer.md)：定义 agent 如何利用这些分析产物
 - [Agent-Readable Wiki Runtime Context](ops/agent-readable-wiki-runtime-context.md)：定义 runtime-ready context bundle
