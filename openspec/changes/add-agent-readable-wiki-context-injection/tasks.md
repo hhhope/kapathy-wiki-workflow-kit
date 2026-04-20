@@ -10,6 +10,6 @@
 
 ## 3. Verify
 
-- [ ] 3.1 Confirm the sample artifact separates injected first-pass context, secondary context, and excluded objects
-- [ ] 3.2 Document proof boundaries and residual risks
-- [ ] 3.3 Run `openspec validate add-agent-readable-wiki-context-injection`
+- [x] 3.1 Confirm the sample artifact separates injected first-pass context, secondary context, and excluded objects
+- [x] 3.2 Document proof boundaries and residual risks
+- [x] 3.3 Run `openspec validate add-agent-readable-wiki-context-injection`
