@@ -27,6 +27,7 @@
 - [Examples](examples/index.md)：当前已验证能力的最佳实践样例
 - [Agent-Readable Wiki Naming Model](ops/agent-readable-wiki-naming-model.md)：定义演变型页面的对象化命名模型
 - [Agent-Readable Wiki Frontmatter](ops/agent-readable-wiki-frontmatter.md)：定义演变型页面的最小结构字段模型
+- [Agent-Readable Wiki Graph Extraction](ops/agent-readable-wiki-graph-extraction.md)：定义演变型页面的最小图提取合同
 
 ## 示例链路
 

@@ -1,0 +1,181 @@
+{
+  "generated_at": "2026-04-20T04:12:03.268903+00:00",
+  "covered_layers": [
+    "wiki/ops",
+    "wiki/adr",
+    "openspec/specs",
+    "wiki/examples"
+  ],
+  "summary": {
+    "node_count": 18,
+    "edge_count": 0,
+    "warning_count": 54
+  },
+  "nodes": [
+    {
+      "page_path": "wiki/ops/agent-readable-wiki-frontmatter.md",
+      "canonical_object": "wiki-frontmatter-model",
+      "artifact_type": "method",
+      "source_layer": "wiki/ops"
+    },
+    {
+      "page_path": "wiki/ops/agent-readable-wiki-naming-model.md",
+      "canonical_object": "wiki-naming-model",
+      "artifact_type": "method",
+      "source_layer": "wiki/ops"
+    },
+    {
+      "page_path": "wiki/ops/conversation-handoff-mode.md",
+      "canonical_object": "conversation-handoff",
+      "artifact_type": "method",
+      "source_layer": "wiki/ops"
+    },
+    {
+      "page_path": "wiki/ops/disagreement-management-method.md",
+      "canonical_object": "disagreement-management",
+      "artifact_type": "method",
+      "source_layer": "wiki/ops"
+    },
+    {
+      "page_path": "wiki/ops/disagreement-management-replay-harness.md",
+      "canonical_object": "disagreement-management",
+      "artifact_type": "replay-harness",
+      "source_layer": "wiki/ops"
+    },
+    {
+      "page_path": "wiki/ops/disagreement-management-replay-validation-2026-04-20.md",
+      "canonical_object": "disagreement-management",
+      "artifact_type": "replay-validation",
+      "source_layer": "wiki/ops"
+    },
+    {
+      "page_path": "wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md",
+      "canonical_object": "example-driven-capture",
+      "artifact_type": "runtime-validation",
+      "source_layer": "wiki/ops"
+    },
+    {
+      "page_path": "wiki/ops/example-driven-wiki-capture.md",
+      "canonical_object": "example-driven-capture",
+      "artifact_type": "method",
+      "source_layer": "wiki/ops"
+    },
+    {
+      "page_path": "wiki/ops/sample-handoff-topic.md",
+      "canonical_object": "conversation-handoff",
+      "artifact_type": "sample",
+      "source_layer": "wiki/ops"
+    },
+    {
+      "page_path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
+      "canonical_object": "disagreement-management",
+      "artifact_type": "adr",
+      "source_layer": "wiki/adr"
+    },
+    {
+      "page_path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
+      "canonical_object": "wiki-naming-model",
+      "artifact_type": "adr",
+      "source_layer": "wiki/adr"
+    },
+    {
+      "page_path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
+      "canonical_object": "wiki-frontmatter-model",
+      "artifact_type": "adr",
+      "source_layer": "wiki/adr"
+    },
+    {
+      "page_path": "openspec/specs/conversation-north-star-handoff/spec.md",
+      "canonical_object": "conversation-handoff",
+      "artifact_type": "spec",
+      "source_layer": "openspec/specs"
+    },
+    {
+      "page_path": "openspec/specs/disagreement-management-method/spec.md",
+      "canonical_object": "disagreement-management",
+      "artifact_type": "spec",
+      "source_layer": "openspec/specs"
+    },
+    {
+      "page_path": "openspec/specs/example-driven-wiki-capture/spec.md",
+      "canonical_object": "example-driven-capture",
+      "artifact_type": "spec",
+      "source_layer": "openspec/specs"
+    },
+    {
+      "page_path": "openspec/specs/wiki-frontmatter-model/spec.md",
+      "canonical_object": "wiki-frontmatter-model",
+      "artifact_type": "spec",
+      "source_layer": "openspec/specs"
+    },
+    {
+      "page_path": "openspec/specs/wiki-naming-model/spec.md",
+      "canonical_object": "wiki-naming-model",
+      "artifact_type": "spec",
+      "source_layer": "openspec/specs"
+    },
+    {
+      "page_path": "wiki/examples/github-analysis-example.md",
+      "canonical_object": "example-driven-capture",
+      "artifact_type": "example",
+      "source_layer": "wiki/examples"
+    }
+  ],
+  "edges": [],
+  "warnings": [
+    "unresolved_identity:wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md",
+    "unresolved_identity:wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md",
+    "unresolved_identity:wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md",
+    "unresolved_identity:wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md",
+    "unresolved_identity:wiki/ops/agent-readable-wiki-graph-extraction.md",
+    "unresolved_identity:wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md",
+    "unresolved_identity:wiki/ops/codex-handoff-rules.md",
+    "unresolved_identity:wiki/ops/gstack-lark-learning-retro-2026-04-18.md",
+    "unresolved_identity:wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md",
+    "unresolved_identity:wiki/ops/karpathy-skills-learning-retro-2026-04-16.md",
+    "unresolved_identity:wiki/ops/main-thread.md",
+    "unresolved_identity:wiki/ops/nirvana-preview-intake.md",
+    "unresolved_identity:wiki/ops/nirvana-weekly-intake-2026-04-13.md",
+    "unresolved_identity:wiki/ops/nirvana-weekly-reminder-2026-04-13.md",
+    "unresolved_identity:wiki/ops/nirvana-涅槃产品上架梳理-intake.md",
+    "unresolved_identity:wiki/ops/project-management-weekly-loop.md",
+    "unresolved_identity:wiki/ops/reminders.md",
+    "unresolved_identity:wiki/ops/sample-codex-handoff.md",
+    "unresolved_identity:wiki/ops/sample-disagreement-retro.md",
+    "unresolved_identity:wiki/ops/sample-explore-trace.md",
+    "unresolved_identity:wiki/ops/sample-focus-thread.md",
+    "unresolved_identity:wiki/ops/sample-intake.md",
+    "unresolved_identity:wiki/ops/sample-reminder.md",
+    "unresolved_identity:wiki/ops/scope-drift-retro.md",
+    "unresolved_identity:wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md",
+    "unresolved_identity:wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md",
+    "unresolved_identity:wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md",
+    "unresolved_identity:wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+    "unresolved_identity:wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+    "unresolved_identity:wiki/adr/0003-retros-stay-separate-from-adrs.md",
+    "unresolved_identity:wiki/adr/0004-agent-self-evolution-over-skill-governance.md",
+    "unresolved_identity:wiki/adr/0005-incremental-refresh-over-full-reprocessing.md",
+    "unresolved_identity:wiki/adr/0006-formal-project-local-skills-over-drafts.md",
+    "unresolved_identity:wiki/adr/0007-archive-review-before-archive.md",
+    "unresolved_identity:wiki/adr/0007-retire-draft-skills-as-runtime-surface.md",
+    "unresolved_identity:wiki/adr/0008-human-governance-before-self-evolution-promotion.md",
+    "unresolved_identity:wiki/adr/0009-explore-trace-before-openspec-explore.md",
+    "unresolved_identity:wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md",
+    "unresolved_identity:wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md",
+    "unresolved_identity:openspec/specs/ai-chat-workflow-installer/spec.md",
+    "unresolved_identity:openspec/specs/archive-review-defaults/spec.md",
+    "unresolved_identity:openspec/specs/local-skill-pressure-tests/spec.md",
+    "unresolved_identity:openspec/specs/openspec-explore-wiki-trace/spec.md",
+    "unresolved_identity:openspec/specs/principle-skills-layer/spec.md",
+    "unresolved_identity:openspec/specs/readme-learning-skill/spec.md",
+    "unresolved_identity:openspec/specs/skill-authoring-contract/spec.md",
+    "unresolved_identity:openspec/specs/skill-evaluation-evidence/spec.md",
+    "unresolved_identity:openspec/specs/skill-governance-review-trace/spec.md",
+    "unresolved_identity:openspec/specs/wiki-workflow-kit-bootstrap/spec.md",
+    "unresolved_identity:wiki/examples/explore-trace-example.md",
+    "unresolved_identity:wiki/examples/learning-note-example.md",
+    "unresolved_identity:wiki/examples/meeting-note-example.md",
+    "unresolved_identity:wiki/examples/project-weekly-example.md",
+    "unresolved_identity:wiki/examples/weixin-summary-example.md"
+  ]
+}

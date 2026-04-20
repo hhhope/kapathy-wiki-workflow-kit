@@ -197,6 +197,33 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - no bulk metadata backfill yet
   - no forced migration for old pages
 
+## Wiki Graph Extraction Default
+
+- Graph extraction is downstream of both:
+  - the wiki naming model
+  - the wiki frontmatter model
+- Version 1 extraction only covers:
+  - `wiki/ops`
+  - `wiki/adr`
+  - `openspec/specs`
+  - `wiki/examples`
+- Extraction output should preserve at least:
+  - nodes with page path, canonical object, artifact type, and source layer
+  - edges with source page path, relation type, and target
+- Supported relation types in version 1:
+  - `related_objects`
+  - `derived_from`
+  - `validates`
+  - `formalizes`
+- Optional relation types when present:
+  - `supersedes`
+  - `replaces`
+- Extraction proof is structural proof only. Do not overclaim it as:
+  - semantic completeness
+  - graph quality scoring
+  - graph UI readiness
+- Unresolved pages may emit warnings; version 1 does not require semantic guessing to force full node coverage
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
