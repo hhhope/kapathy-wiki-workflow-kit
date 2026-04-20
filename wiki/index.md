@@ -29,6 +29,7 @@
 - [Agent-Readable Wiki Frontmatter](ops/agent-readable-wiki-frontmatter.md)：定义演变型页面的最小结构字段模型
 - [Agent-Readable Wiki Graph Extraction](ops/agent-readable-wiki-graph-extraction.md)：定义演变型页面的最小图提取合同
 - [Agent-Readable Wiki Relation Analysis](ops/agent-readable-wiki-relation-analysis.md)：定义演变型页面的最小关系分析合同
+- [Agent-Readable Wiki Semantic Scoring](ops/agent-readable-wiki-semantic-scoring.md)：定义演变型页面的最小语义评分合同
 
 ## 示例链路
 

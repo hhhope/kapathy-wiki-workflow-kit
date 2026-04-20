@@ -247,6 +247,29 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - overclaim runtime routing readiness
   - treat structural analysis as rollout proof
 
+## Wiki Semantic Scoring Default
+
+- Semantic scoring is downstream of:
+  - the wiki naming model
+  - the wiki frontmatter model
+  - wiki graph extraction
+  - wiki relation analysis
+- Version 1 semantic scoring only scores canonical objects already present in relation analysis
+- Semantic scoring output should preserve at least:
+  - object score summary
+  - factor breakdown per object
+  - unresolved repository context
+  - proof-boundary notes
+- Version 1 scoring must stay explicit and audit-friendly:
+  - no embeddings
+  - no hidden semantic guesses
+  - no LLM-only score generation
+- Semantic scoring must not overclaim:
+  - retrieval quality
+  - runtime routing readiness
+  - semantic understanding of unresolved pages
+  - rollout proof
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.

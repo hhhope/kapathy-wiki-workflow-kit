@@ -1,0 +1,209 @@
+{
+  "generated_at": "2026-04-20T05:55:10.774524+00:00",
+  "source_relation_analysis_summary": {
+    "canonical_object_count": 7,
+    "cross_layer_object_count": 5,
+    "analyzed_node_count": 20,
+    "analyzed_edge_count": 5,
+    "unresolved_warning_count": 59
+  },
+  "summary": {
+    "scored_object_count": 7,
+    "score_range": {
+      "min": 2,
+      "max": 8
+    },
+    "band_counts": {
+      "strong": 5,
+      "moderate": 0,
+      "weak": 2
+    }
+  },
+  "repository_context": {
+    "unresolved_warning_total": 59,
+    "unresolved_warning_pressure": "high",
+    "unresolved_warning_by_layer": {
+      "openspec/specs": 13,
+      "wiki/adr": 14,
+      "wiki/examples": 5,
+      "wiki/ops": 27
+    }
+  },
+  "object_scores": [
+    {
+      "canonical_object": "disagreement-management",
+      "semantic_score": 8,
+      "score_band": "strong",
+      "factor_breakdown": {
+        "cross_layer_presence": 3,
+        "artifact_type_variety": 2,
+        "relation_presence": 0,
+        "formalization_depth": 3
+      },
+      "coverage_snapshot": {
+        "node_count": 5,
+        "source_layers": [
+          "openspec/specs",
+          "wiki/adr",
+          "wiki/ops"
+        ],
+        "artifact_types": [
+          "adr",
+          "method",
+          "replay-harness",
+          "replay-validation",
+          "spec"
+        ],
+        "relation_count": 0
+      }
+    },
+    {
+      "canonical_object": "conversation-handoff",
+      "semantic_score": 7,
+      "score_band": "strong",
+      "factor_breakdown": {
+        "cross_layer_presence": 2,
+        "artifact_type_variety": 1,
+        "relation_presence": 2,
+        "formalization_depth": 2
+      },
+      "coverage_snapshot": {
+        "node_count": 3,
+        "source_layers": [
+          "openspec/specs",
+          "wiki/ops"
+        ],
+        "artifact_types": [
+          "method",
+          "sample",
+          "spec"
+        ],
+        "relation_count": 3
+      }
+    },
+    {
+      "canonical_object": "example-driven-capture",
+      "semantic_score": 7,
+      "score_band": "strong",
+      "factor_breakdown": {
+        "cross_layer_presence": 3,
+        "artifact_type_variety": 2,
+        "relation_presence": 0,
+        "formalization_depth": 2
+      },
+      "coverage_snapshot": {
+        "node_count": 4,
+        "source_layers": [
+          "openspec/specs",
+          "wiki/examples",
+          "wiki/ops"
+        ],
+        "artifact_types": [
+          "example",
+          "method",
+          "runtime-validation",
+          "spec"
+        ],
+        "relation_count": 0
+      }
+    },
+    {
+      "canonical_object": "wiki-frontmatter-model",
+      "semantic_score": 7,
+      "score_band": "strong",
+      "factor_breakdown": {
+        "cross_layer_presence": 3,
+        "artifact_type_variety": 1,
+        "relation_presence": 0,
+        "formalization_depth": 3
+      },
+      "coverage_snapshot": {
+        "node_count": 3,
+        "source_layers": [
+          "openspec/specs",
+          "wiki/adr",
+          "wiki/ops"
+        ],
+        "artifact_types": [
+          "adr",
+          "method",
+          "spec"
+        ],
+        "relation_count": 0
+      }
+    },
+    {
+      "canonical_object": "wiki-naming-model",
+      "semantic_score": 7,
+      "score_band": "strong",
+      "factor_breakdown": {
+        "cross_layer_presence": 3,
+        "artifact_type_variety": 1,
+        "relation_presence": 0,
+        "formalization_depth": 3
+      },
+      "coverage_snapshot": {
+        "node_count": 3,
+        "source_layers": [
+          "openspec/specs",
+          "wiki/adr",
+          "wiki/ops"
+        ],
+        "artifact_types": [
+          "adr",
+          "method",
+          "spec"
+        ],
+        "relation_count": 0
+      }
+    },
+    {
+      "canonical_object": "wiki-relation-analysis",
+      "semantic_score": 2,
+      "score_band": "weak",
+      "factor_breakdown": {
+        "cross_layer_presence": 0,
+        "artifact_type_variety": 0,
+        "relation_presence": 1,
+        "formalization_depth": 1
+      },
+      "coverage_snapshot": {
+        "node_count": 1,
+        "source_layers": [
+          "wiki/ops"
+        ],
+        "artifact_types": [
+          "method"
+        ],
+        "relation_count": 1
+      }
+    },
+    {
+      "canonical_object": "wiki-semantic-scoring",
+      "semantic_score": 2,
+      "score_band": "weak",
+      "factor_breakdown": {
+        "cross_layer_presence": 0,
+        "artifact_type_variety": 0,
+        "relation_presence": 1,
+        "formalization_depth": 1
+      },
+      "coverage_snapshot": {
+        "node_count": 1,
+        "source_layers": [
+          "wiki/ops"
+        ],
+        "artifact_types": [
+          "method"
+        ],
+        "relation_count": 1
+      }
+    }
+  ],
+  "scoring_notes": [
+    "Scores are bounded repository-evidence signals only.",
+    "Version 1 uses explicit rule-based factors rather than embeddings or LLM scoring.",
+    "A higher score means stronger repository evidence for that canonical object, not retrieval proof.",
+    "Unresolved warnings still limit stronger semantic claims."
+  ]
+}
