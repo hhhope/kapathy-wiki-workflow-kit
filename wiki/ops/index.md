@@ -27,6 +27,7 @@
 - [Agent-Readable Wiki Relation Analysis](agent-readable-wiki-relation-analysis.md)
 - [Agent-Readable Wiki Semantic Scoring](agent-readable-wiki-semantic-scoring.md)
 - [Agent-Readable Wiki Utilization Layer](agent-readable-wiki-utilization-layer.md)
+- [Agent-Readable Wiki Runtime Context](agent-readable-wiki-runtime-context.md)
 - [分歧管理 Replay Harness](disagreement-management-replay-harness.md)
 - [分歧管理 Replay 验证 2026-04-20](disagreement-management-replay-validation-2026-04-20.md)
 - [例子驱动留痕运行时验证 2026-04-18](example-driven-capture-runtime-validation-2026-04-18.md)

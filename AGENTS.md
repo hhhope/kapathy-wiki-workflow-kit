@@ -292,6 +292,31 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - semantic understanding of unresolved pages
   - rollout proof
 
+## Wiki Runtime Context Default
+
+- Runtime-context bundling is downstream of:
+  - the wiki naming model
+  - the wiki frontmatter model
+  - wiki graph extraction
+  - wiki relation analysis
+  - wiki semantic scoring
+  - wiki utilization layer
+- Version 1 runtime context should preserve distinct sections such as:
+  - `preferred_context`
+  - `supporting_context`
+  - `blocked_context`
+  - `runtime_caution`
+- Runtime-context output must preserve:
+  - reasons
+  - usage guidance
+  - repository-level caution
+  - proof-boundary notes
+- Runtime-context output must not overclaim:
+  - retrieval readiness
+  - runtime autonomy
+  - unresolved page understanding
+  - rollout proof
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.

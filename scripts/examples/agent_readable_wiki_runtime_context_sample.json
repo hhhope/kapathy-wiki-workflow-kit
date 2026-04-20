@@ -1,0 +1,142 @@
+{
+  "generated_at": "2026-04-20T06:35:37.083098+00:00",
+  "source_utilization_summary": {
+    "object_count": 9,
+    "band_counts": {
+      "preferred": 1,
+      "cautious": 4,
+      "blocked": 4
+    }
+  },
+  "summary": {
+    "preferred_count": 1,
+    "supporting_count": 4,
+    "blocked_count": 4,
+    "caution_active": true
+  },
+  "preferred_context": [
+    {
+      "canonical_object": "disagreement-management",
+      "usage_guidance": "Use as a first-pass high-confidence context candidate, but keep direct source inspection for final claims.",
+      "reasons": [
+        "strong bounded semantic score",
+        "cross-layer evidence is present",
+        "formalization depth is sufficient",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_utilization_band": "preferred",
+      "source_semantic_score": 8
+    }
+  ],
+  "supporting_context": [
+    {
+      "canonical_object": "conversation-handoff",
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_utilization_band": "cautious",
+      "source_semantic_score": 7
+    },
+    {
+      "canonical_object": "example-driven-capture",
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_utilization_band": "cautious",
+      "source_semantic_score": 7
+    },
+    {
+      "canonical_object": "wiki-frontmatter-model",
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_utilization_band": "cautious",
+      "source_semantic_score": 7
+    },
+    {
+      "canonical_object": "wiki-naming-model",
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation.",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_utilization_band": "cautious",
+      "source_semantic_score": 7
+    }
+  ],
+  "blocked_context": [
+    {
+      "canonical_object": "wiki-relation-analysis",
+      "usage_guidance": "Do not treat this object as a strong context anchor yet.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_utilization_band": "blocked",
+      "source_semantic_score": 2
+    },
+    {
+      "canonical_object": "wiki-runtime-context",
+      "usage_guidance": "Do not treat this object as a strong context anchor yet.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_utilization_band": "blocked",
+      "source_semantic_score": 2
+    },
+    {
+      "canonical_object": "wiki-semantic-scoring",
+      "usage_guidance": "Do not treat this object as a strong context anchor yet.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_utilization_band": "blocked",
+      "source_semantic_score": 2
+    },
+    {
+      "canonical_object": "wiki-utilization-layer",
+      "usage_guidance": "Do not treat this object as a strong context anchor yet.",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_utilization_band": "blocked",
+      "source_semantic_score": 2
+    }
+  ],
+  "runtime_caution": {
+    "repository_caution": {
+      "unresolved_warning_pressure": "high",
+      "caution_active": true,
+      "unresolved_warning_total": 63
+    },
+    "direct_source_inspection_required": true,
+    "read_order_hint": [
+      "preferred_context",
+      "supporting_context",
+      "blocked_context"
+    ]
+  },
+  "runtime_notes": [
+    "This bundle is bounded runtime guidance only.",
+    "Preferred context should be read first, but does not replace source inspection.",
+    "Supporting context is useful only with explicit caution.",
+    "Blocked context should not anchor stronger runtime judgments yet."
+  ]
+}
