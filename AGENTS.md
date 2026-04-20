@@ -168,6 +168,35 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - no graph metadata model yet
   - no relation-analysis or graph tooling yet
 
+## Wiki Frontmatter Model Default
+
+- For new pages in covered evolution-bearing layers, use the repository's minimal frontmatter model.
+- Version 1 covers only:
+  - `wiki/ops`
+  - `wiki/adr`
+  - `openspec/specs`
+  - `wiki/examples`
+- New covered-layer pages must include:
+  - `canonical_object`
+  - `artifact_type`
+- New covered-layer pages should express direct structural relations through the shared field vocabulary:
+  - `related_objects`
+  - `derived_from`
+  - `validates`
+  - `formalizes`
+- Optional helper fields in version 1:
+  - `supersedes`
+  - `replaces`
+  - `notes_scope`
+- Rollout rule:
+  - strong for new pages
+  - weak for existing pages until they are touched or intentionally migrated
+- Current non-goals:
+  - no graph extractor yet
+  - no relation scoring yet
+  - no bulk metadata backfill yet
+  - no forced migration for old pages
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
