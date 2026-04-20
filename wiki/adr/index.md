@@ -34,6 +34,7 @@
 - [ADR-0021 Agent-Readable Wiki Runtime Auto Routing After Source Integration](0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md)
 - [ADR-0022 Agent-Readable Wiki Context Injection After Runtime Auto Routing](0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md)
 - [ADR-0023 Agent-Readable Wiki Self-Directed Execution After Context Injection](0023-agent-readable-wiki-self-directed-execution-after-context-injection.md)
+- [ADR-0024 Live Conversation Re-Anchor Before Continued Implementation](0024-live-conversation-reanchor-before-continued-implementation.md)
 
 ## 非目标
 
