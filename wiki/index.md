@@ -25,6 +25,7 @@
 - [Inbox Intake](inbox-intake.md)：定义 agent 如何扫描并分类 `inbox/` 中的新文件
 - [Language Policy](language-policy.md)：定义中文主写、英文分栏的写法规范
 - [Examples](examples/index.md)：当前已验证能力的最佳实践样例
+- [Agent-Readable Wiki Naming Model](ops/agent-readable-wiki-naming-model.md)：定义演变型页面的对象化命名模型
 
 ## 示例链路
 
