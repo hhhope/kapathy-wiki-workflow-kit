@@ -130,6 +130,45 @@
 - 当前是 `not yet` 还是已到第一次正向命名
 - 如果看得见，这轮分歧在保护什么目标
 
+## Live Conversation Re-Anchor Gate
+
+上面的分歧管理方法解决的是“先保住分歧”，但还不等于“分歧一出现就会自动打断错误继续”。
+
+当 live conversation 已经开始暴露 scope drift 或 goal drift 时，默认动作不该是继续沿当前技术链推进，而应先回到最后一次确认过的需求主线。
+
+### 触发信号
+
+满足下面任一类强信号时，默认触发 re-anchor gate：
+
+- 用户反复说当前工作已经偏了、不是这个，或要求回到更早确认过的需求
+- 同一个 `继续` 现在已经有两种以上 materially different 的解释
+- 当前工作正从 `analysis / documentation / modeling` 跨到 `runtime / automation / execution`
+- agent 继续的是最近的技术链，而不是最后确认过的产品主目标
+
+### 触发后的默认动作
+
+一旦 gate 触发，先做这些事，再决定是否继续：
+
+1. 停止继续 implementation continuation
+2. 重述最后确认过的原始需求
+3. 写清当前正沿着哪条链继续
+4. 判断这条链是否已经偏离原始需求
+5. 如果偏离仍未在 active change 内完全收束，先落一条 `wiki/ops retro`
+
+### 解锁条件
+
+在继续实现之前，至少满足下面一条：
+
+- 用户明确确认新的主线
+- 已为新方向创建新的 OpenSpec change
+- retro 或 `archive-review.md` 已明确写出 `keep / freeze / next action`
+
+### 非目标
+
+- 普通事实纠错不触发
+- 单次弱反对不触发
+- 同一确认主线内的正常深化不触发
+
 ## 非目标
 
 第一版不做这些事：

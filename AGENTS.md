@@ -129,6 +129,29 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - `ADR` when the disagreement has produced a stable cross-change decision
   - OpenSpec spec or repo-local skill only after the disagreement is stable enough to formalize
 
+## Live Conversation Re-Anchor Gate
+
+- When live conversation signals that the current work may have drifted away from the last confirmed requirement, the default behavior is to stop continuation and re-anchor before more implementation proceeds.
+- Trigger signals include:
+  - the user repeatedly says the work has drifted, is off-target, or should return to an earlier requirement
+  - the same `continue` can now mean materially different next steps
+  - the work is crossing from analysis, documentation, or modeling into runtime, automation, or execution
+  - the agent is continuing from the current technical chain instead of the last confirmed product goal
+- Mandatory action after trigger:
+  - stop implementation continuation
+  - restate the last confirmed requirement
+  - state the current chain being followed
+  - judge whether drift has occurred
+  - create or update a repo-visible `wiki/ops retro` unless the disagreement is already fully resolved in the active change
+- Implementation remains blocked until at least one of the following is true:
+  - the user explicitly confirms the next mainline
+  - a new OpenSpec change is created for the new direction
+  - the retro or archive-review artifact records `keep`, `freeze`, and `next action`
+- Non-goals:
+  - do not trigger on ordinary factual correction
+  - do not trigger on a single weak objection
+  - do not treat normal depth within the same confirmed scope as drift
+
 ## Wiki Naming Model Default
 
 - For new pages in evolution-bearing layers, use the `canonical object / artifact type` naming model.

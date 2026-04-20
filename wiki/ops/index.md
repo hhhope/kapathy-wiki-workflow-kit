@@ -21,6 +21,7 @@
 - [conversation-handoff / method](conversation-handoff-mode.md)
 - [例子驱动的 Wiki 留痕](example-driven-wiki-capture.md)
 - [分歧管理方法](disagreement-management-method.md)
+- [live-conversation-reanchor-gate / retro](live-conversation-reanchor-gate-retro.md)
 - [Agent-Readable Wiki Naming Model](agent-readable-wiki-naming-model.md)
 - [Agent-Readable Wiki Frontmatter](agent-readable-wiki-frontmatter.md)
 - [Agent-Readable Wiki Graph Extraction](agent-readable-wiki-graph-extraction.md)
