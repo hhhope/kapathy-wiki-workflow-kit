@@ -5,8 +5,8 @@
 
 ## 2. Implement context injection
 
-- [ ] 2.1 Add a script or workflow that derives a deterministic injected-context bundle from runtime auto-routing output
-- [ ] 2.2 Generate a sample automatic context-injection artifact from current repository state
+- [x] 2.1 Add a script or workflow that derives a deterministic injected-context bundle from runtime auto-routing output
+- [x] 2.2 Generate a sample automatic context-injection artifact from current repository state
 
 ## 3. Verify
 
