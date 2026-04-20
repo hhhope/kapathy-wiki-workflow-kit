@@ -34,6 +34,7 @@
 - [sample-intake](sample-intake.md)
 - [sample-explore-trace](sample-explore-trace.md)
 - [sample-handoff-topic](sample-handoff-topic.md)
+- [sample-disagreement-retro](sample-disagreement-retro.md)
 - [sample-focus-thread](sample-focus-thread.md)
 - [sample-reminder](sample-reminder.md)
 - [sample-codex-handoff](sample-codex-handoff.md)

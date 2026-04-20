@@ -46,6 +46,10 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - `complete` means stop implementation; it does not mean the change is already archive-ready.
 - If archive review finds an ordinary closing tail such as missing sync or final verification, keep the blocker visible in `tasks.md` and explain the reason and next action in git history.
 - If archive review depends on scope ambiguity, reusable governance judgment, or context that would be hard to recover from `tasks.md` and git history alone, add `archive-review.md` inside the current change directory.
+- Archive review must also check whether the completed change generated disagreement material that:
+  - should remain in method or `wiki/ops retro` form
+  - should already be promoted to `ADR`
+  - was flattened away without a durable record
 - Only archive a change after archive review passes.
 
 ## Explore Trace Default
@@ -121,7 +125,7 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - redirection has occurred
   - the name explains the disagreement's evolution, not only the endpoint
 - Default routing after the method layer:
-  - `wiki/ops retro` when the disagreement already needs repo-visible preservation
+  - `wiki/ops retro` when the disagreement already needs repo-visible preservation but is not yet stable enough for `ADR`, spec, or skill
   - `ADR` when the disagreement has produced a stable cross-change decision
   - OpenSpec spec or repo-local skill only after the disagreement is stable enough to formalize
 
