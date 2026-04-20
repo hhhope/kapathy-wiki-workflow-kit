@@ -103,6 +103,28 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - `wiki/examples` for validated output-shape examples
   - `wiki/team-lore-candidates.md` only after a project-local page already exists and the learning appears reusable across projects
 
+## Disagreement Management Default
+
+- When a live disagreement is still doing goal-calibration work, do not rush to compress it into `ADR`, spec, skill, or route-level explanation.
+- Preserve the disagreement as calibration material first, especially when the user keeps rejecting the current framing or the discussion is still changing what the real object is.
+- Minimum preserved raw material before summary or promotion:
+  - rejected framing
+  - correction pressure
+  - redirection moment
+  - current clarity state
+  - protected target, if visible
+- Explicit anti-compression states:
+  - `I haven't seen it clearly yet`
+  - `We should not name the pattern yet`
+- First positive naming is only valid when:
+  - the rejected object has stabilized
+  - redirection has occurred
+  - the name explains the disagreement's evolution, not only the endpoint
+- Default routing after the method layer:
+  - `wiki/ops retro` when the disagreement already needs repo-visible preservation
+  - `ADR` when the disagreement has produced a stable cross-change decision
+  - OpenSpec spec or repo-local skill only after the disagreement is stable enough to formalize
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.

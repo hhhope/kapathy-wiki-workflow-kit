@@ -22,6 +22,7 @@
 - [ADR-0009 Explore Trace Before OpenSpec Explore](0009-explore-trace-before-openspec-explore.md)
 - [ADR-0010 Shared Skill Authoring Contract Before Repo-Local Overrides](0010-shared-skill-authoring-contract-before-repo-local-overrides.md)
 - [ADR-0011 Canonical AI Chat Installer Source With Platform Adapters](0011-canonical-ai-chat-installer-source-with-platform-adapters.md)
+- [ADR-0012 Disagreement Management Before Conclusion Promotion](0012-disagreement-management-before-conclusion-promotion.md)
 
 ## 非目标
 
