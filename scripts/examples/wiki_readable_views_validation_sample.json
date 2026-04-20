@@ -1,0 +1,33 @@
+{
+  "bundle_label": "2026-04-20 wiki readable views first-pass bundle",
+  "timeline_view": "wiki/timeline/2026-04-20-agent-readable-wiki-evolution.md",
+  "artifact_grouping_view": "wiki/ops/agent-readable-wiki-artifact-grouping.md",
+  "relation_reading_view": "wiki/ops/agent-readable-wiki-relation-reading-view.md",
+  "required_indexes": [
+    "wiki/index.md",
+    "wiki/timeline/index.md",
+    "wiki/ops/index.md"
+  ],
+  "red_baseline": [
+    "the readable-view pages existed without executable bundle validation",
+    "view presence and index wiring were still being checked manually",
+    "there was no checker that could fail structurally when the bundle was incomplete"
+  ],
+  "green_result": [
+    "the checker validates the three required reading views structurally",
+    "the checker validates the required index entry points structurally",
+    "the contract makes the proof boundary explicit and bounded"
+  ],
+  "residual_risk": [
+    "this checker proves structure, not reading quality",
+    "the checker cannot decide whether the grouping is semantically ideal",
+    "future drift in new pages still requires separate review"
+  ],
+  "checks": {
+    "timeline_view_present": true,
+    "artifact_grouping_present": true,
+    "relation_reading_present": true,
+    "index_links_present": true,
+    "no_openspec_explore_mutation_claim": true
+  }
+}

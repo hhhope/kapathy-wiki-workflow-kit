@@ -28,6 +28,7 @@
 - [Agent-Readable Wiki Graph Extraction](agent-readable-wiki-graph-extraction.md)
 - [Agent-Readable Wiki Relation Analysis](agent-readable-wiki-relation-analysis.md)
 - [wiki-readable-views / relation-reading-view](agent-readable-wiki-relation-reading-view.md)
+- [wiki-readable-views-validation / replay-harness](wiki-readable-views-validation-harness.md)
 - [Agent-Readable Wiki Semantic Scoring](agent-readable-wiki-semantic-scoring.md)
 - [Agent-Readable Wiki Utilization Layer](agent-readable-wiki-utilization-layer.md)
 - [Agent-Readable Wiki Runtime Context](agent-readable-wiki-runtime-context.md)
