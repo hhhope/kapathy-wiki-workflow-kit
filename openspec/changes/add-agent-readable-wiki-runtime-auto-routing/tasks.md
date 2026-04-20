@@ -1,7 +1,7 @@
 ## 1. Define the workflow
 
-- [ ] 1.1 Finalize the runtime auto-routing contract and staging model
-- [ ] 1.2 Publish repository-visible guidance for runtime auto-routing usage
+- [x] 1.1 Finalize the runtime auto-routing contract and staging model
+- [x] 1.2 Publish repository-visible guidance for runtime auto-routing usage
 
 ## 2. Implement runtime auto routing
 

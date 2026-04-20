@@ -348,6 +348,35 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - unresolved page understanding
   - rollout proof
 
+## Wiki Runtime Auto Routing Default
+
+- Runtime auto routing is downstream of:
+  - the wiki naming model
+  - the wiki frontmatter model
+  - wiki graph extraction
+  - wiki relation analysis
+  - wiki semantic scoring
+  - wiki utilization layer
+  - wiki runtime context
+  - wiki runtime-context source integration
+- Version 1 runtime auto routing should preserve distinct sections such as:
+  - `open_first`
+  - `open_next`
+  - `do_not_open_first`
+  - `routing_notes`
+- Version 1 runtime auto routing must map only from repository-local source-integrated runtime output
+- Runtime auto-routing output must preserve:
+  - concrete page-path references
+  - source-layer identity
+  - artifact-type identity
+  - proof-boundary notes
+- Runtime auto-routing output must not overclaim:
+  - external retrieval readiness
+  - automatic context injection
+  - runtime autonomy
+  - unresolved page understanding
+  - rollout proof
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
