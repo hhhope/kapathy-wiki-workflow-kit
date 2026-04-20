@@ -125,9 +125,48 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - redirection has occurred
   - the name explains the disagreement's evolution, not only the endpoint
 - Default routing after the method layer:
-  - `wiki/ops retro` when the disagreement already needs repo-visible preservation but is not yet stable enough for `ADR`, spec, or skill
+- `wiki/ops retro` when the disagreement already needs repo-visible preservation but is not yet stable enough for `ADR`, spec, or skill
   - `ADR` when the disagreement has produced a stable cross-change decision
   - OpenSpec spec or repo-local skill only after the disagreement is stable enough to formalize
+
+## Wiki Naming Model Default
+
+- For new pages in evolution-bearing layers, use the `canonical object / artifact type` naming model.
+- Version 1 covers only:
+  - `wiki/ops`
+  - `wiki/adr`
+  - `openspec/specs`
+  - `wiki/examples`
+- For covered layers, the title core should express only:
+  - canonical object
+  - artifact type
+- Do not use the title core to carry:
+  - dates
+  - status words
+  - validation rounds
+  - change identifiers
+  - local symptom words such as `gap`, `issue`, `missing`, `leak`
+- A topic only qualifies as a canonical object when it:
+  - is not a one-time event
+  - already spans at least two repository containers or artifact layers
+  - can unify a real evolution chain instead of a temporary symptom
+- First-wave canonical objects:
+  - `disagreement-management`
+  - `conversation-handoff`
+  - `example-driven-capture`
+- Cross-layer consistency is required across:
+  - `wiki/ops`
+  - `wiki/adr`
+  - `openspec/specs`
+  - `wiki/examples`
+- Rollout rule:
+  - strong for new pages
+  - weak for existing pages until they are touched or intentionally migrated
+- Current non-goals:
+  - no immediate rename of existing pages
+  - no directory migration
+  - no graph metadata model yet
+  - no relation-analysis or graph tooling yet
 
 ## Scope Of Policy
 
