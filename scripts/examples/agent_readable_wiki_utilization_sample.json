@@ -1,0 +1,125 @@
+{
+  "generated_at": "2026-04-20T06:05:13.658022+00:00",
+  "source_semantic_scoring_summary": {
+    "scored_object_count": 8,
+    "score_range": {
+      "min": 2,
+      "max": 8
+    },
+    "band_counts": {
+      "strong": 5,
+      "moderate": 0,
+      "weak": 3
+    }
+  },
+  "summary": {
+    "object_count": 8,
+    "band_counts": {
+      "preferred": 1,
+      "cautious": 4,
+      "blocked": 3
+    }
+  },
+  "repository_caution": {
+    "unresolved_warning_pressure": "high",
+    "caution_active": true,
+    "unresolved_warning_total": 61
+  },
+  "object_utilization": [
+    {
+      "canonical_object": "disagreement-management",
+      "utilization_band": "preferred",
+      "reasons": [
+        "strong bounded semantic score",
+        "cross-layer evidence is present",
+        "formalization depth is sufficient",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_semantic_score": 8,
+      "usage_guidance": "Use as a first-pass high-confidence context candidate, but keep direct source inspection for final claims."
+    },
+    {
+      "canonical_object": "conversation-handoff",
+      "utilization_band": "cautious",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_semantic_score": 7,
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation."
+    },
+    {
+      "canonical_object": "example-driven-capture",
+      "utilization_band": "cautious",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_semantic_score": 7,
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation."
+    },
+    {
+      "canonical_object": "wiki-frontmatter-model",
+      "utilization_band": "cautious",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_semantic_score": 7,
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation."
+    },
+    {
+      "canonical_object": "wiki-naming-model",
+      "utilization_band": "cautious",
+      "reasons": [
+        "object has some usable repository evidence",
+        "repository conditions still limit stronger trust",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_semantic_score": 7,
+      "usage_guidance": "Use only as supporting context and keep stronger caution during interpretation."
+    },
+    {
+      "canonical_object": "wiki-relation-analysis",
+      "utilization_band": "blocked",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_semantic_score": 2,
+      "usage_guidance": "Do not treat this object as a strong context anchor yet."
+    },
+    {
+      "canonical_object": "wiki-semantic-scoring",
+      "utilization_band": "blocked",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_semantic_score": 2,
+      "usage_guidance": "Do not treat this object as a strong context anchor yet."
+    },
+    {
+      "canonical_object": "wiki-utilization-layer",
+      "utilization_band": "blocked",
+      "reasons": [
+        "object remains too thin for stronger agent use",
+        "single-layer evidence only",
+        "repository-wide unresolved pressure is high"
+      ],
+      "source_semantic_score": 2,
+      "usage_guidance": "Do not treat this object as a strong context anchor yet."
+    }
+  ],
+  "utilization_notes": [
+    "Utilization output is bounded usage guidance only.",
+    "Preferred means better current candidate for agent reading, not retrieval proof.",
+    "Cautious means usable only with explicit interpretive caution.",
+    "Blocked means the object should not anchor stronger agent judgments yet."
+  ]
+}

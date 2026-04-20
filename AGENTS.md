@@ -270,6 +270,28 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - semantic understanding of unresolved pages
   - rollout proof
 
+## Wiki Utilization Layer Default
+
+- Utilization guidance is downstream of:
+  - the wiki naming model
+  - the wiki frontmatter model
+  - wiki graph extraction
+  - wiki relation analysis
+  - wiki semantic scoring
+- Version 1 utilization should classify canonical objects into explicit bands such as:
+  - `preferred`
+  - `cautious`
+  - `blocked`
+- Utilization output must preserve:
+  - explicit reasons
+  - repository-level caution signals
+  - proof-boundary notes
+- Utilization guidance must not overclaim:
+  - retrieval readiness
+  - runtime autonomy
+  - semantic understanding of unresolved pages
+  - rollout proof
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
