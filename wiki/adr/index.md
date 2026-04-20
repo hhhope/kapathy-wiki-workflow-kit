@@ -28,6 +28,7 @@
 - [ADR-0015 Agent-Readable Wiki Graph Extraction After Structure](0015-agent-readable-wiki-graph-extraction-after-structure.md)
 - [ADR-0016 Agent-Readable Wiki Relation Analysis After Extraction](0016-agent-readable-wiki-relation-analysis-after-extraction.md)
 - [ADR-0017 Agent-Readable Wiki Semantic Scoring After Relation Analysis](0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md)
+- [ADR-0018 Agent-Readable Wiki Utilization Layer After Semantic Scoring](0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md)
 
 ## 非目标
 
