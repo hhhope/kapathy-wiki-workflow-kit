@@ -1,0 +1,15 @@
+## 1. Define the workflow
+
+- [ ] 1.1 Finalize the runtime auto-routing contract and staging model
+- [ ] 1.2 Publish repository-visible guidance for runtime auto-routing usage
+
+## 2. Implement runtime auto routing
+
+- [ ] 2.1 Add a script or workflow that derives a deterministic reading plan from source-integrated runtime output
+- [ ] 2.2 Generate a sample runtime auto-routing artifact from current repository state
+
+## 3. Verify
+
+- [ ] 3.1 Confirm the sample artifact separates open-first, open-next, and blocked routing states
+- [ ] 3.2 Document proof boundaries and residual risks
+- [ ] 3.3 Run `openspec validate add-agent-readable-wiki-runtime-auto-routing`
