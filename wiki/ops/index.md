@@ -20,6 +20,7 @@
 - [Codex Handoff 规则](codex-handoff-rules.md)
 - [会话承接模式](conversation-handoff-mode.md)
 - [例子驱动的 Wiki 留痕](example-driven-wiki-capture.md)
+- [分歧管理方法](disagreement-management-method.md)
 - [例子驱动留痕运行时验证 2026-04-18](example-driven-capture-runtime-validation-2026-04-18.md)
 - [Scope Drift 复盘](scope-drift-retro.md)
 - [Agent 治理 gate 缺口复盘 2026-04-18](agent-governance-gate-gap-retro-2026-04-18.md)
@@ -48,10 +49,11 @@
 3. 如果用户在当前会话里反复把讨论拉回同一个北极星，agent 进入 `handoff mode`。
 4. handoff mode 先维护 north star、constraints、failure modes、preferences、disagreements、open questions 和 repo targets。
 5. 如果外部 repo、README 或聊天例子已经产出可复用学习，agent 在同轮默认写 wiki 记录，不等用户再提醒。
-6. explore trace 只负责打开问题，不等于正式 OpenSpec change。
-7. 项目管理类周推进材料先走“周推进循环”，再判断是否进入 reminder。
-8. 真正需要推进的事项进入 reminder。
-9. 明确属于研发执行的待办，再晋升为 Codex handoff。
+6. 如果流程级分歧正在做目标校准，先按“分歧管理方法”保留分歧材料，再判断是否进入 retro、ADR 或 formal spec。
+7. explore trace 只负责打开问题，不等于正式 OpenSpec change。
+8. 项目管理类周推进材料先走“周推进循环”，再判断是否进入 reminder。
+9. 真正需要推进的事项进入 reminder。
+10. 明确属于研发执行的待办，再晋升为 Codex handoff。
 
 ## 约束
 
