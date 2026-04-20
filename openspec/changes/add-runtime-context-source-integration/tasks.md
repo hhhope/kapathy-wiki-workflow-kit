@@ -10,6 +10,6 @@
 
 ## 3. Verify
 
-- [ ] 3.1 Confirm the sample artifact resolves preferred/supporting objects into real source references
-- [ ] 3.2 Document proof boundaries and residual risks
-- [ ] 3.3 Run `openspec validate add-runtime-context-source-integration`
+- [x] 3.1 Confirm the sample artifact resolves preferred/supporting objects into real source references
+- [x] 3.2 Document proof boundaries and residual risks
+- [x] 3.3 Run `openspec validate add-runtime-context-source-integration`
