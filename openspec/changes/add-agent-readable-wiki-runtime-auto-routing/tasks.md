@@ -5,8 +5,8 @@
 
 ## 2. Implement runtime auto routing
 
-- [ ] 2.1 Add a script or workflow that derives a deterministic reading plan from source-integrated runtime output
-- [ ] 2.2 Generate a sample runtime auto-routing artifact from current repository state
+- [x] 2.1 Add a script or workflow that derives a deterministic reading plan from source-integrated runtime output
+- [x] 2.2 Generate a sample runtime auto-routing artifact from current repository state
 
 ## 3. Verify
 
