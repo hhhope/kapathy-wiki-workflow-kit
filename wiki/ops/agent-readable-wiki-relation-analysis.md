@@ -1,4 +1,11 @@
-# Agent-Readable Wiki Relation Analysis
+---
+canonical_object: wiki-relation-analysis
+artifact_type: method
+formalizes:
+- wiki-relation-analysis
+---
+
+# wiki-relation-analysis / method
 
 这页定义当前仓库在演变型页面上的最小 relation-analysis workflow。
 
