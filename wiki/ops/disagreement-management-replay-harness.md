@@ -36,6 +36,35 @@
 - `green_result`
 - `residual_risk`
 
+## 可执行检查
+
+仓库现在提供了一个最小可执行检查器：
+
+- `scripts/disagreement_replay_check.py`
+
+它做的不是语义理解，而是结构校验。
+
+它会检查：
+
+- 必填字段是否存在
+- 字段类型是否符合最小 replay 合同
+- 4 个必需 pass-condition 是否显式存在且为 `true`
+
+运行方式：
+
+```bash
+python3 scripts/disagreement_replay_check.py scripts/examples/disagreement_stage_boundary_replay.json
+```
+
+这个脚本通过，只代表：
+
+- replay 记录满足了最小可执行合同
+
+不代表：
+
+- 底层分歧已经被自动语义验证
+- rollout proof 已经成立
+
 ## 通过标准
 
 一次 replay 只有同时满足下面这些，才算通过：
