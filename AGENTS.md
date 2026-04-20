@@ -407,6 +407,37 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - unresolved page understanding
   - rollout proof
 
+## Wiki Self-Directed Execution Default
+
+- Bounded self-directed execution is downstream of:
+  - the wiki naming model
+  - the wiki frontmatter model
+  - wiki graph extraction
+  - wiki relation analysis
+  - wiki semantic scoring
+  - wiki utilization layer
+  - wiki runtime context
+  - wiki runtime-context source integration
+  - wiki runtime auto routing
+  - wiki context injection
+- Version 1 bounded self-directed execution should preserve distinct sections such as:
+  - `execute_now`
+  - `defer_for_followup`
+  - `do_not_execute`
+  - `execution_notes`
+- Version 1 bounded self-directed execution must map only from repository-local injected-context output
+- Bounded self-directed execution output must preserve:
+  - concrete page-path references
+  - source-layer identity
+  - artifact-type identity
+  - explicit bounded action types
+  - proof-boundary notes
+- Bounded self-directed execution output must not overclaim:
+  - unrestricted agent autonomy
+  - external retrieval readiness
+  - unresolved page understanding
+  - rollout proof
+
 ## Scope Of Policy
 
 - Repository-default collaboration policy belongs in this repo first, not in global instructions by default.

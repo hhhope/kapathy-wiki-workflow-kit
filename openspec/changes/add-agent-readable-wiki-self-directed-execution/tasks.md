@@ -1,7 +1,7 @@
 ## 1. Define the workflow
 
-- [ ] 1.1 Finalize the bounded self-directed execution contract and action-plan model
-- [ ] 1.2 Publish repository-visible guidance for bounded self-directed execution usage
+- [x] 1.1 Finalize the bounded self-directed execution contract and action-plan model
+- [x] 1.2 Publish repository-visible guidance for bounded self-directed execution usage
 
 ## 2. Implement bounded self-directed execution
 

@@ -35,6 +35,7 @@
 - [Agent-Readable Wiki Runtime Context Source Integration](ops/agent-readable-wiki-runtime-context-source-integration.md)：定义 runtime context 如何解析到 repo-local source refs
 - [Agent-Readable Wiki Runtime Auto Routing](ops/agent-readable-wiki-runtime-auto-routing.md)：定义 source-integrated runtime 如何转换成阅读顺序
 - [Agent-Readable Wiki Context Injection](ops/agent-readable-wiki-context-injection.md)：定义 routing 结果如何转换成 injected-context bundle
+- [Agent-Readable Wiki Self-Directed Execution](ops/agent-readable-wiki-self-directed-execution.md)：定义 injected-context 如何转换成 bounded execution plan
 
 ## 示例链路
 
