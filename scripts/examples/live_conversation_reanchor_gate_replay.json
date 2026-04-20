@@ -1,0 +1,45 @@
+{
+  "thread_label": "2026-04-20 runtime-stack drift after morning requirement",
+  "original_requirement": "Keep the wiki work focused on helping the agent understand historical disagreement and decision evolution.",
+  "current_drift_chain": [
+    "semantic scoring",
+    "utilization",
+    "runtime context",
+    "source integration",
+    "auto routing",
+    "context injection",
+    "bounded self-directed execution"
+  ],
+  "trigger_signals": [
+    "the user repeatedly said the work had drifted",
+    "the user asked to return to the earlier requirement",
+    "continue could now mean materially different next steps",
+    "the work had crossed from analysis into runtime and execution"
+  ],
+  "stop_action": "Stop continuation, restate the original requirement, and open a repo-visible retro before more implementation.",
+  "reanchor_artifact": "wiki/ops/live-conversation-reanchor-gate-retro.md",
+  "unblock_condition": "retro records keep, freeze, and next action before more implementation proceeds",
+  "red_baseline": [
+    "disagreement preservation existed but did not interrupt continuation",
+    "continue inherited the current technical chain",
+    "the current drift dispute did not automatically land in wiki/ops retro"
+  ],
+  "green_result": [
+    "the gate now defines concrete trigger signals",
+    "the gate stops continuation before more implementation",
+    "the gate requires a repo-visible re-anchor artifact",
+    "the gate requires explicit unblock conditions"
+  ],
+  "residual_risk": [
+    "the checker is structural proof only",
+    "the gate still depends on honest recognition of drift signals",
+    "this does not prove perfect automatic detection"
+  ],
+  "checks": {
+    "drift_signal_present": true,
+    "original_requirement_preserved": true,
+    "continuation_stopped": true,
+    "repo_visible_reanchor_recorded": true,
+    "no_runtime_autonomy_claim": true
+  }
+}
