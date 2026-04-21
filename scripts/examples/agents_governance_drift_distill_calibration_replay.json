@@ -1,0 +1,49 @@
+{
+  "thread_label": "agents-governance-drift-distill-2026-04-21 calibration",
+  "distill_page": "wiki/ops/agents-governance-drift-distill-2026-04-21.md",
+  "fact_recap_sections": [
+    "session arc and turning points",
+    "the author did run multi-round self-tests",
+    "method drift / trigger drift / scope drift recap"
+  ],
+  "candidate_model_sections": [
+    "v3.1 final framework",
+    "6-layer split with S0-S2 and A/B layers",
+    "AGENTS.md 488 -> ~35 line target",
+    "default phase plan and mandatory prerequisites"
+  ],
+  "overclaim_markers": [
+    "v3.1 最终框架",
+    "已废弃",
+    "最小起步集 = a + b + c",
+    "任何推进前必须先 a",
+    "阻塞 Phase 2 执行"
+  ],
+  "downgraded_wording": [
+    "v3.1 候选框架",
+    "当前作者倾向",
+    "待进一步校准",
+    "如果采用该框架，可能的起步顺序"
+  ],
+  "red_baseline": [
+    "distill overclaim concerns were preserved only in narrative retro form",
+    "no executable replay checker could fail on missing calibration evidence"
+  ],
+  "green_result": [
+    "fact recap and candidate model are now structurally separated",
+    "overclaim markers are listed explicitly",
+    "weaker wording candidates are recorded explicitly"
+  ],
+  "residual_risk": [
+    "the checker cannot judge whether the candidate governance model is correct",
+    "the checker does not automatically rewrite the distill page",
+    "future distill pages can still overclaim if no replay is recorded"
+  ],
+  "checks": {
+    "fact_model_split_preserved": true,
+    "overclaim_markers_explicit": true,
+    "downgraded_wording_present": true,
+    "candidate_model_not_treated_as_canonical": true,
+    "no_rollout_claim": true
+  }
+}
