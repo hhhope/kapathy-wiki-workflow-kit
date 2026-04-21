@@ -1,4 +1,4 @@
-# ADR-0007 Retire Draft Skills As Runtime Surface
+# ADR-0026 Retire Draft Skills As Runtime Surface
 
 - Status: accepted
 - Date: 2026-04-16

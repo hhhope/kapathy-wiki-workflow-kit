@@ -21,6 +21,6 @@
 - Result confirmed:
   - `AGENTS.md` points material-processing workflow to `.codex/skills/material-collaboration-defaults/SKILL.md`
   - repo guidance says workflow changes cannot stop with an active draft `SKILL.md`
-  - ADR-0007 records the promotion-or-retire rule
+  - ADR-0026 records the promotion-or-retire rule
 - `openspec validate retire-draft-skills`
 - Result: `Change 'retire-draft-skills' is valid`

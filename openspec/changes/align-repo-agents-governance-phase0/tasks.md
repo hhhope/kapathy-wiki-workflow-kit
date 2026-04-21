@@ -5,12 +5,12 @@
 
 ## 2. Acceptance Boundary
 
-- [ ] 2.1 Confirm the repo-level Phase 0 scope and non-goals in change
+- [x] 2.1 Confirm the repo-level Phase 0 scope and non-goals in change
   artifacts
-- [ ] 2.2 Record whether the accepted repo-level mainline is:
+- [x] 2.2 Record whether the accepted repo-level mainline is:
   - a narrow Phase 0 gate only
   - or an explicitly defined repo-level subset of the candidate v3.1 model
-- [ ] 2.3 Record explicit deferrals for:
+- [x] 2.3 Record explicit deferrals for:
   - root-level `~/.codex/AGENTS.md`
   - root-level `~/.claude/CLAUDE.md`
   - Phase 1 `AGENTS.md` compression / proxy migration
@@ -18,17 +18,17 @@
 
 ## 3. Repo Governance Cleanup
 
-- [ ] 3.1 Remove the duplicate `ADR-0007` numbering conflict
-- [ ] 3.2 Add or update the repo-visible stable decision that records the
+- [x] 3.1 Remove the duplicate `ADR-0007` numbering conflict
+- [x] 3.2 Add or update the repo-visible stable decision that records the
   accepted repo-level Phase 0 mainline
-- [ ] 3.3 Decide whether a repo-local commit gate such as `.githooks/pre-commit`
+- [x] 3.3 Decide whether a repo-local commit gate such as `.githooks/pre-commit`
   is required before Phase 1 can begin
 
 ## 4. Readiness Gate
 
-- [ ] 4.1 Verify the repository no longer treats `candidate` governance wording
+- [x] 4.1 Verify the repository no longer treats `candidate` governance wording
   as `accepted` by implication
-- [ ] 4.2 Verify the duplicate-ADR conflict is gone before calling Phase 0
+- [x] 4.2 Verify the duplicate-ADR conflict is gone before calling Phase 0
   complete
-- [ ] 4.3 Verify that Phase 1 remains blocked until the accepted repo-level
+- [x] 4.3 Verify that Phase 1 remains blocked until the accepted repo-level
   gate set is explicit

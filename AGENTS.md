@@ -20,6 +20,18 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - Do not claim a future “tighter process” unless the new constraint is written into repo-visible artifacts.
 - OpenSpec change artifacts still own current scope, task progress, and interruption checkpoints; `wiki/adr/` owns stable project decisions.
 
+## Repo AGENTS Governance Phase Gate
+
+- For repo-level `AGENTS.md` governance work, treat migration as a phased workflow rather than an immediate edit target.
+- Phase 0 means: accept the repo-level gate, fix repo-local governance identity conflicts, and publish the minimum blocking wording.
+- Phase 1 means: any later compression, proxy migration, or structural rewrite of repo `AGENTS.md`.
+- Do not start Phase 1 from candidate wiki guidance alone. A repo-visible accepted mainline must exist first.
+- Root-level `~/.codex/AGENTS.md` and `~/.claude/CLAUDE.md` are related but out of scope by default for repo Phase 0 work.
+- Before any Phase 1 migration begins, the repository must have:
+  - an accepted repo-visible Phase 0 mainline
+  - no duplicate ADR numbering affecting current governance references
+  - an explicit decision on the repo-local commit gate
+
 ## High-Frequency Principles
 
 - The repo's principle-skills layer lives under `.codex/skills/` and complements, but does not replace, repo governance or workflow skills.
