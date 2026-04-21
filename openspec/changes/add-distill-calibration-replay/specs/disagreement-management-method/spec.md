@@ -2,9 +2,9 @@
 
 ### Requirement: Repository SHALL provide an executable replay contract for distill-calibration disputes
 
-When the repository needs to validate whether a `distill` page overstates the
-current level of governance agreement, it SHALL provide a bounded executable
-replay contract for the calibration record.
+The repository SHALL provide a bounded executable replay contract when it needs
+to validate whether a `distill` page overstates the current level of governance
+agreement.
 
 #### Scenario: Distill calibration replay record is validated
 
