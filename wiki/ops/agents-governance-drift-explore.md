@@ -16,7 +16,7 @@ related_objects:
   - agent-governance-gate-gap
   - conversation-handoff
   - disagreement-management
-notes_scope: 在同一治理漂移主题下补一条独立 explore；先把立即冲突与治理设计分开，不作整改决定
+notes_scope: 在同一治理漂移主题下补一条独立 explore；先把立即冲突与治理设计分开，并补记当前收束到 repo-level AGENTS Phase 0 change 的起点
 ---
 
 # agents-governance-drift / explore
@@ -196,3 +196,35 @@ agents-governance-drift
 - 若两边都要做：把它们当作两条不同节奏的治理线，而不是同一张优先级表
 
 本页仍是 explore，不在这里决定具体改哪份文件、起哪条 OpenSpec change。
+
+## 9. 2026-04-21 本轮补记
+
+### Trigger question
+
+- 用户当前追问的是：`先看下要改的内容，change 先做出来`
+- 并且已明确第一落点是 `repo-level AGENTS.md`，不是根上的 `~/.codex/AGENTS.md`
+
+### Current focus
+
+- 把本轮 change 的起点收紧到 `repo-level AGENTS governance Phase 0`
+- 先为 repo 内默认治理行为建立正式 change 边界
+- 暂不把 root dotfiles 合流、跨 agent 全局切分、`Phase 1` 压缩迁移混进同一 change
+
+### Current hypotheses
+
+- `Phase 0` 与 `Phase 1` 必须拆开，否则会把“接受 mainline”和“执行迁移”绑死在同一轮
+- repo 当前已存在足够证据说明 `candidate != accepted`，所以新 change 应先解决 acceptance gate，而不是直接改写 `AGENTS.md`
+- `ADR-0007` 重号属于 repo 内立即冲突，可以作为本轮 repo change 的组成部分
+- root-level `~/.codex/AGENTS.md` 和 `~/.claude/CLAUDE.md` 暂应视为外轨，不应自动进入 repo 主线整改
+
+### Open questions
+
+- 这轮 `Phase 0` change 是否只定义 repo 内 gate，还是同时把 repo-local pre-commit hook 也纳入实现范围
+- 新 ADR 应该只确认 “repo-level Phase 0 先行”，还是更进一步接受 v3.1 的 repo 子集
+- `evaluation.md` 字段冲突是否并入同一 change，还是保留在后续独立修复线上
+
+### Next step
+
+- 新建一个只覆盖 `repo-level AGENTS governance Phase 0` 的 OpenSpec change
+- 在 change artifacts 里写清 scope、非目标、接受门槛和 deferred items
+- 后续是否进入实现，等 change 边界和主线确认后再说
