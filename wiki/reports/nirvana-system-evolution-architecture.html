@@ -171,7 +171,7 @@
         <h1>涅槃系统变迁图</h1>
       </div>
       <p class="subtitle">
-        基于 `优化后图示.png`、`清算的内容.png` 以及当前口径整理。重点表达三件事：一是 `fi-hub` 的定位从协议支付与 PT 分散实现，演进为 `cutpayment + pt-service` 的融合核心；二是账户侧不再落到 `facade`，而是明确收敛到 `account-asl`；三是为后续统一收口预留迁移和下线路径，包括 `gateway`、开发者站点、`split-core` 和老链路退役计划。
+        基于 `优化后图示.png`、`清算的内容.png` 以及当前口径整理。这张图重点表达：现状的核心问题是烟囱化、入口不统一、账户不统一、分账与交易耦合，以及上下游定义混乱导致的依赖循环；本轮目标是在领域边界上新增 `fi-hub`、`account-asl`、`split-core`、`gateway` 与开发者站点，把交易、账户、分账、通知清算重新拆稳。
       </p>
     </div>
 
@@ -215,32 +215,32 @@
         <g>
           <rect x="90" y="120" width="380" height="54" rx="8" fill="#0f172a"/>
           <rect x="90" y="120" width="380" height="54" rx="8" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.5"/>
-          <text x="280" y="142" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">产品接入分散</text>
-          <text x="280" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">cutpayment / pt-service / 聚合 / 账户入口并存</text>
+          <text x="280" y="142" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">烟囱式入口</text>
+          <text x="280" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">cutpayment / pt-service / 聚合 / 账户入口各自对外</text>
         </g>
         <g>
           <rect x="560" y="120" width="440" height="54" rx="8" fill="#0f172a"/>
           <rect x="560" y="120" width="440" height="54" rx="8" fill="rgba(76, 29, 149, 0.4)" stroke="#a78bfa" stroke-width="1.5"/>
-          <text x="780" y="142" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">账户 / 清算链路割裂</text>
-          <text x="780" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">CDP -> account-gateway；fi-hub -> facade；清算能力散落多服务</text>
+          <text x="780" y="142" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">账户 / 清算链路不统一</text>
+          <text x="780" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">CDP、account-gateway、clearing-trade、账户核各自承接一段</text>
         </g>
         <g>
           <rect x="1090" y="120" width="340" height="54" rx="8" fill="#0f172a"/>
           <rect x="1090" y="120" width="340" height="54" rx="8" fill="rgba(30, 41, 59, 0.55)" stroke="#94a3b8" stroke-width="1.5"/>
           <text x="1260" y="142" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">问题特征</text>
-          <text x="1260" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">入口不统一 / 清算不收口 / 分账未独立成核</text>
+          <text x="1260" y="162" fill="#94a3b8" font-size="10" text-anchor="middle">烟囱 / 入口不统一 / 账户不统一 / 耦合与循环依赖</text>
         </g>
 
         <g>
           <rect x="90" y="188" width="380" height="132" rx="8" fill="#0f172a"/>
           <rect x="90" y="188" width="380" height="132" rx="8" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
-          <text x="280" y="212" fill="#ffffff" font-size="12" font-weight="600" text-anchor="middle">协议支付 / PT</text>
+          <text x="280" y="212" fill="#ffffff" font-size="12" font-weight="600" text-anchor="middle">交易现状</text>
           <rect x="118" y="232" width="150" height="30" rx="5" fill="rgba(251, 146, 60, 0.24)" stroke="#fb923c" stroke-width="1.2"/>
           <text x="193" y="252" fill="#fb923c" font-size="10" text-anchor="middle">cutpayment</text>
           <rect x="292" y="232" width="150" height="30" rx="5" fill="rgba(251, 146, 60, 0.24)" stroke="#fb923c" stroke-width="1.2"/>
           <text x="367" y="252" fill="#fb923c" font-size="10" text-anchor="middle">pt-service / fi-route</text>
           <rect x="118" y="278" width="324" height="24" rx="5" fill="rgba(30, 41, 59, 0.55)" stroke="#94a3b8" stroke-width="1.2"/>
-          <text x="280" y="294" fill="#94a3b8" font-size="9" text-anchor="middle">能力分散：协议支付、组合支付、通知清算、路由</text>
+          <text x="280" y="294" fill="#94a3b8" font-size="9" text-anchor="middle">交易、路由、通知、分账入口混在同一条主链里</text>
         </g>
 
         <g>
@@ -250,7 +250,7 @@
           <rect x="590" y="232" width="160" height="30" rx="5" fill="rgba(30, 41, 59, 0.55)" stroke="#94a3b8" stroke-width="1.2"/>
           <text x="670" y="252" fill="#94a3b8" font-size="10" text-anchor="middle">CDP -> account-gateway</text>
           <rect x="770" y="232" width="160" height="30" rx="5" fill="rgba(251, 146, 60, 0.24)" stroke="#fb923c" stroke-width="1.2"/>
-          <text x="850" y="252" fill="#fb923c" font-size="10" text-anchor="middle">fi-hub -> facade</text>
+          <text x="850" y="252" fill="#fb923c" font-size="10" text-anchor="middle">clearing-trade 承接清算</text>
           <rect x="590" y="278" width="110" height="24" rx="5" fill="rgba(30, 41, 59, 0.55)" stroke="#94a3b8" stroke-width="1.2"/>
           <text x="645" y="294" fill="#94a3b8" font-size="9" text-anchor="middle">cloud-account</text>
           <rect x="714" y="278" width="110" height="24" rx="5" fill="rgba(30, 41, 59, 0.55)" stroke="#94a3b8" stroke-width="1.2"/>
@@ -262,10 +262,10 @@
         <g>
           <rect x="1090" y="188" width="340" height="132" rx="8" fill="#0f172a"/>
           <rect x="1090" y="188" width="340" height="132" rx="8" fill="rgba(136, 19, 55, 0.16)" stroke="#fb7185" stroke-width="1.5"/>
-          <text x="1260" y="212" fill="#ffffff" font-size="12" font-weight="600" text-anchor="middle">现状债务</text>
-          <text x="1120" y="242" fill="#94a3b8" font-size="10">1. `fi-hub` 还不是融合核心</text>
-          <text x="1120" y="266" fill="#94a3b8" font-size="10">2. 账户接入与清算承接分裂</text>
-          <text x="1120" y="290" fill="#94a3b8" font-size="10">3. 分账能力仍夹在收单域中</text>
+          <text x="1260" y="212" fill="#ffffff" font-size="12" font-weight="600" text-anchor="middle">现状症结</text>
+          <text x="1120" y="242" fill="#94a3b8" font-size="10">1. 烟囱化建设，入口和账户定义不统一</text>
+          <text x="1120" y="266" fill="#94a3b8" font-size="10">2. 分账与交易耦合，领域边界不干净</text>
+          <text x="1120" y="290" fill="#94a3b8" font-size="10">3. 上下游定义混乱，存在依赖循环，无法隔离</text>
         </g>
 
         <rect x="40" y="404" width="1480" height="520" rx="18" fill="none" stroke="#34d399" stroke-width="1.2" stroke-dasharray="6,4"/>
@@ -307,7 +307,7 @@
           <rect x="132" y="652" width="52" height="18" rx="4" fill="rgba(251, 146, 60, 0.18)" stroke="#fb923c" stroke-width="1"/>
           <text x="158" y="665" fill="#fb923c" font-size="8" text-anchor="middle">修改</text>
           <text x="280" y="676" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">fi-hub</text>
-          <text x="280" y="696" fill="#94a3b8" font-size="10" text-anchor="middle">本质变更：cutpayment + pt-service 融合核心</text>
+          <text x="280" y="696" fill="#94a3b8" font-size="10" text-anchor="middle">新增：cutpayment + pt-service 融合核心</text>
           <rect x="152" y="720" width="256" height="30" rx="5" fill="rgba(251, 146, 60, 0.24)" stroke="#fb923c" stroke-width="1.2"/>
           <text x="280" y="740" fill="#fb923c" font-size="10" text-anchor="middle">统一收单逻辑层</text>
           <rect x="152" y="764" width="118" height="26" rx="5" fill="rgba(30, 41, 59, 0.55)" stroke="#94a3b8" stroke-width="1.2"/>
@@ -336,14 +336,14 @@
         <g>
           <rect x="780" y="640" width="240" height="260" rx="8" fill="#0f172a"/>
           <rect x="780" y="640" width="240" height="260" rx="8" fill="rgba(76, 29, 149, 0.4)" stroke="#a78bfa" stroke-width="1.5"/>
-          <rect x="792" y="652" width="52" height="18" rx="4" fill="rgba(251, 146, 60, 0.18)" stroke="#fb923c" stroke-width="1"/>
-          <text x="818" y="665" fill="#fb923c" font-size="8" text-anchor="middle">修改</text>
+          <rect x="792" y="652" width="52" height="18" rx="4" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1"/>
+          <text x="818" y="665" fill="#34d399" font-size="8" text-anchor="middle">新增</text>
           <text x="900" y="676" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">account-asl</text>
-          <text x="900" y="696" fill="#94a3b8" font-size="10" text-anchor="middle">fi-hub 对接到账户承接层</text>
+          <text x="900" y="696" fill="#94a3b8" font-size="10" text-anchor="middle">新增：账户承接层，替代 clearing-trade</text>
           <rect x="820" y="720" width="160" height="30" rx="5" fill="rgba(251, 146, 60, 0.24)" stroke="#fb923c" stroke-width="1.2"/>
-          <text x="900" y="740" fill="#fb923c" font-size="10" text-anchor="middle">替代 facade</text>
+          <text x="900" y="740" fill="#fb923c" font-size="10" text-anchor="middle">替代 clearing-trade</text>
           <rect x="820" y="764" width="160" height="24" rx="5" fill="rgba(30, 41, 59, 0.55)" stroke="#94a3b8" stroke-width="1.2"/>
-          <text x="900" y="780" fill="#94a3b8" font-size="9" text-anchor="middle">统一动账 / 开户 / 查询承接</text>
+          <text x="900" y="780" fill="#94a3b8" font-size="9" text-anchor="middle">统一动账 / 账户承接 / 清算接入</text>
         </g>
 
         <g>
@@ -381,7 +381,7 @@
         <g>
           <rect x="340" y="1020" width="190" height="54" rx="8" fill="#0f172a"/>
           <rect x="340" y="1020" width="190" height="54" rx="8" fill="rgba(136, 19, 55, 0.18)" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="6,4"/>
-          <text x="435" y="1042" fill="#ffffff" font-size="12" font-weight="600" text-anchor="middle">facade</text>
+          <text x="435" y="1042" fill="#ffffff" font-size="12" font-weight="600" text-anchor="middle">clearing-trade</text>
           <text x="435" y="1062" fill="#fb7185" font-size="10" text-anchor="middle">未来迁移 / 下线</text>
         </g>
         <g>
@@ -394,7 +394,7 @@
           <rect x="840" y="1020" width="190" height="54" rx="8" fill="#0f172a"/>
           <rect x="840" y="1020" width="190" height="54" rx="8" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
           <text x="935" y="1042" fill="#ffffff" font-size="12" font-weight="600" text-anchor="middle">account-asl</text>
-          <text x="935" y="1062" fill="#34d399" font-size="10" text-anchor="middle">承接所有账户动账主入口</text>
+          <text x="935" y="1062" fill="#34d399" font-size="10" text-anchor="middle">承接 clearing-trade 的账户清算入口</text>
         </g>
         <g>
           <rect x="1090" y="1020" width="190" height="54" rx="8" fill="#0f172a"/>
@@ -419,7 +419,7 @@
           <rect x="610" y="1150" width="200" height="70" rx="8" fill="#0f172a"/>
           <rect x="610" y="1150" width="200" height="70" rx="8" fill="rgba(76, 29, 149, 0.4)" stroke="#a78bfa" stroke-width="1.5"/>
           <text x="710" y="1176" fill="#ffffff" font-size="12" font-weight="600" text-anchor="middle">收单域统一</text>
-          <text x="710" y="1196" fill="#94a3b8" font-size="10" text-anchor="middle">fi-hub 承接 PT / cutpayment 主线</text>
+          <text x="710" y="1196" fill="#94a3b8" font-size="10" text-anchor="middle">fi-hub 新增后承接 PT / cutpayment 主线</text>
         </g>
         <g>
           <rect x="980" y="1150" width="200" height="70" rx="8" fill="#0f172a"/>
@@ -458,8 +458,8 @@
           <h3>本轮修改</h3>
         </div>
         <ul>
-          <li>`fi-hub` 从局部能力名变成 `cutpayment + PT` 的融合核心。</li>
-          <li>账户承接从 `facade` 改为 `account-asl`，清算链路随之重排。</li>
+          <li>现状问题不是单点能力缺失，而是烟囱化、入口不统一、账户不统一。</li>
+          <li>交易与分账耦合、上下游定义混乱并存在依赖循环，导致无法隔离。</li>
         </ul>
       </div>
       <div class="card">
@@ -468,8 +468,8 @@
           <h3>本轮新增</h3>
         </div>
         <ul>
-          <li>新统一网关 `gateway`，并补 `Developer Portal` 对齐微信开发者站点思路。</li>
-          <li>`split-core` 独立成核，`protocol-notice-center` 统一消息通知出口。</li>
+          <li>`fi-hub` 是新增核心，不是旧能力改名，负责融合 `cutpayment + PT`。</li>
+          <li>`account-asl` 也是新增层，用来替代 `clearing-trade`，`split-core` 独立成核。</li>
         </ul>
       </div>
       <div class="card">
@@ -478,8 +478,8 @@
           <h3>未来迁移 / 下线</h3>
         </div>
         <ul>
-          <li>`account-gateway`、`facade`、部分 `fi-route` 职责应逐步迁移并退役。</li>
-          <li>目标态是入口、收单、账户、分账、通知清算分别形成稳定领域边界。</li>
+          <li>`account-gateway`、`clearing-trade`、部分 `fi-route` 职责应逐步迁移并退役。</li>
+          <li>目标态是入口、交易、账户、分账、通知清算都能按领域隔离演进。</li>
         </ul>
       </div>
     </div>
