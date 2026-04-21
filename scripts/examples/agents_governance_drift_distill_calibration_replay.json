@@ -10,20 +10,26 @@
     "v3.1 final framework",
     "6-layer split with S0-S2 and A/B layers",
     "AGENTS.md 488 -> ~35 line target",
-    "default phase plan and mandatory prerequisites"
+    "default phase plan and mandatory prerequisites",
+    "enforcement bundle and workflow split proposal"
   ],
   "overclaim_markers": [
     "v3.1 最终框架",
     "已废弃",
     "最小起步集 = a + b + c",
+    "最小可防漂移起步集 = a + b + c + j",
     "任何推进前必须先 a",
-    "阻塞 Phase 2 执行"
+    "阻塞 Phase 2 执行",
+    "最终方案",
+    "Enforcement 策略"
   ],
   "downgraded_wording": [
     "v3.1 候选框架",
     "当前作者倾向",
     "待进一步校准",
-    "如果采用该框架，可能的起步顺序"
+    "如果采用该框架，可能的起步顺序",
+    "候选 enforcement bundle",
+    "可供下一轮校准的工作流切分建议"
   ],
   "red_baseline": [
     "distill overclaim concerns were preserved only in narrative retro form",
