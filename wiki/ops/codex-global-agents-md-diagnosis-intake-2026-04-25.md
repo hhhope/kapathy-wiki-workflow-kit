@@ -208,3 +208,41 @@ notes_scope: 对 ~/.codex/AGENTS.md（281 行，用户全局 Codex 配置）的�
 - **候选 vs 事实**：所有"优化方向"为候选，未达任何共识；行数基准 60 / 150–200 / 213 为外部参考数值，不是本 repo 已定的目标
 
 本 intake 不主张任何特定整改路径。
+
+---
+
+## 9. 2026-04-27 openspec-explore 复查
+
+### Trigger
+
+用户要求用 `$openspec-explore` 复查 `codex-global-agents-md-diagnosis-intake-2026-04-25` 有什么问题。
+
+### Current focus
+
+- 区分 `~/.codex/AGENTS.md` 本体问题与本 intake 记录问题
+- 判断本 intake 是否已经足够支持下一步动作
+- 不在本轮修改 `~/.codex/AGENTS.md`
+
+### Confirmed facts
+
+- 当前 `~/.codex/AGENTS.md` 仍为 281 行。
+- 本 intake 对 C1/C2/C3、S1-S5、A1-A5 的诊断仍能从当前文件中找到对应信号。
+- 本 intake 明确声明自己是 `intake`，不作决定，不自动演进成 retro / ADR / spec。
+
+### Current hypotheses
+
+- 这份 intake 的主要问题不是诊断太少，而是缺少 action 分层：可直接修的小问题、需要跨 agent 对齐的问题、需要职责边界决策的问题混在一起。
+- `C2`（global 文件装 repo policy）应是最高优先级，因为它直接违反当前文件自己的全局 / repo 边界声明。
+- `C1/C3/A1/A2` 更像低风险收口项；如果不动结构，至少可以先形成一个独立 small-fix list。
+- `S1/S3` 需要先决定 global 文件是否做 progressive disclosure，否则容易继续把压缩变成新一轮堆积。
+
+### Open questions
+
+1. 这次是只要诊断结论，还是要把它推进成一个可执行整改 change？
+2. `~/.codex/AGENTS.md` 的整改是否允许直接修改个人全局文件，还是需要先在本 repo 内生成方案再人工迁移？
+3. Codex / Claude 全局规则是否需要追求对称，还是只对齐共同边界、保留 agent-specific 差异？
+
+### Next step
+
+- 如果只是诊断：本轮停在口头结论即可。
+- 如果要推进整改：先把问题分成 `quick fixes`、`cross-agent alignment`、`global-boundary decision` 三组，再决定是否创建 OpenSpec change 或个人全局整改清单。
