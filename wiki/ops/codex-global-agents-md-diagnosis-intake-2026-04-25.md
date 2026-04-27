@@ -246,3 +246,44 @@ notes_scope: 对 ~/.codex/AGENTS.md（281 行，用户全局 Codex 配置）的�
 
 - 如果只是诊断：本轮停在口头结论即可。
 - 如果要推进整改：先把问题分成 `quick fixes`、`cross-agent alignment`、`global-boundary decision` 三组，再决定是否创建 OpenSpec change 或个人全局整改清单。
+
+---
+
+## 10. 2026-04-27 everything-claude-code AGENTS.md 参考
+
+### Source
+
+- `https://github.com/affaan-m/everything-claude-code/blob/main/AGENTS.md`
+- 观察对象是 `everything-claude-code` 的 repo-level `AGENTS.md`，不是 personal global AGENTS 模板。
+
+### What can be reused
+
+- 它像一张 operating card：先声明项目对象，再列核心原则、agent/skill 路由、安全、测试、工作流、目录结构和成功指标。
+- `Workflow Surface Policy` 值得参考：明确 `skills/` 是 canonical workflow surface，`commands/` 是兼容层。这与本 repo 当前“技能正式层 vs draft/command 层”的治理问题同构。
+- “知识落点”规则值得参考：个人临时信息、团队项目知识、任务已产出文档、无明确落点时询问，四类边界清晰。
+- 相比当前 `~/.codex/AGENTS.md`，它更少讲历史和治理争议，更强调执行入口，这支持“global AGENTS 应压成入口卡片”的候选方向。
+
+### What should be adapted
+
+- 它的 agent-first 路由只适合实际拥有 48 个 specialized agents 的 ECC 仓库；不能搬到 Codex 全局层，因为本机 Codex sub-agent 使用受显式授权约束。
+- 它的 `80%+ coverage`、all test types required、TDD mandatory 适合产品仓库目标，不适合个人全局规则直接硬编码。
+- 它的 `Always create new objects, never mutate existing ones` 是过宽技术偏好；若放入全局 AGENTS，会误伤 Python/Vue/配置文件等正常更新场景。
+- 它的 `200-400 lines typical, 800 max` 与当前全局 guardrail 阈值不同；可作为参考数值，不能直接替换。
+
+### What is rejected
+
+- 不把 `Available Agents` 大表复制进 `~/.codex/AGENTS.md`。全局入口不应枚举不存在或未授权的 agent。
+- 不把 `Agent-First` 当成默认。当前规则仍应保持“只有用户明确要求 sub-agent 时才 spawn”。
+- 不把 repo-level success metrics 改成 personal global hard gate。
+
+### Repo target
+
+- 目标仍是 `codex-global-agents-md` 这个 intake。
+- 若后续改 `~/.codex/AGENTS.md`，该参考只支持两个候选原则：
+  1. 主文件做 operating card，而不是治理历史全文。
+  2. workflow surface / knowledge routing / hard stops 可以独立成高密度段落。
+
+### Residual risks
+
+- 该文件来自 Claude Code 插件仓库，不是 OpenAI 官方 `AGENTS.md` spec；只能作为样例，不是规范来源。
+- raw 文件当前呈现为单行 markdown，说明格式本身对机器可读性不理想；不能拿它证明“短文件就一定好读”。
