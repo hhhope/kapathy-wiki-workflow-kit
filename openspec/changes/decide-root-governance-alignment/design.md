@@ -1,108 +1,96 @@
-## Context
+## Confirmed Boundaries
 
-Phase 0 explicitly deferred root dotfiles. That was the correct move for repo
-acceptance, but it was also a deferral, not a permanent closure.
+The last confirmed requirement is to repair
+`decide-root-governance-alignment` into a reviewable design state. This step is
+not root dotfile implementation, skill authoring, wiki method publication, or
+runtime enforcement.
 
-If the whole `agents-governance-drift` topic is to be closed, the repository
-still needs to answer:
+Current chain being followed:
 
-- should root dotfiles align to the repo mainline
-- should they remain intentionally different
-- if different, what is the principled split
+1. Record the design boundary in this active OpenSpec change.
+2. Make overclaiming visible where candidate wording was written as a decision.
+3. Leave implementation and promotion decisions for review.
 
-## Goals / Non-Goals
+Drift judgment: the previous draft drifted by using decision language before
+the alignment model was accepted. The repair must separate confirmed process
+boundaries from candidate content.
 
-**Goals**
+Confirmed boundaries:
 
-- Resolve repo-vs-root governance alignment as a stable decision.
-- Preserve a clear ownership split between repo policy and root defaults.
-- Avoid leaving root drift as an unspoken tail.
-- Define the SDD-first sequence for personal global `AGENTS.md`, skill
-  skeleton, and replay-harness collaboration.
+- SDD-first: root dotfile, skill, or wiki method changes must not happen from a
+  chat-level plan alone. The active OpenSpec change must record the boundary,
+  evaluation evidence, and open decisions first.
+- Wiki-gated: wiki can be a trace or retro candidate when recovery needs outlive
+  the change, but it is not the default landing place for a method page or ADR.
+- Root files are out of scope for this step: do not edit `~/.codex/AGENTS.md`,
+  `~/.claude/CLAUDE.md`, repo-local skills, or wiki method pages.
+- Replay harness v1 is an evidence contract only. Here, "replay harness" means a
+  small set of recorded scenarios, expected RED/GREEN outcomes, and proof
+  boundaries that can be replayed to check whether a design overclaims. It is
+  not a hook, CI gate, runtime gate, or automatic enforcement mechanism.
 
-**Non-Goals**
+## Candidate Design
 
-- Do not merge repo and root guidance into one file.
-- Do not redesign all personal/global tooling defaults.
-- Do not reopen repo Phase 0.
-- Do not publish a wiki method page or ADR before the design boundary is
-  accepted.
-- Do not edit `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md`, or any skill in this
-  design step.
+Candidate model: hybrid split with explicit ownership, pending review.
 
-## Decisions To Resolve
+This candidate says the repository may record the relationship between repo
+governance and personal root dotfiles, but it does not own the full content of
+personal global dotfiles. Root files may align on shared safety boundaries while
+keeping personal or agent-specific behavior separate.
 
-### Decision: Alignment model
+Candidate required alignment:
 
-Selected model: hybrid split with explicit ownership.
+- When operating inside this repository, root files should not contradict
+  repo-owned boundaries.
+- Repo `AGENTS.md`, `PROJECT.md`, and active OpenSpec changes should remain the
+  source of repo-specific workflow semantics.
+- Behavior-asset changes should have evaluation evidence before they are
+  treated as complete.
 
-The repo may record the relationship between repo governance and root dotfiles,
-but it does not own the full content of personal global dotfiles. Root files may
-align on shared safety boundaries while keeping personal or agent-specific
-behavior separate.
-
-Required alignment:
-
-- root files must not contradict repo-owned boundaries when operating inside
-  this repository
-- root files should treat repo `AGENTS.md` and `PROJECT.md` as the source of
-  repo-specific workflow semantics
-- behavior-asset changes need evaluation before being treated as complete
-
-Allowed divergence:
+Candidate allowed divergence:
 
 - personal global startup preferences
 - agent-specific capability differences
 - cross-repo defaults that are not specific to this repository
 - local machine paths, provided they are not mistaken for repo policy
 
-### Decision: Update burden
-
-If alignment is required, define the minimum update set rather than a broad
-rewrite.
-
-For this change, the first update burden is SDD evidence only. Root dotfile
-edits are deferred until this design has enough evaluation evidence to avoid
-turning the global file into another accumulation surface.
-
-### Decision: SDD-first before implementation
-
-The current work must proceed in this order:
-
-1. OpenSpec proposal/design/tasks/evaluation define the boundary.
-2. Evaluation records the previous failure mode and the desired after state.
-3. Only then may a later step edit root dotfiles, repo skills, or repo guidance.
-
-This prevents a chat-level plan from becoming an immediate global behavior
-change without a spec/design checkpoint.
-
-### Decision: Three-layer collaboration model
-
-The personal global collaboration model has three layers:
+Candidate collaboration split:
 
 - `AGENTS.md` as an entry card: scope, hard stops, startup gates, git truth
-  rules, and routing to deeper assets
-- `SKILL.md` as compact behavior contracts: trigger-only descriptions, hard
-  rules, anti-triggers, and pointers to references
-- replay harness as evidence: RED/GREEN behavior records and proof boundaries,
-  not hooks, runtime gates, or automatic enforcement
+  rules, and routing to deeper assets.
+- `SKILL.md` as compact behavior contracts: trigger conditions, hard rules,
+  anti-patterns, and short loading pointers.
+- replay harness as evidence: RED/GREEN behavior records and proof boundaries.
 
-### Decision: Wiki landing remains gated
+Candidate update burden:
 
-Do not land this design directly as a wiki method page. Wiki remains available
-for trace or retro material when the conversation needs durable recovery, but
-method or ADR promotion requires a stable decision after this OpenSpec design
-is accepted.
+- This change records design evidence only.
+- Any later root sync should be a minimum wording update, not a broad rewrite.
+- If review rejects the candidate model, no root sync should proceed from this
+  change.
 
-The immediate durable surface is this active change. If later review finds that
-the live correction itself must be preserved beyond the change artifacts, add a
-targeted `wiki/ops retro` rather than promoting the design straight to ADR.
+## Open Questions
 
-## Evaluation Plan
+- Should the final root/repo relationship be hybrid split, intentional
+  divergence, full alignment on selected clauses, or something else?
+- Which exact clauses must align across repo `AGENTS.md`,
+  `~/.codex/AGENTS.md`, and `~/.claude/CLAUDE.md`?
+- Who owns future updates when root defaults and repo policy disagree?
+- What is the final responsibility split among `AGENTS.md`, `SKILL.md`, and
+  replay-harness evidence?
+- Is a targeted `wiki/ops retro` needed for this correction, or is the active
+  change sufficient durable recovery?
+- What evidence is required before archive readiness?
 
-- RED baseline: the agent jumps from chat design into implementation, or treats
-  wiki publication as the default landing zone before SDD.
-- GREEN result: the agent records SDD boundaries first, keeps wiki landing
-  gated, and defers root dotfile edits.
-- Residual risk: the accepted design still needs later pressure testing before
-  changing behavior assets.
+## Review Criteria
+
+The design is ready for review when:
+
+- confirmed boundaries are written as decisions, and candidate content is
+  labeled as candidate
+- no root dotfile, repo skill, or wiki method page is edited
+- `tasks.md` does not mark final alignment, ownership, or collaboration model
+  decisions complete
+- evaluation records the RED baseline, current after-state, and residual risks
+  without claiming runtime behavior changed
+- OpenSpec validation passes

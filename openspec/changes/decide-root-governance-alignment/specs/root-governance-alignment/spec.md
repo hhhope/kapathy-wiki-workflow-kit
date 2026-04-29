@@ -2,9 +2,7 @@
 
 ### Requirement: Repository SHALL decide root governance alignment before closure
 
-Before treating `agents-governance-drift` as closed, the repository SHALL record
-the relationship between repo-level governance and personal root dotfile
-governance.
+Before treating `agents-governance-drift` as closed, the repository SHALL keep root governance alignment visible as an open decision until a reviewed relationship is accepted.
 
 #### Scenario: Root governance drift remains open
 - **WHEN** repo `AGENTS.md`, root `~/.codex/AGENTS.md`, and root
@@ -16,9 +14,7 @@ governance.
 
 ### Requirement: Root behavior assets MUST follow spec-driven design sequencing
 
-The repository MUST record the design boundary and evaluation evidence in the
-active OpenSpec change before editing personal root behavior assets from this
-governance thread.
+The repository MUST record the design boundary and evaluation evidence in the active OpenSpec change before editing personal root behavior assets from this governance thread.
 
 #### Scenario: Chat-level plan asks for implementation
 - **WHEN** a chat-level plan targets personal global `AGENTS.md`, skill
@@ -29,8 +25,7 @@ governance thread.
 
 ### Requirement: Repository SHALL gate wiki promotion for root governance design
 
-Root-governance design material SHALL NOT be promoted directly into a wiki
-method page or ADR before the active OpenSpec design boundary is accepted.
+Root-governance design material SHALL NOT be promoted directly into a wiki method page or ADR before the active OpenSpec design boundary is accepted.
 
 #### Scenario: Design discussion exposes a correction
 - **WHEN** the discussion corrects the implementation path or wiki landing path

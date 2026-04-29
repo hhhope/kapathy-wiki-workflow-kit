@@ -14,12 +14,14 @@ should align with the repo mainline, intentionally diverge, or partially sync.
 
 ## What Changes
 
-- Define the accepted relationship between repo governance and root dotfiles.
-- Record which parts must align and which parts may intentionally diverge.
+- Prepare a reviewable candidate relationship between repo governance and root
+  dotfiles.
+- Record the open alignment, ownership, and collaboration questions instead of
+  treating the candidate model as accepted.
 - Establish an SDD-first boundary before any root dotfile, skill, or wiki method
   change.
 - If needed later, make the minimum root-level wording updates to match the
-  accepted relationship after the design and evaluation evidence are accepted.
+  reviewed relationship after the design and evaluation evidence are accepted.
 
 ## Capabilities
 

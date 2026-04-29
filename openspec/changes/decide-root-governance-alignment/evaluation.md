@@ -21,13 +21,12 @@
 
 ## After Results
 
-- The active change now records the selected hybrid ownership model: repo
-  governance owns repo semantics, while root dotfiles remain personal global
-  assets with shared safety boundaries.
-- The design now requires SDD-first sequencing before any root dotfile, skill,
-  or wiki method change.
-- The AGENTS / SKILL / replay-harness collaboration model is recorded as a
-  design boundary, not yet as implemented runtime behavior.
+- The active change records a candidate hybrid ownership model for review
+  instead of treating the model as accepted.
+- The design records the SDD-first gate before any root dotfile, skill, or wiki
+  method change.
+- The AGENTS / SKILL / replay-harness collaboration split is recorded as a
+  candidate design, not a final operating model.
 - Wiki landing is explicitly gated: use the active change first, and only add a
   targeted `wiki/ops retro` if recovery needs outlive the change artifact.
 
@@ -38,5 +37,7 @@
   untested.
 - Replay-harness v1 is still a design contract; it has not been converted into
   executable validation for this topic.
+- The final root/repo alignment model, ownership responsibility, and
+  AGENTS/SKILL/harness split remain open pending review.
 - The optional minimum sync tasks remain open and must not be treated as done
   until root-level edits, if any, are separately accepted and verified.
