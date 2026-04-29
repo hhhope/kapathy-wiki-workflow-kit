@@ -38,7 +38,8 @@
 - The design records the SDD-first gate before any root dotfile, skill, rule, or
   wiki method change.
 - The design now records the full candidate governance stack: root `AGENTS`,
-  rules, skills, OpenSpec, harness evidence, and wiki/ADR/retro durable layers.
+  repo `AGENTS`, rules, skills, OpenSpec, harness evidence, and wiki/ADR/retro
+  durable layers.
 - Harness v1 is limited to manual replay evidence: `replay-harness.md`,
   fixture, and `evaluation.md`; checker work is explicitly deferred to Phase 2.
 - Quantified review criteria now state that this change makes 0 root dotfile
@@ -57,7 +58,7 @@
   does not alter execution constraints.
 - Replay-harness v1 remains evidence only; it has not been converted into a
   hook, CI gate, runtime gate, or enforcement path for this topic.
-- The final root/repo alignment model, ownership responsibility, and six-layer
-  responsibility split remain open pending review.
+- The final root/repo alignment model, ownership responsibility, and
+  root/repo-aware responsibility split remain open pending review.
 - The optional minimum sync tasks remain open and must not be treated as done
   until root-level edits, if any, are separately accepted and verified.

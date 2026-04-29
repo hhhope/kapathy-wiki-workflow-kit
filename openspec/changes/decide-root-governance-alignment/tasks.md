@@ -12,8 +12,8 @@
 - [ ] 2.1 Decide the final repo-vs-root governance alignment model
 - [ ] 2.2 Decide which layers must align and which may diverge
 - [ ] 2.3 Decide file ownership and update responsibility
-- [ ] 2.4 Decide the final root AGENTS / rules / skills / OpenSpec / harness /
-  wiki governance-stack responsibility model
+- [ ] 2.4 Decide the final root AGENTS / repo AGENTS / rules / skills /
+  OpenSpec / harness / wiki governance-stack responsibility model
 - [ ] 2.5 Decide whether a targeted wiki trace, retro, method page, or ADR is
   needed after review
 - [ ] 2.6 Decide whether harness Phase 1 should proceed as manual templates
@@ -31,8 +31,8 @@
   adoption
 - [x] 3.6 Land the current learning in the existing wiki intake without
   promoting a method page or ADR
-- [ ] 3.7 Complete review and either adopt, revise, or reject the six-layer
-  model
+- [ ] 3.7 Complete review and either adopt, revise, or reject the
+  root/repo-aware governance model
 
 ## 4. Optional Minimum Sync
 

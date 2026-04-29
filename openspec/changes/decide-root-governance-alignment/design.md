@@ -62,13 +62,13 @@ Repository evidence adds two concrete signals:
   "long and type-mixed", not automatically wrong by line count alone.
 
 Candidate implication: this repository should not collapse every behavior asset
-into either root `AGENTS.md` or `SKILL.md`. Routing, standing rules, triggered
-skills, lifecycle artifacts, replay evidence, and durable knowledge need
-separate responsibilities.
+into root `AGENTS.md`, repo `AGENTS.md`, or `SKILL.md`. Root routing, repo-local
+policy, standing rules, triggered skills, lifecycle artifacts, replay evidence,
+and durable knowledge need separate responsibilities.
 
 ## Design Decision Proposed For Review
 
-Proposed review baseline: hybrid split with a six-layer governance stack.
+Proposed review baseline: hybrid split with a root/repo-aware governance stack.
 
 This candidate says the repository may record the relationship between repo
 governance and personal root dotfiles, but it does not own the full content of
@@ -77,25 +77,28 @@ keeping personal or agent-specific behavior separate.
 
 Proposed responsibility split:
 
-1. `root AGENTS`: entrance card for source-order, intent routing, hard stop
-   gates, escalation boundaries, health checks, branch safety, and git
-   truth-source checks. It should not carry full workflow history or method
-   bodies.
-2. `rules`: always-available cross-cutting execution constraints such as git,
+1. `root AGENTS`: personal global entrance card for cross-repo source-order,
+   intent routing, hard stop gates, escalation boundaries, health checks,
+   branch safety, and git truth-source checks. It should not carry repo-local
+   workflow history or method bodies.
+2. `repo AGENTS`: repository-local policy surface for repo defaults, OpenSpec
+   triggers, wiki routing, local skill contracts, and project-specific stop
+   conditions. It should not be treated as a personal global template.
+3. `rules`: always-available cross-cutting execution constraints such as git,
    testing, security, development workflow, and behavior-asset gates. Rules
    apply because the work type matches, not because a user names a skill.
-3. `skills`: on-demand behavior contracts for triggered capabilities such as
+4. `skills`: on-demand behavior contracts for triggered capabilities such as
    `openspec-explore`, `openspec-propose`, `openspec-apply-change`,
    `openspec-archive-change`, and `meeting-note-output`. `SKILL.md` should stay
    compact and point to references or scripts when detail would bloat trigger
    context.
-4. `OpenSpec`: proposal, design, tasks, spec deltas, and evaluation lifecycle
+5. `OpenSpec`: proposal, design, tasks, spec deltas, and evaluation lifecycle
    for workflow and behavior changes. OpenSpec owns scoped change progress and
    prevents chat-level plans from becoming direct behavior-asset edits.
-5. `harness`: replay evidence for behavior design review. Harness artifacts
+6. `harness`: replay evidence for behavior design review. Harness artifacts
    record what failed before, what should pass after, and what remains outside
    proof. They do not enforce behavior.
-6. `wiki / ADR / retro`: durable recovery and stable decision layers. Wiki
+7. `wiki / ADR / retro`: durable recovery and stable decision layers. Wiki
    pages preserve learning and calibration; retros preserve drift and
    disagreement; ADRs preserve accepted cross-change decisions.
 
@@ -170,7 +173,7 @@ The design is ready for review when:
 - exactly 0 root dotfiles, repo skills, root rules, or wiki method pages are
   edited by this change
 - only active change artifacts plus the named wiki intake are touched
-- `tasks.md` does not mark final alignment, ownership, or six-layer
+- `tasks.md` does not mark final alignment, ownership, or root/repo-aware
   responsibility decisions complete
 - `evaluation.md` records the RED baseline, GREEN target, and residual risks
   without claiming runtime behavior changed
@@ -186,8 +189,8 @@ The design is ready for review when:
 - Which exact clauses must align across repo `AGENTS.md`,
   `~/.codex/AGENTS.md`, and `~/.claude/CLAUDE.md`?
 - Who owns future updates when root defaults and repo policy disagree?
-- Should the six-layer model be adopted as the review baseline, revised, or
-  rejected?
+- Should the root/repo-aware model be adopted as the review baseline, revised,
+  or rejected?
 - Should harness Phase 1 proceed as manual templates only?
 - Is a targeted `wiki/ops retro` needed after review, or is the intake update
   and active change sufficient durable recovery?

@@ -18,9 +18,9 @@ should align with the repo mainline, intentionally diverge, or partially sync.
   dotfiles.
 - Record the open alignment, ownership, and collaboration questions instead of
   treating the candidate model as accepted.
-- Establish an SDD-first boundary before any root AGENTS, rules, skills,
-  OpenSpec lifecycle, harness, or wiki governance-stack change is treated as
-  ready for runtime publication.
+- Establish an SDD-first boundary before any root AGENTS, repo AGENTS, rules,
+  skills, OpenSpec lifecycle, harness, or wiki governance-stack change is
+  treated as ready for runtime publication.
 - If needed later, make the minimum root-level wording updates to match the
   reviewed relationship after the design and evaluation evidence are accepted.
 
