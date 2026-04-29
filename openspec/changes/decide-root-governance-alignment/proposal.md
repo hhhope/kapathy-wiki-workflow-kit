@@ -16,8 +16,10 @@ should align with the repo mainline, intentionally diverge, or partially sync.
 
 - Define the accepted relationship between repo governance and root dotfiles.
 - Record which parts must align and which parts may intentionally diverge.
-- If needed, make the minimum root-level wording updates to match the accepted
-  relationship.
+- Establish an SDD-first boundary before any root dotfile, skill, or wiki method
+  change.
+- If needed later, make the minimum root-level wording updates to match the
+  accepted relationship after the design and evaluation evidence are accepted.
 
 ## Capabilities
 
@@ -36,3 +38,5 @@ should align with the repo mainline, intentionally diverge, or partially sync.
 - Adds OpenSpec artifacts under
   `openspec/changes/decide-root-governance-alignment/`.
 - Creates the decision boundary for repo-vs-root governance drift.
+- Keeps personal global dotfile edits and wiki method publication out of scope
+  until the design boundary is explicit.
