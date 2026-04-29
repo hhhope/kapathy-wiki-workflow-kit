@@ -12,9 +12,12 @@
 - [ ] 2.1 Decide the final repo-vs-root governance alignment model
 - [ ] 2.2 Decide which layers must align and which may diverge
 - [ ] 2.3 Decide file ownership and update responsibility
-- [ ] 2.4 Decide the final AGENTS / SKILL / replay-harness collaboration model
+- [ ] 2.4 Decide the final root AGENTS / rules / skills / OpenSpec / harness /
+  wiki governance-stack responsibility model
 - [ ] 2.5 Decide whether a targeted wiki trace, retro, method page, or ADR is
   needed after review
+- [ ] 2.6 Decide whether harness Phase 1 should proceed as manual templates
+  only
 
 ## 3. Reviewable Design
 
@@ -22,7 +25,13 @@
   open questions, and review criteria
 - [x] 3.2 Mark the hybrid ownership split as a candidate pending review
 - [x] 3.3 Define replay harness v1 as an evidence contract, not a runtime gate
-- [ ] 3.4 Complete review and either accept, revise, or reject the candidate
+- [x] 3.4 Expand the design framework to include rules, skills, OpenSpec,
+  routing examples, durable knowledge layers, and harness proof boundaries
+- [x] 3.5 Add quantified review criteria and a phased path for harness/template
+  adoption
+- [x] 3.6 Land the current learning in the existing wiki intake without
+  promoting a method page or ADR
+- [ ] 3.7 Complete review and either adopt, revise, or reject the six-layer
   model
 
 ## 4. Optional Minimum Sync
@@ -36,4 +45,6 @@
 - [x] 5.1 Record the previous drift/deferral state
 - [x] 5.2 Record the candidate design and SDD gate
 - [x] 5.3 Record residual risks while final decisions remain open
-- [ ] 5.4 Complete archive-readiness review after the final decision is made
+- [x] 5.4 Record the RED/GREEN result for missing wiki landing, unclear harness
+  shape, and missing quantified review criteria
+- [ ] 5.5 Complete archive-readiness review after the final decision is made

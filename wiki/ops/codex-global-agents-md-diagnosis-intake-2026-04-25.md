@@ -9,15 +9,20 @@ domain: personal-ops
 period: evergreen
 confidence: high
 status: active
-updated_at: 2026-04-25
+updated_at: 2026-04-29
 ai_generated: true
 source_path: /home/yan/.codex/AGENTS.md
 source_type: global-agent-config
 related_objects:
   - agents-governance-drift
   - agent-governance-gate-gap
-derived_from: []
-notes_scope: 对 ~/.codex/AGENTS.md（281 行，用户全局 Codex 配置）的一次诊断 + 外部参考对标。非 repo AGENTS.md 诊断；与 agents-governance-drift 同根但作用对象不同。仅记录，不作决定。
+derived_from:
+  - https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/
+  - https://arxiv.org/html/2602.11988v1
+  - https://gist.github.com/skyzyx/c91d9be9e5050c85e81ccbcca022ff6b
+  - https://github.com/danielrosehill/Agents.md-Templates
+  - https://raw.githubusercontent.com/openai/codex/main/AGENTS.md
+notes_scope: 对 ~/.codex/AGENTS.md（281 行，用户全局 Codex 配置）的一次诊断 + 外部参考对标。非 repo AGENTS.md 诊断；与 agents-governance-drift 同根但作用对象不同。2026-04-27 经过量化数据核验后修订。
 ---
 
 # ~/.codex/AGENTS.md 全局文件诊断
@@ -47,31 +52,44 @@ notes_scope: 对 ~/.codex/AGENTS.md（281 行，用户全局 Codex 配置）的�
 
 ---
 
-## 3. 外部参考源摘要（验证过）
+## 3. 外部参考源摘要（2026-04-27 重新核验）
 
-| 参考 | 核心信号 |
-|------|---------|
-| official `agents.md` spec | 设计对象是 repo 级；precedence 近者赢；常见 section = project overview / build-test / code style / testing / security / commits |
-| GitHub "2500 repo 研究" | 优秀示例约 60 行；必备 section = executable commands / project structure / 代码示例 / git workflow / 三层边界 |
-| skyzyx gist | LLM 能稳定遵守约 150–200 条指令；头号陷阱 = accretion over time；推荐 progressive disclosure |
-| danielrosehill 模板仓库 | 4 类模板全是 repo-level，**社区无 global 模板** |
-| openai/codex 自身 AGENTS.md | 213 行，纯 Rust 技术约定，无 meta-workflow |
-| `~/.claude/CLAUDE.md`（同机对照物） | 两份全局文件存在 9 处跨 agent 不对称 |
+| 参考 | 核心信号 | URL / 验证 |
+|------|---------|-----------|
+| official `agents.md` spec | 设计对象是 repo 级；precedence 近者赢；常见 section = project overview / build-test / code style / testing / security / commits | 本轮未独立 fact-check |
+| GitHub Blog "2500 repos 研究" | 6 个 section（commands / testing / project structure / code style / git workflow / boundaries）；定性建议 "start minimal, expand through iteration"；**全文无任何行数数字** | https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/ |
+| arXiv 2602.11988 实证研究（N=138 from 12 repos） | **字数 mean=641 / min=24 / max=2003**；section mean=9.7 / min=1 / max=29；结论：comprehensive context files 反而降低 agent 成功率、增加 20%+ inference 成本 | https://arxiv.org/html/2602.11988v1 |
+| skyzyx gist | 引 Humanlayer Kyle："Frontier thinking LLMs can follow ~150-200 instructions with reasonable consistency"；推荐 root 文件 "as small as possible" + progressive disclosure | https://gist.github.com/skyzyx/c91d9be9e5050c85e81ccbcca022ff6b |
+| danielrosehill 模板仓库 | **9 个模板分 5 类**（Project Context / Purpose Outline / Stack Context / System Administration / 其他），全 repo-level，**社区无 global 模板** | https://github.com/danielrosehill/Agents.md-Templates |
+| openai/codex 自身 AGENTS.md | **213 行**（curl 实测 2026-04-27），纯 Rust 技术约定，无 meta-workflow | https://raw.githubusercontent.com/openai/codex/main/AGENTS.md |
+| `~/.claude/CLAUDE.md`（同机对照物） | 跨 agent 不对称见 4.4 节（实列 5 处，非"9 处"） | local |
+
+**修订记录（2026-04-27）：**
+- 删除原"GitHub 2500-repo 优秀示例约 60 行"——伪引用，GitHub 官方博客全文无任何行数数字
+- 修正原"4 类模板"为"9 个/5 类"
+- 修正原"两份全局文件存在 9 处跨 agent 不对称"为 5 处（与 4.4 节对齐）
+- 新增 arXiv 2602.11988 作为该领域唯一可引实证研究
 
 ---
 
 ## 4. 当前诊断 hypothesis
 
-### 4.1 量化基准
+### 4.1 量化基准（2026-04-27 重新核验）
 
 | 指标 | 现状 | 外部参考 | 判断 |
 |------|------|---------|------|
-| 行数 | 281 | 优秀示例 ~60；预算 ~150–200；openai repo 213 | 超预算 40–360% |
+| 行数 | 281 | arXiv 2602.11988 (N=138) 字数 mean=641（≈100 行 markdown），max=2003（≈300+ 行）；openai/codex repo 213；skyzyx 推荐 "as small as possible" | 约为实证均值的 2.8 倍，仍在 max 范围内；偏长但不灾难 |
 | 核心内容 | 个人 workflow 偏好 | 可执行技术约定 | 类型错位 |
-| git 纪律重复段 | 3 处 | canonical 单源 | 反模式 |
-| 含 repo-specific policy | 是（OpenSpec archive-review 细节） | spec "近者赢" 禁止 | 违反 precedence |
-| 3 周变化 | +22% 行数 | accretion 是头号坑 | 正在堆积 |
-| 生态形态 | personal global | 社区模板无此类 | 罕见形态 |
+| 含 repo-specific policy | 是（OpenSpec archive-review 细节，line 115–127） | spec "近者赢" 禁止 | 违反 precedence |
+| 24 天行数变化 | 223 行 (2026-04-03 备份) → 281 行 (2026-04-27) = +26% | accretion 是头号坑 | 正在堆积 |
+| 生态形态 | personal global | 社区模板（danielrosehill 9 个/5 类）无此类 | 罕见形态 |
+
+**已删除项（伪引用 / 失实陈述）：**
+- ~~"git 纪律重复段 3 处" / "各出现 2 次"~~：全文 grep 实测 `commit immediately` 只出现 1 次（line 165），`before push verify` 0 次，`interruption` 4 次但集中在一段。字串重复不成立；若需保留 S3，应改为"语义重复"论证而非字串计数
+- ~~"超预算 40-360%"~~：基于伪基线 60 行得出，已删
+- ~~"3 周 +22%"~~：实测 24 天 +26%，已更正
+
+**修订记录（2026-04-27）：** 原表中"优秀示例 ~60 行"为伪基线（GitHub 官方博客无此数字），已替换为 arXiv 实证基线。
 
 ### 4.2 Critical 问题（实际矛盾）
 
@@ -83,14 +101,14 @@ notes_scope: 对 ~/.codex/AGENTS.md（281 行，用户全局 Codex 配置）的�
 
 - **S1** REQ identification 在 OpenSpec 为 default 的前提下成死代码
 - **S2** "active OpenSpec change"（line 61）vs "approved OpenSpec change"（line 108）前后不一
-- **S3** 三段 git 纪律互相覆盖无主次：`commit immediately` / `before push verify` / `after interruption recheck` 各出现 2 次
+- **S3** ~~三段 git 纪律互相覆盖无主次：`commit immediately` / `before push verify` / `after interruption recheck` 各出现 2 次~~（**2026-04-27 撤回字串重复陈述**：grep 实测仅 line 165 有一次 `commit immediately`，其他短语零次或单次。若 S3 仍成立，应基于"语义重复"重新论证而非字串计数）
 - **S4** Rule precedence 只管 `rules/*`，不覆盖 `agents/*`
 - **S5** Lore 导航模型跨 agent 分叉：Codex 走 wiki index→overview→domain；Claude 走 flat grep
 
 ### 4.4 Cross-agent asymmetry（Claude 对照暴露）
 
 - **A1** Branch naming 只在 Claude 侧定义（component/feature/bugfix/cr 四类）；Codex 侧要求建分支但无命名规则
-- **A2** Technical checkpoints 不对称：Claude 2 条集中；Codex 1 条集中 + 1 条散在 line 157
+- **A2** Technical checkpoints 不对称：Claude 2 条集中；Codex 散在 line 110、line 157、line 246 三处（2026-04-27 修正：原记 "1 条集中 + 1 条散在" 漏数 line 246）
 - **A3** Health check 严格度不对称：Claude git dirty → 硬停问用户；Codex git dirty → 软 advise 继续
 - **A4** Proceed signal 触发词不对称：Claude 4 个；Codex 9 个（含中文扩展）
 - **A5** Graphify skill 入口仅 Claude 侧有
@@ -203,9 +221,14 @@ notes_scope: 对 ~/.codex/AGENTS.md（281 行，用户全局 Codex 配置）的�
 
 ## 8. 本诊断的 proof boundary
 
-- **已验证**：文件现状 + 外部参考源 + GitHub AGENTS.md 样例 + Claude 对照物 + 引用链文件存在性
+- **已验证（2026-04-27 全量核验）**：文件现状（wc -l = 281）+ openai/codex 213 行（curl 实测）+ arXiv 2602.11988 字数 mean=641 / N=138 / 12 repos + skyzyx 150-200 instructions 引用 + danielrosehill 9 模板/5 类 + 备份 2026-04-03 = 223 行（24 天 +26%）+ Codex Proceed signal 9 词 / Claude 4 词 + line 引用全部对位
 - **未验证**：上述问题对实际 Codex session 行为的量化影响（需单独压测）
-- **候选 vs 事实**：所有"优化方向"为候选，未达任何共识；行数基准 60 / 150–200 / 213 为外部参考数值，不是本 repo 已定的目标
+- **已撤回的伪陈述**：
+  - "GitHub 2500-repo 优秀示例约 60 行" — GitHub 官方博客全文无此数字
+  - "超预算 40-360%" — 基于伪基线推论
+  - "git 纪律 3 处重复 / 各 2 次" — grep 实测对不上
+  - "3 周 +22%" — 实测 24 天 +26%
+  - "9 处跨 agent 不对称" — intake 自身只列 5 处，已与 4.4 对齐
 
 本 intake 不主张任何特定整改路径。
 
@@ -287,3 +310,147 @@ notes_scope: 对 ~/.codex/AGENTS.md（281 行，用户全局 Codex 配置）的�
 
 - 该文件来自 Claude Code 插件仓库，不是 OpenAI 官方 `AGENTS.md` spec；只能作为样例，不是规范来源。
 - raw 文件当前呈现为单行 markdown，说明格式本身对机器可读性不理想；不能拿它证明“短文件就一定好读”。
+
+---
+
+## 11. 2026-04-27 量化数据核验
+
+### Trigger
+
+复查发现 intake 多处量化断言无来源；用户要求"明确量化的数据要验证清楚给出来源"。
+
+### 方法
+
+逐条对 intake 中所有数字断言做 fact-check：本地 grep / wc / 备份 diff + WebFetch 原始来源。
+
+### 核验结果
+
+| 断言 | 验证 | 结论 |
+|------|------|------|
+| `~/.codex/AGENTS.md` 281 行 | `wc -l` | ✅ 成立 |
+| openai/codex AGENTS.md 213 行 | `curl raw` + wc | ✅ 成立 |
+| skyzyx "150-200 条指令" | WebFetch gist | ✅ 成立（原文引 Humanlayer Kyle） |
+| line 61 / 108 / 115-127 / 157 / 280 引用对位 | sed -n | ✅ 全部成立 |
+| C2 OpenSpec archive-review 装在全局 | line 117/120/125/127 实有 | ✅ 成立 |
+| C3 硬编码 `/mnt/d/team-lore/wiki` | line 14 | ✅ 成立 |
+| Codex Proceed signal 9 词 | line 103-104 = 4+5 | ✅ 成立 |
+| M1 备份残留 | ls | ✅ 成立 |
+| **GitHub "2500-repo 研究 优秀示例约 60 行"** | WebFetch 原文 | ❌ **伪引用**——博客全文无任何行数数字 |
+| **"超预算 40-360%"** | 基于上一项推论 | ❌ **基础垮了**，已删 |
+| **"3 周 +22%"** | 备份 2026-04-03 = 223 行 → 现 281 行 | ⚠️ **24 天 +26%**，已更正 |
+| **"git 纪律 3 处重复，各 2 次"** | grep 实测 | ❌ **失实**——`commit immediately` 仅 1 次 |
+| **"9 处跨 agent 不对称"** | intake 仅列 A1-A5 | ❌ **自相矛盾**，已对齐为 5 处 |
+| **"4 类模板"** | WebFetch | ⚠️ 实为 9 个/5 类，已更正 |
+| arXiv 2602.11988 实证（N=138, 字数 mean=641） | WebFetch | ✅ 成立，且为该领域**唯一**严肃实证研究，原 intake 漏引 |
+
+### 修订
+
+第 3 节（外部参考）+ 第 4.1 节（量化基准）+ S3 + A2 + 第 8 节（proof boundary）+ frontmatter（`updated_at: 2026-04-27`、`derived_from` 补全 5 个 URL）已同步更新。
+
+### 残留风险
+
+- official `agents.md` spec 在本轮未独立 fact-check（其他来源足够支撑结论，spec 引用本身不影响量化基准，故未阻塞）
+- `S3` git 纪律重复的"语义重复"判断尚未重做；当前只确认了原"字串重复"陈述失实，不等于 S3 整体撤销，待重新论证
+- 本核验只覆盖了 intake 的量化数据，未覆盖 intake 的结构性 / 哲学性判断（C2 / S1 / S5 等仍为候选诊断，未达共识）
+
+---
+
+## 12. 2026-04-29 root governance alignment design conclusion
+
+### Trigger
+
+围绕 `decide-root-governance-alignment` 的设计修补中，用户追问：
+
+- `harness` 到底是什么
+- 设计稿到底要改成什么样子
+- 为什么学习完没有结论、wiki 也没有落
+- git 学习完的结论是什么
+
+### Why the previous wiki landing failed
+
+这次没有及时落 wiki，不是因为没有规则，而是因为三层约束互相拉扯：
+
+1. repo-local `openspec-explore` skill 本体强调 `stance, not workflow`，容易让执行者把它理解成只切换思考姿态。
+2. repo `AGENTS.md` 和 ADR-0009 又要求每次 `openspec-explore` 在 `wiki/ops/` 留 trace。
+3. 当前 active change 同时写了 `wiki-gated`：不能把 root governance 设计直接升级成 wiki method page 或 ADR。
+
+正确拆分应是：
+
+- wiki 可以落学习结论和校准材料
+- OpenSpec 继续承接正式设计和任务状态
+- ADR 或 method page 必须等稳定决策后再晋升
+
+本节就是补上这次应落的学习结论，不把它包装成最终治理决定。
+
+### Current design conclusion
+
+`harness` 在当前治理设计里只应定义为行为设计的回放证据包。
+
+它包括：
+
+- 一个说明验证对象、字段、通过标准、proof boundary 的 `replay-harness.md`
+- 一个 markdown 或 JSON fixture，记录 RED baseline、GREEN expectation 和 residual risk
+- active OpenSpec change 内的 `evaluation.md`，记录 before / after / residual risks
+
+它不包括：
+
+- hook
+- CI gate
+- runtime gate
+- 自动合规系统
+- 自动证明未来 agent 一定会执行
+
+当前设计稿要表达的是六层职责分离：
+
+| Layer | Responsibility |
+|---|---|
+| root `AGENTS` | 入口路由、硬停止、git 真值、升级边界 |
+| `rules` | 常驻横切约束，如 git、安全、测试、行为资产修改门槛 |
+| `skills` | 按需触发的行为合同，保持短小，细节放 references/scripts |
+| OpenSpec | 行为资产变化的 lifecycle、scope、tasks、evaluation |
+| harness | 人工回放证据，不做执行 gate |
+| wiki / ADR / retro | 学习、复盘、稳定决策沉淀 |
+
+### Quantified conclusion
+
+当前结论不是“全局 AGENTS 必须立刻大删”，而是“偏长且类型错位，需要先分层”：
+
+| Metric | Current evidence | Conclusion |
+|---|---:|---|
+| `~/.codex/AGENTS.md` current size | 281 lines | 偏长，但不是单靠行数判死刑 |
+| 2026-04-03 backup | 223 lines | 24 天增加 58 行 |
+| Growth rate | about 26 percent | 有持续堆积趋势 |
+| OpenAI Codex repo AGENTS reference | 213 lines | 当前个人全局文件已超过一个工程 repo 入口文件 |
+| arXiv 2602.11988 sample | mean 641 words, N=138 | 当前问题更像内容类型混杂，不只是长度 |
+| current design repair root edits | 0 | 本轮不改变 runtime |
+| current design repair skill edits | 0 | 本轮不重测 trigger 行为 |
+| current design repair wiki method edits | 0 | 本轮只补 intake 学习结论 |
+
+### Phased recommendation
+
+建议渐进式推进：
+
+1. Phase 0：只完成当前 OpenSpec 设计稿，接受或修改六层职责模型。
+2. Phase 1：如果接受，再做人工版 harness 模板，不写 checker。
+3. Phase 2：只有模板被至少 3 个行为资产 change 使用后，再考虑结构 checker。
+4. Phase 3：只有 checker 证明有用后，另起 OpenSpec 讨论是否进入 hook、CI 或 archive gate。
+
+### Git learning conclusion
+
+git 结论已经稳定，后续可以直接复用：
+
+- 不能凭记忆说 `clean`、`committed`、`synced`。
+- 任何这类判断前必须重新跑 `git status --short` 和 `git log -1 --oneline`。
+- dirty worktree 下必须区分 `task-related` 和 `local junk`。
+- hidden tool directories such as `.claude/`, `.idea/`, `.obsidian/` default to `local junk` unless the task explicitly targets them.
+- non-hidden content directories such as `inbox/` still require task relevance classification; 当前 root governance 任务不应把它们纳入提交。
+- 本次任务相关文件只应包括 active OpenSpec artifacts 和本 intake 页面。
+
+### Next step
+
+下一步不应直接改 root dotfiles。先审阅
+`openspec/changes/decide-root-governance-alignment/design.md`：
+
+- 是否接受六层职责分离作为 review baseline
+- 是否接受 `harness` v1 只作为人工证据模板
+- 是否接受 Phase 1 先做模板、不做 checker
