@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>从层级组织到智能组织</title>
+  <style>
+    @font-face {
+      font-family: "LocalMicrosoftYaHei";
+      src: url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype");
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #171717;
+      --paper: #f4ead5;
+      --pink: #ff6f91;
+      --blue: #67b7ff;
+      --yellow: #ffd84d;
+      --mint: #8fe3bf;
+      --cream: #fff8e7;
+      --shadow: 8px 8px 0 var(--ink);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(90deg, rgba(23, 23, 23, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(23, 23, 23, 0.05) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: "LocalMicrosoftYaHei", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      line-height: 1.45;
+    }
+
+    .page {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+
+    .hero,
+    .panel,
+    .cell {
+      border: 4px solid var(--ink);
+      box-shadow: var(--shadow);
+      background: var(--cream);
+    }
+
+    .hero {
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .kicker {
+      display: inline-block;
+      border: 3px solid var(--ink);
+      background: var(--yellow);
+      padding: 7px 12px;
+      font-weight: 900;
+      letter-spacing: 0;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 0.98;
+      max-width: 12ch;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      margin-top: 18px;
+      font-size: 21px;
+      font-weight: 700;
+      max-width: 640px;
+    }
+
+    .hero-note {
+      background: var(--ink);
+      color: white;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 280px;
+    }
+
+    .big-number {
+      font-size: 76px;
+      font-weight: 950;
+      line-height: 0.9;
+    }
+
+    .caption {
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      opacity: 0.78;
+    }
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      line-height: 1.1;
+    }
+
+    .tag {
+      border: 3px solid var(--ink);
+      background: var(--pink);
+      padding: 6px 10px;
+      font-weight: 900;
+      width: fit-content;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .panel {
+      padding: 24px;
+    }
+
+    .panel.pink { background: var(--pink); }
+    .panel.blue { background: var(--blue); }
+    .panel.yellow { background: var(--yellow); }
+    .panel.mint { background: var(--mint); }
+    .panel.black {
+      background: var(--ink);
+      color: white;
+    }
+
+    .panel h3 {
+      font-size: 26px;
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .panel p,
+    .panel li {
+      font-size: 16px;
+      font-weight: 650;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .org {
+      display: grid;
+      gap: 14px;
+    }
+
+    .level,
+    .layer,
+    .role,
+    .route {
+      border: 3px solid var(--ink);
+      background: var(--cream);
+      padding: 14px;
+      font-weight: 850;
+    }
+
+    .level:nth-child(1) { width: 48%; }
+    .level:nth-child(2) { width: 68%; }
+    .level:nth-child(3) { width: 86%; }
+    .level:nth-child(4) { width: 100%; }
+
+    .arrow {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 950;
+    }
+
+    .layer {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .layer strong {
+      font-size: 17px;
+    }
+
+    .mini {
+      font-size: 13px;
+      font-weight: 800;
+      opacity: 0.78;
+      margin-top: 4px;
+    }
+
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 4px solid var(--ink);
+      box-shadow: var(--shadow);
+      background: var(--cream);
+    }
+
+    .compare th,
+    .compare td {
+      border: 3px solid var(--ink);
+      padding: 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 16px;
+    }
+
+    .compare th {
+      background: var(--yellow);
+      font-size: 18px;
+    }
+
+    .compare td:nth-child(2) {
+      background: #ffe0e8;
+    }
+
+    .compare td:nth-child(3) {
+      background: #dcf5ff;
+    }
+
+    .role {
+      min-height: 170px;
+    }
+
+    .role h3 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .routes {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .route {
+      background: var(--cream);
+      min-height: 120px;
+    }
+
+    .route strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .route span {
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .footer {
+      margin-top: 34px;
+      padding: 24px;
+      border: 4px solid var(--ink);
+      background: var(--ink);
+      color: white;
+    }
+
+    .footer a {
+      color: var(--yellow);
+      font-weight: 850;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .routes {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-note {
+        min-height: 210px;
+      }
+
+      h1 {
+        max-width: none;
+      }
+
+      .level {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <span class="kicker">INTELLIGENCE-NATIVE ORG</span>
+        <h1>从层级组织到智能组织</h1>
+        <p class="hero-copy">
+          组织结构的核心约束正在从"人类管理幅度"转向"系统是否能准确理解公司与客户的实时状态"。
+        </p>
+      </div>
+      <aside class="hero-note">
+        <div>
+          <div class="caption">Block / Sequoia</div>
+          <div class="big-number">2026</div>
+        </div>
+        <p>
+          这不是简单的 AI 提效叙事。关键问题是：层级原本承担的信息路由职能，是否仍必须由永久管理层级完成。
+        </p>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="tag">01</span>
+        <h2>旧组织：人作为信息路由器</h2>
+      </div>
+      <div class="grid-2">
+        <div class="panel pink">
+          <h3>层级链路</h3>
+          <div class="org">
+            <div class="level">高层：方向与资源</div>
+            <div class="arrow">↓ ↑</div>
+            <div class="level">中层：汇总、转发、解释</div>
+            <div class="arrow">↓ ↑</div>
+            <div class="level">团队：计划与执行</div>
+            <div class="arrow">↓ ↑</div>
+            <div class="level">客户现实：需求、阻塞、反馈</div>
+          </div>
+        </div>
+        <div class="panel black">
+          <h3>主要损耗</h3>
+          <ul>
+            <li>信息被摘要、过滤和转译。</li>
+            <li>横向协作依赖同步会与优先级协调。</li>
+            <li>路线图来自人工预判，反馈周期较长。</li>
+            <li>层级越多，责任边界越容易变模糊。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="tag">02</span>
+        <h2>新组织：系统维护组织状态模型</h2>
+      </div>
+      <div class="panel blue">
+        <div class="org">
+          <div class="layer">
+            <strong>Capabilities</strong>
+            <div>支付、借贷、发卡、银行、BNPL、工资等可组合金融能力。<div class="mini">定义公司能提供什么。</div></div>
+          </div>
+          <div class="layer">
+            <strong>World Model</strong>
+            <div>公司 artifact + 客户交易信号，持续形成公司状态与客户现实理解。<div class="mini">替代一部分层级信息流。</div></div>
+          </div>
+          <div class="layer">
+            <strong>Intelligence</strong>
+            <div>把能力组合成面向具体客户、具体时刻的解决方案。<div class="mini">从路线图驱动转向反馈驱动。</div></div>
+          </div>
+          <div class="layer">
+            <strong>Interfaces</strong>
+            <div>Square、Cash App、Afterpay、TIDAL、bitkey、proto 等交付界面。<div class="mini">价值主要来自模型与组合层。</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="tag">03</span>
+        <h2>旧组织 vs 新组织</h2>
+      </div>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>维度</th>
+            <th>传统层级组织</th>
+            <th>Intelligence-native organization</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>路由主体</strong></td>
+            <td>管理层级承担汇总、同步、转发。</td>
+            <td>系统维护公司状态模型，人处理边界判断。</td>
+          </tr>
+          <tr>
+            <td><strong>信息来源</strong></td>
+            <td>汇报、会议、路线图、人工解释。</td>
+            <td>工作 artifact、交易信号、阻塞与失败反馈。</td>
+          </tr>
+          <tr>
+            <td><strong>路线图来源</strong></td>
+            <td>产品团队预判需求后排优先级。</td>
+            <td>客户现实暴露能力缺口，缺口形成后续输入。</td>
+          </tr>
+          <tr>
+            <td><strong>人的位置</strong></td>
+            <td>人在层级内部承担大量信息中继。</td>
+            <td>人在系统边界承担判断、信任、伦理和高风险责任。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="tag">04</span>
+        <h2>人的三类角色</h2>
+      </div>
+      <div class="grid-3">
+        <div class="role panel yellow">
+          <h3>IC</h3>
+          <p>深度专家，建设和运营 capabilities、world model、intelligence layer 与 interfaces。</p>
+        </div>
+        <div class="role panel mint">
+          <h3>DRI</h3>
+          <p>对特定跨域问题或客户结果负责，可临时调动多个能力层资源。</p>
+        </div>
+        <div class="role panel blue">
+          <h3>Player-coach</h3>
+          <p>同时承担实际建设与人才培养，不以信息转发作为主要职责。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="tag">05</span>
+        <h2>迁移到行为资产治理</h2>
+      </div>
+      <div class="routes">
+        <div class="route"><strong>root AGENTS</strong><span>跨 repo 安全地板、启动入口、硬停边界。</span></div>
+        <div class="route"><strong>repo AGENTS</strong><span>repo-specific policy、OpenSpec 触发、wiki 路由。</span></div>
+        <div class="route"><strong>rules</strong><span>按工作类型加载的长期执行约束。</span></div>
+        <div class="route"><strong>skills</strong><span>按意图触发的能力合同，保持短入口。</span></div>
+        <div class="route"><strong>OpenSpec</strong><span>变更生命周期、任务进度、审查路径。</span></div>
+        <div class="route"><strong>wiki / ADR</strong><span>长期记忆、分歧材料、稳定决策。</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span class="tag">06</span>
+        <h2>使用边界</h2>
+      </div>
+      <div class="grid-3">
+        <div class="panel mint">
+          <h3>可立即吸收</h3>
+          <ul>
+            <li>使用"信息路由栈"作为分析框架。</li>
+            <li>检查每层是否有 owns / must not own / evidence / promotion path。</li>
+            <li>把 Block 文章作为 benchmark signal。</li>
+          </ul>
+        </div>
+        <div class="panel black">
+          <h3>不要直接迁移</h3>
+          <ul>
+            <li>不写入 repo AGENTS、rules 或 skills。</li>
+            <li>不把组织设计等同于 agent governance。</li>
+            <li>不把 H5 视为正式 policy。</li>
+          </ul>
+        </div>
+        <div class="panel yellow">
+          <h3>后续条件</h3>
+          <ul>
+            <li>解释两个以上 artifact 层之间的真实冲突。</li>
+            <li>帮助收敛当前 governance 候选项。</li>
+            <li>通过 OpenSpec review 后再正式吸收。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p><strong>参考：</strong>Block / Sequoia《From Hierarchy to Intelligence》；写法参考：微信公众号《AI也有潜意识 而且会传染...》。</p>
+      <p style="margin-top: 10px;">本 H5 是视觉解释，不是 repo policy。正式吸收仍需 OpenSpec review。</p>
+    </footer>
+  </main>
+</body>
+</html>
