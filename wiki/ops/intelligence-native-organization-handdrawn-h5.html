@@ -926,6 +926,440 @@
       font-weight: 950;
     }
 
+    .robot-flow {
+      display: grid;
+      grid-template-columns: 1fr 36px 1fr 36px 1.08fr;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .doc-visual {
+      min-height: 110px;
+      padding: 12px;
+      border: 4px solid var(--ink);
+      border-radius: 8px;
+      background: #fff7dc;
+      font-weight: 950;
+      position: relative;
+    }
+
+    .doc-line {
+      height: 8px;
+      margin-top: 12px;
+      border-radius: 999px;
+      background: var(--ink);
+      opacity: 0.75;
+    }
+
+    .doc-check {
+      position: absolute;
+      right: 10px;
+      bottom: 8px;
+      width: 28px;
+      height: 18px;
+      border-left: 5px solid #f2b447;
+      border-bottom: 5px solid #f2b447;
+      transform: rotate(-45deg);
+    }
+
+    .robot-scene {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .robot-body {
+      position: relative;
+      width: 92px;
+      height: 104px;
+      margin: 0 auto;
+    }
+
+    .robot-head {
+      position: absolute;
+      top: 12px;
+      left: 8px;
+      width: 76px;
+      height: 58px;
+      border: 4px solid var(--ink);
+      border-radius: 18px;
+      background: #dff3ff;
+    }
+
+    .robot-head::before,
+    .robot-head::after {
+      content: "";
+      position: absolute;
+      top: 22px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .robot-head::before { left: 20px; }
+    .robot-head::after { right: 20px; }
+
+    .robot-body::before {
+      content: "AI";
+      position: absolute;
+      left: 18px;
+      bottom: 0;
+      width: 56px;
+      height: 42px;
+      border: 4px solid var(--ink);
+      border-radius: 14px 14px 10px 10px;
+      background: white;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 950;
+    }
+
+    .robot-antenna {
+      position: absolute;
+      top: 0;
+      left: 44px;
+      height: 18px;
+      border-left: 4px solid var(--ink);
+    }
+
+    .robot-antenna::before {
+      content: "";
+      position: absolute;
+      top: -9px;
+      left: -8px;
+      width: 12px;
+      height: 12px;
+      border: 4px solid var(--ink);
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .side-tools {
+      display: grid;
+      gap: 8px;
+    }
+
+    .chat-visual,
+    .keyboard-visual {
+      border: 4px solid var(--ink);
+      background: white;
+    }
+
+    .chat-visual {
+      min-height: 58px;
+      border-radius: 14px;
+      position: relative;
+      padding: 9px;
+    }
+
+    .chat-visual::after {
+      content: "";
+      position: absolute;
+      left: 15px;
+      bottom: -11px;
+      width: 18px;
+      height: 18px;
+      border-left: 4px solid var(--ink);
+      border-bottom: 4px solid var(--ink);
+      background: white;
+      transform: rotate(-30deg);
+    }
+
+    .keyboard-visual {
+      min-height: 42px;
+      border-radius: 8px;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 12px, var(--ink) 12px 15px),
+        #fff;
+      border-bottom-width: 6px;
+    }
+
+    .essence-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 48px 0.98fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .clipboard {
+      min-height: 210px;
+      padding: 26px 20px 18px;
+      border: 5px solid var(--ink);
+      border-radius: 12px;
+      background: #fff7dc;
+      box-shadow: 6px 6px 0 #d79a55;
+      transform: rotate(-2deg);
+      position: relative;
+      font-weight: 950;
+    }
+
+    .clip {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      width: 76px;
+      height: 36px;
+      transform: translateX(-50%);
+      border: 4px solid var(--ink);
+      border-radius: 14px 14px 6px 6px;
+      background: #d7d7d7;
+    }
+
+    .task-line {
+      margin-top: 12px;
+      padding-left: 32px;
+      position: relative;
+      font-size: 22px;
+    }
+
+    .task-line::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 19px;
+      height: 11px;
+      border-left: 5px solid var(--ink);
+      border-bottom: 5px solid var(--ink);
+      transform: rotate(-45deg);
+    }
+
+    .target-scene {
+      display: grid;
+      justify-items: center;
+      gap: 12px;
+    }
+
+    .target-ring {
+      width: 150px;
+      height: 150px;
+      border: 5px solid var(--ink);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #f55 0 16%, white 17% 32%, #f55 33% 49%, white 50% 66%, #cceeff 67%);
+      position: relative;
+    }
+
+    .target-ring::after {
+      content: "";
+      position: absolute;
+      top: 13px;
+      right: 8px;
+      width: 90px;
+      border-top: 6px solid var(--ink);
+      transform: rotate(-34deg);
+    }
+
+    .target-ring::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      right: 3px;
+      width: 0;
+      height: 0;
+      border-left: 18px solid var(--ink);
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      transform: rotate(-34deg);
+    }
+
+    .structure-line {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .structure-card {
+      position: relative;
+      min-height: 176px;
+      padding: 12px 10px;
+      border: 4px solid var(--ink);
+      border-radius: 14px;
+      background: white;
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .structure-card:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      top: 50%;
+      width: 22px;
+      border-top: 5px dotted var(--ink);
+    }
+
+    .structure-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--purple);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 950;
+      margin-bottom: 8px;
+    }
+
+    .structure-ico {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 8px;
+      border: 4px solid var(--ink);
+      border-radius: 14px;
+      background: var(--blue);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 950;
+    }
+
+    .iteration-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr 0.9fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .cycle-loop {
+      position: relative;
+      min-height: 220px;
+    }
+
+    .cycle-loop::before {
+      content: "";
+      position: absolute;
+      inset: 28px 42px;
+      border: 7px solid #f38da8;
+      border-left-color: transparent;
+      border-radius: 50%;
+      transform: rotate(20deg);
+    }
+
+    .loop-item {
+      position: absolute;
+      width: 88px;
+      min-height: 76px;
+      text-align: center;
+      font-weight: 950;
+      font-size: 14px;
+    }
+
+    .loop-item:nth-child(1) { left: 0; top: 64px; }
+    .loop-item:nth-child(2) { left: 112px; top: 0; }
+    .loop-item:nth-child(3) { right: 0; top: 74px; }
+    .loop-item:nth-child(4) { left: 102px; bottom: 0; }
+
+    .loop-symbol {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 4px;
+      border: 4px solid var(--ink);
+      border-radius: 14px;
+      background: white;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      font-weight: 950;
+    }
+
+    .fix-list {
+      margin: 0;
+      padding-left: 22px;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .fix-list li + li {
+      margin-top: 8px;
+    }
+
+    .sticky-note {
+      padding: 18px;
+      border: 4px solid var(--ink);
+      border-radius: 8px;
+      background: #fff2b4;
+      transform: rotate(-2deg);
+      font-size: 24px;
+      font-weight: 950;
+      text-align: center;
+      box-shadow: 5px 5px 0 #d7c77e;
+    }
+
+    .conclusion-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .big-icons {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .big-icon {
+      min-height: 106px;
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: 6px;
+      font-weight: 950;
+      text-align: center;
+    }
+
+    .big-icon-shape {
+      width: 64px;
+      height: 58px;
+      border: 4px solid var(--ink);
+      border-radius: 14px;
+      background: var(--blue);
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      font-weight: 950;
+    }
+
+    .big-icon:nth-child(2) .big-icon-shape {
+      border-radius: 50% 45% 55% 45%;
+      background: #ffd2dc;
+    }
+
+    .big-icon:nth-child(3) .big-icon-shape {
+      background: var(--yellow);
+      clip-path: polygon(50% 0, 72% 35%, 100% 35%, 64% 100%, 70% 56%, 36% 56%);
+      border: 0;
+    }
+
+    .big-icon:nth-child(4) .big-icon-shape {
+      background: white;
+      border-radius: 8px;
+    }
+
+    .big-icon:nth-child(5) .big-icon-shape {
+      border-radius: 50% 16px 16px 50%;
+      background: #cceeff;
+    }
+
+    .bottom-slogan {
+      margin-top: 16px;
+      padding: 12px 18px;
+      border: 4px solid var(--ink);
+      border-radius: 16px;
+      background: #cceeff;
+      font-size: 26px;
+      font-weight: 950;
+      text-align: center;
+    }
+
     .cycle {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1008,11 +1442,21 @@
       .persona-map,
       .subway,
       .toolbox-row,
-      .dock-grid {
+      .dock-grid,
+      .robot-flow,
+      .essence-grid,
+      .structure-line,
+      .iteration-layout,
+      .conclusion-layout,
+      .big-icons {
         grid-template-columns: 1fr;
       }
 
       .station::after {
+        display: none;
+      }
+
+      .structure-card::after {
         display: none;
       }
     }
@@ -1033,20 +1477,32 @@
       <div class="tab blue">01 基础概念</div>
       <div class="split">
         <div>
-          <div class="sketch-row">
+          <div class="robot-flow">
             <div class="sketch-col">
               <div class="bubble">···</div>
               <div class="mini">需求 / 阻塞</div>
             </div>
             <div class="arrow">→</div>
             <div class="sketch-col">
-              <div class="note">汇报<br>同步<br>解释</div>
+              <div class="doc-visual">
+                状态简报
+                <div class="doc-line"></div>
+                <div class="doc-line"></div>
+                <div class="doc-line"></div>
+                <div class="doc-check"></div>
+              </div>
               <div class="mini">旧路由</div>
             </div>
             <div class="arrow">→</div>
-            <div class="sketch-col">
-              <div class="bot">AI</div>
-              <div class="mini">状态模型</div>
+            <div class="robot-scene">
+              <div class="robot-body">
+                <div class="robot-antenna"></div>
+                <div class="robot-head"></div>
+              </div>
+              <div class="side-tools">
+                <div class="chat-visual">状态问答</div>
+                <div class="keyboard-visual"></div>
+              </div>
             </div>
           </div>
           <div class="status-dock">
@@ -1145,128 +1601,100 @@
     </section>
 
     <section class="section">
-      <div class="tab green">03 四层结构</div>
-      <div class="illustration-grid">
-        <div class="illus-card">
-          <div class="draw-shop"></div>
-          能力层<br><span class="mini">把真实业务变成可调用模块</span>
+      <div class="tab green">03 本质</div>
+      <div class="essence-grid">
+        <div class="clipboard">
+          <div class="clip"></div>
+          组织任务简报
+          <div class="task-line">现在发生了什么？</div>
+          <div class="task-line">为什么卡住？</div>
+          <div class="task-line">谁该负责？</div>
+          <div class="task-line">下一步调哪个能力？</div>
         </div>
-        <div class="illus-card">
-          <div class="draw-brain"></div>
-          世界模型<br><span class="mini">同时记住公司和客户状态</span>
+        <div class="arrow">→</div>
+        <div class="target-scene">
+          <div class="target-ring"></div>
+          <h2 class="title-line">不是“问模型”，而是给模型下任务</h2>
+          <ul class="bullets">
+            <li>要说清业务目标和约束。</li>
+            <li>要给出公司与客户的真实信号。</li>
+            <li>要让输出能被人审查和追责。</li>
+          </ul>
         </div>
-        <div class="illus-card">
-          <div class="draw-puzzle"></div>
-          智能组合<br><span class="mini">把多个能力拼成方案</span>
-        </div>
-        <div class="illus-card">
-          <div class="draw-phone"></div>
-          触点界面<br><span class="mini">在产品里直接发生动作</span>
-        </div>
-      </div>
-      <div class="stack-grid">
-        <div class="stack">
-          <div class="icon">能力</div>
-          <strong>Capabilities</strong>
-          <div class="mini">支付 / 借贷 / 发卡 / 银行</div>
-        </div>
-        <div class="stack">
-          <div class="icon">模型</div>
-          <strong>World Model</strong>
-          <div class="mini">公司 artifact + 客户信号</div>
-        </div>
-        <div class="stack">
-          <div class="icon">组合</div>
-          <strong>Intelligence</strong>
-          <div class="mini">组合能力，生成方案</div>
-        </div>
-        <div class="stack">
-          <div class="icon">界面</div>
-          <strong>Interfaces</strong>
-          <div class="mini">Square / Cash App / Afterpay</div>
-        </div>
-      </div>
-      <div class="model-map">
-        <div class="model-box">
-          <strong>Company Model</strong>
-          决策 / 代码 / 设计 / 计划 / 阻塞 / 进度
-        </div>
-        <div class="center-bolt">+</div>
-        <div class="model-box">
-          <strong>Customer Model</strong>
-          交易 / 经营 / 支付 / 借贷 / 真实反馈
-        </div>
-      </div>
-      <div class="roadmap">
-        <div class="road-step">客户现实<br>产生信号</div>
-        <div class="road-arrow">→</div>
-        <div class="road-step">智能层<br>组合能力</div>
-        <div class="road-arrow">→</div>
-        <div class="road-step">失败暴露<br>能力缺口</div>
       </div>
     </section>
 
     <section class="section">
-      <div class="tab purple">04 人的角色</div>
-      <div class="roles">
-        <div class="role">
-          <div class="role-badge">建</div>
-          <h3>IC</h3>
-          建设和运营 capabilities、world model、intelligence layer 与 interfaces。
+      <div class="tab purple">04 核心结构</div>
+      <h2 class="title-line">一个 AI-native 组织常包含什么？</h2>
+      <div class="structure-line">
+        <div class="structure-card">
+          <div class="structure-num">1</div>
+          <div class="structure-ico">能</div>
+          <strong>能力层</strong><br>
+          支付、借贷、发卡、银行等可调用模块
         </div>
-        <div class="role">
-          <div class="role-badge">责</div>
-          <h3>DRI</h3>
-          对跨域问题或客户结果负责，可临时调动多个能力层资源。
+        <div class="structure-card">
+          <div class="structure-num">2</div>
+          <div class="structure-ico">模</div>
+          <strong>世界模型</strong><br>
+          公司 artifact + 客户状态持续更新
         </div>
-        <div class="role">
-          <div class="role-badge">带</div>
-          <h3>Player-coach</h3>
-          同时承担实际建设和人才培养，不以信息转发为主要职责。
+        <div class="structure-card">
+          <div class="structure-num">3</div>
+          <div class="structure-ico">组</div>
+          <strong>智能组合</strong><br>
+          把多个能力拼成业务方案
         </div>
-      </div>
-      <div class="persona-map">
-        <div class="person-card"><div class="person-head"></div>过去经理<br><span class="mini">转述信息</span></div>
-        <div class="bridge-arrow">→</div>
-        <div class="person-card"><div class="person-head"></div>现在负责人<br><span class="mini">校验模型</span></div>
-        <div class="bridge-arrow">→</div>
-        <div class="person-card"><div class="person-head"></div>最终责任<br><span class="mini">人来承担</span></div>
+        <div class="structure-card">
+          <div class="structure-num">4</div>
+          <div class="structure-ico">面</div>
+          <strong>触点界面</strong><br>
+          Square / Cash App / Afterpay 承接动作
+        </div>
+        <div class="structure-card">
+          <div class="structure-num">5</div>
+          <div class="structure-ico">责</div>
+          <strong>人工责任</strong><br>
+          人负责信任、伦理、高风险判断
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="tab pink">05 迁移到治理</div>
-      <h2 class="title-line">AGENTS / rules / skills 也要按路由分工</h2>
+      <div class="tab pink">05 优化方法</div>
+      <div class="iteration-layout">
+        <div class="cycle-loop">
+          <div class="loop-item"><div class="loop-symbol">补</div>补充信号</div>
+          <div class="loop-item"><div class="loop-symbol">改</div>修改路由</div>
+          <div class="loop-item"><div class="loop-symbol">评</div>评估效果</div>
+          <div class="loop-item"><div class="loop-symbol">例</div>查看案例</div>
+        </div>
+        <div>
+          <h2 class="title-line">结果不理想，怎么改？</h2>
+          <ul class="fix-list">
+            <li>补充背景：缺什么状态信号？</li>
+            <li>增加约束：哪些风险不能越界？</li>
+            <li>指定格式：输出给谁执行？</li>
+            <li>加入示例：什么才算好结果？</li>
+            <li>持续迭代：从失败暴露能力缺口。</li>
+          </ul>
+        </div>
+        <div class="sticky-note">
+          很多时候，<br>
+          不是 AI 不行，<br>
+          而是组织状态<br>
+          还没说清楚。
+        </div>
+      </div>
       <div class="route-flow">
-        <div class="flow-node">入口</div>
+        <div class="flow-node">root</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-node">约束</div>
+        <div class="flow-node">repo</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-node">变更</div>
+        <div class="flow-node">rules</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-node">沉淀</div>
-      </div>
-      <div class="subway">
-        <div class="station">root<small>硬边界</small></div>
-        <div class="station">repo<small>本仓库</small></div>
-        <div class="station">rules<small>工作类型</small></div>
-        <div class="station">skills<small>意图触发</small></div>
-        <div class="station">spec<small>变更闭环</small></div>
-        <div class="station">ADR<small>稳定决策</small></div>
-      </div>
-      <div class="route">
-        <div class="card"><strong>root</strong>安全地板、启动入口、硬停边界</div>
-        <div class="card"><strong>repo</strong>本仓库 policy、OpenSpec 触发</div>
-        <div class="card"><strong>rules</strong>按工作类型加载的长期约束</div>
-        <div class="card"><strong>skills</strong>按意图触发的能力合同</div>
-        <div class="card"><strong>OpenSpec</strong>变更生命周期与审查路径</div>
-        <div class="card"><strong>wiki / ADR</strong>长期记忆与稳定决策</div>
-      </div>
-      <div class="rule-matrix">
-        <div class="rule-cell">owns<br>它负责什么</div>
-        <div class="rule-cell">must not own<br>它不负责什么</div>
-        <div class="rule-cell">evidence<br>凭什么判断</div>
-        <div class="rule-cell">promotion path<br>如何升级</div>
+        <div class="flow-node">skills</div>
       </div>
       <div class="warning-black">
         警示：把所有规则堆进一个文件，只会制造<span>更慢的信息路由</span>。
@@ -1275,25 +1703,25 @@
 
     <section class="section">
       <div class="tab blue">06 核心结论</div>
-      <div class="split">
-        <div class="cycle">
-          <div class="cycle-step"><div class="cycle-icon">入</div>输入</div>
-          <div class="cycle-step"><div class="cycle-icon">路</div>路由</div>
-          <div class="cycle-step"><div class="cycle-icon">审</div>审查</div>
-          <div class="cycle-step"><div class="cycle-icon">存</div>沉淀</div>
+      <div class="conclusion-layout">
+        <div class="big-icons">
+          <div class="big-icon"><div class="big-icon-shape">包</div>工具箱</div>
+          <div class="big-icon"><div class="big-icon-shape">脑</div>模型</div>
+          <div class="big-icon"><div class="big-icon-shape"></div>能力</div>
+          <div class="big-icon"><div class="big-icon-shape">文</div>记录</div>
+          <div class="big-icon"><div class="big-icon-shape">令</div>行动</div>
         </div>
-        <div class="sticky">
-          不是文件越多越安全。<br>
-          每一层都要说清楚：<br>
-          接收什么、阻断什么、升级什么、沉淀什么。
+        <div>
+          <h2 class="title-line">会用 AI 组织，其实是一种能力</h2>
+          <ul class="bullets">
+            <li>不是把话说复杂，而是把状态说清楚。</li>
+            <li>关键是：谁接收、谁判断、谁执行、谁负责。</li>
+            <li>谁更会组织信息，谁就更能高效调用 AI。</li>
+          </ul>
         </div>
       </div>
-      <div class="toolbox-row">
-        <div class="tool-icon"><div class="tool-mark">收</div>接收信号</div>
-        <div class="tool-icon"><div class="tool-mark">拆</div>拆分路由</div>
-        <div class="tool-icon"><div class="tool-mark">审</div>风险审查</div>
-        <div class="tool-icon"><div class="tool-mark">改</div>变更闭环</div>
-        <div class="tool-icon"><div class="tool-mark">存</div>沉淀记忆</div>
+      <div class="bottom-slogan">
+        AI-native 组织，就是把公司状态变成可理解、可组合、可追责的说明书。
       </div>
     </section>
 
