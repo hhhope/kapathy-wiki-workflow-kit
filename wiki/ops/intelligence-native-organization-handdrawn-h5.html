@@ -45,6 +45,10 @@
       box-shadow: 0 8px 0 var(--ink);
     }
 
+    header {
+      position: relative;
+    }
+
     .banner {
       position: relative;
       margin: 0 auto 14px;
@@ -78,6 +82,41 @@
     .banner::after {
       right: -86px;
       transform: skewY(13deg);
+    }
+
+    .spark {
+      position: absolute;
+      top: 44px;
+      width: 76px;
+      height: 54px;
+      border-top: 6px solid var(--orange);
+      border-bottom: 6px solid var(--orange);
+      transform: rotate(-22deg);
+    }
+
+    .spark::before,
+    .spark::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      width: 48px;
+      border-top: 6px solid var(--orange);
+    }
+
+    .spark::before {
+      top: 20px;
+      transform: rotate(18deg);
+    }
+
+    .spark::after {
+      top: 20px;
+      transform: rotate(-18deg);
+    }
+
+    .spark.left { left: 24px; }
+    .spark.right {
+      right: 24px;
+      transform: rotate(22deg);
     }
 
     h1 {
@@ -167,6 +206,51 @@
       justify-items: center;
     }
 
+    .status-dock {
+      margin-top: 18px;
+      padding: 12px;
+      border: 4px solid var(--ink);
+      border-radius: 16px;
+      background: #fff7dc;
+    }
+
+    .dock-title {
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 950;
+    }
+
+    .dock-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .dock-card {
+      min-height: 74px;
+      padding: 8px 6px;
+      border: 3px solid var(--ink);
+      border-radius: 12px;
+      background: white;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .dock-icon {
+      width: 34px;
+      height: 34px;
+      margin: 0 auto 5px;
+      border: 3px solid var(--ink);
+      border-radius: 10px;
+      background: var(--blue);
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      font-weight: 950;
+    }
+
     .bubble,
     .note,
     .bot,
@@ -240,6 +324,235 @@
       background: white;
       font-weight: 900;
       font-size: 16px;
+    }
+
+    .mini-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .mini-tile {
+      min-height: 86px;
+      padding: 10px 8px;
+      border: 3px solid var(--ink);
+      border-radius: 12px;
+      background: #fffaf0;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .tiny-icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 6px;
+      border: 3px solid var(--ink);
+      border-radius: 12px;
+      background: var(--blue);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 950;
+    }
+
+    .tiny-icon.round {
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .diagram-band {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .sketch-panel {
+      border: 4px solid var(--ink);
+      border-radius: 16px;
+      padding: 14px;
+      background: #fffaf0;
+      min-height: 180px;
+    }
+
+    .sketch-panel.blue { background: #e7f7ff; }
+    .sketch-panel.green { background: #eefbd9; }
+    .sketch-panel.pink { background: #ffe5ec; }
+    .sketch-panel strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 19px;
+      font-weight: 950;
+      text-align: center;
+    }
+
+    .org-pyramid {
+      display: grid;
+      gap: 7px;
+      justify-items: center;
+      margin-top: 6px;
+    }
+
+    .org-tier {
+      height: 36px;
+      border: 3px solid var(--ink);
+      border-radius: 10px;
+      background: white;
+      display: grid;
+      place-items: center;
+      font-weight: 950;
+    }
+
+    .org-tier:nth-child(1) { width: 38%; }
+    .org-tier:nth-child(2) { width: 58%; }
+    .org-tier:nth-child(3) { width: 78%; }
+    .org-tier:nth-child(4) { width: 94%; }
+
+    .state-engine {
+      display: grid;
+      grid-template-columns: 1fr 50px 1fr;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .engine-core {
+      width: 86px;
+      height: 86px;
+      margin: 0 auto;
+      border: 4px solid var(--ink);
+      border-radius: 50%;
+      background: var(--yellow);
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      font-weight: 950;
+    }
+
+    .signal-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    .signal-pill {
+      border: 3px solid var(--ink);
+      border-radius: 999px;
+      padding: 7px 8px;
+      background: white;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .loop-arrow {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 950;
+    }
+
+    .illustration-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 16px 0 4px;
+    }
+
+    .illus-card {
+      min-height: 140px;
+      padding: 12px;
+      border: 4px solid var(--ink);
+      border-radius: 16px;
+      background: white;
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .illus-card:nth-child(1) { background: #fff0a8; }
+    .illus-card:nth-child(2) { background: #cceeff; }
+    .illus-card:nth-child(3) { background: #d4efb0; }
+    .illus-card:nth-child(4) { background: #ffd2dc; }
+
+    .draw-shop,
+    .draw-brain,
+    .draw-puzzle,
+    .draw-phone {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 8px;
+      border: 4px solid var(--ink);
+      background: white;
+      position: relative;
+    }
+
+    .draw-shop {
+      border-radius: 8px;
+      border-top-width: 16px;
+    }
+
+    .draw-shop::before,
+    .draw-shop::after {
+      content: "";
+      position: absolute;
+      bottom: 8px;
+      width: 18px;
+      height: 24px;
+      border: 3px solid var(--ink);
+      background: var(--blue);
+    }
+
+    .draw-shop::before { left: 10px; }
+    .draw-shop::after { right: 10px; }
+
+    .draw-brain {
+      border-radius: 50% 45% 55% 45%;
+      background: #fff7dc;
+    }
+
+    .draw-brain::before,
+    .draw-brain::after {
+      content: "";
+      position: absolute;
+      top: 18px;
+      width: 24px;
+      height: 24px;
+      border: 3px solid var(--ink);
+      border-radius: 50%;
+    }
+
+    .draw-brain::before { left: 12px; }
+    .draw-brain::after { right: 12px; }
+
+    .draw-puzzle {
+      border-radius: 16px;
+      background: linear-gradient(90deg, var(--blue) 0 49%, var(--yellow) 50% 100%);
+    }
+
+    .draw-puzzle::before {
+      content: "+";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 36px;
+      font-weight: 950;
+    }
+
+    .draw-phone {
+      width: 54px;
+      border-radius: 16px;
+      background: #e7f7ff;
+    }
+
+    .draw-phone::before {
+      content: "";
+      position: absolute;
+      left: 11px;
+      right: 11px;
+      bottom: 8px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--ink);
     }
 
     .vs-box {
@@ -475,6 +788,144 @@
       font-weight: 900;
     }
 
+    .persona-map {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+      align-items: center;
+    }
+
+    .person-card {
+      min-height: 112px;
+      border: 4px solid var(--ink);
+      border-radius: 14px;
+      padding: 10px;
+      background: #fffaf0;
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .person-head {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 8px;
+      border: 4px solid var(--ink);
+      border-radius: 50%;
+      background: var(--blue);
+      position: relative;
+    }
+
+    .person-head::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: -30px;
+      height: 26px;
+      border: 4px solid var(--ink);
+      border-top: 0;
+      border-radius: 0 0 14px 14px;
+      background: white;
+    }
+
+    .bridge-arrow {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 950;
+    }
+
+    .subway {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      align-items: center;
+      margin: 14px 0;
+    }
+
+    .station {
+      position: relative;
+      min-height: 84px;
+      padding: 12px 8px;
+      border: 4px solid var(--ink);
+      border-radius: 18px;
+      background: white;
+      text-align: center;
+      font-weight: 950;
+    }
+
+    .station::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -13px;
+      width: 18px;
+      border-top: 5px solid var(--ink);
+      z-index: 2;
+    }
+
+    .station:last-child::after {
+      display: none;
+    }
+
+    .station small {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .warning-black {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border: 4px solid var(--ink);
+      border-radius: 14px;
+      background: #111;
+      color: white;
+      font-size: 20px;
+      font-weight: 950;
+      text-align: center;
+      transform: rotate(-0.5deg);
+    }
+
+    .warning-black span {
+      color: #ffe36e;
+    }
+
+    .toolbox-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tool-icon {
+      min-height: 96px;
+      border: 4px solid var(--ink);
+      border-radius: 16px;
+      background: white;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-weight: 950;
+      font-size: 17px;
+    }
+
+    .tool-icon:nth-child(odd) { background: var(--blue); }
+    .tool-icon:nth-child(even) { background: var(--yellow); }
+
+    .tool-mark {
+      width: 50px;
+      height: 50px;
+      border: 4px solid var(--ink);
+      border-radius: 50%;
+      background: white;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      font-weight: 950;
+    }
+
     .cycle {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -550,8 +1001,19 @@
       .model-map,
       .roadmap,
       .route-flow,
-      .rule-matrix {
+      .rule-matrix,
+      .mini-strip,
+      .diagram-band,
+      .illustration-grid,
+      .persona-map,
+      .subway,
+      .toolbox-row,
+      .dock-grid {
         grid-template-columns: 1fr;
+      }
+
+      .station::after {
+        display: none;
       }
     }
   </style>
@@ -559,6 +1021,8 @@
 <body>
   <main class="poster">
     <header>
+      <div class="spark left"></div>
+      <div class="spark right"></div>
       <div class="banner">
         <h1>一张图读懂 AI 组织</h1>
       </div>
@@ -568,20 +1032,33 @@
     <section class="section">
       <div class="tab blue">01 基础概念</div>
       <div class="split">
-        <div class="sketch-row">
-          <div class="sketch-col">
-            <div class="bubble">···</div>
-            <div class="mini">需求 / 阻塞</div>
+        <div>
+          <div class="sketch-row">
+            <div class="sketch-col">
+              <div class="bubble">···</div>
+              <div class="mini">需求 / 阻塞</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="sketch-col">
+              <div class="note">汇报<br>同步<br>解释</div>
+              <div class="mini">旧路由</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="sketch-col">
+              <div class="bot">AI</div>
+              <div class="mini">状态模型</div>
+            </div>
           </div>
-          <div class="arrow">→</div>
-          <div class="sketch-col">
-            <div class="note">汇报<br>同步<br>解释</div>
-            <div class="mini">旧路由</div>
-          </div>
-          <div class="arrow">→</div>
-          <div class="sketch-col">
-            <div class="bot">AI</div>
-            <div class="mini">状态模型</div>
+          <div class="status-dock">
+            <div class="dock-title">模型要吃进去的状态，不是口头汇报</div>
+            <div class="dock-grid">
+              <div class="dock-card"><div class="dock-icon">码</div>代码变更</div>
+              <div class="dock-card"><div class="dock-icon">单</div>客户工单</div>
+              <div class="dock-card"><div class="dock-icon">险</div>风险例外</div>
+              <div class="dock-card"><div class="dock-icon">钱</div>交易流水</div>
+              <div class="dock-card"><div class="dock-icon">会</div>决策记录</div>
+              <div class="dock-card"><div class="dock-icon">阻</div>执行阻塞</div>
+            </div>
           </div>
         </div>
         <div>
@@ -596,6 +1073,12 @@
             <span class="chip">不是单点提效</span>
             <span class="chip">不是取消责任</span>
             <span class="chip">是重排信息流</span>
+          </div>
+          <div class="mini-strip">
+            <div class="mini-tile"><div class="tiny-icon">文</div>代码 / 文档</div>
+            <div class="mini-tile"><div class="tiny-icon round">阻</div>阻塞 / 例外</div>
+            <div class="mini-tile"><div class="tiny-icon">客</div>客户信号</div>
+            <div class="mini-tile"><div class="tiny-icon round">责</div>人工责任</div>
           </div>
         </div>
       </div>
@@ -626,10 +1109,61 @@
           </div>
         </div>
       </div>
+      <div class="diagram-band">
+        <div class="sketch-panel">
+          <strong>旧组织：信息爬楼</strong>
+          <div class="org-pyramid">
+            <div class="org-tier">CEO 决策</div>
+            <div class="org-tier">VP 过滤</div>
+            <div class="org-tier">经理转述</div>
+            <div class="org-tier">一线事实</div>
+          </div>
+          <div class="chip-row">
+            <span class="chip">层层压缩</span>
+            <span class="chip">慢半拍</span>
+            <span class="chip">上下文丢失</span>
+          </div>
+        </div>
+        <div class="sketch-panel blue">
+          <strong>新组织：状态直接入模</strong>
+          <div class="state-engine">
+            <div class="signal-list">
+              <div class="signal-pill">交易</div>
+              <div class="signal-pill">代码</div>
+              <div class="signal-pill">客服</div>
+            </div>
+            <div class="engine-core">AI</div>
+            <div class="signal-list">
+              <div class="signal-pill">建议</div>
+              <div class="signal-pill">预警</div>
+              <div class="signal-pill">组合</div>
+            </div>
+          </div>
+          <div class="loop-arrow">输入 ↔ 反馈 ↔ 更新</div>
+        </div>
+      </div>
     </section>
 
     <section class="section">
       <div class="tab green">03 四层结构</div>
+      <div class="illustration-grid">
+        <div class="illus-card">
+          <div class="draw-shop"></div>
+          能力层<br><span class="mini">把真实业务变成可调用模块</span>
+        </div>
+        <div class="illus-card">
+          <div class="draw-brain"></div>
+          世界模型<br><span class="mini">同时记住公司和客户状态</span>
+        </div>
+        <div class="illus-card">
+          <div class="draw-puzzle"></div>
+          智能组合<br><span class="mini">把多个能力拼成方案</span>
+        </div>
+        <div class="illus-card">
+          <div class="draw-phone"></div>
+          触点界面<br><span class="mini">在产品里直接发生动作</span>
+        </div>
+      </div>
       <div class="stack-grid">
         <div class="stack">
           <div class="icon">能力</div>
@@ -691,6 +1225,13 @@
           同时承担实际建设和人才培养，不以信息转发为主要职责。
         </div>
       </div>
+      <div class="persona-map">
+        <div class="person-card"><div class="person-head"></div>过去经理<br><span class="mini">转述信息</span></div>
+        <div class="bridge-arrow">→</div>
+        <div class="person-card"><div class="person-head"></div>现在负责人<br><span class="mini">校验模型</span></div>
+        <div class="bridge-arrow">→</div>
+        <div class="person-card"><div class="person-head"></div>最终责任<br><span class="mini">人来承担</span></div>
+      </div>
     </section>
 
     <section class="section">
@@ -705,6 +1246,14 @@
         <div class="flow-arrow">→</div>
         <div class="flow-node">沉淀</div>
       </div>
+      <div class="subway">
+        <div class="station">root<small>硬边界</small></div>
+        <div class="station">repo<small>本仓库</small></div>
+        <div class="station">rules<small>工作类型</small></div>
+        <div class="station">skills<small>意图触发</small></div>
+        <div class="station">spec<small>变更闭环</small></div>
+        <div class="station">ADR<small>稳定决策</small></div>
+      </div>
       <div class="route">
         <div class="card"><strong>root</strong>安全地板、启动入口、硬停边界</div>
         <div class="card"><strong>repo</strong>本仓库 policy、OpenSpec 触发</div>
@@ -718,6 +1267,9 @@
         <div class="rule-cell">must not own<br>它不负责什么</div>
         <div class="rule-cell">evidence<br>凭什么判断</div>
         <div class="rule-cell">promotion path<br>如何升级</div>
+      </div>
+      <div class="warning-black">
+        警示：把所有规则堆进一个文件，只会制造<span>更慢的信息路由</span>。
       </div>
     </section>
 
@@ -735,6 +1287,13 @@
           每一层都要说清楚：<br>
           接收什么、阻断什么、升级什么、沉淀什么。
         </div>
+      </div>
+      <div class="toolbox-row">
+        <div class="tool-icon"><div class="tool-mark">收</div>接收信号</div>
+        <div class="tool-icon"><div class="tool-mark">拆</div>拆分路由</div>
+        <div class="tool-icon"><div class="tool-mark">审</div>风险审查</div>
+        <div class="tool-icon"><div class="tool-mark">改</div>变更闭环</div>
+        <div class="tool-icon"><div class="tool-mark">存</div>沉淀记忆</div>
       </div>
     </section>
 
