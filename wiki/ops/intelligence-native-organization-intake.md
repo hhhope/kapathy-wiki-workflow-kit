@@ -313,5 +313,6 @@ Block 原文最后提出的问题是：一家公司是否拥有真正难以理�
 ### 11.3 生成物
 
 - H5 文件：`wiki/ops/intelligence-native-organization-h5.html`
+- 手绘参考版：`wiki/ops/intelligence-native-organization-handdrawn-h5.html`
 - 用途：用于一图流预览、截图或转成图文稿。
 - 边界：H5 是视觉解释，不是 repo policy；正式吸收仍需 OpenSpec review。
