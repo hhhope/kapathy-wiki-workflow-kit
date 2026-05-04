@@ -17,96 +17,222 @@ derived_from:
   - https://sequoiacap.com/article/from-hierarchy-to-intelligence/
   - https://investors.block.xyz/governance/leadership/default.aspx
   - https://www.pbs.org/newshour/amp/economy/ai-is-key-driver-behind-layoffs-at-fintech-company-block-ceo-says
+  - https://mp.weixin.qq.com/s/b_uLQlu-yTyHncFybc8g2w
 related_objects:
   - behavior-asset-governance
   - agents-governance-drift
-notes_scope: 记录 Jack Dorsey / Roelof Botha 关于 intelligence-native organization 的外部文章学习。这里只保留可复用信号和边界，不把文章主张直接转成 repo policy、AGENTS 规则、skill 或 OpenSpec requirement。
+notes_scope: 记录 Jack Dorsey / Roelof Botha 关于 intelligence-native organization 的外部文章学习，并参考微信公众号文章的表达结构做二次整理。这里只保留可复用信号和边界，不把文章主张直接转成 repo policy、AGENTS 规则、skill 或 OpenSpec requirement。
 ---
 
 # intelligence-native-organization / intake
 
-## 1. 触发
+## 0. 一句话
 
-用户问："帮我搜索下block这个CEO最近写了什么文章"，随后要求"记录md文件"。
+Block 这篇文章真正值得记的，不是"AI 会让公司裁掉中层"。
 
-本页记录 2026-05-04 搜索结果中最相关的一篇署名文章：
+它戳穿的是另一个更底层的默认假设：
+
+> 公司必须靠人类层级来路由信息。
+
+Jack Dorsey 和 Roelof Botha 的说法是：如果 AI 能持续维护公司自己的 `world model`，那公司就不必继续把管理层当作信息传输管道。管理层过去做的很多事，不是"领导力"，而是慢速路由、摘要、同步、对齐、转发。
+
+这对本 repo 有用的地方也不在组织裁员，而在行为资产治理：
+
+> root AGENTS、repo AGENTS、rules、skills、OpenSpec、wiki、ADR，本质上也都是信息路由层。问题不是多写一条规则，而是每一层到底负责传什么、挡什么、升级什么。
+
+## 1. 他最近写了什么
+
+最相关的一篇署名文章：
 
 - 标题：`From Hierarchy to Intelligence`
 - 作者：Jack Dorsey and Roelof Botha
 - 日期：2026-03-31
-- 官方来源：Block 官网与 Sequoia 官网均有发布
+- 来源：Block 官网与 Sequoia 官网均有发布
 
 Block 官方 leadership 页当前称 Jack Dorsey 为 `Block Head, Chairman, and cofounder of Block`。外部媒体仍常用 CEO 口径指代。
 
-## 2. 来源摘要
+这篇文章发布前一个月，Block 宣布裁掉 4000 多名员工。Dorsey 在公开 memo / shareholder letter 中把这次调整与 AI 工具、较小且更扁平的团队、以及 intelligence-native company 方向联系起来。这个背景让文章不只是观点文，而是 Block 正在公开押注的一套组织操作系统。
 
-### 2.1 文章主张
+## 2. 它为什么刺耳
 
-文章把传统层级组织解释为一种信息路由机制：当组织规模扩大，人类只能通过管理层级来聚合、传递、协调信息。作者认为 AI 现在可以持续维护公司的运行模型，并承担部分过去由中层管理完成的信息路由、对齐和协调工作。
+传统管理层级有一个听起来很正当的解释：
 
-文章区分了两种 AI 使用方式：
+- 组织大了，需要经理知道团队发生了什么。
+- 团队多了，需要一层层同步信息。
+- 方向复杂了，需要有人做优先级协调。
+- 规模继续扩大，就需要更清晰的汇报线和控制幅度。
 
-- 把 AI 当作 productivity enhancer：在原组织结构里给每个人加 copilot。
-- 把公司重构为 intelligence-native organization：让 world model 和 intelligence layer 成为公司运转结构的一部分。
+Block 文章把这套说法翻译成更冷的语言：
 
-### 2.2 Block 模型
+> 层级是人类认知限制下的信息路由协议。
 
-文章提出 Block 需要两类关键模型：
+这句话一旦成立，管理层级就不再天然神圣。它只是旧技术条件下的必要中介。
 
-- company world model：从远程工作产生的决策、讨论、代码、设计、计划、问题和进展中持续理解公司自身运行状态。
-- customer world model：基于 Cash App、Square 等交易与经营数据理解客户真实经济活动。
+文章的核心推理是：
 
-在这个模型下，人的角色被归纳为三类：
+1. 过去两千年，军队、铁路、现代公司都在用层级解决大规模协调。
+2. 层级的约束来自人类 span of control：一个人能稳定管理的人有限。
+3. 层级越多，信息流越慢，决策越失真。
+4. AI 第一次提供了替代协调层的可能：它可以持续读取 artifacts，维护公司状态模型，并主动组合资源。
 
-- IC：深度专家，围绕能力、模型、智能层和界面建设。
-- DRI：对跨域问题或客户结果负责，按问题调动资源。
-- player-coach：同时做事和培养人，替代主要负责信息路由的传统 manager。
+它不是在说"每个人加一个 copilot"。
 
-### 2.3 背景事件
+它在说：
 
-2026-02，Block 宣布裁掉 4000 多名员工。Dorsey 在公开 memo / shareholder letter 中把这次调整与 AI 工具、较小且更扁平的团队、以及 intelligence-native company 方向联系起来。PBS/AP 等报道记录了这个背景。
+> AI 不只是提高原结构的效率，而是可能替换原结构里最核心的信息协调功能。
 
-## 3. 可复用信号
+## 3. Block 的模型
 
-1. **组织层级可以被视为信息流问题。**
-   对本 repo 的启发不是"减少管理层"，而是把行为资产治理也看成信息路由问题：root AGENTS、repo AGENTS、rules、skills、OpenSpec、wiki、ADR 各自负责什么信息流。
+文章把 intelligence-native company 拆成四层。
 
-2. **world model 需要真实 artifact。**
-   Block 文章强调远程工作产生的可机器读取 artifact。对应到本 repo，可靠上下文应来自 `PROJECT.md`、OpenSpec artifacts、wiki/ops、ADR、tasks 和 evaluation，而不是聊天记忆。
+### 3.1 Capabilities
 
-3. **AI 不是简单加速器，可能改变工作结构。**
-   对行为资产治理的可复用点是：不要只把 skill / rules 当作更多提示词，而要定义它们在治理栈里的责任边界。
+能力不是产品界面，而是底层金融原语：支付、借贷、发卡、银行、BNPL、工资等。
 
-4. **人的角色应更靠近判断、品味、伦理和高风险边界。**
-   这支持当前 repo 中"候选、review、accepted、runtime"必须分层的做法：AI 可以整理和路由，但不能把未审定候选规则直接升级成运行时规则。
+这些能力难获得、难维护、有合规和可靠性要求，但它们不是最终价值的全部。
 
-## 4. 需要修改后再用的部分
+### 3.2 World model
 
-- Block 文章是公司组织设计与战略表达，不是 agent governance 规范。不能直接当作 root AGENTS、repo AGENTS 或 skill 的规则来源。
-- "AI 替代中层管理"这个表述太强，放到本 repo 容易误导为自动化替代人工 review。这里更适合抽象成"减少信息路由层级，但保留决策边界"。
-- 文章把 world model 设想为持续运行系统；本 repo 目前只有文档和人工检索，不应 overclaim 为自动上下文注入或 runtime autonomy。
-- Block 的 customer world model 依赖交易数据和业务闭环；本 repo 没有类似高频闭环数据，不能照搬其 compounding signal 论证。
+Block 说它需要两个 world model：
 
-## 5. 尚未形式化
+- `company world model`：理解公司内部正在发生什么，谁在做什么，哪里被卡住，资源怎么分配。
+- `customer world model`：从 Cash App、Square 等交易数据中理解客户真实经济行为。
 
-- 未把该文章加入当前 OpenSpec spec requirement。
-- 未修改 repo `AGENTS.md`、root `AGENTS.md`、rules 或 skills。
-- 未新增 replay harness。
-- 未把 `intelligence-native-organization` 提升为 ADR、method page 或正式治理模型。
+文章里最关键的判断是：Block 是 remote-first，公司工作天然留下大量可机器读取 artifacts。决策、讨论、代码、设计、计划、问题和进展，都是 world model 的原料。
 
-## 6. Repo target
+### 3.3 Intelligence layer
 
-当前最可能的落点是：
+intelligence layer 负责把 capabilities 组合成具体方案。
 
-- `openspec/changes/decide-root-governance-alignment/design.md` 的 benchmark / design-review 输入。
-- `wiki/ops/behavior-asset-governance-design-trace.md` 的外部参考候选。
-- 后续如果要转成正式原则，应走 OpenSpec review，而不是从本 intake 直接落规则。
+传统模式是产品经理先规划路线图，再让团队开发。
 
-## 7. Next step
+Block 设想的是：客户现实产生信号，intelligence layer 发现需求，直接组合已有能力；如果组合失败，失败本身就变成未来路线图。
 
-如果继续用于当前 root/repo governance 设计评审，建议只抽取两条低风险原则：
+### 3.4 Interfaces
 
-1. 层级与行为资产的核心问题都是信息路由和责任边界。
-2. AI 可以辅助路由和整理，但候选规则升级为运行时规则必须经过 review artifact。
+Square、Cash App、Afterpay、TIDAL、bitkey、proto 是交付界面。
 
-其余关于裁员、取消中层管理、company mini-AGI、world model 自动协调的表述，暂时只作为外部案例背景，不进入 repo policy。
+文章把界面降级了：界面重要，但价值不主要在界面里，而在模型和智能层里。
+
+## 4. 人还剩什么角色
+
+文章没有说人消失，而是把人推到"边缘"。
+
+边缘指模型碰不到现实的地方：
+
+- 判断
+- 直觉
+- 品味
+- 伦理
+- 信任关系
+- 新场景
+- 高风险决策
+
+因此它把人的角色归纳成三类：
+
+- `IC`：深度专家，围绕能力、模型、智能层和界面建设。
+- `DRI`：对跨域问题或客户结果负责，按问题调动资源。
+- `player-coach`：既做事也培养人，替代主要负责信息路由的传统 manager。
+
+最刺耳的一句是：不需要永久性的中层管理层。
+
+但对本 repo 更有用的改写是：
+
+> 不需要把每一层都变成永久规则层。
+
+## 5. 对本 repo 的可复用信号
+
+### 5.1 行为资产治理也是信息路由问题
+
+我们现在讨论 root AGENTS、repo AGENTS、rules、skills、OpenSpec、wiki、ADR，看起来像是在讨论"规则放哪"。
+
+其实更准确的问题是：
+
+- 哪一层负责入口判断？
+- 哪一层负责安全硬停？
+- 哪一层负责触发式能力？
+- 哪一层负责 change lifecycle？
+- 哪一层负责长期记忆？
+- 哪一层只记录候选，不能升级成规则？
+
+Block 文章提醒我们：层级不是目标，信息流才是目标。
+
+### 5.2 artifact 比聊天记忆可靠
+
+Block 的 company world model 建在 artifacts 上。
+
+对应到本 repo，可依赖的上下文也应该来自：
+
+- `PROJECT.md`
+- OpenSpec `proposal.md / design.md / tasks.md / evaluation.md`
+- wiki intake / retro / method / ADR
+- git status / git log
+- 明确的 source links
+
+不应该来自"我记得刚才好像说过"。
+
+### 5.3 AI 可以路由，但不能擅自定案
+
+这篇文章容易被误读成"AI 接管协调"。
+
+放到本 repo，必须加一道边界：
+
+> AI 可以整理、路由、比较、暴露冲突，但不能把 candidate 自动升级成 accepted。
+
+这正好对应当前 root/repo governance 设计里的问题：候选规则、review 状态、accepted spec、runtime policy 必须分层。
+
+### 5.4 不要把更多提示词误认为更好的组织
+
+如果每遇到一个问题就往 AGENTS、rules、skills 里塞一段话，本质上是在复制旧层级的毛病：更多转发、更多解释、更多上下文负担。
+
+更好的方向是：
+
+- root AGENTS 做跨 repo 安全地板和入口卡片
+- repo AGENTS 做 repo-specific policy
+- rules 做 work-type 约束
+- skills 做 triggered capability
+- OpenSpec 做 change lifecycle
+- wiki / ADR 做 durable memory
+
+每层只拥有自己该拥有的语义。
+
+## 6. 不能照搬的地方
+
+- Block 是公司组织设计，不是 agent governance 标准。
+- "取消中层管理"不能翻译成"取消人工 review"。
+- Block 有交易数据和客户闭环，本 repo 没有这种高频 customer world model。
+- Block 设想的是持续运行系统，本 repo 目前是 markdown + git + OpenSpec，不应 overclaim 自动上下文注入或 runtime autonomy。
+- 文章的裁员语境不适合作为本 repo 的正面行动模板，只能作为组织结构案例背景。
+
+## 7. 如果要用，只抽两条
+
+现在最稳的抽法：
+
+1. **层级存在是因为信息路由困难。**
+   行为资产分层也必须围绕信息流和责任边界设计，而不是围绕"哪里还能塞规则"设计。
+
+2. **AI 可以增强路由，不等于获得决定权。**
+   候选材料必须经过 review artifact 才能进入 spec、AGENTS、rules 或 skills。
+
+其他更强的说法，比如 mini-AGI、取消管理层、world model 自动协调，暂时只作为外部案例，不进入 repo policy。
+
+## 8. 后续落点
+
+如果继续用于当前 root/repo governance 设计评审，建议只作为 benchmark / design-review 输入，最多进入：
+
+- `openspec/changes/decide-root-governance-alignment/design.md`
+- `wiki/ops/behavior-asset-governance-design-trace.md`
+
+不要从本 intake 直接落到：
+
+- repo `AGENTS.md`
+- root `AGENTS.md`
+- `rules/`
+- `.codex/skills/`
+- OpenSpec requirement
+
+下一步如果要正式吸收，应该先问一个更窄的问题：
+
+> 这篇文章能不能支持我们把行为资产治理定义成"信息路由栈"？
+
+如果答案是能，再走 OpenSpec review。否则它只保留为外部案例。
