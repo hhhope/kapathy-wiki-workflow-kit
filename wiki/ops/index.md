@@ -39,6 +39,7 @@
 - [分歧管理 Replay Harness](disagreement-management-replay-harness.md)
 - [分歧管理 Replay 验证 2026-04-20](disagreement-management-replay-validation-2026-04-20.md)
 - [例子驱动留痕运行时验证 2026-04-18](example-driven-capture-runtime-validation-2026-04-18.md)
+- [Reference-driven output calibration / retro](reference-driven-output-calibration-retro.md)
 - [Scope Drift 复盘](scope-drift-retro.md)
 - [Agent 治理 gate 缺口复盘 2026-04-18](agent-governance-gate-gap-retro-2026-04-18.md)
 - [gstack 与 larksuite CLI 学习复盘 2026-04-18](gstack-lark-learning-retro-2026-04-18.md)
