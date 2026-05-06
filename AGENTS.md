@@ -30,7 +30,7 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
 - Before any Phase 1 migration begins, the repository must have:
   - an accepted repo-visible Phase 0 mainline
   - no duplicate ADR numbering affecting current governance references
-  - an explicit decision on the repo-local commit gate
+  - an explicit repo-local commit-gate decision: repo-local commit hooks are not part of the default governance path; reversal requires a new OpenSpec change
 
 ## High-Frequency Principles
 

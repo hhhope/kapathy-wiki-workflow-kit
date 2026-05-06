@@ -39,6 +39,7 @@
 - [ADR-0025 Readable Views Before Further Runtime Expansion](0025-readable-views-before-further-runtime-expansion.md)
 - [ADR-0028 Root AGENTS Archive-Review Semantics Stay as Generic Top-Level Rules With Repo-Owned Detail](0028-root-agents-archive-review-generic-with-repo-detail.md)
 - [ADR-0029 Intake Retractions Are Legitimate With Explicit Reopen Triggers](0029-intake-retractions-legitimate-with-reopen-triggers.md)
+- [ADR-0030 No Repo-Local Commit Hook Default](0030-no-repo-local-commit-hook-default.md)
 
 ## 非目标
 
