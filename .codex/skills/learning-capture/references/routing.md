@@ -7,12 +7,15 @@ Use this reference when intent or source kind is not obvious.
 | User Intent | Learning Capture? | Route |
 |---|---|---|
 | Deep-read, `精读`, learn capability, or learn what is useful | yes | classify source kind |
+| Bare article, repo, README, or example link inside an active learning / governance / method-calibration thread | yes | classify source kind |
+| Source provided immediately after the user asks how learning should work | yes | classify source kind |
 | Write to wiki from source learning | yes | classify source kind |
 | Score whether a source deserves deep reading | yes | classify source kind |
 | Decide what to reuse, adapt, reject, or formalize | yes | classify source kind |
 | Turn external-source learning into SOP, template, skill candidate, or workflow decision | yes | classify source kind |
 | Latest news or fact lookup | no | answer normally, browsing if needed |
 | Raw article / WeChat body fetch only | no | use source-specific reader |
+| Bare link with no local reuse context and no learning thread | no | ask or handle as ordinary lookup/fetch |
 | Short abstract with no local reuse intent | no | answer normally |
 | Generic code review | no | use review workflow |
 

@@ -14,6 +14,14 @@ learning requests before material-specific learning workflows run.
 - **THEN** the system SHALL route the task through the learning capture domain
   router
 
+#### Scenario: User provides a source inside an active learning thread
+
+- **WHEN** the user provides an external article, blog, paper, WeChat post,
+  GitHub/GitLab repository, README, or concrete example inside an active
+  learning, governance, reusable-method, or method-calibration thread
+- **THEN** the system SHALL treat the source as learning material even if the
+  user does not repeat an explicit phrase such as "learn this"
+
 ### Requirement: Learning capture SHALL reject non-learning requests
 
 The learning router SHALL not turn every external source into durable learning.
@@ -24,6 +32,12 @@ The learning router SHALL not turn every external source into durable learning.
   short abstract, or one-off digestion with no local reuse or wiki intent
 - **THEN** the system SHALL avoid learning capture and use the narrower
   task-specific path
+
+#### Scenario: User provides a bare source with no learning context
+
+- **WHEN** the user provides a bare external source without an active learning
+  thread, local reuse context, wiki intent, or method-calibration context
+- **THEN** the system SHALL NOT assume durable learning capture by default
 
 ### Requirement: Learning capture SHALL route by evidence object
 

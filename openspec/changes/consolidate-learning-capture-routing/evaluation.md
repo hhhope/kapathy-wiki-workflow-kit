@@ -10,6 +10,8 @@
 4. User provides a technical article that references a GitHub repo, then asks
    whether the repo structure can be reused.
 5. User asks for an article news summary with no local reuse intent.
+6. User drops article or repo links inside an already-active learning thread
+   without saying "learn this" again.
 
 ### RED Baseline
 
@@ -27,6 +29,16 @@ Observed result:
 - article and README learning depended on separate skill discovery
 - no explicit example-reference learning route existed
 
+After initial publication, an additional RED check caught a trigger gap:
+
+```bash
+rg -n 'bare link|bare URL|ongoing learning|learning thread|provides links|provides article links|only provides.*link|只给|链接' .codex/skills/learning-capture openspec/changes/consolidate-learning-capture-routing
+```
+
+Observed result: exit `1`, no matches. The first description only covered
+"provides external sources and wants to learn", so it could miss a bare link or
+article dropped inside an ongoing learning thread.
+
 ### Skill Authoring Gates
 
 This implementation loaded `skill-creator`, `writing-skills`,
@@ -41,12 +53,15 @@ automation, deletion, or bulk wiki rewrite is part of this change.
 | Scenario | Expected | Result |
 |---|---|---|
 | Article + "精读，学到能力，落 wiki" | `learning-capture` -> article module | PASS |
+| Bare article links inside an ongoing learning thread | `learning-capture` -> source-kind classification | PASS |
 | GitHub repo + "这个方案能不能复用" | `learning-capture` -> repo-readme module | PASS |
+| Bare GitHub repo link after reusable skill-structure discussion | `learning-capture` -> repo-readme module | PASS |
 | WeChat article + "只抓正文" | skip learning capture; use `weixin-reader` | PASS |
 | GitHub README + "学习结构，改造成我们的 SOP" | `learning-capture` -> repo-readme module | PASS |
 | Article about a repo, without direct repo reading | article module; source class is secondary interpretation | PASS |
 | Article about a repo, user asks whether repo structure can be reused | article module, then repo-readme module after reading repo/README | PASS |
 | News summary or fact lookup with no local reuse intent | skip learning capture | PASS |
+| Bare link with no learning thread or reuse context | skip learning capture by default | PASS |
 | Concrete output-shape example with reuse intent | `learning-capture` -> example-reference module | PASS |
 
 ### GREEN Result
@@ -57,6 +72,9 @@ After this change:
   routing.
 - `references/routing.md` defines learning intent, non-learning intent, source
   kind, and module route.
+- The skill description and routing reference cover both explicit learning
+  requests and bare links inside active learning / governance /
+  method-calibration threads.
 - `article-learning-capture` and `readme-learning-capture` remain available but
   point back to `learning-capture` for general routing.
 - `pressure-scenarios.md` records at least five should-trigger and three

@@ -1,6 +1,6 @@
 ---
 name: learning-capture
-description: Use when the user provides external sources and wants to learn capabilities, deep-read, score, write wiki notes, extract reusable practices, or decide what to reuse, adapt, reject, or formalize.
+description: Use when the user provides articles, repo/README links, or examples as learning, reference, or adaptation material, including bare links whose purpose is implied by recent context.
 ---
 
 # Learning Capture
@@ -13,7 +13,11 @@ object and module.
 
 ## When To Use
 
-Use this skill when the user asks to learn from an external source and signals:
+Use this skill when the user gives an external source as learning or reference
+material. The learning intent may be explicit or inherited from the current
+thread.
+
+Explicit signals include:
 
 - deep reading or `精读`
 - learning capability or reusable method
@@ -23,12 +27,22 @@ Use this skill when the user asks to learn from an external source and signals:
 - turning source learning into an SOP, template, candidate skill, or workflow
   decision
 
+Implicit signals include:
+
+- the user drops article, repo, README, or example links inside an active
+  learning / governance / method-calibration thread
+- the user asks "can we use this approach?" or "what did we learn from this?"
+  after providing a source
+- the user provides a source after asking to define how learning should work
+
 Do not use this skill for latest-news answers, fact lookup, raw source fetching,
 short abstracts, or one-off digestion with no local reuse intent.
 
 ## Hard Rules
 
 - Classify intent before reading deeply.
+- If the user only provides a link, inspect conversation context before deciding
+  whether it is learning material or a raw fetch / lookup request.
 - Route by evidence object: article-shaped, repo/README-shaped, or
   example-shaped.
 - Prefer narrower source tools for raw fetching, such as `weixin-reader`.
