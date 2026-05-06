@@ -18,7 +18,11 @@ policy_waiver_note: >
 derived_from:
   - openspec/changes/decide-root-governance-alignment/design.md
   - openspec/changes/decide-root-governance-alignment/specs/root-governance-alignment/spec.md
+  - openspec/changes/archive/2026-05-06-decide-root-governance-alignment/evaluation.md
   - wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md
+  - wiki/ops/agent-harness-article-learning.md
+  - openspec/changes/compress-root-agents-budget/proposal.md
+  - openspec/changes/phase1-repo-agents-compression/proposal.md
   - AGENTS.md
   - https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
   - https://github.com/anthropics/skills
@@ -37,6 +41,9 @@ related_objects:
   - codex-global-agents-md
   - agents-governance-drift
   - root-governance-alignment
+  - agent-harness-article-learning
+  - compress-root-agents-budget
+  - phase1-repo-agents-compression
 notes_scope: Candidate design-trace of the design currently under review in
   decide-root-governance-alignment. Captures candidate principles, candidate
   minimum process, candidate self-check, three ASCII diagrams, a pattern
@@ -52,6 +59,8 @@ notes_scope: Candidate design-trace of the design currently under review in
   the change is archived. Page body is English under the
   `wiki/language-policy.md` "design-trace 英文豁免" carve-out; the Chinese
   companion summary is `wiki/ops/behavior-asset-governance-zh.md`. See §14.
+  §15 is a post-archive successor calibration note; it does not rewrite the
+  original design-trace body.
 ---
 
 # behavior-asset-governance / design-trace
@@ -706,3 +715,80 @@ two or three real uses. If it turns out the companion pages consistently
 duplicate the English trace, fold back into a single-language policy
 with appendix. If they diverge usefully (Chinese reader workflow vs.
 English design-trace), keep the carve-out as-is.
+
+## 15. 2026-05-06 Post-Archive Successor Calibration
+
+### Trigger
+
+After `decide-root-governance-alignment` was archived, two successor changes
+remained easy to confuse:
+
+- `compress-root-agents-budget`
+- `phase1-repo-agents-compression`
+
+The later `agent-harness-article-learning.md` page also became the durable
+source-of-record for external agent / harness / eval article learning. This
+section records how those facts calibrate successor execution. It does not
+reopen the governance design.
+
+### New facts after §13
+
+- `decide-root-governance-alignment` is archived at
+  `openspec/changes/archive/2026-05-06-decide-root-governance-alignment/`.
+- D1 / D2 / D3 were adopted in the archived change's `evaluation.md`
+  §Archive-readiness Review Outcome.
+- `wiki/ops/agent-harness-article-learning.md` is now the source-of-record
+  for the external article learning pass. It records route, source grounding,
+  admission gate, score detail, transfer candidates, and promotion boundaries.
+- `compress-root-agents-budget` is the active root successor for
+  `~/.codex/AGENTS.md` loaded-context governance.
+- `phase1-repo-agents-compression` remains parked. Its own proposal says not
+  to proceed while the name conflict and sequencing question remain open.
+
+### What the article learning changes
+
+The article learning does not change the adopted governance model. It
+calibrates how successor changes use evidence:
+
+- root `AGENTS.md` should be treated as a map, not a manual;
+- line count is supporting evidence, not the success metric;
+- loaded context, trigger-gated detail, source-of-record pointers, and
+  recovery artifacts are the real target;
+- external best-practice claims should cite the learning page or its evidence
+  table rather than scattered chat history or raw URL lists;
+- unsupported article takeaways remain candidate observations and do not become
+  `AGENTS.md` text, spec `SHALL`, skill hard rules, or archive-ready claims.
+
+### Successor split
+
+| Change | Layer | Status | Rule |
+|---|---|---|---|
+| `compress-root-agents-budget` | root `~/.codex/AGENTS.md` | active successor | Continue first. Govern loaded context and drift, not line count alone. |
+| `phase1-repo-agents-compression` | repo `AGENTS.md` | parked | Do not unpark until the root successor run completes and archive review decides rename / unpark / rescope. |
+
+These two changes are not duplicates. They share the adopted governance model
+but apply it to different layers. Running them in parallel would recreate the
+multi-change drift pattern §13 warned against.
+
+### Required successor correction
+
+Future `compress-root-agents-budget` work should cite
+`wiki/ops/agent-harness-article-learning.md` as the durable article-learning
+source when using external harness / agent / eval material. It should not
+spread the same evidence across chat memory, this trace, older governance pages,
+or raw external URLs.
+
+Future `phase1-repo-agents-compression` work should not start from its current
+0/10 task list while parked. After the root successor completes, archive review
+should decide whether to rename, unpark, or rescope the repo-level change.
+
+### Anti-drift boundary
+
+This section does not:
+
+- edit §2-§14;
+- reopen D1 / D2 / D3;
+- add a Pattern Catalog entry;
+- promote article learning into a spec `SHALL`;
+- edit root `~/.codex/AGENTS.md` or repo `AGENTS.md`;
+- unpark `phase1-repo-agents-compression`.
