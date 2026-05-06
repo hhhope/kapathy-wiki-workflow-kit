@@ -18,6 +18,13 @@
   routing principles; details load only after a concrete trigger.
 - [x] 2.4 Record default loaded context and triggered loaded context as required
   evidence.
+- [x] 2.5 Record the external article calibration as local target criteria:
+  root `AGENTS.md` as map, stable source-of-record pointers, reviewable harness
+  assumptions, and recovery artifacts.
+  <!-- 2026-05-06 — captured in design.md §Progressive Context Strategy, evaluation.md §External Article Calibration, and wiki/ops/behavior-asset-governance-zh.md §Harness Engineering 学到什么 -->
+- [x] 2.6 Record the evidence standard for adopted best practices: external
+  documentation excerpt, local demo/fixture, or git-like project comparison.
+  <!-- 2026-05-06 — captured in design.md §Require Evidence-Backed Best Practices, evaluation.md §Evidence Standard for Best Practices, and spec scenario Root context governance adopts external best practices -->
 
 ## 3. Root Context Implementation
 
@@ -37,7 +44,11 @@
 - [ ] 4.4 Confirm no repo `AGENTS.md`, repo `.codex/skills/`, repo `wiki/`,
   repo `rules/`, or `~/.claude/CLAUDE.md` file was edited by root
   implementation.
-- [x] 4.5 Run `openspec validate compress-root-agents-budget --strict`.
+- [ ] 4.5 Confirm the next agent can identify where to read, how to verify, and
+  which artifact preserves recovery after interruption.
+- [ ] 4.6 Confirm every adopted best practice has quantifiable or reproducible
+  evidence, or is explicitly marked candidate-only.
+- [x] 4.7 Run `openspec validate compress-root-agents-budget --strict`.
   <!-- PASS 2026-05-06 — validate returned "Change 'compress-root-agents-budget' is valid"; PostHog DNS noise only -->
 
 ## 5. Self-Check
@@ -45,7 +56,8 @@
 - [x] 5.1 Structural: OpenSpec artifacts exist and validate.
 - [x] 5.2 Semantic: target layer remains Root AGENTS; support files are
   trigger-gated references, not a new governance layer.
-- [ ] 5.3 Evidence: loaded-context metrics, before/after counts, RED/GREEN, and
-  residual risks are recorded.
+- [ ] 5.3 Evidence: loaded-context metrics, before/after counts, RED/GREEN,
+  agent-legibility check, best-practice evidence table, and residual risks are
+  recorded.
 - [x] 5.4 Boundary: no new Pattern Catalog pattern, checklist item, skill, wiki
   method page, or repo policy is introduced.

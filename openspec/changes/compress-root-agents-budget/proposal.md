@@ -9,8 +9,10 @@ move `Global Rule Routing` into `~/.codex/rule-routing.md` and then ask root
 `AGENTS.md` to load that file for non-trivial work. That would reduce
 `AGENTS.md` line count without proving a reduction in loaded context.
 
-This change corrects the successor scope. It governs root context for
-drift-resistant progressive loading, not for cosmetic file-size reduction.
+This change corrects the successor scope. It governs root context as an
+agent-legible map: short enough to avoid drift, structured enough to route the
+agent to the right source of record, and testable enough to prove that moved
+content is not hidden default context.
 
 ## What Changes
 
@@ -22,6 +24,11 @@ drift-resistant progressive loading, not for cosmetic file-size reduction.
   context, and whether a moved reference still sits on the default path.
 - Add a RED/GREEN harness scenario that fails file-moving without progressive
   loading.
+- Add agent-legibility evidence: the next agent can identify where to read,
+  how to verify, and what artifact preserves recovery after interruption.
+- Require every adopted best practice to cite a verifiable evidence shape:
+  external documentation excerpt, local demo/fixture, or git-like project
+  comparison.
 - Consolidate duplicated execution/git discipline wording only if it preserves
   hard stops, dirty-tree handling, commit discipline, branch boundary, and git
   truth-source checks.
@@ -31,7 +38,8 @@ drift-resistant progressive loading, not for cosmetic file-size reduction.
 ### Modified Capabilities
 
 - `root-governance-alignment`: extend the existing root compression scenario
-  from Pattern Catalog compliance to progressive context governance.
+  from Pattern Catalog compliance to agent-legible progressive context
+  governance.
 
 ## Impact
 
@@ -52,3 +60,6 @@ drift-resistant progressive loading, not for cosmetic file-size reduction.
   Catalog entries.
 - Treating a file move as success when the moved file is still loaded by
   default.
+- Building a new harness, checker, skill, or workflow system in this change.
+- Promoting article-derived advice into root behavior without quantifiable or
+  reproducible evidence.

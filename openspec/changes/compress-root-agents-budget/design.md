@@ -6,9 +6,10 @@ Root `~/.codex/AGENTS.md` owns cross-repo safety floor and entrance routing. It
 must not own repo-local archive detail, rule bodies, skill bodies, or wiki
 method content.
 
-This change governs root context so it reduces drift. It does not chase
-single-file size reduction. A moved block counts as reduction only if it leaves
-the default loaded path and becomes genuinely trigger-gated.
+This change governs root context so it reduces drift and improves agent
+legibility. It does not chase single-file size reduction. A moved block counts
+as reduction only if it leaves the default loaded path and becomes genuinely
+trigger-gated.
 
 ## Reused Governance
 
@@ -25,7 +26,21 @@ No new pattern, checklist field, or rule category is introduced here.
 
 ## Progressive Context Strategy
 
-### 1. Measure Loaded Context
+### 1. Treat Root AGENTS as a Map, Not a Manual
+
+The calibrated target is an agent-legible map:
+
+- default context keeps hard stops, routing principles, and source-of-record
+  pointers
+- repo/wiki/OpenSpec/evaluation artifacts hold the detailed knowledge
+- the next agent can tell where to read, how to verify, and when to stop
+- interruption recovery depends on repo-visible artifacts, not chat memory
+
+This follows the external harness-engineering signal that a large monolithic
+`AGENTS.md` becomes stale, unverifiable, and attractive nuisance; the goal is
+not less information, but better located and more inspectable information.
+
+### 2. Measure Loaded Context
 
 Evaluation must distinguish:
 
@@ -38,7 +53,7 @@ Evaluation must distinguish:
 
 `AGENTS.md` line count is supporting evidence. It is not the success metric.
 
-### 2. Reject Fake Progressive Disclosure
+### 3. Reject Fake Progressive Disclosure
 
 The following shape must fail:
 
@@ -50,7 +65,34 @@ AND require non-trivial work to load rule-routing.md by default
 Reason: default file size drops, but practical loaded context for the dominant
 non-trivial path does not.
 
-### 3. Consolidate Git and Execution Discipline
+### 4. Keep Harness Assumptions Reviewable
+
+Harness rules encode assumptions about what the model cannot do unaided. Those
+assumptions can go stale as models and tools improve. Therefore any retained
+root instruction should be classed as one of:
+
+- stable interface or source-of-record pointer
+- always-on hard stop
+- trigger-gated task detail
+- candidate assumption requiring future review
+
+### 5. Require Evidence-Backed Best Practices
+
+An article-derived best practice is not actionable until it has one of these
+evidence shapes:
+
+- **external-doc evidence**: URL plus exact section/line reference and the
+  narrow conclusion it supports
+- **local demo / fixture evidence**: RED/GREEN scenario, input/output, and a
+  command or manual replay record
+- **git-like project evidence**: repository, commit or path, and the observable
+  structure or behavior being compared
+
+Without one of these, the practice remains a candidate observation. It must not
+be promoted into root `AGENTS.md`, a spec `SHALL`, a skill hard rule, or an
+archive-ready conclusion.
+
+### 6. Consolidate Git and Execution Discipline
 
 The current `Execution discipline` and `Git discipline` sections overlap on:
 
@@ -62,7 +104,7 @@ The current `Execution discipline` and `Git discipline` sections overlap on:
 The consolidated section must preserve the behavioral stops while removing
 duplicated wording.
 
-### 4. Preserve Hard Stops
+### 7. Preserve Hard Stops
 
 The compression must not weaken:
 
@@ -87,6 +129,11 @@ must do at least one of the following:
 
 Adding a new checklist, support file, skill, or rule is not success by itself.
 
+The default workflow pattern remains sequential: reframe target, record
+evidence, then implement. Parallel agents, evaluator-optimizer loops, or
+automation are out of scope unless a later measurable quality gap justifies
+them.
+
 ## Evidence Plan
 
 `evaluation.md` records:
@@ -95,6 +142,9 @@ Adding a new checklist, support file, skill, or rule is not success by itself.
 - default loaded context before and after
 - triggered loaded context before and after
 - RED/GREEN result for fake progressive disclosure
+- agent-legibility check: source-of-record path, verification path, recovery
+  artifact
+- evidence-backed best-practice table
 - section mapping before and after
 - Self-Check four-column result
 - residual risks

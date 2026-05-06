@@ -16,6 +16,14 @@ derived_from:
   - openspec/changes/decide-root-governance-alignment/design.md
   - wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md
   - wiki/ops/agents-governance-281-compression-retro-2026-05-06.md
+  - https://openai.com/index/harness-engineering/
+  - https://claude.com/blog/common-workflow-patterns-for-ai-agents-and-when-to-use-them
+  - https://claude.com/blog/building-agents-with-the-claude-agent-sdk
+  - https://www.anthropic.com/research/diff-tool
+  - https://www.anthropic.com/engineering/managed-agents
+  - https://www.anthropic.com/engineering/harness-design-long-running-apps
+  - https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
+  - https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
 related_objects:
   - codex-global-agents-md
   - agents-governance-drift
@@ -32,7 +40,7 @@ notes_scope: 英文 design-trace 的中文入口。承载治理模型的中文�
 [behavior-asset-governance-design-trace.md](behavior-asset-governance-design-trace.md)**，
 该文依据 `wiki/language-policy.md` 新增的 design-trace 英文豁免保留英文。
 
-本页只保留四件事：治理模型一页 · Harness Engineering 学到什么 · 当前主线 · 资产更新判断。
+本页只保留四件事：治理模型一页 · Harness Engineering 学到什么 · 当前目标 · 资产更新判断。
 
 ## 1. 治理模型一页
 
@@ -75,20 +83,32 @@ notes_scope: 英文 design-trace 的中文入口。承载治理模型的中文�
 ## 2. Harness Engineering 学到什么
 
 这轮真正学到的不是"多引用几篇最佳实践"，而是：**外部文章只有转成
-本地 RED/GREEN 场景，才会对治理有帮助。**
+本地 failure mode、验收门和可恢复的 agent 工作环境，才会对治理有帮助。**
 
 正确吸收路径：
 
 `article insight → local failure mode → RED scenario → GREEN behavior → evaluation evidence`
+
+要落地的 best practice 必须可量化、可复核，并绑定证据。允许的证据只有三类：
+
+- 外部文档内容：有 URL、发布日期或访问日期、具体段落/行号、能支撑的结论边界
+- 本地 demo / fixture：有 RED/GREEN、输入输出、运行命令或人工回放记录
+- git 类项目对照：有仓库/commit/path、可复查的结构或行为差异
+
+没有证据的说法只能是 `candidate observation`，不能写进 root `AGENTS.md`、
+spec `SHALL`、skill hard rule，或作为 archive-ready 结论。
 
 当前失败案例：
 
 | 输入 | 错误吸收 | 正确吸收 |
 |---|---|---|
 | Anthropic prompt engineering | 又写一条治理规则 | 先声明 success criteria、失败样例、验证方法 |
+| OpenAI harness engineering | 把 `AGENTS.md` 当百科压缩 | 把 `AGENTS.md` 当地图，repo/wiki/OpenSpec 做 source of record |
 | Progressive disclosure / dynamic loading | 把长表搬到另一个文件 | 默认不加载；只有任务触发后才加载细节 |
+| Managed Agents | 把当前 harness 假设固化成规则 | 稳定接口优先；假设会随模型能力变化而过期 |
+| Workflow patterns | 一上来加多 agent / evaluator | 先用最简单顺序流；只有可测收益时才升级 |
 | Context cost / instruction budget | 追 `AGENTS.md` 行数 | 区分 default loaded context 与 triggered loaded context |
-| Harness Engineering | 建一个 harness 文档 | 用 RED/GREEN 拦住看似合理但无效的方案 |
+| Evals / diff / long-running harness | 建一个 harness 文档 | 用 RED/GREEN、运行记录、差异对比和恢复点拦住看似合理但无效的方案 |
 
 必须拦住的 RED 场景：
 
@@ -106,12 +126,31 @@ Reason: 单文件行数下降，实际 loaded context 没有按目标下降。
 - drift prevention
 - routing correctness
 - evaluation evidence quality
+- agent legibility：下一轮 agent 是否能知道去哪读、怎么验证、何时停
+- recoverability：中断后是否能从 repo-visible artifact 恢复，而不是靠聊天记忆
+
+### 文章校准后的目标
+
+当前目标不是"让 root AGENTS 更短"，而是：
+
+> 把 root `AGENTS.md` 治理成 agent-legible map：默认上下文只保留硬拦截、路由原则和 source-of-record 指针；具体知识、验证方法和恢复状态必须在 repo-visible artifacts 中可检索、可验证、可更新。
+
+这意味着：
+
+- `AGENTS.md` 是地图，不是手册。
+- wiki / OpenSpec / evaluation 是系统记录，不是附属说明。
+- harness 是反馈闭环：gather context → act → verify → leave artifact。
+- eval 评的是产物和可恢复性，不强制规定唯一操作路径。
+- 新增治理规则前，先问它是否替代、缩短、移走了旧文本，或者是否是必须常驻的 hard stop。
 
 ## 3. 当前主线（2026-05-06）
 
 `decide-root-governance-alignment` 已归档；`compress-codex-agents-md` 已归档。
 当前 active successor 是 `compress-root-agents-budget`，但它的原始目标漂移了：
-从"治理 root context 防漂移"滑成了"压缩 `AGENTS.md` 行数"。
+从"治理 root context 防漂移"滑成了"压缩 `AGENTS.md` 行数"。经过这批
+harness / managed agents / evals 文章校准后，目标进一步收敛为
+**agent-legible governance harness**：让 agent 能从短入口找到正确 source，
+按触发加载细节，完成后留下可恢复证据。
 
 最新实测：
 
@@ -121,7 +160,11 @@ Reason: 单文件行数下降，实际 loaded context 没有按目标下降。
 - 如果把它搬到 `rule-routing.md` 但仍默认加载，实际上下文不会等量下降
 
 当前 next action：先修正 `compress-root-agents-budget` 的成功标准，再决定是否改
-`~/.codex/AGENTS.md`。
+`~/.codex/AGENTS.md`。实施前必须先过三个判断：
+
+- 是否减少默认误导，而不只是减少行数？
+- 是否提升 agent legibility，而不只是增加文档？
+- 是否留下下一轮可恢复证据，而不依赖当前聊天上下文？
 
 ## 4. 已采纳决定
 
@@ -144,7 +187,8 @@ Reason: 单文件行数下降，实际 loaded context 没有按目标下降。
 ## 6. 反漂移约束
 
 - 不把 post-archive 学习回写成旧 design-trace 正文。
-- 不把文章引用当成治理有效性的证据；必须有本地 RED/GREEN。
+- 不把文章引用当成治理有效性的证据；必须有可复核证据，并在本地形成
+  RED/GREEN、demo/fixture、或 git 项目对照。
 - 不用单文件行数替代 loaded-context 证据。
 - 不通过新增 checklist / skill / rule 来无限增殖治理；新增治理必须替代、缩短、移走旧文本，或证明它是 always-on hard stop。
 
