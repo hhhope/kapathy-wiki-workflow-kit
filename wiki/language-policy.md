@@ -39,3 +39,26 @@
 - 一句话里一半中文一半英文说明逻辑
 - 同一组 bullet 中中英文随意切换
 - 用英文段落代替中文主结论
+
+## 例外：design-trace 英文豁免（2026-05-05 起）
+
+适用条件（三条全部满足才生效）：
+
+1. 页面 `artifact_type: design-trace`；
+2. `derived_from` 中引用的文件多数为英文（OpenSpec change artifacts、外部英文文献等）；
+3. 页面本体的同一目录下存在一篇同主题的中文摘要 / 中文入口（命名可为 `*-zh.md` 或 `*-中文.md`）。
+
+豁免效果：
+
+- 该 design-trace 页可以 `language: en`，不再被视为违反本策略。
+- 中文摘要页仍须遵循本策略（zh-CN 主内容、可含独立英文区块）。
+- 中文摘要页在 `related_objects` 或文内显式指向英文 trace，反之亦然。
+
+不适用：
+
+- method page（`wiki/methods/`）、ADR、sources、reports、inbox 摘要：仍然 zh-CN 主。
+- `rules/`、`skills/` 下的任何文件：按 `AGENTS.md` 和 `openspec/specs/skill-authoring-contract/spec.md` 处理，本豁免不触及。
+
+记录要求：
+
+- 使用本豁免的页面需在 frontmatter 加 `policy_waiver: design-trace-english` 字段，指向本节。
