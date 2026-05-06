@@ -792,3 +792,44 @@ This section does not:
 - promote article learning into a spec `SHALL`;
 - edit root `~/.codex/AGENTS.md` or repo `AGENTS.md`;
 - unpark `phase1-repo-agents-compression`.
+
+## §16 2026-05-06 Repo AGENTS Compression Re-entry
+
+### Trigger
+
+The root successor `compress-root-agents-budget` has completed and archived at
+`openspec/changes/archive/2026-05-06-compress-root-agents-budget/`. The user
+asked to return to `phase1-repo-agents-compression` under `openspec-explore`.
+
+### Current focus
+
+Explore whether `phase1-repo-agents-compression` should now be renamed,
+unparked, or rescoped. The current change remains parked until that decision is
+made explicitly.
+
+### Current hypotheses
+
+- Root compression produced a small measured edit, not a broad root rewrite.
+- The repo-level problem is still legitimate, but the current change name still
+collides with the older intake meaning of "Phase 1".
+- The old 0/10 task list should not be executed as-is until the rename /
+  unpark / rescope decision is made.
+
+### Open questions
+
+- Should the repo change be renamed away from `phase1-*` before any work?
+- Is the target still "compression", or should it be reframed as repo AGENTS
+  loaded-context governance?
+- Which repo `AGENTS.md` sections are true repo-only hard stops, and which are
+  proxies to ADR, OpenSpec specs, wiki ops pages, or skills?
+
+### Next step
+
+Read `phase1-repo-agents-compression` and the archived root-successor evidence,
+then decide whether to rename, unpark, or rescope before implementation.
+
+### Anti-drift boundary
+
+This re-entry does not implement repo `AGENTS.md`, alter the parked change's
+tasks, or change Pattern Catalog rules. It only records the exploration trigger
+and the decision point opened by completion of the root successor.
