@@ -37,6 +37,8 @@
 - [ADR-0023 Agent-Readable Wiki Self-Directed Execution After Context Injection](0023-agent-readable-wiki-self-directed-execution-after-context-injection.md)
 - [ADR-0024 Live Conversation Re-Anchor Before Continued Implementation](0024-live-conversation-reanchor-before-continued-implementation.md)
 - [ADR-0025 Readable Views Before Further Runtime Expansion](0025-readable-views-before-further-runtime-expansion.md)
+- [ADR-0028 Root AGENTS Archive-Review Semantics Stay as Generic Top-Level Rules With Repo-Owned Detail](0028-root-agents-archive-review-generic-with-repo-detail.md)
+- [ADR-0029 Intake Retractions Are Legitimate With Explicit Reopen Triggers](0029-intake-retractions-legitimate-with-reopen-triggers.md)
 
 ## 非目标
 
