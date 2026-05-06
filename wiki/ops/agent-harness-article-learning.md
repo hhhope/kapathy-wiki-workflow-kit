@@ -38,6 +38,11 @@ notes_scope: 外部 agent / harness / eval / managed agents 文章精读。这�
 - 本地是否采纳、候选、拒绝；
 - 若要升级成行为资产，下一步还缺什么证据。
 
+> 2026-05-06 note: 本页是 `article-learning-capture` skill 发布前形成的
+> pre-SOP 精读初版。它保留了逐篇学习结论，但尚未逐篇补齐新 SOP 要求的评分卡和
+> 结构化翻译笔记。后续新增或返工文章学习应使用
+> `.codex/skills/article-learning-capture/references/wiki-template.md`。
+
 ## Evidence Gate
 
 "有用"不等于"立刻写规则"。本页采用同一证据口径：
@@ -46,9 +51,13 @@ notes_scope: 外部 agent / harness / eval / managed agents 文章精读。这�
 |---|---|
 | source | 文章 URL 和可复核行号 |
 | claim | 文章能支撑的窄结论 |
+| evidence | 支撑 claim 的原文位置、实验、案例或运行证据 |
 | local usefulness | 对当前 repo / agent 工作方式可能有帮助的原因 |
 | status | `accepted` / `candidate` / `rejected` |
 | adoption boundary | 不能越过的本地边界 |
+
+新 SOP 下，文章学习还必须在进入本表前先完成评分和 source-first reading draft：
+问题、方法、证据类型、适用前提、没有证明什么，以及结构化翻译笔记。
 
 ## Cross-Article Classification
 
