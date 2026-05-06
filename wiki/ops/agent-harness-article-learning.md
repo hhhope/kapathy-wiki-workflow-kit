@@ -20,180 +20,464 @@ derived_from:
   - https://www.anthropic.com/engineering/harness-design-long-running-apps
   - https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
   - https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+  - https://mp.weixin.qq.com/s/-nXD7gp75SHeZHHhTh3lNw
 related_objects:
   - example-driven-capture
   - behavior-asset-governance
   - codex-global-agents-md
-notes_scope: 外部 agent / harness / eval / managed agents 文章精读。这里只记录学习、
-  证据、取舍和候选迁移边界；不直接形成 AGENTS、skill、spec、checklist 或 repo policy。
+notes_scope: 外部 agent / harness / eval / managed agents 文章精读。按
+  article-learning-capture skill 记录评分、结构化意译、可迁移学习和 promotion
+  boundary；不直接形成 AGENTS、skill、spec、checklist 或 repo policy。
 ---
 
 # Agent Harness 文章精读
 
-本页是新开的学习专题，不是 `behavior-asset-governance` 的设计正文。它只回答：
+本页按 `.codex/skills/article-learning-capture/` 返工。它不是
+`behavior-asset-governance` 的设计正文，也不是规则发布页。
 
-- 每篇文章讲了什么；
-- 哪些点对我们有用；
-- 有用点的证据在哪里；
-- 本地是否采纳、候选、拒绝；
-- 若要升级成行为资产，下一步还缺什么证据。
+本页只做四件事：
 
-> 2026-05-06 note: 本页是 `article-learning-capture` skill 发布前形成的
-> pre-SOP 精读初版。它保留了逐篇学习结论，但尚未逐篇补齐新 SOP 要求的评分卡和
-> 结构化翻译笔记。后续新增或返工文章学习应使用
-> `.codex/skills/article-learning-capture/references/wiki-template.md`。
+1. 先给每篇文章打分，决定是否值得精读。
+2. 保留 source-first reading notes：问题、方法、证据类型、适用前提、没有证明什么。
+3. 对值得迁移的点做 evidence gate：source / claim / evidence / local usefulness / adoption boundary / status。
+4. 明确哪些内容只是 candidate，不能直接写进 `AGENTS.md`、skill、spec 或 archive-ready 结论。
 
-## Evidence Gate
+## Scoring Summary
 
-"有用"不等于"立刻写规则"。本页采用同一证据口径：
+Access date: 2026-05-06.
 
-| 字段 | 含义 |
-|---|---|
-| source | 文章 URL 和可复核行号 |
-| claim | 文章能支撑的窄结论 |
-| evidence | 支撑 claim 的原文位置、实验、案例或运行证据 |
-| local usefulness | 对当前 repo / agent 工作方式可能有帮助的原因 |
-| status | `accepted` / `candidate` / `rejected` |
-| adoption boundary | 不能越过的本地边界 |
+| Article | Source | Score | Decision | Reason |
+|---|---|---:|---|---|
+| Harness Engineering | OpenAI, 2026-02-11 | 95 | deep-read | 一手工程文章，直接回答 agent-legible repo、`AGENTS.md`、source of record 和 drift 问题。 |
+| Common Workflow Patterns | Claude, 2026-03-05 | 91 | deep-read | 一手 workflow pattern 文章，能约束 sequential / parallel / evaluator 的选型，不只是概念介绍。 |
+| Building Agents with Claude Agent SDK | Claude, 2025-09-29 | 88 | deep-read | 一手 SDK 文章，给出 agent loop、tool feedback、eval 改进方法。 |
+| A Diff Tool for AI | Anthropic Research, 2026-03-13 | 76 | deep-read | 研究向文章，本地相关性较窄，但对 changed-behavior review 很有迁移价值。 |
+| Scaling Managed Agents | Anthropic Engineering, 2026-04-08 | 83 | deep-read | 架构向文章，对稳定接口、harness 假设过期、session/sandbox 分离有帮助。 |
+| Harness Design for Long-Running Apps | Anthropic Engineering, 2026-03-24 | 88 | deep-read | 实验/产品经验结合，适合学习长任务 generator/evaluator 分工和 harness 简化原则。 |
+| Demystifying Evals for AI Agents | Anthropic Engineering, 2026-01-09 | 93 | deep-read | 直接给 eval 词汇、样本、grader、outcome/trajectory 边界，和本地验证方法强相关。 |
+| Effective Harnesses for Long-Running Agents | Anthropic Engineering, 2025-11-26 | 90 | deep-read | 直接命中长会话、中断恢复、progress artifact、基础测试与交接问题。 |
+| Agent 架构选型（微信） | tiny / 微信, 2026-04-15 | 79 | deep-read as reference-shape | 二次解读 Claude workflow 文章；技术观点回原文验证，主要学习四问法、场景矩阵和演进叙事。 |
 
-新 SOP 下，文章学习还必须在进入本表前先完成评分和 source-first reading draft：
-问题、方法、证据类型、适用前提、没有证明什么，以及结构化翻译笔记。
+Score band result: 全部达到 75+，但微信文章只作为 structure / method reference，不作为 primary technical evidence。
 
 ## Cross-Article Classification
 
-| 分类 | 文章 | 当前用途 |
+| 分类 | 文章 | 学习对象 |
 |---|---|---|
-| Agent-legible repo | OpenAI Harness Engineering | 学习如何让 repo 成为 agent 可读 source of record |
-| Workflow selection | Claude workflow patterns | 学习什么时候用 sequential / parallel / evaluator-optimizer |
-| Agent loop and tool feedback | Claude Agent SDK | 学习 gather context → act → verify → repeat 的最小闭环 |
-| Eval design | Demystifying evals, Diff tool | 学习如何验证行为差异、结果和轨迹 |
-| Long-running harness | Effective harnesses, Harness design, Managed Agents | 学习跨 session、评估器、稳定接口与假设过期问题 |
+| Agent-legible repo | OpenAI Harness Engineering | repo 如何成为 agent 可读 source of record |
+| Workflow selection | Claude workflow patterns, 微信结构参考 | 单 agent、skills、workflow、多 agent 的选型问题 |
+| Agent loop and tool feedback | Claude Agent SDK | gather context -> act -> verify -> repeat |
+| Eval and diff | Demystifying evals, Diff tool | 如何评 outcome、trajectory、source quality、behavior delta |
+| Long-running harness | Effective harnesses, Harness design, Managed Agents | 跨 session 恢复、evaluator、稳定接口、假设过期 |
 
 ## 1. OpenAI — Harness Engineering
 
-Source: `https://openai.com/index/harness-engineering/`，published 2026-02-11。
+### Source
 
-文章核心不是"把 AGENTS.md 写短"，而是把工程师工作上移到环境、约束、反馈闭环和 agent-legible repo 设计。它明确说 large instruction manual 会挤占上下文、腐烂、难验证，并主张把 `AGENTS.md` 做成 table of contents，repo docs 做 source of record（L80-L91）。它还强调 repository-local artifacts 是 agent 真正可见的知识（L221-L227），文档本身不足以保持架构一致，需要机械约束和 structural tests（L231-L239），并指出 agent 会复制已有坏模式，漂移需要持续清理而不是偶尔人工 cleanup（L283-L290）。
+| Field | Value |
+|---|---|
+| Title | Harness engineering: leveraging Codex in an agent-first world |
+| URL | `https://openai.com/index/harness-engineering/` |
+| Author / Publisher | OpenAI |
+| Published At | 2026-02-11 |
+| Retrieval Method | Web |
+| Score | 95 / deep-read |
 
-| claim | evidence | local usefulness | status | adoption boundary |
-|---|---|---|---|---|
-| `AGENTS.md` 应是 map，不是 encyclopedia | L80-L91 | 能解释为什么 root context 治理不能只看单文件行数，而要看默认加载上下文和 source pointer | accepted | 只能作为学习结论；改 root `AGENTS.md` 仍需当前 OpenSpec scope 和验证 |
-| repo-local artifact 比聊天 / 外部文档更可被 agent 使用 | L221-L227 | 支持"学习要进 wiki"而不是只留在对话里 | accepted | 不代表所有外部文章都自动新建页面；必须已有可复用学习 |
-| 文档不足，关键边界应机械可检 | L231-L239 | 提醒不要把防漂移只写成口号 | candidate | 当前没有 checker / lint 证据，不能升级成强制自动化要求 |
-| agent 会复制已有坏模式，漂移会积累 | L283-L290 | 支持定期复盘与差异审查 | candidate | 不在本轮新增 cleanup bot 或后台任务 |
+### Reading Draft
 
-## 2. Anthropic — Scaling Managed Agents
+**Problem.** 文章要解决的是 agent-first 开发里“模型越来越能写代码，但环境、约束、反馈和 repo 可读性跟不上”的问题。它把工程师的工作从直接写代码上移到 harness 设计：让 agent 能拿到正确上下文、使用正确工具、留下可验证 artifact。
 
-Source: `https://www.anthropic.com/engineering/managed-agents`，published 2026-04-08。
+**Method.** 核心方法是把 repo 变成 agent-legible source of record。`AGENTS.md` 不应承载百科式长规则，而应更像入口地图；真正的知识应落在 repo-local docs、tests、scripts 和结构化 artifact 中。文章还强调：文档本身不够，关键边界要靠 mechanical constraints 和 structural tests 防漂移。
 
-文章核心是把 agent 的 brain 与 hands 解耦：harness 会编码"模型还做不到什么"的假设，而这些假设会随着模型能力变化而过期（L17-L22）。Anthropic 把 session、harness、sandbox 抽象成可替换接口（L23-L25），避免把状态、运行循环和执行环境绑定成不可丢失的 "pet"（L27-L32）。
+**Evidence type.** OpenAI 工程经验和平台实践；可复核段落包括 `AGENTS.md` 作为目录/地图的建议（L80-L91）、repo-local artifact 的重要性（L221-L227）、文档不足与机械约束（L231-L239）、agent 复制既有模式导致漂移积累（L283-L290）。
 
-| claim | evidence | local usefulness | status | adoption boundary |
-|---|---|---|---|---|
-| harness 假设会过期，应被定期质疑 | L17-L22 | 学习页可以把"当前有效"与"长期规则"分开 | accepted | 不把今天的模型弱点固化进 permanent root rule |
-| 稳定接口比具体 harness 实现更长寿 | L23-L25 | 支持记录 source / session / evidence / artifact 这些稳定概念 | candidate | 本仓库不设计 managed-agent 平台接口 |
-| session / harness / sandbox 解耦提升恢复和调试性 | L27-L32 | 可作为 future runtime architecture 的参考 | candidate | 当前只是知识学习，不改执行架构或权限模型 |
+**Structured Translation Notes.**
 
-## 3. Claude — Common Workflow Patterns
+| Section | Paraphrased Meaning | Evidence Notes |
+|---|---|---|
+| `AGENTS.md` guidance | 常驻指令入口应指路，而不是把所有操作细节塞进默认上下文。 | L80-L91 |
+| Repo as source of record | agent 真正能稳定复用的是 repo 内可检索 artifact，不是聊天记忆。 | L221-L227 |
+| Docs are insufficient | 单靠文档很容易被绕过，关键约束要能被测试或结构性检查捕捉。 | L231-L239 |
+| Drift accumulates | agent 会复制已有坏模式；若 repo 中坏样例可见，漂移会继续放大。 | L283-L290 |
 
-Source: `https://claude.com/blog/common-workflow-patterns-for-ai-agents-and-when-to-use-them`，published 2026-03-05。
+**Applicability Conditions.** 适用于 agent 经常进入同一 repo、需要跨 session 恢复、或者规则/知识开始挤占默认上下文的场景。
 
-文章把 workflow 定义为给 agent 自主性加结构、checkpoint 和边界，而不是替代 agent 的判断（L278-L285）。它区分 sequential、parallel、evaluator-optimizer 三类，并明确每类都有成本收益权衡（L286-L299）。它还提醒：如果一个 agent 就能可靠完成，就不要强拆成 workflow；只在自然依赖或可靠性需要时拆分（L307-L319）。
+**What It Does Not Prove.** 它不证明“短文件一定更好”，也不证明所有约束都要自动化；它证明的是 agent 可见环境和反馈闭环比单纯堆 prompt 更重要。
 
-| claim | evidence | local usefulness | status | adoption boundary |
-|---|---|---|---|---|
-| workflow 是给自主性加边界，不是替代自主性 | L278-L285 | 帮助区分"学习过程"和"治理规则"两层 | accepted | 不自动创建新 workflow 资产 |
-| 默认从最简单 pattern 开始 | L286-L299 | 防止一上来加 parallel agents / evaluator loop | accepted | 只有可测 latency 或 quality gap 才升级 |
-| sequential 适合天然依赖链，单 agent 能做就别拆 | L307-L319 | 指导文章精读先用逐篇顺序流 | accepted | 不把顺序流写成全局硬规则 |
-| parallel 适合独立任务和多维 review | L322-L339 | 可作为后续多文章交叉复核候选 | candidate | 本轮不启用子 agent；没有明确并行收益证据 |
+### Transferable Learning
 
-## 4. Claude — Building Agents with the Claude Agent SDK
+| Source | Claim | Evidence | Local Usefulness | Adoption Boundary | Status |
+|---|---|---|---|---|---|
+| OpenAI L80-L91 | `AGENTS.md` 类入口应像 map，不像 encyclopedia。 | 一手工程建议 | 支持 root/context 治理看 loaded context 和 source pointer，不只看行数。 | 改 root `AGENTS.md` 仍需当前 OpenSpec scope 和验证。 | accepted |
+| OpenAI L221-L227 | repo-local artifact 比聊天结论更可复用。 | source-of-record 段落 | 支持文章学习必须落 wiki，而不是留在聊天。 | 不代表每个链接都建页；需有可复用学习。 | accepted |
+| OpenAI L231-L239 | 关键边界需要机械可检。 | mechanical constraints / tests 段落 | 提醒未来不要把防漂移只写成口号。 | 当前没有 checker demo，不能升级成自动化要求。 | candidate |
+| OpenAI L283-L290 | agent 会复制已有模式，坏样例会导致漂移。 | drift / replication 段落 | 支持定期复盘、删除诱导性坏样例。 | 本轮不新增 cleanup bot。 | candidate |
 
-Source: `https://claude.com/blog/building-agents-with-the-claude-agent-sdk`，published 2025-09-29。
+## 2. Claude — Common Workflow Patterns
 
-文章把 Claude Agent SDK 的基本循环说成 `gather context -> take action -> verify work -> repeat`（L290-L296），强调 agent 需要像人一样有文件、命令、lint、debug 等工具（L276-L281）。它还把可靠性建立在具体反馈上：规则、视觉反馈、LLM judge 各有适用场景和成本（L350-L379）；改进 agent 要看失败样本，问它是否缺信息、规则、工具或 eval set（L380-L388）。
+### Source
 
-| claim | evidence | local usefulness | status | adoption boundary |
-|---|---|---|---|---|
-| agent loop 是 gather context / act / verify / repeat | L290-L296 | 可作为学习记录的基本检查顺序 | accepted | 不把 SDK 文章直接升级成 repo policy |
-| 具体反馈优先于抽象鼓励 | L350-L360 | 支持每个有用点必须绑定 evidence | accepted | 不新增 lint / judge，除非有本地测试需求 |
-| 视觉任务需要视觉反馈 | L361-L370 | 对未来 HTML / report QA 有用 | candidate | 当前文章学习不做 UI 验证 |
-| LLM judge 有成本和鲁棒性限制 | L375-L379 | 防止滥用 evaluator | accepted | 不能把另一模型意见当最终 proof |
-| 失败分析要问缺信息、规则、工具还是 eval set | L380-L388 | 可作为后续 agent 行为诊断框架 | candidate | 还未在本仓库形成正式 checklist |
+| Field | Value |
+|---|---|
+| Title | Common workflow patterns for AI agents and when to use them |
+| URL | `https://claude.com/blog/common-workflow-patterns-for-ai-agents-and-when-to-use-them` |
+| Author / Publisher | Claude / Anthropic |
+| Published At | 2026-03-05 |
+| Retrieval Method | Web |
+| Score | 91 / deep-read |
 
-## 5. Anthropic — A Diff Tool for AI
+### Reading Draft
 
-Source: `https://www.anthropic.com/research/diff-tool`，published 2026-03-13。
+**Problem.** 文章要解决的是“什么时候让一个 agent 自主做，什么时候加 workflow，什么时候拆并行或 evaluator”的架构选型问题。
 
-文章讨论的是模型行为 diff，不是工程 diff 工具。可迁移的学习是：全量审计未知风险成本太高，diff 能把注意力引向变化区域（L18-L23）；但 diff 不是银弹，只是 high-recall screening，需要后续验证（L23-L24）。结论再次强调关注行为差异可以更聪明地审计变化（L67-L71）。
+**Method.** 它把 workflow 看作给 agent 自主性加 checkpoint 和边界的结构，而不是替代智能。文章区分 sequential、parallel、evaluator-optimizer，并强调按任务依赖、可靠性、成本、延迟选择，而不是因为架构高级就使用。
 
-| claim | evidence | local usefulness | status | adoption boundary |
-|---|---|---|---|---|
-| 不要每次从头审计全量语料，先看变化 | L18-L23 | 支持 review 关注 changed behavior 和 evidence delta | accepted | 不能用 diff 代替语义判断 |
-| diff 只是 high-recall screening，不是结论 | L23-L24 | 防止把"发现差异"误当"找到问题" | accepted | 后续仍需本地证据和人工判断 |
-| 行为差异是有限注意力的优先入口 | L67-L71 | 对跨版本 agent / rule / skill review 有用 | candidate | 当前没有自动行为 diff 工具 |
+**Evidence type.** Claude 产品/工程经验和 pattern catalog；关键段落包括 workflow 作用（L278-L285）、三类 workflow 的成本收益（L286-L299）、sequential 的适用条件（L307-L319）、parallel 的独立任务和多视角场景（L322-L339）。
+
+**Structured Translation Notes.**
+
+| Section | Paraphrased Meaning | Evidence Notes |
+|---|---|---|
+| Workflow purpose | workflow 是边界和检查点，不是把 agent 变成脚本。 | L278-L285 |
+| Pattern tradeoffs | sequential、parallel、evaluator 都有成本，不能默认越复杂越好。 | L286-L299 |
+| Sequential | 如果步骤天然依赖，顺序流比多 agent 更稳。 | L307-L319 |
+| Parallel | 独立任务或多视角评审适合并行。 | L322-L339 |
+
+**Applicability Conditions.** 适用于任务边界和依赖关系能说清的场景；如果单 agent 能可靠完成，不应硬拆 workflow。
+
+**What It Does Not Prove.** 它不证明多 agent 是默认目标，也不证明 evaluator loop 应该常驻；它只提供选型条件。
+
+### Transferable Learning
+
+| Source | Claim | Evidence | Local Usefulness | Adoption Boundary | Status |
+|---|---|---|---|---|---|
+| Claude L278-L285 | workflow 是给 agent 自主性加边界。 | workflow framing | 区分学习、执行、验证，不把所有事情都固化成规则。 | 不自动创建新 workflow。 | accepted |
+| Claude L286-L299 | 复杂 workflow 只有在收益超过成本时才值得。 | pattern tradeoff | 防止一上来 parallel agents / evaluator loop。 | 需要可测 latency 或 quality gap 才升级。 | accepted |
+| Claude L307-L319 | 能画出依赖链时，sequential 足够。 | sequential pattern | 指导文章返工先逐篇顺序处理。 | 不写成全局硬规则。 | accepted |
+| Claude L322-L339 | parallel 适合独立任务或多视角评估。 | parallel pattern | 可用于后续多文章交叉 review。 | 当前未启用子 agent；先不升级。 | candidate |
+
+## 3. Claude — Building Agents with the Claude Agent SDK
+
+### Source
+
+| Field | Value |
+|---|---|
+| Title | Building agents with the Claude Agent SDK |
+| URL | `https://claude.com/blog/building-agents-with-the-claude-agent-sdk` |
+| Author / Publisher | Claude / Anthropic |
+| Published At | 2025-09-29 |
+| Retrieval Method | Web |
+| Score | 88 / deep-read |
+
+### Reading Draft
+
+**Problem.** 文章关注如何构建能在真实环境中行动的 agent，而不是只会回复文本的模型调用。
+
+**Method.** 它把 agent loop 定义成 gather context、take action、verify work、repeat，并强调工具、文件、命令、lint、debug 反馈对 agent 可靠性的重要性。改进 agent 时要看失败样本，判断缺的是信息、规则、工具还是 eval set。
+
+**Evidence type.** SDK 产品实践和设计经验；关键段落包括工具需求（L276-L281）、agent loop（L290-L296）、具体反馈机制（L350-L379）、失败分析问题集（L380-L388）。
+
+**Structured Translation Notes.**
+
+| Section | Paraphrased Meaning | Evidence Notes |
+|---|---|---|
+| Tools | agent 需要能读写文件、运行命令、得到 lint/debug 反馈。 | L276-L281 |
+| Loop | agent 可靠性来自 context、action、verification 的循环。 | L290-L296 |
+| Feedback | 规则、视觉反馈、LLM judge 都是反馈工具，但适用边界不同。 | L350-L379 |
+| Improvement | 失败后要问缺信息、规则、工具还是 eval。 | L380-L388 |
+
+**Applicability Conditions.** 适用于需要 agent 实际操作 repo、文件、命令和验证的场景。
+
+**What It Does Not Prove.** 它不证明某个 SDK 是本仓库必须采用的工具，也不证明 LLM judge 可以替代人工校准。
+
+### Transferable Learning
+
+| Source | Claim | Evidence | Local Usefulness | Adoption Boundary | Status |
+|---|---|---|---|---|---|
+| Claude SDK L290-L296 | agent loop 是 context -> action -> verify -> repeat。 | SDK loop 段落 | 作为文章学习和执行任务的基本闭环。 | 不直接升级成 repo policy。 | accepted |
+| Claude SDK L350-L360 | 具体反馈比抽象鼓励更有用。 | feedback 段落 | 支持每个学习点必须有 evidence。 | 不新增 lint/judge，除非本地需要。 | accepted |
+| Claude SDK L361-L370 | 视觉任务需要视觉反馈。 | visual feedback 段落 | 未来 HTML/report QA 可复用。 | 当前文章学习不做 UI 验证。 | candidate |
+| Claude SDK L375-L379 | LLM judge 有成本和鲁棒性边界。 | evaluator caveat | 防止把另一个模型意见当最终 proof。 | judge 只能是证据之一。 | accepted |
+| Claude SDK L380-L388 | 改进 agent 要看失败样本和缺口类型。 | failure-analysis 段落 | 可作为 agent 行为诊断框架。 | 尚未形成正式 checklist。 | candidate |
+
+## 4. Anthropic — A Diff Tool for AI
+
+### Source
+
+| Field | Value |
+|---|---|
+| Title | A diff tool for AI |
+| URL | `https://www.anthropic.com/research/diff-tool` |
+| Author / Publisher | Anthropic Research |
+| Published At | 2026-03-13 |
+| Retrieval Method | Web |
+| Score | 76 / deep-read |
+
+### Reading Draft
+
+**Problem.** 文章要解决模型行为变化难以审计的问题。传统 eval 更擅长抓已知风险，未知行为差异需要另一种高召回筛查方式。
+
+**Method.** 它提出行为 diff 思路：不是从头审计所有行为，而是比较变化前后，把注意力集中到差异上，再由人或后续检查判断重要性。
+
+**Evidence type.** 研究工具介绍；关键段落包括 eval 难覆盖未知风险（L18-L23）、diff 只是 screening 不是结论（L23-L24）、关注行为差异以优化审计注意力（L67-L71）。
+
+**Structured Translation Notes.**
+
+| Section | Paraphrased Meaning | Evidence Notes |
+|---|---|---|
+| Known vs unknown risks | 传统 eval 适合已知风险；未知变化需要 diff。 | L18-L23 |
+| Screening boundary | diff 只能提示差异，不等于判断差异好坏。 | L23-L24 |
+| Attention routing | 有限审计注意力应先看变化区域。 | L67-L71 |
+
+**Applicability Conditions.** 适用于版本前后行为变化、规则/skill 修改前后比较、或模型输出变化审查。
+
+**What It Does Not Prove.** 它不证明 diff 可以代替 eval，也不证明本仓库已经有自动行为 diff 能力。
+
+### Transferable Learning
+
+| Source | Claim | Evidence | Local Usefulness | Adoption Boundary | Status |
+|---|---|---|---|---|---|
+| Anthropic Diff L18-L23 | 不要每次从头审全量，先看变化。 | known/unknown risk 段落 | 支持 review changed behavior 和 evidence delta。 | 不能用 diff 代替语义判断。 | accepted |
+| Anthropic Diff L23-L24 | diff 是 high-recall screening。 | caveat 段落 | 防止把“发现差异”当成“找到问题”。 | 后续仍需人工/本地证据。 | accepted |
+| Anthropic Diff L67-L71 | 行为差异是注意力入口。 | conclusion 段落 | 对跨版本 rule/skill review 有用。 | 当前无自动工具。 | candidate |
+
+## 5. Anthropic — Scaling Managed Agents
+
+### Source
+
+| Field | Value |
+|---|---|
+| Title | Scaling Managed Agents: Decoupling the brain from the hands |
+| URL | `https://www.anthropic.com/engineering/managed-agents` |
+| Author / Publisher | Anthropic Engineering |
+| Published At | 2026-04-08 |
+| Retrieval Method | Web |
+| Score | 83 / deep-read |
+
+### Reading Draft
+
+**Problem.** 文章讨论 agent 平台如何避免把模型、harness、执行环境、状态和 sandbox 绑定成难维护系统。
+
+**Method.** 它主张把 brain 和 hands 解耦：session、harness、sandbox 用稳定接口连接。这样当模型能力提升或执行假设过期时，可以替换 harness 或执行层，而不是重写整个系统。
+
+**Evidence type.** Anthropic agent runtime / platform 架构经验；关键段落包括 harness 假设会过期（L17-L22）、稳定接口抽象（L23-L25）、状态/运行循环/执行环境不应绑定成 pet（L27-L32）、session/harness/sandbox 的隔离价值（L35-L43）。
+
+**Structured Translation Notes.**
+
+| Section | Paraphrased Meaning | Evidence Notes |
+|---|---|---|
+| Stale assumptions | harness 里常藏着“模型做不到”的假设，这些假设会过期。 | L17-L22 |
+| Stable interfaces | session、harness、sandbox 之间应靠稳定接口协作。 | L23-L25 |
+| Recovery | 不把状态和执行环境绑定死，系统才可恢复、可调试。 | L27-L32 |
+| Isolation | 隔离有助于凭证、安全和失败恢复。 | L35-L43 |
+
+**Applicability Conditions.** 适用于构建 agent 平台、长期运行环境或跨任务状态管理。
+
+**What It Does Not Prove.** 它不证明本仓库应立即设计 managed-agent 平台；当前只能迁移“假设会过期、接口要稳定”的判断。
+
+### Transferable Learning
+
+| Source | Claim | Evidence | Local Usefulness | Adoption Boundary | Status |
+|---|---|---|---|---|---|
+| Anthropic Managed L17-L22 | harness 假设会过期。 | stale-assumption 段落 | 防止把当前模型弱点写成永久规则。 | 不直接改 root/skill。 | accepted |
+| Anthropic Managed L23-L25 | 稳定接口比实现细节更长寿。 | interface 段落 | 支持 source/session/evidence/artifact 这类稳定概念。 | 不设计平台接口。 | candidate |
+| Anthropic Managed L35-L43 | session/harness/sandbox 分离提升恢复和隔离。 | isolation 段落 | 对未来运行架构有参考价值。 | 当前不改权限/沙箱架构。 | candidate |
 
 ## 6. Anthropic — Harness Design for Long-Running Application Development
 
-Source: `https://www.anthropic.com/engineering/harness-design-long-running-apps`，published 2026-03-24。
+### Source
 
-文章用前端应用生成实验说明：长任务中，context anxiety、self-evaluation 偏乐观、主观质量难打分都会让单 agent 失败（L24-L34）。解决方式是 planner / generator / evaluator 分工、每个 sprint 定义 testable behaviors（L96-L97），并用 evaluator 按 contract criteria 跑 Playwright、产出具体 fail（L115-L122）。后半段更重要：harness 很容易变重，每个组件都编码了模型做不到的假设，应一个组件一个组件地删减并观察影响（L126-L138）。
+| Field | Value |
+|---|---|
+| Title | Harness design for long-running application development |
+| URL | `https://www.anthropic.com/engineering/harness-design-long-running-apps` |
+| Author / Publisher | Anthropic Engineering |
+| Published At | 2026-03-24 |
+| Retrieval Method | Web |
+| Score | 88 / deep-read |
 
-| claim | evidence | local usefulness | status | adoption boundary |
-|---|---|---|---|---|
-| 自评偏乐观，复杂任务需要外部评价视角 | L31-L34 | 解释为什么关键验证可用另一个 reviewer | candidate | 不默认启用 evaluator agent |
-| testable behavior contract 能让评价更具体 | L96-L97, L115-L120 | 可用于未来高风险输出验收 | candidate | 本轮不新增 contract 模板 |
-| evaluator 需要调参，人类校准不可省 | L121-L122 | 防止把 LLM judge 当可靠权威 | accepted | evaluator 输出只能是证据之一 |
-| harness 组件会过期，应逐个删减并测影响 | L126-L138 | 支持渐进式而非无限增殖 | accepted | 不在学习页里决定删哪个资产 |
+### Reading Draft
+
+**Problem.** 文章描述长任务应用开发中 agent 容易自评过乐观、上下文焦虑、质量标准不稳定的问题。
+
+**Method.** 它使用 planner / generator / evaluator 分工。planner 定义 sprint 和 testable behaviors；generator 生成应用；evaluator 按 contract criteria 用 browser/test 工具检查。文章最后提醒 harness 不应无限增殖，每个组件都编码模型能力假设，应逐个删减并观察效果。
+
+**Evidence type.** Anthropic 前端应用生成实验和 harness 设计经验；关键段落包括问题定义（L24-L34）、testable behaviors（L96-L97）、evaluator logs 和 granular criteria（L115-L122）、harness 组件会过期并应简化（L126-L138）。
+
+**Structured Translation Notes.**
+
+| Section | Paraphrased Meaning | Evidence Notes |
+|---|---|---|
+| Failure mode | 长任务里 agent 常高估自己完成质量。 | L24-L34 |
+| Planner contract | planner 要把目标拆成可测试行为。 | L96-L97 |
+| Evaluator | evaluator 用具体 criteria 和日志让失败可行动。 | L115-L122 |
+| Harness simplification | harness 不是越多越好，组件要能删减。 | L126-L138 |
+
+**Applicability Conditions.** 适用于复杂、长时间、主观质量高、需要外部评估的开发任务。
+
+**What It Does Not Prove.** 它不证明每个任务都需要 evaluator，也不证明本仓库应新增 evaluator agent。
+
+### Transferable Learning
+
+| Source | Claim | Evidence | Local Usefulness | Adoption Boundary | Status |
+|---|---|---|---|---|---|
+| Anthropic Harness Design L31-L34 | 自评偏乐观，复杂任务需要外部评价。 | failure 段落 | 支持高风险变更用 review/evaluation。 | 不默认启用 evaluator agent。 | candidate |
+| Anthropic Harness Design L96-L122 | testable behavior contract 让评价更具体。 | planner/evaluator 段落 | 可用于未来高风险输出验收。 | 当前不新增模板。 | candidate |
+| Anthropic Harness Design L121-L122 | evaluator 需要人类校准。 | tuning caveat | 防止 LLM judge 权威化。 | evaluator 输出只是证据之一。 | accepted |
+| Anthropic Harness Design L126-L138 | harness 组件会过期，应逐个删减。 | simplification 段落 | 支持渐进式治理，不无限增殖。 | 不在本页决定删资产。 | accepted |
 
 ## 7. Anthropic — Demystifying Evals for AI Agents
 
-Source: `https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents`，published 2026-01-09。
+### Source
 
-文章给了 agent eval 的词汇和路线图：task、trial、grader、transcript、outcome、evaluation harness 各自不同（L30-L36）。对 research agents，质量要看 groundedness、coverage、source quality，并常需要与专家判断校准（L199-L205）。对 computer-use agents，必须在真实或 sandboxed 环境里看结果，而不仅看过程（L206-L210）。从零开始做 eval 时，建议先从真实失败和手工检查中收集 20-50 个任务（L222-L232），任务规格要清楚，grader 检查项必须在题面里可见（L234-L237），并用隔离环境减少噪声（L242-L249）。
+| Field | Value |
+|---|---|
+| Title | Demystifying evals for AI agents |
+| URL | `https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents` |
+| Author / Publisher | Anthropic Engineering |
+| Published At | 2026-01-09 |
+| Retrieval Method | Web |
+| Score | 93 / deep-read |
 
-| claim | evidence | local usefulness | status | adoption boundary |
-|---|---|---|---|---|
-| eval 要区分 task / trial / grader / transcript / outcome / harness | L30-L36 | 给学习和验证讨论提供准确词汇 | accepted | 不把词汇表变成正式 spec |
-| research eval 要看 groundedness / coverage / source quality | L199-L205 | 直接适用于本次文章精读质量 | accepted | 当前仍是人工 wiki 证据，不是自动 eval |
-| computer-use eval 看真实或 sandboxed outcome | L206-L210 | 指导未来 UI / browser 任务验证 | candidate | 本轮不运行 GUI eval |
-| 初始 eval 可从真实失败和手工检查开始 | L222-L232 | 可用于后续把 drift 案例转成 fixture | candidate | 尚未建立 20-50 样本集 |
-| ambiguous task 会污染 eval | L234-L237 | 支持先澄清"学习 vs 治理" | accepted | 不把所有模糊都升级成流程规则 |
-| trial 环境应隔离，避免共享状态污染 | L242-L249 | 对后续自动测试有用 | candidate | 当前 wiki 学习不涉及运行环境 |
+### Reading Draft
+
+**Problem.** 文章要解决的是 agent eval 容易概念混乱：到底评 task、trial、trajectory、transcript、outcome 还是 grader。
+
+**Method.** 它先定义 eval 词汇，再按 research agents、computer-use agents 等场景说明 eval 应该看什么。它强调从真实失败和手工检查开始收集样本；任务规格要清楚；grader 检查项必须能从题面或输出中判断；运行环境要隔离。
+
+**Evidence type.** Anthropic eval 工程方法；关键段落包括 eval 术语（L30-L36）、research agent 的 groundedness/coverage/source quality（L199-L205）、computer-use outcome（L206-L210）、从真实失败开始收集样本（L222-L232）、任务规格清晰性（L234-L237）、隔离环境（L242-L249）。
+
+**Structured Translation Notes.**
+
+| Section | Paraphrased Meaning | Evidence Notes |
+|---|---|---|
+| Eval vocabulary | task、trial、grader、transcript、outcome、harness 不是一回事。 | L30-L36 |
+| Research eval | 研究型任务要看 groundedness、coverage、source quality。 | L199-L205 |
+| Computer-use eval | 操作型 agent 要看环境中的实际结果。 | L206-L210 |
+| Dataset start | 先从真实失败和人工检查收集样本。 | L222-L232 |
+| Task clarity | 模糊任务会污染 eval。 | L234-L237 |
+| Isolation | trial 环境应隔离，避免共享状态污染。 | L242-L249 |
+
+**Applicability Conditions.** 适用于需要验证 agent 工作质量、文章学习质量、UI 操作结果、跨 session 恢复结果的场景。
+
+**What It Does Not Prove.** 它不证明必须马上建立 20-50 个样本集，也不证明自动 grader 可以替代人工验收。
+
+### Transferable Learning
+
+| Source | Claim | Evidence | Local Usefulness | Adoption Boundary | Status |
+|---|---|---|---|---|---|
+| Anthropic Evals L30-L36 | eval 词汇必须区分。 | vocabulary 段落 | 避免把 harness、grader、outcome 混用。 | 不独立写成 spec。 | accepted |
+| Anthropic Evals L199-L205 | research eval 要看 groundedness / coverage / source quality。 | research-agent 段落 | 直接适用于文章精读质量。 | 仍是人工 wiki 证据，不是自动 eval。 | accepted |
+| Anthropic Evals L206-L210 | computer-use eval 看真实或 sandboxed outcome。 | computer-use 段落 | 指导未来 UI/browser 验证。 | 本轮不运行 GUI eval。 | candidate |
+| Anthropic Evals L222-L232 | 初始 eval 可从真实失败开始。 | dataset 段落 | 可把 drift 案例转 fixture。 | 尚未建立样本集。 | candidate |
+| Anthropic Evals L234-L237 | 模糊任务会污染 eval。 | task clarity 段落 | 支持先澄清学习 vs 治理。 | 不把所有模糊都升级成流程规则。 | accepted |
 
 ## 8. Anthropic — Effective Harnesses for Long-Running Agents
 
-Source: `https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents`，published 2025-11-26。
+### Source
 
-文章的问题定义很贴近长会话：agent 跨多个 context window 工作时，新 session 没有记忆，compaction 不够，容易半路留下未记录状态或过早宣告完成（L19-L30）。Anthropic 的方案是 initializer agent 建 `init.sh`、progress file 和初始 git commit，后续 coding agent 每轮只做增量并留下结构化更新（L31-L34）。文章还强调 git commit 和 progress file 能让 agent 恢复状态（L60-L61），显式要求端到端测试能减少"标记完成但功能不可用"（L62-L70），每轮开始先读路径、日志、progress 和基础测试（L71-L101）。
+| Field | Value |
+|---|---|
+| Title | Effective harnesses for long-running agents |
+| URL | `https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents` |
+| Author / Publisher | Anthropic Engineering |
+| Published At | 2025-11-26 |
+| Retrieval Method | Web |
+| Score | 90 / deep-read |
 
-| claim | evidence | local usefulness | status | adoption boundary |
-|---|---|---|---|---|
-| 长任务失败常来自跨 session 记忆断裂和过早完成 | L19-L30 | 支持每次中断后必须看 git/log/artifact | accepted | 本页不改全局 AGENTS |
-| progress file + git commit 是恢复机制 | L31-L34, L60-L61 | 支持 repo-visible trace 和小步提交 | accepted | 不强制所有非代码学习都提交每个小节 |
-| 基础端到端测试比只看代码更能防止假完成 | L62-L70 | 对应用开发验证有用 | candidate | 当前文章学习只需 source/evidence 检查 |
-| session 启动应先 get bearings | L71-L101 | 支持恢复时先查 pwd/git/progress | accepted | 已有 root / repo 规则覆盖，不重复新增规则 |
+### Reading Draft
+
+**Problem.** 文章解决长会话 agent 的恢复和交接问题：context window 会重置，新 session 没有前文记忆，agent 容易过早宣告完成或留下不可恢复状态。
+
+**Method.** Anthropic 的方案是 initializer 建启动脚本、progress file 和初始 commit；后续 agent 每轮读 progress、日志、测试，再做增量更新。git commit 和 progress file 共同形成恢复机制；基础端到端测试防止“看起来完成但不可用”。
+
+**Evidence type.** Anthropic 长任务 harness 经验；关键段落包括长会话失败模式（L19-L30）、initializer/progress/commit（L31-L34）、git/progress 恢复（L60-L61）、端到端测试防假完成（L62-L70）、每轮 get bearings（L71-L101）。
+
+**Structured Translation Notes.**
+
+| Section | Paraphrased Meaning | Evidence Notes |
+|---|---|---|
+| Long-session failure | session 重置会让 agent 丢状态、假完成。 | L19-L30 |
+| Initializer | 用启动脚本、progress file、commit 建恢复入口。 | L31-L34 |
+| Recovery | git commit 和 progress file 是恢复锚点。 | L60-L61 |
+| E2E tests | 基础端到端测试比只看代码更能防假完成。 | L62-L70 |
+| Bearings | 每轮开始先读路径、日志、progress、测试。 | L71-L101 |
+
+**Applicability Conditions.** 适用于跨轮、跨 context、长时间执行的代码/文档/治理任务。
+
+**What It Does Not Prove.** 它不证明每个小学习动作都要 init.sh 或每步 commit；它证明的是长任务需要恢复 artifact。
+
+### Transferable Learning
+
+| Source | Claim | Evidence | Local Usefulness | Adoption Boundary | Status |
+|---|---|---|---|---|---|
+| Anthropic Effective L19-L30 | 长任务失败常来自 session 断裂和假完成。 | problem 段落 | 支持中断后查 git/log/artifact。 | 不改全局 AGENTS。 | accepted |
+| Anthropic Effective L31-L34, L60-L61 | progress file + git commit 是恢复机制。 | initializer/recovery 段落 | 支持 repo-visible trace 和小步提交。 | 不强制非代码学习每小节提交。 | accepted |
+| Anthropic Effective L62-L70 | 基础 E2E 防假完成。 | testing 段落 | 对应用开发验证有用。 | 当前文章学习只做 source/evidence 检查。 | candidate |
+| Anthropic Effective L71-L101 | session 启动应先 get bearings。 | startup 段落 | 支持恢复时先查 pwd/git/progress。 | 已有 root/repo 规则覆盖，不重复新增。 | accepted |
+
+## 9. 微信参考 — Agent 架构选型
+
+### Source
+
+| Field | Value |
+|---|---|
+| Title | Agent架构选型：好架构都是逼出来的 |
+| URL | `https://mp.weixin.qq.com/s/-nXD7gp75SHeZHHhTh3lNw` |
+| Author / Publisher | tiny / 微信公众号 |
+| Published At | 2026-04-15 |
+| Retrieval Method | `weixin-reader` |
+| Score | 79 / deep-read as reference-shape |
+
+### Reading Draft
+
+**Problem.** 这篇文章要把 Claude workflow pattern 的架构选择讲成业务决策问题：单 agent、skills、workflow、多 agent 不是技术炫技，而是被控制度、复杂度、资源和专业度逼出来的选择。
+
+**Method.** 它采用“四问法”：控制度、问题域复杂度、资源约束、领域专业度。之后用四种架构场景表和演进案例解释为什么应从简单方案开始，逐步升级。
+
+**Evidence type.** 二次解读和结构化表达，原文技术依据指向 Claude workflow pattern 和 Anthropic report。它的价值主要是表达结构、读者引导和选型框架，不是 primary technical evidence。
+
+**Structured Translation Notes.**
+
+| Section | Paraphrased Meaning | Evidence Notes |
+|---|---|---|
+| Four questions | 用控制度、复杂度、资源、专业度把架构选择从抽象讨论拉回业务约束。 | 微信正文 01-04 |
+| Architecture matrix | 单 agent、串行、并行、多 agent 各自有适用场景。 | 微信正文 05 |
+| Evolution narrative | 架构升级来自真实瓶颈，而不是预先追求复杂。 | 微信正文 06 |
+| Skills option | 多领域问题不一定要多 agent，单 agent + skills 可能足够。 | 微信正文 04 |
+
+**Applicability Conditions.** 适合作为中文学习页的表达结构参考：先用问题框架组织读者，再给矩阵和演进路径。
+
+**What It Does Not Prove.** 它不替代 Claude 原文；所有技术主张要回到 Claude workflow pattern 或 Anthropic report 验证。
+
+### Transferable Learning
+
+| Source | Claim | Evidence | Local Usefulness | Adoption Boundary | Status |
+|---|---|---|---|---|---|
+| 微信 01-04 | 架构选型可先问四个业务约束问题。 | 文章结构 | 可复用到中文 wiki 学习页和决策说明。 | 技术判断仍回官方原文验证。 | accepted |
+| 微信 05 | 场景矩阵比散点总结更容易学会。 | 四架构矩阵 | 改善本页 cross-article synthesis 的表达。 | 不照搬文字或图片。 | accepted |
+| 微信 06 | 架构演进应被瓶颈推动。 | 演进案例 | 支持“先简单，再升级”的学习表达。 | 案例是说明性，不作为本仓库证据。 | candidate |
+| 微信 04 | 单 agent + skills 是多领域问题的中间选项。 | skills section | 直接回应“是否一遇到问题就多 agent/新 skill”。 | 仍需结合 Claude 原文和本地 evidence。 | candidate |
 
 ## Current Accepted Learnings
 
-这些是本页当前认为可以复用、但仍不直接升级成规则的学习结论：
-
-1. Agent 可用的知识必须 repo-visible、可检索、可恢复；聊天里的结论不是稳定资产。
+1. Agent 可用知识必须 repo-visible、可检索、可恢复；聊天里的结论不是稳定资产。
 2. `AGENTS.md` 类入口更适合作 map，而不是把所有细节常驻加载。
 3. 工作流复杂度要从 simplest viable pattern 开始，只有可测收益时才升级。
-4. 验证必须看 outcome、source quality、changed behavior 和恢复证据，不只看文本是否自洽。
-5. evaluator / LLM judge 有价值，但需要人类校准，不能作为单独权威。
-6. harness / workflow / rule 里的每个组件都编码模型能力假设，必须允许随着模型变化被删减。
+4. 对文章学习而言，claim/evidence 表只是 transfer extraction；精读必须先有 source-first reading draft。
+5. 验证要看 outcome、source quality、changed behavior 和恢复证据，不只看文本是否自洽。
+6. evaluator / LLM judge 有价值，但需要人类校准，不能作为单独权威。
+7. harness / workflow / rule 里的每个组件都编码模型能力假设，必须允许随着模型变化被删减。
+8. 中文学习材料可学习结构和表达，但技术主张必须回到 primary source。
 
 ## Candidate Only
-
-以下学习尚不能升级：
 
 - 自动 doc-gardening / cleanup bot：有外部证据，但本仓库没有运行 demo。
 - parallel agents / evaluator-optimizer loop：有模式说明，但当前学习任务未证明需要并行。
 - 自动 behavior diff 工具：diff 思想有用，但尚无本地工具或样本集。
 - 20-50 个 eval dataset：方向成立，但当前还没有本地样本收集。
 - session / harness / sandbox 平台解耦：架构思想成立，但超出本仓库当前工具边界。
+- 单 agent + skills 的架构选型表：适合继续学习，但不能替代本地 routing evidence。
 
 ## Rejected Moves
 
@@ -201,9 +485,10 @@ Source: `https://www.anthropic.com/engineering/effective-harnesses-for-long-runn
 - 不把文章句子直接写进 root `AGENTS.md`、repo `AGENTS.md`、skill 或 spec。
 - 不因为文章提到 evaluator 就新增 evaluator agent。
 - 不因为文章提到 harness 就新建自动 harness。
+- 不把微信二次解读当 primary technical evidence。
 - 不用"外部大厂这么做"替代本地 RED/GREEN、demo、git 对照或运行证据。
 
-## Next Step
+## Next Action
 
 如果后续要把某条学习升级成行为资产，必须另开明确任务，并补足以下至少一种证据：
 

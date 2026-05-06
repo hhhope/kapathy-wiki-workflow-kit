@@ -23,6 +23,7 @@ derived_from:
   - https://www.anthropic.com/engineering/harness-design-long-running-apps
   - https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
   - https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+  - https://mp.weixin.qq.com/s/-nXD7gp75SHeZHHhTh3lNw
 notes_scope: agent / harness / eval / managed agents 外部文章精读专题的目录入口。
   本页记录要学什么、为什么学、怎么读；不承载逐篇结论，也不把文章结论直接升级成
   AGENTS、skill、spec 或 repo policy。
@@ -86,14 +87,13 @@ notes_scope: agent / harness / eval / managed agents 外部文章精读专题的
 
 - 逐篇精读是否需要继续拆成每篇独立页面，还是当前专题页分节足够？
 - 哪些 `candidate` 后续值得做本地 RED/GREEN 或 demo？
-- 是否要把现有 pre-SOP 精读页逐篇补成新模板：评分、结构化翻译笔记、证据门和
-  promotion boundary。
 
 ## Next Step
 
 文章学习 SOP 已经固化到
-`.codex/skills/article-learning-capture/`，逐篇精读初版落在
-[agent-harness-article-learning.md](agent-harness-article-learning.md)。后续同类文章
-学习先走 skill 的 scorecard 和 wiki template；若要把某条学习升级成行为资产，
+`.codex/skills/article-learning-capture/`，本批文章也已经按 score-first 和
+structured reading notes 返工到
+[agent-harness-article-learning.md](agent-harness-article-learning.md)。后续同类
+文章学习先走 skill 的 scorecard 和 wiki template；若要把某条学习升级成行为资产，
 需要另开明确任务，并补本地 RED/GREEN、demo、git 对照或 before / after behavior
 delta。
