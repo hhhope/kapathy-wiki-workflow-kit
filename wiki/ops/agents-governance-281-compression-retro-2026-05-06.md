@@ -118,3 +118,32 @@ read-only 撤回不成立——read-only 操作可以有副作用（日志、缓
 **我们做的不是压缩一份文件，是把"立规矩 vs 用规矩"拆开**。
 立规矩花了 1 个月，用规矩花了半天。下次类似治理问题，**先直接动手，如果卡住再回来补规则**，
 比"先把规则建好再动手"快一个数量级。
+
+## 2026-05-06 追加：预算压缩方案漂移校准
+
+触发问题：新的 `compress-root-agents-budget` 方案一开始把
+`Global Rule Routing` 抽到 `~/.codex/rule-routing.md`，并让 root `AGENTS.md`
+在非 trivial 工作前加载它。用户指出：这只减少 `AGENTS.md` 行数，不减少 Codex
+实际读取的整体上下文。
+
+当前判断：这是从"降低默认上下文"漂移成了"降低单文件行数"。如果继续实施，会把
+治理工程的地基从 behavior-asset abstraction routing 扭成 file-size accounting。
+
+待验证事实：
+- `~/.codex/AGENTS.md` 当前行/词/字节数，以及 `Global Rule Routing` 占比。
+- 新 proposal/design 是否把成功指标写成 line-count，而不是 loaded-context count。
+- 方案里的 load pointer 是否会让抽出的内容在默认路径上仍被读取。
+- 哪些规则必须 ambient 常驻，哪些只能 trigger-gated 加载。
+
+已验证事实：
+- `~/.codex/AGENTS.md` 当前为 283 行 / 1865 词 / 12459 字节。
+- `Global Rule Routing` 当前为 30 行 / 313 词 / 2733 字节，占 root
+  AGENTS 约 10.6% 行数、16.8% 词数、21.9% 字节。
+- 新 proposal 明确写的是 `line-count compression`，新 design 的预算目标也是
+  `AGENTS.md` 行数；没有定义默认 loaded-context count。
+- 新 design 要求在非 trivial implementation / verification 前加载
+  `~/.codex/rule-routing.md`。因此若照此执行，默认非 trivial 工作的实际
+  loaded context 不会随 `AGENTS.md` 行数下降而等量下降。
+
+下一步：暂停实施 root 文件改写；先把 change 的成功指标从单文件行数修正为
+默认加载上下文与触发加载上下文两类证据。
