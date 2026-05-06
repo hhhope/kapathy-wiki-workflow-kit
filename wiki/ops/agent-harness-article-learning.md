@@ -22,43 +22,106 @@ derived_from:
   - https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
   - https://mp.weixin.qq.com/s/-nXD7gp75SHeZHHhTh3lNw
 related_objects:
+  - learning-capture-routing
   - example-driven-capture
   - behavior-asset-governance
   - codex-global-agents-md
 notes_scope: 外部 agent / harness / eval / managed agents 文章精读。按
-  article-learning-capture skill 记录评分、结构化意译、可迁移学习和 promotion
-  boundary；不直接形成 AGENTS、skill、spec、checklist 或 repo policy。
+  learning-capture -> article module -> article-learning-capture skill 记录
+  route、source grounding、admission gate、评分、结构化意译、可迁移学习和
+  promotion boundary；不直接形成 AGENTS、skill、spec、checklist 或 repo
+  policy。
 ---
 
 # Agent Harness 文章精读
 
-本页按 `.codex/skills/article-learning-capture/` 返工。它不是
+本页按 `.codex/skills/learning-capture/` 的 article module 和
+`.codex/skills/article-learning-capture/` 返工。它不是
 `behavior-asset-governance` 的设计正文，也不是规则发布页。
 
-本页只做四件事：
+本页只做六件事：
 
-1. 先给每篇文章打分，决定是否值得精读。
-2. 保留 source-first reading notes：问题、方法、证据类型、适用前提、没有证明什么。
-3. 对值得迁移的点做 evidence gate：source / claim / evidence / local usefulness / adoption boundary / status。
-4. 明确哪些内容只是 candidate，不能直接写进 `AGENTS.md`、skill、spec 或 archive-ready 结论。
+1. 记录 learning-capture route：这是 article-shaped source learning。
+2. 先做 admission gate：source access、source class、source grounding、local objective、copyright boundary。
+3. 先给每篇文章打分，决定是否值得精读。
+4. 保留 source-first reading notes：问题、方法、证据类型、适用前提、没有证明什么。
+5. 对值得迁移的点做 evidence gate：source / claim / evidence / local usefulness / adoption boundary / status。
+6. 明确哪些内容只是 candidate，不能直接写进 `AGENTS.md`、skill、spec 或 archive-ready 结论。
+
+## Learning Capture Route
+
+| Field | Value |
+|---|---|
+| Domain Skill | `learning-capture` |
+| Module | article-shaped source -> `references/article.md` |
+| Delegate Skill | `article-learning-capture` |
+| Source Kind | article / blog / engineering post / research post / WeChat reference |
+| User Intent | agent / harness / eval / managed-agents 外部文章精读与本地可迁移学习 |
+| Non-Goal | 不做新闻摘要、raw fetch、自动 crawler、规则发布或治理正文补丁 |
+| Repo Target | `wiki/ops` reading-notes |
+
+## Admission Gate
+
+| Gate | Result | Reason |
+|---|---|---|
+| Source access | pass | 9 个来源均有 URL；微信来源通过 `weixin-reader` 处理过。 |
+| Source class recorded | pass | 官方工程 / 研究文章标为 primary source；微信文章标为 structure reference / secondary interpretation。 |
+| Source grounding preserved | pass | 本页保留 section-level source map、line references 和 evidence notes；不保存全文快照。 |
+| Local objective exists | pass | 目标是学习 agent-first harness / workflow / eval 方法，并抽取本仓库候选实践。 |
+| Copyright boundary workable | pass | 本页使用结构化意译和短 source map，不保存全文原文或全文翻译。 |
+
+## Original Source Grounding
+
+Source artifact type: `source map with line references`。本页不保存 full
+verbatim article text，不保存 full verbatim translation；官方文章以章节 / 行号
+映射作为 source grounding，微信文章仅作为结构参考。
+
+| Source | Source Class | Source Artifact | Grounding Status |
+|---|---|---|---|
+| OpenAI Harness Engineering | primary source | source map + line references | pass |
+| Claude Common Workflow Patterns | primary source | source map + line references | pass |
+| Claude Agent SDK | primary source | source map + line references | pass |
+| Anthropic Diff Tool | primary source / research | source map + line references | pass |
+| Anthropic Managed Agents | primary source | source map + line references | pass |
+| Anthropic Harness Design | primary source | source map + line references | pass |
+| Anthropic Demystifying Evals | primary source | source map + line references | pass |
+| Anthropic Effective Harnesses | primary source | source map + line references | pass |
+| 微信 Agent 架构选型 | structure reference / secondary interpretation | `weixin-reader` + section map | pass for structure, not primary technical evidence |
 
 ## Scoring Summary
 
 Access date: 2026-05-06.
 
-| Article | Source | Score | Decision | Reason |
-|---|---|---:|---|---|
-| Harness Engineering | OpenAI, 2026-02-11 | 95 | deep-read | 一手工程文章，直接回答 agent-legible repo、`AGENTS.md`、source of record 和 drift 问题。 |
-| Common Workflow Patterns | Claude, 2026-03-05 | 91 | deep-read | 一手 workflow pattern 文章，能约束 sequential / parallel / evaluator 的选型，不只是概念介绍。 |
-| Building Agents with Claude Agent SDK | Claude, 2025-09-29 | 88 | deep-read | 一手 SDK 文章，给出 agent loop、tool feedback、eval 改进方法。 |
-| A Diff Tool for AI | Anthropic Research, 2026-03-13 | 76 | deep-read | 研究向文章，本地相关性较窄，但对 changed-behavior review 很有迁移价值。 |
-| Scaling Managed Agents | Anthropic Engineering, 2026-04-08 | 83 | deep-read | 架构向文章，对稳定接口、harness 假设过期、session/sandbox 分离有帮助。 |
-| Harness Design for Long-Running Apps | Anthropic Engineering, 2026-03-24 | 88 | deep-read | 实验/产品经验结合，适合学习长任务 generator/evaluator 分工和 harness 简化原则。 |
-| Demystifying Evals for AI Agents | Anthropic Engineering, 2026-01-09 | 93 | deep-read | 直接给 eval 词汇、样本、grader、outcome/trajectory 边界，和本地验证方法强相关。 |
-| Effective Harnesses for Long-Running Agents | Anthropic Engineering, 2025-11-26 | 90 | deep-read | 直接命中长会话、中断恢复、progress artifact、基础测试与交接问题。 |
-| Agent 架构选型（微信） | tiny / 微信, 2026-04-15 | 79 | deep-read as reference-shape | 二次解读 Claude workflow 文章；技术观点回原文验证，主要学习四问法、场景矩阵和演进叙事。 |
+| Article | Source Class | Artifact | Score | Decision | Hard Cap | Reason |
+|---|---|---|---:|---|---|---|
+| Harness Engineering | primary source | source map | 95 | deep-read | none | 一手工程文章，直接回答 agent-legible repo、`AGENTS.md`、source of record 和 drift 问题。 |
+| Common Workflow Patterns | primary source | source map | 91 | deep-read | none | 一手 workflow pattern 文章，能约束 sequential / parallel / evaluator 的选型，不只是概念介绍。 |
+| Building Agents with Claude Agent SDK | primary source | source map | 88 | deep-read | none | 一手 SDK 文章，给出 agent loop、tool feedback、eval 改进方法。 |
+| A Diff Tool for AI | primary source / research | source map | 76 | deep-read | none | 研究向文章，本地相关性较窄，但对 changed-behavior review 很有迁移价值。 |
+| Scaling Managed Agents | primary source | source map | 83 | deep-read | none | 架构向文章，对稳定接口、harness 假设过期、session/sandbox 分离有帮助。 |
+| Harness Design for Long-Running Apps | primary source | source map | 88 | deep-read | none | 实验/产品经验结合，适合学习长任务 generator/evaluator 分工和 harness 简化原则。 |
+| Demystifying Evals for AI Agents | primary source | source map | 93 | deep-read | none | 直接给 eval 词汇、样本、grader、outcome/trajectory 边界，和本地验证方法强相关。 |
+| Effective Harnesses for Long-Running Agents | primary source | source map | 90 | deep-read | none | 直接命中长会话、中断恢复、progress artifact、基础测试与交接问题。 |
+| Agent 架构选型（微信） | structure reference / secondary interpretation | section map | 79 | deep-read as reference-shape | max 80 | 二次解读 Claude workflow 文章；技术观点回原文验证，主要学习四问法、场景矩阵和演进叙事。 |
 
 Score band result: 全部达到 75+，但微信文章只作为 structure / method reference，不作为 primary technical evidence。
+
+## Score Detail Matrix
+
+说明：下表是按新版 scorecard 对既有总分做的回溯拆分，用于让分数可审计；它不是新的
+外部证据来源。
+
+| Article | Provenance /20 | Evidence /25 | Local Gain /25 | Transfer /15 | Verification /15 | Total |
+|---|---:|---:|---:|---:|---:|---:|
+| Harness Engineering | 20 | 25 | 25 | 13 | 12 | 95 |
+| Common Workflow Patterns | 20 | 23 | 24 | 13 | 11 | 91 |
+| Building Agents with Claude Agent SDK | 20 | 22 | 23 | 12 | 11 | 88 |
+| A Diff Tool for AI | 19 | 21 | 18 | 10 | 8 | 76 |
+| Scaling Managed Agents | 20 | 21 | 20 | 11 | 11 | 83 |
+| Harness Design for Long-Running Apps | 20 | 23 | 22 | 12 | 11 | 88 |
+| Demystifying Evals for AI Agents | 20 | 24 | 24 | 13 | 12 | 93 |
+| Effective Harnesses for Long-Running Agents | 20 | 23 | 23 | 13 | 11 | 90 |
+| Agent 架构选型（微信） | 15 | 17 | 21 | 14 | 12 | 79 |
 
 ## Cross-Article Classification
 
@@ -80,7 +143,12 @@ Score band result: 全部达到 75+，但微信文章只作为 structure / metho
 | URL | `https://openai.com/index/harness-engineering/` |
 | Author / Publisher | OpenAI |
 | Published At | 2026-02-11 |
+| Accessed At | 2026-05-06 |
+| Source Type | article |
 | Retrieval Method | Web |
+| Source Class | primary source |
+| Source Artifact Type | source map + line references |
+| Source Artifact Path / Note | 本节 Structured Translation Notes 和 Evidence Notes |
 | Score | 95 / deep-read |
 
 ### Reading Draft
@@ -123,7 +191,12 @@ Score band result: 全部达到 75+，但微信文章只作为 structure / metho
 | URL | `https://claude.com/blog/common-workflow-patterns-for-ai-agents-and-when-to-use-them` |
 | Author / Publisher | Claude / Anthropic |
 | Published At | 2026-03-05 |
+| Accessed At | 2026-05-06 |
+| Source Type | article |
 | Retrieval Method | Web |
+| Source Class | primary source |
+| Source Artifact Type | source map + line references |
+| Source Artifact Path / Note | 本节 Structured Translation Notes 和 Evidence Notes |
 | Score | 91 / deep-read |
 
 ### Reading Draft
@@ -166,7 +239,12 @@ Score band result: 全部达到 75+，但微信文章只作为 structure / metho
 | URL | `https://claude.com/blog/building-agents-with-the-claude-agent-sdk` |
 | Author / Publisher | Claude / Anthropic |
 | Published At | 2025-09-29 |
+| Accessed At | 2026-05-06 |
+| Source Type | article |
 | Retrieval Method | Web |
+| Source Class | primary source |
+| Source Artifact Type | source map + line references |
+| Source Artifact Path / Note | 本节 Structured Translation Notes 和 Evidence Notes |
 | Score | 88 / deep-read |
 
 ### Reading Draft
@@ -210,7 +288,12 @@ Score band result: 全部达到 75+，但微信文章只作为 structure / metho
 | URL | `https://www.anthropic.com/research/diff-tool` |
 | Author / Publisher | Anthropic Research |
 | Published At | 2026-03-13 |
+| Accessed At | 2026-05-06 |
+| Source Type | research article |
 | Retrieval Method | Web |
+| Source Class | primary source / research |
+| Source Artifact Type | source map + line references |
+| Source Artifact Path / Note | 本节 Structured Translation Notes 和 Evidence Notes |
 | Score | 76 / deep-read |
 
 ### Reading Draft
@@ -251,7 +334,12 @@ Score band result: 全部达到 75+，但微信文章只作为 structure / metho
 | URL | `https://www.anthropic.com/engineering/managed-agents` |
 | Author / Publisher | Anthropic Engineering |
 | Published At | 2026-04-08 |
+| Accessed At | 2026-05-06 |
+| Source Type | engineering article |
 | Retrieval Method | Web |
+| Source Class | primary source |
+| Source Artifact Type | source map + line references |
+| Source Artifact Path / Note | 本节 Structured Translation Notes 和 Evidence Notes |
 | Score | 83 / deep-read |
 
 ### Reading Draft
@@ -293,7 +381,12 @@ Score band result: 全部达到 75+，但微信文章只作为 structure / metho
 | URL | `https://www.anthropic.com/engineering/harness-design-long-running-apps` |
 | Author / Publisher | Anthropic Engineering |
 | Published At | 2026-03-24 |
+| Accessed At | 2026-05-06 |
+| Source Type | engineering article |
 | Retrieval Method | Web |
+| Source Class | primary source |
+| Source Artifact Type | source map + line references |
+| Source Artifact Path / Note | 本节 Structured Translation Notes 和 Evidence Notes |
 | Score | 88 / deep-read |
 
 ### Reading Draft
@@ -336,7 +429,12 @@ Score band result: 全部达到 75+，但微信文章只作为 structure / metho
 | URL | `https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents` |
 | Author / Publisher | Anthropic Engineering |
 | Published At | 2026-01-09 |
+| Accessed At | 2026-05-06 |
+| Source Type | engineering article |
 | Retrieval Method | Web |
+| Source Class | primary source |
+| Source Artifact Type | source map + line references |
+| Source Artifact Path / Note | 本节 Structured Translation Notes 和 Evidence Notes |
 | Score | 93 / deep-read |
 
 ### Reading Draft
@@ -382,7 +480,12 @@ Score band result: 全部达到 75+，但微信文章只作为 structure / metho
 | URL | `https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents` |
 | Author / Publisher | Anthropic Engineering |
 | Published At | 2025-11-26 |
+| Accessed At | 2026-05-06 |
+| Source Type | engineering article |
 | Retrieval Method | Web |
+| Source Class | primary source |
+| Source Artifact Type | source map + line references |
+| Source Artifact Path / Note | 本节 Structured Translation Notes 和 Evidence Notes |
 | Score | 90 / deep-read |
 
 ### Reading Draft
@@ -426,7 +529,12 @@ Score band result: 全部达到 75+，但微信文章只作为 structure / metho
 | URL | `https://mp.weixin.qq.com/s/-nXD7gp75SHeZHHhTh3lNw` |
 | Author / Publisher | tiny / 微信公众号 |
 | Published At | 2026-04-15 |
+| Accessed At | 2026-05-06 |
+| Source Type | WeChat article |
 | Retrieval Method | `weixin-reader` |
+| Source Class | structure reference / secondary interpretation |
+| Source Artifact Type | section map via `weixin-reader` |
+| Source Artifact Path / Note | 本节 Structured Translation Notes；技术主张回 Claude 原文验证 |
 | Score | 79 / deep-read as reference-shape |
 
 ### Reading Draft
