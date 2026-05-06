@@ -803,21 +803,20 @@ asked to return to `phase1-repo-agents-compression` under `openspec-explore`.
 
 ### Current focus
 
-Explore whether `phase1-repo-agents-compression` should now be renamed,
-unparked, or rescoped. The current change remains parked until that decision is
-made explicitly.
+The parked `phase1-repo-agents-compression` change has been renamed and
+rescoped to `govern-repo-agents-loaded-context`. The current focus is now the
+implementation plan for repo `AGENTS.md` loaded-context governance.
 
 ### Current hypotheses
 
 - Root compression produced a small measured edit, not a broad root rewrite.
-- The repo-level problem is still legitimate, but the current change name still
-collides with the older intake meaning of "Phase 1".
-- The old 0/10 task list should not be executed as-is until the rename /
-  unpark / rescope decision is made.
+- The repo-level problem is still legitimate and now has a clearer active
+  change name.
+- The old 0/10 task list has been replaced by tasks that separate rescope,
+  planning evidence, implementation, and evaluation.
 
 ### Open questions
 
-- Should the repo change be renamed away from `phase1-*` before any work?
 - Is the target still "compression", or should it be reframed as repo AGENTS
   loaded-context governance?
 - Which repo `AGENTS.md` sections are true repo-only hard stops, and which are
@@ -825,8 +824,8 @@ collides with the older intake meaning of "Phase 1".
 
 ### Next step
 
-Read `phase1-repo-agents-compression` and the archived root-successor evidence,
-then decide whether to rename, unpark, or rescope before implementation.
+Discuss the detailed implementation plan for `govern-repo-agents-loaded-context`
+before editing repo `AGENTS.md`.
 
 ### Anti-drift boundary
 
