@@ -103,7 +103,44 @@ Access date for web sources: 2026-05-06.
 
 ## After Results
 
-Pending implementation.
+- File: `~/.codex/AGENTS.md`
+- After count: 271 lines, 1750 words, 11812 bytes.
+- Delta: -12 lines, -115 words, -647 bytes from the 283-line baseline.
+- Target files edited: `~/.codex/AGENTS.md` only.
+- Root-local support file: none added.
+- `Global Rule Routing`: not extracted; no `~/.codex/rule-routing.md` file was
+  created, so no hidden default-loaded support file was introduced.
+
+## Loaded-Context Evidence
+
+| Metric | Before | After | Result |
+|---|---:|---:|---|
+| Default loaded context | `~/.codex/AGENTS.md`: 283 lines / 1865 words / 12459 bytes | `~/.codex/AGENTS.md`: 271 lines / 1750 words / 11812 bytes | Reduced by consolidating duplicate execution/git wording |
+| Triggered loaded context | Task-specific rule / skill files load only after the `Global Rule Routing` table matches a concrete trigger | Same trigger model; no new default-loaded support file | Preserved |
+| Fake progressive disclosure | Proposed `rule-routing.md` on the default non-trivial path would fail | No support file added; routing table remains explicit in root | Avoided |
+
+## Section Mapping
+
+| Before section | After section | Change | Preserved behavior |
+|---|---|---|---|
+| `Execution discipline` + `Git discipline` | `Execution and git discipline` | Consolidated duplicated dirty-tree, commit, branch, resume, push, and truth-source wording | Preserve unrelated changes, avoid destructive git, commit verified task-related files, branch off `main`, verify status/log before git claims |
+| `Global Rule Routing` | `Global Rule Routing` | Unchanged | Triggered references remain visible; no deferred routing-table rows were pulled into scope |
+
+## Agent-Legibility Check
+
+| Question | Result | Evidence |
+|---|---|---|
+| Where should the next agent read? | pass | Root `AGENTS.md` still points to `PROJECT.md`, OpenSpec change docs, wiki entry pages, and triggered rules / skills |
+| How should the next agent verify? | pass | Root `AGENTS.md` requires fresh `git status --short` and `git log -1 --oneline`; this change also validates with `openspec validate compress-root-agents-budget --strict` |
+| Which artifact preserves recovery? | pass | This `evaluation.md`, `tasks.md`, git history, and any later `archive-review.md` preserve the root edit evidence because `~/.codex/AGENTS.md` is outside repo tracking |
+
+## Behavior Pressure Check
+
+| Scenario | Old wording result | New wording result |
+|---|---|---|
+| Dirty repo with unrelated report changes plus task-related OpenSpec edits | Required preserving unrelated changes, committing task-related files, and verifying status/log, but split the same behavior across two overlapping sections | Same required behavior is present in one section; no behavior weakened |
+| Agent wants to claim `already committed` after interruption | Blocked by git truth-source text | Still blocked: fresh `git status --short` and `git log -1 --oneline` are required before git-based completion claims |
+| Current branch is `main` and user asks for feature work | Blocked until a feature branch is created | Still blocked until a feature branch is created |
 
 ## Self-Check
 
@@ -111,7 +148,7 @@ Pending implementation.
 |---|---|---|
 | Structural | pass | `openspec validate compress-root-agents-budget --strict` returned valid on 2026-05-06 |
 | Semantic | pass | Target remains Root AGENTS; support files are allowed only as trigger-gated references |
-| Evidence | partial | Baseline counts, RED/GREEN gate, article calibration, evidence standard, and source-backed best-practice table recorded; after loaded-context and agent-legibility metrics wait for root implementation |
+| Evidence | pass | Baseline and after counts, loaded-context metrics, RED/GREEN gate, article calibration, evidence standard, source-backed best-practice table, section mapping, and agent-legibility check are recorded |
 | Boundary | pass | No new Pattern Catalog pattern, checklist item, skill, wiki method page, or repo policy introduced |
 
 ## Residual Risks
@@ -121,3 +158,5 @@ Pending implementation.
   it too broadly.
 - Line count can still be useful supporting evidence, but it can no longer be
   treated as the primary success metric.
+- The consolidation is a modest reduction, not a full root rewrite; larger
+  reductions still need a future scoped change with measured trigger behavior.

@@ -28,24 +28,33 @@
 
 ## 3. Root Context Implementation
 
-- [ ] 3.1 Confirm target files before any root edit: `~/.codex/AGENTS.md` plus
+- [x] 3.1 Confirm target files before any root edit: `~/.codex/AGENTS.md` plus
   at most one trigger-gated root-local support file under `~/.codex/`.
-- [ ] 3.2 Consolidate `Execution discipline` and `Git discipline` only if it
+  <!-- 2026-05-06 — edited only ~/.codex/AGENTS.md; no root-local support file added -->
+- [x] 3.2 Consolidate `Execution discipline` and `Git discipline` only if it
   preserves dirty-tree, commit, branch, resume, push, and truth-source behavior.
-- [ ] 3.3 Do not extract routing detail into a default-loaded support file.
-- [ ] 3.4 Keep deferred routing-table rows out of scope.
+  <!-- 2026-05-06 — merged into Execution and git discipline; preserved unrelated-change, destructive-git, branch, commit, status/log, and interruption checks -->
+- [x] 3.3 Do not extract routing detail into a default-loaded support file.
+  <!-- 2026-05-06 — Global Rule Routing stayed in root; no rule-routing.md or equivalent default-loaded support file created -->
+- [x] 3.4 Keep deferred routing-table rows out of scope.
+  <!-- 2026-05-06 — no routing table rows, skill behavior, wiki method pages, or repo policies changed -->
 
 ## 4. Validation
 
-- [ ] 4.1 Record before/after line, word, and byte counts as supporting
+- [x] 4.1 Record before/after line, word, and byte counts as supporting
   evidence.
-- [ ] 4.2 Record before/after default loaded context.
-- [ ] 4.3 Record before/after triggered loaded context.
-- [ ] 4.4 Confirm no repo `AGENTS.md`, repo `.codex/skills/`, repo `wiki/`,
+  <!-- 2026-05-06 — evaluation.md records 283/1865/12459 before and 271/1750/11812 after -->
+- [x] 4.2 Record before/after default loaded context.
+  <!-- 2026-05-06 — evaluation.md records root AGENTS as the default loaded context before and after -->
+- [x] 4.3 Record before/after triggered loaded context.
+  <!-- 2026-05-06 — evaluation.md records unchanged trigger model and no hidden default support file -->
+- [x] 4.4 Confirm no repo `AGENTS.md`, repo `.codex/skills/`, repo `wiki/`,
   repo `rules/`, or `~/.claude/CLAUDE.md` file was edited by root
   implementation.
-- [ ] 4.5 Confirm the next agent can identify where to read, how to verify, and
+  <!-- 2026-05-06 — git status shows only pre-existing report/untracked noise plus this change's OpenSpec evidence files; root implementation edited no repo AGENTS/skills/wiki/rules or CLAUDE.md -->
+- [x] 4.5 Confirm the next agent can identify where to read, how to verify, and
   which artifact preserves recovery after interruption.
+  <!-- 2026-05-06 — evaluation.md Agent-Legibility Check records read paths, verification path, and recovery artifacts -->
 - [x] 4.6 Confirm every adopted best practice has quantifiable or reproducible
   evidence, or is explicitly marked candidate-only.
   <!-- 2026-05-06 — see evaluation.md §Evidence-Backed Best Practice Table -->
@@ -57,8 +66,9 @@
 - [x] 5.1 Structural: OpenSpec artifacts exist and validate.
 - [x] 5.2 Semantic: target layer remains Root AGENTS; support files are
   trigger-gated references, not a new governance layer.
-- [ ] 5.3 Evidence: loaded-context metrics, before/after counts, RED/GREEN,
+- [x] 5.3 Evidence: loaded-context metrics, before/after counts, RED/GREEN,
   agent-legibility check, best-practice evidence table, and residual risks are
   recorded.
+  <!-- 2026-05-06 — evaluation.md now records after results, loaded-context evidence, section mapping, pressure check, and residual risks -->
 - [x] 5.4 Boundary: no new Pattern Catalog pattern, checklist item, skill, wiki
   method page, or repo policy is introduced.
