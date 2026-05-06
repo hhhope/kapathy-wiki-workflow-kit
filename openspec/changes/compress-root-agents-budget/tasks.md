@@ -46,8 +46,9 @@
   implementation.
 - [ ] 4.5 Confirm the next agent can identify where to read, how to verify, and
   which artifact preserves recovery after interruption.
-- [ ] 4.6 Confirm every adopted best practice has quantifiable or reproducible
+- [x] 4.6 Confirm every adopted best practice has quantifiable or reproducible
   evidence, or is explicitly marked candidate-only.
+  <!-- 2026-05-06 — see evaluation.md §Evidence-Backed Best Practice Table -->
 - [x] 4.7 Run `openspec validate compress-root-agents-budget --strict`.
   <!-- PASS 2026-05-06 — validate returned "Change 'compress-root-agents-budget' is valid"; PostHog DNS noise only -->
 

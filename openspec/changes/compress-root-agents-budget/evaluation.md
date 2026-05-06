@@ -81,6 +81,26 @@ Practices without one of these evidence shapes stay as candidate observations.
 They must not enter root `AGENTS.md`, spec `SHALL`, skill hard rules, or
 archive-ready claims.
 
+## Evidence-Backed Best Practice Table
+
+Access date for web sources: 2026-05-06.
+
+| Source | Evidence shape | Narrow supported claim | Local adoption boundary |
+|---|---|---|---|
+| OpenAI, `Harness engineering: leveraging Codex in an agent-first world`, `https://openai.com/index/harness-engineering/` L80-L91 | External documentation | `AGENTS.md` should be a map/table of contents, not a large manual; repository knowledge should be structured source-of-record content. | Adopt as target criterion: root `AGENTS.md` acts as map; details move only when they become inspectable source-of-record artifacts, not hidden default context. |
+| OpenAI harness engineering L231-L239 | External documentation | Documentation alone is insufficient; strict boundaries and mechanical invariants prevent architectural drift. | Candidate for later automation only. This change may state the boundary, but no lint/checker is added. |
+| OpenAI harness engineering L283-L290 | External documentation | Agents replicate existing patterns and drift accumulates; continuous cleanup beats periodic manual cleanup. | Adopt as residual-risk lens: root governance must avoid leaving attractive nuisance patterns; recurring cleanup automation is out of scope. |
+| Anthropic, `Scaling Managed Agents`, `https://www.anthropic.com/engineering/managed-agents` L17-L25 | External documentation | Harnesses encode assumptions that can go stale; stable interfaces should outlast implementation details. | Adopt as classification rule: retained root instructions must be hard stops, stable source pointers, trigger-gated detail, or candidate assumptions. |
+| Anthropic Managed Agents L35-L43 | External documentation | Decoupling session, harness, and sandbox makes failures recoverable and keeps credentials out of generated-code sandboxes. | Use as analogy only: root governance should preserve recovery artifacts and source pointers. No sandbox/tool architecture change in this repo. |
+| Claude, `Common workflow patterns for AI agents`, `https://claude.com/blog/common-workflow-patterns-for-ai-agents-and-when-to-use-them` L278-L299 | External documentation | Workflows shape agent autonomy with checkpoints and boundaries; start with the simplest workflow and upgrade only when measurable need exists. | Adopt: current change stays sequential; no parallel agents or evaluator-optimizer loop unless a later measurable quality gap justifies it. |
+| Claude, `Building agents with the Claude Agent SDK`, `https://claude.com/blog/building-agents-with-the-claude-agent-sdk` L380-L388 | External documentation | Improve agents by studying failures and asking whether they have the right information, rules, tools, or eval set. | Adopt: root rewrite must be justified by a local failure mode and verification method, not a generic best-practice appeal. |
+| Anthropic, `Harness design for long-running application development`, `https://www.anthropic.com/engineering/harness-design-long-running-apps` L31-L47 | External documentation | Separate generator and evaluator roles; grade against explicit criteria, especially for subjective quality. | Candidate only for future review/evaluator loops. This change only records criteria; it does not add a separate evaluator agent. |
+| Anthropic harness design L115-L122 | External documentation | Evaluator logs and granular criteria make failures actionable, but evaluator judgment needs tuning against human judgment. | Adopt as evaluation-quality warning: RED/GREEN must state why failure is fair; no claim of automated evaluator reliability. |
+| Anthropic, `Demystifying evals for AI agents`, `https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents` L202-L211 | External documentation | Agent evals should check outcomes in real/sandboxed environments and choose tools based on task context. | Candidate for future runtime proof. Current root-context change uses document/manual evidence only. |
+| Anthropic evals L244-L263 | External documentation | Eval environments should be isolated; graders should prefer outcome grading, partial credit, and transcript review. | Adopt: evaluate whether the agent finds the right source, verifies behavior, and leaves recovery evidence; do not require one exact path. |
+| Anthropic, `Effective harnesses for long-running agents`, `https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents` L73-L101 | External documentation | Long-running agents need startup bearings, progress artifacts, basic tests before new work, and session-end progress updates. | Adopt as agent-legibility criterion: next agent must know where to read, how to verify, and what artifact preserves recovery. |
+| Anthropic, `A diff tool for AI`, `https://www.anthropic.com/research/diff-tool` L18-L23 and L67-L69 | External documentation | Traditional evals catch known risks; diffing helps surface behavioral differences rather than auditing everything from scratch. | Adopt as comparison principle: review changed behavior and evidence deltas, not the whole governance corpus from scratch. |
+
 ## After Results
 
 Pending implementation.
@@ -91,7 +111,7 @@ Pending implementation.
 |---|---|---|
 | Structural | pass | `openspec validate compress-root-agents-budget --strict` returned valid on 2026-05-06 |
 | Semantic | pass | Target remains Root AGENTS; support files are allowed only as trigger-gated references |
-| Evidence | partial | Baseline counts, RED/GREEN gate, article calibration, and evidence standard recorded; after loaded-context and agent-legibility metrics wait for root implementation |
+| Evidence | partial | Baseline counts, RED/GREEN gate, article calibration, evidence standard, and source-backed best-practice table recorded; after loaded-context and agent-legibility metrics wait for root implementation |
 | Boundary | pass | No new Pattern Catalog pattern, checklist item, skill, wiki method page, or repo policy introduced |
 
 ## Residual Risks
