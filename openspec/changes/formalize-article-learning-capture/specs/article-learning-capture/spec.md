@@ -34,9 +34,9 @@ storing full copyrighted article text.
 
 - **WHEN** article learning produces durable wiki notes
 - **THEN** the notes SHALL include original URL, title, author or publisher when
-  available, publication date when available, access date, score, structured
-  translation notes or paraphrased reading notes, evidence references, and
-  promotion boundary
+  available, publication date when available, access date, source class, source
+  artifact type, source grounding, score, structured translation notes or
+  paraphrased reading notes, evidence references, and promotion boundary
 - **AND** the notes SHALL NOT store full verbatim copyrighted article text or a
   full verbatim translation
 

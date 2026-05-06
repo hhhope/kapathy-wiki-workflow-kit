@@ -35,8 +35,8 @@
 ## 6. Archive Review
 
 - [x] 6.1 Run archive review after the change reached complete.
-- [ ] 6.2 Resolve archive-review blocker: skill was published without
+- [x] 6.2 Resolve archive-review blocker: skill was published without
   `skill-creator`, `writing-skills` / TDD, and `simplicity-first` gates.
-- [ ] 6.3 Choose and record the repair path: repair skill, downgrade to wiki SOP,
+- [x] 6.3 Choose and record the repair path: repair skill, downgrade to wiki SOP,
   or replace with a smaller route.
-- [ ] 6.4 Re-run validation after the blocker is resolved.
+- [x] 6.4 Re-run validation after the blocker is resolved.

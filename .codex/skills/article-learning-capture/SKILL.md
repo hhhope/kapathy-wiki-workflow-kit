@@ -37,6 +37,11 @@ article digestion with no local reuse intent.
 - Score before deep reading.
 - Always preserve the original URL, title, publisher or author when available,
   publication date when available, and access date.
+- Classify the source before scoring: primary source, secondary
+  interpretation, structure reference, or low-relevance/general-interest.
+- Preserve source grounding before analysis: extracted markdown when permitted,
+  a section map with bounded excerpts when full text cannot be stored, or a
+  retrieval-failure note that asks for pasted text or screenshots.
 - For copyrighted sources, write structured translation notes or paraphrased
   reading notes; do not store full verbatim article text or a full verbatim
   translation.

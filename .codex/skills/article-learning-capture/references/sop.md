@@ -13,9 +13,23 @@ Record:
 - access date
 - source type: article / blog / paper / WeChat / article collection
 - retrieval method: browser, `weixin-reader`, pasted text, screenshot, local PDF
+- source class: primary source / secondary interpretation / structure
+  reference / low-relevance/general-interest
+- source artifact type: extracted markdown / source map / bounded excerpts /
+  retrieval failure note
 
 For `mp.weixin.qq.com` links, try `weixin-reader` when body text is needed. If it
 fails, ask for pasted text or screenshots.
+
+Preserve source grounding before scoring or deep reading:
+
+- Use an extracted markdown snapshot when the source is available and copyright
+  boundaries allow local storage.
+- Use a source map with section headings and bounded excerpts when the full
+  source cannot be stored.
+- Use a retrieval-failure note when the original cannot be accessed; ask for
+  pasted text or screenshots before interpreting the article.
+- Do not treat another model's summary as the source artifact.
 
 ## 2. Score Before Deep Reading
 
@@ -47,6 +61,7 @@ Copyright boundary:
 - prefer paraphrase
 - no full verbatim article text
 - no full verbatim translation
+- no full verbatim translation draft as the durable wiki output
 
 ## 4. Transfer Extraction
 

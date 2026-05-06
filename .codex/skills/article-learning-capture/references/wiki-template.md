@@ -39,16 +39,38 @@ notes_scope: Source-grounded article learning. This page records reading notes,
 | Accessed At |  |
 | Source Type |  |
 | Retrieval Method |  |
+| Source Class | primary source / secondary interpretation / structure reference / low-relevance/general-interest |
+| Source Artifact Type | extracted markdown / source map / bounded excerpts / retrieval failure note |
+| Source Artifact Path / Note |  |
+
+## Original Source Grounding
+
+Copyright boundary: no full verbatim article text and no full verbatim
+translation. Preserve only the smallest source grounding needed for audit.
+
+| Article Section | Source Map / Bounded Excerpt | Why It Matters |
+|---|---|---|
+|  |  |  |
+
+## Admission Gate
+
+| Gate | Result | Reason |
+|---|---|---|
+| Source access | pass / fail |  |
+| Source class recorded | pass / fail |  |
+| Source grounding preserved | pass / fail |  |
+| Local objective exists | pass / fail |  |
+| Copyright boundary workable | pass / fail |  |
 
 ## Score
 
 | Criterion | Score | Reason |
 |---|---:|---|
-| Source credibility | /20 |  |
-| Evidence quality | /25 |  |
-| Local relevance | /25 |  |
-| Transferability | /15 |  |
-| Novelty vs existing assets | /15 |  |
+| Source access and provenance | /20 |  |
+| Evidence or method density | /25 |  |
+| Local capability gain | /25 |  |
+| Transfer path | /15 |  |
+| Verification path | /15 |  |
 | Total | /100 |  |
 
 Decision: deep-read / brief-read / skip.
