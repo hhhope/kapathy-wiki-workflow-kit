@@ -11,6 +11,9 @@ Turn external article reading into durable repository learning. The goal is not
 summary; the goal is source-grounded learning that can be audited, reused, or
 rejected without becoming an unsupported rule.
 
+General learning intent routing is owned by `learning-capture`; this skill is
+the article-shaped source module and compatibility entry point.
+
 ## When To Use
 
 Use this skill when the user provides or references external articles and asks

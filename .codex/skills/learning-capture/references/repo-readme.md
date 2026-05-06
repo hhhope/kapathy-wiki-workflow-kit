@@ -1,0 +1,28 @@
+# Repo/README Module
+
+Use this module for GitHub/GitLab repositories, README files, repo-level docs,
+or project structures used as learning inputs.
+
+## Delegate
+
+For full README/repo workflow details, load
+`.codex/skills/readme-learning-capture/SKILL.md`.
+
+## Required Gates
+
+- Start from README or repo-level operating docs.
+- Preserve adaptation boundary instead of stopping at source summary.
+- Capture at least:
+  - source
+  - what was reused
+  - what was modified
+  - what was rejected or not yet formalized
+  - repo target
+- Route outputs into existing repository layers: `wiki/ops`, `wiki/examples`,
+  `wiki/team-lore-candidates.md`, or an OpenSpec change.
+
+## When Repo Learning Becomes Article Learning
+
+If the repo link is only background for a specific article, use the article
+module first. Do not claim the repo's real structure from an article summary
+alone.

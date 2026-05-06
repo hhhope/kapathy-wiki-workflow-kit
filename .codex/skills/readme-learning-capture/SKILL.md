@@ -9,6 +9,9 @@ description: Use when the user provides a GitHub or GitLab repo or README and wa
 
 Turn GitHub / GitLab README analysis into repository learning, not just source summary.
 
+General learning intent routing is owned by `learning-capture`; this skill is
+the repo/README-shaped source module and compatibility entry point.
+
 ## When to Use
 
 - The user provides a GitHub or GitLab repo link.

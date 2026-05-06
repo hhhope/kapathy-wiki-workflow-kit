@@ -1,0 +1,29 @@
+# Learning Capture Pressure Scenarios
+
+Use these scenarios when validating `learning-capture`.
+
+## Should Trigger
+
+| Scenario | Expected | Result |
+|---|---|---|
+| User provides a technical article and says "精读，学到能力，落 wiki" | Trigger `learning-capture`, then article module | PASS |
+| User provides multiple agent engineering articles and asks what is useful to the local system | Trigger `learning-capture`, then article module | PASS |
+| User provides a GitHub repo and asks "这个方案能不能复用" | Trigger `learning-capture`, then repo-readme module | PASS |
+| User provides a GitHub README and asks to learn its structure for a local SOP | Trigger `learning-capture`, then repo-readme module | PASS |
+| User provides a concrete output example and asks to reuse its structure | Trigger `learning-capture`, then example-reference module | PASS |
+
+## Should Not Trigger
+
+| Scenario | Expected | Result |
+|---|---|---|
+| User asks for latest news or fact lookup with no local reuse intent | Do not trigger learning capture | PASS |
+| User asks only to fetch raw WeChat body text | Use `weixin-reader` | PASS |
+| User asks for a short abstract with no wiki or adaptation intent | Do not trigger learning capture | PASS |
+
+## Cross-Route Cases
+
+| Scenario | Expected | Result |
+|---|---|---|
+| Article describes a repo, but repo is not read | Article module; mark secondary interpretation where needed | PASS |
+| Article describes a repo, and user asks whether repo structure can be reused | Article module first, then repo-readme module after reading repo/README | PASS |
+| README is used only as an output-shape example | Example-reference module may be enough; do not force full repo learning | PASS |
