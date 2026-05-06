@@ -27,6 +27,16 @@ The repository SHALL preserve not only the source summary but also the adaptatio
   - what was not yet formalized
   - next step
 
+#### Scenario: Learning is promoted into a behavior asset
+
+- **WHEN** an external article, external repo, README, or in-chat example is used to support a behavior-asset rule, hard constraint, spec requirement, skill rule, or archive-ready conclusion
+- **THEN** the promotion SHALL record one accepted evidence shape:
+  - external-document excerpt with URL and exact section or line reference
+  - local demo or fixture with RED/GREEN, input/output, and command or manual replay record
+  - git-like project comparison with repository, commit or path, and observable structure or behavior difference
+- **AND** unsupported learning SHALL remain a candidate observation
+- **AND** unsupported learning SHALL NOT be promoted into repo `AGENTS.md`, root `AGENTS.md`, spec `SHALL`, skill hard rules, or archive-ready claims
+
 ### Requirement: Example-driven records SHALL route to the lowest correct repository layer
 
 The repository SHALL route example-driven learnings to the lowest durable layer that preserves their usefulness.
