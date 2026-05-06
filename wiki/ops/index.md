@@ -20,6 +20,7 @@
 - [Codex Handoff 规则](codex-handoff-rules.md)
 - [conversation-handoff / method](conversation-handoff-mode.md)
 - [例子驱动的 Wiki 留痕](example-driven-wiki-capture.md)
+- [Agent Harness 文章精读](agent-harness-article-learning.md)
 - [分歧管理方法](disagreement-management-method.md)
 - [live-conversation-reanchor-gate / retro](live-conversation-reanchor-gate-retro.md)
 - [Agent-Readable Wiki Naming Model](agent-readable-wiki-naming-model.md)

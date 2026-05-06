@@ -98,23 +98,9 @@ notes_scope: 英文 design-trace 的中文入口。承载治理模型的中文�
 没有证据的说法只能是 `candidate observation`，不能写进 root `AGENTS.md`、
 spec `SHALL`、skill hard rule，或作为 archive-ready 结论。
 
-### 可复核证据表（2026-05-06）
-
-| 来源 | 证据形态 | 可支撑的窄结论 | 本地采纳边界 |
-|---|---|---|---|
-| OpenAI, `Harness engineering: leveraging Codex in an agent-first world`, `https://openai.com/index/harness-engineering/` L80-L91 | 外部文档 | `AGENTS.md` 应更像地图 / 目录，而不是大型手册；仓库知识应落在结构化 source of record。 | 采纳为目标口径：root `AGENTS.md` 只做地图；细节只有成为可检查 source-of-record artifact 时才搬出，而不是藏进默认上下文。 |
-| OpenAI harness engineering L231-L239 | 外部文档 | 只有文档不够；需要严格边界和机械不变量来防止架构漂移。 | 只作为后续自动化候选；当前 change 可以声明边界，但不新增 lint / checker。 |
-| OpenAI harness engineering L283-L290 | 外部文档 | agent 会复制既有模式，漂移会累积；持续清理优于周期性人工清理。 | 采纳为 residual-risk 视角：root 治理不能留下吸引 agent 继续复制的坏样例；自动清理不在当前范围。 |
-| Anthropic, `Scaling Managed Agents`, `https://www.anthropic.com/engineering/managed-agents` L17-L25 | 外部文档 | harness 会编码会过期的假设；稳定接口应比实现细节更长寿。 | 采纳为分类口径：root 保留项必须是 hard stop、稳定 source pointer、触发式细节，或明确 candidate assumption。 |
-| Anthropic Managed Agents L35-L43 | 外部文档 | session / harness / sandbox 解耦能提高恢复性并隔离凭证。 | 只作类比：root 治理要保留恢复 artifact 和 source pointer；不改本仓库 sandbox / tool 架构。 |
-| Claude, `Common workflow patterns for AI agents`, `https://claude.com/blog/common-workflow-patterns-for-ai-agents-and-when-to-use-them` L278-L299 | 外部文档 | workflow 用 checkpoint 和边界塑造 agent 自主性；先用最简单流程，只有可测需求才升级。 | 采纳：当前保持顺序流；不因为文章存在就加 parallel agents 或 evaluator-optimizer loop。 |
-| Claude, `Building agents with the Claude Agent SDK`, `https://claude.com/blog/building-agents-with-the-claude-agent-sdk` L380-L388 | 外部文档 | 改进 agent 要研究失败，并问它是否有正确信息、规则、工具和 eval set。 | 采纳：root 改写必须绑定本地 failure mode 和验证方法，不能只说“最佳实践”。 |
-| Anthropic, `Harness design for long-running application development`, `https://www.anthropic.com/engineering/harness-design-long-running-apps` L31-L47 | 外部文档 | generator / evaluator 角色分离，按明确标准评分，尤其适合主观质量。 | 只作为未来 review / evaluator loop 候选；当前只记录标准，不新增 evaluator agent。 |
-| Anthropic harness design L115-L122 | 外部文档 | evaluator logs 和细粒度标准能让失败更可行动，但 evaluator 判断仍需人类校准。 | 采纳为 evaluation 质量警告：RED/GREEN 要说明 failure 为什么公平，不声称自动 evaluator 已可靠。 |
-| Anthropic, `Demystifying evals for AI agents`, `https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents` L202-L211 | 外部文档 | agent eval 应在真实或 sandboxed 环境中评结果，并按任务选择工具。 | 只作为未来 runtime proof 候选；当前 root-context change 只用文档和人工证据。 |
-| Anthropic evals L244-L263 | 外部文档 | eval 环境应隔离；grader 应偏向 outcome grading、partial credit 和 transcript review。 | 采纳：评估 agent 是否找到正确 source、验证行为、留下恢复证据；不强制唯一操作路径。 |
-| Anthropic, `Effective harnesses for long-running agents`, `https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents` L73-L101 | 外部文档 | 长任务 agent 需要 startup bearings、progress artifacts、先跑基础测试、结束时留下进度。 | 采纳为 agent-legibility 口径：下一轮 agent 必须知道去哪读、怎么验证、哪个 artifact 保留恢复点。 |
-| Anthropic, `A diff tool for AI`, `https://www.anthropic.com/research/diff-tool` L18-L23 and L67-L69 | 外部文档 | 传统 eval 抓已知风险；diff 能帮助发现行为差异，而不是从头审计一切。 | 采纳为比较原则：review 改变的行为和证据差异，不重新审整个治理语料库。 |
+逐篇精读已经从本页移出，作为独立学习专题维护：
+[agent-harness-article-learning.md](agent-harness-article-learning.md)。本页只保留学习
+对当前治理讨论的影响，不承载文章逐篇笔记。
 
 当前失败案例：
 

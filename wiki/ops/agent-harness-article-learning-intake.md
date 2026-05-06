@@ -61,4 +61,7 @@ notes_scope: 记录 agent / harness / eval / managed agents 外部文章精读�
 
 ## Next Step
 
-先回答"为什么要新开"，确认边界后再进入逐篇精读落 wiki。
+逐篇精读已经落到
+[agent-harness-article-learning.md](agent-harness-article-learning.md)。后续若要把某条
+学习升级成行为资产，需要另开明确任务并补本地 RED/GREEN、demo、git 对照或
+before / after behavior delta。
