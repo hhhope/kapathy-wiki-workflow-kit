@@ -560,12 +560,12 @@ Score band result: 全部达到 75+，但微信文章只作为 structure / metho
 
 ### Transferable Learning
 
-| Source | Claim | Evidence | Local Usefulness | Adoption Boundary | Status |
-|---|---|---|---|---|---|
-| 微信 01-04 | 架构选型可先问四个业务约束问题。 | 文章结构 | 可复用到中文 wiki 学习页和决策说明。 | 技术判断仍回官方原文验证。 | accepted |
-| 微信 05 | 场景矩阵比散点总结更容易学会。 | 四架构矩阵 | 改善本页 cross-article synthesis 的表达。 | 不照搬文字或图片。 | accepted |
-| 微信 06 | 架构演进应被瓶颈推动。 | 演进案例 | 支持“先简单，再升级”的学习表达。 | 案例是说明性，不作为本仓库证据。 | candidate |
-| 微信 04 | 单 agent + skills 是多领域问题的中间选项。 | skills section | 直接回应“是否一遇到问题就多 agent/新 skill”。 | 仍需结合 Claude 原文和本地 evidence。 | candidate |
+| Source   | Claim                         | Evidence       | Local Usefulness                  | Adoption Boundary           | Status    |
+| -------- | ----------------------------- | -------------- | --------------------------------- | --------------------------- | --------- |
+| 微信 01-04 | 架构选型可先问四个业务约束问题。              | 文章结构           | 可复用到中文 wiki 学习页和决策说明。             | 技术判断仍回官方原文验证。               | accepted  |
+| 微信 05    | 场景矩阵比散点总结更容易学会。               | 四架构矩阵          | 改善本页 cross-article synthesis 的表达。 | 不照搬文字或图片。                   | accepted  |
+| 微信 06    | 架构演进应被瓶颈推动。                   | 演进案例           | 支持“先简单，再升级”的学习表达。                 | 案例是说明性，不作为本仓库证据。            | candidate |
+| 微信 04    | 单 agent + skills 是多领域问题的中间选项。 | skills section | 直接回应“是否一遇到问题就多 agent/新 skill”。    | 仍需结合 Claude 原文和本地 evidence。 | candidate |
 
 ## Current Accepted Learnings
 
