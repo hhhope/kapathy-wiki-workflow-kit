@@ -119,6 +119,17 @@ This file adds repository-specific constraints for `report-wiki-portfolio`.
   - `wiki/examples` for validated output-shape examples
   - `wiki/team-lore-candidates.md` only after a project-local page already exists and the learning appears reusable across projects
 
+## Evidence-Backed Best Practice Gate
+
+- Capturing an external article, README, repo, or in-chat example as reusable learning is allowed; promoting it into a behavior asset requires evidence.
+- Accepted evidence shapes:
+  - external-document excerpt with URL and exact section or line reference
+  - local demo or fixture with RED/GREEN, input/output, and command or manual replay record
+  - git-like project comparison with repository, commit or path, and observable structure or behavior difference
+- Unsupported learning stays a `candidate observation`.
+- Unsupported learning must not be promoted into repo `AGENTS.md`, root `AGENTS.md`, spec `SHALL`, skill hard rules, or archive-ready claims.
+- This gate is a repo-default promotion constraint, not a skill. Do not hide it behind a trigger-specific `SKILL.md`.
+
 ## Disagreement Management Default
 
 - When a live disagreement is still doing goal-calibration work, do not rush to compress it into `ADR`, spec, skill, or route-level explanation.
