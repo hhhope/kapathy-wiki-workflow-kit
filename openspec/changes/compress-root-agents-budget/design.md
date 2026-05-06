@@ -6,9 +6,9 @@ Root `~/.codex/AGENTS.md` owns cross-repo safety floor and entrance routing. It
 must not own repo-local archive detail, rule bodies, skill bodies, or wiki
 method content.
 
-This change only performs structural compression of the current root guidance.
-It keeps the same authority model and moves detailed routing data into a
-root-local support file when that data is too bulky for the entrance card.
+This change governs root context so it reduces drift. It does not chase
+single-file size reduction. A moved block counts as reduction only if it leaves
+the default loaded path and becomes genuinely trigger-gated.
 
 ## Reused Governance
 
@@ -23,20 +23,34 @@ This change reuses the archived `decide-root-governance-alignment` model:
 
 No new pattern, checklist field, or rule category is introduced here.
 
-## Compression Strategy
+## Progressive Context Strategy
 
-### 1. Extract Rule Routing Detail
+### 1. Measure Loaded Context
 
-The existing `Global Rule Routing` table is valid root-layer content, but it is
-too detailed for the root entrance card. The root file should retain a compact
-instruction to load the root-local routing reference before non-trivial
-implementation or verification. The detailed table moves to
-`~/.codex/rule-routing.md`.
+Evaluation must distinguish:
 
-The support file remains root-local, stack-generic, and personal. It is not a
-repo policy page and does not replace repo `AGENTS.md`.
+- **default loaded context**: text read on the ordinary session path before a
+  task-specific trigger fires
+- **triggered loaded context**: text read only after a concrete work type,
+  skill, rule, or verification need is identified
+- **always-on hard-stop context**: text that must remain ambient because a miss
+  would cause unsafe continuation
 
-### 2. Consolidate Git and Execution Discipline
+`AGENTS.md` line count is supporting evidence. It is not the success metric.
+
+### 2. Reject Fake Progressive Disclosure
+
+The following shape must fail:
+
+```text
+move Global Rule Routing from AGENTS.md to rule-routing.md
+AND require non-trivial work to load rule-routing.md by default
+```
+
+Reason: default file size drops, but practical loaded context for the dominant
+non-trivial path does not.
+
+### 3. Consolidate Git and Execution Discipline
 
 The current `Execution discipline` and `Git discipline` sections overlap on:
 
@@ -48,7 +62,7 @@ The current `Execution discipline` and `Git discipline` sections overlap on:
 The consolidated section must preserve the behavioral stops while removing
 duplicated wording.
 
-### 3. Preserve Hard Stops
+### 4. Preserve Hard Stops
 
 The compression must not weaken:
 
@@ -61,24 +75,26 @@ The compression must not weaken:
 - skill semantic edit gate
 - long-step reporting
 
-## Budget Target
+## Governance Growth Constraint
 
-Primary target: `~/.codex/AGENTS.md` at or below 220 lines.
+This change must not grow governance without paying for it. New governance text
+must do at least one of the following:
 
-Stretch target: at or below 200 lines.
+- replace existing text
+- shorten existing text
+- move existing text off the default loaded path
+- prove that it is an always-on hard stop
 
-The 150-200 target remains the reference budget, but this change may pass with
-an explicit justification above 200 only if every retained line maps to Root
-AGENTS Purpose / Owns and the largest remaining bulky section has a named
-follow-up boundary.
+Adding a new checklist, support file, skill, or rule is not success by itself.
 
 ## Evidence Plan
 
 `evaluation.md` records:
 
 - baseline line/word/byte counts
-- after line/word/byte counts
+- default loaded context before and after
+- triggered loaded context before and after
+- RED/GREEN result for fake progressive disclosure
 - section mapping before and after
-- extracted support-file line count
 - Self-Check four-column result
 - residual risks

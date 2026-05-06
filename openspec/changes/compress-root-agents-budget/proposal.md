@@ -1,43 +1,43 @@
 ## Why
 
 The archived `compress-codex-agents-md` change proved that
-`~/.codex/AGENTS.md` now matches the Root AGENTS Pattern Catalog, but it also
-recorded a budget failure: the file ended at 283 lines, above the 150-200
-instruction budget target.
+`~/.codex/AGENTS.md` now matches the Root AGENTS Pattern Catalog, but it did not
+prove that the root context reduces agent drift.
 
-That archive explicitly deferred line-count compression to a successor change
-and named two safe compression vectors:
+The first successor plan drifted toward single-file line-count compression:
+move `Global Rule Routing` into `~/.codex/rule-routing.md` and then ask root
+`AGENTS.md` to load that file for non-trivial work. That would reduce
+`AGENTS.md` line count without proving a reduction in loaded context.
 
-- consolidate `Execution discipline` and `Git discipline`
-- extract the `Global Rule Routing` table into a separate root reference file
-
-This change is that successor. It is budget governance for the already-adopted
-root model, not a new behavior-asset model.
+This change corrects the successor scope. It governs root context for
+drift-resistant progressive loading, not for cosmetic file-size reduction.
 
 ## What Changes
 
-- Refactor only personal root Codex guidance under `~/.codex/`.
+- Refactor only personal root Codex guidance under `~/.codex/`, after the
+  evidence gate is corrected.
 - Keep `~/.codex/AGENTS.md` as the global entrance card and safety floor.
-- Move the detailed Global Rule Routing table out of `AGENTS.md` into a
-  root-local reference file such as `~/.codex/rule-routing.md`.
-- Consolidate duplicated execution/git discipline wording while preserving the
+- Treat line count as supporting evidence only.
+- Add loaded-context evidence: default loaded context, triggered loaded
+  context, and whether a moved reference still sits on the default path.
+- Add a RED/GREEN harness scenario that fails file-moving without progressive
+  loading.
+- Consolidate duplicated execution/git discipline wording only if it preserves
   hard stops, dirty-tree handling, commit discipline, branch boundary, and git
   truth-source checks.
-- Record before/after line counts, section mapping, and self-check evidence in
-  `evaluation.md`.
 
 ## Capabilities
 
 ### Modified Capabilities
 
 - `root-governance-alignment`: extend the existing root compression scenario
-  from Pattern Catalog compliance to instruction-budget compression.
+  from Pattern Catalog compliance to progressive context governance.
 
 ## Impact
 
-- Edits `~/.codex/AGENTS.md`.
-- May add or edit one root-local support file under `~/.codex/` for extracted
-  routing detail.
+- May edit `~/.codex/AGENTS.md` after evidence is updated.
+- May add or edit one root-local support file under `~/.codex/` only if it is
+  trigger-gated and does not remain on the default loaded path.
 - Does not edit repo `AGENTS.md`, repo `.codex/skills/`, repo `wiki/`, repo
   `rules/`, or `~/.claude/CLAUDE.md`.
 - Does not reopen `compress-codex-agents-md` or add new Pattern Catalog fields.
@@ -50,3 +50,5 @@ root model, not a new behavior-asset model.
 - Creating or changing skills.
 - Creating new repo workflow policy, ADRs, wiki method pages, or Pattern
   Catalog entries.
+- Treating a file move as success when the moved file is still loaded by
+  default.

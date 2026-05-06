@@ -1,39 +1,51 @@
-## 1. Setup
+## 1. Reframe the Change
 
-- [ ] 1.1 Confirm target files: `~/.codex/AGENTS.md` plus at most one
-  root-local routing support file under `~/.codex/`.
-- [ ] 1.2 Record baseline counts and section headings in `evaluation.md`.
-- [ ] 1.3 Confirm repo dirty tree unrelated files stay excluded from this
+- [x] 1.1 Replace single-file line-count success language with progressive
+  context governance language.
+- [x] 1.2 Record why moving text to another file does not count as reduction if
+  the moved file is still loaded on the default path.
+- [x] 1.3 Confirm repo dirty tree unrelated files stay excluded from this
   change's commits.
+  <!-- 2026-05-06 — unrelated report, IDE, inbox, Claude, and nested-path local files left unstaged -->
 
-## 2. Compression
+## 2. Harness Engineering Gate
 
-- [ ] 2.1 Extract Global Rule Routing detail from `~/.codex/AGENTS.md` into
-  `~/.codex/rule-routing.md` or equivalent root-local support file.
-- [ ] 2.2 Replace the extracted table in `AGENTS.md` with a compact load
-  instruction.
-- [ ] 2.3 Consolidate `Execution discipline` and `Git discipline` into one
-  section without weakening dirty-tree, commit, branch, resume, push, or
-  truth-source behavior.
-- [ ] 2.4 Remove duplicated wording introduced by the consolidation.
-- [ ] 2.5 Keep deferred routing-table rows out of scope.
+- [x] 2.1 Add the RED scenario: move `Global Rule Routing` to
+  `rule-routing.md`, then require non-trivial work to load it by default.
+- [x] 2.2 Mark the RED scenario's expected result as FAIL because loaded context
+  is not reduced for the dominant path.
+- [x] 2.3 Define GREEN behavior: root keeps only always-on hard stops and
+  routing principles; details load only after a concrete trigger.
+- [x] 2.4 Record default loaded context and triggered loaded context as required
+  evidence.
 
-## 3. Validation
+## 3. Root Context Implementation
 
-- [ ] 3.1 Record after counts and percentage delta in `evaluation.md`.
-- [ ] 3.2 Confirm `AGENTS.md` is at or below 220 lines, or record why the
-  overshoot remains Root-pattern compliant.
-- [ ] 3.3 Confirm the support file contains only root-local routing detail and
-  no repo-specific policy.
-- [ ] 3.4 Confirm no repo `AGENTS.md`, repo `.codex/skills/`, repo `wiki/`,
-  repo `rules/`, or `~/.claude/CLAUDE.md` file was edited.
-- [ ] 3.5 Run `openspec validate compress-root-agents-budget --strict`.
+- [ ] 3.1 Confirm target files before any root edit: `~/.codex/AGENTS.md` plus
+  at most one trigger-gated root-local support file under `~/.codex/`.
+- [ ] 3.2 Consolidate `Execution discipline` and `Git discipline` only if it
+  preserves dirty-tree, commit, branch, resume, push, and truth-source behavior.
+- [ ] 3.3 Do not extract routing detail into a default-loaded support file.
+- [ ] 3.4 Keep deferred routing-table rows out of scope.
 
-## 4. Self-Check
+## 4. Validation
 
-- [ ] 4.1 Structural: OpenSpec artifacts exist and validate.
-- [ ] 4.2 Semantic: target layer remains Root AGENTS; extracted support file is
-  a reference, not a new governance layer.
-- [ ] 4.3 Evidence: before/after counts and residual risks are recorded.
-- [ ] 4.4 Boundary: no new Pattern Catalog pattern, checklist item, skill, wiki
+- [ ] 4.1 Record before/after line, word, and byte counts as supporting
+  evidence.
+- [ ] 4.2 Record before/after default loaded context.
+- [ ] 4.3 Record before/after triggered loaded context.
+- [ ] 4.4 Confirm no repo `AGENTS.md`, repo `.codex/skills/`, repo `wiki/`,
+  repo `rules/`, or `~/.claude/CLAUDE.md` file was edited by root
+  implementation.
+- [x] 4.5 Run `openspec validate compress-root-agents-budget --strict`.
+  <!-- PASS 2026-05-06 — validate returned "Change 'compress-root-agents-budget' is valid"; PostHog DNS noise only -->
+
+## 5. Self-Check
+
+- [x] 5.1 Structural: OpenSpec artifacts exist and validate.
+- [x] 5.2 Semantic: target layer remains Root AGENTS; support files are
+  trigger-gated references, not a new governance layer.
+- [ ] 5.3 Evidence: loaded-context metrics, before/after counts, RED/GREEN, and
+  residual risks are recorded.
+- [x] 5.4 Boundary: no new Pattern Catalog pattern, checklist item, skill, wiki
   method page, or repo policy is introduced.

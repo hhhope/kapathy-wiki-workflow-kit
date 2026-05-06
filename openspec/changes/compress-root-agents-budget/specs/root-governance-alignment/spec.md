@@ -18,11 +18,12 @@ The repository MUST record the design boundary and evaluation evidence in the ac
 - **AND** the change SHALL map each edited line back to one row of the adopted Issue Routing Table or to a Pattern Catalog field (Purpose / Owns / Anti-patterns)
 - **AND** the change SHALL NOT edit repo `AGENTS.md`, `rules/`, `skills/`, or wiki method pages in the same change
 
-#### Scenario: Root budget compression extracts bulky routing detail
+#### Scenario: Root context governance rejects fake progressive disclosure
 
-- **WHEN** a successor change compresses `~/.codex/AGENTS.md` for instruction budget compliance
-- **THEN** the change SHALL record before and after line counts in `evaluation.md`
-- **AND** it MAY extract bulky root-local routing detail into a root-local support file under `~/.codex/`
-- **AND** the extracted support file SHALL remain a reference for root-local routing detail, not a repo policy page or a new governance layer
-- **AND** `~/.codex/AGENTS.md` SHALL retain the hard stops and load pointer needed to preserve the extracted behavior
+- **WHEN** a successor change governs `~/.codex/AGENTS.md` for drift-resistant progressive loading
+- **THEN** the change SHALL record default loaded context and triggered loaded context evidence in `evaluation.md`
+- **AND** it SHALL treat line count as supporting evidence only
+- **AND** moving text to a support file SHALL NOT count as reduction when the support file remains on the default loaded path
+- **AND** any root-local support file SHALL remain trigger-gated routing detail, not a repo policy page or a new governance layer
+- **AND** `~/.codex/AGENTS.md` SHALL retain always-on hard stops and the routing principles needed to preserve behavior
 - **AND** the change SHALL NOT edit repo `AGENTS.md`, repo `.codex/skills/`, repo `wiki/`, repo `rules/`, or `~/.claude/CLAUDE.md`
