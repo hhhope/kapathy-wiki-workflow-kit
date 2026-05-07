@@ -25,6 +25,14 @@ learning requests before material-specific learning workflows run.
 - **THEN** the system SHALL treat the source as learning material even if the
   user does not repeat an explicit phrase such as "learn this"
 
+#### Scenario: Runtime trigger is advertised in repo entrypoint
+
+- **WHEN** repo `AGENTS.md` lists high-frequency runtime skill routes
+- **THEN** it SHALL include the learning capture domain router for external
+  source learning, reference, or adaptation material
+- **AND** output routing SHALL remain a separate destination rule, not a
+  substitute for the runtime trigger
+
 ### Requirement: Learning capture SHALL reject non-learning requests
 
 The learning router SHALL not turn every external source into durable learning.
@@ -64,6 +72,12 @@ learned from.
   structure, or method example
 - **THEN** the system SHALL route to the example-reference module
 
+#### Scenario: Batch source intake is provided
+
+- **WHEN** the user provides many external sources in one learning thread
+- **THEN** the system SHALL triage and score before deep-reading individual
+  sources
+
 ### Requirement: Learning capture SHALL preserve existing module gates
 
 The domain router SHALL not weaken stricter module-specific evidence gates.
@@ -73,4 +87,34 @@ The domain router SHALL not weaken stricter module-specific evidence gates.
 - **WHEN** a module is selected by the learning router
 - **THEN** the selected module SHALL preserve its existing source grounding,
   adaptation boundary, scoring, or promotion evidence requirements
+
+### Requirement: Learning capture SHALL preserve topic anchoring boundaries
+
+Learning capture SHALL distinguish explicit topic anchoring from weak semantic
+association.
+
+#### Scenario: User provides an explicit learning topic
+
+- **WHEN** the user names a topic such as agent, harness, eval, README structure,
+  or another existing wiki subject
+- **THEN** the system SHALL check existing wiki topic anchors before creating a
+  new durable learning page
+
+#### Scenario: Topic is unclear or weakly matched
+
+- **WHEN** no explicit topic or strong filename/title/index match exists
+- **THEN** the system SHALL keep the source as a candidate for weekly review
+- **AND** it SHALL NOT force a semantic link to an existing topic
+
+### Requirement: Learning capture SHALL not promote unsupported learning
+
+External-source learning SHALL remain candidate material until promotion
+evidence exists.
+
+#### Scenario: Learning takeaway is proposed as a behavior asset
+
+- **WHEN** a learning takeaway is proposed for repo `AGENTS.md`, root
+  `AGENTS.md`, OpenSpec `SHALL`, skill hard rules, or archive-ready claims
+- **THEN** the promotion SHALL pass the repository evidence-backed gate or enter
+  a scoped OpenSpec change
 
