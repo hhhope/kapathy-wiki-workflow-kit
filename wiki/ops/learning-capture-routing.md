@@ -107,3 +107,74 @@ repo `AGENTS.md` 需要区分三类路由：
 
 先基于 wiki / spec / skill 资产聊清楚分层，再决定是否通过当前 OpenSpec change
 补一行 runtime trigger 或调整 archive-review 结论。
+
+## larksuite/cli 二次学习结论（2026-05-07）
+
+## 来源
+
+- `larksuite/cli` repo README：<https://github.com/larksuite/cli>
+- `lark-base` skill：<https://github.com/larksuite/cli/blob/main/skills/lark-base/SKILL.md>
+- 本仓库上一轮学习复盘：`wiki/ops/gstack-lark-learning-retro-2026-04-18.md`
+
+## 学到了什么
+
+`larksuite/cli` 对本仓库最有价值的不是“skill 越多越好”，而是它把 agent
+入口拆成了可执行的几层：
+
+- repo README 负责说明整体能力面、agent-native 定位、安装 / auth / command 体系。
+- domain skill 负责说明“什么时候用 / 什么时候不用”。
+- domain skill 内部再用 module map 把用户意图分流到具体模块和 reference。
+- reference 文档承接重细节，避免主 skill 变成长手册。
+- 高风险动作通过前置约束和禁止行为保留在运行时入口附近。
+
+这说明本仓库不应该把所有 learning 规则塞进 `AGENTS.md`，也不应该只把
+`learning-capture-routing` 放在 source list 里。更稳的做法是：
+
+- `AGENTS.md` 只保留 runtime trigger：外部来源作为学习 / reference /
+  adaptation material 时加载 `learning-capture`。
+- `.codex/skills/learning-capture/SKILL.md` 负责判断是不是学习，并按 evidence
+  object 分到 article / repo-readme / example 模块。
+- `references/*` 承接细节流程、scorecard、模板和压力场景。
+- `Output Routing` 只负责学习结果落到哪里。
+
+## 是否复杂了
+
+表面上多了一层，但实际是降复杂度。
+
+如果没有 runtime trigger，agent 看到外部链接时只能在 `Output Routing` 和 spec
+source 里猜：到底要不要学、要不要落 wiki、要不要加载 skill。这样会把运行时判断
+变成隐式推理，反而更复杂。
+
+如果补上 runtime trigger，复杂度被拆开：
+
+- 入口判断：要不要加载 `learning-capture`。
+- 领域判断：是不是学习，属于哪种 evidence object。
+- 输出判断：产物落到 `wiki/sources`、`wiki/ops`、`wiki/examples`、`wiki/adr`、
+  OpenSpec，还是目标 repo docs。
+- 晋升判断：有没有证据升级成 `AGENTS.md`、spec 或 skill hard rule。
+
+## 复用什么
+
+- 复用 `larksuite/cli` 的 domain skill + module references 结构。
+- 复用“何时用 / 何时不用”的 runtime trigger 写法。
+- 复用“重细节进 references”的低 token 主体模式。
+
+## 修改什么
+
+- 不照搬它的 command/domain 组织法，因为本仓库不是 CLI 命令库。
+- 不把 `learning-capture` 做成所有链接的默认入口；仍然保留 non-learning 拒绝场景。
+- 不把这次学习直接升级成新的 spec SHALL；先作为当前 `govern-repo-agents-loaded-context`
+  的结构修正依据。
+
+## 拒绝什么
+
+- 拒绝把 `High-Frequency Skills` 变成所有 skill 的清单。
+- 拒绝把 `Output Routing` 当成 runtime trigger。
+- 拒绝用 source-of-record 链接替代 agent 运行时加载条件。
+
+## repo target
+
+- 当前落点：本页 `learning-capture-routing / intake`。
+- 可执行后续：在 `govern-repo-agents-loaded-context` 中补 `learning-capture`
+  runtime trigger，并修正 archive review 的 learning replay 结论。
+- 不直接改：root `~/.codex/AGENTS.md`、`CLAUDE.md`、learning skill 本体。
