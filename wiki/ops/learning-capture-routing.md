@@ -224,3 +224,27 @@ source 里猜：到底要不要学、要不要落 wiki、要不要加载 skill�
 - 不迁移 wiki 目录结构。
 - 不实现 weekly-review 自动化。
 - 不把外部来源学习直接升级为 behavior asset。
+
+## Link Trigger Replay 治理锚点（2026-05-07）
+
+本轮用户要求把“下次我给链接你会怎么做”的回放作为 skill / agent 治理策略
+之一。这个锚点的作用不是新增一种学习流程，而是把已经存在的 runtime trigger
+变成可复盘、可引用、可验证的行为矩阵。
+
+## replay matrix
+
+| 输入形态 | runtime route | 输出边界 |
+|---|---|---|
+| 学习 / 治理线程里的裸文章链接 | `learning-capture` -> article module -> admission -> score | 只有分数和 topic anchor 支持时才落 durable wiki |
+| 学习 / 治理线程里的微信链接 | `weixin-reader` -> article module -> admission -> score | 必须先有 source grounding，不把全文搬进 wiki |
+| 带学习 / 复用 / 改造意图的 GitHub/README 链接 | repo/README module -> admission -> score | 只有通过阈值才精读并写 durable notes |
+| raw fetch / news / fact lookup / short abstract | 不走 learning-capture | 不默认落 wiki |
+| 没有学习上下文的裸链接 | clarify 或 ordinary lookup/fetch | 不强行建 durable topic |
+
+## governance boundary
+
+- replay 是 runtime strategy，不是把所有链接都写 wiki。
+- wiki capture 是最低正确落点，不是 promotion。
+- 文章 takeaway 要进入 `AGENTS.md`、spec `SHALL`、skill hard rule 或 archive-ready
+  claim，必须另过 evidence-backed promotion gate 或 scoped OpenSpec change。
+- 这次锚点由 OpenSpec change `codify-link-learning-trigger-replay` 负责验证和收口。

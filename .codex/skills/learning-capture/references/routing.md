@@ -19,6 +19,29 @@ Use this reference when intent or source kind is not obvious.
 | Short abstract with no local reuse intent | no | answer normally |
 | Generic code review | no | use review workflow |
 
+## Link Trigger Replay
+
+Use this replay matrix when the user asks what should happen the next time they
+drop a link, or when a bare link arrives in a recent learning / governance /
+method-calibration thread.
+
+| Input shape | Learning Capture? | Required route | Durable output |
+|---|---|---|---|
+| Bare article link inside an active learning / governance thread | yes | article module -> admission -> score | wiki notes only if the score and topic anchor justify them |
+| `mp.weixin.qq.com` link inside an active learning / governance thread | yes | `weixin-reader` or equivalent source grounding -> article module -> admission -> score | wiki notes only if the score and topic anchor justify them |
+| GitHub/GitLab repo or README link with learn/reuse/adapt intent | yes | repo/README module -> admission -> score | wiki notes only if the score and topic anchor justify them |
+| Raw source body fetch, latest-news, fact lookup, or short abstract request | no | narrower source-specific or lookup path | no durable learning output by default |
+| Bare link with no active learning context, local reuse context, wiki intent, or method-calibration context | no | clarify intent or handle as ordinary lookup/fetch | no durable learning output by default |
+
+Replay output must state:
+
+- selected route
+- source kind
+- score band or reason scoring did not run
+- wiki target, weekly-review candidate status, or skip reason
+- adoption boundary
+- whether promotion is blocked pending evidence
+
 ## Source Kind Gate
 
 | Source Kind | Signal | Module Route |
