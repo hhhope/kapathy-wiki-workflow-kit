@@ -70,6 +70,29 @@ Sources: `wiki/adr/0027-repo-phase0-before-repo-agents-migration.md`,
 | Material-processing output | Produce readable `wiki/sources` output first, then linked `wiki/ops` output when the material contains action signals. | `.codex/skills/material-collaboration-defaults/SKILL.md` |
 | Meeting-note output | Produce a review version first; do not publish or sync final notes while confirmation items remain unresolved. | `.codex/skills/meeting-note-output/SKILL.md` |
 
+## Behavior Replay Gate
+
+- When a change, completion claim, or governance artifact says a runtime
+  behavior will trigger, stop, route, reject, or persist differently in future
+  sessions, include behavior replay evidence before treating the claim as
+  complete or archive-ready.
+- Minimum evidence: input or situation shape, trigger condition, expected route
+  or stop behavior, repo-visible artifact a future agent should read, expected
+  output or non-output, promotion or non-promotion boundary, and residual risk
+  or proof boundary.
+- Applies to semantic skill trigger changes, repo `AGENTS.md` runtime triggers,
+  OpenSpec hard stops, archive / re-anchor / explore gates, link-learning
+  trigger replay, and claims such as "next time this will happen".
+- Does not apply by default to one-off analysis, candidate learning notes,
+  source summaries, ordinary wiki capture, or exploratory thinking that does not
+  claim future runtime behavior.
+- Specialized gates such as skill-evaluation evidence, local pressure tests,
+  link-trigger replay, disagreement replay, and re-anchor replay can satisfy
+  this gate when they preserve the minimum evidence and proof boundary.
+
+Sources: `openspec/changes/generalize-behavior-replay-gate/specs/behavior-replay-gate/spec.md`,
+`wiki/ops/behavior-replay-gate.md`.
+
 ## High-Frequency Skills
 
 Use these repo-local principle skills when the request or implementation scope

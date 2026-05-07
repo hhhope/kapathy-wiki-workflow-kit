@@ -22,6 +22,7 @@
 - [例子驱动的 Wiki 留痕](example-driven-wiki-capture.md)
 - [learning-capture-routing / intake](learning-capture-routing.md)
 - [Agent Harness 文章精读](agent-harness-article-learning.md)
+- [behavior-replay-gate / method](behavior-replay-gate.md)
 - [root-capability-extraction / retro](root-capability-extraction-retro.md)
 - [分歧管理方法](disagreement-management-method.md)
 - [live-conversation-reanchor-gate / retro](live-conversation-reanchor-gate-retro.md)
