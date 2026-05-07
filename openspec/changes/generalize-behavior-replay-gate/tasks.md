@@ -18,4 +18,4 @@
 ## 4. Closeout
 
 - [x] 4.1 Review dirty tree and stage only task-related files.
-- [ ] 4.2 Commit the completed, verified change step.
+- [x] 4.2 Commit the completed, verified change step.
