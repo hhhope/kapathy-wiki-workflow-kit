@@ -25,7 +25,11 @@
 
 ## 4. Evaluation
 
-- [ ] 4.1 Record GREEN replay results.
-- [ ] 4.2 Run `openspec validate decide-root-capability-extraction-boundary --strict`.
-- [ ] 4.3 Confirm no root dotfiles or skill bodies were edited.
-- [ ] 4.4 Record residual risks.
+- [x] 4.1 Record GREEN replay results.
+  <!-- 2026-05-07 — evaluation.md records PASS for ownership column, root-candidate labels, repo-owned labels, shared skills, ADR gate, and retro evidence -->
+- [x] 4.2 Run `openspec validate decide-root-capability-extraction-boundary --strict`.
+  <!-- 2026-05-07 — strict validation passed; PostHog DNS flush noise ignored -->
+- [x] 4.3 Confirm no root dotfiles or skill bodies were edited.
+  <!-- 2026-05-07 — task diff touches repo AGENTS, OpenSpec change artifacts, ADR/index, and wiki ops; no ~/.codex, ~/.claude, or .codex/skills body edits -->
+- [x] 4.4 Record residual risks.
+  <!-- 2026-05-07 — evaluation.md records documentation-level proof, no root runtime change, and physical repo skill location as residual risks -->
