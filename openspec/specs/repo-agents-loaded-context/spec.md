@@ -36,3 +36,10 @@ loaded-context governance, not as line-count cleanup alone.
 - **THEN** the change SHALL preserve the delivery boundary inline unless the
   proxy evidence proves equivalent runtime safety
 
+#### Scenario: Repo AGENTS lists runtime skill routes
+
+- **WHEN** repo `AGENTS.md` lists high-frequency runtime skill routes
+- **THEN** it SHALL state that runtime routing does not imply ownership
+- **AND** rows that can be mistaken for generic root capabilities SHALL declare
+  ownership status or point to a stable source that does
+

@@ -90,7 +90,7 @@ Sources: `wiki/adr/0027-repo-phase0-before-repo-agents-migration.md`,
   link-trigger replay, disagreement replay, and re-anchor replay can satisfy
   this gate when they preserve the minimum evidence and proof boundary.
 
-Sources: `openspec/changes/generalize-behavior-replay-gate/specs/behavior-replay-gate/spec.md`,
+Sources: `openspec/specs/behavior-replay-gate/spec.md`,
 `wiki/ops/behavior-replay-gate.md`.
 
 ## High-Frequency Skills

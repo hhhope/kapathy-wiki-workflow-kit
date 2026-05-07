@@ -8,7 +8,7 @@ related_objects:
 - repo-agents-loaded-context
 - principle-skills-layer
 derived_from:
-- openspec/changes/decide-root-capability-extraction-boundary/
+- openspec/changes/archive/2026-05-07-decide-root-capability-extraction-boundary/
 - wiki/ops/root-capability-extraction-retro.md
 ---
 

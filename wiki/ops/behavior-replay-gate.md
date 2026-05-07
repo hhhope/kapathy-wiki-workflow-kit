@@ -4,7 +4,7 @@ artifact_type: method
 title: behavior-replay-gate / method
 type: method
 language: zh-CN
-status: active-change
+status: accepted
 created_at: 2026-05-07
 updated_at: 2026-05-07
 related_objects:
@@ -13,9 +13,9 @@ related_objects:
   - disagreement-management-method
   - live-conversation-reanchor-gate
 derived_from:
-  - openspec/changes/generalize-behavior-replay-gate/design.md
+  - openspec/changes/archive/2026-05-07-generalize-behavior-replay-gate/design.md
 formalizes:
-  - openspec/changes/generalize-behavior-replay-gate/specs/behavior-replay-gate/spec.md
+  - openspec/specs/behavior-replay-gate/spec.md
 ---
 
 # behavior-replay-gate / method
