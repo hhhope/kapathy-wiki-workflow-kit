@@ -178,3 +178,49 @@ source 里猜：到底要不要学、要不要落 wiki、要不要加载 skill�
 - 可执行后续：在 `govern-repo-agents-loaded-context` 中补 `learning-capture`
   runtime trigger，并修正 archive review 的 learning replay 结论。
 - 不直接改：root `~/.codex/AGENTS.md`、`CLAUDE.md`、learning skill 本体。
+
+## Runtime / Review 分层定稿（2026-05-07）
+
+本轮通过 OpenSpec change `harden-learning-capture-runtime` 把学习入口拆成运行时
+轻门禁和周期性重整理。
+
+## 优先级
+
+| 优先级 | 问题 | 归属 |
+|---|---|---|
+| P0 | 这个输入现在要不要启动学习？ | `learning-capture` runtime trigger |
+| P0 | 是否值得精读？ | admission + scorecard，75 分门槛 |
+| P0 | 是否升级成 `AGENTS.md` / spec / skill？ | promotion gate / OpenSpec |
+| P1 | 它是文章、repo、example 还是混合？ | learning module routing |
+| P1 | 如果主题不明确怎么办？ | candidate，等 weekly review |
+| P1 | 应该挂到哪个已有专题？ | topic anchoring |
+| P2 | 学完产物落哪里？ | Output Routing |
+| P2 | 跨来源概念、链接、整理谁做？ | weekly review / compile |
+
+## 当前落地原则
+
+- Runtime 只做轻判断：intent、source kind、topic anchor、admission、score、
+  candidate / skip / deep-read 决策。
+- Article 和 repo/README 都使用 75 分 deep-read 门槛；60-74 只留 brief
+  candidate，低于 60 只留 skip reason。
+- 用户明确主题时，先查已有 wiki topic；例如 agent / harness / eval 文章应优先
+  检查 `agent-harness-article-learning` 相关页面。
+- 用户没有明确主题且只能弱语义猜测时，不强挂已有专题，留给 weekly review。
+- Weekly review 是 health-check / self-check 出口，不是每次输入都跑的编译器。
+- Output Routing 只负责产物落点，不能替代 runtime trigger。
+
+## 目录映射
+
+- `wiki/sources`：raw source layer。
+- `wiki/ops/*-intake.md`：brainstorming / capture layer。
+- `wiki/ops/*-learning.md` 或专题学习页：compiled learning notes。
+- `wiki/ops/*-retro.md`：process health / drift review。
+- `wiki/examples`：reusable output-shape examples。
+- `wiki/adr`：stable decisions。
+- OpenSpec：scoped behavior changes。
+
+## 不做
+
+- 不迁移 wiki 目录结构。
+- 不实现 weekly-review 自动化。
+- 不把外部来源学习直接升级为 behavior asset。

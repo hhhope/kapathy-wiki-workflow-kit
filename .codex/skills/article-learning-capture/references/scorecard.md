@@ -2,6 +2,9 @@
 
 Use this scorecard before deep reading. It has two stages: an admission gate and
 a value score. Do not score a source until the admission gate is recorded.
+If a score is created after deep reading or after conclusions were drafted, mark
+it `retrospective`; it is useful for audit but does not count as score-first
+admission evidence.
 
 ## Stage 1: Admission Gate
 
@@ -67,6 +70,7 @@ Each scored article should record:
 - admission gate result
 - source class
 - source artifact type
+- score timing: score-first or retrospective
 - total score
 - score band
 - per-criterion scores
@@ -84,3 +88,5 @@ Each scored article should record:
 - A structure reference can teach output shape without proving technical claims.
 - Do not use the score to hide uncertainty. If evidence is weak, mark the
   transfer point as candidate.
+- Do not repair a missing score-first gate by adding a retrospective score and
+  treating it as if it justified the original deep read.

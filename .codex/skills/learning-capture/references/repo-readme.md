@@ -11,6 +11,10 @@ For full README/repo workflow details, load
 ## Required Gates
 
 - Start from README or repo-level operating docs.
+- Record repo admission before scoring: source access, source class, grounding,
+  local objective, and adaptation boundary.
+- Score before deep reading. Use the repo scorecard threshold: 75+ deep-read,
+  60-74 brief candidate, below 60 skip reason.
 - Preserve adaptation boundary instead of stopping at source summary.
 - Capture at least:
   - source
@@ -26,3 +30,10 @@ For full README/repo workflow details, load
 If the repo link is only background for a specific article, use the article
 module first. Do not claim the repo's real structure from an article summary
 alone.
+
+## Reference Files
+
+- Full skill: `.codex/skills/readme-learning-capture/SKILL.md`
+- Scorecard: `.codex/skills/readme-learning-capture/references/scorecard.md`
+- Pressure scenarios:
+  `.codex/skills/readme-learning-capture/references/pressure-scenarios.md`

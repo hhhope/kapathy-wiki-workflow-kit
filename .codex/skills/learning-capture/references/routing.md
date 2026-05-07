@@ -28,6 +28,24 @@ Use this reference when intent or source kind is not obvious.
 | Example-shaped | output example, writing style, visual structure, workflow shape, method example | `example-reference.md` |
 | Mixed | article discusses a repo, repo README supports an article, or example carries a method | start with the directly available source, then route to the second module only when the user asks for that evidence |
 
+## Topic Anchor Gate
+
+| Topic Signal | Action |
+|---|---|
+| User explicitly names a topic, such as agent, harness, eval, README structure, or workflow governance | Check `wiki/ops/index.md`, matching filenames, and existing topic pages before creating durable notes |
+| Source title or repo name strongly matches an existing wiki title, filename, or index entry | Prefer updating or linking the existing topic |
+| Topic is weak, inferred only semantically, or not named by the user | Keep a candidate note for weekly review; do not force a link |
+| Source is low-scoring or only generally interesting | Record skip reason or candidate status; do not create a durable topic page |
+
+## Batch Triage
+
+- When many sources arrive together, triage intent and score sources before
+  deep reading.
+- Only sources meeting the module's deep-read threshold should receive durable
+  reading notes by default.
+- Brief candidates and skip records are inputs for weekly review, not immediate
+  compiled wiki pages.
+
 ## Mixed-Source Rules
 
 - An article about a repo is article-shaped until the repo or README is read.
@@ -36,12 +54,15 @@ Use this reference when intent or source kind is not obvious.
   capture.
 - A secondary interpretation can frame learning, but promotion needs primary
   source or local evidence.
+- A topic anchor is a routing decision, not proof that the source is worth deep
+  reading.
 
 ## Output Contract
 
 Every learning result should say:
 
 - source kind
+- topic anchor or weekly-review candidate status
 - selected module
 - what was learned
 - local usefulness

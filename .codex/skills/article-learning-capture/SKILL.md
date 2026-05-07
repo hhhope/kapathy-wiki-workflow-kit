@@ -38,6 +38,11 @@ article digestion with no local reuse intent.
 ## Hard Rules
 
 - Score before deep reading.
+- Deep-read only sources that score 75 or higher by default.
+- Treat 60-74 as brief candidates and below 60 as skip records unless the user
+  explicitly overrides the threshold.
+- Mark any score created after deep reading or after conclusions as
+  `retrospective`; it does not count as score-first admission evidence.
 - Always preserve the original URL, title, publisher or author when available,
   publication date when available, and access date.
 - Classify the source before scoring: primary source, secondary
@@ -72,3 +77,5 @@ article digestion with no local reuse intent.
 - Reading every provided article deeply without a score threshold.
 - Treating another model's summary as evidence when the original source was not
   checked.
+- Backfilling a score after conclusions and presenting it as if it admitted the
+  article before deep reading.

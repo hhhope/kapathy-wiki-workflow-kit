@@ -17,6 +17,10 @@ For full article workflow details, load
 - Preserve source grounding before analysis: extracted markdown when permitted,
   source map with bounded excerpts, or retrieval-failure note.
 - Score before deep reading.
+- Use the article scorecard threshold: 75+ deep-read, 60-74 brief candidate,
+  below 60 skip reason.
+- Mark retrospective scoring explicitly; it is not score-first admission
+  evidence.
 - Respect copyright boundaries: no full verbatim copyrighted article text and no
   full verbatim translation.
 - Separate article comprehension from local transfer extraction.

@@ -9,7 +9,7 @@ description: Use when the user provides articles, repo/README links, or examples
 
 Route learning requests before material-specific workflows run. The goal is to
 decide whether the request is learning at all, then choose the right evidence
-object and module.
+object, topic anchor, and module.
 
 ## When To Use
 
@@ -41,10 +41,17 @@ short abstracts, or one-off digestion with no local reuse intent.
 ## Hard Rules
 
 - Classify intent before reading deeply.
+- For batch source intake, triage and score first; do not deep-read every source
+  by default.
 - If the user only provides a link, inspect conversation context before deciding
   whether it is learning material or a raw fetch / lookup request.
 - Route by evidence object: article-shaped, repo/README-shaped, or
   example-shaped.
+- If the user names a topic or the source strongly matches an existing wiki
+  title, filename, or index entry, check that topic before creating durable
+  notes.
+- If topic fit is unclear or weak, keep the item as a weekly-review candidate;
+  do not force a semantic link.
 - Prefer narrower source tools for raw fetching, such as `weixin-reader`.
 - Do not promote external-source takeaways into `AGENTS.md`, specs, hard skill
   rules, or archive-ready claims without the repository evidence-backed gate.
@@ -76,3 +83,5 @@ short abstracts, or one-off digestion with no local reuse intent.
   the repo or README.
 - Collapsing source summary, source grounding, local usefulness, and promotion
   evidence into one table.
+- Forcing unclear sources onto existing wiki topics instead of leaving weekly
+  review candidates.

@@ -77,6 +77,7 @@ matches. They complement repo governance; they do not replace OpenSpec gates.
 
 | Situation | Load |
 |---|---|
+| External articles, repos, READMEs, or examples used as learning, reference, or adaptation material | `.codex/skills/learning-capture/SKILL.md` |
 | Material, reports, attachments, preview HTML, or source files | `.codex/skills/material-collaboration-defaults/SKILL.md` |
 | Meeting notes, transcripts, minutes, or Feishu meeting-note output | `.codex/skills/meeting-note-output/SKILL.md` |
 | Implementing an OpenSpec change | `.codex/skills/openspec-apply-change/SKILL.md` |

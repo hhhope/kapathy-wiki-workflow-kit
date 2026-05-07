@@ -23,6 +23,12 @@ Do not use this skill for ordinary article summarization or for generic code rev
 ## Rules
 
 - Start from the README or repo-level operating docs, then extract repository learning.
+- Record admission before scoring: source access, source class, source
+  grounding, local objective, and adaptation boundary.
+- Score before deep reading. Deep-read only repos/READMEs scoring 75 or higher
+  by default.
+- Treat 60-74 as brief candidates and below 60 as skip records unless the user
+  explicitly overrides the threshold.
 - Preserve the adaptation boundary. Capture at least:
   - source
   - what was reused
@@ -37,6 +43,11 @@ Do not use this skill for ordinary article summarization or for generic code rev
   - `OpenSpec change` when the learning becomes a scoped repository change
 - Follow [AGENTS.md](../../../AGENTS.md) and [example-driven wiki capture](../../../wiki/ops/example-driven-wiki-capture.md) instead of inventing a separate storage model.
 
+## References
+
+- Scorecard: `references/scorecard.md`
+- Pressure scenarios: `references/pressure-scenarios.md`
+
 ## Output Checklist
 
 - Name the source repo or README
@@ -48,6 +59,7 @@ Do not use this skill for ordinary article summarization or for generic code rev
 ## Common Mistakes
 
 - Writing only a README summary with no repository adaptation
+- Deep-reading a repo before admission and scoring
 - Copying the source structure directly without checking repo boundaries
 - Forgetting to create the wiki record when the reusable takeaway is already clear
 - Treating every GitHub or GitLab link as worth a durable page
