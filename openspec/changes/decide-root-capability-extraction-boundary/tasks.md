@@ -16,9 +16,12 @@
 
 ## 3. Spec and Runtime Map
 
-- [ ] 3.1 Update `principle-skills-layer` spec with ownership-status classification.
-- [ ] 3.2 Update `repo-agents-loaded-context` spec so runtime maps do not imply ownership.
-- [ ] 3.3 Update repo `AGENTS.md` High-Frequency Skills to include ownership status.
+- [x] 3.1 Update `principle-skills-layer` spec with ownership-status classification.
+  <!-- 2026-05-07 — spec delta requires repo guidance to declare repo-owned/root-candidate/root-owned-reference/shared -->
+- [x] 3.2 Update `repo-agents-loaded-context` spec so runtime maps do not imply ownership.
+  <!-- 2026-05-07 — spec delta requires runtime skill routes to state routing does not imply ownership -->
+- [x] 3.3 Update repo `AGENTS.md` High-Frequency Skills to include ownership status.
+  <!-- 2026-05-07 — AGENTS.md table now has Ownership column for repo-owned/shared/root-candidate rows -->
 
 ## 4. Evaluation
 

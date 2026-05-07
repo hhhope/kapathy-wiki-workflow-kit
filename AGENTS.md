@@ -74,20 +74,21 @@ Sources: `wiki/adr/0027-repo-phase0-before-repo-agents-migration.md`,
 
 Use these repo-local principle skills when the request or implementation scope
 matches. They complement repo governance; they do not replace OpenSpec gates.
+This is a runtime routing map, not an ownership map.
 
-| Situation | Load |
-|---|---|
-| External articles, repos, READMEs, or examples used as learning, reference, or adaptation material | `.codex/skills/learning-capture/SKILL.md` |
-| Material, reports, attachments, preview HTML, or source files | `.codex/skills/material-collaboration-defaults/SKILL.md` |
-| Meeting notes, transcripts, minutes, or Feishu meeting-note output | `.codex/skills/meeting-note-output/SKILL.md` |
-| Implementing an OpenSpec change | `.codex/skills/openspec-apply-change/SKILL.md` |
-| Archiving an OpenSpec change | `.codex/skills/openspec-archive-change/SKILL.md` |
-| Exploring ideas or clarifying requirements with `$openspec-explore` | `.codex/skills/openspec-explore/SKILL.md` |
-| Creating a new OpenSpec proposal | `.codex/skills/openspec-propose/SKILL.md` |
-| Ambiguous request before silently choosing a scope | `.codex/skills/clarify-before-acting/SKILL.md` |
-| Speculative abstractions or future-proofing are growing | `.codex/skills/simplicity-first/SKILL.md` |
-| Narrow edit risks expanding into adjacent cleanup | `.codex/skills/surgical-changes/SKILL.md` |
-| About to claim complete/fixed/synced without fresh evidence | `.codex/skills/verify-before-claiming/SKILL.md` |
+| Situation | Load | Ownership |
+|---|---|---|
+| External articles, repos, READMEs, or examples used as learning, reference, or adaptation material | `.codex/skills/learning-capture/SKILL.md` | shared: root-candidate learning core; repo-owned output routing |
+| Material, reports, attachments, preview HTML, or source files | `.codex/skills/material-collaboration-defaults/SKILL.md` | repo-owned |
+| Meeting notes, transcripts, minutes, or Feishu meeting-note output | `.codex/skills/meeting-note-output/SKILL.md` | repo-owned |
+| Implementing an OpenSpec change | `.codex/skills/openspec-apply-change/SKILL.md` | shared: OpenSpec lifecycle with repo gates |
+| Archiving an OpenSpec change | `.codex/skills/openspec-archive-change/SKILL.md` | shared: generic archive action with repo review detail |
+| Exploring ideas or clarifying requirements with `$openspec-explore` | `.codex/skills/openspec-explore/SKILL.md` | shared: explore stance with repo trace gate |
+| Creating a new OpenSpec proposal | `.codex/skills/openspec-propose/SKILL.md` | shared |
+| Ambiguous request before silently choosing a scope | `.codex/skills/clarify-before-acting/SKILL.md` | root-candidate |
+| Speculative abstractions or future-proofing are growing | `.codex/skills/simplicity-first/SKILL.md` | root-candidate |
+| Narrow edit risks expanding into adjacent cleanup | `.codex/skills/surgical-changes/SKILL.md` | root-candidate |
+| About to claim complete/fixed/synced without fresh evidence | `.codex/skills/verify-before-claiming/SKILL.md` | root-candidate; partly covered by root git truth-source |
 
 ## Skill Authoring Contract
 
