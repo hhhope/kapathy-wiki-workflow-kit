@@ -9,9 +9,12 @@
 
 ## 2. Planning Evidence
 
-- [ ] 2.1 Record baseline repo `AGENTS.md` line, word, and byte counts.
-- [ ] 2.2 Classify each repo `AGENTS.md` section as inline hard stop, stable proxy, delivery-sensitive inline, or deferred candidate.
-- [ ] 2.3 Define proxy acceptance checks and hard-stop preservation checks.
+- [x] 2.1 Record baseline repo `AGENTS.md` line, word, and byte counts.
+  <!-- 2026-05-07 — evaluation.md records 510 lines / 3430 words / 23578 bytes -->
+- [x] 2.2 Classify each repo `AGENTS.md` section as inline hard stop, stable proxy, delivery-sensitive inline, or deferred candidate.
+  <!-- 2026-05-07 — evaluation.md Section Classification covers all current sections -->
+- [x] 2.3 Define proxy acceptance checks and hard-stop preservation checks.
+  <!-- 2026-05-07 — evaluation.md records proxy acceptance checks and hard-stop preservation checks -->
 
 ## 3. Implementation
 
