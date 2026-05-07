@@ -41,3 +41,23 @@
 - Live drift signals still stop implementation until re-anchored.
 - Unsupported external learning still cannot become AGENTS/spec/skill hard rules.
 - Material and meeting-note outputs still require readable/review output before final publication.
+
+## Implementation Evidence
+
+- Date: 2026-05-07
+- Updated file: `AGENTS.md`
+- After implementation count: 215 lines / 1609 words / 14908 bytes
+- Reduction from baseline: 295 lines / 1821 words / 8670 bytes
+- Proxy existence check: all explicit ADR, OpenSpec spec, wiki ops, and
+  published repo skill paths referenced by `AGENTS.md` exist locally.
+- Delivery boundary check: material processing still requires readable
+  `wiki/sources` output before linked `wiki/ops`; meeting-note output still
+  requires a review version and blocks final publication while confirmation
+  items remain unresolved.
+- Agent-legibility check embedded in `AGENTS.md`:
+  - where to read: each compact rule points to source paths in the same section
+  - how to verify: Hard Stops and Wiki Runtime Stack name the verification
+    surface instead of restating full source text
+  - when to stop: OpenSpec completion, archive review, `$openspec-explore`,
+    live drift, unsupported learning promotion, and delivery publication stops
+    remain visible inline

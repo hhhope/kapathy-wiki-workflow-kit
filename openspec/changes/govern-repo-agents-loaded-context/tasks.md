@@ -18,9 +18,12 @@
 
 ## 3. Implementation
 
-- [ ] 3.1 Update repo `AGENTS.md` to the accepted compressed entrypoint structure.
-- [ ] 3.2 Verify every proxy points to a stable repo-visible source.
-- [ ] 3.3 Verify repo-only delivery boundaries still remain explicit.
+- [x] 3.1 Update repo `AGENTS.md` to the accepted compressed entrypoint structure.
+  <!-- 2026-05-07 — AGENTS.md rewritten as loaded-context entrypoint with hard stops, routing, and proxy table -->
+- [x] 3.2 Verify every proxy points to a stable repo-visible source.
+  <!-- 2026-05-07 — explicit ADR/spec/wiki ops/skill proxy paths in AGENTS.md exist locally -->
+- [x] 3.3 Verify repo-only delivery boundaries still remain explicit.
+  <!-- 2026-05-07 — material-processing and meeting-note boundaries remain inline in AGENTS.md -->
 
 ## 4. Evaluation
 

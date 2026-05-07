@@ -1,510 +1,215 @@
 # Repo Instructions
 
 This file adds repository-specific constraints for `report-wiki-portfolio`.
+Global/root instructions still own health checks, git truth-source checks, and
+general execution discipline. This file owns repo-local workflow gates, routing
+defaults, and delivery boundaries.
 
-## OpenSpec Trigger
+## Scope
 
-- Treat changes to repository-default workflow, collaboration behavior, routing defaults, escalation boundaries, or default output rules as OpenSpec-level changes.
-- For these changes, create or select an active OpenSpec change before editing `wiki/`, `scripts/`, `skills-drafts/`, or other repository guidance files.
-- Do not ship temporary wiki-only or skill-draft-only fixes first and backfill OpenSpec later.
-- If the user asks to change how Codex should usually behave in this repository, assume it is a workflow change unless the request is explicitly limited to one page or one one-off run.
+- Repository-default collaboration policy belongs in this repo first, not in
+  global instructions by default.
+- Only promote a policy to global guidance when it has been shown to generalize
+  beyond this repository's material-processing workflow.
+- Active OpenSpec change artifacts own current scope, task progress, and
+  interruption checkpoints.
+- `wiki/adr/` owns stable cross-change decisions.
 
-## Decision Observability
+## Workflow Change Gate
 
-- For workflow-level changes, record stable decisions in `wiki/adr/` rather than leaving the rationale only in chat history.
-- If the work is interrupted, blocked, or leaves an unresolved branch, write a checkpoint note in the active change artifacts or linked repo guidance before stopping.
-- A valid checkpoint must state:
-  - what was decided
-  - what is still open
-  - what the next action is
-- Do not claim a future “tighter process” unless the new constraint is written into repo-visible artifacts.
-- OpenSpec change artifacts still own current scope, task progress, and interruption checkpoints; `wiki/adr/` owns stable project decisions.
+- Treat changes to repository-default workflow, collaboration behavior, routing
+  defaults, escalation boundaries, or default output rules as OpenSpec-level
+  changes.
+- For these changes, create or select an active OpenSpec change before editing
+  `wiki/`, `scripts/`, `skills-drafts/`, `.codex/skills/`, or other repository
+  guidance files.
+- Do not ship temporary wiki-only or skill-draft-only fixes first and backfill
+  OpenSpec later.
+- If the user asks to change how Codex should usually behave in this repository,
+  assume it is a workflow change unless the request is explicitly limited to one
+  page or one one-off run.
 
-## Repo AGENTS Governance Phase Gate
+Sources: `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`,
+`wiki/adr/0002-stable-decisions-live-in-wiki-adr.md`.
 
-- For repo-level `AGENTS.md` governance work, treat migration as a phased workflow rather than an immediate edit target.
-- Phase 0 means: accept the repo-level gate, fix repo-local governance identity conflicts, and publish the minimum blocking wording.
-- Phase 1 means: any later compression, proxy migration, or structural rewrite of repo `AGENTS.md`.
-- Do not start Phase 1 from candidate wiki guidance alone. A repo-visible accepted mainline must exist first.
-- Root-level `~/.codex/AGENTS.md` and `~/.claude/CLAUDE.md` are related but out of scope by default for repo Phase 0 work.
-- Before any Phase 1 migration begins, the repository must have:
+## Repo AGENTS Governance Gate
+
+- For repo-level `AGENTS.md` governance work, treat migration as a phased
+  workflow rather than an immediate edit target.
+- Phase 0 means: accept the repo-level gate, fix repo-local governance identity
+  conflicts, and publish the minimum blocking wording.
+- Phase 1 means: later compression, proxy migration, or structural rewrite of
+  repo `AGENTS.md`.
+- Do not start Phase 1 from candidate wiki guidance alone. A repo-visible
+  accepted mainline must exist first.
+- Root-level `~/.codex/AGENTS.md` and `~/.claude/CLAUDE.md` are related but out
+  of scope by default for repo Phase 0 or Phase 1 work.
+- Before Phase 1 migration begins, the repository must have:
   - an accepted repo-visible Phase 0 mainline
   - no duplicate ADR numbering affecting current governance references
-  - an explicit repo-local commit-gate decision: repo-local commit hooks are not part of the default governance path; reversal requires a new OpenSpec change
+  - an explicit repo-local commit-gate decision
+- Current commit-gate decision: repo-local commit hooks are not part of the
+  default governance path; reversal requires a new OpenSpec change.
 
-## High-Frequency Principles
+Sources: `wiki/adr/0027-repo-phase0-before-repo-agents-migration.md`,
+`wiki/adr/0030-no-repo-local-commit-hook-default.md`,
+`openspec/specs/repo-agents-governance-phase0/spec.md`,
+`openspec/specs/no-repo-local-commit-hook-default/spec.md`.
 
-- The repo's principle-skills layer lives under `.codex/skills/` and complements, but does not replace, repo governance or workflow skills.
-- Any active change that publishes or semantically edits `.codex/skills/` must include `evaluation.md` in the change directory.
-- `evaluation.md` is the behavior-proof artifact and must include: `Baseline Scenarios`, `Before Results`, `After Results`, and `Residual Risks`.
-- Use `clarify-before-acting` when a request still has material ambiguity and the agent is about to silently choose an interpretation.
-- Use `simplicity-first` when the solution is starting to grow speculative abstractions or future-proofing not required by the task.
-- Use `surgical-changes` when the edit risks expanding into unrelated cleanup, formatting, or adjacent refactors.
-- Use `verify-before-claiming` when the agent is about to say something is complete, fixed, or synced without a fresh check.
+## Hard Stops
+
+| Situation | Required behavior | Source |
+|---|---|---|
+| Active OpenSpec change reaches `all_done` or all checkboxes are complete | Stop implementation. Default next action is archive review, not more implementation or immediate archive. | `wiki/adr/0007-archive-review-before-archive.md`, `openspec/specs/archive-review-defaults/spec.md` |
+| Archive review finds a routine closing tail | Keep the blocker visible in `tasks.md` and record the reason and next action in git history. | `openspec/specs/archive-review-defaults/spec.md` |
+| Archive review depends on scope ambiguity or reusable governance judgment | Add `archive-review.md` inside the current change directory. | `openspec/specs/archive-review-defaults/spec.md` |
+| `$openspec-explore` is used in this repo | Before exploration continues, create or update a lightweight repo-visible trace in `wiki/ops/`. | `wiki/adr/0009-explore-trace-before-openspec-explore.md`, `openspec/specs/openspec-explore-wiki-trace/spec.md` |
+| Live conversation shows drift from the last confirmed requirement | Stop continuation, re-anchor, and update a repo-visible `wiki/ops` retro unless the disagreement is already resolved in the active change. | `wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md`, `openspec/specs/live-conversation-reanchor-gate/spec.md` |
+| External article, README, repo, or in-chat example looks useful | Capture as learning only; do not promote into `AGENTS.md`, spec `SHALL`, skill hard rule, or archive-ready claim without evidence. | `openspec/specs/example-driven-wiki-capture/spec.md`, `openspec/specs/article-learning-capture/spec.md` |
+| Semantic edits to `.codex/skills/*` | Include `evaluation.md` with behavior proof and load the writing/TDD skill guidance. | `openspec/specs/skill-authoring-contract/spec.md`, `openspec/specs/skill-evaluation-evidence/spec.md`, `openspec/specs/local-skill-pressure-tests/spec.md` |
+| Material-processing output | Produce readable `wiki/sources` output first, then linked `wiki/ops` output when the material contains action signals. | `.codex/skills/material-collaboration-defaults/SKILL.md` |
+| Meeting-note output | Produce a review version first; do not publish or sync final notes while confirmation items remain unresolved. | `.codex/skills/meeting-note-output/SKILL.md` |
+
+## High-Frequency Skills
+
+Use these repo-local principle skills when the request or implementation scope
+matches. They complement repo governance; they do not replace OpenSpec gates.
+
+| Situation | Load |
+|---|---|
+| Material, reports, attachments, preview HTML, or source files | `.codex/skills/material-collaboration-defaults/SKILL.md` |
+| Meeting notes, transcripts, minutes, or Feishu meeting-note output | `.codex/skills/meeting-note-output/SKILL.md` |
+| Implementing an OpenSpec change | `.codex/skills/openspec-apply-change/SKILL.md` |
+| Archiving an OpenSpec change | `.codex/skills/openspec-archive-change/SKILL.md` |
+| Exploring ideas or clarifying requirements with `$openspec-explore` | `.codex/skills/openspec-explore/SKILL.md` |
+| Creating a new OpenSpec proposal | `.codex/skills/openspec-propose/SKILL.md` |
+| Ambiguous request before silently choosing a scope | `.codex/skills/clarify-before-acting/SKILL.md` |
+| Speculative abstractions or future-proofing are growing | `.codex/skills/simplicity-first/SKILL.md` |
+| Narrow edit risks expanding into adjacent cleanup | `.codex/skills/surgical-changes/SKILL.md` |
+| About to claim complete/fixed/synced without fresh evidence | `.codex/skills/verify-before-claiming/SKILL.md` |
 
 ## Skill Authoring Contract
 
-- Repo-local `.codex/skills/*` files are English-first behavior assets. Do not let the wiki's Chinese-first policy bleed into `SKILL.md`.
-- Keep repo-local `SKILL.md` files compact. Put only trigger conditions, hard rules, anti-patterns, and short loading pointers in the main body.
-- Move long examples, templates, or heavy format details into linked `references/` files when they would bloat trigger-time retrieval.
-- Before authoring or editing a repo-local skill, read this repo `AGENTS.md` and any repo pages that define delivery boundaries for that workflow.
-- If a skill affects Feishu-facing, reader-facing, or other delivery-sensitive outputs, make the repo boundary explicit in the skill or reference the governing repo document directly.
-- Semantic skill changes must include local pressure-test evidence in `evaluation.md`: `Pressure Scenarios`, `RED Baseline`, `GREEN Result`, and `Residual Risks`.
-- Multi-end or rollout proof is optional follow-up evidence, not the minimum completion gate for a semantic skill change.
+- Repo-local `.codex/skills/*` files are English-first behavior assets. Do not
+  let the wiki's Chinese-first policy bleed into `SKILL.md`.
+- Keep repo-local `SKILL.md` files compact. Put only trigger conditions, hard
+  rules, anti-patterns, and short loading pointers in the main body.
+- Move long examples, templates, or heavy format details into linked
+  `references/` files when they would bloat trigger-time retrieval.
+- Before authoring or editing a repo-local skill, read this repo `AGENTS.md` and
+  any repo pages that define delivery boundaries for that workflow.
+- If a skill affects Feishu-facing, reader-facing, or other delivery-sensitive
+  outputs, make the repo boundary explicit in the skill or reference the
+  governing repo document directly.
+- Semantic skill changes must include local pressure-test evidence in
+  `evaluation.md`: `Pressure Scenarios`, `RED Baseline`, `GREEN Result`, and
+  `Residual Risks`.
+- Multi-end or rollout proof is optional follow-up evidence, not the minimum
+  completion gate for a semantic skill change.
 
-## Archive Review Default
+Sources: `openspec/specs/skill-authoring-contract/spec.md`,
+`openspec/specs/skill-evaluation-evidence/spec.md`,
+`openspec/specs/local-skill-pressure-tests/spec.md`.
 
-- In this repository, when an OpenSpec change becomes `complete`, the default next action is `archive review`.
-- `complete` means stop implementation; it does not mean the change is already archive-ready.
-- If archive review finds an ordinary closing tail such as missing sync or final verification, keep the blocker visible in `tasks.md` and explain the reason and next action in git history.
-- If archive review depends on scope ambiguity, reusable governance judgment, or context that would be hard to recover from `tasks.md` and git history alone, add `archive-review.md` inside the current change directory.
-- Archive review must also check whether the completed change generated disagreement material that:
-  - should remain in method or `wiki/ops retro` form
-  - should already be promoted to `ADR`
-  - was flattened away without a durable record
-- Only archive a change after archive review passes.
+## Output Routing
 
-## Explore Trace Default
+- Raw upstream material belongs in `wiki/sources`.
+- Workflow, governance, operating learnings, traces, and retros belong in
+  `wiki/ops`.
+- Validated output-shape examples belong in `wiki/examples`.
+- Stable cross-change decisions belong in `wiki/adr`.
+- Scoped repository-default behavior changes belong in an OpenSpec change.
+- Public-facing repo artifacts such as README, docs, examples, or published
+  templates belong in that target repo when that repo is the active work target;
+  this wiki records internal learning and evidence, not every public artifact.
 
-- In this repository, every `openspec-explore` run must leave a repo-visible trace in `wiki/ops/` before the exploration continues.
-- The trace reuses the existing `intake` page type instead of creating a new page type.
-- If the explore request clearly continues the same topic thread, update the existing `wiki/ops/` trace instead of creating a duplicate page.
-- The explore trace records the opening context for the topic; it does not replace formal OpenSpec artifacts when the work later becomes a scoped change.
-- The explore trace should stay lightweight and capture at least the trigger question, current focus, current hypotheses, open questions, and next step.
+External link routing:
 
-## Conversation Handoff Default
-
-- When the live conversation repeatedly converges on the same north-star goal, the default behavior is to enter `handoff mode` rather than keep treating the exchange as disconnected Q&A.
-- Handoff mode is triggered by repeated north-star pull, not by a single hard counter. Same-topic discussion beyond two rounds is a strong signal, but not the only trigger.
-- Higher-priority signals include:
-  - the user repeatedly correcting the framing back to the same goal
-  - the user rejecting local fixes and restating the larger objective
-  - the user explicitly asking for the topic to be remembered, reused, or made durable
-- Handoff mode should preserve at least:
-  - north star
-  - constraints
-  - failure modes
-  - preferences
-  - disagreements
-  - open questions
-  - candidate practices
-  - repo targets
-- The first version of handoff mode is capture-and-structure only. It must not auto-edit `.codex/skills/*`, `AGENTS.md`, or other repository-default rules directly from conversation state.
-- Durable output should go to the lowest layer that preserves recovery:
-  - `trace / intake` for newly opened operating topics
-  - `retro` for drift, disagreement, or repeated process confusion
-  - `ADR` for stable cross-change decisions
-  - `OpenSpec change` for scoped workflow or implementation changes
-  - `archive-review.md` for governance-heavy closure reasoning on a current change
-
-## Example-Driven Capture Default
-
-- When the user provides an external repo, README, article, or concrete in-chat example and the discussion extracts a reusable learning, the default behavior is to create or update a repo-visible wiki record in the same turn.
-- Do not wait for an extra reminder such as `write this to wiki` when the discussion has already clarified:
-  - what was reused
-  - what was modified or rejected
-  - what is still not formalized
-  - what the next step is
-- This rule is about extracted learning, not raw link presence. Do not create a wiki page for every external link or pasted example.
-- Minimum record fields for example-driven capture:
-  - time
-  - source reference
-  - what was reused
-  - what was modified
-  - what was not yet formalized
-  - repo target
-  - next step
-- Default routing:
-  - `wiki/ops` for workflow, governance, and operating learnings
-  - `wiki/examples` for validated output-shape examples
-  - `wiki/team-lore-candidates.md` only after a project-local page already exists and the learning appears reusable across projects
-
-## Evidence-Backed Best Practice Gate
-
-- Capturing an external article, README, repo, or in-chat example as reusable learning is allowed; promoting it into a behavior asset requires evidence.
-- Accepted evidence shapes:
-  - external-document excerpt with URL and exact section or line reference
-  - local demo or fixture with RED/GREEN, input/output, and command or manual replay record
-  - git-like project comparison with repository, commit or path, and observable structure or behavior difference
+- A link by itself does not require a wiki page.
+- If the discussion extracts reusable learning, create or update a repo-visible
+  wiki record in the same turn.
+- Minimum record fields: time, source reference, what was reused, what was
+  modified, what was not formalized, repo target, and next step.
 - Unsupported learning stays a `candidate observation`.
-- Unsupported learning must not be promoted into repo `AGENTS.md`, root `AGENTS.md`, spec `SHALL`, skill hard rules, or archive-ready claims.
-- This gate is a repo-default promotion constraint, not a skill. Do not hide it behind a trigger-specific `SKILL.md`.
 
-## Disagreement Management Default
+Sources: `openspec/specs/example-driven-wiki-capture/spec.md`,
+`openspec/specs/article-learning-capture/spec.md`,
+`openspec/specs/learning-capture-routing/spec.md`,
+`wiki/ops/example-driven-wiki-capture.md`,
+`wiki/ops/learning-capture-routing.md`.
 
-- When a live disagreement is still doing goal-calibration work, do not rush to compress it into `ADR`, spec, skill, or route-level explanation.
-- Preserve the disagreement as calibration material first, especially when the user keeps rejecting the current framing or the discussion is still changing what the real object is.
-- Minimum preserved raw material before summary or promotion:
-  - rejected framing
-  - correction pressure
-  - redirection moment
-  - current clarity state
-  - protected target, if visible
-- Explicit anti-compression states:
-  - `I haven't seen it clearly yet`
-  - `We should not name the pattern yet`
-- First positive naming is only valid when:
-  - the rejected object has stabilized
-  - redirection has occurred
-  - the name explains the disagreement's evolution, not only the endpoint
-- Default routing after the method layer:
-- `wiki/ops retro` when the disagreement already needs repo-visible preservation but is not yet stable enough for `ADR`, spec, or skill
-  - `ADR` when the disagreement has produced a stable cross-change decision
-  - OpenSpec spec or repo-local skill only after the disagreement is stable enough to formalize
+## Conversation Governance
 
-## Live Conversation Re-Anchor Gate
+- Handoff mode starts when the live conversation repeatedly converges on the
+  same north-star goal. Preserve north star, constraints, failure modes,
+  preferences, disagreements, open questions, candidate practices, and repo
+  targets. Do not auto-edit behavior assets directly from conversation state.
+- Disagreement that is still calibrating the goal stays as calibration material
+  first. Preserve rejected framing, correction pressure, redirection moment,
+  current clarity state, and protected target before promotion.
+- First positive naming is valid only after the rejected object stabilizes and
+  redirection has occurred.
+- Live re-anchor is mandatory when continuation may now mean a materially
+  different next step.
 
-- When live conversation signals that the current work may have drifted away from the last confirmed requirement, the default behavior is to stop continuation and re-anchor before more implementation proceeds.
-- Trigger signals include:
-  - the user repeatedly says the work has drifted, is off-target, or should return to an earlier requirement
-  - the same `continue` can now mean materially different next steps
-  - the work is crossing from analysis, documentation, or modeling into runtime, automation, or execution
-  - the agent is continuing from the current technical chain instead of the last confirmed product goal
-- Mandatory action after trigger:
-  - stop implementation continuation
-  - restate the last confirmed requirement
-  - state the current chain being followed
-  - judge whether drift has occurred
-  - create or update a repo-visible `wiki/ops retro` unless the disagreement is already fully resolved in the active change
-- Implementation remains blocked until at least one of the following is true:
-  - the user explicitly confirms the next mainline
-  - a new OpenSpec change is created for the new direction
-  - the retro or archive-review artifact records `keep`, `freeze`, and `next action`
-- Non-goals:
-  - do not trigger on ordinary factual correction
-  - do not trigger on a single weak objection
-  - do not treat normal depth within the same confirmed scope as drift
+Sources: `openspec/specs/conversation-north-star-handoff/spec.md`,
+`wiki/ops/conversation-handoff-mode.md`,
+`openspec/specs/disagreement-management-method/spec.md`,
+`wiki/ops/disagreement-management-method.md`,
+`openspec/specs/live-conversation-reanchor-gate/spec.md`.
 
-## Wiki Naming Model Default
+## Wiki Runtime Stack
 
-- For new pages in evolution-bearing layers, use the `canonical object / artifact type` naming model.
-- Version 1 covers only:
-  - `wiki/ops`
-  - `wiki/adr`
-  - `openspec/specs`
-  - `wiki/examples`
-- For covered layers, the title core should express only:
-  - canonical object
-  - artifact type
-- Do not use the title core to carry:
-  - dates
-  - status words
-  - validation rounds
-  - change identifiers
-  - local symptom words such as `gap`, `issue`, `missing`, `leak`
-- A topic only qualifies as a canonical object when it:
-  - is not a one-time event
-  - already spans at least two repository containers or artifact layers
-  - can unify a real evolution chain instead of a temporary symptom
-- First-wave canonical objects:
-  - `disagreement-management`
-  - `conversation-handoff`
-  - `example-driven-capture`
-- Cross-layer consistency is required across:
-  - `wiki/ops`
-  - `wiki/adr`
-  - `openspec/specs`
-  - `wiki/examples`
-- Rollout rule:
-  - strong for new pages
-  - weak for existing pages until they are touched or intentionally migrated
-- Current non-goals:
-  - no immediate rename of existing pages
-  - no directory migration
-  - no graph metadata model yet
-  - no relation-analysis or graph tooling yet
+The long wiki runtime chain is governed by stable source records. Do not
+restate the full model here, and do not overclaim runtime autonomy from these
+structural proofs.
 
-## Wiki Frontmatter Model Default
+| Layer | Use | Sources |
+|---|---|---|
+| Naming model | Name new evolution-bearing pages by canonical object and artifact type. | `openspec/specs/wiki-naming-model/spec.md`, `wiki/ops/agent-readable-wiki-naming-model.md`, `wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md` |
+| Frontmatter model | Add minimal graph-ready fields to covered new pages. | `openspec/specs/wiki-frontmatter-model/spec.md`, `wiki/ops/agent-readable-wiki-frontmatter.md`, `wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md` |
+| Graph extraction | Extract structural nodes and relations only. | `openspec/specs/wiki-graph-extraction/spec.md`, `wiki/ops/agent-readable-wiki-graph-extraction.md`, `wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md` |
+| Relation analysis | Summarize object coverage and unresolved structure without semantic invention. | `openspec/specs/wiki-relation-analysis/spec.md`, `wiki/ops/agent-readable-wiki-relation-analysis.md`, `wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md` |
+| Semantic scoring | Score explicit canonical objects with audit-friendly factors; no embeddings or hidden guesses. | `openspec/specs/wiki-semantic-scoring/spec.md`, `wiki/ops/agent-readable-wiki-semantic-scoring.md`, `wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md` |
+| Utilization layer | Classify objects into explicit usage bands with caution reasons. | `openspec/specs/wiki-utilization-layer/spec.md`, `wiki/ops/agent-readable-wiki-utilization-layer.md`, `wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md` |
+| Runtime context | Bundle preferred, supporting, blocked, and caution context. | `openspec/specs/wiki-runtime-context/spec.md`, `wiki/ops/agent-readable-wiki-runtime-context.md`, `wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md` |
+| Source integration | Resolve only repository-local sources from covered layers. | `openspec/specs/wiki-runtime-context-source-integration/spec.md`, `wiki/ops/agent-readable-wiki-runtime-context-source-integration.md`, `wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md` |
+| Runtime auto routing | Produce `open_first`, `open_next`, and `do_not_open_first` from source-integrated context. | `openspec/specs/wiki-runtime-auto-routing/spec.md`, `wiki/ops/agent-readable-wiki-runtime-auto-routing.md`, `wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md` |
+| Context injection | Inject bounded excerpts from runtime auto-routing output. | `openspec/specs/wiki-context-injection/spec.md`, `wiki/ops/agent-readable-wiki-context-injection.md`, `wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md` |
+| Self-directed execution | Map injected context to bounded `execute_now`, `defer_for_followup`, and `do_not_execute` actions. | `openspec/specs/wiki-self-directed-execution/spec.md`, `wiki/ops/agent-readable-wiki-self-directed-execution.md`, `wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md` |
 
-- For new pages in covered evolution-bearing layers, use the repository's minimal frontmatter model.
-- Version 1 covers only:
-  - `wiki/ops`
-  - `wiki/adr`
-  - `openspec/specs`
-  - `wiki/examples`
-- New covered-layer pages must include:
-  - `canonical_object`
-  - `artifact_type`
-- New covered-layer pages should express direct structural relations through the shared field vocabulary:
-  - `related_objects`
-  - `derived_from`
-  - `validates`
-  - `formalizes`
-- Optional helper fields in version 1:
-  - `supersedes`
-  - `replaces`
-  - `notes_scope`
-- Rollout rule:
-  - strong for new pages
-  - weak for existing pages until they are touched or intentionally migrated
-- Current non-goals:
-  - no graph extractor yet
-  - no relation scoring yet
-  - no bulk metadata backfill yet
-  - no forced migration for old pages
+## Delivery Workflows
 
-## Wiki Graph Extraction Default
+Material processing:
 
-- Graph extraction is downstream of both:
-  - the wiki naming model
-  - the wiki frontmatter model
-- Version 1 extraction only covers:
-  - `wiki/ops`
-  - `wiki/adr`
-  - `openspec/specs`
-  - `wiki/examples`
-- Extraction output should preserve at least:
-  - nodes with page path, canonical object, artifact type, and source layer
-  - edges with source page path, relation type, and target
-- Supported relation types in version 1:
-  - `related_objects`
-  - `derived_from`
-  - `validates`
-  - `formalizes`
-- Optional relation types when present:
-  - `supersedes`
-  - `replaces`
-- Extraction proof is structural proof only. Do not overclaim it as:
-  - semantic completeness
-  - graph quality scoring
-  - graph UI readiness
-- Unresolved pages may emit warnings; version 1 does not require semantic guessing to force full node coverage
+- Formal workflow publication uses
+  `.codex/skills/material-collaboration-defaults/SKILL.md`.
+- `skills-drafts/` is draft space only; workflow changes cannot stop with an
+  active draft `SKILL.md`.
+- Before a workflow-level skill change is complete, every draft skill must be
+  either promoted into `.codex/skills/` or explicitly retired.
+- When the user drops materials and asks Codex to process them, do not stop at
+  placeholder intake output.
+- Default completion means readable `wiki/sources` output first, then linked
+  `wiki/ops` output when the material contains action signals.
+- Ask the user only at real output fork-points, such as whether to update
+  `html/h5/preview` artifacts in addition to wiki records.
 
-## Wiki Relation Analysis Default
+Meeting-note output:
 
-- Relation analysis is downstream of:
-  - the wiki naming model
-  - the wiki frontmatter model
-  - wiki graph extraction
-- Version 1 relation analysis only covers the graph extraction surface:
-  - `wiki/ops`
-  - `wiki/adr`
-  - `openspec/specs`
-  - `wiki/examples`
-- Relation analysis output should preserve at least:
-  - object coverage summary
-  - artifact-type distribution
-  - relation-type distribution
-  - unresolved warning summary
-  - proof-boundary notes
-- Relation analysis may aggregate unresolved structure by layer, but it must not:
-  - invent semantic identities for unresolved pages
-  - overclaim retrieval quality
-  - overclaim runtime routing readiness
-  - treat structural analysis as rollout proof
-
-## Wiki Semantic Scoring Default
-
-- Semantic scoring is downstream of:
-  - the wiki naming model
-  - the wiki frontmatter model
-  - wiki graph extraction
-  - wiki relation analysis
-- Version 1 semantic scoring only scores canonical objects already present in relation analysis
-- Semantic scoring output should preserve at least:
-  - object score summary
-  - factor breakdown per object
-  - unresolved repository context
-  - proof-boundary notes
-- Version 1 scoring must stay explicit and audit-friendly:
-  - no embeddings
-  - no hidden semantic guesses
-  - no LLM-only score generation
-- Semantic scoring must not overclaim:
-  - retrieval quality
-  - runtime routing readiness
-  - semantic understanding of unresolved pages
-  - rollout proof
-
-## Wiki Utilization Layer Default
-
-- Utilization guidance is downstream of:
-  - the wiki naming model
-  - the wiki frontmatter model
-  - wiki graph extraction
-  - wiki relation analysis
-  - wiki semantic scoring
-- Version 1 utilization should classify canonical objects into explicit bands such as:
-  - `preferred`
-  - `cautious`
-  - `blocked`
-- Utilization output must preserve:
-  - explicit reasons
-  - repository-level caution signals
-  - proof-boundary notes
-- Utilization guidance must not overclaim:
-  - retrieval readiness
-  - runtime autonomy
-  - semantic understanding of unresolved pages
-  - rollout proof
-
-## Wiki Runtime Context Default
-
-- Runtime-context bundling is downstream of:
-  - the wiki naming model
-  - the wiki frontmatter model
-  - wiki graph extraction
-  - wiki relation analysis
-  - wiki semantic scoring
-  - wiki utilization layer
-- Version 1 runtime context should preserve distinct sections such as:
-  - `preferred_context`
-  - `supporting_context`
-  - `blocked_context`
-  - `runtime_caution`
-- Runtime-context output must preserve:
-  - reasons
-  - usage guidance
-  - repository-level caution
-  - proof-boundary notes
-- Runtime-context output must not overclaim:
-  - retrieval readiness
-  - runtime autonomy
-  - unresolved page understanding
-  - rollout proof
-
-## Wiki Runtime Context Source Integration Default
-
-- Runtime-context source integration is downstream of:
-  - the wiki naming model
-  - the wiki frontmatter model
-  - wiki graph extraction
-  - wiki relation analysis
-  - wiki semantic scoring
-  - wiki utilization layer
-  - wiki runtime context
-- Version 1 source integration should preserve distinct sections such as:
-  - `preferred_sources`
-  - `supporting_sources`
-  - `blocked_objects`
-  - `source_resolution_notes`
-- Version 1 source integration must resolve only repository-local sources from:
-  - `wiki/ops`
-  - `wiki/adr`
-  - `openspec/specs`
-  - `wiki/examples`
-- Source-integration output must preserve:
-  - concrete page-path references
-  - source-layer identity
-  - artifact-type identity
-  - proof-boundary notes
-- Source-integration output must not overclaim:
-  - external retrieval readiness
-  - runtime autonomy
-  - unresolved page understanding
-  - rollout proof
-
-## Wiki Runtime Auto Routing Default
-
-- Runtime auto routing is downstream of:
-  - the wiki naming model
-  - the wiki frontmatter model
-  - wiki graph extraction
-  - wiki relation analysis
-  - wiki semantic scoring
-  - wiki utilization layer
-  - wiki runtime context
-  - wiki runtime-context source integration
-- Version 1 runtime auto routing should preserve distinct sections such as:
-  - `open_first`
-  - `open_next`
-  - `do_not_open_first`
-  - `routing_notes`
-- Version 1 runtime auto routing must map only from repository-local source-integrated runtime output
-- Runtime auto-routing output must preserve:
-  - concrete page-path references
-  - source-layer identity
-  - artifact-type identity
-  - proof-boundary notes
-- Runtime auto-routing output must not overclaim:
-  - external retrieval readiness
-  - automatic context injection
-  - runtime autonomy
-  - unresolved page understanding
-  - rollout proof
-
-## Wiki Context Injection Default
-
-- Automatic context injection is downstream of:
-  - the wiki naming model
-  - the wiki frontmatter model
-  - wiki graph extraction
-  - wiki relation analysis
-  - wiki semantic scoring
-  - wiki utilization layer
-  - wiki runtime context
-  - wiki runtime-context source integration
-  - wiki runtime auto routing
-- Version 1 automatic context injection should preserve distinct sections such as:
-  - `injected_first_pass`
-  - `secondary_context`
-  - `excluded_objects`
-  - `injection_notes`
-- Version 1 automatic context injection must map only from repository-local runtime auto-routing output
-- Runtime context-injection output must preserve:
-  - concrete page-path references
-  - source-layer identity
-  - artifact-type identity
-  - bounded excerpts
-  - proof-boundary notes
-- Runtime context-injection output must not overclaim:
-  - external retrieval readiness
-  - autonomous execution
-  - unresolved page understanding
-  - rollout proof
-
-## Wiki Self-Directed Execution Default
-
-- Bounded self-directed execution is downstream of:
-  - the wiki naming model
-  - the wiki frontmatter model
-  - wiki graph extraction
-  - wiki relation analysis
-  - wiki semantic scoring
-  - wiki utilization layer
-  - wiki runtime context
-  - wiki runtime-context source integration
-  - wiki runtime auto routing
-  - wiki context injection
-- Version 1 bounded self-directed execution should preserve distinct sections such as:
-  - `execute_now`
-  - `defer_for_followup`
-  - `do_not_execute`
-  - `execution_notes`
-- Version 1 bounded self-directed execution must map only from repository-local injected-context output
-- Bounded self-directed execution output must preserve:
-  - concrete page-path references
-  - source-layer identity
-  - artifact-type identity
-  - explicit bounded action types
-  - proof-boundary notes
-- Bounded self-directed execution output must not overclaim:
-  - unrestricted agent autonomy
-  - external retrieval readiness
-  - unresolved page understanding
-  - rollout proof
-
-## Scope Of Policy
-
-- Repository-default collaboration policy belongs in this repo first, not in global instructions by default.
-- Only promote a policy to global guidance when it has been shown to generalize beyond this repository's material-processing workflow.
-
-## Material Processing Default
-
-- Formal material-processing workflow publication uses `.codex/skills/material-collaboration-defaults/SKILL.md`.
-- `skills-drafts/` is draft space only; workflow changes cannot stop with an active draft `SKILL.md`.
-- Before a workflow-level skill change is complete, every draft skill must be either promoted into `.codex/skills/` or explicitly retired.
-- When the user drops materials and asks Codex to process them, do not stop at placeholder intake output.
-- Default completion means readable `source` output first, then linked `ops` output when the material contains action signals.
-- Ask the user only at real output fork-points, such as whether to update `html/h5/preview` artifacts in addition to wiki records.
-
-## Meeting Note Output
-
-- Formal meeting-note workflow publication uses `.codex/skills/meeting-note-output/SKILL.md`.
-- `skills-drafts/meeting-note-output/` is draft space only; it does not count as a formally published repo skill.
-- Manual agent role templates are not a substitute for meeting-note workflow routing.
-- When handling meeting notes or transcripts, use the repository's fixed meeting-note format rather than a generic summary layout.
-- The main meeting-note output must include: meeting metadata, core agenda, numbered topic sections, explicit final/rejected options when applicable, a structured action-item table, and a closing summary.
-- Treat note text as the primary output and transcript text as supporting evidence for disputes or rationale.
-- Default to a review version first. Review versions must include `待确认` and `需你澄清`.
-- Do not publish or sync a final Feishu meeting note until unresolved confirmation items are either answered or explicitly marked as pending.
+- Formal workflow publication uses `.codex/skills/meeting-note-output/SKILL.md`.
+- `skills-drafts/meeting-note-output/` is draft space only; it does not count as
+  a formally published repo skill.
+- Manual agent role templates are not a substitute for meeting-note workflow
+  routing.
+- When handling meeting notes or transcripts, use the repository's fixed
+  meeting-note format rather than a generic summary layout.
+- The main meeting-note output must include: meeting metadata, core agenda,
+  numbered topic sections, explicit final/rejected options when applicable, a
+  structured action-item table, and a closing summary.
+- Treat note text as the primary output and transcript text as supporting
+  evidence for disputes or rationale.
+- Default to a review version first. Review versions must include `待确认` and
+  `需你澄清`.
+- Do not publish or sync a final Feishu meeting note until unresolved
+  confirmation items are either answered or explicitly marked as pending.
