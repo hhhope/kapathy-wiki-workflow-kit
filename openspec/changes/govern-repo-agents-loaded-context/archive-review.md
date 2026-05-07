@@ -18,6 +18,19 @@ unrelated dirty worktree files.
 - `openspec validate govern-repo-agents-loaded-context --strict`: valid.
 - `openspec list`: `govern-repo-agents-loaded-context` is complete.
 
+## Post-Successor Fresh Check
+
+After the successor change `harden-learning-capture-runtime` archived, repo
+`AGENTS.md` gained one high-frequency skill row for `learning-capture`. The
+loaded-context structure remains valid, but the raw size metric changed.
+
+- `wc -l -w -c AGENTS.md`: 216 lines / 1626 words / 15055 bytes.
+- Baseline from `git show 9ac130f:AGENTS.md | wc -l -w -c`: 510 lines /
+  3430 words / 23578 bytes.
+- The new `learning-capture` row is a runtime trigger correction, not a return
+  to inline method expansion.
+- `openspec validate govern-repo-agents-loaded-context --strict`: valid.
+
 ## Replay Matrix
 
 | # | Trigger scenario | Expected decision from compressed `AGENTS.md` | Evidence | Result |
@@ -40,6 +53,8 @@ unrelated dirty worktree files.
   inline sections, stable proxies, or delivery-sensitive inline sections.
 - Direct stop visibility: all tested stop conditions were visible in
   `AGENTS.md` without opening a proxy.
+- Post-successor size remains within the loaded-context target: 216 lines after
+  the learning-capture trigger row, down from the 510-line baseline.
 
 ## Judgment
 
