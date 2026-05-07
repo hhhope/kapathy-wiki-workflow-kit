@@ -7,9 +7,12 @@
 
 ## 2. Durable Records
 
-- [ ] 2.1 Add wiki retro describing the gap root cause.
-- [ ] 2.2 Add ADR for root-capability extraction boundary.
-- [ ] 2.3 Update ADR index.
+- [x] 2.1 Add wiki retro describing the gap root cause.
+  <!-- 2026-05-07 — added wiki/ops/root-capability-extraction-retro.md -->
+- [x] 2.2 Add ADR for root-capability extraction boundary.
+  <!-- 2026-05-07 — added wiki/adr/0031-root-capability-extraction-boundary.md -->
+- [x] 2.3 Update ADR index.
+  <!-- 2026-05-07 — linked ADR-0031 from wiki/adr/index.md -->
 
 ## 3. Spec and Runtime Map
 
