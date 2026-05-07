@@ -12,6 +12,7 @@ Report pages are audience-oriented outputs or draft workspaces built from source
 - [Nirvana Phase1 Leadership Brief](nirvana-phase1-leadership-brief.md): one-page leadership brief for direct-sales phase1 judgment, committed scope, key dates, current constraints, resource asks, and approvals
 - [Nirvana Phase1 Direct Sales Brief H5](nirvana-phase1-direct-sales-brief.html): single-page direct-sales management H5 aligned to the PM baseline and current workstream control
 - [AI Chat Workflow Installer Feishu Share](ai-chat-workflow-installer-feishu-share.md): share-ready explanation of the cross-runtime installer model, platform mappings, and scope boundaries
+- [Behavior Governance Operating Model One-Pager](behavior-governance-operating-model-onepager.html): visual H5 explaining the learning-capture / agent / wiki / OpenSpec governance boundary model
 
 ## Usage Notes
 
