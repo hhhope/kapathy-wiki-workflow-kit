@@ -36,4 +36,5 @@
   Evidence: dirty tree includes unrelated `wiki/ops/agent-harness-article-learning.md`,
   `wiki/reports/nirvana-phase1-direct-sales-brief.html`, and local untracked
   files; only link-trigger replay files are staged for this step.
-- [ ] 4.2 Commit the completed, verified change step.
+- [x] 4.2 Commit the completed, verified change step.
+  Evidence: commit `9b4af5f docs: codify link learning replay runtime`.
