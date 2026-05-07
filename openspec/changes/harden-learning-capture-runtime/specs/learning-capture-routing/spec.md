@@ -58,6 +58,18 @@ learned from.
 - **THEN** the system SHALL triage and score before deep-reading individual
   sources
 
+### Requirement: Learning capture SHALL preserve existing module gates
+
+The domain router SHALL not weaken stricter module-specific evidence gates.
+
+#### Scenario: Learning capture delegates to a module
+
+- **WHEN** a module is selected by the learning router
+- **THEN** the selected module SHALL preserve its existing source grounding,
+  adaptation boundary, scoring, or promotion evidence requirements
+
+## ADDED Requirements
+
 ### Requirement: Learning capture SHALL preserve topic anchoring boundaries
 
 Learning capture SHALL distinguish explicit topic anchoring from weak semantic
@@ -75,16 +87,6 @@ association.
 - **WHEN** no explicit topic or strong filename/title/index match exists
 - **THEN** the system SHALL keep the source as a candidate for weekly review
 - **AND** it SHALL NOT force a semantic link to an existing topic
-
-### Requirement: Learning capture SHALL preserve existing module gates
-
-The domain router SHALL not weaken stricter module-specific evidence gates.
-
-#### Scenario: Learning capture delegates to a module
-
-- **WHEN** a module is selected by the learning router
-- **THEN** the selected module SHALL preserve its existing source grounding,
-  adaptation boundary, scoring, or promotion evidence requirements
 
 ### Requirement: Learning capture SHALL not promote unsupported learning
 

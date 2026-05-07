@@ -1,10 +1,10 @@
 ## MODIFIED Requirements
 
-### Requirement: Repository SHALL provide a README learning skill
+### Requirement: Repository SHALL provide a dedicated skill for GitHub and GitLab README learning
 
-The repository SHALL provide a repo-local skill for GitHub/GitLab repository or
-README learning requests that ask what should be reused, adapted, rejected, or
-formalized locally.
+The repository SHALL provide a dedicated repo-local skill for GitHub/GitLab
+repository or README learning requests that ask what should be reused, adapted,
+rejected, or formalized locally.
 
 #### Scenario: User asks to learn from a repository or README
 
@@ -13,6 +13,8 @@ formalized locally.
   what should be copied, adapted, rejected, or formalized
 - **THEN** the system SHALL route the task through the repo/README learning
   module
+
+## ADDED Requirements
 
 ### Requirement: Repo/README learning SHALL score before deep reading
 
@@ -34,7 +36,9 @@ deep reading.
 - **WHEN** repo/README learning scores below 60
 - **THEN** it SHALL record source and skip reason only
 
-### Requirement: Repo/README learning SHALL preserve adaptation boundary
+## MODIFIED Requirements
+
+### Requirement: README learning SHALL preserve adaptation boundaries
 
 Repo/README learning SHALL not stop at source summary or copy external
 structure without local fit.
