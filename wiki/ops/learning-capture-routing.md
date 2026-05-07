@@ -12,7 +12,7 @@ domain: personal-ops
 period: active
 confidence: medium
 status: active
-updated_at: 2026-05-06
+updated_at: 2026-05-07
 ai_generated: true
 trace_mode: openspec-explore
 same_topic_rule: update-existing
@@ -63,3 +63,47 @@ derived_from:
 执行 OpenSpec change `consolidate-learning-capture-routing`，把 domain-router
 结构落到 repo-local skill，并在 evaluation 中记录 RED/GREEN 与 trigger
 pressure scenarios。
+
+## Runtime trigger 复盘入口（2026-05-07）
+
+## 触发问题
+
+在 `govern-repo-agents-loaded-context` 压缩 repo `AGENTS.md` 后，用户追问：
+为什么 `learning-capture-routing` 没有出现在 `High-Frequency Skills`，而只
+出现在 `Output Routing`。这暴露出一个分层问题：同一个学习治理对象同时有
+规范层、解释层、运行时入口层和输出落点层，压缩时容易只保留 source-of-record，
+漏掉 runtime trigger。
+
+## 当前关注点
+
+- 基于整个 wiki 仓库判断：`runtime trigger` 不是新规则，而是 repo 入口文件中
+  对行为资产的加载条件。
+- `learning-capture-routing` 作为 spec/wiki source，说明学习路由的能力边界。
+- `.codex/skills/learning-capture/SKILL.md` 作为 runtime entry，决定当前请求是否
+  进入学习路由。
+- `Output Routing` 只回答学习结果落到哪里，不能替代 skill 加载入口。
+
+## 当前假设
+
+repo `AGENTS.md` 需要区分三类路由：
+
+- behavior trigger：当前输入来了要不要加载某个 skill。
+- asset governance：某个 skill / spec / wiki page 如何被维护和升级。
+- output destination：产物应该进入 `wiki/sources`、`wiki/ops`、`wiki/examples`、
+  `wiki/adr`、OpenSpec，还是目标 repo 的公开 docs。
+
+如果三类路由压成一个表，agent 会误以为“有 source 链接”就等于“运行时会加载”。
+
+## 开放问题
+
+- repo `AGENTS.md` 的 `High-Frequency Skills` 是否应该只列高频 runtime trigger，
+  还是列所有 published repo skill。
+- `learning-capture` 这种 domain-router skill 是否属于 high-frequency，还是应该
+  有独立的 `Runtime Trigger Map`。
+- archive review 的 replay matrix 是否需要把“source exists”与“trigger exists”
+  分开计分。
+
+## 下一步
+
+先基于 wiki / spec / skill 资产聊清楚分层，再决定是否通过当前 OpenSpec change
+补一行 runtime trigger 或调整 archive-review 结论。
