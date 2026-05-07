@@ -61,3 +61,43 @@
   - when to stop: OpenSpec completion, archive review, `$openspec-explore`,
     live drift, unsupported learning promotion, and delivery publication stops
     remain visible inline
+
+## Final Evaluation
+
+### Before / After Counts
+
+| File | Before | After | Delta |
+|---|---:|---:|---:|
+| `AGENTS.md` lines | 510 | 215 | -295 |
+| `AGENTS.md` words | 3430 | 1609 | -1821 |
+| `AGENTS.md` bytes | 23578 | 14908 | -8670 |
+
+### Proxy Coverage
+
+| Surface | Result |
+|---|---|
+| Section classification | All baseline sections classified before rewrite. |
+| Hard-stop preservation | Preserved inline through `AGENTS.md` Hard Stops and delivery workflow sections. |
+| Stable proxy targets | ADR, OpenSpec spec, wiki ops, and published repo skill proxies exist locally. |
+| Long wiki runtime chain | Replaced by the `Wiki Runtime Stack` table with one row per governed layer. |
+| Delivery-sensitive workflows | Kept inline instead of relying on skill proxy alone. |
+| Deferred candidates | None in this implementation; all baseline sections were either kept inline, proxied, or kept delivery-sensitive inline. |
+
+### Agent Legibility Result
+
+- Where to read: compact sections list the governing ADR/spec/wiki/skill paths
+  immediately next to the rule surface.
+- How to verify: OpenSpec validation plus local proxy-existence checks cover the
+  structural side; hard-stop text covers behavioral stop conditions.
+- When to stop: active-change completion, archive review, explore trace,
+  live-reanchor, unsupported-learning promotion, and delivery publication stops
+  are still visible without opening secondary files.
+
+### Residual Risks
+
+- The compact `Wiki Runtime Stack` depends on agents following proxy links when
+  they need details; `AGENTS.md` no longer repeats full model text.
+- The public-facing artifact routing line is a boundary clarification, not a
+  full public-workflow design.
+- Delivery workflow details still depend on the two published repo skills for
+  format depth.

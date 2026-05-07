@@ -27,7 +27,11 @@
 
 ## 4. Evaluation
 
-- [ ] 4.1 Record before/after line, word, and byte counts.
-- [ ] 4.2 Record before/after proxy coverage.
-- [ ] 4.3 Record agent-legibility result: where to read, how to verify, and when to stop.
-- [ ] 4.4 Record residual risks after migration.
+- [x] 4.1 Record before/after line, word, and byte counts.
+  <!-- 2026-05-07 — evaluation.md Final Evaluation records 510→215 lines, 3430→1609 words, 23578→14908 bytes -->
+- [x] 4.2 Record before/after proxy coverage.
+  <!-- 2026-05-07 — evaluation.md Proxy Coverage records hard stops, proxy targets, runtime chain, and delivery-sensitive coverage -->
+- [x] 4.3 Record agent-legibility result: where to read, how to verify, and when to stop.
+  <!-- 2026-05-07 — evaluation.md Agent Legibility Result records read/verify/stop surfaces -->
+- [x] 4.4 Record residual risks after migration.
+  <!-- 2026-05-07 — evaluation.md Residual Risks records proxy-following, public-routing, and delivery-skill risks -->
