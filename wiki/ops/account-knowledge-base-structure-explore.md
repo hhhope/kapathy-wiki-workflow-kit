@@ -42,7 +42,7 @@ same_topic_rule: update-existing
   结构页。
 - 如果要修改 repo 默认结构、wiki 导航或发布新正式页面，应通过 OpenSpec
   change 承接。
-- Feishu 参考页可能需要登录权限；如果读取失败，本轮只能标注访问边界。
+- Feishu 参考页需要登录权限；授权成功后才能把页面结构作为参考证据。
 
 ## 已确认事实
 
@@ -51,21 +51,24 @@ same_topic_rule: update-existing
 - 当前 wiki 主入口已经按 `Sources / Domains / Timeline / Reports / Ops`
   组织。
 - `wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md` 已记录该飞书
-  wiki URL，但正文仍是 placeholder。
-- 本轮 lark-cli 读取该飞书 wiki 失败，错误为 `need_user_authorization`；
-  因此不能声称已读取参考页正文或层级结构。
+  wiki URL，并在 2026-05-07 授权后补充了结构摘要。
+- 首次读取该飞书 wiki 失败，错误为 `need_user_authorization`；随后通过
+  `lark-cli auth login --domain docs,wiki` 授权成功，并读取到参考页标题和
+  markdown 结构。
+- 参考页结构包括入口说明、一句话定位、适合谁看、层级表、当前阶段、默认
+  生命周期、整体约束、解决问题、分工、默认使用顺序、阅读地图。
 - 当前 repo 已有能力包括 material / meeting note / learning capture /
   OpenSpec lifecycle / wiki runtime stack / behavior replay gate。
 
-## 暂未决定
+## 已确认边界
 
-- 最终文档落在 `wiki/ops`、`wiki/index.md`、还是新的 account 知识库入口页
-- 是否要同步到飞书 wiki
-- 是否需要把结构页升级成 repo 默认导航规则
+- 最终文档落在 `wiki/ops`。
+- 不同步到飞书 wiki。
+- 不升级成 repo 默认导航规则。
+- 不修改 `wiki/index.md`。
 
 ## 下一步
 
-- 读取本 repo 的 PROJECT、wiki index、ADR、spec、skills 和当前目录结构。
-- 尝试读取 Feishu 参考页结构。
-- 输出一版“account 知识库结构文档”草案，并明确哪些内容来自 repo 证据、
-  哪些来自 Feishu 参考、哪些仍是待验证假设。
+- 基于飞书参考页的组织方式，写一版 `wiki/ops/account-knowledge-base-workbench.md`。
+- 只把该页加入 `wiki/ops/index.md`，不改全局 wiki 入口。
+- 保留参考来源和“不升级为默认导航规则”的边界。

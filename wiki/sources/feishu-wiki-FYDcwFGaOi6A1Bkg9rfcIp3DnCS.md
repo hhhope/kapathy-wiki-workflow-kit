@@ -1,5 +1,5 @@
 ---
-title: Feishu Wiki Source FYDcwFGaOi6A1Bkg9rfcIp3DnCS
+title: Account Harness 总览 Feishu Wiki Source
 type: source
 source_path: https://my.feishu.cn/wiki/FYDcwFGaOi6A1Bkg9rfcIp3DnCS?from=from_copylink
 source_type: feishu-wiki-link
@@ -11,30 +11,47 @@ period: evergreen
 source_links:
   - "https://my.feishu.cn/wiki/FYDcwFGaOi6A1Bkg9rfcIp3DnCS?from=from_copylink"
 status: active
-updated_at: 2026-04-17
+updated_at: 2026-05-07
 ai_generated: false
 ---
 
-# Feishu Wiki Source FYDcwFGaOi6A1Bkg9rfcIp3DnCS
+# Account Harness 总览 Feishu Wiki Source
 
 ## Source Metadata
 
 - Source system: Feishu Wiki
 - Source token: `FYDcwFGaOi6A1Bkg9rfcIp3DnCS`
 - Original URL: `https://my.feishu.cn/wiki/FYDcwFGaOi6A1Bkg9rfcIp3DnCS?from=from_copylink`
+- Fetched title: `Account Harness：总览（OpenSpec / Lore / Graphify / Lore Bootstrap，更新至 2026-04-13）`
+- Fetch state: readable through `lark-cli docs +fetch` after `docs,wiki` user authorization on 2026-05-07
 
 ## Access Note
 
 - The original URL has been recorded in the repository.
-- The current execution environment could not fetch the page body directly.
-- The immediate blocker is network access from this environment; `curl` failed before any document content was returned.
-- Even with network access, Feishu wiki content may still require login state and tenant permissions.
+- The page requires Feishu user authorization.
+- On 2026-05-07, `lark-cli auth login --domain docs,wiki` restored access.
+- Node metadata confirmed `obj_type: docx`, `has_child: true`, and title above.
 
-## Next Step
+## Structural Summary
 
-- When readable content is available, replace this placeholder with:
-  - title
-  - summary
-  - key points
-  - reusable takeaways
-  - downstream links
+The page is an entry overview for `Account Harness`. Its own stated boundary is
+that the page only explains the collaboration surface, the layer split, and the
+next reading path.
+
+Reusable structure:
+
+- one-sentence positioning
+- audience table: what problem the reader has, what to use this page for, where
+  to go next
+- control / layer table
+- current stage table
+- default lifecycle table
+- overall constraints table
+- problem-to-answer table
+- layer responsibility table
+- default usage order table
+- reading map
+
+## Reused By
+
+- `wiki/ops/account-knowledge-base-workbench.md`
