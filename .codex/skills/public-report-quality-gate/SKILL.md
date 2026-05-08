@@ -40,6 +40,9 @@ implementation reports unless the user asks for a reader-facing deliverable.
   writing a single long draft.
 - If any hard gate is failed, partial, unknown, or not tested, do not assign a
   numeric score; mark the scorecard `INVALID`.
+- For complex reader-facing materials, decide reviewer routing before drafting.
+  Route to `.codex/agents/public-report-reviewer.md` when at least two reviewer
+  escalation signals are true.
 - Treat voice quality as a hard gate, not a small style score.
 - Preserve the core narrative. If the stated story changes, stop and re-anchor.
 - State what each diagram or visual carries; do not add decorative diagrams. If
@@ -54,6 +57,7 @@ implementation reports unless the user asks for a reader-facing deliverable.
 
 - Scorecard and hard gates: `references/scorecard.md`
 - Gate review artifact contract: `references/gate-review-artifact.md`
+- Reviewer routing: `references/reviewer-routing.md`
 - Learning use map: `references/learning-use-map.md`
 - Report group templates and split routing: `references/report-group-templates.md`
 - Validation scenarios: `references/pressure-scenarios.md`
@@ -63,6 +67,7 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Turning a wiki ops note into a Feishu draft without rewriting for readers
 - Copying a reference page's section labels without mapping its structure
 - Treating linked reading-map articles as placeholders instead of sources
+- Silently choosing one output template when reviewer routing is required
 - Packing overview, runtime, migration, validation, and roadmap into one page
 - Using slogans such as "X = manages Y" instead of explaining the evolution
 - Letting repo paths, OpenSpec details, or agent workflow leak into public text

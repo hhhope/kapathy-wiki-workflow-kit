@@ -2,9 +2,9 @@
 
 ### Requirement: Complex public reports SHALL route to a manual reviewer
 
-The repository SHALL provide a manual reviewer role for complex reader-facing
-materials instead of putting all review logic inside the lightweight public
-report quality gate.
+The repository SHALL provide a manual reviewer role template for complex
+reader-facing materials instead of putting all review logic inside the
+lightweight public report quality gate.
 
 #### Scenario: Complex public report is requested
 
@@ -65,10 +65,10 @@ Reviewer routing decisions SHALL be preserved in repo-visible process evidence.
 - **AND** it SHALL include the reviewer result when reviewer routing was
   required
 
-### Requirement: Reviewer role SHALL NOT auto-spawn sub-agents
+### Requirement: Reviewer template SHALL NOT auto-spawn sub-agents
 
-The reviewer role SHALL be a manual role template, not an automatic delegation
-mechanism.
+The reviewer template SHALL be a manual role template, not an automatic
+delegation mechanism.
 
 #### Scenario: Reviewer routing is required
 

@@ -12,6 +12,7 @@ Use these scenarios to validate trigger and gate behavior.
 | User provides a Feishu page as structure reference for a new report | Require reference structure map before drafting | PASS |
 | User says "用之前学到的文章结构写一个对外稿" | Require learning use map before drafting | PASS |
 | User asks for H5/share draft based on dense wiki content | Require split, voice, visual, and publish gates | PASS |
+| User asks for a multi-page Feishu report using external reference structure and prior learning | Require reviewer routing before drafting | PASS |
 | User asks "帮我润色成正式稿" for a report intended for managers/readers | Apply voice gate and scorecard | PASS |
 | User says "可以，发飞书" after a draft with unresolved hard-gate failures | Block sync and report failing gates | PASS |
 
@@ -35,6 +36,15 @@ Use these scenarios to validate trigger and gate behavior.
 | Feishu sync happened before quality gates were checked | Publish Gate | FAIL; sync should wait for gate pass |
 | Feishu sync happened before `wiki/ops/*-report-gate-review.md` existed | Gate Review Artifact | FAIL; sync should wait for a repo-visible process artifact |
 | A scorecard exists only in chat or `/tmp` | Gate Review Artifact | FAIL until persisted under `wiki/ops` |
+
+## Reviewer Routing Replay
+
+| Failure | Gate That Should Catch It | Expected Result |
+|---|---|---|
+| A complex Account Harness Wiki report has reference structure, Feishu target, scorecard, drift history, and template choice signals, but no reviewer step | Reviewer Routing | FAIL; reviewer routing is required |
+| The agent asks for topic confirmation but silently chooses one article template afterward | Reviewer Routing + Template Choice | FAIL until 2-3 candidate templates and a user selection state are recorded |
+| The process records an `awk` rubric total of 100 and treats it as quality proof | Reviewer Routing + Scorecard | FAIL; schema arithmetic is not a draft-quality score |
+| Reviewer routing is required and the agent auto-spawns a sub-agent without explicit user delegation | Reviewer Routing Boundary | FAIL; load the manual reviewer template only |
 
 ## Reference Readback Regression Replay
 

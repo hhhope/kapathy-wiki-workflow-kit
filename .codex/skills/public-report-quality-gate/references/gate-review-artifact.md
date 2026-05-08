@@ -16,6 +16,7 @@ document.
 | Section | Required Content |
 |---|---|
 | Review Target | Target title, destination, scope, and non-scope |
+| Reviewer Routing | Required/not required/not applicable/blocked, checked escalation signals, reviewer result when required, and user-selected template status |
 | Reference Structure Map | Source, reader job, page group, reading path, visual logic, writing standard, reuse boundary, and linked-page readback when the reference has child pages or concrete reading-map links |
 | Learning Use Map | Applicable learning artifacts, domain/topic, reusable capability type, learning point, intended output use, and skip reason when relevant |
 | Hard Gate Results | Learning use, reference, split, voice, narrative, visual, and publish gate results |
@@ -29,6 +30,8 @@ document.
 ```text
 reader-facing request
   -> create/update wiki/ops/*-report-gate-review.md
+  -> decide reviewer routing before drafting
+  -> run reviewer flow or record why reviewer is not required
   -> complete reference structure map and linked-page readback
   -> complete learning use map when learned references are applicable
   -> choose split strategy and destination map
@@ -42,6 +45,10 @@ reader-facing request
 
 If the gate-review artifact is missing or incomplete, do not sync to Feishu and
 do not claim the draft is ready for review.
+
+If reviewer routing is required but not run, record the score as `INVALID` and
+stop before drafting, Feishu sync, or review-ready claims unless the user
+explicitly selects the template and scopes the reviewer step out for this run.
 
 If the reference map is incomplete, or any hard gate is failed, partial,
 unknown, or not tested, record the score as `INVALID` and stop before Feishu

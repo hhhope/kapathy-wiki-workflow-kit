@@ -13,8 +13,7 @@ not pay the cost of a full reviewer workflow.
 
 - Keep `public-report-quality-gate` as the lightweight trigger and escalation
   gate.
-- Add a repo-local manual reviewer role template for complex reader-facing
-  outputs.
+- Add a repo-local manual reviewer template for complex reader-facing outputs.
 - Define escalation signals for when complex materials must route to the
   reviewer.
 - Require the gate-review artifact to record whether reviewer routing was

@@ -18,9 +18,9 @@ template and score its own output. It should route to a manual reviewer role.
 
 ## Decision
 
-Add `public-report-reviewer` as a repo-local manual agent template. The public
-report quality gate only decides whether the reviewer is required and records
-that decision.
+Add `public-report-reviewer` as a repo-local manual reviewer role under
+`.codex/agents/`. The public report quality gate only decides whether the
+reviewer is required and records that decision.
 
 The reviewer owns:
 
