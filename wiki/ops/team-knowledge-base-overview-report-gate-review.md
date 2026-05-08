@@ -257,3 +257,136 @@ Corrected evidence:
 Decision: freeze the five-article packet as a failed draft. Do not continue
 polishing it or treat the previous Feishu update as review-ready. A repaired
 version must first rebuild the reference map from the linked articles.
+
+## Rebuild Round Reference Map 2026-05-08
+
+This round restarts from the corrected gate. The previous five-article packet is
+not reused as a review-ready base.
+
+| Field | Result |
+|---|---|
+| Source | Feishu `Account Harness` parent wiki page plus linked runtime, install/migration, validation/cases, and roadmap articles. |
+| Reader job | Explain how a team's knowledge base evolves from scattered worksite facts into reusable team knowledge and structured publishing assets. |
+| Page group | One entry page plus four linked follow-up articles. The entry page owns positioning and navigation; child pages own runtime, migration, validation, and roadmap jobs. |
+| Reading path | Entry overview first; runtime for daily flow; migration for adoption; validation/cases for trust boundary; roadmap for maturity and next investments. |
+| Linked-page readback | Confirmed in `wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md`: `Xmdjw...` runtime, `ZocJ...` install/migration, `WdzL...` validation/cases, `XRj1...` roadmap. |
+| Visual logic | Entry needs an evolution-path visual and reader navigation visual. Runtime needs input-flow visual. Migration needs adoption-sequence visual. Validation needs evidence-boundary visual. Roadmap needs maturity-stage visual. |
+| Writing standard | Scope callout first, one-sentence positioning, audience table, focused body, concrete boundaries, no chat/worklog wording. |
+| Reuse boundary | Reuse the reference group's article architecture and visual responsibilities, not its Account Harness content, OpenSpec/Lore/Graphify claims, or measured benchmark numbers. |
+
+## Rebuild Split And Destination Map 2026-05-08
+
+| Page | Local Draft | Feishu Target |
+|---|---|---|
+| Entry overview | `wiki/reports/team-knowledge-base-overview.md` | Update existing doc `L08udWeZJo5iuZxFFm6cgSGOnYg` |
+| Runtime | `wiki/reports/team-knowledge-base-runtime.md` | Create new Feishu doc, then link from entry overview |
+| Migration | `wiki/reports/team-knowledge-base-migration.md` | Create new Feishu doc, then link from entry overview |
+| Validation / Cases | `wiki/reports/team-knowledge-base-validation-cases.md` | Create new Feishu doc, then link from entry overview |
+| Roadmap | `wiki/reports/team-knowledge-base-roadmap.md` | Create new Feishu doc, then link from entry overview |
+
+Pre-draft gate status: Reference Structure Gate can proceed because linked-page
+readback and page jobs are now recorded. No numeric score is assigned until the
+five local drafts exist and all hard gates are checked.
+
+## Rebuild Local Draft Gate Check Before Feishu Writes 2026-05-08
+
+Local drafts:
+
+- `wiki/reports/team-knowledge-base-overview.md`
+- `wiki/reports/team-knowledge-base-runtime.md`
+- `wiki/reports/team-knowledge-base-migration.md`
+- `wiki/reports/team-knowledge-base-validation-cases.md`
+- `wiki/reports/team-knowledge-base-roadmap.md`
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Reference Structure Gate | PASS for child-doc creation | Reference source and linked article jobs are recorded above; each local draft maps to one confirmed reference article role. |
+| Split Gate | PASS for child-doc creation | The four child articles are separate local files with separate Feishu targets. The entry overview is not ready for final update until child URLs replace placeholders. |
+| Voice Gate | PASS | Reader-facing draft scan found no `OpenSpec`, `gate`, `门禁`, `回放`, `repo`, `/tmp`, `这页是`, `下一步去哪`, or `一句话记忆` residue. |
+| Narrative Gate | PASS | All five drafts keep the maturity path from worksite facts to reusable team knowledge to structured publishing assets. |
+| Visual Gate | PASS for draft creation | Each draft includes a concrete information-design role through tables: evolution path, input flow, migration sequence, evidence boundary, and maturity stages. |
+| Publish Gate | PASS for child-doc creation | This section records the decision before Feishu writes; final entry overview update remains blocked until child URLs are created and read back. |
+
+Scorecard for child-doc creation: `88 / 100`
+
+| Dimension | Points | Reason |
+|---|---:|---|
+| Reference fidelity | 18 / 20 | The linked article roles and group split are preserved. Actual Feishu hierarchy remains document-link based, not a wiki parent-child tree. |
+| Core narrative | 19 / 20 | The evolution story is stable across all drafts. |
+| Progressive split | 15 / 15 | Entry, runtime, migration, validation/cases, and roadmap are separate files and targets. |
+| Reader path | 12 / 15 | Local overview still contains placeholders until child document URLs exist. |
+| Visual information design | 12 / 15 | Tables carry visual relationships; no final image assets are included in this round. |
+| Report voice | 9 / 10 | Drafts are reader-facing after voice cleanup. |
+| Evidence boundary | 3 / 5 | Validation examples are concrete but still summary-level. |
+
+Decision: create the four child Feishu documents first. Do not update the entry
+overview as final review-ready until child URLs are read back and local
+placeholders are replaced.
+
+## Rebuild Child Feishu Creation Verification 2026-05-08
+
+| Page | Result |
+|---|---|
+| Runtime | PASS — created `https://www.feishu.cn/docx/O4hYdmBqmognenxxPQ2coEHAnOc`, log id `2026050813155739B77642B0CE9B62D50C` |
+| Migration | PASS — created `https://www.feishu.cn/docx/NRbddWouLoXk56xwGz1cv6W0niu`, log id `20260508131557C1B8F04866FA11691BAD` |
+| Validation / Cases | PASS — created `https://www.feishu.cn/docx/JnHtdMimVoVsoTxJmfHcFbI8nBd`, log id `20260508131558D3A48B82C3C3CE5FE13C` |
+| Roadmap | PASS — created `https://www.feishu.cn/docx/PD3Vd3TnTo9ZjpxBrV0cshs9nIh`, log id `202605081315585AF96040B3DDDC63B791` |
+
+Entry overview local draft was updated to replace all placeholder links with the
+created child document URLs.
+
+## Rebuild Child Readback Verification 2026-05-08
+
+| Page | Read-back Result |
+|---|---|
+| Runtime | PASS — title `团队知识库运行态：一份材料如何变成可复用知识`, log id `202605081317336E93E241EC142C65C878`, opening starts with scope callout |
+| Migration | PASS — title `团队知识库迁移路径：如何把一个项目接入这套方法`, log id `202605081317365AB60DB42BA5C65C0453`, opening starts with scope callout |
+| Validation / Cases | PASS — title `团队知识库验证与案例：怎么判断这套方法可信`, log id `20260508131735C3457CD14660CE609271`, opening starts with scope callout |
+| Roadmap | PASS — title `团队知识库路线图：从记录系统到团队知识资产`, log id `20260508131735C1F33B1BDC2F26687D27`, opening starts with scope callout |
+
+## Rebuild Final Gate Results Before Entry Update 2026-05-08
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Reference Structure Gate | PASS | The reference parent page and four linked articles were read and mapped; local output now uses one entry page plus four concrete linked articles. |
+| Split Gate | PASS | Runtime, migration, validation/cases, and roadmap are separate Feishu documents; the entry overview links to the concrete child URLs. |
+| Voice Gate | PASS | Post-cleanup scan found no internal gate/OpenSpec/repo/tmp/chat-residue trigger words in the five local drafts. |
+| Narrative Gate | PASS | The story remains an evolution path from worksite facts to reusable team knowledge to structured publishing assets. |
+| Visual Gate | PASS | Each page has an explicit information-design table: evolution path, material flow, migration sequence, evidence boundary, and maturity stages. |
+| Publish Gate | PASS for review draft | Destination URLs, creation logs, child readbacks, residual risks, and non-goals are recorded before updating the entry page. |
+
+Scorecard: `91 / 100`
+
+| Dimension | Points | Reason |
+|---|---:|---|
+| Reference fidelity | 19 / 20 | Preserves parent entry plus linked article architecture and page jobs. |
+| Core narrative | 19 / 20 | The evolution path is stable across all pages. |
+| Progressive split | 15 / 15 | Reader jobs are separated into five files and five Feishu targets. |
+| Reader path | 15 / 15 | Entry overview now links to concrete child documents. |
+| Visual information design | 12 / 15 | Tables carry key relationships; final illustration assets remain optional polish. |
+| Report voice | 8 / 10 | Reader-facing tone is clean; some domain terms such as AI and H5 remain because the topic requires them. |
+| Evidence boundary | 3 / 5 | Evidence and failure examples are explicit but still summary-level. |
+
+Decision: hard gates pass and score exceeds the 80-point threshold. The entry
+overview may update the existing Feishu document as a linked review draft.
+
+Residual risks:
+
+- The documents are connected by Feishu doc links, not yet organized as a
+  Feishu wiki parent-child tree.
+- Visuals are information-design tables, not final illustrated image assets.
+- Validation examples are intentionally concise and should be expanded only
+  after the user accepts the article structure.
+
+## Rebuild Entry Feishu Update Verification 2026-05-08
+
+| Check | Result |
+|---|---|
+| Update command | PASS — `lark-cli docs +update --mode overwrite` succeeded |
+| Updated title | `团队知识库构建路径：总览` |
+| Update log id | `20260508131900AF3693CBFFC15161FCF9` |
+| Read-back command | PASS — `lark-cli docs +fetch` succeeded |
+| Read-back title | `团队知识库构建路径：总览` |
+| Read-back opening log id | `20260508131959CADE341F9B524F606674` |
+| Read-back link-map log id | `20260508132118C5AB374E9B9DB4648028` |
+| Read-back link evidence | Entry page contains links to runtime `O4hY...`, migration `NRbd...`, validation `JnHt...`, and roadmap `PD3V...` child docs. |
