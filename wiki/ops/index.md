@@ -22,6 +22,7 @@
 - [例子驱动的 Wiki 留痕](example-driven-wiki-capture.md)
 - [learning-capture-routing / intake](learning-capture-routing.md)
 - [团队知识库构建路径](account-knowledge-base-workbench.md)
+- [团队知识库总览对外稿门禁复核](team-knowledge-base-overview-report-gate-review.md)
 - [Agent Harness 文章精读](agent-harness-article-learning.md)
 - [behavior-replay-gate / method](behavior-replay-gate.md)
 - [root-capability-extraction / retro](root-capability-extraction-retro.md)
