@@ -652,3 +652,60 @@ Total: `94 / 100`.
 
 Decision: local draft passes review-draft gates under the corrected theme.
 Feishu sync is not performed in this round.
+
+## Karpathy LLM Wiki Source Correction 2026-05-08
+
+User correction:
+
+> https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+> 这是 Wiki 的本质，不要胡编。
+
+Source read:
+
+- Karpathy's `LLM Wiki` defines the wiki as a persistent, compounding markdown
+  layer between raw sources and future queries/outputs.
+- It distinguishes three layers: raw sources, wiki, and schema.
+- It defines core operations as ingest, query, and lint.
+- It distinguishes `index.md` as content-oriented and `log.md` as
+  chronological.
+- It states that the human owns sourcing, exploration, and questions, while the
+  LLM does the maintenance work.
+
+Correction to the draft:
+
+- Demote generic Harness Engineering analogy from the primary essence.
+- Make Karpathy's LLM Wiki model the primary source.
+- Reframe Account Harness Wiki as the compiled markdown layer between raw team
+  sources and future questions/reports/decisions.
+- Keep raw sources as source of truth and wiki pages as generated synthesis.
+- Add explicit ingest / query / lint operations and index / log distinction.
+
+## Karpathy-Corrected Gate Results 2026-05-08
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Source Grounding | PASS | The draft now cites Karpathy's gist as the primary source for the wiki model. |
+| Learning Use Gate | PASS | `karpathy-llm-wiki-reading-notes.md` is the primary learning artifact for content, structure, evidence, and boundary. |
+| Reference Structure Gate | PASS | The draft still preserves links to runtime, migration, validation/cases, and roadmap child pages. |
+| Narrative Gate | PASS | The main story is now raw sources -> compiled wiki -> future questions/outputs. |
+| Voice Gate | PASS | The draft avoids unsupported local automation claims and explains terms in reader language. |
+| Evidence Boundary | PASS | The draft says raw sources remain the source of truth and current local lint is incomplete. |
+| Publish Gate | BLOCKED for Feishu sync | This is a local correction after user source calibration; Feishu sync requires explicit approval. |
+
+## Karpathy-Corrected Scorecard 2026-05-08
+
+| Dimension | Points | Reason |
+|---|---:|---|
+| Source fidelity | 20 / 20 | The draft follows Karpathy's core model: raw sources, wiki, schema, ingest, query, lint, index, log. |
+| Theme fit | 15 / 15 | The theme remains Account Harness Wiki but now anchors on wiki essence rather than generic harness analogy. |
+| Learning reuse | 10 / 10 | Karpathy's source shapes content, structure, evidence boundary, and next capability gap. |
+| Core narrative | 20 / 20 | The narrative is stable: wiki is a persistent compounding markdown layer. |
+| Progressive split | 14 / 15 | Child pages remain linked; overview now gives the conceptual model. |
+| Reader path | 15 / 15 | Section 09 gives concrete next-read links and outcomes. |
+| Visual information design | 12 / 15 | Tables carry the main relationships; final illustrated assets remain future polish. |
+| Evidence boundary | 5 / 5 | The draft separates raw source of truth from generated synthesis and names missing lint as a boundary. |
+
+Total: `111 / 115`, normalized to `97 / 100`.
+
+Decision: local draft passes review-draft gates under the Karpathy-corrected
+wiki model. Feishu sync is not performed in this round.
