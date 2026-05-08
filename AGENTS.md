@@ -103,6 +103,7 @@ This is a runtime routing map, not an ownership map.
 |---|---|---|
 | External articles, repos, READMEs, or examples used as learning, reference, or adaptation material | `.codex/skills/learning-capture/SKILL.md` | shared: root-candidate learning core; repo-owned output routing |
 | Material, reports, attachments, preview HTML, or source files | `.codex/skills/material-collaboration-defaults/SKILL.md` | repo-owned |
+| Reader-facing reports, Feishu review drafts, H5/share drafts, public materials, or reference-shaped outputs | `.codex/skills/public-report-quality-gate/SKILL.md` | repo-owned reader-facing output gate |
 | Meeting notes, transcripts, minutes, or Feishu meeting-note output | `.codex/skills/meeting-note-output/SKILL.md` | repo-owned |
 | Implementing an OpenSpec change | `.codex/skills/openspec-apply-change/SKILL.md` | shared: OpenSpec lifecycle with repo gates |
 | Archiving an OpenSpec change | `.codex/skills/openspec-archive-change/SKILL.md` | shared: generic archive action with repo review detail |

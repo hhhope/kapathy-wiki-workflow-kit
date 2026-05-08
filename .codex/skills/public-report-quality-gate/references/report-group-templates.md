@@ -1,0 +1,74 @@
+# Report Group Templates
+
+Use these as structure patterns, not fixed headings. Replace labels with the
+reader's language.
+
+## Reference Structure Map
+
+Before drafting from a reference artifact, record:
+
+| Field | Question |
+|---|---|
+| Source | Which page/article/report is the shape reference? |
+| Reader job | What problem does the reference help readers solve? |
+| Page group | Is it one page, a multi-page group, or a roadmap series? |
+| Reading path | What should readers read first, next, and only if needed? |
+| Visual logic | What do diagrams carry: layers, lifecycle, contrast, maturity, or decisions? |
+| Writing standard | What tone, density, section opening style, and evidence style does it use? |
+| Reuse boundary | What shape is reused, what content is local, and what must not be copied? |
+
+## Split Routing
+
+Split the material when at least two of these are true:
+
+- one page explains the whole system and another explains runtime behavior
+- adoption/migration steps need a separate checklist
+- validation/evidence deserves its own page
+- roadmap/maturity stages are useful but distract from the overview
+- the overview exceeds a focused reader journey
+- the user asks for reference parity with a multi-page source
+
+## Four-Page Group Pattern
+
+| Page | Owns | Must Not Own |
+|---|---|---|
+| Overview | positioning, composition, audience, reading path, main evolution story | detailed implementation, exhaustive evidence |
+| Runtime | default operating sequence, roles, handoffs, expected behavior | installation history or roadmap promises |
+| Install / Migration | adoption sequence, prerequisites, done criteria | daily runtime details |
+| Validation / Cases | evidence, examples, proof boundaries, non-overclaim notes | new policy or unresolved design |
+
+Optional fifth page:
+
+| Page | Owns | Must Not Own |
+|---|---|---|
+| Roadmap | maturity levels, next-stage priorities, constraints | claiming future automation is already present |
+
+## Public Draft Skeleton
+
+```markdown
+# <Reader-facing title>
+
+> <One sentence positioning: what this helps the reader understand or decide.>
+
+## Why This Exists
+
+<Problem and stakes in reader language.>
+
+## The Evolution Path
+
+<Main story. For example: scattered work memory -> reusable team knowledge ->
+structured knowledge base.>
+
+## How To Read This Group
+
+| If you want to know... | Read... | Outcome |
+|---|---|---|
+
+## Current Stage
+
+<One table or diagram that gives the reader orientation.>
+
+## What This Does Not Claim
+
+<Boundaries, proof limits, and next review needs.>
+```

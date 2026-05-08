@@ -7,19 +7,29 @@
 
 ## 2. Skill and References
 
-- [ ] 2.1 Add `.codex/skills/public-report-quality-gate/SKILL.md`.
-- [ ] 2.2 Add scorecard reference with hard gates and 80-point pass threshold.
-- [ ] 2.3 Add template routing reference for overview/runtime/migration/validation/roadmap-style report groups.
-- [ ] 2.4 Add pressure scenarios covering triggers, non-triggers, and the failed knowledge-base draft pattern.
+- [x] 2.1 Add `.codex/skills/public-report-quality-gate/SKILL.md`.
+  <!-- 2026-05-08 — added compact skill body with triggers, hard rules, load pointers, and common mistakes -->
+- [x] 2.2 Add scorecard reference with hard gates and 80-point pass threshold.
+  <!-- 2026-05-08 — scorecard.md defines six hard gates, voice gate detail, 100-point rubric, and threshold bands -->
+- [x] 2.3 Add template routing reference for overview/runtime/migration/validation/roadmap-style report groups.
+  <!-- 2026-05-08 — report-group-templates.md defines reference map, split routing, four-page group pattern, optional roadmap, and public skeleton -->
+- [x] 2.4 Add pressure scenarios covering triggers, non-triggers, and the failed knowledge-base draft pattern.
+  <!-- 2026-05-08 — pressure-scenarios.md covers should-trigger, should-not-trigger, and failed knowledge-base replay -->
 
 ## 3. Repo Routing
 
-- [ ] 3.1 Add `public-report-quality-gate` to repo `AGENTS.md` high-frequency skill routing.
-- [ ] 3.2 Keep the skill positioned as a reader-facing output gate, not a source-reading or Feishu API replacement.
+- [x] 3.1 Add `public-report-quality-gate` to repo `AGENTS.md` high-frequency skill routing.
+  <!-- 2026-05-08 — AGENTS.md now routes reader-facing reports / Feishu review drafts / H5-share drafts through the skill -->
+- [x] 3.2 Keep the skill positioned as a reader-facing output gate, not a source-reading or Feishu API replacement.
+  <!-- 2026-05-08 — SKILL.md hard rules preserve source, learning, visual, Feishu, and verification skills under their own boundaries -->
 
 ## 4. Evaluation
 
-- [ ] 4.1 Record GREEN pressure scenario results.
-- [ ] 4.2 Verify OpenSpec strict validation.
-- [ ] 4.3 Verify skill body remains compact and long details live in references.
-- [ ] 4.4 Record residual risks and non-goals.
+- [x] 4.1 Record GREEN pressure scenario results.
+  <!-- 2026-05-08 — evaluation.md records PASS for runtime skill, AGENTS route, voice/reference/split/narrative/publish gates -->
+- [x] 4.2 Verify OpenSpec strict validation.
+  <!-- 2026-05-08 — openspec validate add-public-report-quality-gate --strict passed; PostHog DNS noise ignored -->
+- [x] 4.3 Verify skill body remains compact and long details live in references.
+  <!-- 2026-05-08 — SKILL.md 52 lines; scorecard/template/pressure details live in references -->
+- [x] 4.4 Record residual risks and non-goals.
+  <!-- 2026-05-08 — evaluation.md records static/manual proof, no source/visual/Feishu proof, historical report risk, and no reviewer-agent template -->
