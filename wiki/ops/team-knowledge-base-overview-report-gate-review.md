@@ -156,3 +156,74 @@ migration, validation, and roadmap pages remain separate follow-up drafts.
 | Read-back command | PASS — `lark-cli docs +fetch` succeeded |
 | Read-back log id | `20260508112224E3083FFB2D212C4BB08C` |
 | Read-back opening | `> 本文是“团队知识库构建路径”系列的总览页，说明团队经验如何从一线工作现场...` |
+
+## Full Article Set Replay Before Feishu Update 2026-05-08
+
+| Replay Scenario | Expected | Result |
+|---|---|---|
+| User says "没图。你把所有文章都写完了我再看" | Treat the work as a reader-facing article set, finish all article drafts, and record that final visual assets are deferred | PASS |
+| Feishu article set update is requested | Update this repo-visible gate-review artifact before Feishu write | PASS |
+| Scorecard exists only in chat or transient draft cache | Block Feishu write | PASS — score and decision are recorded here before update |
+| Five articles are bundled into one Feishu document for review | Label as an audit/review packet, not as final publication | PASS |
+
+## Full Article Set Draft Snapshot 2026-05-08
+
+Target title: `团队知识库构建路径：五篇审核稿`
+
+Packet opening:
+
+> 审核稿合集。本文包含“团队知识库构建路径”系列的五篇文章初稿：总览、运行态、迁移路径、验证与案例、路线图。当前版本先完成正文结构和论述主线，视觉图稿可在正文通过后单独设计。
+
+Article set:
+
+1. `团队知识库构建路径：总览`
+2. `团队知识库运行态：一份材料如何变成可复用知识`
+3. `团队知识库迁移路径：如何把一个项目接入这套方法`
+4. `团队知识库验证与案例：怎么判断这套方法可信`
+5. `团队知识库路线图：从记录系统到团队知识资产`
+
+## Full Article Set Gate Results 2026-05-08
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Reference Structure Gate | PASS | The article set follows the reference group's overview, runtime, migration, validation/cases, and roadmap organization. |
+| Split Gate | PASS | The five reader jobs are separated into five article sections; the current Feishu document is a review packet rather than one long final page. |
+| Voice Gate | PASS | Draft scan found no internal gate/replay/OpenSpec/repo/tmp/chat residue after wording repair. |
+| Narrative Gate | PASS | All five articles keep the maturity path from worksite facts to reusable team knowledge to structured wiki. |
+| Visual Gate | PASS with residual risk | Tables carry reading path, flow, maturity, validation, and priority relationships; final image assets are intentionally deferred by the user. |
+| Publish Gate | PASS for review draft | This artifact records the score, decision, residual risks, and planned read-back verification before Feishu update. |
+
+## Full Article Set Scorecard 2026-05-08
+
+| Dimension | Points | Reason |
+|---|---:|---|
+| Reference fidelity | 18 / 20 | Reuses the five-part reference structure and reader path; does not yet reproduce rich visual styling. |
+| Core narrative | 19 / 20 | The evolution path is stable across all five articles; a few local examples remain high-level. |
+| Progressive split | 15 / 15 | Overview, runtime, migration, validation, and roadmap are separate reader tasks. |
+| Reader path | 15 / 15 | The overview explains how to read the group and each follow-up page has a focused job. |
+| Visual information design | 10 / 15 | Tables carry structure, but there are no final diagrams or illustration assets yet. |
+| Report voice | 10 / 10 | Draft uses reader-facing language and avoids internal process vocabulary. |
+| Evidence boundary | 5 / 5 | The packet explicitly says it is an audit draft and does not claim final visual publication. |
+
+Total: `92 / 100`
+
+Decision: hard gates pass and score exceeds the 80-point threshold. The five-article packet may update the Feishu review document as an audit draft.
+
+Residual risks:
+
+- Final visual assets are not present; the user requested all article drafts first.
+- The current document is a review packet, not the final split Feishu page group.
+- Cases remain summary-level and should not be read as exhaustive proof.
+
+## Full Article Set Feishu Update Verification 2026-05-08
+
+| Check | Result |
+|---|---|
+| Update command | PASS — `lark-cli docs +update --mode overwrite` succeeded |
+| Updated title | `团队知识库构建路径：五篇审核稿` |
+| Update log id | `20260508114500EF657CBA7C205A51F5B5` |
+| Read-back command | PASS — `lark-cli docs +fetch` succeeded |
+| Read-back log id | `2026050811454826C53E90DD01685638E1` |
+| Read-back title | `团队知识库构建路径：五篇审核稿` |
+| Read-back opening | `> 审核稿合集。本文包含“团队知识库构建路径”系列的五篇文章初稿...` |
+| Read-back total length | `12818` |
