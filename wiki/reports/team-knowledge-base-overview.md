@@ -1,5 +1,5 @@
 <callout emoji="map" background-color="light-blue">
-Account Harness Wiki 是 raw sources 和未来问题之间的中间层：它把飞书材料、会议纪要、外部文章和项目记录，持续编译成可链接、可更新、可复用的 markdown wiki。
+Account Wiki 是 raw sources 和未来问题之间的中间层：它把飞书材料、会议纪要、外部文章和项目记录，持续编译成可链接、可更新、可复用的 markdown wiki。
 </callout>
 
 ## 01 先说清楚：Wiki 不是资料夹，也不是 RAG
@@ -8,24 +8,24 @@ Account Harness Wiki 是 raw sources 和未来问题之间的中间层：它把�
 
 如果只是做检索，系统会在每次提问时从原始材料里临时找片段、拼答案。这样能回答问题，但知识没有真正累积。下一次遇到更复杂的问题，仍然要重新检索、重新拼接、重新判断。
 
-Account Harness Wiki 要解决的是另一件事：让知识在每次输入、每次提问、每次写作之后都留下结构化增量。
+Account Wiki 要解决的是另一件事：让知识在每次输入、每次提问、每次写作之后都留下结构化增量。
 
-| 模式 | 它做什么 | 问题 |
-|---|---|---|
-| 资料夹 | 存放原始文件 | 人要自己找、自己串、自己判断 |
-| 临时检索 | 每次提问时找相关片段 | 答案不一定沉淀，综合判断不能复利 |
-| Account Harness Wiki | 把来源持续编译成互相链接的 markdown 页面 | 需要维护规则、索引、日志和人工校准 |
+| 模式                   | 它做什么                      | 问题                |
+| -------------------- | ------------------------- | ----------------- |
+| 资料夹                  | 存放原始文件                    | 人要自己找、自己串、自己判断    |
+| 临时检索                 | 每次提问时找相关片段                | 答案不一定沉淀，综合判断不能复利  |
+| Account Wiki | 把来源持续编译成互相链接的 markdown 页面 | 需要维护规则、索引、日志和人工校准 |
 
 这就是 Karpathy 的 LLM Wiki 模式对我们的校准：wiki 的本质是一个 persistent, compounding artifact。它不是一次答案，而是会随着来源和问题持续变厚的知识层。
 
-## 02 Account Harness Wiki 到底是什么
+## 02 Account Wiki 到底是什么
 
-Account Harness Wiki 是团队知识工作的编译层。
+Account Wiki 是团队知识工作的编译层。
 
 它位于两端之间：
 
 ```text
-raw sources  ->  Account Harness Wiki  ->  future questions / reports / decisions
+raw sources  ->  Account Wiki  ->  future questions / reports / decisions
 ```
 
 左边是原始来源：飞书文档、会议纪要、外部文章、附件、聊天记录、项目材料。它们是事实来源，不能被 wiki 替代。
@@ -36,7 +36,7 @@ raw sources  ->  Account Harness Wiki  ->  future questions / reports / decision
 
 ## 03 三层架构：来源、Wiki、维护规则
 
-Account Harness Wiki 最少有三层。
+Account Wiki 最少有三层。
 
 | 层 | 它是什么 | 谁负责 | 不能做什么 |
 |---|---|---|---|
@@ -50,7 +50,7 @@ Account Harness Wiki 最少有三层。
 
 ## 04 它如何运转：Ingest、Query、Lint
 
-Account Harness Wiki 的日常动作不是“把材料复制进来”，而是三件事。
+Account Wiki 的日常动作不是“把材料复制进来”，而是三件事。
 
 | 动作 | 发生什么 | 本地对应 |
 |---|---|---|
@@ -76,7 +76,7 @@ Account Harness Wiki 的日常动作不是“把材料复制进来”，而是�
 
 ## 06 Index 和 Log 是两种不同的导航
 
-Account Harness Wiki 不能只靠全文搜索。
+Account Wiki 不能只靠全文搜索。
 
 它至少需要两种导航：
 
@@ -89,9 +89,9 @@ Account Harness Wiki 不能只靠全文搜索。
 
 ## 07 为什么它有用
 
-Account Harness Wiki 有用，不是因为它能把所有材料都存起来，而是因为它让综合判断变得可累积。
+Account Wiki 有用，不是因为它能把所有材料都存起来，而是因为它让综合判断变得可累积。
 
-| 没有 Wiki 编译层 | 有 Account Harness Wiki |
+| 没有 Wiki 编译层 | 有 Account Wiki |
 |---|---|
 | 每次写稿重新找资料 | 相关主题、来源和旧判断已经链接好 |
 | 外部文章看完就忘 | 学习点、证据、边界进入阅读笔记和输出映射 |
@@ -103,7 +103,7 @@ Account Harness Wiki 有用，不是因为它能把所有材料都存起来，�
 
 ## 08 它也有什么边界
 
-不能把 Account Harness Wiki 说成已经完全自动化。
+不能把 Account Wiki 说成已经完全自动化。
 
 | 边界 | 说明 |
 |---|---|
@@ -119,7 +119,7 @@ Account Harness Wiki 有用，不是因为它能把所有材料都存起来，�
 
 | 如果你想知道 | 读哪一页 | 读完应该能判断 |
 |---|---|---|
-| Account Harness Wiki 是什么 | 本页 | 它为什么是 raw sources 和未来问题之间的编译层 |
+| Account Wiki 是什么 | 本页 | 它为什么是 raw sources 和未来问题之间的编译层 |
 | 一份材料进入后怎么流转 | [运行态](https://www.feishu.cn/docx/O4hYdmBqmognenxxPQ2coEHAnOc) | 新材料如何 ingest、更新、复用 |
 | 一个项目怎么接入 | [迁移路径](https://www.feishu.cn/docx/NRbddWouLoXk56xwGz1cv6W0niu) | 最小启动条件、迁移步骤和完成标志 |
 | 这套方法可信到什么程度 | [验证与案例](https://www.feishu.cn/docx/JnHtdMimVoVsoTxJmfHcFbI8nBd) | 哪些能力已有证据，哪些还是候选 |
@@ -127,7 +127,7 @@ Account Harness Wiki 有用，不是因为它能把所有材料都存起来，�
 
 ## 10 最后一句判断
 
-Account Harness Wiki 的本质不是文件管理，而是知识编译。
+Account Wiki 的本质不是文件管理，而是知识编译。
 
 它把原始来源保留在原地，把 AI 助手变成 wiki 维护者，把人的问题和判断转化成会持续增厚的 markdown 结构。
 

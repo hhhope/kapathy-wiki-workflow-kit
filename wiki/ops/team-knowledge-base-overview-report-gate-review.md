@@ -709,3 +709,27 @@ Total: `111 / 115`, normalized to `97 / 100`.
 
 Decision: local draft passes review-draft gates under the Karpathy-corrected
 wiki model. Feishu sync is not performed in this round.
+
+## Account Wiki Naming Scope Correction 2026-05-08
+
+User correction:
+
+> 我们做的好多工作其实都没写，要改成 Account Wiki，先不把 harness 纳进去。
+
+Interpretation:
+
+- Current public article should be titled and framed as `Account Wiki`.
+- Do not put `Harness` into the public title or core definition yet.
+- Keep Karpathy's LLM Wiki model as the source-grounded essence.
+- Treat harness-engineering learning as background influence, not the public
+  object name.
+
+Draft correction:
+
+- `Account Harness Wiki` -> `Account Wiki` in the public-facing overview where
+  it names the object.
+- Preserve the raw sources -> wiki -> future questions/reports/decisions model.
+- Preserve ingest / query / lint, index / log, and source-of-truth boundaries.
+
+Gate result: PASS for scope correction. Feishu sync remains blocked until the
+user explicitly approves the corrected local draft.
