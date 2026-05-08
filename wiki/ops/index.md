@@ -21,7 +21,7 @@
 - [conversation-handoff / method](conversation-handoff-mode.md)
 - [例子驱动的 Wiki 留痕](example-driven-wiki-capture.md)
 - [learning-capture-routing / intake](learning-capture-routing.md)
-- [Account 知识库工作台](account-knowledge-base-workbench.md)
+- [团队知识库构建路径](account-knowledge-base-workbench.md)
 - [Agent Harness 文章精读](agent-harness-article-learning.md)
 - [behavior-replay-gate / method](behavior-replay-gate.md)
 - [root-capability-extraction / retro](root-capability-extraction-retro.md)

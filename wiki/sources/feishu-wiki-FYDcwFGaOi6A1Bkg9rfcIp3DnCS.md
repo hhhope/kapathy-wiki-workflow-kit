@@ -34,9 +34,9 @@ ai_generated: false
 
 ## Structural Summary
 
-The page is an entry overview for `Account Harness`. Its own stated boundary is
-that the page only explains the collaboration surface, the layer split, and the
-next reading path.
+The reference is a four-document `Account Harness` group plus one roadmap page.
+The entry overview states its own boundary: explain the collaboration surface,
+the layer split, and the next reading path.
 
 Reusable structure:
 
@@ -51,6 +51,22 @@ Reusable structure:
 - layer responsibility table
 - default usage order table
 - reading map
+
+Fetched related pages:
+
+- `Account Harness：总览（OpenSpec / Lore / Graphify / Lore Bootstrap，更新至 2026-04-13）`
+- `Account Harness：运行态（Lore + Graphify，更新至 2026-04-13）`
+- `Account Harness：安装与迁移（更新至 2026-04-13）`
+- `Account Harness：验证结果与案例（更新至 2026-04-13）`
+- `AICoding L1-L4 路线图（更新至 2026-04-13）`
+
+Reusable group pattern:
+
+- overview page: defines the composition and reading path
+- runtime page: defines default operating sequence
+- install/migration page: defines adoption order and done criteria
+- validation page: defines evidence and non-overclaim boundaries
+- roadmap page: defines maturity levels and next-stage priorities
 
 ## Reused By
 
