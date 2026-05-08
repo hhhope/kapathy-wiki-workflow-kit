@@ -586,3 +586,69 @@ Total: `96 / 100`.
 Decision: local draft passes review-draft gates. Feishu sync is not performed in
 this round because the user has not yet reviewed the rewritten local draft after
 template selection.
+
+## Harness-Article-Dominant Theme Reset 2026-05-08
+
+User correction:
+
+> 主题改成 Account Harness Wiki，整体内容以 Harness Engineering overview
+> article 为主。
+
+Interpretation:
+
+- Keep the title/theme as `Account Harness Wiki`.
+- Make the Harness Engineering overview article the dominant writing structure.
+- Keep the Feishu reference group only as the reading-map architecture.
+- Keep the Evolver article only as supporting problem-led mechanism style.
+
+Updated structure:
+
+1. 最近为什么一定要重新看知识库
+2. Account Harness Wiki 到底是什么
+3. 从 Lore 到 Team Lore 到 Wiki：三代人解同一个问题
+4. 为什么现在需要它
+5. 它怎么运转
+6. 有什么证据说明它有用
+7. 反过来看，它也可能没用
+8. 怎么读这组材料
+9. 三个现在就能用的场景
+10. 最后一句判断
+
+Template use after correction:
+
+| Template | Weight | Evidence |
+|---|---:|---|
+| D. Balanced concept article | Primary | The draft follows signal cluster, definition, evolution timeline, why-now, evidence, counter-evidence, scenarios, and final boundary. |
+| A. Reference-group navigation | Secondary | Section 08 preserves the parent overview plus runtime, migration, validation/cases, and roadmap map. |
+| B. Problem-led teardown | Supporting | Sections 01 and 05 preserve concrete failure modes and mechanism explanation. |
+
+## Harness-Article-Dominant Gate Results 2026-05-08
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Reviewer Routing | PASS | The user corrected the theme and dominant template; the local draft was rewritten before Feishu sync. |
+| Learning Use Gate | PASS | `harness-engineering-overview-reading-notes.md` is now the primary learning artifact for structure, visual, evidence, and boundary. |
+| Reference Structure Gate | PASS | The draft still links to runtime, migration, validation/cases, and roadmap child pages. |
+| Split Gate | PASS | The overview does not absorb child-page details. |
+| Voice Gate | PASS | The draft is reader-facing and framed around Account Harness Wiki, not internal gate mechanics. |
+| Narrative Gate | PASS | The main story is now Account Harness Wiki as a working environment for team knowledge production. |
+| Visual Gate | PASS for review draft | Each major section uses a table as the visual carrier: signal map, component map, evolution map, lifecycle, evidence/counter-evidence, reading map, and action scenarios. |
+| Publish Gate | BLOCKED for Feishu sync | This is a local rewrite after user correction; Feishu sync still requires explicit approval. |
+
+## Harness-Article-Dominant Scorecard 2026-05-08
+
+| Dimension | Points | Reason |
+|---|---:|---|
+| Theme fit | 15 / 15 | The title, opening, definition, and final judgment all center on Account Harness Wiki. |
+| Reference article fidelity | 18 / 20 | The structure follows the Harness Engineering overview article's concept-writing pattern without copying its claims. |
+| Learning reuse | 10 / 10 | The primary article now shapes structure, visual roles, evidence balance, and boundary language. |
+| Core narrative | 19 / 20 | The draft consistently treats the wiki as a team knowledge working environment. |
+| Progressive split | 14 / 15 | Child pages remain separate, though the overview still summarizes their purpose. |
+| Reader path | 15 / 15 | Section 08 gives concrete next-read links and outcomes. |
+| Visual information design | 13 / 15 | Tables carry the main relationships; final illustrated assets remain future polish. |
+| Evidence boundary | 5 / 5 | External article claims are not reused as local proof. |
+
+Total: `94 / 100`.
+
+Decision: local draft passes review-draft gates under the corrected theme.
+Feishu sync is not performed in this round.
