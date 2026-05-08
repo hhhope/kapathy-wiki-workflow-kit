@@ -511,11 +511,11 @@ from the Evolver article, and add the Harness Engineering overview article's
 evidence/counter-evidence balance. Use C only for the lead lifecycle visual, not
 as the whole article architecture.
 
-User selection status: pending. The next draft is blocked until the user accepts
-the recommended A + B + D hybrid or selects another template.
+User selection status: accepted by user in chat on 2026-05-08. The selected
+template is A + B + D hybrid.
 
-Score state: `INVALID` for the next writing round until template selection is
-confirmed and the learning-use map below is accepted or revised.
+Score state before rewrite: `INVALID` until the selected-template draft is
+written and rechecked.
 
 ## Learning Use Map Before Next Writing Round 2026-05-08
 
@@ -530,3 +530,59 @@ confirmed and the learning-use map below is accepted or revised.
 
 Learning Use Gate status: PASS for process mapping, blocked for drafting until
 template selection is confirmed.
+
+## ABD Rewrite Draft Snapshot 2026-05-08
+
+Local draft: `wiki/reports/team-knowledge-base-overview.md`
+
+Selected template: A + B + D hybrid.
+
+Draft structure:
+
+1. 问题：我们不是缺资料，而是缺一条稳定的知识生产路径
+2. 结论：知识库是一套工作环境，不是一堆页面
+3. 演进路径：从 Lore 到 Team Lore，再到结构化 Wiki
+4. 流程：一份输入如何变成团队知识
+5. 证据：哪些已经能观察，哪些还不能夸大
+6. 这组材料怎么读
+7. 当前阶段与边界
+
+Template use:
+
+| Template | Used Where | Evidence |
+|---|---|---|
+| A. Reference-group navigation | Section 06 | Keeps entry page plus runtime, migration, validation/cases, and roadmap reading path. |
+| B. Problem-led teardown | Sections 01-04 | Starts from daily-input failure, then explains system components and lifecycle. |
+| D. Balanced concept article | Sections 05 and 07 | Separates observable evidence from non-claims and ends with boundary judgment. |
+
+## ABD Rewrite Gate Results 2026-05-08
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Reviewer Routing | PASS | Reviewer was required, user accepted A + B + D hybrid, and the draft uses that template. |
+| Learning Use Gate | PASS | Learning artifacts are mapped above; the draft uses the Evolver article for problem-led teardown and the Harness Engineering overview for evidence/counter-evidence balance. |
+| Reference Structure Gate | PASS | The draft preserves parent overview responsibility and links to runtime, migration, validation/cases, and roadmap child pages. |
+| Split Gate | PASS | The entry page does not absorb runtime, migration, validation, or roadmap content. |
+| Voice Gate | PASS | The draft is reader-facing and avoids internal process vocabulary such as gate/replay/OpenSpec/repo path language. |
+| Narrative Gate | PASS | The story stays as an evolution path from daily inputs to reusable, verifiable, publishable team knowledge. |
+| Visual Gate | PASS for review draft | Each section has a table carrying contrast, lifecycle, evidence, reader navigation, or maturity-stage information. |
+| Publish Gate | BLOCKED for Feishu sync | This round writes the local draft only; Feishu sync requires user review or an explicit sync request. |
+
+## ABD Rewrite Scorecard 2026-05-08
+
+| Dimension | Points | Reason |
+|---|---:|---|
+| Reference fidelity | 14 / 15 | Preserves parent/child article architecture and page roles; visual style is table-based rather than final illustrated design. |
+| Learning reuse | 10 / 10 | The selected draft explicitly uses the mapped structure, visual, evidence, and boundary lessons. |
+| Core narrative | 19 / 20 | The maturity path remains stable from problem opening through final boundary. |
+| Progressive split | 15 / 15 | Runtime, migration, validation/cases, and roadmap remain linked child pages. |
+| Reader path | 15 / 15 | Section 06 tells each reader where to go next. |
+| Visual information design | 13 / 15 | Tables carry information relationships; final bitmap/illustrated assets remain future polish. |
+| Report voice | 5 / 5 | The draft is written for readers rather than internal audit. |
+| Evidence boundary | 5 / 5 | External article lessons are treated as structure/evidence-style references, not local proof. |
+
+Total: `96 / 100`.
+
+Decision: local draft passes review-draft gates. Feishu sync is not performed in
+this round because the user has not yet reviewed the rewritten local draft after
+template selection.
