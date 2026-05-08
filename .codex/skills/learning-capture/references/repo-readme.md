@@ -18,9 +18,12 @@ For full README/repo workflow details, load
 - Preserve adaptation boundary instead of stopping at source summary.
 - Capture at least:
   - source
+  - source domain/topic when known
+  - reusable capability type when the point is expected to shape output
   - what was reused
   - what was modified
   - what was rejected or not yet formalized
+  - intended output use or skip reason when relevant
   - repo target
 - Route outputs into existing repository layers: `wiki/ops`, `wiki/examples`,
   `wiki/team-lore-candidates.md`, or an OpenSpec change.

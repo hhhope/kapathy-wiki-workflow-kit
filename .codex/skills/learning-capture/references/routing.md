@@ -51,6 +51,33 @@ Replay output must state:
 | Example-shaped | output example, writing style, visual structure, workflow shape, method example | `example-reference.md` |
 | Mixed | article discusses a repo, repo README supports an article, or example carries a method | start with the directly available source, then route to the second module only when the user asks for that evidence |
 
+## Domain vs Reusable Capability Gate
+
+Do not collapse the source's topic into the thing we learned to reuse.
+
+| Field | Meaning | Example |
+|---|---|---|
+| Domain / topic | What the source is about | `agent harness`, `skill authoring`, `wiki governance`, `public report writing` |
+| Reusable capability type | What future output can reuse from it | `content`, `structure`, `visual`, `evidence`, `boundary` |
+
+Capability types:
+
+| Type | Use when the source teaches... |
+|---|---|
+| `content` | concepts, arguments, facts, claims, vocabulary |
+| `structure` | article order, section rhythm, split strategy, reading map |
+| `visual` | diagram role, visual density, lifecycle map, comparison graphic |
+| `evidence` | metrics, cases, observable scenes, proof style |
+| `boundary` | adoption limits, future/current separation, non-claims |
+
+Examples:
+
+| Source | Domain | Reusable capability type |
+|---|---|---|
+| Skill authoring article | skill authoring / agent workflow | structure, visual, boundary |
+| Account Harness reference group | agent harness / knowledge base | structure, visual, reader path |
+| Agent SaaS WeChat article | agent-first software | structure, evidence, boundary |
+
 ## Topic Anchor Gate
 
 | Topic Signal | Action |
@@ -86,8 +113,14 @@ Every learning result should say:
 
 - source kind
 - topic anchor or weekly-review candidate status
+- source domain/topic when known
+- reusable capability type when the point is expected to shape future output
 - selected module
 - what was learned
 - local usefulness
 - adoption boundary
+- intended output use or skip reason when relevant
 - next repository target, if any
+
+For report, H5, Feishu, or public-material follow-up, hand off to
+`references/output-use.md` and the public report quality gate.

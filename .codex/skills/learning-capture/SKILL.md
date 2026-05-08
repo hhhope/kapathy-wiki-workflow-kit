@@ -47,6 +47,9 @@ short abstracts, or one-off digestion with no local reuse intent.
   whether it is learning material or a raw fetch / lookup request.
 - Route by evidence object: article-shaped, repo/README-shaped, or
   example-shaped.
+- Separate source domain/topic from reusable capability type. Domain says what
+  the source is about; capability type says what future output can reuse from
+  it.
 - If the user names a topic or the source strongly matches an existing wiki
   title, filename, or index entry, check that topic before creating durable
   notes.
@@ -55,6 +58,8 @@ short abstracts, or one-off digestion with no local reuse intent.
 - Prefer narrower source tools for raw fetching, such as `weixin-reader`.
 - Do not promote external-source takeaways into `AGENTS.md`, specs, hard skill
   rules, or archive-ready claims without the repository evidence-backed gate.
+- When a learned point is expected to shape a later report, H5, Feishu draft,
+  skill, or OpenSpec change, preserve an output-use hint or skip reason.
 - Keep module-specific gates intact; the router does not weaken source
   grounding, scoring, adaptation-boundary, or promotion requirements.
 
@@ -74,6 +79,7 @@ short abstracts, or one-off digestion with no local reuse intent.
 - Repo/README module: `references/repo-readme.md`
 - Example reference module: `references/example-reference.md`
 - Pressure scenarios: `references/pressure-scenarios.md`
+- Output-use handoff: `references/output-use.md`
 
 ## Common Mistakes
 
@@ -83,5 +89,7 @@ short abstracts, or one-off digestion with no local reuse intent.
   the repo or README.
 - Collapsing source summary, source grounding, local usefulness, and promotion
   evidence into one table.
+- Treating `content / structure / visual / evidence / boundary` as source
+  domains instead of reusable capability types.
 - Forcing unclear sources onto existing wiki topics instead of leaving weekly
   review candidates.

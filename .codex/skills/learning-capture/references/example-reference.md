@@ -9,6 +9,8 @@ structure, visual organization, writing pattern, output shape, or method shape.
 - State what was reused.
 - State what was modified.
 - State what was not yet formalized.
+- Classify what was learned as source domain/topic plus reusable capability
+  type, such as structure, visual, evidence, or boundary.
 - State the repo target or next step.
 - Do not treat a structure reference as factual proof for technical claims.
 
@@ -22,3 +24,7 @@ structure, visual organization, writing pattern, output shape, or method shape.
 
 Example-reference learning can teach shape. It cannot by itself justify a hard
 rule, skill behavior, spec requirement, or archive-ready conclusion.
+
+When the example is later used for a reader-facing output, preserve where the
+learning appears in the output: section, visual, metric, evidence block,
+boundary statement, or skip reason.

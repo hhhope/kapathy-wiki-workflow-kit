@@ -29,6 +29,23 @@ Reference map completeness rule:
 - Incomplete reference maps force Reference Structure Gate `FAIL` and scorecard
   `INVALID`.
 
+## Learning Use Map
+
+Before drafting from prior learning, record:
+
+| Field | Question |
+|---|---|
+| Learning artifact | Which wiki note, source record, example, or prior gate review is being reused? |
+| Domain / topic | What is the source about? |
+| Reusable capability type | Is the reusable lesson content, structure, visual, evidence, or boundary? |
+| Learning point | What exact lesson is expected to shape the output? |
+| Output use | Which section, visual, metric, evidence block, boundary statement, or named output element will use it? |
+| Skip reason | If the lesson is relevant but not used, why? |
+
+The learning use map proves the output process used or rejected learning
+deliberately. It does not make internal wiki paths part of the public article
+unless citations are requested.
+
 ## Split Routing
 
 Split the material when at least two of these are true:

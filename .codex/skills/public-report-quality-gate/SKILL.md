@@ -29,6 +29,9 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Do not publish, sync to Feishu, or claim review-ready when any hard gate fails.
 - Before Feishu sync or a review-ready claim, create or update a repo-visible
   `wiki/ops/*-report-gate-review.md` artifact.
+- If the output claims to use prior learning or external references, map the
+  applicable learning artifacts before drafting: what was used, where it
+  appears, and why relevant learning was skipped.
 - When a reference artifact is provided, write or state the reference structure
   map before drafting.
 - If a reference page has child pages or a reading map with concrete links,
@@ -44,11 +47,14 @@ implementation reports unless the user asks for a reader-facing deliverable.
   Visual Gate failure for reference-shaped output.
 - Keep source reading, learning capture, visual generation, Feishu operations,
   and final verification under their own skills.
+- Treat learning reuse as process evidence, not automatic promotion into
+  `AGENTS.md`, specs, skills, or root instructions.
 
 ## Load
 
 - Scorecard and hard gates: `references/scorecard.md`
 - Gate review artifact contract: `references/gate-review-artifact.md`
+- Learning use map: `references/learning-use-map.md`
 - Report group templates and split routing: `references/report-group-templates.md`
 - Validation scenarios: `references/pressure-scenarios.md`
 
@@ -60,3 +66,5 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Packing overview, runtime, migration, validation, and roadmap into one page
 - Using slogans such as "X = manages Y" instead of explaining the evolution
 - Letting repo paths, OpenSpec details, or agent workflow leak into public text
+- Saying a draft "learned from" a source without showing the section, visual,
+  metric, evidence block, boundary statement, or skip reason it affected

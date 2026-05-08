@@ -9,6 +9,7 @@ Any hard-fail blocks publishing, Feishu sync, or a "ready for review" claim.
 
 | Gate | Hard-fail signal |
 |---|---|
+| Learning Use Gate | The output claims to use prior learning or reference examples, but no output-use map identifies applicable learning artifacts, domain/topic, reusable capability type, used output element, and skip reasons for relevant unused points. |
 | Reference Structure Gate | A reference artifact exists, but the draft does not map its actual overall structure, page split, reader path, visual logic, writing standard, concrete links, and linked-page roles before drafting. If the reference is a Feishu wiki node with `has_child: true` or a reading map with article links, those linked pages must be fetched and mapped before this gate can pass. |
 | Split Gate | One draft carries multiple reader jobs such as overview, runtime, migration, validation, and roadmap without an explicit split decision and final destination map. A review packet does not count as a split unless it is explicitly labeled non-final and not claimed review-ready. |
 | Voice Gate | Chat residue, slogan simplification, loose narrator, weak section openings, internal ops leakage, or tone mismatch remains in reader-facing text. |
@@ -37,12 +38,13 @@ Feishu sync, publication, and review-ready claims.
 
 | Dimension | Points | Full-credit standard |
 |---|---:|---|
-| Reference fidelity | 20 | Reuses the reference's organization, reader journey, visual logic, and writing standard while changing content appropriately. |
+| Reference fidelity | 15 | Reuses the reference's organization, reader journey, visual logic, and writing standard while changing content appropriately. |
+| Learning reuse | 10 | Shows which learned points shaped the output and where they appear, or records skip reasons for relevant unused points. |
 | Core narrative | 20 | The main story remains stable from title through diagrams and section conclusions. |
 | Progressive split | 15 | Long material is split into overview and follow-up pages, or the single-page choice is justified. |
 | Reader path | 15 | The reader knows who the material is for, what decision it supports, what to read first, and where to go next. |
 | Visual information design | 15 | Each diagram carries structure, sequence, contrast, or decision logic that prose alone cannot scan quickly. |
-| Report voice | 10 | Language is formal, concise, reader-facing, and free of chat residue. |
+| Report voice | 5 | Language is formal, concise, reader-facing, and free of chat residue. |
 | Evidence boundary | 5 | Source/reference/local truth boundaries are explicit without overwhelming the reader. |
 
 ## Thresholds

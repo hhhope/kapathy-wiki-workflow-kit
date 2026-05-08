@@ -10,6 +10,7 @@ Use these scenarios to validate trigger and gate behavior.
 | User says "写一个对外材料并发飞书审核" and no repo-visible gate-review file exists | Create/update `wiki/ops/*-report-gate-review.md` before Feishu write | PASS |
 | User asks to turn an internal wiki ops page into a shareable report | Gate reader-facing rewrite; internal wiki text is not public-ready by default | PASS |
 | User provides a Feishu page as structure reference for a new report | Require reference structure map before drafting | PASS |
+| User says "用之前学到的文章结构写一个对外稿" | Require learning use map before drafting | PASS |
 | User asks for H5/share draft based on dense wiki content | Require split, voice, visual, and publish gates | PASS |
 | User asks "帮我润色成正式稿" for a report intended for managers/readers | Apply voice gate and scorecard | PASS |
 | User says "可以，发飞书" after a draft with unresolved hard-gate failures | Block sync and report failing gates | PASS |
@@ -45,9 +46,21 @@ Use these scenarios to validate trigger and gate behavior.
 | Any hard gate is `FAIL`, `UNKNOWN`, `PARTIAL`, or `NOT TESTED`, but the review still assigns a numeric score | Scorecard | FAIL; score must be `INVALID` and the decision must block sync/review-ready claims |
 | A review packet bundles multiple final reader jobs into one Feishu document and calls that a split | Split Gate | FAIL unless the packet is explicitly marked as a non-review-ready failed/provisional draft and final page destinations are mapped |
 
+## Learning Reuse Replay
+
+| Failure | Gate That Should Catch It | Expected Result |
+|---|---|---|
+| The agent says prior article learning will shape the draft, but does not open or list the learning artifacts before drafting | Learning Use Gate | FAIL until applicable learning artifacts are mapped |
+| The output-use map lists the source domain as "agent harness" but does not say whether the reusable capability is content, structure, visual, evidence, or boundary | Learning Use Gate | FAIL until domain and capability type are separated |
+| A learned visual pattern is relevant but not used, and no reason is recorded | Learning Use Gate | FAIL until skip reason is recorded |
+| A learned evidence pattern is used to claim local results without local data | Evidence Boundary + Learning Use Gate | FAIL; source learning can shape proof style but cannot invent local metrics |
+| A learning point repeatedly shapes outputs and is proposed as a rule | Promotion Boundary | FAIL until routed through evidence-backed promotion or OpenSpec |
+
 ## Validation Notes
 
 - These scenarios validate trigger wording and gate expectations, not automatic
   runtime dispatch across all future sessions.
 - The gate coordinates other skills; it does not prove source correctness,
   visual rendering quality, or Feishu API success by itself.
+- Learning reuse proof shows a learned point affected the output process; it
+  does not prove the learned point should become a durable rule.
