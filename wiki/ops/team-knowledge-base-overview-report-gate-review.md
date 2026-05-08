@@ -798,3 +798,47 @@ Feishu log ids:
 
 Sync result: PASS. The Feishu review draft now matches the corrected local
 Account Wiki overview.
+
+## Publish-Ready Structure Review And Image Insert 2026-05-08
+
+User approval:
+
+- The user accepted the corrected draft and asked to add the generated visual to
+  the Feishu document before publishing.
+
+Image source:
+
+- Local archive copy:
+  `wiki/reports/assets/account-wiki-onepager.png`
+- Generated-image source:
+  `/home/yan/.codex/generated_images/019df610-bb95-7ce2-b3fa-5be9a95ab8d3/ig_03bc855ead1e99ed0169fdbac421a08191ba34da17dd5e3ae5.png`
+
+Feishu updates:
+
+| Operation | Result |
+|---|---|
+| Rename document from review title to publish title | PASS |
+| Insert Account Wiki one-page visual | PASS |
+| Image insertion position | End of document, via `docs +media-insert` shortcut |
+
+Feishu evidence:
+
+- Title update log id: `202605081840361A70FF1C45B9EA99A30E`
+- Image block id: `doxcniqj3mVFiXawrZ0fGkJ0r1d`
+- Image file token: `EhBJbuYPCosJGsxk0fUcui1YnTf`
+- Full read-back log id: `202605081843247C2CAB10CC6F1C9AEB1B`
+
+Publish structure review:
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Final title | PASS | Feishu title is `Account Wiki：团队知识库构建路径`. |
+| Old naming removed | PASS | Full read-back has no `Harness` text. |
+| Core narrative | PASS | Opening still states raw sources -> Account Wiki -> future questions. |
+| Existing capability coverage | PASS | Section 05 remains present. |
+| Boundary clarity | PASS | Obsidian is explicitly not an automatic classifier. |
+| Reader navigation | PASS | Section 10 links runtime, migration, validation/cases, and roadmap pages. |
+| Closing judgment | PASS | Section 11 preserves the knowledge-compilation conclusion. |
+| Visual included | PASS | Feishu image insert returned a valid block id and file token. |
+
+Publication judgment: PASS. The document is ready for the user's publish step.
