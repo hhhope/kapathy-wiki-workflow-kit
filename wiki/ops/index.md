@@ -24,6 +24,8 @@
 - [团队知识库构建路径](account-knowledge-base-workbench.md)
 - [团队知识库总览对外稿门禁复核](team-knowledge-base-overview-report-gate-review.md)
 - [Agent Harness 文章精读](agent-harness-article-learning.md)
+- [Evolver 自演化 Harness 文章精读](evolver-self-evolving-harness-reading-notes.md)
+- [Harness Engineering 总览文章精读](harness-engineering-overview-reading-notes.md)
 - [behavior-replay-gate / method](behavior-replay-gate.md)
 - [root-capability-extraction / retro](root-capability-extraction-retro.md)
 - [分歧管理方法](disagreement-management-method.md)

@@ -456,3 +456,77 @@ Residual risks:
 | Read-back opening | `本页是 Account Harness Wiki 的入口页，只回答一个问题：我如何把日常行为中的 AI 对话、飞书材料、会议纪要、外部链接和项目经验...` |
 | Read-back key sections | PASS — contains `问题`, `结论`, `结构`, `流程`, `可观测案例`, `不做哪些承诺` |
 | Read-back child links | PASS — contains links to runtime `O4hY...`, migration `NRbd...`, validation `JnHt...`, and roadmap `PD3V...` documents |
+
+## Reviewer Routing Before Next Writing Round 2026-05-08
+
+Reviewer routing: required.
+
+Checked signals:
+
+| Signal | Result | Evidence |
+|---|---|---|
+| Multi-page or series output | TRUE | The Account Harness Wiki output is an entry page plus runtime, migration, validation/cases, and roadmap pages. |
+| External reference structure | TRUE | The output uses the Feishu `Account Harness` reference group and multiple article references. |
+| Public target | TRUE | The target is a Feishu-facing review draft. |
+| Evidence decision | TRUE | A scorecard, gate-review artifact, Feishu update, and read-back evidence are required. |
+| Drift history | TRUE | Earlier drafts drifted through missing linked-page readback, missing visuals, and missing template choice. |
+| Template / visual / learning choice | TRUE | The next round must select a writing template and map article learning into output use. |
+
+Decision: reviewer flow is mandatory before the next draft. Do not continue
+drafting or syncing until template choice is recorded.
+
+## Reviewer Template Choice Before Next Writing Round 2026-05-08
+
+Proposition:
+
+> Account Harness Wiki explains how daily AI, Feishu, meeting, link, and project
+> work can become reusable, verifiable, and publishable team knowledge.
+
+Reader: a team member or collaborator who wants to understand why this knowledge
+base exists, how to read it, and what it can or cannot currently guarantee.
+
+Reader decision or action: choose the right entry page, understand the
+knowledge lifecycle, and decide whether the current system is mature enough to
+use or extend.
+
+Non-goals:
+
+- Do not explain every repo workflow detail.
+- Do not claim automatic self-evolution or autonomous context injection.
+- Do not turn reference articles into local technical proof.
+- Do not sync another Feishu draft before template selection is confirmed.
+
+| Candidate Template | Fit | Risk | When Not To Use |
+|---|---|---|---|
+| A. Reference-group navigation template | Best for preserving the Feishu `Account Harness` parent page plus child article architecture. It foregrounds entry page, reading path, and linked pages. | Can still feel like a directory if the opening problem is weak. | Do not use alone if the goal is to make the article compelling as a public share. |
+| B. Problem-led teardown template | Best for using the Evolver article's writing pattern: open with a concrete problem, then explain mechanisms, evidence, concerns, and boundaries. | May overfit to agent-harness readers and make the team knowledge-base article too technical. | Do not use if the audience mainly wants quick navigation rather than argument. |
+| C. Lifecycle one-pager template | Best for a clear visual-first explanation: input -> capture -> structure -> validation -> publishing -> review. | May underuse the five-page reference group and flatten runtime/migration/validation into one page. | Do not use if the next deliverable must match the Account Harness reference group closely. |
+| D. Balanced concept article template | Best for using the Harness Engineering overview article's pattern: converging signals, clear definition, evolution timeline, supporting evidence, counter-evidence, synthesis, practical scenarios. | Can become too broad and dilute the concrete Account Harness Wiki navigation job. | Do not use alone if the deliverable must primarily guide readers through the five-page wiki group. |
+
+Recommended template: A + B + D hybrid.
+
+Reason: keep the Feishu reference group's parent/child navigation structure,
+rewrite the entry page with a problem-led opening and mechanism teardown rhythm
+from the Evolver article, and add the Harness Engineering overview article's
+evidence/counter-evidence balance. Use C only for the lead lifecycle visual, not
+as the whole article architecture.
+
+User selection status: pending. The next draft is blocked until the user accepts
+the recommended A + B + D hybrid or selects another template.
+
+Score state: `INVALID` for the next writing round until template selection is
+confirmed and the learning-use map below is accepted or revised.
+
+## Learning Use Map Before Next Writing Round 2026-05-08
+
+| Learning artifact | Domain / topic | Capability type | Learning point | Output use | Skip reason |
+|---|---|---|---|---|---|
+| `wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md` | Account Harness / wiki group structure | `structure`, `visual`, `boundary` | Use a parent overview plus linked child pages; the entry page owns positioning, reading path, and visual orientation. | Keep parent/child article architecture and link runtime, migration, validation/cases, and roadmap pages from the overview. | Do not reuse reference-specific OpenSpec/Lore/Graphify claims. |
+| `wiki/ops/account-knowledge-base-structure-explore.md` | Account Harness Wiki proposition | `structure`, `visual`, `evidence`, `boundary` | Start from daily behavior, then move through problem, conclusion, structure, process, observable cases, and future thinking. | Use as the entry article section order and visual checklist. | Full illustration assets remain optional until the article structure is accepted. |
+| `wiki/ops/evolver-self-evolving-harness-reading-notes.md` | self-evolving agent harness | `structure`, `visual`, `evidence`, `boundary` | Use a concrete problem opening, mechanism-by-mechanism explanation, observable signals, and a final concerns/non-claims section. | Shape the next overview rewrite and the validation/cases page: problem-first opening, lifecycle visual, signal table, and boundary section. | Do not use Evolver technical claims as local proof. |
+| `wiki/ops/harness-engineering-overview-reading-notes.md` | harness engineering overview | `structure`, `visual`, `evidence`, `boundary` | Use signal cluster, definition, evolution timeline, positive evidence, counter-evidence, synthesis, and practical scenarios. | Shape the overview's "why now", the evolution-path framing, validation/cases balance, and reader scenario table. | Do not copy unverified external benchmark numbers as local proof. |
+| `wiki/ops/reference-driven-output-calibration-retro.md` | reference-driven public output calibration | `visual`, `structure`, `boundary` | External references provide structure, visual grammar, and correction criteria, not just content. | Require each section to state what its visual/table carries. | Do not copy WeChat article content or visual assets. |
+| `wiki/ops/agent-harness-article-learning.md` | agent harness article learning | `evidence`, `boundary` | Useful learning must preserve source, claim, evidence, local usefulness, adoption boundary, and status. | Keep evidence and boundary tables in the review artifact before Feishu update. | Do not promote repeated learning into hard rules without OpenSpec. |
+
+Learning Use Gate status: PASS for process mapping, blocked for drafting until
+template selection is confirmed.
