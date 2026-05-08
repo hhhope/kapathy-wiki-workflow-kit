@@ -390,3 +390,69 @@ Residual risks:
 | Read-back opening log id | `20260508131959CADE341F9B524F606674` |
 | Read-back link-map log id | `20260508132118C5AB374E9B9DB4648028` |
 | Read-back link evidence | Entry page contains links to runtime `O4hY...`, migration `NRbd...`, validation `JnHt...`, and roadmap `PD3V...` child docs. |
+
+## Learning Use Map Repair Before Entry Update 2026-05-08
+
+This section applies the new `Learning Use Gate` added by
+`connect-learning-capture-to-output-gates`. It only rechecks the entry overview
+page. The four child documents are not changed in this round.
+
+| Learning artifact | Domain / topic | Capability type | Learning point | Output use | Skip reason |
+|---|---|---|---|---|---|
+| `wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md` | Account Harness / wiki group structure | `structure`, `visual`, `boundary` | Use a parent overview plus linked child pages; the entry page owns positioning, reading path, and visual orientation. | Overview keeps five-document reading path and adds problem / conclusion / structure / flow / evidence / boundary sections. | Reference-specific OpenSpec/Lore/Graphify claims are not reused because this article is about team knowledge base construction. |
+| `wiki/ops/account-knowledge-base-structure-explore.md` | Account Harness Wiki proposition | `structure`, `visual`, `evidence`, `boundary` | The article should start from daily behavior, then move through problem, conclusion, structure, process, observable cases, and future thinking. | Overview rewrite follows that section order and adds the observable-cases table. | Full illustrated image assets are not added in this round; tables carry the visual relationship for review. |
+| WaytoAGI Skill article learning notes in the current discussion | skill authoring / agent workflow | `structure`, `visual`, `boundary` | Start from real repeated daily behavior; validate before formalizing a reusable behavior asset. | Opening reframes the topic as daily AI / Feishu / meeting / link behavior becoming a system. | The article's personal-story style is only partially reused because this page is a team-facing overview, not a personal essay. |
+| WeChat agent article learning notes in the current discussion | agent-first software / public article style | `structure`, `evidence`, `boundary` | Put the problem and conclusion early; use observable scenes and avoid unsupported future claims. | Overview adds "问题", "结论", and "可观测案例" sections, plus a non-claim list. | External article metrics are not copied because they are not local evidence. |
+
+## Learning Use Gate Repair Results 2026-05-08
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Learning Use Gate | PASS | This review maps each applicable learning artifact to domain/topic, capability type, output use, and skip reason. |
+| Reference Structure Gate | PASS | Parent page and linked child roles remain mapped; this round updates only the entry overview. |
+| Split Gate | PASS | Runtime, migration, validation/cases, and roadmap remain separate child documents linked from the overview. |
+| Voice Gate | PASS | The rewritten overview avoids internal gate/OpenSpec/replay/repo path language in the reader-facing draft. |
+| Narrative Gate | PASS | The entry now states the Account Harness Wiki proposition and keeps the evolution from daily input to team knowledge asset. |
+| Visual Gate | PASS for review draft | Tables carry problem map, routing decision, structure, flow, observable cases, and reading path. Final image assets remain optional polish. |
+| Publish Gate | PASS for review draft | This section records learning use, score, decision, residual risks, and planned read-back before Feishu update. |
+
+## Learning Use Gate Repair Scorecard 2026-05-08
+
+| Dimension | Points | Reason |
+|---|---:|---|
+| Reference fidelity | 14 / 15 | Preserves parent overview plus child page architecture and refocuses the entry page on positioning and navigation. |
+| Learning reuse | 10 / 10 | Shows which learning points shaped section order, visual-table roles, observable evidence, and boundary statements. |
+| Core narrative | 19 / 20 | The story is stable: daily behavior becomes reusable, verifiable, publishable team knowledge. |
+| Progressive split | 15 / 15 | Child reader jobs remain split into linked documents. |
+| Reader path | 15 / 15 | The overview links to runtime, migration, validation/cases, and roadmap pages. |
+| Visual information design | 13 / 15 | Tables carry relationships and decisions; no final illustrated assets are included. |
+| Report voice | 5 / 5 | The entry page uses reader-facing language after internal term cleanup. |
+| Evidence boundary | 4 / 5 | Observable cases and non-claims are explicit; deeper quantitative local metrics remain future evidence. |
+
+Total: `95 / 100`
+
+Decision: hard gates pass and score exceeds the 80-point threshold. The entry
+overview may update the existing Feishu document `L08udWeZJo5iuZxFFm6cgSGOnYg`
+as a review draft.
+
+Residual risks:
+
+- This round updates the entry overview only; child documents still reflect the
+  previous rebuild content.
+- Tables act as review-stage visuals; they are not final illustration assets.
+- The page lists observable evidence types but does not invent local metric
+  values.
+
+## Learning Use Gate Repair Feishu Update Verification 2026-05-08
+
+| Check | Result |
+|---|---|
+| Update command | PASS — `lark-cli docs +update --mode overwrite` succeeded |
+| Updated title | `Account Harness Wiki：团队知识库构建路径（审核稿）` |
+| Update log id | `202605081505147C2721291DCB347A5D0F` |
+| Read-back command | PASS — `lark-cli docs +fetch` succeeded |
+| Read-back title | `Account Harness Wiki：团队知识库构建路径（审核稿）` |
+| Read-back log id | `20260508150537E0643563C465FD6ECF5E` |
+| Read-back opening | `本页是 Account Harness Wiki 的入口页，只回答一个问题：我如何把日常行为中的 AI 对话、飞书材料、会议纪要、外部链接和项目经验...` |
+| Read-back key sections | PASS — contains `问题`, `结论`, `结构`, `流程`, `可观测案例`, `不做哪些承诺` |
+| Read-back child links | PASS — contains links to runtime `O4hY...`, migration `NRbd...`, validation `JnHt...`, and roadmap `PD3V...` documents |
