@@ -227,3 +227,33 @@ Residual risks:
 | Read-back title | `团队知识库构建路径：五篇审核稿` |
 | Read-back opening | `> 审核稿合集。本文包含“团队知识库构建路径”系列的五篇文章初稿...` |
 | Read-back total length | `12818` |
+
+## Reference Readback Failure 2026-05-08
+
+The full article set review above is now invalid as a quality decision. The
+failure was found after re-reading the actual reference wiki page and its linked
+reading-map articles.
+
+| Check | Previous Result | Corrected Result | Reason |
+|---|---|---|---|
+| Reference Structure Gate | PASS | FAIL | The reference page has concrete reading-map article links; the review scored structure before reading the linked runtime, install/migration, validation, and roadmap articles. |
+| Split Gate | PASS | PARTIAL | Five sections were separated, but they were bundled into one Feishu review packet and did not preserve the parent wiki node plus linked-article structure. |
+| Visual Gate | PASS with residual risk | FAIL | The reference entry page uses actual visuals before key tables; the review treated missing images as a residual risk instead of a hard reference-fidelity failure. |
+| Scorecard | `92 / 100` | INVALID | The score depends on a false reference map and must not be used for review readiness. |
+| Feishu review packet | Updated | Failed draft | The synced document should be treated as a failed draft, not a reviewable article set. |
+
+Corrected evidence:
+
+- Entry wiki node `FYDcwFGaOi6A1Bkg9rfcIp3DnCS` has `has_child: true`.
+- Reading map links to:
+  - runtime wiki article `XmdjwOPeaiY9LDkvp7DcuyyLn5n`
+  - install/migration wiki article `ZocJwQNyjiz0G9kkXxzciFAvnxd`
+  - validation/cases wiki article `WdzLwDBSUinb6kkAmCCcvn30nKc`
+  - roadmap docx `XRj1dtTYDoxRF8xbdd6ckJUMnhd`
+- The reference group pattern requires an entry page plus concrete linked
+  articles, each with its own scope callout, one-sentence positioning, audience
+  routing, and focused body.
+
+Decision: freeze the five-article packet as a failed draft. Do not continue
+polishing it or treat the previous Feishu update as review-ready. A repaired
+version must first rebuild the reference map from the linked articles.
