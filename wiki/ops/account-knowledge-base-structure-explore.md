@@ -10,7 +10,7 @@ domain: personal-ops
 period: active
 confidence: medium
 status: active
-updated_at: 2026-05-07
+updated_at: 2026-05-08
 ai_generated: true
 related_sources:
   - https://my.feishu.cn/wiki/FYDcwFGaOi6A1Bkg9rfcIp3DnCS
@@ -41,6 +41,10 @@ same_topic_rule: update-existing
 - 输出应先是探索草案，还是需要后续 OpenSpec change 承接落盘
 - 如何把 `lore -> team-lore -> wiki` 讲成一个团队知识库演变路径
 - 插图应该表达层级关系、控制关系，还是生命周期流转
+- 2026-05-08 审核稿反馈：飞书审核稿质量不达标，需要引入对外 report
+  scorecard/template gate；问题包括未复用参考组的整体结构、行文标准、图示
+  要求，未在内容过多时拆分文章，缺少渐进式引导，口语化严重，并把
+  `lore -> team-lore -> wiki` 的演变过程误写成静态分工。
 
 ## 当前假设
 
@@ -68,13 +72,16 @@ same_topic_rule: update-existing
   wiki` 的演化为主线。
 - 当前 repo 已有能力包括 material / meeting note / learning capture /
   OpenSpec lifecycle / wiki runtime stack / behavior replay gate。
+- `account-knowledge-base-workbench.md` 的飞书审核稿已创建，但用户明确判定
+  “写得不好”；它不应继续作为对外 report 的合格样例。
 
 ## 已确认边界
 
 - 最终文档落在 `wiki/ops`。
-- 不同步到飞书 wiki。
+- 需要先形成审核稿供用户 review；同步到飞书不等于发布通过。
 - 不升级成 repo 默认导航规则。
 - 不修改 `wiki/index.md`。
+- 当前仍处于 explore；不直接修改正式正文，先校准 gate 和重写方向。
 
 ## 下一步
 
@@ -88,3 +95,6 @@ same_topic_rule: update-existing
 - 2026-05-08 已按该方向重写 `wiki/ops/account-knowledge-base-workbench.md`：
   主题改为“团队知识库构建路径”，内容按飞书参考组的总览、运行态、安装/
   迁移、验证案例、路线图结构组织。
+- 2026-05-08 需要新增或选择一个后续 OpenSpec change，处理“对外 report
+  gate”：在生成飞书/对外审核稿前，用评分卡和模板检查参考结构匹配、
+  分篇策略、渐进式引导、行文标准、图示要求、核心叙事一致性。
