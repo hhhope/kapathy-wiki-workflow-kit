@@ -116,3 +116,27 @@ same_topic_rule: update-existing
 2. 现有 ADR / trace 机制是否记录了过程，却没有把“命题未定不得写稿”变成硬边界？
 3. 参考文章的结构、图示、问题-结论写法和量化验证如何转化成本地写作前置判定？
 4. 是否需要新 change 承接，而不是继续修改当前飞书稿？
+
+## 2026-05-08 再校准：learning-capture 调用链
+
+用户指出前一轮把 `learning-capture`、`weixin-reader`、`weixin-reference-wiki-capture`
+说成并列能力仍然不准确。更准确的运行链应是：
+
+- `learning-capture` 先判断输入是否属于学习材料，并识别 source kind。
+- 如果 source kind 是文章，且 URL 是 `mp.weixin.qq.com`，再调用 `weixin-reader`
+  抓取标题、作者、日期、URL 和正文。
+- 抓取后回到 `learning-capture` 的 article / example / repo 模块，继续走
+  admission、scorecard、topic anchoring、过程物落地和 promotion gate。
+- `weixin-reader` 只是微信正文 I/O adapter，不拥有“学什么、落哪里、是否升级”的判断。
+- `weixin-reference-wiki-capture` 与 repo-local `learning-capture` 有主流程重叠；
+  它不应长期作为独立主入口。候选方向是降级为兼容说明，或抽象成
+  `reference-template-extraction` 一类被 `learning-capture` 调用的模块。
+
+本轮任务边界需要同时处理三类 drift：
+
+1. runtime drift：链接进入后没有稳定走 `learning-capture -> source adapter -> module`
+   的顺序。
+2. artifact drift：学习过程物、评分、source grounding、topic anchoring 和 gate review
+   不总是稳定落到 repo-visible 文档。
+3. scope drift：写稿、学习、治理、skill 编辑混在同一条执行链里，导致 active change
+   只解决局部问题。
