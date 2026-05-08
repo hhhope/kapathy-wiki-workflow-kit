@@ -1,0 +1,65 @@
+## ADDED Requirements
+
+### Requirement: Repository SHALL provide a public report quality gate
+
+The repository SHALL provide a repo-local skill that gates reader-facing
+reports, Feishu review drafts, public share drafts, and H5/report-style outputs
+before they are published, synced, or claimed ready for review.
+
+#### Scenario: User asks for a reader-facing material
+
+- **WHEN** the user asks to write, polish, create, sync, or prepare a public
+  report, Feishu review draft, H5/share draft, or reader-facing material
+- **THEN** the system SHALL route the output through the public report quality
+  gate before publishing or syncing
+
+#### Scenario: User provides a reference artifact for output shape
+
+- **WHEN** the user provides a Feishu page, article, example, visual, or
+  existing report as a reference for the output shape
+- **THEN** the gate SHALL require a reference structure map before writing or
+  rewriting the reader-facing draft
+
+### Requirement: Public report gate SHALL enforce hard publish blockers
+
+The public report gate SHALL block publish or Feishu sync when any hard gate
+fails.
+
+#### Scenario: Voice gate fails
+
+- **WHEN** a reader-facing draft contains chat residue, slogan simplification,
+  loose narrator, weak section openings, internal ops leakage, or tone mismatch
+- **THEN** the draft SHALL NOT be published, synced to Feishu, or claimed ready
+  for review
+
+#### Scenario: Core narrative drifts
+
+- **WHEN** the stated story or reader promise changes during the draft, such as
+  rewriting an evolution path into a static responsibility split
+- **THEN** the draft SHALL NOT be published, synced to Feishu, or claimed ready
+  for review
+
+#### Scenario: Multi-part content is overloaded into one article
+
+- **WHEN** the material spans multiple reader jobs such as overview, runtime,
+  migration, validation, and roadmap
+- **THEN** the gate SHALL require an explicit split strategy before reader-facing
+  publication or sync
+
+### Requirement: Public report gate SHALL preserve existing workflow gates
+
+The public report gate SHALL coordinate existing source, learning, visual,
+Feishu, and verification skills without replacing their boundaries.
+
+#### Scenario: Source or reference learning is needed
+
+- **WHEN** a reader-facing report uses external articles, repositories, Feishu
+  pages, or examples as references
+- **THEN** the system SHALL still preserve the applicable learning-capture,
+  source-grounding, and adaptation-boundary gates
+
+#### Scenario: Feishu sync is requested
+
+- **WHEN** the draft is intended for Feishu creation or update
+- **THEN** the system SHALL pass the public report quality gate before using
+  Feishu document write operations
