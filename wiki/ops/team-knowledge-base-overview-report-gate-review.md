@@ -733,3 +733,35 @@ Draft correction:
 
 Gate result: PASS for scope correction. Feishu sync remains blocked until the
 user explicitly approves the corrected local draft.
+
+## Existing Capability Coverage Correction 2026-05-08
+
+User correction summary:
+
+The overview missed existing work around Obsidian/Markdown workspace support,
+domain classification, and relationship organization.
+
+Interpretation:
+
+- The overview under-stated existing Account Wiki capability.
+- The public draft should show the current local work beyond generic wiki
+  theory: Obsidian-compatible markdown, intake classification, domain
+  attribution, suggested target links, typed relations, and graph extraction.
+- The draft must not overclaim Obsidian itself as the automatic classifier.
+  Obsidian is the human-facing workspace; automation comes from repo contracts,
+  scripts, and agent-maintained metadata.
+
+Evidence used:
+
+| Capability | Repo evidence | Draft use |
+|---|---|---|
+| Obsidian-compatible workspace | `scripts/bootstrap_wiki_workflow_kit.py`; `scripts/bootstrap_assets/obsidian/core-plugins.json`; `scripts/bootstrap_assets/AGENTS.md.template` | Section 05 names Obsidian as the human-side reading and relation-checking workspace. |
+| Intake classification | `wiki/inbox-intake.md`; `scripts/inbox_intake.py` | Section 05 lists source type, audience, knowledge level, domain, period, and confidence. |
+| Domain attribution boundary | `scripts/inbox_intake.py` keeps unclear top-level inputs as `unclassified` | Section 05 says low-confidence classification is preserved instead of forced. |
+| Suggested associations | `wiki/inbox-intake.md` requires suggested targets and ops targets | Section 05 explains source/domain/report/timeline/ops routing. |
+| Typed relations | `wiki/ops/agent-readable-wiki-frontmatter.md` | Section 05 lists canonical object, artifact type, related objects, derived from, validates, and formalizes. |
+| Graph extraction | `wiki/ops/agent-readable-wiki-graph-extraction.md`; `scripts/extract_wiki_graph.py` | Section 05 says relation extraction outputs nodes, edges, and warnings without overclaiming semantic understanding. |
+
+Gate result: PASS with boundary. The draft now reflects existing structural
+capabilities while keeping the automation boundary explicit. Feishu sync remains
+blocked until the user explicitly approves the corrected local draft.
