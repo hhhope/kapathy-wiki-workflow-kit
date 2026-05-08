@@ -35,6 +35,16 @@ Use these scenarios to validate trigger and gate behavior.
 | Feishu sync happened before `wiki/ops/*-report-gate-review.md` existed | Gate Review Artifact | FAIL; sync should wait for a repo-visible process artifact |
 | A scorecard exists only in chat or `/tmp` | Gate Review Artifact | FAIL until persisted under `wiki/ops` |
 
+## Reference Readback Regression Replay
+
+| Failure | Gate That Should Catch It | Expected Result |
+|---|---|---|
+| A Feishu wiki reference node has `has_child: true`, but linked child articles are not fetched before scoring | Reference Structure Gate | FAIL; do not draft, score, or sync until linked articles are read and mapped |
+| A reading map contains concrete article links, but the draft uses placeholder page titles instead of the linked articles' actual jobs | Reference Structure Gate + Reader Path | FAIL; reference map must include the concrete links, titles, and page roles |
+| The reference entry page contains essential visuals before key tables, but the draft has no equivalent visual asset or visual plan | Visual Gate | FAIL; do not downgrade to residual risk for reference-shaped output |
+| Any hard gate is `FAIL`, `UNKNOWN`, `PARTIAL`, or `NOT TESTED`, but the review still assigns a numeric score | Scorecard | FAIL; score must be `INVALID` and the decision must block sync/review-ready claims |
+| A review packet bundles multiple final reader jobs into one Feishu document and calls that a split | Split Gate | FAIL unless the packet is explicitly marked as a non-review-ready failed/provisional draft and final page destinations are mapped |
+
 ## Validation Notes
 
 - These scenarios validate trigger wording and gate expectations, not automatic

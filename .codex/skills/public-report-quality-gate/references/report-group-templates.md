@@ -12,10 +12,22 @@ Before drafting from a reference artifact, record:
 | Source | Which page/article/report is the shape reference? |
 | Reader job | What problem does the reference help readers solve? |
 | Page group | Is it one page, a multi-page group, or a roadmap series? |
-| Reading path | What should readers read first, next, and only if needed? |
+| Reading path | What should readers read first, next, and only if needed? If the reference path links to concrete articles, list each title, URL/token, and confirmed page job. |
 | Visual logic | What do diagrams carry: layers, lifecycle, contrast, maturity, or decisions? |
 | Writing standard | What tone, density, section opening style, and evidence style does it use? |
 | Reuse boundary | What shape is reused, what content is local, and what must not be copied? |
+
+Reference map completeness rule:
+
+- A parent wiki page with `has_child: true` is incomplete until its linked or
+  child pages are read.
+- A reading map with concrete links is incomplete until each linked page's title
+  and job are recorded.
+- A reference with essential visuals is incomplete until the local visual plan
+  says what matching visual relationship, sequence, contrast, or decision will
+  carry.
+- Incomplete reference maps force Reference Structure Gate `FAIL` and scorecard
+  `INVALID`.
 
 ## Split Routing
 
@@ -27,6 +39,7 @@ Split the material when at least two of these are true:
 - roadmap/maturity stages are useful but distract from the overview
 - the overview exceeds a focused reader journey
 - the user asks for reference parity with a multi-page source
+- the reference reading map points to concrete linked articles
 
 ## Four-Page Group Pattern
 

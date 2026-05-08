@@ -16,9 +16,9 @@ document.
 | Section | Required Content |
 |---|---|
 | Review Target | Target title, destination, scope, and non-scope |
-| Reference Structure Map | Source, reader job, page group, reading path, visual logic, writing standard, reuse boundary |
+| Reference Structure Map | Source, reader job, page group, reading path, visual logic, writing standard, reuse boundary, and linked-page readback when the reference has child pages or concrete reading-map links |
 | Hard Gate Results | Reference, split, voice, narrative, visual, and publish gate results |
-| Scorecard | Point breakdown and total score |
+| Scorecard | Point breakdown and total score only after all hard gates pass; otherwise `INVALID` with the failing gate |
 | Decision | Whether the draft may update Feishu or be claimed review-ready |
 | Residual Risks | Proof boundary and known gaps |
 | Feishu Update Verification | Update command result, title, update log id, read-back result, read-back log id, and opening text |
@@ -27,8 +27,10 @@ document.
 
 ```text
 reader-facing request
-  -> draft reader-facing content
   -> create/update wiki/ops/*-report-gate-review.md
+  -> complete reference structure map and linked-page readback
+  -> choose split strategy and destination map
+  -> draft reader-facing content
   -> pass hard gates and score >= 80
   -> update Feishu or publish target
   -> read back target
@@ -38,3 +40,7 @@ reader-facing request
 
 If the gate-review artifact is missing or incomplete, do not sync to Feishu and
 do not claim the draft is ready for review.
+
+If the reference map is incomplete, or any hard gate is failed, partial,
+unknown, or not tested, record the score as `INVALID` and stop before Feishu
+sync or review-ready claims.

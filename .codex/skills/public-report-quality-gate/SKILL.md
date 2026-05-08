@@ -31,11 +31,17 @@ implementation reports unless the user asks for a reader-facing deliverable.
   `wiki/ops/*-report-gate-review.md` artifact.
 - When a reference artifact is provided, write or state the reference structure
   map before drafting.
+- If a reference page has child pages or a reading map with concrete links,
+  read and map those linked pages before the Reference Structure Gate can pass.
 - When content spans multiple reader jobs, choose a split strategy before
   writing a single long draft.
+- If any hard gate is failed, partial, unknown, or not tested, do not assign a
+  numeric score; mark the scorecard `INVALID`.
 - Treat voice quality as a hard gate, not a small style score.
 - Preserve the core narrative. If the stated story changes, stop and re-anchor.
-- State what each diagram or visual carries; do not add decorative diagrams.
+- State what each diagram or visual carries; do not add decorative diagrams. If
+  the reference uses essential visuals, missing matching visuals are a hard
+  Visual Gate failure for reference-shaped output.
 - Keep source reading, learning capture, visual generation, Feishu operations,
   and final verification under their own skills.
 
@@ -50,6 +56,7 @@ implementation reports unless the user asks for a reader-facing deliverable.
 
 - Turning a wiki ops note into a Feishu draft without rewriting for readers
 - Copying a reference page's section labels without mapping its structure
+- Treating linked reading-map articles as placeholders instead of sources
 - Packing overview, runtime, migration, validation, and roadmap into one page
 - Using slogans such as "X = manages Y" instead of explaining the evolution
 - Letting repo paths, OpenSpec details, or agent workflow leak into public text

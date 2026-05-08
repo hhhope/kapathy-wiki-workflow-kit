@@ -36,3 +36,22 @@ Date: 2026-05-08
   runtime trigger surface.
 - The gate-review artifact contract is still manual; no script currently checks
   section completeness.
+
+## Regression RED Baseline: Reference Readback Gap
+
+Date: 2026-05-08
+
+| Scenario | Evidence | RED Result |
+|---|---|---|
+| Reference wiki node has child pages, but the gate allows scoring before linked-page readback | `wiki/ops/team-knowledge-base-overview-report-gate-review.md` recorded `92 / 100` before reading the linked runtime, install/migration, validation, and roadmap articles. | FAIL |
+| Reference entry page has essential visuals, but missing local visuals are treated as residual risk | The same gate review recorded `Visual Gate: PASS with residual risk` even though the reference entry uses actual visuals before key tables. | FAIL |
+| Hard gate failure still receives a numeric score | The same gate review later had to mark the `92 / 100` score `INVALID` after Reference Structure Gate was corrected to FAIL. | FAIL |
+
+## Regression GREEN Result: Reference Readback Gap
+
+| Scenario | GREEN Evidence | Result |
+|---|---|---|
+| Linked reference pages must be read before Reference Structure Gate passes | `SKILL.md`, `scorecard.md`, `report-group-templates.md`, and `spec.md` now require linked-page readback when a reference has child pages or concrete reading-map links. | PASS |
+| Missing essential visuals block reference-shaped review readiness | `SKILL.md`, `scorecard.md`, `pressure-scenarios.md`, and `spec.md` now make missing corresponding visual assets or a concrete visual plan a Visual Gate failure. | PASS |
+| Hard gate failure cannot receive a numeric score | `SKILL.md`, `scorecard.md`, `gate-review-artifact.md`, `pressure-scenarios.md`, and `spec.md` now require `INVALID` scorecard when any hard gate is failed, partial, unknown, or not tested. | PASS |
+| Workflow no longer drafts before reference mapping | `gate-review-artifact.md` now orders the stable workflow as gate-review artifact, reference map/readback, split strategy, then draft. | PASS |

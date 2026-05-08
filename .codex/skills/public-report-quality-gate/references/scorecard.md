@@ -9,11 +9,11 @@ Any hard-fail blocks publishing, Feishu sync, or a "ready for review" claim.
 
 | Gate | Hard-fail signal |
 |---|---|
-| Reference Structure Gate | A reference artifact exists, but the draft does not map its overall structure, page split, reader path, visual logic, and writing standard before drafting. |
-| Split Gate | One draft carries multiple reader jobs such as overview, runtime, migration, validation, and roadmap without an explicit split decision. |
+| Reference Structure Gate | A reference artifact exists, but the draft does not map its actual overall structure, page split, reader path, visual logic, writing standard, concrete links, and linked-page roles before drafting. If the reference is a Feishu wiki node with `has_child: true` or a reading map with article links, those linked pages must be fetched and mapped before this gate can pass. |
+| Split Gate | One draft carries multiple reader jobs such as overview, runtime, migration, validation, and roadmap without an explicit split decision and final destination map. A review packet does not count as a split unless it is explicitly labeled non-final and not claimed review-ready. |
 | Voice Gate | Chat residue, slogan simplification, loose narrator, weak section openings, internal ops leakage, or tone mismatch remains in reader-facing text. |
 | Narrative Gate | The core story changes, such as turning an evolution path into a static responsibility split. |
-| Visual Gate | Diagrams are decorative, duplicated text, or fail to say what relationship or decision they carry. |
+| Visual Gate | Diagrams are decorative, duplicated text, or fail to say what relationship or decision they carry. If the reference uses essential visuals, a reference-shaped draft without corresponding visual assets or a concrete visual plan fails this gate; missing visuals cannot be downgraded to residual risk for review-ready output. |
 | Publish Gate | Review status, source boundary, residual risks, or non-goals are missing before sync/publish. |
 
 ## Voice Gate Detail
@@ -30,6 +30,10 @@ Any hard-fail blocks publishing, Feishu sync, or a "ready for review" claim.
 ## Scorecard
 
 Only score after all hard gates pass.
+
+If any hard gate is `FAIL`, `PARTIAL`, `UNKNOWN`, or `NOT TESTED`, do not assign
+a numeric score. Mark the scorecard `INVALID`, record the failing gate, and block
+Feishu sync, publication, and review-ready claims.
 
 | Dimension | Points | Full-credit standard |
 |---|---:|---|

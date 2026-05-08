@@ -37,3 +37,5 @@
   <!-- 2026-05-08 — evaluation.md records static/manual proof, no source/visual/Feishu proof, historical report risk, and no reviewer-agent template -->
 - [x] 4.5 Record archive-blocking replay correction for stable process artifacts.
   <!-- 2026-05-08 — evaluation.md adds RED/GREEN for missing gate-review artifact stability; pressure scenarios now fail chat-only or /tmp-only scoring -->
+- [x] 4.6 Patch reference-readback scoring regression.
+  <!-- 2026-05-08 — linked reference pages are now required before Reference Structure Gate PASS; missing essential visuals fail Visual Gate; hard gate FAIL/PARTIAL/UNKNOWN/NOT TESTED forces scorecard INVALID -->

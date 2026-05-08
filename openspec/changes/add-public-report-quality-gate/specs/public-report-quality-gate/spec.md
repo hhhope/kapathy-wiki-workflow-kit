@@ -19,6 +19,9 @@ before they are published, synced, or claimed ready for review.
   existing report as a reference for the output shape
 - **THEN** the gate SHALL require a reference structure map before writing or
   rewriting the reader-facing draft
+- **AND** if the reference is a Feishu wiki node with child pages or a reading
+  map with concrete links, the gate SHALL require linked-page readback before
+  the Reference Structure Gate can pass
 
 ### Requirement: Public report gate SHALL enforce hard publish blockers
 
@@ -45,6 +48,23 @@ fails.
   migration, validation, and roadmap
 - **THEN** the gate SHALL require an explicit split strategy before reader-facing
   publication or sync
+
+#### Scenario: A hard gate is not fully passed
+
+- **WHEN** any hard gate is failed, partial, unknown, or not tested
+- **THEN** the draft SHALL NOT receive a numeric score
+- **AND** the scorecard SHALL be recorded as `INVALID`
+- **AND** the draft SHALL NOT be published, synced to Feishu, or claimed ready
+  for review
+
+#### Scenario: Reference visuals are missing
+
+- **WHEN** the reference artifact uses essential visuals for structure,
+  sequence, contrast, maturity, or decision logic
+- **AND** the reader-facing draft lacks corresponding visual assets or a
+  concrete visual plan
+- **THEN** the Visual Gate SHALL fail rather than treating the gap as a residual
+  risk
 
 ### Requirement: Public report gate SHALL preserve existing workflow gates
 
@@ -77,6 +97,8 @@ artifact before Feishu sync, publication, or a review-ready claim.
   artifact before the sync, publication, or claim
 - **AND** the artifact SHALL include the reference structure map, hard gate
   results, scorecard, decision, residual risks, and proof boundary
+- **AND** when the reference contains linked pages, the artifact SHALL include
+  linked-page titles, links or tokens, and confirmed page jobs
 
 #### Scenario: Feishu write is completed
 
