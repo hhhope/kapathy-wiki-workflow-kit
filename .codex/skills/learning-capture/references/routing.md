@@ -75,7 +75,7 @@ Examples:
 | Source | Domain | Reusable capability type |
 |---|---|---|
 | Skill authoring article | skill authoring / agent workflow | structure, visual, boundary |
-| Account Harness reference group | agent harness / knowledge base | structure, visual, reader path |
+| Account Harness reference group | agent harness / knowledge base | structure, visual |
 | Agent SaaS WeChat article | agent-first software | structure, evidence, boundary |
 
 ## Topic Anchor Gate

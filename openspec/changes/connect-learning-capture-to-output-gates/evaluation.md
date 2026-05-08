@@ -25,7 +25,7 @@ Date: 2026-05-08
 
 | Learning Artifact | Domain / Topic | Capability Type | Output Use |
 |---|---|---|---|
-| Account Harness reference group | account harness / knowledge base | structure, visual, reader path | Drives multi-page reading map, lifecycle visual, and page split before drafting. |
+| Account Harness reference group | account harness / knowledge base | structure, visual | Drives multi-page reading map, lifecycle visual, and page split before drafting. |
 | WaytoAGI Skill article | skill authoring / agent workflow | structure, visual, boundary | Drives "daily behavior first" opening, per-section visual responsibility, and "run first, then formalize" boundary. |
 | WeChat agent article | agent-first software | structure, evidence, boundary | Drives problem-first opening, observable cases/metrics section, and current-versus-future separation. |
 
