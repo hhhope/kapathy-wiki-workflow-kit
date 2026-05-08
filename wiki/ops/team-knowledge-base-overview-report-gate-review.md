@@ -765,3 +765,36 @@ Evidence used:
 Gate result: PASS with boundary. The draft now reflects existing structural
 capabilities while keeping the automation boundary explicit. Feishu sync remains
 blocked until the user explicitly approves the corrected local draft.
+
+## Feishu Sync 2026-05-08
+
+User approval:
+
+- The user approved syncing the corrected local draft to Feishu after the
+  Account Wiki naming and existing-capability coverage corrections.
+
+Sync target:
+
+- Feishu doc: `L08udWeZJo5iuZxFFm6cgSGOnYg`
+- Title after sync: `Account Wiki：团队知识库构建路径（审核稿）`
+- Update mode: `overwrite`
+
+Verification:
+
+| Check | Result |
+|---|---|
+| Full read-back completed | PASS |
+| `has_more` after full fetch | `false` |
+| Title is Account Wiki, not Account Harness Wiki | PASS |
+| Full markdown contains `Harness` | `false` |
+| Section `## 05 我们已经做过的结构化能力` present | PASS |
+| Obsidian boundary sentence present | PASS |
+| Domain attribution sentence present | PASS |
+
+Feishu log ids:
+
+- Update log id: `20260508170815185A32A762E8618B993D`
+- Full read-back verification log id: `20260508171038C608AC7E527A288C2BC9`
+
+Sync result: PASS. The Feishu review draft now matches the corrected local
+Account Wiki overview.
