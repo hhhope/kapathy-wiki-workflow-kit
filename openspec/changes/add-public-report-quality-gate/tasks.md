@@ -15,6 +15,8 @@
   <!-- 2026-05-08 — report-group-templates.md defines reference map, split routing, four-page group pattern, optional roadmap, and public skeleton -->
 - [x] 2.4 Add pressure scenarios covering triggers, non-triggers, and the failed knowledge-base draft pattern.
   <!-- 2026-05-08 — pressure-scenarios.md covers should-trigger, should-not-trigger, and failed knowledge-base replay -->
+- [x] 2.5 Add gate-review artifact contract for stable process evidence.
+  <!-- 2026-05-08 — gate-review-artifact.md requires wiki/ops/*-report-gate-review.md before Feishu sync or review-ready claims -->
 
 ## 3. Repo Routing
 
@@ -33,3 +35,5 @@
   <!-- 2026-05-08 — SKILL.md 52 lines; scorecard/template/pressure details live in references -->
 - [x] 4.4 Record residual risks and non-goals.
   <!-- 2026-05-08 — evaluation.md records static/manual proof, no source/visual/Feishu proof, historical report risk, and no reviewer-agent template -->
+- [x] 4.5 Record archive-blocking replay correction for stable process artifacts.
+  <!-- 2026-05-08 — evaluation.md adds RED/GREEN for missing gate-review artifact stability; pressure scenarios now fail chat-only or /tmp-only scoring -->

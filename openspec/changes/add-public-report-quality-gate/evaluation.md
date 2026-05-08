@@ -10,6 +10,7 @@ Date: 2026-05-08
 | Reference-driven drafts must map the reference structure before writing | Current learning/example guidance preserves reference source and reuse boundaries, but no public-report gate requires a reference structure map before output. | FAIL |
 | Multi-part report groups must split before Feishu review drafts | Current report template has no split gate for overview/runtime/migration/validation/roadmap groups. | FAIL |
 | Core narrative drift blocks publish readiness | No current gate would fail the `lore -> team-lore -> wiki` story being rewritten as a static responsibility table. | FAIL |
+| Feishu review drafts produce repo-visible process evidence | The first GREEN implementation required gate checks but did not require a stable `wiki/ops/*-report-gate-review.md` artifact before Feishu sync. | FAIL |
 
 ## GREEN Result
 
@@ -22,6 +23,7 @@ Date: 2026-05-08
 | Multi-part report groups must split before Feishu review drafts | `scorecard.md` and `report-group-templates.md` require split strategy for overview/runtime/migration/validation/roadmap-shaped material. | PASS |
 | Core narrative drift blocks publish readiness | `scorecard.md` defines Narrative Gate as a hard gate; `pressure-scenarios.md` replays the `lore -> team-lore -> wiki` failure as expected FAIL until rewritten as an evolution path. | PASS |
 | Feishu sync waits for quality gates | `SKILL.md` and `scorecard.md` block publish/sync/review-ready claims when hard gates fail. | PASS |
+| Feishu review drafts produce repo-visible process evidence | `SKILL.md` requires a `wiki/ops/*-report-gate-review.md` artifact before Feishu sync or review-ready claims; `gate-review-artifact.md` defines required sections and update/read-back evidence; pressure scenarios fail chat-only or `/tmp`-only scoring. | PASS |
 
 ## Residual Risks
 
@@ -32,3 +34,5 @@ Date: 2026-05-08
   reviewed separately.
 - No manual reviewer agent template is added in this change; the skill is the
   runtime trigger surface.
+- The gate-review artifact contract is still manual; no script currently checks
+  section completeness.

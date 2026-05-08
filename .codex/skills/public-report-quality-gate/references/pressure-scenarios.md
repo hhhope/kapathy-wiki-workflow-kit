@@ -7,6 +7,7 @@ Use these scenarios to validate trigger and gate behavior.
 | Scenario | Expected | Result |
 |---|---|---|
 | User says "写一个对外材料，给我同步飞书审核" | Load public-report-quality-gate before Feishu write | PASS |
+| User says "写一个对外材料并发飞书审核" and no repo-visible gate-review file exists | Create/update `wiki/ops/*-report-gate-review.md` before Feishu write | PASS |
 | User asks to turn an internal wiki ops page into a shareable report | Gate reader-facing rewrite; internal wiki text is not public-ready by default | PASS |
 | User provides a Feishu page as structure reference for a new report | Require reference structure map before drafting | PASS |
 | User asks for H5/share draft based on dense wiki content | Require split, voice, visual, and publish gates | PASS |
@@ -31,6 +32,8 @@ Use these scenarios to validate trigger and gate behavior.
 | The text sounded like an agent explaining repo mechanics | Voice Gate | FAIL until rewritten in reader-facing language |
 | Diagrams duplicated text and did not define visual responsibility | Visual Gate | FAIL until each diagram carries a specific relation or sequence |
 | Feishu sync happened before quality gates were checked | Publish Gate | FAIL; sync should wait for gate pass |
+| Feishu sync happened before `wiki/ops/*-report-gate-review.md` existed | Gate Review Artifact | FAIL; sync should wait for a repo-visible process artifact |
+| A scorecard exists only in chat or `/tmp` | Gate Review Artifact | FAIL until persisted under `wiki/ops` |
 
 ## Validation Notes
 

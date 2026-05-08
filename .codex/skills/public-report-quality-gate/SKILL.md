@@ -27,6 +27,8 @@ implementation reports unless the user asks for a reader-facing deliverable.
 ## Hard Rules
 
 - Do not publish, sync to Feishu, or claim review-ready when any hard gate fails.
+- Before Feishu sync or a review-ready claim, create or update a repo-visible
+  `wiki/ops/*-report-gate-review.md` artifact.
 - When a reference artifact is provided, write or state the reference structure
   map before drafting.
 - When content spans multiple reader jobs, choose a split strategy before
@@ -40,6 +42,7 @@ implementation reports unless the user asks for a reader-facing deliverable.
 ## Load
 
 - Scorecard and hard gates: `references/scorecard.md`
+- Gate review artifact contract: `references/gate-review-artifact.md`
 - Report group templates and split routing: `references/report-group-templates.md`
 - Validation scenarios: `references/pressure-scenarios.md`
 

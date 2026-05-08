@@ -63,3 +63,26 @@ Feishu, and verification skills without replacing their boundaries.
 - **WHEN** the draft is intended for Feishu creation or update
 - **THEN** the system SHALL pass the public report quality gate before using
   Feishu document write operations
+
+### Requirement: Public report gate SHALL preserve a repo-visible gate review artifact
+
+The public report gate SHALL preserve the quality decision in a repo-visible
+artifact before Feishu sync, publication, or a review-ready claim.
+
+#### Scenario: Reader-facing draft is prepared for Feishu or review
+
+- **WHEN** a reader-facing draft is intended for Feishu sync, publication, or a
+  review-ready claim
+- **THEN** the system SHALL create or update a `wiki/ops/*-report-gate-review.md`
+  artifact before the sync, publication, or claim
+- **AND** the artifact SHALL include the reference structure map, hard gate
+  results, scorecard, decision, residual risks, and proof boundary
+
+#### Scenario: Feishu write is completed
+
+- **WHEN** a Feishu document is created or updated after passing the public
+  report quality gate
+- **THEN** the gate review artifact SHALL record the Feishu update result and
+  read-back verification
+- **AND** the Feishu document SHALL NOT be treated as the process evidence by
+  itself
