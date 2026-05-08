@@ -29,12 +29,18 @@ same_topic_rule: update-existing
 用户希望回看整个 repo project、wiki 结构、操作范围、已有能力和未来要做的事，
 并结合一个飞书 wiki 参考页，整理出 account 知识库的类似结构文档。
 
+2026-05-08 继续校准：主题应明确为“构建团队知识库”，重点不是一般 repo
+目录说明，而是从 `lore` 到 `team-lore` 到 `wiki` 的过程演变路径；内容插图、
+整体分层结构和页面组织方式都要参考飞书 `Account Harness` 总览页。
+
 ## 当前关注点
 
 - repo 当前已经有哪些知识层和运行时治理能力
 - wiki 现在的目录结构是否能表达“操作范围 / 已有能力 / 未来要做”
 - Feishu 参考页能提供什么页面结构或组织方式
 - 输出应先是探索草案，还是需要后续 OpenSpec change 承接落盘
+- 如何把 `lore -> team-lore -> wiki` 讲成一个团队知识库演变路径
+- 插图应该表达层级关系、控制关系，还是生命周期流转
 
 ## 当前假设
 
@@ -57,6 +63,9 @@ same_topic_rule: update-existing
   markdown 结构。
 - 参考页结构包括入口说明、一句话定位、适合谁看、层级表、当前阶段、默认
   生命周期、整体约束、解决问题、分工、默认使用顺序、阅读地图。
+- 2026-05-08 需要重构上一版 `account-knowledge-base-workbench.md` 的主题：
+  从“account 知识库工作台”改为“团队知识库构建路径”，以 `lore / team-lore /
+  wiki` 的演化为主线。
 - 当前 repo 已有能力包括 material / meeting note / learning capture /
   OpenSpec lifecycle / wiki runtime stack / behavior replay gate。
 
@@ -72,3 +81,7 @@ same_topic_rule: update-existing
 - 基于飞书参考页的组织方式，写一版 `wiki/ops/account-knowledge-base-workbench.md`。
 - 只把该页加入 `wiki/ops/index.md`，不改全局 wiki 入口。
 - 保留参考来源和“不升级为默认导航规则”的边界。
+- 重新检查 `lore`、`team-lore`、`wiki` 在当前 repo 中分别对应哪些资产、
+  边界和演变阶段。
+- 输出新的页面结构草案：包含可视化插图方案、分层结构表、生命周期表、
+  问题-答案表、阅读地图。
