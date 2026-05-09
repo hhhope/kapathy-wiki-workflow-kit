@@ -26,7 +26,7 @@ class CodexPluginMarketplaceTest(unittest.TestCase):
             {"source": "local", "path": "./plugins/report-wiki-portfolio"},
             plugin["source"],
         )
-        self.assertEqual("AVAILABLE", plugin["policy"]["installation"])
+        self.assertEqual("INSTALLED_BY_DEFAULT", plugin["policy"]["installation"])
         self.assertEqual("ON_INSTALL", plugin["policy"]["authentication"])
         self.assertEqual("Productivity", plugin["category"])
 
