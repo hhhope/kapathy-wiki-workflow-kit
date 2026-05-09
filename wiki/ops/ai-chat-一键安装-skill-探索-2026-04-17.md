@@ -1,6 +1,8 @@
 ---
 title: AI Chat 一键安装 Skill 探索
 type: intake
+canonical_object: ai-chat-workflow-installer
+artifact_type: explore
 language: zh-CN
 source_path: chat://openspec-explore/ai-chat-one-click-install-skill-2026-04-17
 source_type: conversation

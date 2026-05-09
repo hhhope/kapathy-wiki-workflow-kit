@@ -101,7 +101,7 @@ class WikiGraphExtractionIdentityTest(unittest.TestCase):
             "wiki/ops/agent-readable-wiki-graph-extraction.md",
             node_paths,
         )
-        self.assertLess(len(warnings), 30)
+        self.assertEqual(warnings, [])
 
 
 if __name__ == "__main__":
