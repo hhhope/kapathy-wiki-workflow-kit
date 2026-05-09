@@ -27,6 +27,7 @@
 - [Evolver 自演化 Harness 文章精读](evolver-self-evolving-harness-reading-notes.md)
 - [Harness Engineering 总览文章精读](harness-engineering-overview-reading-notes.md)
 - [Karpathy LLM Wiki 精读](karpathy-llm-wiki-reading-notes.md)
+- [obsidian-wiki 项目差距复核 2026-05-09](obsidian-wiki-project-gap-review-2026-05-09.md)
 - [behavior-replay-gate / method](behavior-replay-gate.md)
 - [root-capability-extraction / retro](root-capability-extraction-retro.md)
 - [分歧管理方法](disagreement-management-method.md)
