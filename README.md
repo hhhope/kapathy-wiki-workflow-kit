@@ -34,6 +34,7 @@ Restart or reload Codex after adding the marketplace. Wiki runtime commands:
 - `/wiki:status`: refresh and summarize the generated wiki status surface.
 - `/wiki:manifest`: inspect the generated source and routing manifest.
 - `/wiki:inbox`: review pending inbox items that need wiki intake.
+- `/wiki:query`: build bounded task-shaped context from route, context, and explicit text search evidence.
 - `/wiki:graph`: expose the structural wiki graph layer.
 - `/wiki:scorecard`: expose wiki scoring and utilization outputs.
 - `/wiki:route`: expose runtime auto-routing suggestions.

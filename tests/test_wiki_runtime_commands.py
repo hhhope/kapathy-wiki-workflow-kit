@@ -74,6 +74,18 @@ COMMANDS = {
             "do_not_execute",
         ),
     },
+    "query": {
+        "file": "commands/wiki-query.md",
+        "references": (
+            "scripts/build_wiki_status.py",
+            "scripts/derive_runtime_auto_routing.py",
+            "scripts/build_runtime_context_injection.py",
+            "rg -n",
+            "open_first",
+            "open_next",
+            "do_not_anchor",
+        ),
+    },
 }
 
 
@@ -124,6 +136,14 @@ class WikiRuntimeCommandsTest(unittest.TestCase):
                 self.assertIn("graph ui", normalized)
                 self.assertIn("query engine", normalized)
                 self.assertIn("change queue", normalized)
+
+    def test_wiki_query_rejects_hidden_semantic_search(self) -> None:
+        normalized = self._normalize(self.read_command("commands/wiki-query.md"))
+
+        self.assertIn("not semantic search", normalized)
+        self.assertIn("no embeddings", normalized)
+        self.assertIn("no hidden semantic ranking", normalized)
+        self.assertIn("explicit text search", normalized)
 
     def assert_boundary_terms(
         self,
