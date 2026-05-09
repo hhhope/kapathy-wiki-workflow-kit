@@ -3,7 +3,9 @@
 ### Requirement: Account Wiki public-draft repair SHALL happen locally before Feishu sync
 
 The Account Wiki article set repair SHALL complete local draft, visual, and
-gate-review evidence before any Feishu write or review-ready claim.
+gate-review evidence before any Feishu write or review-ready claim, unless and
+until the user explicitly approves the write after local repair evidence is
+available.
 
 #### Scenario: Previous packet is frozen as failed
 
@@ -19,6 +21,27 @@ gate-review evidence before any Feishu write or review-ready claim.
 - **THEN** the system SHALL update the local report pages first
 - **AND** SHALL update the repo-visible gate-review artifact before any external
   sync
+
+#### Scenario: User explicitly approves Feishu write after local repair
+
+- **WHEN** local repair evidence is recorded
+- **AND** the user explicitly asks to write the repaired draft and images back
+  to Feishu
+- **THEN** the system SHALL use the Feishu document skill chain for the external
+  write
+- **AND** SHALL record update logs, image insertion tokens, read-back logs,
+  title verification, and image-token verification before claiming success
+
+#### Scenario: Image-bearing Feishu write causes client freeze
+
+- **WHEN** an image-included Feishu document causes Codex or the Feishu client
+  to freeze after update or read-back
+- **THEN** the system SHALL stop further image-included Feishu writes for this
+  change
+- **AND** SHALL treat prior update logs, image tokens, and read-back logs as
+  audit evidence only, not as proof of client usability
+- **AND** SHALL use text-only Feishu content, local image asset links, or a
+  separately approved client-safe image route before any further delivery claim
 
 ### Requirement: Runtime and validation pages SHALL contain concrete evidence jobs
 

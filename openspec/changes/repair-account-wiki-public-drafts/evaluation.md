@@ -19,6 +19,7 @@
 | Visual style reference is present | Current visual artifact has no dedicated runtime or validation/cases diagrams | FAIL |
 | `infographic-onepager` handles Account Wiki multi-page repair | Current skill focuses on a six-section vertical onepager and Account Wiki overview skeleton | FAIL |
 | User asks for chapter illustrations or horizontal cards | Current skill has no explicit route for "章节配图", "横图", or "信息没那么多，不需要一图流" | FAIL |
+| User confirms image-model chapter cards but agent chooses H5/HTML | Current public-report gate does not explicitly require asking at image-model vs H5/HTML fork-points or fixing Feishu writes to the `lark-doc` skill chain. | FAIL |
 
 ### Reference Image Readback
 
@@ -62,6 +63,19 @@ RED result:
 | Validation page must prove claims with concrete cases | `wiki/reports/team-knowledge-base-validation-cases.md` now uses six cases with data: `92 / 100 -> INVALID`, Reference Gate `PASS -> FAIL`, Feishu update/read-back log ids, read-back length `12818`, RED/GREEN counts, scorecard sum `100`, and 14-17 image dimensions `1672 x 941`. | PASS |
 | Chapter visuals should not be forced into onepager format | `/home/yan/.codex/skills/infographic-onepager/SKILL.md` now has a format decision table that routes `横图`, `章节配图`, `信息不多`, and `不需要一图流` to horizontal teaching cards. | PASS |
 | Account Wiki page-specific visuals stay separate | The skill's Account Wiki article-set map keeps `Runtime` as source -> route -> asset -> output -> writeback and `Validation / cases` as claim -> evidence -> replay -> gate decision -> boundary. | PASS |
+| Gate-review proof boundary is repo-visible | `wiki/ops/team-knowledge-base-overview-report-gate-review.md` now records the Runtime And Validation Local Repair section and explicitly blocks Feishu sync for this repair round. | PASS |
+| Runtime and validation images were generated through the image model | `wiki/reports/assets/account-wiki-runtime-card.png` is 1672x941 RGB; `wiki/reports/assets/account-wiki-validation-card.png` is 1671x941 RGB. Both were copied from generated-image output and referenced by the local Markdown pages. | PASS |
+| Feishu write skill chain is fixed | `.codex/skills/public-report-quality-gate/SKILL.md` now requires user confirmation at output fork-points, routes Feishu writes through `lark-doc` after gate approval, and requires read-back before success claims. | PASS |
+| H5/HTML fork is protected | `/home/yan/.codex/skills/infographic-onepager/SKILL.md` now says unclear image-model vs H5/HTML choices must ask before generation or file edits, and lists switching to H5/HTML without asking as an anti-pattern. | PASS |
+| Feishu sync completed after explicit approval | Runtime update log `20260508194349DEE5B6CCAC6F34007B78`, final read-back log `2026050819594616AE4234E8140900913F`, image token `CXIlbJcK6ox4arxywg9cGN51n5d`; validation update log `2026050819451200340F4F18AE34A2E1A6`, final read-back log `202605081959474737FF991A2A5D01C3AB`, image token `YofGb0NZ8oINtyxRvlic6mcenrb`. | PASS |
+
+## Post-Sync Operational Finding 2026-05-09
+
+| Scenario | Evidence | Result |
+|---|---|---|
+| Image-bearing Feishu docs are opened after media insertion | User reported that docs with inserted images can freeze both Codex and the Feishu client | BLOCKED for further image-included Feishu operations |
+| Feishu read-back logs and image tokens exist | Runtime and validation/cases read-back logs prove the text and image blocks were inserted | PASS for audit evidence only; not proof of client usability |
+| Future route for this change | Keep local image assets in `wiki/reports/assets/` and avoid additional image-bearing Feishu sync | Use text-only Feishu writeback, local asset links, or a separately approved client-safe image route |
 
 ## Current Static Checks
 
@@ -70,12 +84,17 @@ RED result:
 | Runtime page contains structure / skill / agent / gate terms | PASS |
 | Validation page contains concrete case/data markers | PASS |
 | Infographic skill contains horizontal teaching-card route | PASS |
+| Visual generation path corrected after user feedback | PASS — runtime and validation/cases visuals should use image model for local assets, but image-bearing Feishu sync is now blocked by the client-freeze finding |
 | Skill length | `302` lines; acceptable as a patched existing global skill for this run, but a later cleanup should move long prompt patterns to references if this becomes frequently loaded |
 
 ## Residual Risks
 
-- This change does not update Feishu.
-- Local HTML verification proves only local visual structure, not final Feishu
-  rendering.
+- Feishu update and read-back evidence exists, but image-bearing Feishu docs are
+  not a stable delivery path because they can freeze Codex and the Feishu
+  client.
+- Read-back verifies inserted content and tokens, not interactive client
+  usability or rendering performance.
+- Further Feishu sync in this change must be text-only, use local asset links,
+  or wait for a separately approved client-safe image workflow.
 - Skill behavior proof will be local pressure-test evidence, not multi-session
   rollout proof.

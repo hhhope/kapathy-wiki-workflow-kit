@@ -18,9 +18,12 @@
 
 ## 3. Repair Visuals
 
-- [ ] 3.1 Add a runtime visual flow to `wiki/reports/account-wiki-visuals.html`.
-- [ ] 3.2 Add a validation/cases evidence visual to `wiki/reports/account-wiki-visuals.html`.
-- [ ] 3.3 Verify the HTML contains dedicated runtime and validation/cases sections.
+- [x] 3.1 Generate a runtime horizontal teaching-card image through the image model.
+  <!-- 2026-05-08 — generated and archived wiki/reports/assets/account-wiki-runtime-card.png -->
+- [x] 3.2 Generate a validation/cases horizontal teaching-card image through the image model.
+  <!-- 2026-05-08 — generated and archived wiki/reports/assets/account-wiki-validation-card.png -->
+- [x] 3.3 Verify generated images exist and match the chapter-card direction.
+  <!-- 2026-05-08 — file reports runtime 1672x941 RGB and validation 1671x941 RGB; both are horizontal teaching cards -->
 
 ## 4. Skill Gap
 
@@ -33,12 +36,22 @@
 
 ## 5. Gate Review And Verification
 
-- [ ] 5.1 Update `wiki/ops/team-knowledge-base-overview-report-gate-review.md` with the local repair decision and proof boundary.
-- [ ] 5.2 Run static checks for required evidence headings and visual sections.
-- [ ] 5.3 Run `openspec validate repair-account-wiki-public-drafts --strict`.
-- [ ] 5.4 Verify git status/log before any commit or completion claim.
+- [x] 5.1 Update `wiki/ops/team-knowledge-base-overview-report-gate-review.md` with the local repair decision and proof boundary.
+  <!-- 2026-05-08 — appended Runtime And Validation Local Repair section; Feishu remains blocked for this repair round -->
+- [x] 5.2 Fix the Feishu write skill chain and confirmation fork.
+  <!-- 2026-05-08 — public-report-quality-gate now requires user confirmation at image/H5 and Feishu-write forks, routes Feishu writes through lark-doc, and requires read-back -->
+- [x] 5.3 Write runtime and validation/cases repairs back to Feishu after explicit user approval.
+  <!-- 2026-05-09 — gate-review records runtime/validation Feishu update, media insert, and read-back logs; post-sync user observation says image-bearing docs can freeze Codex and Feishu clients, so no further image-included Feishu sync is allowed in this change -->
+- [x] 5.4 Run static checks for required evidence headings and visual sections.
+  <!-- 2026-05-09 — rg checks passed for runtime structure/skill/reviewer/gate/replay terms, validation 92/100->INVALID/read-back/RED-GREEN/image-dimension markers, and local image asset references -->
+- [x] 5.5 Run `openspec validate repair-account-wiki-public-drafts --strict`.
+  <!-- 2026-05-09 — passed: Change 'repair-account-wiki-public-drafts' is valid; PostHog DNS flush errors ignored -->
+- [x] 5.6 Verify git status/log before any commit or completion claim.
+  <!-- 2026-05-09 — git status remains dirty with task-related repair files plus unrelated local material; latest commit 11e0123 docs: repair account wiki runtime validation drafts -->
 
 ## 6. Stop Boundary
 
-- [ ] 6.1 Stop after local drafts, skill evidence, gate review, and validation pass.
-- [ ] 6.2 Do not sync Feishu in this change.
+- [x] 6.1 Stop after local drafts, skill evidence, gate review, Feishu read-back, and validation pass.
+  <!-- 2026-05-09 — stop boundary reached with image-bearing Feishu docs downgraded to audit evidence only because client freeze was reported -->
+- [x] 6.2 Do not perform further Feishu sync or publishing work without a new explicit user approval.
+  <!-- 2026-05-09 — no further image-included Feishu writes in this change; future route must be text-only, local asset link, or separately approved client-safe image workflow -->

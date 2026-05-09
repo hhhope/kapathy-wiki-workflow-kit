@@ -842,3 +842,122 @@ Publish structure review:
 | Visual included | PASS | Feishu image insert returned a valid block id and file token. |
 
 Publication judgment: PASS. The document is ready for the user's publish step.
+
+## Runtime And Validation Local Repair 2026-05-08
+
+Scope:
+
+- Repair target: local runtime and validation/cases follow-up pages plus local
+  visual draft.
+- Feishu scope: blocked in this repair round. Do not sync until the user reviews
+  the new local pages and explicitly asks for Feishu update.
+- Change owner: `openspec/changes/repair-account-wiki-public-drafts`.
+
+User correction:
+
+- Runtime page must explain the actual Wiki runtime, including Wiki structure,
+  skills, agent/reviewer collaboration, gates, and replay.
+- Validation/cases page must use cases and data to show how the Wiki runtime
+  proves usefulness through gates and replay.
+- Reference images `14.png` through `17.png` are horizontal teaching cards, not
+  vertical one-page infographics.
+
+Local repair evidence:
+
+| Artifact | Result | Evidence |
+|---|---|---|
+| Runtime page | PASS for local review | `wiki/reports/team-knowledge-base-runtime.md` now covers Wiki layers, skill routing, agent/reviewer roles, material flow, public-draft gate chain, and runtime boundaries. |
+| Validation/cases page | PASS for local review | `wiki/reports/team-knowledge-base-validation-cases.md` now uses six case/data tables, including `92 / 100 -> INVALID`, Feishu update/read-back logs, read-back length `12818`, RED/GREEN counts, and 14-17 image dimensions. |
+| Infographic skill gap | PASS for local behavior proof | `infographic-onepager` now routes `横图`, `章节配图`, `信息不多`, and `不需要一图流` to horizontal teaching cards instead of forcing six-section posters. |
+| Visual draft | PENDING image generation | User corrected the route: runtime and validation/cases visuals should be generated through the image model, not added as H5/HTML cards unless explicitly approved. |
+
+Hard gate status:
+
+| Gate | Result | Evidence |
+|---|---|---|
+| Reference Structure Gate | PASS for local repair | Runtime and validation/cases page jobs are separated and mapped to the reference group roles. |
+| Split Gate | PASS | Runtime and validation/cases remain separate local pages, not one bundled packet. |
+| Voice Gate | PASS for local draft | Pages avoid chat-like framing and explain internal runtime terms through reader-facing context. |
+| Narrative Gate | PASS | The story remains Account Wiki as a runtime system for compiling sources, routing work, validating claims, and writing evidence back. |
+| Visual Gate | PENDING image generation | The required direction is two horizontal teaching-card images: one for runtime collaboration, one for validation/cases evidence. |
+| Publish Gate | BLOCKED for Feishu | This repair is local only; Feishu sync requires a separate user approval and read-back verification. |
+
+Decision: local repair may continue through visual verification and final
+OpenSpec validation. Feishu sync is explicitly out of scope for this repair
+change.
+
+## Runtime And Validation Feishu Sync 2026-05-08
+
+User approval:
+
+- The user accepted the generated horizontal chapter cards and asked to write
+  the repaired runtime and validation/cases pages back to Feishu.
+
+Skill chain:
+
+| Stage | Skill / route | Result |
+|---|---|---|
+| Publish gate | `public-report-quality-gate` | PASS with explicit user approval for Feishu write |
+| Feishu write | `lark-doc` | PASS — used `docs +update` and `docs +media-insert` |
+| Verification | `verify-before-claiming` / read-back | PASS — fetched both docs after update and image insert |
+
+Runtime document:
+
+| Check | Result |
+|---|---|
+| Feishu doc | `https://www.feishu.cn/docx/O4hYdmBqmognenxxPQ2coEHAnOc` |
+| Title | `团队知识库运行态：一份材料如何变成可复用知识` |
+| Overwrite update log id | `20260508194349DEE5B6CCAC6F34007B78` |
+| Relative-image warning | Present during overwrite; fixed by media insert and empty placeholder removal |
+| Image file | `wiki/reports/assets/account-wiki-runtime-card.png` |
+| Initial image block id | `doxcneygOrodZPO3lIVeR34ynhe` |
+| Initial image file token | `FoalbLzknoAXgaxrflscw0Qfnxf` |
+| Empty placeholder removal log id | `20260508195725D6BC0016A257CDAAEB88` |
+| Final read-back log id | `2026050819594616AE4234E8140900913F` |
+| Final read-back title | PASS |
+| Empty image placeholder removed | PASS |
+| Final image token present | PASS — `CXIlbJcK6ox4arxywg9cGN51n5d` |
+| Final read-back length | `14967` |
+
+Validation/cases document:
+
+| Check | Result |
+|---|---|
+| Feishu doc | `https://www.feishu.cn/docx/JnHtdMimVoVsoTxJmfHcFbI8nBd` |
+| Title | `团队知识库验证与案例：怎么判断这套方法可信` |
+| Overwrite update log id | `2026050819451200340F4F18AE34A2E1A6` |
+| Relative-image warning | Present during overwrite; fixed by media insert and empty placeholder removal |
+| Image file | `wiki/reports/assets/account-wiki-validation-card.png` |
+| Initial image block id | `doxcnxFAgYs5MjsvZX0JtYSucMd` |
+| Initial image file token | `TFMnbBuXColA2lxMQ1vc9vIBnBd` |
+| Empty placeholder removal log id | `202605081957266BC8C0CFA1059B048C47` |
+| Final read-back log id | `202605081959474737FF991A2A5D01C3AB` |
+| Final read-back title | PASS |
+| Empty image placeholder removed | PASS |
+| Final image token present | PASS — `YofGb0NZ8oINtyxRvlic6mcenrb` |
+| Final read-back length | `21406` |
+
+Sync result: PASS for write/read-back evidence. Both repaired Feishu child
+documents contain updated text and a real inserted image block, but this is not
+client-usability proof. Further Feishu publishing or additional sync requires a
+new explicit user approval.
+
+## Post-Sync Client Freeze Finding 2026-05-09
+
+User observation:
+
+- Image-bearing Feishu documents can freeze both Codex and the Feishu client.
+
+Impact:
+
+| Area | Decision |
+|---|---|
+| Existing read-back evidence | Keep as audit evidence that text and image blocks were inserted. |
+| Client usability | Treat as unproven and currently blocked for image-bearing documents. |
+| Further Feishu sync in this change | Do not perform additional image-included Feishu writes. |
+| Acceptable fallback | Use text-only Feishu content, local image asset links, or a separately approved client-safe image route. |
+
+Replay boundary: a future agent must not treat image token read-back as enough
+to claim delivery quality. If a Feishu write includes images and the user or
+client reports freezes, stop image sync and record the limitation before any
+further publish-ready claim.

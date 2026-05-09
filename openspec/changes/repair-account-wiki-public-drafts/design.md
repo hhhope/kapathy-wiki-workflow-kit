@@ -101,4 +101,9 @@ outside the repository writable root, request approval before editing it.
 - Static content checks for required runtime and validation evidence headings.
 - Visual artifact check for dedicated runtime and validation/cases sections.
 - Behavior replay in `evaluation.md` for the failed packet and skill gap.
-- No Feishu sync or review-ready claim in this change.
+- Feishu sync is allowed only after explicit user approval, with update logs,
+  media insertion evidence, and read-back verification recorded in the
+  gate-review artifact.
+- If image-bearing Feishu documents freeze Codex or the Feishu client,
+  read-back evidence remains audit-only and further image-included sync is
+  blocked for this change.
