@@ -29,14 +29,22 @@ From the repository root, add the local marketplace:
 codex plugin marketplace add .
 ```
 
-Restart or reload Codex after adding the marketplace. Then use:
+Restart or reload Codex after adding the marketplace. Wiki runtime commands:
 
-```text
-/wiki:status
-```
+- `/wiki:status`: refresh and summarize the generated wiki status surface.
+- `/wiki:manifest`: inspect the generated source and routing manifest.
+- `/wiki:inbox`: review pending inbox items that need wiki intake.
+- `/wiki:graph`: expose the structural wiki graph layer.
+- `/wiki:scorecard`: expose wiki scoring and utilization outputs.
+- `/wiki:route`: expose runtime auto-routing suggestions.
+- `/wiki:context`: expose the runtime context bundle.
+- `/wiki:apply`: expose bounded self-directed execution suggestions.
 
-The command contract lives in `commands/wiki-status.md`. It refreshes
-`wiki/status/manifest.json` and `wiki/status/wiki-status.md` by running:
+These commands expose existing wiki runtime layers. They do not create, modify,
+or archive OpenSpec changes.
+
+The `/wiki:status` command contract lives in `commands/wiki-status.md`. It
+refreshes `wiki/status/manifest.json` and `wiki/status/wiki-status.md` by running:
 
 ```bash
 python3 scripts/build_wiki_status.py
