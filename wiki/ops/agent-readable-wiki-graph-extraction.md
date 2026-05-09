@@ -1,3 +1,14 @@
+---
+canonical_object: wiki-graph-extraction
+artifact_type: method
+related_objects:
+- wiki-frontmatter-model
+- wiki-naming-model
+- wiki-relation-analysis
+formalizes:
+- wiki-graph-extraction
+---
+
 # Agent-Readable Wiki Graph Extraction
 
 这页定义当前仓库在演变型页面上的最小 graph extraction workflow。

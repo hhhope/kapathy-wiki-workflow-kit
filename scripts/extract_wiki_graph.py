@@ -23,6 +23,17 @@ RELATION_FIELDS = [
     "supersedes",
     "replaces",
 ]
+RUNTIME_ADR_IDENTITIES = {
+    "wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md": "wiki-graph-extraction",
+    "wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md": "wiki-relation-analysis",
+    "wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md": "wiki-semantic-scoring",
+    "wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md": "wiki-utilization-layer",
+    "wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md": "wiki-runtime-context",
+    "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md": "wiki-runtime-context-source-integration",
+    "wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md": "wiki-runtime-auto-routing",
+    "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md": "wiki-context-injection",
+    "wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md": "wiki-self-directed-execution",
+}
 
 
 @dataclass
@@ -95,6 +106,12 @@ def derive_object_and_type(path: Path, meta: dict) -> tuple[str | None, str | No
 
     rel = path.relative_to(ROOT).as_posix()
     stem = path.stem
+
+    if rel.startswith("openspec/specs/") and rel.endswith("/spec.md"):
+        return rel.split("/")[2], "spec"
+
+    if rel in RUNTIME_ADR_IDENTITIES:
+        return RUNTIME_ADR_IDENTITIES[rel], "adr"
 
     # Stable object-family resolvers for current formalized pages.
     if stem == "agent-readable-wiki-naming-model":
