@@ -14,7 +14,8 @@ class WikiStatusCommandTest(unittest.TestCase):
         self.assertIn('"displayName": "Report Wiki Portfolio"', manifest)
 
         content = command_path.read_text(encoding="utf-8")
-        self.assertIn("/report-wiki-portfolio:wiki-status", content)
+        self.assertIn("/wiki:status", content)
+        self.assertNotIn("/report-wiki-portfolio:wiki-status", content)
         self.assertIn("python3 scripts/build_wiki_status.py", content)
         self.assertIn("wiki/status/manifest.json", content)
         self.assertIn("wiki/status/wiki-status.md", content)

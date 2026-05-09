@@ -3,7 +3,7 @@ description: Refresh the repo-local LLM Wiki manifest and summarize the generate
 argument-hint: optional focus text
 ---
 
-# /report-wiki-portfolio:wiki-status
+# /wiki:status
 
 Refresh and summarize the repository's LLM Wiki status surface.
 
