@@ -51,6 +51,12 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Ask the user at real output fork-points before acting, including image model
   vs H5/HTML, overwrite vs image-only update, draft-only vs Feishu sync, and
   publish title/status changes.
+- Generate required report visuals as local assets when requested, but do not
+  insert images into Feishu by default. If the user will add images manually,
+  keep Feishu sync text-only and preserve local asset paths.
+- Treat Feishu image insertion as a separate external operation. It requires
+  explicit user approval after stating the known client-freeze risk; image-token
+  read-back is audit evidence, not proof of client usability.
 - Feishu writes are handled by `lark-doc` after this gate passes and the user
   explicitly approves the write. After every Feishu write, use read-back
   verification before claiming success.
@@ -79,3 +85,5 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Letting repo paths, OpenSpec details, or agent workflow leak into public text
 - Saying a draft "learned from" a source without showing the section, visual,
   metric, evidence block, boundary statement, or skip reason it affected
+- Treating broad Feishu sync approval as approval to insert images
+- Claiming image delivery quality from image tokens or read-back alone

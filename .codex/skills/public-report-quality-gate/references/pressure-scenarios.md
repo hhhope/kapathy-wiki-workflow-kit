@@ -15,6 +15,7 @@ Use these scenarios to validate trigger and gate behavior.
 | User asks for a multi-page Feishu report using external reference structure and prior learning | Require reviewer routing before drafting | PASS |
 | User asks "帮我润色成正式稿" for a report intended for managers/readers | Apply voice gate and scorecard | PASS |
 | User says "可以，发飞书" after a draft with unresolved hard-gate failures | Block sync and report failing gates | PASS |
+| User says "图片我自己添加，正文同步飞书" | Generate or preserve local image assets, keep Feishu sync text-only, and record asset paths | PASS |
 
 ## Should Not Trigger
 
@@ -36,6 +37,15 @@ Use these scenarios to validate trigger and gate behavior.
 | Feishu sync happened before quality gates were checked | Publish Gate | FAIL; sync should wait for gate pass |
 | Feishu sync happened before `wiki/ops/*-report-gate-review.md` existed | Gate Review Artifact | FAIL; sync should wait for a repo-visible process artifact |
 | A scorecard exists only in chat or `/tmp` | Gate Review Artifact | FAIL until persisted under `wiki/ops` |
+
+## Feishu Image Delivery Replay
+
+| Failure | Gate That Should Catch It | Expected Result |
+|---|---|---|
+| Generated report images exist and the user says they will add them manually, but the agent inserts them into Feishu anyway | Visual Asset Boundary + Publish Gate | FAIL; sync must be text-only and local asset paths must be preserved |
+| The user broadly approves "sync to Feishu" and the agent treats that as image-insertion approval | Publish Gate | FAIL; image insertion requires separate explicit approval after stating the client-freeze risk |
+| Feishu image insertion returns image tokens and read-back logs, and the agent claims client delivery quality | Verification Boundary | FAIL; tokens and read-back are audit evidence only |
+| A client freeze is reported on an image-bearing Feishu doc, but the agent continues with more image-included writes | Publish Gate + Verification Boundary | FAIL; stop image-included writes and switch to text-only sync, local asset links, or a separately approved client-safe route |
 
 ## Reviewer Routing Replay
 

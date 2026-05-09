@@ -24,6 +24,7 @@ document.
 | Decision | Whether the draft may update Feishu or be claimed review-ready |
 | Residual Risks | Proof boundary and known gaps |
 | Feishu Update Verification | Update command result, title, update log id, read-back result, read-back log id, and opening text |
+| Visual Asset Boundary | Local asset paths, whether Feishu sync is text-only, whether image insertion was explicitly approved, and any client-usability limitation |
 
 ## Stable Workflow
 
@@ -38,6 +39,7 @@ reader-facing request
   -> draft reader-facing content
   -> pass hard gates and score >= 80
   -> update Feishu or publish target
+     (text-only by default when local images exist)
   -> read back target
   -> append update/read-back evidence to gate-review artifact
   -> commit gate-review artifact
@@ -57,3 +59,9 @@ sync or review-ready claims.
 If the output claims to use learned references but the learning use map is
 missing, incomplete, or only says "used the reference" without a concrete output
 use or skip reason, stop before drafting, Feishu sync, or review-ready claims.
+
+If local visual assets exist, Feishu sync remains text-only unless the user
+explicitly asks the agent to insert images. When image insertion is requested,
+record the known client-freeze risk, the explicit approval, image tokens, and
+read-back logs. Treat those logs as audit evidence only; they do not prove
+Feishu client usability.
