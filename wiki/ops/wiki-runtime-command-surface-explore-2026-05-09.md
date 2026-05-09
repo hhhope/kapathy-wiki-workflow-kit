@@ -66,3 +66,25 @@ runtime layers into visible repo-level `/wiki:*` entrypoints.
 
 This trace is exploratory context. It does not authorize new implementation
 beyond the active OpenSpec change that owns the command surface.
+
+## Runtime Correction
+
+Later runtime evidence showed that the command-surface assumption was wrong for
+current Codex CLI behavior:
+
+- `codex-cli 0.130.0` discovers repo-local skills and exposes them as
+  `$report-wiki-portfolio:<skill-name>` skill triggers.
+- Installing the repo-local plugin makes the plugin visible and enabled, but it
+  does not cause `plugins/report-wiki-portfolio/commands/*.md` to appear in the
+  TUI slash menu.
+- Files under `~/.codex/prompts/*.md` also do not appear in the current TUI
+  slash menu. This explains why existing `/opsx:*` prompts are absent alongside
+  the attempted `/wiki:*` prompts.
+- Official current CLI slash documentation lists built-in slash commands only.
+  A public OpenAI Codex issue reports `~/.codex/prompts` no longer appearing
+  after `codex-cli 0.117.0`, and that issue is closed as not planned.
+
+The practical correction is that `/wiki:*` cannot currently be treated as a
+supported repo-local Codex CLI delivery surface. The supported local surfaces
+available in this repo are repo skills, plugin installation state, scripts, and
+documented manual command bodies.
