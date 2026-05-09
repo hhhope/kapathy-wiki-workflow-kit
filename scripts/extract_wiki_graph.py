@@ -107,11 +107,19 @@ def derive_object_and_type(path: Path, meta: dict) -> tuple[str | None, str | No
     rel = path.relative_to(ROOT).as_posix()
     stem = path.stem
 
+    if rel in RUNTIME_ADR_IDENTITIES:
+        return RUNTIME_ADR_IDENTITIES[rel], "adr"
+
     if rel.startswith("openspec/specs/") and rel.endswith("/spec.md"):
         return rel.split("/")[2], "spec"
 
-    if rel in RUNTIME_ADR_IDENTITIES:
-        return RUNTIME_ADR_IDENTITIES[rel], "adr"
+    example_match = re.match(r"^wiki/examples/(.+)-example\.md$", rel)
+    if example_match:
+        return example_match.group(1), "example"
+
+    adr_match = re.match(r"^wiki/adr/\d{4}-(.+)\.md$", rel)
+    if adr_match:
+        return adr_match.group(1), "adr"
 
     # Stable object-family resolvers for current formalized pages.
     if stem == "agent-readable-wiki-naming-model":
