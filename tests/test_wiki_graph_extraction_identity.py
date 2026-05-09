@@ -36,8 +36,40 @@ class WikiGraphExtractionIdentityTest(unittest.TestCase):
         self.assertEqual(canonical_object, "meeting-note")
         self.assertEqual(artifact_type, "example")
 
+    def test_derives_ops_intake_identity_from_suffix(self) -> None:
+        path = ROOT / "wiki/ops/nirvana-preview-intake.md"
+
+        canonical_object, artifact_type = derive_object_and_type(path, {})
+
+        self.assertEqual(canonical_object, "nirvana-preview")
+        self.assertEqual(artifact_type, "intake")
+
+    def test_derives_ops_dated_explore_identity_from_suffix(self) -> None:
+        path = ROOT / "wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md"
+
+        canonical_object, artifact_type = derive_object_and_type(path, {})
+
+        self.assertEqual(canonical_object, "agent-governance-gate-gap")
+        self.assertEqual(artifact_type, "explore")
+
+    def test_derives_ops_sample_identity_from_prefix(self) -> None:
+        path = ROOT / "wiki/ops/sample-focus-thread.md"
+
+        canonical_object, artifact_type = derive_object_and_type(path, {})
+
+        self.assertEqual(canonical_object, "focus-thread")
+        self.assertEqual(artifact_type, "sample")
+
+    def test_derives_fixed_ops_entry_identity(self) -> None:
+        path = ROOT / "wiki/ops/main-thread.md"
+
+        canonical_object, artifact_type = derive_object_and_type(path, {})
+
+        self.assertEqual(canonical_object, "main-thread")
+        self.assertEqual(artifact_type, "focus-thread")
+
     def test_does_not_infer_identity_from_unmapped_ops_page(self) -> None:
-        path = ROOT / "wiki/ops/reminders.md"
+        path = ROOT / "wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md"
 
         canonical_object, artifact_type = derive_object_and_type(path, {})
 
@@ -61,11 +93,15 @@ class WikiGraphExtractionIdentityTest(unittest.TestCase):
             "unresolved_identity:wiki/examples/meeting-note-example.md",
             warning_text,
         )
+        self.assertNotIn(
+            "unresolved_identity:wiki/ops/nirvana-preview-intake.md",
+            warning_text,
+        )
         self.assertIn(
             "wiki/ops/agent-readable-wiki-graph-extraction.md",
             node_paths,
         )
-        self.assertLess(len(warnings), 49)
+        self.assertLess(len(warnings), 30)
 
 
 if __name__ == "__main__":

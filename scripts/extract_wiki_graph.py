@@ -34,6 +34,16 @@ RUNTIME_ADR_IDENTITIES = {
     "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md": "wiki-context-injection",
     "wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md": "wiki-self-directed-execution",
 }
+OPS_FIXED_IDENTITIES = {
+    "wiki/ops/main-thread.md": ("main-thread", "focus-thread"),
+    "wiki/ops/reminders.md": ("reminders", "reminder-index"),
+    "wiki/ops/codex-handoff-rules.md": ("codex-handoff", "method"),
+    "wiki/ops/project-management-weekly-loop.md": (
+        "project-management-weekly-loop",
+        "method",
+    ),
+}
+OPS_SUFFIX_TYPES = ("intake", "explore", "retro", "reminder", "reanchor")
 
 
 @dataclass
@@ -96,6 +106,27 @@ def derive_layer(path: Path) -> str:
     if rel.startswith("openspec/specs/"):
         return "openspec/specs"
     raise ValueError(f"unsupported layer for {rel}")
+
+
+def strip_iso_date_suffix(stem: str) -> str:
+    return re.sub(r"-\d{4}-\d{2}-\d{2}$", "", stem)
+
+
+def derive_ops_object_and_type(rel: str, stem: str) -> tuple[str | None, str | None]:
+    fixed_identity = OPS_FIXED_IDENTITIES.get(rel)
+    if fixed_identity:
+        return fixed_identity
+
+    if stem.startswith("sample-") and len(stem) > len("sample-"):
+        return stem.removeprefix("sample-"), "sample"
+
+    undated_stem = strip_iso_date_suffix(stem)
+    for suffix_type in OPS_SUFFIX_TYPES:
+        suffix = f"-{suffix_type}"
+        if undated_stem.endswith(suffix) and len(undated_stem) > len(suffix):
+            return undated_stem[: -len(suffix)], suffix_type
+
+    return None, None
 
 
 def derive_object_and_type(path: Path, meta: dict) -> tuple[str | None, str | None]:
@@ -163,6 +194,9 @@ def derive_object_and_type(path: Path, meta: dict) -> tuple[str | None, str | No
         return "example-driven-capture", "example"
     if rel == "openspec/specs/example-driven-wiki-capture/spec.md":
         return "example-driven-capture", "spec"
+
+    if rel.startswith("wiki/ops/"):
+        return derive_ops_object_and_type(rel, stem)
 
     return None, None
 
