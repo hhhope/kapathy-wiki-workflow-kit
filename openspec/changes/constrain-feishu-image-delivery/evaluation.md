@@ -30,11 +30,18 @@ they will add images manually.
 | Skill body compactness | PASS — `SKILL.md` is 89 lines; longer delivery replay detail lives in references. |
 | OpenSpec strict validation | PASS — `openspec validate constrain-feishu-image-delivery --strict` returned `Change 'constrain-feishu-image-delivery' is valid`; PostHog DNS flush errors ignored. |
 
+## Runtime Replay
+
+| Check | Evidence | Result |
+|---|---|---|
+| Fresh replay artifact exists | `runtime-replay.md` records the input shape, loaded skill files, expected route, observed route, and proof boundary. | PASS |
+| Manual image scenario routes correctly | Replay input says images are generated locally and the user will add them manually; observed route keeps Feishu sync text-only and blocks image insertion. | PASS |
+| No accidental external action | Replay did not call Feishu or generate new images. | PASS |
+
 ## Residual Risks
 
-- This is static/manual pressure evidence, not multi-session rollout proof.
-- Fresh runtime replay remains open. Until replay evidence is recorded, this
-  change must not be treated as archive-ready.
+- This is current-session runtime replay evidence, not multi-session rollout
+  proof.
 - The change blocks default Feishu image insertion; it does not solve Feishu
   client freezes or remove existing image blocks.
 - If a future workflow needs agent-managed Feishu images, it needs a separate

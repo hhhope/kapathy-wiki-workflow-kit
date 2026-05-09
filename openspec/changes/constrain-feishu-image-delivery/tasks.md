@@ -26,11 +26,12 @@
   <!-- 2026-05-09 — passed: Change 'constrain-feishu-image-delivery' is valid; PostHog DNS flush errors ignored -->
 - [x] 3.5 Verify git status/log before commit or completion claim.
   <!-- 2026-05-09 — git status remains dirty with task-related skill/OpenSpec files plus unrelated local material; latest commit 1b5d328 docs: trace Feishu image freeze explore -->
-- [ ] 3.6 Record fresh runtime replay evidence that the public-report gate chooses local visual assets plus text-only Feishu sync when the user says images will be added manually.
+- [x] 3.6 Record fresh runtime replay evidence that the public-report gate chooses local visual assets plus text-only Feishu sync when the user says images will be added manually.
+  <!-- 2026-05-09 — runtime-replay.md records input shape, loaded skill/reference files, expected route, observed route, no Feishu/image side effects, and proof boundary -->
 
 ## 4. Stop Boundary
 
-- [ ] 4.1 Stop after skill/reference/spec evidence and runtime replay evidence are complete.
-  <!-- 2026-05-09 — reopened after user challenge: static skill/spec evidence is not enough to claim runtime behavior is complete -->
+- [x] 4.1 Stop after skill/reference/spec evidence and runtime replay evidence are complete.
+  <!-- 2026-05-09 — completed after runtime replay evidence was added; no Feishu calls or image generation performed -->
 - [x] 4.2 Do not modify Feishu documents or generate additional images in this change.
   <!-- 2026-05-09 — no Feishu calls or image generation performed -->
