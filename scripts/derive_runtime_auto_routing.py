@@ -52,6 +52,7 @@ def build_runtime_auto_routing(source_runtime: dict) -> dict:
             "canonical_object": item["canonical_object"],
             "usage_guidance": item["usage_guidance"],
             "reasons": item["reasons"],
+            "blocked_source_refs": item.get("blocked_source_refs", []),
             "routing_blocked": True,
         }
         for item in source_runtime.get("blocked_objects", [])
@@ -69,6 +70,9 @@ def build_runtime_auto_routing(source_runtime: dict) -> dict:
             ),
             "open_next_source_count": sum(
                 len(item["route_sources"]) for item in open_next
+            ),
+            "blocked_source_ref_count": sum(
+                len(item["blocked_source_refs"]) for item in do_not_open_first
             ),
             "caution_active": source_runtime.get("summary", {}).get(
                 "caution_active", False

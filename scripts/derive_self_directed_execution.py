@@ -31,16 +31,18 @@ def load_context_injection() -> dict:
     return json.loads(completed.stdout)
 
 
-def build_action_sources(item: dict) -> list[dict]:
-    return [
-        {
+def build_action_sources(item: dict, source_key: str = "injected_sources") -> list[dict]:
+    action_sources = []
+    for source in item.get(source_key, []):
+        action_source = {
             "page_path": source["page_path"],
             "artifact_type": source["artifact_type"],
             "source_layer": source["source_layer"],
-            "title": source["title"],
         }
-        for source in item.get("injected_sources", [])
-    ]
+        if "title" in source:
+            action_source["title"] = source["title"]
+        action_sources.append(action_source)
+    return action_sources
 
 
 def execute_entry(item: dict) -> dict:
@@ -69,6 +71,7 @@ def blocked_entry(item: dict) -> dict:
         "execution_guidance": "Do not execute from this object during first-pass execution.",
         "reasons": item["reasons"],
         "action_type": "blocked_from_first_pass_execution",
+        "action_sources": build_action_sources(item, "excluded_source_refs"),
     }
 
 
@@ -98,6 +101,9 @@ def build_self_directed_execution(context_injection: dict) -> dict:
             ),
             "deferred_source_count": sum(
                 len(item["action_sources"]) for item in defer_for_followup
+            ),
+            "blocked_source_count": sum(
+                len(item["action_sources"]) for item in do_not_execute
             ),
             "caution_active": context_injection.get("summary", {}).get(
                 "caution_active", False

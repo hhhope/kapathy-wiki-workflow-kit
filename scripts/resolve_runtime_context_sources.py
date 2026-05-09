@@ -93,6 +93,7 @@ def build_integrated_runtime(runtime_context: dict) -> dict:
             "canonical_object": item["canonical_object"],
             "usage_guidance": item["usage_guidance"],
             "reasons": item["reasons"],
+            "blocked_source_refs": source_index.get(item["canonical_object"], []),
             "resolution_skipped": True,
         }
         for item in runtime_context.get("blocked_context", [])
@@ -105,6 +106,9 @@ def build_integrated_runtime(runtime_context: dict) -> dict:
             "preferred_count": len(preferred_sources),
             "supporting_count": len(supporting_sources),
             "blocked_count": len(blocked_objects),
+            "blocked_source_ref_count": sum(
+                len(item["blocked_source_refs"]) for item in blocked_objects
+            ),
             "caution_active": runtime_context.get("summary", {}).get(
                 "caution_active", False
             ),

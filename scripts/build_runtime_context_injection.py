@@ -94,6 +94,7 @@ def build_context_injection(auto_routing: dict) -> dict:
             "canonical_object": item["canonical_object"],
             "usage_guidance": item["usage_guidance"],
             "reasons": item["reasons"],
+            "excluded_source_refs": item.get("blocked_source_refs", []),
             "injection_excluded": True,
         }
         for item in auto_routing.get("do_not_open_first", [])
@@ -111,6 +112,9 @@ def build_context_injection(auto_routing: dict) -> dict:
             ),
             "secondary_context_source_count": sum(
                 len(item["injected_sources"]) for item in secondary_context
+            ),
+            "excluded_source_ref_count": sum(
+                len(item["excluded_source_refs"]) for item in excluded_objects
             ),
             "caution_active": auto_routing.get("summary", {}).get(
                 "caution_active", False
