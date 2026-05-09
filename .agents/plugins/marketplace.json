@@ -8,7 +8,7 @@
       "name": "report-wiki-portfolio",
       "source": {
         "source": "local",
-        "path": "."
+        "path": "./plugins/report-wiki-portfolio"
       },
       "policy": {
         "installation": "AVAILABLE",

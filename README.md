@@ -45,8 +45,9 @@ Restart or reload Codex after adding the marketplace. Wiki runtime commands:
 These commands expose existing wiki runtime layers. They do not create, modify,
 or archive OpenSpec changes.
 
-The `/wiki:status` command contract lives in `commands/wiki-status.md`. It
-refreshes `wiki/status/manifest.json` and `wiki/status/wiki-status.md` by running:
+The `/wiki:status` command contract lives in
+`plugins/report-wiki-portfolio/commands/wiki-status.md`. It refreshes
+`wiki/status/manifest.json` and `wiki/status/wiki-status.md` by running:
 
 ```bash
 python3 scripts/build_wiki_status.py

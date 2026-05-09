@@ -4,8 +4,9 @@ from pathlib import Path
 
 class WikiStatusCommandTest(unittest.TestCase):
     def test_codex_plugin_slash_command_refreshes_wiki_status(self) -> None:
-        plugin_manifest_path = Path(".codex-plugin/plugin.json")
-        command_path = Path("commands/wiki-status.md")
+        plugin_root = Path("plugins/report-wiki-portfolio")
+        plugin_manifest_path = plugin_root / ".codex-plugin/plugin.json"
+        command_path = plugin_root / "commands/wiki-status.md"
 
         self.assertTrue(plugin_manifest_path.exists())
         self.assertTrue(command_path.exists())

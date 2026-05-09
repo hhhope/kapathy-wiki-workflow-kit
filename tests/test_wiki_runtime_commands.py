@@ -3,9 +3,11 @@ import unittest
 from pathlib import Path
 
 
+PLUGIN_ROOT = Path("plugins/report-wiki-portfolio")
+
 COMMANDS = {
     "status": {
-        "file": "commands/wiki-status.md",
+        "file": PLUGIN_ROOT / "commands/wiki-status.md",
         "references": (
             "scripts/build_wiki_status.py",
             "wiki/status/manifest.json",
@@ -13,14 +15,14 @@ COMMANDS = {
         ),
     },
     "manifest": {
-        "file": "commands/wiki-manifest.md",
+        "file": PLUGIN_ROOT / "commands/wiki-manifest.md",
         "references": (
             "scripts/build_wiki_status.py",
             "wiki/status/manifest.json",
         ),
     },
     "inbox": {
-        "file": "commands/wiki-inbox.md",
+        "file": PLUGIN_ROOT / "commands/wiki-inbox.md",
         "references": (
             "scripts/build_wiki_status.py",
             "wiki/status/manifest.json",
@@ -28,7 +30,7 @@ COMMANDS = {
         ),
     },
     "graph": {
-        "file": "commands/wiki-graph.md",
+        "file": PLUGIN_ROOT / "commands/wiki-graph.md",
         "references": (
             "scripts/extract_wiki_graph.py",
             "scripts/analyze_wiki_relations.py",
@@ -38,7 +40,7 @@ COMMANDS = {
         ),
     },
     "scorecard": {
-        "file": "commands/wiki-scorecard.md",
+        "file": PLUGIN_ROOT / "commands/wiki-scorecard.md",
         "references": (
             "scripts/score_wiki_semantics.py",
             "scripts/derive_wiki_utilization.py",
@@ -48,7 +50,7 @@ COMMANDS = {
         ),
     },
     "route": {
-        "file": "commands/wiki-route.md",
+        "file": PLUGIN_ROOT / "commands/wiki-route.md",
         "references": (
             "scripts/resolve_runtime_context_sources.py",
             "scripts/derive_runtime_auto_routing.py",
@@ -57,7 +59,7 @@ COMMANDS = {
         ),
     },
     "context": {
-        "file": "commands/wiki-context.md",
+        "file": PLUGIN_ROOT / "commands/wiki-context.md",
         "references": (
             "scripts/build_wiki_runtime_context.py",
             "scripts/build_runtime_context_injection.py",
@@ -66,7 +68,7 @@ COMMANDS = {
         ),
     },
     "apply": {
-        "file": "commands/wiki-apply.md",
+        "file": PLUGIN_ROOT / "commands/wiki-apply.md",
         "references": (
             "scripts/build_runtime_context_injection.py",
             "scripts/derive_self_directed_execution.py",
@@ -77,7 +79,7 @@ COMMANDS = {
         ),
     },
     "queue": {
-        "file": "commands/wiki-queue.md",
+        "file": PLUGIN_ROOT / "commands/wiki-queue.md",
         "references": (
             "scripts/build_wiki_change_queue_preview.py",
             "ready",
@@ -87,7 +89,7 @@ COMMANDS = {
         ),
     },
     "query": {
-        "file": "commands/wiki-query.md",
+        "file": PLUGIN_ROOT / "commands/wiki-query.md",
         "references": (
             "scripts/build_wiki_status.py",
             "scripts/derive_runtime_auto_routing.py",
@@ -150,7 +152,9 @@ class WikiRuntimeCommandsTest(unittest.TestCase):
                 self.assertIn("change queue", normalized)
 
     def test_wiki_query_rejects_hidden_semantic_search(self) -> None:
-        normalized = self._normalize(self.read_command("commands/wiki-query.md"))
+        normalized = self._normalize(
+            self.read_command(PLUGIN_ROOT / "commands/wiki-query.md")
+        )
 
         self.assertIn("not semantic search", normalized)
         self.assertIn("no embeddings", normalized)
@@ -174,7 +178,7 @@ class WikiRuntimeCommandsTest(unittest.TestCase):
         for term in terms:
             self.assertIn(term, joined, boundary)
 
-    def read_command(self, command_file: str) -> str:
+    def read_command(self, command_file: Path) -> str:
         path = Path(command_file)
         self.assertTrue(path.exists(), command_file)
         return path.read_text(encoding="utf-8")
