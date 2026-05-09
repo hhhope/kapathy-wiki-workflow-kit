@@ -48,6 +48,12 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - State what each diagram or visual carries; do not add decorative diagrams. If
   the reference uses essential visuals, missing matching visuals are a hard
   Visual Gate failure for reference-shaped output.
+- Ask the user at real output fork-points before acting, including image model
+  vs H5/HTML, overwrite vs image-only update, draft-only vs Feishu sync, and
+  publish title/status changes.
+- Feishu writes are handled by `lark-doc` after this gate passes and the user
+  explicitly approves the write. After every Feishu write, use read-back
+  verification before claiming success.
 - Keep source reading, learning capture, visual generation, Feishu operations,
   and final verification under their own skills.
 - Treat learning reuse as process evidence, not automatic promotion into

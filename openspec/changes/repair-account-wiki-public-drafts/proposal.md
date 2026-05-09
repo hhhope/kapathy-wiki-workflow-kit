@@ -25,7 +25,8 @@ The remaining local drafts are still too thin for release:
 - Update the public report gate review with corrected reference, learning,
   visual, split, evidence, and replay decisions.
 - Add behavior proof for any skill change before treating it as complete.
-- Keep Feishu sync out of scope until local drafts and evidence pass.
+- Keep Feishu sync blocked until local drafts and evidence pass and the user
+  explicitly approves the write.
 
 ## Impact
 
@@ -39,7 +40,8 @@ The remaining local drafts are still too thin for release:
 
 ## Non-Goals
 
-- Do not update or publish Feishu documents in this change.
+- Do not update or publish Feishu documents without explicit user approval and
+  read-back verification.
 - Do not archive the already-complete quality-gate changes as part of this
   repair.
 - Do not promote one-off Account Wiki wording into global behavior policy.

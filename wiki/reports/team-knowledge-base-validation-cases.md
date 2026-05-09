@@ -2,6 +2,8 @@
 本页解释 Account Wiki 怎么证明自己有用：用真实 case、分数变化、门禁结果、Feishu 回读日志和 RED/GREEN 回放，而不是只说“有流程”。
 </callout>
 
+配图资产：`wiki/reports/assets/account-wiki-validation-card.png`
+
 ## 一句话定位
 
 验证与案例页要回答两个问题：第一，这套 Wiki runtime 有没有在真实任务里拦住错误；第二，拦住之后有没有留下下一次可以复用的证据。
