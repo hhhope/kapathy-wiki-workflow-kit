@@ -29,6 +29,7 @@
 - [Karpathy LLM Wiki 精读](karpathy-llm-wiki-reading-notes.md)
 - [obsidian-wiki 项目差距复核 2026-05-09](obsidian-wiki-project-gap-review-2026-05-09.md)
 - [产品能力与图谱缺口探索 2026-05-09](product-capability-and-graph-gap-explore-2026-05-09.md)
+- [Report Wiki 产品规划 2026-05-09](report-wiki-product-plan-2026-05-09.md)
 - [behavior-replay-gate / method](behavior-replay-gate.md)
 - [root-capability-extraction / retro](root-capability-extraction-retro.md)
 - [分歧管理方法](disagreement-management-method.md)
