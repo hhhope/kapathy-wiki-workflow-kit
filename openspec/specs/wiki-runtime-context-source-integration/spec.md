@@ -14,9 +14,7 @@ derived_from:
 Capture the repository's minimal runtime-context source-integration contract on top of
 runtime context, while keeping the output bounded, repository-local, and
 non-autonomous.
-
 ## Requirements
-
 ### Requirement: Repository SHALL support bounded source integration on top of runtime context
 
 The repository SHALL support a downstream source-integration step that reads runtime
@@ -46,3 +44,17 @@ retrieval proof or autonomous runtime behavior.
 
 - **WHEN** the repository produces source-integrated runtime output
 - **THEN** it SHALL state that the result is bounded repository-local source guidance only
+
+### Requirement: Source integration SHALL preserve blocked-object trace sources
+
+The repository SHALL preserve repository-local source references for blocked
+objects as trace-only evidence without promoting those objects into preferred or
+supporting source targets.
+
+#### Scenario: Blocked object has repository-local pages
+
+- **WHEN** source integration resolves runtime context
+- **AND** a blocked object has repository-local graph pages
+- **THEN** the blocked object SHALL include trace-only source references
+- **AND** those references SHALL NOT be included in preferred or supporting
+  source lists

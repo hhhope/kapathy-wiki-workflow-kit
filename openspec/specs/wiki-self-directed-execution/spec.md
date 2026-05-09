@@ -14,9 +14,7 @@ derived_from:
 Capture the repository's minimal bounded self-directed execution contract on top of
 automatic context injection, while keeping the output bounded, repository-local, and
 non-autonomous.
-
 ## Requirements
-
 ### Requirement: Repository SHALL support bounded self-directed execution on top of context injection
 
 The repository SHALL support a downstream bounded self-directed execution step that
@@ -45,3 +43,16 @@ autonomy or self-directed execution without guardrails.
 
 - **WHEN** the repository produces bounded self-directed execution output
 - **THEN** it SHALL state that the result is bounded repository-local execution guidance only
+
+### Requirement: Self-directed execution SHALL expose blocked action source refs
+
+The repository SHALL expose source references on blocked execution entries when
+those references exist, while preserving blocked execution state.
+
+#### Scenario: Blocked excluded object has source refs
+
+- **WHEN** bounded self-directed execution builds a blocked entry from an
+  excluded object with source refs
+- **THEN** the blocked entry SHALL include action source refs
+- **AND** the blocked entry SHALL remain in `do_not_execute`
+- **AND** it SHALL NOT be promoted into execute-now or deferred-follow-up actions
