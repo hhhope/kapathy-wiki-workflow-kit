@@ -32,6 +32,7 @@ COMMANDS = {
         "references": (
             "scripts/extract_wiki_graph.py",
             "scripts/analyze_wiki_relations.py",
+            "scripts/summarize_wiki_graph.py",
             "scripts/examples/agent_readable_wiki_graph_sample.json",
             "scripts/examples/agent_readable_wiki_relation_analysis_sample.json",
         ),
@@ -41,6 +42,7 @@ COMMANDS = {
         "references": (
             "scripts/score_wiki_semantics.py",
             "scripts/derive_wiki_utilization.py",
+            "scripts/summarize_wiki_scorecard.py",
             "scripts/examples/agent_readable_wiki_semantic_scoring_sample.json",
             "scripts/examples/agent_readable_wiki_utilization_sample.json",
         ),
@@ -72,6 +74,16 @@ COMMANDS = {
             "execute_now",
             "defer_for_followup",
             "do_not_execute",
+        ),
+    },
+    "queue": {
+        "file": "commands/wiki-queue.md",
+        "references": (
+            "scripts/build_wiki_change_queue_preview.py",
+            "ready",
+            "needs_user_decision",
+            "blocked",
+            "source paths",
         ),
     },
     "query": {

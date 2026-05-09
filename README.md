@@ -40,6 +40,7 @@ Restart or reload Codex after adding the marketplace. Wiki runtime commands:
 - `/wiki:route`: expose runtime auto-routing suggestions.
 - `/wiki:context`: expose the runtime context bundle.
 - `/wiki:apply`: expose bounded self-directed execution suggestions.
+- `/wiki:queue`: preview ready, decision-needed, and blocked wiki work without executing it.
 
 These commands expose existing wiki runtime layers. They do not create, modify,
 or archive OpenSpec changes.
