@@ -17,6 +17,11 @@
 | Feishu image token and read-back exist after insertion | `SKILL.md`, `gate-review-artifact.md`, `pressure-scenarios.md`, and `spec.md` now treat image tokens and read-back logs as audit evidence only, not proof of client usability. | PASS |
 | Client freeze is reported for image-bearing Feishu docs | `pressure-scenarios.md` and `spec.md` require stopping further image-included writes and switching to text-only sync, local asset paths, or a separately approved client-safe route. | PASS |
 
+Proof boundary: the GREEN result above proves wording and pressure-scenario
+coverage only. It does not yet prove that a fresh runtime invocation will load
+`public-report-quality-gate` and choose text-only Feishu sync when the user says
+they will add images manually.
+
 ## Static Checks
 
 | Check | Result |
@@ -28,6 +33,8 @@
 ## Residual Risks
 
 - This is static/manual pressure evidence, not multi-session rollout proof.
+- Fresh runtime replay remains open. Until replay evidence is recorded, this
+  change must not be treated as archive-ready.
 - The change blocks default Feishu image insertion; it does not solve Feishu
   client freezes or remove existing image blocks.
 - If a future workflow needs agent-managed Feishu images, it needs a separate
