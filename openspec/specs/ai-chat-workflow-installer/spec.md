@@ -1,4 +1,9 @@
-## ADDED Requirements
+## Purpose
+
+Define the repository-owned installation model for packaging the wiki workflow
+and skill system across AI chat runtimes.
+
+## Requirements
 
 ### Requirement: Repository SHALL define a canonical AI chat workflow installer model
 

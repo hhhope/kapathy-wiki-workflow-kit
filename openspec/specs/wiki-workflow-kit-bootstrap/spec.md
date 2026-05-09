@@ -1,4 +1,9 @@
-## ADDED Requirements
+## Purpose
+
+Define the bootstrap path for installing the validated wiki workflow kit into a
+new repository.
+
+## Requirements
 
 ### Requirement: Repository SHALL provide a bootstrap path for the validated wiki workflow kit
 
