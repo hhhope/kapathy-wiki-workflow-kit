@@ -29,6 +29,7 @@ python3 scripts/build_wiki_status.py
 ## Boundaries
 
 - This command is a repo-local Codex plugin command, not a global prompt and not a Claude command.
-- Do not implement query, scorecard, graph UI, or change queue.
+- Do not implement scorecard, graph UI, natural-language query engine, or change queue.
 - Do not open, modify, archive, or create OpenSpec changes from this command.
+- Do not mark OpenSpec tasks complete from this command.
 - Do not treat generated status as product judgment; it is only a source manifest and routing surface.

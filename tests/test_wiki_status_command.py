@@ -19,7 +19,10 @@ class WikiStatusCommandTest(unittest.TestCase):
         self.assertIn("python3 scripts/build_wiki_status.py", content)
         self.assertIn("wiki/status/manifest.json", content)
         self.assertIn("wiki/status/wiki-status.md", content)
-        self.assertIn("Do not implement query, scorecard, graph UI, or change queue", content)
+        self.assertIn("natural-language query engine", content)
+        self.assertIn("scorecard, graph UI", content)
+        self.assertIn("change queue", content)
+        self.assertIn("Do not mark OpenSpec tasks complete", content)
 
     def test_no_claude_only_wiki_status_command_remains(self) -> None:
         self.assertFalse(Path(".claude/commands/wiki/status.md").exists())
