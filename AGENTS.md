@@ -105,10 +105,10 @@ This is a runtime routing map, not an ownership map.
 | Material, reports, attachments, preview HTML, or source files | `.codex/skills/material-collaboration-defaults/SKILL.md` | repo-owned |
 | Reader-facing reports, Feishu review drafts, H5/share drafts, public materials, or reference-shaped outputs | `.codex/skills/public-report-quality-gate/SKILL.md` | repo-owned reader-facing output gate |
 | Meeting notes, transcripts, minutes, or Feishu meeting-note output | `.codex/skills/meeting-note-output/SKILL.md` | repo-owned |
-| Implementing an OpenSpec change | `.codex/skills/openspec-apply-change/SKILL.md` | shared: OpenSpec lifecycle with repo gates |
-| Archiving an OpenSpec change | `.codex/skills/openspec-archive-change/SKILL.md` | shared: generic archive action with repo review detail |
-| Exploring ideas or clarifying requirements with `$openspec-explore` | `.codex/skills/openspec-explore/SKILL.md` | shared: explore stance with repo trace gate |
-| Creating a new OpenSpec proposal | `.codex/skills/openspec-propose/SKILL.md` | shared |
+| Implementing an OpenSpec change | `$openspec-apply-change` (source: `plugins/report-wiki-portfolio/skills/openspec-apply-change/SKILL.md`) | shared: OpenSpec lifecycle with repo gates |
+| Archiving an OpenSpec change | `$openspec-archive-change` (source: `plugins/report-wiki-portfolio/skills/openspec-archive-change/SKILL.md`) | shared: generic archive action with repo review detail |
+| Exploring ideas or clarifying requirements with `$openspec-explore` | `$openspec-explore` (source: `plugins/report-wiki-portfolio/skills/openspec-explore/SKILL.md`) | shared: explore stance with repo trace gate |
+| Creating a new OpenSpec proposal | `$openspec-propose` (source: `plugins/report-wiki-portfolio/skills/openspec-propose/SKILL.md`) | shared |
 | Ambiguous request before silently choosing a scope | `.codex/skills/clarify-before-acting/SKILL.md` | root-candidate |
 | Speculative abstractions or future-proofing are growing | `.codex/skills/simplicity-first/SKILL.md` | root-candidate |
 | Narrow edit risks expanding into adjacent cleanup | `.codex/skills/surgical-changes/SKILL.md` | root-candidate |
