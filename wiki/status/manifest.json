@@ -1,0 +1,1903 @@
+{
+  "generated_at": "2026-05-09T05:56:16.970041+00:00",
+  "root": "/mnt/d/cloud/account-meeting-lore",
+  "summary": {
+    "wiki_page_count": 168,
+    "source_record_count": 8,
+    "inbox_file_count": 12,
+    "pending_inbox_count": 6,
+    "active_change_count": 0,
+    "complete_change_count": 7,
+    "wiki_sections": {
+      "wiki/adr": 32,
+      "wiki/domains": 2,
+      "wiki/examples": 7,
+      "wiki/ops": 85,
+      "wiki/reports": 13,
+      "wiki/root": 7,
+      "wiki/sources": 9,
+      "wiki/templates": 10,
+      "wiki/timeline": 3
+    }
+  },
+  "wiki_pages": [
+    {
+      "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+      "section": "wiki/adr",
+      "sha256": "db373c9db048ac3b46da2a9fb57024257e0886bd199763563a8e5ad6e8415293",
+      "bytes": 684,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+      "section": "wiki/adr",
+      "sha256": "dcf069bcded316825fc52f240e94018ebde8347e2ee4b8fa8af315f74d61d0c3",
+      "bytes": 605,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0003-retros-stay-separate-from-adrs.md",
+      "section": "wiki/adr",
+      "sha256": "7c3b0f5631100d758f9390656e0dea13c0d3c7cfe419bddbe98ef3048e5204ab",
+      "bytes": 582,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0004-agent-self-evolution-over-skill-governance.md",
+      "section": "wiki/adr",
+      "sha256": "bfe91f4d373b7429f29c679a725f86336a41dc1a2abc19d5640b01cea9e44c81",
+      "bytes": 809,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0005-incremental-refresh-over-full-reprocessing.md",
+      "section": "wiki/adr",
+      "sha256": "a07130089b495f5b13de7de64493e6015c34c11774627647d53af9043ba411c2",
+      "bytes": 628,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0006-formal-project-local-skills-over-drafts.md",
+      "section": "wiki/adr",
+      "sha256": "5758f39de2a112fd1d83321be6c08244107d82f2f3fa9d3b34c876a8f54ada84",
+      "bytes": 1230,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0007-archive-review-before-archive.md",
+      "section": "wiki/adr",
+      "sha256": "8a2d70065dee4dd36fcf9bf645183c84d35e4a131f39670fbe292309215606b3",
+      "bytes": 1424,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0008-human-governance-before-self-evolution-promotion.md",
+      "section": "wiki/adr",
+      "sha256": "3e685ddfae77284e6786090609a02145c609f9779f1f7b3e20f8ff715451fff7",
+      "bytes": 1538,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0009-explore-trace-before-openspec-explore.md",
+      "section": "wiki/adr",
+      "sha256": "48ba3ccdf90a16834623ef668b35745e793dfeaa24db772a41482d6e14bcaf1a",
+      "bytes": 1472,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md",
+      "section": "wiki/adr",
+      "sha256": "4d3e1204ffd024b4662c38198416c91bc08af7d9be7fd827d02298e971c2f98d",
+      "bytes": 1593,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md",
+      "section": "wiki/adr",
+      "sha256": "bd743d21859bff3ecc92f8e110366ef01eb7264e080c0f4a6d4a9705dac4ad28",
+      "bytes": 1213,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
+      "section": "wiki/adr",
+      "sha256": "f658ec4f7f092d06c71753bdd5ffdd6cfd17a973ae743efd37f99cc2e5b1cecc",
+      "bytes": 2258,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
+      "section": "wiki/adr",
+      "sha256": "4862ffaeefec77b47fc5121489c833342fe02e1f172afb980ad4a53eaba1daa2",
+      "bytes": 2197,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
+      "section": "wiki/adr",
+      "sha256": "4e8c95d475c43ffff2b6b9bab8d745cbd34b75f8b14819769048d3694c97e753",
+      "bytes": 1889,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md",
+      "section": "wiki/adr",
+      "sha256": "46ba0f2439e7ae422ce22b59d9cbde0b0909e1666bdeeb6d919a49f352b0c67b",
+      "bytes": 1927,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md",
+      "section": "wiki/adr",
+      "sha256": "bb85a40219f19f704ad497673d63c9a46650f6707c083cb137a7eea5378765a9",
+      "bytes": 2144,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md",
+      "section": "wiki/adr",
+      "sha256": "4787bb85c01ac56796e62faf89017edd29cf8d6c69460b6a98825ea06fcfb7f6",
+      "bytes": 2096,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md",
+      "section": "wiki/adr",
+      "sha256": "84341202ce1c3221652610dcc3bef2fe66cc5151c52275ba51a8237c43e647f1",
+      "bytes": 2097,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md",
+      "section": "wiki/adr",
+      "sha256": "21c3d51015706278aeee9e0dc1f015ca0394b8905e4a022211f6d43dc68f4cfa",
+      "bytes": 2161,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md",
+      "section": "wiki/adr",
+      "sha256": "87e21af7b7cafa70ec995cbac4596c1273688a968341e02da8696b4610093f2e",
+      "bytes": 2688,
+      "title": null,
+      "canonical_object": "wiki-runtime-context-source-integration",
+      "artifact_type": "adr",
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md",
+      "section": "wiki/adr",
+      "sha256": "26c528b0ee8d3b15b43fd45fffb93a43f8ef040026dea7a90bc7a4de5cec3b80",
+      "bytes": 2729,
+      "title": null,
+      "canonical_object": "wiki-runtime-auto-routing",
+      "artifact_type": "adr",
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md",
+      "section": "wiki/adr",
+      "sha256": "c1792bd6895d762153ee52c1d421ac34c2c3888f019636e6c5fee0d464d7c0c7",
+      "bytes": 2943,
+      "title": null,
+      "canonical_object": "wiki-context-injection",
+      "artifact_type": "adr",
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md",
+      "section": "wiki/adr",
+      "sha256": "76a0d44ce45b8a5daefcfeaa8ae912b4ae6a128b2af27c0514243a0202b69bcf",
+      "bytes": 3052,
+      "title": null,
+      "canonical_object": "wiki-self-directed-execution",
+      "artifact_type": "adr",
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md",
+      "section": "wiki/adr",
+      "sha256": "0600cd19f17fc04ee114ae29694f5ae8dcb2b5c2bce55c6de643ac6bf2bdfe99",
+      "bytes": 2389,
+      "title": null,
+      "canonical_object": "live-conversation-reanchor-gate",
+      "artifact_type": "adr",
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0025-readable-views-before-further-runtime-expansion.md",
+      "section": "wiki/adr",
+      "sha256": "0b914668b7b394ae5dc1aaf373342b8c0c7481c56c40e4f8e6c7cf0fe0ffa5dd",
+      "bytes": 1431,
+      "title": null,
+      "canonical_object": "wiki-readable-views",
+      "artifact_type": "adr",
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0026-retire-draft-skills-as-runtime-surface.md",
+      "section": "wiki/adr",
+      "sha256": "40a0c353d4d976009c4babf6ea7ef2ebb159d090a5f4e8af30bb4c4710261f5a",
+      "bytes": 1227,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0027-repo-phase0-before-repo-agents-migration.md",
+      "section": "wiki/adr",
+      "sha256": "0af05701bc0b6b75de971754637db537864db2a943b2d97d3ade1878f5222636",
+      "bytes": 2471,
+      "title": null,
+      "canonical_object": "repo-agents-governance-phase0",
+      "artifact_type": "adr",
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md",
+      "section": "wiki/adr",
+      "sha256": "176533e562c5634db1116ee1805121b2ed85b7d1468a353ad3a779424dbd54a9",
+      "bytes": 3853,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md",
+      "section": "wiki/adr",
+      "sha256": "1cc690cebf62c54092e48963da6d80a4cddf8d265f707b447f55c6cd18c4ca03",
+      "bytes": 4523,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0030-no-repo-local-commit-hook-default.md",
+      "section": "wiki/adr",
+      "sha256": "f47474af2135570050dab72ece82cc4193cba6b63cf89bc34b0dd1f808e95c60",
+      "bytes": 1579,
+      "title": null,
+      "canonical_object": "no-repo-local-commit-hook-default",
+      "artifact_type": "adr",
+      "status": null
+    },
+    {
+      "path": "wiki/adr/0031-root-capability-extraction-boundary.md",
+      "section": "wiki/adr",
+      "sha256": "5ef14d8354654362b9351c8030628c8879832cf49eac850cf8baa20adcbec4b2",
+      "bytes": 2317,
+      "title": null,
+      "canonical_object": "root-capability-extraction",
+      "artifact_type": "adr",
+      "status": null
+    },
+    {
+      "path": "wiki/adr/index.md",
+      "section": "wiki/adr",
+      "sha256": "99bd014634ba1e4ba11fd22e401393ef5645ce40afc6e30acf4e2022fe144900",
+      "bytes": 4318,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ai-chat-workflow-installer.md",
+      "section": "wiki/root",
+      "sha256": "45b12cb08f11f955f6daa5589258c1e4c07fb796df156b1e0a90c3f16ade6e09",
+      "bytes": 6360,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ai-workflow.md",
+      "section": "wiki/root",
+      "sha256": "5c3047ac296d47a3f9dad05e4e1791f6403515dc582da0a18b40a8b5baddb19f",
+      "bytes": 3202,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/domains/account-clearing.md",
+      "section": "wiki/domains",
+      "sha256": "f6e40c4fc333acfe051fa445ec533af6a414b337db7c2dc5c1d613d4c4b6e1b9",
+      "bytes": 971,
+      "title": "Account and Clearing",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/domains/index.md",
+      "section": "wiki/domains",
+      "sha256": "81313561f91f2723d895140c8f75c08f97d5d86c194cb27efec263999874b0a4",
+      "bytes": 387,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/examples/explore-trace-example.md",
+      "section": "wiki/examples",
+      "sha256": "8c79822a86c499ce2adcb100be35c75e917fe726a63c54f2885d565a4952d1f5",
+      "bytes": 728,
+      "title": "Explore Trace Example",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "sample"
+    },
+    {
+      "path": "wiki/examples/github-analysis-example.md",
+      "section": "wiki/examples",
+      "sha256": "cdcc75e035f137413a2c338258a9238861370c06469fc22a2de1e8dcc2e1946c",
+      "bytes": 789,
+      "title": "GitHub Analysis Example",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "sample"
+    },
+    {
+      "path": "wiki/examples/index.md",
+      "section": "wiki/examples",
+      "sha256": "7cc5188a7ede0c41445c86157710fcce1d7a6dcbc309f7f9b30f90af69b62be1",
+      "bytes": 433,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/examples/learning-note-example.md",
+      "section": "wiki/examples",
+      "sha256": "bca2244196ad034dd3b1d1e0f6de224b705f92692d2ddb9ab69d151c92f3f744",
+      "bytes": 733,
+      "title": "Learning Note Example",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "sample"
+    },
+    {
+      "path": "wiki/examples/meeting-note-example.md",
+      "section": "wiki/examples",
+      "sha256": "4b1cae0032b1b76e4bc7217eaeb080970e450c8f6334673b0cd7728d84b1f9ab",
+      "bytes": 1068,
+      "title": "Meeting Note Example",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "sample"
+    },
+    {
+      "path": "wiki/examples/project-weekly-example.md",
+      "section": "wiki/examples",
+      "sha256": "f952109f9eddbbee46843f18186814cc91c8da3f5862f1d672041bb2eae5d9f7",
+      "bytes": 750,
+      "title": "Project Weekly Example",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "sample"
+    },
+    {
+      "path": "wiki/examples/weixin-summary-example.md",
+      "section": "wiki/examples",
+      "sha256": "7d9eb900c0a41e8693a374d7dfb1e4fbfe07940cca9e3b5631d3845ec617fd3e",
+      "bytes": 678,
+      "title": "Weixin Summary Example",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "sample"
+    },
+    {
+      "path": "wiki/inbox-intake.md",
+      "section": "wiki/root",
+      "sha256": "355f07477d829b7310c8747b4b7556488856ab88fd887e647132eceda8f7cb9b",
+      "bytes": 4272,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/index.md",
+      "section": "wiki/root",
+      "sha256": "6377633e1bfb20e1925210e58f7099e7cc3576975377e5f524731f5155815afa",
+      "bytes": 3731,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/language-policy.md",
+      "section": "wiki/root",
+      "sha256": "29040c279484dfc77acc5d130463e03615b9e8e5122d7969963121138334006f",
+      "bytes": 2968,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md",
+      "section": "wiki/ops",
+      "sha256": "ffed5a955d6a49d80bdeca1bfa98066730dd577804ef04abb9fb56c8b9e3558a",
+      "bytes": 2625,
+      "title": "20260415100517 转写 yan的快速会议 纪要文本 1",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md",
+      "section": "wiki/ops",
+      "sha256": "152f23e1e1c5b9b0ffb6e9670fbed2cd60d8f5fe5041620d55585a3fd44e5f50",
+      "bytes": 2442,
+      "title": "20260415100517 转写 yan的快速会议 逐字稿文本 1",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/account-knowledge-base-structure-explore.md",
+      "section": "wiki/ops",
+      "sha256": "17f5e04f50560266b4cdc53eec9405818779cc950c3e5209bb0de36824fa5224",
+      "bytes": 13938,
+      "title": "account knowledge base structure explore",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/account-knowledge-base-workbench.md",
+      "section": "wiki/ops",
+      "sha256": "2ef9a6de57ad6242c4777b88303ce8c134f33f0eeeac3c638ad252a9b3351f66",
+      "bytes": 12537,
+      "title": "account-knowledge-base / team-knowledge-path",
+      "canonical_object": "account-knowledge-base",
+      "artifact_type": "ops-overview",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md",
+      "section": "wiki/ops",
+      "sha256": "7640a5dcb1a5594885e60d876f5d282e9783214522604910d026a73c4497f7da",
+      "bytes": 2129,
+      "title": "Agent 治理 gate 缺口探索 2026-04-18",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md",
+      "section": "wiki/ops",
+      "sha256": "f1e366d92659905f5c205b8b233912e1fba59381586de7695108e6261c02c47a",
+      "bytes": 3888,
+      "title": "Agent 治理 gate 缺口复盘 2026-04-18",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agent-harness-article-learning-intake.md",
+      "section": "wiki/ops",
+      "sha256": "a1b3a14ce873710fb05014268d0d30d27ed032765ee7fc5c70f7acc4d158def9",
+      "bytes": 4612,
+      "title": "agent-harness-article-learning / intake",
+      "canonical_object": "agent-harness-article-learning",
+      "artifact_type": "intake",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agent-harness-article-learning.md",
+      "section": "wiki/ops",
+      "sha256": "a1a8ff2d84ba73f1794db7f3f365a277292f2f658c4ddbe8f59f4ce91e251bee",
+      "bytes": 44437,
+      "title": "agent-harness-article-learning / reading-notes",
+      "canonical_object": "agent-harness-article-learning",
+      "artifact_type": "reading-notes",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-artifact-grouping.md",
+      "section": "wiki/ops",
+      "sha256": "cc55ae3b072dc1f0130fff2a294f5b59b27ea043bf8cbe14fd08ed99ede0dde8",
+      "bytes": 6365,
+      "title": "wiki-readable-views / artifact-grouping-view",
+      "canonical_object": "wiki-readable-views",
+      "artifact_type": "artifact-grouping-view",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-context-injection.md",
+      "section": "wiki/ops",
+      "sha256": "89cc8c7e02b26ec2172c3a2688052f46d7db89850982f90b58cf51bcb95d1751",
+      "bytes": 3638,
+      "title": null,
+      "canonical_object": "wiki-context-injection",
+      "artifact_type": "method",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-frontmatter.md",
+      "section": "wiki/ops",
+      "sha256": "0a252286fe994e052184193f43e14203e9081b169d6d04ec7867bf6197ecf5f8",
+      "bytes": 2698,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-graph-extraction.md",
+      "section": "wiki/ops",
+      "sha256": "614b1970e50db9d2231321a98e70510b97c84e02fc6c31d421721e9cce462cab",
+      "bytes": 1991,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-naming-model.md",
+      "section": "wiki/ops",
+      "sha256": "5f58c0265a9ed23998c082a52ee6b9b3f8a562b38caecbe1e159167b084d19fd",
+      "bytes": 3193,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-relation-analysis.md",
+      "section": "wiki/ops",
+      "sha256": "bedb027c41b29d52e16b63f47c3d1b1a28faf5d87da9c51083b61f450e112017",
+      "bytes": 2942,
+      "title": null,
+      "canonical_object": "wiki-relation-analysis",
+      "artifact_type": "method",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-relation-reading-view.md",
+      "section": "wiki/ops",
+      "sha256": "318b23280aeae90e5892a1217d3a35001ee3340fba7855409da214c7df6b050f",
+      "bytes": 4429,
+      "title": "wiki-readable-views / relation-reading-view",
+      "canonical_object": "wiki-readable-views",
+      "artifact_type": "relation-reading-view",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-runtime-auto-routing.md",
+      "section": "wiki/ops",
+      "sha256": "422ab9e09033247f21dd800217eded836c673bf44a5a88e4951471e0f74cd336",
+      "bytes": 3440,
+      "title": null,
+      "canonical_object": "wiki-runtime-auto-routing",
+      "artifact_type": "method",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-runtime-context-source-integration.md",
+      "section": "wiki/ops",
+      "sha256": "a2027f25cde39c5cbb535781da95eb5456c59ac6cae37a3eee27eff73064cd3e",
+      "bytes": 3620,
+      "title": null,
+      "canonical_object": "wiki-runtime-context-source-integration",
+      "artifact_type": "method",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-runtime-context.md",
+      "section": "wiki/ops",
+      "sha256": "6b7269d964d2dc79b632b0bd306206e36546b09e911656b24086169e9ee693a5",
+      "bytes": 2739,
+      "title": null,
+      "canonical_object": "wiki-runtime-context",
+      "artifact_type": "method",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-self-directed-execution.md",
+      "section": "wiki/ops",
+      "sha256": "e2d0cb1118fef7f4bd1115ff0acfc5f159f2b3904cc5626ddb0c1bb82cb41967",
+      "bytes": 3514,
+      "title": null,
+      "canonical_object": "wiki-self-directed-execution",
+      "artifact_type": "method",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-semantic-scoring.md",
+      "section": "wiki/ops",
+      "sha256": "085f3a0481169864d498dd2bc0b865eb0b952f4b722390e0efb919228e83c6bb",
+      "bytes": 2945,
+      "title": null,
+      "canonical_object": "wiki-semantic-scoring",
+      "artifact_type": "method",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agent-readable-wiki-utilization-layer.md",
+      "section": "wiki/ops",
+      "sha256": "9773449724134c672c0e22ec476603636cbfe77a38c4a4c286651515bf3a5ebb",
+      "bytes": 2882,
+      "title": null,
+      "canonical_object": "wiki-utilization-layer",
+      "artifact_type": "method",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agents-governance-281-compression-retro-2026-05-06.md",
+      "section": "wiki/ops",
+      "sha256": "a1aad08260b0d0c705f7e2509377cdbf062a577fc36cf6884f908103a79db8df",
+      "bytes": 7603,
+      "title": "agents-governance 281 行压缩 / retro",
+      "canonical_object": "agents-governance-drift",
+      "artifact_type": "retro",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agents-governance-drift-distill-2026-04-21.md",
+      "section": "wiki/ops",
+      "sha256": "40f1ae1d2c6e7b100521256e209ab5f139abc5b0b90149d0ac17c9252912a55b",
+      "bytes": 30521,
+      "title": "AGENTS.md 治理漂移二次蒸馏 2026-04-21",
+      "canonical_object": "agents-governance-drift",
+      "artifact_type": "distill",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agents-governance-drift-distill-calibration-retro.md",
+      "section": "wiki/ops",
+      "sha256": "1a7c74b72913d1d67ff6215e8e3bbcd6477bc2daa7e1bf74461e8a87f1a311a9",
+      "bytes": 5442,
+      "title": "agents-governance-drift-distill-calibration / retro",
+      "canonical_object": "agents-governance-drift-distill-calibration",
+      "artifact_type": "retro",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md",
+      "section": "wiki/ops",
+      "sha256": "f82db9c3014063eacb13fedec858a7c80e41b0cf662232817ec6673c3e96d6d4",
+      "bytes": 2409,
+      "title": "agents-governance-drift-distill-calibration / replay-validation",
+      "canonical_object": "agents-governance-drift-distill-calibration",
+      "artifact_type": "replay-validation",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/agents-governance-drift-explore.md",
+      "section": "wiki/ops",
+      "sha256": "b2896c4387bd5064588247f48e6152e55d06fe297f9da2e3f582bf9d7071cc6e",
+      "bytes": 7924,
+      "title": "agents-governance-drift / explore",
+      "canonical_object": "agents-governance-drift",
+      "artifact_type": "explore",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agents-governance-drift-playbook-2026-04-21.md",
+      "section": "wiki/ops",
+      "sha256": "07eff7d1e99f5a99eb5a173270e1d5b814223a5ece2c28637e119138a034379d",
+      "bytes": 7372,
+      "title": "AGENTS.md 治理漂移候选实施 playbook 2026-04-21",
+      "canonical_object": "agents-governance-drift",
+      "artifact_type": "playbook",
+      "status": "candidate"
+    },
+    {
+      "path": "wiki/ops/agents-governance-drift-retro.md",
+      "section": "wiki/ops",
+      "sha256": "c210d8773c363c1a02a0fa4fdf58634714b50e338ab2785c6026aec5a021b42b",
+      "bytes": 10225,
+      "title": "AGENTS.md 治理漂移复盘 2026-04-21",
+      "canonical_object": "agents-governance-drift",
+      "artifact_type": "retro",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/agents-governance-remediation-explore-2026-04-21.md",
+      "section": "wiki/ops",
+      "sha256": "7e7ad9d7ccd967cbe17b26615b29b3c8c5794c1d9fa7caafcba0a4c7d4da3f31",
+      "bytes": 7396,
+      "title": "AGENTS.md 治理漂移整改方向探索 2026-04-21",
+      "canonical_object": "agents-governance-drift",
+      "artifact_type": "explore",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md",
+      "section": "wiki/ops",
+      "sha256": "27c9925fb2f044b6fb09f54c717d36f1a2b7d941563aab9408c624ff43b28665",
+      "bytes": 2498,
+      "title": "AI Chat 一键安装 Skill 探索",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/behavior-asset-governance-design-trace.md",
+      "section": "wiki/ops",
+      "sha256": "2f1f42d3222da6a073b064bd7efb633a95826dd3c665deda79c8f67ab6950c15",
+      "bytes": 41249,
+      "title": "behavior-asset-governance / design-trace",
+      "canonical_object": "behavior-asset-governance",
+      "artifact_type": "design-trace",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/behavior-asset-governance-zh.md",
+      "section": "wiki/ops",
+      "sha256": "aa31ab90deb501bcfe198cd669d5a5d5576fd704c96086466a7a4d044b2a5ff1",
+      "bytes": 11243,
+      "title": "行为资产治理 / 中文摘要",
+      "canonical_object": "behavior-asset-governance",
+      "artifact_type": "summary",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/behavior-replay-gate.md",
+      "section": "wiki/ops",
+      "sha256": "cbeae425cc29327660e836055577d1bafa639288325c3defd8639fc0e0d972b9",
+      "bytes": 2927,
+      "title": "behavior-replay-gate / method",
+      "canonical_object": "behavior-replay-gate",
+      "artifact_type": "method",
+      "status": "accepted"
+    },
+    {
+      "path": "wiki/ops/check-to-wiki-routing-explore.md",
+      "section": "wiki/ops",
+      "sha256": "7efcbc237eb097e62e9d9b69e7fe0a21efb012f290d393ec916ed89b010bfdd7",
+      "bytes": 2101,
+      "title": "check-to-wiki-routing / intake",
+      "canonical_object": "check-to-wiki-routing",
+      "artifact_type": "intake",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md",
+      "section": "wiki/ops",
+      "sha256": "2a9270f1c1bd055d00fd9fae44b6633673a09f9e5ffb9d6498597f47ee091090",
+      "bytes": 26820,
+      "title": "~/.codex/AGENTS.md 全局文件诊断",
+      "canonical_object": "codex-global-agents-md",
+      "artifact_type": "intake",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/codex-handoff-rules.md",
+      "section": "wiki/ops",
+      "sha256": "94c4bb26a6e89fe768d96d49e0e2499989808c1d94c059505ae155ed283b5e19",
+      "bytes": 1285,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/conversation-handoff-mode.md",
+      "section": "wiki/ops",
+      "sha256": "a8cf51bd2104d9c99c6324f761c7fe5b08f47b1b02139cd8fa07232882e3cdef",
+      "bytes": 2730,
+      "title": null,
+      "canonical_object": "conversation-handoff",
+      "artifact_type": "method",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/disagreement-management-method.md",
+      "section": "wiki/ops",
+      "sha256": "19efe28ac1d2dbb0d22c59e6e172be98c456a920dfa81961f78c4e3b5844b2bf",
+      "bytes": 6078,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/disagreement-management-replay-harness.md",
+      "section": "wiki/ops",
+      "sha256": "c90d22eb6914a114a49a6932cb6fe421e8883f14a8a61103f14d5464162ba380",
+      "bytes": 2051,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/disagreement-management-replay-validation-2026-04-20.md",
+      "section": "wiki/ops",
+      "sha256": "9e08c3e56d055f3a6c99a9edbb52b99927de5c90a363545d0bba3e33534950ce",
+      "bytes": 2468,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/distill-calibration-replay-harness.md",
+      "section": "wiki/ops",
+      "sha256": "d6d7a7d4959718d45d83d766fdcc3e811f020fb1335741231969c0529e03e772",
+      "bytes": 2475,
+      "title": "distill-calibration / replay-harness",
+      "canonical_object": "agents-governance-drift-distill-calibration",
+      "artifact_type": "replay-harness",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/evolver-self-evolving-harness-reading-notes.md",
+      "section": "wiki/ops",
+      "sha256": "118daf1611d822692dfcae2d42e694abb85fb79884ee0426746f9d4ae57017d3",
+      "bytes": 10413,
+      "title": "evolver-self-evolving-harness / reading-notes",
+      "canonical_object": "evolver-self-evolving-harness",
+      "artifact_type": "reading-notes",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md",
+      "section": "wiki/ops",
+      "sha256": "70ae9f48ac118d0740b453c5c8e87c8b817d08655ed9355f695b6334bc7a3d44",
+      "bytes": 2437,
+      "title": "例子驱动留痕运行时验证 2026-04-18",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/example-driven-wiki-capture.md",
+      "section": "wiki/ops",
+      "sha256": "a68935da8f799f8abf2ed29bc73e90278c7b6b066684169f5b9f08d630567974",
+      "bytes": 6726,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md",
+      "section": "wiki/ops",
+      "sha256": "a966ec79d7764c5e6ea856be488da2e8f85be41d82fd83fade258188bf43cd2c",
+      "bytes": 2402,
+      "title": "Feishu image client freeze explore",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/gstack-lark-learning-retro-2026-04-18.md",
+      "section": "wiki/ops",
+      "sha256": "efe983d3af0408957a28a2af4e0fc089b05efe81e8c17cc3d260ee5dd42cebec",
+      "bytes": 2914,
+      "title": "gstack 与 larksuite CLI 学习复盘 2026-04-18",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/harness-engineering-overview-reading-notes.md",
+      "section": "wiki/ops",
+      "sha256": "f980c0731a9181ef5ef35f3387ed6874e2a8fce5034eb12a0fdeb66cad3a6278",
+      "bytes": 10124,
+      "title": "harness-engineering-overview / reading-notes",
+      "canonical_object": "harness-engineering-overview",
+      "artifact_type": "reading-notes",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md",
+      "section": "wiki/ops",
+      "sha256": "ca7210c3d74ca977ec0bd49bd56cdf030c9216e0469290a7e8a4c5115e4bd40e",
+      "bytes": 1668,
+      "title": "Hermes 自进化缺口探索 2026-04-16",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/index.md",
+      "section": "wiki/ops",
+      "sha256": "a2f7f56a5c3cfe6ff89f2f4a801c7fe6cef52d7878c89fab62233706283b2c99",
+      "bytes": 6309,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/intelligence-native-organization-intake.md",
+      "section": "wiki/ops",
+      "sha256": "f2ffe8afecdadadc1f7f8739a47290b5b435df2b617928370ac5c6833cba2def",
+      "bytes": 14372,
+      "title": "intelligence-native-organization / intake",
+      "canonical_object": "intelligence-native-organization",
+      "artifact_type": "intake",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/karpathy-llm-wiki-reading-notes.md",
+      "section": "wiki/ops",
+      "sha256": "70a2328ca02b2c43d821f2ba9cf6b9269bfda2fbf2a770a2b751201586dc89e6",
+      "bytes": 4764,
+      "title": "karpathy-llm-wiki / reading-notes",
+      "canonical_object": "karpathy-llm-wiki",
+      "artifact_type": "reading-notes",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/karpathy-skills-learning-retro-2026-04-16.md",
+      "section": "wiki/ops",
+      "sha256": "99ce74b83e37b6e2950cdb42ae0b10893efd1c49033625cf4269885ffc740ffb",
+      "bytes": 6605,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/learning-capture-routing.md",
+      "section": "wiki/ops",
+      "sha256": "ee10957f35633688e0d5bca4125cb940ae05fcf845964ba7be58afb6e56b2f68",
+      "bytes": 11184,
+      "title": "learning-capture-routing / intake",
+      "canonical_object": "learning-capture-routing",
+      "artifact_type": "intake",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/learning-source-routing-gap-explore-2026-05-09.md",
+      "section": "wiki/ops",
+      "sha256": "84c73367cca5cd6f613f07af7c9f9f1bc27f13b9ec1a9384ab924b0e87ed9a14",
+      "bytes": 2872,
+      "title": null,
+      "canonical_object": "learning-source-routing-gap",
+      "artifact_type": "explore-trace",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/live-conversation-reanchor-gate-replay-harness.md",
+      "section": "wiki/ops",
+      "sha256": "3a06a8b8a2048788740abae9242a64d91aa5b88e3ff13669cb48a1064e54fa1d",
+      "bytes": 1482,
+      "title": "live-conversation-reanchor-gate / replay-harness",
+      "canonical_object": "live-conversation-reanchor-gate",
+      "artifact_type": "replay-harness",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/live-conversation-reanchor-gate-retro.md",
+      "section": "wiki/ops",
+      "sha256": "2bd16d8310ae6e04dd076077300138a29e341fae5229ddbef6fa37dc1d90a155",
+      "bytes": 2412,
+      "title": "live-conversation-reanchor-gate / retro",
+      "canonical_object": "live-conversation-reanchor-gate",
+      "artifact_type": "retro",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/llm-wiki-core-product-contract.md",
+      "section": "wiki/ops",
+      "sha256": "2eb1bca31691ccd5b85bc90d877470d541b74b84476fe396df3eaf26cba95388",
+      "bytes": 7917,
+      "title": null,
+      "canonical_object": "llm-wiki-core-product-contract",
+      "artifact_type": "product-contract",
+      "status": "draft"
+    },
+    {
+      "path": "wiki/ops/main-thread.md",
+      "section": "wiki/ops",
+      "sha256": "426c9e3e1728dc839ff87fb9dab9555130f4656b5a8e7e3ed0be66484c47ec36",
+      "bytes": 1903,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/nirvana-preview-intake.md",
+      "section": "wiki/ops",
+      "sha256": "8a92f77f8a998240c5bc5f62478aaa523f37fd1bcee9d907791f8cabfa01708c",
+      "bytes": 846,
+      "title": "preview",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/nirvana-weekly-intake-2026-04-13.md",
+      "section": "wiki/ops",
+      "sha256": "051dd521dcfaf05860e2087ce6fde7a684580ae39cf1eb6e76fe7dd94da629e7",
+      "bytes": 4542,
+      "title": "涅槃项目周推进 intake 2026-04-13",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/nirvana-weekly-reminder-2026-04-13.md",
+      "section": "wiki/ops",
+      "sha256": "57981cc9f578cdc8b6881ab925e9a60a7f69814e730031808af5ada134d22557",
+      "bytes": 2454,
+      "title": "涅槃项目本周跟进提醒 2026-04-13",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "open"
+    },
+    {
+      "path": "wiki/ops/nirvana-涅槃产品上架梳理-intake.md",
+      "section": "wiki/ops",
+      "sha256": "2e2dccd66bd366474d7659f988f096b96eaede1dd774971bb5fbce95d4b5d63d",
+      "bytes": 901,
+      "title": "涅槃产品上架梳理",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md",
+      "section": "wiki/ops",
+      "sha256": "47f0993a243d4fc13edbf6aab3ca762c108101421459680324f221bd431ed52d",
+      "bytes": 6871,
+      "title": null,
+      "canonical_object": "obsidian-wiki-reference-gap-review",
+      "artifact_type": "learning-note",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/openspec-explore-trigger-drift-retro.md",
+      "section": "wiki/ops",
+      "sha256": "843ac8d63fa3e6ca13324f1b9cc8378980b16c8e97ae604c0dcfcfbb7d031470",
+      "bytes": 4680,
+      "title": "openspec-explore-trigger-drift / retro",
+      "canonical_object": "openspec-explore-trigger-drift",
+      "artifact_type": "retro",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/product-alignment-drift-explore-2026-05-09.md",
+      "section": "wiki/ops",
+      "sha256": "71a6562c9a029f67d6d23bd84e440202edd581887120c1be48ec8a8ec1d7f3a0",
+      "bytes": 4586,
+      "title": null,
+      "canonical_object": "product-alignment-drift",
+      "artifact_type": "explore-trace",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md",
+      "section": "wiki/ops",
+      "sha256": "cbbb545df1eaa603d6dce8706cfb03469f4e6b2e6c203bef376344345827fab0",
+      "bytes": 2055,
+      "title": null,
+      "canonical_object": "product-capability-and-graph-gap",
+      "artifact_type": "explore-trace",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/project-management-weekly-loop.md",
+      "section": "wiki/ops",
+      "sha256": "fafc90b6dab24b13f20f4327940a9a6bd70b339a0fa66c30461cf3f1c2c9fd6a",
+      "bytes": 2449,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/reference-driven-output-calibration-retro.md",
+      "section": "wiki/ops",
+      "sha256": "008cd1978d67b9adad9ced0e754837a9759f2607207f8df18998733afdb78126",
+      "bytes": 8955,
+      "title": "reference-driven-output-calibration / retro",
+      "canonical_object": "reference-driven-output-calibration",
+      "artifact_type": "retro",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/reminders.md",
+      "section": "wiki/ops",
+      "sha256": "ccae393e62e0a9c3f22e5768366e967470c4f669e86a9448b55ba8b5995ad8c3",
+      "bytes": 2534,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/report-wiki-product-plan-2026-05-09.md",
+      "section": "wiki/ops",
+      "sha256": "a1370e6a9f5e746677027d05e6c378598c04c35fa48f4a8932453dfd36361aae",
+      "bytes": 8095,
+      "title": null,
+      "canonical_object": "report-wiki-product-plan",
+      "artifact_type": "product-plan",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/root-capability-extraction-retro.md",
+      "section": "wiki/ops",
+      "sha256": "60e9e4ee48eb9031b77a1691145f91e9b53b451bbfd40a75036bcfca7c5a16be",
+      "bytes": 3571,
+      "title": "root-capability-extraction / retro",
+      "canonical_object": "root-capability-extraction",
+      "artifact_type": "retro",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/sample-codex-handoff.md",
+      "section": "wiki/ops",
+      "sha256": "93a3e5ede89ce123c210babd046e2a3b434661104c619cd25f704bd8661112f1",
+      "bytes": 1125,
+      "title": "实现 inbox 到 source 草稿生成",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/ops/sample-disagreement-retro.md",
+      "section": "wiki/ops",
+      "sha256": "f761c3a4bf7f3bc42978e5d1e286b0856ebb9e85d5d397031e3d68609c505848",
+      "bytes": 820,
+      "title": "分歧管理 retro 示例",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/ops/sample-explore-trace.md",
+      "section": "wiki/ops",
+      "sha256": "106734a3fee88f8a336bd2f627d675419761b05b5b4ae21135b3246416b9ffa5",
+      "bytes": 1363,
+      "title": "OpenSpec 探索留痕样例",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/sample-focus-thread.md",
+      "section": "wiki/ops",
+      "sha256": "c001918741ede9cdd7ebcdc2c04f42fec4ac80bc168f7e557e87b2b3fbc59f2d",
+      "bytes": 1011,
+      "title": "个人操作系统 MVP",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/sample-handoff-topic.md",
+      "section": "wiki/ops",
+      "sha256": "7c6d7f47e2003ba8266800be32735406b5490636cb8e3726443532eccab1ff6d",
+      "bytes": 2338,
+      "title": "conversation-handoff / sample",
+      "canonical_object": "conversation-handoff",
+      "artifact_type": "sample",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/sample-intake.md",
+      "section": "wiki/ops",
+      "sha256": "9bc1d3bf3d190e0729b43d18aea9222da6670cfa13e37d842d4dd17315109ff3",
+      "bytes": 1030,
+      "title": "研发任务派发想法记录",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/sample-reminder.md",
+      "section": "wiki/ops",
+      "sha256": "c243cfa329a2027a9bb3256870d16843597699d935424fe632f4c6b46529b474",
+      "bytes": 1042,
+      "title": "设计 Codex 任务升级规则",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "open"
+    },
+    {
+      "path": "wiki/ops/scope-drift-retro.md",
+      "section": "wiki/ops",
+      "sha256": "d92d08f17f1f43b3e4352f8f763aa9b5727217be924a8fd6f8e4132bd4738fc6",
+      "bytes": 2299,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md",
+      "section": "wiki/ops",
+      "sha256": "4b9e0b7b27a23e70ecf3a9a9f232bcc85d16acc666553942fa7985d1bdd78f43",
+      "bytes": 4505,
+      "title": null,
+      "canonical_object": "scorecard-calibration-gap",
+      "artifact_type": "explore-trace",
+      "status": null
+    },
+    {
+      "path": "wiki/ops/team-knowledge-base-overview-report-gate-review.md",
+      "section": "wiki/ops",
+      "sha256": "1cae58f867f890f573e874bbbca0d3927eee57401c13479812865cb502308b98",
+      "bytes": 59481,
+      "title": "account-knowledge-base / overview-report-gate-review",
+      "canonical_object": "account-knowledge-base",
+      "artifact_type": "report-gate-review",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/wiki-readable-views-validation-harness.md",
+      "section": "wiki/ops",
+      "sha256": "73bb4bab495fda8f182fafd07cbfb554983905b28d5d5f03e18c64f5efd44350",
+      "bytes": 1465,
+      "title": "wiki-readable-views-validation / replay-harness",
+      "canonical_object": "wiki-readable-views-validation",
+      "artifact_type": "replay-harness",
+      "status": "active"
+    },
+    {
+      "path": "wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md",
+      "section": "wiki/ops",
+      "sha256": "b9fcc6ba747138892996be1c2eef30d782604faa1569ac9c1b683784d0e91f4f",
+      "bytes": 1652,
+      "title": "宝财通分账开通与迁移边界提醒 2026-04-16",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "open"
+    },
+    {
+      "path": "wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md",
+      "section": "wiki/ops",
+      "sha256": "50b06d1ec5773362663ecab01eada8deb4b50787fff296201f0a93c8e180d06b",
+      "bytes": 3621,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md",
+      "section": "wiki/ops",
+      "sha256": "f42faeaad0bc796f959d4bc2457394e0cbcfac750405d15ff1381acd37d0c7b7",
+      "bytes": 2774,
+      "title": "文字转写 呼呼的快速会议 276823523",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/reports/ai-chat-workflow-installer-feishu-share.md",
+      "section": "wiki/reports",
+      "sha256": "17face4ed226f963acd5c91344a17fbc8335433f072bcc7b0baf3fe8e758b685",
+      "bytes": 3220,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/reports/index.md",
+      "section": "wiki/reports",
+      "sha256": "df0afb6dd7d3748d76393a29496464e01f3498f4d8ac480239cfba46e2ddd401",
+      "bytes": 2654,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/reports/management-weekly-ops.md",
+      "section": "wiki/reports",
+      "sha256": "1b7d8a12484385d147c1652514c8b3458ebe4ec1ad796b3b7f2d6acb8047313a",
+      "bytes": 1108,
+      "title": "Management Weekly Operations",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/reports/nirvana-delivery-board.md",
+      "section": "wiki/reports",
+      "sha256": "a4154d354f015efbfe47b6efaed0feb3d2070c20c8e1d9a6dc4796748e4eca9d",
+      "bytes": 11730,
+      "title": "涅槃项目一期交付看板",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/reports/nirvana-feature-tech-alignment.md",
+      "section": "wiki/reports",
+      "sha256": "bbdbcd4f0a4e39d222d6e71f6aea8e174397405832cc0bbd2eeb3e40827a9e62",
+      "bytes": 18043,
+      "title": "涅槃项目功能-技术对齐底表",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/reports/nirvana-handover-account-owner.md",
+      "section": "wiki/reports",
+      "sha256": "7984380cab7c68124c28dd7cc2edfbe51e63bef39ccbe3a93236b085a0026da2",
+      "bytes": 10997,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/reports/nirvana-phase1-leadership-brief.md",
+      "section": "wiki/reports",
+      "sha256": "b125f23f6edeca0e37d6e43541e1f2a5c260eb547599254b1c4d8f687ce08564",
+      "bytes": 4142,
+      "title": "涅槃一期领导汇报简版",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/reports/nirvana-phase1-pm-review.md",
+      "section": "wiki/reports",
+      "sha256": "3417c194169c0df41ff7e92bbb4ada45b6f0c17917609108a32f48ecbb395cba",
+      "bytes": 9462,
+      "title": "涅槃一期直销模式 PM 主稿",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/reports/team-knowledge-base-migration.md",
+      "section": "wiki/reports",
+      "sha256": "8e889e8f438c0df457d1e44db8190150b584c27dbd00e7b164f5e835e21a3250",
+      "bytes": 2595,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/reports/team-knowledge-base-overview.md",
+      "section": "wiki/reports",
+      "sha256": "299eb53310b09db3e14e7348123cb2ea8e19dfb85d1f08a7aef42e0cc07d58e6",
+      "bytes": 10371,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/reports/team-knowledge-base-roadmap.md",
+      "section": "wiki/reports",
+      "sha256": "6cf274ef8acb582566faca486865f9877a35dca409966a218fd6b3bf7cd873f0",
+      "bytes": 2924,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/reports/team-knowledge-base-runtime.md",
+      "section": "wiki/reports",
+      "sha256": "a545e6dc61d0b7264f5dfed50153956430efcfdc9964dc0d01491efbfbcc43ef",
+      "bytes": 8595,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/reports/team-knowledge-base-validation-cases.md",
+      "section": "wiki/reports",
+      "sha256": "5cac3cfaba9a8d5c823bab59326d461c9c33ff44dd09d25cf82fc8a75135cce5",
+      "bytes": 11463,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/role-boundaries.md",
+      "section": "wiki/root",
+      "sha256": "a58ee7b8509d384e4c24b9b6e4a2531b9c7fdd32a08a008078d060ab5e329702",
+      "bytes": 1906,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/sources/20260415100517-转写-yan的快速会议-纪要文本-1.md",
+      "section": "wiki/sources",
+      "sha256": "bbf8eb4aeeb04275ad84621a6041fc70c398a06e0522ef43986649320e6f66a5",
+      "bytes": 6434,
+      "title": "收单分账接口升级与退款逻辑对齐会纪要",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/sources/20260415100517-转写-yan的快速会议-逐字稿文本-1.md",
+      "section": "wiki/sources",
+      "sha256": "56b8d2b2200263406db823f423f7a0992289a4e5a376c581b7f1255e8e534b45",
+      "bytes": 3395,
+      "title": "20260415100517 转写 yan的快速会议 逐字稿文本 1",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/feishu-weekly-sync-sample.md",
+      "section": "wiki/sources",
+      "sha256": "8f1a083ca2ef2f893faf07c580fd307429d569f699691f5a5f5578f63f238b2b",
+      "bytes": 1251,
+      "title": "Feishu Weekly Sync Sample",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md",
+      "section": "wiki/sources",
+      "sha256": "f0cb217730701032dc08662da8eaa8a4354969db76768a6a527a9831157ee888",
+      "bytes": 4760,
+      "title": "Account Harness 总览 Feishu Wiki Source",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/sources/index.md",
+      "section": "wiki/sources",
+      "sha256": "fcb9a5612d6261b87519db471af37f0579d80d6d527c590a653580cbf5d5ce21",
+      "bytes": 1362,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/sources/nirvana-weekly-2026-04-13.md",
+      "section": "wiki/sources",
+      "sha256": "57b35dc16d12c28c22ba497d4452a5aee462059f48e750d3908f507d251efedb",
+      "bytes": 3195,
+      "title": "涅槃项目周报 2026-04-13",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/sources/nirvana-weekly-view-2026-04-13.md",
+      "section": "wiki/sources",
+      "sha256": "a550e601c20914dd313b3698c1a1082f73f1fe1ac47ef662a65b8ebd6ab8c7cf",
+      "bytes": 1854,
+      "title": "涅槃项目周视图 2026-04-13",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/sources/nirvana-涅槃产品上架梳理.md",
+      "section": "wiki/sources",
+      "sha256": "cb7a0328f0c8447123fd01f418fe0c1a2544fcdb3208a1b0bea141b6357bf4d2",
+      "bytes": 886,
+      "title": "涅槃产品上架梳理",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/文字转写-呼呼的快速会议-276823523.md",
+      "section": "wiki/sources",
+      "sha256": "fad713aa37d00d9f8b6e12075cb593a3479885347718344577d8549a98a22760",
+      "bytes": 7884,
+      "title": "新宝财通分账开通与迁移路径对齐会纪要",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/team-lore-candidates.md",
+      "section": "wiki/root",
+      "sha256": "998ce10f60e425a2f91a24b1dc10c4cf4a1cf286e41e2ea85953a20db6e7c8d9",
+      "bytes": 1503,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/templates/codex-handoff-template.md",
+      "section": "wiki/templates",
+      "sha256": "41e065c6d4f5c9ebce399fe04ce93404a0e9bd39c3c70030466acef2c51154b4",
+      "bytes": 746,
+      "title": "<Codex Handoff Title>",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/templates/decision-checkpoint-template.md",
+      "section": "wiki/templates",
+      "sha256": "0648dae3713440c20900e4d1a9249280659c8d9e505e354bc5a35e04162ece1c",
+      "bytes": 163,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/templates/domain-template.md",
+      "section": "wiki/templates",
+      "sha256": "c645ab4bef01c93eda74e75242f4a8f06896e558a168742a44da70f345ecf6fa",
+      "bytes": 835,
+      "title": "<Domain Title>",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/templates/focus-thread-template.md",
+      "section": "wiki/templates",
+      "sha256": "ad7bb5fa4cf915699a363ed1b95b728d3ea452ab8d7ff6dbbad5150ff7259d54",
+      "bytes": 668,
+      "title": "<Focus Thread Title>",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/templates/intake-record-template.md",
+      "section": "wiki/templates",
+      "sha256": "cd1bbf186a4bad9aeb4022ac77973f778856796a724b570fd4166b1e7b091243",
+      "bytes": 811,
+      "title": "<Intake Title>",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/templates/meeting-note-source-template.md",
+      "section": "wiki/templates",
+      "sha256": "c1fa319e08e7b489cbd7ba0b3fb240c82b70b09aad7289078abb7c4cf1c34093",
+      "bytes": 1341,
+      "title": "<会议主题> <YYYY-MM-DD>",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/templates/reminder-item-template.md",
+      "section": "wiki/templates",
+      "sha256": "0196fafedec405c2481eaa15c880b68c2b9700453d35bf20bdc550d60c94e216",
+      "bytes": 717,
+      "title": "<Reminder Title>",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "open"
+    },
+    {
+      "path": "wiki/templates/report-template.md",
+      "section": "wiki/templates",
+      "sha256": "8390b7426df7a7385e33bb7b3f5308cbf7384f9eeabccf6f0dedbaa17838a40b",
+      "bytes": 855,
+      "title": "<Report Title>",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/templates/source-template.md",
+      "section": "wiki/templates",
+      "sha256": "40fffe7cddbffdc959c81d3620618f6e6df8e8b81b041f9f12c679093391a9c9",
+      "bytes": 1052,
+      "title": "<Source Title>",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/templates/timeline-template.md",
+      "section": "wiki/templates",
+      "sha256": "717999c73f19bd522c342e829b3629eea349496411161f6db51a3fb9923ecf8e",
+      "bytes": 695,
+      "title": "<Period Title>",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/timeline/2026-04-20-agent-readable-wiki-evolution.md",
+      "section": "wiki/timeline",
+      "sha256": "9e5622b4b134cc12cd344681c650e057330674782ef3e2ee9656ffcc38cf72e8",
+      "bytes": 2919,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    },
+    {
+      "path": "wiki/timeline/2026-q2.md",
+      "section": "wiki/timeline",
+      "sha256": "d5e12a64ffc51176569ae1fd0873dd808d317ed81cabfe786d7d9c5c5a7f25c5",
+      "bytes": 913,
+      "title": "2026 Q2",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
+      "path": "wiki/timeline/index.md",
+      "section": "wiki/timeline",
+      "sha256": "0ac0fde570589ad84ae4336e1b96582614f8913d34f31ceda48f562619733fb6",
+      "bytes": 561,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null
+    }
+  ],
+  "source_records": [
+    {
+      "path": "wiki/sources/20260415100517-转写-yan的快速会议-纪要文本-1.md",
+      "source_path": "inbox/20260415100517-转写_yan的快速会议-纪要文本-1.docx",
+      "source_type": "meeting-note",
+      "domain": "unclassified",
+      "status": "active"
+    },
+    {
+      "path": "wiki/sources/20260415100517-转写-yan的快速会议-逐字稿文本-1.md",
+      "source_path": "inbox/20260415100517-转写_yan的快速会议-逐字稿文本-1.docx",
+      "source_type": "meeting-note",
+      "domain": "unclassified",
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/feishu-weekly-sync-sample.md",
+      "source_path": "inbox/feishu-weekly-sync-sample.md",
+      "source_type": "note",
+      "domain": "account-clearing",
+      "status": "active"
+    },
+    {
+      "path": "wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md",
+      "source_path": "inbox/https://my.feishu.cn/wiki/FYDcwFGaOi6A1Bkg9rfcIp3DnCS?from=from_copylink",
+      "source_type": "feishu-wiki-link",
+      "domain": "workflow-example",
+      "status": "active"
+    },
+    {
+      "path": "wiki/sources/nirvana-weekly-2026-04-13.md",
+      "source_path": "inbox/nirvana/涅槃焕新周报.xlsx",
+      "source_type": "report",
+      "domain": "nirvana-project",
+      "status": "active"
+    },
+    {
+      "path": "wiki/sources/nirvana-weekly-view-2026-04-13.md",
+      "source_path": "inbox/nirvana/preview .html",
+      "source_type": "attachment",
+      "domain": "nirvana-project",
+      "status": "active"
+    },
+    {
+      "path": "wiki/sources/nirvana-涅槃产品上架梳理.md",
+      "source_path": "inbox/nirvana/涅槃产品上架梳理.xlsx",
+      "source_type": "meeting-note",
+      "domain": "nirvana",
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/文字转写-呼呼的快速会议-276823523.md",
+      "source_path": "inbox/文字转写_呼呼的快速会议_276823523.txt",
+      "source_type": "meeting-note",
+      "domain": "unclassified",
+      "status": "draft"
+    }
+  ],
+  "inbox_files": [
+    {
+      "path": "inbox/20260415100517-转写_yan的快速会议-纪要文本-1.docx",
+      "sha256": "59ed0eb23b03cdc34e8db55f003121b4d98f8e89900240248237252145489921",
+      "bytes": 25155,
+      "represented_by_source": true
+    },
+    {
+      "path": "inbox/20260415100517-转写_yan的快速会议-逐字稿文本-1.docx",
+      "sha256": "8f9abbcb95fab87f13985cedcca2dead9ba1508b67de1413813ef60d8aec1830",
+      "bytes": 66780,
+      "represented_by_source": true
+    },
+    {
+      "path": "inbox/README.md",
+      "sha256": "ad35ab54def97e7cd94b95976cea27da20d21d77b85cbcbdf8db22e22712ec56",
+      "bytes": 1788,
+      "represented_by_source": false
+    },
+    {
+      "path": "inbox/nirvana/preview .html",
+      "sha256": "069e4b96b719362b254b7d0d4d15949b25de24120c3f3c7e93fa86d0719ca24e",
+      "bytes": 22105,
+      "represented_by_source": true
+    },
+    {
+      "path": "inbox/nirvana/优化后图示.png",
+      "sha256": "d3f2c9208c1354ed3fc1255f4167e2d28b3387214e313ca1fa8cfe4785f98c88",
+      "bytes": 79023,
+      "represented_by_source": false
+    },
+    {
+      "path": "inbox/nirvana/协议支付涅槃需求文档.docx",
+      "sha256": "78e619efb1b702af5b465cf1b9e78af07e21e60c69b316d6e4508d91bad76880",
+      "bytes": 14478225,
+      "represented_by_source": false
+    },
+    {
+      "path": "inbox/nirvana/最终方案.png",
+      "sha256": "1d87cd30dd572a05813fd1284402d0a7854042d7ce3c3c542683b76beb54b72f",
+      "bytes": 146905,
+      "represented_by_source": false
+    },
+    {
+      "path": "inbox/nirvana/涅槃产品上架梳理.xlsx",
+      "sha256": "d683d650cf88e178db08930bda4fd54d949c1bf22705f8961a55f076fc5e676b",
+      "bytes": 517549,
+      "represented_by_source": true
+    },
+    {
+      "path": "inbox/nirvana/涅槃焕新周报.xlsx",
+      "sha256": "3f6028a5d8f24a639782f85c3c5eeea622e091a51b26e3fc7d14356b2583d63c",
+      "bytes": 39265,
+      "represented_by_source": true
+    },
+    {
+      "path": "inbox/nirvana/清算的内容.png",
+      "sha256": "519b4ed12225ff40cba4e0f16e05ee2f9c4986ad98205e326c919290f7b60400",
+      "bytes": 39868,
+      "represented_by_source": false
+    },
+    {
+      "path": "inbox/nirvana/现状.png",
+      "sha256": "9d99c7501780e73601678241de95efa71aa5b9e70e69cca9e5ef0410e3370ed7",
+      "bytes": 418859,
+      "represented_by_source": false
+    },
+    {
+      "path": "inbox/文字转写_呼呼的快速会议_276823523.txt",
+      "sha256": "aa72289938492adc3b8389f229f82294795434a5668ea0097e3de5d6ec138dc8",
+      "bytes": 46021,
+      "represented_by_source": true
+    }
+  ],
+  "pending_inbox_files": [
+    "inbox/README.md",
+    "inbox/nirvana/优化后图示.png",
+    "inbox/nirvana/协议支付涅槃需求文档.docx",
+    "inbox/nirvana/最终方案.png",
+    "inbox/nirvana/清算的内容.png",
+    "inbox/nirvana/现状.png"
+  ],
+  "openspec_changes": [
+    {
+      "change_id": "add-public-report-quality-gate",
+      "state": "complete",
+      "done_tasks": 15,
+      "open_tasks": 0,
+      "total_tasks": 15,
+      "tasks_path": "openspec/changes/add-public-report-quality-gate/tasks.md"
+    },
+    {
+      "change_id": "add-source-manifest-and-wiki-status",
+      "state": "complete",
+      "done_tasks": 14,
+      "open_tasks": 0,
+      "total_tasks": 14,
+      "tasks_path": "openspec/changes/add-source-manifest-and-wiki-status/tasks.md"
+    },
+    {
+      "change_id": "connect-learning-capture-to-output-gates",
+      "state": "complete",
+      "done_tasks": 10,
+      "open_tasks": 0,
+      "total_tasks": 10,
+      "tasks_path": "openspec/changes/connect-learning-capture-to-output-gates/tasks.md"
+    },
+    {
+      "change_id": "constrain-feishu-image-delivery",
+      "state": "complete",
+      "done_tasks": 13,
+      "open_tasks": 0,
+      "total_tasks": 13,
+      "tasks_path": "openspec/changes/constrain-feishu-image-delivery/tasks.md"
+    },
+    {
+      "change_id": "define-llm-wiki-core-contract",
+      "state": "complete",
+      "done_tasks": 13,
+      "open_tasks": 0,
+      "total_tasks": 13,
+      "tasks_path": "openspec/changes/define-llm-wiki-core-contract/tasks.md"
+    },
+    {
+      "change_id": "repair-account-wiki-public-drafts",
+      "state": "complete",
+      "done_tasks": 20,
+      "open_tasks": 0,
+      "total_tasks": 20,
+      "tasks_path": "openspec/changes/repair-account-wiki-public-drafts/tasks.md"
+    },
+    {
+      "change_id": "route-complex-public-reports-to-reviewer",
+      "state": "complete",
+      "done_tasks": 11,
+      "open_tasks": 0,
+      "total_tasks": 11,
+      "tasks_path": "openspec/changes/route-complex-public-reports-to-reviewer/tasks.md"
+    }
+  ]
+}
