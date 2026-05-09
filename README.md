@@ -20,6 +20,28 @@ This repository is the long-lived wiki layer for report assets. It is meant to a
 4. Keep AI-generated summaries or draft text clearly labeled for review.
 5. Use OpenSpec changes for large structural or workflow updates.
 
+## Codex Plugin
+
+This repo also ships a repo-local Codex plugin for the LLM Wiki status surface.
+From the repository root, add the local marketplace:
+
+```bash
+codex plugin marketplace add .
+```
+
+Restart or reload Codex after adding the marketplace. Then use:
+
+```text
+/wiki:status
+```
+
+The command contract lives in `commands/wiki-status.md`. It refreshes
+`wiki/status/manifest.json` and `wiki/status/wiki-status.md` by running:
+
+```bash
+python3 scripts/build_wiki_status.py
+```
+
 ## Knowledge Views
 
 The wiki is organized around four first-level views:

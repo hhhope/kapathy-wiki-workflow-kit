@@ -1,0 +1,20 @@
+{
+  "name": "report-wiki-portfolio",
+  "interface": {
+    "displayName": "Report Wiki Portfolio"
+  },
+  "plugins": [
+    {
+      "name": "report-wiki-portfolio",
+      "source": {
+        "source": "local",
+        "path": "."
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
