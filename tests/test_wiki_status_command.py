@@ -3,16 +3,16 @@ from pathlib import Path
 
 
 class WikiStatusCommandTest(unittest.TestCase):
-    def test_codex_plugin_slash_command_refreshes_wiki_status(self) -> None:
+    def test_codex_skill_refreshes_wiki_status(self) -> None:
         plugin_root = Path("plugins/report-wiki-portfolio")
-        plugin_manifest_path = plugin_root / ".codex-plugin/plugin.json"
+        skill_path = plugin_root / "skills/wiki-status/SKILL.md"
         command_path = plugin_root / "commands/wiki-status.md"
 
-        self.assertTrue(plugin_manifest_path.exists())
+        self.assertTrue(skill_path.exists())
         self.assertTrue(command_path.exists())
-        manifest = plugin_manifest_path.read_text(encoding="utf-8")
-        self.assertIn('"name": "report-wiki-portfolio"', manifest)
-        self.assertIn('"displayName": "Report Wiki Portfolio"', manifest)
+        skill = skill_path.read_text(encoding="utf-8")
+        self.assertIn("name: wiki-status", skill)
+        self.assertIn("plugins/report-wiki-portfolio/commands/wiki-status.md", skill)
 
         content = command_path.read_text(encoding="utf-8")
         self.assertIn("/wiki:status", content)

@@ -30,12 +30,12 @@ class CodexPluginMarketplaceTest(unittest.TestCase):
         self.assertEqual("ON_INSTALL", plugin["policy"]["authentication"])
         self.assertEqual("Productivity", plugin["category"])
 
-    def test_readme_documents_codex_plugin_install_and_usage(self) -> None:
+    def test_readme_documents_wiki_skill_usage(self) -> None:
         readme = Path("README.md").read_text(encoding="utf-8")
 
-        self.assertIn("codex plugin marketplace add .", readme)
-        self.assertIn("/wiki:status", readme)
-        self.assertIn("plugins/report-wiki-portfolio/commands/wiki-status.md", readme)
+        self.assertIn("$wiki-status", readme)
+        self.assertIn("$wiki-query", readme)
+        self.assertIn("plugins/report-wiki-portfolio/skills/wiki-status/SKILL.md", readme)
 
 
 if __name__ == "__main__":

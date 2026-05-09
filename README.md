@@ -20,34 +20,34 @@ This repository is the long-lived wiki layer for report assets. It is meant to a
 4. Keep AI-generated summaries or draft text clearly labeled for review.
 5. Use OpenSpec changes for large structural or workflow updates.
 
-## Codex Plugin
+## Codex Skills
 
-This repo also ships a repo-local Codex plugin for the LLM Wiki status surface.
-From the repository root, add the local marketplace:
+Current Codex builds expose this repo's wiki runtime through named skills, not
+custom slash commands. The installable source lives under
+`plugins/report-wiki-portfolio/skills/`; install those directories into
+`$CODEX_HOME/skills` to use the plain `wiki-*` names.
 
-```bash
-codex plugin marketplace add .
-```
+Wiki runtime skills:
 
-Restart or reload Codex after adding the marketplace. Wiki runtime commands:
+- `$wiki-status`: refresh and summarize the generated wiki status surface.
+- `$wiki-manifest`: inspect the generated source and routing manifest.
+- `$wiki-inbox`: review pending inbox items that need wiki intake.
+- `$wiki-query`: build bounded task-shaped context from route, context, and explicit text search evidence.
+- `$wiki-graph`: expose the structural wiki graph layer.
+- `$wiki-scorecard`: expose wiki scoring and utilization outputs.
+- `$wiki-route`: expose runtime auto-routing suggestions.
+- `$wiki-context`: expose the runtime context bundle.
+- `$wiki-apply`: expose bounded self-directed execution suggestions.
+- `$wiki-queue`: preview ready, decision-needed, and blocked wiki work without executing it.
 
-- `/wiki:status`: refresh and summarize the generated wiki status surface.
-- `/wiki:manifest`: inspect the generated source and routing manifest.
-- `/wiki:inbox`: review pending inbox items that need wiki intake.
-- `/wiki:query`: build bounded task-shaped context from route, context, and explicit text search evidence.
-- `/wiki:graph`: expose the structural wiki graph layer.
-- `/wiki:scorecard`: expose wiki scoring and utilization outputs.
-- `/wiki:route`: expose runtime auto-routing suggestions.
-- `/wiki:context`: expose the runtime context bundle.
-- `/wiki:apply`: expose bounded self-directed execution suggestions.
-- `/wiki:queue`: preview ready, decision-needed, and blocked wiki work without executing it.
+These skills expose existing wiki runtime layers. They do not create, modify,
+archive, or queue OpenSpec changes.
 
-These commands expose existing wiki runtime layers. They do not create, modify,
-or archive OpenSpec changes.
-
-The `/wiki:status` command contract lives in
-`plugins/report-wiki-portfolio/commands/wiki-status.md`. It refreshes
-`wiki/status/manifest.json` and `wiki/status/wiki-status.md` by running:
+The `$wiki-status` skill source lives in
+`plugins/report-wiki-portfolio/skills/wiki-status/SKILL.md`. Its command
+contract lives in `plugins/report-wiki-portfolio/commands/wiki-status.md`. It
+refreshes `wiki/status/manifest.json` and `wiki/status/wiki-status.md` by
+running:
 
 ```bash
 python3 scripts/build_wiki_status.py
