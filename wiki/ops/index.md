@@ -32,6 +32,7 @@
 - [产品能力与图谱缺口探索 2026-05-09](product-capability-and-graph-gap-explore-2026-05-09.md)
 - [product alignment drift / explore 2026-05-09](product-alignment-drift-explore-2026-05-09.md)
 - [Report Wiki 产品规划 2026-05-09](report-wiki-product-plan-2026-05-09.md)
+- [LLM Wiki 核心产品契约](llm-wiki-core-product-contract.md)
 - [scorecard calibration gap / explore 2026-05-09](scorecard-calibration-gap-explore-2026-05-09.md)
 - [behavior-replay-gate / method](behavior-replay-gate.md)
 - [root-capability-extraction / retro](root-capability-extraction-retro.md)
