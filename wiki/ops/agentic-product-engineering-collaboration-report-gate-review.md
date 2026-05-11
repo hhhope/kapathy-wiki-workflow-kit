@@ -136,7 +136,7 @@ need user confirmation before review-ready status.
 | Narrative | PASS | Main line is stable. |
 | Paragraph drift | PARTIAL | People/organization axis now explicitly answers agent value and role-by-role change after user correction; pilot sections still need user confirmation. |
 | Judgment ownership | PARTIAL | Local operating-model, OPD definition, and pilot ownership decisions remain user-owned. |
-| Visual | PARTIAL | H5 newspaper draft now follows `knowledge-article-visual`: one total infographic plus four chapter knowledge cards / chapter one-pagers with bottom takeaways, warning cells, concrete objects, and action modules. Supporting visuals include line chart, role action cards, dynamic heat map, and evidence load-bearing table. Desktop and mobile screenshot commands ran earlier, but the Playwright environment lacks Chinese fonts, so CJK visual QA is not passed yet. |
+| Visual | PARTIAL | H5 newspaper draft now follows `knowledge-article-visual`, and standalone PNG/HTML visual assets were generated for one total infographic plus four chapter knowledge cards. Supporting H5 visuals include line chart, role action cards, dynamic heat map, and evidence load-bearing table. Standalone visual assets render Chinese with local Microsoft YaHei font; full H5 review-ready visual QA still needs a final browser pass and user review. |
 | Publish | FAIL | Draft is not review-ready or Feishu-ready. |
 
 ## Scorecard
@@ -152,12 +152,12 @@ Updated after the first H5 draft was rejected as too text-heavy.
 
 | Visual | Carries | Status | Remaining Risk |
 |---|---|---|---|
-| Total infographic | Compresses the article into one high-density map: debate, company structure, operating-system shift, review loop, role action, evidence boundary, and reader action. | Added after `knowledge-article-visual` re-anchor | Needs visual QA in a browser with Chinese fonts. |
+| Total infographic | Compresses the article into one high-density map: debate, company structure, operating-system shift, review loop, role action, evidence boundary, and reader action. | Generated as standalone HTML/PNG under `wiki/reports/agentic-visual-assets/` | Needs user review for final wording before publication. |
 | Industry debate knowledge card | Shows four debate directions, execution/responsibility tension, PM compression, small-team density, employee-vs-object framing, and evidence boundary. | Replaced earlier debate card/grid with chapter knowledge card | Needs reader review for whether the debate axes match the intended argument. |
 | Line chart timeline | Shows monthly public-source, podcast/video, and total discussion movement from Jan-May 2026. | Replaced bar timeline with line chart and point tooltips | Counts are source-pool entries, not all-web totals. |
 | Company dumbbell knowledge card | Shows traditional collaboration as human/process translation and AI-era collaboration as executable middle work, with automation vendors on one side and governance/workforce discussions on the other. | Recast as chapter knowledge card after user correction | Must remain framed as discussion structure, not settled industry fact. |
 | Operating-system knowledge card | Shows agent value before workflow redesign: old middle layer, new system object, four properties, old pipeline, new work surface, warning, and observation metrics. | Added after user correction | Needs source-backed examples for final public version. |
-| Reviewable loop knowledge card | Shows target-setting, executable context, Agent Queue, Review Packet, replay trail, system writeback, and warning that closed loop is not full automation. | Replaced previous standalone loop SVG with chapter knowledge card | CJK visual QA blocked in headless environment due missing fonts. |
+| Reviewable loop knowledge card | Shows target-setting, executable context, Agent Queue, Review Packet, replay trail, system writeback, and warning that closed loop is not full automation. | Generated as standalone HTML/PNG under `wiki/reports/agentic-visual-assets/` | Needs user review for final wording before publication. |
 | Role action cards | Shows what CEO/GM, PM, designer/research, engineer/TL, QA/data/ops, and manager/HR should do in an existing company. | Replaced three-role abstraction | Needs user confirmation for local role names and priority order. |
 | Dynamic heat map | Lets readers click terms and inspect source routes and dispute axes. | Replaced static word cloud and removed defensive explanation copy | Needs browser interaction QA. |
 | Evidence load-bearing table | Shows what each evidence class can and cannot support. | Replaced earlier static evidence hierarchy | Needs final citation selection before publication. |
@@ -177,12 +177,18 @@ Verification evidence:
 - Mobile screenshot generated at `/tmp/agentic-newspaper-v4-mobile.png`.
 - Follow-up full-page screenshot after role/action revision generated at
   `/tmp/agentic-newspaper-v5-full.png`.
-- Knowledge-article-visual re-anchor screenshot generated at
+- Standalone visual assets generated:
+  `wiki/reports/agentic-visual-assets/00-total-infographic.png`,
+  `01-industry-debate-card.png`, `02-company-dumbbell-card.png`,
+  `03-operating-system-card.png`, and `04-reviewable-loop-card.png`.
+- Standalone asset screenshot inspection passed for CJK rendering by loading
+  `/mnt/c/Windows/Fonts/msyh.ttc` via `@font-face`.
+- Knowledge-article-visual H5 re-anchor screenshot generated at
   `/tmp/agentic-newspaper-v6-knowledge-visual-full.png`.
 - Knowledge-article-visual mobile screenshot generated at
   `/tmp/agentic-newspaper-v6-knowledge-visual-mobile.png`.
-- Screenshot inspection still shows missing CJK glyph rendering in the current
-  headless environment; this is why Visual Gate remains `PARTIAL`.
+- Earlier H5 screenshot inspection showed missing CJK glyph rendering before the
+  standalone asset font-face fix; full H5 publication QA remains `PARTIAL`.
 
 ## Decision
 

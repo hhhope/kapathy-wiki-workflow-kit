@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>公司的位置更像哑铃</title>
+  <style>
+@font-face {
+  font-family: 'YaHeiLocal';
+  src: url('file:///mnt/c/Windows/Fonts/msyh.ttc') format('truetype');
+}
+
+:root {
+  --ink: #171717;
+  --paper: #fffaf0;
+  --blue: #dff0ff;
+  --orange: #ffe8bd;
+  --green: #e4f6df;
+  --purple: #eee5ff;
+  --pink: #ffe3e5;
+  --yellow: #ffe071;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #ece8df;
+  color: var(--ink);
+  font-family: YaHeiLocal, 'Microsoft YaHei', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+}
+.artboard {
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 12px 12px, rgba(0,0,0,.035) 1px, transparent 1px),
+    var(--paper);
+  background-size: 28px 28px, auto;
+  border: 8px solid var(--ink);
+  overflow: hidden;
+  position: relative;
+}
+.poster { width: 1080px; height: 1440px; padding: 48px; }
+.card { width: 1600px; height: 900px; padding: 46px; }
+.kicker {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 4px solid var(--ink);
+  background: var(--yellow);
+  font-weight: 900;
+  font-size: 24px;
+  transform: rotate(-1deg);
+}
+h1 {
+  margin: 18px 0 10px;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+.card h1 { font-size: 64px; }
+.subtitle {
+  margin: 0 0 24px;
+  font-size: 26px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+.grid { display: grid; gap: 18px; }
+.grid-5 { grid-template-columns: repeat(5, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.module {
+  border: 5px solid var(--ink);
+  border-radius: 22px;
+  padding: 18px;
+  background: #fff;
+  box-shadow: 8px 8px 0 rgba(0,0,0,.18);
+}
+.module h2, .module h3 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 1.15;
+}
+.poster .module h2 { font-size: 25px; }
+.module p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 650;
+}
+.poster .module p { font-size: 18px; }
+.module ul { margin: 8px 0 0; padding-left: 22px; }
+.module li { margin: 5px 0; font-size: 18px; line-height: 1.35; font-weight: 650; }
+.blue { background: var(--blue); }
+.orange { background: var(--orange); }
+.green { background: var(--green); }
+.purple { background: var(--purple); }
+.pink { background: var(--pink); }
+.warning {
+  background: var(--ink);
+  color: white;
+}
+.warning p, .warning li { color: white; }
+.takeaway {
+  border: 5px solid var(--ink);
+  border-radius: 22px;
+  padding: 20px 24px;
+  background: var(--yellow);
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 900;
+  margin-top: 20px;
+}
+.poster .takeaway { font-size: 25px; }
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.pill {
+  border: 4px solid var(--ink);
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: white;
+  font-size: 18px;
+  font-weight: 900;
+}
+.arrow { font-size: 28px; font-weight: 900; }
+.dumbbell {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-top: 18px;
+}
+.circle {
+  aspect-ratio: 1 / 1;
+  border: 6px solid var(--ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  font-weight: 900;
+  font-size: 30px;
+  background: white;
+}
+.bridge {
+  border: 6px solid var(--ink);
+  border-radius: 28px;
+  padding: 22px;
+  background: var(--green);
+  text-align: center;
+  font-size: 28px;
+  font-weight: 900;
+}
+.loop {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+.loop .module { min-height: 150px; text-align: center; }
+.stamp {
+  position: absolute;
+  right: 44px;
+  top: 42px;
+  border: 5px solid var(--ink);
+  border-radius: 16px;
+  padding: 10px 16px;
+  background: white;
+  font-weight: 900;
+  font-size: 22px;
+  transform: rotate(2deg);
+}
+</style>
+</head>
+<body>
+  <main class="artboard card">
+    
+<div class="kicker">章节知识卡 02</div>
+<h1>公司的位置更像哑铃</h1>
+<p class="subtitle">这不是行业定论，而是一个观察框架：一端加速执行，一端补齐治理。</p>
+<section class="dumbbell">
+  <div class="circle blue">执行自动化端<br>issue / IDE / PR / CI</div>
+  <div class="bridge">产研协作桥<br>spec / eval / review / owner</div>
+  <div class="circle orange">组织治理端<br>权限 / 审计 / 责任 / 知识</div>
+</section>
+<section class="grid grid-3" style="margin-top:20px;">
+  <article class="module"><h2>传统协作链</h2><p>PM -> Design -> Eng -> QA。中间层一直存在，只是靠人、会议、文档和脚本承担。</p></article>
+  <article class="module green"><h2>AI 执行单元</h2><p>找上下文、拆任务、生成初稿、跑验证、整理证据，变成可排队工作。</p></article>
+  <article class="module warning"><h2>别讲成中间人消失</h2><p>更稳妥：转述型中间劳动被压缩，判断型中间责任被抬高。</p></article>
+</section>
+<div class="takeaway">章节结论：AI 时代公司不是简单变扁，而是两端变重，中间协作层从传话链变成作业桥。</div>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Agent 时代产研协作总图</title>
+  <style>
+@font-face {
+  font-family: 'YaHeiLocal';
+  src: url('file:///mnt/c/Windows/Fonts/msyh.ttc') format('truetype');
+}
+
+:root {
+  --ink: #171717;
+  --paper: #fffaf0;
+  --blue: #dff0ff;
+  --orange: #ffe8bd;
+  --green: #e4f6df;
+  --purple: #eee5ff;
+  --pink: #ffe3e5;
+  --yellow: #ffe071;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #ece8df;
+  color: var(--ink);
+  font-family: YaHeiLocal, 'Microsoft YaHei', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+}
+.artboard {
+  margin: 0 auto;
+  background:
+    radial-gradient(circle at 12px 12px, rgba(0,0,0,.035) 1px, transparent 1px),
+    var(--paper);
+  background-size: 28px 28px, auto;
+  border: 8px solid var(--ink);
+  overflow: hidden;
+  position: relative;
+}
+.poster { width: 1080px; height: 1440px; padding: 48px; }
+.card { width: 1600px; height: 900px; padding: 46px; }
+.kicker {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 4px solid var(--ink);
+  background: var(--yellow);
+  font-weight: 900;
+  font-size: 24px;
+  transform: rotate(-1deg);
+}
+h1 {
+  margin: 18px 0 10px;
+  font-size: 56px;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+.card h1 { font-size: 64px; }
+.subtitle {
+  margin: 0 0 24px;
+  font-size: 26px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+.grid { display: grid; gap: 18px; }
+.grid-5 { grid-template-columns: repeat(5, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.module {
+  border: 5px solid var(--ink);
+  border-radius: 22px;
+  padding: 18px;
+  background: #fff;
+  box-shadow: 8px 8px 0 rgba(0,0,0,.18);
+}
+.module h2, .module h3 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 1.15;
+}
+.poster .module h2 { font-size: 25px; }
+.module p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 650;
+}
+.poster .module p { font-size: 18px; }
+.module ul { margin: 8px 0 0; padding-left: 22px; }
+.module li { margin: 5px 0; font-size: 18px; line-height: 1.35; font-weight: 650; }
+.blue { background: var(--blue); }
+.orange { background: var(--orange); }
+.green { background: var(--green); }
+.purple { background: var(--purple); }
+.pink { background: var(--pink); }
+.warning {
+  background: var(--ink);
+  color: white;
+}
+.warning p, .warning li { color: white; }
+.takeaway {
+  border: 5px solid var(--ink);
+  border-radius: 22px;
+  padding: 20px 24px;
+  background: var(--yellow);
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 900;
+  margin-top: 20px;
+}
+.poster .takeaway { font-size: 25px; }
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.pill {
+  border: 4px solid var(--ink);
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: white;
+  font-size: 18px;
+  font-weight: 900;
+}
+.arrow { font-size: 28px; font-weight: 900; }
+.dumbbell {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-top: 18px;
+}
+.circle {
+  aspect-ratio: 1 / 1;
+  border: 6px solid var(--ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  font-weight: 900;
+  font-size: 30px;
+  background: white;
+}
+.bridge {
+  border: 6px solid var(--ink);
+  border-radius: 28px;
+  padding: 22px;
+  background: var(--green);
+  text-align: center;
+  font-size: 28px;
+  font-weight: 900;
+}
+.loop {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+.loop .module { min-height: 150px; text-align: center; }
+.poster-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+.poster-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 1fr;
+  gap: 14px;
+  align-items: stretch;
+}
+.poster-row .num {
+  border: 5px solid var(--ink);
+  border-radius: 20px;
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 900;
+}
+.poster-row .module {
+  min-height: 126px;
+  padding: 14px 16px;
+}
+.poster-row .module h2 {
+  font-size: 23px;
+  margin-bottom: 6px;
+}
+.poster-row .module p,
+.poster-row .module li {
+  font-size: 17px;
+  line-height: 1.32;
+}
+.stamp {
+  position: absolute;
+  right: 44px;
+  top: 42px;
+  border: 5px solid var(--ink);
+  border-radius: 16px;
+  padding: 10px 16px;
+  background: white;
+  font-weight: 900;
+  font-size: 22px;
+  transform: rotate(2deg);
+}
+</style>
+</head>
+<body>
+  <main class="artboard poster">
+    
+<div class="kicker">总一图流</div>
+<div class="stamp">262 source entries</div>
+<h1>AI Agent 时代，产研协作怎么变</h1>
+<p class="subtitle">不是“人被替代”，而是可执行的中间工作进入可审查、可回放、可沉淀的系统循环。</p>
+<section class="poster-stack">
+  <div class="poster-row">
+    <div class="num">01</div>
+    <article class="module blue"><h2>先定争议</h2><p>行业争的不是工具，而是谁定义目标、谁承担判断、谁审查结果、谁拥有作业系统。</p></article>
+    <article class="module"><h2>讨论入口</h2><p>Coding solved？PM 消失？小团队替代？Agent 是员工还是工具？</p></article>
+  </div>
+  <div class="poster-row">
+    <div class="num">02</div>
+    <article class="module orange"><h2>看公司位置</h2><p>一端做执行自动化，一端补组织治理，中间靠 spec / eval / review / owner 连接。</p></article>
+    <article class="module"><h2>哑铃不是定论</h2><p>这是讨论结构，不是公司排名。自动化端和治理端会同时变重。</p></article>
+  </div>
+  <div class="poster-row">
+    <div class="num">03</div>
+    <article class="module green"><h2>识别本质</h2><p>Agent 没有发明中间层，它让部分中间工作变成可调用的执行对象。</p></article>
+    <article class="module"><h2>四个属性</h2><p>可调用、可审查、可回放、可沉淀。失败不能只返工，要写回系统。</p></article>
+  </div>
+  <div class="poster-row">
+    <div class="num">04</div>
+    <article class="module pink"><h2>建审查循环</h2><p>输出必须进入 review packet、eval、wiki 和 rules，而不是只给一个“答案”。</p></article>
+    <article class="module"><h2>人类位置</h2><p>人不退场。人负责目标、边界、验收、风险、发布判断和责任归属。</p></article>
+  </div>
+  <div class="poster-row">
+    <div class="num">05</div>
+    <article class="module purple"><h2>回到岗位</h2><p>人从搬运上下文，转向定义目标、设边界、审结果、沉淀系统。</p></article>
+    <article class="module"><h2>观察指标</h2><p>看 cycle time、返工率、review reject、缺陷外逃、证据包完整度。</p></article>
+  </div>
+  <div class="poster-row">
+    <div class="num">06</div>
+    <article class="module warning"><h2>证据边界</h2><p>262 entries 是源池规模，不是全网总量。播客和二手材料只做讨论路由。</p></article>
+    <article class="module"><h2>读者动作</h2><p>不要先买工具。先选 1 个高频、可验证、风险可控的工作流，跑 30-60 天 pilot。</p></article>
+  </div>
+</section>
+<div class="takeaway">金句：Agent 的核心价值不是替人做判断，而是把可执行的中间工作变成可审查、可回放、可沉淀的系统循环。</div>
+
+  </main>
+</body>
+</html>
