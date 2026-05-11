@@ -290,6 +290,154 @@
       gap: 10px;
     }
 
+    .debate-visual,
+    .timeline-visual,
+    .loop-visual,
+    .evidence-visual {
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .visual-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .visual-title h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .visual-title span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line);
+    }
+
+    .quadrant {
+      min-height: 168px;
+      padding: 14px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quadrant:nth-child(2),
+    .quadrant:nth-child(4) {
+      border-right: 0;
+    }
+
+    .quadrant:nth-child(3),
+    .quadrant:nth-child(4) {
+      border-bottom: 0;
+    }
+
+    .quadrant h4 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .quadrant p {
+      margin: 0;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .q-red { background: var(--soft-red); }
+    .q-blue { background: var(--soft-blue); }
+    .q-green { background: var(--soft-green); }
+    .q-amber { background: var(--soft-amber); }
+
+    .axis-note {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .source-axis {
+      display: grid;
+      gap: 10px;
+    }
+
+    .axis-row {
+      display: grid;
+      grid-template-columns: 72px 1fr 64px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .axis-month {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .axis-bars {
+      display: grid;
+      gap: 5px;
+    }
+
+    .bar-track {
+      height: 20px;
+      border: 1px solid var(--line);
+      background: #f6f6f6;
+    }
+
+    .bar-fill {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .bar-public { background: var(--blue); }
+    .bar-talk { background: var(--red); }
+
+    .axis-total {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 900;
+      text-align: right;
+    }
+
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .legend-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      border: 1px solid var(--line);
+    }
+
     .month {
       min-height: 270px;
       padding: 12px;
@@ -424,6 +572,27 @@
     .flow.new .step:nth-child(4) { background: var(--soft-green); }
     .flow.new .step:nth-child(5) { background: var(--soft-violet); }
 
+    .loop-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .svg-label {
+      font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      fill: #161616;
+    }
+
+    .svg-small {
+      font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 12px;
+      fill: #4b4b4b;
+    }
+
     .people {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -507,6 +676,37 @@
       gap: 12px;
     }
 
+    .pyramid {
+      display: grid;
+      gap: 8px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .pyramid-row {
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .pyramid-row small {
+      display: block;
+      margin-top: 3px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .pyramid-row:nth-child(1) { width: 44%; background: var(--soft-green); }
+    .pyramid-row:nth-child(2) { width: 62%; background: var(--soft-blue); }
+    .pyramid-row:nth-child(3) { width: 80%; background: var(--soft-amber); }
+    .pyramid-row:nth-child(4) { width: 100%; background: #f7f7f7; }
+
     .layer {
       min-height: 190px;
       padding: 13px;
@@ -571,13 +771,15 @@
       .front,
       .thesis,
       .debate-grid,
+      .matrix,
       .timeline,
       .map,
       .system,
       .people,
       .heat,
       .evidence,
-      .rules {
+      .rules,
+      .axis-note {
         grid-template-columns: 1fr;
       }
 
@@ -634,6 +836,23 @@
 
       .camp {
         grid-template-columns: 1fr;
+      }
+
+      .axis-row {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+      }
+
+      .axis-total {
+        text-align: left;
+      }
+
+      .pyramid-row,
+      .pyramid-row:nth-child(1),
+      .pyramid-row:nth-child(2),
+      .pyramid-row:nth-child(3),
+      .pyramid-row:nth-child(4) {
+        width: 100%;
       }
 
       .camp-label {
@@ -729,44 +948,100 @@
           <p class="signal">信号源：GitHub Copilot coding agent、Atlassian Rovo、JetBrains Central、Coder Agents、Block guardrails。</p>
         </article>
       </div>
+      <div class="debate-visual">
+        <div class="visual-title">
+          <h3>争议二维图：行业不是一条线，而是两条轴在拉扯</h3>
+          <span>横轴：执行自动化；纵轴：判断责任</span>
+        </div>
+        <div class="axis-note">
+          <div>越往右：越相信 agent 可以承担更多执行。</div>
+          <div>越往上：越强调人类判断、审查和组织责任。</div>
+        </div>
+        <div class="matrix">
+          <div class="quadrant q-amber">
+            <h4>低自动化 / 高责任</h4>
+            <p>传统软件工程。人手写、人工审查、流程慢，但责任链清楚。</p>
+          </div>
+          <div class="quadrant q-green">
+            <h4>高自动化 / 高责任</h4>
+            <p>目标状态。agent 执行，PR / eval / review packet 承接审查，人对判断负责。</p>
+          </div>
+          <div class="quadrant q-blue">
+            <h4>低自动化 / 低责任</h4>
+            <p>AI 试用期。大家在个人工具里尝鲜，但组织没有定义入口、权限和质量标准。</p>
+          </div>
+          <div class="quadrant q-red">
+            <h4>高自动化 / 低责任</h4>
+            <p>危险区。代码、数据、发布、钱流都交给 agent，但没有隔离、审计和人审。</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="section">
       <div class="section-title">
         <h2>讨论如何推进</h2>
-        <span>2026-01 to 2026-05</span>
+        <span>真实条目计数：public timeline 95 + podcast/video 36</span>
+      </div>
+      <div class="timeline-visual">
+        <div class="visual-title">
+          <h3>时间轴：4 月达到公开讨论高峰，2-3 月是播客密集解释期</h3>
+          <span>每月总量 = 公开条目 + 播客/视频讨论</span>
+        </div>
+        <div class="source-axis" aria-label="2026年1月至5月讨论量时间轴">
+          <div class="axis-row">
+            <div class="axis-month">Jan</div>
+            <div class="axis-bars">
+              <div class="bar-track"><div class="bar-fill bar-public" style="width:42%">公开源 11</div></div>
+              <div class="bar-track"><div class="bar-fill bar-talk" style="width:91%">讨论源 10</div></div>
+            </div>
+            <div class="axis-total">21</div>
+          </div>
+          <div class="axis-row">
+            <div class="axis-month">Feb</div>
+            <div class="axis-bars">
+              <div class="bar-track"><div class="bar-fill bar-public" style="width:88%">公开源 23</div></div>
+              <div class="bar-track"><div class="bar-fill bar-talk" style="width:64%">讨论源 7</div></div>
+            </div>
+            <div class="axis-total">30</div>
+          </div>
+          <div class="axis-row">
+            <div class="axis-month">Mar</div>
+            <div class="axis-bars">
+              <div class="bar-track"><div class="bar-fill bar-public" style="width:62%">公开源 16</div></div>
+              <div class="bar-track"><div class="bar-fill bar-talk" style="width:100%">讨论源 11</div></div>
+            </div>
+            <div class="axis-total">27</div>
+          </div>
+          <div class="axis-row">
+            <div class="axis-month">Apr</div>
+            <div class="axis-bars">
+              <div class="bar-track"><div class="bar-fill bar-public" style="width:100%">公开源 26</div></div>
+              <div class="bar-track"><div class="bar-fill bar-talk" style="width:64%">讨论源 7</div></div>
+            </div>
+            <div class="axis-total">33</div>
+          </div>
+          <div class="axis-row">
+            <div class="axis-month">May</div>
+            <div class="axis-bars">
+              <div class="bar-track"><div class="bar-fill bar-public" style="width:73%">公开源 19</div></div>
+              <div class="bar-track"><div class="bar-fill bar-talk" style="width:9%">讨论源 1</div></div>
+            </div>
+            <div class="axis-total">20</div>
+          </div>
+        </div>
+        <div class="legend-row">
+          <span><i class="legend-swatch bar-public"></i>public timeline entries</span>
+          <span><i class="legend-swatch bar-talk"></i>podcast / video discussions</span>
+          <span>计数来自本地源池，不代表全网总量。</span>
+        </div>
       </div>
       <div class="timeline">
-        <article class="month">
-          <h3>Jan</h3>
-          <b>可读、可控、可安全运行</b>
-          <p>讨论从个人 agent 使用，推进到 repo readiness、agent loop、Cowork、guardrails、AI-assisted development。</p>
-          <div class="chips"><span class="chip">AGENTS.md</span><span class="chip">skills</span><span class="chip">safety</span><span class="chip">repo rules</span></div>
-        </article>
-        <article class="month">
-          <h3>Feb</h3>
-          <b>从聊天到 command center</b>
-          <p>Codex app、harness、skills、Claude Code、企业部署开始把 agent 放进可管理的工作台。</p>
-          <div class="chips"><span class="chip">harness</span><span class="chip">parallel agents</span><span class="chip">design-code loop</span></div>
-        </article>
-        <article class="month">
-          <h3>Mar</h3>
-          <b>SDLC 变成控制系统</b>
-          <p>spec readiness、agent-centric cycle、payment eval、platform engineering，把质量和验证推到台前。</p>
-          <div class="chips"><span class="chip">spec</span><span class="chip">eval</span><span class="chip">CI</span><span class="chip">payment risk</span></div>
-        </article>
-        <article class="month">
-          <h3>Apr</h3>
-          <b>从 coding agent 到 work agent</b>
-          <p>Symphony、Managed Agents、Open Agentic Development、enterprise governance 把 issue 和 workflow 变成控制面。</p>
-          <div class="chips"><span class="chip">Symphony</span><span class="chip">managed agents</span><span class="chip">control plane</span></div>
-        </article>
-        <article class="month">
-          <h3>May</h3>
-          <b>进入组织和岗位</b>
-          <p>finance agents、Frontier Firm、AI operating model、自托管 agents、hands-on managers，开始讨论公司怎么重排。</p>
-          <div class="chips"><span class="chip">operating model</span><span class="chip">finance agents</span><span class="chip">manager role</span></div>
-        </article>
+        <article class="month"><h3>Jan</h3><b>可读、可控、可安全运行</b><p>repo readiness、agent loop、Cowork、guardrails。</p></article>
+        <article class="month"><h3>Feb</h3><b>从聊天到 command center</b><p>Codex app、harness、Claude Code、企业部署。</p></article>
+        <article class="month"><h3>Mar</h3><b>SDLC 变成控制系统</b><p>spec readiness、payment eval、platform engineering。</p></article>
+        <article class="month"><h3>Apr</h3><b>从 coding agent 到 work agent</b><p>Symphony、Managed Agents、Open Agentic Development。</p></article>
+        <article class="month"><h3>May</h3><b>进入组织和岗位</b><p>finance agents、Frontier Firm、AI operating model。</p></article>
       </div>
     </section>
 
@@ -847,6 +1122,41 @@
             <div class="step">rules / tests / skills 沉淀 <small>失败不只返工，要写回系统</small></div>
           </div>
         </article>
+      </div>
+      <div class="loop-visual">
+        <div class="visual-title">
+          <h3>循环图：agent 不是流程终点，而是中间执行层</h3>
+          <span>图承担的是责任和回流关系</span>
+        </div>
+        <svg class="loop-svg" viewBox="0 0 960 360" role="img" aria-label="人机作业系统循环图">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#161616"></path>
+            </marker>
+          </defs>
+          <rect x="40" y="50" width="160" height="78" fill="#fff0ee" stroke="#161616"></rect>
+          <text x="120" y="84" text-anchor="middle" class="svg-label">人定目标</text>
+          <text x="120" y="108" text-anchor="middle" class="svg-small">用户价值 / 非目标 / 边界</text>
+          <rect x="250" y="50" width="160" height="78" fill="#edf6ff" stroke="#161616"></rect>
+          <text x="330" y="84" text-anchor="middle" class="svg-label">可执行上下文</text>
+          <text x="330" y="108" text-anchor="middle" class="svg-small">spec / ticket / wiki</text>
+          <rect x="460" y="50" width="160" height="78" fill="#fff6e6" stroke="#161616"></rect>
+          <text x="540" y="84" text-anchor="middle" class="svg-label">agent 执行</text>
+          <text x="540" y="108" text-anchor="middle" class="svg-small">生成 / 实现 / 验证</text>
+          <rect x="670" y="50" width="160" height="78" fill="#eef8f1" stroke="#161616"></rect>
+          <text x="750" y="84" text-anchor="middle" class="svg-label">人审判断</text>
+          <text x="750" y="108" text-anchor="middle" class="svg-small">PR / eval / review packet</text>
+          <rect x="355" y="230" width="250" height="78" fill="#f3efff" stroke="#161616"></rect>
+          <text x="480" y="263" text-anchor="middle" class="svg-label">系统沉淀</text>
+          <text x="480" y="288" text-anchor="middle" class="svg-small">rules / tests / skills / docs</text>
+          <line x1="200" y1="89" x2="250" y2="89" stroke="#161616" stroke-width="2" marker-end="url(#arrow)"></line>
+          <line x1="410" y1="89" x2="460" y2="89" stroke="#161616" stroke-width="2" marker-end="url(#arrow)"></line>
+          <line x1="620" y1="89" x2="670" y2="89" stroke="#161616" stroke-width="2" marker-end="url(#arrow)"></line>
+          <path d="M750 128 C750 210 650 248 605 268" fill="none" stroke="#161616" stroke-width="2" marker-end="url(#arrow)"></path>
+          <path d="M355 268 C235 260 120 215 120 130" fill="none" stroke="#161616" stroke-width="2" marker-end="url(#arrow)"></path>
+          <text x="784" y="190" class="svg-small">失败不能只返工</text>
+          <text x="98" y="214" class="svg-small">下次更清楚</text>
+        </svg>
       </div>
     </section>
 
@@ -940,6 +1250,18 @@
           <h3>二手传播</h3>
           <p>微信、媒体报道、索引页、播客平台页。用于发现线索和中文表达，不直接承担硬事实。</p>
         </article>
+      </div>
+      <div class="evidence-visual">
+        <div class="visual-title">
+          <h3>证据金字塔：越往上越能承重，越往下越适合找线索</h3>
+          <span>防止把播客简介、微信转述和工程博客混成一种证据</span>
+        </div>
+        <div class="pyramid">
+          <div class="pyramid-row">一手公司实践 <small>工程博客 / 产品文档 / 官方报告 / repo</small></div>
+          <div class="pyramid-row">操作者长访谈 <small>用于角色语言，引用前要 transcript capture</small></div>
+          <div class="pyramid-row">研究、调查和反例 <small>用于风险边界和反速度叙事</small></div>
+          <div class="pyramid-row">二手传播和索引 <small>用于发现线索，不承担硬事实</small></div>
+        </div>
       </div>
     </section>
 

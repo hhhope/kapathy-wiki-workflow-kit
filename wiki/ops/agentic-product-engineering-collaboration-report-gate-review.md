@@ -64,7 +64,7 @@ final publication template selected yet.
 | Reader job | Understand why this is an operating-model shift and what decision to make next. |
 | Page group | One management report plus source map. Later can split into internal operating model. |
 | Reading path | Read report first, then source map for evidence. |
-| Visual logic | H5 newspaper draft created with debate map, timeline, camp map, operating-system model, role cards, discussion heat area, and evidence hierarchy. Needs browser visual QA before review-ready publication. |
+| Visual logic | H5 newspaper draft now uses four information-carrying visuals: debate matrix for disagreement axes, monthly source-volume axis for discussion progression, operating-system loop SVG for responsibility and feedback, and evidence pyramid for source hierarchy. Needs browser CJK visual QA before review-ready publication. |
 | Writing standard | Management-facing, decision-oriented, Chinese prose with source links. |
 | Reuse boundary | Sources support pattern extraction; local workflow decisions remain user-owned. |
 
@@ -136,7 +136,7 @@ need user confirmation before review-ready status.
 | Narrative | PASS | Main line is stable. |
 | Paragraph drift | PARTIAL | People/organization axis added after user correction; pilot sections still need user confirmation. |
 | Judgment ownership | PARTIAL | Local operating-model, OPD definition, and pilot ownership decisions remain user-owned. |
-| Visual | PARTIAL | H5 newspaper draft exists. Desktop screenshot command ran, but the Playwright environment lacks Chinese fonts, so CJK visual QA is not passed yet. |
+| Visual | PARTIAL | H5 newspaper draft now has non-decorative visuals: debate matrix, source-volume timeline, operating loop, evidence pyramid. Desktop screenshot command ran, but the Playwright environment lacks Chinese fonts, so CJK visual QA is not passed yet. |
 | Publish | FAIL | Draft is not review-ready or Feishu-ready. |
 
 ## Scorecard
@@ -145,6 +145,21 @@ Overall score: `INVALID`
 
 Reason: Reference Structure Gate, Paragraph Drift Gate, Judgment Ownership Gate,
 Visual Gate, and Publish Gate are not fully passed.
+
+## H5 Visual Repair Diagnostic
+
+Updated after the first H5 draft was rejected as too text-heavy.
+
+| Visual | Carries | Status | Remaining Risk |
+|---|---|---|---|
+| Debate matrix | Shows the real industry tension: execution automation vs judgment responsibility. | Added | Needs reader review for whether the four quadrants match the intended argument. |
+| Source-volume timeline | Shows monthly public-source count and podcast/video discussion count from Jan-May 2026. | Added with counts 21, 30, 27, 33, 20 | Counts are source-pool entries, not all-web totals. |
+| Operating-system loop | Shows human target-setting, executable context, agent execution, human review, and system memory feedback. | Added as inline SVG | CJK visual QA blocked in headless environment due missing fonts. |
+| Evidence pyramid | Separates first-party practice, operator interviews, research/risk, and secondary routing sources. | Added | Needs final citation selection before publication. |
+
+Visual information design diagnostic: improved, but still not scoreable because
+the hard Visual Gate remains `PARTIAL` until Chinese rendering and mobile layout
+are verified in a browser with CJK fonts.
 
 ## Decision
 
@@ -159,5 +174,5 @@ sync to Feishu yet.
 - The 36-lead discussion pool improves podcast/video coverage, but many entries still need transcript capture before quotation.
 - Some sources are secondary summaries, podcast indexes, or transcript mirrors; primary memo/video/transcript capture remains needed.
 - Non-vendor critique improved via Daniel Miessler, Stack Overflow, DORA/GitLab/Thoughtworks, but still needs more independent practitioner cases.
-- Visual model now exists as an H5 newspaper draft. Playwright screenshot exposed missing CJK fonts in the headless environment, so final visual QA still needs a browser with Chinese fonts and reader review.
+- Visual model now contains debate matrix, monthly source-volume timeline, operating loop, and evidence pyramid. Playwright screenshot exposed missing CJK fonts in the headless environment, so final visual QA still needs a browser with Chinese fonts and reader review.
 - Local pilot ownership, scope, and first workflow must be confirmed by user.
