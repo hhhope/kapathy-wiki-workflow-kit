@@ -7,6 +7,7 @@ derived_from:
   - wiki/reports/agentic-product-engineering-collaboration-management-report.md
   - wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md
   - wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md
+  - wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md
 ---
 
 # agentic-product-engineering-collaboration / report-gate-review
@@ -56,7 +57,7 @@ final publication template selected yet.
 
 | Field | Result |
 |---|---|
-| Source | 43-item curated source map plus an 88-lead broad scan across OpenAI, Anthropic, Block, Stripe, Ramp, AWS, Amazon, Google, Microsoft, GitHub, Atlassian, JetBrains, Sourcegraph, Replit, Shopify, Duolingo, Fiverr, Box, Klarna, Coinbase, Stack Overflow, GitLab, METR, Thoughtworks, McKinsey, Deloitte, WeChat syntheses, Lenny/Sequoia interviews, Addy Osmani, and Daniel Miessler. |
+| Source | 43-item curated source map, an 88-lead broad scan, and a 62-entry public timeline from 2026-01 through 2026-05-11 across OpenAI, Anthropic, Block/goose, Stripe, Ramp, AWS, Amazon, Google, Microsoft, GitHub, Atlassian, JetBrains, Sourcegraph, Replit, Shopify, Duolingo, Fiverr, Box, Klarna, Coinbase, Stack Overflow, GitLab, METR, Thoughtworks, McKinsey, Deloitte, QCon/InfoQ/DoNews Chinese sources, WeChat syntheses, Lenny/Sequoia interviews, Addy Osmani, and Daniel Miessler. |
 | Reader job | Understand why this is an operating-model shift and what decision to make next. |
 | Page group | One management report plus source map. Later can split into internal operating model. |
 | Reading path | Read report first, then source map for evidence. |
@@ -65,8 +66,9 @@ final publication template selected yet.
 | Reuse boundary | Sources support pattern extraction; local workflow decisions remain user-owned. |
 
 Reference Structure Gate: PARTIAL. The scan is now broad enough for internal
-research direction, but not all articles, videos, podcasts, and memo chains have
-full upstream transcript or primary-post capture yet.
+research direction and has a chronological public-source layer, but not all
+articles, videos, podcasts, and memo chains have full upstream transcript or
+primary-post capture yet.
 
 ## Learning Use Map
 
@@ -124,7 +126,7 @@ need user confirmation before review-ready status.
 |---|---|---|
 | Reviewer routing | PASS | Required and applied manually. |
 | Learning use | PASS | Source map and learning use map recorded. |
-| Reference structure | PARTIAL | 43 curated sources mapped and 88 broad leads tracked; not every upstream article, memo, podcast, and video deeply captured yet. |
+| Reference structure | PARTIAL | 43 curated sources mapped, 88 broad leads tracked, and 62 public timeline entries recorded; not every upstream article, memo, podcast, and video deeply captured yet. |
 | Split | PASS | Management report separated from source map; internal model can be a later artifact. |
 | Voice | PASS | Draft is management-facing, not chat recap. |
 | Narrative | PASS | Main line is stable. |
@@ -149,6 +151,7 @@ sync to Feishu yet.
 
 - Source set is broader, but "全网" must still be described as broad scan rather than exhaustive coverage.
 - The 88-lead broad scan includes candidate items; it is not the same as 88 deeply read sources.
+- The 62-entry timeline improves chronological coverage, but it still depends on public search visibility and is not a complete web crawl.
 - Some sources are secondary summaries or transcript mirrors; primary memo/video/transcript capture remains needed.
 - Non-vendor critique improved via Daniel Miessler, Stack Overflow, DORA/GitLab/Thoughtworks, but still needs more independent practitioner cases.
 - Visual model is missing.

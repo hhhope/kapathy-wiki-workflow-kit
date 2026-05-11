@@ -8,6 +8,7 @@ created: 2026-05-11
 derived_from:
   - wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md
   - wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md
+  - wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md
 ---
 
 # AI Agent 时代，产研协作从人力流水线走向人机作业系统
@@ -45,6 +46,13 @@ OpenAI 的 Symphony 把 Linear 这样的项目管理板变成 coding agents 的�
 把 AI 厂、支付/金融科技、云商、传统软件、CEO memo、研究报告、风险
 案例和中文二手材料分开记录；它用于保证调研广度，不等同于每条都已经
 可以公开引用。
+
+后续重写时还应该加入 2026 年 1 月到 5 月的时间轴：1 月是 repo
+readiness / safety / Cowork / agent loop，2 月是 harness / skills /
+command center，3 月是 agent-centric SDLC / payment eval / spec
+readiness，4 月是 Codex for almost everything / Managed Agents /
+Symphony / Open Agentic Development，5 月是 self-hosted agents 和
+金融业务岗位 agents。
 
 这些样本表面上卖的是不同产品，底层共识很接近：
 

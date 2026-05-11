@@ -7,6 +7,8 @@ created: 2026-05-11
 status: broad-scan
 derived_from:
   - wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md
+related_timeline:
+  - wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md
 ---
 
 # Agentic Product Engineering Collaboration / Broad Source Scan
@@ -22,6 +24,10 @@ This is a broad scan, not a final evidence pack. Items marked `candidate` or
 `secondary` still need primary-source capture before public claims.
 
 Broad scan inventory: 88 source leads across 8 buckets.
+
+Timeline extension: the January-May 2026 public-source timeline adds 62 dated
+entries and should be used when the writing needs a chronological progression
+rather than a company/category map.
 
 ## Scan Buckets
 

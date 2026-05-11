@@ -6,6 +6,7 @@ source_type: external-article-collection
 created: 2026-05-11
 related_scan:
   - wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md
+  - wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md
 ---
 
 # Agentic Product Engineering Collaboration / Source Map
@@ -31,6 +32,10 @@ Broad scan extension: 88 source leads are tracked in
 `wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md`.
 The broad scan is intentionally wider than this curated map and includes
 candidate leads that still need primary-source capture.
+
+Timeline extension: 62 public source entries from January 2026 through May 11,
+2026 are tracked in
+`wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md`.
 
 | Class | Company / Source | Article | Why It Matters |
 |---|---|---|---|
