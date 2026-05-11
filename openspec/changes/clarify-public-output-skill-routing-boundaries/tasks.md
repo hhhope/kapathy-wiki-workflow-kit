@@ -25,6 +25,6 @@
 ## 4. Verification and stop
 
 - [x] 4.1 Run targeted text checks and OpenSpec validation.
-- [ ] 4.2 Commit only task-related files.
-- [ ] 4.3 Stop when all tasks are complete; archive review is a separate next
+- [x] 4.2 Commit only task-related files.
+- [x] 4.3 Stop when all tasks are complete; archive review is a separate next
       action.
