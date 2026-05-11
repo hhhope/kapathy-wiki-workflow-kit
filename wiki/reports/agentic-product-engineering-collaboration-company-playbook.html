@@ -216,149 +216,6 @@
       font-size: 15px;
     }
 
-    .one-flow {
-      display: grid;
-      gap: 14px;
-    }
-
-    .flow-headline {
-      display: grid;
-      grid-template-columns: minmax(0, .95fr) minmax(0, 1.4fr);
-      gap: 16px;
-      align-items: stretch;
-    }
-
-    .flow-thesis {
-      display: grid;
-      align-content: center;
-      padding: 18px;
-      border: 2px solid var(--line);
-      background: #f7dfaf;
-    }
-
-    .flow-thesis b {
-      display: block;
-      margin-bottom: 8px;
-      font-family: var(--font-serif);
-      font-size: clamp(26px, 3.5vw, 42px);
-      line-height: 1.02;
-    }
-
-    .flow-thesis span {
-      color: #3a2f25;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .flow-map {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      border: 2px solid var(--line);
-      background: #fff7e7;
-    }
-
-    .flow-step {
-      min-height: 176px;
-      padding: 14px;
-      border-right: 1px solid var(--line);
-    }
-
-    .flow-step:last-child { border-right: 0; }
-
-    .flow-step span {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 3px 7px;
-      border: 1px solid var(--line);
-      background: #ffffff;
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .flow-step h3 {
-      margin-bottom: 8px;
-      font-size: 20px;
-      line-height: 1.2;
-    }
-
-    .flow-step p {
-      color: #3d342b;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .flow-step.openai { background: #eaf3ff; }
-    .flow-step.anthropic { background: #f2eadc; }
-    .flow-step.stripe { background: #efe9ff; }
-    .flow-step.block { background: #e6f4df; }
-
-    .flow-rule {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      border-top: 1px solid var(--line);
-      border-bottom: 2px solid var(--line);
-    }
-
-    .flow-rule div {
-      padding: 12px 14px;
-      border-right: 1px solid var(--thin);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .flow-rule div:last-child { border-right: 0; }
-
-    .flow-rule b {
-      display: block;
-      margin-bottom: 3px;
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .knowledge-card {
-      margin: 16px 0;
-      border: 2px solid var(--line);
-      background: #fff7e7;
-    }
-
-    .knowledge-card h4 {
-      margin: 0;
-      padding: 10px 14px;
-      border-bottom: 1px solid var(--line);
-      font-size: 17px;
-      line-height: 1.35;
-      background: #f0d68f;
-    }
-
-    .knowledge-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .knowledge-grid div {
-      min-height: 126px;
-      padding: 12px 14px;
-      border-right: 1px solid var(--thin);
-    }
-
-    .knowledge-grid div:last-child { border-right: 0; }
-
-    .knowledge-grid b {
-      display: block;
-      margin-bottom: 6px;
-      color: #34291f;
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .knowledge-grid span {
-      display: block;
-      color: #4a4036;
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
     .article-prose {
       max-width: 980px;
       margin: 0 auto;
@@ -461,7 +318,6 @@
 
     .sources {
       padding-top: 24px;
-      border-bottom: 0;
     }
 
     .sources h2 {
@@ -499,37 +355,15 @@
       .lead { border-right: 0; border-bottom: 2px solid var(--line); }
 
       .mode-row,
-      .consensus-list li,
-      .flow-headline,
-      .flow-map,
-      .flow-rule,
-      .knowledge-grid { grid-template-columns: 1fr; }
+      .consensus-list li { grid-template-columns: 1fr; }
 
       .mode-row { gap: 4px; }
-
-      .flow-step,
-      .flow-rule div,
-      .knowledge-grid div {
-        border-right: 0;
-        border-bottom: 1px solid var(--thin);
-      }
-
-      .flow-step:last-child,
-      .flow-rule div:last-child,
-      .knowledge-grid div:last-child { border-bottom: 0; }
 
       .sources ol { columns: 1; }
     }
 
     @media (max-width: 620px) {
       .kicker, .section-title { display: block; }
-      .kicker span { display: block; }
-      .kicker span + span { margin-top: 4px; }
-      .section-title span {
-        display: block;
-        margin-top: 6px;
-        white-space: normal;
-      }
       h1 { font-size: 38px; }
       .tagline { font-size: 17px; }
       .masthead,
@@ -594,49 +428,6 @@
 
     <section class="section">
       <div class="section-title">
-        <h2>一图流：Agent 协作落地的四类对象</h2>
-        <span>one-page flow / 判断路径</span>
-      </div>
-      <div class="one-flow" aria-label="四家公司 Agent 协作落地一图流">
-        <div class="flow-headline">
-          <div class="flow-thesis">
-            <b>不是把任务丢给 AI，而是重写协作对象。</b>
-            <span>四家公司分别改造工程系统、专业工作流、交易协议和组织制度；每一种对象都要求人保留判断，系统承担可执行、可验证、可追责的部分。</span>
-          </div>
-          <div class="flow-map">
-            <div class="flow-step openai">
-              <span>Mode 01</span>
-              <h3>工程系统可执行</h3>
-              <p>OpenAI 把 repo、CI、review、observability、docs 和 issue tracker 变成 agent 可以工作的研发操作系统。</p>
-            </div>
-            <div class="flow-step anthropic">
-              <span>Mode 02</span>
-              <h3>专业工作流共创</h3>
-              <p>Anthropic 把 Claude 放进 data、security、marketing、design、legal 等真实工作流，共同生产 artifact。</p>
-            </div>
-            <div class="flow-step stripe">
-              <span>Mode 03</span>
-              <h3>跨组织协议可读</h3>
-              <p>Stripe 把商品、授权、支付、风控和订单交接协议化，并保留商家的履约与售后责任。</p>
-            </div>
-            <div class="flow-step block">
-              <span>Mode 04</span>
-              <h3>组织制度可扩散</h3>
-              <p>Block 把 AI adoption、champions、repo rules、skills 和 metrics 制度化，同时暴露组织信任风险。</p>
-            </div>
-          </div>
-        </div>
-        <div class="flow-rule">
-          <div><b>看对象</b>先判断被改造的是代码任务、专业 artifact、商业交易，还是组织制度。</div>
-          <div><b>看边界</b>确认哪些判断仍由人负责，哪些执行可以交给 agent。</div>
-          <div><b>看证据</b>优先看系统、协议、岗位、指标和失败处理，而不是口号。</div>
-          <div><b>看迁移</b>不要照搬公司名，迁移它们处理协作对象的方式。</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">
         <h2>四家公司：从战略下钻到协作行为</h2>
         <span>strategy → behavior → collaboration</span>
       </div>
@@ -646,15 +437,6 @@
           <h3>OpenAI：把研发系统本身改造成 Agent 可以工作的环境</h3>
           <p><strong>战略选择：</strong>OpenAI 的公开写作不是在讲“工程师少写代码”，而是在讲 agent-first engineering。人类负责目标、环境、约束、反馈和判断，Codex 负责执行、验证、review、修复和推进 PR。</p>
           <p><strong>协作方式：</strong>repo 知识成为 system of record，AGENTS.md、docs、plans、product specs、quality docs 分层承载上下文；Codex 直接使用 gh、local scripts、repository-embedded skills，自审、响应反馈、修复构建失败。Symphony 则把 Linear 这类 issue tracker 变成控制面，每个 open task 对应 agent workspace，并处理 CI、rebase、conflict、flaky check retry 和 handoff。</p>
-          <div class="knowledge-card">
-            <h4>章节知识卡：OpenAI 的可复用方法</h4>
-            <div class="knowledge-grid">
-              <div><b>核心对象</b><span>研发系统，而不是单个代码任务。</span></div>
-              <div><b>人负责</b><span>目标、边界、优先级、架构判断和最终合并责任。</span></div>
-              <div><b>Agent 负责</b><span>执行、验证、修复、响应 review 反馈、失败重试和工作区推进。</span></div>
-              <div><b>迁移提醒</b><span>先补 repo 语境、测试、观测和失败写回，再谈规模化派单。</span></div>
-            </div>
-          </div>
           <div class="evidence-ledger">
             <h4>证据标签</h4>
             <ul>
@@ -671,15 +453,6 @@
           <h3>Anthropic：把 Claude 放进专业团队的真实工作流</h3>
           <p><strong>战略选择：</strong>Anthropic 不是把 Claude Code 包装成单一研发工具，而是让 Claude 进入不同职能的具体工作流。人仍然拥有专业判断，Claude 参与探索、生成、自动化和验证。</p>
           <p><strong>协作方式：</strong>Infrastructure 新数据科学家让 Claude Code 读取 CLAUDE.md，解释 pipeline dependency，并说明 upstream sources 如何 feeding dashboards；Data Infrastructure 在 Kubernetes incident 中把 dashboard screenshots 交给 Claude Code，定位 pod IP exhaustion 并拿到补救命令；Growth Marketing、Product Design、Legal 则把广告生成、prototype/test、phone tree 和自助审核工具变成可运行 artifact。</p>
-          <div class="knowledge-card">
-            <h4>章节知识卡：Anthropic 的可复用方法</h4>
-            <div class="knowledge-grid">
-              <div><b>核心对象</b><span>专业工作流和可交付 artifact。</span></div>
-              <div><b>人负责</b><span>专业语境、品味、风险判断、采用或拒绝输出。</span></div>
-              <div><b>Agent 负责</b><span>探索、生成、解释、自动化、原型、定位和验证辅助。</span></div>
-              <div><b>迁移提醒</b><span>不要从工具培训开始，要从每个职能最真实的工作流入口开始。</span></div>
-            </div>
-          </div>
           <div class="evidence-ledger">
             <h4>证据标签</h4>
             <ul>
@@ -696,15 +469,6 @@
           <h3>Stripe：把交易从人类界面改造成 Agent 可读协议</h3>
           <p><strong>战略选择：</strong>Stripe 把 agentic commerce 定义为新的经济基础设施问题。AI 入口变成 storefront 后，交易不再是人点击网页，而是 agent 带着用户意图、身份、支付上下文进入商家系统。</p>
           <p><strong>协作方式：</strong>ChatGPT Instant Checkout 先支持美国 Etsy 商家，Shopify 商家后续接入；ACP 让商家用一次集成接入多个 AI agent；Shared Payment Token 按 merchant 和 cart total 限定，避免暴露真实支付凭据，同时保留风控能力。ChatGPT 把 token 和订单通过 API 交给商家，商家接受或拒绝订单，并处理收费、税务、履约、退货。</p>
-          <div class="knowledge-card">
-            <h4>章节知识卡：Stripe 的可复用方法</h4>
-            <div class="knowledge-grid">
-              <div><b>核心对象</b><span>跨组织交易协议和责任链。</span></div>
-              <div><b>人负责</b><span>购买意图、授权边界、商家承诺和争议处理判断。</span></div>
-              <div><b>Agent 负责</b><span>读取商品、携带 token、发起订单、传递上下文和触发 API。</span></div>
-              <div><b>迁移提醒</b><span>涉及钱、权限、客户承诺时，先写协议和回滚，不先写对话。</span></div>
-            </div>
-          </div>
           <div class="evidence-ledger">
             <h4>证据标签</h4>
             <ul>
@@ -721,15 +485,6 @@
           <h3>Block：工程 AI-readiness 值得学，裁员叙事必须分开看</h3>
           <p><strong>战略选择：</strong>Block 的公开材料显示两件事同时发生：工程侧把 AI adoption 制度化，管理侧把 intelligence tools 和 smaller team 绑定。这个样本必须同时保留正面做法和组织风险。</p>
           <p><strong>协作方式：</strong>Block 做的是组织系统，而不是单点工具采用：95% 工程师定期使用 AI，50 名 Engineering AI Champions 投入 30% 时间做 enablement；repo 层面设置 AGENTS.md、HOWTOAI.md、agent skills、AI rules、usage tracking、CI/CD 分析和 incident/postmortem 辅助。40,000+ source files、30,000+ test files、650+ deployable services 的 monorepo 被拆成 root context 和 service-level context。</p>
-          <div class="knowledge-card">
-            <h4>章节知识卡：Block 的可复用方法</h4>
-            <div class="knowledge-grid">
-              <div><b>核心对象</b><span>组织 adoption 系统和工程上下文治理。</span></div>
-              <div><b>人负责</b><span>组织信任、人员影响、指标解释和制度边界。</span></div>
-              <div><b>Agent 负责</b><span>代码辅助、自动 PR、CI/CD 分析、incident 辅助和上下文读取。</span></div>
-              <div><b>迁移提醒</b><span>学 readiness、champions、rules 和 metrics，不学把效率直接等同裁员。</span></div>
-            </div>
-          </div>
           <div class="evidence-ledger">
             <h4>证据标签</h4>
             <ul>
@@ -760,7 +515,7 @@
       </div>
     </section>
 
-    <section class="section sources">
+    <section class="sources">
       <h2>来源边界</h2>
       <ol>
         <li><a href="https://openai.com/index/harness-engineering/">OpenAI, Harness engineering: leveraging Codex in an agent-first world</a></li>
