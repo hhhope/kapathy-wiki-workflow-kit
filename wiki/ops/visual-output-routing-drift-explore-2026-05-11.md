@@ -106,6 +106,39 @@ accuracy. In this case the user wanted to own the mode decision:
 Because the agent did not stop at that fork, it kept optimizing for
 controllable text and generated low-quality H5/SVG-like visuals.
 
+## 2026-05-11 Continuation: Named Visual Skills Were Not Carried Into Execution
+
+The user later explicitly named `$knowledge-article-visual` and
+`$infographic-onepager` while asking why the company-playbook visual generation
+did not follow those skills.
+
+The fresh failure is narrower than the original H5/SVG fallback:
+
+- The named skills were loaded only after the user challenged the route, not at
+  the first visual request.
+- The execution path treated the task as `public-report-quality-gate + imagegen`
+  instead of `knowledge-article-visual -> infographic-onepager -> imagegen`.
+- `knowledge-article-visual` owns article-level visual series: four knowledge
+  cards plus one total infographic.
+- `infographic-onepager` owns the required pre-generation compression step:
+  poster/card script first, then prompt or asset generation.
+- The prior response jumped toward image generation and parallel extraction
+  before presenting the compressed visual script as the carrying artifact.
+
+This means the current issue is not simply "which output mode should be used".
+It is an intent-routing handoff failure:
+
+`existing article asks for 图 / 知识卡 / 一图流`
+should route to:
+
+`knowledge-article-visual` for article-level series structure
+then `infographic-onepager` for each image script and format
+then image generation or hybrid output according to the chosen mode.
+
+The skill text already contains this route. The live execution failed because
+the named visual skills did not become the primary control path before
+subtasks and image prompts were started.
+
 ## Desired Boundary
 
 Before producing visual assets, the agent should present the output-mode fork:
@@ -133,6 +166,25 @@ If this becomes an implementation change, the skill behavior should likely be:
    image-model output.
 5. Reference images must be decomposed into visual grammar before generation,
    not reduced to generic style words.
+
+## Candidate Runtime Correction
+
+For the company-playbook visual request, the correct next move after exiting
+explore is:
+
+1. State that `$knowledge-article-visual` is the top-level route.
+2. State that `$infographic-onepager` is the per-image compression and format
+   route.
+3. Infer the output mode from the user's repeated corrections: direct image
+   model or hybrid, not H5/SVG.
+4. Produce the visual script first:
+   - four company knowledge cards: OpenAI, Anthropic, Stripe, Block
+   - one total infographic
+5. Only then generate or assemble project-local image assets.
+
+Do not restart with generic `imagegen` or `public-report-quality-gate` as the
+main route. Those can support report quality and asset generation, but they do
+not own this intent.
 
 ## Non-Implementation Boundary
 
