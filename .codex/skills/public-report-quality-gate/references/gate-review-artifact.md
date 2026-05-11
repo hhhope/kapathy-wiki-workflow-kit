@@ -17,10 +17,13 @@ document.
 |---|---|
 | Review Target | Target title, destination, scope, and non-scope |
 | Reviewer Routing | Required/not required/not applicable/blocked, checked escalation signals, reviewer result when required, and user-selected template status |
+| Article Intent Contract | Reader, reader decision or action, main line, non-goals, user-owned judgments, and agent-allowed work |
 | Reference Structure Map | Source, reader job, page group, reading path, visual logic, writing standard, reuse boundary, and linked-page readback when the reference has child pages or concrete reading-map links |
 | Learning Use Map | Applicable learning artifacts, domain/topic, reusable capability type, learning point, intended output use, and skip reason when relevant |
-| Hard Gate Results | Learning use, reference, split, voice, narrative, visual, and publish gate results |
-| Scorecard | Point breakdown and total score only after all hard gates pass; otherwise `INVALID` with the failing gate |
+| Section And Paragraph Drift Review | Section objective, Paragraph claim, mainline role, target fit score, narrative drift score, evidence fit score, Judgment source, and action |
+| Judgment Ledger | User-owned judgments, source-backed judgments, agent inferences, unknown judgments, and required user confirmations |
+| Hard Gate Results | Learning use, reference, split, voice, narrative, paragraph drift, judgment ownership, visual, and publish gate results |
+| Scorecard | Point breakdown and total score only after all hard gates pass; otherwise `INVALID` with the failing gate. Diagnostic paragraph scores may remain available for repair. |
 | Decision | Whether the draft may update Feishu or be claimed review-ready |
 | Residual Risks | Proof boundary and known gaps |
 | Feishu Update Verification | Update command result, title, update log id, read-back result, read-back log id, and opening text |
@@ -33,10 +36,12 @@ reader-facing request
   -> create/update wiki/ops/*-report-gate-review.md
   -> decide reviewer routing before drafting
   -> run reviewer flow or record why reviewer is not required
+  -> record Article Intent Contract
   -> complete reference structure map and linked-page readback
   -> complete learning use map when learned references are applicable
   -> choose split strategy and destination map
   -> draft reader-facing content
+  -> complete Section And Paragraph Drift Review and Judgment Ledger
   -> pass hard gates and score >= 80
   -> update Feishu or publish target
      (text-only by default when local images exist)
@@ -55,6 +60,15 @@ explicitly selects the template and scopes the reviewer step out for this run.
 If the reference map is incomplete, or any hard gate is failed, partial,
 unknown, or not tested, record the score as `INVALID` and stop before Feishu
 sync or review-ready claims.
+
+If the Article Intent Contract, Section And Paragraph Drift Review, or Judgment
+Ledger is missing for complex, scored, reference-shaped, or drift-corrected
+drafts, record the score as `INVALID`. Keep diagnostic 0-5 paragraph scores if
+they help repair, but do not treat them as a publish or review-ready score.
+
+If a paragraph's judgment source is agent inference or unknown for the article's
+main line, conclusion, priority, proof-strength claim, or public stance, ask the
+user before claiming review-ready status.
 
 If the output claims to use learned references but the learning use map is
 missing, incomplete, or only says "used the reference" without a concrete output

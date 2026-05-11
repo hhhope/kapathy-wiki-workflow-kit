@@ -14,6 +14,8 @@ Any hard-fail blocks publishing, Feishu sync, or a "ready for review" claim.
 | Split Gate | One draft carries multiple reader jobs such as overview, runtime, migration, validation, and roadmap without an explicit split decision and final destination map. A review packet does not count as a split unless it is explicitly labeled non-final and not claimed review-ready. |
 | Voice Gate | Chat residue, slogan simplification, loose narrator, weak section openings, internal ops leakage, or tone mismatch remains in reader-facing text. |
 | Narrative Gate | The core story changes, such as turning an evolution path into a static responsibility split. |
+| Paragraph Drift Gate | A section or important paragraph does not serve the Article Intent Contract, changes the main line, or lacks a repair action after drift is found. |
+| Judgment Ownership Gate | The agent silently turns source material, reference examples, or polished prose into the user's conclusion, priority, proof-strength claim, or public stance without source support or user confirmation. |
 | Visual Gate | Diagrams are decorative, duplicated text, or fail to say what relationship or decision they carry. If the reference uses essential visuals, a reference-shaped draft without corresponding visual assets or a concrete visual plan fails this gate; missing visuals cannot be downgraded to residual risk for review-ready output. |
 | Publish Gate | Review status, source boundary, residual risks, or non-goals are missing before sync/publish. |
 
@@ -28,6 +30,53 @@ Any hard-fail blocks publishing, Feishu sync, or a "ready for review" claim.
 | Internal ops leakage | Repo paths, OpenSpec mechanics, gates, traces, or agent workflow appear without translation into reader-facing context. |
 | Tone mismatch | The requested output is public/executive/shareable, but the tone remains scratch note, chat recap, or wiki draft. |
 
+## Article Intent Contract
+
+Before paragraph drift can be judged, record the anchor:
+
+| Field | Meaning |
+|---|---|
+| Reader | Who the article serves. |
+| Reader decision or action | What the reader should understand, decide, or do after reading. |
+| Main line | The article's controlling story or argument. |
+| Non-goals | Topics, claims, or detail levels the article should not carry. |
+| User-owned judgments | Conclusions, priorities, tradeoffs, proof-strength claims, or public stance that require user confirmation. |
+| Agent-allowed work | Organization, summarization, rewriting, evidence mapping, or alternatives the agent may perform. |
+
+## Section And Paragraph Drift Review
+
+For complex, scored, reference-shaped, or drift-corrected drafts, record
+diagnostic scores against the Article Intent Contract.
+
+| Field | Meaning |
+|---|---|
+| Section objective | What this section is supposed to do for the reader. |
+| Paragraph claim | What the paragraph actually asserts. |
+| Mainline role | Setup, explanation, evidence, contrast, transition, conclusion, or off-track. |
+| Target fit score | 0-5 diagnostic score for serving the reader decision or action. |
+| Narrative drift score | 0-5 diagnostic score for deviation from the main line. |
+| Evidence fit score | 0-5 diagnostic score for whether evidence supports the paragraph. |
+| Judgment source | User, source material, agent inference, or unknown. |
+| Action | Retain, compress, rewrite, delete, or ask the user. |
+
+Drift scale:
+
+| Score | Meaning |
+|---:|---|
+| 0 | Fully serves the main line. |
+| 1 | Weak but acceptable support. |
+| 2 | Related but should be compressed. |
+| 3 | Drifting and should be rewritten. |
+| 4 | Changes article judgment and needs user review. |
+| 5 | Violates the target or replaces user judgment. |
+
+## Judgment Ownership Gate Detail
+
+Process can be delegated, but judgment cannot. The agent may organize,
+summarize, rewrite, and propose alternatives. It must not silently own the
+article's main line, strategic conclusion, priority, proof strength, or public
+stance.
+
 ## Scorecard
 
 Only score after all hard gates pass.
@@ -35,6 +84,10 @@ Only score after all hard gates pass.
 If any hard gate is `FAIL`, `PARTIAL`, `UNKNOWN`, or `NOT TESTED`, do not assign
 a numeric score. Mark the scorecard `INVALID`, record the failing gate, and block
 Feishu sync, publication, and review-ready claims.
+
+If a hard gate fails, the overall score remains `INVALID`, but diagnostic scores
+for section or paragraph drift may remain available to guide repair. Do not
+convert those diagnostic scores into a publish or review-ready score.
 
 | Dimension | Points | Full-credit standard |
 |---|---:|---|

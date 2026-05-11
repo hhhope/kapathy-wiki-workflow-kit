@@ -28,6 +28,8 @@ Reviewer routing is required when at least two signals are true:
    - reader
    - reader decision or action
    - non-goals
+   - user-owned judgments
+   - agent-allowed work
 
 2. Template choice:
    - list 2-3 candidate templates
@@ -35,29 +37,43 @@ Reviewer routing is required when at least two signals are true:
    - recommend one
    - require user selection unless the user already selected explicitly
 
-3. Learning use map:
+3. Reverse outline:
+   - list each section's actual job
+   - list important paragraph claims
+   - compare each claim to the intended reader decision
+   - mark paragraph drift as retain, compress, rewrite, delete, or ask the user
+
+4. Judgment ownership:
+   - classify key judgments as user, source material, agent inference, or unknown
+   - fail or ask the user when the draft changes main line, conclusion,
+     priority, proof strength, or public stance without confirmation
+
+5. Learning use map:
    - learning artifact
    - domain / topic
    - capability type
    - output use
    - skip reason
 
-4. Hard gates:
+6. Hard gates:
    - reviewer routing
    - learning use
    - reference structure
    - split
    - voice
    - narrative
+   - paragraph drift
+   - judgment ownership
    - visual
    - publish boundary
 
-5. Score evidence:
+7. Score evidence:
    - score only after all hard gates pass
+   - keep diagnostic drift scores separate when the overall score is `INVALID`
    - cite draft evidence for each dimension
    - keep rubric-schema checks separate from draft-quality scores
 
-6. Sync readiness:
+8. Sync readiness:
    - ready
    - blocked
    - ready only as review draft
@@ -70,6 +86,9 @@ Return:
 - template candidates
 - recommended template
 - user selection status
+- reverse outline summary
+- paragraph drift actions
+- judgment ownership table
 - hard gate table
 - score or `INVALID`
 - sync readiness decision

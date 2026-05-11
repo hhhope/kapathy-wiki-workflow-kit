@@ -66,6 +66,16 @@ Use these scenarios to validate trigger and gate behavior.
 | Any hard gate is `FAIL`, `UNKNOWN`, `PARTIAL`, or `NOT TESTED`, but the review still assigns a numeric score | Scorecard | FAIL; score must be `INVALID` and the decision must block sync/review-ready claims |
 | A review packet bundles multiple final reader jobs into one Feishu document and calls that a split | Split Gate | FAIL unless the packet is explicitly marked as a non-review-ready failed/provisional draft and final page destinations are mapped |
 
+## Paragraph Drift And Judgment Replay
+
+| Failure | Gate That Should Catch It | Expected Result |
+|---|---|---|
+| Process can be delegated, but judgment cannot: the agent chooses the article's public conclusion while only being asked to organize the draft | Judgment Ownership Gate | FAIL until the conclusion is source-backed or user-confirmed |
+| A pretty paragraph changes the article's decision from "review the option" to "adopt the option" | Paragraph Drift Gate + Judgment Ownership Gate | FAIL; action must be rewrite or ask the user |
+| A reference article's opinion becomes the local conclusion without local evidence | Judgment Ownership Gate + Evidence Boundary | FAIL until marked as reference learning, not a local conclusion |
+| A section has useful facts but no clear role in the Article Intent Contract | Paragraph Drift Gate | Diagnostic drift score 2 or 3; action must be compress, rewrite, or delete |
+| A hard failure but diagnostic scores remain available for repair | Scorecard Boundary | Overall score stays `INVALID`; section or paragraph 0-5 diagnostic scores may remain in the artifact |
+
 ## Learning Reuse Replay
 
 | Failure | Gate That Should Catch It | Expected Result |

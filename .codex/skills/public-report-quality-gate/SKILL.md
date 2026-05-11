@@ -29,6 +29,9 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Do not publish, sync to Feishu, or claim review-ready when any hard gate fails.
 - Before Feishu sync or a review-ready claim, create or update a repo-visible
   `wiki/ops/*-report-gate-review.md` artifact.
+- For complex, scored, reference-shaped, or drift-corrected drafts, record an
+  Article Intent Contract before drafting or scoring: reader, reader decision or
+  action, main line, non-goals, user-owned judgments, and agent-allowed work.
 - If the output claims to use prior learning or external references, map the
   applicable learning artifacts before drafting: what was used, where it
   appears, and why relevant learning was skipped.
@@ -40,6 +43,16 @@ implementation reports unless the user asks for a reader-facing deliverable.
   writing a single long draft.
 - If any hard gate is failed, partial, unknown, or not tested, do not assign a
   numeric score; mark the scorecard `INVALID`.
+- Run a Section And Paragraph Drift Review for complex or drift-corrected
+  drafts before review-ready claims. Compare section objectives and paragraph
+  claims to the Article Intent Contract, then mark retain, compress, rewrite,
+  delete, or ask the user.
+- Apply the Judgment Ownership Gate: process can be delegated, but judgment cannot.
+  Do not silently turn source material, reference examples, or polished prose
+  into the user's main line, conclusion, priority, proof-strength claim, or
+  public stance.
+- When paragraph drift or judgment ownership fails, the overall score remains
+  `INVALID`; diagnostic paragraph scores may still be recorded for repair.
 - For complex reader-facing materials, decide reviewer routing before drafting.
   Route to `.codex/agents/public-report-reviewer.md` when at least two reviewer
   escalation signals are true.
@@ -85,5 +98,8 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Letting repo paths, OpenSpec details, or agent workflow leak into public text
 - Saying a draft "learned from" a source without showing the section, visual,
   metric, evidence block, boundary statement, or skip reason it affected
+- Scoring a whole article while skipping paragraph-level drift diagnostics
+- Letting the agent choose the article's public judgment because the prose reads
+  smoothly
 - Treating broad Feishu sync approval as approval to insert images
 - Claiming image delivery quality from image tokens or read-back alone
