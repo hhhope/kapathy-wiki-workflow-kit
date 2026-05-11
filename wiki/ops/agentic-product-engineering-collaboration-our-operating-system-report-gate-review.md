@@ -12,7 +12,7 @@ status: review-ready
 
 - Audience: internal product, engineering, QA, project-management, and management stakeholders.
 - Reader promise: explain what we should do after the company-playbook and newspaper H5 conclusions, using our own repository and ADR/log evidence, while stating what a non-internet-giant team should not do.
-- Output shape: long-form H5 article with restrained newspaper/report layout, data strip, explicit do-not/do sections, priority execution checklist, software-engineering workflow reshape, mode-change evidence rows, inline failure evidence, writing workflow, and a short pilot plan.
+- Output shape: long-form H5 article with restrained newspaper/report layout, data strip, generated image-model one-page infographic, explicit do-not/do sections, priority execution checklist, software-engineering workflow reshape, mode-change evidence rows, inline failure evidence, writing workflow, and a short pilot plan.
 - Non-goals: not a dashboard, not a card wall, not a table-grid report, not a tool instruction page, not a generic AI trend article.
 
 ## Reference Structure Map
@@ -34,6 +34,7 @@ status: review-ready
   - Mode-change data: account-team-efficiency pre-OpenSpec fixish 26.6%, OpenSpec early phase 32.2%, gate-pressure short window 24.5%; account-meeting-lore public report gate short window fixish 8.5%.
   - Explicit strategic boundary: do not build foundation models, generic RAG platform, AI middle-platform theater, or AI usage-rate management.
   - Execution checklist: intent packet, Spec/ADR entry, Agent execution packet, evidence matrix, review packet, skill gates, failure writeback, weekly metrics.
+  - Image-model infographic: inserted as the scan-first visual summary for the H5.
 - Modified:
   - External company analysis was compressed into a coordinate section instead of dominating the page.
   - Internal failure cases were rewritten as role-facing lessons.
@@ -49,7 +50,7 @@ status: review-ready
 - Actionability Gate: pass. The page includes a concrete priority checklist and names how product, engineering, QA, and project management work changes.
 - Reference Output Shape Gate: pass. The selected shape is an H5 long-form article. It does not drift into dashboard panels, card wall, table grid, or colorful block collage.
 - Voice Quality Gate: pass. The page uses direct internal report prose and removes chat residue.
-- Visual Output Gate: pass with local-assets boundary. The page uses existing visual assets from the prior H5 and captions them as supporting diagrams.
+- Visual Output Gate: pass with local-assets boundary. The page uses existing visual assets from the prior H5 and a generated image-model one-page infographic as the primary scan-first visual.
 - Evidence Boundary Gate: pass. The page names repository evidence categories, date slices, counting method, and representative incidents, while stating that it is an internal H5 draft.
 - No production residue: pass. Reader-facing HTML contains no prompt script, route labels, or tool-execution notes.
 
@@ -66,6 +67,16 @@ status: review-ready
 - Mobile screenshot: `/tmp/agentic-product-engineering-collaboration-our-operating-system-mobile.png`.
 - Result: Chinese text renders in the local Playwright environment after adding CJK font fallbacks. Hero, data strip, and article sections are readable in the checked desktop and mobile viewports.
 
+## Visual Asset Boundary
+
+- Generated image source: `/home/yan/.codex/generated_images/019e1649-0b70-7dd1-a407-f2b5924caee3/ig_0c0d47dbac6051aa016a01cd74d33081919a4cc4ba38f75eea.png`.
+- Repo asset copy: `wiki/reports/agentic-collaboration-images/ai-collaboration-operating-system-onepager.png`.
+- H5 insertion: section `03 · 一图流`.
+- Share package: `wiki/reports/agentic-product-engineering-collaboration-our-operating-system-share.zip`.
+- Package contents: H5 plus the four image assets referenced by the H5.
+- Package verification: extracted to `/tmp/agentic-h5-share-check-20260511-2048/` and opened with Playwright screenshot `/tmp/agentic-h5-share-check-20260511-2048.png`.
+- Feishu sync: not performed. The package is local file delivery only.
+
 ## Behavior Replay Evidence
 
 - Situation shape: user asks for an H5 based on previous H5 conclusions and internal collaboration evidence.
@@ -80,7 +91,7 @@ status: review-ready
 - The repository evidence numbers are copied from the session's prior analysis; if this H5 is reused later, refresh counts before external sharing.
 - Fixish ratio is based on commit titles and may undercount or overcount real defects. Use it to describe workflow pressure, not software quality.
 - This H5 is internal-facing. External publication would require removing or sanitizing internal repo paths, incident details, and company claim wording.
-- The page references local image assets. Moving the HTML outside `wiki/reports` requires copying the `agentic-collaboration-images` directory or rebasing paths.
+- The page references local image assets. Moving the HTML outside `wiki/reports` requires copying the `agentic-collaboration-images` directory or using the generated share zip.
 
 ## Decision
 
