@@ -211,7 +211,7 @@
 
     .company-card {
       display: grid;
-      grid-template-columns: 250px 1fr;
+      grid-template-columns: 230px 1fr;
       border: 2px solid var(--line);
       background: var(--white);
     }
@@ -234,15 +234,17 @@
 
     .company-body {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .cell {
-      padding: 15px;
+      padding: 18px;
       border-right: 1px solid rgba(39, 32, 24, .35);
+      border-bottom: 1px solid rgba(39, 32, 24, .35);
     }
 
-    .cell:last-child { border-right: 0; }
+    .cell:nth-child(2n) { border-right: 0; }
+    .cell:nth-last-child(-n+2) { border-bottom: 0; }
 
     .cell b {
       display: block;
@@ -253,8 +255,8 @@
 
     .cell p,
     .cell li {
-      font-size: 14px;
-      line-height: 1.55;
+      font-size: 15px;
+      line-height: 1.6;
     }
 
     ul {
@@ -391,6 +393,9 @@
       .company-head,
       .cell { border-bottom: 1px solid rgba(39, 32, 24, .35); }
 
+      .cell:nth-last-child(-n+2) { border-bottom: 1px solid rgba(39, 32, 24, .35); }
+      .cell:last-child { border-bottom: 0; }
+
       .sources ol { columns: 1; }
     }
 
@@ -409,22 +414,22 @@
     <header class="masthead">
       <div class="kicker">
         <span>AI Agent Collaboration / Evidence Newspaper</span>
-        <span>Draft 02 · 2026-05-11</span>
+        <span>Draft 03 · 2026-05-11</span>
       </div>
       <h1>四家公司看 Agent 协作怎么落地</h1>
-      <p class="tagline">这不是“大家都用 AI 工具”的故事。OpenAI、Anthropic、Stripe、Block 展示的是四种不同的协作重排：任务控制面、跨职能构建、交易基础设施、AI-native 组织赌注。</p>
+      <p class="tagline">这不是“大家都用 AI 工具”的故事。OpenAI、Anthropic、Stripe、Block 展示的是四种不同战略：agent-first 工程操作系统、human-AI 协作工作空间、agent-readable 商业协议、AI-native 组织制度和风险。</p>
     </header>
 
     <section class="front">
       <article class="lead">
-        <h2>判断一家公司的 Agent 协作现状，不看口号，看三个硬信号：它怎么组织任务，怎么招聘，怎么处理风险。</h2>
-        <p>OpenAI 把工程任务抽象成可持续运行的 agent workspace；Anthropic 把 Claude Code 扩散到设计、数据、营销、法律等职能；Stripe 把商品、支付授权、风控和履约改造成 agent 可读的交易接口；Block 同时给出工程 AI-readiness 的正样本和裁员叙事的警示。四家公司不是同一条路，它们代表四种组织选择。</p>
+        <h2>判断一家公司的 Agent 协作现状，先看战略，再看行为：它把哪些工作交给 agent，哪些判断留给人，哪些系统边界被改造成可执行、可验证、可追责。</h2>
+        <p>OpenAI 的重点不是“派任务给 agent”，而是把研发系统本身改造成 agent 可读、可运行、可自审的操作系统。Anthropic 的重点不是“非工程师也写代码”，而是把 Claude 放进专业团队的真实工作流，让专家和 AI 共同生产 artifact。Stripe 的重点不是“聊天里买东西”，而是重写 agent 交易时代的支付、授权、风控和履约协议。Block 的重点不是“工程师用了 AI”，而是把 AI-native 组织制度化，同时暴露把效率叙事和裁员绑定的风险。</p>
       </article>
       <aside class="evidence-box" aria-label="组织信号和招聘信号">
-        <div><b>OpenAI</b><span>Codex 搜索显示 25 个岗位；Core Agents JD 指向沙箱、编排、状态、生产 fleet。</span></div>
-        <div><b>Anthropic</b><span>Claude Code 内部案例覆盖产品、设计、数据、营销、法律；Claude Code PM JD 要求 PM+工程背景。</span></div>
-        <div><b>Stripe</b><span>Agentic Commerce 有独立设计和工程管理岗位；ACP/SPT 把交易改成 agent 可调用协议。</span></div>
-        <div><b>Block</b><span>工程博客给出 95% 工程师使用 AI、50 名 Champions、自动 PR 21 倍增长；公开报道显示裁员 4000+。</span></div>
+        <div><b>OpenAI</b><span>公开写作强调“Humans steer. Agents execute.”，并把 repo、CI、review、observability、docs 变成 agent 工作系统；Codex hiring 补强平台化信号。</span></div>
+        <div><b>Anthropic</b><span>公开案例覆盖 data infra、product、security、marketing、design、legal；Claude Code best practices 把协作写成 explore、plan、verify、delegate 的工作法。</span></div>
+        <div><b>Stripe</b><span>Instant Checkout、ACP、SPT 显示交易协作从网页界面转向 agent、用户、商家、支付网络之间的协议链。</span></div>
+        <div><b>Block</b><span>工程博客给出 95% 工程师使用 AI、50 名 Champions、自动 PR 21 倍增长；公开报道显示 4000/10000 裁员。</span></div>
       </aside>
     </section>
 
@@ -435,60 +440,64 @@
       </div>
       <div class="matrix">
         <article class="openai">
-          <span class="badge">Control Plane</span>
-          <h3>OpenAI：任务进入 Agent 队列</h3>
-          <p>核心不是“工程师少写代码”，而是把 issue、task board、repo、测试、CI 和 review packet 变成 agent 可以持续执行的控制面。</p>
+          <span class="badge">Agent-first OS</span>
+          <h3>OpenAI：研发系统先为 Agent 重写</h3>
+          <p>战略不是让 agent 接更多 ticket，而是把工程环境、知识、测试、review、observability 和架构约束改造成 agent 可以长期执行的操作系统。</p>
         </article>
         <article class="anthropic">
-          <span class="badge">Builder Surface</span>
-          <h3>Anthropic：职能专家变 Builder</h3>
-          <p>Claude Code 的内部案例把边界推到非工程职能。会描述问题的人，开始能做原型、自动化、测试和数据可视化。</p>
+          <span class="badge">Collaborative Workspace</span>
+          <h3>Anthropic：专业工作流里嵌入 Claude</h3>
+          <p>战略不是把所有人改造成工程师，而是让不同职能在自己的工作流里和 Claude 共同探索、生成、验证和迭代。</p>
         </article>
         <article class="stripe">
-          <span class="badge">Transaction Rails</span>
-          <h3>Stripe：交易系统对 Agent 可读</h3>
-          <p>Agent 一旦要替人买东西，协作对象就不只是员工，而是用户、商家、agent、支付机构和履约系统之间的协议。</p>
+          <span class="badge">Transaction Protocol</span>
+          <h3>Stripe：交易协议先对 Agent 可读</h3>
+          <p>战略不是在支付页加 AI，而是让商品、授权、风控、结算、履约和售后成为 agent 能调用、商家能控制、平台能审计的协议。</p>
         </article>
         <article class="block">
-          <span class="badge">Org Bet + Warning</span>
-          <h3>Block：组织赌注和裁员警示同时成立</h3>
-          <p>Block 证明 repo readiness、champions、AI rules、自动 PR 有真实工程价值；同时也证明 AI-native 很容易被讲成粗暴裁员故事。</p>
+          <span class="badge">Org System + Warning</span>
+          <h3>Block：AI-native 组织制度和缩编叙事并存</h3>
+          <p>战略是把 AI adoption 变成工程制度、培训、上下文和指标；风险是这种制度升级被管理层直接翻译成更小团队和裁员逻辑。</p>
         </article>
       </div>
     </section>
 
     <section class="section">
       <div class="section-title">
-        <h2>公司一：OpenAI 选择把 Codex 做成工程任务系统</h2>
-        <span>agent queue</span>
+        <h2>四家公司：从战略下钻到协作行为</h2>
+        <span>strategy → behavior → collaboration</span>
       </div>
       <div class="company-report">
         <article class="company-card">
           <div class="company-head openai">
             <h3>OpenAI</h3>
-            <p>路径：从 coding assistant 变成可调度、可审查、可扩展的 agent fleet。</p>
+            <p>路径：从 coding assistant 走向 agent-first engineering operating system。</p>
           </div>
           <div class="company-body">
             <div class="cell">
-              <b>协作模式</b>
-              <p>工程协作从“人开多个 session 指挥 agent”转向“issue tracker 作为控制面”。Symphony 把 Linear task 映射为独立 agent workspace，agent 持续运行，人审结果。</p>
-              <span class="source-code">证据：Symphony</span>
+              <b>战略选择</b>
+              <p>OpenAI 的公开写作把战略说得很清楚：当 agent 能写代码，工程团队的主要工作就不再是手写实现，而是设计环境、指定意图、建立反馈回路，让 Codex 能可靠工作。</p>
+              <span class="source-code">证据：Harness Engineering</span>
             </div>
             <div class="cell">
-              <b>公开数据</b>
+              <b>公开行为与协作方式</b>
               <ul>
-                <li>Harness Engineering 称 5 个月约 100 万行代码、约 1500 个 PR。</li>
-                <li>早期 3 名工程师驱动 Codex，后扩大到 7 名。</li>
-                <li>部分团队引入 Symphony 后 landed PR 增长 500%。</li>
+                <li>5 个月约 100 万行代码、约 1500 个 PR，早期 3 名工程师驱动 Codex，后扩大到 7 名。</li>
+                <li>Symphony 把 Linear 这类 issue tracker 变成控制面：每个 open task 对应一个 agent workspace，系统持续 watch task board，agent crash 或 stall 时重启。</li>
+                <li>Symphony 还处理 CI、rebase、conflict、flaky check retry 和 handoff；它是 reference implementation，不等同于 OpenAI 全部战略，但暴露了协作机制。</li>
+                <li>repo 知识成为 system of record，短 AGENTS.md 作为入口，docs、plans、product specs、quality docs 分层承载上下文。</li>
+                <li>Codex 直接使用 gh、local scripts、repository-embedded skills，自己 review、响应反馈、修复构建失败并推进 PR。</li>
+                <li>UI、logs、metrics、traces 对 Codex 可读，agent 可以复现 bug、驱动浏览器、查询观测数据、再次验证。</li>
+                <li>架构约束、taste invariants、custom lint、结构测试把人的判断编码成可重复执行的系统。</li>
               </ul>
             </div>
             <div class="cell">
               <b>招聘/JD 信号</b>
-              <p>OpenAI Careers 搜索 Codex 显示 25 个岗位。Core Agents JD 不是招“会提示词的人”，而是招能做沙箱、隔离、编排、状态/记忆、生产 fleet、CI/CD、安全和开发平台的人。</p>
+              <p>OpenAI Careers 搜索 Codex 显示 25 个岗位。Core Agents JD 关注 sandbox、isolation、orchestration、stateful workflows、memory、production fleet、CI/CD、安全和开发平台，说明它在补 agent 执行系统的基础设施，不是只招会写 prompt 的人。</p>
             </div>
             <div class="cell">
-              <b>边界判断</b>
-              <p>OpenAI 的方向不是取消工程，而是把工程重心移到环境、反馈回路、约束和 review。风险在于：任务抽象不清时，agent 只会更快地产生偏差。</p>
+              <b>我们学到</b>
+              <p>先别问“任务能不能进队列”。更大的问题是：我们的知识、环境、测试、观测、review 和失败写回，是否已经变成 agent 能读、能跑、能验证、能改进的工程系统。</p>
             </div>
           </div>
         </article>
@@ -496,21 +505,23 @@
         <article class="company-card">
           <div class="company-head anthropic">
             <h3>Anthropic</h3>
-            <p>路径：把 Claude Code 从工程工具扩散成跨职能工作界面。</p>
+            <p>路径：把 Claude 做成专业团队日常工作流里的协作者。</p>
           </div>
           <div class="company-body">
             <div class="cell">
-              <b>协作模式</b>
-              <p>Claude Code 的公司内部用法说明，agentic coding 不只是加速传统开发，而是在打散技术/非技术边界。数据科学、产品设计、营销、法律都能把问题转成可运行 artifact。</p>
+              <b>战略选择</b>
+              <p>Anthropic 的战略不是把 Claude Code 包装成单一研发工具，而是让 Claude 进入不同职能的具体工作流。人仍然拥有专业判断，Claude 负责探索、生成、自动化和验证。</p>
               <span class="source-code">证据：How teams use Claude Code</span>
             </div>
             <div class="cell">
-              <b>公开数据</b>
+              <b>公开行为与协作方式</b>
               <ul>
-                <li>营销团队用 sub-agent 生成数百条广告变体。</li>
-                <li>Figma plugin 可批量生成最多 100 个广告变体。</li>
-                <li>Product Design 用 Claude Code 写测试、做原型、发现 edge cases。</li>
-                <li>Legal 做 phone tree 和自助审核工具。</li>
+                <li>Infrastructure 的新数据科学家让 Claude Code 读取 CLAUDE.md，解释 pipeline dependency，并说明哪些 upstream sources feeding dashboards。</li>
+                <li>Data Infrastructure 在 Kubernetes incident 中把 dashboard screenshots 交给 Claude Code，定位 pod IP exhaustion，并拿到具体补救命令。</li>
+                <li>Growth Marketing 构建广告 CSV 处理和 Figma plugin 工作流，用 specialized subagents 生成大量广告变体。</li>
+                <li>Product Design 用 Claude Code 做 prototype、写 tests、检查 edge cases，把设计假设变成可运行 artifact。</li>
+                <li>Legal 做 phone tree 和自助审核工具，说明协作已经进入专业服务流程，而不只是工程研发。</li>
+                <li>Claude Code best practices 强调 explore first、plan、verify、context management、permissions、MCP、subagents，这是一套协作方法而不是单个工具技巧。</li>
               </ul>
             </div>
             <div class="cell">
@@ -518,8 +529,8 @@
               <p>Claude Code PM JD 要求候选人有 5 年以上 PM+工程经验，至少 1 年职业工程背景，并能和 research、engineering、XFN 团队一起把模型进展翻成产品能力。</p>
             </div>
             <div class="cell">
-              <b>边界判断</b>
-              <p>Anthropic 的组织方向是“职能专家具备构建能力”，不是每个人都变工程师。判断、语境、用户理解和最终责任仍在人手里。</p>
+              <b>我们学到</b>
+              <p>不要把它写成“职能专家能不能构建”。更准确的问题是：每个专业团队的工作流里，有没有让 AI 参与探索、生成、验证和迭代的位置，同时保留人的语境、品味和责任。</p>
             </div>
           </div>
         </article>
@@ -531,16 +542,18 @@
           </div>
           <div class="company-body">
             <div class="cell">
-              <b>协作模式</b>
-              <p>Stripe 不是在说“内部员工怎么用 AI”，而是在重做外部交易协作：消费者给意图，agent 发现商品，商家保留商品和履约控制，支付网络提供授权、风控和结算。</p>
+              <b>战略选择</b>
+              <p>Stripe 把 agentic commerce 定义为新的经济基础设施问题。AI 入口变成 storefront 后，交易不再是人点击网页，而是 agent 带着用户意图、身份、支付上下文进入商家系统。</p>
               <span class="source-code">证据：ACP / SPT</span>
             </div>
             <div class="cell">
-              <b>公开数据</b>
+              <b>公开行为与协作方式</b>
               <ul>
                 <li>ChatGPT Instant Checkout 先支持美国 Etsy 商家，Shopify 商家后续接入。</li>
-                <li>ACP 是 Stripe 与 OpenAI 共建的开放标准。</li>
-                <li>Shared Payment Token 按 merchant 和 cart total 限定，避免暴露真实支付凭据。</li>
+                <li>ACP 是 Stripe 与 OpenAI 共建的开放标准，目标是让商家用一次集成接入多个 AI agent。</li>
+                <li>Shared Payment Token 按 merchant 和 cart total 限定，避免暴露真实支付凭据，同时保留风控能力。</li>
+                <li>ChatGPT 把 token 和订单通过 API 交给商家，商家接受或拒绝订单，处理收费、税务、履约、退货。</li>
+                <li>协作边界不是“agent 下单”一句话，而是用户、agent、商家、支付网络、风控、履约之间的责任链。</li>
               </ul>
             </div>
             <div class="cell">
@@ -548,8 +561,8 @@
               <p>Agentic Commerce EM JD 明确写新 API primitives、dashboard surfaces、money movement、Stripe primitives 集成；Designer JD 明确面向 merchants、agents、consumers 三类界面。</p>
             </div>
             <div class="cell">
-              <b>边界判断</b>
-              <p>Stripe 的方向说明：支付领域的 agent 协作必须先机器可读、可授权、可风控、可履约。这里不能用“模型更聪明”替代协议和责任链。</p>
+              <b>我们学到</b>
+              <p>当协作跨出公司边界，最先要补的不是提示词，而是协议。凡是涉及钱、合同、客户承诺、履约和风险的流程，都必须先做到 agent 可读、可授权、可审计、可回滚。</p>
             </div>
           </div>
         </article>
@@ -561,25 +574,27 @@
           </div>
           <div class="company-body">
             <div class="cell">
-              <b>协作模式</b>
-              <p>Block 的工程路线很清楚：先让 repo 对 agent 友好，再用 Champions、AI rules、HOWTOAI、skills、RPI、自动 PR 和 CI/CD 把 agent 嵌进团队日常。</p>
-              <span class="source-code">证据：Block Engineering</span>
+              <b>战略选择</b>
+              <p>Block 的公开材料显示两件事同时发生：工程侧把 AI adoption 制度化，管理侧把 intelligence tools 和 smaller team 绑定。这个样本必须同时保留正面做法和组织风险。</p>
+              <span class="source-code">证据：Block Engineering + Guardian reporting</span>
             </div>
             <div class="cell">
-              <b>公开数据</b>
+              <b>公开行为与协作方式</b>
               <ul>
                 <li>约 95% 工程师定期使用 AI 辅助开发。</li>
                 <li>50 名 Engineering AI Champions，每人投入 30% 时间做 enablement。</li>
                 <li>3 个月内 AI-authored code +69%，reported time savings +37%，automated PRs +21x。</li>
+                <li>repo 层面设置 AGENTS.md、HOWTOAI.md、agent skills、AI rules、usage tracking、CI/CD 分析和 incident/postmortem 辅助。</li>
+                <li>40,000+ source files、30,000+ test files、650+ deployable services 的 monorepo 被拆成 root context 和 service-level context。</li>
               </ul>
             </div>
             <div class="cell">
               <b>招聘/JD 信号</b>
-              <p>当前 Block careers 页面显示 0 open jobs。搜索缓存里有 AI Engineering Tools、Advanced Insights & Modeling 等岗位痕迹，但不能按当前开放岗位使用。这个信号本身更像冻结/收缩，而不是扩招。</p>
+              <p>当前 Block careers 页面显示 0 open jobs。这个实时招聘信号不能支持“Block 正在扩招 AI 岗位”的判断；本页只把它作为当前招聘边界，不从中推断具体原因。</p>
             </div>
             <div class="cell">
-              <b>边界判断</b>
-              <p>公开报道显示 Block 裁员 4000+，Dorsey 将其与 intelligence tools 和更小团队联系起来。Block 的工程实践可学，裁员叙事必须作为风险处理。</p>
+              <b>我们学到</b>
+              <p>Block 的 repo readiness、champions、rules、skills、指标和自动 PR 值得学。不能学的是把 AI-native 直接翻译成“少人更好”。协作系统升级和裁员叙事必须分开判断。</p>
             </div>
           </div>
         </article>
@@ -588,44 +603,50 @@
 
     <section class="section">
       <div class="section-title">
-        <h2>这四条路不是同一个结论</h2>
+        <h2>这四条路给我们的判断坐标</h2>
         <span>what the evidence says</span>
       </div>
       <div class="reading-grid">
         <article class="reading-card">
-          <h3>OpenAI 和 Anthropic 都在重排“谁能构建”</h3>
-          <p>OpenAI 更像工程任务系统，从 task 到 agent workspace 再到 review；Anthropic 更像职能边界重排，让设计、数据、营销、法律都能直接产出可运行 artifact。</p>
+          <h3>OpenAI：协作重心从写代码转向设计执行系统</h3>
+          <p>如果我们的上下文、测试、观测、评审、架构约束还散在聊天和人脑里，agent 只会加速混乱。OpenAI 的启发是先把系统变成 agent 可读。</p>
         </article>
         <article class="reading-card">
-          <h3>Stripe 把问题推进到公司外部</h3>
-          <p>一旦 agent 代表用户交易，公司协作就延伸到商家目录、支付授权、风控、履约、售后和用户确认。支付公司的协作对象是协议链，不只是内部团队。</p>
+          <h3>Anthropic：协作重心从交接转向共同生产 artifact</h3>
+          <p>专业团队不只是把需求丢给工程。更好的模式是让专家在自己的语境里和 AI 一起探索、生成、验证，再把能运行的东西交给组织判断。</p>
         </article>
         <article class="reading-card">
-          <h3>Block 是最该保留警示的一家公司</h3>
-          <p>Block 的工程 enablement 有数据、有做法、有工具；但它同时把 AI-native 叙事和大规模裁员绑定在一起。这个案例不能被美化成单纯效率故事。</p>
+          <h3>Stripe：协作重心从界面转向协议</h3>
+          <p>只要流程涉及钱、客户承诺或外部责任，AI 协作就不能停在“帮我操作”。它必须进入可授权、可审计、可拒绝、可追责的协议层。</p>
+        </article>
+        <article class="reading-card">
+          <h3>Block：协作重心从工具采用转向组织制度</h3>
+          <p>采用率、champions、AI rules、skills、usage tracking 都是组织动作。但 Block 也提醒我们：把 AI enablement 和缩编绑定，会改变员工对协作系统的信任。</p>
         </article>
       </div>
     </section>
 
     <section class="section">
       <div class="section-title">
-        <h2>给我们自己的判断，只保留一层</h2>
-        <span>local reading</span>
+        <h2>这页最终应该只留下一个启发</h2>
+        <span>one usable takeaway</span>
       </div>
-      <div class="visual-note">
-        <div class="poster" aria-label="知识图信息结构">
-          <h3>最终手绘图应该画什么</h3>
-          <div class="poster-row">
-            <div>OpenAI：任务控制面</div>
-            <div>Anthropic：跨职能 Builder</div>
-            <div>Stripe：Agent-readable 交易协议</div>
-            <div>Block：AI-native 组织风险</div>
-          </div>
-        </div>
-        <article class="visual-copy">
-          <h3>不要再把“我们怎么做”写成泛化角色建议。</h3>
-          <p>这页给我们的价值是判断坐标：如果目标是提高产研协作，先判断自己更接近哪种问题。是任务没有进入可执行队列，还是职能专家不能构建，还是系统接口对 agent 不可读，还是管理层把 AI 简化成缩编理由。</p>
-          <p>最终图应该走图片模型或 Hybrid：图片模型负责手绘质感和四家公司符号，Hybrid 负责叠加准确中文。图里只放四种公司路径和证据标签，不放 prompt、不放工具说明、不把 H5/SVG 当最终图。</p>
+      <div class="reading-grid">
+        <article class="reading-card">
+          <h3>OpenAI 给的启发：先改系统，不先改口号</h3>
+          <p>把 repo、测试、观测、review、执行计划和失败写回变成 agent 可读的系统，否则“让 agent 多做任务”只会放大上下文缺口。</p>
+        </article>
+        <article class="reading-card">
+          <h3>Anthropic 给的启发：让专业流程产出 artifact</h3>
+          <p>协作不是把需求转交给工程，而是在设计、数据、营销、法律等流程里让 AI 参与探索、生成、验证，最后由人判断是否接受。</p>
+        </article>
+        <article class="reading-card">
+          <h3>Stripe 给的启发：跨系统协作先协议化</h3>
+          <p>涉及钱、权限、客户承诺和履约时，agent 协作要先定义接口、授权、风控、拒绝、审计和回滚，而不是先让模型代人点击。</p>
+        </article>
+        <article class="reading-card">
+          <h3>Block 给的启发：制度化要和裁员叙事切开</h3>
+          <p>repo readiness、champions、rules、skills 和 metrics 可以学；把 AI-native 直接翻译成“更少的人”会伤害组织信任，必须单独作为风险处理。</p>
         </article>
       </div>
     </section>
@@ -638,6 +659,7 @@
         <li><a href="https://openai.com/careers/search/?q=codex">OpenAI Careers, Codex search</a></li>
         <li><a href="https://openai.com/careers/software-engineer-codex-core-agents-san-francisco/">OpenAI Careers, Software Engineer, Codex Core Agents</a></li>
         <li><a href="https://claude.com/blog/how-anthropic-teams-use-claude-code">Anthropic, How Anthropic teams use Claude Code</a></li>
+        <li><a href="https://code.claude.com/docs/en/best-practices">Anthropic, Best practices for Claude Code</a></li>
         <li><a href="https://www.anthropic.com/careers/jobs/4985920008">Anthropic Careers, Product Manager, Claude Code</a></li>
         <li><a href="https://stripe.com/newsroom/news/stripe-openai-instant-checkout">Stripe, Instant Checkout and Agentic Commerce Protocol</a></li>
         <li><a href="https://docs.stripe.com/agentic-commerce">Stripe Docs, Agentic commerce</a></li>
@@ -648,7 +670,7 @@
         <li><a href="https://www.theguardian.com/technology/2026/feb/27/block-ai-layoffs-jack-dorsey">The Guardian, Block AI layoffs coverage</a></li>
         <li><a href="https://www.theguardian.com/technology/2026/mar/08/block-ai-layoffs-jack-dorsey">The Guardian, Block worker reaction and human-loop concerns</a></li>
       </ol>
-      <div class="boundary">本页是内部草稿，不是公开定稿。招聘数据以 2026-05-11 可访问页面为准；Block 历史岗位只作为搜索缓存信号，不按当前开放岗位陈述。裁员部分使用公开报道，不把报道等同于本仓库立场。</div>
+      <div class="boundary">本页是内部草稿，不是公开定稿。招聘数据以 2026-05-11 可访问页面为准；Block careers 当前 0 open jobs 只作为招聘边界，不推断具体原因。裁员部分使用公开报道，不把报道等同于本仓库立场。</div>
     </section>
   </main>
 </body>

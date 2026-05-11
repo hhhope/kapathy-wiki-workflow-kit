@@ -14,8 +14,9 @@ updated: 2026-05-11
 - Target title: `四家公司看 Agent 协作怎么落地`
 - Destination:
   `wiki/reports/agentic-product-engineering-collaboration-company-playbook.html`
-- Scope: drift repair of the first company playbook draft into an
-  evidence-led newspaper page comparing OpenAI, Anthropic, Stripe, and Block.
+- Scope: drift repair of the company playbook draft into an evidence-led
+  newspaper page that reads each company from strategy to public behavior,
+  collaboration mechanism, hiring/JD signal, and transferable lesson.
 - Non-scope: Feishu sync, public publish, final generated image asset,
   definitive workforce-productivity claim, or local organizational policy.
 
@@ -37,7 +38,7 @@ updated: 2026-05-11
 |---|---|
 | Reader | Product, engineering, design, operations, and management readers evaluating how leading companies are reorganizing around agents. |
 | Reader decision or action | Understand four distinct company collaboration modes and what public evidence supports each mode. |
-| Main line | Agent collaboration is not one generic "how to use AI" playbook. OpenAI, Anthropic, Stripe, and Block each expose a different operating choice: task control plane, cross-functional builder surface, agent-readable transaction rails, and AI-native organization bet with layoff risk. |
+| Main line | Agent collaboration is not one generic "how to use AI" playbook. OpenAI, Anthropic, Stripe, and Block each expose a different strategic collaboration model: agent-first engineering operating system, human-AI collaborative workspace, agent-readable commerce protocol, and AI-native organization system with layoff risk. |
 | Non-goals | Do not provide a generic role action checklist, 30-day adoption loop, prompt text, H5/SVG final-image substitute, or unsourced company claim. |
 | User-owned judgments | Whether this is the desired public stance; how strongly to frame Block as warning; whether to generate the final Hybrid/image-model visual. |
 | Agent-allowed work | Evidence mapping, source-backed drafting, section repair, HTML update, gate review update, and local verification. |
@@ -53,12 +54,12 @@ updated: 2026-05-11
 - Reading path:
   1. masthead and lead judgment
   2. four-mode summary
-  3. company-by-company evidence cards
-  4. cross-company reading
-  5. visual information boundary
+  3. company-by-company strategy / behavior / collaboration / lesson sections
+  4. cross-company judgment coordinates
+  5. single transferable takeaway
   6. source boundary
-- Visual logic: final figure should carry four company modes and evidence labels
-  only; no prompt block in reader-facing body.
+- Visual logic: no final-image prompt or Hybrid instructions in the report
+  body. If a final image is produced later, it remains a separate asset.
 - Writing standard: claims must map to public sources or be explicitly marked as
   boundary / inference.
 - Reuse boundary: reuse newspaper format, not generic role actions or the prior
@@ -69,23 +70,42 @@ updated: 2026-05-11
 | Artifact | Domain / topic | Reusable point | Output use | Skip reason |
 |---|---|---|---|---|
 | `wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md` | agentic collaboration company samples | Separate page and four company sample set | Kept standalone page and four-company structure | The prior local playbook section was removed because user rejected it as repetitive. |
-| `wiki/ops/visual-output-routing-residual-fallback-repair-2026-05-11.md` | visual mode boundary | Image-model / Hybrid must not silently degrade into H5/SVG | Visual section now states information role and final image boundary, without embedding prompt as report prose | Final image generation remains out of scope. |
+| `wiki/ops/visual-output-routing-residual-fallback-repair-2026-05-11.md` | visual mode boundary | Image-model / Hybrid must not silently degrade into H5/SVG | The report body no longer includes prompt text or Hybrid instructions; final image remains separate | Final image generation remains out of scope. |
 | `wiki/reports/agentic-product-engineering-collaboration-newspaper.html` | newspaper reference | Newspaper rhythm, source boundary, evidence-led sections | Reused masthead, lead, section cadence, source boundary | Did not reuse role action / 30-day loop because it caused content duplication. |
 
 ## Section And Paragraph Drift Review
 
 | Section objective | Paragraph claim | Mainline role | Fit | Drift | Evidence | Judgment source | Action |
 |---|---|---:|---:|---:|---:|---|---|
-| Masthead / lead | Four companies show four different collaboration choices. | setup | 5 | 0 | 4 | source + user correction | Retain. |
-| Evidence summary | OpenAI, Anthropic, Stripe, and Block have distinct public evidence signals. | evidence | 5 | 0 | 4 | source material | Retain; source list included. |
-| Four-mode grid | Each company maps to one collaboration mode. | contrast | 5 | 0 | 4 | source + agent synthesis | Retain as interpretive frame, not final public stance. |
-| OpenAI card | Codex/Symphony point to task control plane and agent fleet infrastructure. | evidence | 5 | 0 | 5 | source material | Retain. |
-| Anthropic card | Claude Code expands builder ability across functions. | evidence | 5 | 0 | 5 | source material | Retain. |
-| Stripe card | Agentic commerce requires protocolized transaction rails. | evidence | 5 | 0 | 5 | source material | Retain. |
-| Block card | Block combines repo readiness evidence with AI-linked layoff risk. | evidence / warning | 5 | 1 | 4 | source + secondary news | Retain with boundary language. |
-| Cross-company reading | Four paths should not collapse into one generic local playbook. | conclusion | 5 | 0 | 4 | user correction + source synthesis | Retain. |
-| Visual section | Final image should show company modes and evidence labels, not prompt text. | visual boundary | 5 | 0 | 3 | user instruction + skill evidence | Retain; final asset missing. |
+| Masthead / lead | Four companies show four distinct strategic collaboration models. | setup | 5 | 0 | 4 | source + user correction | Retain. |
+| Evidence summary | Public writing and product/engineering actions lead; hiring/JD signals support. | evidence | 5 | 0 | 4 | source material | Retain; source list included. |
+| Four-mode grid | OpenAI, Anthropic, Stripe, and Block map to strategic modes rather than narrow local tactics. | contrast | 5 | 0 | 4 | source + agent synthesis | Retain as interpretive frame, not final public stance. |
+| OpenAI section | OpenAI is framed as agent-first engineering operating system, not task queue. | evidence | 5 | 0 | 5 | Harness Engineering + Symphony + JD | Retain. |
+| Anthropic section | Anthropic is framed as human-AI collaborative workspace across professional workflows. | evidence | 5 | 0 | 5 | Claude Code team cases + best practices + JD | Retain. |
+| Stripe section | Stripe is framed as agent-readable commerce protocol and responsibility chain. | evidence | 5 | 0 | 5 | Stripe newsroom + docs + jobs | Retain. |
+| Block section | Block combines AI-native engineering system with layoff warning. | evidence / warning | 5 | 1 | 4 | source + secondary news | Retain with boundary language. |
+| Cross-company reading | The page gives judgment coordinates, not a generic role-action playbook. | conclusion | 5 | 0 | 4 | user correction + source synthesis | Retain. |
+| Takeaway section | The only local lesson is how to diagnose which collaboration problem applies. | conclusion | 5 | 0 | 4 | user correction | Retain. |
 | Sources / boundary | Draft status, current-data boundary, and Block hiring limitation are explicit. | proof boundary | 5 | 0 | 5 | current source checks | Retain. |
+
+## Parallel Reviewer Fixes
+
+- OpenAI section now includes concrete Symphony behavior: issue tracker as
+  control plane, per-task agent workspaces, CI / rebase / retry / handoff work,
+  and the boundary that Symphony is a reference implementation rather than the
+  whole OpenAI strategy.
+- Anthropic section removed weak phrasing around "never opened a terminal" and
+  replaced it with cited behaviors from the public article: CLAUDE.md / pipeline
+  dependency explanation, Kubernetes incident diagnosis, Growth Marketing
+  CSV/Figma workflows, Product Design tests/prototypes, and Legal phone tree.
+- Block strategy evidence label now names both Block Engineering and Guardian
+  reporting because engineering adoption and layoff-risk claims come from
+  different source classes.
+- Block hiring sentence no longer uses uncited search-cache evidence or infers
+  hiring freeze / contraction. It states only that the current careers page
+  cannot support an expansion claim.
+- Final takeaway section now uses four company-mapped lessons instead of a
+  generic local playbook block.
 
 ## Judgment Ledger
 
@@ -95,18 +115,21 @@ updated: 2026-05-11
     pillar.
   - Whether to generate a Hybrid/image-model visual next.
 - Source-backed judgments:
-  - OpenAI: Harness Engineering and Symphony show task-board/control-plane
-    agent orchestration; Careers page shows Codex hiring signal.
-  - Anthropic: Claude Code internal usage spans engineering and non-engineering
-    teams; Claude Code PM JD requires PM and engineering background.
+  - OpenAI: Harness Engineering and Symphony show an agent-first engineering
+    operating system built around repo legibility, verification, observability,
+    review, and PR execution; Careers page shows Codex hiring signal.
+  - Anthropic: Claude Code internal usage and best practices show Claude moving
+    into professional workflows with explore / plan / verify / delegate
+    patterns; Claude Code PM JD requires PM and engineering background.
   - Stripe: ACP/SPT, Instant Checkout, Agentic Commerce docs, and agentic
     commerce jobs support transaction-rails framing.
   - Block: engineering blog supports repo readiness / Champions / automated PR
-    framing; current careers page shows 0 open jobs; Guardian coverage supports
-    layoffs and morale-risk boundary.
+    framing; current careers page shows 0 open jobs only as a hiring boundary;
+    Guardian coverage supports layoffs and morale-risk boundary.
 - Agent inferences:
   - The four companies should be read as four collaboration modes.
-  - The final visual should summarize modes and evidence, not show the prompt.
+  - The final visual, if produced later, should summarize modes and evidence,
+    not show prompt text or replace the evidence-led report.
 - Unknown judgments:
   - Whether the revised page is strong enough for external sharing.
   - Whether to broaden Block sourcing beyond Guardian / Block Engineering before
@@ -119,21 +142,22 @@ updated: 2026-05-11
 | Learning use | PASS for draft | Learning use map records what shaped the repair and what was skipped. |
 | Reference | PASS for draft | Newspaper rhythm reused; rejected duplicate sections removed. |
 | Split | PASS | Separate company evidence page remains the right split. |
-| Voice | PASS for draft | Chat residue and prompt-as-content removed from report body. |
-| Narrative | PASS | Main line now matches user correction: company collaboration status and evidence. |
+| Voice | PASS for draft | Chat residue, prompt-as-content, and generic role advice removed from report body. |
+| Narrative | PASS | Main line now matches user correction: strategy first, then behavior, collaboration mechanism, hiring signal, and lesson. |
 | Paragraph drift | PASS for draft | Section-level drift review completed after repair. |
 | Judgment ownership | PARTIAL | Company mode synthesis remains agent interpretation pending user/public review. |
-| Visual | PARTIAL | Visual role is specified; final image-model/Hybrid asset not generated. |
+| Visual | PASS for report shell | No visual prompt or Hybrid instructions remain in the report body; final image-model/Hybrid asset remains out of scope. |
 | Publish | FAIL | Draft only; reviewer routing and final visual not complete. |
 
 ## Scorecard
 
-`INVALID` because reviewer routing was not run, the final visual asset is not
-generated, judgment ownership requires user review, and publish gate fails.
+`INVALID` because reviewer routing was not run, judgment ownership requires user
+review, and publish gate fails.
 
 Diagnostic repair judgment: the previous draft's generic `role actions`,
-`30-day loop`, and prompt block were removed. The page now supports the requested
-company-evidence reading path.
+`30-day loop`, narrow task-queue / builder framing, and prompt block were
+removed. The page now supports the requested strategy-to-behavior company
+reading path.
 
 ## Decision
 
@@ -144,10 +168,11 @@ Draft may stay in `wiki/reports`. Do not sync, publish, or claim review-ready.
 - OpenAI, Anthropic, and Stripe hiring data can change quickly; the page records
   a 2026-05-11 check boundary.
 - Block current hiring is intentionally framed from the live careers page (`0
-  open jobs`) plus cached/search evidence as historical signal only.
+  open jobs`) only as a boundary against expansion claims.
 - Block layoff material depends on public reporting; public use should add one
   more primary SEC / investor source if available.
-- Final image is not generated.
+- Final image is not generated; the report shell no longer claims to be the
+  final visual asset.
 
 ## Feishu Update Verification
 
@@ -156,6 +181,6 @@ Not applicable. No Feishu operation requested or performed.
 ## Visual Asset Boundary
 
 - Local final image asset: not generated.
-- Visual route: image-model or Hybrid only for the final figure.
-- H5/SVG boundary: this HTML page is the report shell, not the requested final
-  hand-drawn knowledge image.
+- Visual route: image-model or Hybrid only if a final figure is requested later.
+- H5/SVG boundary: this HTML page is the evidence-led report shell, not the
+  requested final hand-drawn knowledge image.
