@@ -1511,7 +1511,7 @@
     <a href="#mainline">五张图读懂主线</a>
     <a href="#debate">行业在争什么</a>
     <a href="#timeline">讨论如何推进</a>
-    <a href="#dumbbell">公司的位置更像哑铃</a>
+    <a href="#dumbbell">内部协作变成哑铃</a>
     <a href="#system">作业系统变了</a>
     <a href="#actions">现有公司的人该怎么做</a>
     <a href="#heat">讨论热区</a>
@@ -1558,7 +1558,7 @@
         </div>
         <div class="brief">
           <h3>阅读方法</h3>
-          <p>不要按公司看热闹。按争议看：代码是否被解决、PM 是否会消失、小团队是否会替代大组织、agent 到底是员工还是工具。</p>
+          <p>不要按工具看热闹。按公司内部协作看：目标谁定、上下文谁补、执行谁做、结果谁审、失败写回哪里。</p>
         </div>
       </aside>
     </section>
@@ -1615,20 +1615,20 @@
     <section class="section" id="debate">
       <div class="section-title">
         <h2>行业在争什么</h2>
-        <span>debate map, not word cloud</span>
+        <span>surface debate, internal collaboration question</span>
       </div>
       <div class="viz-sheet knowledge-card">
         <div class="viz-head">
           <div>
-            <h3>争论的表层是工具，底层是四个权力问题</h3>
-            <p>谁定义目标、谁承担判断、谁审查结果、谁拥有作业系统。这里展示争议结构，不判断哪一派已经获胜。</p>
+            <h3>争论的表层是 Agent，底层是公司内部协作怎么重新分工</h3>
+            <p>行业会把问题说成“代码会不会被解决”“PM 会不会消失”“小团队会不会替代大组织”。真正落到公司里，问题只有四个：谁定义目标，谁补全上下文，谁执行中间工作，谁对结果负责。</p>
           </div>
-          <div class="viz-badge">handdrawn teaching map<br />7 modules</div>
+          <div class="viz-badge">debate map<br />4 internal questions</div>
         </div>
         <div class="viz-grid">
           <article class="viz-card blue">
-            <h4>01 争议罗盘</h4>
-            <p>四个方向不是结论，而是讨论入口。</p>
+            <h4>01 表层争议</h4>
+            <p>这些话题是入口，不是结论。它们把外部讨论带回一个内部问题：公司到底如何组织判断、执行和审查。</p>
             <div class="draw-object">
               <div class="draw-dot">Coding<br />solved?</div>
               <div class="draw-dot">PM<br />消失?</div>
@@ -1636,36 +1636,36 @@
             </div>
           </article>
           <article class="viz-card green">
-            <h4>02 双轴拉扯</h4>
-            <p>横轴是执行自动化，纵轴是判断责任。目标状态不是“更快”，而是高自动化仍有高责任。</p>
+            <h4>02 真正的双轴</h4>
+            <p>横轴是执行自动化，纵轴是判断责任。Agent 让执行变便宜，但也把含糊目标、弱 owner、低质量验收暴露得更快。</p>
             <div class="arrow-row"><span>低自动化</span><i>-></i><span>高自动化</span></div>
             <div class="arrow-row"><span>低责任</span><i>-></i><span>高责任</span></div>
           </article>
           <article class="viz-card warning">
-            <h4>03 警告：速度会放大风险</h4>
-            <p>高自动化不等于高成熟。没有权限、审计、回滚和人审，速度会把风险一起放大。</p>
+            <h4>03 警告：速度会放大组织问题</h4>
+            <p>没有清晰目标、权限边界、审计、回滚和人审，Agent 不会自动带来成熟流程，只会让原来的协作漏洞更快出现。</p>
           </article>
           <article class="viz-card amber">
             <h4>04 速度派 vs 责任派</h4>
-            <p>争的不是“会不会写代码”，而是“谁对结果负责”。</p>
+            <p>争的不是“会不会写代码”，而是执行变快以后，谁负责判断结果能不能进产品、进生产、进客户场景。</p>
             <div class="arrow-row"><span>原型 / PR 暴涨</span><i>vs</i><span>架构 / 安全 / 回滚</span></div>
           </article>
           <article class="viz-card red">
-            <h4>05 PM 压缩还是升级</h4>
-            <p>被压缩的是需求转述、会议同步、状态搬运；变重的是目标定义、用户取舍、验收标准和发布判断。</p>
+            <h4>05 PM 被压缩，还是被抬高</h4>
+            <p>被压缩的是需求转述、会议同步和状态搬运。被抬高的是用户取舍、目标定义、验收标准和发布判断。PM 不该消失，PM 的低价值部分应该消失。</p>
           </article>
           <article class="viz-card rose">
             <h4>06 小团队密度 vs 大组织治理</h4>
-            <p>10 人公司和 one-person company 是强信号，但不能直接推出大组织会消失。</p>
+            <p>10 人公司和 one-person company 是强信号，但不能直接推出大组织会消失。大组织真正要学的是高密度协作，而不是幻想不用治理。</p>
             <div class="arrow-row"><span>密度</span><i>+</i><span>权限</span><i>+</i><span>审计</span></div>
           </article>
           <article class="viz-card">
-            <h4>07 员工派 vs 对象派</h4>
-            <p>拟人化方便传播，系统化才方便治理。Agent 更像受上下文、权限、测试和审查约束的作业对象。</p>
+            <h4>07 员工派 vs 作业对象派</h4>
+            <p>把 Agent 当员工方便传播，但不方便治理。更稳的理解是：Agent 是受上下文、权限、测试和审查约束的作业对象。</p>
           </article>
         </div>
-        <p class="signal">证据边界：公开讨论和本地源池只支撑争议结构；播客、二手媒体、微信讨论只做路由；关键引用仍需 transcript 或一手材料复核。</p>
-        <div class="takeaway">章节 takeaway：行业争论可以压成一条线，执行越自动化，判断和审查责任越不能被省掉。</div>
+        <p class="signal">证据边界：公开讨论和本地源池只能支撑争议结构。真正的公司结论，需要回到具体业务流、具体 owner、具体风险等级和具体验收样本。</p>
+        <div class="takeaway">章节 takeaway：行业争论可以压成一条线，执行越自动化，目标、判断、审查和责任越不能被省掉。</div>
       </div>
     </section>
 
@@ -1739,89 +1739,90 @@
 
     <section class="section" id="dumbbell">
       <div class="section-title">
-        <h2>公司的位置更像哑铃</h2>
-        <span>automation side, governance side, product-engineering bridge</span>
+        <h2>公司内部协作正在变成一只哑铃</h2>
+        <span>judgment side, execution side, collaboration bridge</span>
       </div>
       <div class="viz-sheet knowledge-card">
         <div class="viz-head">
           <div>
-            <h3>一端加速执行自动化，一端补齐组织治理</h3>
-            <p>这是观察框架，不是行业定论。中间的产研协作桥，决定 Agent 执行结果能否变成组织可接受的工作成果。</p>
+            <h3>一端是目标、判断和责任，一端是可执行、可验证、可回放的系统能力</h3>
+            <p>传统协作把很多中间工作放在人身上：解释需求、补上下文、追进度、兜质量。Agent 进入后，这些工作不会凭空消失，而是被重新拆到两端。人的一端更重，系统的一端也更重。</p>
           </div>
-          <div class="viz-badge">dumbbell frame<br />not market ranking</div>
+          <div class="viz-badge">internal dumbbell<br />not org flattening</div>
         </div>
         <div class="viz-grid">
           <article class="viz-card blue">
             <h4>01 哑铃总图</h4>
-            <p>左球是执行自动化端，右球是组织治理端，中杆是产研协作桥。</p>
+            <p>左球是人的判断端，右球是系统执行端，中杆是把两端接起来的协作桥。</p>
             <div class="draw-object">
-              <div class="draw-dot">执行<br />自动化</div>
+              <div class="draw-dot">目标<br />判断</div>
               <div class="draw-box">spec / eval<br />review / owner</div>
-              <div class="draw-dot">组织<br />治理</div>
+              <div class="draw-dot">执行<br />回放</div>
             </div>
           </article>
           <article class="viz-card amber">
             <h4>02 传统协作链</h4>
-            <p>传统协作不是没有中间层，而是中间层主要由人、会议、文档、表格和局部脚本承担。</p>
+            <p>过去中间段靠人传话、开会、追表格、补文档。协作能跑起来，但上下文容易丢，责任也容易在交接里变模糊。</p>
             <div class="arrow-row"><span>PM</span><i>-></i><span>Design</span><i>-></i><span>Eng</span><i>-></i><span>QA</span></div>
           </article>
           <article class="viz-card green">
-            <h4>03 AI 时代执行单元</h4>
-            <p>找上下文、拆任务、生成初稿、跑验证、整理证据，被拆成可排队、可审查、可复用的执行单元。</p>
+            <h4>03 AI 时代的系统端</h4>
+            <p>找上下文、拆任务、生成初稿、跑验证、整理证据，开始变成可排队、可审查、可复用的执行单元。</p>
           </article>
           <article class="viz-card">
-            <h4>04 左端：执行自动化公司</h4>
-            <p>共同方向是把 Agent 放进真实工作入口，而不是只停留在聊天窗口。</p>
+            <h4>04 人的一端更重</h4>
+            <p>目标、非目标、用户取舍、风险承受、验收标准、发布判断，不能被 Agent 接管。这些反而需要更清楚地写出来。</p>
             <ul>
-              <li>OpenAI / Anthropic</li>
-              <li>GitHub / Atlassian / JetBrains</li>
-              <li>Cursor / Sourcegraph / Replit</li>
+              <li>谁是 owner</li>
+              <li>什么不能做</li>
+              <li>什么结果才算过关</li>
             </ul>
           </article>
           <article class="viz-card warning">
-            <h4>05 警告：别讲成中间人消失</h4>
-            <p>更稳妥的说法是：转述型中间劳动被压缩，判断型中间责任被抬高。</p>
+            <h4>05 警告：不是中间人消失</h4>
+            <p>更准确的说法是：转述型中间劳动被压缩，判断型中间责任被抬高。人不是退场，而是从搬运上下文转向定义边界和审结果。</p>
           </article>
           <article class="viz-card red">
-            <h4>06 右端：组织治理讨论</h4>
-            <p>当执行层变快，稀缺项从“谁来做”转向“谁允许、谁检查、谁承担、谁沉淀”。</p>
+            <h4>06 系统的一端更重</h4>
+            <p>当执行层变快，系统必须承担权限、日志、测试、回滚、证据打包和知识写回。否则 Agent 只是更快地产生不可控产物。</p>
             <ul>
-              <li>Microsoft / IBM / Deloitte / Gartner</li>
-              <li>DORA / Stack Overflow / GitLab / METR</li>
+              <li>权限和审计</li>
+              <li>eval 和回归测试</li>
+              <li>review packet 和 wiki 写回</li>
             </ul>
           </article>
           <article class="viz-card rose">
-            <h4>07 高风险样本提示</h4>
-            <p>Block、Stripe、Ramp、PayPal、AWS 这类 payment、infra、security、customer data 场景，要求自动化和治理同桌讨论。</p>
+            <h4>07 中杆：产研协作桥</h4>
+            <p>spec、eval、review packet、wiki、rules、issue 和 PR 是哑铃中间那根杆。杆不结实，两端都会变成孤岛。</p>
           </article>
         </div>
-        <p class="signal">这里的重点不是给公司排位，而是说明为什么“自动化端”和“治理端”会同时变重要。</p>
-        <div class="takeaway">章节 takeaway：AI 时代公司不是简单变扁，而是两端变重，中间协作层从传话链变成作业桥。</div>
+        <p class="signal">这里的重点不是说组织会变扁，而是说协作的承重点变了：人的判断端和系统执行端同时变重，中间必须有可执行、可审查、可沉淀的连接物。</p>
+        <div class="takeaway">章节 takeaway：AI 时代的内部协作不是少一层人，而是把传话链改造成连接判断和执行的作业桥。</div>
       </div>
     </section>
 
     <section class="section" id="system">
       <div class="section-title">
         <h2>作业系统变了</h2>
-        <span>agent value before workflow redesign</span>
+        <span>from handoff pipeline to executable work surface</span>
       </div>
       <div class="viz-sheet knowledge-card">
         <div class="viz-head">
           <div>
-            <h3>作业系统变了，不是中间层消失了</h3>
-            <p>以前中间层靠人脑、会议和流程承载；现在一部分中间工作被做成可调用的执行层。</p>
+            <h3>变的不是工具入口，而是公司把工作交出去、收回来、审清楚的方式</h3>
+            <p>过去的产研协作像流水线：产品写需求，设计补体验，工程拆实现，测试做兜底，管理者靠会议追状态。每次交接都会丢一部分上下文，真正的判断常常藏在人脑里。</p>
           </div>
-          <div class="viz-badge">middle work<br />becomes system object</div>
+          <div class="viz-badge">workflow surface<br />becomes executable</div>
         </div>
         <div class="viz-grid">
           <article class="viz-card amber">
-            <h4>01 旧中间层</h4>
-            <p>PM 转译需求，TL 拆任务，QA 兜质量，运营追状态。它不是不存在，而是分散在人的记忆、经验和同步机制里。</p>
+            <h4>01 旧作业系统</h4>
+            <p>PM 转译需求，TL 拆任务，QA 兜质量，运营追状态。它能跑，但靠人的记忆、经验和同步机制维持。</p>
             <div class="arrow-row"><span>会议</span><span>文档</span><span>Jira</span><span>脚本</span></div>
           </article>
           <article class="viz-card blue">
             <h4>02 变化本质</h4>
-            <p>Agent 新增的不是“中间层”，而是把部分中间工作变成系统对象：可触发、可排队、可调用工具、可产出证据。</p>
+            <p>Agent 新增的不是“中间层”，而是一个新的作业面：人把目标、边界、样例、反例、权限和验收标准包装成可执行上下文。</p>
           </article>
           <article class="viz-card green">
             <h4>03 四个新属性</h4>
@@ -1830,20 +1831,20 @@
               <div class="draw-pill">可审查</div>
               <div class="draw-pill">可回放</div>
             </div>
-            <p>再加上可沉淀：失败写回 rules、tests、wiki、skill。</p>
+            <p>再加上可沉淀：失败写回 rules、tests、wiki、skill。否则只是一次性输出，不是组织能力。</p>
           </article>
           <article class="viz-card">
             <h4>04 旧流水线</h4>
-            <p>产品 -> 设计 -> 工程 -> 测试 -> 发布。问题常在末端暴露，返工靠再次开会和再次解释。</p>
+            <p>产品 -> 设计 -> 工程 -> 测试 -> 发布。问题常在末端暴露，返工靠再次开会、再次解释、再次找上下文。</p>
             <div class="arrow-row"><span>产品</span><i>-></i><span>设计</span><i>-></i><span>工程</span><i>-></i><span>测试</span></div>
           </article>
           <article class="viz-card red">
             <h4>05 新作业面</h4>
-            <p>人定义目标、边界、非目标、验收标准；Agent 承担检索、生成、实现、验证、证据打包等可执行部分。</p>
+            <p>人定义目标、非目标、风险边界和验收标准。Agent 承担检索、拆解、生成、实现、验证、证据整理这些可执行部分。</p>
           </article>
           <article class="viz-card warning">
             <h4>06 警告：别把判断外包</h4>
-            <p>Agent 可以执行中间工作，但不能替公司决定目标、取舍、责任和风险承受。没有 owner 的 Agent queue，只会把混乱放大。</p>
+            <p>Agent 可以执行中间工作，但不能替公司决定目标、取舍、责任和风险承受。没有 owner 的 Agent queue，只会把混乱排得更整齐。</p>
           </article>
           <article class="viz-card rose">
             <h4>07 落地观察</h4>
@@ -1855,13 +1856,13 @@
             </ul>
           </article>
         </div>
-        <div class="takeaway">章节 takeaway：Agent 没有发明中间层，它重写了中间层的承载方式。</div>
+        <div class="takeaway">章节 takeaway：Agent 没有发明中间工作，它把中间工作的承载方式从人脑和会议，改成可执行、可审查、可沉淀的作业系统。</div>
       </div>
       <div class="viz-sheet knowledge-card">
         <div class="viz-head">
           <div>
             <h3>Agent 把中间执行层变成可审查循环</h3>
-            <p>不是自动化一条线跑完，而是目标、执行、审查、回放、沉淀不断回流。</p>
+            <p>Agent 最有价值的地方不是一次性给答案，而是把中间执行层变成可审查循环：目标进去，证据出来，失败能写回系统。</p>
           </div>
           <div class="viz-badge">reviewable loop<br />not autopilot</div>
         </div>
@@ -1875,31 +1876,31 @@
         <div class="viz-grid">
           <article class="viz-card blue">
             <h4>01 入口：人定目标</h4>
-            <p>循环从人开始。目标不清，后面的执行越快越危险。</p>
+            <p>循环从人开始。目标、非目标、用户价值、风险边界和验收标准不清，后面的执行越快越危险。</p>
           </article>
           <article class="viz-card amber">
             <h4>02 上下文：可执行包</h4>
-            <p>Agent 需要的不是一句口令，而是背景、边界、示例、反例、数据入口、测试方法和已知风险。</p>
+            <p>Agent 需要的不是一句口令，而是背景、边界、示例、反例、数据入口、测试方法、权限范围和已知风险。</p>
           </article>
           <article class="viz-card green">
             <h4>03 执行：Agent Queue</h4>
-            <p>它应当像任务队列，而不是像聊天窗口：找资料、拆步骤、改代码、跑检查、整理证据。</p>
+            <p>它应当像任务队列，而不是像聊天窗口：检索资料、拆步骤、改代码、跑检查、整理证据，按边界工作。</p>
           </article>
           <article class="viz-card red">
             <h4>04 审查：Review Packet</h4>
-            <p>输出不能只是答案。它要带上变更点、依据、验证结果、失败项、风险和待人判断问题。</p>
+            <p>输出不能只是答案。它要带上变更点、依据、验证结果、失败项、风险和必须由人判断的问题。</p>
           </article>
           <article class="viz-card rose">
             <h4>05 回放与沉淀</h4>
-            <p>输入、工具调用、关键判断、测试结果和人工审查意见留下痕迹；失败写回新测试、新规则、新示例和新知识页。</p>
+            <p>输入、工具调用、关键判断、测试结果和人工审查意见留下痕迹。失败写回新测试、新规则、新示例和新知识页。</p>
           </article>
           <article class="viz-card warning">
             <h4>06 警告：闭环不是全自动</h4>
-            <p>闭环不是 Agent 自己批准自己。高风险节点必须有人审、可追责、可回滚。</p>
+            <p>闭环不是 Agent 自己批准自己。高风险节点必须有人审、可追责、可回滚。没有审查和写回，Agent 只是更快地产出一次性材料。</p>
           </article>
         </div>
-        <p class="signal">中间执行层从“人靠经验转述”变成“系统可调用的工作循环”；人的位置上移到目标、边界、审查和责任。</p>
-        <div class="takeaway">章节 takeaway：闭环不是全自动，而是每次执行都留下证据、审查和写回。</div>
+        <p class="signal">中间执行层从“人靠经验转述”变成“系统可调用的工作循环”。人的位置不是消失，而是上移到目标、边界、审查和责任。</p>
+        <div class="takeaway">章节 takeaway：有审查和写回，Agent 才开始变成公司的作业系统；没有审查和写回，它只是更快的内容生成器。</div>
       </div>
     </section>
 
@@ -2073,7 +2074,7 @@
     </section>
 
     <footer class="footer">
-      <p><strong>本版状态：</strong>内部 H5 草稿。它回答“行业在争什么、主线怎么讲、我们怎么输出”，不替代完整 MD 母稿和最终证据复核。</p>
+      <p><strong>本版状态：</strong>内部 H5 草稿。它回答“行业在争什么、公司内部协作怎么变、Agent 如何进入作业系统”，不替代完整 MD 母稿和最终证据复核。</p>
       <p><strong>主要来源：</strong></p>
       <ol class="source-list">
         <li>OpenAI, Symphony and Codex harness engineering.</li>
