@@ -18,6 +18,7 @@ Report pages are audience-oriented outputs or draft workspaces built from source
 - [Team Knowledge Base Migration](team-knowledge-base-migration.md): migration page for connecting a project to the team knowledge-base method
 - [Team Knowledge Base Validation Cases](team-knowledge-base-validation-cases.md): evidence and boundary page for judging the method's trust level
 - [Team Knowledge Base Roadmap](team-knowledge-base-roadmap.md): maturity-stage roadmap from record system to team knowledge asset
+- [AI Agent Product Engineering Collaboration Newspaper H5](agentic-product-engineering-collaboration-newspaper.html): draft H5 newspaper for the AI-agent-era product-engineering collaboration thesis, debate map, timeline, company camps, and local operating principles
 
 ## Usage Notes
 

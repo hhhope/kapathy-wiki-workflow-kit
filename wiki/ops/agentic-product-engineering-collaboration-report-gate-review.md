@@ -5,6 +5,7 @@ canonical_object: agentic-product-engineering-collaboration
 created: 2026-05-11
 derived_from:
   - wiki/reports/agentic-product-engineering-collaboration-management-report.md
+  - wiki/reports/agentic-product-engineering-collaboration-newspaper.html
   - wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md
   - wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md
   - wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md
@@ -16,8 +17,9 @@ derived_from:
 ## Review Target
 
 Target: `wiki/reports/agentic-product-engineering-collaboration-management-report.md`
+and `wiki/reports/agentic-product-engineering-collaboration-newspaper.html`
 
-Destination: repo-local draft report.
+Destination: repo-local draft report and H5 newspaper draft.
 
 Scope: mixed-management report, first version focused on product engineering
 collaboration and a 30-60 day pilot decision.
@@ -62,7 +64,7 @@ final publication template selected yet.
 | Reader job | Understand why this is an operating-model shift and what decision to make next. |
 | Page group | One management report plus source map. Later can split into internal operating model. |
 | Reading path | Read report first, then source map for evidence. |
-| Visual logic | Not yet created. The report needs a lifecycle diagram before review-ready publication. |
+| Visual logic | H5 newspaper draft created with debate map, timeline, camp map, operating-system model, role cards, discussion heat area, and evidence hierarchy. Needs browser visual QA before review-ready publication. |
 | Writing standard | Management-facing, decision-oriented, Chinese prose with source links. |
 | Reuse boundary | Sources support pattern extraction; local workflow decisions remain user-owned. |
 
@@ -134,7 +136,7 @@ need user confirmation before review-ready status.
 | Narrative | PASS | Main line is stable. |
 | Paragraph drift | PARTIAL | People/organization axis added after user correction; pilot sections still need user confirmation. |
 | Judgment ownership | PARTIAL | Local operating-model, OPD definition, and pilot ownership decisions remain user-owned. |
-| Visual | NOT TESTED | No diagram yet. |
+| Visual | PARTIAL | H5 newspaper draft exists. Desktop screenshot command ran, but the Playwright environment lacks Chinese fonts, so CJK visual QA is not passed yet. |
 | Publish | FAIL | Draft is not review-ready or Feishu-ready. |
 
 ## Scorecard
@@ -157,5 +159,5 @@ sync to Feishu yet.
 - The 36-lead discussion pool improves podcast/video coverage, but many entries still need transcript capture before quotation.
 - Some sources are secondary summaries, podcast indexes, or transcript mirrors; primary memo/video/transcript capture remains needed.
 - Non-vendor critique improved via Daniel Miessler, Stack Overflow, DORA/GitLab/Thoughtworks, but still needs more independent practitioner cases.
-- Visual model is missing.
+- Visual model now exists as an H5 newspaper draft. Playwright screenshot exposed missing CJK fonts in the headless environment, so final visual QA still needs a browser with Chinese fonts and reader review.
 - Local pilot ownership, scope, and first workflow must be confirmed by user.
