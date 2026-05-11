@@ -172,3 +172,61 @@ contract:
 No skill edit is clearly required yet. A repo behavior replay may be useful if
 this repeats: "when user rejects a report frame as generic, public-report gate
 must force structural re-plan before further HTML edits."
+
+## 2026-05-11 Continuation: Visual Constraint Placement
+
+The user asked to add a constraint after a fresh failure: an HTML report named in
+the request was edited directly even though the user asked for `一图流` and
+`章节知识卡`, then asked why the route did not use the image model.
+
+### Constraint Candidate
+
+The missing runtime constraint is not "always use image model." The stricter
+constraint should be:
+
+- If the request contains visual-deliverable words such as `一图流`, `知识卡`,
+  `章节配图`, `图片`, `生图`, `跑图`, or `图片模型`, do not treat an `.html`
+  target path as permission to satisfy the request by adding H5 sections.
+- First classify the output mode:
+  - standalone image-model asset
+  - hybrid image-model background plus deterministic Chinese overlay
+  - deterministic SVG/HTML renderer with exported image asset
+  - H5/HTML page section
+- If the user already complained that prior output was H5/SVG-like, default to
+  image-model or hybrid mode unless they explicitly re-choose H5/SVG.
+- HTML edits may happen only after the standalone visual route is accepted, or
+  when the user explicitly says the desired output is an in-page H5/HTML module.
+
+### Does Behavior Replay Gate Apply?
+
+Yes, if this becomes a real repository or skill constraint.
+
+Reason: the proposed wording changes future runtime behavior. It says a future
+agent should stop, route, or refuse a direct HTML edit when the input shape is
+visual-deliverable wording plus an HTML target. That is exactly the behavior
+class covered by `behavior-replay-gate`: future trigger / route / stop behavior.
+
+The minimum replay evidence should include:
+
+| Field | Evidence Needed |
+|---|---|
+| input / situation shape | User names an existing `.html` report and asks to add `一图流` / `章节知识卡`. |
+| trigger condition | Visual-deliverable wording is present, or user has rejected H5/SVG-like output. |
+| expected route / stop | Stop direct HTML editing; route to visual package script and image-model/hybrid mode decision first. |
+| repo-visible artifact | The skill or repo guidance file that contains the new rule, plus this explore trace. |
+| expected output / non-output | Output visual script / asset plan first; do not output only new H5 sections. |
+| promotion boundary | This does not mean every report edit requires image generation; ordinary text/H5 edits remain allowed when visual wording is absent. |
+| residual risk / proof boundary | Local replay proves the route decision, not image quality or multi-session rollout reliability. |
+
+### Implementation Boundary
+
+Because this would change normal repository behavior, it should not be patched
+directly during explore. The implementation route should be an OpenSpec change
+that updates the relevant skill / gate text and includes behavior replay
+evidence. The likely affected assets are:
+
+- `.codex/skills/public-report-quality-gate/SKILL.md`
+- `knowledge-article-visual` route wording if it is the active visual package
+  owner
+- `infographic-onepager` output-mode fork wording if the ambiguity remains
+- a pressure scenario covering "existing H5/article + 一图流/知识卡"
