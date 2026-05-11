@@ -186,6 +186,67 @@ Do not restart with generic `imagegen` or `public-report-quality-gate` as the
 main route. Those can support report quality and asset generation, but they do
 not own this intent.
 
+## 2026-05-11 Continuation: Public Report Gate Is Not Yet a Clear High-Level Router
+
+The user then asked a deeper routing question: if the output is an external
+article or shareable material, why did `public-report-quality-gate` not
+intercept the visual work before the new visual skills ran?
+
+Current comparison:
+
+- `learning-capture` is written as an explicit router. It says to classify
+  intent before deep reading, route by evidence object, keep module-specific
+  gates intact, and use article / repo / example modules under the parent
+  learning route.
+- `article-learning-capture` reinforces this by saying general learning intent
+  routing is owned by `learning-capture`; the article skill is only the
+  article-shaped source module and compatibility entry point.
+- `public-report-quality-gate` is written as a strong gate for reader-facing
+  output, but it does not state the same parent-child ownership model. It says
+  to keep source reading, learning capture, visual generation, Feishu
+  operations, and verification under their own skills, but not that those
+  skills remain subordinate to the public-report gate when the target is
+  external-facing.
+- `knowledge-article-visual` is written as owning article-level visual series.
+  That is correct locally, but it does not say "when this visual series is part
+  of an external article / H5 / share draft, `public-report-quality-gate` is the
+  outer gate."
+
+This is why the new visual route behaved differently from `learning-capture`:
+
+`learning-capture -> article-learning-capture`
+has an explicit router-to-module relationship.
+
+`public-report-quality-gate -> knowledge-article-visual -> infographic-onepager`
+is only implied across separate skill texts.
+
+The missing object is not another image skill. The missing object is a clear
+high-level public-output route:
+
+`reader-facing output intent`
+owns the outer gate, then delegates to content, learning, visual, Feishu, and
+verification skills without letting them bypass the gate.
+
+Candidate wording direction if this becomes an implementation change:
+
+1. Add a "High-Level Router Role" or "Subordinate Skill Routing" section to
+   `public-report-quality-gate`.
+2. State that when the target is external-facing, this gate wraps visual,
+   learning, source, Feishu, and image-generation skills.
+3. Add a module map similar to `learning-capture`:
+   - source learning -> `learning-capture`
+   - article visual package -> `knowledge-article-visual`
+   - per-image poster/card -> `infographic-onepager`
+   - image generation -> `imagegen`
+   - Feishu write -> `lark-doc`
+   - verification -> gate-review artifact and read-back / visual QA
+4. Add a pressure scenario: user asks for an existing H5/article to become
+   `知识卡` / `一图流` for sharing; expected route is
+   `public-report-quality-gate` first, then visual skills, then gate update.
+
+This would make it behave like `learning-capture`: the parent skill decides the
+intent class and preserves the boundary; child skills do the domain work.
+
 ## Non-Implementation Boundary
 
 This trace records exploration only. It does not edit skills or repo workflow
