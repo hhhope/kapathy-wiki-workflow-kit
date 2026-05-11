@@ -216,6 +216,45 @@
       font-size: 15px;
     }
 
+    .visual-package {
+      display: grid;
+      gap: 18px;
+    }
+
+    .visual-lead {
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .visual-figure {
+      margin: 0;
+      border: 2px solid var(--line);
+      background: #fffdf7;
+    }
+
+    .visual-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .visual-figure figcaption {
+      padding: 10px 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
     .article-prose {
       max-width: 980px;
       margin: 0 auto;
@@ -355,7 +394,8 @@
       .lead { border-right: 0; border-bottom: 2px solid var(--line); }
 
       .mode-row,
-      .consensus-list li { grid-template-columns: 1fr; }
+      .consensus-list li,
+      .visual-grid { grid-template-columns: 1fr; }
 
       .mode-row { gap: 4px; }
 
@@ -423,6 +463,42 @@
           <h3>Block：AI-native 组织制度和缩编叙事并存</h3>
           <p>AI adoption 被制度化，但这种制度升级也被管理层翻译成更小团队和裁员逻辑。</p>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>一图流和章节知识卡</h2>
+        <span>image-model visual assets</span>
+      </div>
+      <div class="visual-package">
+        <p class="visual-lead">这组图是独立图片资产，不是 H5 卡片截图。总图负责建立判断坐标，章节卡分别承载四家公司可复用的协作模式和边界。</p>
+        <figure class="visual-figure">
+          <img src="agentic-product-engineering-collaboration-company-playbook-assets/00-overview-infographic.png" alt="四家公司看 Agent 协作怎么落地一图流">
+          <figcaption>总览一图流：把 OpenAI、Anthropic、Stripe、Block 放在同一张协作对象地图里。</figcaption>
+        </figure>
+        <div class="visual-grid">
+          <figure class="visual-figure">
+            <img src="agentic-product-engineering-collaboration-company-playbook-assets/01-openai-engineering-os-card.png" alt="OpenAI 研发系统先为 Agent 重写知识卡">
+            <figcaption>OpenAI：工程系统先变成 Agent 可读、可执行、可验证。</figcaption>
+          </figure>
+          <figure class="visual-figure">
+            <img src="agentic-product-engineering-collaboration-company-playbook-assets/02-anthropic-workflow-card.png" alt="Anthropic Claude 进入专业工作流知识卡">
+            <figcaption>Anthropic：Claude 嵌入真实专业流程，专家保留判断。</figcaption>
+          </figure>
+          <figure class="visual-figure">
+            <img src="agentic-product-engineering-collaboration-company-playbook-assets/03-stripe-commerce-protocol-card.png" alt="Stripe 交易先变成 Agent 可读协议知识卡">
+            <figcaption>Stripe：跨组织协作先补协议层，再谈 Agent 体验。</figcaption>
+          </figure>
+          <figure class="visual-figure">
+            <img src="agentic-product-engineering-collaboration-company-playbook-assets/04-block-ai-native-warning-card.png" alt="Block AI-native 制度与风险并存知识卡">
+            <figcaption>Block：学 AI-readiness，不把协作升级等同裁员。</figcaption>
+          </figure>
+        </div>
+        <figure class="visual-figure">
+          <img src="agentic-product-engineering-collaboration-company-playbook-assets/05-company-collaboration-judgment-card.png" alt="四家公司 Agent 协作判断卡">
+          <figcaption>补充判断卡：看战略，再看行为，判断交给 Agent 什么、留给人什么。</figcaption>
+        </figure>
       </div>
     </section>
 

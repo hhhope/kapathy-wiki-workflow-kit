@@ -40,7 +40,7 @@ updated: 2026-05-11
 | Reader decision or action | Understand four distinct company collaboration modes and what public evidence supports each mode. |
 | Main line | Agent collaboration is not one generic "how to use AI" playbook. OpenAI, Anthropic, Stripe, and Block each expose a different strategic collaboration model: agent-first engineering operating system, human-AI collaborative workspace, agent-readable commerce protocol, and AI-native organization system with layoff risk. |
 | Non-goals | Do not provide a generic role action checklist, 30-day adoption loop, prompt text, H5/SVG final-image substitute, or unsourced company claim. |
-| User-owned judgments | Whether this is the desired public stance; how strongly to frame Block as warning; whether to generate the final Hybrid/image-model visual. |
+| User-owned judgments | Whether this is the desired public stance; how strongly to frame Block as warning; whether the generated image-model visuals are accepted for wider sharing. |
 | Agent-allowed work | Evidence mapping, source-backed drafting, section repair, HTML update, gate review update, and local verification. |
 
 ## Reference Structure Map
@@ -146,8 +146,8 @@ updated: 2026-05-11
 | Narrative | PASS | Main line now matches user correction: strategy first, then behavior, collaboration mechanism, hiring signal, and lesson. |
 | Paragraph drift | PASS for draft | Section-level drift review completed after repair. |
 | Judgment ownership | PARTIAL | Company mode synthesis remains agent interpretation pending user/public review. |
-| Visual | PASS for report shell | No visual prompt or Hybrid instructions remain in the report body; final image-model/Hybrid asset remains out of scope. |
-| Publish | FAIL | Draft only; reviewer routing and final visual not complete. |
+| Visual | PASS for local draft package | Image-model visual assets were generated, inspected, and embedded as local files. The H5 does not rely on H5/SVG cards as final visuals. |
+| Publish | FAIL for Feishu/public publish | Local share package may be sent as a draft artifact, but Feishu sync / public publish still require explicit approval and reviewer routing. |
 
 ## Scorecard
 
@@ -171,8 +171,8 @@ Draft may stay in `wiki/reports`. Do not sync, publish, or claim review-ready.
   open jobs`) only as a boundary against expansion claims.
 - Block layoff material depends on public reporting; public use should add one
   more primary SEC / investor source if available.
-- Final image is not generated; the report shell no longer claims to be the
-  final visual asset.
+- Image-model visuals are generated as local draft assets; public use should
+  still treat image text as visually inspected, not typography-perfect proof.
 
 ## Feishu Update Verification
 
@@ -180,7 +180,16 @@ Not applicable. No Feishu operation requested or performed.
 
 ## Visual Asset Boundary
 
-- Local final image asset: not generated.
-- Visual route: image-model or Hybrid only if a final figure is requested later.
-- H5/SVG boundary: this HTML page is the evidence-led report shell, not the
-  requested final hand-drawn knowledge image.
+- Local image assets:
+  - `wiki/reports/agentic-product-engineering-collaboration-company-playbook-assets/00-overview-infographic.png`
+  - `wiki/reports/agentic-product-engineering-collaboration-company-playbook-assets/01-openai-engineering-os-card.png`
+  - `wiki/reports/agentic-product-engineering-collaboration-company-playbook-assets/02-anthropic-workflow-card.png`
+  - `wiki/reports/agentic-product-engineering-collaboration-company-playbook-assets/03-stripe-commerce-protocol-card.png`
+  - `wiki/reports/agentic-product-engineering-collaboration-company-playbook-assets/04-block-ai-native-warning-card.png`
+  - `wiki/reports/agentic-product-engineering-collaboration-company-playbook-assets/05-company-collaboration-judgment-card.png`
+- Visual route: direct image-model generation, then local H5 embedding through
+  relative asset paths.
+- H5/SVG boundary: this HTML page embeds standalone image assets; it does not
+  replace the requested images with in-page H5/SVG cards.
+- Package target:
+  `wiki/reports/agentic-product-engineering-collaboration-company-playbook-share.zip`.
