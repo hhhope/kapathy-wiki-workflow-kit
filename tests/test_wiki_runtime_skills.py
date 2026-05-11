@@ -4,6 +4,7 @@ from pathlib import Path
 
 
 SKILL_SOURCE_ROOT = Path(".codex/skills")
+USER_SKILL_ROOT = Path.home() / ".codex" / "skills"
 
 WIKI_SKILLS = {
     "wiki-status": "plugins/report-wiki-portfolio/commands/wiki-status.md",
@@ -46,7 +47,16 @@ class WikiRuntimeSkillsTest(unittest.TestCase):
         self.assertIn("$wiki-query", readme)
         self.assertIn(".codex/skills/wiki-status/SKILL.md", readme)
         self.assertNotIn("install those directories into", readme)
+        self.assertIn("Do not install this repo's `wiki-*`", readme)
         self.assertNotIn("This repo also ships a repo-local Codex plugin", readme)
+
+    def test_user_scope_does_not_duplicate_repo_wiki_runtime_skills(self) -> None:
+        for skill_name in WIKI_SKILLS:
+            with self.subTest(skill=skill_name):
+                self.assertFalse(
+                    (USER_SKILL_ROOT / skill_name / "SKILL.md").exists(),
+                    USER_SKILL_ROOT / skill_name / "SKILL.md",
+                )
 
 
 if __name__ == "__main__":

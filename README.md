@@ -24,8 +24,11 @@ This repository is the long-lived wiki layer for report assets. It is meant to a
 
 Current Codex builds should use this repo's checked-in skills as the supported
 runtime surface. The repo-owned skill source lives under `.codex/skills/`.
-Root/user-scope installs are optional convenience copies, not the source of
-truth for this project.
+Do not install this repo's `wiki-*` or `openspec-*` skills into root/user scope:
+that creates duplicate entries beside the repo-local skills.
+Do not reintroduce repo plugin marketplace metadata or plugin skill copies for
+this runtime surface; those registrations can surface the obsolete
+`report-wiki-portfolio:*` namespace.
 
 Wiki runtime skills:
 

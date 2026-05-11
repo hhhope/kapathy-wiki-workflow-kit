@@ -18,15 +18,14 @@ plugin marketplace support or user-scope installation.
 - **AND** repo guidance SHALL reference `.codex/skills/openspec-*` as the
   supported repo-owned source
 
-### Requirement: Repo SHALL treat user-scope OpenSpec skills as optional
+### Requirement: Repo SHALL avoid root-scope OpenSpec duplicates
 
-User-scope or root-scope OpenSpec skill installs SHALL NOT be the repository's
-required source of truth for this workflow.
+User-scope or root-scope OpenSpec helper installs SHALL NOT duplicate this
+repository's repo-local OpenSpec helper skill surface.
 
-#### Scenario: User-scope install drifts
+#### Scenario: User-scope duplicate appears
 
-- **WHEN** `/home/yan/.codex/skills` is missing an OpenSpec helper skill
-- **THEN** the repository SHALL still provide the required helper source under
-  `.codex/skills`
-- **AND** the workflow SHALL NOT require copying plugin source into user scope
-  before the repo can be used
+- **WHEN** `/home/yan/.codex/skills` contains `openspec-*` helpers for this
+  repository
+- **THEN** those root-scope duplicates SHALL be removed
+- **AND** `.codex/skills/openspec-*` SHALL remain the supported source

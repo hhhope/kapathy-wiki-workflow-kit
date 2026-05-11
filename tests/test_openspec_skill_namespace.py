@@ -3,6 +3,7 @@ from pathlib import Path
 
 
 REPO_SKILL_ROOT = Path(".codex/skills")
+USER_SKILL_ROOT = Path.home() / ".codex" / "skills"
 
 OPENSPEC_SKILLS = (
     "openspec-apply-change",
@@ -31,6 +32,14 @@ class OpenSpecSkillNamespaceTest(unittest.TestCase):
                 self.assertIn(f".codex/skills/{skill_name}/SKILL.md", guidance)
 
         self.assertNotIn("plugins/report-wiki-portfolio/skills/openspec-", guidance)
+
+    def test_user_scope_does_not_duplicate_repo_openspec_skills(self) -> None:
+        for skill_name in OPENSPEC_SKILLS:
+            with self.subTest(skill=skill_name):
+                self.assertFalse(
+                    (USER_SKILL_ROOT / skill_name / "SKILL.md").exists(),
+                    USER_SKILL_ROOT / skill_name / "SKILL.md",
+                )
 
 
 if __name__ == "__main__":
