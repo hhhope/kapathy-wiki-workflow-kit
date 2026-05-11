@@ -6,25 +6,25 @@
 
 ## 2. Public report gate
 
-- [ ] 2.1 Update `public-report-quality-gate` so it clearly owns the outer
+- [x] 2.1 Update `public-report-quality-gate` so it clearly owns the outer
       gate/router for reader-facing output.
-- [ ] 2.2 Add a subordinate skill map for learning, visual package, per-image
+- [x] 2.2 Add a subordinate skill map for learning, visual package, per-image
       infographic, image generation, Feishu write, and verification.
-- [ ] 2.3 Add pressure scenario coverage for public article/H5 visual requests
+- [x] 2.3 Add pressure scenario coverage for public article/H5 visual requests
       that must not bypass the public report gate.
 
 ## 3. Skill authoring boundary
 
-- [ ] 3.1 Update skill authoring guidance to require router/module/tool/helper
+- [x] 3.1 Update skill authoring guidance to require router/module/tool/helper
       classification for created or semantically edited skills.
-- [ ] 3.2 Require delivery-sensitive module skills to preserve or name the
+- [x] 3.2 Require delivery-sensitive module skills to preserve or name the
       applicable parent router/gate.
-- [ ] 3.3 Add evaluation evidence with Pressure Scenarios, RED Baseline, GREEN
+- [x] 3.3 Add evaluation evidence with Pressure Scenarios, RED Baseline, GREEN
       Result, and Residual Risks.
 
 ## 4. Verification and stop
 
-- [ ] 4.1 Run targeted text checks and OpenSpec validation.
+- [x] 4.1 Run targeted text checks and OpenSpec validation.
 - [ ] 4.2 Commit only task-related files.
 - [ ] 4.3 Stop when all tasks are complete; archive review is a separate next
       action.

@@ -9,6 +9,7 @@ GATE_REVIEW = Path(
 )
 PRESSURE = Path(".codex/skills/public-report-quality-gate/references/pressure-scenarios.md")
 REVIEWER = Path(".codex/agents/public-report-reviewer.md")
+AGENTS = Path("AGENTS.md")
 
 
 class PublicReportQualityGateTest(unittest.TestCase):
@@ -101,6 +102,29 @@ class PublicReportQualityGateTest(unittest.TestCase):
 
         self.assertIn("Reference Output Shape Replay", pressure)
         self.assertIn("without explicit user approval", pressure)
+
+    def test_public_output_visual_work_stays_under_outer_gate(self) -> None:
+        skill = SKILL.read_text(encoding="utf-8")
+        pressure = PRESSURE.read_text(encoding="utf-8")
+        agents = AGENTS.read_text(encoding="utf-8")
+
+        self.assertIn("Outer Gate Role", skill)
+        self.assertIn("owns the outer gate", skill)
+        self.assertIn("knowledge-article-visual", skill)
+        self.assertIn("infographic-onepager", skill)
+        self.assertIn("imagegen", skill)
+        self.assertIn("lark-doc", skill)
+        self.assertIn("must not bypass", skill)
+
+        self.assertIn("Public Output Delegation Replay", pressure)
+        self.assertIn("基于这个对外 H5 生成知识卡和一图流", pressure)
+        self.assertIn("每家公司一张知识卡", pressure)
+        self.assertIn("routes directly to `imagegen`", pressure)
+
+        self.assertIn("high-level router/gate", agents)
+        self.assertIn("tool wrapper", agents)
+        self.assertIn("delivery-sensitive module", agents)
+        self.assertIn("parent gate", agents)
 
 
 if __name__ == "__main__":

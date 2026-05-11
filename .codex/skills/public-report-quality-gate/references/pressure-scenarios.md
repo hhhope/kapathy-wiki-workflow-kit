@@ -16,6 +16,8 @@ Use these scenarios to validate trigger and gate behavior.
 | User asks "帮我润色成正式稿" for a report intended for managers/readers | Apply voice gate and scorecard | PASS |
 | User says "可以，发飞书" after a draft with unresolved hard-gate failures | Block sync and report failing gates | PASS |
 | User says "图片我自己添加，正文同步飞书" | Generate or preserve local image assets, keep Feishu sync text-only, and record asset paths | PASS |
+| User asks "基于这个对外 H5 生成知识卡和一图流" | Load public-report-quality-gate first, then delegate visual package work to `knowledge-article-visual` and per-image scripting to `infographic-onepager` | PASS |
+| User asks "这篇分享稿每家公司一张知识卡，最终一张总览图" | Preserve Article Intent, Judgment Ownership, Visual Gate, and Publish Gate while delegating visual production | PASS |
 
 ## Should Not Trigger
 
@@ -94,6 +96,14 @@ Use these scenarios to validate trigger and gate behavior.
 | A learned visual pattern is relevant but not used, and no reason is recorded | Learning Use Gate | FAIL until skip reason is recorded |
 | A learned evidence pattern is used to claim local results without local data | Evidence Boundary + Learning Use Gate | FAIL; source learning can shape proof style but cannot invent local metrics |
 | A learning point repeatedly shapes outputs and is proposed as a rule | Promotion Boundary | FAIL until routed through evidence-backed promotion or OpenSpec |
+
+## Public Output Delegation Replay
+
+| Failure | Gate That Should Catch It | Expected Result |
+|---|---|---|
+| A reader-facing H5 visual request routes directly to `imagegen` without Article Intent, Visual Gate, or Publish Gate ownership | Outer Gate Role + Visual Gate | FAIL; route through public-report-quality-gate first, then delegate image work |
+| A visual child skill produces knowledge cards for a public article and claims the draft is ready to share | Publish Gate + Judgment Ownership Gate | FAIL; child skill output is production evidence, not review-ready approval |
+| A new visual skill is added for public materials but its evaluation does not test bypassing the public report gate | Skill Authoring Boundary + Outer Gate Role | FAIL until pressure evidence shows the parent gate is preserved |
 
 ## Validation Notes
 

@@ -10,6 +10,25 @@ description: Use when the user asks to write, polish, review, sync, or prepare r
 Gate reader-facing output before it becomes a Feishu draft, report, H5, or
 shareable material. Internal wiki notes are not public-ready by default.
 
+## Outer Gate Role
+
+For reader-facing output, this skill owns the outer gate. Subordinate skills may
+handle source reading, learning capture, visual production, image generation,
+Feishu writes, and verification, but they must not bypass the Article Intent
+Contract, Reference Output Shape Gate, Visual Gate, Judgment Ownership Gate, or
+Publish Gate.
+
+Use this delegation map without replacing the child skills' own rules:
+
+| Public output need | Delegate to |
+|---|---|
+| source or reference learning | `learning-capture` and narrower modules |
+| article-level visual package | `knowledge-article-visual` |
+| per-image poster or card script | `infographic-onepager` |
+| generated bitmap assets | `imagegen` |
+| Feishu document write | `lark-doc` |
+| final verification | gate-review artifact, read-back, and visual QA |
+
 ## When To Use
 
 Use this skill when the request involves:

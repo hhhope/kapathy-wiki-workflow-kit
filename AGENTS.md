@@ -127,6 +127,12 @@ This is a runtime routing map, not an ownership map.
 - If a skill affects Feishu-facing, reader-facing, or other delivery-sensitive
   outputs, make the repo boundary explicit in the skill or reference the
   governing repo document directly.
+- Before creating or semantically editing a skill, classify its routing
+  ownership as `high-level router/gate`, `module`, `tool wrapper`, or
+  `reference helper`.
+- If the skill is a delivery-sensitive module, name the applicable parent
+  router/gate or explicitly state that no parent applies. The module must not
+  silently weaken or bypass the parent gate.
 - Semantic skill changes must include local pressure-test evidence in
   `evaluation.md`: `Pressure Scenarios`, `RED Baseline`, `GREEN Result`, and
   `Residual Risks`.
