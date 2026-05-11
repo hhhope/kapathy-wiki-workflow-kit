@@ -7,6 +7,7 @@ created: 2026-05-11
 related_scan:
   - wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md
   - wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md
+  - wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md
 ---
 
 # Agentic Product Engineering Collaboration / Source Map
@@ -36,6 +37,12 @@ candidate leads that still need primary-source capture.
 Timeline extension: 95 public source entries from January 2026 through May 11,
 2026 are tracked in
 `wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md`.
+
+Podcast/video discussion extension: 36 operator, product, engineering, and
+management discussion leads are tracked in
+`wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md`.
+Use that layer for role-change and operating-model language, but capture
+episode transcripts before hard quoting.
 
 | Class | Company / Source | Article | Why It Matters |
 |---|---|---|---|

@@ -9,6 +9,8 @@ derived_from:
   - wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md
 related_timeline:
   - wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md
+related_discussions:
+  - wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md
 ---
 
 # Agentic Product Engineering Collaboration / Broad Source Scan
@@ -29,6 +31,11 @@ Timeline extension: the January-May 2026 public-source timeline adds 95 dated
 entries and should be used when the writing needs a chronological progression
 rather than a company/category map.
 
+Podcast/video discussion extension: 36 discussion leads add the missing
+operator-interview layer across Lenny/How I AI, No Priors, a16z, Software
+Engineering Daily, Software Engineering Radio, Stack Overflow, Gartner,
+Thoughtworks, Practical AI, and Decoder/The Verge.
+
 ## Scan Buckets
 
 | Bucket | Question |
@@ -41,6 +48,7 @@ rather than a company/category map.
 | Company operating model | How are CEOs changing hiring, headcount, performance, contractor, and adoption expectations? |
 | Research and risk | What independent evidence warns against naive productivity claims? |
 | Chinese / secondary practitioner layer | What Chinese-language or practitioner materials are useful as claim routers and framing pressure? |
+| Podcast / video discussion layer | What do operators, PMs, engineering leaders, and founders say in long-form interviews about role and organization changes? |
 
 ## Broad Source Leads
 
@@ -171,6 +179,9 @@ rather than a company/category map.
 
 - Need direct transcript capture for Boris Cherny and Karpathy before final
   quotation or hard attribution.
+- Need direct transcript capture for podcast-led claims such as Sherwin Wu,
+  Cat Wu, Brian Scanlan, Simon Last, Marc Brooker, and Keith Rabois before
+  turning discussion summaries into hard evidence.
 - Need direct primary capture for Shopify, Duolingo, Fiverr, Box, and Coinbase
   memos before treating workforce-policy claims as final.
 - Need more Chinese-language practitioner sources beyond the two user-provided
