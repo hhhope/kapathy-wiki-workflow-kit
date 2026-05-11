@@ -62,6 +62,13 @@ Recommended samples:
   checkout, fulfillment, and agent-readable business systems. PayPal remains
   useful as an organization/OPD anecdote, but it is not the strongest current
   payment-agent collaboration case.
+- Block: payment/fintech organization restructuring plus engineering
+  AI-readiness. Add Block because recent layoffs and Jack Dorsey's public
+  language make it the strongest "boss says the company should now be smaller
+  and intelligence-native" counterweight. Block should not replace Stripe:
+  Stripe explains agentic transaction infrastructure; Block explains the
+  organizational bet, employee pressure, repo readiness, AI Champions, automated
+  PRs, and the risk of using AI productivity as a workforce-cutting narrative.
 
 ### Suggested page thesis
 
@@ -70,8 +77,9 @@ The page should say:
 > Agentic collaboration is not one pattern. OpenAI shows how work enters an
 > agent queue; Anthropic shows how every function can become a builder when
 > problems are described well; Stripe shows what happens when agents cross into
-> payment and commerce: context, authorization, fraud, fulfillment, and audit
-> must become machine-readable.
+> payment and commerce; Block shows the harder organizational question: once AI
+> raises throughput, who remains, what work is still human, and how do you avoid
+> turning "AI-native" into a blunt layoff story?
 
 ### Recommended page shape
 
@@ -80,13 +88,17 @@ Use the existing newspaper grammar, but make the page narrower:
 1. Masthead: `三家公司告诉我们：Agent 协作不是工具接入，而是作业系统重排`.
 2. Lead judgment: current company people must move from "doing tasks" to
    "defining executable work, reviewing evidence, and maintaining writeback".
-3. Three company columns:
+3. Four company columns:
    - OpenAI: issue tracker / task board -> agent workspace -> PR/review -> repo
      knowledge.
    - Anthropic: anyone who can describe a problem can build or inspect a working
      artifact, but review remains human.
    - Stripe: agents can transact only when product, price, checkout, trust,
      payment authorization, fraud, and fulfillment are structured and auditable.
+   - Block: smaller/flatter AI-assisted organization, but the page must hold two
+     truths together: their engineering system shows real AI-readiness work; the
+     layoff story also shows morale, judgment, customer support, and human-loop
+     risk.
 4. Local playbook:
    - Product/PM writes executable intent.
    - Engineering/TL builds harness, permission, tests, rollback, and review
@@ -113,8 +125,9 @@ Recommended visual:
   - Left: OpenAI = control plane / task queue.
   - Middle: Anthropic = cross-functional builder surface.
   - Right: Stripe = agentic transaction infrastructure.
+  - Far right or bottom contrast: Block = AI-native org bet + layoff warning.
   - Bottom: Our action loop = intent -> context -> agent run -> review packet ->
-    eval/writeback.
+    eval/writeback -> human responsibility.
 - Mode: hybrid if exact Chinese wording matters; image model if visual quality
   is the main priority and text can be reviewed after generation.
 
@@ -129,3 +142,6 @@ Current public sources inspected during exploration:
 - Stripe, `Stripe powers Instant Checkout in ChatGPT and releases Agentic
   Commerce Protocol codeveloped with OpenAI`
 - Stripe, `What is agentic commerce? A guide to getting started`
+- Block Engineering, `AI-Assisted Development at Block`
+- The Register / Guardian / AP-syndicated coverage of Block's February-March
+  2026 AI-linked layoffs and Jack Dorsey's shareholder-letter language
