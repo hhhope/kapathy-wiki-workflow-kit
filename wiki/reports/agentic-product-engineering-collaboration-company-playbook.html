@@ -24,12 +24,9 @@
       --ink: #15110b;
       --muted: #665f52;
       --line: #272018;
-      --blue: #d9e9f3;
-      --green: #dfeadd;
-      --amber: #f3dfb3;
-      --red: #f1c8ba;
-      --violet: #e2d8f0;
       --white: #fffaf0;
+      --panel: rgba(255, 250, 240, .86);
+      --panel-alt: rgba(246, 239, 225, .72);
     }
 
     * { box-sizing: border-box; }
@@ -177,10 +174,15 @@
       min-height: 260px;
     }
 
-    .openai { background: var(--blue); }
-    .anthropic { background: var(--green); }
-    .stripe { background: var(--amber); }
-    .block { background: var(--red); }
+    .openai,
+    .anthropic,
+    .stripe,
+    .block { background: var(--panel); }
+
+    .matrix > article:nth-child(even),
+    .company-card:nth-child(even) .company-head {
+      background: var(--panel-alt);
+    }
 
     .badge {
       display: inline-block;
@@ -280,7 +282,7 @@
 
     .reading-card {
       border: 2px solid var(--line);
-      background: var(--violet);
+      background: var(--panel);
       padding: 16px;
     }
 
@@ -291,58 +293,6 @@
     }
 
     .reading-card p { font-size: 15px; }
-
-    .visual-note {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .poster {
-      border: 3px solid var(--line);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(217, 233, 243, .9), transparent 25%),
-        radial-gradient(circle at 80% 25%, rgba(243, 223, 179, .9), transparent 24%),
-        radial-gradient(circle at 50% 82%, rgba(223, 234, 221, .9), transparent 28%),
-        var(--white);
-      padding: 18px;
-      min-height: 260px;
-    }
-
-    .poster h3 {
-      font-size: 26px;
-      line-height: 1.18;
-      margin-bottom: 14px;
-    }
-
-    .poster-row {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .poster-row div {
-      border: 2px solid var(--line);
-      background: rgba(255, 250, 240, .8);
-      padding: 10px;
-      font-weight: 800;
-      min-height: 70px;
-    }
-
-    .visual-copy {
-      border: 2px solid var(--line);
-      background: var(--white);
-      padding: 18px;
-    }
-
-    .visual-copy h3 {
-      font-size: 24px;
-      line-height: 1.2;
-      margin-bottom: 10px;
-    }
-
-    .visual-copy p { margin-top: 10px; }
 
     .sources {
       padding-top: 24px;
@@ -371,15 +321,15 @@
     .boundary {
       margin-top: 16px;
       border: 2px solid var(--line);
-      background: rgba(241, 200, 186, .55);
+      border-top-width: 4px;
+      background: var(--panel);
       padding: 14px;
       font-size: 14px;
       font-weight: 700;
     }
 
     @media (max-width: 980px) {
-      .front,
-      .visual-note { grid-template-columns: 1fr; }
+      .front { grid-template-columns: 1fr; }
 
       .matrix { grid-template-columns: repeat(2, 1fr); }
 
@@ -405,7 +355,6 @@
       h1 { font-size: 38px; }
       .tagline { font-size: 17px; }
       .matrix { grid-template-columns: 1fr; }
-      .poster-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
