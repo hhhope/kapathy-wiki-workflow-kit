@@ -37,6 +37,12 @@ implementation reports unless the user asks for a reader-facing deliverable.
   appears, and why relevant learning was skipped.
 - When a reference artifact is provided, write or state the reference structure
   map before drafting.
+- For reference-shaped newspaper, article, or report outputs, apply the
+  Article Flow Layout Gate before review-ready claims: when the selected
+  reference is newspaper article flow, preserve that layout system, and fail
+  drafts that turn prose-heavy analysis into card-wall, dashboard grid,
+  repeated comparison-cell, colored-panel, prompt text, or visual-script
+  residue.
 - If a reference page has child pages or a reading map with concrete links,
   read and map those linked pages before the Reference Structure Gate can pass.
 - When content spans multiple reader jobs, choose a split strategy before
@@ -91,6 +97,8 @@ implementation reports unless the user asks for a reader-facing deliverable.
 
 - Turning a wiki ops note into a Feishu draft without rewriting for readers
 - Copying a reference page's section labels without mapping its structure
+- Keeping the right facts but replacing a newspaper/article reference with
+  card-wall, boxed-cell, or dashboard-grid composition
 - Treating linked reading-map articles as placeholders instead of sources
 - Silently choosing one output template when reviewer routing is required
 - Packing overview, runtime, migration, validation, and roadmap into one page

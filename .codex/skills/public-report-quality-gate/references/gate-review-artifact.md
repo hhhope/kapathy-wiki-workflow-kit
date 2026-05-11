@@ -19,6 +19,7 @@ document.
 | Reviewer Routing | Required/not required/not applicable/blocked, checked escalation signals, reviewer result when required, and user-selected template status |
 | Article Intent Contract | Reader, reader decision or action, main line, non-goals, user-owned judgments, and agent-allowed work |
 | Reference Structure Map | Source, reader job, page group, reading path, visual logic, writing standard, reuse boundary, and linked-page readback when the reference has child pages or concrete reading-map links |
+| Reference Layout System | Intended layout system, retained patterns, rejected patterns, Article Flow Layout Gate result, and replay notes when card/table drift was repaired |
 | Learning Use Map | Applicable learning artifacts, domain/topic, reusable capability type, learning point, intended output use, and skip reason when relevant |
 | Section And Paragraph Drift Review | Section objective, Paragraph claim, mainline role, target fit score, narrative drift score, evidence fit score, Judgment source, and action |
 | Judgment Ledger | User-owned judgments, source-backed judgments, agent inferences, unknown judgments, and required user confirmations |
@@ -38,6 +39,8 @@ reader-facing request
   -> run reviewer flow or record why reviewer is not required
   -> record Article Intent Contract
   -> complete reference structure map and linked-page readback
+  -> record reference layout system, retained patterns, rejected patterns, and
+     Article Flow Layout Gate result
   -> complete learning use map when learned references are applicable
   -> choose split strategy and destination map
   -> draft reader-facing content
@@ -60,6 +63,12 @@ explicitly selects the template and scopes the reviewer step out for this run.
 If the reference map is incomplete, or any hard gate is failed, partial,
 unknown, or not tested, record the score as `INVALID` and stop before Feishu
 sync or review-ready claims.
+
+If a newspaper/article/report reference is mapped but the draft uses repeated
+boxed cards, comparison cells, dashboard grids, colored panels, prompt text, or
+visual-script residue instead of the reference layout system, record the
+Article Flow Layout Gate as failed. Keep the draft internal until repaired into
+article flow or until the user explicitly selects a different output shape.
 
 If the Article Intent Contract, Section And Paragraph Drift Review, or Judgment
 Ledger is missing for complex, scored, reference-shaped, or drift-corrected

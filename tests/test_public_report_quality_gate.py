@@ -55,6 +55,29 @@ class PublicReportQualityGateTest(unittest.TestCase):
         self.assertIn("reference article's opinion becomes the local conclusion", content)
         self.assertIn("hard failure but diagnostic scores remain available", content)
 
+    def test_gate_blocks_card_wall_drift_from_newspaper_reference(self) -> None:
+        skill = SKILL.read_text(encoding="utf-8")
+        scorecard = SCORECARD.read_text(encoding="utf-8")
+        gate_review = GATE_REVIEW.read_text(encoding="utf-8")
+        pressure = PRESSURE.read_text(encoding="utf-8")
+
+        self.assertIn("Article Flow Layout Gate", skill)
+        self.assertIn("newspaper article flow", skill)
+        self.assertIn("card-wall", skill)
+        self.assertIn("prompt text", skill)
+
+        self.assertIn("Article Flow Layout Gate", scorecard)
+        self.assertIn("repeated boxed cards", scorecard)
+        self.assertIn("comparison cells", scorecard)
+
+        self.assertIn("Reference Layout System", gate_review)
+        self.assertIn("retained patterns", gate_review)
+        self.assertIn("rejected patterns", gate_review)
+
+        self.assertIn("Newspaper Article Flow Replay", pressure)
+        self.assertIn("company analysis becomes repeated cards", pressure)
+        self.assertIn("final takeaway becomes a 2x2 card wall", pressure)
+
 
 if __name__ == "__main__":
     unittest.main()
