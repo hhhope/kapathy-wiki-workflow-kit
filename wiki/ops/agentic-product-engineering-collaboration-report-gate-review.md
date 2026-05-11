@@ -55,7 +55,7 @@ final publication template selected yet.
 
 | Field | Result |
 |---|---|
-| Source | OpenAI, Anthropic, Block, AWS, GitHub, Atlassian, JetBrains official materials. |
+| Source | 43-item source map across OpenAI, Anthropic, Block, Stripe, Ramp, AWS, Amazon, Google, Microsoft, GitHub, Atlassian, JetBrains, Sourcegraph, Replit, Shopify, Duolingo, Klarna, Coinbase, Stack Overflow, GitLab, Thoughtworks, McKinsey, Deloitte, WeChat syntheses, Lenny/Sequoia interviews, Addy Osmani, and Daniel Miessler. |
 | Reader job | Understand why this is an operating-model shift and what decision to make next. |
 | Page group | One management report plus source map. Later can split into internal operating model. |
 | Reading path | Read report first, then source map for evidence. |
@@ -64,12 +64,20 @@ final publication template selected yet.
 | Reuse boundary | Sources support pattern extraction; local workflow decisions remain user-owned. |
 
 Reference Structure Gate: PARTIAL. Sources are linked and classified, but not all
-articles have full deep-read notes yet.
+articles, videos, podcasts, and memo chains have full upstream transcript or
+primary-post capture yet.
 
 ## Learning Use Map
 
 | Learning artifact | Domain / topic | Capability type | Output use | Skip reason |
 |---|---|---|---|---|
+| PayPal / OPD WeChat article | organization people model | framing, source-routing | Routes OPD/barrel framing and forces people/organization analysis. | Do not use as hard source for PayPal data. |
+| Keith Rabois / Lenny + 2014 lecture | organization throughput | people model, evidence | Barrel/ammunition, end-to-end owner bottleneck, PayPal claim source chain. | Need final source check before public citation. |
+| Boris Cherny / Baoyu WeChat | agent management workflow | workflow, organization, caution | Managing agents, loops, generalists, organization process as advantage. | Treat as secondary until original Sequoia video transcript is captured. |
+| Boris Cherny / Sequoia video | agent management workflow | workflow, evidence | Upstream source for Claude Code / loops / managing agents claims. | Needs transcript capture before hard quoting. |
+| Karpathy / Sequoia video | agentic engineering | role model, boundary | Vibe coding vs agentic engineering; responsibility and understanding remain human-owned. | YouTube transcript not fully captured yet. |
+| Addy Osmani | managing coding agents | management skill, workflow | Clarifies that agent fleets require manager-like skills: clarity, delegation, verification loops, async communication. | Practitioner essay, not broad survey. |
+| Daniel Miessler | enterprise AI readiness | organization boundary | Company self-knowledge, goals, workflows, owners, metrics as AI-readiness gate. | Practitioner essay, not survey data. |
 | OpenAI Symphony | agent orchestration | structure, evidence | Control plane, ticket/state machine, PM/design can initiate agent work. | None. |
 | OpenAI Harness Engineering | agent-first engineering | structure, boundary | Human steers / agent executes; repo knowledge and feedback loops. | None. |
 | Anthropic Claude Code teams | cross-functional agent use | content, boundary | Non-engineer participation and role-boundary shift. | None. |
@@ -78,6 +86,8 @@ articles have full deep-read notes yet.
 | GitHub Copilot coding agent | issue-to-PR workflow | structure, governance | Issue assignment, draft PR, branch protection, review. | None. |
 | Atlassian Rovo/Jira | backlog-to-code | structure | Jira as work orchestration surface. | None. |
 | JetBrains Central | agentic production system | governance, structure | Control/execution plane, observability, cost, intent alignment. | None. |
+| Stack Overflow / DORA / GitLab / Thoughtworks | industry evidence | risk, boundary | Balance speed claims with trust, debugging, stability, toolchain, and platform risks. | None. |
+| Amazon / Shopify / Duolingo / Coinbase / Klarna | organization cases | workforce, incentives | AI as headcount, hiring, performance, contractor, and adoption policy pressure. | Some are media-reported; verify primary memos for final publication. |
 
 ## Section And Paragraph Drift Review
 
@@ -85,12 +95,13 @@ articles have full deep-read notes yet.
 |---|---|---:|---|---|
 | 1 | Establish operating-model shift. | 0 | Source synthesis | Retain. |
 | 2 | Compare company classes. | 1 | Source map | Retain; add more examples in later version if needed. |
-| 3 | Name new collaboration objects. | 1 | Source synthesis + local judgment | Retain; user should confirm final object list. |
-| 4 | Explain role changes. | 1 | Source synthesis | Retain; add examples if turning public. |
-| 5 | Define controllable collaboration. | 0 | Source synthesis | Retain. |
-| 6 | Local implication and pilot framing. | 2 | Agent recommendation | Needs user confirmation before final. |
-| 7 | 30-60 day pilot plan. | 2 | Agent recommendation | Needs user confirmation and local ownership. |
-| 8 | Final judgment. | 1 | Source synthesis + agent wording | Retain as draft; confirm stance before publication. |
+| 3 | Move from tool talk to organization, people, and judgment ownership. | 1 | Source synthesis + user correction | Retain; sharpen in next draft around OPD / agentic engineer / manager. |
+| 4 | Name new collaboration objects. | 1 | Source synthesis + local judgment | Retain; user should confirm final object list. |
+| 5 | Explain role changes. | 1 | Source synthesis | Retain; add examples if turning public. |
+| 6 | Define controllable collaboration. | 0 | Source synthesis | Retain. |
+| 7 | Local implication and pilot framing. | 2 | Agent recommendation | Needs user confirmation before final. |
+| 8 | 30-60 day pilot plan. | 2 | Agent recommendation | Needs user confirmation and local ownership. |
+| 9 | Final judgment. | 1 | Source synthesis + agent wording | Retain as draft; confirm stance before publication. |
 
 Paragraph Drift Gate: PARTIAL. Main line is stable; local pilot design sections
 need user confirmation before review-ready status.
@@ -101,6 +112,8 @@ need user confirmation before review-ready status.
 |---|---|---|---|
 | This is an operating-model shift, not just tool adoption. | Source synthesis | Acceptable draft judgment | Keep. |
 | Ticket/spec/PR/eval/wiki become production objects. | Source synthesis + local adaptation | Needs user confirmation | Confirm before final. |
+| OPD/barrel/agentic engineer is the right people model. | User correction + source synthesis | Candidate only | Needs user decision and local examples before final. |
+| AI readiness depends on company self-knowledge, not only tool access. | Daniel Miessler + Microsoft/McKinsey/GitLab | Acceptable draft judgment | Keep, but avoid over-generalizing beyond evidence. |
 | A 30-60 day pilot is the right next decision. | User-selected direction + agent elaboration | Acceptable draft | Confirm pilot scope. |
 | Agent should not own product or strategic judgment. | User-stated principle + source boundary | Acceptable | Keep. |
 
@@ -110,12 +123,12 @@ need user confirmation before review-ready status.
 |---|---|---|
 | Reviewer routing | PASS | Required and applied manually. |
 | Learning use | PASS | Source map and learning use map recorded. |
-| Reference structure | PARTIAL | Source links mapped; not every article deeply captured yet. |
+| Reference structure | PARTIAL | 43 sources mapped; not every upstream article, memo, podcast, and video deeply captured yet. |
 | Split | PASS | Management report separated from source map; internal model can be a later artifact. |
 | Voice | PASS | Draft is management-facing, not chat recap. |
 | Narrative | PASS | Main line is stable. |
-| Paragraph drift | PARTIAL | Pilot sections need user confirmation. |
-| Judgment ownership | PARTIAL | Local operating-model decisions remain user-owned. |
+| Paragraph drift | PARTIAL | People/organization axis added after user correction; pilot sections still need user confirmation. |
+| Judgment ownership | PARTIAL | Local operating-model, OPD definition, and pilot ownership decisions remain user-owned. |
 | Visual | NOT TESTED | No diagram yet. |
 | Publish | FAIL | Draft is not review-ready or Feishu-ready. |
 
@@ -133,7 +146,8 @@ sync to Feishu yet.
 
 ## Residual Risks
 
-- Source set is strong for first draft but still vendor-heavy.
-- No independent practitioner interviews or non-vendor critique included yet.
+- Source set is broader but still not complete enough for "全网" claim.
+- Some sources are secondary summaries or transcript mirrors; primary memo/video/transcript capture remains needed.
+- Non-vendor critique improved via Daniel Miessler, Stack Overflow, DORA/GitLab/Thoughtworks, but still needs more independent practitioner cases.
 - Visual model is missing.
 - Local pilot ownership, scope, and first workflow must be confirmed by user.

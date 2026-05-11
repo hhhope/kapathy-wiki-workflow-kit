@@ -36,15 +36,39 @@ OpenAI 的 Symphony 把 Linear 这样的项目管理板变成 coding agents 的�
 | 传统软件平台 | GitHub Copilot coding agent | issue 指派给 agent，agent 在 GitHub Actions 环境里工作，提交 draft PR，人 review |
 | 工作管理平台 | Atlassian Jira / Rovo Dev | backlog、PRD、Jira issue、code plan、PR 连接成 agentic SDLC |
 | IDE / 开发平台 | JetBrains Central | agentic software development 被定义为跨 IDE、CLI、pipeline、协作工具的分布式生产系统 |
+| 组织管理样本 | Shopify / Amazon / Duolingo / Coinbase | AI 开始进入 headcount、招聘、绩效、承包商策略和角色预期 |
+| 研究与反例 | Stack Overflow / DORA / GitLab / Thoughtworks / Replit incident | AI 使用上升，但信任、调试、稳定性、权限、生产隔离成为新瓶颈 |
+| 组织诊断 | Keith Rabois / Karpathy / Daniel Miessler | 稀缺点从执行人力变成端到端 owner、agentic engineer 和清晰组织自描述 |
 
 它们表面上卖的是不同产品，底层共识很接近：
 
 1. agent 不能停留在个人 IDE 里。
 2. agent 必须接入真实产研对象：issue、PR、CI、日志、知识库、权限和环境。
 3. 人的角色不消失，但上移到目标定义、边界设定、判断、审查和系统设计。
-4. 管理层要治理的不是“员工能不能用 AI”，而是“agent 工作是否可控、可审、可复用、可度量”。
+4. 管理层要治理的不是“员工能不能用 AI”，而是“公司是否清楚到足以让 AI 执行”。
+5. 真正的竞争对象不是某个工具，而是能否形成端到端 owner 加 agent 队列的作业系统。
 
-## 3. 新的产研协作对象：ticket、spec、PR、eval、wiki
+## 3. 不是泛泛聊工具，而是组织、人和判断权重排
+
+这轮补充材料把问题从“哪个 AI 编码工具好用”拉回到组织本身。
+
+Keith Rabois 的 PayPal 例子不是要证明“17 个人能替代 254 个人”，而是指出组织吞吐受少数端到端 owner 约束。他把这种人叫 barrel：能把一个想法从 inception 推到 shipping，并带动周围人。中文文章把它转写成 OPD，这个词可以暂时作为候选概念，但不能当作已验证的人才模型。
+
+Karpathy 的新说法更适合产研语境：vibe coding 只是在降低门槛，professional software 需要的是 agentic engineering。也就是人不再直接写每一行代码，而是拆解任务、喂上下文、调度 agent、审查结果，并对质量、安全和业务后果负责。
+
+Daniel Miessler 的判断补上了另一个关键面：很多公司不是“不会用 AI”，而是说不清自己要什么。目标、策略、工作流、项目、负责人、成本、指标都不清楚时，AI 只能把混乱放大。这个观点对我们尤其重要，因为产研协作不是把 agent 接进来就完成了；必须先把目标、边界、验收、责任和回流机制写清楚。
+
+所以这份报告后续应围绕三类人重写试点设计：
+
+| 人群 | AI 时代的新职责 | 不能外包的部分 |
+|---|---|---|
+| OPD / 端到端 owner | 把业务目标拆成可执行任务，调度 agent，推动上线 | 目标、取舍、用户价值、结果负责 |
+| Agentic engineer | 设计上下文、任务拆解、工具链、验证、权限和回滚 | 架构判断、安全责任、质量标准 |
+| 管理者 | 设计组织节奏、资源配置、绩效口径和作业系统 | 人才判断、授权边界、风险承受度 |
+
+这也解释了为什么“流程可以外包，思想和判断不能外包”。流程外包给 agent 后，判断力会更稀缺，而不是更便宜。
+
+## 4. 新的产研协作对象：ticket、spec、PR、eval、wiki
 
 AI agent 时代，管理层要重新看这些对象。
 
@@ -62,7 +86,7 @@ AI agent 时代，管理层要重新看这些对象。
 如果不能，AI 只能停留在个人效率工具。
 如果能，产研组织才开始进入人机协同作业系统。
 
-## 4. 产研分工会怎么变
+## 5. 产研分工会怎么变
 
 ### 产品
 
@@ -122,7 +146,7 @@ QA 不再只是末端验收。
 
 这是管理对象的变化：从管理人执行，变成管理人机作业系统。
 
-## 5. 成熟组织不是先追求全自动，而是先做可控协作
+## 6. 成熟组织不是先追求全自动，而是先做可控协作
 
 这些公司没有走向同一个“全自动写代码”口号。更成熟的方向是可控协作。
 
@@ -138,7 +162,7 @@ QA 不再只是末端验收。
 
 JetBrains Central 把这个问题说得很直接：代码生成已经不是唯一瓶颈，真正挑战是让结果对齐意图，并管理 agent-driven work 带来的运行复杂度和成本。
 
-## 6. 对我们的启发：先做一条 30-60 天试点链路
+## 7. 对我们的启发：先做一条 30-60 天试点链路
 
 不要一开始做“全公司 AI 转型”。
 
@@ -156,7 +180,7 @@ JetBrains Central 把这个问题说得很直接：代码生成已经不是唯�
 4. 失败是否能回流成规则、skill、测试、wiki，而不是下次重犯。
 5. 产研负责人是否能看见吞吐、质量、成本、风险。
 
-## 7. 建议的 30-60 天试点方案
+## 8. 建议的 30-60 天试点方案
 
 ### 第 1 阶段：定义控制面
 
@@ -221,7 +245,7 @@ JetBrains Central 把这个问题说得很直接：代码生成已经不是唯�
 - 哪些角色可以独立发起工作
 - 哪些任务仍必须人工完成
 
-## 8. 最后判断
+## 9. 最后判断
 
 AI agent 时代的软件工程，不会简单变成“更快写代码”。
 
@@ -245,10 +269,26 @@ AI agent 时代的软件工程，不会简单变成“更快写代码”。
 
 - OpenAI, [An open-source spec for Codex orchestration: Symphony](https://openai.com/index/open-source-codex-orchestration-symphony/)
 - OpenAI, [Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/)
+- OpenAI, [Introducing AgentKit](https://openai.com/index/introducing-agentkit/)
 - Anthropic / Claude, [How Anthropic teams use Claude Code](https://claude.com/blog/how-anthropic-teams-use-claude-code)
+- WeChat / Baoyu, [Boris Cherny: Claude Code 之后，写代码正在变成“管理 Agent”](https://mp.weixin.qq.com/s/eFEH977D8kGlQpGkKgFMtA)
+- Sequoia / YouTube, [Anthropic's Boris Cherny: Coding's Printing Press Moment](https://www.youtube.com/watch?v=SlGRN8jh2RI)
+- Sequoia / YouTube, [Andrej Karpathy: From Vibe Coding to Agentic Engineering](https://www.youtube.com/watch?v=96jN2OCOfLs)
+- Addy Osmani, [Your AI coding agents need a manager](https://addyosmani.com/blog/coding-agents-manager/)
+- Daniel Miessler, [Most Companies Aren't Anywhere Near Ready for AI](https://danielmiessler.com/blog/most-companies-arent-ready-for-ai)
+- Jiang Tao / WeChat, [PayPal 鼎盛时 254 人,只有 17 个在做真正的工作](https://mp.weixin.qq.com/s/T_6uuDQqO-MFg1CXJWjRBw)
+- Lenny's Podcast / Keith Rabois, [Hard truths about building in the AI era](https://www.sum.best/podcasts/lenny-s-podcast-product-career-growth/e/hard-truths-about-building-in-the-ai-era-keith-rabois-khosla-ventures)
+- Keith Rabois, [How to Operate, Lecture 14](https://logmi.jp/knowledge_culture/speech/45153)
 - Block Engineering, [AI-Assisted Development at Block](https://engineering.block.xyz/blog/ai-assisted-development-at-block)
 - AWS, [Amazon Q Developer](https://aws.amazon.com/q/developer/)
 - AWS, [Frontier agents](https://aws.amazon.com/ai/frontier-agents/)
+- Amazon, [Message from CEO Andy Jassy: Some thoughts on Generative AI](https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-on-generative-ai)
+- Google, [Build with Jules](https://blog.google/technology/google-labs/jules)
+- Microsoft, [2025 Work Trend Index: The Frontier Firm is born](https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born)
 - GitHub, [GitHub Copilot: Meet the new coding agent](https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/)
 - Atlassian, [Rovo Dev in Jira](https://www.atlassian.com/blog/company-news/rovo-dev-in-jira)
 - JetBrains, [Introducing JetBrains Central](https://blog.jetbrains.com/blog/2026/03/24/introducing-jetbrains-central-an-open-system-for-agentic-software-development/)
+- Stack Overflow, [2025 Developer Survey](https://stackoverflow.co/company/press/archive/stack-overflow-2025-developer-survey/)
+- GitLab, [Global DevSecOps Report](https://about.gitlab.com/resources/developer-survey/)
+- Thoughtworks, [AI-first software engineering](https://www.thoughtworks.com/en-us/perspectives/edition36-ai-first-software-engineering/article)
+- McKinsey, [The agentic organization](https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era)
