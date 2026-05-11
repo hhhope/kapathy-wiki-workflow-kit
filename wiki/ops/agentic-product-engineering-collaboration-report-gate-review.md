@@ -64,7 +64,7 @@ final publication template selected yet.
 | Reader job | Understand why this is an operating-model shift and what decision to make next. |
 | Page group | One management report plus source map. Later can split into internal operating model. |
 | Reading path | Read report first, then source map for evidence. |
-| Visual logic | H5 newspaper draft now uses four information-carrying visuals: debate matrix for disagreement axes, monthly source-volume axis for discussion progression, operating-system loop SVG for responsibility and feedback, and evidence pyramid for source hierarchy. Needs browser CJK visual QA before review-ready publication. |
+| Visual logic | H5 newspaper draft now uses information-carrying visuals: debate matrix for disagreement axes, line chart for monthly discussion progression, company dumbbell for automation/governance tension, operating-system loop SVG for responsibility and feedback, dynamic source-backed heat map for discussion terms, and evidence load-bearing table for source hierarchy. Needs browser CJK visual QA before review-ready publication. |
 | Writing standard | Management-facing, decision-oriented, Chinese prose with source links. |
 | Reuse boundary | Sources support pattern extraction; local workflow decisions remain user-owned. |
 
@@ -136,7 +136,7 @@ need user confirmation before review-ready status.
 | Narrative | PASS | Main line is stable. |
 | Paragraph drift | PARTIAL | People/organization axis added after user correction; pilot sections still need user confirmation. |
 | Judgment ownership | PARTIAL | Local operating-model, OPD definition, and pilot ownership decisions remain user-owned. |
-| Visual | PARTIAL | H5 newspaper draft now has non-decorative visuals: debate matrix, source-volume timeline, operating loop, evidence pyramid. Desktop screenshot command ran, but the Playwright environment lacks Chinese fonts, so CJK visual QA is not passed yet. |
+| Visual | PARTIAL | H5 newspaper draft now has non-decorative visuals: debate matrix, line chart, company dumbbell, operating loop, dynamic heat map, evidence load-bearing table. Desktop and mobile screenshot commands ran, but the Playwright environment lacks Chinese fonts, so CJK visual QA is not passed yet. |
 | Publish | FAIL | Draft is not review-ready or Feishu-ready. |
 
 ## Scorecard
@@ -153,13 +153,25 @@ Updated after the first H5 draft was rejected as too text-heavy.
 | Visual | Carries | Status | Remaining Risk |
 |---|---|---|---|
 | Debate matrix | Shows the real industry tension: execution automation vs judgment responsibility. | Added | Needs reader review for whether the four quadrants match the intended argument. |
-| Source-volume timeline | Shows monthly public-source count and podcast/video discussion count from Jan-May 2026. | Added with counts 21, 30, 27, 33, 20 | Counts are source-pool entries, not all-web totals. |
+| Line chart timeline | Shows monthly public-source, podcast/video, and total discussion movement from Jan-May 2026. | Replaced bar timeline with line chart and point tooltips | Counts are source-pool entries, not all-web totals. |
+| Company dumbbell | Shows automation vendors on one side, governance/workforce discussions on the other, with product-engineering collaboration as the bridge. | Replaced company card grid | Must remain framed as discussion structure, not settled industry fact. |
 | Operating-system loop | Shows human target-setting, executable context, agent execution, human review, and system memory feedback. | Added as inline SVG | CJK visual QA blocked in headless environment due missing fonts. |
-| Evidence pyramid | Separates first-party practice, operator interviews, research/risk, and secondary routing sources. | Added | Needs final citation selection before publication. |
+| Dynamic heat map | Lets readers click terms and inspect source routes and dispute axes. | Replaced static word cloud and removed defensive explanation copy | Needs browser interaction QA. |
+| Evidence load-bearing table | Shows what each evidence class can and cannot support. | Replaced earlier static evidence hierarchy | Needs final citation selection before publication. |
 
 Visual information design diagnostic: improved, but still not scoreable because
 the hard Visual Gate remains `PARTIAL` until Chinese rendering and mobile layout
 are verified in a browser with CJK fonts.
+
+Verification evidence:
+
+- `git diff --check` passed.
+- Structural HTML check passed: 14 clickable heat-map terms, source drawer,
+  line chart, company dumbbell, and evidence load-bearing table are present.
+- Desktop screenshot generated at `/tmp/agentic-newspaper-v4-desktop.png`.
+- Mobile screenshot generated at `/tmp/agentic-newspaper-v4-mobile.png`.
+- Screenshot inspection still shows missing CJK glyph rendering in the current
+  headless environment; this is why Visual Gate remains `PARTIAL`.
 
 ## Decision
 
@@ -174,5 +186,5 @@ sync to Feishu yet.
 - The 36-lead discussion pool improves podcast/video coverage, but many entries still need transcript capture before quotation.
 - Some sources are secondary summaries, podcast indexes, or transcript mirrors; primary memo/video/transcript capture remains needed.
 - Non-vendor critique improved via Daniel Miessler, Stack Overflow, DORA/GitLab/Thoughtworks, but still needs more independent practitioner cases.
-- Visual model now contains debate matrix, monthly source-volume timeline, operating loop, and evidence pyramid. Playwright screenshot exposed missing CJK fonts in the headless environment, so final visual QA still needs a browser with Chinese fonts and reader review.
+- Visual model now contains debate matrix, line chart timeline, company dumbbell, operating loop, dynamic source-backed heat map, and evidence load-bearing table. Playwright screenshot exposed missing CJK fonts in the headless environment, so final visual QA still needs a browser with Chinese fonts and reader review.
 - Local pilot ownership, scope, and first workflow must be confirmed by user.

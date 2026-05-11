@@ -372,6 +372,53 @@
       gap: 10px;
     }
 
+    .line-chart {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(#ececec 1px, transparent 1px) 0 0 / 100% 20%,
+        #fff;
+    }
+
+    .chart-line-public {
+      fill: none;
+      stroke: var(--blue);
+      stroke-width: 4;
+    }
+
+    .chart-line-talk {
+      fill: none;
+      stroke: var(--red);
+      stroke-width: 4;
+    }
+
+    .chart-line-total {
+      fill: none;
+      stroke: #161616;
+      stroke-width: 5;
+    }
+
+    .chart-dot {
+      cursor: pointer;
+      stroke: #fff;
+      stroke-width: 3;
+    }
+
+    .chart-label {
+      font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      fill: #161616;
+    }
+
+    .chart-small {
+      font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 11px;
+      fill: #4b4b4b;
+    }
+
     .axis-row {
       display: grid;
       grid-template-columns: 72px 1fr 64px;
@@ -529,6 +576,83 @@
       font-size: 14px;
     }
 
+    .dumbbell {
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .dumbbell-grid {
+      display: grid;
+      grid-template-columns: 1fr 150px 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .bell {
+      min-height: 260px;
+      padding: 16px;
+      border: 2px solid var(--line);
+      background: #fff;
+    }
+
+    .bell.left {
+      background: var(--soft-blue);
+    }
+
+    .bell.right {
+      background: var(--soft-amber);
+    }
+
+    .bell h3 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      line-height: 1.15;
+    }
+
+    .bell p {
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    .bell ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .bridge {
+      position: relative;
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bridge-line {
+      position: absolute;
+      left: -18px;
+      right: -18px;
+      top: 50%;
+      border-top: 5px solid var(--line);
+    }
+
+    .bridge-node {
+      position: relative;
+      z-index: 1;
+      width: 142px;
+      min-height: 142px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      border: 2px solid var(--line);
+      border-radius: 50%;
+      background: var(--soft-green);
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
     .system {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -662,6 +786,15 @@
       background: #fff;
       font-weight: 800;
       line-height: 1.1;
+      cursor: pointer;
+      color: inherit;
+      font-family: inherit;
+    }
+
+    .term.active,
+    .term:focus {
+      outline: 3px solid rgba(23, 105, 170, .28);
+      background: #fff8db;
     }
 
     .t1 { font-size: 30px; color: var(--red); }
@@ -670,42 +803,65 @@
     .t4 { font-size: 20px; color: var(--amber); }
     .t5 { font-size: 17px; color: #333; }
 
+    .source-drawer {
+      min-height: 260px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .source-drawer h3 {
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .source-drawer p {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .source-drawer ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .source-drawer li {
+      margin: 7px 0;
+    }
+
     .evidence {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
     }
 
-    .pyramid {
-      display: grid;
-      gap: 8px;
-      max-width: 780px;
-      margin: 0 auto;
+    .load-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 14px;
     }
 
-    .pyramid-row {
-      min-height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      padding: 10px 16px;
+    .load-table th,
+    .load-table td {
+      padding: 12px;
       border: 1px solid var(--line);
-      text-align: center;
-      font-weight: 800;
+      vertical-align: top;
+      text-align: left;
     }
 
-    .pyramid-row small {
-      display: block;
-      margin-top: 3px;
-      color: #333;
-      font-weight: 500;
+    .load-table th {
+      background: #f7f7f7;
+      font-size: 15px;
     }
 
-    .pyramid-row:nth-child(1) { width: 44%; background: var(--soft-green); }
-    .pyramid-row:nth-child(2) { width: 62%; background: var(--soft-blue); }
-    .pyramid-row:nth-child(3) { width: 80%; background: var(--soft-amber); }
-    .pyramid-row:nth-child(4) { width: 100%; background: #f7f7f7; }
+    .load-table td:nth-child(2) {
+      background: var(--soft-green);
+    }
+
+    .load-table td:nth-child(3) {
+      background: var(--soft-red);
+    }
 
     .layer {
       min-height: 190px;
@@ -830,6 +986,23 @@
         grid-template-columns: 1fr;
       }
 
+      .dumbbell-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bridge {
+        min-height: 120px;
+      }
+
+      .bridge-line {
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        right: auto;
+        border-top: 0;
+        border-left: 5px solid var(--line);
+      }
+
       .split {
         grid-template-columns: 1fr;
       }
@@ -845,14 +1018,6 @@
 
       .axis-total {
         text-align: left;
-      }
-
-      .pyramid-row,
-      .pyramid-row:nth-child(1),
-      .pyramid-row:nth-child(2),
-      .pyramid-row:nth-child(3),
-      .pyramid-row:nth-child(4) {
-        width: 100%;
       }
 
       .camp-label {
@@ -985,51 +1150,52 @@
       </div>
       <div class="timeline-visual">
         <div class="visual-title">
-          <h3>时间轴：4 月达到公开讨论高峰，2-3 月是播客密集解释期</h3>
-          <span>每月总量 = 公开条目 + 播客/视频讨论</span>
+          <h3>折线图：2 月升温，4 月公开讨论达到峰值</h3>
+          <span>hover 点位看代表信源</span>
         </div>
-        <div class="source-axis" aria-label="2026年1月至5月讨论量时间轴">
-          <div class="axis-row">
-            <div class="axis-month">Jan</div>
-            <div class="axis-bars">
-              <div class="bar-track"><div class="bar-fill bar-public" style="width:42%">公开源 11</div></div>
-              <div class="bar-track"><div class="bar-fill bar-talk" style="width:91%">讨论源 10</div></div>
-            </div>
-            <div class="axis-total">21</div>
-          </div>
-          <div class="axis-row">
-            <div class="axis-month">Feb</div>
-            <div class="axis-bars">
-              <div class="bar-track"><div class="bar-fill bar-public" style="width:88%">公开源 23</div></div>
-              <div class="bar-track"><div class="bar-fill bar-talk" style="width:64%">讨论源 7</div></div>
-            </div>
-            <div class="axis-total">30</div>
-          </div>
-          <div class="axis-row">
-            <div class="axis-month">Mar</div>
-            <div class="axis-bars">
-              <div class="bar-track"><div class="bar-fill bar-public" style="width:62%">公开源 16</div></div>
-              <div class="bar-track"><div class="bar-fill bar-talk" style="width:100%">讨论源 11</div></div>
-            </div>
-            <div class="axis-total">27</div>
-          </div>
-          <div class="axis-row">
-            <div class="axis-month">Apr</div>
-            <div class="axis-bars">
-              <div class="bar-track"><div class="bar-fill bar-public" style="width:100%">公开源 26</div></div>
-              <div class="bar-track"><div class="bar-fill bar-talk" style="width:64%">讨论源 7</div></div>
-            </div>
-            <div class="axis-total">33</div>
-          </div>
-          <div class="axis-row">
-            <div class="axis-month">May</div>
-            <div class="axis-bars">
-              <div class="bar-track"><div class="bar-fill bar-public" style="width:73%">公开源 19</div></div>
-              <div class="bar-track"><div class="bar-fill bar-talk" style="width:9%">讨论源 1</div></div>
-            </div>
-            <div class="axis-total">20</div>
-          </div>
-        </div>
+        <svg class="line-chart" viewBox="0 0 960 420" role="img" aria-label="2026年1月至5月讨论数量折线图">
+          <line x1="70" y1="330" x2="900" y2="330" stroke="#161616" stroke-width="2"></line>
+          <line x1="70" y1="70" x2="70" y2="330" stroke="#161616" stroke-width="2"></line>
+          <text x="34" y="333" class="chart-small">0</text>
+          <text x="28" y="253" class="chart-small">10</text>
+          <text x="28" y="174" class="chart-small">20</text>
+          <text x="28" y="95" class="chart-small">30</text>
+          <text x="110" y="360" class="chart-label">Jan</text>
+          <text x="295" y="360" class="chart-label">Feb</text>
+          <text x="480" y="360" class="chart-label">Mar</text>
+          <text x="665" y="360" class="chart-label">Apr</text>
+          <text x="850" y="360" class="chart-label">May</text>
+          <polyline class="chart-line-total" points="120,164 305,92 490,116 675,68 860,172"></polyline>
+          <polyline class="chart-line-public" points="120,244 305,148 490,204 675,124 860,180"></polyline>
+          <polyline class="chart-line-talk" points="120,252 305,276 490,244 675,276 860,324"></polyline>
+          <g fill="#161616">
+            <circle class="chart-dot" cx="120" cy="164" r="7"><title>Jan total 21. repo readiness, agent loop, Cowork, guardrails.</title></circle>
+            <circle class="chart-dot" cx="305" cy="92" r="7"><title>Feb total 30. Codex app, harness, Claude Code, design-code loop.</title></circle>
+            <circle class="chart-dot" cx="490" cy="116" r="7"><title>Mar total 27. spec readiness, payment eval, agent-centric SDLC.</title></circle>
+            <circle class="chart-dot" cx="675" cy="68" r="7"><title>Apr total 33. Symphony, Managed Agents, Open Agentic Development, Keith Rabois, Intercom.</title></circle>
+            <circle class="chart-dot" cx="860" cy="172" r="7"><title>May total 20. Frontier Firm, finance agents, AI operating model, hands-on managers.</title></circle>
+          </g>
+          <g fill="#1769aa">
+            <circle class="chart-dot" cx="120" cy="244" r="6"><title>Jan public 11</title></circle>
+            <circle class="chart-dot" cx="305" cy="148" r="6"><title>Feb public 23</title></circle>
+            <circle class="chart-dot" cx="490" cy="204" r="6"><title>Mar public 16</title></circle>
+            <circle class="chart-dot" cx="675" cy="124" r="6"><title>Apr public 26</title></circle>
+            <circle class="chart-dot" cx="860" cy="180" r="6"><title>May public 19</title></circle>
+          </g>
+          <g fill="#c7352f">
+            <circle class="chart-dot" cx="120" cy="252" r="6"><title>Jan podcast/video 10</title></circle>
+            <circle class="chart-dot" cx="305" cy="276" r="6"><title>Feb podcast/video 7</title></circle>
+            <circle class="chart-dot" cx="490" cy="244" r="6"><title>Mar podcast/video 11</title></circle>
+            <circle class="chart-dot" cx="675" cy="276" r="6"><title>Apr podcast/video 7</title></circle>
+            <circle class="chart-dot" cx="860" cy="324" r="6"><title>May podcast/video 1</title></circle>
+          </g>
+          <text x="720" y="48" class="chart-small">total</text>
+          <line x1="760" y1="44" x2="820" y2="44" stroke="#161616" stroke-width="5"></line>
+          <text x="720" y="72" class="chart-small">public</text>
+          <line x1="760" y1="68" x2="820" y2="68" stroke="#1769aa" stroke-width="4"></line>
+          <text x="720" y="96" class="chart-small">podcast / video</text>
+          <line x1="820" y1="92" x2="880" y2="92" stroke="#c7352f" stroke-width="4"></line>
+        </svg>
         <div class="legend-row">
           <span><i class="legend-swatch bar-public"></i>public timeline entries</span>
           <span><i class="legend-swatch bar-talk"></i>podcast / video discussions</span>
@@ -1047,52 +1213,39 @@
 
     <section class="section">
       <div class="section-title">
-        <h2>不同阵营的共识</h2>
-        <span>company classes</span>
+        <h2>公司的位置更像哑铃</h2>
+        <span>automation side, governance side, product-engineering bridge</span>
       </div>
-      <div class="map">
-        <article class="camp">
-          <div class="camp-label">AI 厂</div>
-          <div class="camp-body">
-            <h3>OpenAI / Anthropic</h3>
-            <p>把 agent loop、harness、managed agents、Claude Code、Cowork 做成新的工作基础设施。核心信号是人从写每一步，变成管目标、上下文、工具和审查。</p>
+      <div class="dumbbell">
+        <div class="visual-title">
+          <h3>哑铃图：两端在发力，中间的产研协作被重新定义</h3>
+          <span>这是讨论结构，不是行业定论</span>
+        </div>
+        <div class="dumbbell-grid">
+          <article class="bell left">
+            <h3>执行自动化端</h3>
+            <p>这些公司把 agent 放进 issue、IDE、PR、CI、workspace，让任务更容易被机器执行。</p>
+            <ul>
+              <li>OpenAI / Anthropic</li>
+              <li>GitHub / Atlassian / JetBrains</li>
+              <li>Cursor / Sourcegraph / Replit</li>
+            </ul>
+          </article>
+          <div class="bridge">
+            <div class="bridge-line"></div>
+            <div class="bridge-node">产研协作桥<br />spec / eval / review / owner</div>
           </div>
-        </article>
-        <article class="camp">
-          <div class="camp-label">支付 / 金融</div>
-          <div class="camp-body">
-            <h3>Block / Stripe / Ramp / PayPal</h3>
-            <p>钱和合规让“差不多正确”不可接受。这里的重点是 eval、权限、审计、policy、OPD / barrel 这类端到端 owner。</p>
-          </div>
-        </article>
-        <article class="camp">
-          <div class="camp-label">云商</div>
-          <div class="camp-body">
-            <h3>AWS / Microsoft / Google / IBM</h3>
-            <p>把 agent 放进完整 SDLC、云运营、安全、企业数据和治理。它们争的是企业控制面，不只是 IDE 插件。</p>
-          </div>
-        </article>
-        <article class="camp">
-          <div class="camp-label">传统软件</div>
-          <div class="camp-body">
-            <h3>GitHub / Atlassian / JetBrains / Sourcegraph</h3>
-            <p>issue、Jira、PR、IDE、CI 变成 agent 工作入口。产研对象不再只是记录，而是可执行状态机。</p>
-          </div>
-        </article>
-        <article class="camp">
-          <div class="camp-label">组织样本</div>
-          <div class="camp-body">
-            <h3>Shopify / Amazon / Duolingo / Coinbase</h3>
-            <p>AI 进入 headcount、招聘、绩效、承包商策略和管理者期望。这里有强信号，也有强争议。</p>
-          </div>
-        </article>
-        <article class="camp">
-          <div class="camp-label">反例 / 研究</div>
-          <div class="camp-body">
-            <h3>DORA / Stack Overflow / GitLab / Thoughtworks / METR</h3>
-            <p>提醒我们别只看速度。信任、调试、稳定性、工具链、技术债、生产隔离会变成新的瓶颈。</p>
-          </div>
-        </article>
+          <article class="bell right">
+            <h3>组织治理端</h3>
+            <p>这些讨论把问题推到 headcount、绩效、权限、审计、责任、组织密度。</p>
+            <ul>
+              <li>Microsoft / IBM / Deloitte / Gartner</li>
+              <li>Shopify / Amazon / Coinbase / Duolingo</li>
+              <li>DORA / Stack Overflow / GitLab / METR</li>
+            </ul>
+          </article>
+        </div>
+        <p class="signal">中间桥不是“中立地带”。Block、Stripe、Ramp、PayPal、AWS 这类高风险或基础设施样本，把执行自动化和治理责任拉到同一张桌上。</p>
       </div>
     </section>
 
@@ -1199,31 +1352,35 @@
     <section class="section">
       <div class="section-title">
         <h2>讨论热区</h2>
-        <span>word cloud is only a hint</span>
+        <span>click a term to inspect source routes</span>
       </div>
       <div class="heat">
         <article class="heat-panel">
           <div class="terms" aria-label="行业讨论热词">
-            <span class="term t1">judgment</span>
-            <span class="term t1">agentic engineering</span>
-            <span class="term t2">control plane</span>
-            <span class="term t2">OPD / barrel</span>
-            <span class="term t2">spec</span>
-            <span class="term t3">eval</span>
-            <span class="term t3">review packet</span>
-            <span class="term t3">AI-native team</span>
-            <span class="term t4">permission</span>
-            <span class="term t4">CI</span>
-            <span class="term t4">context</span>
-            <span class="term t5">cost</span>
-            <span class="term t5">trust</span>
-            <span class="term t5">tech debt</span>
+            <button class="term t1 active" data-term="judgment">judgment</button>
+            <button class="term t1" data-term="agentic engineering">agentic engineering</button>
+            <button class="term t2" data-term="control plane">control plane</button>
+            <button class="term t2" data-term="OPD / barrel">OPD / barrel</button>
+            <button class="term t2" data-term="spec">spec</button>
+            <button class="term t3" data-term="eval">eval</button>
+            <button class="term t3" data-term="review packet">review packet</button>
+            <button class="term t3" data-term="AI-native team">AI-native team</button>
+            <button class="term t4" data-term="permission">permission</button>
+            <button class="term t4" data-term="CI">CI</button>
+            <button class="term t4" data-term="context">context</button>
+            <button class="term t5" data-term="cost">cost</button>
+            <button class="term t5" data-term="trust">trust</button>
+            <button class="term t5" data-term="tech debt">tech debt</button>
           </div>
         </article>
-        <article class="heat-panel">
-          <h3>为什么不用词云当核心</h3>
-          <p>词云只能告诉我们大家说了哪些词，不能告诉我们争议在哪里。真正有价值的是把这些词放回四个问题：代码是否被解决、PM 是否被压缩、小团队是否替代大组织、agent 是员工还是工具。</p>
-          <p>所以这版把词云降级为热区提示，把争议轴和作业系统模型放在主位置。</p>
+        <article class="source-drawer" id="sourceDrawer" aria-live="polite">
+          <h3>judgment</h3>
+          <p>所属争议：执行越自动化，人的判断越不能消失。</p>
+          <ul>
+            <li>OpenAI Harness Engineering：human steers, agents execute.</li>
+            <li>Karpathy / Sequoia：agentic engineering 不是随手 vibe coding。</li>
+            <li>Daniel Miessler：公司说不清目标时，AI 只会放大混乱。</li>
+          </ul>
         </article>
       </div>
     </section>
@@ -1231,37 +1388,44 @@
     <section class="section">
       <div class="section-title">
         <h2>证据怎么用</h2>
-        <span>source hierarchy</span>
-      </div>
-      <div class="evidence">
-        <article class="layer">
-          <h3>一手实践</h3>
-          <p>OpenAI、Anthropic、Block、GitHub、Atlassian、JetBrains、AWS、Microsoft。用于支撑“作业对象和平台形态正在改变”。</p>
-        </article>
-        <article class="layer">
-          <h3>操作者访谈</h3>
-          <p>Keith Rabois、Boris Cherny、Karpathy、Cat Wu、Sherwin Wu、Brian Scanlan。用于支撑“角色语言和组织判断”。</p>
-        </article>
-        <article class="layer">
-          <h3>研究和反例</h3>
-          <p>DORA、Stack Overflow、GitLab、Thoughtworks、METR、Replit incident。用于压住速度叙事，提醒质量和治理风险。</p>
-        </article>
-        <article class="layer">
-          <h3>二手传播</h3>
-          <p>微信、媒体报道、索引页、播客平台页。用于发现线索和中文表达，不直接承担硬事实。</p>
-        </article>
+        <span>load-bearing map</span>
       </div>
       <div class="evidence-visual">
         <div class="visual-title">
-          <h3>证据金字塔：越往上越能承重，越往下越适合找线索</h3>
+          <h3>证据承重表：每类材料只能支撑它能支撑的结论</h3>
           <span>防止把播客简介、微信转述和工程博客混成一种证据</span>
         </div>
-        <div class="pyramid">
-          <div class="pyramid-row">一手公司实践 <small>工程博客 / 产品文档 / 官方报告 / repo</small></div>
-          <div class="pyramid-row">操作者长访谈 <small>用于角色语言，引用前要 transcript capture</small></div>
-          <div class="pyramid-row">研究、调查和反例 <small>用于风险边界和反速度叙事</small></div>
-          <div class="pyramid-row">二手传播和索引 <small>用于发现线索，不承担硬事实</small></div>
-        </div>
+        <table class="load-table">
+          <thead>
+            <tr>
+              <th>证据类型</th>
+              <th>能承重</th>
+              <th>不能承重</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>公司一手实践<br />工程博客 / 产品文档 / 官方报告 / repo</td>
+              <td>说明作业对象、工具链、权限、eval、review 如何变化。</td>
+              <td>不能单独证明“整个行业必然如此”。</td>
+            </tr>
+            <tr>
+              <td>操作者长访谈<br />Keith Rabois / Boris Cherny / Karpathy / Cat Wu</td>
+              <td>提炼角色语言、组织判断、工作方式变化。</td>
+              <td>不能当统计事实，引用前要 transcript capture。</td>
+            </tr>
+            <tr>
+              <td>研究、调查、反例<br />DORA / Stack Overflow / GitLab / METR</td>
+              <td>约束速度叙事，提醒信任、质量、技术债和稳定性风险。</td>
+              <td>不能直接替某家公司下结论。</td>
+            </tr>
+            <tr>
+              <td>二手传播和索引<br />微信 / 媒体 / 播客平台页</td>
+              <td>发现线索，捕捉中文表达和公共争议。</td>
+              <td>不能承担硬事实，必须回到上游来源。</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -1306,5 +1470,136 @@
       </ol>
     </footer>
   </main>
+  <script>
+    const termSources = {
+      "judgment": {
+        debate: "执行越自动化，人的判断越不能消失。",
+        sources: [
+          "OpenAI Harness Engineering: human steers, agents execute.",
+          "Karpathy / Sequoia: agentic engineering 不是随手 vibe coding。",
+          "Daniel Miessler: 公司说不清目标时，AI 只会放大混乱。"
+        ]
+      },
+      "agentic engineering": {
+        debate: "专业软件从手写代码转向拆解、调度、验证和负责。",
+        sources: [
+          "Karpathy / Sequoia: From Vibe Coding to Agentic Engineering.",
+          "Practical AI / Steve Klabnik: humility and engineering discipline.",
+          "Software Engineering Daily / Steve Yegge: task graphs and shared ledgers."
+        ]
+      },
+      "control plane": {
+        debate: "agent 工作入口从聊天框迁移到 issue、PR、Jira、Linear、IDE 和 CI。",
+        sources: [
+          "OpenAI Symphony: issue tracker as Codex orchestration surface.",
+          "GitHub Copilot coding agent: issue to PR workflow.",
+          "JetBrains Central: control plane, execution plane, observability."
+        ]
+      },
+      "OPD / barrel": {
+        debate: "执行成本下降后，稀缺点变成端到端 owner。",
+        sources: [
+          "Keith Rabois / Lenny: PayPal barrel claim chain.",
+          "Keith Rabois / How to Operate: barrels vs ammunition.",
+          "Jiang Tao / WeChat: OPD framing, secondary route only."
+        ]
+      },
+      "spec": {
+        debate: "spec 从给人读的文档，变成 agent 执行的边界和验收标准。",
+        sources: [
+          "AWS / Marc Brooker: spec-driven AI development.",
+          "Allstacks Spec Readiness Agent.",
+          "Atlassian Jira AI: PRD, epics, issues, dev execution."
+        ]
+      },
+      "eval": {
+        debate: "当 agent 进入支付、生产和企业系统，eval 是基础设施，不是附加项。",
+        sources: [
+          "Stripe: Can AI agents build real Stripe integrations?",
+          "OpenAI AgentKit: evals and optimization surface.",
+          "Block Testing Pyramid for AI Agents."
+        ]
+      },
+      "review packet": {
+        debate: "人的注意力是瓶颈，agent 输出必须变成可审查包。",
+        sources: [
+          "OpenAI Symphony: review packets and task workspaces.",
+          "GitHub Copilot coding agent: draft PR and branch protection.",
+          "Intercom / How I AI: permission and accountability framework."
+        ]
+      },
+      "AI-native team": {
+        debate: "小团队叙事变强，但组织治理没有消失。",
+        sources: [
+          "Microsoft Frontier Firm: human-led, AI-operated organization.",
+          "AgentMarketCap YC W26 agent-native company pattern, candidate only.",
+          "Business Insider / Airbnb and 0G Labs coverage, secondary routes."
+        ]
+      },
+      "permission": {
+        debate: "agent 能做什么、不能做什么，必须产品化和审计化。",
+        sources: [
+          "Block Agent Guardrails and Controls.",
+          "Coder Agents: self-hosted infrastructure and centralized control.",
+          "Anthropic Managed Agents: credential isolation and durable sessions."
+        ]
+      },
+      "CI": {
+        debate: "CI 从给人看的失败结果，变成 agent 可读的反馈回路。",
+        sources: [
+          "Block Actionable CI, primary-index pending capture.",
+          "GitHub coding agent runs in Actions environment.",
+          "OpenAI Harness Engineering: feedback loops and tests."
+        ]
+      },
+      "context": {
+        debate: "组织上下文是否清楚，决定 agent 是提效还是放大混乱。",
+        sources: [
+          "Daniel Miessler: company self-knowledge as AI readiness.",
+          "Software Engineering Daily / Organizational Context for AI Coding Agents.",
+          "Anthropic Claude Code best practices: context management."
+        ]
+      },
+      "cost": {
+        debate: "agent adoption 带来 token、平台、审查和返工成本。",
+        sources: [
+          "Pragmatic Engineer token spend and tokenmaxxing leads.",
+          "JetBrains Central: observability, cost, and intent alignment.",
+          "GitLab DevSecOps Report: toolchain sprawl and compliance."
+        ]
+      },
+      "trust": {
+        debate: "采用率上升不等于信任上升，尤其在生产和高风险工作中。",
+        sources: [
+          "Stack Overflow Developer Survey: adoption vs trust gap.",
+          "DORA 2025: organization practices and stability caveats.",
+          "Thoughtworks DORA perspective: systems thinking and stability."
+        ]
+      },
+      "tech debt": {
+        debate: "agent 可以加快产出，也可能加快债务生成。",
+        sources: [
+          "Stack Overflow Podcast: AI can 10x developers in creating tech debt.",
+          "METR early-2025 study: experienced developers slowed in realistic OSS tasks.",
+          "Replit incident coverage: production isolation risk."
+        ]
+      }
+    };
+
+    const drawer = document.getElementById("sourceDrawer");
+    document.querySelectorAll(".term").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".term").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        const term = button.dataset.term;
+        const entry = termSources[term];
+        drawer.innerHTML = `
+          <h3>${term}</h3>
+          <p>所属争议：${entry.debate}</p>
+          <ul>${entry.sources.map((source) => `<li>${source}</li>`).join("")}</ul>
+        `;
+      });
+    });
+  </script>
 </body>
 </html>
