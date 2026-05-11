@@ -582,6 +582,203 @@
       background: #fff;
     }
 
+    .viz-sheet {
+      margin-top: 16px;
+      padding: 14px;
+      border: 2px solid var(--line);
+      background: #fffdf7;
+      box-shadow: 6px 6px 0 #161616;
+    }
+
+    .viz-sheet.knowledge-card {
+      border-radius: 8px;
+      background:
+        linear-gradient(0deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .72)),
+        #fbf1d7;
+    }
+
+    .viz-sheet.main-infographic {
+      background: #fff8e6;
+    }
+
+    .viz-head {
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+      gap: 12px;
+      align-items: stretch;
+      margin-bottom: 12px;
+    }
+
+    .viz-head h3 {
+      margin: 0 0 6px;
+      font-size: 26px;
+      line-height: 1.1;
+    }
+
+    .viz-head p {
+      margin: 0;
+      color: #333;
+    }
+
+    .viz-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border: 2px solid var(--line);
+      background: var(--soft-amber);
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .viz-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .viz-grid.five {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .viz-card {
+      min-height: 150px;
+      padding: 12px;
+      border: 2px solid var(--line);
+      background: #fff;
+      position: relative;
+    }
+
+    .viz-card h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .viz-card p {
+      margin: 0;
+      color: #333;
+    }
+
+    .viz-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .viz-card li {
+      margin: 5px 0;
+    }
+
+    .viz-card.blue { background: var(--soft-blue); }
+    .viz-card.green { background: var(--soft-green); }
+    .viz-card.amber { background: var(--soft-amber); }
+    .viz-card.red { background: var(--soft-red); }
+    .viz-card.violet { background: var(--soft-violet); }
+
+    .viz-card.warning {
+      background: #161616;
+      color: #fff;
+    }
+
+    .viz-card.warning p,
+    .viz-card.warning li {
+      color: #fff;
+    }
+
+    .takeaway {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border: 2px solid var(--line);
+      background: #ffe27a;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .draw-object {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .draw-pill,
+    .draw-box,
+    .draw-dot {
+      border: 2px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .draw-pill {
+      padding: 7px 8px;
+      border-radius: 999px;
+    }
+
+    .draw-box {
+      padding: 8px;
+    }
+
+    .draw-dot {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      font-size: 12px;
+      line-height: 1.15;
+    }
+
+    .arrow-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      font-weight: 800;
+    }
+
+    .arrow-row span {
+      padding: 5px 7px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .arrow-row i {
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .loop-map {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .loop-step {
+      min-height: 82px;
+      padding: 8px;
+      border: 2px solid var(--line);
+      background: #fff;
+      text-align: center;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .dumbbell-grid {
       display: grid;
       grid-template-columns: 1fr 150px 1fr;
@@ -1014,6 +1211,14 @@
         grid-template-columns: 1fr;
       }
 
+      .viz-head,
+      .viz-grid,
+      .viz-grid.five,
+      .support-grid,
+      .loop-map {
+        grid-template-columns: 1fr;
+      }
+
       .dumbbell-grid {
         grid-template-columns: 1fr;
       }
@@ -1104,70 +1309,107 @@
 
     <section class="section">
       <div class="section-title">
+        <h2>五张图读懂主线</h2>
+        <span>knowledge-article-visual structure</span>
+      </div>
+      <div class="viz-sheet main-infographic knowledge-card">
+        <div class="viz-head">
+          <div>
+            <h3>Agent 时代，产研协作从“人传人”变成“人管系统”</h3>
+            <p>这张总图是后面四张章节知识卡的索引：先看争议，再看公司结构，再看作业系统，最后看可审查循环。</p>
+          </div>
+          <div class="viz-badge">1 张总图 + 4 张章节卡<br />每章可独立截图</div>
+        </div>
+        <div class="viz-grid five">
+          <article class="viz-card blue">
+            <h4>01 先定争议</h4>
+            <p>行业争的不是工具，而是目标、判断、审查和系统 ownership。</p>
+          </article>
+          <article class="viz-card amber">
+            <h4>02 看公司位置</h4>
+            <p>一端做执行自动化，一端补治理，中间是 spec / eval / review / owner。</p>
+          </article>
+          <article class="viz-card green">
+            <h4>03 识别变化本质</h4>
+            <p>不是中间层消失，而是部分中间工作变成可调用执行层。</p>
+          </article>
+          <article class="viz-card red">
+            <h4>04 建立审查循环</h4>
+            <p>Agent 输出必须进入 review packet、eval、wiki、rules，而不是只给一个答案。</p>
+          </article>
+          <article class="viz-card violet">
+            <h4>05 回到岗位动作</h4>
+            <p>人从搬运上下文，转向定义目标、设边界、审结果、沉淀系统。</p>
+          </article>
+        </div>
+        <div class="support-grid">
+          <article class="viz-card warning">
+            <h4>证据边界</h4>
+            <p>262 entries 是源池规模，不是全网总量；播客和二手材料只做讨论路由，关键引用仍需一手复核。</p>
+          </article>
+          <article class="viz-card">
+            <h4>读者动作</h4>
+            <p>不要先买工具。先选 1 个高频、可验证、风险可控的工作流，跑 30-60 天 pilot。</p>
+          </article>
+        </div>
+        <div class="takeaway">底部金句：Agent 的核心价值不是替人做判断，而是把可执行的中间工作变成可审查、可回放、可沉淀的系统循环。</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
         <h2>行业在争什么</h2>
         <span>debate map, not word cloud</span>
       </div>
-      <div class="debate-grid">
-        <article class="debate">
-          <h3>1. Coding solved 了吗？</h3>
-          <div class="split">
-            <div class="stance"><b>速度派</b>代码生成成本快速下降，工程师可以同时管理多个 agent，PR 数和原型速度会暴涨。</div>
-            <div class="stance"><b>责任派</b>专业软件不只是写代码。架构、安全、测试、回滚、线上后果仍然要人承担。</div>
+      <div class="viz-sheet knowledge-card">
+        <div class="viz-head">
+          <div>
+            <h3>争论的表层是工具，底层是四个权力问题</h3>
+            <p>谁定义目标、谁承担判断、谁审查结果、谁拥有作业系统。这里展示争议结构，不判断哪一派已经获胜。</p>
           </div>
-          <p class="signal">信号源：OpenAI Codex / Symphony、Boris Cherny、Karpathy、Stack Overflow、Practical AI。</p>
-        </article>
-        <article class="debate">
-          <h3>2. PM 会消失吗？</h3>
-          <div class="split">
-            <div class="stance"><b>压缩派</b>当设计和工程都能直接产出可运行原型，传统转述型 PM 价值下降。</div>
-            <div class="stance"><b>判断派</b>目标定义、用户取舍、验收标准、非目标和发布判断更值钱。</div>
-          </div>
-          <p class="signal">信号源：Keith Rabois、Cat Wu、Teresa Torres、Notion / Figma / Intercom 的 How I AI 讨论。</p>
-        </article>
-        <article class="debate">
-          <h3>3. 小团队会替代大组织吗？</h3>
-          <div class="split">
-            <div class="stance"><b>密度派</b>10 人公司、one-person company、OPD / barrel 叙事都指向更高组织密度。</div>
-            <div class="stance"><b>治理派</b>企业仍需要权限、审计、合规、数据边界、平台工程和责任链。</div>
-          </div>
-          <p class="signal">信号源：PayPal / Keith Rabois、Microsoft Frontier Firm、IBM operating model、Deloitte、Gartner。</p>
-        </article>
-        <article class="debate">
-          <h3>4. Agent 是员工还是工具？</h3>
-          <div class="split">
-            <div class="stance"><b>员工派</b>agent 像团队成员，可以接 issue、查代码、跑测试、提交 PR。</div>
-            <div class="stance"><b>对象派</b>更准确地说，agent 是受权限、上下文、测试、审查约束的作业对象。</div>
-          </div>
-          <p class="signal">信号源：GitHub Copilot coding agent、Atlassian Rovo、JetBrains Central、Coder Agents、Block guardrails。</p>
-        </article>
-      </div>
-      <div class="debate-visual">
-        <div class="visual-title">
-          <h3>争议二维图：行业不是一条线，而是两条轴在拉扯</h3>
-          <span>横轴：执行自动化；纵轴：判断责任</span>
+          <div class="viz-badge">handdrawn teaching map<br />7 modules</div>
         </div>
-        <div class="axis-note">
-          <div>越往右：越相信 agent 可以承担更多执行。</div>
-          <div>越往上：越强调人类判断、审查和组织责任。</div>
+        <div class="viz-grid">
+          <article class="viz-card blue">
+            <h4>01 争议罗盘</h4>
+            <p>四个方向不是结论，而是讨论入口。</p>
+            <div class="draw-object">
+              <div class="draw-dot">Coding<br />solved?</div>
+              <div class="draw-dot">PM<br />消失?</div>
+              <div class="draw-dot">小队<br />替代?</div>
+            </div>
+          </article>
+          <article class="viz-card green">
+            <h4>02 双轴拉扯</h4>
+            <p>横轴是执行自动化，纵轴是判断责任。目标状态不是“更快”，而是高自动化仍有高责任。</p>
+            <div class="arrow-row"><span>低自动化</span><i>-></i><span>高自动化</span></div>
+            <div class="arrow-row"><span>低责任</span><i>-></i><span>高责任</span></div>
+          </article>
+          <article class="viz-card warning">
+            <h4>03 警告：速度会放大风险</h4>
+            <p>高自动化不等于高成熟。没有权限、审计、回滚和人审，速度会把风险一起放大。</p>
+          </article>
+          <article class="viz-card amber">
+            <h4>04 速度派 vs 责任派</h4>
+            <p>争的不是“会不会写代码”，而是“谁对结果负责”。</p>
+            <div class="arrow-row"><span>原型 / PR 暴涨</span><i>vs</i><span>架构 / 安全 / 回滚</span></div>
+          </article>
+          <article class="viz-card red">
+            <h4>05 PM 压缩还是升级</h4>
+            <p>被压缩的是需求转述、会议同步、状态搬运；变重的是目标定义、用户取舍、验收标准和发布判断。</p>
+          </article>
+          <article class="viz-card violet">
+            <h4>06 小团队密度 vs 大组织治理</h4>
+            <p>10 人公司和 one-person company 是强信号，但不能直接推出大组织会消失。</p>
+            <div class="arrow-row"><span>密度</span><i>+</i><span>权限</span><i>+</i><span>审计</span></div>
+          </article>
+          <article class="viz-card">
+            <h4>07 员工派 vs 对象派</h4>
+            <p>拟人化方便传播，系统化才方便治理。Agent 更像受上下文、权限、测试和审查约束的作业对象。</p>
+          </article>
         </div>
-        <div class="matrix">
-          <div class="quadrant q-amber">
-            <h4>低自动化 / 高责任</h4>
-            <p>传统软件工程。人手写、人工审查、流程慢，但责任链清楚。</p>
-          </div>
-          <div class="quadrant q-green">
-            <h4>高自动化 / 高责任</h4>
-            <p>目标状态。agent 执行，PR / eval / review packet 承接审查，人对判断负责。</p>
-          </div>
-          <div class="quadrant q-blue">
-            <h4>低自动化 / 低责任</h4>
-            <p>AI 试用期。大家在个人工具里尝鲜，但组织没有定义入口、权限和质量标准。</p>
-          </div>
-          <div class="quadrant q-red">
-            <h4>高自动化 / 低责任</h4>
-            <p>危险区。代码、数据、发布、钱流都交给 agent，但没有隔离、审计和人审。</p>
-          </div>
-        </div>
+        <p class="signal">证据边界：公开讨论和本地源池只支撑争议结构；播客、二手媒体、微信讨论只做路由；关键引用仍需 transcript 或一手材料复核。</p>
+        <div class="takeaway">章节 takeaway：行业争论可以压成一条线，执行越自动化，判断和审查责任越不能被省掉。</div>
       </div>
     </section>
 
@@ -1244,46 +1486,61 @@
         <h2>公司的位置更像哑铃</h2>
         <span>automation side, governance side, product-engineering bridge</span>
       </div>
-      <div class="dumbbell">
-        <div class="visual-title">
-          <h3>哑铃图：传统协作靠人转译，AI 时代把转译变成可执行系统</h3>
-          <span>这是讨论结构，不是行业定论</span>
+      <div class="viz-sheet knowledge-card">
+        <div class="viz-head">
+          <div>
+            <h3>一端加速执行自动化，一端补齐组织治理</h3>
+            <p>这是观察框架，不是行业定论。中间的产研协作桥，决定 Agent 执行结果能否变成组织可接受的工作成果。</p>
+          </div>
+          <div class="viz-badge">dumbbell frame<br />not market ranking</div>
         </div>
-        <div class="compare-grid">
-          <article>
-            <h4>传统公司协作</h4>
-            <p>组织靠职能分工和会议链条推进：PM 写需求，设计解释意图，工程排期实现，QA 和运营在末端兜底。中间层一直存在，只是主要由人、流程表、脚本和局部自动化承担。</p>
+        <div class="viz-grid">
+          <article class="viz-card blue">
+            <h4>01 哑铃总图</h4>
+            <p>左球是执行自动化端，右球是组织治理端，中杆是产研协作桥。</p>
+            <div class="draw-object">
+              <div class="draw-dot">执行<br />自动化</div>
+              <div class="draw-box">spec / eval<br />review / owner</div>
+              <div class="draw-dot">组织<br />治理</div>
+            </div>
           </article>
-          <article>
-            <h4>AI 时代协作</h4>
-            <p>Agent 的新增价值不是替代所有中间人，而是把反复转述、找上下文、拆任务、生成初稿、跑验证、整理证据这些中间消耗，变成可排队、可审查、可复用的执行单元。</p>
+          <article class="viz-card amber">
+            <h4>02 传统协作链</h4>
+            <p>传统协作不是没有中间层，而是中间层主要由人、会议、文档、表格和局部脚本承担。</p>
+            <div class="arrow-row"><span>PM</span><i>-></i><span>Design</span><i>-></i><span>Eng</span><i>-></i><span>QA</span></div>
           </article>
-        </div>
-        <div class="dumbbell-grid">
-          <article class="bell left">
-            <h3>执行自动化端</h3>
-            <p>这些公司把 agent 放进 issue、IDE、PR、CI、workspace，把过去依赖人工接力的任务拆解成机器可接手的动作。</p>
+          <article class="viz-card green">
+            <h4>03 AI 时代执行单元</h4>
+            <p>找上下文、拆任务、生成初稿、跑验证、整理证据，被拆成可排队、可审查、可复用的执行单元。</p>
+          </article>
+          <article class="viz-card">
+            <h4>04 左端：执行自动化公司</h4>
+            <p>共同方向是把 Agent 放进真实工作入口，而不是只停留在聊天窗口。</p>
             <ul>
               <li>OpenAI / Anthropic</li>
               <li>GitHub / Atlassian / JetBrains</li>
               <li>Cursor / Sourcegraph / Replit</li>
             </ul>
           </article>
-          <div class="bridge">
-            <div class="bridge-line"></div>
-            <div class="bridge-node">产研协作桥<br />spec / eval / review / owner</div>
-          </div>
-          <article class="bell right">
-            <h3>组织治理端</h3>
-            <p>这些讨论提醒公司：当执行层变快，真正变稀缺的是判断、权限、审计、责任归属和组织自我知识。</p>
+          <article class="viz-card warning">
+            <h4>05 警告：别讲成中间人消失</h4>
+            <p>更稳妥的说法是：转述型中间劳动被压缩，判断型中间责任被抬高。</p>
+          </article>
+          <article class="viz-card red">
+            <h4>06 右端：组织治理讨论</h4>
+            <p>当执行层变快，稀缺项从“谁来做”转向“谁允许、谁检查、谁承担、谁沉淀”。</p>
             <ul>
               <li>Microsoft / IBM / Deloitte / Gartner</li>
-              <li>Shopify / Amazon / Coinbase / Duolingo</li>
               <li>DORA / Stack Overflow / GitLab / METR</li>
             </ul>
           </article>
+          <article class="viz-card violet">
+            <h4>07 高风险样本提示</h4>
+            <p>Block、Stripe、Ramp、PayPal、AWS 这类 payment、infra、security、customer data 场景，要求自动化和治理同桌讨论。</p>
+          </article>
         </div>
-        <p class="signal">中间桥不是“中立地带”。Block、Stripe、Ramp、PayPal、AWS 这类高风险或基础设施样本，把执行自动化和治理责任拉到同一张桌上。</p>
+        <p class="signal">这里的重点不是给公司排位，而是说明为什么“自动化端”和“治理端”会同时变重要。</p>
+        <div class="takeaway">章节 takeaway：AI 时代公司不是简单变扁，而是两端变重，中间协作层从传话链变成作业桥。</div>
       </div>
     </section>
 
@@ -1292,86 +1549,101 @@
         <h2>作业系统变了</h2>
         <span>agent value before workflow redesign</span>
       </div>
-      <div class="visual-title">
-        <h3>Agent 出现的价值：让“中间工作”第一次可规模化复用</h3>
-        <span>不是以前没有中间层，而是中间层的承载方式变了</span>
-      </div>
-      <div class="compare-grid">
-        <article>
-          <h4>以前的中间层</h4>
-          <p>靠人理解上下文、翻译需求、追状态、补文档、跑脚本、催反馈。它能工作，但高度依赖个人记忆、会议同步和手工判断，难以复制，也很难把每次失败写回系统。</p>
-        </article>
-        <article>
-          <h4>Agent 带来的新增价值</h4>
-          <p>它把一部分中间工作变成可调用的执行层：读上下文、调用工具、生成候选结果、跑检查、打包证据、等待人类判断。价值在于降低协调摩擦，而不是取消人的产品判断。</p>
-        </article>
-      </div>
-      <div class="rules">
-        <h3>Office Hours 再锚定：先问清楚 agent 替谁消掉哪种痛</h3>
-        <ul>
-          <li><b>现实需求：</b>现有公司痛的不是“不会用 AI”，而是需求转译、上下文查找、等待排期、返工审查和知识丢失。</li>
-          <li><b>现状替代品：</b>这些工作今天由 PM、Tech Lead、QA、运营、会议、Jira、文档、脚本和局部自动化承担。</li>
-          <li><b>最窄切口：</b>不要先改组织架构，先选一个高频、可验证、风险可控的工作流，例如客户问题到修复 PR、会议结论到任务包、数据异常到排查报告。</li>
-          <li><b>观察指标：</b>看 cycle time、返工率、review reject、缺陷外逃、上下文补问次数、agent 成本，而不是只看“省了几小时”。</li>
-          <li><b>未来适配：</b>岗位不会一起消失，但只负责转述、催办、搬运信息的工作会被压缩；能定义问题、设边界、审结果、沉淀系统的人会变重。</li>
-        </ul>
-      </div>
-      <div class="system">
-        <article class="flow">
-          <h3>旧协作：人力流水线</h3>
-          <div class="steps">
-            <div class="step">产品需求 <small>人把目标写成文档</small></div>
-            <div class="step">设计交互 <small>静态稿和口头解释</small></div>
-            <div class="step">工程排期 <small>排人力，等实现</small></div>
-            <div class="step">测试验收 <small>末端发现问题</small></div>
-            <div class="step">发布回流 <small>问题再回到人手里</small></div>
+      <div class="viz-sheet knowledge-card">
+        <div class="viz-head">
+          <div>
+            <h3>作业系统变了，不是中间层消失了</h3>
+            <p>以前中间层靠人脑、会议和流程承载；现在一部分中间工作被做成可调用的执行层。</p>
           </div>
-        </article>
-        <article class="flow new">
-          <h3>新协作：人机作业循环</h3>
-          <div class="steps">
-            <div class="step">目标和边界 <small>人定义问题、非目标、判断归属</small></div>
-            <div class="step">spec / ticket / wiki <small>变成 agent 可执行上下文</small></div>
-            <div class="step">agent queue <small>检索、生成、实现、验证、整理</small></div>
-            <div class="step">PR / eval / review packet <small>结果必须可审查、可追踪</small></div>
-            <div class="step">rules / tests / skills 沉淀 <small>失败不只返工，要写回系统</small></div>
-          </div>
-        </article>
-      </div>
-      <div class="loop-visual">
-        <div class="visual-title">
-          <h3>循环图：Agent 把中间执行层变成可审查的工作循环</h3>
-          <span>图承担的是新增价值、责任和回流关系</span>
+          <div class="viz-badge">middle work<br />becomes system object</div>
         </div>
-        <svg class="loop-svg" viewBox="0 0 960 360" role="img" aria-label="人机作业系统循环图">
-          <defs>
-            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-              <path d="M0,0 L0,6 L9,3 z" fill="#161616"></path>
-            </marker>
-          </defs>
-          <rect x="40" y="50" width="160" height="78" fill="#fff0ee" stroke="#161616"></rect>
-          <text x="120" y="84" text-anchor="middle" class="svg-label">人定目标</text>
-          <text x="120" y="108" text-anchor="middle" class="svg-small">用户价值 / 非目标 / 边界</text>
-          <rect x="250" y="50" width="160" height="78" fill="#edf6ff" stroke="#161616"></rect>
-          <text x="330" y="84" text-anchor="middle" class="svg-label">可执行上下文</text>
-          <text x="330" y="108" text-anchor="middle" class="svg-small">spec / ticket / wiki</text>
-          <rect x="460" y="50" width="160" height="78" fill="#fff6e6" stroke="#161616"></rect>
-          <text x="540" y="84" text-anchor="middle" class="svg-label">agent 执行</text>
-          <text x="540" y="108" text-anchor="middle" class="svg-small">生成 / 实现 / 验证</text>
-          <rect x="670" y="50" width="160" height="78" fill="#eef8f1" stroke="#161616"></rect>
-          <text x="750" y="84" text-anchor="middle" class="svg-label">人审判断</text>
-          <text x="750" y="108" text-anchor="middle" class="svg-small">PR / eval / review packet</text>
-          <rect x="355" y="230" width="250" height="78" fill="#f3efff" stroke="#161616"></rect>
-          <text x="480" y="263" text-anchor="middle" class="svg-label">系统沉淀</text>
-          <text x="480" y="288" text-anchor="middle" class="svg-small">rules / tests / skills / docs</text>
-          <line x1="200" y1="89" x2="250" y2="89" stroke="#161616" stroke-width="2" marker-end="url(#arrow)"></line>
-          <line x1="410" y1="89" x2="460" y2="89" stroke="#161616" stroke-width="2" marker-end="url(#arrow)"></line>
-          <line x1="620" y1="89" x2="670" y2="89" stroke="#161616" stroke-width="2" marker-end="url(#arrow)"></line>
-          <path d="M750 128 C750 210 650 248 605 268" fill="none" stroke="#161616" stroke-width="2" marker-end="url(#arrow)"></path>
-          <path d="M355 268 C235 260 120 215 120 130" fill="none" stroke="#161616" stroke-width="2" marker-end="url(#arrow)"></path>
-          <text x="784" y="190" class="svg-small">失败不能只返工</text>
-          <text x="98" y="214" class="svg-small">下次更清楚</text>
-        </svg>
+        <div class="viz-grid">
+          <article class="viz-card amber">
+            <h4>01 旧中间层</h4>
+            <p>PM 转译需求，TL 拆任务，QA 兜质量，运营追状态。它不是不存在，而是分散在人的记忆、经验和同步机制里。</p>
+            <div class="arrow-row"><span>会议</span><span>文档</span><span>Jira</span><span>脚本</span></div>
+          </article>
+          <article class="viz-card blue">
+            <h4>02 变化本质</h4>
+            <p>Agent 新增的不是“中间层”，而是把部分中间工作变成系统对象：可触发、可排队、可调用工具、可产出证据。</p>
+          </article>
+          <article class="viz-card green">
+            <h4>03 四个新属性</h4>
+            <div class="draw-object">
+              <div class="draw-pill">可调用</div>
+              <div class="draw-pill">可审查</div>
+              <div class="draw-pill">可回放</div>
+            </div>
+            <p>再加上可沉淀：失败写回 rules、tests、wiki、skill。</p>
+          </article>
+          <article class="viz-card">
+            <h4>04 旧流水线</h4>
+            <p>产品 -> 设计 -> 工程 -> 测试 -> 发布。问题常在末端暴露，返工靠再次开会和再次解释。</p>
+            <div class="arrow-row"><span>产品</span><i>-></i><span>设计</span><i>-></i><span>工程</span><i>-></i><span>测试</span></div>
+          </article>
+          <article class="viz-card red">
+            <h4>05 新作业面</h4>
+            <p>人定义目标、边界、非目标、验收标准；Agent 承担检索、生成、实现、验证、证据打包等可执行部分。</p>
+          </article>
+          <article class="viz-card warning">
+            <h4>06 警告：别把判断外包</h4>
+            <p>Agent 可以执行中间工作，但不能替公司决定目标、取舍、责任和风险承受。没有 owner 的 Agent queue，只会把混乱放大。</p>
+          </article>
+          <article class="viz-card violet">
+            <h4>07 落地观察</h4>
+            <ul>
+              <li>cycle time</li>
+              <li>返工率 / review reject</li>
+              <li>缺陷外逃 / 上下文补问次数</li>
+              <li>失败是否写回系统</li>
+            </ul>
+          </article>
+        </div>
+        <div class="takeaway">章节 takeaway：Agent 没有发明中间层，它重写了中间层的承载方式。</div>
+      </div>
+      <div class="viz-sheet knowledge-card">
+        <div class="viz-head">
+          <div>
+            <h3>Agent 把中间执行层变成可审查循环</h3>
+            <p>不是自动化一条线跑完，而是目标、执行、审查、回放、沉淀不断回流。</p>
+          </div>
+          <div class="viz-badge">reviewable loop<br />not autopilot</div>
+        </div>
+        <div class="loop-map">
+          <div class="loop-step">人定目标<br />用户价值 / 非目标</div>
+          <div class="loop-step">可执行包<br />spec / ticket / wiki</div>
+          <div class="loop-step">Agent Queue<br />生成 / 实现 / 验证</div>
+          <div class="loop-step">Review Packet<br />证据 / 风险 / 待判断</div>
+          <div class="loop-step">系统沉淀<br />rules / tests / skills</div>
+        </div>
+        <div class="viz-grid">
+          <article class="viz-card blue">
+            <h4>01 入口：人定目标</h4>
+            <p>循环从人开始。目标不清，后面的执行越快越危险。</p>
+          </article>
+          <article class="viz-card amber">
+            <h4>02 上下文：可执行包</h4>
+            <p>Agent 需要的不是一句口令，而是背景、边界、示例、反例、数据入口、测试方法和已知风险。</p>
+          </article>
+          <article class="viz-card green">
+            <h4>03 执行：Agent Queue</h4>
+            <p>它应当像任务队列，而不是像聊天窗口：找资料、拆步骤、改代码、跑检查、整理证据。</p>
+          </article>
+          <article class="viz-card red">
+            <h4>04 审查：Review Packet</h4>
+            <p>输出不能只是答案。它要带上变更点、依据、验证结果、失败项、风险和待人判断问题。</p>
+          </article>
+          <article class="viz-card violet">
+            <h4>05 回放与沉淀</h4>
+            <p>输入、工具调用、关键判断、测试结果和人工审查意见留下痕迹；失败写回新测试、新规则、新示例和新知识页。</p>
+          </article>
+          <article class="viz-card warning">
+            <h4>06 警告：闭环不是全自动</h4>
+            <p>闭环不是 Agent 自己批准自己。高风险节点必须有人审、可追责、可回滚。</p>
+          </article>
+        </div>
+        <p class="signal">中间执行层从“人靠经验转述”变成“系统可调用的工作循环”；人的位置上移到目标、边界、审查和责任。</p>
+        <div class="takeaway">章节 takeaway：闭环不是全自动，而是每次执行都留下证据、审查和写回。</div>
       </div>
     </section>
 

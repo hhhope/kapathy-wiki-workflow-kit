@@ -64,7 +64,7 @@ final publication template selected yet.
 | Reader job | Understand why this is an operating-model shift, how existing roles change, and what decision to make next. |
 | Page group | One management report plus source map. Later can split into internal operating model. |
 | Reading path | Read report first, then source map for evidence. |
-| Visual logic | H5 newspaper draft now uses information-carrying visuals: debate matrix for disagreement axes, line chart for monthly discussion progression, company dumbbell for traditional-vs-AI collaboration comparison, office-hours re-anchor block for agent value, operating-system loop SVG for responsibility and feedback, role action cards for existing positions, dynamic source-backed heat map for discussion terms, and evidence load-bearing table for source hierarchy. Needs browser CJK visual QA before review-ready publication. |
+| Visual logic | H5 newspaper draft was re-anchored to `knowledge-article-visual`: one high-density summary infographic plus four chapter knowledge cards / chapter one-pagers for industry debate, company dumbbell, operating-system shift, and reviewable Agent loop. Supporting visuals remain: line chart for monthly discussion progression, role action cards, dynamic source-backed heat map, and evidence load-bearing table. Needs browser CJK visual QA before review-ready publication. |
 | Writing standard | Management-facing, decision-oriented, Chinese prose with source links. |
 | Reuse boundary | Sources support pattern extraction; local workflow decisions remain user-owned. |
 
@@ -136,7 +136,7 @@ need user confirmation before review-ready status.
 | Narrative | PASS | Main line is stable. |
 | Paragraph drift | PARTIAL | People/organization axis now explicitly answers agent value and role-by-role change after user correction; pilot sections still need user confirmation. |
 | Judgment ownership | PARTIAL | Local operating-model, OPD definition, and pilot ownership decisions remain user-owned. |
-| Visual | PARTIAL | H5 newspaper draft now has non-decorative visuals: debate matrix, line chart, company dumbbell with traditional-vs-AI comparison, office-hours re-anchor block, operating loop, role action cards, dynamic heat map, evidence load-bearing table. Desktop and mobile screenshot commands ran earlier, but the Playwright environment lacks Chinese fonts, so CJK visual QA is not passed yet. |
+| Visual | PARTIAL | H5 newspaper draft now follows `knowledge-article-visual`: one total infographic plus four chapter knowledge cards / chapter one-pagers with bottom takeaways, warning cells, concrete objects, and action modules. Supporting visuals include line chart, role action cards, dynamic heat map, and evidence load-bearing table. Desktop and mobile screenshot commands ran earlier, but the Playwright environment lacks Chinese fonts, so CJK visual QA is not passed yet. |
 | Publish | FAIL | Draft is not review-ready or Feishu-ready. |
 
 ## Scorecard
@@ -152,11 +152,12 @@ Updated after the first H5 draft was rejected as too text-heavy.
 
 | Visual | Carries | Status | Remaining Risk |
 |---|---|---|---|
-| Debate matrix | Shows the real industry tension: execution automation vs judgment responsibility. | Added | Needs reader review for whether the four quadrants match the intended argument. |
+| Total infographic | Compresses the article into one high-density map: debate, company structure, operating-system shift, review loop, role action, evidence boundary, and reader action. | Added after `knowledge-article-visual` re-anchor | Needs visual QA in a browser with Chinese fonts. |
+| Industry debate knowledge card | Shows four debate directions, execution/responsibility tension, PM compression, small-team density, employee-vs-object framing, and evidence boundary. | Replaced earlier debate card/grid with chapter knowledge card | Needs reader review for whether the debate axes match the intended argument. |
 | Line chart timeline | Shows monthly public-source, podcast/video, and total discussion movement from Jan-May 2026. | Replaced bar timeline with line chart and point tooltips | Counts are source-pool entries, not all-web totals. |
-| Company dumbbell | Shows traditional collaboration as human/process translation and AI-era collaboration as executable middle work, with automation vendors on one side and governance/workforce discussions on the other. | Refined after user correction | Must remain framed as discussion structure, not settled industry fact. |
-| Office-hours re-anchor | Shows agent value before workflow redesign: whose pain, current substitute, narrow wedge, observation metric, future-fit. | Added after user correction | Needs source-backed examples for final public version. |
-| Operating-system loop | Shows human target-setting, executable context, agent execution, human review, and system memory feedback without implying the old world had no middle layer. | Reworded after user correction | CJK visual QA blocked in headless environment due missing fonts. |
+| Company dumbbell knowledge card | Shows traditional collaboration as human/process translation and AI-era collaboration as executable middle work, with automation vendors on one side and governance/workforce discussions on the other. | Recast as chapter knowledge card after user correction | Must remain framed as discussion structure, not settled industry fact. |
+| Operating-system knowledge card | Shows agent value before workflow redesign: old middle layer, new system object, four properties, old pipeline, new work surface, warning, and observation metrics. | Added after user correction | Needs source-backed examples for final public version. |
+| Reviewable loop knowledge card | Shows target-setting, executable context, Agent Queue, Review Packet, replay trail, system writeback, and warning that closed loop is not full automation. | Replaced previous standalone loop SVG with chapter knowledge card | CJK visual QA blocked in headless environment due missing fonts. |
 | Role action cards | Shows what CEO/GM, PM, designer/research, engineer/TL, QA/data/ops, and manager/HR should do in an existing company. | Replaced three-role abstraction | Needs user confirmation for local role names and priority order. |
 | Dynamic heat map | Lets readers click terms and inspect source routes and dispute axes. | Replaced static word cloud and removed defensive explanation copy | Needs browser interaction QA. |
 | Evidence load-bearing table | Shows what each evidence class can and cannot support. | Replaced earlier static evidence hierarchy | Needs final citation selection before publication. |
@@ -168,13 +169,18 @@ are verified in a browser with CJK fonts.
 Verification evidence:
 
 - `git diff --check` passed.
-- Structural HTML check passed before latest wording update: 14 clickable
-  heat-map terms, source drawer, line chart, company dumbbell, and evidence
-  load-bearing table are present.
+- Structural HTML check passed after latest visual re-anchor: one main
+  infographic, four chapter knowledge cards, five takeaway banners, five warning
+  cells, heat-map source drawer, line chart, and evidence load-bearing table are
+  present.
 - Desktop screenshot generated at `/tmp/agentic-newspaper-v4-desktop.png`.
 - Mobile screenshot generated at `/tmp/agentic-newspaper-v4-mobile.png`.
 - Follow-up full-page screenshot after role/action revision generated at
   `/tmp/agentic-newspaper-v5-full.png`.
+- Knowledge-article-visual re-anchor screenshot generated at
+  `/tmp/agentic-newspaper-v6-knowledge-visual-full.png`.
+- Knowledge-article-visual mobile screenshot generated at
+  `/tmp/agentic-newspaper-v6-knowledge-visual-mobile.png`.
 - Screenshot inspection still shows missing CJK glyph rendering in the current
   headless environment; this is why Visual Gate remains `PARTIAL`.
 
@@ -191,5 +197,5 @@ sync to Feishu yet.
 - The 36-lead discussion pool improves podcast/video coverage, but many entries still need transcript capture before quotation.
 - Some sources are secondary summaries, podcast indexes, or transcript mirrors; primary memo/video/transcript capture remains needed.
 - Non-vendor critique improved via Daniel Miessler, Stack Overflow, DORA/GitLab/Thoughtworks, but still needs more independent practitioner cases.
-- Visual model now contains debate matrix, line chart timeline, company dumbbell with traditional-vs-AI comparison, office-hours re-anchor block, operating loop, role action cards, dynamic source-backed heat map, and evidence load-bearing table. Playwright screenshot exposed missing CJK fonts in the headless environment, so final visual QA still needs a browser with Chinese fonts and reader review.
+- Visual model now contains one high-density summary infographic, four chapter knowledge cards / chapter one-pagers, line chart timeline, role action cards, dynamic source-backed heat map, and evidence load-bearing table. Playwright screenshot exposed missing CJK fonts in the headless environment, so final visual QA still needs a browser with Chinese fonts and reader review.
 - Local pilot ownership, scope, and first workflow must be confirmed by user.
