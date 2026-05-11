@@ -66,14 +66,14 @@ Use these scenarios to validate trigger and gate behavior.
 | Any hard gate is `FAIL`, `UNKNOWN`, `PARTIAL`, or `NOT TESTED`, but the review still assigns a numeric score | Scorecard | FAIL; score must be `INVALID` and the decision must block sync/review-ready claims |
 | A review packet bundles multiple final reader jobs into one Feishu document and calls that a split | Split Gate | FAIL unless the packet is explicitly marked as a non-review-ready failed/provisional draft and final page destinations are mapped |
 
-## Newspaper Article Flow Replay
+## Reference Output Shape Replay
 
 | Failure | Gate That Should Catch It | Expected Result |
 |---|---|---|
-| A newspaper-style company analysis becomes repeated cards, company cells, or a dashboard-like comparison grid | Article Flow Layout Gate | FAIL until converted into article flow: prose paragraphs plus evidence ledgers or reference lines |
-| The final takeaway becomes a 2x2 card wall after the user asked to follow a newspaper reference | Article Flow Layout Gate + Voice Gate | FAIL; collapse into one closing paragraph and numbered or consensus lines |
-| A final image prompt, Hybrid instructions, or visual-script note appears inside the reader-facing report body | Article Flow Layout Gate + Visual Gate | FAIL; move the image-production route to a separate asset brief or remove it from the report body |
-| A gate review says "retain" for card/table composition after the user rejected that layout | Article Flow Layout Gate + Judgment Ownership Gate | FAIL; record rejected patterns and repair to the selected reference layout system |
+| A newspaper-style company analysis becomes repeated cards, company cells, or a dashboard-like comparison grid without explicit user approval | Reference Output Shape Gate | FAIL until repaired to the selected output shape or until the user approves the shape change |
+| The final takeaway becomes a 2x2 card wall after the user asked to follow a newspaper reference | Reference Output Shape Gate + Voice Gate | FAIL; repair to the selected article/report flow |
+| A final image prompt, Hybrid instructions, or visual-script note appears inside the reader-facing report body | Reference Output Shape Gate + Visual Gate | FAIL; move the production route to a separate asset brief or remove it from the report body |
+| A gate review says "retain" for a changed primary structure after the user rejected that output shape | Reference Output Shape Gate + Judgment Ownership Gate | FAIL; record rejected patterns and repair to the selected output shape |
 
 ## Paragraph Drift And Judgment Replay
 

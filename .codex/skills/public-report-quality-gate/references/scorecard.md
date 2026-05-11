@@ -11,7 +11,7 @@ Any hard-fail blocks publishing, Feishu sync, or a "ready for review" claim.
 |---|---|
 | Learning Use Gate | The output claims to use prior learning or reference examples, but no output-use map identifies applicable learning artifacts, domain/topic, reusable capability type, used output element, and skip reasons for relevant unused points. |
 | Reference Structure Gate | A reference artifact exists, but the draft does not map its actual overall structure, page split, reader path, visual logic, writing standard, concrete links, and linked-page roles before drafting. If the reference is a Feishu wiki node with `has_child: true` or a reading map with article links, those linked pages must be fetched and mapped before this gate can pass. |
-| Article Flow Layout Gate | A reference-shaped newspaper, article, or report draft preserves the topic but replaces the reference's layout system with repeated boxed cards, comparison cells, dashboard-like grids, colored panels, prompt text, or visual-script residue. |
+| Reference Output Shape Gate | A reference-shaped draft preserves the topic but silently replaces the selected output shape with a different primary structure, or leaves production instructions, image prompts, tool notes, or Hybrid routing text inside reader-facing content. |
 | Split Gate | One draft carries multiple reader jobs such as overview, runtime, migration, validation, and roadmap without an explicit split decision and final destination map. A review packet does not count as a split unless it is explicitly labeled non-final and not claimed review-ready. |
 | Voice Gate | Chat residue, slogan simplification, loose narrator, weak section openings, internal ops leakage, or tone mismatch remains in reader-facing text. |
 | Narrative Gate | The core story changes, such as turning an evolution path into a static responsibility split. |
@@ -31,24 +31,28 @@ Any hard-fail blocks publishing, Feishu sync, or a "ready for review" claim.
 | Internal ops leakage | Repo paths, OpenSpec mechanics, gates, traces, or agent workflow appear without translation into reader-facing context. |
 | Tone mismatch | The requested output is public/executive/shareable, but the tone remains scratch note, chat recap, or wiki draft. |
 
-## Article Flow Layout Gate Detail
+## Reference Output Shape Gate Detail
 
-When the user or reference calls for newspaper article flow, the draft must
-preserve that composition system. Use continuous section rhythm, prose
-paragraphs, evidence ledgers, reference lines, and numbered or consensus lines.
+When the user or a reference artifact establishes an output shape, the draft
+must preserve that shape unless the user explicitly approves a change. Record
+the selected output shape before drafting: article/report flow, Feishu review
+document, visual one-pager, card/grid page, dashboard, image brief, or another
+named form.
 
-Fail the gate when prose-heavy analysis becomes:
+Observable failures include:
 
-- repeated boxed cards
-- card-wall endings
-- comparison cells or table-like prose grids
-- dashboard-like summary tiles
-- colored-panel taxonomies unrelated to the reference
-- prompt text, Hybrid instructions, or visual-script residue inside the report
+- replacing a linear article or report structure with a modular grid or
+  repeated block system as the primary body
+- replacing a reference-led narrative with a comparison table as the primary
   body
+- changing from an image brief, H5/share page, Feishu review document, or other
+  named form to another form without explicit user approval
+- leaving production instructions, image prompts, tool notes, or Hybrid routing
+  text inside reader-facing content
 
-This gate does not ban cards for every report. It blocks silent layout-system
-drift when the chosen reference is a newspaper, article, or report page.
+This gate does not ban cards, grids, tables, dashboards, visual panels, or
+image prompts when the user asks for them or the reference itself uses them. It
+blocks silent replacement of the selected output shape.
 
 ## Article Intent Contract
 
