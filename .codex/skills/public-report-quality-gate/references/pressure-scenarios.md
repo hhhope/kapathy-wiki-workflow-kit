@@ -18,6 +18,8 @@ Use these scenarios to validate trigger and gate behavior.
 | User says "图片我自己添加，正文同步飞书" | Generate or preserve local image assets, keep Feishu sync text-only, and record asset paths | PASS |
 | User asks "基于这个对外 H5 生成知识卡和一图流" | Load public-report-quality-gate first, then delegate visual package work to `knowledge-article-visual` and per-image scripting to `infographic-onepager` | PASS |
 | User asks "这篇分享稿每家公司一张知识卡，最终一张总览图" | Preserve Article Intent, Judgment Ownership, Visual Gate, and Publish Gate while delegating visual production | PASS |
+| User asks "`agentic-product-engineering-collaboration-company-playbook.html` 要增加一图流，每个公司要增加章节知识卡" | Do not edit only in-page HTML sections; stop and route to visual package scripting, output-mode selection or inference, and standalone visual asset production/planning before optional HTML embedding | PASS |
+| User asks "这个 H5 加一组章节配图，别再做成 H5/SVG 卡片" | Treat prior H5/SVG rejection as image-model or hybrid routing pressure; do not use deterministic HTML/SVG unless the user explicitly re-chooses it | PASS |
 
 ## Should Not Trigger
 
@@ -104,6 +106,7 @@ Use these scenarios to validate trigger and gate behavior.
 | A reader-facing H5 visual request routes directly to `imagegen` without Article Intent, Visual Gate, or Publish Gate ownership | Outer Gate Role + Visual Gate | FAIL; route through public-report-quality-gate first, then delegate image work |
 | A visual child skill produces knowledge cards for a public article and claims the draft is ready to share | Publish Gate + Judgment Ownership Gate | FAIL; child skill output is production evidence, not review-ready approval |
 | A new visual skill is added for public materials but its evaluation does not test bypassing the public report gate | Skill Authoring Boundary + Outer Gate Role | FAIL until pressure evidence shows the parent gate is preserved |
+| A request names an existing `.html` report and asks for `一图流` / `知识卡`, and the agent completes the task by adding only HTML cards or sections | HTML-Target Visual Route + Visual Gate | FAIL; direct HTML editing must stop until visual script and standalone asset route are produced or explicitly declined |
 
 ## Validation Notes
 

@@ -89,6 +89,12 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Ask the user at real output fork-points before acting, including image model
   vs H5/HTML, overwrite vs image-only update, draft-only vs Feishu sync, and
   publish title/status changes.
+- When a reader-facing `.html` report or H5 page is named together with
+  visual-deliverable wording such as `一图流`, `知识卡`, `章节配图`, `图片`,
+  `生图`, `跑图`, or `图片模型`, do not satisfy the request by editing only
+  in-page HTML sections. Stop direct HTML body edits first, route to visual
+  package scripting and output-mode selection or inference, and produce or plan
+  standalone visual assets before any optional HTML embedding.
 - Generate required report visuals as local assets when requested, but do not
   insert images into Feishu by default. If the user will add images manually,
   keep Feishu sync text-only and preserve local asset paths.
@@ -130,3 +136,5 @@ implementation reports unless the user asks for a reader-facing deliverable.
   smoothly
 - Treating broad Feishu sync approval as approval to insert images
 - Claiming image delivery quality from image tokens or read-back alone
+- Treating a named `.html` target as permission to replace requested one-page
+  infographics or knowledge cards with H5 sections only
