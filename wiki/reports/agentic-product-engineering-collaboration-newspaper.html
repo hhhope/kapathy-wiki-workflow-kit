@@ -970,6 +970,55 @@
       font-weight: 900;
     }
 
+    .article-figure {
+      margin: 0 auto 22px;
+      max-width: 1080px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: #fffdf7;
+    }
+
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--thin);
+      background: #fff;
+    }
+
+    .article-figure figcaption {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .mainline-figure {
+      max-width: 760px;
+    }
+
+    .mainline-figure img {
+      max-height: none;
+      object-fit: contain;
+    }
+
+    .chapter-figure {
+      margin-top: 2px;
+    }
+
+    .paired-figures {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 1080px;
+      margin: 0 auto 22px;
+    }
+
+    .paired-figures .article-figure {
+      margin: 0;
+      max-width: none;
+    }
+
     .evidence-ledger {
       margin: 18px 0;
       padding: 14px 16px;
@@ -1510,7 +1559,8 @@
       .heat,
       .evidence,
       .rules,
-      .axis-note {
+      .axis-note,
+      .paired-figures {
         grid-template-columns: 1fr;
       }
 
@@ -1684,8 +1734,12 @@
     <section class="section" id="mainline">
       <div class="section-title">
         <h2>五张图读懂主线</h2>
-        <span>text-first mainline</span>
+        <span>visual mainline with evidence boundary</span>
       </div>
+      <figure class="article-figure mainline-figure">
+        <img src="agentic-collaboration-images/00-main-thread.png" width="916" height="1717" alt="AI Agent 时代产研协作怎么变：从人肉中间层到可审查作业系统的六段主线图" loading="lazy" />
+        <figcaption>主图使用指定图片：从行业争议、公司哑铃、作业系统、可审查循环到人的责任上移，串成一条主线。</figcaption>
+      </figure>
       <article class="article-prose">
         <p class="lead-claim">主线只有一句：Agent 的核心价值不是替人做判断，而是把原来靠人转述、追踪、补文档、补测试的中间执行工作，变成可执行、可审查、可回放、可沉淀的系统循环。</p>
         <ul class="consensus-list">
@@ -1703,6 +1757,16 @@
       <div class="section-title">
         <h2>行业在争什么</h2>
         <span>what the evidence can and cannot support</span>
+      </div>
+      <div class="paired-figures">
+        <figure class="article-figure chapter-figure">
+          <img src="agentic-collaboration-images/01-industry-debate.png" width="1672" height="941" alt="行业在争什么：速度与责任、工具与工作对象、小团队与组织治理、员工派与对象派" loading="lazy" />
+          <figcaption>章节配图：争议结构图。行业表面在争工具、员工、小团队，底层在争目标、责任、系统和验收。</figcaption>
+        </figure>
+        <figure class="article-figure chapter-figure">
+          <img src="agentic-collaboration-images/01-industry-debate-source-boundary.png" width="1672" height="941" alt="行业在争什么：目标、验收和责任，不只是代码速度" loading="lazy" />
+          <figcaption>章节配图：证据边界图。262 entries 是源池规模，不是全网总量，不能把讨论热度当行业定论。</figcaption>
+        </figure>
       </div>
       <article class="article-prose">
         <p class="lead-claim">表面上，行业在争“Agent 会不会写完代码、PM 会不会消失、公司会不会变成极小团队”。但把 2026 年 1 月到 5 月 11 日的公开信源放在一起看，真正的争点不是职业消失，而是公司能不能把工作交给 Agent，又能不能把结果审回来。</p>
@@ -1810,6 +1874,10 @@
         <h2>公司内部协作正在变成一只哑铃</h2>
         <span>candidate frame, not industry term</span>
       </div>
+      <figure class="article-figure chapter-figure">
+        <img src="agentic-collaboration-images/02-company-dumbbell.png" width="1672" height="941" alt="公司的位置更像哑铃：执行自动化端、组织治理端和中间协作桥" loading="lazy" />
+        <figcaption>章节配图：一端是执行自动化，一端是组织治理，中间靠 spec、eval、review、owner、writeback 承重。</figcaption>
+      </figure>
       <article class="article-prose">
         <p class="lead-claim">“哑铃”不是行业术语，是我们对公开信源的一个观察框架：左端是人的判断、目标和责任，右端是系统化执行、验证和回放，中间那根杆是 spec、eval、review packet、wiki、rules、issue 和 PR。</p>
         <p>过去的产研协作像一条人力交接链：PM 解释需求，设计补体验，工程拆实现，QA 兜质量，管理者靠会、表格和 Jira 追进度。这个系统能跑，但它把很多关键上下文藏在人脑里。每次交接都会丢信息，责任也容易在“我已经同步过了”里变模糊。</p>
@@ -1838,6 +1906,16 @@
       <div class="section-title">
         <h2>作业系统变了</h2>
         <span>from handoff pipeline to reviewable work loop</span>
+      </div>
+      <div class="paired-figures">
+        <figure class="article-figure chapter-figure">
+          <img src="agentic-collaboration-images/04-operating-system.png" width="1672" height="941" alt="作业系统变了：从人对人传话链变成可执行对象控制台" loading="lazy" />
+          <figcaption>章节配图：作业对象从会议、文档和口头同步，迁移到 ticket、spec、PR、eval、wiki、log。</figcaption>
+        </figure>
+        <figure class="article-figure chapter-figure">
+          <img src="agentic-collaboration-images/05-agent-loop.png" width="1672" height="941" alt="Agent 循环：人定目标、可执行上下文、Agent queue、review packet、replay trail、system writeback" loading="lazy" />
+          <figcaption>章节配图：Agent 循环不是全自动，而是每次执行都留下证据、审查和写回。</figcaption>
+        </figure>
       </div>
       <article class="article-prose">
         <p class="lead-claim">作业系统变了，意思不是换一个 AI 工具入口，而是公司把工作交出去、收回来、审清楚、再沉淀的方式变了。过去靠人传上下文；现在要把上下文做成 Agent 能执行、团队能审查、系统能写回的对象。</p>
@@ -1872,6 +1950,10 @@
         <h2>现有公司的人该怎么做</h2>
         <span>role-by-role operating change</span>
       </div>
+      <figure class="article-figure chapter-figure">
+        <img src="agentic-collaboration-images/06-human-position-overview.png" width="1086" height="1448" alt="人的位置：人不消失，责任上移，判断、品味、风险、验收更关键" loading="lazy" />
+        <figcaption>章节配图：人的位置不是退场，而是从搬运上下文转向定目标、给边界、审证据、扛责任。</figcaption>
+      </figure>
       <div class="people">
         <article class="person">
           <span class="role">CEO / GM</span>
