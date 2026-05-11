@@ -104,6 +104,8 @@ def _collect_inbox_files(root: Path, source_records: list[dict[str, Any]]) -> li
         return inbox_files
 
     for path in sorted(item for item in inbox_dir.rglob("*") if item.is_file()):
+        if path.name.lower() == "readme.md":
+            continue
         rel = _relative(path, root)
         inbox_files.append(
             {

@@ -95,6 +95,15 @@ artifact_type: note
         self.assertIn("Pending Inbox Files", status_text)
         self.assertIn("inbox/new-material.txt", status_text)
 
+    def test_manifest_ignores_inbox_readme(self) -> None:
+        (self.tmpdir / "inbox" / "README.md").write_text("usage notes", encoding="utf-8")
+
+        manifest = build_manifest(self.tmpdir)
+
+        self.assertEqual(manifest["summary"]["inbox_file_count"], 0)
+        self.assertEqual(manifest["summary"]["pending_inbox_count"], 0)
+        self.assertEqual(manifest["pending_inbox_files"], [])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-05-11T01:59:03.095986+00:00",
+  "generated_at": "2026-05-11T02:04:42.134250+00:00",
   "root": "/mnt/d/cloud/account-meeting-lore",
   "summary": {
-    "wiki_page_count": 170,
-    "source_record_count": 8,
-    "inbox_file_count": 12,
-    "pending_inbox_count": 6,
+    "wiki_page_count": 176,
+    "source_record_count": 13,
+    "inbox_file_count": 11,
+    "pending_inbox_count": 0,
     "active_change_count": 0,
     "complete_change_count": 0,
     "wiki_sections": {
       "wiki/adr": 32,
       "wiki/domains": 2,
       "wiki/examples": 7,
-      "wiki/ops": 87,
+      "wiki/ops": 88,
       "wiki/reports": 13,
       "wiki/root": 7,
-      "wiki/sources": 9,
+      "wiki/sources": 14,
       "wiki/templates": 10,
       "wiki/timeline": 3
     }
@@ -1092,6 +1092,16 @@
       "status": "open"
     },
     {
+      "path": "wiki/ops/nirvana-协议支付涅槃需求文档-intake.md",
+      "section": "wiki/ops",
+      "sha256": "7b1bdc4e9a035afd30fee8880a5c92977d947a5c1bf5e9e0bb703cf31714fd99",
+      "bytes": 1976,
+      "title": "协议支付涅槃需求文档",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active"
+    },
+    {
       "path": "wiki/ops/nirvana-涅槃产品上架梳理-intake.md",
       "section": "wiki/ops",
       "sha256": "2e2dccd66bd366474d7659f988f096b96eaede1dd774971bb5fbce95d4b5d63d",
@@ -1562,11 +1572,61 @@
       "status": "active"
     },
     {
+      "path": "wiki/sources/nirvana-优化后图示.md",
+      "section": "wiki/sources",
+      "sha256": "6d515ab0385307344a11a2d8156cd6478a347d20b4a148c8ee2cd6116bf1513f",
+      "bytes": 1496,
+      "title": "优化后图示",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/nirvana-协议支付涅槃需求文档.md",
+      "section": "wiki/sources",
+      "sha256": "d391d0efa46c466b925fc67a2a436f243df6e1531abb2dcbbe6b5008ae818f70",
+      "bytes": 2793,
+      "title": "协议支付涅槃需求文档",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/nirvana-最终方案.md",
+      "section": "wiki/sources",
+      "sha256": "4dcbcd05b0b05c6347a45f31cd4ccd1ab76b90c0506dc78dbfd844522d65f5fb",
+      "bytes": 1734,
+      "title": "最终方案",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
       "path": "wiki/sources/nirvana-涅槃产品上架梳理.md",
       "section": "wiki/sources",
       "sha256": "cb7a0328f0c8447123fd01f418fe0c1a2544fcdb3208a1b0bea141b6357bf4d2",
       "bytes": 886,
       "title": "涅槃产品上架梳理",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/nirvana-清算的内容.md",
+      "section": "wiki/sources",
+      "sha256": "2b42b33e779ef9fcfe6cc4c92c1566738db2b6fad4937702a5528b99332a04a4",
+      "bytes": 1438,
+      "title": "清算的内容",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/nirvana-现状.md",
+      "section": "wiki/sources",
+      "sha256": "89935677ab3b32bbf94818e65b9a146b33a5d3b2c2006cdb7f04dcd0937cf41b",
+      "bytes": 2462,
+      "title": "现状",
       "canonical_object": null,
       "artifact_type": null,
       "status": "draft"
@@ -1766,9 +1826,44 @@
       "status": "active"
     },
     {
+      "path": "wiki/sources/nirvana-优化后图示.md",
+      "source_path": "inbox/nirvana/优化后图示.png",
+      "source_type": "image",
+      "domain": "nirvana",
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/nirvana-协议支付涅槃需求文档.md",
+      "source_path": "inbox/nirvana/协议支付涅槃需求文档.docx",
+      "source_type": "attachment",
+      "domain": "nirvana",
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/nirvana-最终方案.md",
+      "source_path": "inbox/nirvana/最终方案.png",
+      "source_type": "image",
+      "domain": "nirvana",
+      "status": "draft"
+    },
+    {
       "path": "wiki/sources/nirvana-涅槃产品上架梳理.md",
       "source_path": "inbox/nirvana/涅槃产品上架梳理.xlsx",
       "source_type": "meeting-note",
+      "domain": "nirvana",
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/nirvana-清算的内容.md",
+      "source_path": "inbox/nirvana/清算的内容.png",
+      "source_type": "image",
+      "domain": "nirvana",
+      "status": "draft"
+    },
+    {
+      "path": "wiki/sources/nirvana-现状.md",
+      "source_path": "inbox/nirvana/现状.png",
+      "source_type": "image",
       "domain": "nirvana",
       "status": "draft"
     },
@@ -1794,12 +1889,6 @@
       "represented_by_source": true
     },
     {
-      "path": "inbox/README.md",
-      "sha256": "ad35ab54def97e7cd94b95976cea27da20d21d77b85cbcbdf8db22e22712ec56",
-      "bytes": 1788,
-      "represented_by_source": false
-    },
-    {
       "path": "inbox/nirvana/preview .html",
       "sha256": "069e4b96b719362b254b7d0d4d15949b25de24120c3f3c7e93fa86d0719ca24e",
       "bytes": 22105,
@@ -1809,19 +1898,19 @@
       "path": "inbox/nirvana/优化后图示.png",
       "sha256": "d3f2c9208c1354ed3fc1255f4167e2d28b3387214e313ca1fa8cfe4785f98c88",
       "bytes": 79023,
-      "represented_by_source": false
+      "represented_by_source": true
     },
     {
       "path": "inbox/nirvana/协议支付涅槃需求文档.docx",
       "sha256": "78e619efb1b702af5b465cf1b9e78af07e21e60c69b316d6e4508d91bad76880",
       "bytes": 14478225,
-      "represented_by_source": false
+      "represented_by_source": true
     },
     {
       "path": "inbox/nirvana/最终方案.png",
       "sha256": "1d87cd30dd572a05813fd1284402d0a7854042d7ce3c3c542683b76beb54b72f",
       "bytes": 146905,
-      "represented_by_source": false
+      "represented_by_source": true
     },
     {
       "path": "inbox/nirvana/涅槃产品上架梳理.xlsx",
@@ -1839,13 +1928,13 @@
       "path": "inbox/nirvana/清算的内容.png",
       "sha256": "519b4ed12225ff40cba4e0f16e05ee2f9c4986ad98205e326c919290f7b60400",
       "bytes": 39868,
-      "represented_by_source": false
+      "represented_by_source": true
     },
     {
       "path": "inbox/nirvana/现状.png",
       "sha256": "9d99c7501780e73601678241de95efa71aa5b9e70e69cca9e5ef0410e3370ed7",
       "bytes": 418859,
-      "represented_by_source": false
+      "represented_by_source": true
     },
     {
       "path": "inbox/文字转写_呼呼的快速会议_276823523.txt",
@@ -1854,13 +1943,6 @@
       "represented_by_source": true
     }
   ],
-  "pending_inbox_files": [
-    "inbox/README.md",
-    "inbox/nirvana/优化后图示.png",
-    "inbox/nirvana/协议支付涅槃需求文档.docx",
-    "inbox/nirvana/最终方案.png",
-    "inbox/nirvana/清算的内容.png",
-    "inbox/nirvana/现状.png"
-  ],
+  "pending_inbox_files": [],
   "openspec_changes": []
 }

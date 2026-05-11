@@ -1,15 +1,15 @@
 # Wiki Status
 
-Generated at: `2026-05-11T01:59:03.095986+00:00`
+Generated at: `2026-05-11T02:04:42.134250+00:00`
 
 ## Summary
 
 | Metric | Value |
 | --- | --- |
-| Wiki pages | 170 |
-| Source records | 8 |
-| Inbox files | 12 |
-| Pending inbox files | 6 |
+| Wiki pages | 176 |
+| Source records | 13 |
+| Inbox files | 11 |
+| Pending inbox files | 0 |
 | Active OpenSpec changes | 0 |
 | Complete active-dir changes | 0 |
 
@@ -20,21 +20,16 @@ Generated at: `2026-05-11T01:59:03.095986+00:00`
 | wiki/adr | 32 |
 | wiki/domains | 2 |
 | wiki/examples | 7 |
-| wiki/ops | 87 |
+| wiki/ops | 88 |
 | wiki/reports | 13 |
 | wiki/root | 7 |
-| wiki/sources | 9 |
+| wiki/sources | 14 |
 | wiki/templates | 10 |
 | wiki/timeline | 3 |
 
 ## Pending Inbox Files
 
-- `inbox/README.md`
-- `inbox/nirvana/优化后图示.png`
-- `inbox/nirvana/协议支付涅槃需求文档.docx`
-- `inbox/nirvana/最终方案.png`
-- `inbox/nirvana/清算的内容.png`
-- `inbox/nirvana/现状.png`
+- None
 
 ## OpenSpec Changes
 
@@ -44,4 +39,4 @@ Generated at: `2026-05-11T01:59:03.095986+00:00`
 
 ## Next Actions
 
-- Create or link source records for pending inbox files.
+- No generated status actions.
