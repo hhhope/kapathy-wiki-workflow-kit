@@ -25,12 +25,10 @@
       --bg: #f3eadc;
       --paper: #fffaf0;
       --paper-2: #f7ecdc;
-      --surface: rgba(255, 250, 240, .94);
       --ink: #1e1812;
       --muted: #66594d;
       --line: #2c2118;
       --thin: rgba(44, 33, 24, .16);
-      --white: #fffaf0;
       --shadow: 0 18px 44px rgba(58, 42, 25, .10);
     }
 
@@ -93,9 +91,9 @@
 
     h1 {
       margin-top: 14px;
-      max-width: 980px;
+      max-width: 1080px;
       font-family: var(--font-serif);
-      font-size: clamp(34px, 6vw, 78px);
+      font-size: clamp(34px, 5.5vw, 70px);
       line-height: .98;
       font-weight: 900;
     }
@@ -185,107 +183,98 @@
       white-space: nowrap;
     }
 
-    .matrix {
+    .mode-index {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mode-row {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      grid-template-columns: 150px 260px minmax(0, 1fr);
+      gap: 18px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--thin);
+      align-items: baseline;
     }
 
-    .matrix > article {
-      min-height: 0;
-      padding: 0 0 0 12px;
-      border-left: 4px solid var(--line);
-      background: transparent;
-    }
+    .mode-row:last-child { border-bottom: 0; }
 
-    .badge {
-      display: inline-block;
-      margin-bottom: 8px;
+    .mode-label {
       color: var(--muted);
       font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
     }
 
-    .matrix h3 {
-      font-size: 23px;
-      line-height: 1.2;
-      margin-bottom: 10px;
+    .mode-row h3 {
+      font-size: 20px;
+      line-height: 1.25;
     }
 
-    .matrix p {
+    .mode-row p {
+      color: #332b22;
       font-size: 15px;
-      color: #1f1a13;
     }
 
-    .company-report {
-      display: grid;
-      gap: 0;
+    .article-prose {
+      max-width: 980px;
+      margin: 0 auto;
+      color: var(--ink);
     }
 
-    .company-card {
-      display: block;
-      padding: 24px 0;
+    .company-article {
+      padding: 26px 0;
       border-bottom: 1px solid var(--line);
-      background: transparent;
     }
 
-    .company-card:first-child { padding-top: 0; }
-    .company-card:last-child { border-bottom: 0; padding-bottom: 0; }
+    .company-article:first-child { padding-top: 0; }
+    .company-article:last-child { border-bottom: 0; padding-bottom: 0; }
 
-    .company-head {
-      max-width: 920px;
-      padding: 0;
-      border-right: 0;
-    }
-
-    .company-head h3 {
-      font-size: 30px;
-      line-height: 1.1;
+    .company-kicker {
+      display: block;
       margin-bottom: 6px;
-    }
-
-    .company-head p {
       color: var(--muted);
-      font-size: 15px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
-    .company-body {
-      display: grid;
-      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-      gap: 18px 22px;
-      margin-top: 14px;
+    .company-article h3 {
+      font-size: clamp(25px, 3vw, 34px);
+      line-height: 1.15;
+      margin-bottom: 8px;
     }
 
-    .cell {
-      padding: 0;
-      border-right: 0;
-      border-bottom: 0;
+    .article-prose p {
+      margin-bottom: 14px;
+      font-size: 16px;
+      line-height: 1.85;
     }
 
-    .cell:nth-child(2) {
-      grid-row: span 3;
+    .article-prose strong { font-weight: 900; }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .evidence-ledger {
+      margin: 16px 0;
       padding: 14px 16px;
       border-left: 4px solid var(--line);
       background: rgba(255, 255, 255, .46);
     }
 
-    .cell b {
-      display: block;
-      margin-bottom: 7px;
-      font-size: 14px;
-      color: #3a2e1d;
+    .evidence-ledger h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.3;
     }
 
-    .cell p,
-    .cell li {
+    .evidence-ledger li {
+      margin: 7px 0;
       font-size: 15px;
-      line-height: 1.75;
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 18px;
+      line-height: 1.65;
     }
 
     .source-code {
@@ -296,26 +285,36 @@
       font-weight: 700;
     }
 
-    .reading-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 28px;
+    .consensus-list {
+      margin: 16px 0 18px;
+      padding: 0;
+      list-style: none;
       border-top: 1px solid var(--line);
     }
 
-    .reading-card {
-      padding: 14px 0;
+    .consensus-list li {
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      gap: 14px;
+      padding: 12px 0;
       border-bottom: 1px solid var(--thin);
-      background: transparent;
+      line-height: 1.7;
     }
 
-    .reading-card h3 {
-      font-size: 22px;
-      line-height: 1.18;
-      margin-bottom: 8px;
+    .consensus-list b {
+      font-size: 14px;
+      font-weight: 900;
     }
 
-    .reading-card p { font-size: 15px; }
+    .reference-line {
+      margin: 18px 0;
+      padding: 12px 14px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
 
     .sources {
       padding-top: 24px;
@@ -355,20 +354,22 @@
       .front { grid-template-columns: 1fr; }
       .lead { border-right: 0; border-bottom: 2px solid var(--line); }
 
-      .matrix { grid-template-columns: repeat(2, 1fr); }
+      .mode-row,
+      .consensus-list li { grid-template-columns: 1fr; }
 
-      .company-body,
-      .reading-grid { grid-template-columns: 1fr; }
+      .mode-row { gap: 4px; }
 
       .sources ol { columns: 1; }
     }
 
     @media (max-width: 620px) {
-      .page { padding: 22px 14px 40px; }
       .kicker, .section-title { display: block; }
       h1 { font-size: 38px; }
       .tagline { font-size: 17px; }
-      .matrix { grid-template-columns: 1fr; }
+      .masthead,
+      .section { padding-left: 16px; padding-right: 16px; }
+      .lead,
+      .evidence-box { padding: 16px; }
     }
   </style>
 </head>
@@ -401,27 +402,27 @@
         <h2>四个样本，各自代表一种协作模式</h2>
         <span>company modes / 组织信号</span>
       </div>
-      <div class="matrix">
-        <article class="openai">
-          <span class="badge">Agent-first OS</span>
+      <div class="mode-index">
+        <div class="mode-row">
+          <span class="mode-label">Agent-first OS</span>
           <h3>OpenAI：研发系统先为 Agent 重写</h3>
-          <p>战略不是让 agent 接更多 ticket，而是把工程环境、知识、测试、review、observability 和架构约束改造成 agent 可以长期执行的操作系统。</p>
-        </article>
-        <article class="anthropic">
-          <span class="badge">Collaborative Workspace</span>
+          <p>工程环境、知识、测试、review、observability 和架构约束被改造成 agent 可以长期执行的操作系统。</p>
+        </div>
+        <div class="mode-row">
+          <span class="mode-label">Collaborative Workspace</span>
           <h3>Anthropic：专业工作流里嵌入 Claude</h3>
-          <p>战略不是把所有人改造成工程师，而是让不同职能在自己的工作流里和 Claude 共同探索、生成、验证和迭代。</p>
-        </article>
-        <article class="stripe">
-          <span class="badge">Transaction Protocol</span>
+          <p>不同职能在自己的工作流里和 Claude 共同探索、生成、验证和迭代。</p>
+        </div>
+        <div class="mode-row">
+          <span class="mode-label">Transaction Protocol</span>
           <h3>Stripe：交易协议先对 Agent 可读</h3>
-          <p>战略不是在支付页加 AI，而是让商品、授权、风控、结算、履约和售后成为 agent 能调用、商家能控制、平台能审计的协议。</p>
-        </article>
-        <article class="block">
-          <span class="badge">Org System + Warning</span>
+          <p>商品、授权、风控、结算、履约和售后成为 agent 能调用、商家能控制、平台能审计的协议。</p>
+        </div>
+        <div class="mode-row">
+          <span class="mode-label">Org System + Warning</span>
           <h3>Block：AI-native 组织制度和缩编叙事并存</h3>
-          <p>战略是把 AI adoption 变成工程制度、培训、上下文和指标；风险是这种制度升级被管理层直接翻译成更小团队和裁员逻辑。</p>
-        </article>
+          <p>AI adoption 被制度化，但这种制度升级也被管理层翻译成更小团队和裁员逻辑。</p>
+        </div>
       </div>
     </section>
 
@@ -430,187 +431,87 @@
         <h2>四家公司：从战略下钻到协作行为</h2>
         <span>strategy → behavior → collaboration</span>
       </div>
-      <div class="company-report">
-        <article class="company-card">
-          <div class="company-head openai">
-            <h3>OpenAI</h3>
-            <p>路径：从 coding assistant 走向 agent-first engineering operating system。</p>
+      <div class="article-prose">
+        <article class="company-article">
+          <span class="company-kicker">OpenAI / Agent-first engineering OS</span>
+          <h3>OpenAI：把研发系统本身改造成 Agent 可以工作的环境</h3>
+          <p><strong>战略选择：</strong>OpenAI 的公开写作不是在讲“工程师少写代码”，而是在讲 agent-first engineering。人类负责目标、环境、约束、反馈和判断，Codex 负责执行、验证、review、修复和推进 PR。</p>
+          <p><strong>协作方式：</strong>repo 知识成为 system of record，AGENTS.md、docs、plans、product specs、quality docs 分层承载上下文；Codex 直接使用 gh、local scripts、repository-embedded skills，自审、响应反馈、修复构建失败。Symphony 则把 Linear 这类 issue tracker 变成控制面，每个 open task 对应 agent workspace，并处理 CI、rebase、conflict、flaky check retry 和 handoff。</p>
+          <div class="evidence-ledger">
+            <h4>证据标签</h4>
+            <ul>
+              <li>Harness Engineering：5 个月约 100 万行代码、约 1500 个 PR，早期 3 名工程师驱动 Codex，后扩大到 7 名。</li>
+              <li>Symphony：issue tracker 作为控制面，agent workspace、watch task board、crash/stall restart、CI/rebase/retry/handoff。</li>
+              <li>Codex Core Agents JD：sandbox、orchestration、stateful workflows、memory、production fleet、CI/CD、安全和开发平台。</li>
+            </ul>
           </div>
-          <div class="company-body">
-            <div class="cell">
-              <b>战略选择</b>
-              <p>OpenAI 的公开写作把战略说得很清楚：当 agent 能写代码，工程团队的主要工作就不再是手写实现，而是设计环境、指定意图、建立反馈回路，让 Codex 能可靠工作。</p>
-              <span class="source-code">证据：Harness Engineering</span>
-            </div>
-            <div class="cell">
-              <b>公开行为与协作方式</b>
-              <ul>
-                <li>5 个月约 100 万行代码、约 1500 个 PR，早期 3 名工程师驱动 Codex，后扩大到 7 名。</li>
-                <li>Symphony 把 Linear 这类 issue tracker 变成控制面：每个 open task 对应一个 agent workspace，系统持续 watch task board，agent crash 或 stall 时重启。</li>
-                <li>Symphony 还处理 CI、rebase、conflict、flaky check retry 和 handoff；它是 reference implementation，不等同于 OpenAI 全部战略，但暴露了协作机制。</li>
-                <li>repo 知识成为 system of record，短 AGENTS.md 作为入口，docs、plans、product specs、quality docs 分层承载上下文。</li>
-                <li>Codex 直接使用 gh、local scripts、repository-embedded skills，自己 review、响应反馈、修复构建失败并推进 PR。</li>
-                <li>UI、logs、metrics、traces 对 Codex 可读，agent 可以复现 bug、驱动浏览器、查询观测数据、再次验证。</li>
-                <li>架构约束、taste invariants、custom lint、结构测试把人的判断编码成可重复执行的系统。</li>
-              </ul>
-            </div>
-            <div class="cell">
-              <b>招聘/JD 信号</b>
-              <p>OpenAI Careers 搜索 Codex 显示 25 个岗位。Core Agents JD 关注 sandbox、isolation、orchestration、stateful workflows、memory、production fleet、CI/CD、安全和开发平台，说明它在补 agent 执行系统的基础设施，不是只招会写 prompt 的人。</p>
-            </div>
-            <div class="cell">
-              <b>我们学到</b>
-              <p>先别问“任务能不能进队列”。更大的问题是：我们的知识、环境、测试、观测、review 和失败写回，是否已经变成 agent 能读、能跑、能验证、能改进的工程系统。</p>
-            </div>
-          </div>
+          <p><strong>我们学到：</strong>先别问“任务能不能进队列”。更大的问题是：我们的知识、环境、测试、观测、review 和失败写回，是否已经变成 agent 能读、能跑、能验证、能改进的工程系统。</p>
         </article>
 
-        <article class="company-card">
-          <div class="company-head anthropic">
-            <h3>Anthropic</h3>
-            <p>路径：把 Claude 做成专业团队日常工作流里的协作者。</p>
+        <article class="company-article">
+          <span class="company-kicker">Anthropic / Human-AI collaborative workspace</span>
+          <h3>Anthropic：把 Claude 放进专业团队的真实工作流</h3>
+          <p><strong>战略选择：</strong>Anthropic 不是把 Claude Code 包装成单一研发工具，而是让 Claude 进入不同职能的具体工作流。人仍然拥有专业判断，Claude 参与探索、生成、自动化和验证。</p>
+          <p><strong>协作方式：</strong>Infrastructure 新数据科学家让 Claude Code 读取 CLAUDE.md，解释 pipeline dependency，并说明 upstream sources 如何 feeding dashboards；Data Infrastructure 在 Kubernetes incident 中把 dashboard screenshots 交给 Claude Code，定位 pod IP exhaustion 并拿到补救命令；Growth Marketing、Product Design、Legal 则把广告生成、prototype/test、phone tree 和自助审核工具变成可运行 artifact。</p>
+          <div class="evidence-ledger">
+            <h4>证据标签</h4>
+            <ul>
+              <li>How teams use Claude Code：data infra、product、security、marketing、design、legal 都有具体内部用例。</li>
+              <li>Claude Code best practices：explore first、plan、verify、context management、permissions、MCP、subagents。</li>
+              <li>Claude Code PM JD：要求 PM+工程经验，并和 research、engineering、XFN 团队一起把模型进展翻成产品能力。</li>
+            </ul>
           </div>
-          <div class="company-body">
-            <div class="cell">
-              <b>战略选择</b>
-              <p>Anthropic 的战略不是把 Claude Code 包装成单一研发工具，而是让 Claude 进入不同职能的具体工作流。人仍然拥有专业判断，Claude 负责探索、生成、自动化和验证。</p>
-              <span class="source-code">证据：How teams use Claude Code</span>
-            </div>
-            <div class="cell">
-              <b>公开行为与协作方式</b>
-              <ul>
-                <li>Infrastructure 的新数据科学家让 Claude Code 读取 CLAUDE.md，解释 pipeline dependency，并说明哪些 upstream sources feeding dashboards。</li>
-                <li>Data Infrastructure 在 Kubernetes incident 中把 dashboard screenshots 交给 Claude Code，定位 pod IP exhaustion，并拿到具体补救命令。</li>
-                <li>Growth Marketing 构建广告 CSV 处理和 Figma plugin 工作流，用 specialized subagents 生成大量广告变体。</li>
-                <li>Product Design 用 Claude Code 做 prototype、写 tests、检查 edge cases，把设计假设变成可运行 artifact。</li>
-                <li>Legal 做 phone tree 和自助审核工具，说明协作已经进入专业服务流程，而不只是工程研发。</li>
-                <li>Claude Code best practices 强调 explore first、plan、verify、context management、permissions、MCP、subagents，这是一套协作方法而不是单个工具技巧。</li>
-              </ul>
-            </div>
-            <div class="cell">
-              <b>招聘/JD 信号</b>
-              <p>Claude Code PM JD 要求候选人有 5 年以上 PM+工程经验，至少 1 年职业工程背景，并能和 research、engineering、XFN 团队一起把模型进展翻成产品能力。</p>
-            </div>
-            <div class="cell">
-              <b>我们学到</b>
-              <p>不要把它写成“职能专家能不能构建”。更准确的问题是：每个专业团队的工作流里，有没有让 AI 参与探索、生成、验证和迭代的位置，同时保留人的语境、品味和责任。</p>
-            </div>
-          </div>
+          <p><strong>我们学到：</strong>不要把它写成“职能专家能不能构建”。更准确的问题是：每个专业团队的工作流里，有没有让 AI 参与探索、生成、验证和迭代的位置，同时保留人的语境、品味和责任。</p>
         </article>
 
-        <article class="company-card">
-          <div class="company-head stripe">
-            <h3>Stripe</h3>
-            <p>路径：把交易从人类界面改造成 agent 可调用的经济基础设施。</p>
+        <article class="company-article">
+          <span class="company-kicker">Stripe / Agent-readable commerce protocol</span>
+          <h3>Stripe：把交易从人类界面改造成 Agent 可读协议</h3>
+          <p><strong>战略选择：</strong>Stripe 把 agentic commerce 定义为新的经济基础设施问题。AI 入口变成 storefront 后，交易不再是人点击网页，而是 agent 带着用户意图、身份、支付上下文进入商家系统。</p>
+          <p><strong>协作方式：</strong>ChatGPT Instant Checkout 先支持美国 Etsy 商家，Shopify 商家后续接入；ACP 让商家用一次集成接入多个 AI agent；Shared Payment Token 按 merchant 和 cart total 限定，避免暴露真实支付凭据，同时保留风控能力。ChatGPT 把 token 和订单通过 API 交给商家，商家接受或拒绝订单，并处理收费、税务、履约、退货。</p>
+          <div class="evidence-ledger">
+            <h4>证据标签</h4>
+            <ul>
+              <li>Instant Checkout / ACP / SPT：交易协作从网页界面转向用户、agent、商家、支付网络之间的责任链。</li>
+              <li>Agentic Commerce EM JD：新 API primitives、dashboard surfaces、money movement、Stripe primitives 集成。</li>
+              <li>Agentic Commerce Designer JD：明确面向 merchants、agents、consumers 三类界面。</li>
+            </ul>
           </div>
-          <div class="company-body">
-            <div class="cell">
-              <b>战略选择</b>
-              <p>Stripe 把 agentic commerce 定义为新的经济基础设施问题。AI 入口变成 storefront 后，交易不再是人点击网页，而是 agent 带着用户意图、身份、支付上下文进入商家系统。</p>
-              <span class="source-code">证据：ACP / SPT</span>
-            </div>
-            <div class="cell">
-              <b>公开行为与协作方式</b>
-              <ul>
-                <li>ChatGPT Instant Checkout 先支持美国 Etsy 商家，Shopify 商家后续接入。</li>
-                <li>ACP 是 Stripe 与 OpenAI 共建的开放标准，目标是让商家用一次集成接入多个 AI agent。</li>
-                <li>Shared Payment Token 按 merchant 和 cart total 限定，避免暴露真实支付凭据，同时保留风控能力。</li>
-                <li>ChatGPT 把 token 和订单通过 API 交给商家，商家接受或拒绝订单，处理收费、税务、履约、退货。</li>
-                <li>协作边界不是“agent 下单”一句话，而是用户、agent、商家、支付网络、风控、履约之间的责任链。</li>
-              </ul>
-            </div>
-            <div class="cell">
-              <b>招聘/JD 信号</b>
-              <p>Agentic Commerce EM JD 明确写新 API primitives、dashboard surfaces、money movement、Stripe primitives 集成；Designer JD 明确面向 merchants、agents、consumers 三类界面。</p>
-            </div>
-            <div class="cell">
-              <b>我们学到</b>
-              <p>当协作跨出公司边界，最先要补的不是提示词，而是协议。凡是涉及钱、合同、客户承诺、履约和风险的流程，都必须先做到 agent 可读、可授权、可审计、可回滚。</p>
-            </div>
-          </div>
+          <p><strong>我们学到：</strong>当协作跨出公司边界，最先要补的不是提示词，而是协议。涉及钱、合同、客户承诺、履约和风险的流程，都必须先做到 agent 可读、可授权、可审计、可回滚。</p>
         </article>
 
-        <article class="company-card">
-          <div class="company-head block">
-            <h3>Block</h3>
-            <p>路径：一边做工程组织 AI-readiness，一边用 AI 解释组织缩编。</p>
+        <article class="company-article">
+          <span class="company-kicker">Block / AI-native organization system + warning</span>
+          <h3>Block：工程 AI-readiness 值得学，裁员叙事必须分开看</h3>
+          <p><strong>战略选择：</strong>Block 的公开材料显示两件事同时发生：工程侧把 AI adoption 制度化，管理侧把 intelligence tools 和 smaller team 绑定。这个样本必须同时保留正面做法和组织风险。</p>
+          <p><strong>协作方式：</strong>Block 做的是组织系统，而不是单点工具采用：95% 工程师定期使用 AI，50 名 Engineering AI Champions 投入 30% 时间做 enablement；repo 层面设置 AGENTS.md、HOWTOAI.md、agent skills、AI rules、usage tracking、CI/CD 分析和 incident/postmortem 辅助。40,000+ source files、30,000+ test files、650+ deployable services 的 monorepo 被拆成 root context 和 service-level context。</p>
+          <div class="evidence-ledger">
+            <h4>证据标签</h4>
+            <ul>
+              <li>Block Engineering：3 个月内 AI-authored code +69%，reported time savings +37%，automated PRs +21x。</li>
+              <li>Block Careers：当前 0 open jobs，只作为招聘边界，不推断具体原因。</li>
+              <li>Guardian reporting：公开报道显示 Block 裁员 4000/10000，并把 intelligence tools 与 smaller team 叙事绑定。</li>
+            </ul>
           </div>
-          <div class="company-body">
-            <div class="cell">
-              <b>战略选择</b>
-              <p>Block 的公开材料显示两件事同时发生：工程侧把 AI adoption 制度化，管理侧把 intelligence tools 和 smaller team 绑定。这个样本必须同时保留正面做法和组织风险。</p>
-              <span class="source-code">证据：Block Engineering + Guardian reporting</span>
-            </div>
-            <div class="cell">
-              <b>公开行为与协作方式</b>
-              <ul>
-                <li>约 95% 工程师定期使用 AI 辅助开发。</li>
-                <li>50 名 Engineering AI Champions，每人投入 30% 时间做 enablement。</li>
-                <li>3 个月内 AI-authored code +69%，reported time savings +37%，automated PRs +21x。</li>
-                <li>repo 层面设置 AGENTS.md、HOWTOAI.md、agent skills、AI rules、usage tracking、CI/CD 分析和 incident/postmortem 辅助。</li>
-                <li>40,000+ source files、30,000+ test files、650+ deployable services 的 monorepo 被拆成 root context 和 service-level context。</li>
-              </ul>
-            </div>
-            <div class="cell">
-              <b>招聘/JD 信号</b>
-              <p>当前 Block careers 页面显示 0 open jobs。这个实时招聘信号不能支持“Block 正在扩招 AI 岗位”的判断；本页只把它作为当前招聘边界，不从中推断具体原因。</p>
-            </div>
-            <div class="cell">
-              <b>我们学到</b>
-              <p>Block 的 repo readiness、champions、rules、skills、指标和自动 PR 值得学。不能学的是把 AI-native 直接翻译成“少人更好”。协作系统升级和裁员叙事必须分开判断。</p>
-            </div>
-          </div>
+          <p><strong>我们学到：</strong>repo readiness、champions、rules、skills、指标和自动 PR 可以学；把 AI-native 直接翻译成“少人更好”不能学。协作系统升级和裁员叙事必须分开判断。</p>
         </article>
       </div>
     </section>
 
     <section class="section">
       <div class="section-title">
-        <h2>这四条路给我们的判断坐标</h2>
-        <span>what the evidence says</span>
-      </div>
-      <div class="reading-grid">
-        <article class="reading-card">
-          <h3>OpenAI：协作重心从写代码转向设计执行系统</h3>
-          <p>如果我们的上下文、测试、观测、评审、架构约束还散在聊天和人脑里，agent 只会加速混乱。OpenAI 的启发是先把系统变成 agent 可读。</p>
-        </article>
-        <article class="reading-card">
-          <h3>Anthropic：协作重心从交接转向共同生产 artifact</h3>
-          <p>专业团队不只是把需求丢给工程。更好的模式是让专家在自己的语境里和 AI 一起探索、生成、验证，再把能运行的东西交给组织判断。</p>
-        </article>
-        <article class="reading-card">
-          <h3>Stripe：协作重心从界面转向协议</h3>
-          <p>只要流程涉及钱、客户承诺或外部责任，AI 协作就不能停在“帮我操作”。它必须进入可授权、可审计、可拒绝、可追责的协议层。</p>
-        </article>
-        <article class="reading-card">
-          <h3>Block：协作重心从工具采用转向组织制度</h3>
-          <p>采用率、champions、AI rules、skills、usage tracking 都是组织动作。但 Block 也提醒我们：把 AI enablement 和缩编绑定，会改变员工对协作系统的信任。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">
-        <h2>这页最终应该只留下一个启发</h2>
+        <h2>这页最终留下什么</h2>
         <span>one usable takeaway</span>
       </div>
-      <div class="reading-grid">
-        <article class="reading-card">
-          <h3>OpenAI 给的启发：先改系统，不先改口号</h3>
-          <p>把 repo、测试、观测、review、执行计划和失败写回变成 agent 可读的系统，否则“让 agent 多做任务”只会放大上下文缺口。</p>
-        </article>
-        <article class="reading-card">
-          <h3>Anthropic 给的启发：让专业流程产出 artifact</h3>
-          <p>协作不是把需求转交给工程，而是在设计、数据、营销、法律等流程里让 AI 参与探索、生成、验证，最后由人判断是否接受。</p>
-        </article>
-        <article class="reading-card">
-          <h3>Stripe 给的启发：跨系统协作先协议化</h3>
-          <p>涉及钱、权限、客户承诺和履约时，agent 协作要先定义接口、授权、风控、拒绝、审计和回滚，而不是先让模型代人点击。</p>
-        </article>
-        <article class="reading-card">
-          <h3>Block 给的启发：制度化要和裁员叙事切开</h3>
-          <p>repo readiness、champions、rules、skills 和 metrics 可以学；把 AI-native 直接翻译成“更少的人”会伤害组织信任，必须单独作为风险处理。</p>
-        </article>
+      <div class="article-prose">
+        <p>这四家公司不能被压成“员工怎么用 AI”。它们给的是四个判断坐标：系统能不能被 agent 执行，专业工作流能不能和 AI 共同生产 artifact，跨系统交易能不能协议化，组织制度化会不会被裁员叙事污染。</p>
+        <ul class="consensus-list">
+          <li><b>OpenAI</b><span>协作重心从写代码转向设计执行系统。把 repo、测试、观测、review、执行计划和失败写回变成 agent 可读。</span></li>
+          <li><b>Anthropic</b><span>协作重心从需求交接转向共同生产 artifact。让专家在自己的语境里和 AI 一起探索、生成、验证，再由人判断。</span></li>
+          <li><b>Stripe</b><span>协作重心从界面转向协议。涉及钱、权限、客户承诺和履约时，先定义接口、授权、风控、拒绝、审计和回滚。</span></li>
+          <li><b>Block</b><span>协作重心从工具采用转向组织制度。repo readiness、champions、rules、skills 和 metrics 可以学，裁员叙事必须单独处理。</span></li>
+        </ul>
+        <div class="reference-line">真正有用的下一步不是写泛化角色建议，而是判断我们当前更接近哪一种问题，再决定是补工程系统、补专业工作流、补协议层，还是先处理组织信任边界。</div>
       </div>
     </section>
 
