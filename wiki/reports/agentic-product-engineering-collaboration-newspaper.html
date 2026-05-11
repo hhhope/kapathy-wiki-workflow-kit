@@ -141,11 +141,11 @@
       padding-bottom: 10px;
       border-bottom: 1px solid var(--thin);
       color: var(--muted);
-      font-family: var(--font-mono);
+      font-family: var(--font-body);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: .14em;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .toc a {
@@ -1600,7 +1600,7 @@
 <body>
   <div class="shell">
   <nav class="toc" aria-label="章节导航">
-    <p class="toc-title">Edition Map</p>
+    <p class="toc-title">目录</p>
     <a href="#top">头版判断</a>
     <a href="#mainline">五张图读懂主线</a>
     <a href="#debate">行业在争什么</a>
@@ -1615,11 +1615,11 @@
   <main class="page" id="top">
     <header class="masthead">
       <div class="kicker">
-        <span>Industry Observer / Draft H5 Newspaper</span>
+        <span>行业观察 / H5 分享稿</span>
         <span>2026-05-11 / 公开信源扫描版</span>
       </div>
       <div class="brand">AI Agent 时代产研协作观察报</div>
-      <p class="tagline">262 个 source entries 之后，行业真正争论的不是工具，而是谁定义目标、谁承担判断、谁审查结果、谁拥有作业系统。</p>
+      <p class="tagline">262 条来源记录之后，行业真正争论的不是工具，而是谁定义目标、谁承担判断、谁审查结果、谁拥有作业系统。</p>
     </header>
 
     <section class="front">
@@ -1634,21 +1634,21 @@
           </div>
           <div class="thesis-box">
             <strong>新问题：怎么让系统可执行、可审查、可沉淀？</strong>
-            <p>人定义目标和判断边界，agent 执行和自证，结果进入 PR、review packet、eval、wiki、rules。</p>
+            <p>人定义目标和判断边界，Agent 执行和自证，结果进入 PR、review packet、eval、wiki、rules。</p>
           </div>
         </div>
       </article>
 
       <aside class="side">
         <div class="source-meter">
-          <div class="metric"><b>43</b><span>curated source map</span></div>
-          <div class="metric"><b>88</b><span>broad leads</span></div>
+          <div class="metric"><b>43</b><span>精选来源图谱</span></div>
+          <div class="metric"><b>88</b><span>扩展线索</span></div>
           <div class="metric"><b>95</b><span>2026 时间线条目</span></div>
           <div class="metric"><b>36</b><span>播客 / 视频讨论</span></div>
         </div>
         <div class="brief">
           <h3>本版边界</h3>
-          <p>这是 H5 草稿，不是发布版。播客、微信、二手媒体只做讨论路由；关键引用仍需 transcript 或一手材料复核。</p>
+          <p>这是 H5 草稿，不是发布版。播客、微信、二手媒体只做讨论路由；关键引用仍需逐字稿或一手材料复核。</p>
         </div>
         <div class="brief">
           <h3>阅读方法</h3>
@@ -1660,7 +1660,7 @@
     <section class="section" id="mainline">
       <div class="section-title">
         <h2>五张图读懂主线</h2>
-        <span>visual mainline with evidence boundary</span>
+        <span>主线图与证据边界</span>
       </div>
       <figure class="article-figure mainline-figure">
         <img src="agentic-collaboration-images/00-main-thread.png" width="916" height="1717" alt="AI Agent 时代产研协作怎么变：从人肉中间层到可审查作业系统的六段主线图" loading="lazy" />
@@ -1672,17 +1672,17 @@
           <li><b>01 争议</b><span>行业表面争“代码会不会被解决、PM 会不会消失、小团队会不会替代大组织”。落到公司内部，真正争的是目标、上下文、执行和责任怎么重新分工。</span></li>
           <li><b>02 结构</b><span>公司内部协作更像一只哑铃：一端是人的判断端，一端是系统执行端，中间靠 spec、eval、review packet、wiki、rules、issue、PR 连接。</span></li>
           <li><b>03 本质</b><span>不是中间层消失，而是转述型中间劳动被压缩，判断型中间责任被抬高。执行可以系统化，判断必须更清楚。</span></li>
-          <li><b>04 循环</b><span>Agent 输出不能只停在答案。它必须进入 review packet、eval、CI、wiki、rules 和 owner decision，才算进入公司的作业系统。</span></li>
-          <li><b>05 动作</b><span>读者不要先买工具。先选一个高频、可验证、风险可控的工作流，跑 30-60 天 pilot，观察目标清晰度、返工、审查、失败写回和责任归属。</span></li>
+          <li><b>04 循环</b><span>Agent 输出不能只停在答案。它必须进入 review packet、eval、CI、wiki、rules 和 owner 判断，才算进入公司的作业系统。</span></li>
+          <li><b>05 动作</b><span>读者不要先买工具。先选一个高频、可验证、风险可控的工作流，跑 30-60 天试点，观察目标清晰度、返工、审查、失败写回和责任归属。</span></li>
         </ul>
-        <p class="reference-line">源池规模：43 条 curated source map、88 条 broad leads、95 条 2026 公开时间线条目、36 条播客 / 视频讨论线索。它们支持本文主线，但不等于全网总量，也不等于所有材料都完成一手引用复核。</p>
+        <p class="reference-line">源池规模：43 条精选来源图谱、88 条扩展线索、95 条 2026 公开时间线条目、36 条播客 / 视频讨论线索。它们支持本文主线，但不等于全网总量，也不等于所有材料都完成一手引用复核。</p>
       </article>
     </section>
 
     <section class="section" id="debate">
       <div class="section-title">
         <h2>行业在争什么</h2>
-        <span>what the evidence can and cannot support</span>
+        <span>证据能支撑什么，不能支撑什么</span>
       </div>
       <figure class="article-figure chapter-figure">
         <img src="agentic-collaboration-images/01-industry-debate.png" width="1672" height="941" alt="行业在争什么：速度与责任、工具与工作对象、小团队与组织治理、员工派与对象派" loading="lazy" />
@@ -1693,20 +1693,20 @@
         <div class="evidence-ledger">
           <h3>这篇草稿的数据底座</h3>
           <ul>
-            <li>截至 2026-05-11，本地源池包括 43 条 curated source map、88 条 broad leads、95 条公开时间线条目、36 条播客 / 视频讨论线索。</li>
+            <li>截至 2026-05-11，本地源池包括 43 条精选来源图谱、88 条扩展线索、95 条公开时间线条目、36 条播客 / 视频讨论线索。</li>
             <li>这不是“全网统计”，也不是 262 篇全部深读后的结论；它能支撑的是公开讨论方向、信源分布和可复核的章节假设。</li>
-            <li>微信文章、二手媒体和播客摘要只作为 claim router；关键判断优先回到公司原文、工程博客、研究报告和上游访谈。</li>
+            <li>微信文章、二手媒体和播客摘要只作为线索路由；关键判断优先回到公司原文、工程博客、研究报告和上游访谈。</li>
           </ul>
         </div>
         <h3>共识一：工作入口正在从聊天框，回到真实工作对象</h3>
         <p>OpenAI Symphony 把 issue tracker / Linear 当作 coding agent 的控制面；GitHub Copilot coding agent 把任务挂在 GitHub issue、branch、PR、Actions 和 repo policy 上；Atlassian Rovo in Jira 把 backlog、plan、code、PR 连起来；Google Jules 强调异步、仓库集成、计划、diff、测试和 GitHub 集成。它们各自卖的产品不同，但共同方向很清楚：Agent 不是孤立聊天窗口，而是进入 ticket、issue、PR、workflow、CI 这些已有作业对象。</p>
         <h3>共识二：执行变快以后，治理、验证和责任反而更重</h3>
-        <p>Stack Overflow 2025 Developer Survey、Google DORA 2025、GitLab DevSecOps、Thoughtworks 的 AI-first software engineering 讨论，都在提醒同一件事：AI adoption 和代码产出提高，并不自动等于交付质量提高。信任、调试、稳定性、平台治理、合规、review、测试和回滚仍然是瓶颈。Replit 数据库事故类案例则是反例边界：没有权限、隔离、审查和回滚，自动化只会放大事故半径。</p>
+        <p>Stack Overflow 2025 Developer Survey、Google DORA 2025、GitLab DevSecOps、Thoughtworks 的 AI-first software engineering 讨论，都在提醒同一件事：AI 采用率和代码产出提高，并不自动等于交付质量提高。信任、调试、稳定性、平台治理、合规、review、测试和回滚仍然是瓶颈。Replit 数据库事故类案例则是反例边界：没有权限、隔离、审查和回滚，自动化只会放大事故半径。</p>
         <h3>共识三：人的责任没有消失，而是上移</h3>
         <p>Karpathy 把专业 AI coding 和“vibe coding”区分开，核心不是模型能不能写，而是人是否仍然理解系统、上下文、质量和风险。Addy Osmani 把 coding agents 明确拉回“管理多个 agent”的能力：清晰目标、分派任务、验证结果、异步沟通。Keith Rabois 的 barrels / ammunition 框架和 Cat Wu 关于产品判断、角色边界变薄的讨论，也都指向同一个组织问题：真正稀缺的是能把目标、判断、执行和结果串起来的人。</p>
         <ul class="consensus-list">
           <li><b>争点</b><span>不是“Agent 是否聪明”，而是它能否进入真实工作对象，并被公司治理、验证、审查、追责。</span></li>
-          <li><b>共识</b><span>执行层会被系统化；目标、边界、验收、风险承受和 owner 不能被系统吞掉。</span></li>
+          <li><b>共识</b><span>执行层会被系统化；目标、边界、验收、风险承受和 owner（责任人）不能被系统吞掉。</span></li>
           <li><b>分歧</b><span>供应商会强调替代和效率，研究报告和事故案例提醒：如果作业系统不变，效率提升可能转化成返工、失控和信任下降。</span></li>
         </ul>
         <p class="reference-line">主要依据：OpenAI Symphony / Harness Engineering / Codex agent loop；GitHub Copilot coding agent；Atlassian Rovo in Jira；Google Jules；JetBrains Central；Block AI-Assisted Development；Stripe AI integration eval；Stack Overflow 2025 Developer Survey；Google DORA 2025；GitLab DevSecOps；Thoughtworks；McKinsey Agentic Organization；Deloitte GenAI enterprise；Karpathy、Addy Osmani、Keith Rabois、Cat Wu、Boris Cherny 等访谈或实践文本。</p>
@@ -1715,7 +1715,7 @@
           <ul>
             <li>可以写“截至 2026-05-11 的公开来源池显示”，不能写“行业已经定论”。</li>
             <li>供应商页面能证明产品方向和工作流设计，不能直接证明客户组织已经完成迁移。</li>
-            <li>访谈能提供角色语言和管理框架；涉及具体公司人数、组织效果、生产率提升时，仍需上游 transcript 或一手报告复核。</li>
+            <li>访谈能提供角色语言和管理框架；涉及具体公司人数、组织效果、生产率提升时，仍需上游逐字稿或一手报告复核。</li>
           </ul>
         </div>
       </article>
@@ -1724,78 +1724,78 @@
     <section class="section" id="timeline">
       <div class="section-title">
         <h2>讨论如何推进</h2>
-        <span>真实条目计数：public timeline 95 + podcast/video 36</span>
+        <span>真实条目计数：公开时间线 95 条 + 播客 / 视频 36 条</span>
       </div>
       <div class="timeline-visual">
         <div class="visual-title">
           <h3>月度源池：2 月升温，4 月公开讨论达到峰值</h3>
-          <span>public timeline 95 + podcast / video 36</span>
+          <span>公开时间线 95 条 + 播客 / 视频 36 条</span>
         </div>
         <div class="source-axis" role="img" aria-label="2026年1月至5月讨论数量数据表">
           <div class="axis-row">
-            <span class="axis-month">Jan</span>
+            <span class="axis-month">1月</span>
             <div class="axis-bars">
-              <div class="bar-track"><span class="bar-fill bar-public" style="width: 42%;">public 11</span></div>
-              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 91%;">podcast / video 10</span></div>
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 42%;">公开 11</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 91%;">播客 / 视频 10</span></div>
             </div>
             <span class="axis-total">21</span>
           </div>
           <div class="axis-row">
-            <span class="axis-month">Feb</span>
+            <span class="axis-month">2月</span>
             <div class="axis-bars">
-              <div class="bar-track"><span class="bar-fill bar-public" style="width: 88%;">public 23</span></div>
-              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 64%;">podcast / video 7</span></div>
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 88%;">公开 23</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 64%;">播客 / 视频 7</span></div>
             </div>
             <span class="axis-total">30</span>
           </div>
           <div class="axis-row">
-            <span class="axis-month">Mar</span>
+            <span class="axis-month">3月</span>
             <div class="axis-bars">
-              <div class="bar-track"><span class="bar-fill bar-public" style="width: 62%;">public 16</span></div>
-              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 100%;">podcast / video 11</span></div>
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 62%;">公开 16</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 100%;">播客 / 视频 11</span></div>
             </div>
             <span class="axis-total">27</span>
           </div>
           <div class="axis-row">
-            <span class="axis-month">Apr</span>
+            <span class="axis-month">4月</span>
             <div class="axis-bars">
-              <div class="bar-track"><span class="bar-fill bar-public" style="width: 100%;">public 26</span></div>
-              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 64%;">podcast / video 7</span></div>
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 100%;">公开 26</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 64%;">播客 / 视频 7</span></div>
             </div>
             <span class="axis-total">33</span>
           </div>
           <div class="axis-row">
-            <span class="axis-month">May</span>
+            <span class="axis-month">5月</span>
             <div class="axis-bars">
-              <div class="bar-track"><span class="bar-fill bar-public" style="width: 73%;">public 19</span></div>
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 73%;">公开 19</span></div>
               <div class="bar-track"><span class="bar-fill bar-talk" style="width: 9%;">1</span></div>
             </div>
             <span class="axis-total">20</span>
           </div>
         </div>
         <div class="legend-row">
-          <span><i class="legend-swatch bar-public"></i>public timeline entries</span>
-          <span><i class="legend-swatch bar-talk"></i>podcast / video discussions</span>
+          <span><i class="legend-swatch bar-public"></i>公开时间线条目</span>
+          <span><i class="legend-swatch bar-talk"></i>播客 / 视频讨论</span>
           <span>计数来自本地源池，不代表全网总量。</span>
         </div>
       </div>
       <div class="timeline">
-        <article class="month"><h3>Jan</h3><b>可读、可控、可安全运行</b><p>repo readiness、agent loop、Cowork、guardrails。</p></article>
-        <article class="month"><h3>Feb</h3><b>从聊天到 command center</b><p>Codex app、harness、Claude Code、企业部署。</p></article>
-        <article class="month"><h3>Mar</h3><b>SDLC 变成控制系统</b><p>spec readiness、payment eval、platform engineering。</p></article>
-        <article class="month"><h3>Apr</h3><b>从 coding agent 到 work agent</b><p>Symphony、Managed Agents、Open Agentic Development。</p></article>
-        <article class="month"><h3>May</h3><b>进入组织和岗位</b><p>finance agents、Frontier Firm、AI operating model。</p></article>
+        <article class="month"><h3>1月</h3><b>可读、可控、可安全运行</b><p>仓库准备度、Agent 循环、Cowork、护栏。</p></article>
+        <article class="month"><h3>2月</h3><b>从聊天到作业指挥台</b><p>Codex app、harness、Claude Code、企业部署。</p></article>
+        <article class="month"><h3>3月</h3><b>SDLC 变成控制系统</b><p>spec 准备度、支付集成 eval、平台工程。</p></article>
+        <article class="month"><h3>4月</h3><b>从写代码的 Agent 到执行工作的 Agent</b><p>Symphony、Managed Agents、Open Agentic Development。</p></article>
+        <article class="month"><h3>5月</h3><b>进入组织和岗位</b><p>金融 Agent、Frontier Firm、AI 作业模型。</p></article>
       </div>
     </section>
 
     <section class="section" id="dumbbell">
       <div class="section-title">
         <h2>公司内部协作正在变成一只哑铃</h2>
-        <span>candidate frame, not industry term</span>
+        <span>候选观察框架，不是行业标准术语</span>
       </div>
       <figure class="article-figure chapter-figure">
         <img src="agentic-collaboration-images/02-company-dumbbell.png" width="1672" height="941" alt="公司的位置更像哑铃：执行自动化端、组织治理端和中间协作桥" loading="lazy" />
-        <figcaption>章节配图：一端是执行自动化，一端是组织治理，中间靠 spec、eval、review、owner、writeback 承重。</figcaption>
+        <figcaption>章节配图：一端是执行自动化，一端是组织治理，中间靠 spec、eval、review、owner 和写回机制承重。</figcaption>
       </figure>
       <article class="article-prose">
         <p class="lead-claim">“哑铃”不是行业术语，是我们对公开信源的一个观察框架：左端是人的判断、目标和责任，右端是系统化执行、验证和回放，中间那根杆是 spec、eval、review packet、wiki、rules、issue 和 PR。</p>
@@ -1803,18 +1803,18 @@
         <p>Agent 进入以后，变化不是“中间人消失”。更准确的说法是：<strong>转述型中间劳动被压缩，判断型中间责任被抬高。</strong>找资料、拆任务、生成初稿、补测试、整理证据、更新文档，这些中间执行工作开始被做成可排队、可审查、可复用的系统单元；但目标、非目标、用户取舍、风险承受、验收标准、发布判断，仍然必须由人承担。</p>
         <h3>为什么说两端都会变重</h3>
         <p>执行端变重，是因为 OpenAI Harness、Block AI-Assisted Development、JetBrains Central、Sourcegraph、GitHub Copilot coding agent 等材料都在强调同一类基础设施：repo knowledge、skills、tests、CI、sandbox、credentials、audit、branch protection、cost attribution、observability。没有这些，Agent 只是更快地制造不可控产物。</p>
-        <p>判断端变重，是因为 Amazon、Shopify、Duolingo、Coinbase、Microsoft Frontier Firm、McKinsey Agentic Organization 这些组织讨论都在把 AI 从“个人效率工具”推向“组织作业方式”。一旦执行可以外包给系统，公司反而更需要清楚说明：谁是 owner，什么不能做，什么结果才算过关，失败以后由谁收拾和写回。</p>
+        <p>判断端变重，是因为 Amazon、Shopify、Duolingo、Coinbase、Microsoft Frontier Firm、McKinsey Agentic Organization 这些组织讨论都在把 AI 从“个人效率工具”推向“组织作业方式”。一旦执行可以外包给系统，公司反而更需要清楚说明：谁是 owner（责任人），什么不能做，什么结果才算过关，失败以后由谁收拾和写回。</p>
         <ul class="consensus-list">
           <li><b>左端</b><span>目标、用户、边界、风险、验收、发布判断。这些不能交给 Agent 自己决定。</span></li>
           <li><b>右端</b><span>检索、拆解、生成、实现、验证、证据整理、知识写回。这些开始变成系统执行能力。</span></li>
           <li><b>中杆</b><span>spec、eval、review packet、wiki、rules、issue、PR。它们把人的判断翻译成可执行上下文，把系统输出翻译成可审查证据。</span></li>
         </ul>
-        <p class="reference-line">主要依据：OpenAI Harness Engineering / Symphony；GitHub Copilot coding agent；Atlassian Rovo/Jira；Google Jules；JetBrains Central；Block AI-Assisted Development；Sourcegraph AI agents；Microsoft Frontier Firm；McKinsey Agentic Organization；Deloitte operating-model materials；Keith Rabois barrels / ammunition；Karpathy / Addy Osmani 关于 agentic engineering 与 agent 管理的实践讨论。</p>
+        <p class="reference-line">主要依据：OpenAI Harness Engineering / Symphony；GitHub Copilot coding agent；Atlassian Rovo/Jira；Google Jules；JetBrains Central；Block AI-Assisted Development；Sourcegraph AI agents；Microsoft Frontier Firm；McKinsey Agentic Organization；Deloitte 作业模型材料；Keith Rabois 的 barrels / ammunition 框架；Karpathy / Addy Osmani 关于 agentic engineering 与 Agent 管理的实践讨论。</p>
         <div class="boundary-note">
           <h3>证据边界</h3>
           <ul>
             <li>“哑铃”是本文候选观察，不是已被行业命名的标准模型。</li>
-            <li>组织瘦身、AI-first hiring、one-person company 叙事不能直接等同于成熟 Agent 作业系统。</li>
+            <li>组织瘦身、AI-first 招聘、一人公司叙事不能直接等同于成熟 Agent 作业系统。</li>
             <li>中间层不是消失，而是被拆成两部分：可系统化的执行，以及必须更清楚归属的人类责任。</li>
           </ul>
         </div>
@@ -1824,7 +1824,7 @@
     <section class="section" id="system">
       <div class="section-title">
         <h2>作业系统变了</h2>
-        <span>from handoff pipeline to reviewable work loop</span>
+        <span>从交接链到可审查作业循环</span>
       </div>
       <div class="paired-figures">
         <figure class="article-figure chapter-figure">
@@ -1832,7 +1832,7 @@
           <figcaption>章节配图：编号 04 对应本节的作业系统变化，作业对象从会议、文档和口头同步，迁移到 ticket、spec、PR、eval、wiki、log。</figcaption>
         </figure>
         <figure class="article-figure chapter-figure">
-          <img src="agentic-collaboration-images/05-agent-loop.png" width="1672" height="941" alt="Agent 循环：人定目标、可执行上下文、Agent queue、review packet、replay trail、system writeback" loading="lazy" />
+          <img src="agentic-collaboration-images/05-agent-loop.png" width="1672" height="941" alt="Agent 循环：人定目标、可执行上下文、Agent 队列、review packet、回放记录、系统写回" loading="lazy" />
           <figcaption>章节配图：编号 05 对应本节里的 Agent 可审查循环；它不是重复配图，而是在说明每次执行都要留下证据、审查和写回。</figcaption>
         </figure>
       </div>
@@ -1840,24 +1840,24 @@
         <p class="lead-claim">作业系统变了，意思不是换一个 AI 工具入口，而是公司把工作交出去、收回来、审清楚、再沉淀的方式变了。过去靠人传上下文；现在要把上下文做成 Agent 能执行、团队能审查、系统能写回的对象。</p>
         <p>在旧协作里，需求、设计、工程、测试之间靠人解释。一个好的 PM 或 TL 往往承担大量隐性中间劳动：把业务目标翻译成工程任务，把工程约束翻译回业务语言，把风险翻译成排期和验收，把问题翻译成会议纪要和 Jira 状态。这个中间层一直存在，只是过去主要由人承担。</p>
         <p>Agent 的变化，是把其中一部分中间执行劳动变成系统对象。ticket 可以带上下文，spec 可以定义目标和非目标，PR 可以承载 diff、测试、日志和风险说明，eval 可以把验收从主观感觉变成可重复检查，wiki / rules / skills 可以把失败和经验写回下次执行。OpenAI Harness 和 Symphony、GitHub issue-to-PR agent、Atlassian Rovo/Jira、Stripe payment integration eval、Block 的 AGENTS/HOWTOAI/skills，都在指向这个方向。</p>
-        <span class="mini-sequence">目标 / 非目标 -> spec / issue / context -> agent queue -> diff / draft / test / log -> review packet -> eval / CI / owner decision -> wiki / rules / test 写回</span>
+        <span class="mini-sequence">目标 / 非目标 -> spec / issue / 上下文 -> Agent 队列 -> diff / 草稿 / test / log -> review packet -> eval / CI / owner 判断 -> wiki / rules / test 写回</span>
         <h3>Agent 把中间执行层变成可审查循环</h3>
-        <p>这句话要写实一点：Agent 没有创造一个新的管理层，也不能自己批准自己。它真正能改变的，是把过去散落在会议、私聊、文档、脚本和个人经验里的中间执行动作，组织成一个可审查循环。人给目标和边界，系统拿到可执行上下文，Agent 排队执行，输出带上依据、验证、失败项和待判断问题，最终由 owner 决定是否接受，并把失败写回系统。</p>
-        <p>OpenAI 的 Codex agent loop 把 user、model、tools、state、safety policy 明确成循环；Symphony 把 issue tracker 变成 orchestration surface；Anthropic Managed Agents 强调 long-horizon work 需要 durable session、sandbox、credential isolation；Block 的 testing pyramid、guardrails、skills 和 Actionable CI 则说明 Agent 工作不能只看生成结果，还要看验证、反馈和写回。</p>
+        <p>这句话要写实一点：Agent 没有创造一个新的管理层，也不能自己批准自己。它真正能改变的，是把过去散落在会议、私聊、文档、脚本和个人经验里的中间执行动作，组织成一个可审查循环。人给目标和边界，系统拿到可执行上下文，Agent 排队执行，输出带上依据、验证、失败项和待判断问题，最终由 owner（责任人）决定是否接受，并把失败写回系统。</p>
+        <p>OpenAI 的 Codex agent loop 把 user、model、tools、state、safety policy 明确成循环；Symphony 把 issue tracker 变成编排入口；Anthropic Managed Agents 强调长期任务需要持久会话、沙箱和凭证隔离；Block 的 testing pyramid、guardrails、skills 和 Actionable CI 则说明 Agent 工作不能只看生成结果，还要看验证、反馈和写回。</p>
         <h3>什么算“可审查”</h3>
         <ul class="consensus-list">
           <li><b>输入</b><span>目标、非目标、样例、反例、权限边界、数据入口、测试方法、验收标准要写清楚。</span></li>
           <li><b>过程</b><span>Agent 用了哪些上下文、调用了哪些工具、跑了哪些检查、跳过了什么，都要能被回放。</span></li>
-          <li><b>输出</b><span>不是只给答案，而是给变更点、依据、验证结果、失败项、风险和待 owner 判断的问题。</span></li>
+          <li><b>输出</b><span>不是只给答案，而是给变更点、依据、验证结果、失败项、风险和待 owner（责任人）判断的问题。</span></li>
           <li><b>写回</b><span>失败要进入测试、rules、wiki、skill、review checklist，否则下一轮只是重复犯错。</span></li>
         </ul>
-        <p>所以这不是“全自动驾驶”。高风险节点仍然需要人审、可追责、可回滚。Agent 的价值不在于省掉判断，而在于让执行层变得更可见：哪里缺上下文、哪里没有测试、哪里 owner 没有说清楚、哪里系统没有留下证据，都会被更快暴露。</p>
+        <p>所以这不是“全自动驾驶”。高风险节点仍然需要人审、可追责、可回滚。Agent 的价值不在于省掉判断，而在于让执行层变得更可见：哪里缺上下文、哪里没有测试、哪里 owner（责任人）没有说清楚、哪里系统没有留下证据，都会被更快暴露。</p>
         <p class="reference-line">主要依据：OpenAI Unrolling the Codex agent loop / Unlocking the Codex harness / Harness Engineering / Symphony；Anthropic Scaling Managed Agents；Block Agent Guardrails、Testing Pyramid for AI Agents、AI-Assisted Development、skills、Actionable CI；GitHub Copilot coding agent；Atlassian Rovo/Jira；Stripe AI agents build real Stripe integrations；Google DORA 2025、Stack Overflow 2025、GitLab、Thoughtworks 对质量、稳定性、信任和平台治理的研究提醒。</p>
         <div class="boundary-note">
           <h3>证据边界</h3>
           <ul>
             <li>不能写“Agent 已接管完整 SDLC”。更准确的是：部分中间执行动作正在从人脑和会议迁移到可执行工作对象。</li>
-            <li>“review packet”是本文用来概括输出证据包的表达，不是所有产品都采用的标准名词。</li>
+            <li>“review packet（审查证据包）”是本文用来概括输出证据包的表达，不是所有产品都采用的标准名词。</li>
             <li>工具页证明作业面方向，研究报告和事故案例提醒治理风险；两类证据要一起用，不能只拿供应商叙事写结论。</li>
           </ul>
         </div>
@@ -1867,7 +1867,7 @@
     <section class="section" id="actions">
       <div class="section-title">
         <h2>现有公司的人该怎么做</h2>
-        <span>role-by-role operating change</span>
+        <span>按角色调整作业方式</span>
       </div>
       <figure class="article-figure chapter-figure">
         <img src="agentic-collaboration-images/06-company-actions.png" width="1672" height="941" alt="现有公司的人该怎么做：CEO、PM、Design、Engineering、QA、Ops、Manager 的角色动作" loading="lazy" />
@@ -1885,10 +1885,10 @@
         </article>
         <article class="person">
           <span class="role">Product / PM</span>
-          <h3>从需求转述者变成判断 owner</h3>
+          <h3>从需求转述者变成判断 owner（责任人）</h3>
           <ul>
             <li>写清目标、非目标、用户场景和验收标准。</li>
-            <li>把 ticket/spec/wiki 做成 agent 可执行上下文。</li>
+            <li>把 ticket / spec / wiki 做成 Agent 可执行上下文。</li>
             <li>保留取舍权，不能把产品判断外包给模型。</li>
           </ul>
         </article>
@@ -1897,7 +1897,7 @@
           <h3>把体验判断变成可测试样本</h3>
           <ul>
             <li>沉淀用户语境、反例、边界场景和体验红线。</li>
-            <li>用原型和 review packet 审 agent 产物。</li>
+            <li>用原型和 review packet 审查 Agent 产物。</li>
             <li>把“像不像人话”变成示例和检查项。</li>
           </ul>
         </article>
@@ -1906,7 +1906,7 @@
           <h3>从写代码扩展到管理执行系统</h3>
           <ul>
             <li>设计工具权限、上下文入口、测试和回滚。</li>
-            <li>审查 agent 输出是否真的满足 spec。</li>
+            <li>审查 Agent 输出是否真的满足 spec。</li>
             <li>把失败写回 eval、lint、guardrail、skill。</li>
           </ul>
         </article>
@@ -1916,7 +1916,7 @@
           <ul>
             <li>从末端兜底转向前置风险样本库。</li>
             <li>把缺陷、异常、客诉、合规点结构化。</li>
-            <li>用可复跑检查证明 agent 没有只会演示。</li>
+            <li>用可复跑检查证明 Agent 没有只会演示。</li>
           </ul>
         </article>
         <article class="person">
@@ -1934,32 +1934,32 @@
     <section class="section" id="heat">
       <div class="section-title">
         <h2>讨论热区</h2>
-        <span>click a term to inspect source routes</span>
+        <span>点击关键词查看来源路径</span>
       </div>
       <div class="heat">
         <article class="heat-panel">
           <div class="terms" aria-label="行业讨论热词">
-            <button class="term t1 active" data-term="judgment">judgment</button>
+            <button class="term t1 active" data-term="judgment">判断</button>
             <button class="term t1" data-term="agentic engineering">agentic engineering</button>
-            <button class="term t2" data-term="control plane">control plane</button>
-            <button class="term t2" data-term="OPD / barrel">OPD / barrel</button>
+            <button class="term t2" data-term="control plane">控制平面</button>
+            <button class="term t2" data-term="OPD / barrel">端到端负责人</button>
             <button class="term t2" data-term="spec">spec</button>
             <button class="term t3" data-term="eval">eval</button>
             <button class="term t3" data-term="review packet">review packet</button>
-            <button class="term t3" data-term="AI-native team">AI-native team</button>
-            <button class="term t4" data-term="permission">permission</button>
+            <button class="term t3" data-term="AI-native team">AI 原生团队</button>
+            <button class="term t4" data-term="permission">权限</button>
             <button class="term t4" data-term="CI">CI</button>
-            <button class="term t4" data-term="context">context</button>
-            <button class="term t5" data-term="cost">cost</button>
-            <button class="term t5" data-term="trust">trust</button>
-            <button class="term t5" data-term="tech debt">tech debt</button>
+            <button class="term t4" data-term="context">上下文</button>
+            <button class="term t5" data-term="cost">成本</button>
+            <button class="term t5" data-term="trust">信任</button>
+            <button class="term t5" data-term="tech debt">技术债</button>
           </div>
         </article>
         <article class="source-drawer" id="sourceDrawer" aria-live="polite">
-          <h3>judgment</h3>
+          <h3>判断</h3>
           <p>所属争议：执行越自动化，人的判断越不能消失。</p>
           <ul>
-            <li>OpenAI Harness Engineering：human steers, agents execute.</li>
+            <li>OpenAI Harness Engineering：人负责驾驶，Agent 负责执行。</li>
             <li>Karpathy / Sequoia：agentic engineering 不是随手 vibe coding。</li>
             <li>Daniel Miessler：公司说不清目标时，AI 只会放大混乱。</li>
           </ul>
@@ -1970,7 +1970,7 @@
     <section class="section" id="evidence">
       <div class="section-title">
         <h2>证据怎么用</h2>
-        <span>load-bearing map</span>
+        <span>证据承重表</span>
       </div>
       <div class="evidence-visual">
         <div class="visual-title">
@@ -1987,14 +1987,14 @@
           </thead>
           <tbody>
             <tr>
-              <td>公司一手实践<br />工程博客 / 产品文档 / 官方报告 / repo</td>
+              <td>公司一手实践<br />工程博客 / 产品文档 / 官方报告 / 仓库</td>
               <td>说明作业对象、工具链、权限、eval、review 如何变化。</td>
               <td>不能单独证明“整个行业必然如此”。</td>
             </tr>
             <tr>
               <td>操作者长访谈<br />Keith Rabois / Boris Cherny / Karpathy / Cat Wu</td>
               <td>提炼角色语言、组织判断、工作方式变化。</td>
-              <td>不能当统计事实，引用前要 transcript capture。</td>
+              <td>不能当统计事实，引用前要回到逐字稿或完整访谈。</td>
             </tr>
             <tr>
               <td>研究、调查、反例<br />DORA / Stack Overflow / GitLab / METR</td>
@@ -2014,7 +2014,7 @@
     <section class="section" id="principles">
       <div class="section-title">
         <h2>我们应该怎么做</h2>
-        <span>local operating principles</span>
+        <span>本地作业原则</span>
       </div>
       <figure class="article-figure chapter-figure">
         <img src="agentic-collaboration-images/07-operating-principles.png" width="1672" height="941" alt="我们应该怎么做：30-60 天 pilot 作业链，从选工作流到写回系统" loading="lazy" />
@@ -2024,8 +2024,8 @@
         <article class="rulebox">
           <h3>三条原则</h3>
           <ul>
-            <li><strong>目标人定。</strong>业务目标、用户价值、优先级、风险承受度不能交给 agent。</li>
-            <li><strong>过程可委托。</strong>检索、整理、生成、实现、验证、回放可以交给 agent。</li>
+            <li><strong>目标人定。</strong>业务目标、用户价值、优先级、风险承受度不能交给 Agent。</li>
+            <li><strong>过程可委托。</strong>检索、整理、生成、实现、验证、回放可以交给 Agent。</li>
             <li><strong>结果可审计。</strong>所有输出必须进入 PR、review packet、eval、wiki、日志这类可追踪对象。</li>
           </ul>
         </article>
@@ -2034,7 +2034,7 @@
           <ul>
             <li>从会议材料、文章或需求进入。</li>
             <li>沉淀成 spec / wiki / issue。</li>
-            <li>agent 产出草稿、代码改动或 review packet。</li>
+            <li>Agent 产出草稿、代码改动或 review packet。</li>
             <li>人审查判断，失败写回规则、测试、skill、wiki。</li>
           </ul>
         </article>
@@ -2045,14 +2045,14 @@
       <p><strong>本版状态：</strong>内部 H5 草稿。它回答“行业在争什么、公司内部协作怎么变、Agent 如何进入作业系统”，不替代完整 MD 母稿和最终证据复核。</p>
       <p><strong>主要来源：</strong></p>
       <ol class="source-list">
-        <li>OpenAI, Symphony and Codex harness engineering.</li>
-        <li>Anthropic, Claude Code teams and managed agents.</li>
-        <li>Block Engineering, AI-assisted development and agent guardrails.</li>
-        <li>Stripe, payment integration evals and agentic commerce.</li>
-        <li>GitHub, Atlassian, JetBrains, Sourcegraph developer-platform posts.</li>
-        <li>Microsoft Frontier Firm, IBM AI operating model, Deloitte and Gartner operating-model discussions.</li>
-        <li>Lenny / How I AI, No Priors, Software Engineering Daily, Software Engineering Radio, Practical AI discussion pool.</li>
-        <li>DORA, Stack Overflow, GitLab, Thoughtworks, METR and incident sources for risk boundaries.</li>
+        <li>OpenAI：Symphony、Codex harness 工程材料与 Agent 循环材料。</li>
+        <li>Anthropic：Claude Code 团队实践与 Managed Agents 材料。</li>
+        <li>Block Engineering：AI-assisted development 与 Agent guardrails。</li>
+        <li>Stripe：支付集成 eval 与 agentic commerce 材料。</li>
+        <li>GitHub、Atlassian、JetBrains、Sourcegraph：开发平台与作业入口材料。</li>
+        <li>Microsoft Frontier Firm、IBM AI operating model、Deloitte / Gartner：组织作业模型讨论。</li>
+        <li>Lenny / How I AI、No Priors、Software Engineering Daily、Software Engineering Radio、Practical AI：操作者访谈与讨论池。</li>
+        <li>DORA、Stack Overflow、GitLab、Thoughtworks、METR 与事故案例：质量、信任和风险边界。</li>
       </ol>
     </footer>
   </main>
@@ -2062,113 +2062,113 @@
       "judgment": {
         debate: "执行越自动化，人的判断越不能消失。",
         sources: [
-          "OpenAI Harness Engineering: human steers, agents execute.",
-          "Karpathy / Sequoia: agentic engineering 不是随手 vibe coding。",
-          "Daniel Miessler: 公司说不清目标时，AI 只会放大混乱。"
+          "OpenAI Harness Engineering：人负责驾驶，Agent 负责执行。",
+          "Karpathy / Sequoia：agentic engineering 不是随手 vibe coding。",
+          "Daniel Miessler：公司说不清目标时，AI 只会放大混乱。"
         ]
       },
       "agentic engineering": {
         debate: "专业软件从手写代码转向拆解、调度、验证和负责。",
         sources: [
-          "Karpathy / Sequoia: From Vibe Coding to Agentic Engineering.",
-          "Practical AI / Steve Klabnik: humility and engineering discipline.",
-          "Software Engineering Daily / Steve Yegge: task graphs and shared ledgers."
+          "Karpathy / Sequoia：From Vibe Coding to Agentic Engineering。",
+          "Practical AI / Steve Klabnik：谦逊、验证和工程纪律。",
+          "Software Engineering Daily / Steve Yegge：任务图和共享账本。"
         ]
       },
       "control plane": {
-        debate: "agent 工作入口从聊天框迁移到 issue、PR、Jira、Linear、IDE 和 CI。",
+        debate: "Agent 工作入口从聊天框迁移到 issue、PR、Jira、Linear、IDE 和 CI。",
         sources: [
-          "OpenAI Symphony: issue tracker as Codex orchestration surface.",
-          "GitHub Copilot coding agent: issue to PR workflow.",
-          "JetBrains Central: control plane, execution plane, observability."
+          "OpenAI Symphony：issue tracker 变成 Codex 编排入口。",
+          "GitHub Copilot coding agent：从 issue 到 PR 的工作流。",
+          "JetBrains Central：控制平面、执行平面和可观测性。"
         ]
       },
       "OPD / barrel": {
-        debate: "执行成本下降后，稀缺点变成端到端 owner。",
+        debate: "执行成本下降后，稀缺点变成端到端 owner（责任人）。",
         sources: [
-          "Keith Rabois / Lenny: PayPal barrel claim chain.",
-          "Keith Rabois / How to Operate: barrels vs ammunition.",
-          "Jiang Tao / WeChat: OPD framing, secondary route only."
+          "Keith Rabois / Lenny：PayPal barrel 说法链路。",
+          "Keith Rabois / How to Operate：barrels vs ammunition 框架。",
+          "江涛 / 微信：OPD 表达，只作为二级线索。"
         ]
       },
       "spec": {
-        debate: "spec 从给人读的文档，变成 agent 执行的边界和验收标准。",
+        debate: "spec 从给人读的文档，变成 Agent 执行的边界和验收标准。",
         sources: [
-          "AWS / Marc Brooker: spec-driven AI development.",
-          "Allstacks Spec Readiness Agent.",
-          "Atlassian Jira AI: PRD, epics, issues, dev execution."
+          "AWS / Marc Brooker：spec-driven AI development。",
+          "Allstacks：Spec Readiness Agent。",
+          "Atlassian Jira AI：PRD、epic、issue 与开发执行。"
         ]
       },
       "eval": {
-        debate: "当 agent 进入支付、生产和企业系统，eval 是基础设施，不是附加项。",
+        debate: "当 Agent 进入支付、生产和企业系统，eval 是基础设施，不是附加项。",
         sources: [
-          "Stripe: Can AI agents build real Stripe integrations?",
-          "OpenAI AgentKit: evals and optimization surface.",
-          "Block Testing Pyramid for AI Agents."
+          "Stripe：Can AI agents build real Stripe integrations?",
+          "OpenAI AgentKit：eval 与优化界面。",
+          "Block：Testing Pyramid for AI Agents。"
         ]
       },
       "review packet": {
-        debate: "人的注意力是瓶颈，agent 输出必须变成可审查包。",
+        debate: "人的注意力是瓶颈，Agent 输出必须变成可审查包。",
         sources: [
-          "OpenAI Symphony: review packets and task workspaces.",
-          "GitHub Copilot coding agent: draft PR and branch protection.",
-          "Intercom / How I AI: permission and accountability framework."
+          "OpenAI Symphony：review packet 与任务工作区。",
+          "GitHub Copilot coding agent：draft PR 与分支保护。",
+          "Intercom / How I AI：权限和问责框架。"
         ]
       },
       "AI-native team": {
         debate: "小团队叙事变强，但组织治理没有消失。",
         sources: [
-          "Microsoft Frontier Firm: human-led, AI-operated organization.",
-          "AgentMarketCap YC W26 agent-native company pattern, candidate only.",
-          "Business Insider / Airbnb and 0G Labs coverage, secondary routes."
+          "Microsoft Frontier Firm：human-led, AI-operated organization。",
+          "AgentMarketCap YC W26：agent-native company pattern，仅作候选线索。",
+          "Business Insider / Airbnb 与 0G Labs 报道：二级线索。"
         ]
       },
       "permission": {
-        debate: "agent 能做什么、不能做什么，必须产品化和审计化。",
+        debate: "Agent 能做什么、不能做什么，必须产品化和审计化。",
         sources: [
-          "Block Agent Guardrails and Controls.",
-          "Coder Agents: self-hosted infrastructure and centralized control.",
-          "Anthropic Managed Agents: credential isolation and durable sessions."
+          "Block Agent Guardrails and Controls。",
+          "Coder Agents：自托管基础设施和集中控制。",
+          "Anthropic Managed Agents：凭证隔离和持久会话。"
         ]
       },
       "CI": {
-        debate: "CI 从给人看的失败结果，变成 agent 可读的反馈回路。",
+        debate: "CI 从给人看的失败结果，变成 Agent 可读的反馈回路。",
         sources: [
-          "Block Actionable CI, primary-index pending capture.",
-          "GitHub coding agent runs in Actions environment.",
-          "OpenAI Harness Engineering: feedback loops and tests."
+          "Block Actionable CI，一手索引待补。",
+          "GitHub coding agent 在 Actions 环境中运行。",
+          "OpenAI Harness Engineering：反馈回路和测试。"
         ]
       },
       "context": {
-        debate: "组织上下文是否清楚，决定 agent 是提效还是放大混乱。",
+        debate: "组织上下文是否清楚，决定 Agent 是提效还是放大混乱。",
         sources: [
-          "Daniel Miessler: company self-knowledge as AI readiness.",
-          "Software Engineering Daily / Organizational Context for AI Coding Agents.",
-          "Anthropic Claude Code best practices: context management."
+          "Daniel Miessler：公司自我认知是 AI readiness 的一部分。",
+          "Software Engineering Daily：Organizational Context for AI Coding Agents。",
+          "Anthropic Claude Code best practices：上下文管理。"
         ]
       },
       "cost": {
-        debate: "agent adoption 带来 token、平台、审查和返工成本。",
+        debate: "采用 Agent 会带来 token、平台、审查和返工成本。",
         sources: [
-          "Pragmatic Engineer token spend and tokenmaxxing leads.",
-          "JetBrains Central: observability, cost, and intent alignment.",
-          "GitLab DevSecOps Report: toolchain sprawl and compliance."
+          "Pragmatic Engineer：token spend 与 tokenmaxxing 线索。",
+          "JetBrains Central：可观测性、成本和意图对齐。",
+          "GitLab DevSecOps Report：工具链膨胀和合规。"
         ]
       },
       "trust": {
         debate: "采用率上升不等于信任上升，尤其在生产和高风险工作中。",
         sources: [
-          "Stack Overflow Developer Survey: adoption vs trust gap.",
-          "DORA 2025: organization practices and stability caveats.",
-          "Thoughtworks DORA perspective: systems thinking and stability."
+          "Stack Overflow Developer Survey：采用率与信任缺口。",
+          "DORA 2025：组织实践和稳定性提醒。",
+          "Thoughtworks DORA perspective：系统思维和稳定性。"
         ]
       },
       "tech debt": {
-        debate: "agent 可以加快产出，也可能加快债务生成。",
+        debate: "Agent 可以加快产出，也可能加快债务生成。",
         sources: [
-          "Stack Overflow Podcast: AI can 10x developers in creating tech debt.",
-          "METR early-2025 study: experienced developers slowed in realistic OSS tasks.",
-          "Replit incident coverage: production isolation risk."
+          "Stack Overflow Podcast：AI 也能 10 倍加速技术债生成。",
+          "METR early-2025 study：有经验开发者在真实 OSS 任务里变慢。",
+          "Replit 事故报道：生产隔离风险。"
         ]
       }
     };
@@ -2180,8 +2180,9 @@
         button.classList.add("active");
         const term = button.dataset.term;
         const entry = termSources[term];
+        const label = button.textContent.trim();
         drawer.innerHTML = `
-          <h3>${term}</h3>
+          <h3>${label}</h3>
           <p>所属争议：${entry.debate}</p>
           <ul>${entry.sources.map((source) => `<li>${source}</li>`).join("")}</ul>
         `;
