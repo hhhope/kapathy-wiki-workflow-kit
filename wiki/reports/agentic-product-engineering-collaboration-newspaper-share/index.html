@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Agent 时代产研协作行业观察报</title>
+  <style>
+    @font-face {
+      font-family: YaHeiLocal;
+      src: url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype");
+      font-weight: 400 900;
+    }
+
+    @font-face {
+      font-family: SimSunLocal;
+      src: url("file:///mnt/c/Windows/Fonts/simsun.ttc") format("truetype");
+      font-weight: 400 900;
+    }
+
+    :root {
+      --font-body: YaHeiLocal, "IBM Plex Sans", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      --font-serif: SimSunLocal, "Instrument Serif", "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "SimSun", Georgia, serif;
+      --font-mono: "IBM Plex Mono", "SFMono-Regular", "Menlo", "Consolas", monospace;
+      --bg: #f3eadc;
+      --paper: #fffaf0;
+      --paper-2: #f7ecdc;
+      --surface: rgba(255, 250, 240, .94);
+      --ink: #1e1812;
+      --muted: #66594d;
+      --line: #2c2118;
+      --thin: rgba(44, 33, 24, .16);
+      --red: #be123c;
+      --blue: #1e3a5f;
+      --green: #4f6f45;
+      --amber: #d4a73a;
+      --cranberry: #881337;
+      --soft-red: #f8e0e3;
+      --soft-blue: #e3edf4;
+      --soft-green: #e6eedf;
+      --soft-amber: #f8edcf;
+      --soft-cranberry: #f2d9dd;
+      --shadow: 0 18px 44px rgba(58, 42, 25, .10);
+      --shadow-soft: 0 10px 26px rgba(58, 42, 25, .07);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #15100b;
+        --paper: #211910;
+        --paper-2: #2a2016;
+        --surface: rgba(33, 25, 16, .94);
+        --ink: #f5ead9;
+        --muted: #cdbfae;
+        --line: #f1dfc1;
+        --thin: rgba(241, 223, 193, .16);
+        --red: #f08ca1;
+        --blue: #9fc1df;
+        --green: #a8c78f;
+        --amber: #efd17a;
+        --cranberry: #e99aae;
+        --soft-red: #3a1c22;
+        --soft-blue: #17283a;
+        --soft-green: #1f2d1c;
+        --soft-amber: #342a14;
+        --soft-cranberry: #351821;
+        --shadow: 0 18px 44px rgba(0, 0, 0, .36);
+        --shadow-soft: 0 10px 26px rgba(0, 0, 0, .24);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(212, 167, 58, .18), transparent 30%),
+        radial-gradient(circle at 92% 9%, rgba(30, 58, 95, .14), transparent 28%),
+        linear-gradient(180deg, var(--bg), #f8f1e7 54%, #eee1cf);
+      font-family: var(--font-body);
+      line-height: 1.65;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(44, 33, 24, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(44, 33, 24, .045) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, .28), transparent 74%);
+      opacity: .72;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: min(1440px, calc(100vw - 32px));
+      margin: 24px auto 40px;
+      display: grid;
+      grid-template-columns: 210px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 20px;
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      padding: 14px;
+      border: 1px solid var(--thin);
+      border-radius: 8px;
+      background: rgba(255, 250, 240, .84);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
+    }
+
+    .toc-title {
+      margin: 0 0 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--thin);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 7px 8px;
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      color: var(--ink);
+      background: var(--paper-2);
+    }
+
+    .page {
+      min-width: 0;
+      background: var(--paper);
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: fadeUp .55s ease both;
+    }
+
+    .masthead {
+      padding: 18px 22px 12px;
+      border-bottom: 4px double var(--line);
+    }
+
+    .kicker {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .brand {
+      margin: 10px 0 2px;
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 7vw, 78px);
+      line-height: .98;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .tagline {
+      margin: 0;
+      font-size: clamp(15px, 2vw, 20px);
+      color: var(--muted);
+    }
+
+    .front {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, .75fr);
+      gap: 0;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .lead {
+      padding: 24px 24px 28px;
+      border-right: 2px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 4px 8px;
+      background: var(--red);
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 14px;
+      max-width: 820px;
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 62px);
+      line-height: 1.03;
+      letter-spacing: 0;
+    }
+
+    .dek {
+      max-width: 820px;
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 23px);
+      line-height: 1.55;
+    }
+
+    .thesis {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .thesis-box {
+      min-height: 128px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .thesis-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .thesis-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .side {
+      padding: 18px;
+      background: var(--paper-2);
+    }
+
+    .source-meter {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .metric,
+    .thesis-box,
+    .debate,
+    .stance,
+    .timeline-visual,
+    .debate-visual,
+    .loop-visual,
+    .evidence-visual,
+    .month,
+    .camp,
+    .dumbbell,
+    .bell,
+    .flow,
+    .step,
+    .person,
+    .heat-panel,
+    .source-drawer,
+    .rulebox,
+    .viz-card,
+    .viz-badge,
+    .takeaway,
+    .loop-step {
+      border-radius: 8px;
+    }
+
+    .metric {
+      min-height: 92px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .metric b {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .brief {
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .brief h3 {
+      margin-bottom: 6px;
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .brief p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 24px;
+      border-bottom: 2px solid var(--line);
+      animation: fadeUp .55s ease both;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .section-title h2 {
+      margin-bottom: 7px;
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1;
+    }
+
+    .section-title span {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .debate-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .debate {
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .debate h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .stance {
+      min-height: 118px;
+      padding: 11px;
+      border: 1px solid var(--thin);
+      background: #fafafa;
+    }
+
+    .stance b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--blue);
+      font-size: 14px;
+    }
+
+    .stance:nth-child(2) b {
+      color: var(--red);
+    }
+
+    .signal {
+      margin: 10px 0 0;
+      padding-top: 10px;
+      border-top: 1px dashed #8c8c8c;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .debate-visual,
+    .timeline-visual,
+    .loop-visual,
+    .evidence-visual {
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .visual-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .visual-title h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .visual-title span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line);
+    }
+
+    .quadrant {
+      min-height: 168px;
+      padding: 14px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quadrant:nth-child(2),
+    .quadrant:nth-child(4) {
+      border-right: 0;
+    }
+
+    .quadrant:nth-child(3),
+    .quadrant:nth-child(4) {
+      border-bottom: 0;
+    }
+
+    .quadrant h4 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .quadrant p {
+      margin: 0;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .q-red { background: var(--soft-red); }
+    .q-blue { background: var(--soft-blue); }
+    .q-green { background: var(--soft-green); }
+    .q-amber { background: var(--soft-amber); }
+
+    .axis-note {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .source-axis {
+      display: grid;
+      gap: 10px;
+    }
+
+    .axis-row {
+      display: grid;
+      grid-template-columns: 72px 1fr 64px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .axis-month {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .axis-bars {
+      display: grid;
+      gap: 5px;
+    }
+
+    .bar-track {
+      height: 20px;
+      border: 1px solid var(--line);
+      background: #f6f6f6;
+    }
+
+    .bar-fill {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .bar-public { background: var(--blue); }
+    .bar-talk { background: var(--red); }
+
+    .axis-total {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      font-weight: 900;
+      text-align: right;
+    }
+
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .legend-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      border: 1px solid var(--line);
+    }
+
+    .month {
+      min-height: 270px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .month h3 {
+      margin-bottom: 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .month b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--red);
+      font-size: 15px;
+    }
+
+    .month p {
+      margin-bottom: 10px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      display: inline-flex;
+      padding: 3px 7px;
+      border: 1px solid var(--thin);
+      background: #f7f7f7;
+      color: #333;
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
+    .map {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .camp {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      min-height: 130px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .camp-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-right: 1px solid var(--line);
+      color: #fff;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .camp:nth-child(1) .camp-label { background: var(--red); }
+    .camp:nth-child(2) .camp-label { background: var(--blue); }
+    .camp:nth-child(3) .camp-label { background: var(--green); }
+    .camp:nth-child(4) .camp-label { background: var(--amber); }
+    .camp:nth-child(5) .camp-label { background: var(--cranberry); }
+    .camp:nth-child(6) .camp-label { background: #333; }
+
+    .camp-body {
+      padding: 12px;
+    }
+
+    .camp-body h3 {
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    .camp-body p {
+      margin: 0;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .dumbbell {
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .viz-sheet {
+      margin-top: 16px;
+      padding: 14px;
+      border: 2px solid var(--line);
+      background: #fffdf7;
+      border-radius: 8px;
+      box-shadow: 6px 6px 0 rgba(30, 24, 18, .92);
+    }
+
+    .viz-sheet.knowledge-card {
+      border-radius: 8px;
+      background:
+        linear-gradient(0deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .72)),
+        #fbf1d7;
+    }
+
+    .viz-sheet.main-infographic {
+      background:
+        radial-gradient(circle at 88% 0%, rgba(212, 167, 58, .2), transparent 28%),
+        #fff8e6;
+    }
+
+    .viz-head {
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+      gap: 12px;
+      align-items: stretch;
+      margin-bottom: 12px;
+    }
+
+    .viz-head h3 {
+      margin: 0 0 6px;
+      font-size: 26px;
+      line-height: 1.1;
+    }
+
+    .viz-head p {
+      margin: 0;
+      color: #333;
+    }
+
+    .viz-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border: 2px solid var(--line);
+      background: var(--soft-amber);
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .viz-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .viz-grid.five {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .viz-card {
+      min-height: 150px;
+      padding: 12px;
+      border: 2px solid var(--line);
+      background: #fff;
+      position: relative;
+      box-shadow: 0 8px 18px rgba(44, 33, 24, .05);
+    }
+
+    .viz-card h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .viz-card p {
+      margin: 0;
+      color: #333;
+    }
+
+    .viz-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .viz-card li {
+      margin: 5px 0;
+    }
+
+    .viz-card.blue { background: var(--soft-blue); }
+    .viz-card.green { background: var(--soft-green); }
+    .viz-card.amber { background: var(--soft-amber); }
+    .viz-card.red { background: var(--soft-red); }
+    .viz-card.rose { background: var(--soft-cranberry); }
+
+    .viz-card.warning {
+      background: #161616;
+      color: #fff;
+    }
+
+    .viz-card.warning p,
+    .viz-card.warning li {
+      color: #fff;
+    }
+
+    .takeaway {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border: 2px solid var(--line);
+      background: linear-gradient(135deg, #ffe27a, #f6c85b);
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .draw-object {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .draw-pill,
+    .draw-box,
+    .draw-dot {
+      border: 2px solid var(--line);
+      background: #fff;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .draw-pill {
+      padding: 7px 8px;
+      border-radius: 999px;
+    }
+
+    .draw-box {
+      padding: 8px;
+    }
+
+    .draw-dot {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      font-size: 12px;
+      line-height: 1.15;
+    }
+
+    .arrow-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      font-weight: 800;
+    }
+
+    .arrow-row span {
+      padding: 5px 7px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .arrow-row i {
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .loop-map {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .loop-step {
+      min-height: 82px;
+      padding: 8px;
+      border: 2px solid var(--line);
+      background: #fff;
+      text-align: center;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dumbbell-grid {
+      display: grid;
+      grid-template-columns: 1fr 150px 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .article-prose {
+      max-width: 980px;
+      margin: 0 auto;
+      color: var(--ink);
+    }
+
+    .article-prose .lead-claim {
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--thin);
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.28;
+      font-weight: 900;
+    }
+
+    .article-prose h3 {
+      margin: 24px 0 8px;
+      font-size: 22px;
+      line-height: 1.28;
+    }
+
+    .article-prose p {
+      margin-bottom: 14px;
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .article-prose strong {
+      font-weight: 900;
+    }
+
+    .article-figure {
+      margin: 0 auto 22px;
+      max-width: 1080px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: #fffdf7;
+    }
+
+    .article-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--thin);
+      background: #fff;
+    }
+
+    .article-figure figcaption {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .mainline-figure {
+      max-width: 760px;
+    }
+
+    .mainline-figure img {
+      max-height: none;
+      object-fit: contain;
+    }
+
+    .chapter-figure {
+      margin-top: 2px;
+    }
+
+    .paired-figures {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 1080px;
+      margin: 0 auto 22px;
+    }
+
+    .paired-figures .article-figure {
+      margin: 0;
+      max-width: none;
+    }
+
+    .evidence-ledger {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-left: 4px solid var(--line);
+      background: rgba(255, 255, 255, .5);
+    }
+
+    .evidence-ledger h3,
+    .boundary-note h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .evidence-ledger ul,
+    .boundary-note ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .evidence-ledger li,
+    .boundary-note li {
+      margin: 7px 0;
+      line-height: 1.65;
+    }
+
+    .consensus-list {
+      margin: 16px 0 18px;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .consensus-list li {
+      display: grid;
+      grid-template-columns: 118px minmax(0, 1fr);
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--thin);
+      line-height: 1.7;
+    }
+
+    .consensus-list b {
+      font-family: var(--font-body);
+      font-size: 13px;
+      letter-spacing: 0;
+    }
+
+    .reference-line {
+      margin: 18px 0;
+      padding: 12px 14px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .boundary-note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      background: #fffdf7;
+    }
+
+    .mini-sequence {
+      display: block;
+      margin: 14px 0;
+      padding: 12px 14px;
+      border-left: 4px solid var(--red);
+      background: rgba(248, 224, 227, .42);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .compare-grid article {
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fafafa;
+    }
+
+    .compare-grid h4 {
+      margin-bottom: 8px;
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .compare-grid p {
+      margin: 0;
+      color: #333;
+    }
+
+    .bell {
+      min-height: 260px;
+      padding: 16px;
+      border: 2px solid var(--line);
+      background: #fff;
+    }
+
+    .bell.left {
+      background: var(--soft-blue);
+    }
+
+    .bell.right {
+      background: var(--soft-amber);
+    }
+
+    .bell h3 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      line-height: 1.15;
+    }
+
+    .bell p {
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    .bell ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .bridge {
+      position: relative;
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bridge-line {
+      position: absolute;
+      left: -18px;
+      right: -18px;
+      top: 50%;
+      border-top: 5px solid var(--line);
+    }
+
+    .bridge-node {
+      position: relative;
+      z-index: 1;
+      width: 142px;
+      min-height: 142px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      border: 2px solid var(--line);
+      border-radius: 50%;
+      background: var(--soft-green);
+      text-align: center;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .system {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .flow {
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .flow h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 8px;
+    }
+
+    .step {
+      position: relative;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: #fafafa;
+      font-weight: 700;
+    }
+
+    .step small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .flow.new .step:nth-child(1) { background: var(--soft-red); }
+    .flow.new .step:nth-child(2) { background: var(--soft-blue); }
+    .flow.new .step:nth-child(3) { background: var(--soft-amber); }
+    .flow.new .step:nth-child(4) { background: var(--soft-green); }
+    .flow.new .step:nth-child(5) { background: var(--soft-cranberry); }
+
+    .people {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .person {
+      min-height: 310px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .person .role {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .person:nth-child(1) .role { background: var(--red); }
+    .person:nth-child(2) .role { background: var(--blue); }
+    .person:nth-child(3) .role { background: var(--green); }
+    .person:nth-child(4) .role { background: var(--amber); color: #161616; }
+    .person:nth-child(5) .role { background: var(--cranberry); }
+    .person:nth-child(6) .role { background: #333; }
+
+    .person h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+      line-height: 1.22;
+    }
+
+    .person ul, .rules ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .person li, .rules li {
+      margin: 8px 0;
+    }
+
+    .heat {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+    }
+
+    .heat-panel {
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .terms {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      min-height: 220px;
+    }
+
+    .term {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 800;
+      line-height: 1.1;
+      cursor: pointer;
+      color: inherit;
+      font-family: inherit;
+    }
+
+    .term.active,
+    .term:focus {
+      outline: 3px solid rgba(23, 105, 170, .28);
+      background: #fff8db;
+    }
+
+    .t1 { font-size: 30px; color: var(--red); }
+    .t2 { font-size: 26px; color: var(--blue); }
+    .t3 { font-size: 23px; color: var(--green); }
+    .t4 { font-size: 20px; color: var(--amber); }
+    .t5 { font-size: 17px; color: #333; }
+
+    .source-drawer {
+      min-height: 260px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .source-drawer h3 {
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .source-drawer p {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .source-drawer ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .source-drawer li {
+      margin: 7px 0;
+    }
+
+    .evidence {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .load-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 14px;
+    }
+
+    .load-table th,
+    .load-table td {
+      padding: 12px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .load-table th {
+      background: #f7f7f7;
+      font-size: 15px;
+    }
+
+    .load-table td:nth-child(2) {
+      background: var(--soft-green);
+    }
+
+    .load-table td:nth-child(3) {
+      background: var(--soft-red);
+    }
+
+    .layer {
+      min-height: 190px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .layer h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .layer p {
+      margin: 0;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .rules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .rulebox {
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .rulebox h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .footer {
+      padding: 18px 24px 24px;
+      color: #333;
+      font-size: 13px;
+    }
+
+    .source-list {
+      columns: 2;
+      column-gap: 28px;
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .source-list li {
+      break-inside: avoid;
+      margin: 0 0 8px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .toc,
+      .thesis-box,
+      .metric,
+      .debate,
+      .timeline-visual,
+      .debate-visual,
+      .loop-visual,
+      .evidence-visual,
+      .camp,
+      .dumbbell,
+      .viz-card,
+      .bell,
+      .flow,
+      .person,
+      .heat-panel,
+      .term,
+      .source-drawer,
+      .load-table,
+      .layer,
+      .rulebox {
+        background: var(--surface);
+      }
+
+      .stance,
+      .chip,
+      .compare-grid article,
+      .step,
+      .load-table th {
+        background: var(--paper-2);
+      }
+
+      .brief p,
+      .debate p,
+      .stance,
+      .quadrant p,
+      .camp-body p,
+      .viz-head p,
+      .viz-card p,
+      .month p,
+      .compare-grid p,
+      .bell p,
+      .flow p,
+      .source-drawer p,
+      .layer p,
+      .footer {
+        color: var(--muted);
+      }
+
+    }
+
+    @media (max-width: 1100px) {
+      .shell {
+        width: min(1180px, calc(100vw - 24px));
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .toc {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        max-height: none;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .toc-title {
+        display: inline-block;
+        margin: 0 10px 0 0;
+        padding: 0 10px 0 0;
+        border-bottom: 0;
+        border-right: 1px solid var(--thin);
+        vertical-align: middle;
+      }
+
+      .toc a {
+        display: inline-block;
+        margin-right: 4px;
+        vertical-align: middle;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        width: 100%;
+        margin: 0;
+        border-left: 0;
+        border-right: 0;
+      }
+
+      .front,
+      .thesis,
+      .debate-grid,
+      .matrix,
+      .timeline,
+      .map,
+      .system,
+      .people,
+      .compare-grid,
+      .heat,
+      .evidence,
+      .rules,
+      .axis-note,
+      .paired-figures {
+        grid-template-columns: 1fr;
+      }
+
+      .consensus-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .lead {
+        border-right: 0;
+        border-bottom: 2px solid var(--line);
+      }
+
+      .source-meter {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .section-title span {
+        white-space: normal;
+      }
+
+      .source-list {
+        columns: 1;
+      }
+
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        box-shadow: none;
+      }
+
+      .masthead,
+      .lead,
+      .side,
+      .section,
+      .footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .kicker {
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .source-meter {
+        grid-template-columns: 1fr;
+      }
+
+      .viz-head,
+      .viz-grid,
+      .viz-grid.five,
+      .support-grid,
+      .loop-map,
+      .core-questions,
+      .ops-lane.inline,
+      .ops-metrics,
+      .bridge-stack {
+        grid-template-columns: 1fr;
+      }
+
+      .dumbbell-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bridge {
+        min-height: 120px;
+      }
+
+      .bridge-line {
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        right: auto;
+        border-top: 0;
+        border-left: 5px solid var(--line);
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .camp {
+        grid-template-columns: 1fr;
+      }
+
+      .axis-row {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+      }
+
+      .axis-total {
+        text-align: left;
+      }
+
+      .camp-label {
+        min-height: 52px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+  <nav class="toc" aria-label="章节导航">
+    <p class="toc-title">Edition Map</p>
+    <a href="#top">头版判断</a>
+    <a href="#mainline">五张图读懂主线</a>
+    <a href="#debate">行业在争什么</a>
+    <a href="#timeline">讨论如何推进</a>
+    <a href="#dumbbell">内部协作变成哑铃</a>
+    <a href="#system">作业系统变了</a>
+    <a href="#actions">现有公司的人该怎么做</a>
+    <a href="#heat">讨论热区</a>
+    <a href="#evidence">证据怎么用</a>
+    <a href="#principles">我们应该怎么做</a>
+  </nav>
+  <main class="page" id="top">
+    <header class="masthead">
+      <div class="kicker">
+        <span>Industry Observer / Draft H5 Newspaper</span>
+        <span>2026-05-11 / 公开信源扫描版</span>
+      </div>
+      <div class="brand">AI Agent 时代产研协作观察报</div>
+      <p class="tagline">262 个 source entries 之后，行业真正争论的不是工具，而是谁定义目标、谁承担判断、谁审查结果、谁拥有作业系统。</p>
+    </header>
+
+    <section class="front">
+      <article class="lead">
+        <span class="eyebrow">头版判断</span>
+        <h1>产研协作正在从人力流水线，变成人机作业系统。</h1>
+        <p class="dek">Agent 不是把工程师变快的插件。它把 ticket、spec、PR、CI、eval、wiki 变成可执行对象。人不再只负责把上下文传给下一个人，而要负责目标、边界、判断和后果。</p>
+        <div class="thesis">
+          <div class="thesis-box">
+            <strong>旧问题：怎么让人更快交付？</strong>
+            <p>产品、设计、工程、测试按顺序接力。上下文靠会议和文档搬运，质量靠末端验收兜底。</p>
+          </div>
+          <div class="thesis-box">
+            <strong>新问题：怎么让系统可执行、可审查、可沉淀？</strong>
+            <p>人定义目标和判断边界，agent 执行和自证，结果进入 PR、review packet、eval、wiki、rules。</p>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side">
+        <div class="source-meter">
+          <div class="metric"><b>43</b><span>curated source map</span></div>
+          <div class="metric"><b>88</b><span>broad leads</span></div>
+          <div class="metric"><b>95</b><span>2026 时间线条目</span></div>
+          <div class="metric"><b>36</b><span>播客 / 视频讨论</span></div>
+        </div>
+        <div class="brief">
+          <h3>本版边界</h3>
+          <p>这是 H5 草稿，不是发布版。播客、微信、二手媒体只做讨论路由；关键引用仍需 transcript 或一手材料复核。</p>
+        </div>
+        <div class="brief">
+          <h3>阅读方法</h3>
+          <p>不要按工具看热闹。按公司内部协作看：目标谁定、上下文谁补、执行谁做、结果谁审、失败写回哪里。</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="mainline">
+      <div class="section-title">
+        <h2>五张图读懂主线</h2>
+        <span>visual mainline with evidence boundary</span>
+      </div>
+      <figure class="article-figure mainline-figure">
+        <img src="00-main-thread.jpg" width="916" height="1717" alt="AI Agent 时代产研协作怎么变：从人肉中间层到可审查作业系统的六段主线图" loading="lazy" />
+        <figcaption>主图使用指定图片：从行业争议、公司哑铃、作业系统、可审查循环到人的责任上移，串成一条主线。</figcaption>
+      </figure>
+      <article class="article-prose">
+        <p class="lead-claim">主线只有一句：Agent 的核心价值不是替人做判断，而是把原来靠人转述、追踪、补文档、补测试的中间执行工作，变成可执行、可审查、可回放、可沉淀的系统循环。</p>
+        <ul class="consensus-list">
+          <li><b>01 争议</b><span>行业表面争“代码会不会被解决、PM 会不会消失、小团队会不会替代大组织”。落到公司内部，真正争的是目标、上下文、执行和责任怎么重新分工。</span></li>
+          <li><b>02 结构</b><span>公司内部协作更像一只哑铃：一端是人的判断端，一端是系统执行端，中间靠 spec、eval、review packet、wiki、rules、issue、PR 连接。</span></li>
+          <li><b>03 本质</b><span>不是中间层消失，而是转述型中间劳动被压缩，判断型中间责任被抬高。执行可以系统化，判断必须更清楚。</span></li>
+          <li><b>04 循环</b><span>Agent 输出不能只停在答案。它必须进入 review packet、eval、CI、wiki、rules 和 owner decision，才算进入公司的作业系统。</span></li>
+          <li><b>05 动作</b><span>读者不要先买工具。先选一个高频、可验证、风险可控的工作流，跑 30-60 天 pilot，观察目标清晰度、返工、审查、失败写回和责任归属。</span></li>
+        </ul>
+        <p class="reference-line">源池规模：43 条 curated source map、88 条 broad leads、95 条 2026 公开时间线条目、36 条播客 / 视频讨论线索。它们支持本文主线，但不等于全网总量，也不等于所有材料都完成一手引用复核。</p>
+      </article>
+    </section>
+
+    <section class="section" id="debate">
+      <div class="section-title">
+        <h2>行业在争什么</h2>
+        <span>what the evidence can and cannot support</span>
+      </div>
+      <figure class="article-figure chapter-figure">
+        <img src="01-industry-debate.jpg" width="1672" height="941" alt="行业在争什么：速度与责任、工具与工作对象、小团队与组织治理、员工派与对象派" loading="lazy" />
+        <figcaption>章节配图：保留这一张行业争议图。行业表面在争工具、员工、小团队，底层在争目标、责任、系统和验收；源池规模和证据边界回到正文说明。</figcaption>
+      </figure>
+      <article class="article-prose">
+        <p class="lead-claim">表面上，行业在争“Agent 会不会写完代码、PM 会不会消失、公司会不会变成极小团队”。但把 2026 年 1 月到 5 月 11 日的公开信源放在一起看，真正的争点不是职业消失，而是公司能不能把工作交给 Agent，又能不能把结果审回来。</p>
+        <div class="evidence-ledger">
+          <h3>这篇草稿的数据底座</h3>
+          <ul>
+            <li>截至 2026-05-11，本地源池包括 43 条 curated source map、88 条 broad leads、95 条公开时间线条目、36 条播客 / 视频讨论线索。</li>
+            <li>这不是“全网统计”，也不是 262 篇全部深读后的结论；它能支撑的是公开讨论方向、信源分布和可复核的章节假设。</li>
+            <li>微信文章、二手媒体和播客摘要只作为 claim router；关键判断优先回到公司原文、工程博客、研究报告和上游访谈。</li>
+          </ul>
+        </div>
+        <h3>共识一：工作入口正在从聊天框，回到真实工作对象</h3>
+        <p>OpenAI Symphony 把 issue tracker / Linear 当作 coding agent 的控制面；GitHub Copilot coding agent 把任务挂在 GitHub issue、branch、PR、Actions 和 repo policy 上；Atlassian Rovo in Jira 把 backlog、plan、code、PR 连起来；Google Jules 强调异步、仓库集成、计划、diff、测试和 GitHub 集成。它们各自卖的产品不同，但共同方向很清楚：Agent 不是孤立聊天窗口，而是进入 ticket、issue、PR、workflow、CI 这些已有作业对象。</p>
+        <h3>共识二：执行变快以后，治理、验证和责任反而更重</h3>
+        <p>Stack Overflow 2025 Developer Survey、Google DORA 2025、GitLab DevSecOps、Thoughtworks 的 AI-first software engineering 讨论，都在提醒同一件事：AI adoption 和代码产出提高，并不自动等于交付质量提高。信任、调试、稳定性、平台治理、合规、review、测试和回滚仍然是瓶颈。Replit 数据库事故类案例则是反例边界：没有权限、隔离、审查和回滚，自动化只会放大事故半径。</p>
+        <h3>共识三：人的责任没有消失，而是上移</h3>
+        <p>Karpathy 把专业 AI coding 和“vibe coding”区分开，核心不是模型能不能写，而是人是否仍然理解系统、上下文、质量和风险。Addy Osmani 把 coding agents 明确拉回“管理多个 agent”的能力：清晰目标、分派任务、验证结果、异步沟通。Keith Rabois 的 barrels / ammunition 框架和 Cat Wu 关于产品判断、角色边界变薄的讨论，也都指向同一个组织问题：真正稀缺的是能把目标、判断、执行和结果串起来的人。</p>
+        <ul class="consensus-list">
+          <li><b>争点</b><span>不是“Agent 是否聪明”，而是它能否进入真实工作对象，并被公司治理、验证、审查、追责。</span></li>
+          <li><b>共识</b><span>执行层会被系统化；目标、边界、验收、风险承受和 owner 不能被系统吞掉。</span></li>
+          <li><b>分歧</b><span>供应商会强调替代和效率，研究报告和事故案例提醒：如果作业系统不变，效率提升可能转化成返工、失控和信任下降。</span></li>
+        </ul>
+        <p class="reference-line">主要依据：OpenAI Symphony / Harness Engineering / Codex agent loop；GitHub Copilot coding agent；Atlassian Rovo in Jira；Google Jules；JetBrains Central；Block AI-Assisted Development；Stripe AI integration eval；Stack Overflow 2025 Developer Survey；Google DORA 2025；GitLab DevSecOps；Thoughtworks；McKinsey Agentic Organization；Deloitte GenAI enterprise；Karpathy、Addy Osmani、Keith Rabois、Cat Wu、Boris Cherny 等访谈或实践文本。</p>
+        <div class="boundary-note">
+          <h3>证据边界</h3>
+          <ul>
+            <li>可以写“截至 2026-05-11 的公开来源池显示”，不能写“行业已经定论”。</li>
+            <li>供应商页面能证明产品方向和工作流设计，不能直接证明客户组织已经完成迁移。</li>
+            <li>访谈能提供角色语言和管理框架；涉及具体公司人数、组织效果、生产率提升时，仍需上游 transcript 或一手报告复核。</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="timeline">
+      <div class="section-title">
+        <h2>讨论如何推进</h2>
+        <span>真实条目计数：public timeline 95 + podcast/video 36</span>
+      </div>
+      <div class="timeline-visual">
+        <div class="visual-title">
+          <h3>月度源池：2 月升温，4 月公开讨论达到峰值</h3>
+          <span>public timeline 95 + podcast / video 36</span>
+        </div>
+        <div class="source-axis" role="img" aria-label="2026年1月至5月讨论数量数据表">
+          <div class="axis-row">
+            <span class="axis-month">Jan</span>
+            <div class="axis-bars">
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 42%;">public 11</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 91%;">podcast / video 10</span></div>
+            </div>
+            <span class="axis-total">21</span>
+          </div>
+          <div class="axis-row">
+            <span class="axis-month">Feb</span>
+            <div class="axis-bars">
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 88%;">public 23</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 64%;">podcast / video 7</span></div>
+            </div>
+            <span class="axis-total">30</span>
+          </div>
+          <div class="axis-row">
+            <span class="axis-month">Mar</span>
+            <div class="axis-bars">
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 62%;">public 16</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 100%;">podcast / video 11</span></div>
+            </div>
+            <span class="axis-total">27</span>
+          </div>
+          <div class="axis-row">
+            <span class="axis-month">Apr</span>
+            <div class="axis-bars">
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 100%;">public 26</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 64%;">podcast / video 7</span></div>
+            </div>
+            <span class="axis-total">33</span>
+          </div>
+          <div class="axis-row">
+            <span class="axis-month">May</span>
+            <div class="axis-bars">
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 73%;">public 19</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 9%;">1</span></div>
+            </div>
+            <span class="axis-total">20</span>
+          </div>
+        </div>
+        <div class="legend-row">
+          <span><i class="legend-swatch bar-public"></i>public timeline entries</span>
+          <span><i class="legend-swatch bar-talk"></i>podcast / video discussions</span>
+          <span>计数来自本地源池，不代表全网总量。</span>
+        </div>
+      </div>
+      <div class="timeline">
+        <article class="month"><h3>Jan</h3><b>可读、可控、可安全运行</b><p>repo readiness、agent loop、Cowork、guardrails。</p></article>
+        <article class="month"><h3>Feb</h3><b>从聊天到 command center</b><p>Codex app、harness、Claude Code、企业部署。</p></article>
+        <article class="month"><h3>Mar</h3><b>SDLC 变成控制系统</b><p>spec readiness、payment eval、platform engineering。</p></article>
+        <article class="month"><h3>Apr</h3><b>从 coding agent 到 work agent</b><p>Symphony、Managed Agents、Open Agentic Development。</p></article>
+        <article class="month"><h3>May</h3><b>进入组织和岗位</b><p>finance agents、Frontier Firm、AI operating model。</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="dumbbell">
+      <div class="section-title">
+        <h2>公司内部协作正在变成一只哑铃</h2>
+        <span>candidate frame, not industry term</span>
+      </div>
+      <figure class="article-figure chapter-figure">
+        <img src="02-company-dumbbell.jpg" width="1672" height="941" alt="公司的位置更像哑铃：执行自动化端、组织治理端和中间协作桥" loading="lazy" />
+        <figcaption>章节配图：一端是执行自动化，一端是组织治理，中间靠 spec、eval、review、owner、writeback 承重。</figcaption>
+      </figure>
+      <article class="article-prose">
+        <p class="lead-claim">“哑铃”不是行业术语，是我们对公开信源的一个观察框架：左端是人的判断、目标和责任，右端是系统化执行、验证和回放，中间那根杆是 spec、eval、review packet、wiki、rules、issue 和 PR。</p>
+        <p>过去的产研协作像一条人力交接链：PM 解释需求，设计补体验，工程拆实现，QA 兜质量，管理者靠会、表格和 Jira 追进度。这个系统能跑，但它把很多关键上下文藏在人脑里。每次交接都会丢信息，责任也容易在“我已经同步过了”里变模糊。</p>
+        <p>Agent 进入以后，变化不是“中间人消失”。更准确的说法是：<strong>转述型中间劳动被压缩，判断型中间责任被抬高。</strong>找资料、拆任务、生成初稿、补测试、整理证据、更新文档，这些中间执行工作开始被做成可排队、可审查、可复用的系统单元；但目标、非目标、用户取舍、风险承受、验收标准、发布判断，仍然必须由人承担。</p>
+        <h3>为什么说两端都会变重</h3>
+        <p>执行端变重，是因为 OpenAI Harness、Block AI-Assisted Development、JetBrains Central、Sourcegraph、GitHub Copilot coding agent 等材料都在强调同一类基础设施：repo knowledge、skills、tests、CI、sandbox、credentials、audit、branch protection、cost attribution、observability。没有这些，Agent 只是更快地制造不可控产物。</p>
+        <p>判断端变重，是因为 Amazon、Shopify、Duolingo、Coinbase、Microsoft Frontier Firm、McKinsey Agentic Organization 这些组织讨论都在把 AI 从“个人效率工具”推向“组织作业方式”。一旦执行可以外包给系统，公司反而更需要清楚说明：谁是 owner，什么不能做，什么结果才算过关，失败以后由谁收拾和写回。</p>
+        <ul class="consensus-list">
+          <li><b>左端</b><span>目标、用户、边界、风险、验收、发布判断。这些不能交给 Agent 自己决定。</span></li>
+          <li><b>右端</b><span>检索、拆解、生成、实现、验证、证据整理、知识写回。这些开始变成系统执行能力。</span></li>
+          <li><b>中杆</b><span>spec、eval、review packet、wiki、rules、issue、PR。它们把人的判断翻译成可执行上下文，把系统输出翻译成可审查证据。</span></li>
+        </ul>
+        <p class="reference-line">主要依据：OpenAI Harness Engineering / Symphony；GitHub Copilot coding agent；Atlassian Rovo/Jira；Google Jules；JetBrains Central；Block AI-Assisted Development；Sourcegraph AI agents；Microsoft Frontier Firm；McKinsey Agentic Organization；Deloitte operating-model materials；Keith Rabois barrels / ammunition；Karpathy / Addy Osmani 关于 agentic engineering 与 agent 管理的实践讨论。</p>
+        <div class="boundary-note">
+          <h3>证据边界</h3>
+          <ul>
+            <li>“哑铃”是本文候选观察，不是已被行业命名的标准模型。</li>
+            <li>组织瘦身、AI-first hiring、one-person company 叙事不能直接等同于成熟 Agent 作业系统。</li>
+            <li>中间层不是消失，而是被拆成两部分：可系统化的执行，以及必须更清楚归属的人类责任。</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="system">
+      <div class="section-title">
+        <h2>作业系统变了</h2>
+        <span>from handoff pipeline to reviewable work loop</span>
+      </div>
+      <div class="paired-figures">
+        <figure class="article-figure chapter-figure">
+          <img src="04-operating-system.jpg" width="1672" height="941" alt="作业系统变了：从人对人传话链变成可执行对象控制台" loading="lazy" />
+          <figcaption>章节配图：编号 04 对应本节的作业系统变化，作业对象从会议、文档和口头同步，迁移到 ticket、spec、PR、eval、wiki、log。</figcaption>
+        </figure>
+        <figure class="article-figure chapter-figure">
+          <img src="05-agent-loop.jpg" width="1672" height="941" alt="Agent 循环：人定目标、可执行上下文、Agent queue、review packet、replay trail、system writeback" loading="lazy" />
+          <figcaption>章节配图：编号 05 对应本节里的 Agent 可审查循环；它不是重复配图，而是在说明每次执行都要留下证据、审查和写回。</figcaption>
+        </figure>
+      </div>
+      <article class="article-prose">
+        <p class="lead-claim">作业系统变了，意思不是换一个 AI 工具入口，而是公司把工作交出去、收回来、审清楚、再沉淀的方式变了。过去靠人传上下文；现在要把上下文做成 Agent 能执行、团队能审查、系统能写回的对象。</p>
+        <p>在旧协作里，需求、设计、工程、测试之间靠人解释。一个好的 PM 或 TL 往往承担大量隐性中间劳动：把业务目标翻译成工程任务，把工程约束翻译回业务语言，把风险翻译成排期和验收，把问题翻译成会议纪要和 Jira 状态。这个中间层一直存在，只是过去主要由人承担。</p>
+        <p>Agent 的变化，是把其中一部分中间执行劳动变成系统对象。ticket 可以带上下文，spec 可以定义目标和非目标，PR 可以承载 diff、测试、日志和风险说明，eval 可以把验收从主观感觉变成可重复检查，wiki / rules / skills 可以把失败和经验写回下次执行。OpenAI Harness 和 Symphony、GitHub issue-to-PR agent、Atlassian Rovo/Jira、Stripe payment integration eval、Block 的 AGENTS/HOWTOAI/skills，都在指向这个方向。</p>
+        <span class="mini-sequence">目标 / 非目标 -> spec / issue / context -> agent queue -> diff / draft / test / log -> review packet -> eval / CI / owner decision -> wiki / rules / test 写回</span>
+        <h3>Agent 把中间执行层变成可审查循环</h3>
+        <p>这句话要写实一点：Agent 没有创造一个新的管理层，也不能自己批准自己。它真正能改变的，是把过去散落在会议、私聊、文档、脚本和个人经验里的中间执行动作，组织成一个可审查循环。人给目标和边界，系统拿到可执行上下文，Agent 排队执行，输出带上依据、验证、失败项和待判断问题，最终由 owner 决定是否接受，并把失败写回系统。</p>
+        <p>OpenAI 的 Codex agent loop 把 user、model、tools、state、safety policy 明确成循环；Symphony 把 issue tracker 变成 orchestration surface；Anthropic Managed Agents 强调 long-horizon work 需要 durable session、sandbox、credential isolation；Block 的 testing pyramid、guardrails、skills 和 Actionable CI 则说明 Agent 工作不能只看生成结果，还要看验证、反馈和写回。</p>
+        <h3>什么算“可审查”</h3>
+        <ul class="consensus-list">
+          <li><b>输入</b><span>目标、非目标、样例、反例、权限边界、数据入口、测试方法、验收标准要写清楚。</span></li>
+          <li><b>过程</b><span>Agent 用了哪些上下文、调用了哪些工具、跑了哪些检查、跳过了什么，都要能被回放。</span></li>
+          <li><b>输出</b><span>不是只给答案，而是给变更点、依据、验证结果、失败项、风险和待 owner 判断的问题。</span></li>
+          <li><b>写回</b><span>失败要进入测试、rules、wiki、skill、review checklist，否则下一轮只是重复犯错。</span></li>
+        </ul>
+        <p>所以这不是“全自动驾驶”。高风险节点仍然需要人审、可追责、可回滚。Agent 的价值不在于省掉判断，而在于让执行层变得更可见：哪里缺上下文、哪里没有测试、哪里 owner 没有说清楚、哪里系统没有留下证据，都会被更快暴露。</p>
+        <p class="reference-line">主要依据：OpenAI Unrolling the Codex agent loop / Unlocking the Codex harness / Harness Engineering / Symphony；Anthropic Scaling Managed Agents；Block Agent Guardrails、Testing Pyramid for AI Agents、AI-Assisted Development、skills、Actionable CI；GitHub Copilot coding agent；Atlassian Rovo/Jira；Stripe AI agents build real Stripe integrations；Google DORA 2025、Stack Overflow 2025、GitLab、Thoughtworks 对质量、稳定性、信任和平台治理的研究提醒。</p>
+        <div class="boundary-note">
+          <h3>证据边界</h3>
+          <ul>
+            <li>不能写“Agent 已接管完整 SDLC”。更准确的是：部分中间执行动作正在从人脑和会议迁移到可执行工作对象。</li>
+            <li>“review packet”是本文用来概括输出证据包的表达，不是所有产品都采用的标准名词。</li>
+            <li>工具页证明作业面方向，研究报告和事故案例提醒治理风险；两类证据要一起用，不能只拿供应商叙事写结论。</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="actions">
+      <div class="section-title">
+        <h2>现有公司的人该怎么做</h2>
+        <span>role-by-role operating change</span>
+      </div>
+      <figure class="article-figure chapter-figure">
+        <img src="06-company-actions.jpg" width="1672" height="941" alt="现有公司的人该怎么做：CEO、PM、Design、Engineering、QA、Ops、Manager 的角色动作" loading="lazy" />
+        <figcaption>章节配图：现有公司不是考核“用了多少 AI”，而是让 CEO / GM、PM、Design、Engineering、QA / Data / Ops、Manager / HR 各自把责任、边界和证据写清楚。</figcaption>
+      </figure>
+      <div class="people">
+        <article class="person">
+          <span class="role">CEO / GM</span>
+          <h3>别把 AI 当采购项目</h3>
+          <ul>
+            <li>选一个真业务瓶颈做 30-60 天试点。</li>
+            <li>明确质量、风险、成本和责任边界。</li>
+            <li>用流程结果考核，不用“用了多少 AI”考核。</li>
+          </ul>
+        </article>
+        <article class="person">
+          <span class="role">Product / PM</span>
+          <h3>从需求转述者变成判断 owner</h3>
+          <ul>
+            <li>写清目标、非目标、用户场景和验收标准。</li>
+            <li>把 ticket/spec/wiki 做成 agent 可执行上下文。</li>
+            <li>保留取舍权，不能把产品判断外包给模型。</li>
+          </ul>
+        </article>
+        <article class="person">
+          <span class="role">Designer / Research</span>
+          <h3>把体验判断变成可测试样本</h3>
+          <ul>
+            <li>沉淀用户语境、反例、边界场景和体验红线。</li>
+            <li>用原型和 review packet 审 agent 产物。</li>
+            <li>把“像不像人话”变成示例和检查项。</li>
+          </ul>
+        </article>
+        <article class="person">
+          <span class="role">Engineer / TL</span>
+          <h3>从写代码扩展到管理执行系统</h3>
+          <ul>
+            <li>设计工具权限、上下文入口、测试和回滚。</li>
+            <li>审查 agent 输出是否真的满足 spec。</li>
+            <li>把失败写回 eval、lint、guardrail、skill。</li>
+          </ul>
+        </article>
+        <article class="person">
+          <span class="role">QA / Data / Ops</span>
+          <h3>把反复出错的地方变成 eval</h3>
+          <ul>
+            <li>从末端兜底转向前置风险样本库。</li>
+            <li>把缺陷、异常、客诉、合规点结构化。</li>
+            <li>用可复跑检查证明 agent 没有只会演示。</li>
+          </ul>
+        </article>
+        <article class="person">
+          <span class="role">Manager / HR</span>
+          <h3>重写岗位边界和成长路径</h3>
+          <ul>
+            <li>区分可自动化执行和必须人类判断的工作。</li>
+            <li>训练员工写上下文、审证据、管风险。</li>
+            <li>调整绩效：看结果质量、系统沉淀和协作吞吐。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="heat">
+      <div class="section-title">
+        <h2>讨论热区</h2>
+        <span>click a term to inspect source routes</span>
+      </div>
+      <div class="heat">
+        <article class="heat-panel">
+          <div class="terms" aria-label="行业讨论热词">
+            <button class="term t1 active" data-term="judgment">judgment</button>
+            <button class="term t1" data-term="agentic engineering">agentic engineering</button>
+            <button class="term t2" data-term="control plane">control plane</button>
+            <button class="term t2" data-term="OPD / barrel">OPD / barrel</button>
+            <button class="term t2" data-term="spec">spec</button>
+            <button class="term t3" data-term="eval">eval</button>
+            <button class="term t3" data-term="review packet">review packet</button>
+            <button class="term t3" data-term="AI-native team">AI-native team</button>
+            <button class="term t4" data-term="permission">permission</button>
+            <button class="term t4" data-term="CI">CI</button>
+            <button class="term t4" data-term="context">context</button>
+            <button class="term t5" data-term="cost">cost</button>
+            <button class="term t5" data-term="trust">trust</button>
+            <button class="term t5" data-term="tech debt">tech debt</button>
+          </div>
+        </article>
+        <article class="source-drawer" id="sourceDrawer" aria-live="polite">
+          <h3>judgment</h3>
+          <p>所属争议：执行越自动化，人的判断越不能消失。</p>
+          <ul>
+            <li>OpenAI Harness Engineering：human steers, agents execute.</li>
+            <li>Karpathy / Sequoia：agentic engineering 不是随手 vibe coding。</li>
+            <li>Daniel Miessler：公司说不清目标时，AI 只会放大混乱。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="evidence">
+      <div class="section-title">
+        <h2>证据怎么用</h2>
+        <span>load-bearing map</span>
+      </div>
+      <div class="evidence-visual">
+        <div class="visual-title">
+          <h3>证据承重表：每类材料只能支撑它能支撑的结论</h3>
+          <span>防止把播客简介、微信转述和工程博客混成一种证据</span>
+        </div>
+        <table class="load-table">
+          <thead>
+            <tr>
+              <th>证据类型</th>
+              <th>能承重</th>
+              <th>不能承重</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>公司一手实践<br />工程博客 / 产品文档 / 官方报告 / repo</td>
+              <td>说明作业对象、工具链、权限、eval、review 如何变化。</td>
+              <td>不能单独证明“整个行业必然如此”。</td>
+            </tr>
+            <tr>
+              <td>操作者长访谈<br />Keith Rabois / Boris Cherny / Karpathy / Cat Wu</td>
+              <td>提炼角色语言、组织判断、工作方式变化。</td>
+              <td>不能当统计事实，引用前要 transcript capture。</td>
+            </tr>
+            <tr>
+              <td>研究、调查、反例<br />DORA / Stack Overflow / GitLab / METR</td>
+              <td>约束速度叙事，提醒信任、质量、技术债和稳定性风险。</td>
+              <td>不能直接替某家公司下结论。</td>
+            </tr>
+            <tr>
+              <td>二手传播和索引<br />微信 / 媒体 / 播客平台页</td>
+              <td>发现线索，捕捉中文表达和公共争议。</td>
+              <td>不能承担硬事实，必须回到上游来源。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="principles">
+      <div class="section-title">
+        <h2>我们应该怎么做</h2>
+        <span>local operating principles</span>
+      </div>
+      <figure class="article-figure chapter-figure">
+        <img src="07-operating-principles.jpg" width="1672" height="941" alt="我们应该怎么做：30-60 天 pilot 作业链，从选工作流到写回系统" loading="lazy" />
+        <figcaption>章节配图：先跑一条可验证业务流，不先买工具，不追概念热度；目标、执行、审查、写回要连成同一条作业链。</figcaption>
+      </figure>
+      <div class="rules">
+        <article class="rulebox">
+          <h3>三条原则</h3>
+          <ul>
+            <li><strong>目标人定。</strong>业务目标、用户价值、优先级、风险承受度不能交给 agent。</li>
+            <li><strong>过程可委托。</strong>检索、整理、生成、实现、验证、回放可以交给 agent。</li>
+            <li><strong>结果可审计。</strong>所有输出必须进入 PR、review packet、eval、wiki、日志这类可追踪对象。</li>
+          </ul>
+        </article>
+        <article class="rulebox">
+          <h3>第一条试点链路</h3>
+          <ul>
+            <li>从会议材料、文章或需求进入。</li>
+            <li>沉淀成 spec / wiki / issue。</li>
+            <li>agent 产出草稿、代码改动或 review packet。</li>
+            <li>人审查判断，失败写回规则、测试、skill、wiki。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p><strong>本版状态：</strong>内部 H5 草稿。它回答“行业在争什么、公司内部协作怎么变、Agent 如何进入作业系统”，不替代完整 MD 母稿和最终证据复核。</p>
+      <p><strong>主要来源：</strong></p>
+      <ol class="source-list">
+        <li>OpenAI, Symphony and Codex harness engineering.</li>
+        <li>Anthropic, Claude Code teams and managed agents.</li>
+        <li>Block Engineering, AI-assisted development and agent guardrails.</li>
+        <li>Stripe, payment integration evals and agentic commerce.</li>
+        <li>GitHub, Atlassian, JetBrains, Sourcegraph developer-platform posts.</li>
+        <li>Microsoft Frontier Firm, IBM AI operating model, Deloitte and Gartner operating-model discussions.</li>
+        <li>Lenny / How I AI, No Priors, Software Engineering Daily, Software Engineering Radio, Practical AI discussion pool.</li>
+        <li>DORA, Stack Overflow, GitLab, Thoughtworks, METR and incident sources for risk boundaries.</li>
+      </ol>
+    </footer>
+  </main>
+  </div>
+  <script>
+    const termSources = {
+      "judgment": {
+        debate: "执行越自动化，人的判断越不能消失。",
+        sources: [
+          "OpenAI Harness Engineering: human steers, agents execute.",
+          "Karpathy / Sequoia: agentic engineering 不是随手 vibe coding。",
+          "Daniel Miessler: 公司说不清目标时，AI 只会放大混乱。"
+        ]
+      },
+      "agentic engineering": {
+        debate: "专业软件从手写代码转向拆解、调度、验证和负责。",
+        sources: [
+          "Karpathy / Sequoia: From Vibe Coding to Agentic Engineering.",
+          "Practical AI / Steve Klabnik: humility and engineering discipline.",
+          "Software Engineering Daily / Steve Yegge: task graphs and shared ledgers."
+        ]
+      },
+      "control plane": {
+        debate: "agent 工作入口从聊天框迁移到 issue、PR、Jira、Linear、IDE 和 CI。",
+        sources: [
+          "OpenAI Symphony: issue tracker as Codex orchestration surface.",
+          "GitHub Copilot coding agent: issue to PR workflow.",
+          "JetBrains Central: control plane, execution plane, observability."
+        ]
+      },
+      "OPD / barrel": {
+        debate: "执行成本下降后，稀缺点变成端到端 owner。",
+        sources: [
+          "Keith Rabois / Lenny: PayPal barrel claim chain.",
+          "Keith Rabois / How to Operate: barrels vs ammunition.",
+          "Jiang Tao / WeChat: OPD framing, secondary route only."
+        ]
+      },
+      "spec": {
+        debate: "spec 从给人读的文档，变成 agent 执行的边界和验收标准。",
+        sources: [
+          "AWS / Marc Brooker: spec-driven AI development.",
+          "Allstacks Spec Readiness Agent.",
+          "Atlassian Jira AI: PRD, epics, issues, dev execution."
+        ]
+      },
+      "eval": {
+        debate: "当 agent 进入支付、生产和企业系统，eval 是基础设施，不是附加项。",
+        sources: [
+          "Stripe: Can AI agents build real Stripe integrations?",
+          "OpenAI AgentKit: evals and optimization surface.",
+          "Block Testing Pyramid for AI Agents."
+        ]
+      },
+      "review packet": {
+        debate: "人的注意力是瓶颈，agent 输出必须变成可审查包。",
+        sources: [
+          "OpenAI Symphony: review packets and task workspaces.",
+          "GitHub Copilot coding agent: draft PR and branch protection.",
+          "Intercom / How I AI: permission and accountability framework."
+        ]
+      },
+      "AI-native team": {
+        debate: "小团队叙事变强，但组织治理没有消失。",
+        sources: [
+          "Microsoft Frontier Firm: human-led, AI-operated organization.",
+          "AgentMarketCap YC W26 agent-native company pattern, candidate only.",
+          "Business Insider / Airbnb and 0G Labs coverage, secondary routes."
+        ]
+      },
+      "permission": {
+        debate: "agent 能做什么、不能做什么，必须产品化和审计化。",
+        sources: [
+          "Block Agent Guardrails and Controls.",
+          "Coder Agents: self-hosted infrastructure and centralized control.",
+          "Anthropic Managed Agents: credential isolation and durable sessions."
+        ]
+      },
+      "CI": {
+        debate: "CI 从给人看的失败结果，变成 agent 可读的反馈回路。",
+        sources: [
+          "Block Actionable CI, primary-index pending capture.",
+          "GitHub coding agent runs in Actions environment.",
+          "OpenAI Harness Engineering: feedback loops and tests."
+        ]
+      },
+      "context": {
+        debate: "组织上下文是否清楚，决定 agent 是提效还是放大混乱。",
+        sources: [
+          "Daniel Miessler: company self-knowledge as AI readiness.",
+          "Software Engineering Daily / Organizational Context for AI Coding Agents.",
+          "Anthropic Claude Code best practices: context management."
+        ]
+      },
+      "cost": {
+        debate: "agent adoption 带来 token、平台、审查和返工成本。",
+        sources: [
+          "Pragmatic Engineer token spend and tokenmaxxing leads.",
+          "JetBrains Central: observability, cost, and intent alignment.",
+          "GitLab DevSecOps Report: toolchain sprawl and compliance."
+        ]
+      },
+      "trust": {
+        debate: "采用率上升不等于信任上升，尤其在生产和高风险工作中。",
+        sources: [
+          "Stack Overflow Developer Survey: adoption vs trust gap.",
+          "DORA 2025: organization practices and stability caveats.",
+          "Thoughtworks DORA perspective: systems thinking and stability."
+        ]
+      },
+      "tech debt": {
+        debate: "agent 可以加快产出，也可能加快债务生成。",
+        sources: [
+          "Stack Overflow Podcast: AI can 10x developers in creating tech debt.",
+          "METR early-2025 study: experienced developers slowed in realistic OSS tasks.",
+          "Replit incident coverage: production isolation risk."
+        ]
+      }
+    };
+
+    const drawer = document.getElementById("sourceDrawer");
+    document.querySelectorAll(".term").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".term").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        const term = button.dataset.term;
+        const entry = termSources[term];
+        drawer.innerHTML = `
+          <h3>${term}</h3>
+          <p>所属争议：${entry.debate}</p>
+          <ul>${entry.sources.map((source) => `<li>${source}</li>`).join("")}</ul>
+        `;
+      });
+    });
+  </script>
+</body>
+</html>
