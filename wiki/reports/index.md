@@ -19,6 +19,7 @@ Report pages are audience-oriented outputs or draft workspaces built from source
 - [Team Knowledge Base Validation Cases](team-knowledge-base-validation-cases.md): evidence and boundary page for judging the method's trust level
 - [Team Knowledge Base Roadmap](team-knowledge-base-roadmap.md): maturity-stage roadmap from record system to team knowledge asset
 - [AI Agent Product Engineering Collaboration Newspaper H5](agentic-product-engineering-collaboration-newspaper.html): draft H5 newspaper for the AI-agent-era product-engineering collaboration thesis, debate map, timeline, company camps, and local operating principles
+- [AI Agent Company Playbook Newspaper H5](agentic-product-engineering-collaboration-company-playbook.html): first-draft standalone H5 comparing OpenAI, Anthropic, Stripe, and Block collaboration modes and translating them into a local operating loop
 
 ## Usage Notes
 

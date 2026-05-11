@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>四家公司看 Agent 协作怎么落地</title>
+  <style>
+    @font-face {
+      font-family: YaHeiLocal;
+      src: url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype");
+      font-weight: 400 900;
+    }
+
+    @font-face {
+      font-family: SimSunLocal;
+      src: url("file:///mnt/c/Windows/Fonts/simsun.ttc") format("truetype");
+      font-weight: 400 900;
+    }
+
+    :root {
+      --paper: #fffaf0;
+      --bg: #eee3d0;
+      --ink: #1f1a14;
+      --muted: #66594e;
+      --line: #2c2118;
+      --blue: #1e4f79;
+      --green: #56783f;
+      --red: #b4233f;
+      --amber: #c88b18;
+      --violet: #5944a3;
+      --soft-blue: #e4f0f7;
+      --soft-green: #e9f1df;
+      --soft-red: #f7dfe4;
+      --soft-amber: #f7ebc9;
+      --soft-violet: #e8e2f6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(44, 33, 24, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(44, 33, 24, .045) 1px, transparent 1px),
+        var(--bg);
+      background-size: 28px 28px, 28px 28px, auto;
+      font-family: YaHeiLocal, "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+      line-height: 1.68;
+    }
+
+    a { color: inherit; text-underline-offset: 3px; }
+
+    .page {
+      width: min(1180px, calc(100vw - 28px));
+      margin: 24px auto 40px;
+      background: var(--paper);
+      border: 2px solid var(--line);
+      box-shadow: 0 18px 42px rgba(50, 35, 20, .14);
+    }
+
+    .masthead {
+      padding: 18px 22px 12px;
+      border-bottom: 4px double var(--line);
+    }
+
+    .kicker {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    h1 {
+      margin: 10px 0 8px;
+      font-family: SimSunLocal, SimSun, "Noto Serif CJK SC", serif;
+      font-size: clamp(38px, 7vw, 76px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .tagline {
+      max-width: 920px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px, 2vw, 20px);
+    }
+
+    .front {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(300px, .8fr);
+      border-bottom: 2px solid var(--line);
+    }
+
+    .lead, .brief {
+      padding: 24px;
+    }
+
+    .lead { border-right: 2px solid var(--line); }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--red);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .lead h2, .section h2 {
+      margin: 0 0 12px;
+      font-family: SimSunLocal, SimSun, "Noto Serif CJK SC", serif;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.15;
+    }
+
+    .lead p, .section p, li {
+      font-size: 16px;
+    }
+
+    .thesis {
+      margin-top: 18px;
+      padding: 16px;
+      border: 2px solid var(--line);
+      background: var(--soft-amber);
+      font-weight: 800;
+    }
+
+    .brief-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .metric {
+      border: 1px solid rgba(44, 33, 24, .18);
+      padding: 12px;
+      background: rgba(255, 255, 255, .44);
+    }
+
+    .metric b {
+      display: block;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .section {
+      padding: 26px 24px;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgba(44, 33, 24, .18);
+    }
+
+    .section-title span {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding-bottom: 12px;
+    }
+
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .company {
+      border: 2px solid var(--line);
+      min-height: 100%;
+      padding: 14px;
+      background: white;
+    }
+
+    .company.openai { background: var(--soft-blue); }
+    .company.anthropic { background: var(--soft-green); }
+    .company.stripe { background: var(--soft-violet); }
+    .company.block { background: var(--soft-red); }
+
+    .company h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      line-height: 1.12;
+    }
+
+    .company .label {
+      color: var(--muted);
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .company ul, .playbook ul, .sources ol {
+      padding-left: 20px;
+      margin: 10px 0 0;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .step {
+      border: 2px solid var(--line);
+      padding: 13px;
+      background: rgba(255, 255, 255, .62);
+    }
+
+    .step b {
+      color: var(--blue);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .playbook {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .playbook article {
+      border-left: 8px solid var(--green);
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, .64);
+    }
+
+    .visual-plan {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .poster-sketch {
+      border: 3px solid var(--line);
+      background: #fff7df;
+      padding: 16px;
+      min-height: 380px;
+      position: relative;
+    }
+
+    .poster-sketch h3 {
+      margin: 0 0 12px;
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .lane {
+      margin: 10px 0;
+      padding: 10px;
+      border: 2px dashed rgba(44, 33, 24, .45);
+      background: rgba(255, 255, 255, .55);
+      font-weight: 800;
+    }
+
+    .prompt {
+      border: 2px solid var(--line);
+      padding: 14px;
+      background: #1f1a14;
+      color: #fff7df;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+    }
+
+    .warning {
+      border: 2px solid var(--red);
+      background: var(--soft-red);
+      padding: 14px;
+      margin-top: 14px;
+      font-weight: 700;
+    }
+
+    .sources {
+      padding: 24px;
+      background: #f7ecd8;
+    }
+
+    .sources li { font-size: 14px; }
+
+    @media (max-width: 980px) {
+      .front, .visual-plan, .playbook { grid-template-columns: 1fr; }
+      .lead { border-right: 0; border-bottom: 2px solid var(--line); }
+      .company-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .matrix { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .page { width: calc(100vw - 16px); margin-top: 8px; }
+      .company-grid { grid-template-columns: 1fr; }
+      .kicker, .section-title { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <div class="kicker">
+        <span>AI Agent Collaboration / Company Playbook</span>
+        <span>Draft 01 · 2026-05-11</span>
+      </div>
+      <h1>四家公司告诉我们：Agent 协作不是工具接入，而是作业系统重排</h1>
+      <p class="tagline">OpenAI、Anthropic、Stripe、Block 给出的不是同一种答案。它们共同说明：Agent 进入公司后，真正变化的是任务入口、职能边界、交易基础设施和组织人数叙事。</p>
+    </header>
+
+    <section class="front">
+      <article class="lead">
+        <span class="eyebrow">头版判断</span>
+        <h2>现有公司的人，不是要立刻让 Agent 多做事，而是先让工作能被正确交出去、审回来、写回去。</h2>
+        <p>当前最危险的误解，是把 AI 协作理解成“人人装一个工具”。OpenAI 的样本说明，任务入口要从聊天框进入 issue / task board / repo；Anthropic 的样本说明，产品、设计、数据、法律、营销都可能变成 builder；Stripe 的样本说明，Agent 一旦进入支付和交易，商品、价格、授权、风控、履约都要机器可读；Block 的样本则提醒我们，AI-native 也可能滑向粗暴降本叙事。</p>
+        <div class="thesis">我们的做法：把 Agent 当作可审执行层，而不是替公司做判断的黑箱。目标人定，过程可委托，结果可审计，失败要写回。</div>
+      </article>
+      <aside class="brief">
+        <div class="brief-grid">
+          <div class="metric"><b>OpenAI</b><span>task board -> agent queue -> PR/review</span></div>
+          <div class="metric"><b>Anthropic</b><span>cross-functional builder surface</span></div>
+          <div class="metric"><b>Stripe</b><span>agent-readable commerce and payment rails</span></div>
+          <div class="metric"><b>Block</b><span>AI-readiness plus smaller-team controversy</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>四个样本，各自代表一种协作模式</h2>
+        <span>company modes</span>
+      </div>
+      <div class="company-grid">
+        <article class="company openai">
+          <span class="label">Control Plane</span>
+          <h3>OpenAI：把任务变成 Agent 队列</h3>
+          <p>Codex、Harness Engineering 和 Symphony 的共同点，是把工程工作从一次次交互 session 推向 issue、task board、repo knowledge、测试和 review。</p>
+          <ul>
+            <li>人定义目标和边界。</li>
+            <li>Agent 并行执行小块任务。</li>
+            <li>PR、测试、日志和 review packet 承接审查。</li>
+          </ul>
+        </article>
+        <article class="company anthropic">
+          <span class="label">Builder Surface</span>
+          <h3>Anthropic：让更多职能直接构建</h3>
+          <p>Claude Code 的内部案例说明，Agent 不只服务工程。设计、数据、产品、法律和营销都可以把问题描述成可运行产物，再由人审查。</p>
+          <ul>
+            <li>设计可以把 mockup 变原型。</li>
+            <li>数据人员可以生成可视化应用。</li>
+            <li>职能专家仍负责语境、判断和验收。</li>
+          </ul>
+        </article>
+        <article class="company stripe">
+          <span class="label">Transaction Infrastructure</span>
+          <h3>Stripe：让 Agent 能安全交易</h3>
+          <p>Agentic commerce 不是按钮换入口，而是把商品、价格、库存、支付授权、风控、税务、履约和售后变成 Agent 能读、能调用、能审计的系统。</p>
+          <ul>
+            <li>ACP 提供商家和 Agent 的共同语言。</li>
+            <li>SPT 避免暴露买家真实支付凭据。</li>
+            <li>MCP / metadata 让业务系统可被 Agent 理解。</li>
+          </ul>
+        </article>
+        <article class="company block">
+          <span class="label">Org Bet + Warning</span>
+          <h3>Block：AI-native 不能只等于裁员</h3>
+          <p>Block 的工程博客展示了 repo readiness、AI Champions、AI rules、自动 PR 和多 Agent 工作流；近期裁员和 Dorsey 话语又把组织风险推到台前。</p>
+          <ul>
+            <li>真实价值在作业系统升级。</li>
+            <li>真实风险在士气、判断、客服和人类回路。</li>
+            <li>不能把 AI 生产率直接等同于岗位可删除。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>现有公司的人该怎么做</h2>
+        <span>role actions</span>
+      </div>
+      <div class="playbook">
+        <article>
+          <h3>Product / PM：写可执行意图</h3>
+          <ul>
+            <li>把目标、非目标、用户场景、验收标准写清楚。</li>
+            <li>把会议、材料、需求整理成 Agent 可执行上下文。</li>
+            <li>保留业务取舍，不把判断外包给模型。</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Engineering / TL：建可审执行系统</h3>
+          <ul>
+            <li>准备 repo rules、测试、权限、沙箱、CI 和回滚。</li>
+            <li>让 Agent 输出 PR、日志、风险和待确认项。</li>
+            <li>把失败写回 eval、lint、skill、wiki 或模板。</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Design / Research：把品味变成样本</h3>
+          <ul>
+            <li>沉淀用户语境、反例、状态流和体验红线。</li>
+            <li>用可运行原型检查假设，而不是只交静态稿。</li>
+            <li>审查 Agent 产物是否符合真实用户语言。</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Manager：管吞吐，也管后果</h3>
+          <ul>
+            <li>不要只看用了多少 AI，要看可评审结果和返工原因。</li>
+            <li>区分可委托执行与必须人类负责的判断。</li>
+            <li>把组织缩编叙事和作业系统升级分开评估。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>我们的 30 天落地链路</h2>
+        <span>local operating loop</span>
+      </div>
+      <div class="matrix">
+        <div class="step"><b>01 Intent</b>一句话写清目标、读者、场景和不做什么。</div>
+        <div class="step"><b>02 Context</b>把材料、源链接、现有页面、验收标准放到一个任务包。</div>
+        <div class="step"><b>03 Agent Run</b>Agent 负责整理、草拟、实现、补测试或生成 review packet。</div>
+        <div class="step"><b>04 Human Review</b>人审判断、边界、证据、风险和是否接受。</div>
+        <div class="step"><b>05 Writeback</b>失败写回 wiki、eval、skill、lint、模板或流程。</div>
+      </div>
+      <div class="warning">不要先做“全公司 AI 转型”。先选一条真实链路：会议材料或需求进入，产出可审稿 / 可执行任务 / 可验证结果，再看返工是否下降、知识是否写回。</div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>图片模型 / Hybrid 视觉 brief</h2>
+        <span>not H5/SVG final image</span>
+      </div>
+      <div class="visual-plan">
+        <div class="poster-sketch" aria-label="视觉构图草案">
+          <h3>三种协作 + 一个警示，落到我们怎么做</h3>
+          <div class="lane">OpenAI：任务进入 Agent 队列</div>
+          <div class="lane">Anthropic：职能专家变 Builder</div>
+          <div class="lane">Stripe：交易系统对 Agent 可读</div>
+          <div class="lane">Block：AI-native 组织赌注与裁员警示</div>
+          <div class="lane">我们：intent -> context -> run -> review -> writeback</div>
+        </div>
+        <div>
+          <div class="prompt">Hybrid image prompt:
+Create a Chinese hand-drawn sketchnote knowledge poster, warm paper texture, thick black marker outlines, four company panels plus one bottom action loop. No logos. No realistic people. Use symbolic icons only.
+
+Title: 四家公司看 Agent 协作怎么落地
+
+Panel 1 OpenAI: task board, issue cards, agent queue, PR review.
+Panel 2 Anthropic: designer, data, product, legal building working artifacts.
+Panel 3 Stripe: agent, product catalog, secure payment token, fraud shield, fulfillment box.
+Panel 4 Block: smaller team, AI rules, automated PR, warning sign for layoffs and morale.
+
+Bottom loop: 意图 -> 上下文 -> Agent 执行 -> 人审证据 -> 失败写回.
+
+Style: hand-drawn educational poster, readable Chinese labels, pastel blue green amber red violet, no tiny text, no overlap. If Chinese text is unreliable, generate low-text illustration layer and overlay exact Chinese separately.</div>
+          <p>本草稿先保留图片模型的视觉脚本，明确最终图应走图片模型或 Hybrid。若下一步直接生图，优先用 Hybrid：图片模型生成低文字视觉层，再叠加准确中文。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources">
+      <h2>来源边界</h2>
+      <ol>
+        <li><a href="https://openai.com/business/guides-and-resources/how-openai-uses-codex/">OpenAI: How OpenAI uses Codex</a></li>
+        <li><a href="https://openai.com/index/harness-engineering/">OpenAI: Harness engineering</a></li>
+        <li><a href="https://openai.com/index/open-source-codex-orchestration-symphony/">OpenAI: Symphony orchestration spec</a></li>
+        <li><a href="https://www.anthropic.com/news/how-anthropic-teams-use-claude-code">Anthropic: How teams use Claude Code</a></li>
+        <li><a href="https://stripe.com/newsroom/news/stripe-openai-instant-checkout">Stripe: Instant Checkout and Agentic Commerce Protocol</a></li>
+        <li><a href="https://stripe.com/us/guides/agentic-commerce">Stripe: Agentic commerce guide</a></li>
+        <li><a href="https://engineering.block.xyz/blog/ai-assisted-development-at-block">Block Engineering: AI-Assisted Development at Block</a></li>
+        <li><a href="https://www.theregister.com/2026/02/27/block_q4_2025_ai_layoffs/">The Register: Block 2026 AI-linked layoffs coverage</a></li>
+      </ol>
+      <p>本页是第一版内部草稿，不是最终公开稿。Block 裁员部分使用公开报道和工程博客做双重边界：工程实践可作为作业系统样本，裁员叙事只作为组织风险和老板话语样本。</p>
+    </section>
+  </main>
+</body>
+</html>
