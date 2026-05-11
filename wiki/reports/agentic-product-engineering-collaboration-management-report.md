@@ -7,6 +7,7 @@ audience: mixed-management
 created: 2026-05-11
 derived_from:
   - wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md
+  - wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md
 ---
 
 # AI Agent 时代，产研协作从人力流水线走向人机作业系统
@@ -40,7 +41,12 @@ OpenAI 的 Symphony 把 Linear 这样的项目管理板变成 coding agents 的�
 | 研究与反例 | Stack Overflow / DORA / GitLab / Thoughtworks / Replit incident | AI 使用上升，但信任、调试、稳定性、权限、生产隔离成为新瓶颈 |
 | 组织诊断 | Keith Rabois / Karpathy / Daniel Miessler | 稀缺点从执行人力变成端到端 owner、agentic engineer 和清晰组织自描述 |
 
-它们表面上卖的是不同产品，底层共识很接近：
+这只是已进入报告主线的样本。另有一份 88 条来源线索的 broad scan，
+把 AI 厂、支付/金融科技、云商、传统软件、CEO memo、研究报告、风险
+案例和中文二手材料分开记录；它用于保证调研广度，不等同于每条都已经
+可以公开引用。
+
+这些样本表面上卖的是不同产品，底层共识很接近：
 
 1. agent 不能停留在个人 IDE 里。
 2. agent 必须接入真实产研对象：issue、PR、CI、日志、知识库、权限和环境。

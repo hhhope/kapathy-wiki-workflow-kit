@@ -4,6 +4,8 @@ title: agentic-product-engineering-collaboration / source-map
 canonical_object: agentic-product-engineering-collaboration
 source_type: external-article-collection
 created: 2026-05-11
+related_scan:
+  - wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md
 ---
 
 # Agentic Product Engineering Collaboration / Source Map
@@ -23,7 +25,12 @@ router, not as the source of record for PayPal or Keith Rabois claims.
 
 ## Source Set
 
-Current intake count: 43 source items.
+Curated intake count: 43 source items.
+
+Broad scan extension: 88 source leads are tracked in
+`wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md`.
+The broad scan is intentionally wider than this curated map and includes
+candidate leads that still need primary-source capture.
 
 | Class | Company / Source | Article | Why It Matters |
 |---|---|---|---|
