@@ -589,6 +589,30 @@
       align-items: center;
     }
 
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .compare-grid article {
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fafafa;
+    }
+
+    .compare-grid h4 {
+      margin-bottom: 8px;
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .compare-grid p {
+      margin: 0;
+      color: #333;
+    }
+
     .bell {
       min-height: 260px;
       padding: 16px;
@@ -742,6 +766,9 @@
     .person:nth-child(1) .role { background: var(--red); }
     .person:nth-child(2) .role { background: var(--blue); }
     .person:nth-child(3) .role { background: var(--green); }
+    .person:nth-child(4) .role { background: var(--amber); color: #161616; }
+    .person:nth-child(5) .role { background: var(--violet); }
+    .person:nth-child(6) .role { background: #333; }
 
     .person h3 {
       margin-bottom: 10px;
@@ -932,6 +959,7 @@
       .map,
       .system,
       .people,
+      .compare-grid,
       .heat,
       .evidence,
       .rules,
@@ -1218,13 +1246,23 @@
       </div>
       <div class="dumbbell">
         <div class="visual-title">
-          <h3>哑铃图：两端在发力，中间的产研协作被重新定义</h3>
+          <h3>哑铃图：传统协作靠人转译，AI 时代把转译变成可执行系统</h3>
           <span>这是讨论结构，不是行业定论</span>
+        </div>
+        <div class="compare-grid">
+          <article>
+            <h4>传统公司协作</h4>
+            <p>组织靠职能分工和会议链条推进：PM 写需求，设计解释意图，工程排期实现，QA 和运营在末端兜底。中间层一直存在，只是主要由人、流程表、脚本和局部自动化承担。</p>
+          </article>
+          <article>
+            <h4>AI 时代协作</h4>
+            <p>Agent 的新增价值不是替代所有中间人，而是把反复转述、找上下文、拆任务、生成初稿、跑验证、整理证据这些中间消耗，变成可排队、可审查、可复用的执行单元。</p>
+          </article>
         </div>
         <div class="dumbbell-grid">
           <article class="bell left">
             <h3>执行自动化端</h3>
-            <p>这些公司把 agent 放进 issue、IDE、PR、CI、workspace，让任务更容易被机器执行。</p>
+            <p>这些公司把 agent 放进 issue、IDE、PR、CI、workspace，把过去依赖人工接力的任务拆解成机器可接手的动作。</p>
             <ul>
               <li>OpenAI / Anthropic</li>
               <li>GitHub / Atlassian / JetBrains</li>
@@ -1237,7 +1275,7 @@
           </div>
           <article class="bell right">
             <h3>组织治理端</h3>
-            <p>这些讨论把问题推到 headcount、绩效、权限、审计、责任、组织密度。</p>
+            <p>这些讨论提醒公司：当执行层变快，真正变稀缺的是判断、权限、审计、责任归属和组织自我知识。</p>
             <ul>
               <li>Microsoft / IBM / Deloitte / Gartner</li>
               <li>Shopify / Amazon / Coinbase / Duolingo</li>
@@ -1252,7 +1290,31 @@
     <section class="section">
       <div class="section-title">
         <h2>作业系统变了</h2>
-        <span>from pipeline to loop</span>
+        <span>agent value before workflow redesign</span>
+      </div>
+      <div class="visual-title">
+        <h3>Agent 出现的价值：让“中间工作”第一次可规模化复用</h3>
+        <span>不是以前没有中间层，而是中间层的承载方式变了</span>
+      </div>
+      <div class="compare-grid">
+        <article>
+          <h4>以前的中间层</h4>
+          <p>靠人理解上下文、翻译需求、追状态、补文档、跑脚本、催反馈。它能工作，但高度依赖个人记忆、会议同步和手工判断，难以复制，也很难把每次失败写回系统。</p>
+        </article>
+        <article>
+          <h4>Agent 带来的新增价值</h4>
+          <p>它把一部分中间工作变成可调用的执行层：读上下文、调用工具、生成候选结果、跑检查、打包证据、等待人类判断。价值在于降低协调摩擦，而不是取消人的产品判断。</p>
+        </article>
+      </div>
+      <div class="rules">
+        <h3>Office Hours 再锚定：先问清楚 agent 替谁消掉哪种痛</h3>
+        <ul>
+          <li><b>现实需求：</b>现有公司痛的不是“不会用 AI”，而是需求转译、上下文查找、等待排期、返工审查和知识丢失。</li>
+          <li><b>现状替代品：</b>这些工作今天由 PM、Tech Lead、QA、运营、会议、Jira、文档、脚本和局部自动化承担。</li>
+          <li><b>最窄切口：</b>不要先改组织架构，先选一个高频、可验证、风险可控的工作流，例如客户问题到修复 PR、会议结论到任务包、数据异常到排查报告。</li>
+          <li><b>观察指标：</b>看 cycle time、返工率、review reject、缺陷外逃、上下文补问次数、agent 成本，而不是只看“省了几小时”。</li>
+          <li><b>未来适配：</b>岗位不会一起消失，但只负责转述、催办、搬运信息的工作会被压缩；能定义问题、设边界、审结果、沉淀系统的人会变重。</li>
+        </ul>
       </div>
       <div class="system">
         <article class="flow">
@@ -1278,8 +1340,8 @@
       </div>
       <div class="loop-visual">
         <div class="visual-title">
-          <h3>循环图：agent 不是流程终点，而是中间执行层</h3>
-          <span>图承担的是责任和回流关系</span>
+          <h3>循环图：Agent 把中间执行层变成可审查的工作循环</h3>
+          <span>图承担的是新增价值、责任和回流关系</span>
         </div>
         <svg class="loop-svg" viewBox="0 0 960 360" role="img" aria-label="人机作业系统循环图">
           <defs>
@@ -1315,35 +1377,62 @@
 
     <section class="section">
       <div class="section-title">
-        <h2>人怎么变</h2>
-        <span>the scarce role is judgment</span>
+        <h2>现有公司的人该怎么做</h2>
+        <span>role-by-role operating change</span>
       </div>
       <div class="people">
         <article class="person">
-          <span class="role">OPD / Barrel</span>
-          <h3>端到端 owner</h3>
+          <span class="role">CEO / GM</span>
+          <h3>别把 AI 当采购项目</h3>
           <ul>
-            <li>把业务目标拆成可执行任务。</li>
-            <li>协调产品、设计、工程、数据和 agent。</li>
-            <li>对用户价值、取舍和结果负责。</li>
+            <li>选一个真业务瓶颈做 30-60 天试点。</li>
+            <li>明确质量、风险、成本和责任边界。</li>
+            <li>用流程结果考核，不用“用了多少 AI”考核。</li>
           </ul>
         </article>
         <article class="person">
-          <span class="role">Agentic Engineer</span>
-          <h3>管理 agent 的工程师</h3>
+          <span class="role">Product / PM</span>
+          <h3>从需求转述者变成判断 owner</h3>
           <ul>
-            <li>设计上下文、权限、工具、测试和回滚。</li>
-            <li>审查 agent 输出是否真的满足目标。</li>
-            <li>把失败沉淀成 guardrail、eval、skill、lint。</li>
+            <li>写清目标、非目标、用户场景和验收标准。</li>
+            <li>把 ticket/spec/wiki 做成 agent 可执行上下文。</li>
+            <li>保留取舍权，不能把产品判断外包给模型。</li>
           </ul>
         </article>
         <article class="person">
-          <span class="role">Manager</span>
-          <h3>作业系统设计者</h3>
+          <span class="role">Designer / Research</span>
+          <h3>把体验判断变成可测试样本</h3>
           <ul>
-            <li>决定哪些工作进入 agent 队列。</li>
-            <li>设计审查节点、责任边界和指标。</li>
-            <li>看吞吐、质量、成本、风险，而不是只看省了几小时。</li>
+            <li>沉淀用户语境、反例、边界场景和体验红线。</li>
+            <li>用原型和 review packet 审 agent 产物。</li>
+            <li>把“像不像人话”变成示例和检查项。</li>
+          </ul>
+        </article>
+        <article class="person">
+          <span class="role">Engineer / TL</span>
+          <h3>从写代码扩展到管理执行系统</h3>
+          <ul>
+            <li>设计工具权限、上下文入口、测试和回滚。</li>
+            <li>审查 agent 输出是否真的满足 spec。</li>
+            <li>把失败写回 eval、lint、guardrail、skill。</li>
+          </ul>
+        </article>
+        <article class="person">
+          <span class="role">QA / Data / Ops</span>
+          <h3>把反复出错的地方变成 eval</h3>
+          <ul>
+            <li>从末端兜底转向前置风险样本库。</li>
+            <li>把缺陷、异常、客诉、合规点结构化。</li>
+            <li>用可复跑检查证明 agent 没有只会演示。</li>
+          </ul>
+        </article>
+        <article class="person">
+          <span class="role">Manager / HR</span>
+          <h3>重写岗位边界和成长路径</h3>
+          <ul>
+            <li>区分可自动化执行和必须人类判断的工作。</li>
+            <li>训练员工写上下文、审证据、管风险。</li>
+            <li>调整绩效：看结果质量、系统沉淀和协作吞吐。</li>
           </ul>
         </article>
       </div>
