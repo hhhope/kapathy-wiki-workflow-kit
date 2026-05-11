@@ -25,6 +25,7 @@
 - [团队知识库构建路径](account-knowledge-base-workbench.md)
 - [团队知识库总览对外稿门禁复核](team-knowledge-base-overview-report-gate-review.md)
 - [团队知识库总览段落漂移运行时回放 2026-05-11](team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md)
+- [Agentic 产研协作报告门禁复核](agentic-product-engineering-collaboration-report-gate-review.md)
 - [Agent Harness 文章精读](agent-harness-article-learning.md)
 - [Evolver 自演化 Harness 文章精读](evolver-self-evolving-harness-reading-notes.md)
 - [Harness Engineering 总览文章精读](harness-engineering-overview-reading-notes.md)
