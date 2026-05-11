@@ -5,23 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Agent 时代产研协作行业观察报</title>
   <style>
+    @font-face {
+      font-family: YaHeiLocal;
+      src: url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype");
+      font-weight: 400 900;
+    }
+
+    @font-face {
+      font-family: SimSunLocal;
+      src: url("file:///mnt/c/Windows/Fonts/simsun.ttc") format("truetype");
+      font-weight: 400 900;
+    }
+
     :root {
-      --bg: #f4f5f7;
-      --paper: #fffdf7;
-      --ink: #161616;
-      --muted: #5f6368;
-      --line: #242424;
-      --thin: #d7d7d7;
-      --red: #c7352f;
-      --blue: #1769aa;
-      --green: #257a52;
-      --amber: #b96b00;
-      --violet: #5f4bb6;
-      --soft-red: #fff0ee;
-      --soft-blue: #edf6ff;
-      --soft-green: #eef8f1;
-      --soft-amber: #fff6e6;
-      --soft-violet: #f3efff;
+      --font-body: YaHeiLocal, "IBM Plex Sans", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      --font-serif: SimSunLocal, "Instrument Serif", "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "SimSun", Georgia, serif;
+      --font-mono: "IBM Plex Mono", "SFMono-Regular", "Menlo", "Consolas", monospace;
+      --bg: #f3eadc;
+      --paper: #fffaf0;
+      --paper-2: #f7ecdc;
+      --surface: rgba(255, 250, 240, .94);
+      --ink: #1e1812;
+      --muted: #66594d;
+      --line: #2c2118;
+      --thin: rgba(44, 33, 24, .16);
+      --red: #be123c;
+      --blue: #1e3a5f;
+      --green: #4f6f45;
+      --amber: #d4a73a;
+      --cranberry: #881337;
+      --soft-red: #f8e0e3;
+      --soft-blue: #e3edf4;
+      --soft-green: #e6eedf;
+      --soft-amber: #f8edcf;
+      --soft-cranberry: #f2d9dd;
+      --shadow: 0 18px 44px rgba(58, 42, 25, .10);
+      --shadow-soft: 0 10px 26px rgba(58, 42, 25, .07);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #15100b;
+        --paper: #211910;
+        --paper-2: #2a2016;
+        --surface: rgba(33, 25, 16, .94);
+        --ink: #f5ead9;
+        --muted: #cdbfae;
+        --line: #f1dfc1;
+        --thin: rgba(241, 223, 193, .16);
+        --red: #f08ca1;
+        --blue: #9fc1df;
+        --green: #a8c78f;
+        --amber: #efd17a;
+        --cranberry: #e99aae;
+        --soft-red: #3a1c22;
+        --soft-blue: #17283a;
+        --soft-green: #1f2d1c;
+        --soft-amber: #342a14;
+        --soft-cranberry: #351821;
+        --shadow: 0 18px 44px rgba(0, 0, 0, .36);
+        --shadow-soft: 0 10px 26px rgba(0, 0, 0, .24);
+      }
     }
 
     * {
@@ -34,10 +78,27 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       color: var(--ink);
-      background: var(--bg);
-      font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", "WenQuanYi Micro Hei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(212, 167, 58, .18), transparent 30%),
+        radial-gradient(circle at 92% 9%, rgba(30, 58, 95, .14), transparent 28%),
+        linear-gradient(180deg, var(--bg), #f8f1e7 54%, #eee1cf);
+      font-family: var(--font-body);
       line-height: 1.65;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(44, 33, 24, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(44, 33, 24, .045) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, .28), transparent 74%);
+      opacity: .72;
     }
 
     a {
@@ -46,12 +107,70 @@
       text-underline-offset: 3px;
     }
 
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: min(1440px, calc(100vw - 32px));
+      margin: 24px auto 40px;
+      display: grid;
+      grid-template-columns: 210px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 20px;
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      padding: 14px;
+      border: 1px solid var(--thin);
+      border-radius: 8px;
+      background: rgba(255, 250, 240, .84);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
+    }
+
+    .toc-title {
+      margin: 0 0 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--thin);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .toc a {
+      display: block;
+      padding: 7px 8px;
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      color: var(--ink);
+      background: var(--paper-2);
+    }
+
     .page {
-      width: min(1180px, calc(100vw - 32px));
-      margin: 24px auto;
+      min-width: 0;
       background: var(--paper);
       border: 2px solid var(--line);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, .12);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: fadeUp .55s ease both;
     }
 
     .masthead {
@@ -71,7 +190,7 @@
 
     .brand {
       margin: 10px 0 2px;
-      font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "SimSun", Georgia, "Times New Roman", serif;
+      font-family: var(--font-serif);
       font-size: clamp(34px, 7vw, 78px);
       line-height: .98;
       font-weight: 900;
@@ -81,7 +200,7 @@
     .tagline {
       margin: 0;
       font-size: clamp(15px, 2vw, 20px);
-      color: #303030;
+      color: var(--muted);
     }
 
     .front {
@@ -114,7 +233,7 @@
     h1 {
       margin-bottom: 14px;
       max-width: 820px;
-      font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "SimSun", Georgia, "Times New Roman", serif;
+      font-family: var(--font-serif);
       font-size: clamp(32px, 5vw, 62px);
       line-height: 1.03;
       letter-spacing: 0;
@@ -123,7 +242,7 @@
     .dek {
       max-width: 820px;
       margin-bottom: 20px;
-      color: #2f3337;
+      color: var(--muted);
       font-size: clamp(17px, 2vw, 23px);
       line-height: 1.55;
     }
@@ -139,7 +258,7 @@
       min-height: 128px;
       padding: 14px;
       border: 1px solid var(--line);
-      background: #fff;
+      background: var(--surface);
     }
 
     .thesis-box strong {
@@ -150,13 +269,13 @@
 
     .thesis-box p {
       margin: 0;
-      color: #303030;
+      color: var(--muted);
       font-size: 14px;
     }
 
     .side {
       padding: 18px;
-      background: #fbfbfb;
+      background: var(--paper-2);
     }
 
     .source-meter {
@@ -166,11 +285,37 @@
       margin-bottom: 18px;
     }
 
+    .metric,
+    .thesis-box,
+    .debate,
+    .stance,
+    .timeline-visual,
+    .debate-visual,
+    .loop-visual,
+    .evidence-visual,
+    .month,
+    .camp,
+    .dumbbell,
+    .bell,
+    .flow,
+    .step,
+    .person,
+    .heat-panel,
+    .source-drawer,
+    .rulebox,
+    .viz-card,
+    .viz-badge,
+    .takeaway,
+    .loop-step {
+      border-radius: 8px;
+    }
+
     .metric {
       min-height: 92px;
       padding: 12px;
       border: 1px solid var(--line);
       background: #fff;
+      box-shadow: var(--shadow-soft);
     }
 
     .metric b {
@@ -201,13 +346,14 @@
 
     .brief p {
       margin: 0;
-      color: #333;
+      color: var(--muted);
       font-size: 14px;
     }
 
     .section {
       padding: 24px;
       border-bottom: 2px solid var(--line);
+      animation: fadeUp .55s ease both;
     }
 
     .section-title {
@@ -221,7 +367,7 @@
 
     .section-title h2 {
       margin-bottom: 7px;
-      font-family: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "SimSun", Georgia, "Times New Roman", serif;
+      font-family: var(--font-serif);
       font-size: clamp(26px, 4vw, 42px);
       line-height: 1;
     }
@@ -243,6 +389,7 @@
       padding: 14px;
       border: 1px solid var(--line);
       background: #fff;
+      box-shadow: var(--shadow-soft);
     }
 
     .debate h3 {
@@ -298,6 +445,7 @@
       padding: 14px;
       border: 1px solid var(--line);
       background: #fff;
+      box-shadow: var(--shadow-soft);
     }
 
     .visual-title {
@@ -407,14 +555,14 @@
     }
 
     .chart-label {
-      font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: var(--font-body);
       font-size: 13px;
       font-weight: 800;
       fill: #161616;
     }
 
     .chart-small {
-      font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: var(--font-body);
       font-size: 11px;
       fill: #4b4b4b;
     }
@@ -558,7 +706,7 @@
     .camp:nth-child(2) .camp-label { background: var(--blue); }
     .camp:nth-child(3) .camp-label { background: var(--green); }
     .camp:nth-child(4) .camp-label { background: var(--amber); }
-    .camp:nth-child(5) .camp-label { background: var(--violet); }
+    .camp:nth-child(5) .camp-label { background: var(--cranberry); }
     .camp:nth-child(6) .camp-label { background: #333; }
 
     .camp-body {
@@ -587,7 +735,8 @@
       padding: 14px;
       border: 2px solid var(--line);
       background: #fffdf7;
-      box-shadow: 6px 6px 0 #161616;
+      border-radius: 8px;
+      box-shadow: 6px 6px 0 rgba(30, 24, 18, .92);
     }
 
     .viz-sheet.knowledge-card {
@@ -598,7 +747,9 @@
     }
 
     .viz-sheet.main-infographic {
-      background: #fff8e6;
+      background:
+        radial-gradient(circle at 88% 0%, rgba(212, 167, 58, .2), transparent 28%),
+        #fff8e6;
     }
 
     .viz-head {
@@ -654,6 +805,7 @@
       border: 2px solid var(--line);
       background: #fff;
       position: relative;
+      box-shadow: 0 8px 18px rgba(44, 33, 24, .05);
     }
 
     .viz-card h4 {
@@ -680,7 +832,7 @@
     .viz-card.green { background: var(--soft-green); }
     .viz-card.amber { background: var(--soft-amber); }
     .viz-card.red { background: var(--soft-red); }
-    .viz-card.violet { background: var(--soft-violet); }
+    .viz-card.rose { background: var(--soft-cranberry); }
 
     .viz-card.warning {
       background: #161616;
@@ -696,7 +848,7 @@
       margin-top: 12px;
       padding: 12px 14px;
       border: 2px solid var(--line);
-      background: #ffe27a;
+      background: linear-gradient(135deg, #ffe27a, #f6c85b);
       font-weight: 900;
       font-size: 18px;
       line-height: 1.35;
@@ -915,7 +1067,7 @@
     .flow.new .step:nth-child(2) { background: var(--soft-blue); }
     .flow.new .step:nth-child(3) { background: var(--soft-amber); }
     .flow.new .step:nth-child(4) { background: var(--soft-green); }
-    .flow.new .step:nth-child(5) { background: var(--soft-violet); }
+    .flow.new .step:nth-child(5) { background: var(--soft-cranberry); }
 
     .loop-svg {
       width: 100%;
@@ -926,14 +1078,14 @@
     }
 
     .svg-label {
-      font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: var(--font-body);
       font-size: 15px;
       font-weight: 800;
       fill: #161616;
     }
 
     .svg-small {
-      font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: var(--font-body);
       font-size: 12px;
       fill: #4b4b4b;
     }
@@ -964,7 +1116,7 @@
     .person:nth-child(2) .role { background: var(--blue); }
     .person:nth-child(3) .role { background: var(--green); }
     .person:nth-child(4) .role { background: var(--amber); color: #161616; }
-    .person:nth-child(5) .role { background: var(--violet); }
+    .person:nth-child(5) .role { background: var(--cranberry); }
     .person:nth-child(6) .role { background: #333; }
 
     .person h3 {
@@ -1140,6 +1292,96 @@
       margin: 0 0 8px;
     }
 
+    @media (prefers-color-scheme: dark) {
+      .toc,
+      .thesis-box,
+      .metric,
+      .debate,
+      .timeline-visual,
+      .debate-visual,
+      .loop-visual,
+      .evidence-visual,
+      .camp,
+      .dumbbell,
+      .viz-card,
+      .bell,
+      .flow,
+      .loop-svg,
+      .person,
+      .heat-panel,
+      .term,
+      .source-drawer,
+      .load-table,
+      .layer,
+      .rulebox {
+        background: var(--surface);
+      }
+
+      .stance,
+      .chip,
+      .compare-grid article,
+      .step,
+      .load-table th {
+        background: var(--paper-2);
+      }
+
+      .brief p,
+      .debate p,
+      .stance,
+      .quadrant p,
+      .camp-body p,
+      .viz-head p,
+      .viz-card p,
+      .month p,
+      .compare-grid p,
+      .bell p,
+      .flow p,
+      .source-drawer p,
+      .layer p,
+      .footer {
+        color: var(--muted);
+      }
+
+      .line-chart {
+        background:
+          linear-gradient(rgba(241, 223, 193, .08) 1px, transparent 1px) 0 0 / 100% 20%,
+          var(--surface);
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .shell {
+        width: min(1180px, calc(100vw - 24px));
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .toc {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        max-height: none;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .toc-title {
+        display: inline-block;
+        margin: 0 10px 0 0;
+        padding: 0 10px 0 0;
+        border-bottom: 0;
+        border-right: 1px solid var(--thin);
+        vertical-align: middle;
+      }
+
+      .toc a {
+        display: inline-block;
+        margin-right: 4px;
+        vertical-align: middle;
+      }
+    }
+
     @media (max-width: 900px) {
       .page {
         width: 100%;
@@ -1262,7 +1504,21 @@
   </style>
 </head>
 <body>
-  <main class="page">
+  <div class="shell">
+  <nav class="toc" aria-label="章节导航">
+    <p class="toc-title">Edition Map</p>
+    <a href="#top">头版判断</a>
+    <a href="#mainline">五张图读懂主线</a>
+    <a href="#debate">行业在争什么</a>
+    <a href="#timeline">讨论如何推进</a>
+    <a href="#dumbbell">公司的位置更像哑铃</a>
+    <a href="#system">作业系统变了</a>
+    <a href="#actions">现有公司的人该怎么做</a>
+    <a href="#heat">讨论热区</a>
+    <a href="#evidence">证据怎么用</a>
+    <a href="#principles">我们应该怎么做</a>
+  </nav>
+  <main class="page" id="top">
     <header class="masthead">
       <div class="kicker">
         <span>Industry Observer / Draft H5 Newspaper</span>
@@ -1307,7 +1563,7 @@
       </aside>
     </section>
 
-    <section class="section">
+    <section class="section" id="mainline">
       <div class="section-title">
         <h2>五张图读懂主线</h2>
         <span>knowledge-article-visual structure</span>
@@ -1337,7 +1593,7 @@
             <h4>04 建立审查循环</h4>
             <p>Agent 输出必须进入 review packet、eval、wiki、rules，而不是只给一个答案。</p>
           </article>
-          <article class="viz-card violet">
+          <article class="viz-card rose">
             <h4>05 回到岗位动作</h4>
             <p>人从搬运上下文，转向定义目标、设边界、审结果、沉淀系统。</p>
           </article>
@@ -1356,7 +1612,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="debate">
       <div class="section-title">
         <h2>行业在争什么</h2>
         <span>debate map, not word cloud</span>
@@ -1398,7 +1654,7 @@
             <h4>05 PM 压缩还是升级</h4>
             <p>被压缩的是需求转述、会议同步、状态搬运；变重的是目标定义、用户取舍、验收标准和发布判断。</p>
           </article>
-          <article class="viz-card violet">
+          <article class="viz-card rose">
             <h4>06 小团队密度 vs 大组织治理</h4>
             <p>10 人公司和 one-person company 是强信号，但不能直接推出大组织会消失。</p>
             <div class="arrow-row"><span>密度</span><i>+</i><span>权限</span><i>+</i><span>审计</span></div>
@@ -1413,7 +1669,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="timeline">
       <div class="section-title">
         <h2>讨论如何推进</h2>
         <span>真实条目计数：public timeline 95 + podcast/video 36</span>
@@ -1481,7 +1737,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="dumbbell">
       <div class="section-title">
         <h2>公司的位置更像哑铃</h2>
         <span>automation side, governance side, product-engineering bridge</span>
@@ -1534,7 +1790,7 @@
               <li>DORA / Stack Overflow / GitLab / METR</li>
             </ul>
           </article>
-          <article class="viz-card violet">
+          <article class="viz-card rose">
             <h4>07 高风险样本提示</h4>
             <p>Block、Stripe、Ramp、PayPal、AWS 这类 payment、infra、security、customer data 场景，要求自动化和治理同桌讨论。</p>
           </article>
@@ -1544,7 +1800,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="system">
       <div class="section-title">
         <h2>作业系统变了</h2>
         <span>agent value before workflow redesign</span>
@@ -1589,7 +1845,7 @@
             <h4>06 警告：别把判断外包</h4>
             <p>Agent 可以执行中间工作，但不能替公司决定目标、取舍、责任和风险承受。没有 owner 的 Agent queue，只会把混乱放大。</p>
           </article>
-          <article class="viz-card violet">
+          <article class="viz-card rose">
             <h4>07 落地观察</h4>
             <ul>
               <li>cycle time</li>
@@ -1633,7 +1889,7 @@
             <h4>04 审查：Review Packet</h4>
             <p>输出不能只是答案。它要带上变更点、依据、验证结果、失败项、风险和待人判断问题。</p>
           </article>
-          <article class="viz-card violet">
+          <article class="viz-card rose">
             <h4>05 回放与沉淀</h4>
             <p>输入、工具调用、关键判断、测试结果和人工审查意见留下痕迹；失败写回新测试、新规则、新示例和新知识页。</p>
           </article>
@@ -1647,7 +1903,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="actions">
       <div class="section-title">
         <h2>现有公司的人该怎么做</h2>
         <span>role-by-role operating change</span>
@@ -1710,7 +1966,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="heat">
       <div class="section-title">
         <h2>讨论热区</h2>
         <span>click a term to inspect source routes</span>
@@ -1746,7 +2002,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="evidence">
       <div class="section-title">
         <h2>证据怎么用</h2>
         <span>load-bearing map</span>
@@ -1790,7 +2046,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="principles">
       <div class="section-title">
         <h2>我们应该怎么做</h2>
         <span>local operating principles</span>
@@ -1831,6 +2087,7 @@
       </ol>
     </footer>
   </main>
+  </div>
   <script>
     const termSources = {
       "judgment": {
