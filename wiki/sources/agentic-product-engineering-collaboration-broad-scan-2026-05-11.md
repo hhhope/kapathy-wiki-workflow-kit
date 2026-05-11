@@ -25,7 +25,7 @@ This is a broad scan, not a final evidence pack. Items marked `candidate` or
 
 Broad scan inventory: 88 source leads across 8 buckets.
 
-Timeline extension: the January-May 2026 public-source timeline adds 62 dated
+Timeline extension: the January-May 2026 public-source timeline adds 64 dated
 entries and should be used when the writing needs a chronological progression
 rather than a company/category map.
 

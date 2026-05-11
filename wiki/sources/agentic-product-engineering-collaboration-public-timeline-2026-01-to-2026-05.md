@@ -24,7 +24,7 @@ Coverage status: expanded open-web scan, not an "all public sources" claim.
 Public sources are continuously changing and search engines do not expose a
 complete corpus. Treat this as a dated source inventory that can be extended.
 
-Current timeline count: 62 public source entries.
+Current timeline count: 64 public source entries.
 
 ## Source Classes
 
@@ -97,6 +97,7 @@ Current timeline count: 62 public source entries.
 | 2026-04-08 | Anthropic Engineering | [Scaling Managed Agents](https://www.anthropic.com/engineering/managed-agents) | primary | Long-horizon agent work needs durable sessions, decoupled harness/sandbox, credential isolation, and many-brain/many-hand architecture. |
 | 2026-04-10 | InfoQ / QCon Beijing | [从云原生到 Agent Engineering](https://www.infoq.cn/article/DXzhsW63lQ5IoohR1uDD) | secondary-cn | Chinese engineering discussion explicitly moves from software engineering to AI engineering / Agent Engineering. |
 | 2026-04-10 | DECODE | [Agentic development at DECODE](https://decode.agency/article/our-agentic-development-process/) | practitioner | Agency practice case: agentic development is part of the delivery process, not an isolated tool. |
+| 2026-04-12 | Lenny's Podcast / Keith Rabois | [Hard truths about building in the AI era](https://www.lennysnewsletter.com/p/hard-truths-about-building-in-the-ai-era) | primary-interview | Upstream PayPal / barrels vs ammunition source chain: organization output is constrained by end-to-end owners, not raw headcount. Also discusses PM role pressure in the AI era. |
 | 2026-04-14 | SoftServe / MIT Technology Review | [Redefining the Future of Software Engineering](https://finance.yahoo.com/sectors/technology/articles/98-agentic-ai-speed-software-130100068.html) | secondary-report | Survey signal: enterprises expect agents to reduce pilot purgatory but need delivery model change. |
 | 2026-04-16 | OpenAI | [Codex for almost everything](https://openai.com/index/codex-for-almost-everything//) | primary | Codex expands beyond coding into background computer use, repeatable work, memory, and full SDLC support. |
 | 2026-04-16 | CN-SEC / QCon Beijing | [快手技术五大议题解读 AI 落地路径](https://cn-sec.com/archives/5174713.html) | secondary-cn | Chinese enterprise cases: risk control, BI, feature-flag governance, frontend analysis, RCA agents. |
@@ -120,6 +121,7 @@ Current timeline count: 62 public source entries.
 | 2026-05-07 | VentureBeat / Anthropic | [Dreaming for Claude Managed Agents](https://venturebeat.com/technology/anthropic-introduces-dreaming-a-system-that-lets-ai-agents-learn-from-their-own-mistakes) | secondary | Agent platforms start adding self-improvement, outcome rubrics, and multi-agent orchestration as production capabilities. |
 | 2026-05-07 | Business Insider / Anthropic | [Anthropic agents learn from mistakes](https://www.businessinsider.com/anthropic-dreaming-ai-agents-2026-5) | secondary | Reinforces the same May signal: long-running agents move toward memory, self-correction, and managed orchestration. |
 | 2026-05-07 | TechRadar / Anthropic | [Agents for financial services coverage](https://www.techradar.com/pro/anthropic-rolls-out-a-host-of-new-ai-agents-to-target-the-most-time-consuming-work-in-financial-services) | secondary | Secondary view of Anthropic's finance agents and role-specific templates. |
+| 2026-05-08 | Jiang Tao / 硅基时间 | [PayPal 鼎盛时 254 人,只有 17 个在做真正的工作](https://mp.weixin.qq.com/s/T_6uuDQqO-MFg1CXJWjRBw) | secondary-cn | Chinese synthesis that routes the PayPal 254 people / 12-17 barrels claim to Keith Rabois. Use as OPD/barrel framing pressure, not as the hard source for PayPal data. |
 | 2026-05-10 | GitHub / MassGen | [MassGen multi-agent scaling system](https://github.com/massgen/massgen) | primary-repo | Open-source multi-agent orchestration with parallel processing, consensus, and checkpoint/reviewer patterns. |
 
 ## Timeline Reading
