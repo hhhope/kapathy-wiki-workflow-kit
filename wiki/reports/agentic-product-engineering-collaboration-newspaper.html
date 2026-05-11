@@ -520,53 +520,6 @@
       gap: 10px;
     }
 
-    .line-chart {
-      width: 100%;
-      height: auto;
-      display: block;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(#ececec 1px, transparent 1px) 0 0 / 100% 20%,
-        #fff;
-    }
-
-    .chart-line-public {
-      fill: none;
-      stroke: var(--blue);
-      stroke-width: 4;
-    }
-
-    .chart-line-talk {
-      fill: none;
-      stroke: var(--red);
-      stroke-width: 4;
-    }
-
-    .chart-line-total {
-      fill: none;
-      stroke: #161616;
-      stroke-width: 5;
-    }
-
-    .chart-dot {
-      cursor: pointer;
-      stroke: #fff;
-      stroke-width: 3;
-    }
-
-    .chart-label {
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 800;
-      fill: #161616;
-    }
-
-    .chart-small {
-      font-family: var(--font-body);
-      font-size: 11px;
-      fill: #4b4b4b;
-    }
-
     .axis-row {
       display: grid;
       grid-template-columns: 72px 1fr 64px;
@@ -1226,27 +1179,6 @@
     .flow.new .step:nth-child(4) { background: var(--soft-green); }
     .flow.new .step:nth-child(5) { background: var(--soft-cranberry); }
 
-    .loop-svg {
-      width: 100%;
-      height: auto;
-      display: block;
-      border: 1px solid var(--line);
-      background: #fff;
-    }
-
-    .svg-label {
-      font-family: var(--font-body);
-      font-size: 15px;
-      font-weight: 800;
-      fill: #161616;
-    }
-
-    .svg-small {
-      font-family: var(--font-body);
-      font-size: 12px;
-      fill: #4b4b4b;
-    }
-
     .people {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1463,7 +1395,6 @@
       .viz-card,
       .bell,
       .flow,
-      .loop-svg,
       .person,
       .heat-panel,
       .term,
@@ -1499,11 +1430,6 @@
         color: var(--muted);
       }
 
-      .line-chart {
-        background:
-          linear-gradient(rgba(241, 223, 193, .08) 1px, transparent 1px) 0 0 / 100% 20%,
-          var(--surface);
-      }
     }
 
     @media (max-width: 1100px) {
@@ -1758,16 +1684,10 @@
         <h2>行业在争什么</h2>
         <span>what the evidence can and cannot support</span>
       </div>
-      <div class="paired-figures">
-        <figure class="article-figure chapter-figure">
-          <img src="agentic-collaboration-images/01-industry-debate.png" width="1672" height="941" alt="行业在争什么：速度与责任、工具与工作对象、小团队与组织治理、员工派与对象派" loading="lazy" />
-          <figcaption>章节配图：争议结构图。行业表面在争工具、员工、小团队，底层在争目标、责任、系统和验收。</figcaption>
-        </figure>
-        <figure class="article-figure chapter-figure">
-          <img src="agentic-collaboration-images/01-industry-debate-source-boundary.png" width="1672" height="941" alt="行业在争什么：目标、验收和责任，不只是代码速度" loading="lazy" />
-          <figcaption>章节配图：证据边界图。262 entries 是源池规模，不是全网总量，不能把讨论热度当行业定论。</figcaption>
-        </figure>
-      </div>
+      <figure class="article-figure chapter-figure">
+        <img src="agentic-collaboration-images/01-industry-debate.png" width="1672" height="941" alt="行业在争什么：速度与责任、工具与工作对象、小团队与组织治理、员工派与对象派" loading="lazy" />
+        <figcaption>章节配图：保留这一张行业争议图。行业表面在争工具、员工、小团队，底层在争目标、责任、系统和验收；源池规模和证据边界回到正文说明。</figcaption>
+      </figure>
       <article class="article-prose">
         <p class="lead-claim">表面上，行业在争“Agent 会不会写完代码、PM 会不会消失、公司会不会变成极小团队”。但把 2026 年 1 月到 5 月 11 日的公开信源放在一起看，真正的争点不是职业消失，而是公司能不能把工作交给 Agent，又能不能把结果审回来。</p>
         <div class="evidence-ledger">
@@ -1808,52 +1728,51 @@
       </div>
       <div class="timeline-visual">
         <div class="visual-title">
-          <h3>折线图：2 月升温，4 月公开讨论达到峰值</h3>
-          <span>hover 点位看代表信源</span>
+          <h3>月度源池：2 月升温，4 月公开讨论达到峰值</h3>
+          <span>public timeline 95 + podcast / video 36</span>
         </div>
-        <svg class="line-chart" viewBox="0 0 960 420" role="img" aria-label="2026年1月至5月讨论数量折线图">
-          <line x1="70" y1="330" x2="900" y2="330" stroke="#161616" stroke-width="2"></line>
-          <line x1="70" y1="70" x2="70" y2="330" stroke="#161616" stroke-width="2"></line>
-          <text x="34" y="333" class="chart-small">0</text>
-          <text x="28" y="253" class="chart-small">10</text>
-          <text x="28" y="174" class="chart-small">20</text>
-          <text x="28" y="95" class="chart-small">30</text>
-          <text x="110" y="360" class="chart-label">Jan</text>
-          <text x="295" y="360" class="chart-label">Feb</text>
-          <text x="480" y="360" class="chart-label">Mar</text>
-          <text x="665" y="360" class="chart-label">Apr</text>
-          <text x="850" y="360" class="chart-label">May</text>
-          <polyline class="chart-line-total" points="120,164 305,92 490,116 675,68 860,172"></polyline>
-          <polyline class="chart-line-public" points="120,244 305,148 490,204 675,124 860,180"></polyline>
-          <polyline class="chart-line-talk" points="120,252 305,276 490,244 675,276 860,324"></polyline>
-          <g fill="#161616">
-            <circle class="chart-dot" cx="120" cy="164" r="7"><title>Jan total 21. repo readiness, agent loop, Cowork, guardrails.</title></circle>
-            <circle class="chart-dot" cx="305" cy="92" r="7"><title>Feb total 30. Codex app, harness, Claude Code, design-code loop.</title></circle>
-            <circle class="chart-dot" cx="490" cy="116" r="7"><title>Mar total 27. spec readiness, payment eval, agent-centric SDLC.</title></circle>
-            <circle class="chart-dot" cx="675" cy="68" r="7"><title>Apr total 33. Symphony, Managed Agents, Open Agentic Development, Keith Rabois, Intercom.</title></circle>
-            <circle class="chart-dot" cx="860" cy="172" r="7"><title>May total 20. Frontier Firm, finance agents, AI operating model, hands-on managers.</title></circle>
-          </g>
-          <g fill="#1769aa">
-            <circle class="chart-dot" cx="120" cy="244" r="6"><title>Jan public 11</title></circle>
-            <circle class="chart-dot" cx="305" cy="148" r="6"><title>Feb public 23</title></circle>
-            <circle class="chart-dot" cx="490" cy="204" r="6"><title>Mar public 16</title></circle>
-            <circle class="chart-dot" cx="675" cy="124" r="6"><title>Apr public 26</title></circle>
-            <circle class="chart-dot" cx="860" cy="180" r="6"><title>May public 19</title></circle>
-          </g>
-          <g fill="#c7352f">
-            <circle class="chart-dot" cx="120" cy="252" r="6"><title>Jan podcast/video 10</title></circle>
-            <circle class="chart-dot" cx="305" cy="276" r="6"><title>Feb podcast/video 7</title></circle>
-            <circle class="chart-dot" cx="490" cy="244" r="6"><title>Mar podcast/video 11</title></circle>
-            <circle class="chart-dot" cx="675" cy="276" r="6"><title>Apr podcast/video 7</title></circle>
-            <circle class="chart-dot" cx="860" cy="324" r="6"><title>May podcast/video 1</title></circle>
-          </g>
-          <text x="720" y="48" class="chart-small">total</text>
-          <line x1="760" y1="44" x2="820" y2="44" stroke="#161616" stroke-width="5"></line>
-          <text x="720" y="72" class="chart-small">public</text>
-          <line x1="760" y1="68" x2="820" y2="68" stroke="#1769aa" stroke-width="4"></line>
-          <text x="720" y="96" class="chart-small">podcast / video</text>
-          <line x1="820" y1="92" x2="880" y2="92" stroke="#c7352f" stroke-width="4"></line>
-        </svg>
+        <div class="source-axis" role="img" aria-label="2026年1月至5月讨论数量数据表">
+          <div class="axis-row">
+            <span class="axis-month">Jan</span>
+            <div class="axis-bars">
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 42%;">public 11</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 91%;">podcast / video 10</span></div>
+            </div>
+            <span class="axis-total">21</span>
+          </div>
+          <div class="axis-row">
+            <span class="axis-month">Feb</span>
+            <div class="axis-bars">
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 88%;">public 23</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 64%;">podcast / video 7</span></div>
+            </div>
+            <span class="axis-total">30</span>
+          </div>
+          <div class="axis-row">
+            <span class="axis-month">Mar</span>
+            <div class="axis-bars">
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 62%;">public 16</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 100%;">podcast / video 11</span></div>
+            </div>
+            <span class="axis-total">27</span>
+          </div>
+          <div class="axis-row">
+            <span class="axis-month">Apr</span>
+            <div class="axis-bars">
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 100%;">public 26</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 64%;">podcast / video 7</span></div>
+            </div>
+            <span class="axis-total">33</span>
+          </div>
+          <div class="axis-row">
+            <span class="axis-month">May</span>
+            <div class="axis-bars">
+              <div class="bar-track"><span class="bar-fill bar-public" style="width: 73%;">public 19</span></div>
+              <div class="bar-track"><span class="bar-fill bar-talk" style="width: 9%;">1</span></div>
+            </div>
+            <span class="axis-total">20</span>
+          </div>
+        </div>
         <div class="legend-row">
           <span><i class="legend-swatch bar-public"></i>public timeline entries</span>
           <span><i class="legend-swatch bar-talk"></i>podcast / video discussions</span>
@@ -1910,11 +1829,11 @@
       <div class="paired-figures">
         <figure class="article-figure chapter-figure">
           <img src="agentic-collaboration-images/04-operating-system.png" width="1672" height="941" alt="作业系统变了：从人对人传话链变成可执行对象控制台" loading="lazy" />
-          <figcaption>章节配图：作业对象从会议、文档和口头同步，迁移到 ticket、spec、PR、eval、wiki、log。</figcaption>
+          <figcaption>章节配图：编号 04 对应本节的作业系统变化，作业对象从会议、文档和口头同步，迁移到 ticket、spec、PR、eval、wiki、log。</figcaption>
         </figure>
         <figure class="article-figure chapter-figure">
           <img src="agentic-collaboration-images/05-agent-loop.png" width="1672" height="941" alt="Agent 循环：人定目标、可执行上下文、Agent queue、review packet、replay trail、system writeback" loading="lazy" />
-          <figcaption>章节配图：Agent 循环不是全自动，而是每次执行都留下证据、审查和写回。</figcaption>
+          <figcaption>章节配图：编号 05 对应本节里的 Agent 可审查循环；它不是重复配图，而是在说明每次执行都要留下证据、审查和写回。</figcaption>
         </figure>
       </div>
       <article class="article-prose">
@@ -1951,8 +1870,8 @@
         <span>role-by-role operating change</span>
       </div>
       <figure class="article-figure chapter-figure">
-        <img src="agentic-collaboration-images/06-human-position-overview.png" width="1086" height="1448" alt="人的位置：人不消失，责任上移，判断、品味、风险、验收更关键" loading="lazy" />
-        <figcaption>章节配图：人的位置不是退场，而是从搬运上下文转向定目标、给边界、审证据、扛责任。</figcaption>
+        <img src="agentic-collaboration-images/06-company-actions.png" width="1672" height="941" alt="现有公司的人该怎么做：CEO、PM、Design、Engineering、QA、Ops、Manager 的角色动作" loading="lazy" />
+        <figcaption>章节配图：现有公司不是考核“用了多少 AI”，而是让 CEO / GM、PM、Design、Engineering、QA / Data / Ops、Manager / HR 各自把责任、边界和证据写清楚。</figcaption>
       </figure>
       <div class="people">
         <article class="person">
@@ -2097,6 +2016,10 @@
         <h2>我们应该怎么做</h2>
         <span>local operating principles</span>
       </div>
+      <figure class="article-figure chapter-figure">
+        <img src="agentic-collaboration-images/07-operating-principles.png" width="1672" height="941" alt="我们应该怎么做：30-60 天 pilot 作业链，从选工作流到写回系统" loading="lazy" />
+        <figcaption>章节配图：先跑一条可验证业务流，不先买工具，不追概念热度；目标、执行、审查、写回要连成同一条作业链。</figcaption>
+      </figure>
       <div class="rules">
         <article class="rulebox">
           <h3>三条原则</h3>
