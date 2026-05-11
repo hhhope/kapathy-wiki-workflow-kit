@@ -938,387 +938,112 @@
       align-items: center;
     }
 
-    .collab-system {
-      display: grid;
-      gap: 14px;
+    .article-prose {
+      max-width: 980px;
+      margin: 0 auto;
+      color: var(--ink);
     }
 
-    .collab-rail {
-      display: grid;
-      grid-template-columns: minmax(0, .92fr) minmax(220px, .62fr) minmax(0, .92fr);
-      gap: 14px;
-      align-items: stretch;
-    }
-
-    .collab-end,
-    .collab-bridge,
-    .collab-flow,
-    .collab-note {
-      border: 2px solid var(--line);
-      border-radius: 8px;
-      background: var(--surface);
-    }
-
-    .collab-end {
-      min-height: 330px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .collab-end.human {
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .68), rgba(255, 255, 255, .68)),
-        var(--soft-blue);
-    }
-
-    .collab-end.system-side {
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .64), rgba(255, 255, 255, .64)),
-        var(--soft-green);
-    }
-
-    .collab-kicker {
-      display: inline-flex;
-      width: fit-content;
-      margin-bottom: 10px;
-      padding: 5px 8px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .collab-end h4,
-    .collab-bridge h4,
-    .collab-flow h4,
-    .collab-note h4 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      line-height: 1.12;
-    }
-
-    .collab-end p,
-    .collab-bridge p,
-    .collab-flow p,
-    .collab-note p {
-      margin: 0;
-      color: #333;
-    }
-
-    .collab-token-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-
-    .collab-token {
-      padding: 7px 9px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .72);
+    .article-prose .lead-claim {
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--thin);
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.28;
       font-weight: 900;
-      line-height: 1.15;
     }
 
-    .collab-bridge {
-      position: relative;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .62), rgba(255, 255, 255, .62)),
-        var(--soft-amber);
+    .article-prose h3 {
+      margin: 24px 0 8px;
+      font-size: 22px;
+      line-height: 1.28;
     }
 
-    .collab-bridge::before,
-    .collab-bridge::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 14px;
-      border-top: 4px solid var(--line);
+    .article-prose p {
+      margin-bottom: 14px;
+      font-size: 16px;
+      line-height: 1.85;
     }
 
-    .collab-bridge::before {
-      right: 100%;
-    }
-
-    .collab-bridge::after {
-      left: 100%;
-    }
-
-    .bridge-stack {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 7px;
-      margin: 12px 0;
-    }
-
-    .bridge-stack span {
-      padding: 7px 8px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, .74);
+    .article-prose strong {
       font-weight: 900;
-      line-height: 1.15;
     }
 
-    .collab-flow {
+    .evidence-ledger {
+      margin: 18px 0;
       padding: 14px 16px;
-      background: rgba(255, 255, 255, .58);
+      border-left: 4px solid var(--line);
+      background: rgba(255, 255, 255, .5);
     }
 
-    .flow-strip {
-      display: grid;
-      grid-template-columns: repeat(7, auto);
-      gap: 8px;
-      align-items: center;
-      margin-top: 12px;
-      width: fit-content;
-      max-width: 100%;
+    .evidence-ledger h3,
+    .boundary-note h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
     }
 
-    .flow-strip span {
-      padding: 7px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--paper);
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .flow-strip i {
-      color: var(--muted);
-      font-style: normal;
-      font-weight: 900;
-    }
-
-    .collab-notes {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .collab-note {
-      min-height: 185px;
-      padding: 16px;
-    }
-
-    .collab-note.system-note {
-      background: var(--soft-green);
-    }
-
-    .collab-note.warning-note {
-      background: #161616;
-      color: #fff;
-    }
-
-    .collab-note.warning-note p {
-      color: #fff;
-    }
-
-    .collab-note.bridge-note {
-      background: var(--soft-cranberry);
-    }
-
-    .debate-funnel,
-    .ops-shift,
-    .review-loop-panel {
-      display: grid;
-      gap: 14px;
-    }
-
-    .debate-funnel {
-      grid-template-columns: .9fr 1.1fr;
-      align-items: stretch;
-    }
-
-    .funnel-surface,
-    .funnel-core,
-    .ops-column,
-    .loop-stage,
-    .loop-warning {
-      border: 2px solid var(--line);
-      border-radius: 8px;
-      background: var(--surface);
-    }
-
-    .funnel-surface,
-    .funnel-core {
-      padding: 18px;
-    }
-
-    .funnel-surface {
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .72)),
-        var(--soft-blue);
-    }
-
-    .funnel-core {
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .68), rgba(255, 255, 255, .68)),
-        var(--soft-amber);
-    }
-
-    .funnel-surface h4,
-    .funnel-core h4,
-    .ops-column h4,
-    .loop-stage h4,
-    .loop-warning h4 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      line-height: 1.12;
-    }
-
-    .funnel-surface p,
-    .funnel-core p,
-    .ops-column p,
-    .loop-stage p,
-    .loop-warning p {
+    .evidence-ledger ul,
+    .boundary-note ul {
       margin: 0;
-      color: #333;
+      padding-left: 20px;
     }
 
-    .surface-questions {
+    .evidence-ledger li,
+    .boundary-note li {
+      margin: 7px 0;
+      line-height: 1.65;
+    }
+
+    .consensus-list {
+      margin: 16px 0 18px;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .consensus-list li {
       display: grid;
-      gap: 9px;
-      margin-top: 16px;
+      grid-template-columns: 118px minmax(0, 1fr);
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--thin);
+      line-height: 1.7;
     }
 
-    .surface-questions span,
-    .core-question {
-      display: block;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .72);
-      font-weight: 900;
-      text-align: center;
-    }
-
-    .core-questions {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .debate-rule {
-      grid-column: 1 / -1;
-      padding: 14px 16px;
-      border: 2px solid var(--line);
-      border-radius: 8px;
-      background: #161616;
-      color: #fff;
-      font-weight: 900;
-      line-height: 1.45;
-    }
-
-    .ops-shift {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      align-items: stretch;
-    }
-
-    .ops-column {
-      padding: 18px;
-    }
-
-    .ops-column.old {
-      background: var(--soft-amber);
-    }
-
-    .ops-column.new {
-      background: var(--soft-blue);
-    }
-
-    .ops-lane {
-      display: grid;
-      gap: 8px;
-      margin-top: 16px;
-    }
-
-    .ops-lane span {
-      padding: 9px 11px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .72);
-      font-weight: 900;
-    }
-
-    .ops-lane.inline {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .ops-metrics {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .ops-metrics span {
-      padding: 8px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--paper);
+    .consensus-list b {
+      font-family: var(--font-body);
       font-size: 13px;
-      font-weight: 900;
-      text-align: center;
+      letter-spacing: 0;
     }
 
-    .loop-track {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-      align-items: stretch;
+    .reference-line {
+      margin: 18px 0;
+      padding: 12px 14px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
     }
 
-    .loop-stage {
-      position: relative;
-      min-height: 190px;
-      padding: 16px;
-      background: var(--surface);
-    }
-
-    .loop-stage:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: -10px;
-      width: 10px;
-      border-top: 3px solid var(--line);
-    }
-
-    .loop-index {
-      display: inline-flex;
-      margin-bottom: 12px;
-      padding: 5px 8px;
+    .boundary-note {
+      margin-top: 18px;
+      padding: 14px 16px;
       border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--paper);
+      background: #fffdf7;
+    }
+
+    .mini-sequence {
+      display: block;
+      margin: 14px 0;
+      padding: 12px 14px;
+      border-left: 4px solid var(--red);
+      background: rgba(248, 224, 227, .42);
       font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: .12em;
-    }
-
-    .loop-warning {
-      padding: 16px;
-      background: #161616;
-      color: #fff;
-    }
-
-    .loop-warning p {
-      color: #fff;
+      font-size: 13px;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
     }
 
     .compare-grid {
@@ -1721,14 +1446,6 @@
       .flow p,
       .source-drawer p,
       .layer p,
-      .collab-end p,
-      .collab-bridge p,
-      .collab-flow p,
-      .collab-note p,
-      .funnel-surface p,
-      .funnel-core p,
-      .ops-column p,
-      .loop-stage p,
       .footer {
         color: var(--muted);
       }
@@ -1784,15 +1501,10 @@
       .front,
       .thesis,
       .debate-grid,
-      .debate-funnel,
       .matrix,
       .timeline,
       .map,
       .system,
-      .collab-rail,
-      .collab-notes,
-      .ops-shift,
-      .loop-track,
       .people,
       .compare-grid,
       .heat,
@@ -1800,6 +1512,11 @@
       .rules,
       .axis-note {
         grid-template-columns: 1fr;
+      }
+
+      .consensus-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
       }
 
       .lead {
@@ -1825,17 +1542,6 @@
         columns: 1;
       }
 
-      .collab-bridge::before,
-      .collab-bridge::after,
-      .loop-stage:not(:last-child)::after {
-        display: none;
-      }
-
-      .flow-strip {
-        display: flex;
-        flex-wrap: wrap;
-        width: auto;
-      }
     }
 
     @media (max-width: 520px) {
@@ -1978,92 +1684,57 @@
     <section class="section" id="mainline">
       <div class="section-title">
         <h2>五张图读懂主线</h2>
-        <span>knowledge-article-visual structure</span>
+        <span>text-first mainline</span>
       </div>
-      <div class="viz-sheet main-infographic knowledge-card">
-        <div class="viz-head">
-          <div>
-            <h3>Agent 时代，产研协作从“人传人”变成“人管系统”</h3>
-            <p>这张总图是后面四张章节知识卡的索引：先看争议，再看公司结构，再看作业系统，最后看可审查循环。</p>
-          </div>
-          <div class="viz-badge">1 张总图 + 4 张章节卡<br />每章可独立截图</div>
-        </div>
-        <div class="viz-grid five">
-          <article class="viz-card blue">
-            <h4>01 先定争议</h4>
-            <p>行业争的不是工具，而是目标、判断、审查和系统 ownership。</p>
-          </article>
-          <article class="viz-card amber">
-            <h4>02 看公司位置</h4>
-            <p>一端做执行自动化，一端补治理，中间是 spec / eval / review / owner。</p>
-          </article>
-          <article class="viz-card green">
-            <h4>03 识别变化本质</h4>
-            <p>不是中间层消失，而是部分中间工作变成可调用执行层。</p>
-          </article>
-          <article class="viz-card red">
-            <h4>04 建立审查循环</h4>
-            <p>Agent 输出必须进入 review packet、eval、wiki、rules，而不是只给一个答案。</p>
-          </article>
-          <article class="viz-card rose">
-            <h4>05 回到岗位动作</h4>
-            <p>人从搬运上下文，转向定义目标、设边界、审结果、沉淀系统。</p>
-          </article>
-        </div>
-        <div class="support-grid">
-          <article class="viz-card warning">
-            <h4>证据边界</h4>
-            <p>262 entries 是源池规模，不是全网总量；播客和二手材料只做讨论路由，关键引用仍需一手复核。</p>
-          </article>
-          <article class="viz-card">
-            <h4>读者动作</h4>
-            <p>不要先买工具。先选 1 个高频、可验证、风险可控的工作流，跑 30-60 天 pilot。</p>
-          </article>
-        </div>
-        <div class="takeaway">底部金句：Agent 的核心价值不是替人做判断，而是把可执行的中间工作变成可审查、可回放、可沉淀的系统循环。</div>
-      </div>
+      <article class="article-prose">
+        <p class="lead-claim">主线只有一句：Agent 的核心价值不是替人做判断，而是把原来靠人转述、追踪、补文档、补测试的中间执行工作，变成可执行、可审查、可回放、可沉淀的系统循环。</p>
+        <ul class="consensus-list">
+          <li><b>01 争议</b><span>行业表面争“代码会不会被解决、PM 会不会消失、小团队会不会替代大组织”。落到公司内部，真正争的是目标、上下文、执行和责任怎么重新分工。</span></li>
+          <li><b>02 结构</b><span>公司内部协作更像一只哑铃：一端是人的判断端，一端是系统执行端，中间靠 spec、eval、review packet、wiki、rules、issue、PR 连接。</span></li>
+          <li><b>03 本质</b><span>不是中间层消失，而是转述型中间劳动被压缩，判断型中间责任被抬高。执行可以系统化，判断必须更清楚。</span></li>
+          <li><b>04 循环</b><span>Agent 输出不能只停在答案。它必须进入 review packet、eval、CI、wiki、rules 和 owner decision，才算进入公司的作业系统。</span></li>
+          <li><b>05 动作</b><span>读者不要先买工具。先选一个高频、可验证、风险可控的工作流，跑 30-60 天 pilot，观察目标清晰度、返工、审查、失败写回和责任归属。</span></li>
+        </ul>
+        <p class="reference-line">源池规模：43 条 curated source map、88 条 broad leads、95 条 2026 公开时间线条目、36 条播客 / 视频讨论线索。它们支持本文主线，但不等于全网总量，也不等于所有材料都完成一手引用复核。</p>
+      </article>
     </section>
 
     <section class="section" id="debate">
       <div class="section-title">
         <h2>行业在争什么</h2>
-        <span>surface debate, internal collaboration question</span>
+        <span>what the evidence can and cannot support</span>
       </div>
-      <div class="viz-sheet knowledge-card">
-        <div class="viz-head">
-          <div>
-            <h3>争论的表层是 Agent，底层是公司内部协作怎么重新分工</h3>
-            <p>行业会把问题说成“代码会不会被解决”“PM 会不会消失”“小团队会不会替代大组织”。真正落到公司里，问题只有四个：谁定义目标，谁补全上下文，谁执行中间工作，谁对结果负责。</p>
-          </div>
-          <div class="viz-badge">debate map<br />4 internal questions</div>
+      <article class="article-prose">
+        <p class="lead-claim">表面上，行业在争“Agent 会不会写完代码、PM 会不会消失、公司会不会变成极小团队”。但把 2026 年 1 月到 5 月 11 日的公开信源放在一起看，真正的争点不是职业消失，而是公司能不能把工作交给 Agent，又能不能把结果审回来。</p>
+        <div class="evidence-ledger">
+          <h3>这篇草稿的数据底座</h3>
+          <ul>
+            <li>截至 2026-05-11，本地源池包括 43 条 curated source map、88 条 broad leads、95 条公开时间线条目、36 条播客 / 视频讨论线索。</li>
+            <li>这不是“全网统计”，也不是 262 篇全部深读后的结论；它能支撑的是公开讨论方向、信源分布和可复核的章节假设。</li>
+            <li>微信文章、二手媒体和播客摘要只作为 claim router；关键判断优先回到公司原文、工程博客、研究报告和上游访谈。</li>
+          </ul>
         </div>
-        <div class="debate-funnel">
-          <article class="funnel-surface">
-            <span class="collab-kicker">Surface Noise</span>
-            <h4>外部讨论看起来很散</h4>
-            <p>代码会不会被解决，PM 会不会消失，小团队会不会替代大组织，Agent 到底像员工还是工具。</p>
-            <div class="surface-questions">
-              <span>Coding solved?</span>
-              <span>PM 消失?</span>
-              <span>小团队替代?</span>
-              <span>员工还是作业对象?</span>
-            </div>
-          </article>
-          <article class="funnel-core">
-            <span class="collab-kicker">Real Question</span>
-            <h4>落到公司内部，其实是四个分工问题</h4>
-            <p>Agent 让执行变便宜，但也把含糊目标、弱 owner、低质量验收暴露得更快。真正要重分的是目标、上下文、执行和责任。</p>
-            <div class="core-questions">
-              <span class="core-question">谁定义目标</span>
-              <span class="core-question">谁补全上下文</span>
-              <span class="core-question">谁执行中间工作</span>
-              <span class="core-question">谁对结果负责</span>
-            </div>
-          </article>
-          <div class="debate-rule">行业争论可以压成一条线：执行越自动化，目标、判断、审查和责任越不能被省掉。</div>
+        <h3>共识一：工作入口正在从聊天框，回到真实工作对象</h3>
+        <p>OpenAI Symphony 把 issue tracker / Linear 当作 coding agent 的控制面；GitHub Copilot coding agent 把任务挂在 GitHub issue、branch、PR、Actions 和 repo policy 上；Atlassian Rovo in Jira 把 backlog、plan、code、PR 连起来；Google Jules 强调异步、仓库集成、计划、diff、测试和 GitHub 集成。它们各自卖的产品不同，但共同方向很清楚：Agent 不是孤立聊天窗口，而是进入 ticket、issue、PR、workflow、CI 这些已有作业对象。</p>
+        <h3>共识二：执行变快以后，治理、验证和责任反而更重</h3>
+        <p>Stack Overflow 2025 Developer Survey、Google DORA 2025、GitLab DevSecOps、Thoughtworks 的 AI-first software engineering 讨论，都在提醒同一件事：AI adoption 和代码产出提高，并不自动等于交付质量提高。信任、调试、稳定性、平台治理、合规、review、测试和回滚仍然是瓶颈。Replit 数据库事故类案例则是反例边界：没有权限、隔离、审查和回滚，自动化只会放大事故半径。</p>
+        <h3>共识三：人的责任没有消失，而是上移</h3>
+        <p>Karpathy 把专业 AI coding 和“vibe coding”区分开，核心不是模型能不能写，而是人是否仍然理解系统、上下文、质量和风险。Addy Osmani 把 coding agents 明确拉回“管理多个 agent”的能力：清晰目标、分派任务、验证结果、异步沟通。Keith Rabois 的 barrels / ammunition 框架和 Cat Wu 关于产品判断、角色边界变薄的讨论，也都指向同一个组织问题：真正稀缺的是能把目标、判断、执行和结果串起来的人。</p>
+        <ul class="consensus-list">
+          <li><b>争点</b><span>不是“Agent 是否聪明”，而是它能否进入真实工作对象，并被公司治理、验证、审查、追责。</span></li>
+          <li><b>共识</b><span>执行层会被系统化；目标、边界、验收、风险承受和 owner 不能被系统吞掉。</span></li>
+          <li><b>分歧</b><span>供应商会强调替代和效率，研究报告和事故案例提醒：如果作业系统不变，效率提升可能转化成返工、失控和信任下降。</span></li>
+        </ul>
+        <p class="reference-line">主要依据：OpenAI Symphony / Harness Engineering / Codex agent loop；GitHub Copilot coding agent；Atlassian Rovo in Jira；Google Jules；JetBrains Central；Block AI-Assisted Development；Stripe AI integration eval；Stack Overflow 2025 Developer Survey；Google DORA 2025；GitLab DevSecOps；Thoughtworks；McKinsey Agentic Organization；Deloitte GenAI enterprise；Karpathy、Addy Osmani、Keith Rabois、Cat Wu、Boris Cherny 等访谈或实践文本。</p>
+        <div class="boundary-note">
+          <h3>证据边界</h3>
+          <ul>
+            <li>可以写“截至 2026-05-11 的公开来源池显示”，不能写“行业已经定论”。</li>
+            <li>供应商页面能证明产品方向和工作流设计，不能直接证明客户组织已经完成迁移。</li>
+            <li>访谈能提供角色语言和管理框架；涉及具体公司人数、组织效果、生产率提升时，仍需上游 transcript 或一手报告复核。</li>
+          </ul>
         </div>
-        <p class="signal">证据边界：公开讨论和本地源池只能支撑争议结构。真正的公司结论，需要回到具体业务流、具体 owner、具体风险等级和具体验收样本。</p>
-      </div>
+      </article>
     </section>
 
     <section class="section" id="timeline">
@@ -2137,180 +1808,63 @@
     <section class="section" id="dumbbell">
       <div class="section-title">
         <h2>公司内部协作正在变成一只哑铃</h2>
-        <span>judgment side, execution side, collaboration bridge</span>
+        <span>candidate frame, not industry term</span>
       </div>
-      <div class="viz-sheet knowledge-card">
-        <div class="viz-head">
-          <div>
-            <h3>一端是目标、判断和责任，一端是可执行、可验证、可回放的系统能力</h3>
-            <p>传统协作把很多中间工作放在人身上：解释需求、补上下文、追进度、兜质量。Agent 进入后，这些工作不会凭空消失，而是被重新拆到两端。人的一端更重，系统的一端也更重。</p>
-          </div>
-          <div class="viz-badge">internal dumbbell<br />not org flattening</div>
+      <article class="article-prose">
+        <p class="lead-claim">“哑铃”不是行业术语，是我们对公开信源的一个观察框架：左端是人的判断、目标和责任，右端是系统化执行、验证和回放，中间那根杆是 spec、eval、review packet、wiki、rules、issue 和 PR。</p>
+        <p>过去的产研协作像一条人力交接链：PM 解释需求，设计补体验，工程拆实现，QA 兜质量，管理者靠会、表格和 Jira 追进度。这个系统能跑，但它把很多关键上下文藏在人脑里。每次交接都会丢信息，责任也容易在“我已经同步过了”里变模糊。</p>
+        <p>Agent 进入以后，变化不是“中间人消失”。更准确的说法是：<strong>转述型中间劳动被压缩，判断型中间责任被抬高。</strong>找资料、拆任务、生成初稿、补测试、整理证据、更新文档，这些中间执行工作开始被做成可排队、可审查、可复用的系统单元；但目标、非目标、用户取舍、风险承受、验收标准、发布判断，仍然必须由人承担。</p>
+        <h3>为什么说两端都会变重</h3>
+        <p>执行端变重，是因为 OpenAI Harness、Block AI-Assisted Development、JetBrains Central、Sourcegraph、GitHub Copilot coding agent 等材料都在强调同一类基础设施：repo knowledge、skills、tests、CI、sandbox、credentials、audit、branch protection、cost attribution、observability。没有这些，Agent 只是更快地制造不可控产物。</p>
+        <p>判断端变重，是因为 Amazon、Shopify、Duolingo、Coinbase、Microsoft Frontier Firm、McKinsey Agentic Organization 这些组织讨论都在把 AI 从“个人效率工具”推向“组织作业方式”。一旦执行可以外包给系统，公司反而更需要清楚说明：谁是 owner，什么不能做，什么结果才算过关，失败以后由谁收拾和写回。</p>
+        <ul class="consensus-list">
+          <li><b>左端</b><span>目标、用户、边界、风险、验收、发布判断。这些不能交给 Agent 自己决定。</span></li>
+          <li><b>右端</b><span>检索、拆解、生成、实现、验证、证据整理、知识写回。这些开始变成系统执行能力。</span></li>
+          <li><b>中杆</b><span>spec、eval、review packet、wiki、rules、issue、PR。它们把人的判断翻译成可执行上下文，把系统输出翻译成可审查证据。</span></li>
+        </ul>
+        <p class="reference-line">主要依据：OpenAI Harness Engineering / Symphony；GitHub Copilot coding agent；Atlassian Rovo/Jira；Google Jules；JetBrains Central；Block AI-Assisted Development；Sourcegraph AI agents；Microsoft Frontier Firm；McKinsey Agentic Organization；Deloitte operating-model materials；Keith Rabois barrels / ammunition；Karpathy / Addy Osmani 关于 agentic engineering 与 agent 管理的实践讨论。</p>
+        <div class="boundary-note">
+          <h3>证据边界</h3>
+          <ul>
+            <li>“哑铃”是本文候选观察，不是已被行业命名的标准模型。</li>
+            <li>组织瘦身、AI-first hiring、one-person company 叙事不能直接等同于成熟 Agent 作业系统。</li>
+            <li>中间层不是消失，而是被拆成两部分：可系统化的执行，以及必须更清楚归属的人类责任。</li>
+          </ul>
         </div>
-        <div class="collab-system">
-          <div class="collab-rail">
-            <article class="collab-end human">
-              <div>
-                <span class="collab-kicker">Human Side</span>
-                <h4>人的判断端</h4>
-                <p>目标、非目标、用户取舍、风险承受、验收标准、发布判断，不能被 Agent 接管。</p>
-              </div>
-              <div class="collab-token-row">
-                <span class="collab-token">谁是 owner</span>
-                <span class="collab-token">什么不能做</span>
-                <span class="collab-token">什么才算过关</span>
-              </div>
-            </article>
-            <div class="collab-bridge">
-              <span class="collab-kicker">Bridge</span>
-              <h4>产研协作桥</h4>
-              <div class="bridge-stack">
-                <span>spec</span>
-                <span>eval</span>
-                <span>review packet</span>
-                <span>wiki</span>
-                <span>rules</span>
-                <span>PR / issue</span>
-              </div>
-              <p>把判断翻译成可执行上下文，把执行结果翻译成可审查证据。</p>
-            </div>
-            <article class="collab-end system-side">
-              <div>
-                <span class="collab-kicker">System Side</span>
-                <h4>系统执行端</h4>
-                <p>找上下文、拆任务、生成初稿、跑验证、整理证据，变成可排队、可审查、可复用的执行单元。</p>
-              </div>
-              <div class="collab-token-row">
-                <span class="collab-token">权限和审计</span>
-                <span class="collab-token">回归测试</span>
-                <span class="collab-token">知识写回</span>
-              </div>
-            </article>
-          </div>
-          <article class="collab-flow">
-            <span class="collab-kicker">Old Handoff</span>
-            <h4>传统协作链靠人把上下文一段段搬过去</h4>
-            <p>PM 到 Design 到 Eng 到 QA，协作能跑起来，但上下文容易丢，责任也容易在交接里变模糊。</p>
-            <div class="flow-strip">
-              <span>PM</span><i>-></i><span>Design</span><i>-></i><span>Eng</span><i>-></i><span>QA</span>
-            </div>
-          </article>
-          <div class="collab-notes">
-            <article class="collab-note system-note">
-              <h4>人不是退场</h4>
-              <p>转述型中间劳动被压缩，判断型中间责任被抬高。人的位置从搬运上下文，转向定义边界和审结果。</p>
-            </article>
-            <article class="collab-note warning-note">
-              <h4>系统端必须变强</h4>
-              <p>执行层变快以后，系统必须承担权限、日志、测试、回滚、证据打包和知识写回。</p>
-            </article>
-            <article class="collab-note bridge-note">
-              <h4>中杆不能断</h4>
-              <p>spec、eval、review packet、wiki、rules、issue 和 PR 是中间那根杆。杆不结实，两端都会变成孤岛。</p>
-            </article>
-          </div>
-        </div>
-        <p class="signal">这里的重点不是说组织会变扁，而是说协作的承重点变了：人的判断端和系统执行端同时变重，中间必须有可执行、可审查、可沉淀的连接物。</p>
-        <div class="takeaway">章节 takeaway：AI 时代的内部协作不是少一层人，而是把传话链改造成连接判断和执行的作业桥。</div>
-      </div>
+      </article>
     </section>
 
     <section class="section" id="system">
       <div class="section-title">
         <h2>作业系统变了</h2>
-        <span>from handoff pipeline to executable work surface</span>
+        <span>from handoff pipeline to reviewable work loop</span>
       </div>
-      <div class="viz-sheet knowledge-card">
-        <div class="viz-head">
-          <div>
-            <h3>变的不是工具入口，而是公司把工作交出去、收回来、审清楚的方式</h3>
-            <p>过去的产研协作像流水线：产品写需求，设计补体验，工程拆实现，测试做兜底，管理者靠会议追状态。每次交接都会丢一部分上下文，真正的判断常常藏在人脑里。</p>
-          </div>
-          <div class="viz-badge">workflow surface<br />becomes executable</div>
+      <article class="article-prose">
+        <p class="lead-claim">作业系统变了，意思不是换一个 AI 工具入口，而是公司把工作交出去、收回来、审清楚、再沉淀的方式变了。过去靠人传上下文；现在要把上下文做成 Agent 能执行、团队能审查、系统能写回的对象。</p>
+        <p>在旧协作里，需求、设计、工程、测试之间靠人解释。一个好的 PM 或 TL 往往承担大量隐性中间劳动：把业务目标翻译成工程任务，把工程约束翻译回业务语言，把风险翻译成排期和验收，把问题翻译成会议纪要和 Jira 状态。这个中间层一直存在，只是过去主要由人承担。</p>
+        <p>Agent 的变化，是把其中一部分中间执行劳动变成系统对象。ticket 可以带上下文，spec 可以定义目标和非目标，PR 可以承载 diff、测试、日志和风险说明，eval 可以把验收从主观感觉变成可重复检查，wiki / rules / skills 可以把失败和经验写回下次执行。OpenAI Harness 和 Symphony、GitHub issue-to-PR agent、Atlassian Rovo/Jira、Stripe payment integration eval、Block 的 AGENTS/HOWTOAI/skills，都在指向这个方向。</p>
+        <span class="mini-sequence">目标 / 非目标 -> spec / issue / context -> agent queue -> diff / draft / test / log -> review packet -> eval / CI / owner decision -> wiki / rules / test 写回</span>
+        <h3>Agent 把中间执行层变成可审查循环</h3>
+        <p>这句话要写实一点：Agent 没有创造一个新的管理层，也不能自己批准自己。它真正能改变的，是把过去散落在会议、私聊、文档、脚本和个人经验里的中间执行动作，组织成一个可审查循环。人给目标和边界，系统拿到可执行上下文，Agent 排队执行，输出带上依据、验证、失败项和待判断问题，最终由 owner 决定是否接受，并把失败写回系统。</p>
+        <p>OpenAI 的 Codex agent loop 把 user、model、tools、state、safety policy 明确成循环；Symphony 把 issue tracker 变成 orchestration surface；Anthropic Managed Agents 强调 long-horizon work 需要 durable session、sandbox、credential isolation；Block 的 testing pyramid、guardrails、skills 和 Actionable CI 则说明 Agent 工作不能只看生成结果，还要看验证、反馈和写回。</p>
+        <h3>什么算“可审查”</h3>
+        <ul class="consensus-list">
+          <li><b>输入</b><span>目标、非目标、样例、反例、权限边界、数据入口、测试方法、验收标准要写清楚。</span></li>
+          <li><b>过程</b><span>Agent 用了哪些上下文、调用了哪些工具、跑了哪些检查、跳过了什么，都要能被回放。</span></li>
+          <li><b>输出</b><span>不是只给答案，而是给变更点、依据、验证结果、失败项、风险和待 owner 判断的问题。</span></li>
+          <li><b>写回</b><span>失败要进入测试、rules、wiki、skill、review checklist，否则下一轮只是重复犯错。</span></li>
+        </ul>
+        <p>所以这不是“全自动驾驶”。高风险节点仍然需要人审、可追责、可回滚。Agent 的价值不在于省掉判断，而在于让执行层变得更可见：哪里缺上下文、哪里没有测试、哪里 owner 没有说清楚、哪里系统没有留下证据，都会被更快暴露。</p>
+        <p class="reference-line">主要依据：OpenAI Unrolling the Codex agent loop / Unlocking the Codex harness / Harness Engineering / Symphony；Anthropic Scaling Managed Agents；Block Agent Guardrails、Testing Pyramid for AI Agents、AI-Assisted Development、skills、Actionable CI；GitHub Copilot coding agent；Atlassian Rovo/Jira；Stripe AI agents build real Stripe integrations；Google DORA 2025、Stack Overflow 2025、GitLab、Thoughtworks 对质量、稳定性、信任和平台治理的研究提醒。</p>
+        <div class="boundary-note">
+          <h3>证据边界</h3>
+          <ul>
+            <li>不能写“Agent 已接管完整 SDLC”。更准确的是：部分中间执行动作正在从人脑和会议迁移到可执行工作对象。</li>
+            <li>“review packet”是本文用来概括输出证据包的表达，不是所有产品都采用的标准名词。</li>
+            <li>工具页证明作业面方向，研究报告和事故案例提醒治理风险；两类证据要一起用，不能只拿供应商叙事写结论。</li>
+          </ul>
         </div>
-        <div class="ops-shift">
-          <article class="ops-column old">
-            <span class="collab-kicker">Before</span>
-            <h4>旧作业系统靠交接维持</h4>
-            <p>PM 转译需求，TL 拆任务，QA 兜质量，运营追状态。它能跑，但靠人的记忆、经验和同步机制维持。</p>
-            <div class="ops-lane inline">
-              <span>产品</span>
-              <span>设计</span>
-              <span>工程</span>
-              <span>测试</span>
-            </div>
-            <div class="ops-lane">
-              <span>会议补上下文</span>
-              <span>文档补记忆</span>
-              <span>Jira 追状态</span>
-              <span>末端验收兜底</span>
-            </div>
-          </article>
-          <article class="ops-column new">
-            <span class="collab-kicker">After</span>
-            <h4>新作业面把中间工作变成可执行上下文</h4>
-            <p>人把目标、边界、样例、反例、权限和验收标准包装清楚；Agent 承担检索、拆解、生成、实现、验证和证据整理。</p>
-            <div class="ops-lane">
-              <span>可调用：工作能被触发和排队</span>
-              <span>可审查：输出带依据、风险和验证</span>
-              <span>可回放：过程留下输入、工具和结果</span>
-              <span>可沉淀：失败写回 rules / tests / wiki / skill</span>
-            </div>
-          </article>
-          <div class="debate-rule">警告：Agent 可以执行中间工作，但不能替公司决定目标、取舍、责任和风险承受。没有 owner 的 Agent queue，只会把混乱排得更整齐。</div>
-          <div class="ops-metrics">
-            <span>cycle time</span>
-            <span>返工率 / review reject</span>
-            <span>缺陷外逃 / 补问次数</span>
-            <span>失败是否写回系统</span>
-          </div>
-        </div>
-        <div class="takeaway">章节 takeaway：Agent 没有发明中间工作，它把中间工作的承载方式从人脑和会议，改成可执行、可审查、可沉淀的作业系统。</div>
-      </div>
-      <div class="viz-sheet knowledge-card">
-        <div class="viz-head">
-          <div>
-            <h3>Agent 把中间执行层变成可审查循环</h3>
-            <p>Agent 最有价值的地方不是一次性给答案，而是把中间执行层变成可审查循环：目标进去，证据出来，失败能写回系统。</p>
-          </div>
-          <div class="viz-badge">reviewable loop<br />not autopilot</div>
-        </div>
-        <div class="review-loop-panel">
-          <div class="loop-track">
-            <article class="loop-stage">
-              <span class="loop-index">01</span>
-              <h4>人定目标</h4>
-              <p>目标、非目标、用户价值、风险边界和验收标准先写清楚。</p>
-            </article>
-            <article class="loop-stage">
-              <span class="loop-index">02</span>
-              <h4>可执行包</h4>
-              <p>背景、边界、示例、反例、数据入口、测试方法、权限范围进入上下文。</p>
-            </article>
-            <article class="loop-stage">
-              <span class="loop-index">03</span>
-              <h4>Agent Queue</h4>
-              <p>检索资料、拆步骤、改代码、跑检查、整理证据，按边界工作。</p>
-            </article>
-            <article class="loop-stage">
-              <span class="loop-index">04</span>
-              <h4>Review Packet</h4>
-              <p>输出带上变更点、依据、验证结果、失败项、风险和待判断问题。</p>
-            </article>
-            <article class="loop-stage">
-              <span class="loop-index">05</span>
-              <h4>系统写回</h4>
-              <p>失败写回新测试、新规则、新示例和新知识页，下一轮少踩同一个坑。</p>
-            </article>
-          </div>
-          <article class="loop-warning">
-            <h4>闭环不是全自动</h4>
-            <p>Agent 不能自己批准自己。高风险节点必须有人审、可追责、可回滚。没有审查和写回，它只是更快地产出一次性材料。</p>
-          </article>
-        </div>
-        <p class="signal">中间执行层从“人靠经验转述”变成“系统可调用的工作循环”。人的位置不是消失，而是上移到目标、边界、审查和责任。</p>
-        <div class="takeaway">章节 takeaway：有审查和写回，Agent 才开始变成公司的作业系统；没有审查和写回，它只是更快的内容生成器。</div>
-      </div>
+      </article>
     </section>
 
     <section class="section" id="actions">
