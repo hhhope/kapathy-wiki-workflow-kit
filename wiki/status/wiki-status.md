@@ -1,17 +1,17 @@
 # Wiki Status
 
-Generated at: `2026-05-09T05:56:16.970041+00:00`
+Generated at: `2026-05-11T01:59:03.095986+00:00`
 
 ## Summary
 
 | Metric | Value |
 | --- | --- |
-| Wiki pages | 168 |
+| Wiki pages | 170 |
 | Source records | 8 |
 | Inbox files | 12 |
 | Pending inbox files | 6 |
 | Active OpenSpec changes | 0 |
-| Complete active-dir changes | 7 |
+| Complete active-dir changes | 0 |
 
 ## Wiki Sections
 
@@ -20,7 +20,7 @@ Generated at: `2026-05-09T05:56:16.970041+00:00`
 | wiki/adr | 32 |
 | wiki/domains | 2 |
 | wiki/examples | 7 |
-| wiki/ops | 85 |
+| wiki/ops | 87 |
 | wiki/reports | 13 |
 | wiki/root | 7 |
 | wiki/sources | 9 |
@@ -40,15 +40,8 @@ Generated at: `2026-05-09T05:56:16.970041+00:00`
 
 | Change | State | Tasks | Path |
 | --- | --- | --- | --- |
-| add-public-report-quality-gate | complete | 15/15 | openspec/changes/add-public-report-quality-gate/tasks.md |
-| add-source-manifest-and-wiki-status | complete | 14/14 | openspec/changes/add-source-manifest-and-wiki-status/tasks.md |
-| connect-learning-capture-to-output-gates | complete | 10/10 | openspec/changes/connect-learning-capture-to-output-gates/tasks.md |
-| constrain-feishu-image-delivery | complete | 13/13 | openspec/changes/constrain-feishu-image-delivery/tasks.md |
-| define-llm-wiki-core-contract | complete | 13/13 | openspec/changes/define-llm-wiki-core-contract/tasks.md |
-| repair-account-wiki-public-drafts | complete | 20/20 | openspec/changes/repair-account-wiki-public-drafts/tasks.md |
-| route-complex-public-reports-to-reviewer | complete | 11/11 | openspec/changes/route-complex-public-reports-to-reviewer/tasks.md |
+| none | - | - | - |
 
 ## Next Actions
 
 - Create or link source records for pending inbox files.
-- Review complete active-directory OpenSpec changes for archive readiness.

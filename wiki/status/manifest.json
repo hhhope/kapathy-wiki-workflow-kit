@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-05-09T05:56:16.970041+00:00",
+  "generated_at": "2026-05-11T01:59:03.095986+00:00",
   "root": "/mnt/d/cloud/account-meeting-lore",
   "summary": {
-    "wiki_page_count": 168,
+    "wiki_page_count": 170,
     "source_record_count": 8,
     "inbox_file_count": 12,
     "pending_inbox_count": 6,
     "active_change_count": 0,
-    "complete_change_count": 7,
+    "complete_change_count": 0,
     "wiki_sections": {
       "wiki/adr": 32,
       "wiki/domains": 2,
       "wiki/examples": 7,
-      "wiki/ops": 85,
+      "wiki/ops": 87,
       "wiki/reports": 13,
       "wiki/root": 7,
       "wiki/sources": 9,
@@ -594,11 +594,11 @@
     {
       "path": "wiki/ops/agent-readable-wiki-graph-extraction.md",
       "section": "wiki/ops",
-      "sha256": "614b1970e50db9d2231321a98e70510b97c84e02fc6c31d421721e9cce462cab",
-      "bytes": 1991,
+      "sha256": "87425a59ceb29b203913ecdbd5d4c959a6451f5acdfa7d3a2249426631e5e9fb",
+      "bytes": 2185,
       "title": null,
-      "canonical_object": null,
-      "artifact_type": null,
+      "canonical_object": "wiki-graph-extraction",
+      "artifact_type": "method",
       "status": null
     },
     {
@@ -774,11 +774,11 @@
     {
       "path": "wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md",
       "section": "wiki/ops",
-      "sha256": "27c9925fb2f044b6fb09f54c717d36f1a2b7d941563aab9408c624ff43b28665",
-      "bytes": 2498,
+      "sha256": "a8c055bf25e1af83fc3804be8b8b4961ce8e69056b21234d575c95669630b66e",
+      "bytes": 2566,
       "title": "AI Chat 一键安装 Skill 探索",
-      "canonical_object": null,
-      "artifact_type": null,
+      "canonical_object": "ai-chat-workflow-installer",
+      "artifact_type": "explore",
       "status": "active"
     },
     {
@@ -1302,23 +1302,43 @@
       "status": "active"
     },
     {
-      "path": "wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md",
+      "path": "wiki/ops/wiki-runtime-command-surface-explore-2026-05-09.md",
       "section": "wiki/ops",
-      "sha256": "b9fcc6ba747138892996be1c2eef30d782604faa1569ac9c1b683784d0e91f4f",
-      "bytes": 1652,
-      "title": "宝财通分账开通与迁移边界提醒 2026-04-16",
+      "sha256": "bc715b5100bc10c2862e8e7df2e2601c30fa84faf07b33d567bba42d4d115071",
+      "bytes": 3649,
+      "title": "Wiki Runtime Command Surface Explore",
       "canonical_object": null,
       "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/ops/wiki-status-slash-command-reanchor.md",
+      "section": "wiki/ops",
+      "sha256": "760e2d4194835d6df2afde9fb0756f1358904c221d016e1cb46f6affde11f3f2",
+      "bytes": 1702,
+      "title": "Wiki Status Slash Command Reanchor",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "draft"
+    },
+    {
+      "path": "wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md",
+      "section": "wiki/ops",
+      "sha256": "7dbfce12c06e09d19207b421faeb5a55b234f641b3e73c382d16f0453d17d72f",
+      "bytes": 1729,
+      "title": "宝财通分账开通与迁移边界提醒 2026-04-16",
+      "canonical_object": "baocaitong-split-account-migration",
+      "artifact_type": "reminder",
       "status": "open"
     },
     {
       "path": "wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md",
       "section": "wiki/ops",
-      "sha256": "50b06d1ec5773362663ecab01eada8deb4b50787fff296201f0a93c8e180d06b",
-      "bytes": 3621,
+      "sha256": "63e4bd71d79b73f9ed1996bdc228e8a73d44fa95d990f1c1239d82b1e201e22e",
+      "bytes": 3848,
       "title": null,
-      "canonical_object": null,
-      "artifact_type": null,
+      "canonical_object": "baocaitong-split-account-migration",
+      "artifact_type": "scenario-matrix",
       "status": null
     },
     {
@@ -1842,62 +1862,5 @@
     "inbox/nirvana/清算的内容.png",
     "inbox/nirvana/现状.png"
   ],
-  "openspec_changes": [
-    {
-      "change_id": "add-public-report-quality-gate",
-      "state": "complete",
-      "done_tasks": 15,
-      "open_tasks": 0,
-      "total_tasks": 15,
-      "tasks_path": "openspec/changes/add-public-report-quality-gate/tasks.md"
-    },
-    {
-      "change_id": "add-source-manifest-and-wiki-status",
-      "state": "complete",
-      "done_tasks": 14,
-      "open_tasks": 0,
-      "total_tasks": 14,
-      "tasks_path": "openspec/changes/add-source-manifest-and-wiki-status/tasks.md"
-    },
-    {
-      "change_id": "connect-learning-capture-to-output-gates",
-      "state": "complete",
-      "done_tasks": 10,
-      "open_tasks": 0,
-      "total_tasks": 10,
-      "tasks_path": "openspec/changes/connect-learning-capture-to-output-gates/tasks.md"
-    },
-    {
-      "change_id": "constrain-feishu-image-delivery",
-      "state": "complete",
-      "done_tasks": 13,
-      "open_tasks": 0,
-      "total_tasks": 13,
-      "tasks_path": "openspec/changes/constrain-feishu-image-delivery/tasks.md"
-    },
-    {
-      "change_id": "define-llm-wiki-core-contract",
-      "state": "complete",
-      "done_tasks": 13,
-      "open_tasks": 0,
-      "total_tasks": 13,
-      "tasks_path": "openspec/changes/define-llm-wiki-core-contract/tasks.md"
-    },
-    {
-      "change_id": "repair-account-wiki-public-drafts",
-      "state": "complete",
-      "done_tasks": 20,
-      "open_tasks": 0,
-      "total_tasks": 20,
-      "tasks_path": "openspec/changes/repair-account-wiki-public-drafts/tasks.md"
-    },
-    {
-      "change_id": "route-complex-public-reports-to-reviewer",
-      "state": "complete",
-      "done_tasks": 11,
-      "open_tasks": 0,
-      "total_tasks": 11,
-      "tasks_path": "openspec/changes/route-complex-public-reports-to-reviewer/tasks.md"
-    }
-  ]
+  "openspec_changes": []
 }
