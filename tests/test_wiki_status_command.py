@@ -5,7 +5,7 @@ from pathlib import Path
 class WikiStatusCommandTest(unittest.TestCase):
     def test_codex_skill_refreshes_wiki_status(self) -> None:
         plugin_root = Path("plugins/report-wiki-portfolio")
-        skill_path = plugin_root / "skills/wiki-status/SKILL.md"
+        skill_path = Path(".codex/skills/wiki-status/SKILL.md")
         command_path = plugin_root / "commands/wiki-status.md"
 
         self.assertTrue(skill_path.exists())

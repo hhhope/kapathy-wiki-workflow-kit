@@ -22,10 +22,10 @@ This repository is the long-lived wiki layer for report assets. It is meant to a
 
 ## Codex Skills
 
-Current Codex builds expose this repo's wiki runtime through named skills, not
-custom slash commands. The installable source lives under
-`plugins/report-wiki-portfolio/skills/`; install those directories into
-`$CODEX_HOME/skills` to use the plain `wiki-*` names.
+Current Codex builds should use this repo's checked-in skills as the supported
+runtime surface. The repo-owned skill source lives under `.codex/skills/`.
+Root/user-scope installs are optional convenience copies, not the source of
+truth for this project.
 
 Wiki runtime skills:
 
@@ -44,10 +44,9 @@ These skills expose existing wiki runtime layers. They do not create, modify,
 archive, or queue OpenSpec changes.
 
 The `$wiki-status` skill source lives in
-`plugins/report-wiki-portfolio/skills/wiki-status/SKILL.md`. Its command
-contract lives in `plugins/report-wiki-portfolio/commands/wiki-status.md`. It
-refreshes `wiki/status/manifest.json` and `wiki/status/wiki-status.md` by
-running:
+`.codex/skills/wiki-status/SKILL.md`. Its command contract lives in
+`plugins/report-wiki-portfolio/commands/wiki-status.md`. It refreshes
+`wiki/status/manifest.json` and `wiki/status/wiki-status.md` by running:
 
 ```bash
 python3 scripts/build_wiki_status.py

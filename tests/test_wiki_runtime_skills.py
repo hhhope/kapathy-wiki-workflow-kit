@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 
 
-SKILL_SOURCE_ROOT = Path("plugins/report-wiki-portfolio/skills")
+SKILL_SOURCE_ROOT = Path(".codex/skills")
 
 WIKI_SKILLS = {
     "wiki-status": "plugins/report-wiki-portfolio/commands/wiki-status.md",
@@ -44,7 +44,8 @@ class WikiRuntimeSkillsTest(unittest.TestCase):
         readme = Path("README.md").read_text(encoding="utf-8")
         self.assertIn("$wiki-status", readme)
         self.assertIn("$wiki-query", readme)
-        self.assertIn("plugins/report-wiki-portfolio/skills/wiki-status/SKILL.md", readme)
+        self.assertIn(".codex/skills/wiki-status/SKILL.md", readme)
+        self.assertNotIn("install those directories into", readme)
         self.assertNotIn("This repo also ships a repo-local Codex plugin", readme)
 
 
