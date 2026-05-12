@@ -1,0 +1,140 @@
+from __future__ import annotations
+
+from typing import Any
+
+
+def _markdown_table(headers: list[str], rows: list[list[object]]) -> list[str]:
+    lines = [
+        "| " + " | ".join(headers) + " |",
+        "| " + " | ".join("---" for _ in headers) + " |",
+    ]
+    lines.extend("| " + " | ".join(str(cell) for cell in row) + " |" for row in rows)
+    return lines
+
+
+def _counter_rows(counter: dict[str, int]) -> list[list[object]]:
+    return [[key, value] for key, value in sorted(counter.items())] or [["none", 0]]
+
+
+def _render_product_status(product_status: dict[str, Any]) -> list[str]:
+    identity = product_status["identity_coverage"]
+    relation = product_status["relation_coverage"]
+    unresolved = product_status["unresolved_items"]
+    lines = [
+        "",
+        "## Product Status",
+        "",
+        f"Contract version: `{product_status['contract_version']}`",
+        "",
+        "### Object Types",
+        "",
+        *_markdown_table(["Object Type", "Count"], _counter_rows(product_status["object_type_counts"])),
+        "",
+        "### Readiness",
+        "",
+        *_markdown_table(["Readiness", "Count"], _counter_rows(product_status["readiness_counts"])),
+        "",
+        "### Source Layers",
+        "",
+        *_markdown_table(["Source Layer", "Count"], _counter_rows(product_status["source_layer_counts"])),
+        "",
+        "### Identity Coverage",
+        "",
+        *_markdown_table(
+            ["Metric", "Value"],
+            [
+                ["With identity", identity["with_identity"]],
+                ["Missing identity", identity["missing_identity"]],
+            ],
+        ),
+        "",
+        "### Relation Coverage",
+        "",
+        *_markdown_table(
+            ["Metric", "Value"],
+            [
+                ["With relations", relation["with_relations"]],
+                ["Missing relations", relation["missing_relations"]],
+            ],
+        ),
+        "",
+        "### Unresolved Product Status Items",
+        "",
+    ]
+    if unresolved:
+        for item in unresolved:
+            item_type = item.get("type", "unknown")
+            target = item.get("path") or item.get("change_id") or "unknown"
+            lines.append(
+                f"- `{target}`: {item_type} "
+                f"({item['readiness_label']} -> {item['status_transition']})"
+            )
+    else:
+        lines.append("- None")
+    return lines
+
+
+def render_status_markdown(manifest: dict[str, Any]) -> str:
+    summary = manifest["summary"]
+    lines = [
+        "# Wiki Status",
+        "",
+        f"Generated at: `{manifest['generated_at']}`",
+        "",
+        "## Summary",
+        "",
+        *_markdown_table(
+            ["Metric", "Value"],
+            [
+                ["Wiki pages", summary["wiki_page_count"]],
+                ["Source records", summary["source_record_count"]],
+                ["Inbox files", summary["inbox_file_count"]],
+                ["Pending inbox files", summary["pending_inbox_count"]],
+                ["Active OpenSpec changes", summary["active_change_count"]],
+                ["Complete active-dir changes", summary["complete_change_count"]],
+            ],
+        ),
+        "",
+        "## Wiki Sections",
+        "",
+    ]
+    section_rows = [
+        [section, count]
+        for section, count in sorted(summary["wiki_sections"].items())
+    ]
+    lines.extend(_markdown_table(["Section", "Pages"], section_rows or [["none", 0]]))
+    lines.extend(_render_product_status(manifest["product_status"]))
+    lines.extend(["", "## Pending Inbox Files", ""])
+    pending = manifest["pending_inbox_files"]
+    if pending:
+        lines.extend(f"- `{path}`" for path in pending)
+    else:
+        lines.append("- None")
+
+    lines.extend(["", "## OpenSpec Changes", ""])
+    change_rows = [
+        [
+            item["change_id"],
+            item["state"],
+            f"{item['done_tasks']}/{item['total_tasks']}",
+            item["tasks_path"],
+        ]
+        for item in manifest["openspec_changes"]
+    ]
+    lines.extend(_markdown_table(["Change", "State", "Tasks", "Path"], change_rows or [["none", "-", "-", "-"]]))
+
+    lines.extend(["", "## Next Actions", ""])
+    if summary["pending_inbox_count"]:
+        lines.append("- Create or link source records for pending inbox files.")
+    if summary["complete_change_count"]:
+        lines.append("- Review complete active-directory OpenSpec changes for archive readiness.")
+    if summary["active_change_count"]:
+        lines.append("- Continue active OpenSpec changes before starting unrelated implementation.")
+    if not (
+        summary["pending_inbox_count"]
+        or summary["complete_change_count"]
+        or summary["active_change_count"]
+    ):
+        lines.append("- No generated status actions.")
+    lines.append("")
+    return "\n".join(lines)

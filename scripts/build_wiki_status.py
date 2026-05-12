@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.extract_wiki_graph import parse_frontmatter
 from scripts.wiki_product_status import build_product_status, relation_fields_from_meta
+from scripts.wiki_status_render import render_status_markdown
 
 
 DEFAULT_OUTPUT_DIR = Path("wiki/status")
@@ -194,80 +195,6 @@ def build_manifest(root: Path | str) -> dict[str, Any]:
         "openspec_changes": changes,
         "product_status": product_status,
     }
-
-
-def _markdown_table(headers: list[str], rows: list[list[object]]) -> list[str]:
-    lines = [
-        "| " + " | ".join(headers) + " |",
-        "| " + " | ".join("---" for _ in headers) + " |",
-    ]
-    lines.extend("| " + " | ".join(str(cell) for cell in row) + " |" for row in rows)
-    return lines
-
-
-def render_status_markdown(manifest: dict[str, Any]) -> str:
-    summary = manifest["summary"]
-    lines = [
-        "# Wiki Status",
-        "",
-        f"Generated at: `{manifest['generated_at']}`",
-        "",
-        "## Summary",
-        "",
-        * _markdown_table(
-            ["Metric", "Value"],
-            [
-                ["Wiki pages", summary["wiki_page_count"]],
-                ["Source records", summary["source_record_count"]],
-                ["Inbox files", summary["inbox_file_count"]],
-                ["Pending inbox files", summary["pending_inbox_count"]],
-                ["Active OpenSpec changes", summary["active_change_count"]],
-                ["Complete active-dir changes", summary["complete_change_count"]],
-            ],
-        ),
-        "",
-        "## Wiki Sections",
-        "",
-    ]
-    section_rows = [
-        [section, count]
-        for section, count in sorted(summary["wiki_sections"].items())
-    ]
-    lines.extend(_markdown_table(["Section", "Pages"], section_rows or [["none", 0]]))
-    lines.extend(["", "## Pending Inbox Files", ""])
-    pending = manifest["pending_inbox_files"]
-    if pending:
-        lines.extend(f"- `{path}`" for path in pending)
-    else:
-        lines.append("- None")
-
-    lines.extend(["", "## OpenSpec Changes", ""])
-    change_rows = [
-        [
-            item["change_id"],
-            item["state"],
-            f"{item['done_tasks']}/{item['total_tasks']}",
-            item["tasks_path"],
-        ]
-        for item in manifest["openspec_changes"]
-    ]
-    lines.extend(_markdown_table(["Change", "State", "Tasks", "Path"], change_rows or [["none", "-", "-", "-"]]))
-
-    lines.extend(["", "## Next Actions", ""])
-    if summary["pending_inbox_count"]:
-        lines.append("- Create or link source records for pending inbox files.")
-    if summary["complete_change_count"]:
-        lines.append("- Review complete active-directory OpenSpec changes for archive readiness.")
-    if summary["active_change_count"]:
-        lines.append("- Continue active OpenSpec changes before starting unrelated implementation.")
-    if not (
-        summary["pending_inbox_count"]
-        or summary["complete_change_count"]
-        or summary["active_change_count"]
-    ):
-        lines.append("- No generated status actions.")
-    lines.append("")
-    return "\n".join(lines)
 
 
 def write_status_outputs(root: Path | str, output_dir: Path | str = DEFAULT_OUTPUT_DIR) -> tuple[Path, Path]:
