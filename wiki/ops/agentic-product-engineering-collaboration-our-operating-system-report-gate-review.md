@@ -11,8 +11,8 @@ status: review-ready
 ## Article Intent Contract
 
 - Audience: internal product, engineering, QA, project-management, and management stakeholders.
-- Reader promise: explain what we should do after the company-playbook and newspaper H5 conclusions, using our own repository and ADR/log evidence, while stating what a non-internet-giant team should not do.
-- Output shape: long-form H5 article with restrained newspaper/report layout, data strip, generated image-model one-page infographic, explicit do-not/do sections, priority execution checklist, software-engineering workflow reshape, mode-change evidence rows, inline failure evidence, writing workflow, and a short pilot plan.
+- Reader promise: explain what we should do after the company-playbook and newspaper H5 conclusions, using our own repository and ADR/log evidence, while stating what a non-internet-giant team should not do and where each step of the workflow comes from.
+- Output shape: long-form H5 article with restrained newspaper/report layout, data strip, generated image-model one-page infographic, workflow provenance section, explicit do-not/do sections, priority execution checklist, software-engineering workflow reshape, mode-change evidence rows, inline failure evidence, writing workflow, and a short pilot plan.
 - Non-goals: not a dashboard, not a card wall, not a table-grid report, not a tool instruction page, not a generic AI trend article.
 
 ## Reference Structure Map
@@ -22,7 +22,7 @@ status: review-ready
 - `account-team-efficiency/logs/*`: reused as internal evidence for requirement drift, DB verification gaps, and visual acceptance failure.
 - Previous prose draft from this session: reused as the article spine, role map, blood-lessons section, and 30-day pilot.
 - Fresh git/file statistics gathered on 2026-05-11: reused for pre/post OpenSpec and skill-gate comparison.
-- `$office-hours` calibration: reused to sharpen the wedge around a non-internet-giant team's practical AI-assisted operating system.
+- Six-question diagnosis calibration: reused to sharpen the wedge around a non-internet-giant team's practical AI-assisted operating system.
 
 ## Learning Use Map
 
@@ -35,6 +35,7 @@ status: review-ready
   - Explicit strategic boundary: do not build foundation models, generic RAG platform, AI middle-platform theater, or AI usage-rate management.
   - Execution checklist: intent packet, Spec/ADR entry, Agent execution packet, evidence matrix, review packet, skill gates, failure writeback, weekly metrics.
   - Image-model infographic: inserted as the scan-first visual summary for the H5.
+  - Workflow provenance: each of the eight landing steps now maps external company inspiration, local failure evidence, and implementation meaning.
 - Modified:
   - External company analysis was compressed into a coordinate section instead of dominating the page.
   - Internal failure cases were rewritten as role-facing lessons.
@@ -46,8 +47,9 @@ status: review-ready
 ## Hard Gate Results
 
 - Reader promise: pass. The page answers what we should do and what our writing/collaboration process should become.
-- Office-hours wedge: pass. The page names the real user/problem, rejects AI-platform overreach, and narrows the solution to AI-assisted product-engineering operating work.
+- Six-question wedge: pass. The page names the real user/problem, rejects AI-platform overreach, and narrows the solution to AI-assisted product-engineering operating work.
 - Actionability Gate: pass. The page includes a concrete priority checklist and names how product, engineering, QA, and project management work changes.
+- Workflow Provenance Gate: pass. The page records why each workflow step exists, using OpenAI, Anthropic, Stripe, Block, six-question diagnosis, and local failure evidence.
 - Reference Output Shape Gate: pass. The selected shape is an H5 long-form article. It does not drift into dashboard panels, card wall, table grid, or colorful block collage.
 - Voice Quality Gate: pass. The page uses direct internal report prose and removes chat residue.
 - Visual Output Gate: pass with local-assets boundary. The page uses existing visual assets from the prior H5 and a generated image-model one-page infographic as the primary scan-first visual.
@@ -65,6 +67,7 @@ status: review-ready
 
 - Desktop screenshot: `/tmp/agentic-product-engineering-collaboration-our-operating-system-v2.png`.
 - Mobile screenshot: `/tmp/agentic-product-engineering-collaboration-our-operating-system-mobile.png`.
+- Workflow provenance screenshot: `/tmp/agentic-product-engineering-collaboration-our-operating-system-provenance.png`.
 - Result: Chinese text renders in the local Playwright environment after adding CJK font fallbacks. Hero, data strip, and article sections are readable in the checked desktop and mobile viewports.
 
 ## Visual Asset Boundary
@@ -74,7 +77,7 @@ status: review-ready
 - H5 insertion: section `03 · 一图流`.
 - Share package: `wiki/reports/agentic-product-engineering-collaboration-our-operating-system-share.zip`.
 - Package contents: H5 plus the four image assets referenced by the H5.
-- Package verification: extracted to `/tmp/agentic-h5-share-check-20260511-2048/` and opened with Playwright screenshot `/tmp/agentic-h5-share-check-20260511-2048.png`.
+- Package verification: extracted to `/tmp/agentic-h5-share-check-20260512-provenance/` and opened with Playwright screenshot `/tmp/agentic-h5-share-check-20260512-provenance.png`.
 - Feishu sync: not performed. The package is local file delivery only.
 
 ## Behavior Replay Evidence
