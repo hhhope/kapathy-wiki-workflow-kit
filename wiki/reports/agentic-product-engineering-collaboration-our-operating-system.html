@@ -1043,33 +1043,103 @@
       </p>
     </section>
 
-    <section class="section">
+    <section class="section" id="role-changes">
       <p class="section-label">13 · 角色变化</p>
-      <h2>每个角色都要从“参与流程”转向“维护证据链”</h2>
+      <h2>岗位怎么变：8 步流程里的 owner、产物和证据</h2>
+      <p class="reading">
+        不是问“产品要不要写代码”，而是问每一步谁拥有产物、什么证据证明完成。Agent 可以执行很多动作，但 owner、边界和完成判断必须落到人和系统记录上。
+      </p>
+      <div class="phase-list">
+        <div class="phase-row">
+          <strong>1. 意图包<br>Owner：产品 / PM</strong>
+          <div class="source-tags">
+            <span><b>产物</b>用户原话、业务对象、动作、期望结果、非目标、负责人、验收路径。</span>
+            <span><b>证据</b>Agent 能复述任务边界，不自行扩大范围；研发和测试能据此判断做与不做。</span>
+            <span><b>岗位变化</b>产品不再只是写需求摘要，而是守住用户意图不被翻译漂移。</span>
+          </div>
+        </div>
+        <div class="phase-row">
+          <strong>2. Spec / ADR 入口<br>Owner：研发组长</strong>
+          <div class="source-tags">
+            <span><b>产物</b>OpenSpec、ADR 或明确的不进入理由，包含范围、非目标、验收、风险和回滚边界。</span>
+            <span><b>证据</b>跨模块、跨角色、改变默认协作方式的工作没有伪装成小修；稳定决策能被下一轮读取。</span>
+            <span><b>岗位变化</b>研发组长从“分配开发任务”上移到判断工作是否需要进入正式决策入口。</span>
+          </div>
+        </div>
+        <div class="phase-row">
+          <strong>3. Agent 执行包<br>Owner：研发工程师</strong>
+          <div class="source-tags">
+            <span><b>产物</b>diff、改动文件、假设、未做事项、验证命令、风险清单和必要截图或日志。</span>
+            <span><b>证据</b>Reviewer 不需要翻聊天记录，也能看清代码如何映射用户原话、哪些路径被验证、哪些只是 smoke。</span>
+            <span><b>岗位变化</b>工程师不是把判断外包给 AI，而是提交可审查的工程结果和执行证据。</span>
+          </div>
+        </div>
+        <div class="phase-row">
+          <strong>4. 证据矩阵<br>Owner：QA / 测试</strong>
+          <div class="source-tags">
+            <span><b>产物</b>单测、集成、真实 API、真实 DB、权限路径、浏览器交互、截图、视觉断言、性能和回放要求。</span>
+            <span><b>证据</b>证据覆盖用户真实路径和风险等级，不用 mock 字段、DOM 存在或构建通过冒充完成。</span>
+            <span><b>岗位变化</b>测试不再是尾部兜底，而是在执行前后定义“什么证据足以证明完成”。</span>
+          </div>
+        </div>
+        <div class="phase-row">
+          <strong>5. Review Packet<br>Owner：研发组长 / 业务 owner</strong>
+          <div class="source-tags">
+            <span><b>产物</b>业务映射、diff 摘要、验证结果、截图或日志、风险、待人判断问题。</span>
+            <span><b>证据</b>人类可以直接做 approve / reject / defer 判断，而不是重新翻仓库、会议和聊天。</span>
+            <span><b>岗位变化</b>负责人审的是完整判断包，不是只问“代码改完了吗”。</span>
+          </div>
+        </div>
+        <div class="phase-row">
+          <strong>6. 人类判断<br>Owner：Boss / 指定 owner</strong>
+          <div class="source-tags">
+            <span><b>产物</b>通过、打回、延期、缩范围或上线风险接受的明确结论。</span>
+            <span><b>证据</b>决定和理由被写下，后续事故或复盘能回到当时的取舍。</span>
+            <span><b>岗位变化</b>管理层不替 Agent 做执行，但必须负责优先级、范围取舍、上线风险和组织信任边界。</span>
+          </div>
+        </div>
+        <div class="phase-row">
+          <strong>7. 失败写回<br>Owner：失败类型对应角色</strong>
+          <div class="source-tags">
+            <span><b>产物</b>tests、ADR、ops、skill、checklist 或项目规则更新。</span>
+            <span><b>证据</b>同类问题下一次有触发器、检查项或门禁，不靠某个人记得这次踩过坑。</span>
+            <span><b>岗位变化</b>产品写回意图漂移，研发写回实现和架构坑，测试写回证据缺口，项目写回节奏和边界问题。</span>
+          </div>
+        </div>
+        <div class="phase-row">
+          <strong>8. 周度指标<br>Owner：Boss / 项目管理</strong>
+          <div class="source-tags">
+            <span><b>产物</b>周期、验证覆盖、返工、事故、写回、重复坑、owner 清晰度趋势。</span>
+            <span><b>证据</b>管理层看到的是作业系统健康度，而不是“谁用了多少 AI”。</span>
+            <span><b>岗位变化</b>项目管理从催进度变成维护状态机；Boss 从看使用率变成看瓶颈、风险和责任链。</span>
+          </div>
+        </div>
+      </div>
+
       <div class="role-list">
         <div class="role-row">
           <strong>Boss</strong>
-          <p>不要只看 AI 使用率。应看需求到可验证结果的周期、重复返工下降、真实运行事故、写回数量、负责人是否清楚。</p>
+          <p>停止只问 AI 使用率；开始问哪一步卡住、哪个 owner 证据不清；产物是每周 operating-system review。</p>
         </div>
         <div class="role-row">
           <strong>产品 / PM</strong>
-          <p>守住意图链。每个需求必须保留用户原话、业务判断、非目标、验收路径，以及哪些裁剪需要重新确认。</p>
+          <p>停止只交整理后的需求摘要；开始交意图包、非目标、验收路径和裁剪取舍；产物是用户路径验收样例。</p>
         </div>
         <div class="role-row">
           <strong>研发组长</strong>
-          <p>把仓库变成 agent-readable 的执行系统：OpenSpec、ADR、测试、DB 验证、CI 解释、review packet、回滚路径、已知坑都要能被下一轮读取。</p>
+          <p>停止把所有需求都当小实现；开始判断 Spec / ADR 入口、拆解边界、review packet 标准和回滚边界。</p>
         </div>
         <div class="role-row">
           <strong>研发工程师</strong>
-          <p>使用 AI 产出可审查 diff，而不是外包判断。提交应说明用户原话映射、改了哪些文件、验证了哪些路径、哪些只是 mock 或 smoke。</p>
+          <p>停止让 AI 只交代码；开始交执行包：diff、假设、验证、风险和未做事项。</p>
         </div>
         <div class="role-row">
-          <strong>测试部门</strong>
-          <p>设计证据负载矩阵：单测、集成、真实 DB、浏览器交互、截图、权限路径、回放场景。测试不是最后兜底，而是定义“完成”的证据结构。</p>
+          <strong>QA / 测试</strong>
+          <p>停止等功能完成后再进入；开始在执行前后定义证据矩阵、回放场景和真实环境检查。</p>
         </div>
         <div class="role-row">
           <strong>项目管理</strong>
-          <p>跟踪状态从“任务进行中”升级为：意图已捕获、spec 已接受、Agent 已执行、review packet ready、人类判断完成、真实运行已验证、失败已写回。</p>
+          <p>停止只报进行中、延期、完成；开始维护 8 状态链路：意图、spec、执行、证据、review、人审、真实验证、写回。</p>
         </div>
       </div>
     </section>
@@ -1117,15 +1187,15 @@
           <p class="caption">前一版 H5 的“操作系统”结论：Agent 不是孤立工具，必须被 issue、spec、测试、CI、review、wiki、规则、权限共同约束。</p>
         </div>
         <div class="pilot-panel">
-          <h3>30 天内只看 7 件事</h3>
+          <h3>30 天内按岗位只看 7 件事</h3>
           <ol>
-            <li>每个需求都有用户原话映射。</li>
-            <li>每个 spec 都写明非目标和裁剪边界。</li>
-            <li>每次 Agent 执行都有 review packet。</li>
-            <li>每次 DB/API 改动都有真实运行证据。</li>
-            <li>每次前端关键页面都有运行截图和视觉断言。</li>
-            <li>每次打回都归因到翻译、实现、验证、视觉或项目边界。</li>
-            <li>每个高频坑都写回测试、ADR、skill 或项目规则。</li>
+            <li>产品选一个看板指标异常场景，交第一版意图包。</li>
+            <li>研发组长判断是否进入 Spec / ADR，并写清执行边界。</li>
+            <li>研发工程师用 Agent 修链路或补能力，同时提交执行包。</li>
+            <li>QA 定义真实 DB、真实 API、浏览器截图和视觉证据。</li>
+            <li>项目管理跟踪任务卡在哪个状态，而不是只跟日期。</li>
+            <li>Boss 每周看返工、事故、写回和 owner 清晰度，不看 AI 使用率。</li>
+            <li>每次打回都归因，并写回测试、ADR、skill 或项目规则。</li>
           </ol>
         </div>
       </div>

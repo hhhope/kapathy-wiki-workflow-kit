@@ -4,6 +4,7 @@ kind: report-gate-review
 created: 2026-05-11
 target: wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html
 status: review-ready
+updated: 2026-05-12
 ---
 
 # Report Gate Review
@@ -11,8 +12,8 @@ status: review-ready
 ## Article Intent Contract
 
 - Audience: internal product, engineering, QA, project-management, and management stakeholders.
-- Reader promise: explain what we should do after the company-playbook and newspaper H5 conclusions, using our own repository and ADR/log evidence, while stating what a non-internet-giant team should not do and where each step of the workflow comes from.
-- Output shape: long-form H5 article with restrained newspaper/report layout, data strip, generated image-model one-page infographic, workflow provenance section, explicit do-not/do sections, priority execution checklist, software-engineering workflow reshape, mode-change evidence rows, inline failure evidence, writing workflow, and a short pilot plan.
+- Reader promise: explain what we should do after the company-playbook and newspaper H5 conclusions, using our own repository and ADR/log evidence, while stating what a non-internet-giant team should not do, where each step of the workflow comes from, and how our roles change inside that workflow.
+- Output shape: long-form H5 article with restrained newspaper/report layout, data strip, generated image-model one-page infographic, workflow provenance section, explicit do-not/do sections, priority execution checklist, software-engineering workflow reshape, role responsibility map, mode-change evidence rows, inline failure evidence, writing workflow, and a short role-specific pilot plan.
 - Non-goals: not a dashboard, not a card wall, not a table-grid report, not a tool instruction page, not a generic AI trend article.
 
 ## Reference Structure Map
@@ -23,6 +24,7 @@ status: review-ready
 - Previous prose draft from this session: reused as the article spine, role map, blood-lessons section, and 30-day pilot.
 - Fresh git/file statistics gathered on 2026-05-11: reused for pre/post OpenSpec and skill-gate comparison.
 - Six-question diagnosis calibration: reused to sharpen the wedge around a non-internet-giant team's practical AI-assisted operating system.
+- `agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md`: reused to replace scattered role prose with an eight-step owner / artifact / evidence responsibility map.
 
 ## Learning Use Map
 
@@ -36,10 +38,12 @@ status: review-ready
   - Execution checklist: intent packet, Spec/ADR entry, Agent execution packet, evidence matrix, review packet, skill gates, failure writeback, weekly metrics.
   - Image-model infographic: inserted as the scan-first visual summary for the H5.
   - Workflow provenance: each of the eight landing steps now maps external company inspiration, local failure evidence, and implementation meaning.
+  - Role-change design: section `13 · 角色变化` now maps the eight-step operating system to owners, artifacts, completion evidence, and role behavior changes.
 - Modified:
   - External company analysis was compressed into a coordinate section instead of dominating the page.
   - Internal failure cases were rewritten as role-facing lessons.
   - SMART / 5W1H was kept as a lightweight check rather than the article structure.
+  - The 30-day pilot was rewritten from a generic checklist into role-specific actions for product, engineering lead, engineer, QA, project management, Boss, and failure writeback.
 - Not formalized:
   - No new repository runtime rule is introduced by this H5.
   - No new skill behavior is claimed by the H5 itself.
@@ -50,6 +54,7 @@ status: review-ready
 - Six-question wedge: pass. The page names the real user/problem, rejects AI-platform overreach, and narrows the solution to AI-assisted product-engineering operating work.
 - Actionability Gate: pass. The page includes a concrete priority checklist and names how product, engineering, QA, and project management work changes.
 - Workflow Provenance Gate: pass. The page records why each workflow step exists, using OpenAI, Anthropic, Stripe, Block, six-question diagnosis, and local failure evidence.
+- Role Responsibility Gate: pass. The page now answers which role owns each workflow step, what artifact they produce, and what evidence proves the step is done.
 - Reference Output Shape Gate: pass. The selected shape is an H5 long-form article. It does not drift into dashboard panels, card wall, table grid, or colorful block collage.
 - Voice Quality Gate: pass. The page uses direct internal report prose and removes chat residue.
 - Visual Output Gate: pass with local-assets boundary. The page uses existing visual assets from the prior H5 and a generated image-model one-page infographic as the primary scan-first visual.
@@ -69,6 +74,17 @@ status: review-ready
 - Mobile screenshot: `/tmp/agentic-product-engineering-collaboration-our-operating-system-mobile.png`.
 - Workflow provenance screenshot: `/tmp/agentic-product-engineering-collaboration-our-operating-system-provenance.png`.
 - Result: Chinese text renders in the local Playwright environment after adding CJK font fallbacks. Hero, data strip, and article sections are readable in the checked desktop and mobile viewports.
+
+## Local Verification
+
+- Static role-owner check: H5 contains 8 `Owner：` workflow owner rows and the role-specific pilot heading.
+- Reader residue check: reader-facing HTML contains no `$office-hours`, `office-hours`, `Hybrid`, or `prompt` residue.
+- Share package verification: regenerated and extracted to `/tmp/our-operating-system-role-change-check-20260512/`.
+- Full-page screenshot verification: `/tmp/our-operating-system-role-change-full.png`.
+- Full-page mobile screenshot verification: `/tmp/our-operating-system-role-change-full-mobile.png`.
+- Role-change section screenshot verification: `/tmp/our-operating-system-role-change-section13.png`.
+- Role-change section mobile screenshot verification: `/tmp/our-operating-system-role-change-section13-mobile.png`.
+- Section anchor: `#role-changes` was added to the role-change section for stable preview and review targeting.
 
 ## Visual Asset Boundary
 
