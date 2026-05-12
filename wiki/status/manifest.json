@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-05-11T02:04:42.134250+00:00",
+  "generated_at": "2026-05-12T05:16:52.012358+00:00",
   "root": "/mnt/d/cloud/account-meeting-lore",
   "summary": {
-    "wiki_page_count": 176,
-    "source_record_count": 13,
+    "wiki_page_count": 201,
+    "source_record_count": 17,
     "inbox_file_count": 11,
     "pending_inbox_count": 0,
-    "active_change_count": 0,
+    "active_change_count": 1,
     "complete_change_count": 0,
     "wiki_sections": {
       "wiki/adr": 32,
       "wiki/domains": 2,
       "wiki/examples": 7,
-      "wiki/ops": 88,
-      "wiki/reports": 13,
+      "wiki/ops": 107,
+      "wiki/reports": 15,
       "wiki/root": 7,
-      "wiki/sources": 14,
+      "wiki/sources": 18,
       "wiki/templates": 10,
       "wiki/timeline": 3
     }
@@ -29,7 +29,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
@@ -39,7 +45,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0003-retros-stay-separate-from-adrs.md",
@@ -49,7 +61,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0004-agent-self-evolution-over-skill-governance.md",
@@ -59,7 +77,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0005-incremental-refresh-over-full-reprocessing.md",
@@ -69,7 +93,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0006-formal-project-local-skills-over-drafts.md",
@@ -79,7 +109,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0007-archive-review-before-archive.md",
@@ -89,7 +125,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0008-human-governance-before-self-evolution-promotion.md",
@@ -99,7 +141,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0009-explore-trace-before-openspec-explore.md",
@@ -109,7 +157,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md",
@@ -119,7 +173,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md",
@@ -129,7 +189,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
@@ -139,7 +205,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
@@ -149,7 +221,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
@@ -159,7 +237,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md",
@@ -169,7 +253,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md",
@@ -179,7 +269,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md",
@@ -189,7 +285,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md",
@@ -199,7 +301,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md",
@@ -209,7 +317,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md",
@@ -219,7 +333,15 @@
       "title": null,
       "canonical_object": "wiki-runtime-context-source-integration",
       "artifact_type": "adr",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "wiki-runtime-context"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md",
@@ -229,7 +351,15 @@
       "title": null,
       "canonical_object": "wiki-runtime-auto-routing",
       "artifact_type": "adr",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "wiki-runtime-context-source-integration"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md",
@@ -239,7 +369,15 @@
       "title": null,
       "canonical_object": "wiki-context-injection",
       "artifact_type": "adr",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "wiki-runtime-auto-routing"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md",
@@ -249,7 +387,15 @@
       "title": null,
       "canonical_object": "wiki-self-directed-execution",
       "artifact_type": "adr",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "wiki-context-injection"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md",
@@ -259,7 +405,15 @@
       "title": null,
       "canonical_object": "live-conversation-reanchor-gate",
       "artifact_type": "adr",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "disagreement-management"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0025-readable-views-before-further-runtime-expansion.md",
@@ -269,7 +423,13 @@
       "title": null,
       "canonical_object": "wiki-readable-views",
       "artifact_type": "adr",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0026-retire-draft-skills-as-runtime-surface.md",
@@ -279,7 +439,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0027-repo-phase0-before-repo-agents-migration.md",
@@ -289,7 +455,15 @@
       "title": null,
       "canonical_object": "repo-agents-governance-phase0",
       "artifact_type": "adr",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "agents-governance-drift"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md",
@@ -299,7 +473,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md",
@@ -309,7 +489,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0030-no-repo-local-commit-hook-default.md",
@@ -319,7 +505,17 @@
       "title": null,
       "canonical_object": "no-repo-local-commit-hook-default",
       "artifact_type": "adr",
-      "status": null
+      "status": null,
+      "related_objects": [
+        "repo-agents-governance-phase0"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "agents-governance-drift"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/0031-root-capability-extraction-boundary.md",
@@ -329,7 +525,20 @@
       "title": null,
       "canonical_object": "root-capability-extraction",
       "artifact_type": "adr",
-      "status": null
+      "status": null,
+      "related_objects": [
+        "root-governance-alignment",
+        "repo-agents-loaded-context",
+        "principle-skills-layer"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "openspec/changes/archive/2026-05-07-decide-root-capability-extraction-boundary/",
+        "wiki/ops/root-capability-extraction-retro.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/adr/index.md",
@@ -339,7 +548,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ai-chat-workflow-installer.md",
@@ -349,7 +564,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ai-workflow.md",
@@ -359,7 +580,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/domains/account-clearing.md",
@@ -369,7 +596,13 @@
       "title": "Account and Clearing",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/domains/index.md",
@@ -379,7 +612,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/examples/explore-trace-example.md",
@@ -389,7 +628,13 @@
       "title": "Explore Trace Example",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "sample"
+      "status": "sample",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/examples/github-analysis-example.md",
@@ -399,7 +644,13 @@
       "title": "GitHub Analysis Example",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "sample"
+      "status": "sample",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/examples/index.md",
@@ -409,7 +660,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/examples/learning-note-example.md",
@@ -419,7 +676,13 @@
       "title": "Learning Note Example",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "sample"
+      "status": "sample",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/examples/meeting-note-example.md",
@@ -429,7 +692,13 @@
       "title": "Meeting Note Example",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "sample"
+      "status": "sample",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/examples/project-weekly-example.md",
@@ -439,7 +708,13 @@
       "title": "Project Weekly Example",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "sample"
+      "status": "sample",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/examples/weixin-summary-example.md",
@@ -449,7 +724,13 @@
       "title": "Weixin Summary Example",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "sample"
+      "status": "sample",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/inbox-intake.md",
@@ -459,7 +740,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/index.md",
@@ -469,7 +756,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/language-policy.md",
@@ -479,7 +772,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md",
@@ -489,7 +788,13 @@
       "title": "20260415100517 转写 yan的快速会议 纪要文本 1",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md",
@@ -499,7 +804,13 @@
       "title": "20260415100517 转写 yan的快速会议 逐字稿文本 1",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/account-knowledge-base-structure-explore.md",
@@ -509,7 +820,13 @@
       "title": "account knowledge base structure explore",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/account-knowledge-base-workbench.md",
@@ -519,7 +836,13 @@
       "title": "account-knowledge-base / team-knowledge-path",
       "canonical_object": "account-knowledge-base",
       "artifact_type": "ops-overview",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md",
@@ -529,7 +852,13 @@
       "title": "Agent 治理 gate 缺口探索 2026-04-18",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md",
@@ -539,7 +868,13 @@
       "title": "Agent 治理 gate 缺口复盘 2026-04-18",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-harness-article-learning-intake.md",
@@ -549,7 +884,13 @@
       "title": "agent-harness-article-learning / intake",
       "canonical_object": "agent-harness-article-learning",
       "artifact_type": "intake",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-harness-article-learning.md",
@@ -559,7 +900,13 @@
       "title": "agent-harness-article-learning / reading-notes",
       "canonical_object": "agent-harness-article-learning",
       "artifact_type": "reading-notes",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-artifact-grouping.md",
@@ -569,7 +916,13 @@
       "title": "wiki-readable-views / artifact-grouping-view",
       "canonical_object": "wiki-readable-views",
       "artifact_type": "artifact-grouping-view",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": [],
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-context-injection.md",
@@ -579,7 +932,16 @@
       "title": null,
       "canonical_object": "wiki-context-injection",
       "artifact_type": "method",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "wiki-runtime-auto-routing",
+        "wiki-runtime-context-source-integration"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-frontmatter.md",
@@ -589,7 +951,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-graph-extraction.md",
@@ -599,7 +967,17 @@
       "title": null,
       "canonical_object": "wiki-graph-extraction",
       "artifact_type": "method",
-      "status": null
+      "status": null,
+      "related_objects": [
+        "wiki-frontmatter-model",
+        "wiki-naming-model",
+        "wiki-relation-analysis"
+      ],
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-naming-model.md",
@@ -609,7 +987,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-relation-analysis.md",
@@ -619,7 +1003,13 @@
       "title": null,
       "canonical_object": "wiki-relation-analysis",
       "artifact_type": "method",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-relation-reading-view.md",
@@ -629,7 +1019,13 @@
       "title": "wiki-readable-views / relation-reading-view",
       "canonical_object": "wiki-readable-views",
       "artifact_type": "relation-reading-view",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": [],
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-runtime-auto-routing.md",
@@ -639,7 +1035,16 @@
       "title": null,
       "canonical_object": "wiki-runtime-auto-routing",
       "artifact_type": "method",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "wiki-runtime-context-source-integration",
+        "wiki-runtime-context"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-runtime-context-source-integration.md",
@@ -649,7 +1054,16 @@
       "title": null,
       "canonical_object": "wiki-runtime-context-source-integration",
       "artifact_type": "method",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "wiki-runtime-context",
+        "wiki-utilization-layer"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-runtime-context.md",
@@ -659,7 +1073,13 @@
       "title": null,
       "canonical_object": "wiki-runtime-context",
       "artifact_type": "method",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-self-directed-execution.md",
@@ -669,7 +1089,16 @@
       "title": null,
       "canonical_object": "wiki-self-directed-execution",
       "artifact_type": "method",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "wiki-context-injection",
+        "wiki-runtime-auto-routing"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-semantic-scoring.md",
@@ -679,7 +1108,13 @@
       "title": null,
       "canonical_object": "wiki-semantic-scoring",
       "artifact_type": "method",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agent-readable-wiki-utilization-layer.md",
@@ -689,7 +1124,221 @@
       "title": null,
       "canonical_object": "wiki-utilization-layer",
       "artifact_type": "method",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "9a47b51ecc74cfee5be9b5c3ae5c53627d1cacabb658cdb14c685078072e4e75",
+      "bytes": 6888,
+      "title": "agentic-collaboration / company playbook page explore",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "explore_trace",
+      "status": "exploring",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "6fe677d9ec7d1f17afe22320250c34488bebd5f09a9b383b1eb9669771952546",
+      "bytes": 11025,
+      "title": "agentic-company-playbook / quality failure root cause explore",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "explore_trace",
+      "status": "exploring",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-article-evidence-matrix-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "cfb15a0ef030d65da17f6b2ee33deb6dcb3ebfa672f3c694461242f142717176",
+      "bytes": 6047,
+      "title": "agentic-product-engineering-collaboration / article evidence matrix",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "article-evidence-matrix",
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md",
+      "section": "wiki/ops",
+      "sha256": "99ff1b224b0a1a6ddf84978cebae6b4947293bcc72f0080bf81049b6b408911b",
+      "bytes": 15655,
+      "title": "agentic-product-engineering-collaboration-company-playbook / report gate review",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "report_gate_review",
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-company-playbook-role-change-diagnosis-2026-05-12.md",
+      "section": "wiki/ops",
+      "sha256": "6f7e9965598938b41329c4dbb109fdf834f861a692c420db66f29cca273b11f7",
+      "bytes": 14722,
+      "title": "agentic-product-engineering-collaboration company playbook role-change diagnosis",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "office_hours_design",
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-image-model-visual-qa-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "48b797e9ad689c15616bef72d5e68120b66eb02299b71d99c5ac3bdf2bf0eea0",
+      "bytes": 2641,
+      "title": "agentic-product-engineering-collaboration / image-model visual qa",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "visual-qa",
+      "status": "partial",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md",
+      "section": "wiki/ops",
+      "sha256": "ddba0e473d7f8454946379ada8fd39c9e3273333e95ccbd5801fbd8a14a39a84",
+      "bytes": 10116,
+      "title": "agentic-product-engineering-collaboration-our-operating-system report gate review",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "review-ready",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md",
+      "section": "wiki/ops",
+      "sha256": "cfb6ecf5771374c898563f2a94fa2fb5b25389c6b7296d2d52c95f85b35d7aae",
+      "bytes": 12283,
+      "title": "agentic-product-engineering-collaboration our operating system role-change design",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "office_hours_design",
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md",
+      "section": "wiki/ops",
+      "sha256": "226500373a1e88454e635c91650bf2056bd5af10f44d8ae71970e826164e7cbb",
+      "bytes": 17550,
+      "title": "agentic-product-engineering-collaboration / report-gate-review",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "report-gate-review",
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "3c03042bd3b3fbb0bf8c672f529271a5b844936620d6eb0c4ce54f60136e5149",
+      "bytes": 20584,
+      "title": "agentic-product-engineering-collaboration / session handoff",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "ops-handoff",
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-split-execution-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "84177e00039c7fc49221bf23e9a00385ef364742e27a8912b1ba5099abf55f9d",
+      "bytes": 4978,
+      "title": "agentic-product-engineering-collaboration / split execution",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "ops-execution-plan",
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-visual-production-brief-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "4fad15d40adbd01c9c8f266626e78511ec588767850d6621d4ffb04cb62ab52e",
+      "bytes": 6084,
+      "title": "agentic-product-engineering-collaboration / visual production brief",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "visual-production-brief",
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-workflow-gate-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "85e2fe83551796f87f1cf977267982b14562ea400778434cbcae53c756b89f1f",
+      "bytes": 3945,
+      "title": "agentic-product-engineering-collaboration / workflow gate",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "workflow-gate",
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agents-governance-281-compression-retro-2026-05-06.md",
@@ -699,7 +1348,13 @@
       "title": "agents-governance 281 行压缩 / retro",
       "canonical_object": "agents-governance-drift",
       "artifact_type": "retro",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agents-governance-drift-distill-2026-04-21.md",
@@ -709,7 +1364,13 @@
       "title": "AGENTS.md 治理漂移二次蒸馏 2026-04-21",
       "canonical_object": "agents-governance-drift",
       "artifact_type": "distill",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agents-governance-drift-distill-calibration-retro.md",
@@ -719,7 +1380,13 @@
       "title": "agents-governance-drift-distill-calibration / retro",
       "canonical_object": "agents-governance-drift-distill-calibration",
       "artifact_type": "retro",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md",
@@ -729,7 +1396,13 @@
       "title": "agents-governance-drift-distill-calibration / replay-validation",
       "canonical_object": "agents-governance-drift-distill-calibration",
       "artifact_type": "replay-validation",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": [],
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agents-governance-drift-explore.md",
@@ -739,7 +1412,13 @@
       "title": "agents-governance-drift / explore",
       "canonical_object": "agents-governance-drift",
       "artifact_type": "explore",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agents-governance-drift-playbook-2026-04-21.md",
@@ -749,7 +1428,13 @@
       "title": "AGENTS.md 治理漂移候选实施 playbook 2026-04-21",
       "canonical_object": "agents-governance-drift",
       "artifact_type": "playbook",
-      "status": "candidate"
+      "status": "candidate",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agents-governance-drift-retro.md",
@@ -759,7 +1444,13 @@
       "title": "AGENTS.md 治理漂移复盘 2026-04-21",
       "canonical_object": "agents-governance-drift",
       "artifact_type": "retro",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/agents-governance-remediation-explore-2026-04-21.md",
@@ -769,7 +1460,13 @@
       "title": "AGENTS.md 治理漂移整改方向探索 2026-04-21",
       "canonical_object": "agents-governance-drift",
       "artifact_type": "explore",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md",
@@ -779,7 +1476,13 @@
       "title": "AI Chat 一键安装 Skill 探索",
       "canonical_object": "ai-chat-workflow-installer",
       "artifact_type": "explore",
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/behavior-asset-governance-design-trace.md",
@@ -789,7 +1492,13 @@
       "title": "behavior-asset-governance / design-trace",
       "canonical_object": "behavior-asset-governance",
       "artifact_type": "design-trace",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/behavior-asset-governance-zh.md",
@@ -799,7 +1508,13 @@
       "title": "行为资产治理 / 中文摘要",
       "canonical_object": "behavior-asset-governance",
       "artifact_type": "summary",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/behavior-replay-gate.md",
@@ -809,7 +1524,13 @@
       "title": "behavior-replay-gate / method",
       "canonical_object": "behavior-replay-gate",
       "artifact_type": "method",
-      "status": "accepted"
+      "status": "accepted",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/check-to-wiki-routing-explore.md",
@@ -819,7 +1540,13 @@
       "title": "check-to-wiki-routing / intake",
       "canonical_object": "check-to-wiki-routing",
       "artifact_type": "intake",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md",
@@ -829,7 +1556,13 @@
       "title": "~/.codex/AGENTS.md 全局文件诊断",
       "canonical_object": "codex-global-agents-md",
       "artifact_type": "intake",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/codex-handoff-rules.md",
@@ -839,7 +1572,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/conversation-handoff-mode.md",
@@ -849,7 +1588,13 @@
       "title": null,
       "canonical_object": "conversation-handoff",
       "artifact_type": "method",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/disagreement-management-method.md",
@@ -859,7 +1604,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/disagreement-management-replay-harness.md",
@@ -869,7 +1620,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/disagreement-management-replay-validation-2026-04-20.md",
@@ -879,7 +1636,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/distill-calibration-replay-harness.md",
@@ -889,7 +1652,13 @@
       "title": "distill-calibration / replay-harness",
       "canonical_object": "agents-governance-drift-distill-calibration",
       "artifact_type": "replay-harness",
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/evolver-self-evolving-harness-reading-notes.md",
@@ -899,7 +1668,13 @@
       "title": "evolver-self-evolving-harness / reading-notes",
       "canonical_object": "evolver-self-evolving-harness",
       "artifact_type": "reading-notes",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md",
@@ -909,7 +1684,13 @@
       "title": "例子驱动留痕运行时验证 2026-04-18",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/example-driven-wiki-capture.md",
@@ -919,7 +1700,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md",
@@ -929,7 +1716,13 @@
       "title": "Feishu image client freeze explore",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/gstack-lark-learning-retro-2026-04-18.md",
@@ -939,7 +1732,13 @@
       "title": "gstack 与 larksuite CLI 学习复盘 2026-04-18",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/harness-engineering-overview-reading-notes.md",
@@ -949,7 +1748,13 @@
       "title": "harness-engineering-overview / reading-notes",
       "canonical_object": "harness-engineering-overview",
       "artifact_type": "reading-notes",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md",
@@ -959,17 +1764,29 @@
       "title": "Hermes 自进化缺口探索 2026-04-16",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/index.md",
       "section": "wiki/ops",
-      "sha256": "a2f7f56a5c3cfe6ff89f2f4a801c7fe6cef52d7878c89fab62233706283b2c99",
-      "bytes": 6309,
+      "sha256": "247be0d00285d63213c46e6d4183c6206d3584f9cf60a243e735424a5cf20152",
+      "bytes": 6556,
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/intelligence-native-organization-intake.md",
@@ -979,7 +1796,13 @@
       "title": "intelligence-native-organization / intake",
       "canonical_object": "intelligence-native-organization",
       "artifact_type": "intake",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/karpathy-llm-wiki-reading-notes.md",
@@ -989,7 +1812,13 @@
       "title": "karpathy-llm-wiki / reading-notes",
       "canonical_object": "karpathy-llm-wiki",
       "artifact_type": "reading-notes",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/karpathy-skills-learning-retro-2026-04-16.md",
@@ -999,7 +1828,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/learning-capture-routing.md",
@@ -1009,7 +1844,13 @@
       "title": "learning-capture-routing / intake",
       "canonical_object": "learning-capture-routing",
       "artifact_type": "intake",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/learning-source-routing-gap-explore-2026-05-09.md",
@@ -1019,7 +1860,23 @@
       "title": null,
       "canonical_object": "learning-source-routing-gap",
       "artifact_type": "explore-trace",
-      "status": null
+      "status": null,
+      "related_objects": [
+        "learning-capture-routing",
+        "example-driven-capture",
+        "obsidian-wiki-reference-gap-review"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "wiki/index.md",
+        "wiki/ops/learning-capture-routing.md",
+        "wiki/ops/example-driven-wiki-capture.md",
+        ".codex/skills/learning-capture/SKILL.md",
+        ".codex/skills/readme-learning-capture/SKILL.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/live-conversation-reanchor-gate-replay-harness.md",
@@ -1029,7 +1886,13 @@
       "title": "live-conversation-reanchor-gate / replay-harness",
       "canonical_object": "live-conversation-reanchor-gate",
       "artifact_type": "replay-harness",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": null,
+      "validates": [],
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/live-conversation-reanchor-gate-retro.md",
@@ -1039,7 +1902,13 @@
       "title": "live-conversation-reanchor-gate / retro",
       "canonical_object": "live-conversation-reanchor-gate",
       "artifact_type": "retro",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/llm-wiki-core-product-contract.md",
@@ -1049,7 +1918,24 @@
       "title": null,
       "canonical_object": "llm-wiki-core-product-contract",
       "artifact_type": "product-contract",
-      "status": "draft"
+      "status": "draft",
+      "related_objects": [
+        "report-wiki-product-plan",
+        "obsidian-wiki-reference-gap-review",
+        "product-capability-and-graph-gap",
+        "learning-source-routing-gap"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "PROJECT.md",
+        "wiki/ops/report-wiki-product-plan-2026-05-09.md",
+        "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md",
+        "wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md",
+        "/home/yan/.gstack/projects/clearing-account-meeting-lore/yan-feat-refine-openspec-explore-trace-model-design-20260509-114904-llm-wiki-core-value.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/main-thread.md",
@@ -1059,7 +1945,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/nirvana-preview-intake.md",
@@ -1069,7 +1961,13 @@
       "title": "preview",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/nirvana-weekly-intake-2026-04-13.md",
@@ -1079,7 +1977,13 @@
       "title": "涅槃项目周推进 intake 2026-04-13",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/nirvana-weekly-reminder-2026-04-13.md",
@@ -1089,17 +1993,29 @@
       "title": "涅槃项目本周跟进提醒 2026-04-13",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "open"
+      "status": "open",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/nirvana-协议支付涅槃需求文档-intake.md",
       "section": "wiki/ops",
-      "sha256": "7b1bdc4e9a035afd30fee8880a5c92977d947a5c1bf5e9e0bb703cf31714fd99",
-      "bytes": 1976,
+      "sha256": "fe1d2ffcb6b20b9a1f7c2873bef55db0dbc36ffed516f0ab5bdd8ea6af9d2990",
+      "bytes": 1975,
       "title": "协议支付涅槃需求文档",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/nirvana-涅槃产品上架梳理-intake.md",
@@ -1109,7 +2025,13 @@
       "title": "涅槃产品上架梳理",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md",
@@ -1119,7 +2041,21 @@
       "title": null,
       "canonical_object": "obsidian-wiki-reference-gap-review",
       "artifact_type": "learning-note",
-      "status": null
+      "status": null,
+      "related_objects": [
+        "agent-readable-wiki",
+        "learning-capture-routing",
+        "account-knowledge-base-workbench"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "https://github.com/Ar9av/obsidian-wiki"
+      ],
+      "validates": [
+        "readme-learning-capture"
+      ],
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/openspec-explore-trigger-drift-retro.md",
@@ -1129,7 +2065,13 @@
       "title": "openspec-explore-trigger-drift / retro",
       "canonical_object": "openspec-explore-trigger-drift",
       "artifact_type": "retro",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/product-alignment-drift-explore-2026-05-09.md",
@@ -1139,7 +2081,25 @@
       "title": null,
       "canonical_object": "product-alignment-drift",
       "artifact_type": "explore-trace",
-      "status": null
+      "status": null,
+      "related_objects": [
+        "report-wiki-product-plan",
+        "scorecard-calibration-gap",
+        "learning-source-routing-gap",
+        "product-capability-and-graph-gap",
+        "obsidian-wiki-reference-gap-review"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "wiki/ops/report-wiki-product-plan-2026-05-09.md",
+        "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md",
+        "wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md",
+        "wiki/ops/learning-source-routing-gap-explore-2026-05-09.md",
+        "wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md",
@@ -1149,7 +2109,22 @@
       "title": null,
       "canonical_object": "product-capability-and-graph-gap",
       "artifact_type": "explore-trace",
-      "status": null
+      "status": null,
+      "related_objects": [
+        "account-knowledge-base",
+        "agent-readable-wiki",
+        "obsidian-wiki-reference-gap-review"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "PROJECT.md",
+        "wiki/index.md",
+        "wiki/ops/account-knowledge-base-workbench.md",
+        "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/project-management-weekly-loop.md",
@@ -1159,7 +2134,29 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/public-report-skill-gate-wording-explore-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "91a81688d3da72e6729d229915153da138a2a95c15e3a272410fa51ef6798c24",
+      "bytes": 2198,
+      "title": "public-report skill gate wording / explore",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/reference-driven-output-calibration-retro.md",
@@ -1169,7 +2166,13 @@
       "title": "reference-driven-output-calibration / retro",
       "canonical_object": "reference-driven-output-calibration",
       "artifact_type": "retro",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/reminders.md",
@@ -1179,7 +2182,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/report-wiki-product-plan-2026-05-09.md",
@@ -1189,7 +2198,23 @@
       "title": null,
       "canonical_object": "report-wiki-product-plan",
       "artifact_type": "product-plan",
-      "status": null
+      "status": null,
+      "related_objects": [
+        "account-knowledge-base",
+        "product-capability-and-graph-gap",
+        "obsidian-wiki-reference-gap-review",
+        "wiki-status-dashboard"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "PROJECT.md",
+        "wiki/ops/account-knowledge-base-workbench.md",
+        "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md",
+        "wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/root-capability-extraction-retro.md",
@@ -1199,7 +2224,13 @@
       "title": "root-capability-extraction / retro",
       "canonical_object": "root-capability-extraction",
       "artifact_type": "retro",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/sample-codex-handoff.md",
@@ -1209,7 +2240,13 @@
       "title": "实现 inbox 到 source 草稿生成",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/sample-disagreement-retro.md",
@@ -1219,7 +2256,13 @@
       "title": "分歧管理 retro 示例",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/sample-explore-trace.md",
@@ -1229,7 +2272,13 @@
       "title": "OpenSpec 探索留痕样例",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/sample-focus-thread.md",
@@ -1239,7 +2288,13 @@
       "title": "个人操作系统 MVP",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/sample-handoff-topic.md",
@@ -1249,7 +2304,17 @@
       "title": "conversation-handoff / sample",
       "canonical_object": "conversation-handoff",
       "artifact_type": "sample",
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": [
+        "chat://handoff-mode/sample-north-star"
+      ],
+      "validates": [
+        "conversation-handoff"
+      ],
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/sample-intake.md",
@@ -1259,7 +2324,13 @@
       "title": "研发任务派发想法记录",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/sample-reminder.md",
@@ -1269,7 +2340,13 @@
       "title": "设计 Codex 任务升级规则",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "open"
+      "status": "open",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/scope-drift-retro.md",
@@ -1279,7 +2356,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md",
@@ -1289,7 +2372,40 @@
       "title": null,
       "canonical_object": "scorecard-calibration-gap",
       "artifact_type": "explore-trace",
-      "status": null
+      "status": null,
+      "related_objects": [
+        "learning-capture-routing",
+        "public-report-quality-gate",
+        "behavior-replay-gate",
+        "product-capability-and-graph-gap"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        ".codex/skills/article-learning-capture/references/scorecard.md",
+        ".codex/skills/readme-learning-capture/references/scorecard.md",
+        ".codex/skills/public-report-quality-gate/references/scorecard.md",
+        "wiki/ops/agent-harness-article-learning.md",
+        "wiki/ops/team-knowledge-base-overview-report-gate-review.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "b4872322f3ebdd0201da664a8a4a3b958127df6fc0273493767a53054083ca14",
+      "bytes": 15198,
+      "title": "team-knowledge-base-overview / paragraph-drift-runtime-replay",
+      "canonical_object": "team-knowledge-base-overview",
+      "artifact_type": "runtime-replay",
+      "status": null,
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": [],
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/team-knowledge-base-overview-report-gate-review.md",
@@ -1299,7 +2415,77 @@
       "title": "account-knowledge-base / overview-report-gate-review",
       "canonical_object": "account-knowledge-base",
       "artifact_type": "report-gate-review",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": [],
+      "validates": [],
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/visual-output-routing-drift-explore-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "18482f56f0ae2e5d60f78e8ef5e3e11c5011e5ee69ed7017336782041c6769e5",
+      "bytes": 11328,
+      "title": "visual-output-routing-drift / explore",
+      "canonical_object": "visual-output-routing-drift",
+      "artifact_type": "intake",
+      "status": "exploring",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/visual-output-routing-fix-recheck-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "c4ebaf0d9e5df245f98f59615641434d1439e3b985d3c5718f650270d2223ac6",
+      "bytes": 3069,
+      "title": "visual-output-routing / fix recheck",
+      "canonical_object": "visual-output-routing",
+      "artifact_type": "explore_trace",
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/visual-output-routing-residual-fallback-repair-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "931c7332df20c20f7840c6318e8237886c2fa0bed4c10d4a5b003eb56afcd998",
+      "bytes": 3731,
+      "title": "visual-output-routing / residual fallback repair",
+      "canonical_object": "visual-output-routing",
+      "artifact_type": "skill_fix_evidence",
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/visual-output-routing-skill-fix-evidence-2026-05-11.md",
+      "section": "wiki/ops",
+      "sha256": "6d65b580e4130277b531175b7195ec09eac4a63fab4c11bb42989604d7a3575d",
+      "bytes": 4313,
+      "title": "visual-output-routing / skill-fix-evidence",
+      "canonical_object": "visual-output-routing",
+      "artifact_type": "skill_fix_evidence",
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/wiki-readable-views-validation-harness.md",
@@ -1309,7 +2495,13 @@
       "title": "wiki-readable-views-validation / replay-harness",
       "canonical_object": "wiki-readable-views-validation",
       "artifact_type": "replay-harness",
-      "status": "active"
+      "status": "active",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": null,
+      "validates": [],
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/wiki-runtime-command-surface-explore-2026-05-09.md",
@@ -1319,7 +2511,13 @@
       "title": "Wiki Runtime Command Surface Explore",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": [],
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/wiki-status-slash-command-reanchor.md",
@@ -1329,7 +2527,13 @@
       "title": "Wiki Status Slash Command Reanchor",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md",
@@ -1339,7 +2543,13 @@
       "title": "宝财通分账开通与迁移边界提醒 2026-04-16",
       "canonical_object": "baocaitong-split-account-migration",
       "artifact_type": "reminder",
-      "status": "open"
+      "status": "open",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md",
@@ -1349,7 +2559,17 @@
       "title": null,
       "canonical_object": "baocaitong-split-account-migration",
       "artifact_type": "scenario-matrix",
-      "status": null
+      "status": null,
+      "related_objects": [
+        "baocaitong-split-account-migration"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md",
@@ -1359,7 +2579,45 @@
       "title": "文字转写 呼呼的快速会议 276823523",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
+    },
+    {
+      "path": "wiki/reports/agentic-product-engineering-collaboration-management-report.md",
+      "section": "wiki/reports",
+      "sha256": "55ee333587d0b4c674eee6feff61bd037c88145d962965b153a48a0ff1e142db",
+      "bytes": 16421,
+      "title": "AI Agent 时代，产研协作从人力流水线走向人机作业系统",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "report",
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/reports/agentic-visual-assets-image-model/README.md",
+      "section": "wiki/reports",
+      "sha256": "17d5aac01a8c99ed54a18fa649c176ca460c96f9b811cf024e8d5419b6e05039",
+      "bytes": 1710,
+      "title": null,
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/ai-chat-workflow-installer-feishu-share.md",
@@ -1369,17 +2627,29 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/index.md",
       "section": "wiki/reports",
-      "sha256": "df0afb6dd7d3748d76393a29496464e01f3498f4d8ac480239cfba46e2ddd401",
-      "bytes": 2654,
+      "sha256": "935d894d69f5d226f30dae022dc3819a378b29776305177ff65c564b786893da",
+      "bytes": 3174,
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/management-weekly-ops.md",
@@ -1389,7 +2659,13 @@
       "title": "Management Weekly Operations",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/nirvana-delivery-board.md",
@@ -1399,7 +2675,13 @@
       "title": "涅槃项目一期交付看板",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/nirvana-feature-tech-alignment.md",
@@ -1409,7 +2691,13 @@
       "title": "涅槃项目功能-技术对齐底表",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/nirvana-handover-account-owner.md",
@@ -1419,7 +2707,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/nirvana-phase1-leadership-brief.md",
@@ -1429,7 +2723,13 @@
       "title": "涅槃一期领导汇报简版",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/nirvana-phase1-pm-review.md",
@@ -1439,7 +2739,13 @@
       "title": "涅槃一期直销模式 PM 主稿",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/team-knowledge-base-migration.md",
@@ -1449,7 +2755,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/team-knowledge-base-overview.md",
@@ -1459,7 +2771,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/team-knowledge-base-roadmap.md",
@@ -1469,7 +2787,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/team-knowledge-base-runtime.md",
@@ -1479,7 +2803,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/reports/team-knowledge-base-validation-cases.md",
@@ -1489,7 +2819,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/role-boundaries.md",
@@ -1499,7 +2835,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/20260415100517-转写-yan的快速会议-纪要文本-1.md",
@@ -1509,7 +2851,13 @@
       "title": "收单分账接口升级与退款逻辑对齐会纪要",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/20260415100517-转写-yan的快速会议-逐字稿文本-1.md",
@@ -1519,7 +2867,77 @@
       "title": "20260415100517 转写 yan的快速会议 逐字稿文本 1",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md",
+      "section": "wiki/sources",
+      "sha256": "4aa75537e578de0f6d7d6dbf69297a4cc28dfe460d47fa82261a1ff70a40a2ed",
+      "bytes": 24465,
+      "title": "agentic-product-engineering-collaboration / broad-source-scan",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "broad-source-scan",
+      "status": "broad-scan",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md",
+      "section": "wiki/sources",
+      "sha256": "03a0f5cf4d79e5f6077817f2837503764c50b03fa4145b76d1a41ec40fa3adaf",
+      "bytes": 14250,
+      "title": "agentic-product-engineering-collaboration / podcast-video-discussions",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "podcast-video-source-pool",
+      "status": "broad-discussion-scan",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md",
+      "section": "wiki/sources",
+      "sha256": "0466ab5d2745fa0342dac07e338b12efacfc29a4076f2d410345f595e245c3a5",
+      "bytes": 35212,
+      "title": "agentic-product-engineering-collaboration / public-timeline / 2026-01-to-2026-05",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "public-source-timeline",
+      "status": "expanded-open-web-scan",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md",
+      "section": "wiki/sources",
+      "sha256": "ee1fd30584c7dfe9acca2362c477dd23e4583d9265e2d60895b298756694997e",
+      "bytes": 26038,
+      "title": "agentic-product-engineering-collaboration / source-map",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "source-map",
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/feishu-weekly-sync-sample.md",
@@ -1529,7 +2947,13 @@
       "title": "Feishu Weekly Sync Sample",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md",
@@ -1539,7 +2963,13 @@
       "title": "Account Harness 总览 Feishu Wiki Source",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/index.md",
@@ -1549,7 +2979,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/nirvana-weekly-2026-04-13.md",
@@ -1559,7 +2995,13 @@
       "title": "涅槃项目周报 2026-04-13",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/nirvana-weekly-view-2026-04-13.md",
@@ -1569,7 +3011,13 @@
       "title": "涅槃项目周视图 2026-04-13",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/nirvana-优化后图示.md",
@@ -1579,7 +3027,13 @@
       "title": "优化后图示",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/nirvana-协议支付涅槃需求文档.md",
@@ -1589,7 +3043,13 @@
       "title": "协议支付涅槃需求文档",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/nirvana-最终方案.md",
@@ -1599,7 +3059,13 @@
       "title": "最终方案",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/nirvana-涅槃产品上架梳理.md",
@@ -1609,7 +3075,13 @@
       "title": "涅槃产品上架梳理",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/nirvana-清算的内容.md",
@@ -1619,7 +3091,13 @@
       "title": "清算的内容",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/nirvana-现状.md",
@@ -1629,7 +3107,13 @@
       "title": "现状",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/sources/文字转写-呼呼的快速会议-276823523.md",
@@ -1639,7 +3123,13 @@
       "title": "新宝财通分账开通与迁移路径对齐会纪要",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/team-lore-candidates.md",
@@ -1649,7 +3139,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/templates/codex-handoff-template.md",
@@ -1659,7 +3155,13 @@
       "title": "<Codex Handoff Title>",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": []
     },
     {
       "path": "wiki/templates/decision-checkpoint-template.md",
@@ -1669,7 +3171,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/templates/domain-template.md",
@@ -1679,7 +3187,13 @@
       "title": "<Domain Title>",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/templates/focus-thread-template.md",
@@ -1689,7 +3203,13 @@
       "title": "<Focus Thread Title>",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": []
     },
     {
       "path": "wiki/templates/intake-record-template.md",
@@ -1699,7 +3219,13 @@
       "title": "<Intake Title>",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/templates/meeting-note-source-template.md",
@@ -1709,7 +3235,13 @@
       "title": "<会议主题> <YYYY-MM-DD>",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/templates/reminder-item-template.md",
@@ -1719,7 +3251,13 @@
       "title": "<Reminder Title>",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "open"
+      "status": "open",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": null
     },
     {
       "path": "wiki/templates/report-template.md",
@@ -1729,7 +3267,13 @@
       "title": "<Report Title>",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/templates/source-template.md",
@@ -1739,7 +3283,13 @@
       "title": "<Source Title>",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/templates/timeline-template.md",
@@ -1749,7 +3299,13 @@
       "title": "<Period Title>",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "draft"
+      "status": "draft",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/timeline/2026-04-20-agent-readable-wiki-evolution.md",
@@ -1759,7 +3315,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/timeline/2026-q2.md",
@@ -1769,7 +3331,13 @@
       "title": "2026 Q2",
       "canonical_object": null,
       "artifact_type": null,
-      "status": "active"
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/timeline/index.md",
@@ -1779,7 +3347,13 @@
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
-      "status": null
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     }
   ],
   "source_records": [
@@ -1796,6 +3370,34 @@
       "source_type": "meeting-note",
       "domain": "unclassified",
       "status": "draft"
+    },
+    {
+      "path": "wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md",
+      "source_path": null,
+      "source_type": "external-broad-scan",
+      "domain": null,
+      "status": "broad-scan"
+    },
+    {
+      "path": "wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md",
+      "source_path": null,
+      "source_type": "external-podcast-video-discussion-pool",
+      "domain": null,
+      "status": "broad-discussion-scan"
+    },
+    {
+      "path": "wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md",
+      "source_path": null,
+      "source_type": "external-public-source-timeline",
+      "domain": null,
+      "status": "expanded-open-web-scan"
+    },
+    {
+      "path": "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md",
+      "source_path": null,
+      "source_type": "external-article-collection",
+      "domain": null,
+      "status": null
     },
     {
       "path": "wiki/sources/feishu-weekly-sync-sample.md",
@@ -1944,5 +3546,44 @@
     }
   ],
   "pending_inbox_files": [],
-  "openspec_changes": []
+  "openspec_changes": [
+    {
+      "change_id": "add-product-status-contract",
+      "state": "active",
+      "done_tasks": 0,
+      "open_tasks": 13,
+      "total_tasks": 13,
+      "tasks_path": "openspec/changes/add-product-status-contract/tasks.md"
+    }
+  ],
+  "product_status": {
+    "contract_version": "1",
+    "object_type_counts": {
+      "behavior": 5,
+      "governance": 33,
+      "output": 15,
+      "source": 18,
+      "unknown": 131
+    },
+    "readiness_counts": {
+      "accepted": 1,
+      "draft-only": 200
+    },
+    "source_layer_counts": {
+      "ops": 107,
+      "report": 15,
+      "source": 18,
+      "spec": 33,
+      "unknown": 29
+    },
+    "identity_coverage": {
+      "with_identity": 83,
+      "missing_identity": 118
+    },
+    "relation_coverage": {
+      "with_relations": 22,
+      "missing_relations": 179
+    },
+    "unresolved_items": []
+  }
 }

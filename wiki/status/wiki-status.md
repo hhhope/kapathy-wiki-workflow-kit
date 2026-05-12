@@ -1,16 +1,16 @@
 # Wiki Status
 
-Generated at: `2026-05-11T02:04:42.134250+00:00`
+Generated at: `2026-05-12T05:16:52.012358+00:00`
 
 ## Summary
 
 | Metric | Value |
 | --- | --- |
-| Wiki pages | 176 |
-| Source records | 13 |
+| Wiki pages | 201 |
+| Source records | 17 |
 | Inbox files | 11 |
 | Pending inbox files | 0 |
-| Active OpenSpec changes | 0 |
+| Active OpenSpec changes | 1 |
 | Complete active-dir changes | 0 |
 
 ## Wiki Sections
@@ -20,12 +20,61 @@ Generated at: `2026-05-11T02:04:42.134250+00:00`
 | wiki/adr | 32 |
 | wiki/domains | 2 |
 | wiki/examples | 7 |
-| wiki/ops | 88 |
-| wiki/reports | 13 |
+| wiki/ops | 107 |
+| wiki/reports | 15 |
 | wiki/root | 7 |
-| wiki/sources | 14 |
+| wiki/sources | 18 |
 | wiki/templates | 10 |
 | wiki/timeline | 3 |
+
+## Product Status
+
+Contract version: `1`
+
+### Object Types
+
+| Object Type | Count |
+| --- | --- |
+| behavior | 5 |
+| governance | 33 |
+| output | 15 |
+| source | 18 |
+| unknown | 131 |
+
+### Readiness
+
+| Readiness | Count |
+| --- | --- |
+| accepted | 1 |
+| draft-only | 200 |
+
+### Source Layers
+
+| Source Layer | Count |
+| --- | --- |
+| ops | 107 |
+| report | 15 |
+| source | 18 |
+| spec | 33 |
+| unknown | 29 |
+
+### Identity Coverage
+
+| Metric | Value |
+| --- | --- |
+| With identity | 83 |
+| Missing identity | 118 |
+
+### Relation Coverage
+
+| Metric | Value |
+| --- | --- |
+| With relations | 22 |
+| Missing relations | 179 |
+
+### Unresolved Product Status Items
+
+- None
 
 ## Pending Inbox Files
 
@@ -35,8 +84,8 @@ Generated at: `2026-05-11T02:04:42.134250+00:00`
 
 | Change | State | Tasks | Path |
 | --- | --- | --- | --- |
-| none | - | - | - |
+| add-product-status-contract | active | 0/13 | openspec/changes/add-product-status-contract/tasks.md |
 
 ## Next Actions
 
-- No generated status actions.
+- Continue active OpenSpec changes before starting unrelated implementation.
