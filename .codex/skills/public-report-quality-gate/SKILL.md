@@ -54,6 +54,11 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - If the output claims to use prior learning or external references, map the
   applicable learning artifacts before drafting: what was used, where it
   appears, and why relevant learning was skipped.
+- For newspaper-style H5/share packages or public newspaper drafts, require a
+  reader-visible citation surface before review-ready, publish, sync, or share
+  claims. Internal source maps, learning use maps, or gate reviews do not
+  substitute for reader-visible citations on load-bearing claims, figures,
+  company examples, or visual panels.
 - When a reference artifact is provided, write or state the reference structure
   map before drafting.
 - For reference-shaped outputs, apply the Reference Output Shape Gate before
@@ -131,6 +136,8 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Letting repo paths, OpenSpec details, or agent workflow leak into public text
 - Saying a draft "learned from" a source without showing the section, visual,
   metric, evidence block, boundary statement, or skip reason it affected
+- Treating an internal source map as enough for a newspaper/H5 reader when the
+  shareable output lacks visible citation routes
 - Scoring a whole article while skipping paragraph-level drift diagnostics
 - Letting the agent choose the article's public judgment because the prose reads
   smoothly

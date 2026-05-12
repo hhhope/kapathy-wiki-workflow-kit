@@ -40,6 +40,10 @@ Record these before claiming that a later output uses the learned reference:
 
 - The final public draft does not need to expose internal wiki paths unless the
   user asks for citations.
+- Newspaper-style H5/share packages and public newspaper drafts are stricter:
+  the output-use map is internal process evidence and does not replace a
+  reader-visible citation surface for load-bearing claims, figures, company
+  examples, or visual panels.
 - Do not force every learning point into the output.
 - Do not silently discard relevant learning while claiming the output used it.
 - Learning output use does not promote a point into a rule, spec, or skill.

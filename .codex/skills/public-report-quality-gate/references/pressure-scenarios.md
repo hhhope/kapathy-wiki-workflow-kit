@@ -99,6 +99,15 @@ Use these scenarios to validate trigger and gate behavior.
 | A learned evidence pattern is used to claim local results without local data | Evidence Boundary + Learning Use Gate | FAIL; source learning can shape proof style but cannot invent local metrics |
 | A learning point repeatedly shapes outputs and is proposed as a rule | Promotion Boundary | FAIL until routed through evidence-backed promotion or OpenSpec |
 
+## Newspaper Citation Replay
+
+| Failure | Gate That Should Catch It | Expected Result |
+|---|---|---|
+| A newspaper-style H5 has an internal source map and learning use map, but the shareable output has no reader-visible citation route for load-bearing panels | Newspaper Citation Surface Gate | FAIL; internal process artifacts do not substitute for reader-visible citations |
+| `wiki/reports/agentic-product-engineering-collaboration-newspaper.html` is claimed review-ready while its load-bearing panels have not been checked against `wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md` | Newspaper Citation Surface Gate + Publish Gate | FAIL until citation routes or boundary notes are recorded |
+| A secondary, practitioner, transcript-mirror, candidate, or paywalled source is used as if it proves a hard fact in a newspaper panel | Newspaper Citation Surface Gate + Evidence Boundary | FAIL; record source class and boundary note or replace with a stronger source |
+| A newspaper share package exports screenshots or images that omit the citation surface available in the HTML | Newspaper Citation Surface Gate + Visual Asset Boundary | FAIL until the delivered reader path includes citation routes or an explicit non-final boundary |
+
 ## Public Output Delegation Replay
 
 | Failure | Gate That Should Catch It | Expected Result |

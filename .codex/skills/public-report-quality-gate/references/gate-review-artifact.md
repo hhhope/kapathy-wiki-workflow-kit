@@ -21,6 +21,7 @@ document.
 | Reference Structure Map | Source, reader job, page group, reading path, visual logic, writing standard, reuse boundary, and linked-page readback when the reference has child pages or concrete reading-map links |
 | Reference Output Shape | Selected output shape, retained patterns, rejected patterns, user-approved shape changes, Reference Output Shape Gate result, and replay notes when shape drift was repaired |
 | Learning Use Map | Applicable learning artifacts, domain/topic, reusable capability type, learning point, intended output use, and skip reason when relevant |
+| Newspaper Citation Surface | Required for newspaper-style H5/share packages and public newspaper drafts: output path, source map path, load-bearing claim or visual panel, reader-visible citation target, source class, and boundary note when source strength is limited |
 | Section And Paragraph Drift Review | Section objective, Paragraph claim, mainline role, target fit score, narrative drift score, evidence fit score, Judgment source, and action |
 | Judgment Ledger | User-owned judgments, source-backed judgments, agent inferences, unknown judgments, and required user confirmations |
 | Hard Gate Results | Learning use, reference, split, voice, narrative, paragraph drift, judgment ownership, visual, and publish gate results |
@@ -42,6 +43,8 @@ reader-facing request
   -> record selected output shape, retained patterns, rejected patterns,
      user-approved shape changes, and Reference Output Shape Gate result
   -> complete learning use map when learned references are applicable
+  -> complete Newspaper Citation Surface when the output is a newspaper-style
+     H5/share package or public newspaper draft
   -> choose split strategy and destination map
   -> draft reader-facing content
   -> complete Section And Paragraph Drift Review and Judgment Ledger
@@ -83,6 +86,12 @@ user before claiming review-ready status.
 If the output claims to use learned references but the learning use map is
 missing, incomplete, or only says "used the reference" without a concrete output
 use or skip reason, stop before drafting, Feishu sync, or review-ready claims.
+
+If the output is a newspaper-style H5/share package or public newspaper draft,
+and load-bearing claims, figures, company examples, or visual panels lack a
+reader-visible citation route, record the Newspaper Citation Surface Gate as
+failed. Internal source maps, learning use maps, or gate-review artifacts are
+not substitutes for reader-visible citations in the shareable output path.
 
 If local visual assets exist, Feishu sync remains text-only unless the user
 explicitly asks the agent to insert images. When image insertion is requested,
