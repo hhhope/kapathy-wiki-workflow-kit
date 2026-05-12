@@ -57,8 +57,8 @@ LLM Wiki runtime layers through the `wiki-*` skill family under `.codex/skills`.
 - **WHEN** the user wants to invoke the repo's LLM Wiki runtime capabilities in
   current Codex
 - **THEN** the repository SHALL provide skill source files under `.codex/skills`
-  for status, manifest, inbox, query, graph, scorecard, route, context, apply,
-  and queue surfaces
+  for status, manifest, inbox, query, explore, graph, scorecard, route,
+  context, apply, and queue surfaces
 - **AND** the supported runtime path SHALL NOT require plugin marketplace
   loading or copying skills into user scope
 
@@ -94,8 +94,8 @@ or user-scope installation.
 #### Scenario: User reads command documentation
 
 - **WHEN** the user wants to know which wiki runtime skills are available
-- **THEN** the README SHALL list status, manifest, inbox, query, graph,
-  scorecard, route, context, apply, and queue skills
+- **THEN** the README SHALL list status, manifest, inbox, query, explore,
+  graph, scorecard, route, context, apply, and queue skills
 - **AND** it SHALL keep `.codex/skills/wiki-status/SKILL.md` as the status
   source path
 - **AND** it SHALL warn not to install this repo's `wiki-*` skills into
