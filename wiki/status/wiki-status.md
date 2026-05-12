@@ -1,6 +1,6 @@
 # Wiki Status
 
-Generated at: `2026-05-12T05:16:52.012358+00:00`
+Generated at: `2026-05-12T05:18:45.902799+00:00`
 
 ## Summary
 
@@ -62,8 +62,8 @@ Contract version: `1`
 
 | Metric | Value |
 | --- | --- |
-| With identity | 83 |
-| Missing identity | 118 |
+| With identity | 84 |
+| Missing identity | 117 |
 
 ### Relation Coverage
 

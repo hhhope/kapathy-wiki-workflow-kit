@@ -1,5 +1,7 @@
 ---
 title: agentic-product-engineering-collaboration-our-operating-system report gate review
+canonical_object: agentic-product-engineering-collaboration-our-operating-system
+artifact_type: report-gate-review
 kind: report-gate-review
 created: 2026-05-11
 target: wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html

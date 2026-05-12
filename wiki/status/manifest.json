@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-12T05:16:52.012358+00:00",
+  "generated_at": "2026-05-12T05:18:45.902799+00:00",
   "root": "/mnt/d/cloud/account-meeting-lore",
   "summary": {
     "wiki_page_count": 201,
@@ -1231,11 +1231,11 @@
     {
       "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md",
       "section": "wiki/ops",
-      "sha256": "ddba0e473d7f8454946379ada8fd39c9e3273333e95ccbd5801fbd8a14a39a84",
-      "bytes": 10116,
+      "sha256": "8ab9d6b51805a324ba97e712c3e9e6d7e4df0d287569385d2d0f424d7271e65c",
+      "bytes": 10231,
       "title": "agentic-product-engineering-collaboration-our-operating-system report gate review",
-      "canonical_object": null,
-      "artifact_type": null,
+      "canonical_object": "agentic-product-engineering-collaboration-our-operating-system",
+      "artifact_type": "report-gate-review",
       "status": "review-ready",
       "related_objects": null,
       "related_sources": null,
@@ -3577,8 +3577,8 @@
       "unknown": 29
     },
     "identity_coverage": {
-      "with_identity": 83,
-      "missing_identity": 118
+      "with_identity": 84,
+      "missing_identity": 117
     },
     "relation_coverage": {
       "with_relations": 22,
