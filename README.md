@@ -36,6 +36,7 @@ Wiki runtime skills:
 - `$wiki-manifest`: inspect the generated source and routing manifest.
 - `$wiki-inbox`: review pending inbox items that need wiki intake.
 - `$wiki-query`: build bounded task-shaped context from route, context, and explicit text search evidence.
+- `$wiki-explore`: explore a wiki-backed topic with evidence-surface and enoughness checks.
 - `$wiki-graph`: expose the structural wiki graph layer.
 - `$wiki-scorecard`: expose wiki scoring and utilization outputs.
 - `$wiki-route`: expose runtime auto-routing suggestions.
