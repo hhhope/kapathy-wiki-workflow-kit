@@ -153,3 +153,193 @@ image insertion as separate delivery operations.
   current work
 - **AND** SHALL switch to text-only sync, local asset paths, or a separately
   approved client-safe image workflow before any further delivery claim
+
+### Requirement: Public report gate SHALL anchor drafts with an article intent contract
+
+The public report gate SHALL establish the reader-facing target before complex
+drafting, scoring, Feishu sync, or review-ready claims.
+
+#### Scenario: Complex reader-facing draft is prepared
+
+- **WHEN** a reader-facing report, Feishu review draft, H5/share draft, or
+  public material has reviewer-routing complexity signals, user-reported drift,
+  or a required scorecard
+- **THEN** the gate SHALL record an Article Intent Contract before drafting or
+  scoring
+- **AND** the contract SHALL identify the reader, reader decision or action,
+  main line, non-goals, user-owned judgments, and agent-allowed operations
+
+### Requirement: Public report gate SHALL provide section and paragraph drift diagnostics
+
+The public report gate SHALL review sections and important paragraphs against
+the article intent before review-ready claims.
+
+#### Scenario: Draft sections are reviewed for drift
+
+- **WHEN** a complex or drift-corrected reader-facing draft is reviewed
+- **THEN** the gate SHALL record a Section And Paragraph Drift Review
+- **AND** the review SHALL include section objective, paragraph claim, mainline
+  role, target fit score, narrative drift score, evidence fit score, judgment
+  source, and action
+- **AND** the action SHALL be one of retain, compress, rewrite, delete, or ask
+  the user
+
+#### Scenario: Paragraph changes article judgment
+
+- **WHEN** a paragraph changes the article's main line, conclusion,
+  prioritization, or public stance without source support or user confirmation
+- **THEN** the Paragraph Drift Gate SHALL fail
+- **AND** the draft SHALL NOT be published, synced to Feishu, or claimed ready
+  for review
+
+### Requirement: Public report gate SHALL preserve user judgment ownership
+
+The public report gate SHALL treat user-owned thought and judgment as separate
+from delegable writing process.
+
+#### Scenario: Agent makes an unsourced public judgment
+
+- **WHEN** the agent turns source material, reference examples, or smooth prose
+  into a local strategic conclusion, priority, proof-strength claim, or public
+  stance that the user has not confirmed
+- **THEN** the Judgment Ownership Gate SHALL fail
+- **AND** the gate-review artifact SHALL identify the judgment source as user,
+  source material, agent inference, or unknown
+
+#### Scenario: Hard gate fails but diagnostics are useful
+
+- **WHEN** Paragraph Drift Gate or Judgment Ownership Gate fails
+- **THEN** the overall scorecard SHALL remain `INVALID`
+- **AND** the gate MAY still record diagnostic 0-5 drift scores and required
+  repair actions for sections or paragraphs
+
+### Requirement: Public report gate SHALL own the outer route for reader-facing output
+
+The public report gate SHALL remain the outer route for reader-facing reports,
+H5/share drafts, Feishu review drafts, public materials, and external-facing
+visual packages even when specialized skills perform source, learning, visual,
+image-generation, Feishu, or verification work.
+
+#### Scenario: Reader-facing article asks for knowledge cards
+
+- **WHEN** the user asks to turn an existing reader-facing article, H5, or
+  share draft into knowledge cards, chapter visuals, or a one-page infographic
+- **THEN** the system SHALL route through the public report gate first
+- **AND** the public report gate SHALL preserve the Article Intent Contract,
+  Judgment Ownership Gate, Visual Gate, and Publish Gate
+- **AND** visual skills SHALL be treated as delegated production routes rather
+  than replacements for the public report gate
+
+#### Scenario: Specialized skill is needed during public output work
+
+- **WHEN** a reader-facing output needs source learning, visual package design,
+  per-image infographic scripting, image generation, Feishu writing, or final
+  verification
+- **THEN** the public report gate SHALL identify the subordinate skill route
+- **AND** the subordinate skill SHALL NOT weaken the public report gate's
+  review-ready, publish, sync, source-boundary, visual, or judgment-ownership
+  blockers
+
+#### Scenario: Visual asset is generated for a public draft
+
+- **WHEN** a visual asset is generated for a reader-facing draft
+- **THEN** the public report gate review SHALL record the visual's intended
+  reader-facing role, local asset path or delivery boundary, and remaining
+  visual QA risk before any review-ready, publish, or sync claim
+
+### Requirement: Public report gate SHALL enforce reference-shaped article flow
+
+The public report gate SHALL verify reference-shaped article flow when a
+reader-facing draft uses a newspaper, article, or report reference for output
+shape, preserving the reference's layout system rather than silently replacing
+it with a card, dashboard, table, or prompt-script composition.
+
+#### Scenario: Newspaper reference becomes a card wall
+
+- **WHEN** the user asks for a reader-facing draft that references an existing
+  newspaper or article-style report
+- **AND** the draft renders prose-heavy company or topic analysis as repeated
+  boxed cards, colored panels, comparison cells, or dashboard-like grids
+- **THEN** the Article Flow Layout Gate SHALL fail
+- **AND** the draft SHALL NOT be claimed review-ready until the content is
+  converted into article flow with prose paragraphs and disciplined evidence
+  callouts
+
+#### Scenario: Visual prompt leaks into report body
+
+- **WHEN** the requested final image route is image-model or Hybrid
+- **AND** prompt text, visual-script instructions, or output-mode notes appear
+  inside the reader-facing report body
+- **THEN** the Article Flow Layout Gate SHALL fail
+- **AND** the prompt or visual production route SHALL be moved to a separate
+  asset brief or removed from the report body
+
+#### Scenario: Gate review records layout replay
+
+- **WHEN** a draft is repaired after layout drift against a newspaper/article
+  reference
+- **THEN** the gate-review artifact SHALL record the reference layout system,
+  retained patterns, rejected card/table patterns, and replay result
+
+### Requirement: Public report gate SHALL enforce reference output shape fidelity
+
+The public report gate SHALL verify the selected output shape when a user
+request or reference artifact establishes one, and SHALL block review-ready,
+publish, or sync claims when the draft silently replaces that shape with a
+different primary structure.
+
+#### Scenario: Draft silently changes selected output shape
+
+- **WHEN** a user request or reference artifact establishes an output shape
+- **AND** the draft changes to a different primary structure without explicit
+  user approval
+- **THEN** the Reference Output Shape Gate SHALL fail
+- **AND** the draft SHALL NOT be claimed review-ready, published, or synced
+  until repaired or explicitly approved by the user
+
+#### Scenario: Production route leaks into reader-facing content
+
+- **WHEN** the selected output shape is reader-facing content
+- **AND** production instructions, image prompts, tool notes, or Hybrid routing
+  text appear inside that content
+- **THEN** the Reference Output Shape Gate SHALL fail
+- **AND** the production route SHALL be moved to a separate asset brief,
+  worklog, or other non-reader-facing location
+
+#### Scenario: Gate review records shape replay
+
+- **WHEN** a reference-shaped draft is prepared for review, publish, or sync
+- **THEN** the gate-review artifact SHALL record the selected output shape,
+  retained patterns, rejected patterns, user-approved shape changes, and replay
+  result
+
+### Requirement: Public report gate SHALL route HTML-target visual requests to visual assets first before HTML edits
+
+The public report gate SHALL route reader-facing HTML report or H5 page requests
+to visual asset work first when the request also asks for visual deliverables.
+It SHALL NOT treat the HTML target path as permission to satisfy the request by
+adding in-page H5 sections only.
+
+#### Scenario: Existing HTML report asks for knowledge cards and a one-page infographic
+
+- **WHEN** the user names an existing `.html` report or H5 page
+- **AND** the request includes visual-deliverable wording such as `一图流`,
+  `知识卡`, `章节配图`, `图片`, `生图`, `跑图`, or `图片模型`
+- **THEN** the system SHALL stop before direct HTML body edits
+- **AND** SHALL route first to visual package scripting, output-mode selection
+  or inference, and standalone visual asset production or planning
+- **AND** SHALL NOT claim the request is complete by adding only HTML sections
+
+#### Scenario: HTML embedding is explicitly requested or follows accepted visual assets
+
+- **WHEN** the user explicitly asks for an in-page H5/HTML module
+- **OR** standalone visual assets have already been accepted and the next step
+  is embedding or linking those assets in HTML
+- **THEN** HTML editing MAY proceed within the public report gate boundary
+
+#### Scenario: Ordinary HTML report edits do not ask for visual deliverables
+
+- **WHEN** the user names an `.html` report and asks for ordinary text, evidence,
+  layout, or citation edits without visual-deliverable wording
+- **THEN** the gate MAY allow scoped HTML/report editing without requiring
+  standalone visual asset production first
