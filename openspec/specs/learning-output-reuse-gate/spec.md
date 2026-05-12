@@ -33,6 +33,17 @@ handoff from learned artifact to output constraint.
 - **AND** the system SHALL NOT silently discard the learning point while still
   claiming the output uses the learned reference
 
+#### Scenario: Newspaper output needs reader-visible citations
+
+- **WHEN** a learning artifact shapes a newspaper-style H5, share package, or
+  public newspaper draft
+- **THEN** the output-use map SHALL remain internal process evidence
+- **AND** the system SHALL separately identify whether the learned source also
+  needs a reader-visible citation route for load-bearing claims, figures, or
+  visual panels
+- **AND** review-ready, publish, sync, or share claims SHALL NOT rely on the
+  internal output-use map as a substitute for reader-visible citation surface
+
 ### Requirement: Learning capture SHALL distinguish source domain from reusable capability type
 
 Learning capture SHALL avoid treating the source's topic as the same thing as
