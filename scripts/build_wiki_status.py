@@ -16,6 +16,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.extract_wiki_graph import parse_frontmatter
+from scripts.wiki_product_status import build_product_status, relation_fields_from_meta
 
 
 DEFAULT_OUTPUT_DIR = Path("wiki/status")
@@ -75,6 +76,7 @@ def _collect_wiki_pages(root: Path) -> tuple[list[dict[str, Any]], list[dict[str
             "canonical_object": meta.get("canonical_object"),
             "artifact_type": meta.get("artifact_type"),
             "status": meta.get("status"),
+            **relation_fields_from_meta(meta),
         }
         pages.append(record)
 
@@ -171,6 +173,7 @@ def build_manifest(root: Path | str) -> dict[str, Any]:
     ]
     active_changes = [item for item in changes if item["state"] == "active"]
     complete_changes = [item for item in changes if item["state"] == "complete"]
+    product_status = build_product_status(pages, inbox_files, changes)
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -189,6 +192,7 @@ def build_manifest(root: Path | str) -> dict[str, Any]:
         "inbox_files": inbox_files,
         "pending_inbox_files": pending_inbox_files,
         "openspec_changes": changes,
+        "product_status": product_status,
     }
 
 
