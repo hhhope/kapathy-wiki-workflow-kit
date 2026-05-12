@@ -168,6 +168,58 @@ related_objects:
             {"with_relations": 1, "missing_relations": 1},
         )
 
+    def test_product_status_unresolved_items_include_pending_inbox_files(self) -> None:
+        (self.tmpdir / "inbox" / "new-material.txt").write_text("raw", encoding="utf-8")
+
+        unresolved = build_manifest(self.tmpdir)["product_status"]["unresolved_items"]
+
+        self.assertIn(
+            {
+                "type": "pending_inbox",
+                "path": "inbox/new-material.txt",
+                "readiness_label": "blocked",
+                "status_transition": "evidence_collection",
+            },
+            unresolved,
+        )
+
+    def test_product_status_unresolved_items_include_complete_openspec_changes(self) -> None:
+        complete_dir = self.tmpdir / "openspec" / "changes" / "complete-change"
+        complete_dir.mkdir()
+        (complete_dir / "tasks.md").write_text(
+            "- [x] done\n- [x] also done\n",
+            encoding="utf-8",
+        )
+
+        product_status = build_manifest(self.tmpdir)["product_status"]
+
+        self.assertEqual(product_status["object_type_counts"]["governance"], 1)
+        self.assertEqual(product_status["source_layer_counts"]["spec"], 1)
+        self.assertIn(
+            {
+                "type": "complete_openspec_change",
+                "change_id": "complete-change",
+                "readiness_label": "unresolved",
+                "status_transition": "archive_review",
+            },
+            product_status["unresolved_items"],
+        )
+
+    def test_status_report_renders_product_status_section(self) -> None:
+        (self.tmpdir / "inbox" / "new-material.txt").write_text("raw", encoding="utf-8")
+
+        status_text = render_status_markdown(build_manifest(self.tmpdir))
+
+        self.assertIn("## Product Status", status_text)
+        self.assertIn("Contract version: `1`", status_text)
+        self.assertIn("Object Types", status_text)
+        self.assertIn("Readiness", status_text)
+        self.assertIn("Source Layers", status_text)
+        self.assertIn("Identity Coverage", status_text)
+        self.assertIn("Relation Coverage", status_text)
+        self.assertIn("Unresolved Product Status Items", status_text)
+        self.assertIn("inbox/new-material.txt", status_text)
+
 
 if __name__ == "__main__":
     unittest.main()
