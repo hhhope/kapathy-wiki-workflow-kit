@@ -104,6 +104,70 @@ artifact_type: note
         self.assertEqual(manifest["summary"]["pending_inbox_count"], 0)
         self.assertEqual(manifest["pending_inbox_files"], [])
 
+    def test_manifest_includes_product_status_contract_version(self) -> None:
+        manifest = build_manifest(self.tmpdir)
+        product_status = manifest["product_status"]
+
+        self.assertEqual(product_status["contract_version"], "1")
+        self.assertEqual(product_status["object_type_counts"], {})
+        self.assertEqual(product_status["readiness_counts"], {})
+        self.assertEqual(product_status["source_layer_counts"], {})
+        self.assertEqual(
+            product_status["identity_coverage"],
+            {"with_identity": 0, "missing_identity": 0},
+        )
+        self.assertEqual(
+            product_status["relation_coverage"],
+            {"with_relations": 0, "missing_relations": 0},
+        )
+        self.assertEqual(product_status["unresolved_items"], [])
+
+    def test_product_status_counts_source_records_as_source_objects(self) -> None:
+        (self.tmpdir / "wiki" / "sources" / "captured.md").write_text(
+            """---
+title: Captured
+source_path: inbox/captured.txt
+source_type: note
+status: draft
+---
+
+# Captured
+""",
+            encoding="utf-8",
+        )
+
+        product_status = build_manifest(self.tmpdir)["product_status"]
+
+        self.assertEqual(product_status["object_type_counts"]["source"], 1)
+        self.assertEqual(product_status["source_layer_counts"]["source"], 1)
+        self.assertEqual(product_status["readiness_counts"]["draft-only"], 1)
+
+    def test_product_status_counts_identity_and_relation_frontmatter_coverage(self) -> None:
+        (self.tmpdir / "wiki" / "ops" / "linked.md").write_text(
+            """---
+canonical_object: linked-object
+artifact_type: method
+related_objects:
+- source-object
+---
+
+# Linked
+""",
+            encoding="utf-8",
+        )
+        (self.tmpdir / "wiki" / "ops" / "loose.md").write_text("# Loose\n", encoding="utf-8")
+
+        product_status = build_manifest(self.tmpdir)["product_status"]
+
+        self.assertEqual(
+            product_status["identity_coverage"],
+            {"with_identity": 1, "missing_identity": 1},
+        )
+        self.assertEqual(
+            product_status["relation_coverage"],
+            {"with_relations": 1, "missing_relations": 1},
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
