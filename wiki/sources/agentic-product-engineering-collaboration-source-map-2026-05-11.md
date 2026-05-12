@@ -8,6 +8,7 @@ related_scan:
   - wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md
   - wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md
   - wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md
+  - wiki/sources/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md
 ---
 
 # Agentic Product Engineering Collaboration / Source Map
@@ -43,6 +44,12 @@ management discussion leads are tracked in
 `wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md`.
 Use that layer for role-change and operating-model language, but capture
 episode transcripts before hard quoting.
+
+Source-hardening extension: 60 additional public source leads are tracked in
+`wiki/sources/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md`.
+After this extension, unique URL extraction across the related source and ops
+files reports 312 unique URLs and 321 URL mentions. This verifies a
+300-source-lead pool, not 300 publication-grade sources.
 
 | Class | Company / Source | Article | Why It Matters |
 |---|---|---|---|

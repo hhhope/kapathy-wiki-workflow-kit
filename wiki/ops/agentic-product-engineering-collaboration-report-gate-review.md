@@ -10,6 +10,7 @@ derived_from:
   - wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md
   - wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md
   - wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md
+  - wiki/sources/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md
 ---
 
 # agentic-product-engineering-collaboration / report-gate-review
@@ -60,7 +61,7 @@ final publication template selected yet.
 
 | Field | Result |
 |---|---|
-| Source | 43-item curated source map, an 88-lead broad scan, a 95-entry public timeline from 2026-01 through 2026-05-11, and a 36-lead podcast/video discussion pool across OpenAI, Anthropic, Block/goose, Stripe, Ramp, AWS, Amazon, Google, Microsoft, GitHub, Atlassian, JetBrains, Sourcegraph, Replit, Shopify, Duolingo, Fiverr, Box, Klarna, Coinbase, Stack Overflow, GitLab, METR, Thoughtworks, McKinsey, Deloitte, Gartner, Software Engineering Daily, Software Engineering Radio, Practical AI, No Priors, Lenny/How I AI, a16z, Decoder/The Verge, QCon/InfoQ/DoNews Chinese sources, WeChat syntheses, Addy Osmani, Daniel Miessler, Microsoft Frontier Firms, IBM operating model, WEF, California Management Review, Lumenalta, Pragmatic Engineer, and AI-native team/operator-density articles. |
+| Source | 43-item curated source map, an 88-lead broad scan, a 95-entry public timeline from 2026-01 through 2026-05-11, a 36-lead podcast/video discussion pool, and a 60-lead source-hardening extension. Current URL extraction reports 312 unique URLs and 321 URL mentions across related source/ops files. Coverage spans OpenAI, Anthropic, Block/goose, Stripe, Ramp, AWS, Amazon, Google, Microsoft, GitHub, Atlassian, JetBrains, Sourcegraph, Replit, Shopify, Duolingo, Fiverr, Box, Klarna, Coinbase, Stack Overflow, GitLab, METR, Thoughtworks, McKinsey, Deloitte, Gartner, Software Engineering Daily, Software Engineering Radio, Practical AI, No Priors, Lenny/How I AI, a16z, Decoder/The Verge, QCon/InfoQ/DoNews Chinese sources, WeChat syntheses, Addy Osmani, Daniel Miessler, Microsoft Frontier Firms, IBM operating model, WEF, California Management Review, Lumenalta, Pragmatic Engineer, agent infrastructure, governance, security, workforce-policy, and operating-model sources. |
 | Reader job | Understand why this is an operating-model shift, how existing roles change, and what decision to make next. |
 | Page group | One management report plus source map. Later can split into internal operating model. |
 | Reading path | Read report first, then source map for evidence. |
@@ -68,10 +69,11 @@ final publication template selected yet.
 | Writing standard | Management-facing, decision-oriented, Chinese prose with source links. |
 | Reuse boundary | Sources support pattern extraction; local workflow decisions remain user-owned. |
 
-Reference Structure Gate: PARTIAL. The scan is now broad enough for internal
-research direction and has a chronological public-source layer, but not all
-articles, videos, podcasts, and memo chains have full upstream transcript or
-primary-post capture yet.
+Reference Structure Gate: PARTIAL. The scan now verifies a 300-source-lead
+pool and is broad enough for internal research direction and next-source
+selection, but not all articles, videos, podcasts, and memo chains have full
+upstream transcript or primary-post capture yet. It is not publication-ready
+evidence by source count alone.
 
 ## Learning Use Map
 
@@ -130,7 +132,7 @@ need user confirmation before review-ready status.
 |---|---|---|
 | Reviewer routing | PASS | Required and applied manually. |
 | Learning use | PASS | Source map and learning use map recorded. |
-| Reference structure | PARTIAL | 43 curated sources mapped, 88 broad leads tracked, 95 public timeline entries recorded, and 36 podcast/video discussion leads separated; not every upstream article, memo, podcast, and video deeply captured yet. |
+| Reference structure | PARTIAL | 43 curated sources mapped, 88 broad leads tracked, 95 public timeline entries recorded, 36 podcast/video discussion leads separated, and 60 source-hardening leads added. Unique URL count now verifies a 300-source-lead pool, but not every upstream article, memo, podcast, and video is deeply captured yet. |
 | Split | PASS | Management report separated from source map; internal model can be a later artifact. |
 | Voice | PASS | Draft is management-facing, not chat recap. |
 | Narrative | PASS | Main line is stable. |
