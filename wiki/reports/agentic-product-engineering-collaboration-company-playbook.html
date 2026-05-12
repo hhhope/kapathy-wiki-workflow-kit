@@ -316,6 +316,50 @@
       line-height: 1.65;
     }
 
+    .role-implication {
+      margin: 16px 0;
+      padding: 15px 16px;
+      border-top: 2px solid var(--line);
+      border-bottom: 1px solid var(--thin);
+      background: #fbf3e5;
+    }
+
+    .role-implication h4,
+    .role-map h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .role-implication ul,
+    .role-map ul {
+      padding-left: 18px;
+    }
+
+    .role-implication li,
+    .role-map li {
+      margin: 7px 0;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .role-implication b,
+    .role-map b {
+      font-weight: 900;
+    }
+
+    .role-map {
+      margin: 16px 0 18px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .42);
+    }
+
+    .role-map ul {
+      columns: 2;
+      column-gap: 28px;
+    }
+
     .source-code {
       display: inline-block;
       margin-top: 8px;
@@ -398,6 +442,8 @@
       .visual-grid { grid-template-columns: 1fr; }
 
       .mode-row { gap: 4px; }
+
+      .role-map ul { columns: 1; }
 
       .sources ol { columns: 1; }
     }
@@ -521,6 +567,16 @@
               <li>Codex Core Agents JD：sandbox、orchestration、stateful workflows、memory、production fleet、CI/CD、安全和开发平台。</li>
             </ul>
           </div>
+          <div class="role-implication">
+            <h4>职位变化：不是每个人都写代码，而是每个人都要把工作交成 Agent 能执行、能审查的对象</h4>
+            <ul>
+              <li><b>产品</b>不默认变成生产代码作者，而是把意图、非目标、验收标准、边界条件和 review 问题写成可执行 work object。</li>
+              <li><b>研发</b>从单纯写实现，转向设计 repo 结构、测试、观测、状态、权限、安全策略和失败写回机制。</li>
+              <li><b>技术负责人 / EM</b>更像 agent fleet manager：拆任务、控队列、处理失败运行、CI、rebase、冲突和质量门槛。</li>
+              <li><b>QA / 测试</b>进入更早阶段，负责 eval、验证路径和风险证据，而不是等功能写完再找 bug。</li>
+              <li><b>项目 / Ops</b>从收集状态转向控制面运营，盯 issue 状态、handoff、review packet、重试和 owner 边界。</li>
+            </ul>
+          </div>
           <p><strong>我们学到：</strong>先别问“任务能不能进队列”。更大的问题是：我们的知识、环境、测试、观测、review 和失败写回，是否已经变成 agent 能读、能跑、能验证、能改进的工程系统。</p>
         </article>
 
@@ -535,6 +591,16 @@
               <li>How teams use Claude Code：data infra、product、security、marketing、design、legal 都有具体内部用例。</li>
               <li>Claude Code best practices：explore first、plan、verify、context management、permissions、MCP、subagents。</li>
               <li>Claude Code PM JD：要求 PM+工程经验，并和 research、engineering、XFN 团队一起把模型进展翻成产品能力。</li>
+            </ul>
+          </div>
+          <div class="role-implication">
+            <h4>职位变化：专业团队开始生产可运行 artifact，但专业判断没有交出去</h4>
+            <ul>
+              <li><b>产品</b>可以更快做原型、研究整理、spec 草稿、边界样例和验证脚本，但这不等于产品独自拥有生产代码责任。</li>
+              <li><b>产品经理</b>的核心能力从“写需求”上移到框定问题、探索替代方案、保留上下文、判断输出和决定什么值得发布。</li>
+              <li><b>设计</b>从静态稿交接靠近 prototype / test loop，用可运行样品检查交互、文案、状态和边界。</li>
+              <li><b>法务、市场、安全</b>不是变成工程师，而是把自己的专业流程变成可运行、可检查、可复用的工作资产。</li>
+              <li><b>研发</b>仍然关键，因为权限、上下文、验证和生产边界决定这些跨职能 artifact 能不能安全进入真实系统。</li>
             </ul>
           </div>
           <p><strong>我们学到：</strong>不要把它写成“职能专家能不能构建”。更准确的问题是：每个专业团队的工作流里，有没有让 AI 参与探索、生成、验证和迭代的位置，同时保留人的语境、品味和责任。</p>
@@ -553,6 +619,16 @@
               <li>Agentic Commerce Designer JD：明确面向 merchants、agents、consumers 三类界面。</li>
             </ul>
           </div>
+          <div class="role-implication">
+            <h4>职位变化：高风险业务里，岗位先围绕协议、授权、审计和回滚重排</h4>
+            <ul>
+              <li><b>产品</b>的工作是协议定义：谁是 actor，谁授权，哪些动作可拒绝，哪些动作可回滚，哪些记录必须可审计。</li>
+              <li><b>研发</b>负责 API primitives、身份和支付上下文、风险控制、集成面、真实支付链路下的 eval。</li>
+              <li><b>设计</b>不只设计 checkout 页面，还要同时设计 consumer、merchant、agent 三类界面的确认、拒绝、可见性和恢复状态。</li>
+              <li><b>QA / 风控 / 合规</b>变成中心岗位，因为 agentic commerce 横跨钱、身份、商家承诺、税务、履约和退货。</li>
+              <li><b>项目管理</b>不只是排内部需求，而是协调商家、平台、支付网络和 agent 入口之间的跨方依赖。</li>
+            </ul>
+          </div>
           <p><strong>我们学到：</strong>当协作跨出公司边界，最先要补的不是提示词，而是协议。涉及钱、合同、客户承诺、履约和风险的流程，都必须先做到 agent 可读、可授权、可审计、可回滚。</p>
         </article>
 
@@ -569,8 +645,40 @@
               <li>Guardian reporting：公开报道显示 Block 裁员 4000/10000，并把 intelligence tools 与 smaller team 叙事绑定。</li>
             </ul>
           </div>
+          <div class="role-implication">
+            <h4>职位变化：组织层面要有人负责 enablement，也要有人守住信任边界</h4>
+            <ul>
+              <li><b>研发</b>通过 champions、playbooks、skills、共享 recipes、CI 反馈和 service-level context 提升，而不是各自私下写提示词。</li>
+              <li><b>技术负责人 / 管理者</b>要管 adoption quality，不只管 adoption rate。使用率如果不连到验证、事故、review 质量和写回，就是表演。</li>
+              <li><b>QA / 事故复盘</b>获得更大杠杆，因为 CI 失败、postmortem 和 review 信号都可以变成 agent-readable 输入。</li>
+              <li><b>HR / 管理层</b>必须把 AI-readiness 和裁员叙事分开。否则团队会把风险藏起来，协作系统反而失真。</li>
+              <li><b>项目 / 运营</b>要维护规则、技能、指标和培训节奏，确保升级的是组织能力，而不是短期成本故事。</li>
+            </ul>
+          </div>
           <p><strong>我们学到：</strong>repo readiness、champions、rules、skills、指标和自动 PR 可以学；把 AI-native 直接翻译成“少人更好”不能学。协作系统升级和裁员叙事必须分开判断。</p>
         </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>职位到底怎么变</h2>
+        <span>role changes / not everyone codes</span>
+      </div>
+      <div class="article-prose">
+        <p>所以问题不是“产品、设计、QA 都能不能写代码”。这个问法太粗。四家公司共同指向的是另一件事：当 Agent 接走一部分执行，人类岗位更靠近目标、上下文、证据、协议、验收和责任。</p>
+        <div class="role-map">
+          <h4>从数据里抽出来的岗位变化</h4>
+          <ul>
+            <li><b>产品</b>从需求传话人，变成 intent / acceptance / prototype / edge case 的 owner。</li>
+            <li><b>研发</b>从实现主力，变成 harness、架构、测试、观测、权限和 failure writeback 的 owner。</li>
+            <li><b>设计</b>从静态稿交付，变成可运行原型、状态检查和体验证据的 owner。</li>
+            <li><b>QA / 测试</b>从末端验收，变成 eval、证据矩阵、回放、风险边界和事故学习的 owner。</li>
+            <li><b>项目 / Ops</b>从会议纪要和催进度，变成队列健康、依赖、review packet、handoff 和写回节奏的 owner。</li>
+            <li><b>管理层</b>从看 AI 使用率，变成看验证覆盖、返工下降、事故减少、责任清晰和组织信任边界。</li>
+          </ul>
+        </div>
+        <div class="reference-line">结论很直接：能写代码的人会越来越多，但真正稀缺的不是“谁敲代码”，而是谁能把一个模糊目标推进到可执行、可验证、可追责、可复盘的结果。</div>
       </div>
     </section>
 

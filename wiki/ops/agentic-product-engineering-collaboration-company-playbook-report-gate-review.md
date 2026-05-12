@@ -4,7 +4,7 @@ canonical_object: agentic-product-engineering-collaboration
 artifact_type: report_gate_review
 status: draft
 source_path: wiki/reports/agentic-product-engineering-collaboration-company-playbook.html
-updated: 2026-05-11
+updated: 2026-05-12
 ---
 
 # Company Playbook Report Gate Review
@@ -16,7 +16,8 @@ updated: 2026-05-11
   `wiki/reports/agentic-product-engineering-collaboration-company-playbook.html`
 - Scope: drift repair of the company playbook draft into an evidence-led
   newspaper page that reads each company from strategy to public behavior,
-  collaboration mechanism, hiring/JD signal, and transferable lesson.
+  collaboration mechanism, hiring/JD signal, role-change implication, and
+  transferable lesson.
 - Non-scope: Feishu sync, public publish, final generated image asset,
   definitive workforce-productivity claim, or local organizational policy.
 
@@ -37,9 +38,9 @@ updated: 2026-05-11
 | Field | Content |
 |---|---|
 | Reader | Product, engineering, design, operations, and management readers evaluating how leading companies are reorganizing around agents. |
-| Reader decision or action | Understand four distinct company collaboration modes and what public evidence supports each mode. |
+| Reader decision or action | Understand four distinct company collaboration modes, what public evidence supports each mode, and what changes for product, engineering, design, QA, project/ops, and management roles. |
 | Main line | Agent collaboration is not one generic "how to use AI" playbook. OpenAI, Anthropic, Stripe, and Block each expose a different strategic collaboration model: agent-first engineering operating system, human-AI collaborative workspace, agent-readable commerce protocol, and AI-native organization system with layoff risk. |
-| Non-goals | Do not provide a generic role action checklist, 30-day adoption loop, prompt text, H5/SVG final-image substitute, or unsourced company claim. |
+| Non-goals | Do not provide a generic role action checklist, 30-day adoption loop, prompt text, H5/SVG final-image substitute, unsourced company claim, or role-collapse claim such as "everyone becomes a coder." |
 | User-owned judgments | Whether this is the desired public stance; how strongly to frame Block as warning; whether the generated image-model visuals are accepted for wider sharing. |
 | Agent-allowed work | Evidence mapping, source-backed drafting, section repair, HTML update, gate review update, and local verification. |
 
@@ -54,10 +55,11 @@ updated: 2026-05-11
 - Reading path:
   1. masthead and lead judgment
   2. four-mode summary
-  3. company-by-company strategy / behavior / collaboration / lesson sections
-  4. cross-company judgment coordinates
-  5. single transferable takeaway
-  6. source boundary
+  3. company-by-company strategy / behavior / collaboration / role implication / lesson sections
+  4. cross-company role-change map
+  5. cross-company judgment coordinates
+  6. single transferable takeaway
+  7. source boundary
 - Visual logic: no final-image prompt or Hybrid instructions in the report
   body. If a final image is produced later, it remains a separate asset.
 - Writing standard: claims must map to public sources or be explicitly marked as
@@ -72,6 +74,7 @@ updated: 2026-05-11
 | `wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md` | agentic collaboration company samples | Separate page and four company sample set | Kept standalone page and four-company structure | The prior local playbook section was removed because user rejected it as repetitive. |
 | `wiki/ops/visual-output-routing-residual-fallback-repair-2026-05-11.md` | visual mode boundary | Image-model / Hybrid must not silently degrade into H5/SVG | The report body no longer includes prompt text or Hybrid instructions; final image remains separate | Final image generation remains out of scope. |
 | `wiki/reports/agentic-product-engineering-collaboration-newspaper.html` | newspaper reference | Newspaper rhythm, source boundary, evidence-led sections | Reused masthead, lead, section cadence, source boundary | Did not reuse role action / 30-day loop because it caused content duplication. |
+| `wiki/ops/agentic-product-engineering-collaboration-company-playbook-role-change-diagnosis-2026-05-12.md` | company role-change diagnosis | Product is not "now a coder" by default; each role moves toward executable artifacts, verification evidence, and clearer accountability. | Added role implication blocks inside each company section, then added a cross-company role-change map. | Did not rewrite the whole article role-first because that would weaken the company-playbook premise. |
 
 ## Section And Paragraph Drift Review
 
@@ -81,9 +84,14 @@ updated: 2026-05-11
 | Evidence summary | Public writing and product/engineering actions lead; hiring/JD signals support. | evidence | 5 | 0 | 4 | source material | Retain; source list included. |
 | Four-mode grid | OpenAI, Anthropic, Stripe, and Block map to strategic modes rather than narrow local tactics. | contrast | 5 | 0 | 4 | source + agent synthesis | Retain as interpretive frame, not final public stance. |
 | OpenAI section | OpenAI is framed as agent-first engineering operating system, not task queue. | evidence | 5 | 0 | 5 | Harness Engineering + Symphony + JD | Retain. |
+| OpenAI role implication | Product writes sharper executable work objects; engineering designs harness/review/failure loops; QA and project roles move upstream. | role consequence | 5 | 0 | 4 | Harness Engineering + Symphony + role diagnosis | Added. |
 | Anthropic section | Anthropic is framed as human-AI collaborative workspace across professional workflows. | evidence | 5 | 0 | 5 | Claude Code team cases + best practices + JD | Retain. |
+| Anthropic role implication | Product, design, legal, marketing, and security can produce runnable artifacts without taking over production-code accountability. | role consequence | 5 | 0 | 4 | Claude Code team cases + PM JD + timeline role signals | Added. |
 | Stripe section | Stripe is framed as agent-readable commerce protocol and responsibility chain. | evidence | 5 | 0 | 5 | Stripe newsroom + docs + jobs | Retain. |
+| Stripe role implication | Product/design/engineering/QA/project roles reorganize around protocol, authorization, auditability, risk, and cross-party dependencies. | role consequence | 5 | 0 | 4 | Stripe ACP/SPT + commerce roles + eval evidence | Added. |
 | Block section | Block combines AI-native engineering system with layoff warning. | evidence / warning | 5 | 1 | 4 | source + secondary news | Retain with boundary language. |
+| Block role implication | Enablement, adoption quality, QA/incident leverage, and workforce-trust boundaries must be separated from raw AI usage or layoff narrative. | role consequence | 5 | 0 | 4 | Block Engineering + careers boundary + Guardian reporting | Added. |
+| Cross-role map | The page answers "产品是不是都写代码了" by reframing roles around executable artifacts, evidence, protocols, and accountability. | synthesis | 5 | 0 | 4 | role diagnosis + source map + article evidence matrix | Added. |
 | Cross-company reading | The page gives judgment coordinates, not a generic role-action playbook. | conclusion | 5 | 0 | 4 | user correction + source synthesis | Retain. |
 | Takeaway section | The only local lesson is how to diagnose which collaboration problem applies. | conclusion | 5 | 0 | 4 | user correction | Retain. |
 | Sources / boundary | Draft status, current-data boundary, and Block hiring limitation are explicit. | proof boundary | 5 | 0 | 5 | current source checks | Retain. |
@@ -106,6 +114,9 @@ updated: 2026-05-11
   cannot support an expansion claim.
 - Final takeaway section now uses four company-mapped lessons instead of a
   generic local playbook block.
+- Role-change repair now answers the user's product-role concern without saying
+  every role becomes a coder: each company section has a role implication block
+  and the page has a cross-company role map.
 
 ## Judgment Ledger
 
@@ -130,6 +141,8 @@ updated: 2026-05-11
   - The four companies should be read as four collaboration modes.
   - The final visual, if produced later, should summarize modes and evidence,
     not show prompt text or replace the evidence-led report.
+  - Role implications should be read as responsibility redistribution, not
+    role collapse.
 - Unknown judgments:
   - Whether the revised page is strong enough for external sharing.
   - Whether to broaden Block sourcing beyond Guardian / Block Engineering before
@@ -145,6 +158,7 @@ updated: 2026-05-11
 | Voice | PASS for draft | Chat residue, prompt-as-content, and generic role advice removed from report body. |
 | Narrative | PASS | Main line now matches user correction: strategy first, then behavior, collaboration mechanism, hiring signal, and lesson. |
 | Paragraph drift | PASS for draft | Section-level drift review completed after repair. |
+| Role-change clarity | PASS for draft | The page now separates "can produce runnable artifacts" from "owns production code" and maps role changes to company evidence. |
 | Judgment ownership | PARTIAL | Company mode synthesis remains agent interpretation pending user/public review. |
 | Visual | PASS for local draft package | Image-model visual assets were generated, inspected, and embedded as local files. The H5 does not rely on H5/SVG cards as final visuals. |
 | Publish | FAIL for Feishu/public publish | Local share package may be sent as a draft artifact, but Feishu sync / public publish still require explicit approval and reviewer routing. |
@@ -157,7 +171,7 @@ review, and publish gate fails.
 Diagnostic repair judgment: the previous draft's generic `role actions`,
 `30-day loop`, narrow task-queue / builder framing, and prompt block were
 removed. The page now supports the requested strategy-to-behavior company
-reading path.
+reading path, plus evidence-led role-change interpretation.
 
 ## Decision
 
@@ -173,10 +187,26 @@ Draft may stay in `wiki/reports`. Do not sync, publish, or claim review-ready.
   more primary SEC / investor source if available.
 - Image-model visuals are generated as local draft assets; public use should
   still treat image text as visually inspected, not typography-perfect proof.
+- Role-change language is synthesized from public sources and local source-map
+  analysis. It should remain framed as interpretation, not as each company's
+  official org-design doctrine.
 
 ## Feishu Update Verification
 
 Not applicable. No Feishu operation requested or performed.
+
+## Local Verification
+
+- Static role-block check: H5 contains 4 `role-implication` blocks and the
+  `职位到底怎么变` cross-role section.
+- Reader residue check: reader-facing H5 contains no `$office-hours`,
+  `office-hours`, `Hybrid`, or `prompt` residue.
+- Share package verification: regenerated and extracted to
+  `/tmp/company-playbook-role-change-check-20260512/`.
+- Screenshot verification:
+  `/tmp/company-playbook-role-change-check-20260512.png`.
+- Mobile screenshot verification:
+  `/tmp/company-playbook-role-change-check-20260512-mobile.png`.
 
 ## Visual Asset Boundary
 
@@ -193,3 +223,4 @@ Not applicable. No Feishu operation requested or performed.
   replace the requested images with in-page H5/SVG cards.
 - Package target:
   `wiki/reports/agentic-product-engineering-collaboration-company-playbook-share.zip`.
+- Package refresh: regenerated after role-change repair on 2026-05-12.
