@@ -2,7 +2,7 @@
 
 - [x] 1. Create OpenSpec change artifacts for taxonomy drift control.
 - [x] 2. Add taxonomy contract config and config-loading tests.
-- [ ] 3. Add content drift checker and tests.
+- [x] 3. Add content drift checker and tests.
 - [ ] 4. Add registered producer drift and possible producer warning checks.
 - [ ] 5. Add checker CLI report output.
 - [ ] 6. Add taxonomy gate skill and AGENTS routing.
