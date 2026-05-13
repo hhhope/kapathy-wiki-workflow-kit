@@ -4,4 +4,4 @@
 - [x] 2. Add RED tests for repo-public artifact routing.
 - [x] 3. Add AGENTS intent routing and public gate lightweight path.
 - [x] 4. Add behavior replay evidence and mark tasks.
-- [ ] 5. Run verification and commit final state.
+- [x] 5. Run verification and commit final state.
