@@ -1,0 +1,46 @@
+severity:
+  missing_evaluation: error
+  missing_required_section: error
+  missing_negative_scenario: error
+  missing_parent_gate_preservation: error
+  route_table_ownership_drift: error
+  weak_replay_evidence: warn
+
+required_sections:
+  - "## Pressure Scenarios"
+  - "## RED Baseline"
+  - "## GREEN Result"
+  - "## Residual Risks"
+
+required_replay_fields:
+  - "input or situation shape"
+  - "trigger condition"
+  - "repo-visible artifact"
+  - "expected output"
+  - "proof boundary"
+
+positive_markers:
+  - "positive"
+  - "trigger"
+
+negative_markers:
+  - "negative"
+  - "should-not-trigger"
+
+parent_gate_markers:
+  - "parent gate"
+  - "preserve"
+
+covered_change_markers:
+  - ".codex/skills/"
+  - "AGENTS.md"
+  - "runtime routing"
+  - "parent gate"
+
+ownership_rules:
+  agent_intent_routing:
+    owner_section: "High-Frequency Skills"
+    classification_section: "Agent Intent Routing"
+    forbidden_markers:
+      - "Minimum routes"
+      - "| Intent shape | Parent gate |"
