@@ -65,6 +65,12 @@ def change_is_behavior_asset_change(change_dir: Path, config: dict[str, Any]) ->
     return any(marker in text for marker in markers)
 
 
+def change_is_grandfathered(change_dir: Path, repo_root: Path, config: dict[str, Any]) -> bool:
+    change_rel = rel(change_dir, repo_root)
+    grandfathered = {str(value).rstrip("/") for value in config.get("grandfathered_changes", [])}
+    return change_rel in grandfathered
+
+
 def check_evaluation(change_dir: Path, repo_root: Path, config: dict[str, Any]) -> list[BehaviorAssetEntry]:
     evaluation = change_dir / "evaluation.md"
     change_rel = rel(change_dir, repo_root)
@@ -179,6 +185,8 @@ def check_behavior_assets(repo_root: Path | str) -> list[BehaviorAssetEntry]:
     config = load_config(root)
     entries: list[BehaviorAssetEntry] = []
     for change_dir in active_change_dirs(root):
+        if change_is_grandfathered(change_dir, root, config):
+            continue
         if change_is_behavior_asset_change(change_dir, config):
             entries.extend(check_evaluation(change_dir, root, config))
     entries.extend(check_agent_intent_ownership(root, config))

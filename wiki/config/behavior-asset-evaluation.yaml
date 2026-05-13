@@ -37,6 +37,10 @@ covered_change_markers:
   - "runtime routing"
   - "parent gate"
 
+grandfathered_changes:
+  - "openspec/changes/route-repo-public-artifacts-through-agent-intent"
+  - "openspec/changes/stabilize-wiki-frontmatter-taxonomy"
+
 ownership_rules:
   agent_intent_routing:
     owner_section: "High-Frequency Skills"

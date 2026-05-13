@@ -54,6 +54,8 @@ covered_change_markers:
   - "AGENTS.md"
   - "runtime routing"
   - "parent gate"
+grandfathered_changes:
+  - "openspec/changes/grandfathered-change"
 ownership_rules:
   agent_intent_routing:
     owner_section: "High-Frequency Skills"
@@ -74,6 +76,16 @@ ownership_rules:
         entries = check_behavior_assets(self.tmpdir)
 
         self.assertTrue(any(entry.kind == "missing_evaluation" for entry in entries))
+
+    def test_grandfathered_active_change_is_not_rechecked(self) -> None:
+        self.write_config()
+        change = self.tmpdir / "openspec/changes/grandfathered-change"
+        change.mkdir(parents=True)
+        (change / "proposal.md").write_text("Change .codex/skills/example/SKILL.md\n", encoding="utf-8")
+
+        entries = check_behavior_assets(self.tmpdir)
+
+        self.assertEqual([entry for entry in entries if entry.kind == "missing_evaluation"], [])
 
     def test_route_table_ownership_drift_is_error(self) -> None:
         self.write_config()
