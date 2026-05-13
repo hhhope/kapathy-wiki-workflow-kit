@@ -114,6 +114,35 @@ This is a runtime routing map, not an ownership map.
 | Narrow edit risks expanding into adjacent cleanup | `.codex/skills/surgical-changes/SKILL.md` | root-candidate |
 | About to claim complete/fixed/synced without fresh evidence | `.codex/skills/verify-before-claiming/SKILL.md` | root-candidate; partly covered by root git truth-source |
 
+## Agent Intent Routing
+
+- Before acting, classify the user intent.
+- If the request writes, rewrites, polishes, prepares, or updates an artifact
+  that will be read outside the current chat or worklog, route through the
+  applicable parent gate before editing.
+- Keep this section as a routing map only. Do not duplicate full skill bodies,
+  taxonomy vocabulary, report scorecards, or long examples here.
+
+Minimum routes:
+
+| Intent shape | Parent gate |
+|---|---|
+| repo-public artifact such as `README.md`, `docs/*`, `examples/*`, or published templates | `.codex/skills/public-report-quality-gate/SKILL.md` lightweight path |
+| Reader-facing report, Feishu review draft, H5/share draft, or public material | `.codex/skills/public-report-quality-gate/SKILL.md` full path |
+| External article, repo, README, or example used as learning or reference material | `.codex/skills/learning-capture/SKILL.md` and narrower module |
+| Semantic edit to `.codex/skills/*` | Skill Authoring Contract |
+| Wiki frontmatter, wiki templates, or repo-local frontmatter producers | wiki frontmatter taxonomy gate |
+
+Rules:
+
+- repo-public artifact work must identify the reader and job-to-be-done, then
+  scan artifact-specific constraints before drafting.
+- README work must scan relevant `README SHALL`, `README`, and `readme` hits in
+  `AGENTS.md`, `PROJECT.md`, `openspec/specs`, `.codex/skills`, `wiki/adr`, and
+  `wiki/ops` before drafting.
+- Do not let the public gate replace specialized gates for frontmatter,
+  semantic skill edits, OpenSpec lifecycle, or external learning.
+
 ## Wiki Frontmatter Taxonomy Gate
 
 - When creating or modifying wiki frontmatter, wiki templates, or repo-local

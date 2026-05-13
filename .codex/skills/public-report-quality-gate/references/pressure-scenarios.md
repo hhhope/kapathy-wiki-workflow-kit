@@ -117,6 +117,16 @@ Use these scenarios to validate trigger and gate behavior.
 | A new visual skill is added for public materials but its evaluation does not test bypassing the public report gate | Skill Authoring Boundary + Outer Gate Role | FAIL until pressure evidence shows the parent gate is preserved |
 | A request names an existing `.html` report and asks for `一图流` / `知识卡`, and the agent completes the task by adding only HTML cards or sections | HTML-Target Visual Route + Visual Gate | FAIL; direct HTML editing must stop until visual script and standalone asset route are produced or explicitly declined |
 
+## Agent Intent Routing Replay
+
+| Scenario | Expected Result |
+|---|---|
+| User says `readMe写一下` | Agent Intent Routing classifies the request as repo-public artifact work, loads the public gate lightweight path, identifies the README reader/job-to-be-done, and runs a README constraint scan before drafting |
+| User says `把这个 wiki/ops 改成飞书文章` | Route to the full public report gate because the internal ops note is being rewritten for a reader-facing Feishu article |
+| User says `这个外部 README 学一下能不能复用` | Route to `learning-capture` and the README learning module; do not treat the external source-learning step as a repo-public artifact edit |
+| User says `改一下 wiki frontmatter` | Route to `wiki-frontmatter-taxonomy`; do not let the public gate replace the taxonomy checker |
+| A small README typo fix is requested | Use the lightweight path with reader/job and relevant constraint awareness; do not require a gate-review artifact unless a review-ready, publish, sync, complex, reference-shaped, or drift-corrected claim is made |
+
 ## Validation Notes
 
 - These scenarios validate trigger wording and gate expectations, not automatic

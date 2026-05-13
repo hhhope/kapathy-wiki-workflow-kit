@@ -29,6 +29,34 @@ Use this delegation map without replacing the child skills' own rules:
 | Feishu document write | `lark-doc` |
 | final verification | gate-review artifact, read-back, and visual QA |
 
+## Repo-Public Lightweight Path
+
+When Agent Intent Routing classifies a request as a repo-public artifact, this
+gate owns a lightweight path.
+
+Use the lightweight path for `README.md`, `docs/*`, `examples/*`, and published
+templates when the output is meant for future contributors, users, agents, or
+other readers outside the current chat or worklog.
+
+Required checks:
+
+- Identify the reader and job-to-be-done before drafting.
+- Run an artifact-specific constraint scan before drafting. For README work,
+  scan relevant `README SHALL`, `README`, and `readme` hits in `AGENTS.md`,
+  `PROJECT.md`, `openspec/specs`, `.codex/skills`, `wiki/adr`, and `wiki/ops`.
+- Avoid internal residue unless the artifact intentionally documents repo
+  mechanics for its readers.
+- Use fresh evidence before claiming the artifact is complete, review-ready,
+  published, or synced.
+
+The lightweight path does not require a `wiki/ops/*-report-gate-review.md`
+artifact by default for small repo-public documentation edits. Create or update
+a gate-review artifact when the output is review-ready, published, synced to
+Feishu, complex, reference-shaped, or drift-corrected.
+
+This path must not replace specialized gates for wiki frontmatter, semantic
+skill edits, OpenSpec lifecycle, or external learning capture.
+
 ## When To Use
 
 Use this skill when the request involves:
@@ -36,6 +64,9 @@ Use this skill when the request involves:
 - public reports, executive summaries, share drafts, H5 pages, or Feishu review
   drafts
 - rewriting internal wiki/ops material for readers
+- repo-public artifacts such as `README.md`, `docs/*`, `examples/*`, or
+  published templates when they are written, rewritten, polished, prepared, or
+  updated for readers outside the current chat or worklog
 - using an article, Feishu page, visual example, or prior report as an output
   reference
 - claiming a draft is ready for review, sync, publish, or external reading
