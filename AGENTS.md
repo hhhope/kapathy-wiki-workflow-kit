@@ -134,6 +134,17 @@ This is a runtime routing map, not an ownership map.
   examples here. Detailed behavior-asset evaluation rules live in
   `wiki/config/behavior-asset-evaluation.yaml`.
 
+## Go Engineering Rule
+
+- For Go backend/service/security work, load
+  `rules/go/engineering-security.md` before implementation or review.
+- Default stack when the user does not override it:
+  Go 1.25.1 + Gin + gin-contrib + validator + GORM + go-redis.
+- Treat `go tool fix` as a Go-version migration tool only. Do not use it as
+  daily formatting, linting, or cleanup.
+- Keep the full Go rule out of `AGENTS.md`; this section is only the route and
+  hard boundary.
+
 ## Wiki Frontmatter Taxonomy Gate
 
 - When creating or modifying wiki frontmatter, wiki templates, or repo-local
