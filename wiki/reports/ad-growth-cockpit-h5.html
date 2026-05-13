@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>投放增长驾驶舱</title>
+  <style>
+    :root {
+      --bg: #101418;
+      --panel: #171d22;
+      --panel-2: #1d252b;
+      --text: #f4f7f8;
+      --muted: #94a3ad;
+      --line: rgba(255, 255, 255, .1);
+      --cyan: #34d3ee;
+      --green: #2dd48a;
+      --amber: #f5b642;
+      --violet: #9b7cff;
+      --red: #ff6b6b;
+      --shadow: 0 18px 48px rgba(0, 0, 0, .28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        linear-gradient(135deg, rgba(52, 211, 238, .08), transparent 28%),
+        radial-gradient(circle at 85% 8%, rgba(245, 182, 66, .12), transparent 24%),
+        radial-gradient(circle at 16% 80%, rgba(45, 212, 138, .09), transparent 25%),
+        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, .72), transparent 72%);
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .app-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 12px auto 0;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(16, 20, 24, .82);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .top-nav a {
+      min-height: 36px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      transition: color .2s ease, background .2s ease;
+    }
+
+    .top-nav a:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .hero-section,
+    .section {
+      scroll-margin-top: 88px;
+      min-height: 100vh;
+      padding: 72px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(440px, 1.08fr);
+      gap: 22px;
+      align-items: center;
+      min-height: calc(100vh - 128px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      margin: 0 0 16px;
+      padding: 6px 10px;
+      border: 1px solid rgba(52, 211, 238, .26);
+      border-radius: 999px;
+      color: var(--cyan);
+      background: rgba(52, 211, 238, .08);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 640px;
+      margin-bottom: 24px;
+      color: #cbd5dc;
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .primary-action,
+    .secondary-action {
+      min-height: 44px;
+      padding: 11px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .primary-action {
+      border-color: rgba(52, 211, 238, .5);
+      background: linear-gradient(135deg, rgba(52, 211, 238, .28), rgba(45, 212, 138, .2));
+      font-weight: 800;
+    }
+
+    .secondary-action {
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .primary-action:hover,
+    .secondary-action:hover,
+    .kpi-card:hover,
+    .view-tab:hover,
+    .alert-card button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(52, 211, 238, .45);
+    }
+
+    .cockpit-frame {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(23, 29, 34, .86);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .cockpit-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .live-dot {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .live-dot::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 6px rgba(45, 212, 138, .12);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .kpi-card {
+      display: grid;
+      gap: 4px;
+      min-height: 128px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--text);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03)),
+        var(--panel-2);
+      text-align: left;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .kpi-card span,
+    .metric-label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .kpi-card strong {
+      color: var(--text);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+    }
+
+    .kpi-card em {
+      color: var(--green);
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 800;
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 12px;
+      padding: 0 16px 16px;
+    }
+
+    .trend-card,
+    .route-card,
+    .section-card,
+    .alert-card,
+    .review-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .055);
+    }
+
+    .trend-card,
+    .route-card {
+      padding: 16px;
+    }
+
+    .trend-bars {
+      display: grid;
+      grid-template-columns: repeat(14, 1fr);
+      gap: 6px;
+      align-items: end;
+      height: 168px;
+      margin-top: 18px;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, .16);
+    }
+
+    .trend-bars i {
+      display: block;
+      min-height: 16px;
+      border-radius: 4px 4px 0 0;
+      background: linear-gradient(180deg, var(--cyan), rgba(52, 211, 238, .22));
+    }
+
+    .route-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .route-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      color: #dce7ea;
+      font-size: 14px;
+    }
+
+    .route-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(280px, .42fr);
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .section-kicker {
+      margin-bottom: 8px;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .section-summary {
+      color: var(--muted);
+    }
+
+    .money-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 16px;
+    }
+
+    .spend-board,
+    .insight-board {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(23, 29, 34, .82);
+    }
+
+    .view-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, .18);
+    }
+
+    .view-tab {
+      flex: 1;
+      min-height: 38px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      transition: transform .2s ease, color .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .view-tab.is-active {
+      border-color: rgba(52, 211, 238, .45);
+      color: var(--text);
+      background: rgba(52, 211, 238, .14);
+    }
+
+    .view-panel {
+      display: none;
+    }
+
+    .view-panel.is-active {
+      display: block;
+    }
+
+    .spend-row {
+      display: grid;
+      grid-template-columns: 118px minmax(120px, 1fr) 86px 74px;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .spend-row:last-child {
+      border-bottom: 0;
+    }
+
+    .bar-track {
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      color: var(--green);
+      background: rgba(45, 212, 138, .12);
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .pill.warn {
+      color: var(--amber);
+      background: rgba(245, 182, 66, .12);
+    }
+
+    .insight-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .insight-list div {
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .055);
+      color: #d7e1e5;
+      font-size: 14px;
+    }
+
+    .optimization-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .section-card {
+      min-height: 260px;
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .card-icon {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      background: rgba(52, 211, 238, .14);
+      color: var(--cyan);
+      font-weight: 900;
+    }
+
+    .mini-chart {
+      display: grid;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .mini-chart span {
+      display: block;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .08);
+      overflow: hidden;
+    }
+
+    .mini-chart i {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+    }
+
+    .anomaly-layout {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .alert-card {
+      overflow: hidden;
+      transition: border-color .2s ease, background .2s ease;
+    }
+
+    .alert-card.is-open {
+      border-color: rgba(245, 182, 66, .55);
+      background: rgba(245, 182, 66, .08);
+    }
+
+    .alert-card button {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      width: 100%;
+      min-height: 74px;
+      padding: 16px;
+      border: 0;
+      color: var(--text);
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      transition: transform .2s ease;
+    }
+
+    .alert-card button strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    .alert-card button span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .alert-card button::after {
+      content: "+";
+      color: var(--amber);
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .alert-card.is-open button::after {
+      content: "-";
+    }
+
+    .alert-detail {
+      display: none;
+      padding: 0 16px 16px;
+      color: #d9e4e7;
+      font-size: 14px;
+    }
+
+    .alert-card.is-open .alert-detail {
+      display: block;
+    }
+
+    .review-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px;
+    }
+
+    .review-card {
+      padding: 16px;
+    }
+
+    .report-lines {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .report-line {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .055);
+      color: #dce7ea;
+    }
+
+    .next-steps {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .next-steps li {
+      padding: 12px;
+      border-left: 3px solid var(--cyan);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, .055);
+    }
+
+    .foot-cta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px solid rgba(52, 211, 238, .24);
+      border-radius: 8px;
+      background: rgba(52, 211, 238, .08);
+    }
+
+    .foot-cta p {
+      margin: 0;
+      color: #dce7ea;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .section-head,
+      .money-layout,
+      .review-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-section,
+      .section {
+        min-height: auto;
+        padding: 54px 0;
+      }
+
+      .optimization-grid,
+      .anomaly-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .app-shell {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .top-nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+
+      .top-nav a {
+        flex: 0 0 auto;
+      }
+
+      .hero-grid {
+        gap: 14px;
+      }
+
+      .kpi-grid,
+      .signal-grid,
+      .optimization-grid,
+      .anomaly-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .spend-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .report-line {
+        grid-template-columns: 1fr;
+      }
+
+      .foot-cta {
+        align-items: stretch;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <nav class="top-nav" aria-label="H5 sections">
+      <a href="#hero">驾驶舱</a>
+      <a href="#money-flow">钱花在哪</a>
+      <a href="#optimization">效果优化</a>
+      <a href="#anomalies">异常处理</a>
+      <a href="#review">复盘</a>
+    </nav>
+
+    <section id="hero" class="hero-section">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">实时投放增长中枢</p>
+          <h1>投放增长驾驶舱</h1>
+          <p class="lead">把巨量引擎、腾讯广告、Google Ads 与自营流量放进同一个增长视角：预算流向、转化表现、自动调价、异常处理和复盘建议实时联动。</p>
+          <div class="hero-actions">
+            <button class="primary-action" type="button" onclick="scrollToSection('money-flow')">查看钱花在哪</button>
+            <button class="secondary-action" type="button" onclick="scrollToSection('review')">查看本周投放复盘</button>
+          </div>
+          <p class="section-summary">演示数据展示一位广告主从投放监控到复盘优化的完整闭环，不连接真实媒体 API，不产生实际预算操作。</p>
+        </div>
+
+        <div class="cockpit-frame" aria-label="投放增长驾驶舱实时看板">
+          <div class="cockpit-bar">
+            <span class="live-dot">Live 5s refresh</span>
+            <span>今日 09:00 - 18:00</span>
+          </div>
+          <div class="kpi-grid">
+            <button class="kpi-card" data-jump-target="money-flow" type="button">
+              <span>今日消耗</span>
+              <strong>¥128,420</strong>
+              <em>预算利用率 73%</em>
+            </button>
+            <button class="kpi-card" data-jump-target="review" type="button">
+              <span>转化数</span>
+              <strong>6,842</strong>
+              <em>较昨日 +18%</em>
+            </button>
+            <button class="kpi-card" data-jump-target="optimization" type="button">
+              <span>ROAS</span>
+              <strong>3.8</strong>
+              <em>优于目标 26%</em>
+            </button>
+            <button class="kpi-card" data-jump-target="anomalies" type="button">
+              <span>CPA</span>
+              <strong>18.6</strong>
+              <em>自动降价中</em>
+            </button>
+          </div>
+          <div class="signal-grid">
+            <div class="trend-card">
+              <h3>分时转化趋势</h3>
+              <span class="metric-label">高价值人群在 15:00 后继续放量</span>
+              <div class="trend-bars" aria-hidden="true">
+                <i style="height: 32%"></i>
+                <i style="height: 44%"></i>
+                <i style="height: 38%"></i>
+                <i style="height: 56%"></i>
+                <i style="height: 72%"></i>
+                <i style="height: 61%"></i>
+                <i style="height: 68%"></i>
+                <i style="height: 76%"></i>
+                <i style="height: 84%"></i>
+                <i style="height: 78%"></i>
+                <i style="height: 88%"></i>
+                <i style="height: 92%"></i>
+                <i style="height: 82%"></i>
+                <i style="height: 90%"></i>
+              </div>
+            </div>
+            <div class="route-card">
+              <h3>增长动作队列</h3>
+              <div class="route-list">
+                <div class="route-item"><span>预算分配</span><strong>转向高 ROAS 计划</strong></div>
+                <div class="route-item"><span>规则引擎</span><strong>3 条规则执行中</strong></div>
+                <div class="route-item"><span>归因</span><strong>7 天窗口更新</strong></div>
+                <div class="route-item"><span>LTV</span><strong>回传媒体模型</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="money-flow" class="section">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">01 / Spend Intelligence</p>
+          <h2>钱花在哪</h2>
+          <p class="section-summary">跨媒体看清每一笔预算的去向。渠道、计划和创意三层视图用同一套指标解释消耗、转化、ROAS 和 CPA，避免只看总消耗却不知道增长来自哪里。</p>
+        </div>
+        <div class="insight-board">
+          <h3>当前判断</h3>
+          <p class="section-summary">巨量引擎承接主要放量，腾讯广告保持稳定成本，Google Ads 带来更高 LTV，新创意在自营流量中完成冷启动。</p>
+        </div>
+      </div>
+
+      <div class="money-layout">
+        <div class="spend-board">
+          <div class="view-tabs" role="tablist" aria-label="Spend views">
+            <button class="view-tab is-active" data-view="channel" type="button">渠道</button>
+            <button class="view-tab" data-view="plan" type="button">计划</button>
+            <button class="view-tab" data-view="creative" type="button">素材</button>
+          </div>
+
+          <div id="channel-view" class="view-panel is-active" data-view-panel="channel">
+            <div class="spend-row">
+              <strong>巨量引擎</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: 82%"></div></div>
+              <span>¥52,800</span>
+              <span class="pill">ROAS 4.1</span>
+            </div>
+            <div class="spend-row">
+              <strong>腾讯广告</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: 64%"></div></div>
+              <span>¥38,600</span>
+              <span class="pill">CPA 17.9</span>
+            </div>
+            <div class="spend-row">
+              <strong>Google Ads</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: 46%"></div></div>
+              <span>¥24,300</span>
+              <span class="pill">LTV 高</span>
+            </div>
+            <div class="spend-row">
+              <strong>自营流量</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: 28%"></div></div>
+              <span>¥12,720</span>
+              <span class="pill warn">冷启动</span>
+            </div>
+          </div>
+
+          <div id="plan-view" class="view-panel" data-view-panel="plan">
+            <div class="spend-row">
+              <strong>春促 A 计划</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: 78%"></div></div>
+              <span>3,214 转化</span>
+              <span class="pill">扩量</span>
+            </div>
+            <div class="spend-row">
+              <strong>高客单回流</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: 56%"></div></div>
+              <span>1,486 转化</span>
+              <span class="pill">优先</span>
+            </div>
+            <div class="spend-row">
+              <strong>新人礼包</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: 44%"></div></div>
+              <span>1,025 转化</span>
+              <span class="pill warn">观察</span>
+            </div>
+          </div>
+
+          <div id="creative-view" class="view-panel" data-view-panel="creative">
+            <div class="spend-row">
+              <strong>短视频 A</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: 86%"></div></div>
+              <span>CTR 5.8%</span>
+              <span class="pill">创意优选</span>
+            </div>
+            <div class="spend-row">
+              <strong>直播切片</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: 62%"></div></div>
+              <span>CVR 8.1%</span>
+              <span class="pill">加预算</span>
+            </div>
+            <div class="spend-row">
+              <strong>权益海报</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: 33%"></div></div>
+              <span>CPA 24.2</span>
+              <span class="pill warn">降权</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="insight-board">
+          <h3>预算分配建议</h3>
+          <div class="insight-list">
+            <div>把低转化素材的 12% 预算转移到高 LTV 人群计划。</div>
+            <div>Google Ads 继续保留探索预算，用归因结果校验长周期价值。</div>
+            <div>巨量引擎高转化计划进入放量，但 CPA 超过阈值时自动降价。</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="optimization" class="section">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">02 / Optimization Loop</p>
+          <h2>为什么效果变好</h2>
+          <p class="section-summary">把复杂后台能力翻译成广告主能直接理解的增长动作：自动调价控制成本，预算分配追随回报，创意优选放大素材胜率，规则引擎把经验变成稳定执行。</p>
+        </div>
+        <div class="insight-board">
+          <h3>今日优化结果</h3>
+          <p class="section-summary">18 次自动调价、6 次预算转移、4 个创意进入优选池，整体 ROAS 较昨日提升 26%。</p>
+        </div>
+      </div>
+
+      <div class="optimization-grid">
+        <article class="section-card">
+          <div class="card-icon">价</div>
+          <h3>自动调价</h3>
+          <p class="section-summary">CPA 接近目标上限时自动降价，转化充足且消耗不足时小幅提价，减少人工盯盘。</p>
+          <div class="mini-chart" aria-hidden="true">
+            <span><i style="width: 68%"></i></span>
+            <span><i style="width: 54%"></i></span>
+            <span><i style="width: 76%"></i></span>
+          </div>
+        </article>
+        <article class="section-card">
+          <div class="card-icon">预</div>
+          <h3>预算分配</h3>
+          <p class="section-summary">预算从低效计划流向高回报计划，同时保留探索预算，避免只追短期转化。</p>
+          <div class="mini-chart" aria-hidden="true">
+            <span><i style="width: 42%"></i></span>
+            <span><i style="width: 82%"></i></span>
+            <span><i style="width: 64%"></i></span>
+          </div>
+        </article>
+        <article class="section-card">
+          <div class="card-icon">创</div>
+          <h3>创意优选</h3>
+          <p class="section-summary">新素材先拿到小流量验证，CTR 和 CVR 持续领先后逐步扩量，衰退素材自动降权。</p>
+          <div class="mini-chart" aria-hidden="true">
+            <span><i style="width: 36%"></i></span>
+            <span><i style="width: 58%"></i></span>
+            <span><i style="width: 88%"></i></span>
+          </div>
+        </article>
+        <article class="section-card">
+          <div class="card-icon">规</div>
+          <h3>规则引擎</h3>
+          <p class="section-summary">把“CPA 超标降价”“消耗突增预警”“转化断崖暂停”变成可复用规则，关键动作有记录可追溯。</p>
+          <div class="mini-chart" aria-hidden="true">
+            <span><i style="width: 72%"></i></span>
+            <span><i style="width: 66%"></i></span>
+            <span><i style="width: 91%"></i></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="anomalies" class="section">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">03 / Risk Control</p>
+          <h2>异常怎么处理</h2>
+          <p class="section-summary">异常不是一条孤立告警，而是“触发条件、建议动作、自动化状态、人工确认”的闭环。点击卡片查看每类异常的处理动作。</p>
+        </div>
+        <div class="insight-board">
+          <h3>处理状态</h3>
+          <p class="section-summary">P0 自动暂停 1 条，P1 通知优化师 3 条，P2 观察记录 6 条。</p>
+        </div>
+      </div>
+
+      <div class="anomaly-layout">
+        <article class="alert-card" data-alert-card="">
+          <button type="button" onclick="toggleAlert(this)">
+            <span><strong>漏斗断崖</strong>点击到转化骤降 42%</span>
+          </button>
+          <div class="alert-detail">建议动作：暂停低转化计划，切换备用素材，通知优化师确认落地页。自动化状态：规则引擎已暂停 2 个单元并保留最近 30 分钟证据。</div>
+        </article>
+
+        <article class="alert-card" data-alert-card="">
+          <button type="button" onclick="toggleAlert(this)">
+            <span><strong>CPA 超标</strong>连续 20 分钟高于目标 22%</span>
+          </button>
+          <div class="alert-detail">建议动作：自动调价降低 8%，预算转移到同人群高 ROAS 计划，若 30 分钟未恢复则进入人工复核。</div>
+        </article>
+
+        <article class="alert-card" data-alert-card="">
+          <button type="button" onclick="toggleAlert(this)">
+            <span><strong>流量异常</strong>曝光突增但有效点击下降</span>
+          </button>
+          <div class="alert-detail">建议动作：标记可疑流量来源，降低对应版位出价，保留归因与点击质量样本供后续复盘。</div>
+        </article>
+
+        <article class="alert-card" data-alert-card="">
+          <button type="button" onclick="toggleAlert(this)">
+            <span><strong>预算超限</strong>小时消耗超过节奏 18%</span>
+          </button>
+          <div class="alert-detail">建议动作：收紧时段预算，停止低 LTV 人群扩量，给财务和投放负责人同步剩余额度。</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="review" class="section">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">04 / Review Loop</p>
+          <h2>复盘与下一轮投放</h2>
+          <p class="section-summary">日报和周报不只汇总数据，还把归因、LTV、素材表现、异常记录和下一轮预算建议串起来，让优化动作能进入下一轮投放。</p>
+        </div>
+        <div class="insight-board">
+          <h3>本周结论</h3>
+          <p class="section-summary">高 LTV 人群来自搜索与短视频再营销组合，下一轮重点放大“权益解释清晰”的短视频素材。</p>
+        </div>
+      </div>
+
+      <div class="review-layout">
+        <article class="review-card">
+          <h3>复盘报告</h3>
+          <div class="report-lines">
+            <div class="report-line">
+              <strong>归因</strong>
+              <span>7 天窗口显示 Google Ads 贡献 22% 高价值转化，巨量引擎贡献主要规模。</span>
+              <span class="pill">已更新</span>
+            </div>
+            <div class="report-line">
+              <strong>LTV</strong>
+              <span>高客单人群 30 日预测 LTV 较普通人群高 41%，建议保留探索预算。</span>
+              <span class="pill">高价值</span>
+            </div>
+            <div class="report-line">
+              <strong>素材</strong>
+              <span>创意优选池中 3 条短视频持续领先，权益海报进入降权观察。</span>
+              <span class="pill warn">需迭代</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <h3>下一轮投放建议</h3>
+          <ul class="next-steps">
+            <li>把 15% 预算转向高 LTV 搜索词和复购人群，保留 8% 探索预算。</li>
+            <li>复制巨量引擎高转化计划到腾讯广告，先以目标 CPA 约束冷启动。</li>
+            <li>新增两条短视频脚本，围绕价格权益和信任背书做 A/B 验证。</li>
+            <li>将 CPA 超标和预算超限规则加入周报，复盘每次自动动作的收益。</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="foot-cta">
+        <p><strong>投放增长驾驶舱</strong>把钱、效果、异常和复盘放在同一条运营链路中。</p>
+        <button class="primary-action" type="button" onclick="scrollToSection('hero')">返回实时驾驶舱</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function scrollToSection(id) {
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.querySelectorAll("[data-jump-target]").forEach((button) => {
+      button.addEventListener("click", () => scrollToSection(button.dataset.jumpTarget));
+    });
+
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach((tab) => {
+        if (tab.dataset.view === view) {
+          tab.classList.add("is-active");
+        } else {
+          tab.classList.remove("is-active");
+        }
+      });
+      document.querySelectorAll("[data-view-panel]").forEach((panel) => {
+        if (panel.id === `${view}-view`) {
+          panel.classList.add("is-active");
+        } else {
+          panel.classList.remove("is-active");
+        }
+      });
+    }
+
+    document.querySelectorAll("[data-view]").forEach((button) => {
+      button.addEventListener("click", () => switchView(button.dataset.view));
+    });
+
+    function toggleAlert(button) {
+      const card = button.closest("[data-alert-card]");
+      if (!card) return;
+      card.classList.toggle("is-open");
+      const detail = card.querySelector(".alert-detail");
+      if (detail) detail.hidden = !card.classList.contains("is-open");
+    }
+
+    document.querySelectorAll("[data-alert-card]").forEach((card) => {
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") card.classList.remove("is-open");
+      });
+    });
+  </script>
+</body>
+</html>
