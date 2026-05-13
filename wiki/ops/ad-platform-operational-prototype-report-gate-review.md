@@ -7,7 +7,7 @@ artifact_type: report-gate-review
 kind: report-gate-review
 created: 2026-05-13
 target: wiki/reports/ad-platform-operational-prototype.html
-status: prototype-review
+status: prototype-verified
 ---
 
 # ad-platform-operational-prototype / report-gate-review
@@ -101,21 +101,20 @@ Drift Gate: PASS for prototype review.
 | Reference/output shape | PASS | Backstage workbench matches corrected prototype target. |
 | Module drift | PASS | Required modules are present and mapped to operations. |
 | Judgment ownership | PASS | User corrections and agent-created prototype data are separated. |
-| Visual output | PENDING | Browser screenshots and interaction replay still need final verification. |
+| Visual output | PASS | Desktop and mobile screenshots generated after loading a local CJK fontconfig; Chinese text renders and layout is readable. |
 | Publish gate | NOT APPLICABLE | No Feishu sync or production publication requested. |
 
 ## Scorecard
 
-Prototype score: pending final verification.
+Prototype score: 88 / 100.
 
 Publication score: INVALID because no Feishu sync or external publication was
 requested or verified.
 
 ## Decision
 
-The artifact may be used as a repo-local operational prototype after final
-verification passes. It must not be claimed as Feishu-synced, production-ready,
-or externally published.
+The artifact may be used as a repo-local operational prototype. It must not be
+claimed as Feishu-synced, production-ready, or externally published.
 
 ## Residual Risks
 
@@ -127,18 +126,17 @@ or externally published.
 
 ## Local Verification
 
-Status: pending final verification.
+Completed on 2026-05-13:
 
-Planned checks:
-
-- `python3 -m unittest tests.test_ad_platform_operational_prototype tests.test_public_report_quality_gate -v`
-- `python3 scripts/check_behavior_assets.py`
-- `git diff --check`
-- `openspec validate build-ad-platform-operational-prototype --strict`
-- `python3 scripts/check_wiki_frontmatter.py`
-- Inline JavaScript parse check.
-- Playwright interaction replay for budget, strategy, rules, finance, funnel,
-  report, architecture, sequence, and mobile load.
+- `python3 -m unittest tests.test_ad_platform_operational_prototype tests.test_public_report_quality_gate -v`: 14 tests passed.
+- `python3 scripts/check_behavior_assets.py`: passed.
+- `git diff --check`: passed.
+- `openspec validate build-ad-platform-operational-prototype --strict`: change valid. PostHog telemetry flush produced a sandbox/network warning after validation; the validation result was successful.
+- `python3 scripts/check_wiki_frontmatter.py`: failed on pre-existing legacy taxonomy drift (`personal-ops` and missing `classification_needed` on older pages); `wiki/ops/ad-platform-operational-prototype-report-gate-review.md` was not listed as drift.
+- Inline JavaScript parse check: passed.
+- Playwright interaction replay: passed for budget update, strategy switch, rule test, rule publish, merchant recharge, funnel alert handling, custom report save, architecture visibility, sequence visibility, and mobile load.
+- Desktop screenshot: `/tmp/ad-platform-operational-prototype-desktop.png`.
+- Mobile screenshot: `/tmp/ad-platform-operational-prototype-mobile.png`.
 
 ## Feishu Update Verification
 
