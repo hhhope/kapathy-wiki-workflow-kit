@@ -103,7 +103,7 @@ This is a runtime routing map, not an ownership map.
 |---|---|---|
 | External articles, repos, READMEs, or examples used as learning, reference, or adaptation material | `.codex/skills/learning-capture/SKILL.md` | shared: root-candidate learning core; repo-owned output routing |
 | Material, reports, attachments, preview HTML, or source files | `.codex/skills/material-collaboration-defaults/SKILL.md` | repo-owned |
-| Reader-facing reports, Feishu review drafts, H5/share drafts, public materials, or reference-shaped outputs | `.codex/skills/public-report-quality-gate/SKILL.md` | repo-owned reader-facing output gate |
+| Reader-facing reports, Feishu review drafts, H5/share drafts, public materials, reference-shaped outputs, or repo-public artifacts such as `README.md`, `docs/*`, `examples/*`, and published templates | `.codex/skills/public-report-quality-gate/SKILL.md` | repo-owned reader-facing output gate |
 | Meeting notes, transcripts, minutes, or Feishu meeting-note output | `.codex/skills/meeting-note-output/SKILL.md` | repo-owned |
 | Implementing an OpenSpec change | `.codex/skills/openspec-apply-change/SKILL.md` | repo-owned OpenSpec lifecycle helper with repo gates |
 | Archiving an OpenSpec change | `.codex/skills/openspec-archive-change/SKILL.md` | repo-owned archive helper with repo review detail |
@@ -117,31 +117,22 @@ This is a runtime routing map, not an ownership map.
 ## Agent Intent Routing
 
 - Before acting, classify the user intent.
+- Use `High-Frequency Skills` as the single repo-local skill routing table.
 - If the request writes, rewrites, polishes, prepares, or updates an artifact
   that will be read outside the current chat or worklog, route through the
   applicable parent gate before editing.
-- Keep this section as a routing map only. Do not duplicate full skill bodies,
-  taxonomy vocabulary, report scorecards, or long examples here.
-
-Minimum routes:
-
-| Intent shape | Parent gate |
-|---|---|
-| repo-public artifact such as `README.md`, `docs/*`, `examples/*`, or published templates | `.codex/skills/public-report-quality-gate/SKILL.md` lightweight path |
-| Reader-facing report, Feishu review draft, H5/share draft, or public material | `.codex/skills/public-report-quality-gate/SKILL.md` full path |
-| External article, repo, README, or example used as learning or reference material | `.codex/skills/learning-capture/SKILL.md` and narrower module |
-| Semantic edit to `.codex/skills/*` | Skill Authoring Contract |
-| Wiki frontmatter, wiki templates, or repo-local frontmatter producers | wiki frontmatter taxonomy gate |
-
-Rules:
-
-- repo-public artifact work must identify the reader and job-to-be-done, then
-  scan artifact-specific constraints before drafting.
+- Repo-public artifact work, including `README.md`, `docs/*`, `examples/*`, and
+  published templates, routes through
+  `.codex/skills/public-report-quality-gate/SKILL.md` lightweight path.
 - README work must scan relevant `README SHALL`, `README`, and `readme` hits in
   `AGENTS.md`, `PROJECT.md`, `openspec/specs`, `.codex/skills`, `wiki/adr`, and
   `wiki/ops` before drafting.
 - Do not let the public gate replace specialized gates for frontmatter,
-  semantic skill edits, OpenSpec lifecycle, or external learning.
+  including the wiki frontmatter taxonomy gate, semantic skill edits, OpenSpec
+  lifecycle, or external learning.
+- Do not add route tables, taxonomy vocabulary, report scorecards, or long
+  examples here. Detailed behavior-asset evaluation rules live in
+  `wiki/config/behavior-asset-evaluation.yaml`.
 
 ## Wiki Frontmatter Taxonomy Gate
 
@@ -176,6 +167,9 @@ Rules:
 - Semantic skill changes must include local pressure-test evidence in
   `evaluation.md`: `Pressure Scenarios`, `RED Baseline`, `GREEN Result`, and
   `Residual Risks`.
+- Before claiming a behavior-asset change complete, run
+  `python3 scripts/check_behavior_assets.py` and preserve any expected non-zero
+  result in `evaluation.md`.
 - Multi-end or rollout proof is optional follow-up evidence, not the minimum
   completion gate for a semantic skill change.
 

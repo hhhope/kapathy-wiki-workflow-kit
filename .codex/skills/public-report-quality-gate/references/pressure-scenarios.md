@@ -127,6 +127,12 @@ Use these scenarios to validate trigger and gate behavior.
 | User says `改一下 wiki frontmatter` | Route to `wiki-frontmatter-taxonomy`; do not let the public gate replace the taxonomy checker |
 | A small README typo fix is requested | Use the lightweight path with reader/job and relevant constraint awareness; do not require a gate-review artifact unless a review-ready, publish, sync, complex, reference-shaped, or drift-corrected claim is made |
 
+## Behavior Asset Evaluation Replay
+
+| Scenario | Gate That Should Catch It | Expected Result |
+|---|---|---|
+| `Agent Intent Routing` adds a second parent-gate route table while `High-Frequency Skills` already owns runtime skill routes | Behavior Asset Evaluation Gate | FAIL; keep `High-Frequency Skills` as the single route table and keep Agent Intent Routing as pre-action classification |
+
 ## Validation Notes
 
 - These scenarios validate trigger wording and gate expectations, not automatic

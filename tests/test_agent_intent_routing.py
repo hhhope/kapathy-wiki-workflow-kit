@@ -25,6 +25,16 @@ class AgentIntentRoutingTest(unittest.TestCase):
         self.assertIn(".codex/skills/public-report-quality-gate/SKILL.md", text)
         self.assertIn("wiki frontmatter taxonomy gate", text)
 
+    def test_agent_intent_routing_references_single_route_table(self) -> None:
+        text = read(AGENTS)
+
+        self.assertIn("## High-Frequency Skills", text)
+        self.assertIn("## Agent Intent Routing", text)
+        agent_intent = text.split("## Agent Intent Routing", 1)[1].split("\n## ", 1)[0]
+        self.assertIn("High-Frequency Skills", agent_intent)
+        self.assertNotIn("Minimum routes", agent_intent)
+        self.assertNotIn("| Intent shape | Parent gate |", agent_intent)
+
     def test_public_gate_skill_defines_repo_public_lightweight_path(self) -> None:
         text = read(PUBLIC_SKILL)
 
