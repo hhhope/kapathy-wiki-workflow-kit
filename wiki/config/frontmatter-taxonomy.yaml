@@ -1,0 +1,87 @@
+version: 1
+
+fields:
+  layer:
+    allowed:
+      - sources
+      - domains
+      - timeline
+      - reports
+      - ops
+      - adr
+      - spec
+      - examples
+
+  domain:
+    meaning: business_or_topic_only
+    allow_none: true
+    require_classification_flag_for_unclassified: true
+    forbidden:
+      - personal-ops
+    known:
+      - none
+      - unclassified
+      - nirvana
+      - nirvana-project
+      - account-clearing
+      - agentic-collaboration
+      - report-workflow
+      - wiki
+      - agent-harness
+
+  ops_area:
+    allowed:
+      - agent-governance
+      - learning-capture
+      - wiki-runtime
+      - report-quality
+      - meeting-notes
+      - source-intake
+      - workflow-trace
+
+path_rules:
+  wiki/ops:
+    required:
+      - layer
+      - domain
+      - ops_area
+    layer: ops
+    domain_policy: none_or_real_domain_or_unclassified
+
+  wiki/domains:
+    required:
+      - layer
+      - domain
+    layer: domains
+    domain_policy: required_real_domain
+
+  wiki/sources:
+    required:
+      - layer
+      - domain
+    layer: sources
+    domain_policy: real_domain_or_unclassified
+
+severity:
+  forbidden_domain: error
+  missing_ops_area_on_ops_page: error
+  missing_domain_on_sample_ops_page: error
+  producer_hardcoded_forbidden_domain: error
+  unclassified_without_flag: error
+  unknown_domain: warn
+  missing_layer_on_legacy_page: warn
+  possible_unregistered_producer: warn
+
+producer_paths:
+  templates:
+    - wiki/templates/*.md
+    - .codex/skills/**/references/*template*.md
+  scripts:
+    - scripts/inbox_intake.py
+
+sample_migration_paths:
+  - wiki/ops/behavior-replay-gate.md
+  - wiki/ops/learning-capture-routing.md
+  - wiki/ops/agent-readable-wiki-semantic-scoring.md
+  - wiki/ops/nirvana-协议支付涅槃需求文档-intake.md
+  - wiki/ops/nirvana-preview-intake.md
