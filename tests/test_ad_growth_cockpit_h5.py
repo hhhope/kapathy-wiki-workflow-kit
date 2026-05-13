@@ -41,9 +41,8 @@ class AdGrowthCockpitH5Test(unittest.TestCase):
         ]:
             self.assertIn(f'href="{anchor}"', self.html)
 
-        self.assertIn("data-jump-target=\"optimization\"", self.html)
-        self.assertIn("data-jump-target=\"anomalies\"", self.html)
-        self.assertIn("data-jump-target=\"review\"", self.html)
+        for target in ["money-flow", "optimization", "anomalies", "review"]:
+            self.assertIn(f'data-jump-target="{target}"', self.html)
 
     def test_channel_view_toggle_controls_exist(self) -> None:
         for view in ["channel", "plan", "creative"]:
@@ -51,10 +50,17 @@ class AdGrowthCockpitH5Test(unittest.TestCase):
             self.assertIn(f'id="{view}-view"', self.html)
 
         self.assertIn("function switchView", self.html)
+        self.assertIn("querySelectorAll(\"[data-view]\")", self.html)
+        self.assertIn("querySelectorAll(\"[data-view-panel]\")", self.html)
+        self.assertIn("data-view-panel=\"channel\"", self.html)
+        self.assertIn("data-view-panel=\"plan\"", self.html)
+        self.assertIn("data-view-panel=\"creative\"", self.html)
         self.assertIn("classList.add(\"is-active\")", self.html)
 
     def test_alert_expansion_controls_exist(self) -> None:
         self.assertGreaterEqual(len(re.findall(r'data-alert-card=', self.html)), 4)
+        self.assertIn("querySelectorAll(\"[data-alert-card]\")", self.html)
+        self.assertIn("querySelector(\".alert-detail\")", self.html)
         self.assertIn("function toggleAlert", self.html)
         self.assertIn("漏斗断崖", self.html)
         self.assertIn("CPA 超标", self.html)
