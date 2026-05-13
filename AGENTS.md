@@ -114,6 +114,17 @@ This is a runtime routing map, not an ownership map.
 | Narrow edit risks expanding into adjacent cleanup | `.codex/skills/surgical-changes/SKILL.md` | root-candidate |
 | About to claim complete/fixed/synced without fresh evidence | `.codex/skills/verify-before-claiming/SKILL.md` | root-candidate; partly covered by root git truth-source |
 
+## Wiki Frontmatter Taxonomy Gate
+
+- When creating or modifying wiki frontmatter, wiki templates, or repo-local
+  scripts that generate wiki frontmatter, load
+  `.codex/skills/wiki-frontmatter-taxonomy/SKILL.md`.
+- `AGENTS.md` must not duplicate the taxonomy vocabulary. The source of truth is
+  `wiki/config/frontmatter-taxonomy.yaml`.
+- Before claiming taxonomy compliance or completion, run the repo frontmatter taxonomy checker:
+  `python3 scripts/check_wiki_frontmatter.py`.
+- Do not claim taxonomy compliance from memory.
+
 ## Skill Authoring Contract
 
 - Repo-local `.codex/skills/*` files are English-first behavior assets. Do not
