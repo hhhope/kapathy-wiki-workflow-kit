@@ -4,7 +4,10 @@ type: reminder
 language: zh-CN
 audience: self
 knowledge_level: working
-domain: <domain-slug>
+layer: ops
+domain: <real-topic-domain-or-none>
+classification_needed: true
+ops_area: workflow-trace
 period: <period-slug-or-evergreen>
 status: open
 updated_at: YYYY-MM-DD

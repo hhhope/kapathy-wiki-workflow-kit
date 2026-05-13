@@ -2,6 +2,7 @@
 title: <Period Title>
 type: timeline
 language: zh-CN
+layer: timeline
 domain: <domain-slug>
 audience: project
 knowledge_level: working

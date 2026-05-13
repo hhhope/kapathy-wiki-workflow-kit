@@ -6,7 +6,10 @@ source_path: inbox/<file-name>
 source_type: <source-type>
 audience: self
 knowledge_level: working
+layer: ops
 domain: <domain-slug>
+classification_needed: true
+ops_area: source-intake
 period: <period-slug-or-evergreen>
 confidence: medium
 status: active

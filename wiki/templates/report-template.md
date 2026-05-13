@@ -2,6 +2,7 @@
 title: <Report Title>
 type: report
 language: zh-CN
+layer: reports
 domain: <domain-slug>
 audience: <audience>
 knowledge_level: working

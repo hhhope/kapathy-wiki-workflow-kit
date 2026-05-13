@@ -2,6 +2,7 @@
 title: <Domain Title>
 type: domain
 language: zh-CN
+layer: domains
 domain: <domain-slug>
 audience: project
 knowledge_level: reusable

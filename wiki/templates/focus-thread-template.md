@@ -4,7 +4,10 @@ type: focus-thread
 language: zh-CN
 audience: self
 knowledge_level: working
-domain: <domain-slug>
+layer: ops
+domain: <real-topic-domain-or-none>
+classification_needed: true
+ops_area: workflow-trace
 period: active
 status: active
 updated_at: YYYY-MM-DD

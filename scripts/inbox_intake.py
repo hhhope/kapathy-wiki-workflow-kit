@@ -111,6 +111,12 @@ def _infer_domain(source_file: Path, inbox_dir: Path) -> str:
     return _slugify(relative_parent.parts[0])
 
 
+def _domain_fields(domain: str) -> str:
+    if domain == "unclassified":
+        return "domain: unclassified\nclassification_needed: true"
+    return f"domain: {domain}"
+
+
 def _classify_source(source_file: Path, text: str) -> tuple[str, str, str]:
     haystack = f"{source_file.stem}\n{text}"
     if _contains_keywords(haystack, MEETING_KEYWORDS):
@@ -153,7 +159,8 @@ type: source
 source_path: inbox/{source_path}
 source_type: {source_type}
 language: {language}
-domain: {domain}
+layer: sources
+{_domain_fields(domain)}
 audience: project
 knowledge_level: working
 period: evergreen
@@ -234,7 +241,9 @@ source_path: inbox/{source_path}
 source_type: {source_type}
 audience: self
 knowledge_level: working
-domain: {domain}
+layer: ops
+{_domain_fields(domain)}
+ops_area: source-intake
 period: evergreen
 confidence: {confidence}
 status: active

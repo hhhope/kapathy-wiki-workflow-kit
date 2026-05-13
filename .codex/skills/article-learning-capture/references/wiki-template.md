@@ -12,7 +12,10 @@ artifact_type: reading-notes
 language: zh-CN
 audience: self
 knowledge_level: working
-domain: personal-ops
+layer: ops
+domain: <real-topic-domain-or-none>
+ops_area: learning-capture
+classification_needed: true
 status: active
 confidence: candidate
 updated_at: YYYY-MM-DD

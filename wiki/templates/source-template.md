@@ -4,7 +4,9 @@ type: source
 source_path: inbox/<file-name>
 source_type: <source-type>
 language: zh-CN
+layer: sources
 domain: <domain-slug>
+classification_needed: true
 audience: project
 knowledge_level: working
 period: <period-slug>
