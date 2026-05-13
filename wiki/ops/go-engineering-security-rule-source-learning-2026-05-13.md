@@ -22,6 +22,11 @@ derived_from:
   - https://mp.weixin.qq.com/s/KcKm8BNBYV91zlbxTIz9yw
   - https://mp.weixin.qq.com/s/pJSibD0QYrbhSqcy4V4EMQ
   - https://mp.weixin.qq.com/s/sWnXjrWpTjYO9ZGTaOIlJQ
+  - https://go.dev/doc/modules/layout
+  - https://go.dev/wiki/CodeReviewComments
+  - https://google.github.io/styleguide/go/guide
+  - https://github.com/uber-go/guide
+  - https://github.com/golang-standards/project-layout
 notes_scope: Compressed source learning for a repo-local Go engineering/security
   rule. This page records what was reused, modified, rejected, and bounded; it
   does not copy article bodies.
@@ -40,6 +45,11 @@ notes_scope: Compressed source learning for a repo-local Go engineering/security
 | 告别旧写法，拥抱新姿势 | `go tool fix` discussion | Reused only for migration awareness; corrected against local `go tool fix -help`. |
 | 编写地道Go代码的n条建议：第二部分 代码组织 | Package and project organization | Reused for package cohesion, internal boundary, file organization, dependencies. |
 | Golang框架全景封神榜 | Framework selection background | Rejected as hard rule; user-confirmed stack wins. |
+| https://go.dev/doc/modules/layout | Official module layout guidance | Reused for `internal/` and conditional `cmd/` guidance; not used as a large-template mandate. |
+| https://go.dev/wiki/CodeReviewComments | Official Go review guidance | Reused for context, goroutine lifecycle, interface placement, package naming, and error handling. |
+| https://google.github.io/styleguide/go/guide | Google Go style guidance | Reused for clarity/simplicity framing and rejection of fixed Go-local line-length thresholds. |
+| https://github.com/uber-go/guide | GitHub-hosted company style guide | Supporting reference only; not copied wholesale into the repo rule. |
+| https://github.com/golang-standards/project-layout | Popular GitHub project layout repo | Reused as a cautionary map only; rejected as official or mandatory layout. |
 
 ## Admission And Score
 
@@ -70,12 +80,24 @@ Decision: use compressed learning. Do not preserve article bodies.
 | Tests | Include table tests, error assertions, race-sensitive checks, timeout/cancel/retry/partial failure cases. |
 | Organization | Prefer `cmd/`, `internal/`, cohesive packages, explicit dependencies, generated-code boundaries, docs split. |
 | Migration | `go tool fix` is a Go upgrade tool; inspect available rewrites and preview with `-diff`. |
+| Official-source boundary | Promote only compressed Go-specific practices; keep generic policy in global/common rules. |
+| Large-file threshold | Go/Rust/Java `> 300` lines is referenced from global `Large-file guardrails`; the Go rule must not redefine it locally. |
+| Context | Pass `context.Context` explicitly through request/dependency boundaries and do not store request-scoped context in structs. |
+| Interfaces | Prefer defining interfaces near consumers; avoid premature interfaces only for hypothetical mocks. |
+| Layout | Use `cmd/` and `internal/` when helpful; do not force a large project-layout template onto small services. |
 
 ## Modified Or Rejected
 
 - Rejected full source copying and code-example copying.
 - Rejected article repetition and long checklist duplication.
 - Rejected framework star ranking as a default selection rule.
+- Rejected `500` lines as a local or article-derived threshold. The current
+  threshold evidence is Go/Rust/Java `> 300` lines, referenced from global
+  `Large-file guardrails`.
+- Rejected fixed Go-local line-length thresholds; Go style sources favor
+  readability, simplicity, and refactoring over hard local numeric limits.
+- Rejected `golang-standards/project-layout` as official or mandatory policy.
+  It remains a useful map, not a repo rule template.
 - Modified `go tool fix` guidance after checking local `go doc cmd/fix` and
   `go tool fix -help`: available rewrites depend on the installed Go toolchain.
 - Modified Go-version guidance because this machine reports `go1.22.2` while

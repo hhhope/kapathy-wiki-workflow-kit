@@ -60,6 +60,24 @@ class GoEngineeringSecurityRulesTest(unittest.TestCase):
         self.assertNotIn("500", content)
         self.assertNotIn("> 300", content)
 
+    def test_source_learning_records_official_sources_and_global_300_guardrail(self) -> None:
+        content = LEARNING.read_text(encoding="utf-8")
+
+        self.assertIn("https://go.dev/doc/modules/layout", content)
+        self.assertIn("https://go.dev/wiki/CodeReviewComments", content)
+        self.assertIn("https://google.github.io/styleguide/go/guide", content)
+        self.assertIn("https://github.com/uber-go/guide", content)
+        self.assertIn("Go/Rust/Java `> 300` lines", content)
+        self.assertIn("referenced from global `Large-file guardrails`", content)
+
+    def test_go_rule_promotes_official_go_specific_guidance_only(self) -> None:
+        content = RULE.read_text(encoding="utf-8")
+
+        self.assertIn("pass `context.Context` as an explicit first argument", content)
+        self.assertIn("Do not store request-scoped context in structs", content)
+        self.assertIn("Define interfaces near the consuming package", content)
+        self.assertIn("Do not force a large project-layout template", content)
+
 
 if __name__ == "__main__":
     unittest.main()

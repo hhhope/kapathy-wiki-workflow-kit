@@ -34,6 +34,15 @@ generic repository workflow policy.
   rule only adds Go-specific test emphasis.
 - Do not define repo-local file length thresholds here.
 
+## Official Go Practice Boundary
+
+- Apply official Go guidance in compressed form. Do not copy full upstream
+  style guides into this rule.
+- Prefer clarity, small cohesive packages, explicit ownership, and simple
+  control flow over article-derived checklist volume.
+- Reject fixed Go-local file-length or line-length thresholds. Use global
+  large-file guardrails and refactor when code is hard to understand.
+
 ## Version And Migration
 
 - Treat `go.mod` as the source of truth for the target Go version.
@@ -98,6 +107,9 @@ Reject or stop for redesign when code violates these boundaries:
 
 ## Concurrency And Resource Lifecycle
 
+- Always pass `context.Context` as an explicit first argument after the receiver
+  for request-scoped and dependency-scoped work.
+- Do not store request-scoped context in structs.
 - Every goroutine needs a cancellation or exit path, normally through
   `context.Context`.
 - Avoid unbounded queues, unbounded goroutine fan-out, and unbounded buffering.
@@ -138,7 +150,11 @@ Reject or stop for redesign when code violates these boundaries:
 
 - Prefer `cmd/<service>` for binaries and `internal/` for private application
   code.
+- Do not force a large project-layout template onto small services; add
+  directories when the service shape needs them.
 - Keep package responsibility narrow and names aligned with contents.
+- Define interfaces near the consuming package when practical. Do not introduce
+  interfaces only because a future mock might need them.
 - Keep stable interfaces separate from frequently changing implementations.
 - Avoid circular dependencies; break cycles with smaller packages or interfaces.
 - Use explicit module versions. Do not rely on `latest`, `master`, or omitted
