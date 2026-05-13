@@ -6,6 +6,7 @@ from scripts.check_wiki_frontmatter import load_taxonomy
 from scripts.check_wiki_frontmatter import check_content_drift
 from scripts.check_wiki_frontmatter import check_possible_unregistered_producers
 from scripts.check_wiki_frontmatter import check_registered_producer_drift
+from scripts.check_wiki_frontmatter import render_markdown_report
 
 
 def write(path: Path, text: str) -> None:
@@ -174,3 +175,38 @@ def test_unregistered_frontmatter_producer_warns(tmp_path: Path) -> None:
     assert [(entry.kind, entry.severity, entry.path) for entry in entries] == [
         ("possible_unregistered_producer", "warn", "scripts/other_writer.py")
     ]
+
+
+def test_render_markdown_report_includes_summary_and_entries() -> None:
+    report = {
+        "generated_at": "2026-05-13T00:00:00+00:00",
+        "root": "/repo",
+        "config_path": "wiki/config/frontmatter-taxonomy.yaml",
+        "taxonomy_version": 1,
+        "summary": {"error": 1, "warn": 1, "info": 0, "total": 2},
+        "entries": [
+            {
+                "kind": "forbidden_domain",
+                "severity": "error",
+                "path": "wiki/ops/sample.md",
+                "field": "domain",
+                "value": "personal-ops",
+                "message": "`domain: personal-ops` is forbidden by taxonomy contract.",
+            },
+            {
+                "kind": "possible_unregistered_producer",
+                "severity": "warn",
+                "path": "scripts/other_writer.py",
+                "field": None,
+                "value": None,
+                "message": "File contains frontmatter-looking text but is not registered in producer_paths.",
+            },
+        ],
+    }
+
+    markdown = render_markdown_report(report)
+
+    assert "# Wiki Frontmatter Taxonomy Report" in markdown
+    assert "| error | 1 |" in markdown
+    assert "`wiki/ops/sample.md`" in markdown
+    assert "`scripts/other_writer.py`" in markdown

@@ -239,6 +239,39 @@ def build_report(root: Path | str = ROOT) -> dict[str, Any]:
     }
 
 
+def render_markdown_report(report: dict[str, Any]) -> str:
+    lines = [
+        "# Wiki Frontmatter Taxonomy Report",
+        "",
+        f"Generated at: `{report['generated_at']}`",
+        f"Root: `{report['root']}`",
+        f"Config: `{report['config_path']}`",
+        f"Taxonomy version: `{report['taxonomy_version']}`",
+        "",
+        "## Summary",
+        "",
+        "| Severity | Count |",
+        "| --- | --- |",
+    ]
+    for key in ["error", "warn", "info", "total"]:
+        lines.append(f"| {key} | {report['summary'].get(key, 0)} |")
+
+    lines.extend(["", "## Drift Entries", ""])
+    entries = report.get("entries", [])
+    if not entries:
+        lines.append("- None")
+    else:
+        for entry in entries:
+            field = entry.get("field") or "-"
+            value = entry.get("value") or "-"
+            lines.append(
+                f"- `{entry['path']}` `{entry['severity']}` `{entry['kind']}` "
+                f"field=`{field}` value=`{value}`: {entry['message']}"
+            )
+    lines.append("")
+    return "\n".join(lines)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Check wiki frontmatter taxonomy drift.")
     parser.add_argument("--root", default=ROOT)
@@ -251,8 +284,11 @@ def main() -> int:
         json.dumps(report, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    Path(args.markdown_output).write_text("# Wiki Frontmatter Taxonomy Report\n", encoding="utf-8")
-    return 0
+    Path(args.markdown_output).write_text(
+        render_markdown_report(report),
+        encoding="utf-8",
+    )
+    return 1 if report["summary"].get("error", 0) else 0
 
 
 if __name__ == "__main__":
