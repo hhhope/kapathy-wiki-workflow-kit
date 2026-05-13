@@ -462,7 +462,7 @@
           <option>运维</option>
         </select>
         <span id="currentTenant" class="tenant">当前租户：示例广告主 · 模拟时间 2026-05-13 10:30</span>
-        <input id="globalSearch" type="search" placeholder="搜索计划 / 媒体 / 规则">
+        <input id="globalSearch" type="search" aria-label="全局搜索" placeholder="搜索计划 / 媒体 / 规则">
         <button id="resetPrototype" class="reset-button" type="button">重置模拟数据</button>
       </header>
 
@@ -512,7 +512,7 @@
             <div class="panel">
               <h2>预算配置</h2>
               <form id="budgetForm" class="form-grid">
-                <div class="field"><label for="dailyBudget">日预算</label><input id="dailyBudget" type="number" min="1000" value="12000"></div>
+                <div class="field"><label for="budgetDaily">日预算</label><input id="budgetDaily" type="number" min="1000" value="12000"></div>
                 <div class="field"><label for="totalBudget">总预算</label><input id="totalBudget" type="number" min="1000" value="36000"></div>
                 <div class="field"><label for="timeWindowBudget">时段预算</label><input id="timeWindowBudget" type="text" value="08:00-23:00"></div>
                 <button id="submitBudget" class="primary-button" type="submit">保存预算</button>
@@ -833,7 +833,7 @@
         financeLedger: [{ id: "ledger-001", type: "充值", amount: 50000, status: "成功" }],
         trackingEvents: [{ id: "event-001", event: "purchase", source: "SDK", status: "已入库" }],
         reports: [{ id: "report-001", name: "投流日报", status: "已生成" }],
-        operationsLog: ["系统加载 seeded mock state"]
+        operationsLog: ["系统加载初始业务状态"]
       };
     }
 
@@ -1034,7 +1034,7 @@
 
     function submitBudget(event) {
       event.preventDefault();
-      const daily = Number(document.getElementById("dailyBudget").value);
+      const daily = Number(document.getElementById("budgetDaily").value);
       const total = Number(document.getElementById("totalBudget").value);
       const timeWindow = document.getElementById("timeWindowBudget").value;
       const budget = state.budgets[0];
@@ -1044,7 +1044,7 @@
       budget.frozen = total;
       state.campaigns[0].budget = total;
       state.financeLedger.unshift({ id: `ledger-${Date.now()}`, type: "预算冻结", amount: total, status: "成功" });
-      updateLog(`提交预算：日预算 ${money(daily)}，总预算 ${money(total)}，时段预算 ${timeWindow}`);
+      updateLog(`预算已更新：日预算 ${money(daily)}，总预算 ${money(total)}，时段预算 ${timeWindow}`);
       render();
     }
 
@@ -1058,7 +1058,7 @@
       strategy.targetCpa = targetCpa;
       strategy.bidInterval = bidInterval;
       state.campaigns[0].strategy = type;
-      updateLog(`提交策略：${type}，目标 CPA ${money(targetCpa)}，调价频率 ${bidInterval}`);
+      updateLog(`投流策略已切换：${type}，目标 CPA ${money(targetCpa)}，调价频率 ${bidInterval}`);
       render();
     }
 
@@ -1078,7 +1078,7 @@
       alert.status = "已处理";
       alert.action = "已暂停计划并通知优化师";
       state.campaigns[0].status = "暂停观察";
-      updateLog("处理漏斗告警：暂停计划，通知优化师，记录观察");
+      updateLog("漏斗异常已处理：暂停计划，通知优化师，记录观察");
       render();
     }
 
@@ -1118,14 +1118,14 @@
     function testRule() {
       const rule = state.rules[0];
       rule.status = "已测试";
-      updateLog(`规则测试：${rule.name} 命中 mock campaign`);
+      updateLog(`规则测试通过：${rule.name} 命中计划样本`);
       render();
     }
 
     function publishRule() {
       const rule = state.rules[0];
       rule.status = "运行中";
-      updateLog(`规则发布：${rule.name} 已进入运行中`);
+      updateLog(`规则已发布：${rule.name} 已进入运行中`);
       render();
     }
 
@@ -1135,7 +1135,7 @@
       const channel = document.getElementById("paymentChannel").value;
       state.advertisers[0].balance += amount;
       state.financeLedger.unshift({ id: `ledger-${Date.now()}`, type: `充值-${channel}`, amount, status: "成功" });
-      updateLog(`商户充值：${channel} 回调成功，余额增加 ${money(amount)}`);
+      updateLog(`商户充值成功：${channel} 回调成功，余额增加 ${money(amount)}`);
       render();
     }
 
@@ -1173,7 +1173,7 @@
       const dimension = document.getElementById("reportDimensions").value;
       const metric = document.getElementById("reportMetrics").value;
       state.reports.unshift({ id: `report-${Date.now()}`, name: `自定义报表-${dimension}`, status: "已保存", note: metric });
-      updateLog(`保存自定义报表：${dimension} / ${metric}`);
+      updateLog(`自定义报表模板已保存：${dimension} / ${metric}`);
       render();
     }
 

@@ -1138,7 +1138,7 @@ with sync_playwright() as p:
     page.goto(url)
 
     expect(page.locator("text=广告投流系统")).to_be_visible()
-    page.locator('[data-module="advertiser"]').click()
+    page.locator('.side-nav [data-module="advertiser"]').click()
     expect(page.locator("#module-advertiser")).to_be_visible()
     page.fill("#budgetDaily", "15000")
     page.locator("#budgetForm button[type='submit']").click()
@@ -1148,26 +1148,26 @@ with sync_playwright() as p:
     page.locator("#strategyForm button[type='submit']").click()
     expect(page.locator("#stateRail")).to_contain_text("投流策略已切换")
 
-    page.locator('[data-module="rules"]').click()
+    page.locator('.side-nav [data-module="rules"]').click()
     page.locator("#testRule").click()
     expect(page.locator("#stateRail")).to_contain_text("规则测试通过")
     page.locator("#publishRule").click()
     expect(page.locator("#stateRail")).to_contain_text("规则已发布")
 
-    page.locator('[data-module="finance"]').click()
+    page.locator('.side-nav [data-module="finance"]').click()
     page.fill("#rechargeAmount", "20000")
     page.locator("#rechargeForm button[type='submit']").click()
     expect(page.locator("#stateRail")).to_contain_text("商户充值成功")
 
-    page.locator('[data-module="platform"]').click()
+    page.locator('.side-nav [data-module="platform"]').click()
     page.locator("#handleFunnelAlert").click()
     expect(page.locator("#stateRail")).to_contain_text("漏斗异常已处理")
 
-    page.locator('[data-module="reports"]').click()
+    page.locator('.side-nav [data-module="reports"]').click()
     page.locator("#saveReportTemplate").click()
     expect(page.locator("#stateRail")).to_contain_text("自定义报表模板已保存")
 
-    page.locator('[data-module="overview"]').click()
+    page.locator('.side-nav [data-module="overview"]').click()
     expect(page.locator('[data-diagram="overall-architecture"]')).to_be_visible()
     expect(page.locator('[data-sequence="budget-sequence"]')).to_be_visible()
 
