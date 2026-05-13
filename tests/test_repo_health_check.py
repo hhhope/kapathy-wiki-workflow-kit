@@ -23,10 +23,12 @@ class RepoHealthCheckTest(unittest.TestCase):
 severity:
   missing_evaluation: error
   missing_required_section: error
+  missing_positive_scenario: error
   missing_negative_scenario: error
   missing_parent_gate_preservation: error
   route_table_ownership_drift: error
-  weak_replay_evidence: warn
+  weak_replay_evidence: error
+  shallow_text_evidence: error
 required_sections:
   - "## Pressure Scenarios"
   - "## RED Baseline"
@@ -35,12 +37,17 @@ required_sections:
 required_replay_fields:
   - "input or situation shape"
   - "trigger condition"
+  - "expected route"
   - "repo-visible artifact"
   - "expected output"
+  - "promotion or non-promotion boundary"
   - "proof boundary"
 positive_markers:
   - "positive"
-  - "trigger"
+shallow_evidence_markers:
+  - "text exists"
+  - "presence-only"
+  - "contains required text"
 negative_markers:
   - "negative"
   - "should-not-trigger"
@@ -130,8 +137,10 @@ ownership_rules:
 
 - input or situation shape: semantic skill change
 - trigger condition: `.codex/skills/*` edit
+- expected route: route through parent gate before edit
 - repo-visible artifact: AGENTS.md and skill file
 - expected output: route before edit
+- promotion or non-promotion boundary: repo-local only
 - proof boundary: local checker proof only
 
 ## RED Baseline

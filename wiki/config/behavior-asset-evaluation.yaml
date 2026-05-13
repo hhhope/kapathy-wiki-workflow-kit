@@ -1,10 +1,12 @@
 severity:
   missing_evaluation: error
   missing_required_section: error
+  missing_positive_scenario: error
   missing_negative_scenario: error
   missing_parent_gate_preservation: error
   route_table_ownership_drift: error
-  weak_replay_evidence: warn
+  weak_replay_evidence: error
+  shallow_text_evidence: error
 
 required_sections:
   - "## Pressure Scenarios"
@@ -15,13 +17,19 @@ required_sections:
 required_replay_fields:
   - "input or situation shape"
   - "trigger condition"
+  - "expected route"
   - "repo-visible artifact"
   - "expected output"
+  - "promotion or non-promotion boundary"
   - "proof boundary"
 
 positive_markers:
   - "positive"
-  - "trigger"
+
+shallow_evidence_markers:
+  - "text exists"
+  - "presence-only"
+  - "contains required text"
 
 negative_markers:
   - "negative"

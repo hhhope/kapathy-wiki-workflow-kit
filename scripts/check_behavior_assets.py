@@ -98,6 +98,16 @@ def check_evaluation(change_dir: Path, repo_root: Path, config: dict[str, Any]) 
             )
 
     lower = content.lower()
+    if not any(str(marker).lower() in lower for marker in config.get("positive_markers", [])):
+        entries.append(
+            BehaviorAssetEntry(
+                kind="missing_positive_scenario",
+                severity=severity(config, "missing_positive_scenario", "error"),
+                path=rel(evaluation, repo_root),
+                message="Evaluation requires a positive trigger scenario.",
+            )
+        )
+
     if not any(str(marker).lower() in lower for marker in config.get("negative_markers", [])):
         entries.append(
             BehaviorAssetEntry(
@@ -139,6 +149,17 @@ def check_evaluation(change_dir: Path, repo_root: Path, config: dict[str, Any]) 
                     severity=severity(config, "weak_replay_evidence", "warn"),
                     path=rel(evaluation, repo_root),
                     message=f"Replay evidence does not mention: {field}",
+                )
+            )
+
+    for marker in config.get("shallow_evidence_markers", []):
+        if str(marker).lower() in lower:
+            entries.append(
+                BehaviorAssetEntry(
+                    kind="shallow_text_evidence",
+                    severity=severity(config, "shallow_text_evidence", "error"),
+                    path=rel(evaluation, repo_root),
+                    message=f"Evaluation relies on shallow evidence marker: {marker}",
                 )
             )
     return entries

@@ -7,3 +7,4 @@
 - [x] 5. Compress Agent Intent Routing and strengthen skill pressure scenarios.
 - [x] 6. Record RED/GREEN evaluation evidence.
 - [x] 7. Run targeted tests, checker, repo health check, OpenSpec validation, and diff check.
+- [x] 8. Address final review findings for replay-field and shallow-evidence enforcement.

@@ -9,6 +9,8 @@
 | parent gate preserve: active behavior change mentions parent gate, route, publish, sync, or reader-facing output | Evaluation must show parent gate preservation evidence | `tests.test_repo_health_check.test_reports_pass_for_skill_change_with_valid_evaluation_md` |
 | structural anti-drift: `Agent Intent Routing` duplicates the High-Frequency Skills route table | Checker reports `route_table_ownership_drift` error | `tests.test_behavior_asset_evaluation.test_route_table_ownership_drift_is_error` |
 | health-check integration: route table drift exists in a temp repo | `repo_health_check.py` reports `FAIL behavior-asset-evaluation` | `tests.test_repo_health_check.test_reports_fail_for_agent_intent_route_table_drift` |
+| reviewer finding: evaluation omits positive trigger case | Checker reports `missing_positive_scenario` error | `tests.test_behavior_asset_evaluation.test_missing_positive_scenario_is_error` |
+| reviewer finding: routing proof only asserts required wording was present | Checker reports `shallow_text_evidence` error | `tests.test_behavior_asset_evaluation.test_shallow_text_exists_evidence_is_error` |
 
 ## Replay Evidence
 
@@ -35,6 +37,7 @@
 - `python3 -m unittest tests.test_behavior_asset_evaluation tests.test_repo_health_check tests.test_agent_intent_routing tests.test_public_report_quality_gate -v` passed 24 tests after final evaluation closeout.
 - `python3 scripts/check_behavior_assets.py` passed with no error-severity behavior asset drift after this file was added.
 - `python3 scripts/repo_health_check.py` reported `PASS draft-skill-runtime-surface`, `PASS skill-evaluation-evidence`, and `PASS behavior-asset-evaluation`.
+- Final review found two enforcement gaps: incomplete required replay fields and missing positive/shallow-evidence checks. After repair, `python3 -m unittest tests.test_behavior_asset_evaluation tests.test_repo_health_check -v` passed 12 tests, including positive-scenario and shallow-text-evidence RED cases.
 - `AGENTS.md` now keeps `High-Frequency Skills` as the single runtime skill routing table and compresses `Agent Intent Routing` into pre-action classification guidance.
 - `wiki/config/behavior-asset-evaluation.yaml` owns detailed evaluation vocabulary and configured grandfathered active changes for the first rollout.
 

@@ -25,10 +25,12 @@ class BehaviorAssetEvaluationTest(unittest.TestCase):
 severity:
   missing_evaluation: error
   missing_required_section: error
+  missing_positive_scenario: error
   missing_negative_scenario: error
   missing_parent_gate_preservation: error
   route_table_ownership_drift: error
-  weak_replay_evidence: warn
+  weak_replay_evidence: error
+  shallow_text_evidence: error
 required_sections:
   - "## Pressure Scenarios"
   - "## RED Baseline"
@@ -37,12 +39,17 @@ required_sections:
 required_replay_fields:
   - "input or situation shape"
   - "trigger condition"
+  - "expected route"
   - "repo-visible artifact"
   - "expected output"
+  - "promotion or non-promotion boundary"
   - "proof boundary"
 positive_markers:
   - "positive"
-  - "trigger"
+shallow_evidence_markers:
+  - "text exists"
+  - "presence-only"
+  - "contains required text"
 negative_markers:
   - "negative"
   - "should-not-trigger"
@@ -117,8 +124,10 @@ ownership_rules:
 
 - input or situation shape: semantic skill change
 - trigger condition: `.codex/skills/*` edit
+- expected route: route through parent gate before edit
 - repo-visible artifact: AGENTS.md and skill file
 - expected output: route before edit
+- promotion or non-promotion boundary: repo-local only
 - proof boundary: local checker proof only
 
 ## RED Baseline
@@ -139,6 +148,90 @@ Future agents must load repo guidance.
         entries = check_behavior_assets(self.tmpdir)
 
         self.assertEqual([entry for entry in entries if entry.severity == "error"], [])
+
+    def test_missing_positive_scenario_is_error(self) -> None:
+        self.write_config()
+        change = self.tmpdir / "openspec/changes/skill-change"
+        change.mkdir(parents=True)
+        (change / "proposal.md").write_text("Change .codex/skills/example/SKILL.md\n", encoding="utf-8")
+        (change / "evaluation.md").write_text(
+            """## Pressure Scenarios
+
+| Case | Expected |
+|---|---|
+| negative should-not-trigger case | do not load skill |
+
+## Replay Evidence
+
+- input or situation shape: semantic skill change
+- trigger condition: `.codex/skills/*` edit
+- expected route: route through parent gate before edit
+- repo-visible artifact: AGENTS.md and skill file
+- expected output: route before edit
+- promotion or non-promotion boundary: repo-local only
+- proof boundary: local checker proof only
+
+## RED Baseline
+
+Observed failing command: `python3 scripts/check_behavior_assets.py` reported missing gate.
+
+## GREEN Result
+
+Manual replay record: file paths and expected observations are listed above.
+
+## Residual Risks
+
+Future agents must load repo guidance.
+""",
+            encoding="utf-8",
+        )
+
+        entries = check_behavior_assets(self.tmpdir)
+
+        self.assertTrue(any(entry.kind == "missing_positive_scenario" for entry in entries))
+
+    def test_shallow_text_exists_evidence_is_error(self) -> None:
+        self.write_config()
+        change = self.tmpdir / "openspec/changes/routing-change"
+        change.mkdir(parents=True)
+        (change / "proposal.md").write_text("Change AGENTS.md runtime routing\n", encoding="utf-8")
+        (change / "evaluation.md").write_text(
+            """## Pressure Scenarios
+
+| Case | Expected |
+|---|---|
+| positive trigger case | route through gate |
+| negative should-not-trigger case | do not route |
+| parent gate preserve case | preserve parent gate blockers |
+
+## Replay Evidence
+
+- input or situation shape: runtime route change
+- trigger condition: AGENTS.md route edit
+- expected route: route through parent gate before edit
+- repo-visible artifact: AGENTS.md
+- expected output: route before edit
+- promotion or non-promotion boundary: repo-local only
+- proof boundary: local checker proof only
+
+## RED Baseline
+
+The required text exists.
+
+## GREEN Result
+
+The text exists after editing.
+
+## Residual Risks
+
+Future agents must load repo guidance.
+""",
+            encoding="utf-8",
+        )
+
+        entries = check_behavior_assets(self.tmpdir)
+
+        self.assertTrue(any(entry.kind == "shallow_text_evidence" for entry in entries))
 
 
 if __name__ == "__main__":
