@@ -8,4 +8,4 @@
 - [x] 6. Add taxonomy gate skill and AGENTS routing.
 - [x] 7. Update known producer templates and inbox intake generation.
 - [x] 8. Migrate sample pages listed in the taxonomy contract.
-- [ ] 9. Add evaluation evidence and run verification.
+- [x] 9. Add evaluation evidence and run verification.
