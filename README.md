@@ -139,12 +139,21 @@ Use repo-local skills under `.codex/skills/`. Do not install this repo's
 `wiki-*` or `openspec-*` skills into root/user scope; duplicate registrations
 can surface obsolete namespaces.
 
+Do not reintroduce repo plugin marketplace metadata or plugin skill copies for
+this runtime surface; those registrations can surface obsolete namespaces.
+Specifically, keep `.agents/plugins/marketplace.json`,
+`plugins/report-wiki-portfolio/.codex-plugin/plugin.json`, and
+`plugins/report-wiki-portfolio/skills` absent.
+
+The `$wiki-status` skill source is `.codex/skills/wiki-status/SKILL.md`.
+
 High-frequency entry points:
 
 - `$wiki-status`: refresh and summarize generated wiki status.
 - `$wiki-manifest`: inspect generated source and routing manifest.
 - `$wiki-inbox`: review pending inbox items.
-- `$wiki-query`: build bounded context from route, context, and explicit search.
+- `$wiki-query`: bounded task-shaped context retrieval from route, context, and
+  explicit search.
 - `$wiki-explore`: explore a wiki-backed topic with evidence-surface checks.
 - `$wiki-graph`: inspect structural graph and relation analysis.
 - `$wiki-scorecard`: inspect semantic scoring and utilization diagnostics.
