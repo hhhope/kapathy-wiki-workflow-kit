@@ -18,6 +18,22 @@ Use this stack when the user asks for a Go service and does not override it:
 
 Do not use framework popularity rankings as a stronger signal than this stack.
 
+## Common Rule Boundaries
+
+This rule owns Go-specific engineering and security behavior. It does not own
+generic repository workflow policy.
+
+- File-size thresholds and refactor-first behavior come from the global
+  `Large-file guardrails` in `~/.codex/AGENTS.md`.
+- Git discipline, commit boundaries, and dirty-worktree handling come from the
+  global/root instructions.
+- General behavior-asset evaluation and prior-art dedupe come from repo
+  `AGENTS.md`, `wiki/config/behavior-asset-evaluation.yaml`, and
+  `scripts/check_behavior_assets.py`.
+- General testing policy comes from `~/.codex/rules/common/testing.md`; this
+  rule only adds Go-specific test emphasis.
+- Do not define repo-local file length thresholds here.
+
 ## Version And Migration
 
 - Treat `go.mod` as the source of truth for the target Go version.
@@ -106,7 +122,7 @@ Reject or stop for redesign when code violates these boundaries:
 - Expose or record latency, error rate, saturation, queue depth, retry count,
   timeout, and dependency-failure signals for production services.
 
-## Tests And CI
+## Go Tests And CI
 
 - Prefer table-driven tests for input/output behavior and edge cases.
 - Tests must check returned errors; do not discard errors silently.
@@ -115,8 +131,10 @@ Reject or stop for redesign when code violates these boundaries:
 - Avoid naked sleeps in tests; use polling with timeout or controlled fakes.
 - Run race detection for concurrency-sensitive code and CI gates where feasible.
 - Performance claims require benchmarks or measurements, not comments.
+- Use common testing rules for generic verification workflow and report only
+  Go-specific additions from this rule.
 
-## Project Shape
+## Go Project Shape
 
 - Prefer `cmd/<service>` for binaries and `internal/` for private application
   code.
@@ -126,8 +144,9 @@ Reject or stop for redesign when code violates these boundaries:
 - Use explicit module versions. Do not rely on `latest`, `master`, or omitted
   versions in durable project rules.
 - Generated code must be marked, reproducible, and not edited by hand.
-- README is the entry point. Long design, testing, benchmarks, and operations
-  details belong in `docs/` and should be linked from README.
+- README/docs publication quality is governed by the repo public-output gate;
+  this rule only expects Go entry points and generated artifacts to be
+  discoverable.
 
 ## Framework Selection Boundary
 

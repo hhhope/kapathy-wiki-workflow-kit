@@ -51,6 +51,15 @@ class GoEngineeringSecurityRulesTest(unittest.TestCase):
         self.assertIn("go 1.25.1", content)
         self.assertIn("Source Set", content)
 
+    def test_go_rule_references_common_rules_instead_of_redefining_generic_limits(self) -> None:
+        content = RULE.read_text(encoding="utf-8")
+
+        self.assertIn("Common Rule Boundaries", content)
+        self.assertIn("Large-file guardrails", content)
+        self.assertIn("Do not define repo-local file length thresholds here", content)
+        self.assertNotIn("500", content)
+        self.assertNotIn("> 300", content)
+
 
 if __name__ == "__main__":
     unittest.main()

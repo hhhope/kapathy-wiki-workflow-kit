@@ -71,6 +71,20 @@ def change_is_grandfathered(change_dir: Path, repo_root: Path, config: dict[str,
     return change_rel in grandfathered
 
 
+def change_is_prior_art_grandfathered(change_dir: Path, repo_root: Path, config: dict[str, Any]) -> bool:
+    change_rel = rel(change_dir, repo_root)
+    rules = config.get("prior_art_dedupe", {})
+    grandfathered = {str(value).rstrip("/") for value in rules.get("grandfathered_changes", [])}
+    return change_rel in grandfathered
+
+
+def change_requires_prior_art_dedupe(change_dir: Path, config: dict[str, Any]) -> bool:
+    rules = config.get("prior_art_dedupe", {})
+    markers = [str(value).lower() for value in rules.get("required_when_markers", [])]
+    text = change_text(change_dir).lower()
+    return any(marker in text for marker in markers)
+
+
 def check_evaluation(change_dir: Path, repo_root: Path, config: dict[str, Any]) -> list[BehaviorAssetEntry]:
     evaluation = change_dir / "evaluation.md"
     change_rel = rel(change_dir, repo_root)
@@ -160,6 +174,28 @@ def check_evaluation(change_dir: Path, repo_root: Path, config: dict[str, Any]) 
                     severity=severity(config, "shallow_text_evidence", "error"),
                     path=rel(evaluation, repo_root),
                     message=f"Evaluation relies on shallow evidence marker: {marker}",
+                )
+            )
+
+    if change_requires_prior_art_dedupe(change_dir, config) and not change_is_prior_art_grandfathered(
+        change_dir,
+        repo_root,
+        config,
+    ):
+        rules = config.get("prior_art_dedupe", {})
+        required_section = str(rules.get("required_section", "## Prior-Art / Common-Rule Dedupe"))
+        required_markers = [str(value) for value in rules.get("required_markers", [])]
+        missing = [marker for marker in [required_section, *required_markers] if marker not in content]
+        if missing:
+            entries.append(
+                BehaviorAssetEntry(
+                    kind="missing_prior_art_dedupe",
+                    severity=severity(config, "missing_prior_art_dedupe", "error"),
+                    path=rel(evaluation, repo_root),
+                    message=(
+                        "Behavior-asset change requires prior-art/common-rule "
+                        f"dedupe evidence. Missing: {', '.join(missing)}"
+                    ),
                 )
             )
     return entries

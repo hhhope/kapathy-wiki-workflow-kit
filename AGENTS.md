@@ -93,6 +93,24 @@ Sources: `wiki/adr/0027-repo-phase0-before-repo-agents-migration.md`,
 Sources: `openspec/specs/behavior-replay-gate/spec.md`,
 `wiki/ops/behavior-replay-gate.md`.
 
+## Behavior Asset Prior-Art Gate
+
+- Before semantically creating or modifying repo behavior assets such as
+  `.codex/skills/*`, `rules/*`, or `AGENTS.md`, scan existing ownership first:
+  this repo `AGENTS.md`, `PROJECT.md`, relevant `openspec/specs`,
+  `wiki/adr`, `wiki/ops`, existing repo `rules/*`, global `~/.codex/AGENTS.md`,
+  and relevant `~/.codex/rules/common/*`.
+- Classify the proposed behavior before writing it:
+  `Owns` for behavior specific to the target asset, `References` for existing
+  common/global behavior, and `Rejects` for article/example/conversation
+  material that should not be promoted.
+- Generic engineering constraints such as file-size thresholds, git discipline,
+  general testing, and behavior-asset evaluation stay in common/global rules or
+  repo governance. Domain, workflow, or stack-specific rules may reference them
+  but must not restate or override them.
+- Semantic behavior-asset changes must include `Prior-Art / Common-Rule
+  Dedupe` evidence in `evaluation.md` before completion claims.
+
 ## High-Frequency Skills
 
 Use these repo-local principle skills when the request or implementation scope
@@ -144,6 +162,8 @@ This is a runtime routing map, not an ownership map.
   daily formatting, linting, or cleanup.
 - Keep the full Go rule out of `AGENTS.md`; this section is only the route and
   hard boundary.
+- Do not add generic file-size, git, testing, or behavior-asset thresholds here;
+  route those through the Behavior Asset Prior-Art Gate and common/global rules.
 
 ## Wiki Frontmatter Taxonomy Gate
 
