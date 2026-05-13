@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>广告投流系统 · 可操作原型</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef2f7;
+      --panel: #ffffff;
+      --panel-soft: #f7f9fc;
+      --line: #dbe2ec;
+      --text: #172033;
+      --muted: #65758b;
+      --primary: #2563eb;
+      --primary-soft: #e8f0ff;
+      --success: #0f8a5f;
+      --warning: #b7791f;
+      --danger: #c2410c;
+      --ink: #0f172a;
+      --radius: 8px;
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+      font-family: "Inter", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-width: 1180px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: 220px minmax(720px, 1fr) 320px;
+      min-height: 100vh;
+    }
+
+    .side-nav {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 22px 16px;
+      background: #111827;
+      color: #e5e7eb;
+    }
+
+    .brand {
+      display: grid;
+      gap: 4px;
+      margin-bottom: 22px;
+      padding: 0 8px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .brand strong {
+      font-size: 17px;
+      color: #ffffff;
+    }
+
+    .brand span {
+      color: #9ca3af;
+      font-size: 12px;
+    }
+
+    .side-nav button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      padding: 11px 12px;
+      border-radius: var(--radius);
+      color: #d1d5db;
+      background: transparent;
+      text-align: left;
+    }
+
+    .side-nav button::after {
+      content: attr(data-count);
+      min-width: 22px;
+      color: #93c5fd;
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .side-nav button.active,
+    .side-nav button:hover {
+      background: #1f2937;
+      color: #ffffff;
+    }
+
+    .workspace {
+      min-width: 0;
+      padding: 20px 24px 42px;
+    }
+
+    .top-bar {
+      display: grid;
+      grid-template-columns: 180px 1fr 180px 156px;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .top-bar select,
+    .top-bar input,
+    .field input,
+    .field select {
+      width: 100%;
+      height: 38px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .tenant {
+      color: var(--muted);
+    }
+
+    .reset-button,
+    .primary-button,
+    .secondary-button,
+    .danger-button {
+      min-height: 38px;
+      padding: 0 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .reset-button,
+    .secondary-button {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--text);
+    }
+
+    .primary-button {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .danger-button {
+      background: #fff7ed;
+      color: var(--danger);
+      border: 1px solid #fed7aa;
+    }
+
+    .module-page {
+      display: none;
+    }
+
+    .module-page.active {
+      display: block;
+    }
+
+    .module-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .caption {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid.cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .panel {
+      margin-bottom: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .metric {
+      min-height: 108px;
+      display: grid;
+      gap: 8px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric strong {
+      font-size: 26px;
+      color: var(--ink);
+    }
+
+    .metric button {
+      justify-self: start;
+      background: transparent;
+      color: var(--primary);
+      font-weight: 700;
+      padding: 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      align-items: end;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .table th,
+    .table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .table th {
+      background: var(--panel-soft);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .badge.success {
+      background: #e7f7ef;
+      color: var(--success);
+    }
+
+    .badge.warning {
+      background: #fff7db;
+      color: var(--warning);
+    }
+
+    .badge.danger {
+      background: #fff1e8;
+      color: var(--danger);
+    }
+
+    .diagram,
+    .sequence {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfdff;
+    }
+
+    .diagram-flow,
+    .sequence-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .node,
+    .step {
+      min-height: 34px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .arrow {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .state-rail {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      padding: 20px 16px;
+      border-left: 1px solid var(--line);
+      background: #f8fafc;
+    }
+
+    .rail-block {
+      margin-bottom: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+    }
+
+    .rail-block ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .rail-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+      color: var(--muted);
+    }
+
+    .rail-log {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .rail-log li {
+      padding: 8px;
+      border-radius: 6px;
+      background: var(--panel-soft);
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="side-nav" aria-label="主模块导航">
+      <div class="brand">
+        <strong>广告投流系统</strong>
+        <span>operational backstage prototype</span>
+      </div>
+      <button data-module="overview" data-count="01" type="button">总览</button>
+      <button data-module="advertiser" data-count="02" type="button">投流方</button>
+      <button data-module="traffic" data-count="03" type="button">流量方</button>
+      <button data-module="platform" data-count="04" type="button">平台运营</button>
+      <button data-module="core" data-count="05" type="button">广告核心</button>
+      <button data-module="rules" data-count="06" type="button">规则引擎</button>
+      <button data-module="finance" data-count="07" type="button">财务管理</button>
+      <button data-module="integration" data-count="08" type="button">埋点与三方</button>
+      <button data-module="reports" data-count="09" type="button">报表监控</button>
+    </aside>
+
+    <div class="workspace">
+      <header class="top-bar">
+        <select id="roleSwitcher" aria-label="角色切换">
+          <option>平台管理员</option>
+          <option>广告主/优化师</option>
+          <option>流量方</option>
+          <option>财务</option>
+          <option>运维</option>
+        </select>
+        <span id="currentTenant" class="tenant">当前租户：示例广告主 · 模拟时间 2026-05-13 10:30</span>
+        <input id="globalSearch" type="search" placeholder="搜索计划 / 媒体 / 规则">
+        <button id="resetPrototype" class="reset-button" type="button">重置模拟数据</button>
+      </header>
+
+      <main id="mainContent">
+        <section id="module-overview" class="module-page" data-module="overview">
+          <div class="module-head">
+            <div>
+              <h1>总览</h1>
+              <p class="caption">平台健康、预算、媒体 API、规则执行和实时监控入口。</p>
+            </div>
+            <span class="badge success" id="activeRoleBadge">平台管理员</span>
+          </div>
+          <div class="grid cols-4" id="overviewMetrics"></div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>系统架构</h2>
+              <div class="diagram" data-diagram="overall-architecture">
+                <div class="diagram-flow">
+                  <span class="node">广告主工作台</span><span class="arrow">-></span><span class="node">广告核心</span><span class="arrow">-></span><span class="node">规则引擎</span><span class="arrow">-></span><span class="node">媒体 API</span>
+                  <span class="node">埋点 SDK</span><span class="arrow">-></span><span class="node">实时数仓</span><span class="arrow">-></span><span class="node">报表监控</span><span class="arrow">-></span><span class="node">平台运营</span>
+                </div>
+              </div>
+            </div>
+            <div class="panel">
+              <h2>实时报告数据流</h2>
+              <div class="sequence" data-sequence="realtime-report-sequence">
+                <div class="sequence-flow">
+                  <span class="step">SDK/API 事件</span><span class="arrow">-></span><span class="step">流式清洗</span><span class="arrow">-></span><span class="step">指标聚合</span><span class="arrow">-></span><span class="step">实时监控</span><span class="arrow">-></span><span class="step">自定义报表</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>跨模块最近状态</h2>
+            <div id="overviewStatus"></div>
+          </div>
+        </section>
+
+        <section id="module-advertiser" class="module-page" data-module="advertiser">
+          <div class="module-head">
+            <div>
+              <h1>投流方</h1>
+              <p class="caption">日预算、总预算、时段预算、成本控制、量级优先、ROI 最优与复盘报告。</p>
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>预算配置</h2>
+              <form id="budgetForm" class="form-grid">
+                <div class="field"><label for="dailyBudget">日预算</label><input id="dailyBudget" type="number" min="1000" value="12000"></div>
+                <div class="field"><label for="totalBudget">总预算</label><input id="totalBudget" type="number" min="1000" value="36000"></div>
+                <div class="field"><label for="timeWindowBudget">时段预算</label><input id="timeWindowBudget" type="text" value="08:00-23:00"></div>
+                <button id="submitBudget" class="primary-button" type="submit">保存预算</button>
+              </form>
+            </div>
+            <div class="panel">
+              <h2>投放策略</h2>
+              <form id="strategyForm" class="form-grid">
+                <div class="field"><label for="strategyType">策略类型</label><select id="strategyType"><option>成本控制</option><option>量级优先</option><option selected>ROI 最优</option></select></div>
+                <div class="field"><label for="targetCpa">目标 CPA</label><input id="targetCpa" type="number" value="20"></div>
+                <div class="field"><label for="bidInterval">调价频率</label><select id="bidInterval"><option>5 分钟</option><option selected>10 分钟</option><option>30 分钟</option></select></div>
+                <button id="submitStrategy" class="primary-button" type="submit">保存策略</button>
+              </form>
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>投流方架构</h2>
+              <div class="diagram" data-diagram="advertiser-architecture">
+                <div class="diagram-flow"><span class="node">账户</span><span class="arrow">-></span><span class="node">计划</span><span class="arrow">-></span><span class="node">广告组</span><span class="arrow">-></span><span class="node">创意</span><span class="arrow">-></span><span class="node">监测指标</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <h2>预算设置与扣费链路</h2>
+              <div class="sequence" data-sequence="budget-sequence">
+                <div class="sequence-flow"><span class="step">提交预算</span><span class="arrow">-></span><span class="step">余额校验</span><span class="arrow">-></span><span class="step">预算冻结</span><span class="arrow">-></span><span class="step">消耗扣减</span><span class="arrow">-></span><span class="step">报表回写</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="action-row">
+              <button id="generateReviewReport" class="secondary-button" type="button">生成复盘报告</button>
+              <span class="badge">监控指标：CPA / ROI / 花费突增 / 转化下降</span>
+            </div>
+          </div>
+          <div class="panel" id="advertiserTables"></div>
+        </section>
+
+        <section id="module-traffic" class="module-page" data-module="traffic">
+          <div class="module-head">
+            <div>
+              <h1>流量方</h1>
+              <p class="caption">流量源、App、广告位、曝光转化看板和接入状态。</p>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>广告位创建</h2>
+            <form id="trafficPlacementForm" class="form-grid">
+              <div class="field"><label for="trafficApp">App 名称</label><input id="trafficApp" type="text" value="自营流量 App"></div>
+              <div class="field"><label for="placementType">广告位</label><select id="placementType"><option>开屏</option><option>激励视频</option><option selected>信息流</option><option>插屏</option><option>Banner</option></select></div>
+              <div class="field"><label for="placementStatus">接入状态</label><select id="placementStatus"><option>测试中</option><option>上线</option><option>异常</option></select></div>
+              <button id="createTrafficPlacement" class="primary-button" type="submit">创建广告位</button>
+            </form>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>流量方架构</h2>
+              <div class="diagram" data-diagram="traffic-architecture">
+                <div class="diagram-flow"><span class="node">流量源注册</span><span class="arrow">-></span><span class="node">App 创建</span><span class="arrow">-></span><span class="node">广告位</span><span class="arrow">-></span><span class="node">SDK 测试</span><span class="arrow">-></span><span class="node">上线分发</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <h2>广告位接入链路</h2>
+              <div class="sequence" data-sequence="traffic-placement-sequence">
+                <div class="sequence-flow"><span class="step">创建广告位</span><span class="arrow">-></span><span class="step">生成代码位</span><span class="arrow">-></span><span class="step">发送测试事件</span><span class="arrow">-></span><span class="step">验收上线</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel" id="trafficTables"></div>
+        </section>
+
+        <section id="module-platform" class="module-page" data-module="platform">
+          <div class="module-head">
+            <div>
+              <h1>平台运营</h1>
+              <p class="caption">广告主收益评估、ROI/LTV/CAC、CPM -> CPC -> CPA -> CPS 漏斗与异常处理。</p>
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>平台架构</h2>
+              <div class="diagram" data-diagram="platform-architecture">
+                <div class="diagram-flow"><span class="node">收益排行</span><span class="arrow">-></span><span class="node">价值评估</span><span class="arrow">-></span><span class="node">漏斗监控</span><span class="arrow">-></span><span class="node">运营动作</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <h2>收益评估链路</h2>
+              <div class="sequence" data-sequence="revenue-evaluation-sequence">
+                <div class="sequence-flow"><span class="step">成本汇总</span><span class="arrow">-></span><span class="step">转化收入</span><span class="arrow">-></span><span class="step">ROI / LTV / CAC</span><span class="arrow">-></span><span class="step">运营排序</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>漏斗告警处理</h2>
+            <div class="split">
+              <div>
+                <div class="sequence" data-sequence="funnel-alert-sequence">
+                  <div class="sequence-flow"><span class="step">漏斗断崖</span><span class="arrow">-></span><span class="step">P1 告警</span><span class="arrow">-></span><span class="step">暂停计划</span><span class="arrow">-></span><span class="step">通知优化师</span><span class="arrow">-></span><span class="step">记录观察</span></div>
+                </div>
+              </div>
+              <button id="handleFunnelAlert" class="danger-button" type="button">处理漏斗告警</button>
+            </div>
+          </div>
+          <div class="panel" id="platformTables"></div>
+        </section>
+
+        <section id="module-core" class="module-page" data-module="core">
+          <div class="module-head">
+            <div>
+              <h1>广告核心</h1>
+              <p class="caption">媒体账户、跨媒体复制、自动调价、预算分配、创意轮播、多维度归因与 LTV 回传。</p>
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>广告核心架构</h2>
+              <div class="diagram" data-diagram="core-architecture">
+                <div class="diagram-flow"><span class="node">媒体账户</span><span class="arrow">-></span><span class="node">计划映射</span><span class="arrow">-></span><span class="node">智能策略</span><span class="arrow">-></span><span class="node">预算分配</span><span class="arrow">-></span><span class="node">归因回传</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <h2>跨媒体复制</h2>
+              <div class="sequence" data-sequence="cross-media-copy-sequence">
+                <div class="sequence-flow"><span class="step">选择源计划</span><span class="arrow">-></span><span class="step">字段映射</span><span class="arrow">-></span><span class="step">生成目标计划</span><span class="arrow">-></span><span class="step">媒体校验</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>自动调价</h2>
+              <div class="sequence" data-sequence="auto-bid-sequence">
+                <div class="sequence-flow"><span class="step">CPA 超目标</span><span class="arrow">-></span><span class="step">计算上限</span><span class="arrow">-></span><span class="step">下调出价</span><span class="arrow">-></span><span class="step">写入策略日志</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <h2>核心操作</h2>
+              <div class="action-row">
+                <button id="copyCampaignAcrossMedia" class="primary-button" type="button">跨媒体复制</button>
+                <button id="runAutoBidSimulation" class="secondary-button" type="button">运行自动调价</button>
+                <button id="redistributeBudget" class="secondary-button" type="button">预算分配</button>
+                <button id="sendLtvCallback" class="secondary-button" type="button">发送 LTV 回传</button>
+              </div>
+              <p class="caption">创意轮播模式：均匀轮播 / CTR 加权 / Explore-Exploit。</p>
+            </div>
+          </div>
+          <div class="panel" id="coreTables"></div>
+        </section>
+
+        <section id="module-rules" class="module-page" data-module="rules">
+          <div class="module-head">
+            <div>
+              <h1>规则引擎</h1>
+              <p class="caption">无代码条件块、AND/OR 逻辑、动作块、测试、发布和回滚。</p>
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>规则引擎架构</h2>
+              <div class="diagram" data-diagram="rules-architecture">
+                <div class="diagram-flow"><span class="node">条件块</span><span class="arrow">-></span><span class="node">逻辑编排</span><span class="arrow">-></span><span class="node">动作块</span><span class="arrow">-></span><span class="node">执行日志</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <h2>规则执行链路</h2>
+              <div class="sequence" data-sequence="rule-execution-sequence">
+                <div class="sequence-flow"><span class="step">草稿</span><span class="arrow">-></span><span class="step">测试</span><span class="arrow">-></span><span class="step">发布</span><span class="arrow">-></span><span class="step">运行</span><span class="arrow">-></span><span class="step">暂停 / 回滚</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="action-row">
+              <button id="testRule" class="secondary-button" type="button">测试规则</button>
+              <button id="publishRule" class="primary-button" type="button">发布规则</button>
+              <span class="badge">条件：Spend / CPA / ROI / Conversion count / Time window / Media / Campaign</span>
+            </div>
+          </div>
+          <div class="panel" id="rulesTables"></div>
+        </section>
+
+        <section id="module-finance" class="module-page" data-module="finance">
+          <div class="module-head">
+            <div>
+              <h1>财务管理</h1>
+              <p class="caption">商户充值、预算冻结、扣减、释放、退款、开票和流水明细。</p>
+            </div>
+          </div>
+          <div class="grid cols-3">
+            <div class="panel">
+              <h2>商户充值</h2>
+              <form id="rechargeForm" class="grid">
+                <div class="field"><label for="rechargeAmount">充值金额</label><input id="rechargeAmount" type="number" value="20000"></div>
+                <div class="field"><label for="paymentChannel">支付渠道</label><select id="paymentChannel"><option>网银</option><option selected>企业支付宝</option><option>线下转账</option></select></div>
+                <button id="rechargeMerchant" class="primary-button" type="submit">模拟充值回调</button>
+              </form>
+            </div>
+            <div class="panel">
+              <h2>退款</h2>
+              <form id="refundForm" class="grid">
+                <div class="field"><label for="refundAmount">退款金额</label><input id="refundAmount" type="number" value="3000"></div>
+                <div class="field"><label for="refundReason">退款原因</label><input id="refundReason" type="text" value="计划提前结束"></div>
+                <button id="submitRefund" class="secondary-button" type="submit">提交退款</button>
+              </form>
+            </div>
+            <div class="panel">
+              <h2>开票</h2>
+              <form id="invoiceForm" class="grid">
+                <div class="field"><label for="invoiceAmount">开票金额</label><input id="invoiceAmount" type="number" value="12000"></div>
+                <div class="field"><label for="invoiceTitle">发票抬头</label><input id="invoiceTitle" type="text" value="示例广告主有限公司"></div>
+                <button id="submitInvoice" class="secondary-button" type="submit">提交开票</button>
+              </form>
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>财务架构</h2>
+              <div class="diagram" data-diagram="finance-architecture">
+                <div class="diagram-flow"><span class="node">余额账户</span><span class="arrow">-></span><span class="node">冻结预算</span><span class="arrow">-></span><span class="node">消耗扣减</span><span class="arrow">-></span><span class="node">退款 / 开票</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <h2>财务流程序列</h2>
+              <div class="sequence" data-sequence="finance-sequence">
+                <div class="sequence-flow"><span class="step">Recharge</span><span class="arrow">-></span><span class="step">Balance</span><span class="arrow">-></span><span class="step">Freeze / Deduct / Release</span><span class="arrow">-></span><span class="step">Refund</span><span class="arrow">-></span><span class="step">Invoice</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel" id="financeTables"></div>
+        </section>
+
+        <section id="module-integration" class="module-page" data-module="integration">
+          <div class="module-head">
+            <div>
+              <h1>埋点与三方</h1>
+              <p class="caption">Web SDK、Android SDK、iOS SDK、Server API、AppKey、AppSecret 和归因伙伴。</p>
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>接入凭证</h2>
+              <div class="action-row">
+                <button id="generateCredentials" class="primary-button" type="button">生成 AppKey / AppSecret</button>
+                <button id="sendTestEvent" class="secondary-button" type="button">发送测试事件</button>
+              </div>
+              <p class="caption">支持事件：曝光、点击、转化、Purchase。归因伙伴：AppsFlyer / Adjust / 热云 / 自建归因。</p>
+            </div>
+            <div class="panel">
+              <h2>埋点架构</h2>
+              <div class="diagram" data-diagram="integration-architecture">
+                <div class="diagram-flow"><span class="node">SDK</span><span class="arrow">-></span><span class="node">API 网关</span><span class="arrow">-></span><span class="node">事件清洗</span><span class="arrow">-></span><span class="node">归因回调</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>SDK 事件追踪链路</h2>
+            <div class="sequence" data-sequence="tracking-sequence">
+              <div class="sequence-flow"><span class="step">AppKey 校验</span><span class="arrow">-></span><span class="step">SDK 上报</span><span class="arrow">-></span><span class="step">事件去重</span><span class="arrow">-></span><span class="step">多维度归因</span><span class="arrow">-></span><span class="step">媒体优化反馈</span></div>
+            </div>
+          </div>
+          <div class="panel" id="integrationTables"></div>
+        </section>
+
+        <section id="module-reports" class="module-page" data-module="reports">
+          <div class="module-head">
+            <div>
+              <h1>报表监控</h1>
+              <p class="caption">实时报告、自定义报表、QPS、失败率、媒体 API 延迟和告警中心。</p>
+            </div>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <h2>自定义报表</h2>
+              <div class="form-grid">
+                <div class="field"><label for="reportDimensions">维度</label><select id="reportDimensions"><option>媒体 + 计划</option><option>广告主 + 日期</option><option>广告位 + 事件</option></select></div>
+                <div class="field"><label for="reportMetrics">指标</label><select id="reportMetrics"><option>花费 / 点击 / 转化</option><option>CPA / ROAS</option><option>QPS / 失败率</option></select></div>
+                <button id="saveReportTemplate" class="primary-button" type="button">保存自定义报表</button>
+                <button id="confirmMonitoringAlert" class="secondary-button" type="button">确认监控告警</button>
+              </div>
+            </div>
+            <div class="panel">
+              <h2>报表监控架构</h2>
+              <div class="diagram" data-diagram="reports-architecture">
+                <div class="diagram-flow"><span class="node">实时指标</span><span class="arrow">-></span><span class="node">模板配置</span><span class="arrow">-></span><span class="node">监控阈值</span><span class="arrow">-></span><span class="node">告警中心</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel" id="reportsTables"></div>
+        </section>
+      </main>
+    </div>
+
+    <aside id="stateRail" class="state-rail" aria-label="状态与日志"></aside>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "ad-platform-operational-prototype-state";
+
+    function seedState() {
+      return {
+        activeModule: "overview",
+        role: "平台管理员",
+        advertisers: [{ id: "adv-001", name: "示例广告主", balance: 128000, roas: 3.8, refunds: [], invoices: [], credentials: null }],
+        trafficSources: [{ id: "ts-001", name: "自营流量 App", placement: "信息流", status: "测试中", impressions: 860000, clicks: 26400, conversions: 1840, revenue: 97000 }],
+        mediaAccounts: [
+          { id: "ma-001", media: "巨量引擎", status: "已授权" },
+          { id: "ma-002", media: "腾讯广告", status: "已授权" },
+          { id: "ma-003", media: "Google Ads", status: "待同步" },
+          { id: "ma-004", media: "Meta", status: "未授权" },
+          { id: "ma-005", media: "自营媒体", status: "已授权" }
+        ],
+        campaigns: [{ id: "camp-001", name: "春促 ROI 计划", status: "投放中", budget: 30000, spent: 18420, bid: 18.6, strategy: "ROI 最优", media: "巨量引擎" }],
+        budgets: [{ id: "budget-001", campaignId: "camp-001", daily: 10000, total: 30000, timeWindow: "09:00-22:00", frozen: 30000, spent: 18420 }],
+        strategies: [{ id: "strategy-001", campaignId: "camp-001", type: "ROI 最优", targetCpa: 20, bidInterval: "10 分钟" }],
+        rules: [{ id: "rule-001", name: "CPA 超标自动降价", status: "运行中", condition: "CPA > 目标 * 1.2", action: "自动调价 -5%" }],
+        alerts: [
+          { id: "alert-001", type: "漏斗断崖", status: "未处理", level: "P1", action: "通知优化师" },
+          { id: "alert-002", type: "媒体 API 延迟", status: "待确认", level: "P2", action: "分配运维" }
+        ],
+        financeLedger: [{ id: "ledger-001", type: "充值", amount: 50000, status: "成功" }],
+        trackingEvents: [{ id: "event-001", event: "purchase", source: "SDK", status: "已入库" }],
+        reports: [{ id: "report-001", name: "投流日报", status: "已生成" }],
+        operationsLog: ["系统加载 seeded mock state"]
+      };
+    }
+
+    let state = loadState();
+
+    function loadState() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return seedState();
+      try {
+        return JSON.parse(raw);
+      } catch (_error) {
+        return seedState();
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function resetState() {
+      state = seedState();
+      saveState();
+      render();
+    }
+
+    function setActiveModule(moduleId) {
+      state.activeModule = moduleId;
+      saveState();
+      render();
+    }
+
+    function switchRole(role) {
+      state.role = role;
+      updateLog(`切换角色为 ${role}`);
+      render();
+    }
+
+    function updateLog(message) {
+      state.operationsLog.unshift(`${new Date().toLocaleTimeString()} ${message}`);
+      state.operationsLog = state.operationsLog.slice(0, 12);
+      saveState();
+    }
+
+    function money(value) {
+      return `¥${Number(value || 0).toLocaleString("zh-CN")}`;
+    }
+
+    function pct(value) {
+      return `${Number(value || 0).toFixed(2)}%`;
+    }
+
+    function badgeClass(status) {
+      if (/成功|已授权|上线|运行中|已生成|已入库|已处理|已发布/.test(status)) return "success";
+      if (/未处理|异常|超标|暂停/.test(status)) return "danger";
+      return "warning";
+    }
+
+    function table(headers, rows) {
+      return `<table class="table"><thead><tr>${headers.map((item) => `<th>${item}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table>`;
+    }
+
+    function renderOverview() {
+      const campaign = state.campaigns[0];
+      const budget = state.budgets[0];
+      const source = state.trafficSources[0];
+      const advertiser = state.advertisers[0];
+      const metrics = [
+        ["花费", money(campaign.spent), "查看预算", "advertiser"],
+        ["曝光", source.impressions.toLocaleString("zh-CN"), "查看流量", "traffic"],
+        ["点击", source.clicks.toLocaleString("zh-CN"), "查看漏斗", "platform"],
+        ["转化", source.conversions.toLocaleString("zh-CN"), "查看报表", "reports"],
+        ["CPA", money(campaign.spent / Math.max(source.conversions, 1)), "查看策略", "core"],
+        ["ROAS", `${advertiser.roas}x`, "收益评估", "platform"],
+        ["余额", money(advertiser.balance), "财务管理", "finance"],
+        ["活跃告警", state.alerts.filter((alert) => alert.status !== "已处理" && alert.status !== "已关闭").length, "告警中心", "reports"]
+      ];
+      document.getElementById("overviewMetrics").innerHTML = metrics.map(([label, value, action, module]) => `<div class="metric"><span>${label}</span><strong>${value}</strong><button type="button" data-jump="${module}">${action}</button></div>`).join("");
+      document.getElementById("overviewStatus").innerHTML = table(
+        ["对象", "当前状态", "说明"],
+        [
+          `<tr><td>${campaign.name}</td><td><span class="badge ${badgeClass(campaign.status)}">${campaign.status}</span></td><td>预算 ${money(budget.total)}，策略 ${campaign.strategy}</td></tr>`,
+          `<tr><td>${source.name}</td><td><span class="badge ${badgeClass(source.status)}">${source.status}</span></td><td>广告位 ${source.placement}，CTR ${pct(source.clicks / Math.max(source.impressions, 1) * 100)}</td></tr>`,
+          `<tr><td>${state.rules[0].name}</td><td><span class="badge ${badgeClass(state.rules[0].status)}">${state.rules[0].status}</span></td><td>${state.rules[0].condition}，${state.rules[0].action}</td></tr>`
+        ]
+      );
+    }
+
+    function renderAdvertiser() {
+      document.getElementById("advertiserTables").innerHTML = table(
+        ["计划", "预算", "消耗", "时段", "策略", "状态"],
+        state.campaigns.map((campaign) => {
+          const budget = state.budgets.find((item) => item.campaignId === campaign.id) || state.budgets[0];
+          return `<tr><td>${campaign.name}</td><td>${money(budget.total)} / 日 ${money(budget.daily)}</td><td>${money(campaign.spent)}</td><td>${budget.timeWindow}</td><td><span class="badge">${campaign.strategy}</span></td><td><span class="badge ${badgeClass(campaign.status)}">${campaign.status}</span></td></tr>`;
+        })
+      );
+    }
+
+    function renderTraffic() {
+      document.getElementById("trafficTables").innerHTML = table(
+        ["流量源", "广告位", "状态", "曝光", "CTR", "转化", "收入"],
+        state.trafficSources.map((source) => `<tr><td>${source.name}</td><td>${source.placement}</td><td><span class="badge ${badgeClass(source.status)}">${source.status}</span></td><td>${source.impressions.toLocaleString("zh-CN")}</td><td>${pct(source.clicks / Math.max(source.impressions, 1) * 100)}</td><td>${source.conversions.toLocaleString("zh-CN")}</td><td>${money(source.revenue)}</td></tr>`)
+      );
+    }
+
+    function renderPlatform() {
+      const advertiser = state.advertisers[0];
+      document.getElementById("platformTables").innerHTML = table(
+        ["广告主", "ROI", "LTV", "CAC", "CPM", "CPC", "CPA", "CPS"],
+        [`<tr><td>${advertiser.name}</td><td>${advertiser.roas}x</td><td>${money(286)}</td><td>${money(64)}</td><td>${money(28)}</td><td>${money(1.6)}</td><td>${money(18)}</td><td>${money(71)}</td></tr>`]
+      );
+    }
+
+    function renderCore() {
+      const accountRows = state.mediaAccounts.map((account) => `<tr><td>${account.media}</td><td><span class="badge ${badgeClass(account.status)}">${account.status}</span></td><td>账户 ${account.id}</td></tr>`);
+      const campaignRows = state.campaigns.map((campaign) => `<tr><td>${campaign.name}</td><td>${campaign.media || "巨量引擎"}</td><td>${money(campaign.budget)}</td><td>${money(campaign.bid)}</td><td>${campaign.strategy}</td><td>${campaign.status}</td></tr>`);
+      document.getElementById("coreTables").innerHTML = `<div class="grid cols-2"><div>${table(["媒体", "授权", "编号"], accountRows)}</div><div>${table(["计划", "媒体", "预算", "出价", "策略", "状态"], campaignRows)}</div></div>`;
+    }
+
+    function renderRules() {
+      document.getElementById("rulesTables").innerHTML = table(
+        ["规则", "状态", "条件", "动作"],
+        state.rules.map((rule) => `<tr><td>${rule.name}</td><td><span class="badge ${badgeClass(rule.status)}">${rule.status}</span></td><td>${rule.condition}</td><td>${rule.action}</td></tr>`)
+      );
+    }
+
+    function renderFinance() {
+      document.getElementById("financeTables").innerHTML = table(
+        ["流水", "类型", "金额", "状态"],
+        state.financeLedger.map((item) => `<tr><td>${item.id}</td><td>${item.type}</td><td>${money(item.amount)}</td><td><span class="badge ${badgeClass(item.status)}">${item.status}</span></td></tr>`)
+      );
+    }
+
+    function renderIntegration() {
+      const advertiser = state.advertisers[0];
+      const credentials = advertiser.credentials ? `${advertiser.credentials.appKey} / ${advertiser.credentials.appSecret}` : "待生成";
+      document.getElementById("integrationTables").innerHTML = `<p class="caption">当前凭证：${credentials}</p>` + table(
+        ["事件", "来源", "状态"],
+        state.trackingEvents.map((event) => `<tr><td>${event.event}</td><td>${event.source}</td><td><span class="badge ${badgeClass(event.status)}">${event.status}</span></td></tr>`)
+      );
+    }
+
+    function renderReports() {
+      document.getElementById("reportsTables").innerHTML = table(
+        ["报表", "状态", "说明"],
+        state.reports.map((report) => `<tr><td>${report.name}</td><td><span class="badge ${badgeClass(report.status)}">${report.status}</span></td><td>${report.note || "Spend / Impressions / Clicks / Conversions / CPA / ROAS"}</td></tr>`)
+      );
+    }
+
+    function renderRail() {
+      const advertiser = state.advertisers[0];
+      const activeAlerts = state.alerts.filter((alert) => alert.status !== "已处理" && alert.status !== "已关闭");
+      document.getElementById("stateRail").innerHTML = `
+        <div class="rail-block">
+          <h3>状态摘要</h3>
+          <div class="rail-line"><span>角色</span><strong>${state.role}</strong></div>
+          <div class="rail-line"><span>余额</span><strong>${money(advertiser.balance)}</strong></div>
+          <div class="rail-line"><span>活跃告警</span><strong>${activeAlerts.length}</strong></div>
+          <div class="rail-line"><span>刷新</span><strong>${new Date().toLocaleTimeString()}</strong></div>
+        </div>
+        <div class="rail-block">
+          <h3>告警</h3>
+          <ul>${activeAlerts.map((alert) => `<li>${alert.level} ${alert.type} · ${alert.status}</li>`).join("") || "<li>无待处理告警</li>"}</ul>
+        </div>
+        <div class="rail-block">
+          <h3>规则执行</h3>
+          <ul>${state.rules.slice(0, 4).map((rule) => `<li>${rule.name} · ${rule.status}</li>`).join("")}</ul>
+        </div>
+        <div class="rail-block">
+          <h3>操作日志</h3>
+          <ul class="rail-log">${state.operationsLog.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </div>
+      `;
+    }
+
+    function render() {
+      document.querySelectorAll("[data-module]").forEach((button) => {
+        if (button.tagName === "BUTTON") button.classList.toggle("active", button.dataset.module === state.activeModule);
+      });
+      document.querySelectorAll(".module-page").forEach((section) => {
+        section.classList.toggle("active", section.dataset.module === state.activeModule);
+      });
+      document.getElementById("roleSwitcher").value = state.role;
+      document.getElementById("activeRoleBadge").textContent = state.role;
+      renderOverview();
+      renderAdvertiser();
+      renderTraffic();
+      renderPlatform();
+      renderCore();
+      renderRules();
+      renderFinance();
+      renderIntegration();
+      renderReports();
+      renderRail();
+      document.querySelectorAll("[data-jump]").forEach((button) => {
+        button.onclick = () => setActiveModule(button.dataset.jump);
+      });
+    }
+
+    function submitBudget(event) {
+      event.preventDefault();
+      const daily = Number(document.getElementById("dailyBudget").value);
+      const total = Number(document.getElementById("totalBudget").value);
+      const timeWindow = document.getElementById("timeWindowBudget").value;
+      const budget = state.budgets[0];
+      budget.daily = daily;
+      budget.total = total;
+      budget.timeWindow = timeWindow;
+      budget.frozen = total;
+      state.campaigns[0].budget = total;
+      state.financeLedger.unshift({ id: `ledger-${Date.now()}`, type: "预算冻结", amount: total, status: "成功" });
+      updateLog(`提交预算：日预算 ${money(daily)}，总预算 ${money(total)}，时段预算 ${timeWindow}`);
+      render();
+    }
+
+    function submitStrategy(event) {
+      event.preventDefault();
+      const type = document.getElementById("strategyType").value;
+      const targetCpa = Number(document.getElementById("targetCpa").value);
+      const bidInterval = document.getElementById("bidInterval").value;
+      const strategy = state.strategies[0];
+      strategy.type = type;
+      strategy.targetCpa = targetCpa;
+      strategy.bidInterval = bidInterval;
+      state.campaigns[0].strategy = type;
+      updateLog(`提交策略：${type}，目标 CPA ${money(targetCpa)}，调价频率 ${bidInterval}`);
+      render();
+    }
+
+    function createTrafficPlacement(event) {
+      event.preventDefault();
+      const appName = document.getElementById("trafficApp").value;
+      const placement = document.getElementById("placementType").value;
+      const status = document.getElementById("placementStatus").value;
+      state.trafficSources.unshift({ id: `ts-${Date.now()}`, name: appName, placement, status, impressions: 0, clicks: 0, conversions: 0, revenue: 0 });
+      state.trackingEvents.unshift({ id: `event-${Date.now()}`, event: `${placement} test_impression`, source: "SDK", status: "测试中" });
+      updateLog(`创建广告位：${appName} / ${placement}，状态 ${status}`);
+      render();
+    }
+
+    function handleFunnelAlert() {
+      const alert = state.alerts.find((item) => item.id === "alert-001") || state.alerts[0];
+      alert.status = "已处理";
+      alert.action = "已暂停计划并通知优化师";
+      state.campaigns[0].status = "暂停观察";
+      updateLog("处理漏斗告警：暂停计划，通知优化师，记录观察");
+      render();
+    }
+
+    function copyCampaignAcrossMedia() {
+      const source = state.campaigns[0];
+      const target = { ...source, id: `camp-${Date.now()}`, name: `${source.name} - 腾讯广告复制`, media: "腾讯广告", status: "待媒体校验", spent: 0 };
+      state.campaigns.push(target);
+      state.budgets.push({ id: `budget-${Date.now()}`, campaignId: target.id, daily: Math.round(source.budget / 5), total: source.budget, timeWindow: "09:00-22:00", frozen: source.budget, spent: 0 });
+      updateLog("跨媒体复制：完成字段映射并创建腾讯广告目标计划");
+      render();
+    }
+
+    function runAutoBidSimulation() {
+      const campaign = state.campaigns[0];
+      campaign.bid = Math.max(1, Number((campaign.bid * 0.95).toFixed(2)));
+      state.rules.unshift({ id: `rule-${Date.now()}`, name: "自动调价模拟", status: "已执行", condition: "CPA over target", action: `自动调价至 ${money(campaign.bid)}` });
+      updateLog(`自动调价：CPA 超目标，出价调整为 ${money(campaign.bid)}`);
+      render();
+    }
+
+    function redistributeBudget() {
+      const campaign = state.campaigns[0];
+      const moveAmount = Math.min(5000, campaign.budget);
+      campaign.budget += moveAmount;
+      state.budgets[0].total += moveAmount;
+      state.financeLedger.unshift({ id: `ledger-${Date.now()}`, type: "预算分配", amount: moveAmount, status: "成功" });
+      updateLog(`预算分配：向高 ROAS 计划追加 ${money(moveAmount)}`);
+      render();
+    }
+
+    function sendLtvCallback() {
+      state.trackingEvents.unshift({ id: `event-${Date.now()}`, event: "ltv_callback", source: "Server API", status: "已回传" });
+      updateLog("LTV 回传：多维度归因结果已反馈媒体优化接口");
+      render();
+    }
+
+    function testRule() {
+      const rule = state.rules[0];
+      rule.status = "已测试";
+      updateLog(`规则测试：${rule.name} 命中 mock campaign`);
+      render();
+    }
+
+    function publishRule() {
+      const rule = state.rules[0];
+      rule.status = "运行中";
+      updateLog(`规则发布：${rule.name} 已进入运行中`);
+      render();
+    }
+
+    function rechargeMerchant(event) {
+      event.preventDefault();
+      const amount = Number(document.getElementById("rechargeAmount").value);
+      const channel = document.getElementById("paymentChannel").value;
+      state.advertisers[0].balance += amount;
+      state.financeLedger.unshift({ id: `ledger-${Date.now()}`, type: `充值-${channel}`, amount, status: "成功" });
+      updateLog(`商户充值：${channel} 回调成功，余额增加 ${money(amount)}`);
+      render();
+    }
+
+    function submitRefund(event) {
+      event.preventDefault();
+      const amount = Number(document.getElementById("refundAmount").value);
+      const reason = document.getElementById("refundReason").value;
+      state.financeLedger.unshift({ id: `ledger-${Date.now()}`, type: `退款-${reason}`, amount, status: "待审核" });
+      updateLog(`退款申请：${money(amount)} 已提交审核`);
+      render();
+    }
+
+    function submitInvoice(event) {
+      event.preventDefault();
+      const amount = Number(document.getElementById("invoiceAmount").value);
+      const title = document.getElementById("invoiceTitle").value;
+      state.financeLedger.unshift({ id: `ledger-${Date.now()}`, type: `开票-${title}`, amount, status: "待开票" });
+      updateLog(`开票申请：${title} ${money(amount)} 已提交`);
+      render();
+    }
+
+    function generateCredentials() {
+      state.advertisers[0].credentials = { appKey: `app_${Date.now()}`, appSecret: `sec_${Math.random().toString(36).slice(2, 10)}` };
+      updateLog("生成 AppKey / AppSecret：凭证已写入埋点配置");
+      render();
+    }
+
+    function sendTestEvent() {
+      state.trackingEvents.unshift({ id: `event-${Date.now()}`, event: "purchase_test", source: "Web SDK", status: "已入库" });
+      updateLog("发送测试事件：Web SDK purchase_test 已进入实时监控");
+      render();
+    }
+
+    function saveReportTemplate() {
+      const dimension = document.getElementById("reportDimensions").value;
+      const metric = document.getElementById("reportMetrics").value;
+      state.reports.unshift({ id: `report-${Date.now()}`, name: `自定义报表-${dimension}`, status: "已保存", note: metric });
+      updateLog(`保存自定义报表：${dimension} / ${metric}`);
+      render();
+    }
+
+    function confirmMonitoringAlert() {
+      const alert = state.alerts.find((item) => item.id === "alert-002") || state.alerts[0];
+      alert.status = "已确认";
+      updateLog(`实时监控告警确认：${alert.type} 已分配处理`);
+      render();
+    }
+
+    function generateReviewReport() {
+      state.reports.unshift({ id: `report-${Date.now()}`, name: "投流周复盘", status: "已生成", note: "CPA / ROI / 花费突增 / 转化下降" });
+      updateLog("生成复盘报告：投流周复盘已追加到报表记录");
+      render();
+    }
+
+    window.AdPrototype = {
+      get state() {
+        return state;
+      },
+      seedState,
+      loadState,
+      saveState,
+      resetState,
+      setActiveModule,
+      switchRole,
+      updateLog,
+      render,
+      submitBudget,
+      submitStrategy,
+      createTrafficPlacement,
+      handleFunnelAlert,
+      copyCampaignAcrossMedia,
+      runAutoBidSimulation,
+      redistributeBudget,
+      sendLtvCallback,
+      testRule,
+      publishRule,
+      rechargeMerchant,
+      submitRefund,
+      submitInvoice,
+      generateCredentials,
+      sendTestEvent,
+      saveReportTemplate,
+      confirmMonitoringAlert,
+      generateReviewReport
+    };
+
+    document.querySelectorAll(".side-nav button[data-module]").forEach((button) => {
+      button.addEventListener("click", () => setActiveModule(button.dataset.module));
+    });
+    document.getElementById("roleSwitcher").addEventListener("change", (event) => switchRole(event.target.value));
+    document.getElementById("resetPrototype").addEventListener("click", resetState);
+    document.getElementById("budgetForm").addEventListener("submit", submitBudget);
+    document.getElementById("strategyForm").addEventListener("submit", submitStrategy);
+    document.getElementById("trafficPlacementForm").addEventListener("submit", createTrafficPlacement);
+    document.getElementById("handleFunnelAlert").addEventListener("click", handleFunnelAlert);
+    document.getElementById("copyCampaignAcrossMedia").addEventListener("click", copyCampaignAcrossMedia);
+    document.getElementById("runAutoBidSimulation").addEventListener("click", runAutoBidSimulation);
+    document.getElementById("redistributeBudget").addEventListener("click", redistributeBudget);
+    document.getElementById("sendLtvCallback").addEventListener("click", sendLtvCallback);
+    document.getElementById("testRule").addEventListener("click", testRule);
+    document.getElementById("publishRule").addEventListener("click", publishRule);
+    document.getElementById("rechargeForm").addEventListener("submit", rechargeMerchant);
+    document.getElementById("refundForm").addEventListener("submit", submitRefund);
+    document.getElementById("invoiceForm").addEventListener("submit", submitInvoice);
+    document.getElementById("generateCredentials").addEventListener("click", generateCredentials);
+    document.getElementById("sendTestEvent").addEventListener("click", sendTestEvent);
+    document.getElementById("saveReportTemplate").addEventListener("click", saveReportTemplate);
+    document.getElementById("confirmMonitoringAlert").addEventListener("click", confirmMonitoringAlert);
+    document.getElementById("generateReviewReport").addEventListener("click", generateReviewReport);
+    render();
+  </script>
+</body>
+</html>
