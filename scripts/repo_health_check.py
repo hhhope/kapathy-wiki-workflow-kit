@@ -9,6 +9,7 @@ if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from scripts.repo_policy_check import find_draft_skill_violations
+from scripts.check_behavior_assets import check_behavior_assets
 
 REQUIRED_EVALUATION_SECTIONS = (
     "## Pressure Scenarios",
@@ -28,6 +29,11 @@ class HealthCheckResult:
 def run_health_checks(repo_root: Path) -> list[HealthCheckResult]:
     draft_skill_violations = [path.as_posix() for path in find_draft_skill_violations(repo_root)]
     skill_evaluation_violations = find_skill_evaluation_evidence_violations(repo_root)
+    behavior_asset_violations = [
+        f"{entry.path}: {entry.kind}: {entry.message}"
+        for entry in check_behavior_assets(repo_root)
+        if entry.severity == "error"
+    ]
     return [
         HealthCheckResult(
             name="draft-skill-runtime-surface",
@@ -38,6 +44,11 @@ def run_health_checks(repo_root: Path) -> list[HealthCheckResult]:
             name="skill-evaluation-evidence",
             passed=not skill_evaluation_violations,
             details=skill_evaluation_violations,
+        ),
+        HealthCheckResult(
+            name="behavior-asset-evaluation",
+            passed=not behavior_asset_violations,
+            details=behavior_asset_violations,
         ),
     ]
 
