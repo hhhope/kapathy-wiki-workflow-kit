@@ -432,6 +432,79 @@
       grid-template-columns: minmax(0, 1fr) 280px;
       gap: 14px;
     }
+
+    @media (max-width: 900px) {
+      body {
+        min-width: 0;
+      }
+
+      .app-shell {
+        display: block;
+      }
+
+      .side-nav {
+        position: relative;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        padding: 16px;
+      }
+
+      .brand {
+        grid-column: 1 / -1;
+        margin-bottom: 6px;
+      }
+
+      .side-nav button {
+        min-height: 42px;
+        margin-bottom: 0;
+      }
+
+      .workspace {
+        padding: 16px;
+      }
+
+      .top-bar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid.cols-3,
+      .grid.cols-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .form-grid,
+      .grid.cols-2,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .state-rail {
+        position: relative;
+        height: auto;
+        padding: 16px;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .side-nav,
+      .top-bar,
+      .grid.cols-3,
+      .grid.cols-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .module-head {
+        display: grid;
+      }
+
+      .metric strong {
+        font-size: 24px;
+      }
+    }
   </style>
 </head>
 <body>

@@ -1140,6 +1140,7 @@ with sync_playwright() as p:
     expect(page.locator("text=广告投流系统")).to_be_visible()
     page.locator('.side-nav [data-module="advertiser"]').click()
     expect(page.locator("#module-advertiser")).to_be_visible()
+    expect(page.locator('[data-sequence="budget-sequence"]')).to_be_visible()
     page.fill("#budgetDaily", "15000")
     page.locator("#budgetForm button[type='submit']").click()
     expect(page.locator("#stateRail")).to_contain_text("预算已更新")
@@ -1169,7 +1170,7 @@ with sync_playwright() as p:
 
     page.locator('.side-nav [data-module="overview"]').click()
     expect(page.locator('[data-diagram="overall-architecture"]')).to_be_visible()
-    expect(page.locator('[data-sequence="budget-sequence"]')).to_be_visible()
+    expect(page.locator('[data-sequence="realtime-report-sequence"]')).to_be_visible()
 
     page.set_viewport_size({"width": 390, "height": 844})
     page.goto(url)
