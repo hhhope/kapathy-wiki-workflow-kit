@@ -6,7 +6,9 @@ source_path: inbox/nirvana/preview .html
 source_type: meeting-note
 audience: self
 knowledge_level: working
+layer: ops
 domain: nirvana
+ops_area: source-intake
 period: evergreen
 confidence: high
 status: active
@@ -42,4 +44,3 @@ related_reminders: []
 - 待 agent 进一步判断是否应升级为 focus-thread、reminder 或 codex-handoff
 
 ## English Notes
-

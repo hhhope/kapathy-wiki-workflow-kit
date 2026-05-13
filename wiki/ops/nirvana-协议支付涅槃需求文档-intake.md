@@ -6,7 +6,9 @@ source_path: inbox/nirvana/协议支付涅槃需求文档.docx
 source_type: attachment
 audience: self
 knowledge_level: working
+layer: ops
 domain: nirvana
+ops_area: source-intake
 period: evergreen
 confidence: medium
 status: active

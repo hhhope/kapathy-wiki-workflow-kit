@@ -1,6 +1,7 @@
 ---
 canonical_object: learning-capture-routing
 artifact_type: intake
+layer: ops
 title: learning-capture-routing / intake
 type: intake
 language: zh-CN
@@ -8,7 +9,8 @@ source_path: chat://openspec-explore/learning-capture-routing/2026-05-06
 source_type: conversation
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: none
+ops_area: learning-capture
 period: active
 confidence: medium
 status: active

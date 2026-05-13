@@ -1,6 +1,9 @@
 ---
 canonical_object: behavior-replay-gate
 artifact_type: method
+layer: ops
+domain: none
+ops_area: agent-governance
 title: behavior-replay-gate / method
 type: method
 language: zh-CN
