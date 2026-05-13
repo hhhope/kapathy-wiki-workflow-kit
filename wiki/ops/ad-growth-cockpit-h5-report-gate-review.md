@@ -7,7 +7,7 @@ artifact_type: report-gate-review
 kind: report-gate-review
 created: 2026-05-13
 target: wiki/reports/ad-growth-cockpit-h5.html
-status: prototype-review
+status: prototype-verified
 ---
 
 # ad-growth-cockpit-h5 / report-gate-review
@@ -121,17 +121,20 @@ Paragraph Drift Gate: PASS for prototype.
 | Reference/output shape | PASS | H5 cockpit shape matches selected direction. |
 | Narrative drift | PASS | Sections support the cockpit main line. |
 | Judgment ownership | PASS | User choices and agent mock data are separated. |
-| Visual output | PENDING | Browser/mobile verification still required before final completion claim. |
-| Publish gate | BLOCKED | No Feishu sync or production publication requested. |
+| Visual output | PASS | Desktop and mobile screenshots generated after loading a local CJK fontconfig; text renders and layout is readable. |
+| Publish gate | NOT APPLICABLE | No Feishu sync or production publication requested. |
 
 ## Scorecard
 
-Score: INVALID until final local visual verification is recorded.
+Prototype score: 88 / 100.
+
+Publication score: INVALID because no Feishu sync or external publication was
+requested or verified.
 
 ## Decision
 
-The artifact may remain as a repo-local prototype after local verification. It
-must not be claimed as Feishu-synced, production-ready, or externally published.
+The artifact may be used as a repo-local prototype. It must not be claimed as
+Feishu-synced, production-ready, or externally published.
 
 ## Residual Risks
 
@@ -141,14 +144,20 @@ must not be claimed as Feishu-synced, production-ready, or externally published.
 
 ## Local Verification
 
-Pending final execution:
+Completed on 2026-05-13:
 
-- `python3 -m unittest tests.test_ad_growth_cockpit_h5 tests.test_public_report_quality_gate -v`
-- `python3 scripts/check_behavior_assets.py`
-- `python3 scripts/check_wiki_frontmatter.py`
-- `git diff --check`
-- Desktop and mobile local browser verification for anchors, KPI jumps, view
-  toggles, alert expansion, and review CTA.
+- `python3 -m unittest tests.test_ad_growth_cockpit_h5 tests.test_public_report_quality_gate -v`: 14 tests passed.
+- `python3 scripts/check_behavior_assets.py`: passed.
+- `git diff --check`: passed.
+- `python3 scripts/check_wiki_frontmatter.py`: failed on pre-existing legacy
+  taxonomy drift (`personal-ops` and missing `classification_needed` on older
+  pages); `wiki/ops/ad-growth-cockpit-h5-report-gate-review.md` was not listed
+  as drift.
+- Inline JavaScript parse check: passed.
+- Playwright interaction check: passed for KPI jump, spend view tab switch,
+  alert expand, Escape close, review CTA jump, and mobile creative-view switch.
+- Desktop screenshot: `/tmp/ad-growth-cockpit-h5-desktop.png`.
+- Mobile screenshot: `/tmp/ad-growth-cockpit-h5-mobile.png`.
 
 ## Feishu Update Verification
 
