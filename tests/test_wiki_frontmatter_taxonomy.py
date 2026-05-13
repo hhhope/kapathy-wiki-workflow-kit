@@ -4,6 +4,8 @@ from pathlib import Path
 
 from scripts.check_wiki_frontmatter import load_taxonomy
 from scripts.check_wiki_frontmatter import check_content_drift
+from scripts.check_wiki_frontmatter import check_possible_unregistered_producers
+from scripts.check_wiki_frontmatter import check_registered_producer_drift
 
 
 def write(path: Path, text: str) -> None:
@@ -129,3 +131,46 @@ ops_area: source-intake
     entries = check_content_drift(tmp_path, minimal_config())
 
     assert any(entry.kind == "unclassified_without_flag" for entry in entries)
+
+
+def producer_config() -> dict:
+    config = minimal_config()
+    config["producer_paths"] = {
+        "templates": [".codex/skills/**/references/*template*.md"],
+        "scripts": ["scripts/inbox_intake.py"],
+    }
+    config["severity"]["producer_hardcoded_forbidden_domain"] = "error"
+    config["severity"]["possible_unregistered_producer"] = "warn"
+    return config
+
+
+def test_registered_template_reports_hardcoded_forbidden_domain(tmp_path: Path) -> None:
+    write(
+        tmp_path / ".codex/skills/article-learning-capture/references/wiki-template.md",
+        """
+```markdown
+---
+domain: personal-ops
+---
+```
+""".lstrip(),
+    )
+
+    entries = check_registered_producer_drift(tmp_path, producer_config())
+
+    assert [(entry.kind, entry.severity, entry.value) for entry in entries] == [
+        ("producer_hardcoded_forbidden_domain", "error", "personal-ops")
+    ]
+
+
+def test_unregistered_frontmatter_producer_warns(tmp_path: Path) -> None:
+    write(
+        tmp_path / "scripts/other_writer.py",
+        'CONTENT = "---\\ndomain: personal-ops\\n---\\n"',
+    )
+
+    entries = check_possible_unregistered_producers(tmp_path, producer_config())
+
+    assert [(entry.kind, entry.severity, entry.path) for entry in entries] == [
+        ("possible_unregistered_producer", "warn", "scripts/other_writer.py")
+    ]

@@ -152,6 +152,66 @@ def check_content_drift(root: Path | str, config: dict[str, Any]) -> list[DriftE
     return entries
 
 
+def expand_registered_producers(root: Path, config: dict[str, Any]) -> list[Path]:
+    producer_paths = config.get("producer_paths", {})
+    paths: list[Path] = []
+    for values in producer_paths.values():
+        if not isinstance(values, list):
+            continue
+        for pattern in values:
+            paths.extend(sorted(root.glob(str(pattern))))
+    return sorted(path for path in paths if path.is_file())
+
+
+def check_registered_producer_drift(root: Path | str, config: dict[str, Any]) -> list[DriftEntry]:
+    root_path = Path(root)
+    forbidden_domains = set(config.get("fields", {}).get("domain", {}).get("forbidden", []))
+    entries: list[DriftEntry] = []
+    for path in expand_registered_producers(root_path, config):
+        rel = rel_path(path, root_path)
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        for domain in sorted(forbidden_domains):
+            if f"domain: {domain}" in text:
+                entries.append(
+                    DriftEntry(
+                        kind="producer_hardcoded_forbidden_domain",
+                        severity=severity(config, "producer_hardcoded_forbidden_domain", "error"),
+                        path=rel,
+                        field="domain",
+                        value=domain,
+                        message=f"Registered producer hardcodes forbidden `domain: {domain}`.",
+                    )
+                )
+    return entries
+
+
+def check_possible_unregistered_producers(root: Path | str, config: dict[str, Any]) -> list[DriftEntry]:
+    root_path = Path(root)
+    registered = {rel_path(path, root_path) for path in expand_registered_producers(root_path, config)}
+    candidate_roots = [root_path / "scripts", root_path / ".codex/skills"]
+    entries: list[DriftEntry] = []
+    for candidate_root in candidate_roots:
+        if not candidate_root.exists():
+            continue
+        for path in sorted(candidate_root.rglob("*")):
+            if not path.is_file() or path.suffix not in {".py", ".md"}:
+                continue
+            rel = rel_path(path, root_path)
+            if rel in registered:
+                continue
+            text = path.read_text(encoding="utf-8", errors="ignore")
+            if "---" in text and "domain:" in text:
+                entries.append(
+                    DriftEntry(
+                        kind="possible_unregistered_producer",
+                        severity=severity(config, "possible_unregistered_producer", "warn"),
+                        path=rel,
+                        message="File contains frontmatter-looking text but is not registered in producer_paths.",
+                    )
+                )
+    return entries
+
+
 def summarize(entries: list[DriftEntry]) -> dict[str, int]:
     summary = {"error": 0, "warn": 0, "info": 0, "total": len(entries)}
     for entry in entries:
@@ -164,7 +224,11 @@ def summarize(entries: list[DriftEntry]) -> dict[str, int]:
 def build_report(root: Path | str = ROOT) -> dict[str, Any]:
     root_path = Path(root)
     config = load_taxonomy(root_path)
-    entries = check_content_drift(root_path, config)
+    entries = [
+        *check_content_drift(root_path, config),
+        *check_registered_producer_drift(root_path, config),
+        *check_possible_unregistered_producers(root_path, config),
+    ]
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "root": root_path.resolve().as_posix(),
