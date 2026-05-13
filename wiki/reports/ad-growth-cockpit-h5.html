@@ -788,12 +788,12 @@
       <div class="money-layout">
         <div class="spend-board">
           <div class="view-tabs" role="tablist" aria-label="Spend views">
-            <button class="view-tab is-active" data-view="channel" type="button">渠道</button>
-            <button class="view-tab" data-view="plan" type="button">计划</button>
-            <button class="view-tab" data-view="creative" type="button">素材</button>
+            <button id="channel-tab" class="view-tab is-active" data-view="channel" type="button" role="tab" aria-selected="true" aria-controls="channel-view">渠道</button>
+            <button id="plan-tab" class="view-tab" data-view="plan" type="button" role="tab" aria-selected="false" aria-controls="plan-view">计划</button>
+            <button id="creative-tab" class="view-tab" data-view="creative" type="button" role="tab" aria-selected="false" aria-controls="creative-view">素材</button>
           </div>
 
-          <div id="channel-view" class="view-panel is-active" data-view-panel="channel">
+          <div id="channel-view" class="view-panel is-active" data-view-panel="channel" role="tabpanel" aria-labelledby="channel-tab">
             <div class="spend-row">
               <strong>巨量引擎</strong>
               <div class="bar-track"><div class="bar-fill" style="width: 82%"></div></div>
@@ -820,7 +820,7 @@
             </div>
           </div>
 
-          <div id="plan-view" class="view-panel" data-view-panel="plan">
+          <div id="plan-view" class="view-panel" data-view-panel="plan" role="tabpanel" aria-labelledby="plan-tab" hidden>
             <div class="spend-row">
               <strong>春促 A 计划</strong>
               <div class="bar-track"><div class="bar-fill" style="width: 78%"></div></div>
@@ -841,7 +841,7 @@
             </div>
           </div>
 
-          <div id="creative-view" class="view-panel" data-view-panel="creative">
+          <div id="creative-view" class="view-panel" data-view-panel="creative" role="tabpanel" aria-labelledby="creative-tab" hidden>
             <div class="spend-row">
               <strong>短视频 A</strong>
               <div class="bar-track"><div class="bar-fill" style="width: 86%"></div></div>
@@ -946,31 +946,31 @@
 
       <div class="anomaly-layout">
         <article class="alert-card" data-alert-card="">
-          <button type="button" onclick="toggleAlert(this)">
+          <button type="button" onclick="toggleAlert(this)" aria-expanded="false" aria-controls="alert-funnel-detail">
             <span><strong>漏斗断崖</strong>点击到转化骤降 42%</span>
           </button>
-          <div class="alert-detail">建议动作：暂停低转化计划，切换备用素材，通知优化师确认落地页。自动化状态：规则引擎已暂停 2 个单元并保留最近 30 分钟证据。</div>
+          <div id="alert-funnel-detail" class="alert-detail" hidden>建议动作：暂停低转化计划，切换备用素材，通知优化师确认落地页。自动化状态：规则引擎已暂停 2 个单元并保留最近 30 分钟证据。</div>
         </article>
 
         <article class="alert-card" data-alert-card="">
-          <button type="button" onclick="toggleAlert(this)">
+          <button type="button" onclick="toggleAlert(this)" aria-expanded="false" aria-controls="alert-cpa-detail">
             <span><strong>CPA 超标</strong>连续 20 分钟高于目标 22%</span>
           </button>
-          <div class="alert-detail">建议动作：自动调价降低 8%，预算转移到同人群高 ROAS 计划，若 30 分钟未恢复则进入人工复核。</div>
+          <div id="alert-cpa-detail" class="alert-detail" hidden>建议动作：自动调价降低 8%，预算转移到同人群高 ROAS 计划，若 30 分钟未恢复则进入人工复核。自动化状态：自动调价已生效，预算转移规则排队执行，30 分钟后生成复核任务。</div>
         </article>
 
         <article class="alert-card" data-alert-card="">
-          <button type="button" onclick="toggleAlert(this)">
+          <button type="button" onclick="toggleAlert(this)" aria-expanded="false" aria-controls="alert-traffic-detail">
             <span><strong>流量异常</strong>曝光突增但有效点击下降</span>
           </button>
-          <div class="alert-detail">建议动作：标记可疑流量来源，降低对应版位出价，保留归因与点击质量样本供后续复盘。</div>
+          <div id="alert-traffic-detail" class="alert-detail" hidden>建议动作：标记可疑流量来源，降低对应版位出价，保留归因与点击质量样本供后续复盘。自动化状态：异常版位已降价 12%，点击质量样本已进入归因复盘队列。</div>
         </article>
 
         <article class="alert-card" data-alert-card="">
-          <button type="button" onclick="toggleAlert(this)">
+          <button type="button" onclick="toggleAlert(this)" aria-expanded="false" aria-controls="alert-budget-detail">
             <span><strong>预算超限</strong>小时消耗超过节奏 18%</span>
           </button>
-          <div class="alert-detail">建议动作：收紧时段预算，停止低 LTV 人群扩量，给财务和投放负责人同步剩余额度。</div>
+          <div id="alert-budget-detail" class="alert-detail" hidden>建议动作：收紧时段预算，停止低 LTV 人群扩量，给财务和投放负责人同步剩余额度。自动化状态：小时预算阈值已收紧，低 LTV 人群扩量已暂停。</div>
         </article>
       </div>
     </section>
@@ -1042,15 +1042,19 @@
       document.querySelectorAll(".view-tab").forEach((tab) => {
         if (tab.dataset.view === view) {
           tab.classList.add("is-active");
+          tab.setAttribute("aria-selected", "true");
         } else {
           tab.classList.remove("is-active");
+          tab.setAttribute("aria-selected", "false");
         }
       });
       document.querySelectorAll("[data-view-panel]").forEach((panel) => {
         if (panel.id === `${view}-view`) {
           panel.classList.add("is-active");
+          panel.hidden = false;
         } else {
           panel.classList.remove("is-active");
+          panel.hidden = true;
         }
       });
     }
@@ -1063,13 +1067,21 @@
       const card = button.closest("[data-alert-card]");
       if (!card) return;
       card.classList.toggle("is-open");
+      const isOpen = card.classList.contains("is-open");
+      button.setAttribute("aria-expanded", String(isOpen));
       const detail = card.querySelector(".alert-detail");
-      if (detail) detail.hidden = !card.classList.contains("is-open");
+      if (detail) detail.hidden = !isOpen;
     }
 
     document.querySelectorAll("[data-alert-card]").forEach((card) => {
       card.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") card.classList.remove("is-open");
+        if (event.key === "Escape") {
+          card.classList.remove("is-open");
+          const button = card.querySelector("button");
+          const detail = card.querySelector(".alert-detail");
+          if (button) button.setAttribute("aria-expanded", "false");
+          if (detail) detail.hidden = true;
+        }
       });
     });
   </script>

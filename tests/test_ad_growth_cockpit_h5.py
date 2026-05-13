@@ -55,12 +55,50 @@ class AdGrowthCockpitH5Test(unittest.TestCase):
         self.assertIn("data-view-panel=\"channel\"", self.html)
         self.assertIn("data-view-panel=\"plan\"", self.html)
         self.assertIn("data-view-panel=\"creative\"", self.html)
+        for view, selected in [
+            ("channel", "true"),
+            ("plan", "false"),
+            ("creative", "false"),
+        ]:
+            self.assertRegex(
+                self.html,
+                rf'<button id="{view}-tab"[^>]*data-view="{view}"[^>]*'
+                rf'role="tab"[^>]*aria-selected="{selected}"[^>]*'
+                rf'aria-controls="{view}-view"',
+            )
+            self.assertRegex(
+                self.html,
+                rf'<div id="{view}-view"[^>]*data-view-panel="{view}"[^>]*'
+                rf'role="tabpanel"[^>]*aria-labelledby="{view}-tab"',
+            )
+        self.assertIn("tab.setAttribute(\"aria-selected\"", self.html)
+        self.assertIn("panel.hidden =", self.html)
         self.assertIn("classList.add(\"is-active\")", self.html)
 
     def test_alert_expansion_controls_exist(self) -> None:
         self.assertGreaterEqual(len(re.findall(r'data-alert-card=', self.html)), 4)
+        for alert_id, label in [
+            ("alert-funnel-detail", "漏斗断崖"),
+            ("alert-cpa-detail", "CPA 超标"),
+            ("alert-traffic-detail", "流量异常"),
+            ("alert-budget-detail", "预算超限"),
+        ]:
+            self.assertRegex(
+                self.html,
+                rf'<button[^>]*aria-expanded="false"[^>]*'
+                rf'aria-controls="{alert_id}"[^>]*>[\s\S]*?'
+                rf'<strong>{re.escape(label)}</strong>',
+            )
+            self.assertRegex(
+                self.html,
+                rf'<div id="{alert_id}" class="alert-detail" hidden>'
+                rf'[\s\S]*?建议动作：[\s\S]*?自动化状态：[\s\S]*?</div>',
+            )
         self.assertIn("querySelectorAll(\"[data-alert-card]\")", self.html)
         self.assertIn("querySelector(\".alert-detail\")", self.html)
+        self.assertIn("button.setAttribute(\"aria-expanded\"", self.html)
+        self.assertIn("button.setAttribute(\"aria-expanded\", \"false\")", self.html)
+        self.assertIn("event.key === \"Escape\"", self.html)
         self.assertIn("function toggleAlert", self.html)
         self.assertIn("漏斗断崖", self.html)
         self.assertIn("CPA 超标", self.html)
