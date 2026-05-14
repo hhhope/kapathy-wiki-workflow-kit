@@ -7,28 +7,57 @@ SKILL_SOURCE_ROOT = Path(".codex/skills")
 USER_SKILL_ROOT = Path.home() / ".codex" / "skills"
 
 WIKI_SKILLS = {
-    "wiki-status": "plugins/report-wiki-portfolio/commands/wiki-status.md",
-    "wiki-manifest": "plugins/report-wiki-portfolio/commands/wiki-manifest.md",
-    "wiki-inbox": "plugins/report-wiki-portfolio/commands/wiki-inbox.md",
-    "wiki-query": "plugins/report-wiki-portfolio/commands/wiki-query.md",
-    "wiki-graph": "plugins/report-wiki-portfolio/commands/wiki-graph.md",
-    "wiki-scorecard": "plugins/report-wiki-portfolio/commands/wiki-scorecard.md",
-    "wiki-route": "plugins/report-wiki-portfolio/commands/wiki-route.md",
-    "wiki-context": "plugins/report-wiki-portfolio/commands/wiki-context.md",
-    "wiki-apply": "plugins/report-wiki-portfolio/commands/wiki-apply.md",
-    "wiki-queue": "plugins/report-wiki-portfolio/commands/wiki-queue.md",
+    "wiki-status": ("scripts/build_wiki_status.py", "wiki/status/wiki-status.md"),
+    "wiki-manifest": ("scripts/build_wiki_status.py", "wiki/status/manifest.json"),
+    "wiki-inbox": ("scripts/build_wiki_status.py", "inbox/"),
+    "wiki-query": (
+        "scripts/build_wiki_status.py",
+        "scripts/derive_runtime_auto_routing.py",
+        "scripts/build_runtime_context_injection.py",
+        "rg -n",
+    ),
+    "wiki-explore": ("wiki-query", "Evidence surface", "Enoughness judgment"),
+    "wiki-graph": (
+        "scripts/extract_wiki_graph.py",
+        "scripts/analyze_wiki_relations.py",
+        "scripts/summarize_wiki_graph.py",
+    ),
+    "wiki-scorecard": (
+        "scripts/score_wiki_semantics.py",
+        "scripts/derive_wiki_utilization.py",
+        "scripts/summarize_wiki_scorecard.py",
+    ),
+    "wiki-route": (
+        "scripts/resolve_runtime_context_sources.py",
+        "scripts/derive_runtime_auto_routing.py",
+    ),
+    "wiki-context": (
+        "scripts/build_wiki_runtime_context.py",
+        "scripts/build_runtime_context_injection.py",
+    ),
+    "wiki-apply": (
+        "scripts/build_runtime_context_injection.py",
+        "scripts/derive_self_directed_execution.py",
+        "scripts/wiki_gate_precheck.py",
+        "page-frontmatter-fix",
+    ),
+    "wiki-queue": ("scripts/build_wiki_change_queue_preview.py",),
 }
 
 
 class WikiRuntimeSkillsTest(unittest.TestCase):
     def test_wiki_runtime_skill_sources_exist_with_plain_wiki_names(self) -> None:
-        for skill_name, command_path in WIKI_SKILLS.items():
+        for skill_name, required_markers in WIKI_SKILLS.items():
             with self.subTest(skill=skill_name):
                 skill_path = SKILL_SOURCE_ROOT / skill_name / "SKILL.md"
                 self.assertTrue(skill_path.exists(), skill_path)
                 content = skill_path.read_text(encoding="utf-8")
                 self.assertRegex(content, rf"(?m)^name: {re.escape(skill_name)}$")
-                self.assertIn(command_path, content)
+                for marker in required_markers:
+                    self.assertIn(marker, content)
+                self.assertNotIn("Command contract:", content)
+                self.assertNotIn("plugins/report-wiki-portfolio/commands", content)
+                self.assertNotIn("/wiki:", content)
                 self.assertNotIn("name: report-wiki-portfolio:", content)
 
     def test_wiki_runtime_skills_preserve_boundaries(self) -> None:
@@ -49,6 +78,20 @@ class WikiRuntimeSkillsTest(unittest.TestCase):
         self.assertNotIn("install those directories into", readme)
         self.assertIn("Do not install this repo's `wiki-*`", readme)
         self.assertNotIn("This repo also ships a repo-local Codex plugin", readme)
+
+    def test_active_runtime_docs_do_not_reference_slash_command_surface(self) -> None:
+        active_paths = [
+            Path("README.md"),
+            Path("openspec/specs/wiki-runtime-slash-command-surface/spec.md"),
+            Path("openspec/specs/wiki-status-slash-command/spec.md"),
+        ]
+        active_paths.extend(sorted(Path(".codex/skills").glob("wiki-*/SKILL.md")))
+        for path in active_paths:
+            with self.subTest(path=path.as_posix()):
+                text = path.read_text(encoding="utf-8")
+                self.assertNotIn("plugins/report-wiki-portfolio/commands", text)
+                self.assertNotIn("commands/wiki-", text)
+                self.assertNotIn("/wiki:", text)
 
     def test_user_scope_does_not_duplicate_repo_wiki_runtime_skills(self) -> None:
         for skill_name in WIKI_SKILLS:
