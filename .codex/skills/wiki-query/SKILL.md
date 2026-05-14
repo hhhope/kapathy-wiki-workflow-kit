@@ -8,14 +8,16 @@ Use the wiki query runtime surface for the report wiki repository.
 When triggered:
 
 1. Confirm the current repository has wiki runtime scripts and `wiki/`.
-2. Run or reference `python3 scripts/build_wiki_status.py`,
+2. For high-risk or ambiguous requests, use the `decision_trace` contract in
+   `wiki/ops/wiki-react-decision-trace-runtime.md` before choosing a route.
+3. Run or reference `python3 scripts/build_wiki_status.py`,
    `python3 scripts/derive_runtime_auto_routing.py`, and
    `python3 scripts/build_runtime_context_injection.py` as needed.
-3. Use explicit `rg -n` text search for the user's query terms.
-4. Read `wiki/status/manifest.json`, `wiki/status/wiki-status.md`,
+4. Use explicit `rg -n` text search for the user's query terms.
+5. Read `wiki/status/manifest.json`, `wiki/status/wiki-status.md`,
    `/tmp/wiki-runtime-auto-routing.json`, `/tmp/wiki-context-injection.json`,
    and explicit text matches when available.
-5. Summarize bounded context using `open_first`, `open_next`, `do_not_anchor`,
+6. Summarize bounded context using `open_first`, `open_next`, `do_not_anchor`,
    explicit matches, caution notes, and proof boundaries.
 
 Boundaries:

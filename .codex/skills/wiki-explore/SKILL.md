@@ -9,6 +9,11 @@ Use this as the repo's evidence-depth exploration surface. It is not a
 replacement for `wiki-query`; use `wiki-query` for bounded retrieval and
 `wiki-explore` when the user needs a depth judgment.
 
+For ambiguous, rejected, or high-risk exploration, emit a compact
+`decision_trace` using `wiki/ops/wiki-react-decision-trace-runtime.md` before
+choosing whether the route is static precheck, exploratory scoring,
+OpenSpec/proposal, or stop.
+
 ## When To Use
 
 Use this skill when:

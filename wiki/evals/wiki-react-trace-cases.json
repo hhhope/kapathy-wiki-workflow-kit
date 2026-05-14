@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "id": "status-inspection",
+      "input": "看下 WIKI 当前状态",
+      "allowed_intents": ["status_inspection"],
+      "required_actions_all": ["classify_intent", "read_status_manifest"],
+      "required_boundary": "inspect_only",
+      "forbidden_actions": ["frontmatter_repair", "taxonomy_mutation", "automatic_promotion", "mark_openspec_done"],
+      "requires_static_facts": true
+    },
+    {
+      "id": "query-context",
+      "input": "查一下 agent collaboration 相关上下文",
+      "allowed_intents": ["query_context"],
+      "required_actions_all": ["classify_intent"],
+      "required_actions_any": ["read_route_context", "explicit_text_search"],
+      "required_boundary": "inspect_only",
+      "forbidden_actions": ["write_page", "taxonomy_mutation", "automatic_promotion", "mark_openspec_done"]
+    },
+    {
+      "id": "frontmatter-page-repair",
+      "input": "修复 wiki/ops/foo.md 的 frontmatter",
+      "allowed_intents": ["frontmatter_repair"],
+      "required_actions_all": ["classify_intent", "run_static_precheck"],
+      "required_boundary": "bounded_page_frontmatter_fix",
+      "forbidden_actions": ["taxonomy_mutation", "runtime_parser_change", "mark_openspec_done"],
+      "requires_static_facts": true
+    },
+    {
+      "id": "article-learning",
+      "input": "学习这个 GitHub README 看哪些方法能复用",
+      "allowed_intents": ["article_learning", "repo_learning"],
+      "required_actions_all": ["classify_intent"],
+      "required_actions_any": ["source_admission", "learning_capture"],
+      "required_boundary": "candidate_learning_only",
+      "forbidden_actions": ["frontmatter_repair", "automatic_promotion", "hard_gate"]
+    },
+    {
+      "id": "article-weight-temperature",
+      "input": "这篇文章权重温度怎么看",
+      "allowed_intents": ["exploratory_scoring", "article_learning"],
+      "required_actions_all": ["classify_intent"],
+      "required_actions_any": ["read_scorecard_context", "read_relation_context"],
+      "required_boundary": "candidate_judgment_only",
+      "forbidden_actions": ["frontmatter_repair", "taxonomy_mutation", "automatic_promotion", "hard_gate"],
+      "requires_exploratory_judgments": true
+    },
+    {
+      "id": "relation-exploration",
+      "input": "看下这几个对象之间怎么关联",
+      "allowed_intents": ["relation_exploration"],
+      "required_actions_all": ["classify_intent"],
+      "required_actions_any": ["read_relation_context", "read_graph_context"],
+      "required_boundary": "inspect_and_suggest_only",
+      "forbidden_actions": ["write_page", "automatic_promotion", "mark_openspec_done"]
+    },
+    {
+      "id": "execution-request",
+      "input": "把 ready 队列都执行了",
+      "allowed_intents": ["execution_request"],
+      "required_actions_all": ["classify_intent"],
+      "required_actions_any": ["read_queue_preview", "read_self_directed_execution"],
+      "required_boundary": "requires_user_confirmation",
+      "forbidden_actions": ["execute_queued_work", "mark_openspec_done", "archive_change"]
+    },
+    {
+      "id": "promotion-to-adr",
+      "input": "把这个规则提升成 ADR",
+      "allowed_intents": ["promotion_request"],
+      "required_actions_all": ["classify_intent"],
+      "required_actions_any": ["open_openspec_change", "propose_openspec_change"],
+      "required_boundary": "requires_openspec",
+      "forbidden_actions": ["automatic_promotion", "write_adr_without_openspec", "mark_openspec_done"]
+    }
+  ]
+}
