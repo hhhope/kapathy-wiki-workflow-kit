@@ -50,6 +50,8 @@ After implementation:
 
 - `scripts/eval_wiki_decision_trace.py` validates agent-produced traces without
   natural-language intent classification.
+- `.codex/skills/wiki-react/SKILL.md` provides the direct repo-local skill
+  entrypoint for decision-trace creation, replay, and onward wiki routing.
 - `wiki/evals/wiki-react-trace-cases.json` covers status, query, frontmatter
   repair, article learning, article weight/temperature, relation exploration,
   execution request, and promotion-to-ADR scenarios.

@@ -112,6 +112,18 @@ class WikiDecisionTraceEvalTest(unittest.TestCase):
 
 
 class WikiDecisionTraceSkillReferenceTest(unittest.TestCase):
+    def test_wiki_react_skill_entrypoint_exists(self) -> None:
+        skill_path = ROOT / ".codex/skills/wiki-react/SKILL.md"
+
+        self.assertTrue(skill_path.exists(), skill_path)
+        text = skill_path.read_text(encoding="utf-8")
+        self.assertIn("name: wiki-react", text)
+        self.assertIn("wiki/ops/wiki-react-decision-trace-runtime.md", text)
+        self.assertIn("scripts/eval_wiki_decision_trace.py", text)
+        self.assertIn("wiki/evals/wiki-react-trace-cases.json", text)
+        self.assertIn("decision_trace", text)
+        self.assertIn("Do not execute queued work", text)
+
     def test_high_risk_wiki_skills_reference_decision_trace_contract(self) -> None:
         required = [
             ".codex/skills/wiki-query/SKILL.md",
