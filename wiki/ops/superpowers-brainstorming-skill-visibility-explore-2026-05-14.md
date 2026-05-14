@@ -90,9 +90,18 @@ root like:
 This suggests the mechanism can work, but this account-meeting-lore session did
 not receive the openai-curated Superpowers skill root.
 
+Later evidence from newer `/mnt/d/cloud/team-knowledge` sessions showed the
+current cache root exactly:
+
+`/home/yan/.codex/plugins/cache/openai-curated/superpowers/08373044/skills`
+
+Those sessions include `r4` in `### Skill roots`; the current
+account-meeting-lore worker session does not.
+
 ## Current Interpretation
 
-The failure mode is a session skill-index / plugin-injection mismatch:
+The failure mode is a stale or incomplete session skill-index /
+plugin-injection mismatch:
 
 - plugin installed: yes
 - plugin enabled in config: yes
@@ -101,6 +110,11 @@ The failure mode is a session skill-index / plugin-injection mismatch:
 
 The earlier answer that "there is no `Superpowers:brainstorming` skill file" was
 wrong because it checked the gstack skill directory, not the Codex plugin cache.
+
+The most likely root cause is session immutability: skill roots are injected
+when the Codex session or worker thread starts, and this existing
+account-meeting-lore worker did not get the plugin cache root. Newer sessions
+can get it, so reinstall is not the first remedy.
 
 ## Practical Consequence
 
@@ -111,3 +125,6 @@ session-visible registry, then either:
 - read the plugin cache skill manually as evidence, or
 - restart/open a new Codex session after plugin cache refresh, so the skill root
   is injected.
+
+No reinstall is required unless a fresh session still lacks the plugin cache
+root after confirming `[plugins."superpowers@openai-curated"] enabled = true`.
