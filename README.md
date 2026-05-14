@@ -148,10 +148,59 @@ Specifically, keep `.agents/plugins/marketplace.json`,
 `plugins/report-wiki-portfolio/.codex-plugin/plugin.json`, and
 `plugins/report-wiki-portfolio/skills` absent.
 
+### Wiki Runtime Architecture
+
+The wiki runtime is layered. Start from the layer contract before choosing an
+entrypoint:
+
+```text
+Core loop
+  -> Skill entrypoints
+  -> Decision contract
+  -> Observation tools
+  -> Boundaries
+  -> Eval / lifecycle gates
+```
+
+- Core loop: capture, compile, retrieve, and apply wiki work.
+- Skill entrypoints: `wiki-react` routes, while domain skills remain directly
+  callable.
+- Decision contract: high-risk or ambiguous routes emit `decision_trace`.
+- Observation tools: Python scripts and generated artifacts report current
+  state; they do not classify natural-language intent.
+- Boundaries: outputs stay inspect-only, candidate judgment, bounded page fix,
+  user-confirmation required, or OpenSpec-required.
+- Eval / lifecycle gates: scorecard observes, trace eval validates
+  `decision_trace`, the behavior checker validates behavior assets, and
+  OpenSpec owns lifecycle.
+
+Use [wiki/ops/wiki-runtime-layer-contract.md](wiki/ops/wiki-runtime-layer-contract.md)
+as the durable architecture reference.
+
+### Choosing Wiki Skills
+
+Use `wiki-react` when the request is ambiguous, high-risk, or may cross from
+inspection into repair, queueing, governance, or lifecycle decisions. It is the
+explicit router, not a replacement for domain skills.
+
+Use direct domain skills when the surface is already clear:
+
+- `wiki-status`: current health, manifest counts, blockers, and next inspection
+  routes.
+- `wiki-query`: bounded retrieval for a known task or topic.
+- `wiki-apply`: inspect bounded self-directed execution suggestions before any
+  repair path.
+- `wiki-scorecard`: semantic scoring and utilization diagnostics.
+
+Direct domain-skill use does not bypass the decision contract. If the route is
+high-risk, the skill still emits `decision_trace` before action.
+
 The `$wiki-status` skill source is `.codex/skills/wiki-status/SKILL.md`.
 
 High-frequency entry points:
 
+- `$wiki-react`: explicit router and decision-trace entrypoint for ambiguous or
+  high-risk wiki routes.
 - `$wiki-status`: refresh and summarize generated wiki status.
 - `$wiki-manifest`: inspect generated source and routing manifest.
 - `$wiki-inbox`: review pending inbox items.
