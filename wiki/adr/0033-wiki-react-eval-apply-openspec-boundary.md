@@ -11,55 +11,53 @@ derived_from:
   - brainstorming-drift-wiki-trace
 ---
 
-# ADR-0033 Wiki React Eval Apply OpenSpec Boundary
+# ADR-0033 Wiki React / Eval / Apply / OpenSpec 边界
 
-## Status
+## 状态
 
 Accepted
 
-## Context
+## 背景
 
-The wiki runtime now has several adjacent surfaces:
+当前 wiki runtime 已经有几个相邻入口和层级：
 
-- `$wiki-react` for explicit route and boundary decisions
-- `eval_wiki_decision_trace.py` for validating agent-produced traces
-- `/wiki:apply` for bounded self-directed execution preview
-- repair-route labels for diagnostic classes
-- OpenSpec for runtime and workflow lifecycle
+- `$wiki-react`：负责显式路由和边界判断
+- `eval_wiki_decision_trace.py`：负责验证 agent 产出的 trace
+- `/wiki:apply`：负责 bounded self-directed execution 预览
+- repair-route labels：负责给诊断修复类别命名
+- OpenSpec：负责 runtime 和 workflow 生命周期
 
-During the 2026-05-14 wiki runtime discussion, these layers were repeatedly
-substituted for each other. The agent treated eval as a repair path, treated
-`/wiki:apply` as a repair executor, and treated repair-route labels from design
-documents as if executable repair infrastructure already existed.
+在 2026-05-14 的 wiki runtime 讨论中，这些层被反复互相替代。agent 把
+eval 当成 repair path，把 `/wiki:apply` 当成 repair executor，又把设计文档里
+出现的 repair-route labels 当成已经存在的可执行修复基础设施。
 
-The repository needs a stable decision that prevents these layers from being
-used as substitutes for each other.
+仓库需要一条稳定决策，防止这些层继续被互相替代。
 
-## Decision
+## 决策
 
-Wiki runtime layers must not substitute for each other.
+wiki runtime 各层不能互相替代。
 
-- `$wiki-react` owns explicit routing and `decision_trace` production for
-  ambiguous or high-risk wiki requests.
-- `eval_wiki_decision_trace.py` validates agent-produced traces against replay
-  cases. It does not classify natural-language intent, execute repairs, or
-  approve OpenSpec lifecycle steps.
-- `/wiki:apply` previews bounded self-directed execution or context
-  suggestions. It does not directly mutate runtime files, scripts, skills,
-  AGENTS, command behavior, or OpenSpec state.
-- Repair-route labels name diagnostic classes. They do not prove executable
-  repair infrastructure exists.
-- OpenSpec owns runtime, workflow, skill, AGENTS, command behavior, and repair
-  capability changes.
+- `$wiki-react` 负责在模糊或高风险 wiki 请求中产生显式 route 和
+  `decision_trace`。
+- `eval_wiki_decision_trace.py` 只负责用 replay cases 验证 agent-produced
+  traces。它不做自然语言意图分类，不执行 repair，也不批准 OpenSpec 生命周期
+  步骤。
+- `/wiki:apply` 只预览 bounded self-directed execution 或 context suggestions。
+  它不直接修改 runtime files、scripts、skills、AGENTS、command behavior 或
+  OpenSpec state。
+- Repair-route labels 只给诊断类别命名。它们不证明 executable repair
+  infrastructure 已经存在。
+- OpenSpec 负责 runtime、workflow、skill、AGENTS、command behavior 和 repair
+  capability changes 的生命周期。
 
-## Consequences
+## 后果
 
-- Passing trace eval proves only that trace shape and boundary checks passed.
-- `/wiki:apply` output remains preview or suggestion unless a separate approved
-  implementation path authorizes action.
-- Naming a repair route such as `runtime-parser-fix` or `readable-graph-fix`
-  does not imply implementation exists.
-- Runtime or workflow behavior changes must not be hidden inside status, graph,
-  apply, scorecard, or eval surfaces.
-- Future wiki runtime explanations must identify which layer owns routing,
-  validation, preview, route labeling, and lifecycle approval.
+- trace eval 通过只证明 trace shape 和 boundary checks 通过。
+- `/wiki:apply` 输出默认仍是 preview 或 suggestion，除非另有已批准的
+  implementation path 授权执行。
+- 命名 `runtime-parser-fix` 或 `readable-graph-fix` 这样的 repair route，不等于
+  对应实现已经存在。
+- runtime 或 workflow behavior changes 不能藏在 status、graph、apply、
+  scorecard 或 eval surface 里。
+- 后续解释 wiki runtime 时，必须明确 routing、validation、preview、route
+  labeling 和 lifecycle approval 分别由哪一层负责。

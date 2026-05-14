@@ -26,7 +26,7 @@ notes_scope: distill wiki-react、eval、wiki-apply、repair routes、OpenSpec �
 
 # wiki-runtime-layer-boundary / distill
 
-## Problem
+## 问题
 
 2026-05-14 的 wiki runtime 讨论暴露出一个稳定分层问题：agent 把不同 runtime
 层互相当成对方。
@@ -42,9 +42,9 @@ notes_scope: distill wiki-react、eval、wiki-apply、repair routes、OpenSpec �
 这不是单纯的表达问题。只要边界不稳定，agent 就会把“路由判断”“验证 trace”
 “预览 action”“已有 repair 能力”“生命周期批准”混成一件事。
 
-## Correct Boundary
+## 正确边界
 
-| Layer | Owns | Does not own |
+| 层 | 负责 | 不负责 |
 | --- | --- | --- |
 | `$wiki-react` | 显式 router 和 `decision_trace` 入口。 | 不做 deterministic eval，不执行 repair，不批准 lifecycle。 |
 | `eval_wiki_decision_trace.py` | 验证 agent-produced trace 的结构、动作、边界。 | 不做自然语言意图分类，不修文件，不替代 OpenSpec review。 |
@@ -52,7 +52,7 @@ notes_scope: distill wiki-react、eval、wiki-apply、repair routes、OpenSpec �
 | repair routes | 给诊断修复分类命名。 | 不证明已经存在 executable repair layer。 |
 | OpenSpec | runtime、workflow、skill、AGENTS、command behavior change 生命周期。 | 不应被 eval、scorecard、apply preview 绕过。 |
 
-## Why The Previous Answer Was Wrong
+## 为什么前一个回答错了
 
 错误链条是：
 
@@ -73,7 +73,7 @@ $wiki-react 先决定路由和边界
 -> 改 runtime / workflow / behavior 仍走 OpenSpec
 ```
 
-## Repair Route Status
+## Repair Route 当前状态
 
 当前四个 repair route 名称的含义是：
 
@@ -86,7 +86,7 @@ $wiki-react 先决定路由和边界
 除非有额外 implementation artifact，否则这些名称只是 route labels / contracts，
 不是自动可执行修复器。
 
-## Decision Candidate
+## 决策候选
 
 稳定决策应当是：
 
@@ -98,7 +98,7 @@ separate responsibilities.
 
 这条决策进入 ADR-0033。此 distill 保留误读背景和校准材料。
 
-## Boundary
+## 边界
 
 本页不新增 runtime 能力，不改变 `$wiki-react`、eval 或 `/wiki:apply` 的代码行为。
 它只是把已有事实压成可读边界，并为 ADR 提供上下文。
