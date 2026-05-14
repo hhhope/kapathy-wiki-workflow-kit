@@ -13,7 +13,11 @@ def _timestamp_slug(timestamp: datetime | str | None) -> str:
         return datetime.now(timezone.utc).strftime("%Y-%m-%d-%H%M%S")
     if isinstance(timestamp, datetime):
         return timestamp.astimezone(timezone.utc).strftime("%Y-%m-%d-%H%M%S")
-    return timestamp
+    try:
+        parsed = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+    except ValueError:
+        return timestamp
+    return parsed.astimezone(timezone.utc).strftime("%Y-%m-%d-%H%M%S")
 
 
 def _limited(items: Any, limit: int) -> list[Any]:
@@ -33,10 +37,17 @@ def render_review_record_markdown(package: dict[str, Any], scan_root: Path | str
     eval_result = package.get("eval_result", {})
     if not isinstance(eval_result, dict):
         eval_result = {}
+    warnings = eval_result.get("warnings", [])
+    errors = eval_result.get("errors", [])
+    generated_at = str(package.get("generated_at", "unknown"))
     lines = [
         "# wiki-doctor Review Record",
         "",
+        "## Scan",
+        "",
+        f"- Generated at: {generated_at}",
         f"- Scan root: `{Path(scan_root)}`",
+        f"- Detail limit: {limit}",
         "- Source: scripts/build_wiki_content_adjudication.py",
         "",
         "## Summary Counts",
@@ -47,6 +58,13 @@ def render_review_record_markdown(package: dict[str, Any], scan_root: Path | str
             lines.append(f"- {key}: {summary[key]}")
     else:
         lines.append("- None")
+    lines.extend(
+        [
+            f"- eval_passed: {bool(eval_result.get('passed', False))}",
+            f"- eval_error_count: {len(errors) if isinstance(errors, list) else 0}",
+            f"- eval_warning_count: {len(warnings) if isinstance(warnings, list) else 0}",
+        ]
+    )
 
     lines.extend(["", "## Taxonomy Candidates"])
     taxonomy_lines = []
@@ -69,10 +87,10 @@ def render_review_record_markdown(package: dict[str, Any], scan_root: Path | str
     lines.extend(_markdown_list(drift_lines))
 
     lines.extend(["", "## Eval Errors"])
-    lines.extend(_markdown_list([str(item) for item in _limited(eval_result.get("errors", []), limit)]))
+    lines.extend(_markdown_list([str(item) for item in _limited(errors, limit)]))
 
     lines.extend(["", "## Eval Warnings"])
-    lines.extend(_markdown_list([str(item) for item in _limited(eval_result.get("warnings", []), limit)]))
+    lines.extend(_markdown_list([str(item) for item in _limited(warnings, limit)]))
 
     lines.extend(["", "## Proof Boundary"])
     proof_notes = [str(item) for item in _limited(package.get("proof_boundary_notes", []), limit)]
@@ -83,9 +101,10 @@ def render_review_record_markdown(package: dict[str, Any], scan_root: Path | str
         [
             "",
             "## Next Review Actions",
-            "- Review taxonomy candidates before updating taxonomy configuration.",
-            "- Review drift traces before promoting any governance or behavior claim.",
-            "- Resolve eval errors before treating the package as complete.",
+            "- Human review: inspect taxonomy candidates and review focus refs before accepting any structure change.",
+            "- Discard: ignore candidates that lack evidence or only preserve historical drift.",
+            "- OpenSpec candidate: create or select a change for taxonomy or workflow behavior changes.",
+            "- Later explicit repair: apply frontmatter, taxonomy, or MOC changes only after approval.",
         ]
     )
     return "\n".join(lines) + "\n"

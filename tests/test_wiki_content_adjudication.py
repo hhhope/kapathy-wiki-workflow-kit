@@ -146,6 +146,7 @@ artifact_type: method
         from scripts.wiki_doctor_review_records import render_review_record_markdown
 
         package = {
+            "generated_at": "2026-05-14T12:46:28+00:00",
             "summary": {
                 "candidate_count": 2,
                 "full_detail_count": 2,
@@ -183,8 +184,13 @@ artifact_type: method
         markdown = render_review_record_markdown(package, scan_root=self.tmpdir, limit=50)
 
         self.assertIn("# wiki-doctor Review Record", markdown)
+        self.assertIn("- Generated at: 2026-05-14T12:46:28+00:00", markdown)
         self.assertIn(f"- Scan root: `{self.tmpdir}`", markdown)
+        self.assertIn("- Detail limit: 50", markdown)
         self.assertIn("- candidate_count: 2", markdown)
+        self.assertIn("- eval_passed: False", markdown)
+        self.assertIn("- eval_error_count: 1", markdown)
+        self.assertIn("- eval_warning_count: 1", markdown)
         self.assertIn("## Taxonomy Candidates", markdown)
         self.assertIn("domain=`agent-runtime`", markdown)
         self.assertIn("## Drift Traces", markdown)
@@ -196,6 +202,10 @@ artifact_type: method
         self.assertIn("## Proof Boundary", markdown)
         self.assertIn("This record is diagnosis only.", markdown)
         self.assertIn("## Next Review Actions", markdown)
+        self.assertIn("Human review:", markdown)
+        self.assertIn("Discard:", markdown)
+        self.assertIn("OpenSpec candidate:", markdown)
+        self.assertIn("Later explicit repair:", markdown)
 
     def test_writes_review_record_without_overwriting_existing_file(self) -> None:
         from scripts.wiki_doctor_review_records import write_review_record
@@ -213,13 +223,13 @@ artifact_type: method
             package,
             self.tmpdir,
             output_dir=output_dir,
-            timestamp="2026-05-14-010203",
+            timestamp="2026-05-14T01:02:03+00:00",
         )
         second = write_review_record(
             package,
             self.tmpdir,
             output_dir=output_dir,
-            timestamp="2026-05-14-010203",
+            timestamp="2026-05-14T01:02:03+00:00",
         )
 
         self.assertEqual(first.name, "2026-05-14-010203-review.md")
