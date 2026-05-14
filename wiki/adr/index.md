@@ -41,6 +41,7 @@
 - [ADR-0029 Intake Retractions Are Legitimate With Explicit Reopen Triggers](0029-intake-retractions-legitimate-with-reopen-triggers.md)
 - [ADR-0030 No Repo-Local Commit Hook Default](0030-no-repo-local-commit-hook-default.md)
 - [ADR-0031 Root Capability Extraction Boundary](0031-root-capability-extraction-boundary.md)
+- [ADR-0033 Wiki React Eval Apply OpenSpec Boundary](0033-wiki-react-eval-apply-openspec-boundary.md)
 
 ## 非目标
 
