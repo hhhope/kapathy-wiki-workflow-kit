@@ -5,11 +5,11 @@ from scripts.extract_wiki_graph import ROOT, collect_pages, derive_object_and_ty
 
 class WikiGraphExtractionIdentityTest(unittest.TestCase):
     def test_derives_openspec_spec_identity_from_path(self) -> None:
-        path = ROOT / "openspec/specs/wiki-runtime-slash-command-surface/spec.md"
+        path = ROOT / "openspec/specs/wiki-runtime-skill-surface/spec.md"
 
         canonical_object, artifact_type = derive_object_and_type(path, {})
 
-        self.assertEqual(canonical_object, "wiki-runtime-slash-command-surface")
+        self.assertEqual(canonical_object, "wiki-runtime-skill-surface")
         self.assertEqual(artifact_type, "spec")
 
     def test_derives_known_runtime_adr_identity_from_filename(self) -> None:
@@ -82,7 +82,7 @@ class WikiGraphExtractionIdentityTest(unittest.TestCase):
         node_paths = {node["page_path"] for node in nodes}
 
         self.assertNotIn(
-            "unresolved_identity:openspec/specs/wiki-runtime-slash-command-surface/spec.md",
+            "unresolved_identity:openspec/specs/wiki-runtime-skill-surface/spec.md",
             warning_text,
         )
         self.assertNotIn(

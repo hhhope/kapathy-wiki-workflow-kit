@@ -85,8 +85,8 @@ class WikiRuntimeSkillsTest(unittest.TestCase):
     def test_active_runtime_docs_do_not_reference_slash_command_surface(self) -> None:
         active_paths = [
             Path("README.md"),
-            Path("openspec/specs/wiki-runtime-slash-command-surface/spec.md"),
-            Path("openspec/specs/wiki-status-slash-command/spec.md"),
+            Path("openspec/specs/wiki-runtime-skill-surface/spec.md"),
+            Path("openspec/specs/wiki-status-skill/spec.md"),
         ]
         active_paths.extend(sorted(Path(".codex/skills").glob("wiki-*/SKILL.md")))
         for path in active_paths:
