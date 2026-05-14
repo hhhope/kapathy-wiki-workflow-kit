@@ -4,4 +4,4 @@
 - [x] 2. Add a repo-visible wiki ops record for the LLM-WIKI self-evolution model.
 - [x] 3. Add evaluation evidence for behavior replay, prior-art dedupe, and validation.
 - [x] 4. Run OpenSpec validation and focused content checks.
-- [ ] 5. Commit the completed formalization artifacts.
+- [x] 5. Commit the completed formalization artifacts.
