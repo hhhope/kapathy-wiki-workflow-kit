@@ -1,6 +1,9 @@
 ---
 canonical_object: wiki-react-decision-trace
 artifact_type: method
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 related_objects:
   - wiki-runtime-skill-surface
   - wiki-frontmatter-taxonomy-gate
