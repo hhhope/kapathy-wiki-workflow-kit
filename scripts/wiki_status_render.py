@@ -108,6 +108,51 @@ def _render_domain_taxonomy_health(health: dict[str, Any]) -> list[str]:
     return lines
 
 
+def _render_frontmatter_strict_gate(health: dict[str, Any]) -> list[str]:
+    strict_gate = health.get("strict_gate", {})
+    scorecard = health.get("scorecard", {})
+    lines = [
+        "",
+        "## Frontmatter Strict Gate",
+        "",
+        *_markdown_table(
+            ["Metric", "Value"],
+            [
+                ["Enabled", strict_gate.get("enabled", False)],
+                ["Passed", strict_gate.get("passed", False)],
+                ["Blocking entries", strict_gate.get("blocking_entry_count", 0)],
+                [
+                    "Score",
+                    f"{scorecard.get('score', 0)} / {scorecard.get('minimum_pass_score', 100)}",
+                ],
+            ],
+        ),
+        "",
+        "## Frontmatter Scorecard",
+        "",
+    ]
+    dimensions = scorecard.get("dimensions", [])
+    if dimensions:
+        lines.extend(
+            _markdown_table(
+                ["Dimension", "Weight", "Findings", "Points Lost", "Passed"],
+                [
+                    [
+                        item.get("dimension"),
+                        item.get("weight"),
+                        item.get("finding_count"),
+                        item.get("points_lost"),
+                        item.get("passed"),
+                    ]
+                    for item in dimensions
+                ],
+            )
+        )
+    else:
+        lines.append("- None")
+    return lines
+
+
 def _render_graph_parse_health(health: dict[str, Any]) -> list[str]:
     summary = health.get("summary", {})
     lines = [
@@ -140,6 +185,14 @@ def _render_graph_parse_health(health: dict[str, Any]) -> list[str]:
 def render_status_markdown(manifest: dict[str, Any]) -> str:
     summary = manifest["summary"]
     lines = [
+        "---",
+        "layer: status",
+        "domain: none",
+        "canonical_object: wiki-status",
+        "artifact_type: generated-status",
+        "status: generated",
+        "---",
+        "",
         "# Wiki Status",
         "",
         f"Generated at: `{manifest['generated_at']}`",
@@ -168,6 +221,7 @@ def render_status_markdown(manifest: dict[str, Any]) -> str:
     lines.extend(_markdown_table(["Section", "Pages"], section_rows or [["none", 0]]))
     lines.extend(_render_product_status(manifest["product_status"]))
     lines.extend(_render_domain_taxonomy_health(manifest.get("domain_taxonomy_health", {})))
+    lines.extend(_render_frontmatter_strict_gate(manifest.get("domain_taxonomy_health", {})))
     lines.extend(_render_graph_parse_health(manifest.get("graph_parse_health", {})))
     lines.extend(["", "## Pending Inbox Files", ""])
     pending = manifest["pending_inbox_files"]

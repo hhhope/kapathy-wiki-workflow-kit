@@ -11,6 +11,7 @@ fields:
       - adr
       - spec
       - examples
+      - status
 
   domain:
     meaning: business_or_topic_only
@@ -64,6 +65,8 @@ path_rules:
 
 severity:
   forbidden_domain: error
+  missing_required_field: error
+  unexpected_field_value: error
   missing_ops_area_on_ops_page: error
   missing_domain_on_sample_ops_page: error
   producer_hardcoded_forbidden_domain: error
@@ -85,3 +88,48 @@ sample_migration_paths:
   - wiki/ops/agent-readable-wiki-semantic-scoring.md
   - wiki/ops/nirvana-协议支付涅槃需求文档-intake.md
   - wiki/ops/nirvana-preview-intake.md
+
+strict_gate:
+  enabled: true
+  minimum_pass_score: 100
+  blocking_severities:
+    - error
+  rule_sets:
+    whole_wiki:
+      path_globs:
+        - wiki/**/*.md
+      required:
+        - layer
+        - domain
+    ops_pages:
+      path_globs:
+        - wiki/ops/**/*.md
+      required:
+        - ops_area
+        - canonical_object
+        - artifact_type
+      expected:
+        layer: ops
+    adr_pages:
+      path_globs:
+        - wiki/adr/**/*.md
+      required:
+        - canonical_object
+        - artifact_type
+      expected:
+        layer: adr
+        domain: none
+    source_pages:
+      path_globs:
+        - wiki/sources/**/*.md
+      required:
+        - source_type
+      expected:
+        layer: sources
+
+scorecard:
+  dimensions:
+    completeness: 40
+    taxonomy_validity: 25
+    identity_coverage: 20
+    relation_shape: 15

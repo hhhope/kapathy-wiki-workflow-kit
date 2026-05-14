@@ -322,6 +322,57 @@ related_objects:
         self.assertEqual(manifest["graph_parse_health"]["status"], "pass")
         self.assertEqual(manifest["graph_parse_health"]["entries"], [])
 
+    def test_status_report_renders_strict_frontmatter_gate_scorecard(self) -> None:
+        (self.tmpdir / "wiki" / "config" / "frontmatter-taxonomy.yaml").write_text(
+            """version: 1
+fields:
+  domain:
+    known:
+      - none
+    forbidden:
+      - personal-ops
+severity:
+  missing_required_field: error
+strict_gate:
+  enabled: true
+  minimum_pass_score: 100
+  blocking_severities:
+    - error
+  rule_sets:
+    whole_wiki:
+      path_globs:
+        - wiki/**/*.md
+      required:
+        - layer
+        - domain
+scorecard:
+  dimensions:
+    completeness: 40
+    taxonomy_validity: 25
+    identity_coverage: 20
+    relation_shape: 15
+""",
+            encoding="utf-8",
+        )
+        (self.tmpdir / "wiki" / "ops" / "missing.md").write_text(
+            """---
+title: Missing
+---
+
+# Missing
+""",
+            encoding="utf-8",
+        )
+
+        manifest = build_manifest(self.tmpdir)
+        status_text = render_status_markdown(manifest)
+
+        self.assertFalse(manifest["domain_taxonomy_health"]["strict_gate"]["passed"])
+        self.assertIn("## Frontmatter Strict Gate", status_text)
+        self.assertIn("Passed | False", status_text)
+        self.assertIn("## Frontmatter Scorecard", status_text)
+        self.assertIn("missing_required_field", status_text)
+
 
 if __name__ == "__main__":
     unittest.main()

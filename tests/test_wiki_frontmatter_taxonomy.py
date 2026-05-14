@@ -1,7 +1,11 @@
 from __future__ import annotations
 
+import shutil
+import tempfile
+import unittest
 from pathlib import Path
 
+from scripts.check_wiki_frontmatter import build_report
 from scripts.check_wiki_frontmatter import load_taxonomy
 from scripts.check_wiki_frontmatter import check_content_drift
 from scripts.check_wiki_frontmatter import check_possible_unregistered_producers
@@ -210,3 +214,166 @@ def test_render_markdown_report_includes_summary_and_entries() -> None:
     assert "| error | 1 |" in markdown
     assert "`wiki/ops/sample.md`" in markdown
     assert "`scripts/other_writer.py`" in markdown
+
+
+def strict_config() -> str:
+    return """
+version: 1
+fields:
+  domain:
+    forbidden:
+      - personal-ops
+    known:
+      - none
+      - unclassified
+  ops_area:
+    allowed:
+      - agent-governance
+severity:
+  missing_required_field: error
+  unexpected_field_value: error
+  forbidden_domain: error
+  unclassified_without_flag: error
+strict_gate:
+  enabled: true
+  minimum_pass_score: 100
+  blocking_severities:
+    - error
+  rule_sets:
+    whole_wiki:
+      path_globs:
+        - wiki/**/*.md
+      required:
+        - layer
+        - domain
+    ops_pages:
+      path_globs:
+        - wiki/ops/**/*.md
+      required:
+        - ops_area
+        - canonical_object
+        - artifact_type
+      expected:
+        layer: ops
+    adr_pages:
+      path_globs:
+        - wiki/adr/**/*.md
+      required:
+        - canonical_object
+        - artifact_type
+      expected:
+        layer: adr
+        domain: none
+scorecard:
+  dimensions:
+    completeness: 40
+    taxonomy_validity: 25
+    identity_coverage: 20
+    relation_shape: 15
+""".lstrip()
+
+
+class StrictFrontmatterGateTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmpdir = Path(tempfile.mkdtemp(prefix="strict-frontmatter-test-"))
+        write(self.tmpdir / "wiki/config/frontmatter-taxonomy.yaml", strict_config())
+
+    def tearDown(self) -> None:
+        shutil.rmtree(self.tmpdir)
+
+    def test_ops_page_missing_strict_fields_fails_gate(self) -> None:
+        write(
+            self.tmpdir / "wiki/ops/visual-output-routing-fix-recheck-2026-05-11.md",
+            """---
+title: visual-output-routing / fix recheck
+status: active
+---
+
+# Visual Output Routing Fix Recheck
+""",
+        )
+
+        report = build_report(self.tmpdir)
+        entries = [
+            entry
+            for entry in report["entries"]
+            if entry["path"] == "wiki/ops/visual-output-routing-fix-recheck-2026-05-11.md"
+        ]
+
+        self.assertFalse(report["strict_gate"]["passed"])
+        self.assertEqual(report["scorecard"]["score"], 0)
+        self.assertIn(
+            ("missing_required_field", "layer"),
+            {(entry["kind"], entry["field"]) for entry in entries},
+        )
+        self.assertIn(
+            ("missing_required_field", "domain"),
+            {(entry["kind"], entry["field"]) for entry in entries},
+        )
+        self.assertIn(
+            ("missing_required_field", "ops_area"),
+            {(entry["kind"], entry["field"]) for entry in entries},
+        )
+
+    def test_adr_page_missing_taxonomy_fields_fails_gate(self) -> None:
+        write(
+            self.tmpdir / "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md",
+            """---
+canonical_object: wiki-runtime-context-source-integration
+artifact_type: adr
+---
+
+# ADR
+""",
+        )
+
+        report = build_report(self.tmpdir)
+        entries = [
+            entry
+            for entry in report["entries"]
+            if entry["path"]
+            == "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md"
+        ]
+
+        self.assertFalse(report["strict_gate"]["passed"])
+        self.assertIn(
+            ("missing_required_field", "layer"),
+            {(entry["kind"], entry["field"]) for entry in entries},
+        )
+        self.assertIn(
+            ("missing_required_field", "domain"),
+            {(entry["kind"], entry["field"]) for entry in entries},
+        )
+
+    def test_compliant_ops_and_adr_pages_pass_strict_gate(self) -> None:
+        write(
+            self.tmpdir / "wiki/ops/compliant.md",
+            """---
+layer: ops
+domain: none
+ops_area: agent-governance
+canonical_object: compliant
+artifact_type: method
+---
+
+# Compliant
+""",
+        )
+        write(
+            self.tmpdir / "wiki/adr/0032-compliant.md",
+            """---
+layer: adr
+domain: none
+canonical_object: compliant
+artifact_type: adr
+---
+
+# ADR
+""",
+        )
+
+        report = build_report(self.tmpdir)
+
+        self.assertTrue(report["strict_gate"]["passed"])
+        self.assertEqual(report["scorecard"]["score"], 100)
+        self.assertEqual(report["summary"]["error"], 0)

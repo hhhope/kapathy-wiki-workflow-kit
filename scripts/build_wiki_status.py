@@ -193,6 +193,8 @@ def _collect_domain_taxonomy_health(root: Path) -> dict[str, Any]:
         "config_path": report["config_path"],
         "taxonomy_version": report.get("taxonomy_version"),
         "summary": report["summary"],
+        "strict_gate": report.get("strict_gate", {}),
+        "scorecard": report.get("scorecard", {}),
         "entries": entries[:10],
     }
 
