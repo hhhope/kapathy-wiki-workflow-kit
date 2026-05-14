@@ -1,7 +1,9 @@
-# wiki-status-slash-command Specification
+# wiki-status-skill Specification
 
 ## Purpose
-TBD - created by archiving change add-wiki-status-slash-command. Update Purpose after archive.
+
+Define the repo-local `wiki-status` skill as the current status entrypoint.
+
 ## Requirements
 ### Requirement: Repository SHALL expose wiki status as a Codex skill
 

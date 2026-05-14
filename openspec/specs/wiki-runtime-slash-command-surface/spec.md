@@ -1,7 +1,10 @@
-# wiki-runtime-slash-command-surface Specification
+# wiki-runtime-skill-surface Specification
 
 ## Purpose
-TBD - created by archiving change expose-wiki-runtime-slash-command-surface. Update Purpose after archive.
+
+Define the current repo-local wiki skill runtime surface and keep obsolete
+slash command contracts out of active runtime documentation.
+
 ## Requirements
 ### Requirement: Wiki graph skill SHALL provide an explainable object view
 
@@ -70,8 +73,10 @@ wiki/spec records rather than inventing new runtime semantics.
 #### Scenario: Runtime skill is invoked
 
 - **WHEN** a `wiki-*` runtime skill is invoked
-- **THEN** it SHALL identify the scripts, artifacts, or command contract it uses
+- **THEN** it SHALL identify the scripts and artifacts it uses
 - **AND** it SHALL summarize the generated or inspected runtime output
+- **AND** it SHALL be executable from `.codex/skills/wiki-*` without opening
+  obsolete command contract files
 - **AND** it SHALL preserve the proof boundary of the underlying runtime layer
 
 ### Requirement: Wiki runtime skills SHALL not mutate OpenSpec lifecycle state

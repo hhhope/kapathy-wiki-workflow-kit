@@ -135,9 +135,12 @@ python3 -m pytest tests/test_wiki_frontmatter_taxonomy.py tests/test_wiki_frontm
 
 ## Codex Skills
 
-Use repo-local skills under `.codex/skills/`. Do not install this repo's
-`wiki-*` or `openspec-*` skills into root/user scope; duplicate registrations
-can surface obsolete namespaces.
+Use repo-local skills under `.codex/skills/`. Do not install this repo's `wiki-*`
+or `openspec-*` skills into root/user scope; duplicate registrations can surface
+obsolete namespaces.
+
+The current wiki runtime is the repo-local skill surface. Do not document or
+invoke obsolete slash-style wiki commands as the active runtime entrypoint.
 
 Do not reintroduce repo plugin marketplace metadata or plugin skill copies for
 this runtime surface; those registrations can surface obsolete namespaces.
