@@ -29,6 +29,9 @@ fields:
       - report-workflow
       - wiki
       - agent-harness
+      - ai-workflow
+      - product-engineering-collaboration
+      - public-report-output
 
   ops_area:
     allowed:
