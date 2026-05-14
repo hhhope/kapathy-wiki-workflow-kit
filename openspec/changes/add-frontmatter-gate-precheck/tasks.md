@@ -5,3 +5,4 @@
 - [x] 3. Update wiki frontmatter taxonomy skill to route routine checks through precheck.
 - [x] 4. Record behavior-asset evaluation evidence.
 - [x] 5. Run focused tests, strict checker/precheck, behavior asset checker, and OpenSpec validation.
+- [x] 6. Add target repair hints so agents can fill frontmatter fields without opening full YAML by default.

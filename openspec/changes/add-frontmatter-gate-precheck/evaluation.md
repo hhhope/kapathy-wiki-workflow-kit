@@ -10,7 +10,9 @@
    the whole-gate pass/fail result.
 4. Negative should-not-trigger scenario: taxonomy config edits and checker debugging should not rely only on the
    compact precheck; those cases still load the YAML or checker source.
-5. The skill routing change must be behavior-visible and must not duplicate
+5. Positive trigger scenario: target-specific output should include repair hints
+   for field补齐 so agents do not need to open the full YAML for ordinary missing-field fixes.
+6. The skill routing change must be behavior-visible and must not duplicate
    taxonomy vocabulary.
 
 ## Behavior Replay
@@ -25,7 +27,7 @@
   `scripts/wiki_gate_precheck.py`, and this OpenSpec change.
 - Expected output: compact precheck JSON with pass/fail, score, minimum score,
   blocking count, summary counts, bounded top blockers, optional bounded target
-  entries, and full report paths.
+  entries, target repair hints, and full report paths.
 - Promotion or non-promotion boundary: compact precheck output may support
   routing and status claims, but taxonomy vocabulary or scorecard changes still
   require editing the YAML under the OpenSpec gate.
@@ -70,21 +72,31 @@ After implementation:
 - Compact output contains pass/fail, score, minimum score, blocking count,
   summary counts, bounded top blockers, optional bounded target entries, full
   report paths, and proof boundary.
+- Target output includes `repair_hints` with required fields, exact frontmatter
+  values, relevant field options, and notes for when to open full YAML.
 - `.codex/skills/wiki-frontmatter-taxonomy/SKILL.md` now routes routine checks
   through `python3 scripts/wiki_gate_precheck.py --mode frontmatter` first.
 - Full YAML/checker loading is reserved for taxonomy edits, checker debugging,
   or insufficient precheck evidence.
+- The skill tells agents to use `target.repair_hints` before opening full YAML.
 
 ## Verification
 
 - `python3 -m unittest tests.test_wiki_gate_precheck tests.test_wiki_frontmatter_taxonomy_skill`
   - Result: pass, 4 tests.
+- `python3 -m unittest tests.test_wiki_gate_precheck`
+  - Result after archive-review tail fix: pass, 2 tests.
 - `python3 -m unittest tests.test_wiki_gate_precheck tests.test_wiki_frontmatter_taxonomy_skill tests.test_wiki_frontmatter_taxonomy tests.test_wiki_status tests.test_wiki_graph_summary tests.test_wiki_runtime_commands`
   - Result: pass, 31 tests.
 - `python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 3`
   - Result: expected failure, exit code 1.
   - Compact summary: strict gate failed, 769 blocking entries, score 0 / 100.
   - Top blockers were bounded to 3 grouped rows.
+- `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target wiki/ops/visual-output-routing-fix-recheck-2026-05-11.md --top 3`
+  - Result: expected failure, exit code 1.
+  - Target output included `repair_hints.required_fields`,
+    `repair_hints.exact_frontmatter.layer: ops`, and bounded field options for
+    `domain` and `ops_area`.
 - `python3 scripts/check_wiki_frontmatter.py`
   - Result: expected failure, exit code 1.
   - Full report summary: 769 errors, 2 warnings, score 0 / 100.
@@ -115,5 +127,8 @@ After implementation:
 
 - The precheck is a compact summary. It intentionally omits the full `entries`
   list from agent-facing output.
+- Repair hints do not infer semantic business domain from prose. If exact
+  values and field options are insufficient, the agent must load the taxonomy
+  config or ask for classification.
 - The current whole-wiki strict gate still fails on historical frontmatter debt;
   this change does not migrate those pages.

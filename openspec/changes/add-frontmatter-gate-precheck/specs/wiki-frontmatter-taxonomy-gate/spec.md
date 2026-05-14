@@ -25,6 +25,8 @@ agent-readable evidence.
 - **WHEN** the precheck command is run with `--target PATH`
 - **THEN** the output SHALL include bounded entries for that target when
   matching findings exist
+- **AND** it SHALL include bounded repair hints for required fields, expected
+  values, and relevant allowed values
 - **AND** it SHALL preserve the whole-gate pass/fail result
 
 ### Requirement: Frontmatter taxonomy skill SHALL prefer precheck for routine checks

@@ -97,6 +97,22 @@ title: Broken
         self.assertEqual(report["target"]["path"], "wiki/ops/broken.md")
         self.assertLessEqual(len(report["target"]["entries"]), 2)
         self.assertGreaterEqual(len(report["target"]["entries"]), 1)
+        self.assertEqual(
+            report["target"]["repair_hints"]["exact_frontmatter"],
+            {"layer": "ops"},
+        )
+        self.assertEqual(
+            report["target"]["repair_hints"]["required_fields"],
+            ["layer", "domain", "ops_area", "canonical_object", "artifact_type"],
+        )
+        self.assertEqual(
+            report["target"]["repair_hints"]["field_options"]["ops_area"],
+            ["agent-governance"],
+        )
+        self.assertEqual(
+            report["target"]["repair_hints"]["field_options"]["domain"],
+            ["none"],
+        )
         self.assertTrue(report["full_report"]["json"].endswith("full.json"))
         self.assertTrue(report["full_report"]["markdown"].endswith("full.md"))
 

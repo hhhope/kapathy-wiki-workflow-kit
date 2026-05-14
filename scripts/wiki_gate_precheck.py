@@ -15,6 +15,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.check_wiki_frontmatter import build_report as build_frontmatter_report
+from scripts.check_wiki_frontmatter import load_taxonomy
+from scripts.check_wiki_frontmatter import matching_rule_sets
 from scripts.check_wiki_frontmatter import render_markdown_report
 
 
@@ -66,6 +68,50 @@ def _top_blockers(entries: list[dict[str, Any]], limit: int) -> list[dict[str, A
     return sorted(rows, key=lambda item: (-int(item["count"]), str(item["kind"])))[:limit]
 
 
+def _dedupe_ordered(values: list[str]) -> list[str]:
+    seen = set()
+    result = []
+    for value in values:
+        if value in seen:
+            continue
+        seen.add(value)
+        result.append(value)
+    return result
+
+
+def _target_repair_hints(root: Path, target_path: str, config: dict[str, Any]) -> dict[str, Any]:
+    required: list[str] = []
+    exact: dict[str, Any] = {}
+    for _rule_name, rule in matching_rule_sets(target_path, config):
+        required.extend(str(field) for field in rule.get("required", []))
+        expected = rule.get("expected", {})
+        if isinstance(expected, dict):
+            for field, value in expected.items():
+                exact[str(field)] = value
+
+    field_options: dict[str, list[str]] = {}
+    fields = config.get("fields", {})
+    if isinstance(fields, dict):
+        for field in _dedupe_ordered(required):
+            field_config = fields.get(field, {})
+            if not isinstance(field_config, dict):
+                continue
+            options = field_config.get("allowed") or field_config.get("known")
+            if isinstance(options, list):
+                field_options[field] = [str(option) for option in options]
+
+    return {
+        "required_fields": _dedupe_ordered(required),
+        "exact_frontmatter": exact,
+        "field_options": field_options,
+        "notes": [
+            "Use exact_frontmatter values as-is.",
+            "Choose field_options values only when they match the page content and repo routing.",
+            "Load wiki/config/frontmatter-taxonomy.yaml only when these hints are insufficient.",
+        ],
+    }
+
+
 def build_precheck_report(
     *,
     root: Path | str = ROOT,
@@ -79,6 +125,7 @@ def build_precheck_report(
         raise ValueError(f"unsupported precheck mode: {mode}")
 
     root_path = Path(root)
+    config = load_taxonomy(root_path)
     json_path = Path(json_output)
     markdown_path = Path(markdown_output)
     full_report = build_frontmatter_report(root_path)
@@ -113,6 +160,7 @@ def build_precheck_report(
             "path": target_path,
             "entry_count": len(target_entries),
             "entries": target_entries[:max_items],
+            "repair_hints": _target_repair_hints(root_path, target_path, config),
         }
         if target_path
         else None,

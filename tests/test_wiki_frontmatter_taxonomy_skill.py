@@ -17,6 +17,8 @@ class WikiFrontmatterTaxonomySkillTest(unittest.TestCase):
             "Run `python3 scripts/wiki_gate_precheck.py --mode frontmatter` first",
             text,
         )
+        self.assertIn("repair hints", text)
+        self.assertIn("target.repair_hints", text)
         self.assertIn("Do not load the full taxonomy YAML or checker by default", text)
         self.assertIn("Do not duplicate taxonomy vocabulary", text)
         self.assertNotIn("agent-governance", text)

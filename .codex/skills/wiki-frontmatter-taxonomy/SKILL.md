@@ -9,8 +9,8 @@ Default routine check:
 
 - Run `python3 scripts/wiki_gate_precheck.py --mode frontmatter` first.
 - Add `--target PATH` when checking a specific page.
-- Read the compact pass/fail, score, blocking count, top blockers, and full
-  report paths from precheck output.
+- Read the compact pass/fail, score, blocking count, top blockers, target
+  repair hints, and full report paths from precheck output.
 
 Load full sources only when needed:
 
@@ -33,9 +33,10 @@ When creating or modifying frontmatter:
 
 1. Run the precheck with `--target PATH`.
 2. Determine the page layer by path and task.
-3. Load `wiki/config/frontmatter-taxonomy.yaml` only if the compact output does not identify the needed rule.
+3. Apply exact values and field options from `target.repair_hints`.
 4. Use explicit uncertainty fields when classification is not known.
-5. Run the precheck again and summarize remaining drift.
+5. Load `wiki/config/frontmatter-taxonomy.yaml` only if repair hints do not identify the needed rule or option.
+6. Run the precheck again and summarize remaining drift.
 
 Boundaries:
 
