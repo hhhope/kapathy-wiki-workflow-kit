@@ -2,8 +2,28 @@
 
 ## Evidence
 
-- Skeleton creation evidence: this file records the expected RED baseline before
-  implementation commands are run.
+- `python3 -m unittest tests/test_wiki_content_adjudication.py`
+  - RED baseline: failed before implementation because
+    `scripts.wiki_doctor_review_records` did not exist and the CLI lacked
+    `--write-review-record`.
+  - GREEN result from Worker B: passed, 7 tests.
+- `python3 -m unittest tests/test_wiki_runtime_skills.py`
+  - RED baseline: failed after adding markers because `wiki-doctor` did not
+    mention explicit review-record generation.
+  - GREEN result from Worker C: passed, 5 tests.
+- `python3 -m unittest tests/test_wiki_content_adjudication.py tests/test_wiki_runtime_skills.py`
+  - Result: passed, 12 tests.
+- `python3 scripts/build_wiki_content_adjudication.py --limit 0`
+  - Result: completed without `review_record_path`, preserving default
+    stdout-only behavior.
+- `python3 scripts/build_wiki_content_adjudication.py --limit 5 --write-review-record`
+  - Result: wrote
+    `wiki/ops/wiki-doctor-runs/2026-05-14-130526-review.md`.
+  - Summary: 153 candidates, 153 full details, 144 review focus entries,
+    3 taxonomy candidates, 71 drift traces, 112 eval warnings.
+  - The generated record includes proof boundary and next review actions.
+- `python3 scripts/check_behavior_assets.py`
+  - Result: passed.
 - OpenSpec validation: `openspec validate add-wiki-doctor-review-records --strict`
   reported `Change 'add-wiki-doctor-review-records' is valid` and exited `0`.
   PostHog network flush warnings appeared after validation because
@@ -14,10 +34,10 @@
 
 | Scenario | Expected route | Result |
 | --- | --- | --- |
-| Positive: explicit review-record request | Build adjudication package and write Markdown diagnosis under `wiki/ops/wiki-doctor-runs/` | Not run in skeleton stage |
-| Negative: ordinary doctor diagnosis | Preserve stdout-only behavior and create no review-record file | Not run in skeleton stage |
-| Negative: taxonomy candidates appear | Record candidates without mutating taxonomy YAML | Not run in skeleton stage |
-| Negative: accepted judgments appear | Record diagnosis without frontmatter, MOC, or OpenSpec task writes | Not run in skeleton stage |
+| Positive: explicit review-record request | Build adjudication package and write Markdown diagnosis under `wiki/ops/wiki-doctor-runs/` | Passed |
+| Negative: ordinary doctor diagnosis | Preserve stdout-only behavior and create no review-record file | Passed |
+| Negative: taxonomy candidates appear | Record candidates without mutating taxonomy YAML | Passed |
+| Negative: accepted judgments appear | Record diagnosis without frontmatter, MOC, or OpenSpec task writes | Passed |
 
 ## RED Baseline
 
@@ -39,9 +59,10 @@ wiki-doctor -> build adjudication package -> explicit review record ->
 human review -> later explicit fix or OpenSpec
 ```
 
-Repo-visible artifact: this change will add `scripts/wiki_doctor_review_records.py`,
+Repo-visible artifact: `scripts/wiki_doctor_review_records.py`,
 `scripts/build_wiki_content_adjudication.py`, `.codex/skills/wiki-doctor/SKILL.md`,
-targeted tests, and optional `wiki/ops/wiki-doctor-runs/*-review.md` evidence.
+targeted tests, and
+`wiki/ops/wiki-doctor-runs/2026-05-14-130526-review.md`.
 
 Expected output: a Markdown diagnosis record with scan scope, summary, taxonomy
 candidates, drift traces, eval result, proof boundary, and next review actions.
