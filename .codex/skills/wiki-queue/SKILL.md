@@ -5,15 +5,12 @@ description: Preview ready, decision-needed, and blocked report wiki work withou
 
 Use the wiki queue runtime surface for the report wiki repository.
 
-Command contract: `plugins/report-wiki-portfolio/commands/wiki-queue.md`
-
 When triggered:
 
 1. Confirm the current repository has `scripts/build_wiki_change_queue_preview.py`.
-2. Follow the command contract when present.
-3. Run or reference `python3 scripts/build_wiki_change_queue_preview.py`.
-4. Read queue preview JSON when available.
-5. Summarize `ready`, `needs_user_decision`, and `blocked` work with source
+2. Run or reference `python3 scripts/build_wiki_change_queue_preview.py`.
+3. Read queue preview JSON when available.
+4. Summarize `ready`, `needs_user_decision`, and `blocked` work with source
    paths and caution notes.
 
 Boundaries:

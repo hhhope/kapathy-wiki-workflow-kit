@@ -32,8 +32,6 @@ The answer must open repo-visible evidence from the relevant layers:
 - `openspec/specs`
 - `openspec/changes/archive`
 - `.codex/skills`
-- `plugins/report-wiki-portfolio/commands`
-
 The answer does not need to open every layer for every topic, but it must say
 which layers exist and which are missing.
 

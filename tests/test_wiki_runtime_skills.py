@@ -5,6 +5,9 @@ from pathlib import Path
 
 SKILL_SOURCE_ROOT = Path(".codex/skills")
 USER_SKILL_ROOT = Path.home() / ".codex" / "skills"
+PLUGIN_COMMANDS_FRAGMENT = "plugins/report-wiki-portfolio" + "/commands"
+COMMANDS_WIKI_FRAGMENT = "commands/" + "wiki-"
+WIKI_SLASH_FRAGMENT = "/" + "wiki:"
 
 WIKI_SKILLS = {
     "wiki-status": ("scripts/build_wiki_status.py", "wiki/status/wiki-status.md"),
@@ -56,8 +59,8 @@ class WikiRuntimeSkillsTest(unittest.TestCase):
                 for marker in required_markers:
                     self.assertIn(marker, content)
                 self.assertNotIn("Command contract:", content)
-                self.assertNotIn("plugins/report-wiki-portfolio/commands", content)
-                self.assertNotIn("/wiki:", content)
+                self.assertNotIn(PLUGIN_COMMANDS_FRAGMENT, content)
+                self.assertNotIn(WIKI_SLASH_FRAGMENT, content)
                 self.assertNotIn("name: report-wiki-portfolio:", content)
 
     def test_wiki_runtime_skills_preserve_boundaries(self) -> None:
@@ -89,9 +92,9 @@ class WikiRuntimeSkillsTest(unittest.TestCase):
         for path in active_paths:
             with self.subTest(path=path.as_posix()):
                 text = path.read_text(encoding="utf-8")
-                self.assertNotIn("plugins/report-wiki-portfolio/commands", text)
-                self.assertNotIn("commands/wiki-", text)
-                self.assertNotIn("/wiki:", text)
+                self.assertNotIn(PLUGIN_COMMANDS_FRAGMENT, text)
+                self.assertNotIn(COMMANDS_WIKI_FRAGMENT, text)
+                self.assertNotIn(WIKI_SLASH_FRAGMENT, text)
 
     def test_user_scope_does_not_duplicate_repo_wiki_runtime_skills(self) -> None:
         for skill_name in WIKI_SKILLS:

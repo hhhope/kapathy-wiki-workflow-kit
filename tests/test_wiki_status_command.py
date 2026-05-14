@@ -2,6 +2,10 @@ import unittest
 from pathlib import Path
 
 
+PLUGIN_COMMANDS_FRAGMENT = "plugins/report-wiki-portfolio" + "/commands"
+WIKI_STATUS_SLASH = "/" + "wiki:status"
+
+
 class WikiStatusSkillTest(unittest.TestCase):
     def test_wiki_status_skill_is_self_contained(self) -> None:
         skill_path = Path(".codex/skills/wiki-status/SKILL.md")
@@ -15,8 +19,8 @@ class WikiStatusSkillTest(unittest.TestCase):
         self.assertIn("strict frontmatter gate", skill)
         self.assertIn("Do not mark OpenSpec tasks complete", skill)
         self.assertNotIn("Command contract:", skill)
-        self.assertNotIn("/wiki:status", skill)
-        self.assertNotIn("plugins/report-wiki-portfolio/commands", skill)
+        self.assertNotIn(WIKI_STATUS_SLASH, skill)
+        self.assertNotIn(PLUGIN_COMMANDS_FRAGMENT, skill)
 
     def test_no_claude_only_wiki_status_command_remains(self) -> None:
         self.assertFalse(Path(".claude/commands/wiki/status.md").exists())

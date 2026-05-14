@@ -5,16 +5,13 @@ description: Inspect the generated report wiki source and routing manifest witho
 
 Use the wiki manifest runtime surface for the report wiki repository.
 
-Command contract: `plugins/report-wiki-portfolio/commands/wiki-manifest.md`
-
 When triggered:
 
 1. Confirm the current repository has `scripts/build_wiki_status.py`.
-2. Follow the command contract when present.
-3. Run or reference `python3 scripts/build_wiki_status.py`.
-4. Read `wiki/status/manifest.json`.
-5. Summarize manifest counts, source coverage, stale inputs, route pressure,
-   and missing generated artifacts.
+2. Run or reference `python3 scripts/build_wiki_status.py`.
+3. Read `wiki/status/manifest.json`.
+4. Summarize manifest counts, source coverage, stale inputs, route pressure,
+   missing generated artifacts, and proof boundaries.
 
 Boundaries:
 

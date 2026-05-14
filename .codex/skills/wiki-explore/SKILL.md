@@ -9,8 +9,6 @@ Use this as the repo's evidence-depth exploration surface. It is not a
 replacement for `wiki-query`; use `wiki-query` for bounded retrieval and
 `wiki-explore` when the user needs a depth judgment.
 
-Command contract: `plugins/report-wiki-portfolio/commands/wiki-explore.md`
-
 ## When To Use
 
 Use this skill when:

@@ -5,17 +5,20 @@ description: Inspect bounded wiki self-directed execution suggestions without ex
 
 Use the wiki apply runtime surface for the report wiki repository.
 
-Command contract: `plugins/report-wiki-portfolio/commands/wiki-apply.md`
-
 When triggered:
 
 1. Confirm the current repository has `scripts/derive_self_directed_execution.py`.
-2. Follow the command contract when present.
-3. Run or reference `python3 scripts/build_runtime_context_injection.py` and
+2. Run or reference `python3 scripts/build_runtime_context_injection.py` and
    `python3 scripts/derive_self_directed_execution.py`.
-4. Read self-directed execution JSON when available.
-5. Summarize `execute_now`, `defer_for_followup`, and `do_not_execute` as
+3. Read self-directed execution JSON when available.
+4. Summarize `execute_now`, `defer_for_followup`, and `do_not_execute` as
    suggestions only.
+5. For explicit page frontmatter repairs, route to
+   `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target PATH`
+   and use `target.repair_hints` before opening full taxonomy config.
+6. Distinguish `page-frontmatter-fix`, `taxonomy-config-fix`,
+   `runtime-parser-fix`, and `readable-graph-fix`; only page-frontmatter-fix
+   can be bounded to an explicit page without a new runtime behavior change.
 
 Boundaries:
 

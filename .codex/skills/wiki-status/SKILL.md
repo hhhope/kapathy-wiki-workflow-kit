@@ -5,16 +5,16 @@ description: Refresh and summarize the report wiki status surface from manifest 
 
 Use the wiki status runtime surface for the report wiki repository.
 
-Command contract: `plugins/report-wiki-portfolio/commands/wiki-status.md`
-
 When triggered:
 
 1. Confirm the current repository has `scripts/build_wiki_status.py`.
-2. Follow the command contract when present.
-3. Run or reference `python3 scripts/build_wiki_status.py`.
-4. Read `wiki/status/manifest.json` and `wiki/status/wiki-status.md`.
-5. Summarize only the current status, warnings, stale inputs, and next
-   inspection points.
+2. Run or reference `python3 scripts/build_wiki_status.py`.
+3. Read `wiki/status/manifest.json` and `wiki/status/wiki-status.md`.
+4. Summarize page and source counts, inbox and OpenSpec counts, identity and
+   relation coverage, graph parse health, strict frontmatter gate status,
+   scorecard score, blocking count, and top blockers when present.
+5. Name next inspection routes such as `wiki-graph`, `wiki-scorecard`,
+   `wiki-apply`, or `wiki-frontmatter-taxonomy` when the status shows drift.
 
 Boundaries:
 
