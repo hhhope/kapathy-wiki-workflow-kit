@@ -48,10 +48,10 @@ Boundaries
   requires user confirmation | requires OpenSpec
     |
     v
-Eval / lifecycle gates
-  trace eval validates decision_trace
-  behavior checker validates behavior assets
-  OpenSpec owns runtime and workflow lifecycle
+Eval and lifecycle gates
+  trace eval validates agent-produced decision traces
+  behavior asset checker validates behavior-change evidence
+  OpenSpec owns workflow/runtime change lifecycle
 ```
 
 ## Layer Responsibilities
@@ -63,7 +63,7 @@ Eval / lifecycle gates
 | Decision contract | The `decision_trace` shape for high-risk or ambiguous routes. | Deterministic scoring, linting, or lifecycle approval. |
 | Observation tools | Script output and generated artifacts that describe current state. | Natural-language intent classification. |
 | Boundaries | The action class allowed after observations are read. | Silent escalation into workflow changes. |
-| Eval / lifecycle gates | Trace validation, behavior-asset validation, and OpenSpec lifecycle. | Substituting one gate for another. |
+| Eval and lifecycle gates | Trace validation, behavior-asset validation, and OpenSpec lifecycle. | Substituting one gate for another. |
 
 ## Capability And Ownership Rules
 
@@ -88,16 +88,18 @@ approve wiki repairs, or replace OpenSpec review.
 
 The eval harness validates traces. `scripts/eval_wiki_decision_trace.py`
 checks whether agent-produced traces satisfy the decision contract for replay
-cases. It does not replace the behavior-asset checker or OpenSpec task review.
+cases. In short: trace eval validates agent-produced decision traces. It does
+not replace the behavior-asset checker or OpenSpec task review.
 
-The behavior checker validates behavior assets. It checks whether behavior
-changes carry the required evidence shape. It does not approve runtime
-lifecycle changes by itself.
+The behavior asset checker validates behavior-change evidence. It checks
+whether behavior changes carry the required evidence shape. It does not approve
+runtime lifecycle changes by itself.
 
-OpenSpec owns lifecycle. New or changed runtime capabilities, workflow defaults,
-skill semantics, and governance behavior go through scoped OpenSpec changes.
-Observation tools and scorecards can surface evidence, but they do not own
-proposal, implementation, completion, or archive decisions.
+OpenSpec owns workflow/runtime change lifecycle. New or changed runtime
+capabilities, workflow defaults, skill semantics, and governance behavior go
+through scoped OpenSpec changes. Observation tools and scorecards can surface
+evidence, but they do not own proposal, implementation, completion, or archive
+decisions.
 
 ## Choosing An Entry Point
 
@@ -112,5 +114,5 @@ proposal, implementation, completion, or archive decisions.
 ## Proof Boundary
 
 This contract documents the current architecture and ownership boundaries. It
-does not add new runtime capability, change scorecard algorithms, change eval
-case semantics, or rename active specs.
+does not add new runtime capability, change scorecard algorithms, or change
+eval case semantics.

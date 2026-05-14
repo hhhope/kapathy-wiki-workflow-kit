@@ -159,7 +159,7 @@ Core loop
   -> Decision contract
   -> Observation tools
   -> Boundaries
-  -> Eval / lifecycle gates
+  -> Eval and lifecycle gates
 ```
 
 - Core loop: capture, compile, retrieve, and apply wiki work.
@@ -170,9 +170,9 @@ Core loop
   state; they do not classify natural-language intent.
 - Boundaries: outputs stay inspect-only, candidate judgment, bounded page fix,
   user-confirmation required, or OpenSpec-required.
-- Eval / lifecycle gates: scorecard observes, trace eval validates
-  `decision_trace`, the behavior checker validates behavior assets, and
-  OpenSpec owns lifecycle.
+- Eval and lifecycle gates: scorecard observes, trace eval validates
+  agent-produced decision traces, the behavior asset checker validates
+  behavior-change evidence, and OpenSpec owns workflow/runtime change lifecycle.
 
 Use [wiki/ops/wiki-runtime-layer-contract.md](wiki/ops/wiki-runtime-layer-contract.md)
 as the durable architecture reference.
@@ -180,8 +180,8 @@ as the durable architecture reference.
 ### Choosing Wiki Skills
 
 Use `wiki-react` when the request is ambiguous, high-risk, or may cross from
-inspection into repair, queueing, governance, or lifecycle decisions. It is the
-explicit router, not a replacement for domain skills.
+inspection into repair, queueing, governance, or lifecycle decisions.
+wiki-react is the explicit router; it does not replace domain skills.
 
 Use direct domain skills when the surface is already clear:
 
@@ -191,6 +191,13 @@ Use direct domain skills when the surface is already clear:
 - `wiki-apply`: inspect bounded self-directed execution suggestions before any
   repair path.
 - `wiki-scorecard`: semantic scoring and utilization diagnostics.
+
+Quick mapping:
+
+- status -> wiki-status
+- repair -> wiki-apply
+- uncertain/high-risk -> wiki-react
+- scorecard/evidence strength -> wiki-scorecard
 
 Direct domain-skill use does not bypass the decision contract. If the route is
 high-risk, the skill still emits `decision_trace` before action.
