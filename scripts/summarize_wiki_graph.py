@@ -67,6 +67,26 @@ def matches_focus(value: str, focus: str | None) -> bool:
     return focus is None or focus in value.lower()
 
 
+def representative_pages_for(nodes: list[dict]) -> tuple[list[dict], int]:
+    sorted_nodes = sorted(nodes, key=lambda item: item["page_path"])
+    non_spec_nodes = [
+        node
+        for node in sorted_nodes
+        if node.get("artifact_type") != "spec"
+        and node.get("source_layer") != "openspec/specs"
+    ]
+    representative_nodes = non_spec_nodes or sorted_nodes
+    collapsed_spec_count = len(sorted_nodes) - len(representative_nodes)
+    return [
+        {
+            "page_path": node["page_path"],
+            "artifact_type": node["artifact_type"],
+            "source_layer": node["source_layer"],
+        }
+        for node in representative_nodes[:5]
+    ], collapsed_spec_count
+
+
 def build_object_view(graph: dict, relation_analysis: dict, focus: str | None, limit: int) -> list[dict]:
     nodes_by_object: dict[str, list[dict]] = defaultdict(list)
     relation_types_by_object: dict[str, Counter[str]] = defaultdict(Counter)
@@ -92,14 +112,7 @@ def build_object_view(graph: dict, relation_analysis: dict, focus: str | None, l
         if not matches_focus(canonical_object, focus):
             continue
         coverage = coverage_by_object.get(canonical_object, {})
-        representative_pages = [
-            {
-                "page_path": node["page_path"],
-                "artifact_type": node["artifact_type"],
-                "source_layer": node["source_layer"],
-            }
-            for node in sorted(nodes, key=lambda item: item["page_path"])[:5]
-        ]
+        representative_pages, collapsed_spec_count = representative_pages_for(nodes)
         object_view.append(
             {
                 "canonical_object": canonical_object,
@@ -124,6 +137,7 @@ def build_object_view(graph: dict, relation_analysis: dict, focus: str | None, l
                     sorted(relation_types_by_object[canonical_object].items())
                 ),
                 "representative_pages": representative_pages,
+                "collapsed_spec_page_count": collapsed_spec_count,
             }
         )
 

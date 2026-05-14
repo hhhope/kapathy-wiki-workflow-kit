@@ -74,6 +74,69 @@ def _render_product_status(product_status: dict[str, Any]) -> list[str]:
     return lines
 
 
+def _render_domain_taxonomy_health(health: dict[str, Any]) -> list[str]:
+    summary = health.get("summary", {})
+    lines = [
+        "",
+        "## Domain Taxonomy Health",
+        "",
+        f"Status: `{health.get('status', 'unknown')}`",
+        f"Config: `{health.get('config_path', 'wiki/config/frontmatter-taxonomy.yaml')}`",
+        "",
+        *_markdown_table(
+            ["Severity", "Count"],
+            [
+                ["error", summary.get("error", 0)],
+                ["warn", summary.get("warn", 0)],
+                ["info", summary.get("info", 0)],
+                ["total", summary.get("total", 0)],
+            ],
+        ),
+        "",
+        "### Taxonomy Drift Samples",
+        "",
+    ]
+    entries = health.get("entries", [])
+    if entries:
+        for entry in entries:
+            lines.append(
+                f"- `{entry.get('path', 'unknown')}` `{entry.get('severity', 'unknown')}` "
+                f"`{entry.get('kind', 'unknown')}`: {entry.get('message', '')}"
+            )
+    else:
+        lines.append("- None")
+    return lines
+
+
+def _render_graph_parse_health(health: dict[str, Any]) -> list[str]:
+    summary = health.get("summary", {})
+    lines = [
+        "",
+        "## Graph Parse Health",
+        "",
+        f"Status: `{health.get('status', 'unknown')}`",
+        "",
+        *_markdown_table(
+            ["Metric", "Value"],
+            [["Suspicious relation pages", summary.get("total", 0)]],
+        ),
+        "",
+        "### Graph Parse Samples",
+        "",
+    ]
+    entries = health.get("entries", [])
+    if entries:
+        for entry in entries:
+            fields = ", ".join(entry.get("fields", []))
+            lines.append(
+                f"- `{entry.get('path', 'unknown')}` fields=`{fields}` "
+                f"route=`{entry.get('repair_route', 'unknown')}`: {entry.get('problem', '')}"
+            )
+    else:
+        lines.append("- None")
+    return lines
+
+
 def render_status_markdown(manifest: dict[str, Any]) -> str:
     summary = manifest["summary"]
     lines = [
@@ -104,6 +167,8 @@ def render_status_markdown(manifest: dict[str, Any]) -> str:
     ]
     lines.extend(_markdown_table(["Section", "Pages"], section_rows or [["none", 0]]))
     lines.extend(_render_product_status(manifest["product_status"]))
+    lines.extend(_render_domain_taxonomy_health(manifest.get("domain_taxonomy_health", {})))
+    lines.extend(_render_graph_parse_health(manifest.get("graph_parse_health", {})))
     lines.extend(["", "## Pending Inbox Files", ""])
     pending = manifest["pending_inbox_files"]
     if pending:

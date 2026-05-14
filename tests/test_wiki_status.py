@@ -11,6 +11,7 @@ class WikiStatusTest(unittest.TestCase):
         self.tmpdir = Path(tempfile.mkdtemp(prefix="wiki-status-test-"))
         (self.tmpdir / "wiki" / "sources").mkdir(parents=True)
         (self.tmpdir / "wiki" / "ops").mkdir(parents=True)
+        (self.tmpdir / "wiki" / "config").mkdir(parents=True)
         (self.tmpdir / "inbox").mkdir(parents=True)
         (self.tmpdir / "openspec" / "changes").mkdir(parents=True)
 
@@ -219,6 +220,107 @@ related_objects:
         self.assertIn("Relation Coverage", status_text)
         self.assertIn("Unresolved Product Status Items", status_text)
         self.assertIn("inbox/new-material.txt", status_text)
+
+    def test_manifest_and_status_report_surface_domain_taxonomy_health(self) -> None:
+        (self.tmpdir / "wiki" / "config" / "frontmatter-taxonomy.yaml").write_text(
+            """version: 1
+fields:
+  domain:
+    known:
+      - none
+      - unclassified
+    forbidden:
+      - personal-ops
+severity:
+  forbidden_domain: error
+""",
+            encoding="utf-8",
+        )
+        (self.tmpdir / "wiki" / "ops" / "domain-drift.md").write_text(
+            """---
+layer: ops
+domain: personal-ops
+ops_area: agent-governance
+canonical_object: domain-drift
+artifact_type: retro
+---
+
+# Domain Drift
+""",
+            encoding="utf-8",
+        )
+
+        manifest = build_manifest(self.tmpdir)
+        health = manifest["domain_taxonomy_health"]
+
+        self.assertEqual(health["status"], "drift")
+        self.assertEqual(health["summary"]["error"], 1)
+        self.assertEqual(health["entries"][0]["kind"], "forbidden_domain")
+        self.assertEqual(health["entries"][0]["path"], "wiki/ops/domain-drift.md")
+
+        status_text = render_status_markdown(manifest)
+        self.assertIn("## Domain Taxonomy Health", status_text)
+        self.assertIn("forbidden_domain", status_text)
+        self.assertIn("wiki/ops/domain-drift.md", status_text)
+
+    def test_manifest_and_status_report_surface_empty_parsed_relation_fields(self) -> None:
+        (self.tmpdir / "wiki" / "ops" / "empty-relation.md").write_text(
+            """---
+canonical_object: empty-relation
+artifact_type: retro
+related_objects:
+---
+
+# Empty Relation
+""",
+            encoding="utf-8",
+        )
+
+        manifest = build_manifest(self.tmpdir)
+        health = manifest["graph_parse_health"]
+
+        self.assertEqual(health["status"], "drift")
+        self.assertEqual(health["summary"]["total"], 1)
+        self.assertEqual(
+            health["entries"][0],
+            {
+                "type": "graph_parse_health",
+                "path": "wiki/ops/empty-relation.md",
+                "fields": ["related_objects"],
+                "problem": "raw relation frontmatter exists, but parsed relation value is empty",
+                "repair_route": "runtime-parser-fix",
+            },
+        )
+
+        status_text = render_status_markdown(manifest)
+        self.assertIn("## Graph Parse Health", status_text)
+        self.assertIn("runtime-parser-fix", status_text)
+        self.assertIn("wiki/ops/empty-relation.md", status_text)
+
+    def test_indented_relation_lists_are_parsed_as_relation_coverage(self) -> None:
+        (self.tmpdir / "wiki" / "ops" / "indented-relation.md").write_text(
+            """---
+canonical_object: indented-relation
+artifact_type: retro
+derived_from:
+  - wiki/ops/source-page.md
+related_objects:
+  - wiki-frontmatter-model
+---
+
+# Indented Relation
+""",
+            encoding="utf-8",
+        )
+
+        manifest = build_manifest(self.tmpdir)
+
+        self.assertEqual(
+            manifest["product_status"]["relation_coverage"],
+            {"with_relations": 1, "missing_relations": 0},
+        )
+        self.assertEqual(manifest["graph_parse_health"]["status"], "pass")
+        self.assertEqual(manifest["graph_parse_health"]["entries"], [])
 
 
 if __name__ == "__main__":

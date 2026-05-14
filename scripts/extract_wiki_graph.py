@@ -74,8 +74,9 @@ def parse_frontmatter(text: str) -> tuple[dict, str]:
             key = line.split(":", 1)[0].strip()
             items: list[str] = []
             i += 1
-            while i < len(lines) and lines[i].startswith("- "):
-                items.append(lines[i][2:].strip().strip('"').strip("'"))
+            while i < len(lines) and re.match(r"^\s*-\s+", lines[i]):
+                item = re.sub(r"^\s*-\s+", "", lines[i], count=1)
+                items.append(item.strip().strip('"').strip("'"))
                 i += 1
             meta[key] = items
             continue

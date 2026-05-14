@@ -83,6 +83,67 @@ class WikiGraphSummaryTest(unittest.TestCase):
             ["alpha-object"],
         )
 
+    def test_default_representative_pages_collapse_specs_but_retain_spec_evidence(self) -> None:
+        graph = {
+            "summary": {"node_count": 3, "edge_count": 1, "warning_count": 0},
+            "nodes": [
+                {
+                    "page_path": "openspec/specs/wiki-runtime/spec.md",
+                    "canonical_object": "wiki-runtime",
+                    "artifact_type": "spec",
+                    "source_layer": "openspec/specs",
+                },
+                {
+                    "page_path": "wiki/adr/0001-wiki-runtime.md",
+                    "canonical_object": "wiki-runtime",
+                    "artifact_type": "adr",
+                    "source_layer": "wiki/adr",
+                },
+                {
+                    "page_path": "wiki/ops/wiki-runtime.md",
+                    "canonical_object": "wiki-runtime",
+                    "artifact_type": "method",
+                    "source_layer": "wiki/ops",
+                },
+            ],
+            "edges": [
+                {
+                    "source_page_path": "wiki/ops/wiki-runtime.md",
+                    "relation_type": "formalizes",
+                    "target": "wiki-runtime",
+                }
+            ],
+            "warnings": [],
+        }
+        relation_analysis = {
+            "summary": {
+                "canonical_object_count": 1,
+                "cross_layer_object_count": 1,
+            },
+            "object_coverage": [
+                {
+                    "canonical_object": "wiki-runtime",
+                    "node_count": 3,
+                    "source_layers": ["openspec/specs", "wiki/adr", "wiki/ops"],
+                    "artifact_types": ["adr", "method", "spec"],
+                    "relation_count": 1,
+                    "cross_layer": True,
+                }
+            ],
+        }
+
+        summary = summarize_graph(graph, relation_analysis)
+        object_view = summary["object_view"][0]
+
+        self.assertEqual(object_view["node_count"], 3)
+        self.assertIn("openspec/specs", object_view["source_layers"])
+        self.assertIn("spec", object_view["artifact_types"])
+        self.assertEqual(object_view["relation_count"], 1)
+        self.assertNotIn(
+            "openspec/specs/wiki-runtime/spec.md",
+            [page["page_path"] for page in object_view["representative_pages"]],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

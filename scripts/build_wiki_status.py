@@ -15,7 +15,9 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.extract_wiki_graph import parse_frontmatter
+from scripts.check_wiki_frontmatter import build_report as build_taxonomy_report
+from scripts.extract_wiki_graph import RELATION_FIELDS as GRAPH_RELATION_FIELDS
+from scripts.extract_wiki_graph import normalize_relation_value, parse_frontmatter
 from scripts.wiki_product_status import build_product_status, relation_fields_from_meta
 from scripts.wiki_status_render import render_status_markdown
 
@@ -53,6 +55,19 @@ def _normal_source_path(value: object) -> str | None:
     if path.startswith("inbox/"):
         return path
     return f"inbox/{path}"
+
+
+def _raw_frontmatter(text: str) -> str:
+    if not text.startswith("---\n"):
+        return ""
+    parts = text.split("\n---\n", 1)
+    if len(parts) != 2:
+        return ""
+    return parts[0].removeprefix("---\n")
+
+
+def _raw_has_frontmatter_field(raw_meta: str, field: str) -> bool:
+    return bool(re.search(rf"(?m)^{re.escape(field)}\s*:", raw_meta))
 
 
 def _collect_wiki_pages(root: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
@@ -161,6 +176,67 @@ def _collect_openspec_changes(root: Path) -> list[dict[str, Any]]:
     return changes
 
 
+def _collect_domain_taxonomy_health(root: Path) -> dict[str, Any]:
+    config_path = root / "wiki" / "config" / "frontmatter-taxonomy.yaml"
+    if not config_path.exists():
+        return {
+            "status": "unavailable",
+            "config_path": "wiki/config/frontmatter-taxonomy.yaml",
+            "summary": {"error": 0, "warn": 0, "info": 0, "total": 0},
+            "entries": [],
+        }
+
+    report = build_taxonomy_report(root)
+    entries = report.get("entries", [])
+    return {
+        "status": "pass" if report["summary"].get("total", 0) == 0 else "drift",
+        "config_path": report["config_path"],
+        "taxonomy_version": report.get("taxonomy_version"),
+        "summary": report["summary"],
+        "entries": entries[:10],
+    }
+
+
+def _collect_graph_parse_health(root: Path) -> dict[str, Any]:
+    wiki_dir = root / "wiki"
+    entries: list[dict[str, Any]] = []
+    if not wiki_dir.exists():
+        return {"status": "pass", "summary": {"total": 0}, "entries": []}
+
+    for path in sorted(wiki_dir.rglob("*.md")):
+        rel = _relative(path, root)
+        if rel.startswith(GENERATED_STATUS_DIR):
+            continue
+        text = path.read_text(encoding="utf-8")
+        raw_meta = _raw_frontmatter(text)
+        if not raw_meta:
+            continue
+        meta, _body = parse_frontmatter(text)
+        empty_raw_relation_fields = [
+            field
+            for field in GRAPH_RELATION_FIELDS
+            if _raw_has_frontmatter_field(raw_meta, field)
+            and not normalize_relation_value(meta.get(field))
+        ]
+        if not empty_raw_relation_fields:
+            continue
+        entries.append(
+            {
+                "type": "graph_parse_health",
+                "path": rel,
+                "fields": empty_raw_relation_fields,
+                "problem": "raw relation frontmatter exists, but parsed relation value is empty",
+                "repair_route": "runtime-parser-fix",
+            }
+        )
+
+    return {
+        "status": "pass" if not entries else "drift",
+        "summary": {"total": len(entries)},
+        "entries": entries[:10],
+    }
+
+
 def build_manifest(root: Path | str) -> dict[str, Any]:
     root_path = Path(root).resolve()
     pages, source_records = _collect_wiki_pages(root_path)
@@ -175,6 +251,8 @@ def build_manifest(root: Path | str) -> dict[str, Any]:
     active_changes = [item for item in changes if item["state"] == "active"]
     complete_changes = [item for item in changes if item["state"] == "complete"]
     product_status = build_product_status(pages, inbox_files, changes)
+    domain_taxonomy_health = _collect_domain_taxonomy_health(root_path)
+    graph_parse_health = _collect_graph_parse_health(root_path)
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -194,6 +272,8 @@ def build_manifest(root: Path | str) -> dict[str, Any]:
         "pending_inbox_files": pending_inbox_files,
         "openspec_changes": changes,
         "product_status": product_status,
+        "domain_taxonomy_health": domain_taxonomy_health,
+        "graph_parse_health": graph_parse_health,
     }
 
 

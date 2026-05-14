@@ -6,7 +6,9 @@ argument-hint: optional canonical object or artifact focus
 # /wiki:graph
 
 Extract and summarize the repository's agent-readable wiki graph structure as
-an explainable object view.
+an explainable object view. Use this command as the structural drilldown when a
+page, object, layer, artifact, or relation looks disconnected after the default
+health view.
 
 ## Workflow
 
@@ -38,11 +40,23 @@ python3 scripts/summarize_wiki_graph.py --graph /tmp/wiki-graph.json --relation-
    - cross-layer object count
    - object-level source layers and artifact types
    - representative pages
+   - whether raw `openspec/specs` nodes are present in the graph
+   - readable object summaries with spec details collapsed by default
    - artifact type and relation type highlights
    - unresolved warning concentration when present
 6. Point the user to the governing wiki pages:
    - `wiki/ops/agent-readable-wiki-graph-extraction.md`
    - `wiki/ops/agent-readable-wiki-relation-analysis.md`
+
+## Structural Drilldown
+
+Keep `/wiki:graph` focused on structure. Raw graph extraction includes
+`wiki/ops`, `wiki/adr`, `openspec/specs`, and `wiki/examples`; do not remove
+raw `openspec/specs` graph nodes because they prove formalization depth.
+
+Readable summaries should favor object-level evidence and collapse spec details
+by default. Expand spec details only when the user is checking archive review,
+formalization proof, or another spec-specific question.
 
 ## Boundaries
 
