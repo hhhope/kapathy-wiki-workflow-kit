@@ -24,6 +24,7 @@ WIKI_SKILLS = {
         "scripts/extract_wiki_graph.py",
         "scripts/analyze_wiki_relations.py",
         "scripts/summarize_wiki_graph.py",
+        "MOC candidates",
     ),
     "wiki-scorecard": (
         "scripts/score_wiki_semantics.py",
@@ -41,10 +42,33 @@ WIKI_SKILLS = {
     "wiki-apply": (
         "scripts/build_runtime_context_injection.py",
         "scripts/derive_self_directed_execution.py",
+        "scripts/build_wiki_content_enrichment.py",
+        "scripts/build_wiki_content_adjudication.py",
+        "scripts/build_wiki_moc_projection.py",
         "scripts/wiki_gate_precheck.py",
         "page-frontmatter-fix",
     ),
+    "wiki-doctor": (
+        "scripts/build_wiki_content_adjudication.py",
+        "full_detail_set",
+        "review_focus_set",
+        "taxonomy_candidate_set",
+        "drift_trace_set",
+        "eval_result",
+        "review-only",
+        "--write-review-record",
+        "wiki/ops/wiki-doctor-runs",
+    ),
     "wiki-queue": ("scripts/build_wiki_change_queue_preview.py",),
+    "wiki-react": (
+        "wiki_content_enrichment",
+        "wiki_content_adjudication",
+        "frontmatter_enrichment_preview_only",
+        "adjudication_review_only",
+        "obsidian_graph_projection",
+        "preview_moc_projection",
+        "explicit_moc_generator_required",
+    ),
 }
 
 
