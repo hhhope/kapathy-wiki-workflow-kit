@@ -31,12 +31,12 @@ Modify:
 
 - [x] 1. Inspect the team-knowledge reference implementation and classify what to reuse.
 - [x] 2. Write Superpowers design and execution plan for this repo.
-- [ ] 3. Create the repo-local `openspec-router` skill.
-- [ ] 4. Create the OpenSpec governance change.
-- [ ] 5. Update AGENTS.md and PROJECT.md with minimal routing integration.
-- [ ] 6. Add replay evidence covering the original incident.
-- [ ] 7. Run OpenSpec validation and behavior-asset checks.
-- [ ] 8. Commit only task-related governance files.
+- [x] 3. Create the repo-local `openspec-router` skill.
+- [x] 4. Create the OpenSpec governance change.
+- [x] 5. Update AGENTS.md and PROJECT.md with minimal routing integration.
+- [x] 6. Add replay evidence covering the original incident.
+- [x] 7. Run OpenSpec validation and behavior-asset checks.
+- [x] 8. Commit only task-related governance files.
 
 ## Red Baseline
 

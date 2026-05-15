@@ -14,6 +14,8 @@ This repository is the durable markdown knowledge base for recurring reports, me
 ## Operating Model
 
 - OpenSpec owns change lifecycle and implementation progress.
+- Agent workflow routing preserves OpenSpec lifecycle authority while allowing
+  Superpowers method workflows to run without bypassing review gates.
 - `wiki/` owns durable knowledge, templates, and navigation.
 - External systems such as Feishu are treated as source evidence, not the long-term knowledge layer.
 - AI-generated content is allowed as a draft aid, but it must remain visibly distinct from approved human conclusions.

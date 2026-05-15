@@ -32,6 +32,21 @@ defaults, and delivery boundaries.
 Sources: `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`,
 `wiki/adr/0002-stable-decisions-live-in-wiki-adr.md`.
 
+## Workflow Routing
+
+- For mixed Superpowers/OpenSpec work, workflow repair, implementation,
+  verification, archive, or ambiguous large tasks, use the repo-local
+  `openspec-router` skill before editing files or claiming completion.
+- The router must emit one compact route line at the beginning of a routed task
+  and after gate transitions.
+- The router does not relax OpenSpec gates. It only prevents Superpowers method
+  gates and OpenSpec lifecycle gates from bypassing each other.
+- If `$superpowers:brainstorming` is active, OpenSpec artifacts are read-only
+  until the Superpowers written spec review gate passes.
+- Short approvals such as `可以`, `继续`, `确认`, and `做吧` only advance the
+  current gate; they do not imply permission to edit OpenSpec, implement,
+  commit, push, or archive.
+
 ## Repo AGENTS Governance Gate
 
 - For repo-level `AGENTS.md` governance work, treat migration as a phased
