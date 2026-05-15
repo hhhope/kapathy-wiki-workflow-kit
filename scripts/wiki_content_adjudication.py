@@ -21,6 +21,7 @@ REVIEW_RISKS = {
 GENERATED_REVIEW_ARTIFACT_PREFIXES = (
     "wiki/ops/wiki-doctor-runs/",
     "wiki/ops/wiki-review-decisions/",
+    "wiki/ops/wiki-treatment-runs/",
 )
 
 

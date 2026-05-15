@@ -97,7 +97,7 @@ artifact_type: method
         self.assertIn("taxonomy_candidate", detail["risk_flags"])
         self.assertFalse(detail["safe_to_apply_frontmatter"])
 
-    def test_excludes_generated_review_artifacts_from_candidates(self) -> None:
+    def test_excludes_generated_review_and_treatment_artifacts_from_candidates(self) -> None:
         (self.tmpdir / "wiki" / "ops" / "ordinary-runtime-note.md").write_text(
             """# Ordinary Runtime Note
 
@@ -107,8 +107,10 @@ This ordinary wiki runtime note remains reviewable.
         )
         doctor_dir = self.tmpdir / "wiki" / "ops" / "wiki-doctor-runs"
         decision_dir = self.tmpdir / "wiki" / "ops" / "wiki-review-decisions"
+        treatment_dir = self.tmpdir / "wiki" / "ops" / "wiki-treatment-runs"
         doctor_dir.mkdir(parents=True)
         decision_dir.mkdir(parents=True)
+        treatment_dir.mkdir(parents=True)
         (doctor_dir / "2026-05-14-010203-review.md").write_text(
             """# wiki-doctor Review Record
 
@@ -120,6 +122,13 @@ This generated diagnosis record mentions wiki runtime drift and governance.
             """# wiki-review-decisions Draft Record
 
 This generated decision sheet mentions treatment candidates and OpenSpec.
+""",
+            encoding="utf-8",
+        )
+        (treatment_dir / "2026-05-15-010203-treatment.md").write_text(
+            """# wiki-treatment Record
+
+This generated treatment record mentions applied frontmatter.
 """,
             encoding="utf-8",
         )
