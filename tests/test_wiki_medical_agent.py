@@ -8,6 +8,7 @@ from pathlib import Path
 
 from scripts.wiki_medical_case import build_medical_case_package, write_medical_case_file
 from scripts.wiki_medical_agent import (
+    build_status_payload,
     classify_medical_intent,
     resolve_active_case,
     validate_case_action,
@@ -107,6 +108,30 @@ class WikiMedicalAgentTest(unittest.TestCase):
 
         self.assertTrue(result.allowed)
         self.assertEqual(result.allowed_action, "apply_confirmed_treatments")
+
+    def test_status_payload_allows_status_without_active_case(self) -> None:
+        payload = build_status_payload(self.tmpdir, "看下 wiki 现在什么状态")
+
+        self.assertEqual(payload["intent"], "status")
+        self.assertEqual(payload["case_path"], "")
+        self.assertEqual(payload["state"], "no_case")
+        self.assertTrue(payload["allowed"])
+        self.assertEqual(payload["allowed_action"], "report_status")
+        self.assertEqual(payload["blocked_reason"], "")
+        self.assertEqual(payload["next_action"], "diagnose")
+
+    def test_status_payload_blocks_write_when_multiple_cases_are_active(self) -> None:
+        self._write_case(self._case_package(active=True), "2026-05-15T01:02:03+00:00")
+        self._write_case(self._case_package(active=True), "2026-05-15T01:02:04+00:00")
+
+        payload = build_status_payload(self.tmpdir, "apply 已确认的 2 个 treatment candidates")
+
+        self.assertEqual(payload["intent"], "treatment_apply")
+        self.assertEqual(payload["state"], "multiple_active_cases")
+        self.assertFalse(payload["allowed"])
+        self.assertEqual(payload["blocked_reason"], "multiple_active_cases")
+        self.assertEqual(len(payload["candidate_cases"]), 2)
+        self.assertEqual(payload["next_action"], "select_active_case")
 
     def test_cli_status_outputs_intent_case_state_and_next_action(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]

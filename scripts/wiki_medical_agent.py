@@ -270,3 +270,30 @@ def validate_resolved_case_action(
         blocked_reason=resolution.blocked_reason or "case_resolution_failed",
         expected_count=expected_count,
     )
+
+
+def build_status_payload(root: Path | str, intent_text: str) -> dict[str, Any]:
+    intent = classify_medical_intent(intent_text)
+    resolution = resolve_active_case(root)
+    validation = validate_resolved_case_action(resolution, intent.intent, intent.expected_count)
+    payload: dict[str, Any] = {
+        "intent": intent.intent,
+        "case_path": resolution.case_path.as_posix() if resolution.case_path else "",
+        "state": validation.state,
+        "allowed": validation.allowed,
+        "allowed_action": validation.allowed_action,
+        "blocked_reason": validation.blocked_reason,
+        "next_action": validation.allowed_action or validation.blocked_reason,
+    }
+    if resolution.status == "no_case":
+        payload["next_action"] = "diagnose"
+    if resolution.status == "blocked":
+        payload["candidate_cases"] = [path.as_posix() for path in resolution.candidates]
+        payload["next_action"] = "select_active_case"
+    if resolution.case_package is not None:
+        archive = resolution.case_package.get("archive_next_action", {})
+        next_action = archive.get("next_action") if isinstance(archive, dict) else ""
+        payload["executable_count"] = validation.executable_count
+        payload["expected_count"] = validation.expected_count
+        payload["next_action"] = str(next_action or payload["next_action"])
+    return payload
