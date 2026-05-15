@@ -5,7 +5,19 @@ from pathlib import Path
 import re
 from typing import Any
 
-from scripts.wiki_medical_case import DEFAULT_MEDICAL_CASE_DIR, load_medical_case_file
+from scripts.wiki_medical_case import (
+    DEFAULT_MEDICAL_CASE_DIR,
+    attach_recovery_result_to_case,
+    load_medical_case_file,
+    overwrite_medical_case_file,
+)
+from scripts.wiki_recovery import build_recovery_package, write_recovery_record
+from scripts.wiki_treatment import (
+    apply_treatment_plan,
+    load_case_and_build_treatment_plan,
+    update_case_file_with_treatment_result,
+    write_treatment_record,
+)
 
 
 @dataclass(frozen=True)
@@ -298,3 +310,52 @@ def build_status_payload(root: Path | str, intent_text: str) -> dict[str, Any]:
         if validation.allowed and next_action:
             payload["next_action"] = str(next_action)
     return payload
+
+
+def apply_confirmed_treatment_and_recover(
+    root: Path | str,
+    case_path: Path | str,
+    approved_domains: set[str] | None = None,
+    approved_detail_refs: set[str] | None = None,
+) -> dict[str, Any]:
+    root_path = Path(root).resolve()
+    case_file = Path(case_path).resolve()
+    if root_path not in case_file.parents and case_file != root_path:
+        raise ValueError("case path escapes root")
+    if not (approved_domains or approved_detail_refs):
+        raise ValueError("missing explicit treatment approval")
+    plan = load_case_and_build_treatment_plan(
+        case_file,
+        approved_domains=approved_domains or set(),
+        approved_detail_refs=approved_detail_refs or set(),
+    )
+    result = apply_treatment_plan(root_path, plan, apply=True)
+    treatment_record = write_treatment_record(plan, result, root_path)
+    update_case_file_with_treatment_result(
+        case_file,
+        plan,
+        result,
+        root_path,
+        treatment_record=treatment_record.as_posix(),
+    )
+    recovery = build_recovery_package(root_path)
+    recovery_record = write_recovery_record(recovery, root_path)
+    case_package = load_medical_case_file(case_file)
+    updated_case = attach_recovery_result_to_case(
+        case_package,
+        recovery,
+        recovery_record=recovery_record.as_posix(),
+    )
+    overwrite_medical_case_file(case_file, updated_case, root_path)
+    next_action = updated_case.get("archive_next_action", {}).get("next_action", "")
+    return {
+        "applied": result["summary"]["applied_count"],
+        "blocked": result["summary"]["blocked_count"],
+        "treatment_record": treatment_record.as_posix(),
+        "recovery": {
+            "status": updated_case["recovery"]["status"],
+            "record": recovery_record.as_posix(),
+            "passed": recovery.get("passed", False),
+        },
+        "next_action": next_action,
+    }

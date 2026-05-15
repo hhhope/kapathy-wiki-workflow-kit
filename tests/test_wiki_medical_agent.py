@@ -170,6 +170,38 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertEqual(payload["state"], "ready_for_treatment")
         self.assertIn("next_action", payload)
 
+    def test_cli_applies_confirmed_treatment_then_runs_recovery(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        target = self.tmpdir / "wiki" / "ops" / "safe.md"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("# Safe\n", encoding="utf-8")
+        case_path = self._write_case(self._case_package(status="ready_for_treatment"), "2026-05-15T01:02:03+00:00")
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_medical_agent.py",
+                "--root",
+                str(self.tmpdir),
+                "--intent-text",
+                "apply 已确认的 1 个 treatment candidates",
+                "--approved-detail",
+                "detail-safe",
+                "--apply",
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+
+        self.assertEqual(payload["intent"], "treatment_apply")
+        self.assertEqual(payload["case_path"], case_path.as_posix())
+        self.assertEqual(payload["applied"], 1)
+        self.assertEqual(payload["recovery"]["status"], "completed")
+        self.assertIn(payload["next_action"], {"archive_ready", "blocked"})
+
 
 if __name__ == "__main__":
     unittest.main()
