@@ -141,6 +141,66 @@ strict_gate:
         self.assertIn("recovery_record_path", write_payload)
         self.assertTrue(Path(write_payload["recovery_record_path"]).exists())
 
+    def test_cli_updates_case_file_with_recovery_result(self) -> None:
+        from scripts.wiki_medical_case import (
+            build_medical_case_package,
+            load_medical_case_file,
+            write_medical_case_file,
+        )
+
+        repo_root = Path(__file__).resolve().parents[1]
+        case_package = build_medical_case_package(
+            {
+                "generated_at": "2026-05-15T01:02:03+00:00",
+                "summary": {},
+                "source_adjudication_summary": {},
+                "accepted_candidates": [],
+                "rejected_candidates": [],
+                "deferred_items": [],
+                "surgery_candidates": [],
+                "openspec_required": [],
+                "treatment_candidates": [],
+            },
+            case_slug="recovery-case",
+        )
+        case_package["status"] = "recovery_required"
+        case_path = write_medical_case_file(
+            case_package,
+            self.tmpdir,
+            output_dir=self.tmpdir / "cases",
+            timestamp="2026-05-15T01:02:03+00:00",
+        )
+        record_dir = self.tmpdir / "recovery-records"
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_recovery.py",
+                "--root",
+                str(self.tmpdir),
+                "--case-file",
+                str(case_path),
+                "--write-recovery-record",
+                "--recovery-record-dir",
+                str(record_dir),
+                "--update-case-file",
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+        loaded = load_medical_case_file(case_path)
+
+        self.assertIn("updated_case_file", payload)
+        self.assertEqual(loaded["recovery"]["status"], "completed")
+        self.assertIn(
+            payload["recovery_record_path"],
+            loaded["evidence_attachments"]["recovery"],
+        )
+        self.assertIn(loaded["archive_next_action"]["next_action"], {"archive_ready", "blocked"})
+
 
 if __name__ == "__main__":
     unittest.main()
