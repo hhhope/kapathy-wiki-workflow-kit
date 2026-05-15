@@ -38,6 +38,7 @@ def main() -> None:
         parser.error("--update-case-file requires --case-file")
 
     root = Path(args.root).resolve()
+    case_package = load_medical_case_file(args.case_file) if args.update_case_file else None
     payload = build_recovery_package(root)
     if args.write_recovery_record:
         record_path = write_recovery_record(
@@ -47,7 +48,6 @@ def main() -> None:
         )
         payload["recovery_record_path"] = record_path.as_posix()
     if args.update_case_file:
-        case_package = load_medical_case_file(args.case_file)
         updated_case = attach_recovery_result_to_case(
             case_package,
             payload,

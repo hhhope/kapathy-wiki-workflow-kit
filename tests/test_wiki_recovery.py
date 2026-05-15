@@ -201,6 +201,81 @@ strict_gate:
         )
         self.assertIn(loaded["archive_next_action"]["next_action"], {"archive_ready", "blocked"})
 
+    def test_cli_missing_update_case_file_does_not_write_recovery_record(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        record_dir = self.tmpdir / "recovery-records"
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_recovery.py",
+                "--root",
+                str(self.tmpdir),
+                "--case-file",
+                str(self.tmpdir / "missing.md"),
+                "--write-recovery-record",
+                "--recovery-record-dir",
+                str(record_dir),
+                "--update-case-file",
+            ],
+            cwd=repo_root,
+            text=True,
+            capture_output=True,
+        )
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse(record_dir.exists())
+
+    def test_cli_case_file_without_update_does_not_mutate_case_file(self) -> None:
+        from scripts.wiki_medical_case import (
+            build_medical_case_package,
+            write_medical_case_file,
+        )
+
+        repo_root = Path(__file__).resolve().parents[1]
+        case_package = build_medical_case_package(
+            {
+                "generated_at": "2026-05-15T01:02:03+00:00",
+                "summary": {},
+                "source_adjudication_summary": {},
+                "accepted_candidates": [],
+                "rejected_candidates": [],
+                "deferred_items": [],
+                "surgery_candidates": [],
+                "openspec_required": [],
+                "treatment_candidates": [],
+            },
+            case_slug="read-only-recovery-case",
+        )
+        case_package["status"] = "recovery_required"
+        case_path = write_medical_case_file(
+            case_package,
+            self.tmpdir,
+            output_dir=self.tmpdir / "cases",
+            timestamp="2026-05-15T01:02:03+00:00",
+        )
+        before = case_path.read_text(encoding="utf-8")
+
+        subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_recovery.py",
+                "--root",
+                str(self.tmpdir),
+                "--case-file",
+                str(case_path),
+                "--write-recovery-record",
+                "--recovery-record-dir",
+                str(self.tmpdir / "recovery-records"),
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+
+        self.assertEqual(case_path.read_text(encoding="utf-8"), before)
+
 
 if __name__ == "__main__":
     unittest.main()
