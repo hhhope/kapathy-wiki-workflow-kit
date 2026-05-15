@@ -111,3 +111,28 @@ After this change, skill tests verify the new entry and redirect boundary.
 
 Local skill text cannot prove every future agent will comply. Runtime CLI
 guards and state-machine tests provide the stronger enforcement layer.
+
+## Verification Commands
+
+```text
+python3 -m unittest tests.test_wiki_medical_agent tests.test_wiki_medical_case tests.test_wiki_treatment tests.test_wiki_recovery tests.test_wiki_medical_loop_skills -v
+openspec validate introduce-wiki-medical-agent-state-machine --strict
+python3 scripts/check_behavior_assets.py
+```
+
+## Replay Results
+
+- Status request reports intent, case, state, allowed action, and next action.
+- Apply request with matching confirmed count applies treatment, runs recovery,
+  attaches records, and updates the case next action.
+- Apply request with mismatched count is blocked.
+- Multiple active cases block write actions.
+- Old stage skills redirect ordinary usage to `wiki-medical-agent`.
+
+Actual command results:
+
+- `python3 -m unittest tests.test_wiki_medical_agent tests.test_wiki_medical_case tests.test_wiki_treatment tests.test_wiki_recovery tests.test_wiki_medical_loop_skills -v`: PASS, 52 tests ran in 9.059s, `OK`.
+- `openspec validate introduce-wiki-medical-agent-state-machine --strict`: PASS, reported `Change 'introduce-wiki-medical-agent-state-machine' is valid`.
+- OpenSpec telemetry warning: validation printed PostHog network flush warnings for `edge.openspec.dev` with `getaddrinfo EAI_AGAIN`; the command still exited 0 after reporting the change valid.
+- `python3 scripts/check_behavior_assets.py`: PASS, exited 0 with no output.
+- Frontmatter taxonomy check: not run; Task 10 added no repository wiki case outputs, only temporary test fixtures.

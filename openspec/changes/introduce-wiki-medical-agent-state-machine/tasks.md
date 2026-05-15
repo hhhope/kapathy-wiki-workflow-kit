@@ -9,6 +9,6 @@
 - [x] 7. Make recovery case-file-aware and able to update the same case file.
 - [x] 8. Implement treatment apply orchestration: apply, attach treatment record, run recovery, update next action.
 - [x] 9. Add `.codex/skills/wiki-medical-agent/SKILL.md` and downgrade old stage skills to redirect ordinary usage.
-- [ ] 10. Add behavior replay and skill tests.
-- [ ] 11. Run focused tests, frontmatter taxonomy check for new wiki case outputs if any, OpenSpec strict validation, and behavior-asset checks.
+- [x] 10. Add behavior replay and skill tests.
+- [x] 11. Run focused tests, frontmatter taxonomy check for new wiki case outputs if any, OpenSpec strict validation, and behavior-asset checks.
 - [ ] 12. Commit verified implementation and stop at OpenSpec hard stop.

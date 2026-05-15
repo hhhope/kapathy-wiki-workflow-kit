@@ -334,6 +334,63 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertEqual(loaded_case["archive_next_action"]["next_action"], "blocked")
         self.assertIn("treatment blocked", loaded_case["archive_next_action"]["reason"])
 
+    def test_cli_blocks_apply_count_mismatch(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        case_path = self._write_case(self._case_package(status="ready_for_treatment"), "2026-05-15T01:02:03+00:00")
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_medical_agent.py",
+                "--root",
+                str(self.tmpdir),
+                "--intent-text",
+                "apply 已确认的 10 个 treatment candidates",
+                "--approved-detail",
+                "detail-safe",
+                "--apply",
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+
+        self.assertEqual(payload["case_path"], case_path.as_posix())
+        self.assertFalse(payload["allowed"])
+        self.assertEqual(payload["blocked_reason"], "confirmed_decision_count_mismatch")
+        self.assertEqual(payload["expected_count"], 10)
+        self.assertEqual(payload["executable_count"], 1)
+
+    def test_cli_blocks_write_when_multiple_active_cases_exist(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        self._write_case(self._case_package(active=True), "2026-05-15T01:02:03+00:00")
+        self._write_case(self._case_package(active=True), "2026-05-15T01:02:04+00:00")
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_medical_agent.py",
+                "--root",
+                str(self.tmpdir),
+                "--intent-text",
+                "apply 已确认的 1 个 treatment candidates",
+                "--approved-detail",
+                "detail-safe",
+                "--apply",
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+
+        self.assertFalse(payload["allowed"])
+        self.assertEqual(payload["blocked_reason"], "multiple_active_cases")
+        self.assertEqual(payload["next_action"], "select_active_case")
+
 
 if __name__ == "__main__":
     unittest.main()
