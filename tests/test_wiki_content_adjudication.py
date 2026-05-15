@@ -247,10 +247,12 @@ This generated recovery record mentions checkers and doctor reruns.
 
         markdown = render_review_record_markdown(package, scan_root=self.tmpdir, limit=50)
 
-        self.assertIn("# wiki-doctor Review Record", markdown)
+        self.assertIn("# wiki-doctor Diagnosis Record", markdown)
         self.assertIn("- Generated at: 2026-05-14T12:46:28+00:00", markdown)
         self.assertIn(f"- Scan root: `{self.tmpdir}`", markdown)
         self.assertIn("- Detail limit: 50", markdown)
+        self.assertIn("## Exam Items / 检查项目", markdown)
+        self.assertIn("## Reference Standards / 判定标准", markdown)
         self.assertIn("- candidate_count: 2", markdown)
         self.assertIn("- eval_passed: False", markdown)
         self.assertIn("- eval_error_count: 1", markdown)
@@ -265,11 +267,8 @@ This generated recovery record mentions checkers and doctor reruns.
         self.assertIn("relation candidate needs reviewed evidence", markdown)
         self.assertIn("## Proof Boundary", markdown)
         self.assertIn("This record is diagnosis only.", markdown)
-        self.assertIn("## Next Review Actions", markdown)
-        self.assertIn("Human review:", markdown)
-        self.assertIn("Discard:", markdown)
-        self.assertIn("OpenSpec candidate:", markdown)
-        self.assertIn("Later explicit repair:", markdown)
+        self.assertIn("## Recommended Next Stage / 建议下一步", markdown)
+        self.assertIn("Use `wiki-confirm`", markdown)
 
     def test_writes_review_record_without_overwriting_existing_file(self) -> None:
         from scripts.wiki_doctor_review_records import write_review_record
@@ -300,11 +299,19 @@ This generated recovery record mentions checkers and doctor reruns.
         self.assertEqual(second.name, "2026-05-14-010203-review-2.md")
         self.assertTrue(first.exists())
         self.assertTrue(second.exists())
-        self.assertIn("# wiki-doctor Review Record", first.read_text(encoding="utf-8"))
+        self.assertIn("# wiki-doctor Diagnosis Record", first.read_text(encoding="utf-8"))
 
-    def test_cli_writes_review_record_only_when_explicitly_requested(self) -> None:
+    def test_cli_writes_complete_diagnosis_record_by_default(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
         record_dir = self.tmpdir / "review-records"
+        (self.tmpdir / "wiki" / "ops" / "first-runtime-note.md").write_text(
+            "# First Runtime Note\n\nThis wiki runtime note is reviewable.\n",
+            encoding="utf-8",
+        )
+        (self.tmpdir / "wiki" / "ops" / "second-runtime-note.md").write_text(
+            "# Second Runtime Note\n\nThis wiki runtime note is also reviewable.\n",
+            encoding="utf-8",
+        )
 
         default_result = subprocess.run(
             [
@@ -313,27 +320,7 @@ This generated recovery record mentions checkers and doctor reruns.
                 "--root",
                 str(self.tmpdir),
                 "--limit",
-                "0",
-            ],
-            cwd=repo_root,
-            check=True,
-            text=True,
-            capture_output=True,
-        )
-        default_payload = json.loads(default_result.stdout)
-
-        self.assertNotIn("review_record_path", default_payload)
-        self.assertFalse(record_dir.exists())
-
-        write_result = subprocess.run(
-            [
-                sys.executable,
-                "scripts/build_wiki_content_adjudication.py",
-                "--root",
-                str(self.tmpdir),
-                "--limit",
-                "0",
-                "--write-review-record",
+                "1",
                 "--review-record-dir",
                 str(record_dir),
             ],
@@ -342,13 +329,48 @@ This generated recovery record mentions checkers and doctor reruns.
             text=True,
             capture_output=True,
         )
-        write_payload = json.loads(write_result.stdout)
+        default_payload = json.loads(default_result.stdout)
 
-        self.assertIn("review_record_path", write_payload)
-        record_path = Path(write_payload["review_record_path"])
+        self.assertIn("review_record_path", default_payload)
+        self.assertIn("summary", default_payload)
+        self.assertNotIn("full_detail_set", default_payload)
+        record_path = Path(default_payload["review_record_path"])
         self.assertEqual(record_path.parent, record_dir.resolve())
         self.assertTrue(record_path.exists())
-        self.assertIn("This record is diagnosis only.", record_path.read_text(encoding="utf-8"))
+        record_text = record_path.read_text(encoding="utf-8")
+        self.assertIn("# wiki-doctor Diagnosis Record", record_text)
+        self.assertIn("## Exam Items / 检查项目", record_text)
+        self.assertIn("## Reference Standards / 判定标准", record_text)
+        self.assertIn("## Abnormal Findings / 异常发现", record_text)
+        self.assertIn("## Recommended Next Stage / 建议下一步", record_text)
+        self.assertIn("second-runtime-note.md", record_text)
+
+    def test_cli_stdout_json_only_preserves_non_writing_diagnosis_debug_mode(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        record_dir = self.tmpdir / "review-records"
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_content_adjudication.py",
+                "--root",
+                str(self.tmpdir),
+                "--limit",
+                "0",
+                "--stdout-json-only",
+                "--review-record-dir",
+                str(record_dir),
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+
+        self.assertNotIn("review_record_path", payload)
+        self.assertIn("full_detail_set", payload)
+        self.assertFalse(record_dir.exists())
 
 
 if __name__ == "__main__":

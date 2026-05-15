@@ -5,6 +5,8 @@ description: Use when diagnosing wiki content enrichment judgments, review focus
 
 Use the wiki doctor review-package surface for the report wiki repository.
 This is a review-only diagnostic entry.
+default writes a complete diagnosis record; stdout summary is only the live
+chat/terminal surface.
 
 Medical-loop sequence:
 
@@ -17,7 +19,8 @@ When triggered:
 
 1. Confirm the current repository has
    `scripts/build_wiki_content_adjudication.py`.
-2. Run or reference `python3 scripts/build_wiki_content_adjudication.py`.
+2. Run `python3 scripts/build_wiki_content_adjudication.py`; by default it
+   writes a complete diagnosis record under `wiki/ops/wiki-doctor-runs/`.
 3. Summarize the review package sections:
    `full_detail_set`, `review_focus_set`, `taxonomy_candidate_set`,
    `drift_trace_set`, and `eval_result`.
@@ -29,9 +32,10 @@ When triggered:
    may have entered the flow.
 7. Route any actual frontmatter write, taxonomy update, or MOC write to a
    separate explicitly approved change path.
-8. If the user explicitly asks to generate a diagnosis or review record, run
-   `python3 scripts/build_wiki_content_adjudication.py --write-review-record`;
-   include `--review-record-dir` when the record must be written somewhere
+8. Treat stdout as a summary and report the generated diagnosis record path.
+   Use `--stdout-json-only` only for explicit non-writing debug inspection.
+   `--write-review-record` remains a compatibility flag.
+   Include `--review-record-dir` when the record must be written somewhere
    other than the default `wiki/ops/wiki-doctor-runs/` directory.
 9. Treat generated files under `wiki/ops/wiki-doctor-runs/` as diagnosis
    records only. They are review evidence, not approval to apply repairs.
@@ -46,7 +50,6 @@ Boundaries:
 - Do not create, modify, archive, or queue OpenSpec changes.
 - Do not mark OpenSpec tasks complete.
 - Do not execute queued work.
-- Do not generate a review record unless the user explicitly asks for one.
 - Do not write frontmatter from doctor output.
 - Do not mutate `wiki/config/frontmatter-taxonomy.yaml`.
 - Do not write `wiki/moc` files.

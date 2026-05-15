@@ -7,6 +7,8 @@ Use the wiki review-decision surface for the report wiki repository.
 This is a legacy compatibility alias for `wiki-confirm`.
 Prefer `wiki-confirm` for new user-facing prompts. This skill remains a
 review-only routing entry for `wiki-doctor` diagnosis output.
+default writes a complete confirmation record; stdout summary is only the live
+chat/terminal surface.
 
 Medical-loop sequence:
 
@@ -19,16 +21,17 @@ When triggered:
 
 1. Confirm the current repository has
    `scripts/build_wiki_review_decisions.py`.
-2. Run or reference `python3 scripts/build_wiki_review_decisions.py`.
+2. Run `python3 scripts/build_wiki_review_decisions.py`; by default it writes
+   a complete confirmation record under `wiki/ops/wiki-review-decisions/`.
 3. Preserve these draft buckets exactly:
    `accepted_candidates`, `rejected_candidates`, `deferred_items`,
    `treatment_candidates`, `surgery_candidates`, and `openspec_required`.
 4. Treat outputs as draft review routing, not approval.
-5. If the user explicitly asks to generate or write a decision record, run
-   `python3 scripts/build_wiki_review_decisions.py --write-decision-record`;
-   include `--decision-record-dir` only when the record must be written
-   somewhere other than the default `wiki/ops/wiki-review-decisions/`
-   directory.
+5. Treat stdout as a summary and report the generated confirmation record path.
+   Use `--stdout-json-only` only for explicit non-writing debug inspection.
+   `--write-decision-record` remains a compatibility flag. Include
+   `--decision-record-dir` only when the record must be written somewhere other
+   than the default `wiki/ops/wiki-review-decisions/` directory.
 
 Boundaries:
 

@@ -20,9 +20,11 @@ def _timestamp_slug(timestamp: datetime | str | None) -> str:
     return parsed.astimezone(timezone.utc).strftime("%Y-%m-%d-%H%M%S")
 
 
-def _limited(items: Any, limit: int) -> list[Any]:
+def _limited(items: Any, limit: int | None) -> list[Any]:
     if not isinstance(items, list):
         return []
+    if limit is None:
+        return items
     return items[: max(0, limit)]
 
 
@@ -32,7 +34,21 @@ def _markdown_list(items: list[str]) -> list[str]:
     return [f"- {item}" for item in items]
 
 
-def render_review_record_markdown(package: dict[str, Any], scan_root: Path | str, limit: int) -> str:
+def _format_detail(item: dict[str, Any]) -> str:
+    detail_ref = str(item.get("detail_id") or item.get("detail_ref") or "unknown")
+    path = str(item.get("path", ""))
+    risks = item.get("risk_flags", [])
+    reason = ""
+    judgment = item.get("judgment", {})
+    if isinstance(judgment, dict):
+        reason = str(judgment.get("reason", ""))
+    if not reason:
+        reason = str(item.get("reason", ""))
+    risk_text = ", ".join(str(risk) for risk in risks) if isinstance(risks, list) and risks else "none"
+    return f"{detail_ref} `{path}` risks={risk_text}: {reason}".strip()
+
+
+def render_review_record_markdown(package: dict[str, Any], scan_root: Path | str, limit: int | None) -> str:
     summary = package.get("summary", {})
     eval_result = package.get("eval_result", {})
     if not isinstance(eval_result, dict):
@@ -40,17 +56,32 @@ def render_review_record_markdown(package: dict[str, Any], scan_root: Path | str
     warnings = eval_result.get("warnings", [])
     errors = eval_result.get("errors", [])
     generated_at = str(package.get("generated_at", "unknown"))
+    detail_limit = "complete" if limit is None else str(limit)
     lines = [
-        "# wiki-doctor Review Record",
+        "# wiki-doctor Diagnosis Record",
         "",
-        "## Scan",
+        "## Source / 检查来源",
         "",
         f"- Generated at: {generated_at}",
         f"- Scan root: `{Path(scan_root)}`",
-        f"- Detail limit: {limit}",
+        f"- Detail limit: {detail_limit}",
         "- Source: scripts/build_wiki_content_adjudication.py",
         "",
-        "## Summary Counts",
+        "## Exam Items / 检查项目",
+        f"- full_detail_set: {len(package.get('full_detail_set', [])) if isinstance(package.get('full_detail_set'), list) else 0}",
+        f"- review_focus_set: {len(package.get('review_focus_set', [])) if isinstance(package.get('review_focus_set'), list) else 0}",
+        f"- taxonomy_candidate_set: {len(package.get('taxonomy_candidate_set', [])) if isinstance(package.get('taxonomy_candidate_set'), list) else 0}",
+        f"- drift_trace_set: {len(package.get('drift_trace_set', [])) if isinstance(package.get('drift_trace_set'), list) else 0}",
+        "- eval_result",
+        "",
+        "## Reference Standards / 判定标准",
+        "- agent_uncertain: human review required before structural writes.",
+        "- relation_weak_evidence: relation candidates cannot be auto-written.",
+        "- openspec_required: lifecycle routing cannot be bypassed.",
+        "- drift_risk: governance or agent judgment drift needs explicit review.",
+        "- adr_risk: stable decision surfaces need surgery or OpenSpec handling.",
+        "",
+        "## Diagnosis Summary / 诊断摘要",
     ]
 
     if isinstance(summary, dict) and summary:
@@ -65,6 +96,13 @@ def render_review_record_markdown(package: dict[str, Any], scan_root: Path | str
             f"- eval_warning_count: {len(warnings) if isinstance(warnings, list) else 0}",
         ]
     )
+
+    lines.extend(["", "## Abnormal Findings / 异常发现"])
+    detail_lines = []
+    for item in _limited(package.get("full_detail_set", []), limit):
+        if isinstance(item, dict):
+            detail_lines.append(_format_detail(item))
+    lines.extend(_markdown_list(detail_lines))
 
     lines.extend(["", "## Taxonomy Candidates"])
     taxonomy_lines = []
@@ -100,11 +138,9 @@ def render_review_record_markdown(package: dict[str, Any], scan_root: Path | str
     lines.extend(
         [
             "",
-            "## Next Review Actions",
-            "- Human review: inspect taxonomy candidates and review focus refs before accepting any structure change.",
-            "- Discard: ignore candidates that lack evidence or only preserve historical drift.",
-            "- OpenSpec candidate: create or select a change for taxonomy or workflow behavior changes.",
-            "- Later explicit repair: apply frontmatter, taxonomy, or MOC changes only after approval.",
+            "## Recommended Next Stage / 建议下一步",
+            "- Use `wiki-confirm` to confirm which findings are accepted, rejected, deferred, treatment candidates, surgery candidates, or OpenSpec-required.",
+            "- Do not apply frontmatter, taxonomy, relation, MOC, ADR, or OpenSpec changes from diagnosis alone.",
         ]
     )
     return "\n".join(lines) + "\n"
@@ -128,7 +164,7 @@ def write_review_record(
     root: Path | str,
     output_dir: Path | str | None = None,
     timestamp: datetime | str | None = None,
-    limit: int = 50,
+    limit: int | None = None,
 ) -> Path:
     root_path = Path(root)
     target_dir = Path(output_dir) if output_dir is not None else root_path / DEFAULT_REVIEW_RECORD_DIR

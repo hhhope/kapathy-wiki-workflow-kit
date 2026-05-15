@@ -37,9 +37,11 @@ def _timestamp_slug(timestamp: datetime | str | None) -> str:
     return parsed.astimezone(timezone.utc).strftime("%Y-%m-%d-%H%M%S")
 
 
-def _limited(items: Any, limit: int) -> list[Any]:
+def _limited(items: Any, limit: int | None) -> list[Any]:
     if not isinstance(items, list):
         return []
+    if limit is None:
+        return items
     return items[: max(0, limit)]
 
 
@@ -148,26 +150,59 @@ def _format_entry(item: dict[str, Any]) -> str:
     return ": ".join([parts[0], "; ".join(parts[1:])]) if len(parts) > 1 else parts[0]
 
 
-def _bucket_lines(items: Any, limit: int) -> list[str]:
+def _bucket_lines(items: Any, limit: int | None) -> list[str]:
     limited = _limited(items, limit)
     if not limited:
         return ["- None"]
     return [f"- {_format_entry(item)}" for item in limited if isinstance(item, dict)]
 
 
-def render_review_decision_markdown(package: dict[str, Any], scan_root: Path | str, limit: int) -> str:
+def _abnormal_lines(package: dict[str, Any], limit: int | None) -> list[str]:
+    by_ref: dict[str, dict[str, Any]] = {}
+    memberships: dict[str, list[str]] = {}
+    for bucket in BUCKETS:
+        for item in package.get(bucket, []):
+            if not isinstance(item, dict):
+                continue
+            detail_ref = str(item.get("detail_ref", "unknown"))
+            by_ref.setdefault(detail_ref, item)
+            memberships.setdefault(detail_ref, []).append(bucket)
+    if not by_ref:
+        return ["- None"]
+    lines = []
+    for detail_ref in list(by_ref)[: None if limit is None else max(0, limit)]:
+        item = by_ref[detail_ref]
+        risk_flags = item.get("risk_flags", [])
+        risk_text = ", ".join(str(flag) for flag in risk_flags) if isinstance(risk_flags, list) and risk_flags else "none"
+        bucket_text = ", ".join(memberships.get(detail_ref, [])) or "none"
+        path = str(item.get("path", ""))
+        reason = str(item.get("reason", ""))
+        lines.append(f"- {detail_ref} `{path}` buckets={bucket_text}; risks={risk_text}: {reason}")
+    return lines
+
+
+def render_review_decision_markdown(package: dict[str, Any], scan_root: Path | str, limit: int | None) -> str:
     summary = package.get("summary", {})
     generated_at = str(package.get("generated_at", "unknown"))
+    detail_limit = "complete" if limit is None else str(limit)
     lines = [
-        "# wiki-review-decisions Draft Record",
+        "# wiki-confirm Confirmation Record",
         "",
-        "## Source",
+        "## Source / 检查来源",
         "",
         f"- Generated at: {generated_at}",
         f"- Scan root: `{Path(scan_root)}`",
-        f"- Detail limit: {limit}",
+        f"- Detail limit: {detail_limit}",
         f"- Source record: {package.get('source_record') or 'none'}",
         "- Source package: scripts/build_wiki_content_adjudication.py",
+        "",
+        "## Decision Rules / 确诊标准",
+        "- safe_to_apply_frontmatter=true -> treatment_candidates.",
+        "- relation_weak_evidence, drift_risk, or adr_risk -> surgery_candidates.",
+        "- openspec_required or taxonomy_candidate -> openspec_required.",
+        "- agent_uncertain or needs_user_confirmation -> deferred_items.",
+        "- reject or rejected candidate details -> rejected_candidates.",
+        "- accept with no risk flags -> accepted_candidates.",
         "",
         "## Summary",
     ]
@@ -178,6 +213,7 @@ def render_review_decision_markdown(package: dict[str, Any], scan_root: Path | s
     else:
         lines.append("- None")
 
+    lines.extend(["", "## Confirmed Buckets / 确诊分流"])
     sections = [
         ("Accepted Candidates", "accepted_candidates"),
         ("Treatment Candidates", "treatment_candidates"),
@@ -190,8 +226,17 @@ def render_review_decision_markdown(package: dict[str, Any], scan_root: Path | s
         lines.extend(["", f"## {title}"])
         lines.extend(_bucket_lines(package.get(bucket, []), limit))
 
+    lines.extend(["", "## Abnormal Findings / 异常明细"])
+    lines.extend(_abnormal_lines(package, limit))
+
     lines.extend(
         [
+            "",
+            "## Medical Advice / 处理建议",
+            "- Treatment candidates may enter `wiki-treatment` only after explicit approval.",
+            "- Surgery candidates route to `wiki-surgery` planning.",
+            "- OpenSpec-required items cannot be handled through treatment alone.",
+            "- Deferred items need human review before routing.",
             "",
             "## Proof Boundary",
             "- This is draft review routing only, not human approval.",
@@ -224,7 +269,7 @@ def write_review_decision_record(
     root: Path | str,
     output_dir: Path | str | None = None,
     timestamp: datetime | str | None = None,
-    limit: int = 50,
+    limit: int | None = None,
 ) -> Path:
     root_path = Path(root)
     target_dir = Path(output_dir) if output_dir is not None else root_path / DEFAULT_DECISION_RECORD_DIR

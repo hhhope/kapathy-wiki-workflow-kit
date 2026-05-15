@@ -128,15 +128,19 @@ strict_gate:
         markdown = render_review_decision_markdown(package, scan_root=self.tmpdir, limit=50)
 
         for heading in [
-            "# wiki-review-decisions Draft Record",
-            "## Source",
+            "# wiki-confirm Confirmation Record",
+            "## Source / 检查来源",
+            "## Decision Rules / 确诊标准",
             "## Summary",
+            "## Confirmed Buckets / 确诊分流",
             "## Accepted Candidates",
             "## Treatment Candidates",
             "## Surgery Candidates",
             "## OpenSpec Required",
             "## Deferred Items",
             "## Rejected Candidates",
+            "## Abnormal Findings / 异常明细",
+            "## Medical Advice / 处理建议",
             "## Proof Boundary",
             "## Next Actions",
         ]:
@@ -167,11 +171,20 @@ strict_gate:
         self.assertEqual(second.name, "2026-05-14-010203-review-decisions-2.md")
         self.assertTrue(first.exists())
         self.assertTrue(second.exists())
-        self.assertIn("# wiki-review-decisions Draft Record", first.read_text(encoding="utf-8"))
+        self.assertIn("# wiki-confirm Confirmation Record", first.read_text(encoding="utf-8"))
 
-    def test_cli_outputs_json_by_default_and_writes_only_when_requested(self) -> None:
+    def test_cli_writes_complete_confirmation_record_by_default(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
         record_dir = self.tmpdir / "decision-records"
+        (self.tmpdir / "wiki" / "ops").mkdir(parents=True, exist_ok=True)
+        (self.tmpdir / "wiki" / "ops" / "first-runtime-note.md").write_text(
+            "# First Runtime Note\n\nThis wiki runtime note is reviewable.\n",
+            encoding="utf-8",
+        )
+        (self.tmpdir / "wiki" / "ops" / "second-runtime-note.md").write_text(
+            "# Second Runtime Note\n\nThis wiki runtime note is also reviewable.\n",
+            encoding="utf-8",
+        )
 
         default_result = subprocess.run(
             [
@@ -180,9 +193,11 @@ strict_gate:
                 "--root",
                 str(self.tmpdir),
                 "--limit",
-                "0",
+                "1",
                 "--source-record",
                 "wiki/ops/wiki-doctor-runs/diagnosis.md",
+                "--decision-record-dir",
+                str(record_dir),
             ],
             cwd=repo_root,
             check=True,
@@ -192,10 +207,25 @@ strict_gate:
         default_payload = json.loads(default_result.stdout)
 
         self.assertEqual(default_payload["source_record"], "wiki/ops/wiki-doctor-runs/diagnosis.md")
-        self.assertNotIn("decision_record_path", default_payload)
-        self.assertFalse(record_dir.exists())
+        self.assertIn("decision_record_path", default_payload)
+        self.assertIn("summary", default_payload)
+        self.assertNotIn("full_detail_set", default_payload)
+        record_path = Path(default_payload["decision_record_path"])
+        self.assertEqual(record_path.parent, record_dir.resolve())
+        self.assertTrue(record_path.exists())
+        record_text = record_path.read_text(encoding="utf-8")
+        self.assertIn("# wiki-confirm Confirmation Record", record_text)
+        self.assertIn("## Decision Rules / 确诊标准", record_text)
+        self.assertIn("## Confirmed Buckets / 确诊分流", record_text)
+        self.assertIn("## Abnormal Findings / 异常明细", record_text)
+        self.assertIn("## Medical Advice / 处理建议", record_text)
+        self.assertIn("second-runtime-note.md", record_text)
 
-        write_result = subprocess.run(
+    def test_cli_stdout_json_only_preserves_non_writing_confirmation_debug_mode(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        record_dir = self.tmpdir / "decision-records"
+
+        result = subprocess.run(
             [
                 sys.executable,
                 "scripts/build_wiki_review_decisions.py",
@@ -205,7 +235,7 @@ strict_gate:
                 "0",
                 "--source-record",
                 "wiki/ops/wiki-doctor-runs/diagnosis.md",
-                "--write-decision-record",
+                "--stdout-json-only",
                 "--decision-record-dir",
                 str(record_dir),
             ],
@@ -214,13 +244,12 @@ strict_gate:
             text=True,
             capture_output=True,
         )
-        write_payload = json.loads(write_result.stdout)
+        payload = json.loads(result.stdout)
 
-        self.assertIn("decision_record_path", write_payload)
-        record_path = Path(write_payload["decision_record_path"])
-        self.assertEqual(record_path.parent, record_dir.resolve())
-        self.assertTrue(record_path.exists())
-        self.assertIn("draft review routing only", record_path.read_text(encoding="utf-8"))
+        self.assertEqual(payload["source_record"], "wiki/ops/wiki-doctor-runs/diagnosis.md")
+        self.assertNotIn("decision_record_path", payload)
+        self.assertIn("deferred_items", payload)
+        self.assertFalse(record_dir.exists())
 
 
 if __name__ == "__main__":
