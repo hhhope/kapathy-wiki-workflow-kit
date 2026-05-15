@@ -68,6 +68,90 @@ evidence attachments.
 
 ## Validation
 
+### RED Baseline
+
+Command:
+
+```bash
+python3 -m unittest tests.test_wiki_medical_case tests.test_wiki_surgery
+```
+
+Initial result before implementation:
+
+```text
+ModuleNotFoundError: No module named 'scripts.wiki_medical_case'
+ImportError: cannot import name 'build_surgery_plan_from_case' from 'scripts.wiki_surgery'
+```
+
+Interpretation: the repo had no canonical case-file module and surgery could
+not derive a plan from Confirmed Decisions.
+
+### Implementation Replay
+
+Implemented files:
+
+- `scripts/wiki_medical_case.py`
+- `scripts/build_wiki_medical_case.py`
+- `scripts/wiki_surgery.py`
+- `scripts/build_wiki_surgery.py`
+- `tests/test_wiki_medical_case.py`
+- `tests/test_wiki_surgery.py`
+
+Replay coverage:
+
+- A case file can be generated under `wiki/ops/wiki-medical-cases/`.
+- The case file contains `Confirmed Decisions` and machine-readable case data.
+- Surgery can read `--case-file` and build from confirmed surgery and OpenSpec
+  decisions instead of raw adjudication details.
+- `--update-case-file` writes the generated surgery plan back into the case
+  file and preserves the surgery record path as an evidence attachment.
+- No repo-local skill was updated; behavior-asset checks were therefore not
+  required by this change.
+
+### Focused Tests
+
+Command:
+
+```bash
+python3 -m unittest tests.test_wiki_medical_case tests.test_wiki_surgery
+```
+
+Result:
+
+```text
+Ran 12 tests in 1.714s
+OK
+```
+
+Command:
+
+```bash
+python3 -m unittest tests.test_wiki_medical_case tests.test_wiki_surgery tests.test_wiki_review_decisions tests.test_wiki_treatment tests.test_wiki_recovery
+```
+
+Result:
+
+```text
+Ran 29 tests in 3.836s
+OK
+```
+
+### Generated Case Frontmatter Target Precheck
+
+Command shape:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --root "$tmpdir" --mode frontmatter --target wiki/ops/wiki-medical-cases/2026-05-15-061136-precheck-case.md --top 1
+```
+
+Result:
+
+```text
+passed: true
+blocking_count: 0
+target.entry_count: 0
+```
+
 ### OpenSpec
 
 Command:

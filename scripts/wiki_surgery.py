@@ -4,6 +4,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from scripts.wiki_medical_case import (
+    attach_surgery_plan_to_case,
+    load_medical_case_file,
+    overwrite_medical_case_file,
+)
+
 
 DEFAULT_SURGERY_RECORD_DIR = Path("wiki/ops/wiki-surgery-runs")
 SURGERY_RISK_FLAGS = {
@@ -57,6 +63,15 @@ def _surgery_item(detail: dict[str, Any]) -> dict[str, Any]:
         "reason": _judgment_reason(detail),
     }
     return item
+
+
+def _surgery_item_from_decision(decision: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "detail_ref": str(decision.get("detail_ref") or decision.get("detail_id") or "unknown"),
+        "path": str(decision.get("path", "")),
+        "risk_flags": _risk_flags(decision),
+        "reason": str(decision.get("reason") or _judgment_reason(decision)),
+    }
 
 
 def _moc_projection_items(moc_plan: dict[str, Any] | None) -> list[dict[str, Any]]:
@@ -177,6 +192,83 @@ def build_surgery_plan(
     }
 
 
+def build_surgery_plan_from_case(
+    case_package: dict[str, Any],
+    moc_plan: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    confirmed = case_package.get("confirmed_decisions", {})
+    if not isinstance(confirmed, dict):
+        confirmed = {}
+
+    decisions: list[dict[str, Any]] = []
+    for bucket in ("surgery_candidates", "openspec_required"):
+        values = confirmed.get(bucket, [])
+        if not isinstance(values, list):
+            continue
+        decisions.extend(item for item in values if isinstance(item, dict))
+
+    surgery_items: list[dict[str, Any]] = []
+    seen_refs: set[str] = set()
+    for decision in decisions:
+        item = _surgery_item_from_decision(decision)
+        ref = item["detail_ref"]
+        if ref in seen_refs:
+            continue
+        seen_refs.add(ref)
+        surgery_items.append(item)
+
+    relation_rebuild = [
+        item for item in surgery_items if "relation_weak_evidence" in item["risk_flags"]
+    ]
+    governance_change = [
+        item for item in surgery_items if set(item["risk_flags"]) & GOVERNANCE_RISK_FLAGS
+    ]
+    taxonomy_decision = [
+        item for item in surgery_items if "taxonomy_candidate" in item["risk_flags"]
+    ]
+    moc_items = _moc_projection_items(moc_plan)
+
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "mode": "wiki_surgery_plan",
+        "status": "planned",
+        "source_case_slug": case_package.get("case_slug", ""),
+        "source_case_path": case_package.get("case_path", ""),
+        "source_confirmed_decisions": {
+            "surgery_candidates": len(confirmed.get("surgery_candidates", []))
+            if isinstance(confirmed.get("surgery_candidates"), list)
+            else 0,
+            "openspec_required": len(confirmed.get("openspec_required", []))
+            if isinstance(confirmed.get("openspec_required"), list)
+            else 0,
+        },
+        "source_moc_summary": moc_plan.get("summary", {}) if isinstance(moc_plan, dict) else {},
+        "summary": {
+            "source_detail_count": len(decisions),
+            "surgery_item_count": len(surgery_items),
+            "relation_rebuild_count": len(relation_rebuild),
+            "governance_change_count": len(governance_change),
+            "taxonomy_decision_count": len(taxonomy_decision),
+            "moc_projection_count": len(moc_items),
+        },
+        "surgery_items": surgery_items,
+        "relation_rebuild_items": relation_rebuild,
+        "governance_change_items": governance_change,
+        "taxonomy_decision_items": taxonomy_decision,
+        "moc_projection_items": moc_items,
+        "proof_boundary_notes": [
+            "This surgery plan derives from confirmed case decisions.",
+            "The canonical case file remains the source of truth.",
+            "It does not write frontmatter, taxonomy config, relations, MOC pages, ADR decisions, or OpenSpec state.",
+        ],
+        "next_review_actions": [
+            "Human review: verify this plan faithfully executes Confirmed Decisions in the case file.",
+            "OpenSpec: route governance, ADR, taxonomy, and broad relation changes to explicit changes.",
+            "Recovery: run checkers and doctor again only after surgery is applied.",
+        ],
+    }
+
+
 def _limited(items: Any, limit: int) -> list[Any]:
     if not isinstance(items, list):
         return []
@@ -210,9 +302,12 @@ def render_surgery_record_markdown(
         f"- Generated at: {plan.get('generated_at', 'unknown')}",
         f"- Scan root: `{Path(scan_root)}`",
         f"- Detail limit: {limit}",
-        "",
-        "## Summary",
     ]
+    if plan.get("source_case_slug"):
+        lines.append(f"- Source case slug: {plan['source_case_slug']}")
+    if plan.get("source_case_path"):
+        lines.append(f"- Source case path: `{plan['source_case_path']}`")
+    lines.extend(["", "## Summary"])
     for key, value in sorted(plan.get("summary", {}).items()):
         lines.append(f"- {key}: {value}")
 
@@ -270,3 +365,23 @@ def write_surgery_record(
             return target.resolve()
         except FileExistsError:
             continue
+
+
+def load_case_and_build_surgery_plan(
+    case_file: Path | str,
+    moc_plan: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    case_package = load_medical_case_file(case_file)
+    case_package["case_path"] = Path(case_file).resolve().as_posix()
+    return build_surgery_plan_from_case(case_package, moc_plan=moc_plan)
+
+
+def update_case_file_with_surgery_plan(
+    case_file: Path | str,
+    plan: dict[str, Any],
+    root: Path | str,
+    surgery_record: str | Path | None = None,
+) -> Path:
+    case_package = load_medical_case_file(case_file)
+    updated = attach_surgery_plan_to_case(case_package, plan, surgery_record=surgery_record)
+    return overwrite_medical_case_file(case_file, updated, scan_root=root)

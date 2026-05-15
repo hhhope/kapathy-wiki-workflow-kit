@@ -6,8 +6,14 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from scripts.wiki_medical_case import (
+    build_medical_case_package,
+    load_medical_case_file,
+    write_medical_case_file,
+)
 from scripts.wiki_surgery import (
     build_surgery_plan,
+    build_surgery_plan_from_case,
     render_surgery_record_markdown,
     write_surgery_record,
 )
@@ -141,6 +147,102 @@ class WikiSurgeryTest(unittest.TestCase):
         self.assertIn("## Proof Boundary", markdown)
         self.assertIn("## Next Review Actions", markdown)
         self.assertIn("not surgery approval", markdown)
+
+    def test_builds_surgery_plan_from_case_confirmed_decisions_not_raw_adjudication(self) -> None:
+        case = {
+            "case_slug": "confirmed-case",
+            "confirmed_decisions": {
+                "surgery_candidates": [
+                    {
+                        "detail_ref": "detail-confirmed-relation",
+                        "path": "wiki/ops/confirmed.md",
+                        "risk_flags": ["relation_weak_evidence"],
+                        "reason": "confirmed weak relation",
+                    }
+                ],
+                "openspec_required": [
+                    {
+                        "detail_ref": "detail-confirmed-governance",
+                        "path": "wiki/ops/governance.md",
+                        "risk_flags": ["openspec_required", "drift_risk"],
+                        "reason": "confirmed governance drift",
+                    }
+                ],
+            },
+        }
+
+        plan = build_surgery_plan_from_case(case)
+
+        refs = {item["detail_ref"] for item in plan["surgery_items"]}
+        self.assertEqual(refs, {"detail-confirmed-relation", "detail-confirmed-governance"})
+        self.assertEqual(plan["summary"]["surgery_item_count"], 2)
+        self.assertEqual(plan["summary"]["relation_rebuild_count"], 1)
+        self.assertEqual(plan["summary"]["governance_change_count"], 1)
+        self.assertEqual(plan["source_case_slug"], "confirmed-case")
+        self.assertIn(
+            "confirmed case decisions",
+            " ".join(plan["proof_boundary_notes"]),
+        )
+
+    def test_cli_can_update_case_file_with_surgery_evidence_attachment(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        case_package = build_medical_case_package(
+            {
+                "generated_at": "2026-05-15T01:02:03+00:00",
+                "summary": {},
+                "source_adjudication_summary": {},
+                "surgery_candidates": [
+                    {
+                        "detail_ref": "detail-confirmed-relation",
+                        "path": "wiki/ops/confirmed.md",
+                        "risk_flags": ["relation_weak_evidence"],
+                        "reason": "confirmed weak relation",
+                    }
+                ],
+                "openspec_required": [],
+                "treatment_candidates": [],
+                "accepted_candidates": [],
+                "rejected_candidates": [],
+                "deferred_items": [],
+            },
+            case_slug="confirmed-case",
+        )
+        case_path = write_medical_case_file(
+            case_package,
+            self.tmpdir,
+            output_dir=self.tmpdir / "cases",
+            timestamp="2026-05-15T01:02:03+00:00",
+        )
+        record_dir = self.tmpdir / "surgery-records"
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_surgery.py",
+                "--root",
+                str(self.tmpdir),
+                "--case-file",
+                str(case_path),
+                "--write-surgery-record",
+                "--surgery-record-dir",
+                str(record_dir),
+                "--update-case-file",
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+        loaded_case = load_medical_case_file(case_path)
+
+        self.assertEqual(payload["source_case_slug"], "confirmed-case")
+        self.assertEqual(payload["summary"]["surgery_item_count"], 1)
+        self.assertEqual(loaded_case["surgery_plan"]["status"], "planned")
+        self.assertIn(
+            payload["surgery_record_path"],
+            loaded_case["evidence_attachments"]["surgery"],
+        )
 
     def test_cli_outputs_json_and_writes_record_only_when_requested(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]

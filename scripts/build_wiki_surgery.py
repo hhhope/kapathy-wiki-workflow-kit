@@ -12,7 +12,12 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.wiki_content_adjudication import build_adjudication_package
-from scripts.wiki_surgery import build_surgery_plan, write_surgery_record
+from scripts.wiki_surgery import (
+    build_surgery_plan,
+    load_case_and_build_surgery_plan,
+    update_case_file_with_surgery_plan,
+    write_surgery_record,
+)
 
 
 def _load_moc_plan(path: str | None) -> dict | None:
@@ -25,6 +30,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Build wiki surgery plan.")
     parser.add_argument("--root", default=ROOT)
     parser.add_argument("--moc-plan", help="Optional MOC projection dry-run JSON.")
+    parser.add_argument("--case-file", help="Canonical wiki medical case file to use as surgery input.")
+    parser.add_argument(
+        "--update-case-file",
+        action="store_true",
+        help="Write the generated surgery plan back into --case-file.",
+    )
     parser.add_argument("--limit", type=int, default=50)
     parser.add_argument(
         "--write-surgery-record",
@@ -38,11 +49,16 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    plan = build_surgery_plan(
-        build_adjudication_package(root),
-        moc_plan=_load_moc_plan(args.moc_plan),
-    )
+    moc_plan = _load_moc_plan(args.moc_plan)
+    if args.case_file:
+        plan = load_case_and_build_surgery_plan(args.case_file, moc_plan=moc_plan)
+    else:
+        plan = build_surgery_plan(
+            build_adjudication_package(root),
+            moc_plan=moc_plan,
+        )
     payload = dict(plan)
+    record_path = None
 
     if args.write_surgery_record:
         record_path = write_surgery_record(
@@ -53,9 +69,19 @@ def main() -> None:
         )
         payload["surgery_record_path"] = record_path.as_posix()
 
+    if args.update_case_file:
+        if not args.case_file:
+            parser.error("--update-case-file requires --case-file")
+        updated_path = update_case_file_with_surgery_plan(
+            args.case_file,
+            plan,
+            root,
+            surgery_record=record_path.as_posix() if record_path else None,
+        )
+        payload["updated_case_file"] = updated_path.as_posix()
+
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
     main()
-
