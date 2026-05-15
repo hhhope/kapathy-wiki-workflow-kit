@@ -6,8 +6,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.wiki_medical_case import build_medical_case_package, write_medical_case_file
+from scripts.wiki_medical_case import build_medical_case_package, load_medical_case_file, write_medical_case_file
 from scripts.wiki_medical_agent import (
+    apply_confirmed_treatment_and_recover,
     build_status_payload,
     classify_medical_intent,
     resolve_active_case,
@@ -62,6 +63,9 @@ class WikiMedicalAgentTest(unittest.TestCase):
             output_dir=self.tmpdir / "wiki" / "ops" / "wiki-medical-cases",
             timestamp=timestamp,
         )
+
+    def _target_text(self) -> str:
+        return (self.tmpdir / "wiki" / "ops" / "safe.md").read_text(encoding="utf-8")
 
     def test_classifies_natural_language_intents(self) -> None:
         self.assertEqual(classify_medical_intent("看下 wiki 现在什么状态").intent, "status")
@@ -201,6 +205,110 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertEqual(payload["applied"], 1)
         self.assertEqual(payload["recovery"]["status"], "completed")
         self.assertIn(payload["next_action"], {"archive_ready", "blocked"})
+
+    def test_direct_apply_rejects_wrong_state_before_writing_records(self) -> None:
+        target = self.tmpdir / "wiki" / "ops" / "safe.md"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("# Safe\n", encoding="utf-8")
+        case_path = self._write_case(
+            self._case_package(status="awaiting_confirmation"),
+            "2026-05-15T01:02:03+00:00",
+        )
+
+        with self.assertRaisesRegex(ValueError, "state_does_not_allow_treatment_apply"):
+            apply_confirmed_treatment_and_recover(
+                self.tmpdir,
+                case_path,
+                approved_detail_refs={"detail-safe"},
+            )
+
+        self.assertEqual(self._target_text(), "# Safe\n")
+        self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-treatment-runs").exists())
+        self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-recovery-runs").exists())
+
+    def test_cli_apply_missing_approval_writes_nothing(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        target = self.tmpdir / "wiki" / "ops" / "safe.md"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("# Safe\n", encoding="utf-8")
+        self._write_case(self._case_package(status="ready_for_treatment"), "2026-05-15T01:02:03+00:00")
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_medical_agent.py",
+                "--root",
+                str(self.tmpdir),
+                "--intent-text",
+                "apply 已确认的 1 个 treatment candidates",
+                "--apply",
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+
+        self.assertFalse(payload["allowed"])
+        self.assertEqual(payload["blocked_reason"], "missing_explicit_treatment_approval")
+        self.assertEqual(self._target_text(), "# Safe\n")
+        self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-treatment-runs").exists())
+        self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-recovery-runs").exists())
+
+    def test_partial_treatment_failure_blocks_before_recovery(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        target = self.tmpdir / "wiki" / "ops" / "safe.md"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("# Safe\n", encoding="utf-8")
+        package = self._case_package(status="ready_for_treatment")
+        package["confirmed_decisions"]["treatment_candidates"].append(
+            {
+                "detail_ref": "detail-missing",
+                "path": "wiki/ops/missing.md",
+                "risk_flags": [],
+                "suggested_frontmatter": {
+                    "layer": "ops",
+                    "domain": "wiki",
+                    "ops_area": "wiki-runtime",
+                    "canonical_object": "missing",
+                    "artifact_type": "method",
+                },
+            }
+        )
+        case_path = self._write_case(package, "2026-05-15T01:02:03+00:00")
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_medical_agent.py",
+                "--root",
+                str(self.tmpdir),
+                "--intent-text",
+                "apply 已确认的 2 个 treatment candidates",
+                "--approved-detail",
+                "detail-safe",
+                "--approved-detail",
+                "detail-missing",
+                "--apply",
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+        loaded_case = load_medical_case_file(case_path)
+
+        self.assertEqual(payload["applied"], 1)
+        self.assertEqual(payload["blocked"], 1)
+        self.assertEqual(payload["next_action"], "blocked")
+        self.assertIn("treatment_record", payload)
+        self.assertTrue(Path(payload["treatment_record"]).exists())
+        self.assertNotIn("recovery", payload)
+        self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-recovery-runs").exists())
+        self.assertEqual(loaded_case["archive_next_action"]["next_action"], "blocked")
+        self.assertIn("treatment blocked", loaded_case["archive_next_action"]["reason"])
 
 
 if __name__ == "__main__":

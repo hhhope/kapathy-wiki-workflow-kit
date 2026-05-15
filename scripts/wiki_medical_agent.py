@@ -324,6 +324,14 @@ def apply_confirmed_treatment_and_recover(
         raise ValueError("case path escapes root")
     if not (approved_domains or approved_detail_refs):
         raise ValueError("missing explicit treatment approval")
+    resolution = resolve_active_case(root_path)
+    if resolution.status != "ok" or resolution.case_path is None or resolution.case_package is None:
+        raise ValueError(resolution.blocked_reason or resolution.status)
+    if resolution.case_path.resolve() != case_file:
+        raise ValueError("supplied case path is not the active case")
+    validation = validate_case_action(resolution.case_package, "treatment_apply")
+    if not validation.allowed:
+        raise ValueError(validation.blocked_reason or "treatment_apply_not_allowed")
     plan = load_case_and_build_treatment_plan(
         case_file,
         approved_domains=approved_domains or set(),
@@ -338,6 +346,21 @@ def apply_confirmed_treatment_and_recover(
         root_path,
         treatment_record=treatment_record.as_posix(),
     )
+    if result["summary"]["blocked_count"] > 0:
+        case_package = load_medical_case_file(case_file)
+        case_package["status"] = "blocked"
+        case_package["archive_next_action"] = {
+            "status": "blocked",
+            "next_action": "blocked",
+            "reason": "treatment blocked results must be resolved before recovery.",
+        }
+        overwrite_medical_case_file(case_file, case_package, root_path)
+        return {
+            "applied": result["summary"]["applied_count"],
+            "blocked": result["summary"]["blocked_count"],
+            "treatment_record": treatment_record.as_posix(),
+            "next_action": "blocked",
+        }
     recovery = build_recovery_package(root_path)
     recovery_record = write_recovery_record(recovery, root_path)
     case_package = load_medical_case_file(case_file)
