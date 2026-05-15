@@ -69,6 +69,16 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertEqual(classify_medical_intent("apply 已确认的 10 个 treatment candidates").intent, "treatment_apply")
         self.assertEqual(classify_medical_intent("做 recovery，告诉我是否闭环").intent, "recovery")
 
+    def test_classifies_preview_before_apply(self) -> None:
+        self.assertEqual(
+            classify_medical_intent("dry-run apply confirmed treatments").intent,
+            "treatment_preview",
+        )
+        self.assertEqual(
+            classify_medical_intent("preview apply confirmed treatments").intent,
+            "treatment_preview",
+        )
+
     def test_resolve_active_case_blocks_multiple_active_cases(self) -> None:
         self._write_case(self._case_package(active=True), "2026-05-15T01:02:03+00:00")
         self._write_case(self._case_package(active=True), "2026-05-15T01:02:04+00:00")
