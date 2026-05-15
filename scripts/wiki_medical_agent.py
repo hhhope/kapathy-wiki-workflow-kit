@@ -44,7 +44,7 @@ def classify_medical_intent(text: str) -> IntentResult:
     expected_count = int(count_match.group(1)) if count_match else None
     if "legacy" in lowered or "debug" in lowered:
         return IntentResult("legacy_debug", expected_count, "explicit legacy/debug request")
-    if any(token in lowered for token in ["preview", "dry-run", "预览"]):
+    if any(token in lowered for token in ["preview", "dry-run", "dry run", "预览"]):
         return IntentResult("treatment_preview", expected_count, "user requested treatment preview")
     if any(token in lowered for token in ["apply", "应用", "治疗这", "执行治疗"]):
         return IntentResult("treatment_apply", expected_count, "user requested treatment apply")

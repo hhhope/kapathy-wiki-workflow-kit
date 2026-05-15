@@ -75,6 +75,10 @@ class WikiMedicalAgentTest(unittest.TestCase):
             "treatment_preview",
         )
         self.assertEqual(
+            classify_medical_intent("dry run apply confirmed treatments").intent,
+            "treatment_preview",
+        )
+        self.assertEqual(
             classify_medical_intent("preview apply confirmed treatments").intent,
             "treatment_preview",
         )
