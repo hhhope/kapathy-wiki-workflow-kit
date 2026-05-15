@@ -133,6 +133,18 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertEqual(len(payload["candidate_cases"]), 2)
         self.assertEqual(payload["next_action"], "select_active_case")
 
+    def test_blocked_payload_does_not_use_stale_archive_next_action(self) -> None:
+        package = self._case_package(status="awaiting_confirmation")
+        package["archive_next_action"] = {"next_action": "archive_ready"}
+        self._write_case(package, "2026-05-15T01:02:03+00:00")
+
+        payload = build_status_payload(self.tmpdir, "apply 已确认的 1 个 treatment candidates")
+
+        self.assertFalse(payload["allowed"])
+        self.assertEqual(payload["blocked_reason"], "state_does_not_allow_treatment_apply")
+        self.assertNotEqual(payload["next_action"], "archive_ready")
+        self.assertEqual(payload["next_action"], "state_does_not_allow_treatment_apply")
+
     def test_cli_status_outputs_intent_case_state_and_next_action(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
         case_path = self._write_case(self._case_package(), "2026-05-15T01:02:03+00:00")

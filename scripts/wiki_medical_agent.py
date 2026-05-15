@@ -295,5 +295,6 @@ def build_status_payload(root: Path | str, intent_text: str) -> dict[str, Any]:
         next_action = archive.get("next_action") if isinstance(archive, dict) else ""
         payload["executable_count"] = validation.executable_count
         payload["expected_count"] = validation.expected_count
-        payload["next_action"] = str(next_action or payload["next_action"])
+        if validation.allowed and next_action:
+            payload["next_action"] = str(next_action)
     return payload
