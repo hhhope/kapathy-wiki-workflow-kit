@@ -4,9 +4,9 @@
 
 ### Requirement: Normal medical-loop entry SHALL route through wiki-medical-agent
 
-Ordinary user requests SHALL use `wiki-medical-agent` as the user-facing
-controller for wiki medical-loop status, diagnosis, confirmation, treatment,
-surgery, recovery, or archive checks.
+Ordinary non-legacy/debug user requests SHALL use `wiki-medical-agent` as the
+user-facing controller for wiki medical-loop status, diagnosis, confirmation,
+treatment, surgery, recovery, or archive checks.
 
 #### Scenario: User asks to apply confirmed treatment candidates
 
@@ -14,6 +14,30 @@ surgery, recovery, or archive checks.
 - **THEN** the controller SHALL classify intent as `treatment_apply`
 - **AND** resolve exactly one active case file
 - **AND** validate executable confirmed treatment decisions before applying
+
+#### Scenario: No active case exists
+
+- **GIVEN** no active medical case file exists
+- **WHEN** the user asks for status or diagnosis
+- **THEN** the controller SHALL allow the request
+- **AND** report that no active case is resolved
+- **WHEN** the user asks for treatment, surgery, or recovery
+- **THEN** the controller SHALL block the write action
+- **AND** require diagnosis or explicit case creation before execution
+
+#### Scenario: Multiple active cases exist
+
+- **GIVEN** more than one active medical case file exists
+- **WHEN** the user asks for treatment, surgery, recovery, or another write action
+- **THEN** the controller SHALL block the write action
+- **AND** require the user to select exactly one active case before execution
+
+#### Scenario: Normal old stage skill usage redirects
+
+- **GIVEN** a user invokes an old stage skill without explicit legacy or debug mode
+- **WHEN** the request is for doctor, confirm, treatment, surgery, or recovery work
+- **THEN** the stage skill SHALL redirect ordinary usage to `wiki-medical-agent`
+- **AND** explicit legacy or debug mode SHALL remain evidence-only
 
 ### Requirement: Case file SHALL be the only authority
 

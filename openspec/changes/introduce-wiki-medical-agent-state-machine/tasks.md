@@ -1,6 +1,6 @@
 # Tasks
 
-- [ ] 1. Create OpenSpec proposal, design, tasks, spec delta, and initial evaluation stub.
+- [ ] 1. Create OpenSpec proposal, design, tasks, and spec delta.
 - [ ] 2. Add RED tests for medical-agent intent diagnosis and active-case resolution.
 - [ ] 3. Add case state helpers to `scripts/wiki_medical_case.py`.
 - [ ] 4. Implement `scripts/wiki_medical_agent.py` intent and state validation.
