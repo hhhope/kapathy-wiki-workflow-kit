@@ -97,6 +97,43 @@ artifact_type: method
         self.assertIn("taxonomy_candidate", detail["risk_flags"])
         self.assertFalse(detail["safe_to_apply_frontmatter"])
 
+    def test_excludes_generated_review_artifacts_from_candidates(self) -> None:
+        (self.tmpdir / "wiki" / "ops" / "ordinary-runtime-note.md").write_text(
+            """# Ordinary Runtime Note
+
+This ordinary wiki runtime note remains reviewable.
+""",
+            encoding="utf-8",
+        )
+        doctor_dir = self.tmpdir / "wiki" / "ops" / "wiki-doctor-runs"
+        decision_dir = self.tmpdir / "wiki" / "ops" / "wiki-review-decisions"
+        doctor_dir.mkdir(parents=True)
+        decision_dir.mkdir(parents=True)
+        (doctor_dir / "2026-05-14-010203-review.md").write_text(
+            """# wiki-doctor Review Record
+
+This generated diagnosis record mentions wiki runtime drift and governance.
+""",
+            encoding="utf-8",
+        )
+        (decision_dir / "2026-05-15-010203-review-decisions.md").write_text(
+            """# wiki-review-decisions Draft Record
+
+This generated decision sheet mentions treatment candidates and OpenSpec.
+""",
+            encoding="utf-8",
+        )
+
+        package = build_adjudication_package(self.tmpdir)
+
+        paths = [detail["path"] for detail in package["full_detail_set"]]
+        self.assertEqual(package["summary"]["candidate_count"], 1)
+        self.assertEqual(paths, ["wiki/ops/ordinary-runtime-note.md"])
+        self.assertEqual(
+            [entry["path"] for entry in package["candidate_set"]],
+            ["wiki/ops/ordinary-runtime-note.md"],
+        )
+
     def test_eval_fails_when_risky_detail_has_no_evidence(self) -> None:
         package = {
             "full_detail_set": [
