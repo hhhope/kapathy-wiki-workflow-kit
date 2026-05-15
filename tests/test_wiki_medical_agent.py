@@ -226,6 +226,30 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-treatment-runs").exists())
         self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-recovery-runs").exists())
 
+    def test_direct_apply_rejects_inactive_case_when_another_case_is_active(self) -> None:
+        target = self.tmpdir / "wiki" / "ops" / "safe.md"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("# Safe\n", encoding="utf-8")
+        stale_case_path = self._write_case(
+            self._case_package(status="ready_for_treatment", active=False),
+            "2026-05-15T01:02:03+00:00",
+        )
+        self._write_case(
+            self._case_package(status="ready_for_treatment", active=True),
+            "2026-05-15T01:02:04+00:00",
+        )
+
+        with self.assertRaisesRegex(ValueError, "not the active case"):
+            apply_confirmed_treatment_and_recover(
+                self.tmpdir,
+                stale_case_path,
+                approved_detail_refs={"detail-safe"},
+            )
+
+        self.assertEqual(self._target_text(), "# Safe\n")
+        self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-treatment-runs").exists())
+        self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-recovery-runs").exists())
+
     def test_cli_apply_missing_approval_writes_nothing(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
         target = self.tmpdir / "wiki" / "ops" / "safe.md"
