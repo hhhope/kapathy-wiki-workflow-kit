@@ -11,4 +11,4 @@
 - [x] 9. Add `.codex/skills/wiki-medical-agent/SKILL.md` and downgrade old stage skills to redirect ordinary usage.
 - [x] 10. Add behavior replay and skill tests.
 - [x] 11. Run focused tests, frontmatter taxonomy check for new wiki case outputs if any, OpenSpec strict validation, and behavior-asset checks.
-- [ ] 12. Commit verified implementation and stop at OpenSpec hard stop.
+- [x] 12. Commit verified implementation and stop at OpenSpec hard stop.
