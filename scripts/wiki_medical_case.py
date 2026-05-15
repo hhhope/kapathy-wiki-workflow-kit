@@ -70,6 +70,13 @@ def _copy_bucket(source: dict[str, Any], key: str) -> list[dict[str, Any]]:
     return [copy.deepcopy(item) for item in _as_list(source.get(key)) if isinstance(item, dict)]
 
 
+def _item_dedupe_key(item: dict[str, Any]) -> str:
+    ref = item.get("detail_ref") or item.get("detail_id")
+    if ref:
+        return f"ref:{ref}"
+    return "json:" + json.dumps(item, ensure_ascii=False, sort_keys=True)
+
+
 def _attachment_list(*values: str | Path | None) -> list[str]:
     attachments: list[str] = []
     for value in values:
@@ -158,21 +165,56 @@ def build_medical_case_package(
 
 def _normalize_next_action(next_route: str | None, passed: bool | None = None) -> str:
     route = str(next_route or "").strip().replace("-", "_")
-    if route in {
-        "archive_ready",
-        "awaiting_confirmation",
-        "surgery_required",
-        "blocked",
-        "followup_required",
-    }:
-        return route
-    if route == "archive_ready":
+    if route == "archive_ready" and passed is True:
         return "archive_ready"
     if route == "blocked_by_recovery_findings":
         return "blocked"
-    if passed is True:
-        return "archive_ready"
+    if route in {"awaiting_confirmation", "surgery_required", "blocked", "followup_required"}:
+        return route
     return "blocked"
+
+
+def _recovery_proposed_decisions(recovery_package: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
+    proposed: dict[str, list[dict[str, Any]]] = {
+        "treatment_candidates": [],
+        "surgery_candidates": [],
+        "openspec_required": [],
+        "blockers": [],
+    }
+    nested = recovery_package.get("proposed_decisions", {})
+    sources = [nested] if isinstance(nested, dict) else []
+    sources.append(recovery_package)
+    for source in sources:
+        if not isinstance(source, dict):
+            continue
+        for key in proposed:
+            proposed[key].extend(_copy_bucket(source, key))
+    return proposed
+
+
+def _merge_proposed_decisions(
+    target: dict[str, Any],
+    additions: dict[str, list[dict[str, Any]]],
+) -> bool:
+    changed = False
+    for key, items in additions.items():
+        bucket = target.setdefault(key, [])
+        if not isinstance(bucket, list):
+            bucket = []
+            target[key] = bucket
+        seen = {
+            _item_dedupe_key(item)
+            for item in bucket
+            if isinstance(item, dict)
+        }
+        for item in items:
+            dedupe_key = _item_dedupe_key(item)
+            if dedupe_key in seen:
+                continue
+            bucket.append(copy.deepcopy(item))
+            seen.add(dedupe_key)
+            changed = True
+    return changed
 
 
 def attach_recovery_result_to_case(
@@ -192,6 +234,16 @@ def attach_recovery_result_to_case(
         str(recovery_package.get("next_route", "")),
         recovery_package.get("passed") is True,
     )
+    proposed = updated.setdefault("proposed_decisions", {})
+    if not isinstance(proposed, dict):
+        proposed = {}
+        updated["proposed_decisions"] = proposed
+    has_new_proposals = _merge_proposed_decisions(
+        proposed,
+        _recovery_proposed_decisions(recovery_package),
+    )
+    if has_new_proposals:
+        next_action = "awaiting_confirmation"
     updated["recovery"] = {
         "status": "completed",
         "records": records,

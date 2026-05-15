@@ -254,6 +254,87 @@ strict_gate:
         self.assertEqual(updated["archive_next_action"]["next_action"], "archive_ready")
         self.assertIn("wiki/ops/wiki-recovery-runs/recovery.md", updated["evidence_attachments"]["recovery"])
 
+    def test_failed_recovery_archive_ready_route_blocks_case(self) -> None:
+        from scripts.wiki_medical_case import attach_recovery_result_to_case
+
+        package = build_medical_case_package(self._decision_package())
+        updated = attach_recovery_result_to_case(
+            package,
+            {
+                "passed": False,
+                "next_route": "archive-ready",
+                "summary": {"check_count": 2, "failed_count": 1},
+            },
+        )
+
+        self.assertEqual(updated["status"], "blocked")
+        self.assertEqual(updated["archive_next_action"]["next_action"], "blocked")
+
+    def test_recovery_candidates_become_proposed_decisions_requiring_confirmation(self) -> None:
+        from scripts.wiki_medical_case import attach_recovery_result_to_case
+
+        package = build_medical_case_package(self._decision_package())
+        updated = attach_recovery_result_to_case(
+            package,
+            {
+                "passed": True,
+                "next_route": "archive-ready",
+                "proposed_decisions": {
+                    "treatment_candidates": [
+                        {
+                            "detail_ref": "detail-recovery-treatment",
+                            "path": "wiki/ops/recovery-treatment.md",
+                            "reason": "recovery found missing frontmatter",
+                        }
+                    ],
+                },
+            },
+        )
+
+        self.assertEqual(
+            updated["proposed_decisions"]["treatment_candidates"][0]["detail_ref"],
+            "detail-recovery-treatment",
+        )
+        self.assertEqual(updated["status"], "awaiting_confirmation")
+        self.assertEqual(updated["archive_next_action"]["next_action"], "awaiting_confirmation")
+
+    def test_repeated_recovery_attach_deduplicates_records_and_proposed_decisions(self) -> None:
+        from scripts.wiki_medical_case import attach_recovery_result_to_case
+
+        package = build_medical_case_package(self._decision_package())
+        recovery_package = {
+            "passed": True,
+            "next_route": "archive-ready",
+            "treatment_candidates": [
+                {
+                    "detail_ref": "detail-recovery-treatment",
+                    "path": "wiki/ops/recovery-treatment.md",
+                    "reason": "recovery found missing frontmatter",
+                }
+            ],
+        }
+
+        updated = attach_recovery_result_to_case(
+            package,
+            recovery_package,
+            recovery_record="wiki/ops/wiki-recovery-runs/recovery.md",
+        )
+        updated = attach_recovery_result_to_case(
+            updated,
+            recovery_package,
+            recovery_record="wiki/ops/wiki-recovery-runs/recovery.md",
+        )
+
+        self.assertEqual(
+            updated["recovery"]["records"],
+            ["wiki/ops/wiki-recovery-runs/recovery.md"],
+        )
+        self.assertEqual(
+            updated["evidence_attachments"]["recovery"],
+            ["wiki/ops/wiki-recovery-runs/recovery.md"],
+        )
+        self.assertEqual(len(updated["proposed_decisions"]["treatment_candidates"]), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
