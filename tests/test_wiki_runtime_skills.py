@@ -59,6 +59,18 @@ WIKI_SKILLS = {
         "--write-review-record",
         "wiki/ops/wiki-doctor-runs",
     ),
+    "wiki-review-decisions": (
+        "scripts/build_wiki_review_decisions.py",
+        "accepted_candidates",
+        "rejected_candidates",
+        "deferred_items",
+        "treatment_candidates",
+        "surgery_candidates",
+        "openspec_required",
+        "--write-decision-record",
+        "wiki/ops/wiki-review-decisions",
+        "draft review routing",
+    ),
     "wiki-queue": ("scripts/build_wiki_change_queue_preview.py",),
     "wiki-react": (
         "wiki_content_enrichment",

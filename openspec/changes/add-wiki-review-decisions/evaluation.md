@@ -45,6 +45,11 @@
 
 ## GREEN Result
 
+- Added `scripts/wiki_review_decisions.py` and
+  `scripts/build_wiki_review_decisions.py`.
+- Added `tests/test_wiki_review_decisions.py` covering classification buckets,
+  Markdown proof boundaries, non-overwriting record writes, and default-vs-
+  explicit CLI file writes.
 - Added `.codex/skills/wiki-review-decisions/SKILL.md` as a compact
   English-first tool-wrapper module for confirming, triaging, or routing
   `wiki-doctor` findings into review decisions.
@@ -63,14 +68,21 @@
 - GREEN command:
   `python3 -m unittest tests/test_wiki_review_decisions_skill.py`
 - GREEN result: passed, `Ran 1 test in 0.016s`, `OK`.
-- Script existence note: at this slice boundary,
-  `scripts/build_wiki_review_decisions.py` was still absent
-  (`test -e scripts/build_wiki_review_decisions.py; echo script:$?` returned
-  `script:1`); the skill intentionally references the separately owned code
-  worker output.
+- Integrated test command:
+  `python3 -m unittest tests/test_wiki_review_decisions.py tests/test_wiki_review_decisions_skill.py tests/test_wiki_runtime_skills.py`
+- Integrated test result: passed, `Ran 10 tests`, `OK`.
+- CLI smoke command:
+  `python3 scripts/build_wiki_review_decisions.py --limit 1`
+- CLI smoke result: exited 0 and emitted JSON with `mode:
+  wiki_review_decision_package`, draft buckets, summary counts, and proof
+  boundary notes.
 - Behavior-asset check command:
   `python3 scripts/check_behavior_assets.py`
 - Behavior-asset check result: exit code 0 with no output.
+- OpenSpec validation command:
+  `openspec validate add-wiki-review-decisions --strict`
+- OpenSpec validation result: pass. OpenSpec reported the change valid;
+  PostHog DNS flush warnings were telemetry-only.
 
 ## Prior-Art / Common-Rule Dedupe
 
