@@ -90,6 +90,8 @@ not derive a plan from Confirmed Decisions.
 
 Implemented files:
 
+- `.codex/skills/wiki-confirm/SKILL.md`
+- `.codex/skills/wiki-surgery/SKILL.md`
 - `scripts/wiki_medical_case.py`
 - `scripts/build_wiki_medical_case.py`
 - `scripts/wiki_surgery.py`
@@ -106,7 +108,142 @@ Replay coverage:
 - `--update-case-file` writes the generated surgery plan back into the case
   file and preserves the surgery record path as an evidence attachment.
 - No repo-local skill was updated; behavior-asset checks were therefore not
-  required by this change.
+  required by the first implementation commit.
+
+## Pressure Scenarios
+
+Positive scenario:
+
+- input or situation shape: user invokes `wiki-confirm` after `wiki-doctor`.
+- trigger condition: confirmation writes a decision record and exposes
+  treatment, surgery, and OpenSpec-required buckets.
+- expected route: `wiki-confirm` runs `scripts/build_wiki_review_decisions.py`,
+  then creates the canonical case file with
+  `scripts/build_wiki_medical_case.py --confirm-record <decision_record_path>`.
+- repo-visible artifact: `.codex/skills/wiki-confirm/SKILL.md` and the case
+  file under `wiki/ops/wiki-medical-cases/`.
+- expected output: the user receives both the confirmation record path and the
+  medical case path.
+- promotion or non-promotion boundary: confirmation remains draft routing, not
+  human approval and not treatment or surgery execution.
+- proof boundary: this does not write frontmatter, relation fields, MOC files,
+  ADRs, AGENTS, skills beyond this repair, or OpenSpec lifecycle state.
+
+Positive scenario:
+
+- input or situation shape: user invokes `wiki-surgery` while a current case
+  file exists.
+- trigger condition: `wiki/ops/wiki-medical-cases/` contains the case file that
+  owns the current Confirmed Decisions.
+- expected route: `wiki-surgery` uses
+  `scripts/build_wiki_surgery.py --case-file <case-file>`, and uses
+  `--write-surgery-record --update-case-file` when a surgery record is
+  requested.
+- repo-visible artifact: `.codex/skills/wiki-surgery/SKILL.md`, the case file,
+  and the surgery evidence attachment.
+- expected output: the surgery plan cites confirmed case decisions and the
+  updated case file links the surgery record as evidence.
+- promotion or non-promotion boundary: the surgery record is not a new
+  diagnosis and does not become the source of truth.
+- proof boundary: this only repairs intent routing; it still does not apply
+  relation, taxonomy, governance, MOC, ADR, AGENTS, skill, or OpenSpec edits.
+
+Negative should-not-trigger scenario:
+
+- input or situation shape: user invokes `wiki-surgery` and no case file exists.
+- trigger condition: no current file is available under
+  `wiki/ops/wiki-medical-cases/`.
+- expected route: stop and route to `wiki-confirm` or
+  `scripts/build_wiki_medical_case.py` instead of silently running raw
+  adjudication.
+- repo-visible artifact: `.codex/skills/wiki-surgery/SKILL.md`.
+- expected output: the agent asks for or creates the case file before normal
+  surgery planning.
+- promotion or non-promotion boundary: raw adjudication remains a legacy/debug
+  path, not the normal surgery intent path.
+- proof boundary: the skill cannot automatically detect human approval; it
+  only defines the required route judgment.
+
+## RED Baseline
+
+Command:
+
+```bash
+python3 -m unittest tests.test_wiki_runtime_skills.WikiRuntimeSkillsTest.test_wiki_runtime_skill_sources_exist_with_plain_wiki_names
+```
+
+Initial result before the skill repair:
+
+```text
+FAILED (failures=2)
+AssertionError: 'scripts/build_wiki_medical_case.py' not found ... skill='wiki-confirm'
+AssertionError: 'wiki/ops/wiki-medical-cases' not found ... skill='wiki-surgery'
+```
+
+Interpretation: the implemented CLI path existed, but the runtime skill entry
+still lacked the intent judgment that turns confirmation into a case file and
+turns surgery into case-file-based planning.
+
+## GREEN Result
+
+Command:
+
+```bash
+python3 -m unittest tests.test_wiki_runtime_skills.WikiRuntimeSkillsTest.test_wiki_runtime_skill_sources_exist_with_plain_wiki_names
+```
+
+Result:
+
+```text
+Ran 1 test in 0.162s
+OK
+```
+
+The repaired skills now state the runtime route:
+
+- `wiki-confirm` creates the case file after the confirmation record.
+- `wiki-surgery` checks `wiki/ops/wiki-medical-cases/`, uses
+  `--case-file`, and updates the same case with `--update-case-file` when a
+  surgery record is requested.
+
+## Prior-Art / Common-Rule Dedupe
+
+Scanned:
+
+- `AGENTS.md` Agent Intent Routing and Workflow Change Gate.
+- `PROJECT.md` OpenSpec source-of-truth boundary.
+- `openspec/changes/introduce-wiki-medical-case-file/design.md`.
+- `openspec/changes/introduce-wiki-medical-case-file/specs/wiki-medical-loop-records/spec.md`.
+- `.codex/skills/wiki-confirm/SKILL.md`.
+- `.codex/skills/wiki-surgery/SKILL.md`.
+- `tests/test_wiki_runtime_skills.py`.
+
+Owns:
+
+- The two stage skills own their local stage instructions: confirmation creates
+  a case file, and surgery prefers the case file for normal surgery intent.
+
+References:
+
+- `AGENTS.md` still owns global intent classification and the high-frequency
+  skill routing table.
+- OpenSpec still owns the case-file lifecycle requirement.
+- The surgery CLI still owns the concrete `--case-file` and
+  `--update-case-file` behavior.
+
+Rejects:
+
+- No new broad route table was added to `AGENTS.md`.
+- No generic intent framework was added.
+- Raw surgery from adjudication was not promoted as the normal user-intent path.
+
+## Residual Risks
+
+- If multiple case files exist, the skill requires choosing the current case;
+  automated latest-case selection is not implemented.
+- The skill route depends on the agent reading the skill body after trigger.
+- Historical surgery records remain evidence only; they are not migrated into
+  case files by this repair.
 
 ### Focused Tests
 

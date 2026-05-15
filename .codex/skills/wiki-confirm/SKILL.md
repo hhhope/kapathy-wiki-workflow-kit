@@ -18,14 +18,21 @@ wiki-doctor -> wiki-confirm -> wiki-treatment -> wiki-surgery -> wiki-recovery
 When triggered:
 
 1. Confirm the current repository has
-   `scripts/build_wiki_review_decisions.py`.
+   `scripts/build_wiki_review_decisions.py` and
+   `scripts/build_wiki_medical_case.py`.
 2. Run `python3 scripts/build_wiki_review_decisions.py`; by default it writes
    a complete confirmation record under `wiki/ops/wiki-review-decisions/`.
-3. Preserve these draft buckets exactly:
+3. Create the canonical case file immediately after confirmation:
+   `python3 scripts/build_wiki_medical_case.py --confirm-record <decision_record_path>`.
+   The case file lives under `wiki/ops/wiki-medical-cases/`.
+4. Treat the case file's `Confirmed Decisions` section as the next human
+   review surface for treatment, surgery, recovery, and archive decisions.
+5. Preserve these draft buckets exactly:
    `accepted_candidates`, `rejected_candidates`, `deferred_items`,
    `treatment_candidates`, `surgery_candidates`, and `openspec_required`.
-4. Explain the output as draft routing, not approval.
-5. Treat stdout as a summary and report the generated confirmation record path.
+6. Explain the output as draft routing, not approval.
+7. Treat stdout as a summary and report both the generated confirmation record
+   path and the generated case file path.
    Use `--stdout-json-only` only for explicit non-writing debug inspection.
    `--write-decision-record` remains a compatibility flag. Include
    `--decision-record-dir` only when the record must be written somewhere other

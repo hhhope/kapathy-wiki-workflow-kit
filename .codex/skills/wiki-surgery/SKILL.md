@@ -17,13 +17,22 @@ wiki-doctor -> wiki-confirm -> wiki-treatment -> wiki-surgery -> wiki-recovery
 When triggered:
 
 1. Confirm the current repository has `scripts/build_wiki_surgery.py`.
-2. Run or reference `python3 scripts/build_wiki_surgery.py`.
-3. Use surgery planning for `relation_weak_evidence`, `drift_risk`,
+2. Make the intent judgment before running surgery:
+   if `wiki/ops/wiki-medical-cases/` contains a current case file, use that
+   file as the authority and run
+   `python3 scripts/build_wiki_surgery.py --case-file <case-file>`.
+3. If the user asks for a surgery record for that case, run
+   `python3 scripts/build_wiki_surgery.py --case-file <case-file> --write-surgery-record --update-case-file`.
+   This writes a surgery evidence attachment and updates the same case file.
+4. If no case file exists, stop and route to `wiki-confirm` or
+   `scripts/build_wiki_medical_case.py`; do not silently fall back to raw
+   adjudication for normal surgery intent.
+5. Use surgery planning for `relation_weak_evidence`, `drift_risk`,
    `adr_risk`, `openspec_required`, taxonomy candidates, MOC projection
    changes, governance pages, and broad batch repair.
-4. If the user asks for a surgery record, run
-   `python3 scripts/build_wiki_surgery.py --write-surgery-record`.
-5. Explain the output as a plan-only surgery package, not surgery approval.
+6. Explain the output as a plan-only surgery package, not surgery approval.
+   Human review targets the case file's `Confirmed Decisions`; the surgery
+   record is only a fidelity/evidence attachment.
 
 Boundaries:
 

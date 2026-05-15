@@ -67,6 +67,7 @@ WIKI_SKILLS = {
     ),
     "wiki-confirm": (
         "scripts/build_wiki_review_decisions.py",
+        "scripts/build_wiki_medical_case.py",
         "accepted_candidates",
         "rejected_candidates",
         "deferred_items",
@@ -75,6 +76,7 @@ WIKI_SKILLS = {
         "openspec_required",
         "--write-decision-record",
         "default writes a complete confirmation record",
+        "wiki/ops/wiki-medical-cases",
         "stdout summary",
         "wiki/ops/wiki-review-decisions",
         "draft routing, not approval",
@@ -89,6 +91,10 @@ WIKI_SKILLS = {
     ),
     "wiki-surgery": (
         "scripts/build_wiki_surgery.py",
+        "wiki/ops/wiki-medical-cases",
+        "--case-file",
+        "--update-case-file",
+        "Confirmed Decisions",
         "--write-surgery-record",
         "plan-only",
         "relation_weak_evidence",
