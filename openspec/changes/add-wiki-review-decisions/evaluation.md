@@ -38,10 +38,39 @@
 - Before this change, no `.codex/skills/wiki-review-decisions/SKILL.md` exists.
 - Before this change, no `scripts/build_wiki_review_decisions.py` CLI exists.
 - Before this change, no repo-visible review-decision record writer exists.
+- RED command:
+  `python3 -m unittest tests/test_wiki_review_decisions_skill.py`
+- RED result: failed as expected because the repo-local skill file was absent:
+  `AssertionError: False is not true : wiki-review-decisions skill must exist`.
 
 ## GREEN Result
 
-- To be updated after tests and validation run.
+- Added `.codex/skills/wiki-review-decisions/SKILL.md` as a compact
+  English-first tool-wrapper module for confirming, triaging, or routing
+  `wiki-doctor` findings into review decisions.
+- The skill references `scripts/build_wiki_review_decisions.py` and
+  `python3 scripts/build_wiki_review_decisions.py`, while requiring
+  `--write-decision-record` for explicit decision-record writes under the
+  default `wiki/ops/wiki-review-decisions/` directory.
+- The skill preserves the required buckets:
+  `accepted_candidates`, `rejected_candidates`, `deferred_items`,
+  `treatment_candidates`, `surgery_candidates`, and `openspec_required`.
+- The skill states the proof boundary: outputs are draft review routing, not
+  approval, and draft review decisions are not human approval.
+- The skill preserves hard boundaries against OpenSpec lifecycle mutation,
+  task completion, queued work execution, frontmatter writes, taxonomy config
+  mutation, relation-field writes, and `wiki/moc` writes.
+- GREEN command:
+  `python3 -m unittest tests/test_wiki_review_decisions_skill.py`
+- GREEN result: passed, `Ran 1 test in 0.016s`, `OK`.
+- Script existence note: at this slice boundary,
+  `scripts/build_wiki_review_decisions.py` was still absent
+  (`test -e scripts/build_wiki_review_decisions.py; echo script:$?` returned
+  `script:1`); the skill intentionally references the separately owned code
+  worker output.
+- Behavior-asset check command:
+  `python3 scripts/check_behavior_assets.py`
+- Behavior-asset check result: exit code 0 with no output.
 
 ## Prior-Art / Common-Rule Dedupe
 
