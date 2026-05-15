@@ -49,6 +49,15 @@ strict_gate:
                 {
                     "detail_id": "detail-treatment",
                     "path": "wiki/ops/treatment.md",
+                    "candidate": {
+                        "suggested_frontmatter": {
+                            "layer": "ops",
+                            "domain": "wiki",
+                            "ops_area": "wiki-runtime",
+                            "canonical_object": "treatment",
+                            "artifact_type": "method",
+                        }
+                    },
                     "judgment": {"state": "likely", "reason": "bounded frontmatter candidate"},
                     "risk_flags": [],
                     "safe_to_apply_frontmatter": True,
@@ -99,6 +108,10 @@ strict_gate:
         self.assertEqual(package["accepted_candidates"][0]["path"], "wiki/ops/accepted.md")
         self.assertEqual(package["accepted_candidates"][0]["reason"], "strong evidence")
         self.assertEqual(package["treatment_candidates"][0]["detail_ref"], "detail-treatment")
+        self.assertEqual(
+            package["treatment_candidates"][0]["suggested_frontmatter"]["canonical_object"],
+            "treatment",
+        )
         self.assertEqual(package["surgery_candidates"][0]["detail_ref"], "detail-surgery")
         self.assertEqual(package["openspec_required"][0]["detail_ref"], "detail-openspec")
         self.assertEqual(

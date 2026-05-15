@@ -7,9 +7,11 @@ import unittest
 from pathlib import Path
 
 from scripts.extract_wiki_graph import parse_frontmatter
+from scripts.wiki_medical_case import build_medical_case_package, load_medical_case_file, write_medical_case_file
 from scripts.wiki_treatment import (
     apply_treatment_plan,
     build_treatment_plan,
+    build_treatment_plan_from_case,
     render_treatment_record_markdown,
     write_treatment_record,
 )
@@ -97,6 +99,50 @@ class WikiTreatmentTest(unittest.TestCase):
         self.assertEqual(plan["summary"]["treatment_item_count"], 1)
         self.assertEqual(plan["treatment_items"][0]["detail_ref"], "detail-unapproved")
         self.assertEqual(plan["treatment_items"][0]["approval"], "detail:detail-unapproved")
+
+    def test_builds_treatment_plan_from_case_confirmed_decisions(self) -> None:
+        case = {
+            "case_slug": "confirmed-case",
+            "confirmed_decisions": {
+                "treatment_candidates": [
+                    {
+                        "detail_ref": "detail-safe",
+                        "path": "wiki/ops/safe.md",
+                        "risk_flags": [],
+                        "suggested_frontmatter": {
+                            "layer": "ops",
+                            "domain": "wiki",
+                            "ops_area": "wiki-runtime",
+                            "canonical_object": "safe",
+                            "artifact_type": "method",
+                        },
+                    },
+                    {
+                        "detail_ref": "detail-missing-approval",
+                        "path": "wiki/ops/missing.md",
+                        "risk_flags": [],
+                        "suggested_frontmatter": {
+                            "layer": "ops",
+                            "domain": "wiki",
+                            "ops_area": "wiki-runtime",
+                            "canonical_object": "missing",
+                            "artifact_type": "method",
+                        },
+                    },
+                ]
+            },
+        }
+
+        plan = build_treatment_plan_from_case(case, approved_detail_refs={"detail-safe"})
+
+        self.assertEqual(plan["source_case_slug"], "confirmed-case")
+        self.assertEqual(plan["summary"]["source_detail_count"], 2)
+        self.assertEqual(plan["summary"]["treatment_item_count"], 1)
+        self.assertEqual(plan["treatment_items"][0]["detail_ref"], "detail-safe")
+        self.assertEqual(plan["treatment_items"][0]["approval"], "detail:detail-safe")
+        skipped = {item["detail_ref"]: item["reason"] for item in plan["skipped_items"]}
+        self.assertEqual(skipped["detail-missing-approval"], "missing explicit domain or detail approval")
+        self.assertIn("confirmed case decisions", " ".join(plan["proof_boundary_notes"]))
 
     def test_apply_treatment_plan_is_dry_run_by_default(self) -> None:
         page = self.tmpdir / "wiki" / "ops" / "safe.md"
@@ -251,6 +297,79 @@ This page documents wiki runtime behavior.
 
         self.assertIn("treatment_record_path", write_payload)
         self.assertTrue(Path(write_payload["treatment_record_path"]).exists())
+
+    def test_cli_can_apply_from_case_file_and_update_case_evidence(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        target = self.tmpdir / "wiki" / "ops" / "safe.md"
+        target.write_text("# Safe\n", encoding="utf-8")
+        case_package = build_medical_case_package(
+            {
+                "generated_at": "2026-05-15T01:02:03+00:00",
+                "summary": {},
+                "source_adjudication_summary": {},
+                "accepted_candidates": [],
+                "rejected_candidates": [],
+                "deferred_items": [],
+                "surgery_candidates": [],
+                "openspec_required": [],
+                "treatment_candidates": [
+                    {
+                        "detail_ref": "detail-safe",
+                        "path": "wiki/ops/safe.md",
+                        "risk_flags": [],
+                        "suggested_frontmatter": {
+                            "layer": "ops",
+                            "domain": "wiki",
+                            "ops_area": "wiki-runtime",
+                            "canonical_object": "safe",
+                            "artifact_type": "method",
+                        },
+                    }
+                ],
+            },
+            case_slug="confirmed-case",
+        )
+        case_path = write_medical_case_file(
+            case_package,
+            self.tmpdir,
+            output_dir=self.tmpdir / "cases",
+            timestamp="2026-05-15T01:02:03+00:00",
+        )
+        record_dir = self.tmpdir / "treatment-records"
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_treatment.py",
+                "--root",
+                str(self.tmpdir),
+                "--case-file",
+                str(case_path),
+                "--approved-detail",
+                "detail-safe",
+                "--apply",
+                "--write-treatment-record",
+                "--treatment-record-dir",
+                str(record_dir),
+                "--update-case-file",
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+        meta, _body = parse_frontmatter(target.read_text(encoding="utf-8"))
+        loaded_case = load_medical_case_file(case_path)
+
+        self.assertTrue(payload["applied"])
+        self.assertEqual(payload["result"]["summary"]["applied_count"], 1)
+        self.assertEqual(meta["canonical_object"], "safe")
+        self.assertEqual(loaded_case["treatment"]["status"], "applied")
+        self.assertIn(
+            payload["treatment_record_path"],
+            loaded_case["evidence_attachments"]["treatment"],
+        )
 
 
 if __name__ == "__main__":

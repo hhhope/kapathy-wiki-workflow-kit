@@ -348,6 +348,46 @@ target.entry_count: 0
 Interpretation: whole-wiki legacy blockers remain, but the generated case file
 has no target-level frontmatter blockers.
 
+### Treatment Intent Routing Repair
+
+RED command:
+
+```bash
+python3 -m unittest tests.test_wiki_review_decisions.WikiReviewDecisionsTest.test_classifies_review_details_into_required_buckets tests.test_wiki_treatment.WikiTreatmentTest.test_builds_treatment_plan_from_case_confirmed_decisions tests.test_wiki_treatment.WikiTreatmentTest.test_cli_can_apply_from_case_file_and_update_case_evidence tests.test_wiki_runtime_skills.WikiRuntimeSkillsTest.test_wiki_runtime_skill_sources_exist_with_plain_wiki_names
+```
+
+Initial result:
+
+```text
+KeyError: 'suggested_frontmatter'
+ImportError: cannot import name 'build_treatment_plan_from_case'
+AssertionError: 'wiki/ops/wiki-medical-cases' not found ... skill='wiki-treatment'
+```
+
+Interpretation: treatment still followed the old raw-adjudication path. The
+case file could not independently drive apply because confirmation records did
+not preserve `suggested_frontmatter`.
+
+GREEN result:
+
+```text
+Ran 4 tests
+OK
+```
+
+Repair:
+
+- `wiki-confirm` decision entries now preserve `suggested_frontmatter`.
+- `wiki-treatment` can build a plan from case `Confirmed Decisions`.
+- `scripts/build_wiki_treatment.py` supports `--case-file` and
+  `--update-case-file`.
+- `.codex/skills/wiki-treatment/SKILL.md` now requires case-file routing for
+  normal case treatment intent.
+
+Residual note: case files created before this repair lack treatment
+`suggested_frontmatter`. They should be regenerated through the repaired
+`wiki-confirm` path before treatment apply.
+
 ### OpenSpec
 
 Command:

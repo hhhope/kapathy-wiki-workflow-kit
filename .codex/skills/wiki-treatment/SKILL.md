@@ -17,13 +17,23 @@ wiki-doctor -> wiki-confirm -> wiki-treatment -> wiki-surgery -> wiki-recovery
 When triggered:
 
 1. Confirm the current repository has `scripts/build_wiki_treatment.py`.
-2. Run or reference `python3 scripts/build_wiki_treatment.py`.
+2. Make the intent judgment before running treatment:
+   if `wiki/ops/wiki-medical-cases/` contains a current case file, use that
+   file as the authority and run
+   `python3 scripts/build_wiki_treatment.py --case-file <case-file>`.
 3. Default to dry-run: treatment defaults to dry-run and must not write files
    unless `--apply` is present.
 4. Require explicit human approval through `--approved-domain` or
    `--approved-detail`.
-5. Treat `--write-treatment-record` as a reviewable treatment record under
+5. To actually apply the case-confirmed treatment candidates, keep
+   `--case-file <case-file>`, add `--apply`, and add either
+   `--approved-domain` or `--approved-detail`.
+6. When writing a treatment record for a case, also use `--update-case-file`
+   so the same case file records the treatment evidence attachment.
+7. Treat `--write-treatment-record` as a reviewable treatment record under
    `wiki/ops/wiki-treatment-runs/`, not as surgery approval.
+8. The human review surface is the case file's `Confirmed Decisions`; do not
+   rebuild treatment intent from raw adjudication for normal case treatment.
 
 Boundaries:
 

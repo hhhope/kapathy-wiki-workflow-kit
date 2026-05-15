@@ -15,6 +15,8 @@ from scripts.wiki_content_adjudication import build_adjudication_package
 from scripts.wiki_treatment import (
     apply_treatment_plan,
     build_treatment_plan,
+    load_case_and_build_treatment_plan,
+    update_case_file_with_treatment_result,
     write_treatment_record,
 )
 
@@ -22,6 +24,12 @@ from scripts.wiki_treatment import (
 def main() -> None:
     parser = argparse.ArgumentParser(description="Build or apply wiki treatment plan.")
     parser.add_argument("--root", default=ROOT)
+    parser.add_argument("--case-file", help="Canonical wiki medical case file to use as treatment input.")
+    parser.add_argument(
+        "--update-case-file",
+        action="store_true",
+        help="Write the generated treatment result back into --case-file.",
+    )
     parser.add_argument("--approved-domain", action="append", default=[])
     parser.add_argument("--approved-detail", action="append", default=[])
     parser.add_argument("--apply", action="store_true", help="Apply approved frontmatter treatment.")
@@ -37,14 +45,22 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    adjudication_package = build_adjudication_package(root)
-    plan = build_treatment_plan(
-        adjudication_package,
-        approved_domains=set(args.approved_domain),
-        approved_detail_refs=set(args.approved_detail),
-    )
+    if args.case_file:
+        plan = load_case_and_build_treatment_plan(
+            args.case_file,
+            approved_domains=set(args.approved_domain),
+            approved_detail_refs=set(args.approved_detail),
+        )
+    else:
+        adjudication_package = build_adjudication_package(root)
+        plan = build_treatment_plan(
+            adjudication_package,
+            approved_domains=set(args.approved_domain),
+            approved_detail_refs=set(args.approved_detail),
+        )
     result = apply_treatment_plan(root, plan, apply=args.apply)
     payload = {"applied": args.apply, "plan": plan, "result": result}
+    record_path = None
 
     if args.write_treatment_record:
         record_path = write_treatment_record(
@@ -55,9 +71,20 @@ def main() -> None:
         )
         payload["treatment_record_path"] = record_path.as_posix()
 
+    if args.update_case_file:
+        if not args.case_file:
+            parser.error("--update-case-file requires --case-file")
+        updated_path = update_case_file_with_treatment_result(
+            args.case_file,
+            plan,
+            result,
+            root,
+            treatment_record=record_path.as_posix() if record_path else None,
+        )
+        payload["updated_case_file"] = updated_path.as_posix()
+
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
     main()
-

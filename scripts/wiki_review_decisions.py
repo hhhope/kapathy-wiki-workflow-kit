@@ -85,6 +85,13 @@ def _decision_entry(detail: dict[str, Any]) -> dict[str, Any]:
     entry["risk_flags"] = _risk_flags(detail)
     if detail.get("rejected_candidates"):
         entry["rejected_candidates"] = detail["rejected_candidates"]
+    candidate = detail.get("candidate", {})
+    if isinstance(candidate, dict):
+        suggested = candidate.get("suggested_frontmatter", {})
+        if isinstance(suggested, dict) and suggested:
+            entry["suggested_frontmatter"] = {
+                str(key): value for key, value in suggested.items() if str(key).strip()
+            }
     return entry
 
 

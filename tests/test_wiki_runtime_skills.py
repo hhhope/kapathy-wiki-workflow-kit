@@ -83,6 +83,10 @@ WIKI_SKILLS = {
     ),
     "wiki-treatment": (
         "scripts/build_wiki_treatment.py",
+        "wiki/ops/wiki-medical-cases",
+        "--case-file",
+        "--update-case-file",
+        "Confirmed Decisions",
         "--approved-domain",
         "--approved-detail",
         "--apply",
