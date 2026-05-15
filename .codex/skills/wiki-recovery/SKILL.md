@@ -1,6 +1,6 @@
 ---
 name: wiki-recovery
-description: Use when checking or 复查 wiki state after treatment, surgery planning, or medical-loop repair work.
+description: Use only for explicit legacy/debug recovery evidence; ordinary wiki medical-loop recovery requests route through wiki-medical-agent.
 ---
 
 Use this skill for the recovery / 复查 stage of the LLM-WIKI medical loop.

@@ -1,6 +1,6 @@
 ---
 name: wiki-doctor
-description: Use when diagnosing wiki content enrichment judgments, review focus, taxonomy candidates, drift traces, or adjudication eval results.
+description: Use only for explicit legacy/debug doctor evidence; ordinary wiki medical-loop diagnosis requests route through wiki-medical-agent.
 ---
 
 Use the wiki doctor review-package surface for the report wiki repository.

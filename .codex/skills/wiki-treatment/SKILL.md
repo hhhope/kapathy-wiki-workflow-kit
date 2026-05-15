@@ -1,6 +1,6 @@
 ---
 name: wiki-treatment
-description: Use when applying or previewing explicitly approved low-risk wiki frontmatter treatment after diagnosis and confirmation.
+description: Use only for explicit legacy/debug treatment evidence; ordinary wiki medical-loop treatment requests route through wiki-medical-agent.
 ---
 
 Use this skill for the treatment / 治疗 stage of the LLM-WIKI medical loop.

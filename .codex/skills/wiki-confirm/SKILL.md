@@ -1,6 +1,6 @@
 ---
 name: wiki-confirm
-description: Use when confirming, triaging, routing, or 确诊 `wiki-doctor` findings before treatment or surgery.
+description: Use only for explicit legacy/debug confirm evidence; ordinary wiki medical-loop confirmation requests route through wiki-medical-agent.
 ---
 
 Use this skill for the confirm / 确诊 stage of the LLM-WIKI medical loop.

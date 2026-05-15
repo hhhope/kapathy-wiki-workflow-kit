@@ -1,6 +1,6 @@
 ---
 name: wiki-surgery
-description: Use when planning broad, structural, governance-sensitive, relation, MOC, ADR, taxonomy, or OpenSpec-sensitive wiki repair.
+description: Use only for explicit legacy/debug surgery evidence; ordinary wiki medical-loop surgery requests route through wiki-medical-agent.
 ---
 
 Use this skill for the surgery / 手术 stage of the LLM-WIKI medical loop.

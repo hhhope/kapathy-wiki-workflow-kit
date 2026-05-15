@@ -16,7 +16,7 @@ class WikiMedicalLoopSkillsTest(unittest.TestCase):
         required = {
             "wiki-confirm": [
                 "name: wiki-confirm",
-                "description: Use when",
+                "description: Use only",
                 "确诊",
                 "scripts/build_wiki_review_decisions.py",
                 "--write-decision-record",
@@ -31,7 +31,7 @@ class WikiMedicalLoopSkillsTest(unittest.TestCase):
             ],
             "wiki-treatment": [
                 "name: wiki-treatment",
-                "description: Use when",
+                "description: Use only",
                 "治疗",
                 "scripts/build_wiki_treatment.py",
                 "--approved-domain",
@@ -45,7 +45,7 @@ class WikiMedicalLoopSkillsTest(unittest.TestCase):
             ],
             "wiki-surgery": [
                 "name: wiki-surgery",
-                "description: Use when",
+                "description: Use only",
                 "手术",
                 "scripts/build_wiki_surgery.py",
                 "--write-surgery-record",
@@ -60,7 +60,7 @@ class WikiMedicalLoopSkillsTest(unittest.TestCase):
             ],
             "wiki-recovery": [
                 "name: wiki-recovery",
-                "description: Use when",
+                "description: Use only",
                 "复查",
                 "scripts/build_wiki_recovery.py",
                 "--write-recovery-record",
@@ -147,6 +147,10 @@ class WikiMedicalLoopSkillsTest(unittest.TestCase):
         ]:
             with self.subTest(skill=skill_name):
                 text = self.read_skill(skill_name)
+                self.assertIn(
+                    "description: Use only for explicit legacy/debug", text
+                )
+                self.assertIn("wiki-medical-agent", text)
                 self.assertIn("Ordinary use routes through `wiki-medical-agent`", text)
                 self.assertIn("legacy/debug evidence only", text)
 

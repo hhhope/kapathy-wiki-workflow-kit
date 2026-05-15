@@ -104,6 +104,9 @@ wording in `wiki-doctor`, `wiki-confirm`, `wiki-treatment`, `wiki-surgery`, and
 
 After this change, skill tests verify the new entry and redirect boundary.
 
+- `python3 -m unittest tests.test_wiki_medical_loop_skills -v` passed, 5 tests.
+- `python3 scripts/check_behavior_assets.py` passed.
+
 ## Residual Risks
 
 Local skill text cannot prove every future agent will comply. Runtime CLI
