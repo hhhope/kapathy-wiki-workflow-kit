@@ -117,6 +117,39 @@ class WikiMedicalLoopSkillsTest(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, text)
 
+    def test_wiki_medical_agent_is_normal_user_entry(self) -> None:
+        text = self.read_skill("wiki-medical-agent")
+
+        required_markers = [
+            "name: wiki-medical-agent",
+            "single normal user-facing entry point",
+            "Intent",
+            "Case",
+            "State",
+            "Allowed action",
+            "Next Action",
+            "scripts/build_wiki_medical_agent.py",
+            "Confirmed Decisions",
+            "Proposed Decisions",
+        ]
+
+        for marker in required_markers:
+            with self.subTest(marker=marker):
+                self.assertIn(marker, text)
+
+    def test_stage_skills_redirect_ordinary_use_to_medical_agent(self) -> None:
+        for skill_name in [
+            "wiki-doctor",
+            "wiki-confirm",
+            "wiki-treatment",
+            "wiki-surgery",
+            "wiki-recovery",
+        ]:
+            with self.subTest(skill=skill_name):
+                text = self.read_skill(skill_name)
+                self.assertIn("Ordinary use routes through `wiki-medical-agent`", text)
+                self.assertIn("legacy/debug evidence only", text)
+
 
 if __name__ == "__main__":
     unittest.main()

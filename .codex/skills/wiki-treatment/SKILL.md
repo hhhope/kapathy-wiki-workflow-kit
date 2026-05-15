@@ -7,6 +7,13 @@ Use this skill for the treatment / 治疗 stage of the LLM-WIKI medical loop.
 Treatment handles bounded low-risk frontmatter repair after explicit human
 approval.
 
+Ordinary use routes through `wiki-medical-agent`.
+
+Use this stage skill directly only for explicit legacy/debug evidence. Direct
+stage output is legacy/debug evidence only; it is not authoritative and does
+not update case state unless routed through the medical agent and written back
+to the active case file.
+
 Medical-loop sequence:
 
 ```text
