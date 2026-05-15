@@ -1,0 +1,227 @@
+import json
+import shutil
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+from scripts.wiki_review_decisions import (
+    build_review_decision_package,
+    render_review_decision_markdown,
+    write_review_decision_record,
+)
+
+
+class WikiReviewDecisionsTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmpdir = Path(tempfile.mkdtemp(prefix="wiki-review-decisions-test-"))
+        (self.tmpdir / "wiki" / "config").mkdir(parents=True)
+        (self.tmpdir / "wiki" / "config" / "frontmatter-taxonomy.yaml").write_text(
+            """version: 1
+fields:
+  domain:
+    known:
+      - wiki
+  ops_area:
+    allowed:
+      - wiki-runtime
+strict_gate:
+  enabled: true
+  rule_sets: {}
+""",
+            encoding="utf-8",
+        )
+
+    def tearDown(self) -> None:
+        shutil.rmtree(self.tmpdir)
+
+    def test_classifies_review_details_into_required_buckets(self) -> None:
+        adjudication_package = {
+            "summary": {"full_detail_count": 6},
+            "full_detail_set": [
+                {
+                    "detail_id": "detail-accepted",
+                    "path": "wiki/ops/accepted.md",
+                    "judgment": {"state": "accept", "reason": "strong evidence"},
+                    "risk_flags": [],
+                },
+                {
+                    "detail_id": "detail-treatment",
+                    "path": "wiki/ops/treatment.md",
+                    "judgment": {"state": "likely", "reason": "bounded frontmatter candidate"},
+                    "risk_flags": [],
+                    "safe_to_apply_frontmatter": True,
+                },
+                {
+                    "detail_id": "detail-surgery",
+                    "path": "wiki/ops/relation.md",
+                    "judgment": {"state": "needs_user_confirmation", "reason": "weak relation"},
+                    "risk_flags": ["relation_weak_evidence"],
+                },
+                {
+                    "detail_id": "detail-openspec",
+                    "path": "wiki/ops/taxonomy.md",
+                    "judgment": {"state": "needs_user_confirmation", "reason": "new taxonomy"},
+                    "risk_flags": ["taxonomy_candidate"],
+                },
+                {
+                    "detail_id": "detail-deferred",
+                    "path": "wiki/ops/uncertain.md",
+                    "judgment": {"state": "needs_user_confirmation", "reason": "agent uncertain"},
+                    "risk_flags": ["agent_uncertain"],
+                },
+                {
+                    "detail_id": "detail-rejected",
+                    "path": "wiki/ops/rejected.md",
+                    "judgment": {"state": "reject", "reason": "insufficient evidence"},
+                    "risk_flags": [],
+                    "rejected_candidates": [
+                        {"field": "domain", "value": "auto_accept_unclassified"}
+                    ],
+                },
+            ],
+        }
+
+        package = build_review_decision_package(
+            adjudication_package,
+            source_record="wiki/ops/wiki-doctor-runs/diagnosis.md",
+        )
+
+        self.assertEqual(package["source_record"], "wiki/ops/wiki-doctor-runs/diagnosis.md")
+        self.assertEqual(package["summary"]["accepted_candidates_count"], 1)
+        self.assertEqual(package["summary"]["treatment_candidates_count"], 1)
+        self.assertEqual(package["summary"]["surgery_candidates_count"], 1)
+        self.assertEqual(package["summary"]["openspec_required_count"], 1)
+        self.assertEqual(package["summary"]["deferred_items_count"], 3)
+        self.assertEqual(package["summary"]["rejected_candidates_count"], 1)
+        self.assertEqual(package["accepted_candidates"][0]["detail_ref"], "detail-accepted")
+        self.assertEqual(package["accepted_candidates"][0]["path"], "wiki/ops/accepted.md")
+        self.assertEqual(package["accepted_candidates"][0]["reason"], "strong evidence")
+        self.assertEqual(package["treatment_candidates"][0]["detail_ref"], "detail-treatment")
+        self.assertEqual(package["surgery_candidates"][0]["detail_ref"], "detail-surgery")
+        self.assertEqual(package["openspec_required"][0]["detail_ref"], "detail-openspec")
+        self.assertEqual(
+            {item["detail_ref"] for item in package["deferred_items"]},
+            {"detail-surgery", "detail-openspec", "detail-deferred"},
+        )
+        self.assertEqual(package["rejected_candidates"][0]["detail_ref"], "detail-rejected")
+        self.assertEqual(package["rejected_candidates"][0]["risk_flags"], [])
+
+    def test_renders_markdown_with_required_sections_and_proof_boundary(self) -> None:
+        package = build_review_decision_package(
+            {
+                "summary": {"full_detail_count": 1},
+                "full_detail_set": [
+                    {
+                        "detail_id": "detail-0001",
+                        "path": "wiki/ops/treatment.md",
+                        "judgment": {"state": "likely", "reason": "bounded frontmatter candidate"},
+                        "risk_flags": [],
+                        "safe_to_apply_frontmatter": True,
+                    }
+                ],
+            },
+            source_record="wiki/ops/wiki-doctor-runs/diagnosis.md",
+        )
+
+        markdown = render_review_decision_markdown(package, scan_root=self.tmpdir, limit=50)
+
+        for heading in [
+            "# wiki-review-decisions Draft Record",
+            "## Source",
+            "## Summary",
+            "## Accepted Candidates",
+            "## Treatment Candidates",
+            "## Surgery Candidates",
+            "## OpenSpec Required",
+            "## Deferred Items",
+            "## Rejected Candidates",
+            "## Proof Boundary",
+            "## Next Actions",
+        ]:
+            self.assertIn(heading, markdown)
+        self.assertIn("detail-0001 `wiki/ops/treatment.md`", markdown)
+        self.assertIn("draft review routing only", markdown)
+        self.assertIn("not human approval", markdown)
+        self.assertIn("does not write frontmatter, taxonomy, relations, MOC, or OpenSpec state", markdown)
+
+    def test_writes_decision_record_without_overwriting_existing_file(self) -> None:
+        package = build_review_decision_package({"full_detail_set": []})
+        output_dir = self.tmpdir / "records"
+
+        first = write_review_decision_record(
+            package,
+            self.tmpdir,
+            output_dir=output_dir,
+            timestamp="2026-05-14T01:02:03+00:00",
+        )
+        second = write_review_decision_record(
+            package,
+            self.tmpdir,
+            output_dir=output_dir,
+            timestamp="2026-05-14T01:02:03+00:00",
+        )
+
+        self.assertEqual(first.name, "2026-05-14-010203-review-decisions.md")
+        self.assertEqual(second.name, "2026-05-14-010203-review-decisions-2.md")
+        self.assertTrue(first.exists())
+        self.assertTrue(second.exists())
+        self.assertIn("# wiki-review-decisions Draft Record", first.read_text(encoding="utf-8"))
+
+    def test_cli_outputs_json_by_default_and_writes_only_when_requested(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        record_dir = self.tmpdir / "decision-records"
+
+        default_result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_review_decisions.py",
+                "--root",
+                str(self.tmpdir),
+                "--limit",
+                "0",
+                "--source-record",
+                "wiki/ops/wiki-doctor-runs/diagnosis.md",
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        default_payload = json.loads(default_result.stdout)
+
+        self.assertEqual(default_payload["source_record"], "wiki/ops/wiki-doctor-runs/diagnosis.md")
+        self.assertNotIn("decision_record_path", default_payload)
+        self.assertFalse(record_dir.exists())
+
+        write_result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_review_decisions.py",
+                "--root",
+                str(self.tmpdir),
+                "--limit",
+                "0",
+                "--source-record",
+                "wiki/ops/wiki-doctor-runs/diagnosis.md",
+                "--write-decision-record",
+                "--decision-record-dir",
+                str(record_dir),
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        write_payload = json.loads(write_result.stdout)
+
+        self.assertIn("decision_record_path", write_payload)
+        record_path = Path(write_payload["decision_record_path"])
+        self.assertEqual(record_path.parent, record_dir.resolve())
+        self.assertTrue(record_path.exists())
+        self.assertIn("draft review routing only", record_path.read_text(encoding="utf-8"))
+
+
+if __name__ == "__main__":
+    unittest.main()
