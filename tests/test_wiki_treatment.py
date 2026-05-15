@@ -274,6 +274,8 @@ This page documents wiki runtime behavior.
         default_payload = json.loads(default_result.stdout)
 
         self.assertFalse(default_payload["applied"])
+        self.assertTrue(default_payload["legacy_preview"])
+        self.assertEqual(default_payload["authority"], "legacy_debug_evidence_only")
         self.assertGreaterEqual(default_payload["plan"]["summary"]["treatment_item_count"], 1)
         self.assertFalse(record_dir.exists())
 
@@ -338,6 +340,32 @@ This page documents wiki runtime behavior.
 
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("--legacy-preview", result.stderr)
+
+    def test_cli_update_case_file_requires_case_file_before_writing_record(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        record_dir = self.tmpdir / "treatment-records"
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_treatment.py",
+                "--root",
+                str(self.tmpdir),
+                "--approved-domain",
+                "wiki",
+                "--legacy-preview",
+                "--write-treatment-record",
+                "--treatment-record-dir",
+                str(record_dir),
+                "--update-case-file",
+            ],
+            cwd=repo_root,
+            text=True,
+            capture_output=True,
+        )
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("--update-case-file requires --case-file", result.stderr)
+        self.assertFalse(record_dir.exists())
 
     def test_cli_can_apply_from_case_file_and_update_case_evidence(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]

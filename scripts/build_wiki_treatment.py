@@ -52,6 +52,8 @@ def main() -> None:
     root = Path(args.root).resolve()
     if args.apply and not args.case_file:
         parser.error("--apply requires --case-file")
+    if args.update_case_file and not args.case_file:
+        parser.error("--update-case-file requires --case-file")
     if not args.case_file and not args.legacy_preview:
         parser.error("raw treatment preview without --case-file requires --legacy-preview")
 
@@ -69,7 +71,10 @@ def main() -> None:
             approved_detail_refs=set(args.approved_detail),
         )
     result = apply_treatment_plan(root, plan, apply=args.apply)
-    payload = {"applied": args.apply, "plan": plan, "result": result}
+    legacy_preview = args.legacy_preview and not args.case_file
+    payload = {"applied": args.apply, "legacy_preview": legacy_preview, "plan": plan, "result": result}
+    if legacy_preview:
+        payload["authority"] = "legacy_debug_evidence_only"
     record_path = None
 
     if args.write_treatment_record:
@@ -82,8 +87,6 @@ def main() -> None:
         payload["treatment_record_path"] = record_path.as_posix()
 
     if args.update_case_file:
-        if not args.case_file:
-            parser.error("--update-case-file requires --case-file")
         updated_path = update_case_file_with_treatment_result(
             args.case_file,
             plan,
