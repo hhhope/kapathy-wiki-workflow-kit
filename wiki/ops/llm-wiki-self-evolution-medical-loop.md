@@ -1,15 +1,15 @@
 ---
-canonical_object: llm-wiki-self-evolution
-artifact_type: ops-model
 layer: ops
 domain: wiki
 ops_area: wiki-runtime
-title: LLM-WIKI 自进化医疗闭环
-status: draft
+canonical_object: llm-wiki-self-evolution
+artifact_type: ops-model
 created_at: 2026-05-14
 derived_from:
   - docs/superpowers/specs/2026-05-14-llm-wiki-self-evolution-design.md
   - openspec/changes/formalize-llm-wiki-medical-loop
+status: draft
+title: LLM-WIKI 自进化医疗闭环
 ---
 
 # LLM-WIKI 自进化医疗闭环

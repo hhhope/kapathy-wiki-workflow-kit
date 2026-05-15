@@ -1,16 +1,16 @@
 ---
-canonical_object: wiki-react-decision-trace
-artifact_type: method
 layer: ops
 domain: wiki
 ops_area: wiki-runtime
+canonical_object: wiki-react-decision-trace
+artifact_type: method
+derived_from:
+  - openspec/changes/introduce-wiki-react-decision-trace-eval/design.md
 related_objects:
   - wiki-runtime-skill-surface
   - wiki-frontmatter-taxonomy-gate
   - wiki-semantic-scoring
   - wiki-relation-analysis
-derived_from:
-  - openspec/changes/introduce-wiki-react-decision-trace-eval/design.md
 validated_by:
   - tests/test_wiki_decision_trace_eval.py
 ---

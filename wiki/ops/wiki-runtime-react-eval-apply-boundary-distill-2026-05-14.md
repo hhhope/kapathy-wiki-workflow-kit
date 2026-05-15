@@ -4,24 +4,24 @@ domain: wiki
 ops_area: wiki-runtime
 canonical_object: wiki-runtime-layer-boundary
 artifact_type: distill
-title: wiki-runtime-layer-boundary / distill
-type: distill
-language: zh-CN
-status: active
-created_at: 2026-05-14
-updated_at: 2026-05-14
 ai_generated: true
+created_at: 2026-05-14
 derived_from:
   - wiki/ops/wiki-runtime-layer-contract.md
   - wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md
   - openspec/changes/formalize-wiki-runtime-layer-boundary/design.md
+language: zh-CN
+notes_scope: distill wiki-react、eval、wiki-apply、repair routes、OpenSpec 的职责边界
 related_objects:
   - wiki-react-decision-trace
   - wiki-runtime-layer-contract
   - wiki-self-directed-execution
   - improve-wiki-routing-diagnostics
   - brainstorming-drift-wiki-trace
-notes_scope: distill wiki-react、eval、wiki-apply、repair routes、OpenSpec 的职责边界
+status: active
+title: wiki-runtime-layer-boundary / distill
+type: distill
+updated_at: 2026-05-14
 ---
 
 # wiki-runtime-layer-boundary / distill

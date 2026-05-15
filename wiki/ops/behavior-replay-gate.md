@@ -1,24 +1,24 @@
 ---
-canonical_object: behavior-replay-gate
-artifact_type: method
 layer: ops
 domain: none
 ops_area: agent-governance
-title: behavior-replay-gate / method
-type: method
-language: zh-CN
-status: accepted
+canonical_object: behavior-replay-gate
+artifact_type: method
 created_at: 2026-05-07
-updated_at: 2026-05-07
+derived_from:
+  - openspec/changes/archive/2026-05-07-generalize-behavior-replay-gate/design.md
+formalizes:
+  - openspec/specs/behavior-replay-gate/spec.md
+language: zh-CN
 related_objects:
   - learning-capture-routing
   - skill-evaluation-evidence
   - disagreement-management-method
   - live-conversation-reanchor-gate
-derived_from:
-  - openspec/changes/archive/2026-05-07-generalize-behavior-replay-gate/design.md
-formalizes:
-  - openspec/specs/behavior-replay-gate/spec.md
+status: accepted
+title: behavior-replay-gate / method
+type: method
+updated_at: 2026-05-07
 ---
 
 # behavior-replay-gate / method

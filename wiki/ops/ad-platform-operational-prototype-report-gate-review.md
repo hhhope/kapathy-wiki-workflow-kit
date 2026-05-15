@@ -4,10 +4,10 @@ domain: none
 ops_area: report-quality
 canonical_object: ad-platform-operational-prototype
 artifact_type: report-gate-review
-kind: report-gate-review
 created: 2026-05-13
-target: wiki/reports/ad-platform-operational-prototype.html
+kind: report-gate-review
 status: prototype-verified
+target: wiki/reports/ad-platform-operational-prototype.html
 ---
 
 # ad-platform-operational-prototype / report-gate-review

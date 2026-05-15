@@ -4,10 +4,10 @@ domain: none
 ops_area: report-quality
 canonical_object: ad-growth-cockpit-h5
 artifact_type: report-gate-review
-kind: report-gate-review
 created: 2026-05-13
-target: wiki/reports/ad-growth-cockpit-h5.html
+kind: report-gate-review
 status: prototype-verified
+target: wiki/reports/ad-growth-cockpit-h5.html
 ---
 
 # ad-growth-cockpit-h5 / report-gate-review

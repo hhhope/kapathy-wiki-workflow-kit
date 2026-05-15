@@ -1,30 +1,30 @@
 ---
-canonical_object: learning-capture-routing
-artifact_type: intake
 layer: ops
-title: learning-capture-routing / intake
-type: intake
-language: zh-CN
-source_path: chat://openspec-explore/learning-capture-routing/2026-05-06
-source_type: conversation
-audience: self
-knowledge_level: working
 domain: none
 ops_area: learning-capture
-period: active
-confidence: medium
-status: active
-updated_at: 2026-05-07
+canonical_object: learning-capture-routing
+artifact_type: intake
 ai_generated: true
-trace_mode: openspec-explore
-same_topic_rule: update-existing
+audience: self
+confidence: medium
+derived_from:
+  - https://github.com/larksuite/cli
+  - https://github.com/larksuite/cli/blob/main/skills/lark-base/SKILL.md
+knowledge_level: working
+language: zh-CN
+period: active
 related_objects:
   - example-driven-capture
   - article-learning-capture
   - readme-learning
-derived_from:
-  - https://github.com/larksuite/cli
-  - https://github.com/larksuite/cli/blob/main/skills/lark-base/SKILL.md
+same_topic_rule: update-existing
+source_path: "chat://openspec-explore/learning-capture-routing/2026-05-06"
+source_type: conversation
+status: active
+title: learning-capture-routing / intake
+trace_mode: openspec-explore
+type: intake
+updated_at: 2026-05-07
 ---
 
 # learning-capture-routing / intake

@@ -4,16 +4,16 @@ domain: wiki
 ops_area: wiki-runtime
 canonical_object: wiki-runtime-layer-contract
 artifact_type: method
-title: wiki-runtime-layer-contract / method
-type: method
-language: en
-status: accepted
 created_at: 2026-05-14
-updated_at: 2026-05-14
 derived_from:
   - openspec/changes/stabilize-wiki-runtime-layer-contract/design.md
 formalizes:
   - wiki-runtime-layer-contract
+language: en
+status: accepted
+title: wiki-runtime-layer-contract / method
+type: method
+updated_at: 2026-05-14
 ---
 
 # wiki-runtime-layer-contract / method

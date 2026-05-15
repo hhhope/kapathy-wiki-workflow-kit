@@ -1,11 +1,11 @@
 ---
-canonical_object: wiki-semantic-scoring
-artifact_type: method
 layer: ops
 domain: none
 ops_area: wiki-runtime
+canonical_object: wiki-semantic-scoring
+artifact_type: method
 formalizes:
-- wiki-semantic-scoring
+  - wiki-semantic-scoring
 ---
 
 # wiki-semantic-scoring / method
