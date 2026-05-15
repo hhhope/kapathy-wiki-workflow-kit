@@ -270,6 +270,22 @@ strict_gate:
         self.assertEqual(updated["status"], "blocked")
         self.assertEqual(updated["archive_next_action"]["next_action"], "blocked")
 
+    def test_unknown_recovery_route_with_passed_true_blocks_case(self) -> None:
+        from scripts.wiki_medical_case import attach_recovery_result_to_case
+
+        package = build_medical_case_package(self._decision_package())
+        updated = attach_recovery_result_to_case(
+            package,
+            {
+                "passed": True,
+                "next_route": "unexpected-route",
+                "summary": {},
+            },
+        )
+
+        self.assertEqual(updated["status"], "blocked")
+        self.assertEqual(updated["archive_next_action"]["next_action"], "blocked")
+
     def test_recovery_candidates_become_proposed_decisions_requiring_confirmation(self) -> None:
         from scripts.wiki_medical_case import attach_recovery_result_to_case
 
