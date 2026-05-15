@@ -6,4 +6,4 @@
 - [x] 4. Update confirm CLI default behavior, stdout summary, `--stdout-json-only`, and confirmation record Markdown.
 - [x] 5. Update `wiki-doctor`, `wiki-confirm`, and legacy `wiki-review-decisions` skill contracts with default record behavior.
 - [x] 6. Run focused tests, behavior asset checks, OpenSpec validation, and record evidence.
-- [ ] 7. Commit verified implementation and stop at the OpenSpec hard stop.
+- [x] 7. Commit verified implementation and stop at the OpenSpec hard stop.
