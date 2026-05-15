@@ -6,6 +6,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from scripts.wiki_review_decisions import write_review_decision_record
 from scripts.wiki_medical_case import (
     build_medical_case_package,
     load_medical_case_file,
@@ -180,6 +181,51 @@ strict_gate:
         self.assertTrue(case_path.exists())
         self.assertEqual(case_path.parent, record_dir.resolve())
         self.assertIn("## Confirmed Decisions", case_path.read_text(encoding="utf-8"))
+
+    def test_cli_builds_case_from_confirm_record_without_rescanning_existing_case_files(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        decision_package = self._decision_package()
+        confirm_path = write_review_decision_record(
+            decision_package,
+            self.tmpdir,
+            output_dir=self.tmpdir / "wiki" / "ops" / "wiki-review-decisions",
+            timestamp="2026-05-15T01:02:03+00:00",
+        )
+        existing_case_dir = self.tmpdir / "wiki" / "ops" / "wiki-medical-cases"
+        existing_case_dir.mkdir(parents=True)
+        (existing_case_dir / "2026-05-15-010000-old-case.md").write_text(
+            "# old case\n\nThis old case must not be scanned into the new case decisions.\n",
+            encoding="utf-8",
+        )
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_medical_case.py",
+                "--root",
+                str(self.tmpdir),
+                "--confirm-record",
+                str(confirm_path),
+                "--case-record-dir",
+                str(existing_case_dir),
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+        loaded = load_medical_case_file(payload["medical_case_path"])
+
+        self.assertEqual(loaded["case_source"]["source_decision_summary"]["source_detail_count"], 3)
+        self.assertEqual(
+            [item["detail_ref"] for item in loaded["confirmed_decisions"]["accepted_candidates"]],
+            [],
+        )
+        self.assertNotIn(
+            "old-case",
+            json.dumps(loaded["confirmed_decisions"], ensure_ascii=False),
+        )
 
 
 if __name__ == "__main__":

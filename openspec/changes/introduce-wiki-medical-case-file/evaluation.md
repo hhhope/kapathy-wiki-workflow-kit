@@ -289,6 +289,65 @@ blocking_count: 0
 target.entry_count: 0
 ```
 
+### Confirm-To-Case Self-Contamination Repair
+
+RED command:
+
+```bash
+python3 -m unittest tests.test_wiki_medical_case.WikiMedicalCaseTest.test_cli_builds_case_from_confirm_record_without_rescanning_existing_case_files
+```
+
+Initial result:
+
+```text
+AssertionError: 0 != 3
+```
+
+Interpretation: `build_wiki_medical_case.py` ignored the confirmation record
+content and rescanned the current wiki, so generated case files could become
+new candidates.
+
+GREEN result after adding machine decision data to confirmation records and
+loading it from `--confirm-record`:
+
+```text
+Ran 1 test
+OK
+```
+
+Additional RED/GREEN:
+
+```bash
+python3 -m unittest tests.test_wiki_content_adjudication.WikiContentAdjudicationTest.test_excludes_generated_medical_loop_artifacts_from_candidates
+```
+
+The RED phase showed `wiki/ops/wiki-medical-cases/` was not excluded from
+adjudication candidates. GREEN excludes generated case files along with doctor,
+confirm, treatment, surgery, and recovery run records.
+
+Live wiki-confirm run after the repair:
+
+- Confirmation record:
+  `wiki/ops/wiki-review-decisions/2026-05-15-062939-review-decisions.md`
+- Canonical case file:
+  `wiki/ops/wiki-medical-cases/2026-05-15-062944-wiki-medical-case.md`
+- Source doctor record:
+  `wiki/ops/wiki-doctor-runs/2026-05-15-043329-review.md`
+- Summary:
+  `source_detail_count=155`, `treatment_candidates_count=10`,
+  `surgery_candidates_count=131`, `openspec_required_count=51`.
+
+Target frontmatter precheck for the case file:
+
+```text
+passed: false
+blocking_count: 852
+target.entry_count: 0
+```
+
+Interpretation: whole-wiki legacy blockers remain, but the generated case file
+has no target-level frontmatter blockers.
+
 ### OpenSpec
 
 Command:

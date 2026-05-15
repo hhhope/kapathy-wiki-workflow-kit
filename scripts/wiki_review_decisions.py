@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 
 DEFAULT_DECISION_RECORD_DIR = Path("wiki/ops/wiki-review-decisions")
+DECISION_DATA_START = "<!-- wiki-review-decision-data:start -->"
+DECISION_DATA_END = "<!-- wiki-review-decision-data:end -->"
 
 SURGERY_RISK_FLAGS = {
     "openspec_required",
@@ -248,7 +251,36 @@ def render_review_decision_markdown(package: dict[str, Any], scan_root: Path | s
             "- Surgery or OpenSpec: plan structural, taxonomy, relation, MOC, governance, or lifecycle changes separately.",
         ]
     )
+    machine_json = json.dumps(package, ensure_ascii=False, indent=2, sort_keys=True)
+    lines.extend(
+        [
+            "",
+            "## Machine Decision Data",
+            DECISION_DATA_START,
+            "```json",
+            machine_json,
+            "```",
+            DECISION_DATA_END,
+        ]
+    )
     return "\n".join(lines) + "\n"
+
+
+def load_review_decision_record(path: Path | str) -> dict[str, Any]:
+    text = Path(path).read_text(encoding="utf-8")
+    start = text.find(DECISION_DATA_START)
+    end = text.find(DECISION_DATA_END)
+    if start < 0 or end < 0 or end <= start:
+        raise ValueError(f"review decision data block not found: {path}")
+    data = text[start + len(DECISION_DATA_START) : end].strip()
+    if data.startswith("```json"):
+        data = data[len("```json") :].strip()
+    if data.endswith("```"):
+        data = data[:-3].strip()
+    payload = json.loads(data)
+    if not isinstance(payload, dict):
+        raise ValueError(f"review decision data is not an object: {path}")
+    return payload
 
 
 def next_review_decision_record_path(output_dir: Path, timestamp: datetime | str | None = None) -> Path:

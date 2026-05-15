@@ -13,7 +13,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.wiki_content_adjudication import build_adjudication_package
 from scripts.wiki_medical_case import build_medical_case_package, write_medical_case_file
-from scripts.wiki_review_decisions import build_review_decision_package
+from scripts.wiki_review_decisions import build_review_decision_package, load_review_decision_record
 
 
 def main() -> None:
@@ -34,7 +34,10 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    decision_package = build_review_decision_package(build_adjudication_package(root))
+    if args.confirm_record:
+        decision_package = load_review_decision_record(args.confirm_record)
+    else:
+        decision_package = build_review_decision_package(build_adjudication_package(root))
     if args.source_record:
         decision_package["source_record"] = args.source_record
     package = build_medical_case_package(

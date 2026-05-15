@@ -10,3 +10,4 @@
 - [x] 8. Run focused tests, frontmatter precheck for new case pages, OpenSpec validation, and behavior-asset checks if skills change.
 - [x] 9. Commit verified implementation and stop at the OpenSpec hard stop.
 - [x] 10. Repair missed intent judgment in `.codex/skills/wiki-confirm/SKILL.md` and `.codex/skills/wiki-surgery/SKILL.md`: confirm now creates a case file, and surgery now routes through an existing case file before raw adjudication.
+- [x] 11. Repair confirm-to-case self-contamination: confirmation records now carry machine decision data, case generation loads that data instead of rescanning, and adjudication excludes generated medical case files.
