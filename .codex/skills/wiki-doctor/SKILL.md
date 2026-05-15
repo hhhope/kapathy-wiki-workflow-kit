@@ -6,6 +6,13 @@ description: Use when diagnosing wiki content enrichment judgments, review focus
 Use the wiki doctor review-package surface for the report wiki repository.
 This is a review-only diagnostic entry.
 
+Medical-loop sequence:
+
+```text
+wiki-doctor -> wiki-confirm -> wiki-treatment -> wiki-surgery -> wiki-recovery
+诊断 -> 确诊 -> 治疗 -> 手术 -> 复查
+```
+
 When triggered:
 
 1. Confirm the current repository has
@@ -28,6 +35,11 @@ When triggered:
    other than the default `wiki/ops/wiki-doctor-runs/` directory.
 9. Treat generated files under `wiki/ops/wiki-doctor-runs/` as diagnosis
    records only. They are review evidence, not approval to apply repairs.
+10. When the user asks what to do next, answer in medical-loop terms:
+    Use `wiki-confirm` to 确诊 doctor findings; Use `wiki-treatment` for
+    explicitly approved low-risk 治疗; Use `wiki-surgery` for broad structural
+    or governance-sensitive 手术 planning; Use `wiki-recovery` to 复查 after
+    treatment or surgery planning.
 
 Boundaries:
 

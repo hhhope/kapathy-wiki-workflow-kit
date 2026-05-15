@@ -4,7 +4,16 @@ description: Use when confirming, triaging, or routing `wiki-doctor` findings in
 ---
 
 Use the wiki review-decision surface for the report wiki repository.
-This is a review-only routing entry for `wiki-doctor` diagnosis output.
+This is a legacy compatibility alias for `wiki-confirm`.
+Prefer `wiki-confirm` for new user-facing prompts. This skill remains a
+review-only routing entry for `wiki-doctor` diagnosis output.
+
+Medical-loop sequence:
+
+```text
+wiki-doctor -> wiki-confirm -> wiki-treatment -> wiki-surgery -> wiki-recovery
+诊断 -> 确诊 -> 治疗 -> 手术 -> 复查
+```
 
 When triggered:
 
