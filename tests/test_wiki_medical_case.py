@@ -227,6 +227,33 @@ strict_gate:
             json.dumps(loaded["confirmed_decisions"], ensure_ascii=False),
         )
 
+    def test_case_package_has_state_active_and_proposed_decisions(self) -> None:
+        package = build_medical_case_package(self._decision_package())
+
+        self.assertEqual(package["status"], "awaiting_confirmation")
+        self.assertTrue(package["active"])
+        self.assertIn("proposed_decisions", package)
+        self.assertEqual(package["archive_next_action"]["next_action"], "awaiting_confirmation")
+
+    def test_updates_case_with_recovery_result_and_next_action(self) -> None:
+        from scripts.wiki_medical_case import attach_recovery_result_to_case
+
+        package = build_medical_case_package(self._decision_package())
+        updated = attach_recovery_result_to_case(
+            package,
+            {
+                "passed": True,
+                "next_route": "archive-ready",
+                "summary": {"check_count": 2, "failed_count": 0},
+            },
+            recovery_record="wiki/ops/wiki-recovery-runs/recovery.md",
+        )
+
+        self.assertEqual(updated["recovery"]["status"], "completed")
+        self.assertEqual(updated["status"], "archive_ready")
+        self.assertEqual(updated["archive_next_action"]["next_action"], "archive_ready")
+        self.assertIn("wiki/ops/wiki-recovery-runs/recovery.md", updated["evidence_attachments"]["recovery"])
+
 
 if __name__ == "__main__":
     unittest.main()

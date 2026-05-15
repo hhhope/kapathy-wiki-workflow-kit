@@ -21,6 +21,20 @@ DECISION_BUCKETS = (
     "openspec_required",
 )
 
+CASE_STATUSES = {
+    "diagnosis_ready",
+    "awaiting_confirmation",
+    "ready_for_treatment",
+    "treatment_previewed",
+    "treatment_applied",
+    "recovery_required",
+    "surgery_required",
+    "surgery_planned",
+    "blocked",
+    "archive_ready",
+    "followup_required",
+}
+
 
 def _iso_timestamp(timestamp: datetime | str | None = None) -> str:
     if timestamp is None:
@@ -87,7 +101,9 @@ def build_medical_case_package(
         "generated_at": generated_at,
         "mode": "wiki_medical_case",
         "case_slug": normalized_slug,
-        "status": "active",
+        "status": "awaiting_confirmation",
+        "active": True,
+        "current_intent": {},
         "case_source": {
             "source_record": str(source_record) if source_record else "",
             "confirm_record": str(confirm_record) if confirm_record else "",
@@ -97,6 +113,12 @@ def build_medical_case_package(
             "source_adjudication_summary": copy.deepcopy(
                 decision_package.get("source_adjudication_summary", {})
             ),
+        },
+        "proposed_decisions": {
+            "treatment_candidates": [],
+            "surgery_candidates": [],
+            "openspec_required": [],
+            "blockers": [],
         },
         "confirmed_decisions": confirmed_decisions,
         "treatment": {
@@ -115,8 +137,9 @@ def build_medical_case_package(
             "records": [str(path) for path in (recovery_records or [])],
         },
         "archive_next_action": {
-            "status": "pending",
-            "next_action": "Use this case file as the source for treatment, surgery, recovery, and archive review.",
+            "status": "awaiting_confirmation",
+            "next_action": "awaiting_confirmation",
+            "reason": "Confirmed Decisions require human review before treatment or surgery.",
         },
         "evidence_attachments": {
             "doctor": _attachment_list(source_record),
@@ -131,6 +154,57 @@ def build_medical_case_package(
             "Stage records are evidence attachments, not competing sources of truth.",
         ],
     }
+
+
+def _normalize_next_action(next_route: str | None, passed: bool | None = None) -> str:
+    route = str(next_route or "").strip().replace("-", "_")
+    if route in {
+        "archive_ready",
+        "awaiting_confirmation",
+        "surgery_required",
+        "blocked",
+        "followup_required",
+    }:
+        return route
+    if route == "archive_ready":
+        return "archive_ready"
+    if route == "blocked_by_recovery_findings":
+        return "blocked"
+    if passed is True:
+        return "archive_ready"
+    return "blocked"
+
+
+def attach_recovery_result_to_case(
+    case_package: dict[str, Any],
+    recovery_package: dict[str, Any],
+    recovery_record: str | Path | None = None,
+) -> dict[str, Any]:
+    updated = copy.deepcopy(case_package)
+    record_text = str(recovery_record) if recovery_record else ""
+    records = list(_as_list(updated.get("recovery", {}).get("records")))
+    attachments = updated.setdefault("evidence_attachments", {}).setdefault("recovery", [])
+    if record_text and record_text not in records:
+        records.append(record_text)
+    if record_text and record_text not in attachments:
+        attachments.append(record_text)
+    next_action = _normalize_next_action(
+        str(recovery_package.get("next_route", "")),
+        recovery_package.get("passed") is True,
+    )
+    updated["recovery"] = {
+        "status": "completed",
+        "records": records,
+        "summary": copy.deepcopy(recovery_package.get("summary", {})),
+        "result": copy.deepcopy(recovery_package),
+    }
+    updated["status"] = next_action
+    updated["archive_next_action"] = {
+        "status": next_action,
+        "next_action": next_action,
+        "reason": "Recovery result set the next medical-loop action.",
+    }
+    return updated
 
 
 def attach_surgery_plan_to_case(
@@ -216,6 +290,14 @@ def render_medical_case_markdown(package: dict[str, Any], scan_root: Path | str)
     if isinstance(summary, dict) and summary:
         for key, value in sorted(summary.items()):
             lines.append(f"- {key}: {value}")
+    else:
+        lines.append("- None")
+
+    proposed = package.get("proposed_decisions", {})
+    lines.extend(["", "## Proposed Decisions"])
+    if isinstance(proposed, dict):
+        for key in ("treatment_candidates", "surgery_candidates", "openspec_required", "blockers"):
+            lines.extend(_bucket_lines(key.replace("_", " ").title(), _copy_bucket(proposed, key)))
     else:
         lines.append("- None")
 

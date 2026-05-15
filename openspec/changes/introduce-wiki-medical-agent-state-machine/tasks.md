@@ -2,7 +2,7 @@
 
 - [x] 1. Create OpenSpec proposal, design, tasks, and spec delta.
 - [x] 2. Add RED tests for medical-agent intent diagnosis and active-case resolution.
-- [ ] 3. Add case state helpers to `scripts/wiki_medical_case.py`.
+- [x] 3. Add case state helpers to `scripts/wiki_medical_case.py`.
 - [ ] 4. Implement `scripts/wiki_medical_agent.py` intent and state validation.
 - [ ] 5. Add `scripts/build_wiki_medical_agent.py` CLI.
 - [ ] 6. Make treatment apply require case-file authority and explicit legacy preview for raw scans.
