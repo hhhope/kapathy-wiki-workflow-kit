@@ -147,10 +147,13 @@ class WikiMedicalLoopSkillsTest(unittest.TestCase):
         ]:
             with self.subTest(skill=skill_name):
                 text = self.read_skill(skill_name)
-                self.assertIn(
-                    "description: Use only for explicit legacy/debug", text
+                description_line = next(
+                    line for line in text.splitlines() if line.startswith("description:")
                 )
-                self.assertIn("wiki-medical-agent", text)
+                self.assertIn(
+                    "Use only for explicit legacy/debug", description_line
+                )
+                self.assertIn("wiki-medical-agent", description_line)
                 self.assertIn("Ordinary use routes through `wiki-medical-agent`", text)
                 self.assertIn("legacy/debug evidence only", text)
 
