@@ -493,7 +493,7 @@ created_at: 2026-05-15
 - detail-0155 `wiki/adr/0034-readme-capability-map-is-project-description.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
 
 ## Treatment
-- Status: pending
+- Status: dry_run
 - Candidate count: 10
 
 ## Surgery Plan
@@ -513,7 +513,7 @@ created_at: 2026-05-15
 ### Confirm
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-review-decisions/2026-05-15-064420-review-decisions.md`
 ### Treatment
-- None
+- `wiki/ops/wiki-treatment-runs/2026-05-15-065102-treatment.md`
 ### Surgery
 - None
 ### Recovery
@@ -7708,7 +7708,9 @@ created_at: 2026-05-15
     ],
     "recovery": [],
     "surgery": [],
-    "treatment": []
+    "treatment": [
+      "wiki/ops/wiki-treatment-runs/2026-05-15-065102-treatment.md"
+    ]
   },
   "generated_at": "2026-05-15T06:44:20.893714+00:00",
   "mode": "wiki_medical_case",
@@ -7729,8 +7731,17 @@ created_at: 2026-05-15
   },
   "treatment": {
     "candidate_count": 10,
-    "records": [],
-    "status": "pending"
+    "records": [
+      "wiki/ops/wiki-treatment-runs/2026-05-15-065102-treatment.md"
+    ],
+    "status": "dry_run",
+    "summary": {
+      "applied_count": 0,
+      "blocked_count": 0,
+      "dry_run_count": 10,
+      "skipped_item_count": 145,
+      "treatment_item_count": 10
+    }
   }
 }
 ```
