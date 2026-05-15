@@ -34,6 +34,11 @@ def main() -> None:
     parser.add_argument("--approved-detail", action="append", default=[])
     parser.add_argument("--apply", action="store_true", help="Apply approved frontmatter treatment.")
     parser.add_argument(
+        "--legacy-preview",
+        action="store_true",
+        help="Allow raw adjudication treatment preview without --case-file. Evidence only; not authoritative.",
+    )
+    parser.add_argument(
         "--write-treatment-record",
         action="store_true",
         help="Write Markdown treatment record. Default behavior is stdout JSON only.",
@@ -45,6 +50,11 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
+    if args.apply and not args.case_file:
+        parser.error("--apply requires --case-file")
+    if not args.case_file and not args.legacy_preview:
+        parser.error("raw treatment preview without --case-file requires --legacy-preview")
+
     if args.case_file:
         plan = load_case_and_build_treatment_plan(
             args.case_file,

@@ -5,7 +5,7 @@
 - [x] 3. Add case state helpers to `scripts/wiki_medical_case.py`.
 - [x] 4. Implement `scripts/wiki_medical_agent.py` intent and state validation.
 - [x] 5. Add `scripts/build_wiki_medical_agent.py` CLI.
-- [ ] 6. Make treatment apply require case-file authority and explicit legacy preview for raw scans.
+- [x] 6. Make treatment apply require case-file authority and explicit legacy preview for raw scans.
 - [ ] 7. Make recovery case-file-aware and able to update the same case file.
 - [ ] 8. Implement treatment apply orchestration: apply, attach treatment record, run recovery, update next action.
 - [ ] 9. Add `.codex/skills/wiki-medical-agent/SKILL.md` and downgrade old stage skills to redirect ordinary usage.

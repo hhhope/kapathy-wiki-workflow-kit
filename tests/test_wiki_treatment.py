@@ -264,6 +264,7 @@ This page documents wiki runtime behavior.
                 str(self.tmpdir),
                 "--approved-domain",
                 "wiki",
+                "--legacy-preview",
             ],
             cwd=repo_root,
             check=True,
@@ -284,6 +285,7 @@ This page documents wiki runtime behavior.
                 str(self.tmpdir),
                 "--approved-domain",
                 "wiki",
+                "--legacy-preview",
                 "--write-treatment-record",
                 "--treatment-record-dir",
                 str(record_dir),
@@ -297,6 +299,45 @@ This page documents wiki runtime behavior.
 
         self.assertIn("treatment_record_path", write_payload)
         self.assertTrue(Path(write_payload["treatment_record_path"]).exists())
+
+    def test_cli_apply_requires_case_file(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_treatment.py",
+                "--root",
+                str(self.tmpdir),
+                "--approved-domain",
+                "wiki",
+                "--apply",
+            ],
+            cwd=repo_root,
+            text=True,
+            capture_output=True,
+        )
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("--apply requires --case-file", result.stderr)
+
+    def test_cli_raw_scan_requires_legacy_preview_without_case_file(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_treatment.py",
+                "--root",
+                str(self.tmpdir),
+                "--approved-domain",
+                "wiki",
+            ],
+            cwd=repo_root,
+            text=True,
+            capture_output=True,
+        )
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("--legacy-preview", result.stderr)
 
     def test_cli_can_apply_from_case_file_and_update_case_evidence(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
