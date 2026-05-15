@@ -109,10 +109,12 @@ This ordinary wiki runtime note remains reviewable.
         decision_dir = self.tmpdir / "wiki" / "ops" / "wiki-review-decisions"
         treatment_dir = self.tmpdir / "wiki" / "ops" / "wiki-treatment-runs"
         surgery_dir = self.tmpdir / "wiki" / "ops" / "wiki-surgery-runs"
+        recovery_dir = self.tmpdir / "wiki" / "ops" / "wiki-recovery-runs"
         doctor_dir.mkdir(parents=True)
         decision_dir.mkdir(parents=True)
         treatment_dir.mkdir(parents=True)
         surgery_dir.mkdir(parents=True)
+        recovery_dir.mkdir(parents=True)
         (doctor_dir / "2026-05-14-010203-review.md").write_text(
             """# wiki-doctor Review Record
 
@@ -138,6 +140,13 @@ This generated treatment record mentions applied frontmatter.
             """# wiki-surgery Plan Record
 
 This generated surgery plan mentions MOC projection and governance.
+""",
+            encoding="utf-8",
+        )
+        (recovery_dir / "2026-05-15-010203-recovery.md").write_text(
+            """# wiki-recovery Record
+
+This generated recovery record mentions checkers and doctor reruns.
 """,
             encoding="utf-8",
         )

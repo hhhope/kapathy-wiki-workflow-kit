@@ -23,6 +23,7 @@ GENERATED_REVIEW_ARTIFACT_PREFIXES = (
     "wiki/ops/wiki-review-decisions/",
     "wiki/ops/wiki-treatment-runs/",
     "wiki/ops/wiki-surgery-runs/",
+    "wiki/ops/wiki-recovery-runs/",
 )
 
 
