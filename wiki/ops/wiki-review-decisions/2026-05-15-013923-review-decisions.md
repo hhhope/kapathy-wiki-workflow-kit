@@ -1,0 +1,261 @@
+# wiki-review-decisions Draft Record
+
+## Source
+
+- Generated at: 2026-05-15T01:39:23.679418+00:00
+- Scan root: `/mnt/d/cloud/account-meeting-lore`
+- Detail limit: 50
+- Source record: wiki/ops/wiki-doctor-runs/2026-05-14-132156-detailed-review-zh.md
+- Source package: scripts/build_wiki_content_adjudication.py
+
+## Summary
+- accepted_candidates_count: 11
+- deferred_items_count: 146
+- openspec_required_count: 51
+- rejected_candidates_count: 115
+- source_detail_count: 157
+- surgery_candidates_count: 132
+- treatment_candidates_count: 11
+
+## Accepted Candidates
+- detail-0005 `wiki/ops/ad-growth-cockpit-h5-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0006 `wiki/ops/ad-platform-operational-prototype-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0023 `wiki/ops/agent-readable-wiki-semantic-scoring.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0050 `wiki/ops/behavior-replay-gate.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0070 `wiki/ops/karpathy-llm-wiki-reading-notes.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0072 `wiki/ops/learning-capture-routing.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0077 `wiki/ops/llm-wiki-self-evolution-medical-loop.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0114 `wiki/ops/wiki-doctor-runs/2026-05-14-132156-detailed-review-zh.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0115 `wiki/ops/wiki-react-decision-trace-runtime.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0118 `wiki/ops/wiki-runtime-layer-contract.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0119 `wiki/ops/wiki-runtime-react-eval-apply-boundary-distill-2026-05-14.md`: existing or strongly evidenced candidate without unresolved review risks
+
+## Treatment Candidates
+- detail-0005 `wiki/ops/ad-growth-cockpit-h5-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0006 `wiki/ops/ad-platform-operational-prototype-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0023 `wiki/ops/agent-readable-wiki-semantic-scoring.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0050 `wiki/ops/behavior-replay-gate.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0070 `wiki/ops/karpathy-llm-wiki-reading-notes.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0072 `wiki/ops/learning-capture-routing.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0077 `wiki/ops/llm-wiki-self-evolution-medical-loop.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0114 `wiki/ops/wiki-doctor-runs/2026-05-14-132156-detailed-review-zh.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0115 `wiki/ops/wiki-react-decision-trace-runtime.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0118 `wiki/ops/wiki-runtime-layer-contract.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0119 `wiki/ops/wiki-runtime-react-eval-apply-boundary-distill-2026-05-14.md`: existing or strongly evidenced candidate without unresolved review risks
+
+## Surgery Candidates
+- detail-0001 `wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0002 `wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0003 `wiki/ops/account-knowledge-base-structure-explore.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0004 `wiki/ops/account-knowledge-base-workbench.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0007 `wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0008 `wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0009 `wiki/ops/agent-harness-article-learning-intake.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0010 `wiki/ops/agent-harness-article-learning.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0011 `wiki/ops/agent-intent-routing-skill-drift-explore-2026-05-13.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0012 `wiki/ops/agent-readable-wiki-artifact-grouping.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0013 `wiki/ops/agent-readable-wiki-context-injection.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0015 `wiki/ops/agent-readable-wiki-graph-extraction.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0016 `wiki/ops/agent-readable-wiki-naming-model.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0017 `wiki/ops/agent-readable-wiki-relation-analysis.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0018 `wiki/ops/agent-readable-wiki-relation-reading-view.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0019 `wiki/ops/agent-readable-wiki-runtime-auto-routing.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0020 `wiki/ops/agent-readable-wiki-runtime-context-source-integration.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0021 `wiki/ops/agent-readable-wiki-runtime-context.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0022 `wiki/ops/agent-readable-wiki-self-directed-execution.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0024 `wiki/ops/agent-readable-wiki-utilization-layer.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0025 `wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0026 `wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0028 `wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0031 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0032 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0034 `wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0035 `wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md`: risks=agent_uncertain, openspec_required; candidate has review risks: agent_uncertain, openspec_required
+- detail-0039 `wiki/ops/agents-governance-281-compression-retro-2026-05-06.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0040 `wiki/ops/agents-governance-drift-distill-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0041 `wiki/ops/agents-governance-drift-distill-calibration-retro.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0042 `wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0043 `wiki/ops/agents-governance-drift-explore.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0044 `wiki/ops/agents-governance-drift-playbook-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0045 `wiki/ops/agents-governance-drift-retro.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0046 `wiki/ops/agents-governance-remediation-explore-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0047 `wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0048 `wiki/ops/behavior-asset-governance-design-trace.md`: risks=agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0049 `wiki/ops/behavior-asset-governance-zh.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0051 `wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0052 `wiki/ops/check-to-wiki-routing-explore.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0053 `wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0055 `wiki/ops/completion-bridge-drift-explore-2026-05-12.md`: risks=agent_uncertain, drift_risk, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence
+- detail-0056 `wiki/ops/conversation-handoff-mode.md`: risks=agent_uncertain, drift_risk; candidate has review risks: agent_uncertain, drift_risk
+- detail-0057 `wiki/ops/disagreement-management-method.md`: risks=agent_uncertain, drift_risk, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence
+- detail-0058 `wiki/ops/disagreement-management-replay-harness.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0059 `wiki/ops/disagreement-management-replay-validation-2026-04-20.md`: risks=agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0060 `wiki/ops/distill-calibration-replay-harness.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0061 `wiki/ops/evolver-self-evolving-harness-reading-notes.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0062 `wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0063 `wiki/ops/example-driven-wiki-capture.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+
+## OpenSpec Required
+- detail-0007 `wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0008 `wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0035 `wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md`: risks=agent_uncertain, openspec_required; candidate has review risks: agent_uncertain, openspec_required
+- detail-0039 `wiki/ops/agents-governance-281-compression-retro-2026-05-06.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0040 `wiki/ops/agents-governance-drift-distill-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0041 `wiki/ops/agents-governance-drift-distill-calibration-retro.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0042 `wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0043 `wiki/ops/agents-governance-drift-explore.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0044 `wiki/ops/agents-governance-drift-playbook-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0045 `wiki/ops/agents-governance-drift-retro.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0046 `wiki/ops/agents-governance-remediation-explore-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0048 `wiki/ops/behavior-asset-governance-design-trace.md`: risks=agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0049 `wiki/ops/behavior-asset-governance-zh.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0059 `wiki/ops/disagreement-management-replay-validation-2026-04-20.md`: risks=agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0060 `wiki/ops/distill-calibration-replay-harness.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0086 `wiki/ops/openspec-explore-trigger-drift-retro.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0098 `wiki/ops/sample-explore-trace.md`: risks=agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0124 `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`: risks=adr_risk, agent_uncertain, openspec_required; candidate has review risks: adr_risk, agent_uncertain, openspec_required
+- detail-0125 `wiki/adr/0002-stable-decisions-live-in-wiki-adr.md`: risks=adr_risk, agent_uncertain, openspec_required; candidate has review risks: adr_risk, agent_uncertain, openspec_required
+- detail-0126 `wiki/adr/0003-retros-stay-separate-from-adrs.md`: risks=adr_risk, agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0127 `wiki/adr/0004-agent-self-evolution-over-skill-governance.md`: risks=adr_risk, agent_uncertain, openspec_required; candidate has review risks: adr_risk, agent_uncertain, openspec_required
+- detail-0128 `wiki/adr/0005-incremental-refresh-over-full-reprocessing.md`: risks=adr_risk, agent_uncertain, openspec_required; candidate has review risks: adr_risk, agent_uncertain, openspec_required
+- detail-0129 `wiki/adr/0006-formal-project-local-skills-over-drafts.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0130 `wiki/adr/0007-archive-review-before-archive.md`: risks=adr_risk, agent_uncertain, openspec_required; candidate has review risks: adr_risk, agent_uncertain, openspec_required
+- detail-0131 `wiki/adr/0008-human-governance-before-self-evolution-promotion.md`: risks=adr_risk, agent_uncertain, openspec_required; candidate has review risks: adr_risk, agent_uncertain, openspec_required
+- detail-0132 `wiki/adr/0009-explore-trace-before-openspec-explore.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0133 `wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0134 `wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md`: risks=adr_risk, agent_uncertain, openspec_required; candidate has review risks: adr_risk, agent_uncertain, openspec_required
+- detail-0135 `wiki/adr/0012-disagreement-management-before-conclusion-promotion.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0136 `wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0137 `wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0138 `wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0139 `wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0140 `wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0141 `wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0142 `wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0143 `wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0144 `wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0145 `wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0146 `wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0147 `wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md`: risks=adr_risk, agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0148 `wiki/adr/0025-readable-views-before-further-runtime-expansion.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0149 `wiki/adr/0026-retire-draft-skills-as-runtime-surface.md`: risks=adr_risk, agent_uncertain, openspec_required; candidate has review risks: adr_risk, agent_uncertain, openspec_required
+- detail-0150 `wiki/adr/0027-repo-phase0-before-repo-agents-migration.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0151 `wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0152 `wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0153 `wiki/adr/0030-no-repo-local-commit-hook-default.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0154 `wiki/adr/0031-root-capability-extraction-boundary.md`: risks=adr_risk, agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0155 `wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0156 `wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+
+## Deferred Items
+- detail-0001 `wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0002 `wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0003 `wiki/ops/account-knowledge-base-structure-explore.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0004 `wiki/ops/account-knowledge-base-workbench.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0007 `wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0008 `wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0009 `wiki/ops/agent-harness-article-learning-intake.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0010 `wiki/ops/agent-harness-article-learning.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0011 `wiki/ops/agent-intent-routing-skill-drift-explore-2026-05-13.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0012 `wiki/ops/agent-readable-wiki-artifact-grouping.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0013 `wiki/ops/agent-readable-wiki-context-injection.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0014 `wiki/ops/agent-readable-wiki-frontmatter.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0015 `wiki/ops/agent-readable-wiki-graph-extraction.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0016 `wiki/ops/agent-readable-wiki-naming-model.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0017 `wiki/ops/agent-readable-wiki-relation-analysis.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0018 `wiki/ops/agent-readable-wiki-relation-reading-view.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0019 `wiki/ops/agent-readable-wiki-runtime-auto-routing.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0020 `wiki/ops/agent-readable-wiki-runtime-context-source-integration.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0021 `wiki/ops/agent-readable-wiki-runtime-context.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0022 `wiki/ops/agent-readable-wiki-self-directed-execution.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0024 `wiki/ops/agent-readable-wiki-utilization-layer.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0025 `wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0026 `wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0027 `wiki/ops/agentic-product-engineering-collaboration-article-evidence-matrix-2026-05-11.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0028 `wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0029 `wiki/ops/agentic-product-engineering-collaboration-company-playbook-role-change-diagnosis-2026-05-12.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0030 `wiki/ops/agentic-product-engineering-collaboration-image-model-visual-qa-2026-05-11.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0031 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0032 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0033 `wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0034 `wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0035 `wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md`: risks=agent_uncertain, openspec_required; candidate has review risks: agent_uncertain, openspec_required
+- detail-0036 `wiki/ops/agentic-product-engineering-collaboration-split-execution-2026-05-11.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0037 `wiki/ops/agentic-product-engineering-collaboration-visual-production-brief-2026-05-11.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0038 `wiki/ops/agentic-product-engineering-collaboration-workflow-gate-2026-05-11.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0039 `wiki/ops/agents-governance-281-compression-retro-2026-05-06.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0040 `wiki/ops/agents-governance-drift-distill-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0041 `wiki/ops/agents-governance-drift-distill-calibration-retro.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0042 `wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0043 `wiki/ops/agents-governance-drift-explore.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0044 `wiki/ops/agents-governance-drift-playbook-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0045 `wiki/ops/agents-governance-drift-retro.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0046 `wiki/ops/agents-governance-remediation-explore-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0047 `wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0048 `wiki/ops/behavior-asset-governance-design-trace.md`: risks=agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0049 `wiki/ops/behavior-asset-governance-zh.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0051 `wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0052 `wiki/ops/check-to-wiki-routing-explore.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0053 `wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0054 `wiki/ops/codex-handoff-rules.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+
+## Rejected Candidates
+- detail-0001 `wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0002 `wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0003 `wiki/ops/account-knowledge-base-structure-explore.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0004 `wiki/ops/account-knowledge-base-workbench.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0007 `wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0008 `wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0009 `wiki/ops/agent-harness-article-learning-intake.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0010 `wiki/ops/agent-harness-article-learning.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0012 `wiki/ops/agent-readable-wiki-artifact-grouping.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0013 `wiki/ops/agent-readable-wiki-context-injection.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0015 `wiki/ops/agent-readable-wiki-graph-extraction.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0016 `wiki/ops/agent-readable-wiki-naming-model.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0017 `wiki/ops/agent-readable-wiki-relation-analysis.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0018 `wiki/ops/agent-readable-wiki-relation-reading-view.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0019 `wiki/ops/agent-readable-wiki-runtime-auto-routing.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0020 `wiki/ops/agent-readable-wiki-runtime-context-source-integration.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0021 `wiki/ops/agent-readable-wiki-runtime-context.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0022 `wiki/ops/agent-readable-wiki-self-directed-execution.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0024 `wiki/ops/agent-readable-wiki-utilization-layer.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0025 `wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0026 `wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0028 `wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0031 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0032 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0034 `wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0039 `wiki/ops/agents-governance-281-compression-retro-2026-05-06.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0040 `wiki/ops/agents-governance-drift-distill-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0041 `wiki/ops/agents-governance-drift-distill-calibration-retro.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0042 `wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0043 `wiki/ops/agents-governance-drift-explore.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0044 `wiki/ops/agents-governance-drift-playbook-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0045 `wiki/ops/agents-governance-drift-retro.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0046 `wiki/ops/agents-governance-remediation-explore-2026-04-21.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0047 `wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0048 `wiki/ops/behavior-asset-governance-design-trace.md`: risks=agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0049 `wiki/ops/behavior-asset-governance-zh.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0052 `wiki/ops/check-to-wiki-routing-explore.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0053 `wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0055 `wiki/ops/completion-bridge-drift-explore-2026-05-12.md`: risks=agent_uncertain, drift_risk, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence
+- detail-0057 `wiki/ops/disagreement-management-method.md`: risks=agent_uncertain, drift_risk, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence
+- detail-0058 `wiki/ops/disagreement-management-replay-harness.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0059 `wiki/ops/disagreement-management-replay-validation-2026-04-20.md`: risks=agent_uncertain, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence
+- detail-0060 `wiki/ops/distill-calibration-replay-harness.md`: risks=agent_uncertain, drift_risk, openspec_required, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence
+- detail-0061 `wiki/ops/evolver-self-evolving-harness-reading-notes.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0062 `wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0063 `wiki/ops/example-driven-wiki-capture.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0064 `wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+- detail-0065 `wiki/ops/go-engineering-security-rule-source-learning-2026-05-13.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0066 `wiki/ops/gstack-lark-learning-retro-2026-04-18.md`: risks=agent_uncertain, drift_risk, relation_weak_evidence; candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence
+- detail-0067 `wiki/ops/harness-engineering-overview-reading-notes.md`: risks=agent_uncertain, relation_weak_evidence; candidate has review risks: agent_uncertain, relation_weak_evidence
+
+## Proof Boundary
+- This is draft review routing only, not human approval.
+- It does not write frontmatter, taxonomy, relations, MOC, or OpenSpec state.
+
+## Next Actions
+- Human review: confirm which candidates are accepted, deferred, rejected, treatment candidates, surgery candidates, or OpenSpec-required.
+- Treatment: apply only later, after explicit approval for low-risk frontmatter updates.
+- Surgery or OpenSpec: plan structural, taxonomy, relation, MOC, governance, or lifecycle changes separately.
