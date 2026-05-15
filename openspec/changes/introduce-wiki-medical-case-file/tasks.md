@@ -1,6 +1,6 @@
 # Tasks
 
-- [x] 1. Create OpenSpec proposal, design, tasks, spec delta, drift trace, and initial evaluation evidence.
+- [x] 1. Create OpenSpec proposal, design, tasks, spec delta, drift trace, Superpowers repair artifacts, and initial evaluation evidence.
 - [ ] 2. Add RED replay/test showing separate surgery output can drift from confirmed decisions.
 - [ ] 3. Implement a case-file builder or updater under `wiki/ops/wiki-medical-cases/`.
 - [ ] 4. Add case-file source wiring for surgery planning.
