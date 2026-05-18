@@ -538,6 +538,81 @@ created_at: 2026-05-15
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md`
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md`
 
+## Manual Surgery Triage Summary
+
+This summary preserves human review decisions from the 2026-05-18 live triage.
+It is recovery context only. It does not approve surgery application, relation
+writes, taxonomy changes, ADR edits, AGENTS edits, skill edits, or OpenSpec
+lifecycle changes.
+
+### Relation-only Items
+
+- Source set: 59 relation-only surgery items.
+- First triage:
+  - `confirm`: 35 items.
+  - `reject`: 10 items.
+  - `defer`: 14 items.
+- Evidence verification:
+  - 34 of the 35 confirmed items had strong structural evidence.
+  - `detail-0031` remains weak/defer because its identity resolves, but no
+    sibling node or explicit relation field was found.
+- Relation proposal result:
+  - 28 items already have explicit relation frontmatter; no new relation write
+    is recommended from this case.
+  - 6 items only show same-object sibling artifacts; keep object aggregation,
+    do not add relation fields from this case.
+- Current action: no relation-only item should be auto-applied.
+
+### Governance-only Items
+
+- Source set: 7 governance-only items without relation or OpenSpec flags.
+- `no-op confirmed`: `detail-0051`, `detail-0091`, `detail-0112`.
+- `defer to cleanup`: `detail-0011`, `detail-0056`, `detail-0103`.
+- `OpenSpec candidate only`: `detail-0118`.
+- Project-management correction:
+  - `detail-0081` should not be treated as learning; it is
+    `project-management / weekly-intake / project-report` for the Nirvana
+    project.
+
+### Relation plus Governance Items
+
+- Source set: 14 relation plus governance items without OpenSpec flag.
+- `no-op confirmed`: `detail-0074`, `detail-0075`, `detail-0092`,
+  `detail-0095`, `detail-0100`, `detail-0106`.
+- `defer to cleanup`: `detail-0057`, `detail-0066`, `detail-0071`,
+  `detail-0081`, `detail-0097`, `detail-0108`.
+- `OpenSpec candidate only`: `detail-0055`, `detail-0087`.
+- Cleanup correction:
+  - `detail-0097` is a `dialogue-disagreement-example`, not a live incident.
+  - `detail-0108` is an `agent-drift-explore-trace`, a real visual-output
+    routing drift record.
+
+### OpenSpec-required Items
+
+- Source set: 51 OpenSpec-required items.
+- `wiki/adr`: 34 items. Default no-op; ADR changes must go through separate
+  OpenSpec changes if needed.
+- `wiki/ops`: 17 items. Grouped into:
+  - agent-governance / behavior-asset-governance candidates.
+  - dialogue-disagreement / agent-drift / reanchor-trace candidates.
+  - agentic-product-engineering source-hardening material.
+  - sample / explore trace cleanup.
+- Follow-up proposal created:
+  `openspec/changes/classify-dialogue-agent-drift-traces/`.
+
+### Agreed Cleanup Vocabulary
+
+The live review agreed to use:
+
+```text
+dialogue-disagreement / agent-drift / reanchor-trace
+```
+
+as the review-only cleanup vocabulary for pages that preserve user-agent
+disagreement, agent route drift, and re-anchor evidence. This vocabulary is now
+captured in the OpenSpec proposal above, but it is not yet an implemented
+taxonomy or write-capable workflow.
+
 ## Proof Boundary
 - This is the canonical case file for review routing.
 - Confirmed Decisions are the authority for surgery planning.
