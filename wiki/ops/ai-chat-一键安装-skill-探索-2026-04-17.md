@@ -9,6 +9,8 @@ source_type: conversation
 audience: self
 knowledge_level: working
 domain: ai-workflow
+layer: ops
+ops_area: workflow-trace
 period: active
 confidence: medium
 status: active

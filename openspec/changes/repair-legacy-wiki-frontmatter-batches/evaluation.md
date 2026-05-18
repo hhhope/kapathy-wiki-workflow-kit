@@ -672,6 +672,51 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 13f Evidence
+
+Approved batch:
+
+- Batch 13f: ai-workflow trace ops page with existing identity
+
+Applied fields:
+
+- `layer: ops`
+- `ops_area: workflow-trace`
+
+Target set:
+
+- `wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md`
+
+Before target counts:
+
+- the page had 3 errors covering `layer` and `ops_area`
+
+After target counts:
+
+- the target page reported `after.entry_count: 0`
+- the target precheck run reported `target.entry_count: 0`; the precheck
+  command still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 524
+- `summary.error`: 524
+
+Boundary:
+
+- Existing `domain`, `canonical_object`, and `artifact_type` values were
+  preserved.
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.
+
 ## Batch 13d Evidence
 
 Approved batch:

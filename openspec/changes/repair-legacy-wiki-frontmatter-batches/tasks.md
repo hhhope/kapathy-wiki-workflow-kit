@@ -37,6 +37,8 @@
   pages with existing identity.
 - [x] 21. Apply approved batch 13e to agent-harness learning-capture ops pages
   with existing identity.
-- [ ] 22. Get approval for the next classification batch before applying more
+- [x] 22. Apply approved batch 13f to the ai-workflow trace ops page with
+  existing identity.
+- [ ] 23. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 23. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 24. Add final evaluation evidence and run OpenSpec validation.
