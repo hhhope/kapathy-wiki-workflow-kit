@@ -5,7 +5,9 @@ canonical_object: codex-global-agents-md
 artifact_type: intake
 language: zh-CN
 audience: self
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
 period: evergreen
 confidence: high
 status: active

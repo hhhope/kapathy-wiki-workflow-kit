@@ -5,7 +5,9 @@ canonical_object: superpowers-brainstorming-skill-visibility
 artifact_type: explore
 language: zh-CN
 audience: self
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
 status: active
 updated_at: 2026-05-14
 ai_generated: true

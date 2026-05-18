@@ -6,7 +6,9 @@ artifact_type: design-trace
 language: en
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
 status: active
 confidence: decided
 updated_at: 2026-05-06

@@ -41,6 +41,9 @@
   existing identity.
 - [x] 23. Apply approved batch 14a to remap clean `agents-governance-*` ops
   pages from forbidden `personal-ops` to repo wiki governance fields.
-- [ ] 24. Get approval for the next classification batch before applying more
+- [x] 24. Apply approved batch 14b to remap clean behavior/Codex/OpenSpec
+  governance ops pages from forbidden `personal-ops` to repo wiki governance
+  fields.
+- [ ] 25. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 25. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 26. Add final evaluation evidence and run OpenSpec validation.

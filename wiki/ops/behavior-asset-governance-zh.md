@@ -6,7 +6,9 @@ artifact_type: summary
 language: zh-CN
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
 status: active
 confidence: candidate
 updated_at: 2026-05-06

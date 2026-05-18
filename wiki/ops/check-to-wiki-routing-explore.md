@@ -8,7 +8,9 @@ source_path: chat://openspec-explore/check-to-wiki-routing/2026-05-06
 source_type: conversation
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
 period: active
 confidence: medium
 status: active

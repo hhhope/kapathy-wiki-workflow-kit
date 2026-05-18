@@ -626,6 +626,58 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14b Evidence
+
+Approved batch:
+
+- Batch 14b: clean behavior/Codex/OpenSpec governance ops pages with existing
+  identity and forbidden `domain: personal-ops`
+
+Applied fields:
+
+- `domain: wiki`
+- `layer: ops`
+- `ops_area: agent-governance`
+
+Target set:
+
+- `wiki/ops/behavior-asset-governance-design-trace.md`
+- `wiki/ops/behavior-asset-governance-zh.md`
+- `wiki/ops/check-to-wiki-routing-explore.md`
+- `wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md`
+- `wiki/ops/openspec-explore-trigger-drift-retro.md`
+- `wiki/ops/superpowers-brainstorming-skill-visibility-explore-2026-05-14.md`
+
+Before target counts:
+
+- all 6 pages had 4 errors covering forbidden `domain: personal-ops`,
+  missing `layer`, and missing `ops_area`
+
+After target counts:
+
+- all 6 target pages reported `after.entry_count: 0`
+- all 6 target precheck runs reported `target.entry_count: 0`; the precheck
+  command still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 472
+- `summary.error`: 472
+
+Boundary:
+
+- Existing `canonical_object` and `artifact_type` values were preserved.
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.
+
 ## Batch 13e Evidence
 
 Approved batch:
