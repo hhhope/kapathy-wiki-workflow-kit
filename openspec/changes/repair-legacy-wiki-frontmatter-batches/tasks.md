@@ -82,4 +82,6 @@
 - [x] 42. Apply approved batch 14s to tracked wiki-doctor run record pages.
 - [x] 43. Apply approved batch 14t to tracked recovery, review-decision,
   treatment, and surgery run record pages.
-- [ ] 44. Add final evaluation evidence and run OpenSpec validation.
+- [x] 44. Apply approved batch 14u to clean visual-output-routing drift and
+  account-clearing scenario-matrix ops pages.
+- [ ] 45. Add final evaluation evidence and run OpenSpec validation.

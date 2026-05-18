@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 artifact_type: intake
 title: visual-output-routing-drift / explore
 canonical_object: visual-output-routing-drift

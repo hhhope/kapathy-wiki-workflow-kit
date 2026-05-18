@@ -461,6 +461,74 @@ Boundary:
 - No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
   lifecycle state were changed.
 
+## Batch 14u Evidence
+
+Approved batch:
+
+- Batch 14u: clean visual-output-routing drift and account-clearing
+  scenario-matrix ops pages.
+
+Target set:
+
+- `wiki/ops/visual-output-routing-drift-explore-2026-05-11.md`
+- `wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md`
+
+Applied fields:
+
+- `layer: ops`
+- `domain: wiki`, `ops_area: wiki-runtime` for the visual-output-routing
+  drift explore page, matching the already accepted agent/workflow drift
+  interpretation.
+- `domain: account-clearing`, `ops_area: workflow-trace` for the 宝财通
+  scenario matrix, because the page content is a business migration scenario
+  trace for split-account opening.
+- Existing `canonical_object`, `artifact_type`, and relation fields were
+  preserved.
+
+After target counts:
+
+- both target pages reported `target.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 26
+- `summary.error`: 26
+- top remaining samples include `wiki/mnt/...`, `wiki/ops/index.md`,
+  dirty `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`,
+  dirty
+  `wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md`,
+  and untracked
+  `wiki/ops/wiki-surgery-runs/2026-05-15-044434-surgery.md`
+
+OpenSpec validation:
+
+```bash
+openspec validate repair-legacy-wiki-frontmatter-batches --strict
+```
+
+Result:
+
+- `Change 'repair-legacy-wiki-frontmatter-batches' is valid`
+- PostHog DNS flush failed after validation; this did not change the command's
+  successful validation result.
+
+Boundary:
+
+- No relation fields were added.
+- Page bodies were not changed.
+- The dirty obsidian/team drift files, untracked surgery run, `wiki/mnt`
+  mirror paths, `wiki/ops/index.md`, and wiki template were not changed in this
+  batch.
+- No taxonomy config, checker logic, MOC pages, ADRs, skills, templates, or
+  OpenSpec lifecycle state were changed.
+
 ## Batch 1 Baseline
 
 Planner command:
