@@ -542,9 +542,7 @@ created_at: 2026-05-15
 - `openspec/specs/dialogue-agent-drift-trace-cleanup/spec.md`
 - `openspec/changes/archive/2026-05-18-add-completion-bridge-gate/`
 - `openspec/specs/completion-bridge-gate/spec.md`
-
-### OpenSpec Active Follow-up
-- `openspec/changes/rename-wiki-status-command-surface/`
+- `openspec/changes/archive/2026-05-18-rename-wiki-status-command-surface/`
 
 ## Manual Surgery Triage Summary
 
@@ -577,9 +575,10 @@ lifecycle changes.
 - `no-op confirmed`: `detail-0051`, `detail-0091`, `detail-0112`.
 - `defer to cleanup`: `detail-0011`, `detail-0056`, `detail-0103`.
 - `detail-0118` follow-up:
-  OpenSpec proposal created at
-  `openspec/changes/rename-wiki-status-command-surface/`; this is proposal
-  evidence only and does not implement `/wiki:status`.
+  closed without implementation in
+  `openspec/changes/archive/2026-05-18-rename-wiki-status-command-surface/`
+  because the current runtime direction keeps `$wiki-status` as the active
+  repo-local skill surface and rejects slash command promotion.
 - Project-management correction:
   - `detail-0081` should not be treated as learning; it is
     `project-management / weekly-intake / project-report` for the Nirvana
