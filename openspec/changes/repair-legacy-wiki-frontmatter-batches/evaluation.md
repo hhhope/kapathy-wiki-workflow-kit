@@ -639,6 +639,75 @@ Boundary:
 - No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
   lifecycle state were changed.
 
+## Final Recovery Evidence
+
+Commands:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+python3 scripts/check_wiki_frontmatter.py
+PYTHONPATH=. python3 scripts/build_wiki_recovery.py --root . --case-file wiki/ops/wiki-medical-cases/2026-05-15-064427-wiki-medical-case.md --write-recovery-record
+openspec validate repair-legacy-wiki-frontmatter-batches --strict
+```
+
+Frontmatter gate result:
+
+- page blocking errors are now cleared: `blocking_count: 0`, `summary.error: 0`
+- remaining findings are 5 `possible_unregistered_producer` warnings in
+  scripts
+- `wiki_gate_precheck` still reports `passed: false`, `score: 75`, because the
+  score threshold is 100 even when there are no blocking errors
+- `python3 scripts/check_wiki_frontmatter.py` exits 0
+
+Recovery result:
+
+- `passed`: false
+- `next_route`: `blocked_by_recovery_findings`
+- `check_count`: 4
+- `passed_count`: 3
+- `failed_count`: 1
+- failed check: `frontmatter_precheck`
+- failed reason: `frontmatter_precheck` exits 1 due 5 producer warnings, while
+  page errors and blocking count are 0
+
+Generated evidence records:
+
+- `wiki/ops/wiki-doctor-runs/2026-05-18-113632-review.md`
+- `wiki/ops/wiki-review-decisions/2026-05-18-113638-review-decisions.md`
+- `wiki/ops/wiki-recovery-runs/2026-05-18-113643-recovery.md`
+
+Generated record frontmatter:
+
+- all 3 generated evidence records reported `target.entry_count: 0` after
+  frontmatter repair
+
+OpenSpec validation:
+
+- `Change 'repair-legacy-wiki-frontmatter-batches' is valid`
+- PostHog DNS flush failed after validation; this did not change the command's
+  successful validation result.
+
+Medical status after evidence:
+
+```json
+{
+  "intent": "status",
+  "state": "blocked",
+  "allowed_action": "report_status",
+  "next_action": "blocked",
+  "executable_count": 10
+}
+```
+
+Boundary and next routing:
+
+- The page-frontmatter repair objective reached `blocking_count: 0`.
+- Recovery is still blocked by producer-warning gate semantics, not by missing
+  wiki page frontmatter.
+- Registering script producers or changing `wiki_gate_precheck` pass semantics
+  is a tool/config behavior decision and should be routed as a separate
+  producer-warning gate change, not hidden inside this page repair batch.
+
 ## Batch 1 Baseline
 
 Planner command:
