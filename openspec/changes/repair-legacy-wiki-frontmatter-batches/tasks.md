@@ -57,6 +57,8 @@
   ops identities and remap them from forbidden `personal-ops`.
 - [x] 30. Apply approved batch 14h to rebuild clean sample ops identities and
   remap them from forbidden `personal-ops`.
-- [ ] 31. Get approval for the next classification batch before applying more
+- [x] 31. Apply approved batch 14i to rebuild clean learning/runtime trace ops
+  identities and remap them from forbidden `personal-ops`.
+- [ ] 32. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 32. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 33. Add final evaluation evidence and run OpenSpec validation.

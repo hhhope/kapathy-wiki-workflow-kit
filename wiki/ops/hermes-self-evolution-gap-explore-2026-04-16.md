@@ -6,7 +6,11 @@ source_path: chat://openspec-explore/hermes-self-evolution-gap-2026-04-16
 source_type: conversation
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: workflow-trace
+canonical_object: hermes-self-evolution-gap
+artifact_type: explore
 period: active
 confidence: medium
 status: active

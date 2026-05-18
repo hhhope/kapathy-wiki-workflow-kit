@@ -626,6 +626,65 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14i Evidence
+
+Approved batch:
+
+- Batch 14i: clean learning/runtime trace ops pages with doctor-run candidate
+  frontmatter and forbidden `domain: personal-ops`
+
+Applied fields:
+
+- `wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md`
+  - `domain: wiki`
+  - `layer: ops`
+  - `ops_area: learning-capture`
+  - `canonical_object: example-driven-capture-runtime-validation`
+  - `artifact_type: method`
+- `wiki/ops/gstack-lark-learning-retro-2026-04-18.md`
+  - `domain: wiki`
+  - `layer: ops`
+  - `ops_area: learning-capture`
+  - `canonical_object: gstack-lark-learning`
+  - `artifact_type: retro`
+- `wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md`
+  - `domain: wiki`
+  - `layer: ops`
+  - `ops_area: workflow-trace`
+  - `canonical_object: hermes-self-evolution-gap`
+  - `artifact_type: explore`
+
+Before target counts:
+
+- all 3 pages had 6 errors covering forbidden `domain: personal-ops`, missing
+  `layer`, missing `ops_area`, missing `canonical_object`, and missing
+  `artifact_type`
+
+After target counts:
+
+- all 3 target precheck runs reported `target.entry_count: 0`; the precheck
+  commands still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 374
+- `summary.error`: 374
+
+Boundary:
+
+- Relation candidates from the doctor run were not applied.
+- Existing body text, taxonomy config, checker logic, MOC, ADR, and OpenSpec
+  lifecycle state were not changed.
+- Dirty pages with unrelated user changes were skipped.
+
 ## Batch 14h Evidence
 
 Approved batch:
