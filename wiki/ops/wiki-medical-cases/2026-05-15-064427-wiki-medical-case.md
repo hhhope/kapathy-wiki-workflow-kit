@@ -507,8 +507,14 @@ created_at: 2026-05-15
 - Candidate count: 10
 
 ## Surgery Plan
-- Status: pending
-- Candidate count: 182
+- Status: planned
+- Candidate count: 0
+- governance_change_count: 72
+- moc_projection_count: 0
+- relation_rebuild_count: 112
+- source_detail_count: 182
+- surgery_item_count: 131
+- taxonomy_decision_count: 0
 
 ## Recovery
 - Status: completed
@@ -527,7 +533,7 @@ created_at: 2026-05-15
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-treatment-runs/2026-05-18-014811-treatment.md`
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-treatment-runs/2026-05-18-015905-treatment.md`
 ### Surgery
-- None
+- `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-surgery-runs/2026-05-18-023550-surgery.md`
 ### Recovery
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md`
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md`
@@ -7814,7 +7820,9 @@ created_at: 2026-05-15
       "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md",
       "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md"
     ],
-    "surgery": [],
+    "surgery": [
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-surgery-runs/2026-05-18-023550-surgery.md"
+    ],
     "treatment": [
       "wiki/ops/wiki-treatment-runs/2026-05-15-065102-treatment.md",
       "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-treatment-runs/2026-05-18-014811-treatment.md",
@@ -7968,9 +7976,3173 @@ created_at: 2026-05-15
   },
   "status": "blocked",
   "surgery_plan": {
-    "candidate_count": 182,
-    "records": [],
-    "status": "pending"
+    "plan": {
+      "generated_at": "2026-05-18T02:35:50.277548+00:00",
+      "governance_change_items": [
+        {
+          "detail_ref": "detail-0007",
+          "path": "wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0008",
+          "path": "wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0011",
+          "path": "wiki/ops/agent-intent-routing-skill-drift-explore-2026-05-13.md",
+          "reason": "candidate has review risks: drift_risk",
+          "risk_flags": [
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0035",
+          "path": "wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0039",
+          "path": "wiki/ops/agents-governance-281-compression-retro-2026-05-06.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0040",
+          "path": "wiki/ops/agents-governance-drift-distill-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0041",
+          "path": "wiki/ops/agents-governance-drift-distill-calibration-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0042",
+          "path": "wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0043",
+          "path": "wiki/ops/agents-governance-drift-explore.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0044",
+          "path": "wiki/ops/agents-governance-drift-playbook-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0045",
+          "path": "wiki/ops/agents-governance-drift-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0046",
+          "path": "wiki/ops/agents-governance-remediation-explore-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0048",
+          "path": "wiki/ops/behavior-asset-governance-design-trace.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0049",
+          "path": "wiki/ops/behavior-asset-governance-zh.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0051",
+          "path": "wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md",
+          "reason": "candidate has review risks: drift_risk",
+          "risk_flags": [
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0055",
+          "path": "wiki/ops/completion-bridge-drift-explore-2026-05-12.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0056",
+          "path": "wiki/ops/conversation-handoff-mode.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0057",
+          "path": "wiki/ops/disagreement-management-method.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0059",
+          "path": "wiki/ops/disagreement-management-replay-validation-2026-04-20.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0060",
+          "path": "wiki/ops/distill-calibration-replay-harness.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0066",
+          "path": "wiki/ops/gstack-lark-learning-retro-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0071",
+          "path": "wiki/ops/karpathy-skills-learning-retro-2026-04-16.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0074",
+          "path": "wiki/ops/live-conversation-reanchor-gate-replay-harness.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0075",
+          "path": "wiki/ops/live-conversation-reanchor-gate-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0081",
+          "path": "wiki/ops/nirvana-weekly-intake-2026-04-13.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0086",
+          "path": "wiki/ops/openspec-explore-trigger-drift-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0087",
+          "path": "wiki/ops/product-alignment-drift-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0091",
+          "path": "wiki/ops/readme-capability-map-boundary-drift-retro-2026-05-14.md",
+          "reason": "candidate has review risks: drift_risk",
+          "risk_flags": [
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0092",
+          "path": "wiki/ops/reference-driven-output-calibration-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0095",
+          "path": "wiki/ops/root-capability-extraction-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0097",
+          "path": "wiki/ops/sample-disagreement-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0098",
+          "path": "wiki/ops/sample-explore-trace.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0100",
+          "path": "wiki/ops/sample-handoff-topic.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0103",
+          "path": "wiki/ops/scope-drift-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0106",
+          "path": "wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0108",
+          "path": "wiki/ops/visual-output-routing-drift-explore-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0112",
+          "path": "wiki/ops/wiki-medical-case-file-drift-retro-2026-05-15.md",
+          "reason": "candidate has review risks: drift_risk",
+          "risk_flags": [
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0118",
+          "path": "wiki/ops/wiki-status-slash-command-reanchor.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0122",
+          "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0123",
+          "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0124",
+          "path": "wiki/adr/0003-retros-stay-separate-from-adrs.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0125",
+          "path": "wiki/adr/0004-agent-self-evolution-over-skill-governance.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0126",
+          "path": "wiki/adr/0005-incremental-refresh-over-full-reprocessing.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0127",
+          "path": "wiki/adr/0006-formal-project-local-skills-over-drafts.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0128",
+          "path": "wiki/adr/0007-archive-review-before-archive.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0129",
+          "path": "wiki/adr/0008-human-governance-before-self-evolution-promotion.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0130",
+          "path": "wiki/adr/0009-explore-trace-before-openspec-explore.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0131",
+          "path": "wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0132",
+          "path": "wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0133",
+          "path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0134",
+          "path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0135",
+          "path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0136",
+          "path": "wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0137",
+          "path": "wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0138",
+          "path": "wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0139",
+          "path": "wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0140",
+          "path": "wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0141",
+          "path": "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0142",
+          "path": "wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0143",
+          "path": "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0144",
+          "path": "wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0145",
+          "path": "wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0146",
+          "path": "wiki/adr/0025-readable-views-before-further-runtime-expansion.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0147",
+          "path": "wiki/adr/0026-retire-draft-skills-as-runtime-surface.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0148",
+          "path": "wiki/adr/0027-repo-phase0-before-repo-agents-migration.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0149",
+          "path": "wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0150",
+          "path": "wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0151",
+          "path": "wiki/adr/0030-no-repo-local-commit-hook-default.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0152",
+          "path": "wiki/adr/0031-root-capability-extraction-boundary.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0153",
+          "path": "wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md",
+          "reason": "candidate has review risks: adr_risk, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0154",
+          "path": "wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md",
+          "reason": "candidate has review risks: adr_risk, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0155",
+          "path": "wiki/adr/0034-readme-capability-map-is-project-description.md",
+          "reason": "candidate has review risks: adr_risk, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "openspec_required"
+          ]
+        }
+      ],
+      "moc_projection_items": [],
+      "mode": "wiki_surgery_plan",
+      "next_review_actions": [
+        "Human review: verify this plan faithfully executes Confirmed Decisions in the case file.",
+        "OpenSpec: route governance, ADR, taxonomy, and broad relation changes to explicit changes.",
+        "Recovery: run checkers and doctor again only after surgery is applied."
+      ],
+      "proof_boundary_notes": [
+        "This surgery plan derives from confirmed case decisions.",
+        "The canonical case file remains the source of truth.",
+        "It does not write frontmatter, taxonomy config, relations, MOC pages, ADR decisions, or OpenSpec state."
+      ],
+      "relation_rebuild_items": [
+        {
+          "detail_ref": "detail-0001",
+          "path": "wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0002",
+          "path": "wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0003",
+          "path": "wiki/ops/account-knowledge-base-structure-explore.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0004",
+          "path": "wiki/ops/account-knowledge-base-workbench.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0007",
+          "path": "wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0008",
+          "path": "wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0009",
+          "path": "wiki/ops/agent-harness-article-learning-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0010",
+          "path": "wiki/ops/agent-harness-article-learning.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0012",
+          "path": "wiki/ops/agent-readable-wiki-artifact-grouping.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0013",
+          "path": "wiki/ops/agent-readable-wiki-context-injection.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0015",
+          "path": "wiki/ops/agent-readable-wiki-graph-extraction.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0016",
+          "path": "wiki/ops/agent-readable-wiki-naming-model.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0017",
+          "path": "wiki/ops/agent-readable-wiki-relation-analysis.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0018",
+          "path": "wiki/ops/agent-readable-wiki-relation-reading-view.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0019",
+          "path": "wiki/ops/agent-readable-wiki-runtime-auto-routing.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0020",
+          "path": "wiki/ops/agent-readable-wiki-runtime-context-source-integration.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0021",
+          "path": "wiki/ops/agent-readable-wiki-runtime-context.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0022",
+          "path": "wiki/ops/agent-readable-wiki-self-directed-execution.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0024",
+          "path": "wiki/ops/agent-readable-wiki-utilization-layer.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0025",
+          "path": "wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0026",
+          "path": "wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0028",
+          "path": "wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0031",
+          "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0032",
+          "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0034",
+          "path": "wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0039",
+          "path": "wiki/ops/agents-governance-281-compression-retro-2026-05-06.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0040",
+          "path": "wiki/ops/agents-governance-drift-distill-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0041",
+          "path": "wiki/ops/agents-governance-drift-distill-calibration-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0042",
+          "path": "wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0043",
+          "path": "wiki/ops/agents-governance-drift-explore.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0044",
+          "path": "wiki/ops/agents-governance-drift-playbook-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0045",
+          "path": "wiki/ops/agents-governance-drift-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0046",
+          "path": "wiki/ops/agents-governance-remediation-explore-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0047",
+          "path": "wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0048",
+          "path": "wiki/ops/behavior-asset-governance-design-trace.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0049",
+          "path": "wiki/ops/behavior-asset-governance-zh.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0052",
+          "path": "wiki/ops/check-to-wiki-routing-explore.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0053",
+          "path": "wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0055",
+          "path": "wiki/ops/completion-bridge-drift-explore-2026-05-12.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0057",
+          "path": "wiki/ops/disagreement-management-method.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0058",
+          "path": "wiki/ops/disagreement-management-replay-harness.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0059",
+          "path": "wiki/ops/disagreement-management-replay-validation-2026-04-20.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0060",
+          "path": "wiki/ops/distill-calibration-replay-harness.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0061",
+          "path": "wiki/ops/evolver-self-evolving-harness-reading-notes.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0062",
+          "path": "wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0063",
+          "path": "wiki/ops/example-driven-wiki-capture.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0064",
+          "path": "wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0066",
+          "path": "wiki/ops/gstack-lark-learning-retro-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0067",
+          "path": "wiki/ops/harness-engineering-overview-reading-notes.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0068",
+          "path": "wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0069",
+          "path": "wiki/ops/intelligence-native-organization-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0071",
+          "path": "wiki/ops/karpathy-skills-learning-retro-2026-04-16.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0073",
+          "path": "wiki/ops/learning-source-routing-gap-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0074",
+          "path": "wiki/ops/live-conversation-reanchor-gate-replay-harness.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0075",
+          "path": "wiki/ops/live-conversation-reanchor-gate-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0076",
+          "path": "wiki/ops/llm-wiki-core-product-contract.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0078",
+          "path": "wiki/ops/main-thread.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0079",
+          "path": "wiki/ops/multi-system-branch-spec-explore-2026-05-12.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0080",
+          "path": "wiki/ops/nirvana-preview-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0081",
+          "path": "wiki/ops/nirvana-weekly-intake-2026-04-13.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0082",
+          "path": "wiki/ops/nirvana-weekly-reminder-2026-04-13.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0083",
+          "path": "wiki/ops/nirvana-协议支付涅槃需求文档-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0084",
+          "path": "wiki/ops/nirvana-涅槃产品上架梳理-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0085",
+          "path": "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0086",
+          "path": "wiki/ops/openspec-explore-trigger-drift-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0087",
+          "path": "wiki/ops/product-alignment-drift-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0088",
+          "path": "wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0089",
+          "path": "wiki/ops/project-management-weekly-loop.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0090",
+          "path": "wiki/ops/public-report-skill-gate-wording-explore-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0092",
+          "path": "wiki/ops/reference-driven-output-calibration-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0093",
+          "path": "wiki/ops/reminders.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0094",
+          "path": "wiki/ops/report-wiki-product-plan-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0095",
+          "path": "wiki/ops/root-capability-extraction-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0096",
+          "path": "wiki/ops/sample-codex-handoff.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0097",
+          "path": "wiki/ops/sample-disagreement-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0098",
+          "path": "wiki/ops/sample-explore-trace.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0099",
+          "path": "wiki/ops/sample-focus-thread.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0100",
+          "path": "wiki/ops/sample-handoff-topic.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0101",
+          "path": "wiki/ops/sample-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0102",
+          "path": "wiki/ops/sample-reminder.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0104",
+          "path": "wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0106",
+          "path": "wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0107",
+          "path": "wiki/ops/team-knowledge-base-overview-report-gate-review.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0108",
+          "path": "wiki/ops/visual-output-routing-drift-explore-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0114",
+          "path": "wiki/ops/wiki-readable-views-validation-harness.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0115",
+          "path": "wiki/ops/wiki-runtime-command-surface-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0119",
+          "path": "wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0120",
+          "path": "wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0121",
+          "path": "wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0124",
+          "path": "wiki/adr/0003-retros-stay-separate-from-adrs.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0127",
+          "path": "wiki/adr/0006-formal-project-local-skills-over-drafts.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0130",
+          "path": "wiki/adr/0009-explore-trace-before-openspec-explore.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0131",
+          "path": "wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0133",
+          "path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0134",
+          "path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0135",
+          "path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0136",
+          "path": "wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0137",
+          "path": "wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0138",
+          "path": "wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0139",
+          "path": "wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0140",
+          "path": "wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0141",
+          "path": "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0142",
+          "path": "wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0143",
+          "path": "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0144",
+          "path": "wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0145",
+          "path": "wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0146",
+          "path": "wiki/adr/0025-readable-views-before-further-runtime-expansion.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0148",
+          "path": "wiki/adr/0027-repo-phase0-before-repo-agents-migration.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0149",
+          "path": "wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0150",
+          "path": "wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0151",
+          "path": "wiki/adr/0030-no-repo-local-commit-hook-default.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0152",
+          "path": "wiki/adr/0031-root-capability-extraction-boundary.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        }
+      ],
+      "source_case_path": "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-medical-cases/2026-05-15-064427-wiki-medical-case.md",
+      "source_case_slug": "wiki-medical-case",
+      "source_confirmed_decisions": {
+        "openspec_required": 51,
+        "surgery_candidates": 131
+      },
+      "source_moc_summary": {},
+      "status": "planned",
+      "summary": {
+        "governance_change_count": 72,
+        "moc_projection_count": 0,
+        "relation_rebuild_count": 112,
+        "source_detail_count": 182,
+        "surgery_item_count": 131,
+        "taxonomy_decision_count": 0
+      },
+      "surgery_items": [
+        {
+          "detail_ref": "detail-0001",
+          "path": "wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0002",
+          "path": "wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0003",
+          "path": "wiki/ops/account-knowledge-base-structure-explore.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0004",
+          "path": "wiki/ops/account-knowledge-base-workbench.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0007",
+          "path": "wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0008",
+          "path": "wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0009",
+          "path": "wiki/ops/agent-harness-article-learning-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0010",
+          "path": "wiki/ops/agent-harness-article-learning.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0011",
+          "path": "wiki/ops/agent-intent-routing-skill-drift-explore-2026-05-13.md",
+          "reason": "candidate has review risks: drift_risk",
+          "risk_flags": [
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0012",
+          "path": "wiki/ops/agent-readable-wiki-artifact-grouping.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0013",
+          "path": "wiki/ops/agent-readable-wiki-context-injection.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0015",
+          "path": "wiki/ops/agent-readable-wiki-graph-extraction.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0016",
+          "path": "wiki/ops/agent-readable-wiki-naming-model.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0017",
+          "path": "wiki/ops/agent-readable-wiki-relation-analysis.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0018",
+          "path": "wiki/ops/agent-readable-wiki-relation-reading-view.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0019",
+          "path": "wiki/ops/agent-readable-wiki-runtime-auto-routing.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0020",
+          "path": "wiki/ops/agent-readable-wiki-runtime-context-source-integration.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0021",
+          "path": "wiki/ops/agent-readable-wiki-runtime-context.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0022",
+          "path": "wiki/ops/agent-readable-wiki-self-directed-execution.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0024",
+          "path": "wiki/ops/agent-readable-wiki-utilization-layer.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0025",
+          "path": "wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0026",
+          "path": "wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0028",
+          "path": "wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0031",
+          "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0032",
+          "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0034",
+          "path": "wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0035",
+          "path": "wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0039",
+          "path": "wiki/ops/agents-governance-281-compression-retro-2026-05-06.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0040",
+          "path": "wiki/ops/agents-governance-drift-distill-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0041",
+          "path": "wiki/ops/agents-governance-drift-distill-calibration-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0042",
+          "path": "wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0043",
+          "path": "wiki/ops/agents-governance-drift-explore.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0044",
+          "path": "wiki/ops/agents-governance-drift-playbook-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0045",
+          "path": "wiki/ops/agents-governance-drift-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0046",
+          "path": "wiki/ops/agents-governance-remediation-explore-2026-04-21.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0047",
+          "path": "wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0048",
+          "path": "wiki/ops/behavior-asset-governance-design-trace.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0049",
+          "path": "wiki/ops/behavior-asset-governance-zh.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0051",
+          "path": "wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md",
+          "reason": "candidate has review risks: drift_risk",
+          "risk_flags": [
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0052",
+          "path": "wiki/ops/check-to-wiki-routing-explore.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0053",
+          "path": "wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0055",
+          "path": "wiki/ops/completion-bridge-drift-explore-2026-05-12.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0056",
+          "path": "wiki/ops/conversation-handoff-mode.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0057",
+          "path": "wiki/ops/disagreement-management-method.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0058",
+          "path": "wiki/ops/disagreement-management-replay-harness.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0059",
+          "path": "wiki/ops/disagreement-management-replay-validation-2026-04-20.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0060",
+          "path": "wiki/ops/distill-calibration-replay-harness.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0061",
+          "path": "wiki/ops/evolver-self-evolving-harness-reading-notes.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0062",
+          "path": "wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0063",
+          "path": "wiki/ops/example-driven-wiki-capture.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0064",
+          "path": "wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0066",
+          "path": "wiki/ops/gstack-lark-learning-retro-2026-04-18.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0067",
+          "path": "wiki/ops/harness-engineering-overview-reading-notes.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0068",
+          "path": "wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0069",
+          "path": "wiki/ops/intelligence-native-organization-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0071",
+          "path": "wiki/ops/karpathy-skills-learning-retro-2026-04-16.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0073",
+          "path": "wiki/ops/learning-source-routing-gap-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0074",
+          "path": "wiki/ops/live-conversation-reanchor-gate-replay-harness.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0075",
+          "path": "wiki/ops/live-conversation-reanchor-gate-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0076",
+          "path": "wiki/ops/llm-wiki-core-product-contract.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0078",
+          "path": "wiki/ops/main-thread.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0079",
+          "path": "wiki/ops/multi-system-branch-spec-explore-2026-05-12.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0080",
+          "path": "wiki/ops/nirvana-preview-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0081",
+          "path": "wiki/ops/nirvana-weekly-intake-2026-04-13.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0082",
+          "path": "wiki/ops/nirvana-weekly-reminder-2026-04-13.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0083",
+          "path": "wiki/ops/nirvana-协议支付涅槃需求文档-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0084",
+          "path": "wiki/ops/nirvana-涅槃产品上架梳理-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0085",
+          "path": "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0086",
+          "path": "wiki/ops/openspec-explore-trigger-drift-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0087",
+          "path": "wiki/ops/product-alignment-drift-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0088",
+          "path": "wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0089",
+          "path": "wiki/ops/project-management-weekly-loop.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0090",
+          "path": "wiki/ops/public-report-skill-gate-wording-explore-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0091",
+          "path": "wiki/ops/readme-capability-map-boundary-drift-retro-2026-05-14.md",
+          "reason": "candidate has review risks: drift_risk",
+          "risk_flags": [
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0092",
+          "path": "wiki/ops/reference-driven-output-calibration-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0093",
+          "path": "wiki/ops/reminders.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0094",
+          "path": "wiki/ops/report-wiki-product-plan-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0095",
+          "path": "wiki/ops/root-capability-extraction-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0096",
+          "path": "wiki/ops/sample-codex-handoff.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0097",
+          "path": "wiki/ops/sample-disagreement-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0098",
+          "path": "wiki/ops/sample-explore-trace.md",
+          "reason": "candidate has review risks: agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0099",
+          "path": "wiki/ops/sample-focus-thread.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0100",
+          "path": "wiki/ops/sample-handoff-topic.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0101",
+          "path": "wiki/ops/sample-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0102",
+          "path": "wiki/ops/sample-reminder.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0103",
+          "path": "wiki/ops/scope-drift-retro.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0104",
+          "path": "wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0106",
+          "path": "wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0107",
+          "path": "wiki/ops/team-knowledge-base-overview-report-gate-review.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0108",
+          "path": "wiki/ops/visual-output-routing-drift-explore-2026-05-11.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0112",
+          "path": "wiki/ops/wiki-medical-case-file-drift-retro-2026-05-15.md",
+          "reason": "candidate has review risks: drift_risk",
+          "risk_flags": [
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0114",
+          "path": "wiki/ops/wiki-readable-views-validation-harness.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0115",
+          "path": "wiki/ops/wiki-runtime-command-surface-explore-2026-05-09.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0118",
+          "path": "wiki/ops/wiki-status-slash-command-reanchor.md",
+          "reason": "candidate has review risks: agent_uncertain, drift_risk",
+          "risk_flags": [
+            "agent_uncertain",
+            "drift_risk"
+          ]
+        },
+        {
+          "detail_ref": "detail-0119",
+          "path": "wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0120",
+          "path": "wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0121",
+          "path": "wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md",
+          "reason": "candidate has review risks: agent_uncertain, relation_weak_evidence",
+          "risk_flags": [
+            "agent_uncertain",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0122",
+          "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0123",
+          "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0124",
+          "path": "wiki/adr/0003-retros-stay-separate-from-adrs.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0125",
+          "path": "wiki/adr/0004-agent-self-evolution-over-skill-governance.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0126",
+          "path": "wiki/adr/0005-incremental-refresh-over-full-reprocessing.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0127",
+          "path": "wiki/adr/0006-formal-project-local-skills-over-drafts.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0128",
+          "path": "wiki/adr/0007-archive-review-before-archive.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0129",
+          "path": "wiki/adr/0008-human-governance-before-self-evolution-promotion.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0130",
+          "path": "wiki/adr/0009-explore-trace-before-openspec-explore.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0131",
+          "path": "wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0132",
+          "path": "wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0133",
+          "path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0134",
+          "path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0135",
+          "path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0136",
+          "path": "wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0137",
+          "path": "wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0138",
+          "path": "wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0139",
+          "path": "wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0140",
+          "path": "wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0141",
+          "path": "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0142",
+          "path": "wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0143",
+          "path": "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0144",
+          "path": "wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0145",
+          "path": "wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, drift_risk, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "drift_risk",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0146",
+          "path": "wiki/adr/0025-readable-views-before-further-runtime-expansion.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0147",
+          "path": "wiki/adr/0026-retire-draft-skills-as-runtime-surface.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0148",
+          "path": "wiki/adr/0027-repo-phase0-before-repo-agents-migration.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0149",
+          "path": "wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0150",
+          "path": "wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0151",
+          "path": "wiki/adr/0030-no-repo-local-commit-hook-default.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0152",
+          "path": "wiki/adr/0031-root-capability-extraction-boundary.md",
+          "reason": "candidate has review risks: adr_risk, agent_uncertain, openspec_required, relation_weak_evidence",
+          "risk_flags": [
+            "adr_risk",
+            "agent_uncertain",
+            "openspec_required",
+            "relation_weak_evidence"
+          ]
+        },
+        {
+          "detail_ref": "detail-0153",
+          "path": "wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md",
+          "reason": "candidate has review risks: adr_risk, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0154",
+          "path": "wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md",
+          "reason": "candidate has review risks: adr_risk, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "openspec_required"
+          ]
+        },
+        {
+          "detail_ref": "detail-0155",
+          "path": "wiki/adr/0034-readme-capability-map-is-project-description.md",
+          "reason": "candidate has review risks: adr_risk, openspec_required",
+          "risk_flags": [
+            "adr_risk",
+            "openspec_required"
+          ]
+        }
+      ],
+      "taxonomy_decision_items": []
+    },
+    "records": [
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-surgery-runs/2026-05-18-023550-surgery.md"
+    ],
+    "source": "confirmed_decisions",
+    "status": "planned",
+    "summary": {
+      "governance_change_count": 72,
+      "moc_projection_count": 0,
+      "relation_rebuild_count": 112,
+      "source_detail_count": 182,
+      "surgery_item_count": 131,
+      "taxonomy_decision_count": 0
+    }
   },
   "treatment": {
     "candidate_count": 10,
