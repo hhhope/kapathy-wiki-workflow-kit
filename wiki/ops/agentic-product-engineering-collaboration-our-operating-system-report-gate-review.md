@@ -18,7 +18,7 @@ updated: 2026-05-12
 
 - Audience: internal product, engineering, QA, project-management, and management stakeholders.
 - Reader promise: explain what we should do after the company-playbook and newspaper H5 conclusions, using our own repository and ADR/log evidence, while stating what a non-internet-giant team should not do, where each step of the workflow comes from, and how our roles change inside that workflow.
-- Output shape: long-form H5 article with restrained newspaper/report layout, data strip, generated image-model one-page infographic, workflow provenance section, explicit do-not/do sections, priority execution checklist, software-engineering workflow reshape, role responsibility map, mode-change evidence rows, inline failure evidence, writing workflow, and a short role-specific pilot plan.
+- Output shape: long-form H5 article with restrained newspaper/report layout, data strip, generated image-model one-page infographic, workflow provenance section, explicit do-not/do sections, Li Xiang four-layer case matrix, technical roadmap, priority execution checklist, software-engineering workflow reshape, role responsibility map, mode-change evidence rows, inline failure evidence, writing workflow, and a short role-specific pilot plan.
 - Non-goals: not a dashboard, not a card wall, not a table-grid report, not a tool instruction page, not a generic AI trend article.
 
 ## Reference Structure Map
@@ -101,11 +101,17 @@ Visual structure correction on 2026-05-18:
 - User feedback: the role / goal / action / result text still looked like stacked paragraphs and was visually hard to read.
 - Response: section `05A` now uses a `case-matrix` layout: rows are the four layers, and columns are role, goal, action, and result. This removes the vertical paragraph stack and makes the case structure visually match the argument structure.
 
+Full-article roadmap correction on 2026-05-18:
+
+- User feedback: the four-layer correction should spread across the whole article, and the article needs a technical roadmap.
+- Response: added section `05B · 技术路线图`, translating the four cases into four build layers: work-object layer, Agent orchestration layer, evidence reaction chain, and memory/knowledge layer. The later sections now refer back to this roadmap when describing the minimum viable direction, the nine-step workflow, engineering reshaping, role ownership, the 30-day pilot, and the final judgment.
+
 Verification performed for this text-only update:
 
 - WeChat body fetched with `.codex/skills/weixin-reader/scripts/fetch_weixin.py`.
 - HTML syntax check: `python3 -m html.parser wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html`.
 - Text consistency check searched for old `8 步`, `8 状态`, and `7 件事` leftovers after adding the new step.
+- Technical roadmap screenshots: `/tmp/our-operating-system-technical-roadmap.png` and `/tmp/our-operating-system-technical-roadmap-mobile-long.png`.
 - Frontmatter precheck was run for the new source note. The repo-wide gate still reports legacy blockers; the target entry list has no target-specific drift entry.
 
 Boundary:

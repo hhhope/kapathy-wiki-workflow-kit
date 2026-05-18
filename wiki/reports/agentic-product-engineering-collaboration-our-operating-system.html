@@ -523,6 +523,95 @@
       line-height: 1.56;
     }
 
+    .tech-roadmap {
+      margin-top: 34px;
+      border-top: 2px solid var(--ink);
+      border-left: 1px solid var(--line);
+    }
+
+    .roadmap-row {
+      display: grid;
+      grid-template-columns: 190px repeat(3, minmax(0, 1fr));
+      border-bottom: 1px solid var(--line);
+      background: #fffdf8;
+    }
+
+    .roadmap-stage,
+    .roadmap-cell {
+      padding: 18px 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .roadmap-stage {
+      background: #f7efe1;
+    }
+
+    .roadmap-stage span {
+      display: block;
+      color: var(--accent-2);
+      font-size: 0.76rem;
+      font-weight: 900;
+    }
+
+    .roadmap-stage strong {
+      display: block;
+      margin-top: 7px;
+      color: var(--accent);
+      font-size: 1.05rem;
+      line-height: 1.3;
+    }
+
+    .roadmap-stage em {
+      display: block;
+      margin-top: 8px;
+      color: #675847;
+      font-size: 0.82rem;
+      font-style: normal;
+      line-height: 1.4;
+    }
+
+    .roadmap-cell b {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--accent-2);
+      font-size: 0.78rem;
+    }
+
+    .roadmap-cell p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.58;
+    }
+
+    .roadmap-axis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 22px;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      background: #fbf5e8;
+    }
+
+    .roadmap-axis div {
+      padding: 14px 16px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .roadmap-axis strong {
+      display: block;
+      color: var(--accent);
+      line-height: 1.35;
+    }
+
+    .roadmap-axis span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.48;
+    }
+
     .pilot {
       margin-top: 32px;
       display: grid;
@@ -630,6 +719,21 @@
         font-weight: 900;
       }
 
+      .roadmap-row,
+      .roadmap-axis {
+        grid-template-columns: 1fr;
+      }
+
+      .roadmap-stage,
+      .roadmap-cell,
+      .roadmap-axis div {
+        border-right: 0;
+      }
+
+      .roadmap-cell {
+        border-top: 1px solid var(--line);
+      }
+
       header {
         min-height: 88vh;
       }
@@ -703,7 +807,7 @@
           我们自己的现场更直接。业务意图进入仓库后，会被翻译成 spec、任务、代码、测试、报告和 H5。真正的风险也在这里发生：意图被翻译错、验证只证明了中间层、页面看起来有 DOM 但用户看不到内容、数据库字段在 mock 中存在但真实库没有。AI 让交付变快，也让错误方向的返工变快。
         </p>
         <p>
-          李想和罗永浩这次对话给了一个更贴近经营现场的校准：泛化 AI 可以像更强的搜索和问答，但 Agent 要产生价值，必须进入真实生产环境，有任务、有数据、有反馈、有链路结果。没有这个环境，个人玩得再热闹也很快失去反馈；有这个环境，专业的人会把原来别扭的业务流程重新做一遍。
+          李想和罗永浩这次对话给了一个更贴近经营现场的校准：泛化 AI 可以像更强的搜索和问答，但 Agent 要产生价值，必须进入真实生产环境，有任务、有数据、有反馈、有链路结果。没有这个环境，个人玩得再热闹也很快失去反馈；有这个环境，专业的人会把原来别扭的业务流程重新做一遍。这也决定了本文后面的技术路线：先把工作对象做成原型，再让 Agent 生成和比较方案，再压短从意图到证据的反应链，最后把记录、知识检索和个性化分层。
         </p>
         <div class="pullquote">
           我们不是在学习一个工具，而是在决定哪些工作可以交给系统执行，哪些判断必须由人负责。
@@ -985,11 +1089,117 @@
       </div>
     </section>
 
+    <section class="section" id="technical-roadmap">
+      <p class="section-label">05B · 技术路线图</p>
+      <h2>不是先搭平台，而是分四层把产研反应链做出来</h2>
+      <p class="reading">
+        技术路线不能写成“接入大模型、接入知识库、接入工作流”三件套。那样会重新回到工具堆叠。更合理的路线，是沿着四个层次建设：先有可跑的工作对象，再有可比较的方案，再有可审查的执行和证据，最后才有记录、检索和个性化。
+      </p>
+      <div class="tech-roadmap" aria-label="AI-assisted 产研作业系统技术路线图">
+        <article class="roadmap-row">
+          <div class="roadmap-stage">
+            <span>Layer 1</span>
+            <strong>工作对象层</strong>
+            <em>对应 Cowork Demo</em>
+          </div>
+          <div class="roadmap-cell">
+            <b>先建设</b>
+            <p>意图包、方案包、Spec / ADR、Review Packet 的结构化模板，让研究判断和业务需求先变成可试对象。</p>
+          </div>
+          <div class="roadmap-cell">
+            <b>接入数据</b>
+            <p>需求原话、会议纪要、看板指标、已有日志、测试结果、H5 / 报告 gate review。</p>
+          </div>
+          <div class="roadmap-cell">
+            <b>完成证据</b>
+            <p>一个真实场景能从用户原话进入 Demo / 样例，再被 HR、数仓、研发或测试讨论真实接入边界。</p>
+          </div>
+        </article>
+
+        <article class="roadmap-row">
+          <div class="roadmap-stage">
+            <span>Layer 2</span>
+            <strong>Agent 编排层</strong>
+            <em>对应多方案流程</em>
+          </div>
+          <div class="roadmap-cell">
+            <b>先建设</b>
+            <p>分析、反向问题、多方案生成、方案打分、风险暴露、人工选择、执行包生成的固定流程。</p>
+          </div>
+          <div class="roadmap-cell">
+            <b>接入数据</b>
+            <p>历史方案、ADR、失败案例、性能约束、权限边界、成本估算和未决问题。</p>
+          </div>
+          <div class="roadmap-cell">
+            <b>完成证据</b>
+            <p>每个进入实现的需求都有至少两条可比较路径，专业 owner 明确选择、合并或打回，而不是默认执行第一稿。</p>
+          </div>
+        </article>
+
+        <article class="roadmap-row">
+          <div class="roadmap-stage">
+            <span>Layer 3</span>
+            <strong>证据反应链</strong>
+            <em>对应底盘智能</em>
+          </div>
+          <div class="roadmap-cell">
+            <b>先建设</b>
+            <p>从 Spec 到 diff、测试、真实 API、真实 DB、浏览器截图、视觉验收、性能耗时、风险结论的证据链。</p>
+          </div>
+          <div class="roadmap-cell">
+            <b>接入数据</b>
+            <p>CI、测试日志、运行库检查、接口返回、截图、console、性能计时、项目状态。</p>
+          </div>
+          <div class="roadmap-cell">
+            <b>完成证据</b>
+            <p>从用户意图到 review packet 的周期变短；打回时能定位卡在意图、方案、实现、验证还是判断。</p>
+          </div>
+        </article>
+
+        <article class="roadmap-row">
+          <div class="roadmap-stage">
+            <span>Layer 4</span>
+            <strong>记忆与知识层</strong>
+            <em>对应车内 Agent 架构</em>
+          </div>
+          <div class="roadmap-cell">
+            <b>先建设</b>
+            <p>把记录、知识图谱 / RAG、稳定偏好、团队规则、个性化指令分开，不把所有历史都塞进上下文。</p>
+          </div>
+          <div class="roadmap-cell">
+            <b>接入数据</b>
+            <p>ADR、ops、spec、skill、事故复盘、用户偏好、团队约束、业务术语和可复用样例。</p>
+          </div>
+          <div class="roadmap-cell">
+            <b>完成证据</b>
+            <p>下一次 Agent 能自动读到相关边界和失败教训；无关历史不会污染当前任务；偏好能被显式修改。</p>
+          </div>
+        </article>
+      </div>
+      <div class="roadmap-axis" aria-label="路线图阶段">
+        <div>
+          <strong>30 天：跑通一个原型链路</strong>
+          <span>只选一个高频场景，先验证意图包、多方案、执行包和证据矩阵。</span>
+        </div>
+        <div>
+          <strong>60 天：固化反应链</strong>
+          <span>把 review packet、真实环境验证和失败写回变成默认动作。</span>
+        </div>
+        <div>
+          <strong>90 天：建设记忆层</strong>
+          <span>把 ADR、ops、skill、RAG 和个性化边界接起来，减少重复踩坑。</span>
+        </div>
+      </div>
+      <div class="pullquote">
+        技术路线图的核心不是“更多 Agent”，而是让 Agent 工作在明确对象、明确路由、明确证据和明确记忆边界里。
+      </div>
+    </section>
+
     <section class="section">
       <p class="section-label">06 · 我们能做什么</p>
       <h2>最小可行方向：AI-assisted 产研作业系统</h2>
       <p class="reading">
-        这不是平台战略，是日常工作方式升级。我们已经有真实业务系统、真实看板、真实 DB、真实会议、真实需求、真实事故日志。AI 最应该进入的地方，是那些高频、重复、容易漂移、又必须留下证据的协作动作。
+        这不是平台战略，是日常工作方式升级。我们已经有真实业务系统、真实看板、真实 DB、真实会议、真实需求、真实事故日志。AI 最应该进入的地方，是那些高频、重复、容易漂移、又必须留下证据的协作动作。对应技术路线，先不要做大而全平台，而是把一个场景的工作对象、方案编排、证据反应链和记忆写回跑通。
       </p>
       <div class="role-list">
         <div class="role-row">
@@ -1019,7 +1229,7 @@
       <p class="section-label">07 · 模式变化</p>
       <h2>重点清单：重塑软件工程工作方式，不是加一个 AI 工具</h2>
       <p class="reading">
-        接下来要做的不是“推广 AI 使用”，而是改造软件工程的工作对象。以前的主线是需求、开发、测试、上线；新的主线应该是意图、spec、Agent 执行、证据包、人类判断、失败写回。每个环节都有固定产物，才不会靠口头同步和临场记忆维持质量。
+        接下来要做的不是“推广 AI 使用”，而是改造软件工程的工作对象。以前的主线是需求、开发、测试、上线；新的主线应该是意图、方案、spec、Agent 执行、证据包、人类判断、失败写回。九步流程不是另一套管理表格，而是技术路线图的落地顺序：工作对象先定，Agent 再编排，证据链跟上，最后把失败写回记忆层。
       </p>
       <div class="phase-list">
         <div class="phase-row">
@@ -1092,7 +1302,7 @@
         </div>
         <div class="role-row">
           <strong>新模式</strong>
-          <p>需求一进入就被结构化成意图包和 spec；Agent 负责生成草稿、代码、测试、报告、截图和证据；人负责判断目标、边界、取舍、上线风险；系统负责留下可回放记录。</p>
+          <p>需求一进入就被结构化成意图包、方案包和 spec；Agent 负责生成多方案、代码、测试、报告、截图和证据；人负责判断目标、边界、取舍、上线风险；系统负责留下可回放记录、可检索知识和可修改偏好。</p>
         </div>
         <div class="role-row">
           <strong>变化一</strong>
@@ -1252,7 +1462,7 @@
         </article>
         <article class="company-item">
           <h3>李想访谈：垂直生产环境和专业 owner</h3>
-          <p>这次访谈补上一个经营视角：泛化问答只是入口，Agent 价值来自真实生产环境；专业人士用 AI 做可验证方案和 Demo，再由工程、测试和业务 owner 进入可规模化生产。</p>
+          <p>这次访谈补上一个经营视角：泛化问答只是入口，Agent 价值来自真实生产环境；专业人士用 AI 做可验证方案和 Demo，再由工程、测试和业务 owner 进入可规模化生产。它也把我们的路线拆清楚：原型、方案、反应链、分层架构。</p>
         </article>
       </div>
       <p class="source-note">
@@ -1264,7 +1474,7 @@
       <p class="section-label">13 · 角色变化</p>
       <h2>岗位怎么变：9 步流程里的 owner、产物和证据</h2>
       <p class="reading">
-        不是问“产品要不要写代码”，而是问每一步谁拥有产物、什么证据证明完成。Agent 可以执行很多动作，但 owner、边界和完成判断必须落到人和系统记录上。专业的人不是被 AI 替代，而是用 AI 把自己的判断变成更早可验证、更容易被工程化的产物。
+        不是问“产品要不要写代码”，而是问每一步谁拥有产物、什么证据证明完成。技术路线图不会自己运行，必须落到 owner、产物和证据上。Agent 可以执行很多动作，但 owner、边界和完成判断必须落到人和系统记录上。专业的人不是被 AI 替代，而是用 AI 把自己的判断变成更早可验证、更容易被工程化的产物。
       </p>
       <div class="phase-list">
         <div class="phase-row">
@@ -1404,7 +1614,7 @@
       <p class="section-label">15 · 下一步</p>
       <h2>先用一个真实链路做 30 天试点</h2>
       <p class="reading">
-        最合适的试点不是再写一套宏大制度，而是挑一个高频且容易暴露判断链的场景：看板指标异常解释链路。用户看到指标异常后，必须能下钻样本、理解原因、决定处理动作；Agent 负责整理证据包，人负责判断和取舍，失败写回规则与测试。
+        最合适的试点不是再写一套宏大制度，而是挑一个高频且容易暴露判断链的场景：看板指标异常解释链路。这个试点要同时验证技术路线图的四层：异常解释先做成可跑原型，处理路径先做多方案比较，真实 DB / API / 截图形成反应链，最后把失败样例、业务偏好和规则写回记忆层。
       </p>
       <div class="pilot">
         <div class="image-band">
@@ -1432,10 +1642,10 @@
         <p class="section-label">16 · 最终判断</p>
         <h2>目标人定，过程可委托，结果可审计</h2>
         <p class="lead">
-          产研工作方式的转变，不是把产品、研发、测试、项目管理都变成会提问的人，而是让每个角色都知道自己守哪一段责任链。人决定目标、边界和取舍；Agent 分析问题、生成多方案、放大专业判断、执行重复劳动、生成证据；系统留下可复盘、可回放、可改进的记录。
+          产研工作方式的转变，不是把产品、研发、测试、项目管理都变成会提问的人，而是让每个角色都知道自己守哪一段责任链。人决定目标、边界和取舍；Agent 分析问题、生成多方案、放大专业判断、执行重复劳动、生成证据；系统留下可复盘、可回放、可检索、可改进的记录。
         </p>
         <p>
-          这就是我们接下来应该做的事：从“AI 帮忙”切到“AI 协作作业系统”。每一次输出都要能回答 5W1H：为什么做、为谁做、做什么、不做什么、在哪里验证、怎么证明。SMART 可以作为检查表，但核心不是模型名称，而是把责任、证据和写回固定下来。
+          这就是我们接下来应该做的事：从“AI 帮忙”切到“AI 协作作业系统”。技术上先做四层：工作对象层、Agent 编排层、证据反应链、记忆与知识层；管理上守住 5W1H：为什么做、为谁做、做什么、不做什么、在哪里验证、怎么证明。SMART 可以作为检查表，但核心不是模型名称，而是把责任、证据和写回固定下来。
         </p>
       </div>
     </section>
