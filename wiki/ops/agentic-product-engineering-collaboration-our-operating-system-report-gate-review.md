@@ -76,6 +76,21 @@ Follow-up correction on 2026-05-18:
 - User feedback: the previous draft was not clear enough and should use concrete cases, especially the research lead bringing several new graduates to build the Cowork Demo and then work out how to connect with HR / data teams.
 - Response: section `05A` now starts from four cases and then lifts them into the product-engineering operating-system theme.
 
+Voice correction on 2026-05-18:
+
+- User feedback: the `Case 1/2/3/4` wording still felt like oral notes and lacked reading appeal.
+- Response: section `05A` was rewritten into four structured observations: verifiable prototype,方案竞争, end-to-end reaction chain, and generic/deterministic layering. The case facts remain, but the reader first sees the mechanism and then the evidence.
+
+Second clarity correction on 2026-05-18:
+
+- User feedback: the revised section still mapped too quickly back to "what we should do" before explaining the cases themselves.
+- Response: section `05A` now first tells each case as a self-contained operating story: Cowork Demo from research to HR/data validation; Agent plan competition; chassis reaction chain; in-car Agent routing. Only after the cases does it return to the product-engineering collaboration analogy.
+
+Layering correction on 2026-05-18:
+
+- User feedback: the Agent方案层 and the four-layer structure were not explicit enough.
+- Response: section `05A` now names the four layers directly: verifiable prototype, Agent方案流程, reaction chain, and generic/deterministic architecture. The second layer explicitly states `分析 -> 多方案 -> 博弈/打分 -> 优化 -> 人选择 -> 执行`.
+
 Verification performed for this text-only update:
 
 - WeChat body fetched with `.codex/skills/weixin-reader/scripts/fetch_weixin.py`.
