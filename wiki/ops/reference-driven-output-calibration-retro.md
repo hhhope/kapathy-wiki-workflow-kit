@@ -5,7 +5,9 @@ canonical_object: reference-driven-output-calibration
 artifact_type: retro
 language: zh-CN
 audience: self
-domain: personal-ops
+domain: public-report-output
+layer: ops
+ops_area: report-quality
 status: active
 updated_at: 2026-05-04
 ai_generated: true

@@ -47,6 +47,8 @@
 - [x] 25. Apply approved batch 14c to remap clean completion/reanchor/root
   governance ops pages from forbidden `personal-ops` to repo wiki governance
   fields.
-- [ ] 26. Get approval for the next classification batch before applying more
+- [x] 26. Apply approved batch 14d to remap clean agent-harness learning and
+  public-report output calibration ops pages from forbidden `personal-ops`.
+- [ ] 27. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 27. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 28. Add final evaluation evidence and run OpenSpec validation.
