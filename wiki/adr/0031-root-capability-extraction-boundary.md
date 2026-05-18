@@ -1,4 +1,6 @@
 ---
+layer: adr
+domain: none
 canonical_object: root-capability-extraction
 artifact_type: adr
 formalizes:

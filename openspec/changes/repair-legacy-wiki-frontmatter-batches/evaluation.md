@@ -195,3 +195,46 @@ Residual boundary:
 - Batch 3 reduced blockers by 46.
 - The whole-wiki frontmatter gate remains blocked.
 - Medical recovery/archive is still not clean.
+
+## Batch 4 Evidence
+
+Batch 4 target set:
+
+- `wiki/adr/0031-root-capability-extraction-boundary.md`
+- `wiki/adr/index.md`
+
+Before target counts:
+
+- ADR 0031: `before.entry_count: 4`
+- ADR index: `before.entry_count: 6`
+
+Approved deterministic fields:
+
+- ADR 0031: add only `layer: adr` and `domain: none`, preserving existing
+  `canonical_object`, `artifact_type`, and relation fields.
+- ADR index: add `layer: adr`, `domain: none`,
+  `canonical_object: wiki-adr-index`, and `artifact_type: index`.
+
+After target counts:
+
+- both batch 4 pages reported `after.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 5
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 742
+- `summary.error`: 742
+- top remaining samples have moved out of numbered ADR pages into mixed wiki
+  root, domain, example, and ops pages
+
+Residual boundary:
+
+- Batch 4 reduced blockers by 10.
+- The remaining work is no longer a pure ADR-number batch and needs layer-by-
+  layer review before broad apply.

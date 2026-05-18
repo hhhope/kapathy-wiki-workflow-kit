@@ -1,3 +1,10 @@
+---
+layer: adr
+domain: none
+canonical_object: wiki-adr-index
+artifact_type: index
+---
+
 # ADR Index
 
 这层记录项目级稳定决策，不记录一次性任务过程，也不记录事件日志。

@@ -12,8 +12,9 @@
   preserve existing relation fields on pages that already had them.
 - [x] 7. Review and apply batch 3 to `wiki/adr/0021` through `wiki/adr/0030`;
   preserve existing relation fields on partial-frontmatter pages.
-- [ ] 8. Review the next planner batch and decide whether it is deterministic,
+- [x] 8. Review and apply batch 4 to `wiki/adr/0031` and `wiki/adr/index.md`.
+- [ ] 9. Review the next planner batch and decide whether it is deterministic,
   needs manual approval, or should split into a follow-up change.
-- [ ] 9. Re-run medical recovery/status only after verified frontmatter batches
+- [ ] 10. Re-run medical recovery/status only after verified frontmatter batches
   change the blocker state.
-- [ ] 10. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 11. Add final evaluation evidence and run OpenSpec validation.
