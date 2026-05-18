@@ -1,4 +1,6 @@
 ---
+layer: adr
+domain: none
 canonical_object: live-conversation-reanchor-gate
 artifact_type: adr
 formalizes:

@@ -1,3 +1,10 @@
+---
+layer: adr
+domain: none
+canonical_object: root-agents-archive-review-generic-with-repo-detail
+artifact_type: adr
+---
+
 # ADR-0028 Root AGENTS Archive-Review Semantics Stay as Generic Top-Level Rules With Repo-Owned Detail
 
 ## Status

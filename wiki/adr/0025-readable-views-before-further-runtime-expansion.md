@@ -1,4 +1,6 @@
 ---
+layer: adr
+domain: none
 canonical_object: wiki-readable-views
 artifact_type: adr
 formalizes:

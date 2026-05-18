@@ -1,3 +1,10 @@
+---
+layer: adr
+domain: none
+canonical_object: retire-draft-skills-as-runtime-surface
+artifact_type: adr
+---
+
 # ADR-0026 Retire Draft Skills As Runtime Surface
 
 - Status: accepted

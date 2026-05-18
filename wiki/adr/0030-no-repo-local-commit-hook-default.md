@@ -1,4 +1,6 @@
 ---
+layer: adr
+domain: none
 canonical_object: no-repo-local-commit-hook-default
 artifact_type: adr
 formalizes:

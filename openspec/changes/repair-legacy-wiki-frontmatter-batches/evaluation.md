@@ -149,3 +149,49 @@ The repair script currently repeats whole-wiki frontmatter scans during target
 evidence collection. Batch 1 and batch 2 completed, but each batch took several
 minutes. A later optimization may cache the full report or add a faster
 target-only path; this batch did not change checker or repair tooling.
+
+## Batch 3 Evidence
+
+Batch 3 target set:
+
+- `wiki/adr/0021` through `wiki/adr/0030`
+
+Before target counts:
+
+- ADR 0021-0025: `before.entry_count: 4`
+- ADR 0026: `before.entry_count: 6`
+- ADR 0027: `before.entry_count: 4`
+- ADR 0028-0029: `before.entry_count: 6`
+- ADR 0030: `before.entry_count: 4`
+
+Approved deterministic fields:
+
+- ADR pages with existing partial frontmatter: add only `layer: adr` and
+  `domain: none`, preserving existing `canonical_object`, `artifact_type`, and
+  relation fields.
+- ADR pages without frontmatter: add `layer: adr`, `domain: none`,
+  `artifact_type: adr`, and `canonical_object` from filename stem after the ADR
+  number prefix.
+
+After target counts:
+
+- every batch 3 page reported `after.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 5
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 752
+- `summary.error`: 752
+- top remaining ADR sample starts at `wiki/adr/0031`
+
+Residual boundary:
+
+- Batch 3 reduced blockers by 46.
+- The whole-wiki frontmatter gate remains blocked.
+- Medical recovery/archive is still not clean.

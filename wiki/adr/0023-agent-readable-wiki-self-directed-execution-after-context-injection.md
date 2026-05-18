@@ -1,4 +1,6 @@
 ---
+layer: adr
+domain: none
 canonical_object: wiki-self-directed-execution
 artifact_type: adr
 formalizes:

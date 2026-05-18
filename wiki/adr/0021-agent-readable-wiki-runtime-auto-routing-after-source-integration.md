@@ -1,4 +1,6 @@
 ---
+layer: adr
+domain: none
 canonical_object: wiki-runtime-auto-routing
 artifact_type: adr
 formalizes:

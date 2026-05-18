@@ -1,3 +1,10 @@
+---
+layer: adr
+domain: none
+canonical_object: intake-retractions-legitimate-with-reopen-triggers
+artifact_type: adr
+---
+
 # ADR-0029 Intake Retractions Are Legitimate With Explicit Reopen Triggers
 
 ## Status

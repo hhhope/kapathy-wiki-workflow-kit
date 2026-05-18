@@ -1,4 +1,6 @@
 ---
+layer: adr
+domain: none
 canonical_object: repo-agents-governance-phase0
 artifact_type: adr
 formalizes:

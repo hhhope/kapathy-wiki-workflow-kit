@@ -10,8 +10,10 @@
 - [x] 5. Record whole-wiki residual blocker count after batch 1.
 - [x] 6. Review and apply batch 2 to `wiki/adr/0011` through `wiki/adr/0020`;
   preserve existing relation fields on pages that already had them.
-- [ ] 7. Review the next planner batch and decide whether it is deterministic,
+- [x] 7. Review and apply batch 3 to `wiki/adr/0021` through `wiki/adr/0030`;
+  preserve existing relation fields on partial-frontmatter pages.
+- [ ] 8. Review the next planner batch and decide whether it is deterministic,
   needs manual approval, or should split into a follow-up change.
-- [ ] 8. Re-run medical recovery/status only after verified frontmatter batches
+- [ ] 9. Re-run medical recovery/status only after verified frontmatter batches
   change the blocker state.
-- [ ] 9. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 10. Add final evaluation evidence and run OpenSpec validation.
