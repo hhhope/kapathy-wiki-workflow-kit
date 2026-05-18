@@ -1,3 +1,8 @@
+---
+layer: domains
+domain: none
+---
+
 # Domains
 
 Domain pages capture durable business themes and reusable context.

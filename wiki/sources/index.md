@@ -1,3 +1,9 @@
+---
+layer: sources
+domain: none
+source_type: index
+---
+
 # Sources
 
 Source pages represent upstream evidence such as Feishu documents, meeting notes, and attachments.

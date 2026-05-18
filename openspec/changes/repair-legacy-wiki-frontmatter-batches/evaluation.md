@@ -455,3 +455,54 @@ Boundary:
 - `wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md`
   had pre-existing non-frontmatter table formatting changes. Only this
   batch's frontmatter hunk is task-related for the commit.
+
+## Batch 10 Evidence
+
+Approved batch:
+
+- Batch 10: Index Pages
+
+Applied convention:
+
+- Structural index pages use `domain: none`.
+- Index page `layer` follows the directory it indexes.
+- Root `wiki/index.md` uses `layer: status` as the wiki overview/status entry.
+- `wiki/sources/index.md` uses `source_type: index` to satisfy the source-page
+  strict gate without pretending to be upstream evidence.
+
+Target set:
+
+- `wiki/domains/index.md`
+- `wiki/examples/index.md`
+- `wiki/index.md`
+- `wiki/reports/index.md`
+- `wiki/sources/index.md`
+- `wiki/status/index.md`
+- `wiki/timeline/index.md`
+
+Before target counts:
+
+- six index pages had 2 errors: `domain` and `layer`
+- `wiki/sources/index.md` had 4 errors: `domain`, `layer`, and `source_type`
+  including the source-page expected-layer check
+
+After target counts:
+
+- all 7 target pages reported `after.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 667
+- `summary.error`: 667
+
+Boundary:
+
+- No taxonomy config or checker logic was changed.
+- The `domain: none` convention was applied only to structural index pages.

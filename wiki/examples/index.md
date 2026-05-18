@@ -1,3 +1,8 @@
+---
+layer: examples
+domain: none
+---
+
 # Examples
 
 These example pages show the current validated task families supported by this kit.

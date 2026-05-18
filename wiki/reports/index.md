@@ -1,3 +1,8 @@
+---
+layer: reports
+domain: none
+---
+
 # Reports
 
 Report pages are audience-oriented outputs or draft workspaces built from sources and domain context.
