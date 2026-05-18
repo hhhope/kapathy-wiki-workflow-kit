@@ -79,4 +79,5 @@
   plan, and scorecard calibration ops pages.
 - [x] 41. Apply approved batch 14r to clean team overview, visual routing
   repair, and wiki command ops pages.
-- [ ] 42. Add final evaluation evidence and run OpenSpec validation.
+- [x] 42. Apply approved batch 14s to tracked wiki-doctor run record pages.
+- [ ] 43. Add final evaluation evidence and run OpenSpec validation.

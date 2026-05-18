@@ -317,6 +317,73 @@ Boundary:
 - No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
   lifecycle state were changed.
 
+## Batch 14s Evidence
+
+Approved batch:
+
+- Batch 14s: tracked wiki-doctor run record pages.
+
+Target set:
+
+- `wiki/ops/wiki-doctor-runs/2026-05-14-130526-review.md`
+- `wiki/ops/wiki-doctor-runs/2026-05-14-131652-review.md`
+- `wiki/ops/wiki-doctor-runs/2026-05-15-035845-review.md`
+- `wiki/ops/wiki-doctor-runs/2026-05-15-041628-review.md`
+- `wiki/ops/wiki-doctor-runs/2026-05-15-043329-review.md`
+- `wiki/ops/wiki-doctor-runs/2026-05-15-064214-review.md`
+- `wiki/ops/wiki-doctor-runs/2026-05-18-014824-review.md`
+- `wiki/ops/wiki-doctor-runs/2026-05-18-015919-review.md`
+
+Applied fields:
+
+- `layer: ops`
+- `domain: wiki`
+- `ops_area: wiki-runtime`
+- `canonical_object: wiki-doctor-review`
+- `artifact_type: review` or `diagnosis` based on the record title
+
+After target counts:
+
+- sampled target prechecks for the first, one diagnosis, and last page reported
+  `target.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 124
+- `summary.error`: 124
+- top remaining samples include `wiki/mnt/...`, `wiki/ops/index.md`,
+  `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`,
+  `wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md`,
+  and `wiki/ops/wiki-recovery-runs/...`
+
+OpenSpec validation:
+
+```bash
+openspec validate repair-legacy-wiki-frontmatter-batches --strict
+```
+
+Result:
+
+- `Change 'repair-legacy-wiki-frontmatter-batches' is valid`
+- PostHog DNS flush failed after validation; this did not change the command's
+  successful validation result.
+
+Boundary:
+
+- No relation fields were added.
+- Page bodies were not changed.
+- The existing detailed doctor review page already had compliant frontmatter
+  and was not changed.
+- No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
+  lifecycle state were changed.
+
 ## Batch 1 Baseline
 
 Planner command:
