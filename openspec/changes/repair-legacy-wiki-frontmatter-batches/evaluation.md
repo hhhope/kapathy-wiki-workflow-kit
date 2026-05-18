@@ -384,6 +384,83 @@ Boundary:
 - No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
   lifecycle state were changed.
 
+## Batch 14t Evidence
+
+Approved batch:
+
+- Batch 14t: tracked recovery, review-decision, treatment, and surgery run
+  record pages.
+
+Target set:
+
+- `wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md`
+- `wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md`
+- `wiki/ops/wiki-review-decisions/2026-05-15-013923-review-decisions.md`
+- `wiki/ops/wiki-review-decisions/2026-05-15-040152-review-decisions.md`
+- `wiki/ops/wiki-review-decisions/2026-05-15-042538-review-decisions.md`
+- `wiki/ops/wiki-review-decisions/2026-05-15-043333-review-decisions.md`
+- `wiki/ops/wiki-review-decisions/2026-05-15-062939-review-decisions.md`
+- `wiki/ops/wiki-review-decisions/2026-05-15-064420-review-decisions.md`
+- `wiki/ops/wiki-review-decisions/2026-05-18-014829-review-decisions.md`
+- `wiki/ops/wiki-review-decisions/2026-05-18-015923-review-decisions.md`
+- `wiki/ops/wiki-surgery-runs/2026-05-18-023550-surgery.md`
+- `wiki/ops/wiki-treatment-runs/2026-05-15-041020-treatment.md`
+- `wiki/ops/wiki-treatment-runs/2026-05-15-065102-treatment.md`
+- `wiki/ops/wiki-treatment-runs/2026-05-18-014811-treatment.md`
+- `wiki/ops/wiki-treatment-runs/2026-05-18-015905-treatment.md`
+
+Applied fields:
+
+- `layer: ops`
+- `domain: wiki`
+- `ops_area: wiki-runtime`
+- `canonical_object`: `wiki-recovery`, `wiki-review-decisions`,
+  `wiki-surgery`, or `wiki-treatment`
+- `artifact_type`: `recovery`, `review-decision`, `surgery-plan`, or
+  `treatment`
+
+After target counts:
+
+- sampled target prechecks for recovery, review-decision, treatment, and
+  surgery pages reported `target.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 34
+- `summary.error`: 34
+- top remaining samples include `wiki/mnt/...`, `wiki/ops/index.md`,
+  `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`,
+  `wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md`,
+  and `wiki/ops/wiki-surgery-runs/2026-05-15-044434-surgery.md`
+
+OpenSpec validation:
+
+```bash
+openspec validate repair-legacy-wiki-frontmatter-batches --strict
+```
+
+Result:
+
+- `Change 'repair-legacy-wiki-frontmatter-batches' is valid`
+- PostHog DNS flush failed after validation; this did not change the command's
+  successful validation result.
+
+Boundary:
+
+- No relation fields were added.
+- Page bodies were not changed.
+- The untracked `wiki/ops/wiki-surgery-runs/2026-05-15-044434-surgery.md`
+  was not changed or staged in this batch.
+- No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
+  lifecycle state were changed.
+
 ## Batch 1 Baseline
 
 Planner command:

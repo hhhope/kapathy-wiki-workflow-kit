@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
+canonical_object: wiki-review-decisions
+artifact_type: review-decision
+---
+
 # wiki-review-decisions Draft Record
 
 ## Source
