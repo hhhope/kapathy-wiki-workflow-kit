@@ -22,6 +22,8 @@
   `wiki/sources`, and `wiki/timeline` pages with existing domain values.
 - [x] 12. Re-run medical recovery/status only after verified frontmatter batches
   change the blocker state.
-- [ ] 13. Split the remaining mixed root/index/ops classification blockers into
+- [x] 13. Split the remaining mixed root/index/ops classification blockers into
   an approved follow-up plan before applying more fields.
-- [ ] 14. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 14. Get approval for the next classification batch before applying more
+  frontmatter fields.
+- [ ] 15. Add final evaluation evidence and run OpenSpec validation.

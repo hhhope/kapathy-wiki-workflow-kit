@@ -384,3 +384,35 @@ Residual boundary:
 - More automatic layer-only repair would now be unsafe.
 - Next work must split root/index pages, mirrored `wiki/mnt` paths, and ops
   pages into an approved classification plan before applying more fields.
+
+## Classification Plan Evidence
+
+Added:
+
+- `classification-plan.md`
+
+Planner command:
+
+```bash
+python3 -c '<group remaining frontmatter errors by route group>'
+```
+
+Result:
+
+- blocked page count: 165
+- `SOURCE_DOMAIN_LAYER`: 5 pages
+- `SOURCE_UNCLASSIFIED_FLAG`: 3 pages
+- `REPORT_DOMAIN_LAYER`: 1 page
+- `INDEX_PAGE_DECISION`: 7 pages
+- `ROOT_PUBLIC_PAGE_DECISION`: 15 pages
+- `TEMPLATE_DECISION`: 1 page
+- `MNT_MIRROR_REVIEW`: 2 pages
+- `OPS_AREA_DOMAIN_ONLY`: 44 pages
+- `OPS_FORBIDDEN_DOMAIN_REMAP`: 37 pages
+- `OPS_IDENTITY_REBUILD`: 50 pages
+
+Boundary:
+
+- No wiki page frontmatter was changed in this step.
+- The next field-writing step requires approval for a named batch from
+  `classification-plan.md`.
