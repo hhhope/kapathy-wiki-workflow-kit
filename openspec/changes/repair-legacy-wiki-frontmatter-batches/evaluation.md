@@ -626,6 +626,63 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14j Evidence
+
+Approved batch:
+
+- Batch 14j: clean unclassified meeting/intake ops pages requiring explicit
+  `classification_needed: true`
+
+Applied fields:
+
+- `domain: unclassified` was preserved on all target pages.
+- `classification_needed: true`
+- `layer: ops`
+- `ops_area: workflow-trace`
+- Missing `canonical_object` and `artifact_type` values were filled from
+  existing title/source path and prior doctor-run candidate frontmatter.
+
+Target set:
+
+- `wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md`
+- `wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md`
+- `wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md`
+- `wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md`
+
+Before target counts:
+
+- 2 pages had 6 errors covering missing `layer`, missing `ops_area`, missing
+  `canonical_object`, missing `artifact_type`, unexpected `layer`, and
+  `unclassified_without_flag`
+- 1 intake page had the same 6-error shape
+- 1 reminder page had 4 errors because it already had `canonical_object` and
+  `artifact_type`
+
+After target counts:
+
+- all 4 target precheck runs reported `target.entry_count: 0`; the precheck
+  commands still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 352
+- `summary.error`: 352
+
+Boundary:
+
+- The pages remained explicitly unclassified; no business domain was invented.
+- Relation candidates from the doctor run were not applied.
+- Existing body text, taxonomy config, checker logic, MOC, ADR, and OpenSpec
+  lifecycle state were not changed.
+
 ## Batch 14i Evidence
 
 Approved batch:

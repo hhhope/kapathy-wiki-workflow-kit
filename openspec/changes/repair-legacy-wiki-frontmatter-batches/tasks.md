@@ -59,6 +59,8 @@
   remap them from forbidden `personal-ops`.
 - [x] 31. Apply approved batch 14i to rebuild clean learning/runtime trace ops
   identities and remap them from forbidden `personal-ops`.
-- [ ] 32. Get approval for the next classification batch before applying more
+- [x] 32. Apply approved batch 14j to mark clean unclassified meeting/intake
+  ops pages with explicit classification-needed fields.
+- [ ] 33. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 33. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 34. Add final evaluation evidence and run OpenSpec validation.
