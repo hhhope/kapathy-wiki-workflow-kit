@@ -540,8 +540,8 @@ created_at: 2026-05-15
 ### OpenSpec Archive
 - `openspec/changes/archive/2026-05-18-classify-dialogue-agent-drift-traces/`
 - `openspec/specs/dialogue-agent-drift-trace-cleanup/spec.md`
-### OpenSpec Active Change
-- `openspec/changes/add-completion-bridge-gate/`
+- `openspec/changes/archive/2026-05-18-add-completion-bridge-gate/`
+- `openspec/specs/completion-bridge-gate/spec.md`
 
 ## Manual Surgery Triage Summary
 
@@ -586,10 +586,12 @@ lifecycle changes.
   `detail-0095`, `detail-0100`, `detail-0106`.
 - `defer to cleanup`: `detail-0057`, `detail-0066`, `detail-0071`,
   `detail-0081`, `detail-0097`, `detail-0108`.
-- `OpenSpec candidate only`: `detail-0055`, `detail-0087`.
+- `OpenSpec candidate only`: `detail-0087`.
 - `detail-0055` follow-up:
-  `openspec/changes/add-completion-bridge-gate/` added structural replay proof
-  for completion reports that must bridge back to the user's original question.
+  archived in `openspec/changes/archive/2026-05-18-add-completion-bridge-gate/`;
+  stable spec created at `openspec/specs/completion-bridge-gate/spec.md`.
+  It adds structural replay proof for completion reports that must bridge back
+  to the user's original question.
 - Cleanup correction:
   - `detail-0097` is a `dialogue-disagreement-example`, not a live incident.
   - `detail-0108` is an `agent-drift-explore-trace`, a real visual-output
