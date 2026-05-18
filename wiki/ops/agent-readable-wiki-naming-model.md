@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
+canonical_object: agent-readable-wiki-naming-model
+artifact_type: method
+---
+
 # Agent-Readable Wiki Naming Model
 
 这页定义当前仓库在演变型页面上的标题命名模型。

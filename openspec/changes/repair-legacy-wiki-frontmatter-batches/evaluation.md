@@ -626,6 +626,64 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14l Evidence
+
+Approved batch:
+
+- Batch 14l: clean wiki method ops pages with missing frontmatter and
+  doctor-run candidate frontmatter
+
+Applied fields:
+
+- `wiki/ops/agent-readable-wiki-frontmatter.md`
+  - `domain: wiki`
+  - `layer: ops`
+  - `ops_area: wiki-runtime`
+  - `canonical_object: agent-readable-wiki-frontmatter`
+  - `artifact_type: method`
+- `wiki/ops/agent-readable-wiki-naming-model.md`
+  - `domain: wiki`
+  - `layer: ops`
+  - `ops_area: wiki-runtime`
+  - `canonical_object: agent-readable-wiki-naming-model`
+  - `artifact_type: method`
+- `wiki/ops/codex-handoff-rules.md`
+  - `domain: wiki`
+  - `layer: ops`
+  - `ops_area: workflow-trace`
+  - `canonical_object: codex-handoff-rules`
+  - `artifact_type: method`
+
+Before target counts:
+
+- all 3 pages had 6 errors covering missing `layer`, missing `domain`, missing
+  `ops_area`, missing `canonical_object`, missing `artifact_type`, and
+  unexpected `layer`
+
+After target counts:
+
+- all 3 target precheck runs reported `target.entry_count: 0`; the precheck
+  commands still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 324
+- `summary.error`: 324
+
+Boundary:
+
+- Relation candidates from the doctor run were not applied.
+- Existing body text, taxonomy config, checker logic, MOC, ADR, and OpenSpec
+  lifecycle state were not changed.
+
 ## Batch 14k Evidence
 
 Approved batch:

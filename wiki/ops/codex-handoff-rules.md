@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: workflow-trace
+canonical_object: codex-handoff-rules
+artifact_type: method
+---
+
 # Codex Handoff 规则
 
 这页定义什么样的提醒可以升级为 Codex handoff，以及升级后应保留哪些上下文。

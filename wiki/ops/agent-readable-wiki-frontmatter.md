@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
+canonical_object: agent-readable-wiki-frontmatter
+artifact_type: method
+---
+
 # Agent-Readable Wiki Frontmatter
 
 这页定义当前仓库在演变型页面上的最小 frontmatter 与关系字段模型。

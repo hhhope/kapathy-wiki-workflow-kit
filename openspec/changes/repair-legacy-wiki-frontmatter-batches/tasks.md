@@ -63,6 +63,8 @@
   ops pages with explicit classification-needed fields.
 - [x] 33. Apply approved batch 14k to remap remaining forbidden-domain dirty
   ops pages by staging only frontmatter hunks.
-- [ ] 34. Get approval for the next classification batch before applying more
+- [x] 34. Apply approved batch 14l to add frontmatter to clean wiki method ops
+  pages.
+- [ ] 35. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 35. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 36. Add final evaluation evidence and run OpenSpec validation.
