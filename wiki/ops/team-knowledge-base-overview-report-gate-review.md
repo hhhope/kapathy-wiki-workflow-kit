@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: agent-harness
+ops_area: wiki-runtime
 canonical_object: account-knowledge-base
 artifact_type: report-gate-review
 title: account-knowledge-base / overview-report-gate-review

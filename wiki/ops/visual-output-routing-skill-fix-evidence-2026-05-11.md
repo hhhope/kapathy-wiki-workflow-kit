@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 title: visual-output-routing / skill-fix-evidence
 canonical_object: visual-output-routing
 artifact_type: skill_fix_evidence

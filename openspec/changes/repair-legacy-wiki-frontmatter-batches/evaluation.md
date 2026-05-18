@@ -253,6 +253,70 @@ Boundary:
 - No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
   lifecycle state were changed.
 
+## Batch 14r Evidence
+
+Approved batch:
+
+- Batch 14r: clean team overview, visual routing repair, and wiki command ops
+  pages.
+
+Target set:
+
+- `wiki/ops/team-knowledge-base-overview-report-gate-review.md`
+- `wiki/ops/visual-output-routing-fix-recheck-2026-05-11.md`
+- `wiki/ops/visual-output-routing-residual-fallback-repair-2026-05-11.md`
+- `wiki/ops/visual-output-routing-skill-fix-evidence-2026-05-11.md`
+- `wiki/ops/wiki-runtime-command-surface-explore-2026-05-09.md`
+- `wiki/ops/wiki-status-slash-command-reanchor.md`
+
+Applied fields:
+
+- `layer: ops`
+- `domain: agent-harness` for the team knowledge-base overview review
+- `domain: wiki` for visual-output-routing and wiki command pages
+- `ops_area`: `wiki-runtime` or `workflow-trace`
+- missing identity fields for wiki command pages
+
+After target counts:
+
+- all 6 target pages reported `target.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 172
+- `summary.error`: 172
+- top remaining samples include `wiki/mnt/...`, `wiki/ops/index.md`,
+  `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`,
+  `wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md`,
+  and `wiki/ops/wiki-doctor-runs/...`
+
+OpenSpec validation:
+
+```bash
+openspec validate repair-legacy-wiki-frontmatter-batches --strict
+```
+
+Result:
+
+- `Change 'repair-legacy-wiki-frontmatter-batches' is valid`
+- PostHog DNS flush failed after validation; this did not change the command's
+  successful validation result.
+
+Boundary:
+
+- No relation fields were added.
+- Existing relation fields were preserved.
+- Page bodies were not changed.
+- No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
+  lifecycle state were changed.
+
 ## Batch 1 Baseline
 
 Planner command:

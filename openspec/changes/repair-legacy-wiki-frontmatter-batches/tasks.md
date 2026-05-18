@@ -77,4 +77,6 @@
   explore ops pages.
 - [x] 40. Apply approved batch 14q to clean product/runtime drift, product
   plan, and scorecard calibration ops pages.
-- [ ] 41. Add final evaluation evidence and run OpenSpec validation.
+- [x] 41. Apply approved batch 14r to clean team overview, visual routing
+  repair, and wiki command ops pages.
+- [ ] 42. Add final evaluation evidence and run OpenSpec validation.

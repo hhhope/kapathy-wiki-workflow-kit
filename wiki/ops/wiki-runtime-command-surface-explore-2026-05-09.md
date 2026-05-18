@@ -1,4 +1,9 @@
 ---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
+canonical_object: wiki-runtime-command-surface
+artifact_type: explore
 title: Wiki Runtime Command Surface Explore
 type: ops
 status: draft

@@ -1,4 +1,9 @@
 ---
+layer: ops
+domain: wiki
+ops_area: workflow-trace
+canonical_object: wiki-status-slash-command
+artifact_type: reanchor
 title: Wiki Status Slash Command Reanchor
 type: ops
 status: draft

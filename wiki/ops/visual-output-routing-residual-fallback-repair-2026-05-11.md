@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 title: visual-output-routing / residual fallback repair
 canonical_object: visual-output-routing
 artifact_type: skill_fix_evidence
