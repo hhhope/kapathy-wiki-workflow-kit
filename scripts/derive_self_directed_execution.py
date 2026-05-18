@@ -10,6 +10,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTEXT_INJECTION_DERIVER = ROOT / "scripts" / "build_runtime_context_injection.py"
+GRAPH_EXTRACTOR = ROOT / "scripts" / "extract_wiki_graph.py"
+
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.wiki_moc_projection import build_moc_plan
+from scripts.wiki_content_enrichment import build_enrichment_preview
+from scripts.wiki_content_adjudication import build_adjudication_package
 
 
 def load_context_injection() -> dict:
@@ -88,6 +96,18 @@ def build_self_directed_execution(context_injection: dict) -> dict:
         blocked_entry(item)
         for item in context_injection.get("excluded_objects", [])
     ]
+    graph = json.loads(
+        subprocess.run(
+            [sys.executable, str(GRAPH_EXTRACTOR)],
+            check=True,
+            capture_output=True,
+            text=True,
+            cwd=ROOT,
+        ).stdout
+    )
+    moc_projection_preview = build_moc_plan(ROOT, graph)
+    enrichment_preview = build_enrichment_preview(ROOT)
+    adjudication_package = build_adjudication_package(ROOT)
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -115,10 +135,39 @@ def build_self_directed_execution(context_injection: dict) -> dict:
         "execute_now": execute_now,
         "defer_for_followup": defer_for_followup,
         "do_not_execute": do_not_execute,
+        "moc_projection_preview": {
+            "summary": moc_projection_preview["summary"],
+            "entries": [
+                {
+                    "action": entry["action"],
+                    "kind": entry["kind"],
+                    "key": entry["key"],
+                    "path": entry["path"],
+                    "link_count": entry["link_count"],
+                }
+                for entry in moc_projection_preview["entries"][:20]
+            ],
+            "execution_boundary": "preview_only",
+        },
+        "content_enrichment_preview": {
+            "summary": enrichment_preview["summary"],
+            "entries": enrichment_preview["entries"][:20],
+            "execution_boundary": "preview_only",
+        },
+        "content_adjudication_review_package": {
+            "summary": adjudication_package["summary"],
+            "eval_result": adjudication_package["eval_result"],
+            "review_focus_set": adjudication_package["review_focus_set"][:20],
+            "drift_trace_set": adjudication_package["drift_trace_set"][:20],
+            "execution_boundary": "review_only",
+        },
         "execution_notes": [
             "Version 1 derives bounded actions from injected context only.",
             "Execute-now actions come only from injected_first_pass context.",
             "Blocked objects remain outside first-pass execution.",
+            "MOC projection preview is inspect-only; use the explicit generator with --apply to write files.",
+            "Content enrichment preview is inspect-only; reviewed frontmatter edits are a separate write action.",
+            "Content adjudication review package is inspect-only; it does not decide or apply semantic truth.",
         ],
         "proof_boundary_notes": [
             "This output is bounded repository-local execution guidance only.",

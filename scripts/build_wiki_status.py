@@ -18,6 +18,9 @@ if str(ROOT) not in sys.path:
 from scripts.check_wiki_frontmatter import build_report as build_taxonomy_report
 from scripts.extract_wiki_graph import RELATION_FIELDS as GRAPH_RELATION_FIELDS
 from scripts.extract_wiki_graph import normalize_relation_value, parse_frontmatter
+from scripts.wiki_content_adjudication import build_adjudication_health
+from scripts.wiki_content_enrichment import build_enrichment_health
+from scripts.wiki_moc_projection import build_moc_health
 from scripts.wiki_product_status import build_product_status, relation_fields_from_meta
 from scripts.wiki_status_render import render_status_markdown
 
@@ -89,6 +92,7 @@ def _collect_wiki_pages(root: Path) -> tuple[list[dict[str, Any]], list[dict[str
             "sha256": _sha256(path),
             "bytes": path.stat().st_size,
             "title": meta.get("title"),
+            "domain": meta.get("domain"),
             "canonical_object": meta.get("canonical_object"),
             "artifact_type": meta.get("artifact_type"),
             "status": meta.get("status"),
@@ -239,6 +243,44 @@ def _collect_graph_parse_health(root: Path) -> dict[str, Any]:
     }
 
 
+def _graph_from_pages(pages: list[dict[str, Any]]) -> dict[str, Any]:
+    nodes = []
+    edges = []
+    for page in pages:
+        canonical_object = page.get("canonical_object")
+        artifact_type = page.get("artifact_type")
+        if not canonical_object or not artifact_type:
+            continue
+        nodes.append(
+            {
+                "page_path": page["path"],
+                "canonical_object": canonical_object,
+                "artifact_type": artifact_type,
+                "source_layer": page["section"],
+                "domain": page.get("domain"),
+            }
+        )
+        for relation_type in GRAPH_RELATION_FIELDS:
+            for target in normalize_relation_value(page.get(relation_type)):
+                edges.append(
+                    {
+                        "source_page_path": page["path"],
+                        "relation_type": relation_type,
+                        "target": target,
+                    }
+                )
+    return {
+        "summary": {
+            "node_count": len(nodes),
+            "edge_count": len(edges),
+            "warning_count": 0,
+        },
+        "nodes": nodes,
+        "edges": edges,
+        "warnings": [],
+    }
+
+
 def build_manifest(root: Path | str) -> dict[str, Any]:
     root_path = Path(root).resolve()
     pages, source_records = _collect_wiki_pages(root_path)
@@ -255,6 +297,9 @@ def build_manifest(root: Path | str) -> dict[str, Any]:
     product_status = build_product_status(pages, inbox_files, changes)
     domain_taxonomy_health = _collect_domain_taxonomy_health(root_path)
     graph_parse_health = _collect_graph_parse_health(root_path)
+    content_enrichment_health = build_enrichment_health(root_path)
+    content_adjudication_health = build_adjudication_health(root_path)
+    moc_projection_health = build_moc_health(root_path, _graph_from_pages(pages))
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -276,6 +321,9 @@ def build_manifest(root: Path | str) -> dict[str, Any]:
         "product_status": product_status,
         "domain_taxonomy_health": domain_taxonomy_health,
         "graph_parse_health": graph_parse_health,
+        "content_enrichment_health": content_enrichment_health,
+        "content_adjudication_health": content_adjudication_health,
+        "moc_projection_health": moc_projection_health,
     }
 
 

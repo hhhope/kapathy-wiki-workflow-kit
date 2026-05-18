@@ -53,7 +53,10 @@ class WikiGraphSummaryTest(unittest.TestCase):
         self.assertEqual(summary["object_view"][0]["canonical_object"], "wiki-runtime")
         self.assertEqual(summary["object_view"][0]["relation_types"], {"formalizes": 1})
         self.assertEqual(summary["warning_view"]["by_layer"], {"wiki/ops": 1})
+        self.assertEqual(summary["moc_candidates"]["summary"]["object_count"], 1)
+        self.assertEqual(summary["moc_candidates"]["summary"]["relation_count"], 1)
         self.assertIn("structural graph evidence only", summary["proof_boundary_notes"][0])
+        self.assertIn("does not write files", summary["proof_boundary_notes"][-1])
 
     def test_focus_filters_by_explicit_object_text(self) -> None:
         graph = {

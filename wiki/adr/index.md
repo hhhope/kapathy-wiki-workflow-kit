@@ -42,6 +42,7 @@
 - [ADR-0030 No Repo-Local Commit Hook Default](0030-no-repo-local-commit-hook-default.md)
 - [ADR-0031 Root Capability Extraction Boundary](0031-root-capability-extraction-boundary.md)
 - [ADR-0033 Wiki React / Eval / Apply / OpenSpec 边界](0033-wiki-react-eval-apply-openspec-boundary.md)
+- [ADR-0034 README Capability Map Is Project Description](0034-readme-capability-map-is-project-description.md)
 
 ## 非目标
 

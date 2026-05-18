@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-05-12T05:18:45.902799+00:00",
+  "generated_at": "2026-05-14T09:41:41.991896+00:00",
   "root": "/mnt/d/cloud/account-meeting-lore",
   "summary": {
-    "wiki_page_count": 201,
-    "source_record_count": 17,
-    "inbox_file_count": 11,
-    "pending_inbox_count": 0,
-    "active_change_count": 1,
-    "complete_change_count": 0,
+    "wiki_page_count": 215,
+    "source_record_count": 18,
+    "inbox_file_count": 12,
+    "pending_inbox_count": 1,
+    "active_change_count": 0,
+    "complete_change_count": 16,
     "wiki_sections": {
-      "wiki/adr": 32,
+      "wiki/adr": 34,
       "wiki/domains": 2,
       "wiki/examples": 7,
-      "wiki/ops": 107,
+      "wiki/ops": 118,
       "wiki/reports": 15,
       "wiki/root": 7,
-      "wiki/sources": 18,
+      "wiki/sources": 19,
       "wiki/templates": 10,
       "wiki/timeline": 3
     }
@@ -426,7 +426,9 @@
       "status": null,
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "live-conversation-reanchor-gate"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -541,10 +543,49 @@
       "related_reminders": null
     },
     {
+      "path": "wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md",
+      "section": "wiki/adr",
+      "sha256": "774d923c6a3d81d06e6eb1a2dd7416e36e308760cb65064c4535433096183ab7",
+      "bytes": 1961,
+      "title": null,
+      "canonical_object": "whole-wiki-frontmatter-gate",
+      "artifact_type": "adr",
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "wiki-frontmatter-model",
+        "stabilize-wiki-frontmatter-taxonomy"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md",
+      "section": "wiki/adr",
+      "sha256": "898a95988cbc4dac3a928814058150db607d0db96b6a298aee1daf6b834c993e",
+      "bytes": 2404,
+      "title": null,
+      "canonical_object": "wiki-runtime-layer-boundary",
+      "artifact_type": "adr",
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "wiki-runtime-layer-contract",
+        "wiki-react-decision-trace",
+        "brainstorming-drift-wiki-trace"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
       "path": "wiki/adr/index.md",
       "section": "wiki/adr",
-      "sha256": "99bd014634ba1e4ba11fd22e401393ef5645ce40afc6e30acf4e2022fe144900",
-      "bytes": 4318,
+      "sha256": "f12a7e4ad142f8464294d1e67f5db603f75b9cf3427a38b5c5716b3d21ff85a2",
+      "bytes": 4424,
       "title": null,
       "canonical_object": null,
       "artifact_type": null,
@@ -790,7 +831,9 @@
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        "../sources/20260415100517-转写-yan的快速会议-纪要文本-1.md"
+      ],
       "derived_from": null,
       "validates": null,
       "related_focus_threads": [],
@@ -806,7 +849,9 @@
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        "../sources/20260415100517-转写-yan的快速会议-逐字稿文本-1.md"
+      ],
       "derived_from": null,
       "validates": null,
       "related_focus_threads": [],
@@ -822,10 +867,14 @@
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        "https://my.feishu.cn/wiki/FYDcwFGaOi6A1Bkg9rfcIp3DnCS"
+      ],
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
       "related_reminders": []
     },
     {
@@ -837,9 +886,53 @@
       "canonical_object": "account-knowledge-base",
       "artifact_type": "ops-overview",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "learning-capture-routing",
+        "behavior-replay-gate",
+        "wiki-runtime-auto-routing",
+        "team-lore-candidates"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/account-knowledge-base-structure-explore.md",
+        "wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md",
+        "PROJECT.md",
+        "wiki/index.md",
+        "wiki/role-boundaries.md",
+        "wiki/team-lore-candidates.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/ad-growth-cockpit-h5-report-gate-review.md",
+      "section": "wiki/ops",
+      "sha256": "447930a8cf8832e1f779c8f090eea9a31571d3728bc3757acc739acd1a813b5a",
+      "bytes": 6881,
+      "title": null,
+      "canonical_object": "ad-growth-cockpit-h5",
+      "artifact_type": "report-gate-review",
+      "status": "prototype-verified",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/ad-platform-operational-prototype-report-gate-review.md",
+      "section": "wiki/ops",
+      "sha256": "6c8ab892bc495405f28bba9304c3f2bd2d5ea2fea02934c0963b7f984dacec71",
+      "bytes": 7759,
+      "title": null,
+      "canonical_object": "ad-platform-operational-prototype",
+      "artifact_type": "report-gate-review",
+      "status": "prototype-verified",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -857,7 +950,9 @@
       "related_sources": [],
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
       "related_reminders": []
     },
     {
@@ -873,7 +968,9 @@
       "related_sources": null,
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
       "related_reminders": null
     },
     {
@@ -885,9 +982,22 @@
       "canonical_object": "agent-harness-article-learning",
       "artifact_type": "intake",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "example-driven-capture",
+        "behavior-asset-governance"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "https://openai.com/index/harness-engineering/",
+        "https://claude.com/blog/common-workflow-patterns-for-ai-agents-and-when-to-use-them",
+        "https://claude.com/blog/building-agents-with-the-claude-agent-sdk",
+        "https://www.anthropic.com/research/diff-tool",
+        "https://www.anthropic.com/engineering/managed-agents",
+        "https://www.anthropic.com/engineering/harness-design-long-running-apps",
+        "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+        "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+        "https://mp.weixin.qq.com/s/-nXD7gp75SHeZHHhTh3lNw"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -901,9 +1011,41 @@
       "canonical_object": "agent-harness-article-learning",
       "artifact_type": "reading-notes",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "learning-capture-routing",
+        "example-driven-capture",
+        "behavior-asset-governance",
+        "codex-global-agents-md"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "https://openai.com/index/harness-engineering/",
+        "https://claude.com/blog/common-workflow-patterns-for-ai-agents-and-when-to-use-them",
+        "https://claude.com/blog/building-agents-with-the-claude-agent-sdk",
+        "https://www.anthropic.com/research/diff-tool",
+        "https://www.anthropic.com/engineering/managed-agents",
+        "https://www.anthropic.com/engineering/harness-design-long-running-apps",
+        "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+        "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+        "https://mp.weixin.qq.com/s/-nXD7gp75SHeZHHhTh3lNw",
+        "https://mp.weixin.qq.com/s/r__2l_u6oXwzWHyD3wu_ZQ"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agent-intent-routing-skill-drift-explore-2026-05-13.md",
+      "section": "wiki/ops",
+      "sha256": "2f1b268946cd65a432cfdba0e054e05db32a3fa0bc60351d5a5195ecb3c6e335",
+      "bytes": 1014,
+      "title": "Agent Intent Routing Skill Drift Explore",
+      "canonical_object": "agent-intent-routing-skill-drift",
+      "artifact_type": "explore-trace",
+      "status": null,
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": null,
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -917,10 +1059,19 @@
       "canonical_object": "wiki-readable-views",
       "artifact_type": "artifact-grouping-view",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "wiki-naming-model",
+        "wiki-frontmatter-model",
+        "wiki-relation-analysis"
+      ],
       "related_sources": null,
-      "derived_from": [],
-      "validates": [],
+      "derived_from": [
+        "wiki-naming-model",
+        "wiki-frontmatter-model"
+      ],
+      "validates": [
+        "wiki-readable-views"
+      ],
       "related_focus_threads": null,
       "related_reminders": null
     },
@@ -1020,10 +1171,19 @@
       "canonical_object": "wiki-readable-views",
       "artifact_type": "relation-reading-view",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "wiki-graph-extraction",
+        "wiki-relation-analysis",
+        "wiki-semantic-scoring"
+      ],
       "related_sources": null,
-      "derived_from": [],
-      "validates": [],
+      "derived_from": [
+        "wiki-graph-extraction",
+        "wiki-relation-analysis"
+      ],
+      "validates": [
+        "wiki-readable-views"
+      ],
       "related_focus_threads": null,
       "related_reminders": null
     },
@@ -1103,8 +1263,8 @@
     {
       "path": "wiki/ops/agent-readable-wiki-semantic-scoring.md",
       "section": "wiki/ops",
-      "sha256": "085f3a0481169864d498dd2bc0b865eb0b952f4b722390e0efb919228e83c6bb",
-      "bytes": 2945,
+      "sha256": "c074396cb7092471a05f2fd6fda65c5d0b7a83677149c8ae07fe1b27e87bbadf",
+      "bytes": 2992,
       "title": null,
       "canonical_object": "wiki-semantic-scoring",
       "artifact_type": "method",
@@ -1167,15 +1327,23 @@
     {
       "path": "wiki/ops/agentic-product-engineering-collaboration-article-evidence-matrix-2026-05-11.md",
       "section": "wiki/ops",
-      "sha256": "cfb15a0ef030d65da17f6b2ee33deb6dcb3ebfa672f3c694461242f142717176",
-      "bytes": 6047,
+      "sha256": "9fafd43f8ecf3a64c5ae543e52dc4f6cee4cf3edccd05eb030d6fa2114bb1d91",
+      "bytes": 6272,
       "title": "agentic-product-engineering-collaboration / article evidence matrix",
       "canonical_object": "agentic-product-engineering-collaboration",
       "artifact_type": "article-evidence-matrix",
       "status": "draft",
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md",
+        "wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md",
+        "wiki/reports/agentic-product-engineering-collaboration-management-report.md",
+        "wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1223,7 +1391,11 @@
       "status": "partial",
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/reports/assets/account-wiki-onepager.png",
+        "wiki/reports/agentic-visual-assets-v2/00-total-infographic.png",
+        "wiki/reports/agentic-visual-assets-image-model/00-total-infographic-image-model.png"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1263,15 +1435,23 @@
     {
       "path": "wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md",
       "section": "wiki/ops",
-      "sha256": "226500373a1e88454e635c91650bf2056bd5af10f44d8ae71970e826164e7cbb",
-      "bytes": 17550,
+      "sha256": "9ced6e6236dd094a90e34c057eac0e8ec0cd0d2e70d4a83bb72e720e17632a15",
+      "bytes": 18015,
       "title": "agentic-product-engineering-collaboration / report-gate-review",
       "canonical_object": "agentic-product-engineering-collaboration",
       "artifact_type": "report-gate-review",
       "status": null,
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/reports/agentic-product-engineering-collaboration-management-report.md",
+        "wiki/reports/agentic-product-engineering-collaboration-newspaper.html",
+        "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md",
+        "wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1287,7 +1467,40 @@
       "status": "active",
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md",
+        "wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md",
+        "wiki/reports/agentic-product-engineering-collaboration-management-report.md",
+        "wiki/reports/agentic-product-engineering-collaboration-newspaper.html",
+        "wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md",
+        "wiki/reports/assets/account-wiki-onepager.png",
+        "wiki/reports/assets/account-wiki-runtime-card.png",
+        "wiki/reports/assets/account-wiki-validation-card.png",
+        "wiki/reports/agentic-visual-assets/"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md",
+      "section": "wiki/ops",
+      "sha256": "f61eb2dc23def08831924fe757054782310984928273c1e45ab62a9213d840cd",
+      "bytes": 2198,
+      "title": "agentic-product-engineering-collaboration / 300 source leads hardening evidence",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "source-hardening-evidence",
+      "status": null,
+      "related_objects": null,
+      "related_sources": [
+        "wiki/sources/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md",
+        "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md",
+        "wiki/ops/agentic-product-engineering-collaboration-article-evidence-matrix-2026-05-11.md",
+        "wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md"
+      ],
+      "derived_from": null,
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1303,7 +1516,12 @@
       "status": "active",
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md",
+        "wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md",
+        "wiki/reports/assets/",
+        "wiki/reports/agentic-visual-assets/"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1319,7 +1537,13 @@
       "status": "draft",
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md",
+        "wiki/reports/assets/account-wiki-onepager.png",
+        "wiki/reports/assets/account-wiki-runtime-card.png",
+        "wiki/reports/assets/account-wiki-validation-card.png",
+        "wiki/reports/agentic-visual-assets/"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1335,7 +1559,11 @@
       "status": "active",
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md",
+        "wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md",
+        "wiki/ops/agentic-product-engineering-collaboration-split-execution-2026-05-11.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1349,9 +1577,19 @@
       "canonical_object": "agents-governance-drift",
       "artifact_type": "retro",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "codex-global-agents-md",
+        "agents-governance-drift",
+        "root-governance-alignment"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "openspec/changes/archive/2026-05-06-decide-root-governance-alignment/",
+        "openspec/changes/compress-codex-agents-md/",
+        "wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md",
+        "wiki/ops/behavior-asset-governance-design-trace.md",
+        "wiki/language-policy.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1365,9 +1603,20 @@
       "canonical_object": "agents-governance-drift",
       "artifact_type": "distill",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "agent-governance-gate-gap",
+        "wiki-readable-views",
+        "conversation-handoff",
+        "disagreement-management",
+        "agents-governance-drift-distill-calibration"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/agents-governance-drift-retro.md",
+        "wiki/ops/agents-governance-drift-explore.md",
+        "wiki/ops/agents-governance-remediation-explore-2026-04-21.md",
+        "wiki/ops/openspec-explore-trigger-drift-retro.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1381,9 +1630,18 @@
       "canonical_object": "agents-governance-drift-distill-calibration",
       "artifact_type": "retro",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "agents-governance-drift",
+        "disagreement-management",
+        "conversation-handoff"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/agents-governance-drift-distill-2026-04-21.md",
+        "wiki/ops/agents-governance-drift-retro.md",
+        "wiki/ops/agents-governance-drift-explore.md",
+        "wiki/ops/openspec-explore-trigger-drift-retro.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1399,8 +1657,13 @@
       "status": null,
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
-      "validates": [],
+      "derived_from": [
+        "wiki/ops/agents-governance-drift-distill-calibration-retro.md",
+        "wiki/ops/distill-calibration-replay-harness.md"
+      ],
+      "validates": [
+        "disagreement-management-method"
+      ],
       "related_focus_threads": null,
       "related_reminders": null
     },
@@ -1413,9 +1676,16 @@
       "canonical_object": "agents-governance-drift",
       "artifact_type": "explore",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "agent-governance-gate-gap",
+        "conversation-handoff",
+        "disagreement-management"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/agents-governance-drift-retro.md",
+        "wiki/ops/agents-governance-remediation-explore-2026-04-21.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1429,9 +1699,15 @@
       "canonical_object": "agents-governance-drift",
       "artifact_type": "playbook",
       "status": "candidate",
-      "related_objects": [],
+      "related_objects": [
+        "agents-governance-drift-distill-calibration",
+        "conversation-handoff",
+        "disagreement-management"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/agents-governance-drift-distill-2026-04-21.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1445,9 +1721,16 @@
       "canonical_object": "agents-governance-drift",
       "artifact_type": "retro",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "disagreement-management",
+        "conversation-handoff"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md",
+        "wiki/ops/karpathy-skills-learning-retro-2026-04-16.md",
+        "wiki/ops/scope-drift-retro.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1461,9 +1744,14 @@
       "canonical_object": "agents-governance-drift",
       "artifact_type": "explore",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "agent-governance-gate-gap",
+        "wiki-readable-views"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/agents-governance-drift-retro.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1481,7 +1769,9 @@
       "related_sources": [],
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
       "related_reminders": []
     },
     {
@@ -1493,9 +1783,38 @@
       "canonical_object": "behavior-asset-governance",
       "artifact_type": "design-trace",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "codex-global-agents-md",
+        "agents-governance-drift",
+        "root-governance-alignment",
+        "agent-harness-article-learning",
+        "compress-root-agents-budget",
+        "phase1-repo-agents-compression"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "openspec/changes/decide-root-governance-alignment/design.md",
+        "openspec/changes/decide-root-governance-alignment/specs/root-governance-alignment/spec.md",
+        "openspec/changes/archive/2026-05-06-decide-root-governance-alignment/evaluation.md",
+        "wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md",
+        "wiki/ops/agent-harness-article-learning.md",
+        "openspec/changes/compress-root-agents-budget/proposal.md",
+        "openspec/changes/phase1-repo-agents-compression/proposal.md",
+        "AGENTS.md",
+        "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills",
+        "https://github.com/anthropics/skills",
+        "https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/",
+        "https://arxiv.org/html/2602.11988v1",
+        "https://gist.github.com/skyzyx/c91d9be9e5050c85e81ccbcca022ff6b",
+        "https://github.com/danielrosehill/Agents.md-Templates",
+        "https://raw.githubusercontent.com/openai/codex/main/AGENTS.md",
+        "https://www.philschmid.de/agent-harness-2026",
+        "https://calv.info/agents-feb-2026",
+        "https://github.com/github/spec-kit/blob/main/spec-driven.md",
+        "https://inspect.aisi.org.uk/",
+        "https://www.promptfoo.dev/docs/red-team",
+        "https://promptfoo.dev/docs/integrations/ci-cd/"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1509,9 +1828,26 @@
       "canonical_object": "behavior-asset-governance",
       "artifact_type": "summary",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "codex-global-agents-md",
+        "agents-governance-drift",
+        "root-governance-alignment"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/behavior-asset-governance-design-trace.md",
+        "openspec/changes/decide-root-governance-alignment/design.md",
+        "wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md",
+        "wiki/ops/agents-governance-281-compression-retro-2026-05-06.md",
+        "https://openai.com/index/harness-engineering/",
+        "https://claude.com/blog/common-workflow-patterns-for-ai-agents-and-when-to-use-them",
+        "https://claude.com/blog/building-agents-with-the-claude-agent-sdk",
+        "https://www.anthropic.com/research/diff-tool",
+        "https://www.anthropic.com/engineering/managed-agents",
+        "https://www.anthropic.com/engineering/harness-design-long-running-apps",
+        "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+        "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1519,15 +1855,46 @@
     {
       "path": "wiki/ops/behavior-replay-gate.md",
       "section": "wiki/ops",
-      "sha256": "cbeae425cc29327660e836055577d1bafa639288325c3defd8639fc0e0d972b9",
-      "bytes": 2927,
+      "sha256": "b54a6beb27e6f59e1f41c4371c70d2eb8152d04e50f5de75a9b4113d17ad103d",
+      "bytes": 2978,
       "title": "behavior-replay-gate / method",
       "canonical_object": "behavior-replay-gate",
       "artifact_type": "method",
       "status": "accepted",
-      "related_objects": [],
+      "related_objects": [
+        "learning-capture-routing",
+        "skill-evaluation-evidence",
+        "disagreement-management-method",
+        "live-conversation-reanchor-gate"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "openspec/changes/archive/2026-05-07-generalize-behavior-replay-gate/design.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md",
+      "section": "wiki/ops",
+      "sha256": "a6ccbdf0d0dd441230d089327a337c1928c5bddd0a4a7df10c7e381873322e36",
+      "bytes": 6400,
+      "title": "brainstorming-drift-wiki-trace / retro",
+      "canonical_object": "brainstorming-drift-wiki-trace",
+      "artifact_type": "retro",
+      "status": "active",
+      "related_objects": [
+        "wiki-react-decision-trace",
+        "wiki-runtime-layer-contract",
+        "live-conversation-reanchor-gate",
+        "openspec-explore-wiki-trace"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "chat://2026-05-14/wiki-runtime-brainstorming-drift",
+        "openspec/changes/add-brainstorming-drift-wiki-trace/design.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1541,7 +1908,11 @@
       "canonical_object": "check-to-wiki-routing",
       "artifact_type": "intake",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "example-driven-capture",
+        "material-collaboration-defaults",
+        "conversation-handoff"
+      ],
       "related_sources": null,
       "derived_from": null,
       "validates": null,
@@ -1557,9 +1928,18 @@
       "canonical_object": "codex-global-agents-md",
       "artifact_type": "intake",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "agents-governance-drift",
+        "agent-governance-gate-gap"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/",
+        "https://arxiv.org/html/2602.11988v1",
+        "https://gist.github.com/skyzyx/c91d9be9e5050c85e81ccbcca022ff6b",
+        "https://github.com/danielrosehill/Agents.md-Templates",
+        "https://raw.githubusercontent.com/openai/codex/main/AGENTS.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1579,6 +1959,28 @@
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/completion-bridge-drift-explore-2026-05-12.md",
+      "section": "wiki/ops",
+      "sha256": "100eac9aa3ca7bec958ce55295506b79a8806e31862fea634fb10d8cdbfc27f5",
+      "bytes": 4061,
+      "title": "completion-bridge-drift / explore",
+      "canonical_object": "completion-bridge-drift",
+      "artifact_type": "explore-trace",
+      "status": "active",
+      "related_objects": [
+        "openspec-explore-trigger-drift",
+        "conversation-handoff",
+        "add-product-status-contract"
+      ],
+      "related_sources": [
+        "wiki/ops/openspec-explore-trigger-drift-retro.md"
+      ],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
     },
     {
       "path": "wiki/ops/conversation-handoff-mode.md",
@@ -1669,9 +2071,15 @@
       "canonical_object": "evolver-self-evolving-harness",
       "artifact_type": "reading-notes",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "account-knowledge-base",
+        "public-report-quality-gate",
+        "agent-harness-article-learning"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "https://mp.weixin.qq.com/s/L8H0Kl0ecXOk7yTwpI7RTA"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1686,10 +2094,15 @@
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        "https://github.com/garrytan/gstack",
+        "https://github.com/larksuite/cli"
+      ],
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
       "related_reminders": null
     },
     {
@@ -1718,11 +2131,44 @@
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        "wiki/ops/team-knowledge-base-overview-report-gate-review.md",
+        "openspec/changes/repair-account-wiki-public-drafts/evaluation.md",
+        "openspec/changes/repair-account-wiki-public-drafts/specs/account-wiki-public-draft-repair/spec.md"
+      ],
       "derived_from": null,
       "validates": null,
       "related_focus_threads": [],
       "related_reminders": []
+    },
+    {
+      "path": "wiki/ops/go-engineering-security-rule-source-learning-2026-05-13.md",
+      "section": "wiki/ops",
+      "sha256": "d22f899d3d4a1b1e570d271c7cb6d57f9e5f1f2c6dd5cf0687f1c676b413e7c6",
+      "bytes": 7064,
+      "title": "go-engineering-security-rule / source-learning",
+      "canonical_object": "go-engineering-security-rule",
+      "artifact_type": "source-learning",
+      "status": "active",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "https://mp.weixin.qq.com/s/3hQC4BYmU1-h_WfbOmXOhg",
+        "https://mp.weixin.qq.com/s/8SoRM1Q_nR_JtXuQhLMafg",
+        "https://mp.weixin.qq.com/s/NpDiSiiG_PFX15vYheEsqw",
+        "https://mp.weixin.qq.com/s/SxnMbThrsgB3Q6hTZRX69Q",
+        "https://mp.weixin.qq.com/s/KcKm8BNBYV91zlbxTIz9yw",
+        "https://mp.weixin.qq.com/s/pJSibD0QYrbhSqcy4V4EMQ",
+        "https://mp.weixin.qq.com/s/sWnXjrWpTjYO9ZGTaOIlJQ",
+        "https://go.dev/doc/modules/layout",
+        "https://go.dev/wiki/CodeReviewComments",
+        "https://google.github.io/styleguide/go/guide",
+        "https://github.com/uber-go/guide",
+        "https://github.com/golang-standards/project-layout"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
     },
     {
       "path": "wiki/ops/gstack-lark-learning-retro-2026-04-18.md",
@@ -1734,10 +2180,15 @@
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        "https://github.com/garrytan/gstack",
+        "https://github.com/larksuite/cli"
+      ],
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
       "related_reminders": null
     },
     {
@@ -1749,9 +2200,15 @@
       "canonical_object": "harness-engineering-overview",
       "artifact_type": "reading-notes",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "account-knowledge-base",
+        "public-report-quality-gate",
+        "evolver-self-evolving-harness"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "https://mp.weixin.qq.com/s/x2BZgM1boc_TmdosO78XVA"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1769,7 +2226,9 @@
       "related_sources": [],
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
       "related_reminders": []
     },
     {
@@ -1797,9 +2256,18 @@
       "canonical_object": "intelligence-native-organization",
       "artifact_type": "intake",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "behavior-asset-governance",
+        "agents-governance-drift"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "https://block.xyz/inside/from-hierarchy-to-intelligence",
+        "https://sequoiacap.com/article/from-hierarchy-to-intelligence/",
+        "https://investors.block.xyz/governance/leadership/default.aspx",
+        "https://www.pbs.org/newshour/amp/economy/ai-is-key-driver-behind-layoffs-at-fintech-company-block-ceo-says",
+        "https://mp.weixin.qq.com/s/b_uLQlu-yTyHncFybc8g2w"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1813,9 +2281,14 @@
       "canonical_object": "karpathy-llm-wiki",
       "artifact_type": "reading-notes",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "account-knowledge-base",
+        "harness-engineering-overview"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1839,15 +2312,22 @@
     {
       "path": "wiki/ops/learning-capture-routing.md",
       "section": "wiki/ops",
-      "sha256": "ee10957f35633688e0d5bca4125cb940ae05fcf845964ba7be58afb6e56b2f68",
-      "bytes": 11184,
+      "sha256": "f13270b6f85a5502b409e852444d2df7b63aa731e06bfa3aa1bdaac7cd3dcbd8",
+      "bytes": 11214,
       "title": "learning-capture-routing / intake",
       "canonical_object": "learning-capture-routing",
       "artifact_type": "intake",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "example-driven-capture",
+        "article-learning-capture",
+        "readme-learning"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "https://github.com/larksuite/cli",
+        "https://github.com/larksuite/cli/blob/main/skills/lark-base/SKILL.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1887,10 +2367,14 @@
       "canonical_object": "live-conversation-reanchor-gate",
       "artifact_type": "replay-harness",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "disagreement-management"
+      ],
       "related_sources": null,
       "derived_from": null,
-      "validates": [],
+      "validates": [
+        "live-conversation-reanchor-gate"
+      ],
       "related_focus_threads": null,
       "related_reminders": null
     },
@@ -1903,9 +2387,13 @@
       "canonical_object": "live-conversation-reanchor-gate",
       "artifact_type": "retro",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "disagreement-management"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "disagreement-management"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -1954,16 +2442,34 @@
       "related_reminders": null
     },
     {
-      "path": "wiki/ops/nirvana-preview-intake.md",
+      "path": "wiki/ops/multi-system-branch-spec-explore-2026-05-12.md",
       "section": "wiki/ops",
-      "sha256": "8a92f77f8a998240c5bc5f62478aaa523f37fd1bcee9d907791f8cabfa01708c",
-      "bytes": 846,
-      "title": "preview",
+      "sha256": "f99aab6d2ba1bb5cfe559ae0d2ffbdf9d893a3cd56888c01a4e479391bc03467",
+      "bytes": 2604,
+      "title": "multi-system branch spec explore",
       "canonical_object": null,
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
       "related_sources": [],
+      "derived_from": null,
+      "validates": null,
+      "related_focus_threads": [],
+      "related_reminders": []
+    },
+    {
+      "path": "wiki/ops/nirvana-preview-intake.md",
+      "section": "wiki/ops",
+      "sha256": "533d370f1a6de5c9f65787c1f508cce78951796fec523d0f4ab1d63b1942cb15",
+      "bytes": 880,
+      "title": "preview",
+      "canonical_object": null,
+      "artifact_type": null,
+      "status": "active",
+      "related_objects": null,
+      "related_sources": [
+        "../sources/nirvana-weekly-view-2026-04-13.md"
+      ],
       "derived_from": null,
       "validates": null,
       "related_focus_threads": [],
@@ -1979,11 +2485,18 @@
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        "../sources/nirvana-weekly-2026-04-13.md",
+        "../sources/nirvana-weekly-view-2026-04-13.md"
+      ],
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
-      "related_reminders": []
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
+      "related_reminders": [
+        "nirvana-weekly-reminder-2026-04-13.md"
+      ]
     },
     {
       "path": "wiki/ops/nirvana-weekly-reminder-2026-04-13.md",
@@ -1998,20 +2511,24 @@
       "related_sources": null,
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
       "related_reminders": null
     },
     {
       "path": "wiki/ops/nirvana-协议支付涅槃需求文档-intake.md",
       "section": "wiki/ops",
-      "sha256": "fe1d2ffcb6b20b9a1f7c2873bef55db0dbc36ffed516f0ab5bdd8ea6af9d2990",
-      "bytes": 1975,
+      "sha256": "6c5d8cf3761cee978c556d63d9a035ac7b57325a9638d0917f390ee74f0a7da1",
+      "bytes": 2010,
       "title": "协议支付涅槃需求文档",
       "canonical_object": null,
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        "../sources/nirvana-协议支付涅槃需求文档.md"
+      ],
       "derived_from": null,
       "validates": null,
       "related_focus_threads": [],
@@ -2027,7 +2544,9 @@
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        "../sources/nirvana-涅槃产品上架梳理.md"
+      ],
       "derived_from": null,
       "validates": null,
       "related_focus_threads": [],
@@ -2036,8 +2555,8 @@
     {
       "path": "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md",
       "section": "wiki/ops",
-      "sha256": "47f0993a243d4fc13edbf6aab3ca762c108101421459680324f221bd431ed52d",
-      "bytes": 6871,
+      "sha256": "83b9e3d7ac6898d458908199632bf91aac37f8160be22d86ce1b526d2a8dc99f",
+      "bytes": 7254,
       "title": null,
       "canonical_object": "obsidian-wiki-reference-gap-review",
       "artifact_type": "learning-note",
@@ -2066,9 +2585,16 @@
       "canonical_object": "openspec-explore-trigger-drift",
       "artifact_type": "retro",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "agents-governance-drift",
+        "conversation-handoff",
+        "disagreement-management"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/agents-governance-drift-retro.md",
+        "wiki/ops/agents-governance-drift-explore.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -2152,7 +2678,10 @@
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        ".codex/skills/public-report-quality-gate/SKILL.md",
+        "openspec/changes/enforce-public-report-article-flow-gate/"
+      ],
       "derived_from": null,
       "validates": null,
       "related_focus_threads": [],
@@ -2167,9 +2696,20 @@
       "canonical_object": "reference-driven-output-calibration",
       "artifact_type": "retro",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "intelligence-native-organization",
+        "example-driven-capture",
+        "disagreement-management",
+        "xiaohongshu-retro-grid-content",
+        "weixin-reference-wiki-capture"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/ops/intelligence-native-organization-intake.md",
+        "wiki/ops/intelligence-native-organization-h5.html",
+        "wiki/ops/intelligence-native-organization-handdrawn-h5.html",
+        "https://mp.weixin.qq.com/s/b_uLQlu-yTyHncFybc8g2w"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -2225,9 +2765,18 @@
       "canonical_object": "root-capability-extraction",
       "artifact_type": "retro",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "root-governance-alignment",
+        "repo-agents-loaded-context",
+        "principle-skills-layer"
+      ],
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "openspec/specs/principle-skills-layer/spec.md",
+        "openspec/specs/repo-agents-loaded-context/spec.md",
+        "openspec/specs/root-governance-alignment/spec.md",
+        "wiki/ops/learning-capture-routing.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -2246,7 +2795,9 @@
       "derived_from": null,
       "validates": null,
       "related_focus_threads": null,
-      "related_reminders": []
+      "related_reminders": [
+        "sample-reminder.md"
+      ]
     },
     {
       "path": "wiki/ops/sample-disagreement-retro.md",
@@ -2277,7 +2828,9 @@
       "related_sources": [],
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
       "related_reminders": []
     },
     {
@@ -2294,7 +2847,9 @@
       "derived_from": null,
       "validates": null,
       "related_focus_threads": null,
-      "related_reminders": []
+      "related_reminders": [
+        "sample-reminder.md"
+      ]
     },
     {
       "path": "wiki/ops/sample-handoff-topic.md",
@@ -2313,7 +2868,9 @@
       "validates": [
         "conversation-handoff"
       ],
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
       "related_reminders": []
     },
     {
@@ -2329,8 +2886,12 @@
       "related_sources": [],
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
-      "related_reminders": []
+      "related_focus_threads": [
+        "main-thread.md"
+      ],
+      "related_reminders": [
+        "reminders.md"
+      ]
     },
     {
       "path": "wiki/ops/sample-reminder.md",
@@ -2345,7 +2906,9 @@
       "related_sources": null,
       "derived_from": null,
       "validates": null,
-      "related_focus_threads": [],
+      "related_focus_threads": [
+        "sample-focus-thread.md"
+      ],
       "related_reminders": null
     },
     {
@@ -2400,10 +2963,21 @@
       "canonical_object": "team-knowledge-base-overview",
       "artifact_type": "runtime-replay",
       "status": null,
-      "related_objects": [],
+      "related_objects": [
+        "public-report-quality-gate",
+        "public-report-reviewer"
+      ],
       "related_sources": null,
-      "derived_from": [],
-      "validates": [],
+      "derived_from": [
+        "wiki/reports/team-knowledge-base-overview.md",
+        ".codex/skills/public-report-quality-gate/SKILL.md",
+        ".codex/skills/public-report-quality-gate/references/scorecard.md",
+        ".codex/skills/public-report-quality-gate/references/gate-review-artifact.md",
+        ".codex/agents/public-report-reviewer.md"
+      ],
+      "validates": [
+        "openspec/changes/add-public-report-paragraph-drift-gate"
+      ],
       "related_focus_threads": null,
       "related_reminders": null
     },
@@ -2416,10 +2990,21 @@
       "canonical_object": "account-knowledge-base",
       "artifact_type": "report-gate-review",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "public-report-quality-gate",
+        "account-knowledge-base"
+      ],
       "related_sources": null,
-      "derived_from": [],
-      "validates": [],
+      "derived_from": [
+        ".codex/skills/public-report-quality-gate/SKILL.md",
+        ".codex/skills/public-report-quality-gate/references/scorecard.md",
+        ".codex/skills/public-report-quality-gate/references/report-group-templates.md",
+        "wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md",
+        "wiki/ops/account-knowledge-base-structure-explore.md"
+      ],
+      "validates": [
+        "wiki/ops/account-knowledge-base-workbench.md"
+      ],
       "related_focus_threads": null,
       "related_reminders": null
     },
@@ -2488,6 +3073,29 @@
       "related_reminders": null
     },
     {
+      "path": "wiki/ops/wiki-react-decision-trace-runtime.md",
+      "section": "wiki/ops",
+      "sha256": "6e2b14e56a8c1524d92491eaa20144adc54eeb690e9ce39a02dbca9a66e89c27",
+      "bytes": 2618,
+      "title": null,
+      "canonical_object": "wiki-react-decision-trace",
+      "artifact_type": "method",
+      "status": null,
+      "related_objects": [
+        "wiki-runtime-skill-surface",
+        "wiki-frontmatter-taxonomy-gate",
+        "wiki-semantic-scoring",
+        "wiki-relation-analysis"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "openspec/changes/introduce-wiki-react-decision-trace-eval/design.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
       "path": "wiki/ops/wiki-readable-views-validation-harness.md",
       "section": "wiki/ops",
       "sha256": "73bb4bab495fda8f182fafd07cbfb554983905b28d5d5f03e18c64f5efd44350",
@@ -2496,10 +3104,14 @@
       "canonical_object": "wiki-readable-views-validation",
       "artifact_type": "replay-harness",
       "status": "active",
-      "related_objects": [],
+      "related_objects": [
+        "wiki-readable-views"
+      ],
       "related_sources": null,
       "derived_from": null,
-      "validates": [],
+      "validates": [
+        "wiki-readable-views"
+      ],
       "related_focus_threads": null,
       "related_reminders": null
     },
@@ -2512,9 +3124,57 @@
       "canonical_object": null,
       "artifact_type": null,
       "status": "draft",
-      "related_objects": [],
+      "related_objects": [
+        "wiki-status-slash-command",
+        "wiki-runtime-slash-command-surface",
+        "llm-wiki-core-product-contract"
+      ],
       "related_sources": null,
       "derived_from": null,
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/wiki-runtime-layer-contract.md",
+      "section": "wiki/ops",
+      "sha256": "bb3bb0272a6e8b107df8f9d52ebf63df82666111e4905101863456710d5ab3dd",
+      "bytes": 5234,
+      "title": "wiki-runtime-layer-contract / method",
+      "canonical_object": "wiki-runtime-layer-contract",
+      "artifact_type": "method",
+      "status": "accepted",
+      "related_objects": null,
+      "related_sources": null,
+      "derived_from": [
+        "openspec/changes/stabilize-wiki-runtime-layer-contract/design.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/ops/wiki-runtime-react-eval-apply-boundary-distill-2026-05-14.md",
+      "section": "wiki/ops",
+      "sha256": "67132a2522281d627aaa8f4c401764893706e3666f0b447db09be98e24654cdd",
+      "bytes": 3499,
+      "title": "wiki-runtime-layer-boundary / distill",
+      "canonical_object": "wiki-runtime-layer-boundary",
+      "artifact_type": "distill",
+      "status": "active",
+      "related_objects": [
+        "wiki-react-decision-trace",
+        "wiki-runtime-layer-contract",
+        "wiki-self-directed-execution",
+        "improve-wiki-routing-diagnostics",
+        "brainstorming-drift-wiki-trace"
+      ],
+      "related_sources": null,
+      "derived_from": [
+        "wiki/ops/wiki-runtime-layer-contract.md",
+        "wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md",
+        "openspec/changes/formalize-wiki-runtime-layer-boundary/design.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -2581,11 +3241,15 @@
       "artifact_type": null,
       "status": "active",
       "related_objects": null,
-      "related_sources": [],
+      "related_sources": [
+        "../sources/文字转写-呼呼的快速会议-276823523.md"
+      ],
       "derived_from": null,
       "validates": null,
       "related_focus_threads": [],
-      "related_reminders": []
+      "related_reminders": [
+        "宝财通分账开通与迁移边界提醒-2026-04-16.md"
+      ]
     },
     {
       "path": "wiki/reports/agentic-product-engineering-collaboration-management-report.md",
@@ -2598,7 +3262,11 @@
       "status": "draft",
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -2886,7 +3554,9 @@
       "status": "broad-scan",
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md"
+      ],
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -2918,7 +3588,30 @@
       "status": "expanded-open-web-scan",
       "related_objects": null,
       "related_sources": null,
-      "derived_from": [],
+      "derived_from": [
+        "wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md"
+      ],
+      "validates": null,
+      "related_focus_threads": null,
+      "related_reminders": null
+    },
+    {
+      "path": "wiki/sources/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md",
+      "section": "wiki/sources",
+      "sha256": "ba75301b1ddd3f91fdb6f9907e5b41b7415b9947dc9144ea4e2e6d7c199a45f5",
+      "bytes": 20418,
+      "title": "agentic-product-engineering-collaboration / source hardening / 300 leads",
+      "canonical_object": "agentic-product-engineering-collaboration",
+      "artifact_type": "source-hardening",
+      "status": "expanded-source-leads",
+      "related_objects": null,
+      "related_sources": [
+        "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-broad-scan-2026-05-11.md",
+        "wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md",
+        "wiki/sources/agentic-product-engineering-collaboration-podcast-video-discussions-2026-05-11.md"
+      ],
+      "derived_from": null,
       "validates": null,
       "related_focus_threads": null,
       "related_reminders": null
@@ -2926,8 +3619,8 @@
     {
       "path": "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md",
       "section": "wiki/sources",
-      "sha256": "ee1fd30584c7dfe9acca2362c477dd23e4583d9265e2d60895b298756694997e",
-      "bytes": 26038,
+      "sha256": "c34fb9c238fb47b2f45e2fe9c22c452902ef14ca95afa24af3dcc3afadeaf065",
+      "bytes": 26518,
       "title": "agentic-product-engineering-collaboration / source-map",
       "canonical_object": "agentic-product-engineering-collaboration",
       "artifact_type": "source-map",
@@ -3150,8 +3843,8 @@
     {
       "path": "wiki/templates/codex-handoff-template.md",
       "section": "wiki/templates",
-      "sha256": "41e065c6d4f5c9ebce399fe04ce93404a0e9bd39c3c70030466acef2c51154b4",
-      "bytes": 746,
+      "sha256": "1601e7c368d4f7ffb6fcd09a6fd0f2d22e396c05b18c14b11126d4129fc0ef1a",
+      "bytes": 824,
       "title": "<Codex Handoff Title>",
       "canonical_object": null,
       "artifact_type": null,
@@ -3182,8 +3875,8 @@
     {
       "path": "wiki/templates/domain-template.md",
       "section": "wiki/templates",
-      "sha256": "c645ab4bef01c93eda74e75242f4a8f06896e558a168742a44da70f345ecf6fa",
-      "bytes": 835,
+      "sha256": "defb9202f8265e7f749bea0d891957145d994bc92d5827b8db22ee94c0f686a6",
+      "bytes": 850,
       "title": "<Domain Title>",
       "canonical_object": null,
       "artifact_type": null,
@@ -3198,8 +3891,8 @@
     {
       "path": "wiki/templates/focus-thread-template.md",
       "section": "wiki/templates",
-      "sha256": "ad7bb5fa4cf915699a363ed1b95b728d3ea452ab8d7ff6dbbad5150ff7259d54",
-      "bytes": 668,
+      "sha256": "a8c06bd5a54e4b38c8b23b5eed784eccf280d4573cd41983588822e131f1ff2d",
+      "bytes": 746,
       "title": "<Focus Thread Title>",
       "canonical_object": null,
       "artifact_type": null,
@@ -3214,8 +3907,8 @@
     {
       "path": "wiki/templates/intake-record-template.md",
       "section": "wiki/templates",
-      "sha256": "cd1bbf186a4bad9aeb4022ac77973f778856796a724b570fd4166b1e7b091243",
-      "bytes": 811,
+      "sha256": "ce63a276535fab2f2d1e29a03a9ae20c8f48f8b669aabae1ff2d86976328170c",
+      "bytes": 874,
       "title": "<Intake Title>",
       "canonical_object": null,
       "artifact_type": null,
@@ -3230,8 +3923,8 @@
     {
       "path": "wiki/templates/meeting-note-source-template.md",
       "section": "wiki/templates",
-      "sha256": "c1fa319e08e7b489cbd7ba0b3fb240c82b70b09aad7289078abb7c4cf1c34093",
-      "bytes": 1341,
+      "sha256": "4865f5bf16d845fcd1d3ec30c5065fb77544790fee37e4a076d02289df4fa43b",
+      "bytes": 1384,
       "title": "<会议主题> <YYYY-MM-DD>",
       "canonical_object": null,
       "artifact_type": null,
@@ -3246,8 +3939,8 @@
     {
       "path": "wiki/templates/reminder-item-template.md",
       "section": "wiki/templates",
-      "sha256": "0196fafedec405c2481eaa15c880b68c2b9700453d35bf20bdc550d60c94e216",
-      "bytes": 717,
+      "sha256": "fab38e8e1bee0c481ba77c0868fa402d69e964fad2f0d3fb0835ca5c03678141",
+      "bytes": 795,
       "title": "<Reminder Title>",
       "canonical_object": null,
       "artifact_type": null,
@@ -3262,8 +3955,8 @@
     {
       "path": "wiki/templates/report-template.md",
       "section": "wiki/templates",
-      "sha256": "8390b7426df7a7385e33bb7b3f5308cbf7384f9eeabccf6f0dedbaa17838a40b",
-      "bytes": 855,
+      "sha256": "1e27a8044bb8fbe0bda845816f3859d9eebeb1b5607a10625ba02f29de1a8ed4",
+      "bytes": 870,
       "title": "<Report Title>",
       "canonical_object": null,
       "artifact_type": null,
@@ -3278,8 +3971,8 @@
     {
       "path": "wiki/templates/source-template.md",
       "section": "wiki/templates",
-      "sha256": "40fffe7cddbffdc959c81d3620618f6e6df8e8b81b041f9f12c679093391a9c9",
-      "bytes": 1052,
+      "sha256": "bc67098cda406078f43a139c06206670399fdbfb916fe3b524d5ad0b2c87446c",
+      "bytes": 1095,
       "title": "<Source Title>",
       "canonical_object": null,
       "artifact_type": null,
@@ -3294,8 +3987,8 @@
     {
       "path": "wiki/templates/timeline-template.md",
       "section": "wiki/templates",
-      "sha256": "717999c73f19bd522c342e829b3629eea349496411161f6db51a3fb9923ecf8e",
-      "bytes": 695,
+      "sha256": "df0df684a53638dc0fd9e709c956cb32e335944aeaddd95bc0e5882ce3a65cbf",
+      "bytes": 711,
       "title": "<Period Title>",
       "canonical_object": null,
       "artifact_type": null,
@@ -3391,6 +4084,13 @@
       "source_type": "external-public-source-timeline",
       "domain": null,
       "status": "expanded-open-web-scan"
+    },
+    {
+      "path": "wiki/sources/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md",
+      "source_path": null,
+      "source_type": "external-public-source-hardening",
+      "domain": null,
+      "status": "expanded-source-leads"
     },
     {
       "path": "wiki/sources/agentic-product-engineering-collaboration-source-map-2026-05-11.md",
@@ -3491,6 +4191,12 @@
       "represented_by_source": true
     },
     {
+      "path": "inbox/ad-desgin.md",
+      "sha256": "1675e690187b3a7b201050ca3b9fb3ac5596e3bd0a6354ce1b12a3dac39a3632",
+      "bytes": 25065,
+      "represented_by_source": false
+    },
+    {
       "path": "inbox/nirvana/preview .html",
       "sha256": "069e4b96b719362b254b7d0d4d15949b25de24120c3f3c7e93fa86d0719ca24e",
       "bytes": 22105,
@@ -3545,45 +4251,425 @@
       "represented_by_source": true
     }
   ],
-  "pending_inbox_files": [],
+  "pending_inbox_files": [
+    "inbox/ad-desgin.md"
+  ],
   "openspec_changes": [
     {
-      "change_id": "add-product-status-contract",
-      "state": "active",
-      "done_tasks": 0,
-      "open_tasks": 13,
-      "total_tasks": 13,
-      "tasks_path": "openspec/changes/add-product-status-contract/tasks.md"
+      "change_id": "add-brainstorming-drift-wiki-trace",
+      "state": "complete",
+      "done_tasks": 5,
+      "open_tasks": 0,
+      "total_tasks": 5,
+      "tasks_path": "openspec/changes/add-brainstorming-drift-wiki-trace/tasks.md"
+    },
+    {
+      "change_id": "add-frontmatter-gate-precheck",
+      "state": "complete",
+      "done_tasks": 6,
+      "open_tasks": 0,
+      "total_tasks": 6,
+      "tasks_path": "openspec/changes/add-frontmatter-gate-precheck/tasks.md"
+    },
+    {
+      "change_id": "add-go-engineering-security-rules",
+      "state": "complete",
+      "done_tasks": 5,
+      "open_tasks": 0,
+      "total_tasks": 5,
+      "tasks_path": "openspec/changes/add-go-engineering-security-rules/tasks.md"
+    },
+    {
+      "change_id": "build-ad-growth-cockpit-h5",
+      "state": "complete",
+      "done_tasks": 4,
+      "open_tasks": 0,
+      "total_tasks": 4,
+      "tasks_path": "openspec/changes/build-ad-growth-cockpit-h5/tasks.md"
+    },
+    {
+      "change_id": "build-ad-platform-operational-prototype",
+      "state": "complete",
+      "done_tasks": 5,
+      "open_tasks": 0,
+      "total_tasks": 5,
+      "tasks_path": "openspec/changes/build-ad-platform-operational-prototype/tasks.md"
+    },
+    {
+      "change_id": "close-wiki-skill-runtime-loop",
+      "state": "complete",
+      "done_tasks": 6,
+      "open_tasks": 0,
+      "total_tasks": 6,
+      "tasks_path": "openspec/changes/close-wiki-skill-runtime-loop/tasks.md"
+    },
+    {
+      "change_id": "enforce-whole-wiki-frontmatter-gate",
+      "state": "complete",
+      "done_tasks": 7,
+      "open_tasks": 0,
+      "total_tasks": 7,
+      "tasks_path": "openspec/changes/enforce-whole-wiki-frontmatter-gate/tasks.md"
+    },
+    {
+      "change_id": "formalize-wiki-runtime-layer-boundary",
+      "state": "complete",
+      "done_tasks": 6,
+      "open_tasks": 0,
+      "total_tasks": 6,
+      "tasks_path": "openspec/changes/formalize-wiki-runtime-layer-boundary/tasks.md"
+    },
+    {
+      "change_id": "harden-behavior-asset-evaluation-gate",
+      "state": "complete",
+      "done_tasks": 8,
+      "open_tasks": 0,
+      "total_tasks": 8,
+      "tasks_path": "openspec/changes/harden-behavior-asset-evaluation-gate/tasks.md"
+    },
+    {
+      "change_id": "improve-wiki-routing-diagnostics",
+      "state": "complete",
+      "done_tasks": 7,
+      "open_tasks": 0,
+      "total_tasks": 7,
+      "tasks_path": "openspec/changes/improve-wiki-routing-diagnostics/tasks.md"
+    },
+    {
+      "change_id": "introduce-wiki-react-decision-trace-eval",
+      "state": "complete",
+      "done_tasks": 7,
+      "open_tasks": 0,
+      "total_tasks": 7,
+      "tasks_path": "openspec/changes/introduce-wiki-react-decision-trace-eval/tasks.md"
+    },
+    {
+      "change_id": "normalize-go-rule-dedupe-gate",
+      "state": "complete",
+      "done_tasks": 3,
+      "open_tasks": 0,
+      "total_tasks": 3,
+      "tasks_path": "openspec/changes/normalize-go-rule-dedupe-gate/tasks.md"
+    },
+    {
+      "change_id": "route-repo-public-artifacts-through-agent-intent",
+      "state": "complete",
+      "done_tasks": 5,
+      "open_tasks": 0,
+      "total_tasks": 5,
+      "tasks_path": "openspec/changes/route-repo-public-artifacts-through-agent-intent/tasks.md"
+    },
+    {
+      "change_id": "solidify-go-rule-official-sources",
+      "state": "complete",
+      "done_tasks": 3,
+      "open_tasks": 0,
+      "total_tasks": 3,
+      "tasks_path": "openspec/changes/solidify-go-rule-official-sources/tasks.md"
+    },
+    {
+      "change_id": "stabilize-wiki-frontmatter-taxonomy",
+      "state": "complete",
+      "done_tasks": 9,
+      "open_tasks": 0,
+      "total_tasks": 9,
+      "tasks_path": "openspec/changes/stabilize-wiki-frontmatter-taxonomy/tasks.md"
+    },
+    {
+      "change_id": "stabilize-wiki-runtime-layer-contract",
+      "state": "complete",
+      "done_tasks": 6,
+      "open_tasks": 0,
+      "total_tasks": 6,
+      "tasks_path": "openspec/changes/stabilize-wiki-runtime-layer-contract/tasks.md"
     }
   ],
   "product_status": {
     "contract_version": "1",
     "object_type_counts": {
       "behavior": 5,
-      "governance": 33,
+      "governance": 50,
       "output": 15,
-      "source": 18,
-      "unknown": 131
+      "source": 19,
+      "unknown": 142
     },
     "readiness_counts": {
-      "accepted": 1,
-      "draft-only": 200
+      "accepted": 2,
+      "draft-only": 213
     },
     "source_layer_counts": {
-      "ops": 107,
+      "ops": 118,
       "report": 15,
-      "source": 18,
-      "spec": 33,
+      "source": 19,
+      "spec": 50,
       "unknown": 29
     },
     "identity_coverage": {
-      "with_identity": 84,
-      "missing_identity": 117
+      "with_identity": 97,
+      "missing_identity": 118
     },
     "relation_coverage": {
-      "with_relations": 22,
-      "missing_relations": 179
+      "with_relations": 97,
+      "missing_relations": 118
     },
-    "unresolved_items": []
+    "unresolved_items": [
+      {
+        "type": "pending_inbox",
+        "path": "inbox/ad-desgin.md",
+        "readiness_label": "blocked",
+        "status_transition": "evidence_collection"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "add-brainstorming-drift-wiki-trace",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "add-frontmatter-gate-precheck",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "add-go-engineering-security-rules",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "build-ad-growth-cockpit-h5",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "build-ad-platform-operational-prototype",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "close-wiki-skill-runtime-loop",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "enforce-whole-wiki-frontmatter-gate",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "formalize-wiki-runtime-layer-boundary",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "harden-behavior-asset-evaluation-gate",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "improve-wiki-routing-diagnostics",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "introduce-wiki-react-decision-trace-eval",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "normalize-go-rule-dedupe-gate",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "route-repo-public-artifacts-through-agent-intent",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "solidify-go-rule-official-sources",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "stabilize-wiki-frontmatter-taxonomy",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      },
+      {
+        "type": "complete_openspec_change",
+        "change_id": "stabilize-wiki-runtime-layer-contract",
+        "readiness_label": "unresolved",
+        "status_transition": "archive_review"
+      }
+    ]
+  },
+  "domain_taxonomy_health": {
+    "status": "drift",
+    "config_path": "wiki/config/frontmatter-taxonomy.yaml",
+    "taxonomy_version": 1,
+    "summary": {
+      "error": 767,
+      "warn": 2,
+      "info": 0,
+      "total": 769
+    },
+    "strict_gate": {
+      "enabled": true,
+      "passed": false,
+      "minimum_pass_score": 100,
+      "blocking_severities": [
+        "error"
+      ],
+      "blocking_entry_count": 767
+    },
+    "scorecard": {
+      "score": 0,
+      "minimum_pass_score": 100,
+      "passed": false,
+      "blocking_entry_count": 767,
+      "dimensions": [
+        {
+          "dimension": "completeness",
+          "weight": 40,
+          "finding_count": 414,
+          "points_lost": 40,
+          "passed": false
+        },
+        {
+          "dimension": "taxonomy_validity",
+          "weight": 25,
+          "finding_count": 233,
+          "points_lost": 25,
+          "passed": false
+        },
+        {
+          "dimension": "identity_coverage",
+          "weight": 20,
+          "finding_count": 122,
+          "points_lost": 20,
+          "passed": false
+        },
+        {
+          "dimension": "relation_shape",
+          "weight": 15,
+          "finding_count": 0,
+          "points_lost": 0,
+          "passed": true
+        }
+      ]
+    },
+    "entries": [
+      {
+        "kind": "missing_required_field",
+        "severity": "error",
+        "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+        "message": "Rule `whole_wiki` requires `layer` for `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`.",
+        "field": "layer",
+        "value": null,
+        "dimension": "completeness"
+      },
+      {
+        "kind": "missing_required_field",
+        "severity": "error",
+        "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+        "message": "Rule `whole_wiki` requires `domain` for `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`.",
+        "field": "domain",
+        "value": null,
+        "dimension": "completeness"
+      },
+      {
+        "kind": "missing_required_field",
+        "severity": "error",
+        "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+        "message": "Rule `adr_pages` requires `canonical_object` for `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`.",
+        "field": "canonical_object",
+        "value": null,
+        "dimension": "identity_coverage"
+      },
+      {
+        "kind": "missing_required_field",
+        "severity": "error",
+        "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+        "message": "Rule `adr_pages` requires `artifact_type` for `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`.",
+        "field": "artifact_type",
+        "value": null,
+        "dimension": "identity_coverage"
+      },
+      {
+        "kind": "unexpected_field_value",
+        "severity": "error",
+        "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+        "message": "Rule `adr_pages` expects `layer: adr` for `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`, got `None`.",
+        "field": "layer",
+        "value": "None",
+        "dimension": "taxonomy_validity"
+      },
+      {
+        "kind": "unexpected_field_value",
+        "severity": "error",
+        "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+        "message": "Rule `adr_pages` expects `domain: none` for `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`, got `None`.",
+        "field": "domain",
+        "value": "None",
+        "dimension": "taxonomy_validity"
+      },
+      {
+        "kind": "missing_required_field",
+        "severity": "error",
+        "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+        "message": "Rule `whole_wiki` requires `layer` for `wiki/adr/0002-stable-decisions-live-in-wiki-adr.md`.",
+        "field": "layer",
+        "value": null,
+        "dimension": "completeness"
+      },
+      {
+        "kind": "missing_required_field",
+        "severity": "error",
+        "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+        "message": "Rule `whole_wiki` requires `domain` for `wiki/adr/0002-stable-decisions-live-in-wiki-adr.md`.",
+        "field": "domain",
+        "value": null,
+        "dimension": "completeness"
+      },
+      {
+        "kind": "missing_required_field",
+        "severity": "error",
+        "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+        "message": "Rule `adr_pages` requires `canonical_object` for `wiki/adr/0002-stable-decisions-live-in-wiki-adr.md`.",
+        "field": "canonical_object",
+        "value": null,
+        "dimension": "identity_coverage"
+      },
+      {
+        "kind": "missing_required_field",
+        "severity": "error",
+        "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+        "message": "Rule `adr_pages` requires `artifact_type` for `wiki/adr/0002-stable-decisions-live-in-wiki-adr.md`.",
+        "field": "artifact_type",
+        "value": null,
+        "dimension": "identity_coverage"
+      }
+    ]
+  },
+  "graph_parse_health": {
+    "status": "pass",
+    "summary": {
+      "total": 0
+    },
+    "entries": []
   }
 }

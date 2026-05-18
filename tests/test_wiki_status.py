@@ -258,10 +258,43 @@ artifact_type: retro
         self.assertEqual(health["entries"][0]["kind"], "forbidden_domain")
         self.assertEqual(health["entries"][0]["path"], "wiki/ops/domain-drift.md")
 
+    def test_manifest_and_status_report_surface_content_adjudication_health(self) -> None:
+        (self.tmpdir / "wiki" / "config" / "frontmatter-taxonomy.yaml").write_text(
+            """version: 1
+fields:
+  domain:
+    known:
+      - none
+      - unclassified
+      - wiki
+  ops_area:
+    allowed:
+      - wiki-runtime
+      - workflow-trace
+severity: {}
+strict_gate:
+  enabled: true
+  rule_sets: {}
+""",
+            encoding="utf-8",
+        )
+        (self.tmpdir / "wiki" / "ops" / "runtime-boundary-drift-retro.md").write_text(
+            """# Runtime Boundary Drift
+
+This drift retro records a wiki-react eval apply boundary mismatch.
+""",
+            encoding="utf-8",
+        )
+
+        manifest = build_manifest(self.tmpdir)
+        health = manifest["content_adjudication_health"]
         status_text = render_status_markdown(manifest)
-        self.assertIn("## Domain Taxonomy Health", status_text)
-        self.assertIn("forbidden_domain", status_text)
-        self.assertIn("wiki/ops/domain-drift.md", status_text)
+
+        self.assertEqual(health["status"], "review_needed")
+        self.assertEqual(health["summary"]["full_detail_count"], 1)
+        self.assertEqual(health["summary"]["review_focus_count"], 1)
+        self.assertIn("Content Adjudication Health", status_text)
+        self.assertIn("review_package", status_text)
 
     def test_manifest_and_status_report_surface_empty_parsed_relation_fields(self) -> None:
         (self.tmpdir / "wiki" / "ops" / "empty-relation.md").write_text(
@@ -372,6 +405,74 @@ title: Missing
         self.assertIn("Passed | False", status_text)
         self.assertIn("## Frontmatter Scorecard", status_text)
         self.assertIn("missing_required_field", status_text)
+
+    def test_manifest_and_status_report_surface_moc_projection_health(self) -> None:
+        (self.tmpdir / "wiki" / "ops" / "moc-source.md").write_text(
+            """---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
+canonical_object: moc-source
+artifact_type: method
+related_objects:
+  - wiki-frontmatter-model
+---
+
+# MOC Source
+""",
+            encoding="utf-8",
+        )
+
+        manifest = build_manifest(self.tmpdir)
+        health = manifest["moc_projection_health"]
+
+        self.assertEqual(health["status"], "drift")
+        self.assertGreaterEqual(health["summary"]["candidate_count"], 1)
+        self.assertTrue(
+            any(entry["path"] == "wiki/moc/domain-wiki.md" for entry in health["entries"])
+        )
+
+        status_text = render_status_markdown(manifest)
+        self.assertIn("## MOC Projection Health", status_text)
+        self.assertIn("obsidian-moc-projection", status_text)
+        self.assertIn("Status does not write `wiki/moc` files", status_text)
+
+    def test_manifest_and_status_report_surface_content_enrichment_health(self) -> None:
+        (self.tmpdir / "wiki" / "config" / "frontmatter-taxonomy.yaml").write_text(
+            """version: 1
+fields:
+  domain:
+    known:
+      - none
+      - unclassified
+      - wiki
+  ops_area:
+    allowed:
+      - wiki-runtime
+strict_gate:
+  enabled: true
+  rule_sets: {}
+""",
+            encoding="utf-8",
+        )
+        (self.tmpdir / "wiki" / "ops" / "needs-enrichment-retro.md").write_text(
+            """# Needs Enrichment
+
+This wiki runtime retro mentions wiki-react and decision_trace.
+""",
+            encoding="utf-8",
+        )
+
+        manifest = build_manifest(self.tmpdir)
+        health = manifest["content_enrichment_health"]
+
+        self.assertEqual(health["status"], "review_needed")
+        self.assertEqual(health["summary"]["entry_count"], 1)
+        self.assertEqual(health["entries"][0]["path"], "wiki/ops/needs-enrichment-retro.md")
+
+        status_text = render_status_markdown(manifest)
+        self.assertIn("## Content Enrichment Health", status_text)
+        self.assertIn("frontmatter-enrichment-preview", status_text)
 
 
 if __name__ == "__main__":

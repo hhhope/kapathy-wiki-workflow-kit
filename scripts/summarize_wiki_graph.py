@@ -9,8 +9,13 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.wiki_moc_projection import build_moc_candidates
+
+
 GRAPH_EXTRACTOR = ROOT / "scripts" / "extract_wiki_graph.py"
 RELATION_ANALYZER = ROOT / "scripts" / "analyze_wiki_relations.py"
 DEFAULT_LIMIT = 10
@@ -157,6 +162,7 @@ def summarize_graph(graph: dict, relation_analysis: dict, focus: str | None = No
     warnings = graph.get("warnings", [])
     warning_by_layer = Counter(warning_layer(warning) for warning in warnings)
     object_view = build_object_view(graph, relation_analysis, normalized_focus, limit)
+    moc_candidates = build_moc_candidates(graph)
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -181,10 +187,28 @@ def summarize_graph(graph: dict, relation_analysis: dict, focus: str | None = No
             "by_layer": dict(sorted(warning_by_layer.items())),
             "samples": warnings[:10],
         },
+        "moc_candidates": {
+            "summary": {
+                "candidate_count": len(moc_candidates),
+                "domain_count": sum(1 for item in moc_candidates if item.kind == "domain"),
+                "object_count": sum(1 for item in moc_candidates if item.kind == "object"),
+                "relation_count": sum(1 for item in moc_candidates if item.kind == "relation"),
+            },
+            "items": [
+                {
+                    "kind": item.kind,
+                    "key": item.key,
+                    "path": item.path,
+                    "link_count": len(item.lines),
+                }
+                for item in moc_candidates[:limit]
+            ],
+        },
         "proof_boundary_notes": [
             "This is structural graph evidence only.",
             "It does not infer semantic identity for unresolved pages.",
             "It does not prove retrieval quality or rollout readiness.",
+            "MOC candidates are projection suggestions only; graph summary does not write files.",
         ],
     }
 

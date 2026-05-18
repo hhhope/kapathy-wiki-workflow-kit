@@ -23,6 +23,9 @@ class WikiDecisionTraceEvalTest(unittest.TestCase):
         self.assertIn("relation-exploration", case_ids)
         self.assertIn("execution-request", case_ids)
         self.assertIn("promotion-to-adr", case_ids)
+        self.assertIn("obsidian-graph-projection", case_ids)
+        self.assertIn("wiki-content-enrichment", case_ids)
+        self.assertIn("wiki-content-adjudication", case_ids)
 
     def test_eval_accepts_agent_trace_without_python_intent_classification(self) -> None:
         cases = [

@@ -21,6 +21,45 @@ reused, and checked by agents.
 External systems such as Feishu are treated as source or publishing surfaces.
 The durable truth lives in git-backed Markdown.
 
+## Project Capability Map
+
+This repository is organized as a layered reporting wiki with agent-readable
+runtime support. The layers answer different questions:
+
+| Layer | Question It Answers | Primary Readers |
+| --- | --- | --- |
+| Source records | What evidence entered the repo, and where did it come from? | humans, agents |
+| Domain and timeline views | What durable business or topic understanding has been built? | humans |
+| Reports and examples | What reader-facing outputs or validated shapes can be reused? | humans |
+| Ops traces and runtime docs | What workflow, routing, learning, and governance evidence exists? | humans, agents |
+| ADRs | Which cross-change decisions remain stable? | humans, agents |
+| OpenSpec | Which capability changes are proposed, active, complete, or archived? | humans, agents |
+| Status artifacts | What is the current health of the wiki graph, taxonomy, inbox, and runtime surfaces? | agents, maintainers |
+| Future MOC projection | Which frontmatter-derived relationships should be visible in Obsidian graph views? | humans, agents |
+
+Core capabilities:
+
+- Material capture: preserve upstream report inputs as traceable wiki records.
+- Learning capture: turn useful external references, repos, articles, or examples
+  into bounded local learning before promotion.
+- Frontmatter taxonomy: keep wiki pages machine-readable through explicit
+  `layer`, `domain`, `ops_area`, `canonical_object`, and `artifact_type` fields.
+- Graph and relation analysis: derive structural nodes, edges, identities, and
+  relation health from explicit wiki and OpenSpec evidence.
+- Status and scorecard surfaces: expose inbox, OpenSpec, taxonomy, identity,
+  relation, graph parse, and scorecard health.
+- Runtime routing: use `wiki-react`, direct wiki skills, decision traces, apply
+  previews, and eval checks to keep inspection, preview, validation, and
+  lifecycle decisions separate.
+- Change lifecycle: use OpenSpec for workflow, runtime, skill, taxonomy,
+  command, or structural behavior changes.
+
+README is a project description and orientation surface. It is not the runtime
+entrypoint, behavior source of truth, repair authorization, or OpenSpec
+lifecycle substitute. Stable decisions live in `wiki/adr`, operational traces
+live in `wiki/ops`, scoped behavior changes live in `openspec`, and current
+health evidence lives in generated `wiki/status` artifacts.
+
 ## Wiki Layers
 
 Use the wiki by layer, not by memory:
@@ -35,6 +74,9 @@ Use the wiki by layer, not by memory:
   methods, and agent-readable wiki surfaces.
 - `wiki/adr/`: stable cross-change decisions.
 - `wiki/status/`: generated status and manifest outputs.
+- Future `wiki/moc/`: Obsidian-visible projection pages generated from
+  approved frontmatter/graph contracts. This layer is not active until a scoped
+  OpenSpec change implements it.
 
 Default flow:
 
@@ -176,6 +218,10 @@ Core loop
 
 Use [wiki/ops/wiki-runtime-layer-contract.md](wiki/ops/wiki-runtime-layer-contract.md)
 as the durable architecture reference.
+
+Runtime orientation in this README is descriptive. The authoritative runtime
+boundaries are the layer contract, ADRs, OpenSpec specs, skill files, command
+docs, and implementation evidence.
 
 ### Choosing Wiki Skills
 

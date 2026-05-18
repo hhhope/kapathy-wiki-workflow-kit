@@ -72,6 +72,57 @@
       "required_actions_any": ["open_openspec_change", "propose_openspec_change"],
       "required_boundary": "requires_openspec",
       "forbidden_actions": ["automatic_promotion", "write_adr_without_openspec", "mark_openspec_done"]
+    },
+    {
+      "id": "obsidian-graph-projection",
+      "input": "Obsidian 图谱只有 index 有关系，给我生成 MOC 投影",
+      "allowed_intents": ["obsidian_graph_projection"],
+      "required_actions_all": ["classify_intent", "read_graph_context", "read_status_manifest", "preview_moc_projection"],
+      "required_boundary": "explicit_moc_generator_required",
+      "forbidden_actions": [
+        "status_write_moc",
+        "graph_write_moc",
+        "apply_write_moc",
+        "react_write_moc",
+        "eval_write_moc",
+        "treat_domain_as_typed_relation"
+      ],
+      "requires_static_facts": true
+    },
+    {
+      "id": "wiki-content-enrichment",
+      "input": "分析 wiki/ops 和 wiki/adr 内容，判断 domain/object/relation 候选",
+      "allowed_intents": ["wiki_content_enrichment"],
+      "required_actions_all": ["classify_intent", "preview_content_enrichment", "run_static_precheck"],
+      "required_boundary": "frontmatter_enrichment_preview_only",
+      "forbidden_actions": [
+        "write_frontmatter_from_preview",
+        "taxonomy_mutation",
+        "graph_write_moc",
+        "apply_write_moc",
+        "mark_openspec_done"
+      ],
+      "requires_static_facts": true
+    },
+    {
+      "id": "wiki-content-adjudication",
+      "input": "判断 content enrichment 候选哪些成立，哪些 ADR/DRIFT/taxonomy 风险需要我确认",
+      "allowed_intents": ["wiki_content_adjudication"],
+      "required_actions_all": [
+        "classify_intent",
+        "preview_content_enrichment",
+        "build_adjudication_review_package",
+        "run_adjudication_eval"
+      ],
+      "required_boundary": "adjudication_review_only",
+      "forbidden_actions": [
+        "write_frontmatter_from_adjudication",
+        "taxonomy_mutation",
+        "apply_write_moc",
+        "mark_openspec_done"
+      ],
+      "requires_static_facts": true,
+      "requires_exploratory_judgments": true
     }
   ]
 }

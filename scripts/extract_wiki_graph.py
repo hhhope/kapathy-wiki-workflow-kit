@@ -237,6 +237,7 @@ def collect_pages() -> tuple[list[dict], list[dict], list[str]]:
                     "canonical_object": canonical_object,
                     "artifact_type": artifact_type,
                     "source_layer": layer,
+                    "domain": meta.get("domain"),
                 }
             )
 

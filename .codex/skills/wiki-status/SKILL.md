@@ -12,7 +12,8 @@ When triggered:
 3. Read `wiki/status/manifest.json` and `wiki/status/wiki-status.md`.
 4. Summarize page and source counts, inbox and OpenSpec counts, identity and
    relation coverage, graph parse health, strict frontmatter gate status,
-   scorecard score, blocking count, and top blockers when present.
+   content enrichment health, content adjudication health, MOC projection
+   health, scorecard score, blocking count, and top blockers when present.
 5. Name next inspection routes such as `wiki-graph`, `wiki-scorecard`,
    `wiki-apply`, or `wiki-frontmatter-taxonomy` when the status shows drift.
 
@@ -23,3 +24,6 @@ Boundaries:
 - Do not execute queued work.
 - Do not implement a query engine, graph UI, scorecard, or change queue from
   this skill.
+- Do not write `wiki/moc` files from status inspection.
+- Do not write frontmatter from content enrichment health.
+- Do not write frontmatter or taxonomy from content adjudication health.

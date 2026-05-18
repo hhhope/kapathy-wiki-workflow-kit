@@ -182,6 +182,130 @@ def _render_graph_parse_health(health: dict[str, Any]) -> list[str]:
     return lines
 
 
+def _render_moc_projection_health(health: dict[str, Any]) -> list[str]:
+    summary = health.get("summary", {})
+    lines = [
+        "",
+        "## MOC Projection Health",
+        "",
+        f"Status: `{health.get('status', 'unknown')}`",
+        "",
+        *_markdown_table(
+            ["Metric", "Value"],
+            [
+                ["Candidates", summary.get("candidate_count", 0)],
+                ["Create", summary.get("create_count", 0)],
+                ["Update", summary.get("update_count", 0)],
+                ["Noop", summary.get("noop_count", 0)],
+                ["Orphan", summary.get("orphan_count", 0)],
+            ],
+        ),
+        "",
+        "### MOC Projection Samples",
+        "",
+    ]
+    entries = health.get("entries", [])
+    if entries:
+        for entry in entries:
+            lines.append(
+                f"- `{entry.get('path', 'unknown')}` `{entry.get('problem', 'unknown')}` "
+                f"kind=`{entry.get('kind', 'unknown')}` key=`{entry.get('key', 'unknown')}` "
+                f"route=`{entry.get('repair_route', 'unknown')}`"
+            )
+    else:
+        lines.append("- None")
+    lines.extend(
+        [
+            "",
+            "MOC projection health is diagnostic only. Status does not write `wiki/moc` files.",
+        ]
+    )
+    return lines
+
+
+def _render_content_enrichment_health(health: dict[str, Any]) -> list[str]:
+    summary = health.get("summary", {})
+    lines = [
+        "",
+        "## Content Enrichment Health",
+        "",
+        f"Status: `{health.get('status', 'unknown')}`",
+        "",
+        *_markdown_table(
+            ["Metric", "Value"],
+            [
+                ["Entries", summary.get("entry_count", 0)],
+                ["Review needed", summary.get("review_needed_count", 0)],
+                ["High confidence", summary.get("high_confidence_count", 0)],
+                ["Medium confidence", summary.get("medium_confidence_count", 0)],
+                ["Low confidence", summary.get("low_confidence_count", 0)],
+            ],
+        ),
+        "",
+        "### Content Enrichment Samples",
+        "",
+    ]
+    entries = health.get("entries", [])
+    if entries:
+        for entry in entries:
+            lines.append(
+                f"- `{entry.get('path', 'unknown')}` confidence=`{entry.get('confidence', 'unknown')}` "
+                f"route=`{entry.get('repair_route', 'unknown')}`"
+            )
+    else:
+        lines.append("- None")
+    lines.extend(
+        [
+            "",
+            "Content enrichment is preview only. Status does not write frontmatter.",
+        ]
+    )
+    return lines
+
+
+def _render_content_adjudication_health(health: dict[str, Any]) -> list[str]:
+    summary = health.get("summary", {})
+    eval_result = health.get("eval_result", {})
+    lines = [
+        "",
+        "## Content Adjudication Health",
+        "",
+        f"Status: `{health.get('status', 'unknown')}`",
+        f"Eval passed: `{eval_result.get('passed', False)}`",
+        "",
+        *_markdown_table(
+            ["Metric", "Value"],
+            [
+                ["Candidates", summary.get("candidate_count", 0)],
+                ["Full details", summary.get("full_detail_count", 0)],
+                ["Review focus", summary.get("review_focus_count", 0)],
+                ["Taxonomy candidates", summary.get("taxonomy_candidate_count", 0)],
+                ["Drift traces", summary.get("drift_trace_count", 0)],
+            ],
+        ),
+        "",
+        "### Content Adjudication Samples",
+        "",
+    ]
+    entries = health.get("entries", [])
+    if entries:
+        for entry in entries:
+            reasons = ", ".join(entry.get("review_reasons", []))
+            lines.append(
+                f"- `{entry.get('path', 'unknown')}` detail=`{entry.get('detail_ref', 'unknown')}` "
+                f"reasons=`{reasons}` route=`{entry.get('repair_route', 'unknown')}`"
+            )
+    else:
+        lines.append("- None")
+    lines.extend(
+        [
+            "",
+            "Content adjudication is review_package output only. Status does not write frontmatter or taxonomy.",
+        ]
+    )
+    return lines
+
+
 def render_status_markdown(manifest: dict[str, Any]) -> str:
     summary = manifest["summary"]
     lines = [
@@ -223,6 +347,9 @@ def render_status_markdown(manifest: dict[str, Any]) -> str:
     lines.extend(_render_domain_taxonomy_health(manifest.get("domain_taxonomy_health", {})))
     lines.extend(_render_frontmatter_strict_gate(manifest.get("domain_taxonomy_health", {})))
     lines.extend(_render_graph_parse_health(manifest.get("graph_parse_health", {})))
+    lines.extend(_render_content_enrichment_health(manifest.get("content_enrichment_health", {})))
+    lines.extend(_render_content_adjudication_health(manifest.get("content_adjudication_health", {})))
+    lines.extend(_render_moc_projection_health(manifest.get("moc_projection_health", {})))
     lines.extend(["", "## Pending Inbox Files", ""])
     pending = manifest["pending_inbox_files"]
     if pending:

@@ -14,6 +14,7 @@ When triggered:
 3. Read generated graph, relation-analysis, and summary JSON when available.
 4. Summarize canonical objects, source layers, relation counts, warnings, and
    representative pages as structural evidence only.
+5. When present, summarize MOC candidates as projection candidates only.
 
 Boundaries:
 
@@ -21,3 +22,4 @@ Boundaries:
 - Do not mark OpenSpec tasks complete.
 - Do not execute queued work.
 - Do not claim semantic understanding from graph structure alone.
+- Do not write `wiki/moc` files from graph inspection.
