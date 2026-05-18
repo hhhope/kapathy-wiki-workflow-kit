@@ -91,5 +91,5 @@
 - [x] 47. Run recovery evidence after blocker cleanup and frontmatter the new
   doctor, review-decision, and recovery records it generated.
 - [x] 48. Add final evaluation evidence and run OpenSpec validation.
-- [ ] 49. Route the remaining recovery blocker as a separate producer-warning
+- [x] 49. Route the remaining recovery blocker as a separate producer-warning
   gate decision instead of continuing page-frontmatter repair in this change.
