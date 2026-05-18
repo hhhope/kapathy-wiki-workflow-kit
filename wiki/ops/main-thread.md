@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: workflow-trace
+canonical_object: main-thread
+artifact_type: method
+---
+
 # 主线面板
 
 这页只保留当前真正驱动工作的主线，不收纳所有输入。

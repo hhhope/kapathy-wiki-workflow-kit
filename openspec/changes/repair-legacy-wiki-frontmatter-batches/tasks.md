@@ -67,6 +67,8 @@
   pages.
 - [x] 35. Apply approved batch 14m to add governance replay/method ops
   frontmatter.
-- [ ] 36. Get approval for the next classification batch before applying more
+- [x] 36. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 37. Add final evaluation evidence and run OpenSpec validation.
+- [x] 37. Apply approved batch 14n to clean ops method, learning, product
+  contract, and explore pages using doctor candidate frontmatter only.
+- [ ] 38. Add final evaluation evidence and run OpenSpec validation.

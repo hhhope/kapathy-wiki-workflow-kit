@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: learning-capture
+canonical_object: karpathy-skills-learning
+artifact_type: retro
+---
+
 # Karpathy Skills 学习复盘 2026-04-16
 
 ## 观察对象

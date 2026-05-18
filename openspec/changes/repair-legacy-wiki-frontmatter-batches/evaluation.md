@@ -1,5 +1,70 @@
 # Evaluation: repair legacy wiki frontmatter batches
 
+## Batch 14n Evidence
+
+Approved batch:
+
+- Batch 14n: clean ops method, learning, product contract, and explore pages
+  using doctor candidate frontmatter only
+
+Target set:
+
+- `wiki/ops/example-driven-wiki-capture.md`
+- `wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md`
+- `wiki/ops/karpathy-skills-learning-retro-2026-04-16.md`
+- `wiki/ops/learning-source-routing-gap-explore-2026-05-09.md`
+- `wiki/ops/llm-wiki-core-product-contract.md`
+- `wiki/ops/main-thread.md`
+- `wiki/ops/multi-system-branch-spec-explore-2026-05-12.md`
+
+Applied fields:
+
+- `layer: ops`
+- `domain`: `wiki`, `public-report-output`, or
+  `product-engineering-collaboration` from existing frontmatter or doctor
+  candidate evidence
+- `ops_area`: `learning-capture`, `report-quality`, `wiki-runtime`, or
+  `workflow-trace`
+- `canonical_object` and `artifact_type` where missing
+
+After target counts:
+
+- all 7 target pages reported `target.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 258
+- `summary.error`: 258
+- top remaining samples include `wiki/mnt/...`, `wiki/ops/index.md`,
+  `wiki/ops/nirvana-weekly-intake-2026-04-13.md`, and
+  `wiki/ops/nirvana-weekly-reminder-2026-04-13.md`
+
+OpenSpec validation:
+
+```bash
+openspec validate repair-legacy-wiki-frontmatter-batches --strict
+```
+
+Result:
+
+- `Change 'repair-legacy-wiki-frontmatter-batches' is valid`
+- PostHog DNS flush failed after validation; this did not change the command's
+  successful validation result.
+
+Boundary:
+
+- No relation fields were added.
+- Existing relation fields were preserved where already present.
+- No page bodies, taxonomy config, checker logic, MOC pages, ADRs, skills, or
+  OpenSpec lifecycle state were changed.
+
 ## Batch 1 Baseline
 
 Planner command:

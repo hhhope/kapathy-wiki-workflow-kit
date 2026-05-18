@@ -1,5 +1,6 @@
 ---
 title: Feishu image client freeze explore
+layer: ops
 type: intake
 language: zh-CN
 source_path: chat://openspec-explore/feishu-image-client-freeze-2026-05-09
@@ -7,6 +8,9 @@ source_type: conversation
 audience: self
 knowledge_level: working
 domain: public-report-output
+ops_area: report-quality
+canonical_object: feishu-image-client-freeze
+artifact_type: explore
 period: active
 confidence: medium
 status: active

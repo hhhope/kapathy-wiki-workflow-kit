@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: wiki
+ops_area: learning-capture
 canonical_object: learning-source-routing-gap
 artifact_type: explore-trace
 related_objects:

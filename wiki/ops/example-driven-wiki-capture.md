@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: learning-capture
+canonical_object: example-driven-wiki-capture
+artifact_type: method
+---
+
 # 例子驱动的 Wiki 留痕
 
 这页定义什么情况下，agent 不应只停在“分析了一个外部例子”，而应把已经提炼出的学习结果写成 repo-visible 记录。

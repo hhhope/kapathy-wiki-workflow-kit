@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 canonical_object: llm-wiki-core-product-contract
 artifact_type: product-contract
 related_objects:

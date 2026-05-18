@@ -1,5 +1,6 @@
 ---
 title: multi-system branch spec explore
+layer: ops
 type: intake
 language: zh-CN
 source_path: chat://openspec-explore/multi-system-branch-spec-2026-05-12
@@ -7,6 +8,9 @@ source_type: conversation
 audience: self
 knowledge_level: working
 domain: product-engineering-collaboration
+ops_area: workflow-trace
+canonical_object: multi-system-branch-spec
+artifact_type: explore
 period: active
 confidence: medium
 status: active
