@@ -543,6 +543,9 @@ created_at: 2026-05-15
 - `openspec/changes/archive/2026-05-18-add-completion-bridge-gate/`
 - `openspec/specs/completion-bridge-gate/spec.md`
 
+### OpenSpec Active Follow-up
+- `openspec/changes/rename-wiki-status-command-surface/`
+
 ## Manual Surgery Triage Summary
 
 This summary preserves human review decisions from the 2026-05-18 live triage.
@@ -573,7 +576,10 @@ lifecycle changes.
 - Source set: 7 governance-only items without relation or OpenSpec flags.
 - `no-op confirmed`: `detail-0051`, `detail-0091`, `detail-0112`.
 - `defer to cleanup`: `detail-0011`, `detail-0056`, `detail-0103`.
-- `OpenSpec candidate only`: `detail-0118`.
+- `detail-0118` follow-up:
+  OpenSpec proposal created at
+  `openspec/changes/rename-wiki-status-command-surface/`; this is proposal
+  evidence only and does not implement `/wiki:status`.
 - Project-management correction:
   - `detail-0081` should not be treated as learning; it is
     `project-management / weekly-intake / project-report` for the Nirvana
@@ -586,7 +592,10 @@ lifecycle changes.
   `detail-0095`, `detail-0100`, `detail-0106`.
 - `defer to cleanup`: `detail-0057`, `detail-0066`, `detail-0071`,
   `detail-0081`, `detail-0097`, `detail-0108`.
-- `OpenSpec candidate only`: `detail-0087`.
+- `detail-0087` no-op/defer:
+  covered by the existing product status contract at
+  `openspec/specs/product-status-contract/spec.md`; no new OpenSpec change is
+  opened from this case.
 - `detail-0055` follow-up:
   archived in `openspec/changes/archive/2026-05-18-add-completion-bridge-gate/`;
   stable spec created at `openspec/specs/completion-bridge-gate/spec.md`.
