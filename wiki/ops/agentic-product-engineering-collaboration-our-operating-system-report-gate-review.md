@@ -91,6 +91,11 @@ Layering correction on 2026-05-18:
 - User feedback: the Agent方案层 and the four-layer structure were not explicit enough.
 - Response: section `05A` now names the four layers directly: verifiable prototype, Agent方案流程, reaction chain, and generic/deterministic architecture. The second layer explicitly states `分析 -> 多方案 -> 博弈/打分 -> 优化 -> 人选择 -> 执行`.
 
+Memory correction on 2026-05-18:
+
+- User feedback: the article's Agent memory discussion was missing, and each case still needed role / goal / action / result.
+- Response: section `05A` now rewrites all four layers with `角色 / 目标 / 做法 / 完成结果`. The fourth layer now covers Li Xiang's memory critique: "memory" as context stuffing is a poor abstraction; the useful architecture separates records, personalization, knowledge graph / RAG, simple parameter memory, Agent, and ChatBot.
+
 Verification performed for this text-only update:
 
 - WeChat body fetched with `.codex/skills/weixin-reader/scripts/fetch_weixin.py`.
