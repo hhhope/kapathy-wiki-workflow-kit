@@ -537,6 +537,9 @@ created_at: 2026-05-15
 ### Recovery
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md`
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md`
+### OpenSpec Archive
+- `openspec/changes/archive/2026-05-18-classify-dialogue-agent-drift-traces/`
+- `openspec/specs/dialogue-agent-drift-trace-cleanup/spec.md`
 
 ## Manual Surgery Triage Summary
 
@@ -597,8 +600,10 @@ lifecycle changes.
   - dialogue-disagreement / agent-drift / reanchor-trace candidates.
   - agentic-product-engineering source-hardening material.
   - sample / explore trace cleanup.
-- Follow-up proposal created:
-  `openspec/changes/classify-dialogue-agent-drift-traces/`.
+- Follow-up OpenSpec archived:
+  `openspec/changes/archive/2026-05-18-classify-dialogue-agent-drift-traces/`.
+- Stable review-only spec created:
+  `openspec/specs/dialogue-agent-drift-trace-cleanup/spec.md`.
 
 ### Agreed Cleanup Vocabulary
 
@@ -610,7 +615,7 @@ dialogue-disagreement / agent-drift / reanchor-trace
 
 as the review-only cleanup vocabulary for pages that preserve user-agent
 disagreement, agent route drift, and re-anchor evidence. This vocabulary is now
-captured in the OpenSpec proposal above, but it is not yet an implemented
+captured in the archived OpenSpec spec above, but it is not an implemented
 taxonomy or write-capable workflow.
 
 ## Proof Boundary
