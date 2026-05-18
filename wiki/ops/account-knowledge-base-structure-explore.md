@@ -6,7 +6,11 @@ source_path: chat://openspec-explore/account-knowledge-base-structure-2026-05-07
 source_type: conversation
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: learning-capture
+canonical_object: account-knowledge-base-structure
+artifact_type: explore
 period: active
 confidence: medium
 status: active

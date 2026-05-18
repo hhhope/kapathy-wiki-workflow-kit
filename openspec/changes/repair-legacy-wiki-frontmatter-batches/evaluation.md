@@ -626,6 +626,61 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14k Evidence
+
+Approved batch:
+
+- Batch 14k: remaining forbidden-domain ops pages that already had unrelated
+  working-tree edits
+
+Applied fields:
+
+- `wiki/ops/account-knowledge-base-structure-explore.md`
+  - `domain: wiki`
+  - `layer: ops`
+  - `ops_area: learning-capture`
+  - `canonical_object: account-knowledge-base-structure`
+  - `artifact_type: explore`
+- `wiki/ops/agent-harness-article-learning.md`
+  - `domain: agent-harness`
+  - `layer: ops`
+  - `ops_area: learning-capture`
+  - existing `canonical_object` and `artifact_type` values were preserved
+
+Before target counts:
+
+- `account-knowledge-base-structure-explore.md` had 6 errors covering forbidden
+  `domain: personal-ops`, missing `layer`, missing `ops_area`, missing
+  `canonical_object`, and missing `artifact_type`
+- `agent-harness-article-learning.md` had 4 errors covering forbidden
+  `domain: personal-ops`, missing `layer`, and missing `ops_area`
+
+After target counts:
+
+- both target precheck runs reported `target.entry_count: 0`; the precheck
+  commands still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 342
+- `summary.error`: 342
+
+Boundary:
+
+- These files had unrelated pre-existing working-tree edits; only the
+  frontmatter hunks listed above were staged for commit.
+- Relation candidates from the doctor run were not applied.
+- Existing body text, taxonomy config, checker logic, MOC, ADR, and OpenSpec
+  lifecycle state were not changed.
+
 ## Batch 14j Evidence
 
 Approved batch:

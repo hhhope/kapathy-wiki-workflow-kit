@@ -61,6 +61,8 @@
   identities and remap them from forbidden `personal-ops`.
 - [x] 32. Apply approved batch 14j to mark clean unclassified meeting/intake
   ops pages with explicit classification-needed fields.
-- [ ] 33. Get approval for the next classification batch before applying more
+- [x] 33. Apply approved batch 14k to remap remaining forbidden-domain dirty
+  ops pages by staging only frontmatter hunks.
+- [ ] 34. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 34. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 35. Add final evaluation evidence and run OpenSpec validation.
