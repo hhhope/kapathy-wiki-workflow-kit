@@ -5,7 +5,10 @@ canonical_object: intelligence-native-organization
 artifact_type: intake
 language: zh-CN
 audience: self
-domain: personal-ops
+domain: unclassified
+classification_needed: true
+layer: ops
+ops_area: learning-capture
 period: evergreen
 confidence: medium
 status: active

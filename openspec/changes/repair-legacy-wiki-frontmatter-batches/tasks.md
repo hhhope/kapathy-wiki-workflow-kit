@@ -49,6 +49,8 @@
   fields.
 - [x] 26. Apply approved batch 14d to remap clean agent-harness learning and
   public-report output calibration ops pages from forbidden `personal-ops`.
-- [ ] 27. Get approval for the next classification batch before applying more
+- [x] 27. Apply approved batch 14e to remap unresolved intelligence-native
+  organization intake to explicit unclassified learning-capture fields.
+- [ ] 28. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 28. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 29. Add final evaluation evidence and run OpenSpec validation.

@@ -626,6 +626,56 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14e Evidence
+
+Approved batch:
+
+- Batch 14e: unresolved intelligence-native organization intake with existing
+  identity and forbidden `domain: personal-ops`
+
+Applied fields:
+
+- `domain: unclassified`
+- `classification_needed: true`
+- `layer: ops`
+- `ops_area: learning-capture`
+
+Target set:
+
+- `wiki/ops/intelligence-native-organization-intake.md`
+
+Before target counts:
+
+- the page had 4 errors covering forbidden `domain: personal-ops`,
+  missing `layer`, and missing `ops_area`
+
+After target counts:
+
+- the target page reported `after.entry_count: 0`
+- the target precheck run reported `target.entry_count: 0`; the precheck
+  command still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 444
+- `summary.error`: 444
+
+Boundary:
+
+- Existing `canonical_object` and `artifact_type` values were preserved.
+- A real taxonomy domain was not invented; `classification_needed: true`
+  keeps this as explicit unresolved classification.
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.
+
 ## Batch 14d Evidence
 
 Approved batch:
