@@ -42,6 +42,57 @@ class WikiRecoveryTest(unittest.TestCase):
         self.assertEqual(package["checks"][1]["stderr_tail"], "bad drift")
         self.assertIn("does not apply treatment", " ".join(package["proof_boundary_notes"]))
 
+    def test_frontmatter_status_separates_clean_targets_from_repo_debt(self) -> None:
+        checks = [
+            {"check_id": "frontmatter_precheck", "command": ["frontmatter"]},
+        ]
+
+        def runner(command, cwd):
+            if command == ["frontmatter"]:
+                return (
+                    1,
+                    json.dumps(
+                        {
+                            "passed": False,
+                            "summary": {"error": 10},
+                            "target": None,
+                        }
+                    ),
+                    "",
+                )
+            if "--target" in command:
+                return (
+                    1,
+                    json.dumps(
+                        {
+                            "passed": False,
+                            "summary": {"error": 10},
+                            "target": {
+                                "path": command[command.index("--target") + 1],
+                                "entry_count": 0,
+                                "entries": [],
+                            },
+                        }
+                    ),
+                    "",
+                )
+            raise AssertionError(f"unexpected command: {command}")
+
+        package = build_recovery_package(
+            self.tmpdir,
+            checks=checks,
+            runner=runner,
+            frontmatter_targets=["wiki/ops/clean-target.md"],
+        )
+
+        frontmatter = package["frontmatter_status"]
+        self.assertFalse(package["passed"])
+        self.assertFalse(frontmatter["repository"]["passed"])
+        self.assertTrue(frontmatter["targets_passed"])
+        self.assertEqual(frontmatter["targets"][0]["path"], "wiki/ops/clean-target.md")
+        self.assertEqual(frontmatter["targets"][0]["entry_count"], 0)
+        self.assertEqual(package["next_route"], "blocked_by_repository_frontmatter_debt")
+
     def test_writes_recovery_record_without_overwriting_existing_file(self) -> None:
         package = build_recovery_package(
             self.tmpdir,

@@ -101,6 +101,7 @@ def build_recovery_package(
     root: Path | str,
     checks: list[dict[str, Any]] | None = None,
     runner: CommandRunner | None = None,
+    frontmatter_targets: list[str] | None = None,
 ) -> dict[str, Any]:
     root_path = Path(root).resolve()
     run = runner or _run_subprocess
@@ -124,23 +125,101 @@ def build_recovery_package(
 
     failed = [item for item in results if not item["passed"]]
     passed = not failed
+    frontmatter_status = _build_frontmatter_status(
+        root_path,
+        results,
+        frontmatter_targets or [],
+        run,
+    )
+    if frontmatter_status and frontmatter_status["targets_passed"] and not frontmatter_status["repository"]["passed"]:
+        next_route = "blocked_by_repository_frontmatter_debt"
+    elif passed:
+        next_route = "archive-ready"
+    else:
+        next_route = "blocked_by_recovery_findings"
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": "wiki_recovery_package",
         "passed": passed,
-        "next_route": "archive-ready" if passed else "blocked_by_recovery_findings",
+        "next_route": next_route,
         "summary": {
             "check_count": len(results),
             "passed_count": len(results) - len(failed),
             "failed_count": len(failed),
         },
         "checks": results,
+        **({"frontmatter_status": frontmatter_status} if frontmatter_status else {}),
         "proof_boundary_notes": [
             "Recovery records check results only.",
             "It does not apply treatment or surgery.",
             "It does not write frontmatter, taxonomy config, relations, MOC pages, ADR decisions, status files, or OpenSpec state.",
             "Nonzero checks are preserved as findings instead of hidden.",
         ],
+    }
+
+
+def _target_precheck_command(root_path: Path, target: str) -> list[str]:
+    return [
+        sys.executable,
+        "scripts/wiki_gate_precheck.py",
+        "--root",
+        str(root_path),
+        "--mode",
+        "frontmatter",
+        "--target",
+        target,
+        "--full-json-output",
+        str(Path("/tmp") / "wiki-recovery-target-frontmatter.json"),
+        "--full-markdown-output",
+        str(Path("/tmp") / "wiki-recovery-target-frontmatter.md"),
+    ]
+
+
+def _target_status_from_stdout(path: str, stdout: str, exit_code: int) -> dict[str, Any]:
+    try:
+        payload = json.loads(stdout)
+    except json.JSONDecodeError:
+        payload = {}
+    target = payload.get("target", {}) if isinstance(payload, dict) else {}
+    if not isinstance(target, dict):
+        target = {}
+    entry_count = int(target.get("entry_count", 0) or 0)
+    return {
+        "path": str(target.get("path") or path),
+        "passed": entry_count == 0,
+        "entry_count": entry_count,
+        "exit_code": int(exit_code),
+    }
+
+
+def _build_frontmatter_status(
+    root_path: Path,
+    check_results: list[dict[str, Any]],
+    targets: list[str],
+    runner: CommandRunner,
+) -> dict[str, Any] | None:
+    frontmatter_check = next(
+        (item for item in check_results if item.get("check_id") == "frontmatter_precheck"),
+        None,
+    )
+    if frontmatter_check is None and not targets:
+        return None
+    target_rows = []
+    for target in targets:
+        command = _target_precheck_command(root_path, str(target))
+        exit_code, stdout, _stderr = runner(command, root_path)
+        target_rows.append(_target_status_from_stdout(str(target), stdout, exit_code))
+    repository_summary = (
+        frontmatter_check.get("parsed_summary", {}) if isinstance(frontmatter_check, dict) else {}
+    )
+    repository_passed = bool(frontmatter_check.get("passed", False)) if isinstance(frontmatter_check, dict) else False
+    return {
+        "repository": {
+            "passed": repository_passed,
+            "summary": repository_summary if isinstance(repository_summary, dict) else {},
+        },
+        "targets_passed": all(item["passed"] for item in target_rows) if target_rows else False,
+        "targets": target_rows,
     }
 
 
@@ -199,6 +278,26 @@ def render_recovery_record_markdown(package: dict[str, Any], scan_root: Path | s
         summary = check.get("parsed_summary", {})
         if isinstance(summary, dict) and summary:
             lines.append(f"  - summary: `{json.dumps(summary, ensure_ascii=False, sort_keys=True)}`")
+
+    frontmatter_status = package.get("frontmatter_status", {})
+    if isinstance(frontmatter_status, dict):
+        repository = frontmatter_status.get("repository", {})
+        lines.extend(["", "## Frontmatter Status"])
+        if isinstance(repository, dict):
+            lines.append(f"- Repository passed: {repository.get('passed', False)}")
+            summary = repository.get("summary", {})
+            if isinstance(summary, dict) and summary:
+                lines.append(f"- Repository summary: `{json.dumps(summary, ensure_ascii=False, sort_keys=True)}`")
+        lines.append(f"- Targets passed: {frontmatter_status.get('targets_passed', False)}")
+        targets = frontmatter_status.get("targets", [])
+        if isinstance(targets, list) and targets:
+            for target in targets:
+                if not isinstance(target, dict):
+                    continue
+                lines.append(
+                    f"  - `{target.get('path', '')}` passed={target.get('passed', False)} "
+                    f"entry_count={target.get('entry_count', 0)}"
+                )
 
     lines.extend(["", "## Proof Boundary"])
     for note in package.get("proof_boundary_notes", []):

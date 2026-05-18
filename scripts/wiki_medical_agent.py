@@ -361,7 +361,14 @@ def apply_confirmed_treatment_and_recover(
             "treatment_record": treatment_record.as_posix(),
             "next_action": "blocked",
         }
-    recovery = build_recovery_package(root_path)
+    recovery = build_recovery_package(
+        root_path,
+        frontmatter_targets=[
+            str(item.get("path", ""))
+            for item in plan.get("treatment_items", [])
+            if isinstance(item, dict) and str(item.get("path", "")).strip()
+        ],
+    )
     recovery_record = write_recovery_record(recovery, root_path)
     case_package = load_medical_case_file(case_file)
     updated_case = attach_recovery_result_to_case(
