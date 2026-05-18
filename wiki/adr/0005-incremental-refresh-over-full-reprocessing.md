@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: incremental-refresh-over-full-reprocessing
+artifact_type: adr
+---
 # ADR-0005 Incremental Refresh Over Full Reprocessing
 
 - Status: proposed

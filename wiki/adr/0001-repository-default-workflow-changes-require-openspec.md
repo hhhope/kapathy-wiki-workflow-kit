@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: repository-default-workflow-changes-require-openspec
+artifact_type: adr
+---
 # ADR-0001 Repository-Default Workflow Changes Require OpenSpec
 
 - Status: accepted

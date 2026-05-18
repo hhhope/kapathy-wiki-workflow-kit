@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: human-governance-before-self-evolution-promotion
+artifact_type: adr
+---
 # ADR-0008 Human Governance Before Self-Evolution Promotion
 
 - Status: accepted

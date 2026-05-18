@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: agent-self-evolution-over-skill-governance
+artifact_type: adr
+---
 # ADR-0004 Agent Self-Evolution Over Skill Governance
 
 - Status: accepted

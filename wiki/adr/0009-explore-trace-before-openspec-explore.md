@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: explore-trace-before-openspec-explore
+artifact_type: adr
+---
 # ADR-0009 Explore Trace Before OpenSpec Explore
 
 ## Status

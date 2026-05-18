@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: retros-stay-separate-from-adrs
+artifact_type: adr
+---
 # ADR-0003 Retros Stay Separate From ADRs
 
 - Status: accepted

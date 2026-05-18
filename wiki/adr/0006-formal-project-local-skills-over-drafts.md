@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: formal-project-local-skills-over-drafts
+artifact_type: adr
+---
 # ADR-0006 Formal Project-Local Skills Over Draft Skill Docs
 
 - Status: accepted

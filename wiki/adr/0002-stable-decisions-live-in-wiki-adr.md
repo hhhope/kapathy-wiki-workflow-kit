@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: stable-decisions-live-in-wiki-adr
+artifact_type: adr
+---
 # ADR-0002 Stable Decisions Live In Wiki ADR
 
 - Status: accepted

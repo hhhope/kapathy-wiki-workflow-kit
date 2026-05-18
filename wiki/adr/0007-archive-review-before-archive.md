@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: archive-review-before-archive
+artifact_type: adr
+---
 # ADR-0007 Archive Review Before Archive
 
 - Status: accepted

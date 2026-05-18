@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: shared-skill-authoring-contract-before-repo-local-overrides
+artifact_type: adr
+---
 # ADR-0010 Shared Skill Authoring Contract Before Repo-Local Overrides
 
 ## Status
