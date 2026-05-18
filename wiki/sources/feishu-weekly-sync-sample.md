@@ -1,6 +1,7 @@
 ---
 title: Feishu Weekly Sync Sample
 type: source
+layer: sources
 source_path: inbox/feishu-weekly-sync-sample.md
 source_type: note
 language: zh-CN

@@ -295,3 +295,60 @@ Residual boundary:
 - `wiki/domains/index.md` and `wiki/examples/index.md` remain intentionally
   unresolved because they need a domain classification decision, not just a
   layer insertion.
+
+## Batch 6 Evidence
+
+Batch 6 target set:
+
+- `wiki/reports/management-weekly-ops.md`
+- `wiki/reports/nirvana-delivery-board.md`
+- `wiki/reports/nirvana-feature-tech-alignment.md`
+- `wiki/reports/nirvana-phase1-leadership-brief.md`
+- `wiki/reports/nirvana-phase1-pm-review.md`
+- `wiki/sources/feishu-weekly-sync-sample.md`
+- `wiki/sources/feishu-wiki-FYDcwFGaOi6A1Bkg9rfcIp3DnCS.md`
+- `wiki/sources/nirvana-weekly-2026-04-13.md`
+- `wiki/sources/nirvana-weekly-view-2026-04-13.md`
+- `wiki/sources/nirvana-优化后图示.md`
+- `wiki/sources/nirvana-协议支付涅槃需求文档.md`
+- `wiki/sources/nirvana-最终方案.md`
+- `wiki/sources/nirvana-涅槃产品上架梳理.md`
+- `wiki/sources/nirvana-清算的内容.md`
+- `wiki/sources/nirvana-现状.md`
+- `wiki/timeline/2026-q2.md`
+
+Before target counts:
+
+- every batch 6 page appeared in the layer-only target list.
+
+Approved deterministic fields:
+
+- `wiki/reports/*.md`: add only `layer: reports`; keep existing domain and
+  legacy report metadata unchanged.
+- `wiki/sources/*.md`: add only `layer: sources`; keep existing domain and
+  `source_type` unchanged.
+- `wiki/timeline/*.md`: add only `layer: timeline`; keep existing domain
+  unchanged.
+
+After target counts:
+
+- all 16 batch 6 pages reported `after.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 5
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 709
+- `summary.error`: 709
+- top remaining samples are now mixed root/index pages and ops pages requiring
+  explicit domain/ops identity classification
+
+Residual boundary:
+
+- Batch 6 reduced blockers by 26 because source pages had both whole-wiki
+  `layer` requirements and source-page expected-layer checks.

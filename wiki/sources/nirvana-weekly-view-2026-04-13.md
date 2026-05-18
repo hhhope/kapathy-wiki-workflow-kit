@@ -1,6 +1,7 @@
 ---
 title: 涅槃项目周视图 2026-04-13
 type: source
+layer: sources
 source_path: inbox/nirvana/preview .html
 source_type: attachment
 language: zh-CN

@@ -1,6 +1,7 @@
 ---
 title: 优化后图示
 type: source
+layer: sources
 source_path: inbox/nirvana/优化后图示.png
 source_type: image
 language: zh-CN

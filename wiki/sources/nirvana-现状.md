@@ -1,6 +1,7 @@
 ---
 title: 现状
 type: source
+layer: sources
 source_path: inbox/nirvana/现状.png
 source_type: image
 language: zh-CN

@@ -1,5 +1,6 @@
 ---
 title: 涅槃项目一期交付看板
+layer: reports
 domain: nirvana-project
 status: draft
 updated_at: 2026-04-15

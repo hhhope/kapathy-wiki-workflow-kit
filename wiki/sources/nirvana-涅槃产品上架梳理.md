@@ -1,6 +1,7 @@
 ---
 title: 涅槃产品上架梳理
 type: source
+layer: sources
 source_path: inbox/nirvana/涅槃产品上架梳理.xlsx
 source_type: meeting-note
 language: zh-CN

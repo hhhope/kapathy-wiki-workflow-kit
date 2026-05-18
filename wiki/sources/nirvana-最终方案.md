@@ -1,6 +1,7 @@
 ---
 title: 最终方案
 type: source
+layer: sources
 source_path: inbox/nirvana/最终方案.png
 source_type: image
 language: zh-CN

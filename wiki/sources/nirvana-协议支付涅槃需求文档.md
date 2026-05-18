@@ -1,6 +1,7 @@
 ---
 title: 协议支付涅槃需求文档
 type: source
+layer: sources
 source_path: inbox/nirvana/协议支付涅槃需求文档.docx
 source_type: attachment
 language: zh-CN

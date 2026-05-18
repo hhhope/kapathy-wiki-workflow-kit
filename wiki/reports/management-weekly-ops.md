@@ -2,6 +2,7 @@
 title: Management Weekly Operations
 type: report
 language: zh-CN
+layer: reports
 domain: account-clearing
 audience: management
 knowledge_level: working

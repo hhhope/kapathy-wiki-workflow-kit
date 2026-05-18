@@ -1,5 +1,6 @@
 ---
 title: 涅槃一期直销模式 PM 主稿
+layer: reports
 domain: nirvana-project
 status: draft
 updated_at: 2026-04-15

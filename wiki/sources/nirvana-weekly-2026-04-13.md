@@ -1,6 +1,7 @@
 ---
 title: 涅槃项目周报 2026-04-13
 type: source
+layer: sources
 source_path: inbox/nirvana/涅槃焕新周报.xlsx
 source_type: report
 language: zh-CN

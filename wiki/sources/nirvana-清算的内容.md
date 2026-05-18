@@ -1,6 +1,7 @@
 ---
 title: 清算的内容
 type: source
+layer: sources
 source_path: inbox/nirvana/清算的内容.png
 source_type: image
 language: zh-CN
