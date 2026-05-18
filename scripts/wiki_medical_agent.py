@@ -11,7 +11,10 @@ from scripts.wiki_medical_case import (
     load_medical_case_file,
     overwrite_medical_case_file,
 )
+from scripts.build_wiki_moc_projection import load_graph
+from scripts.wiki_moc_projection import build_moc_plan
 from scripts.wiki_recovery import build_recovery_package, write_recovery_record
+from scripts.wiki_surgery import build_surgery_plan_from_case
 from scripts.wiki_treatment import (
     apply_treatment_plan,
     load_case_and_build_treatment_plan,
@@ -48,6 +51,14 @@ class ActionValidation:
 
 
 READ_ONLY_INTENTS = {"status", "diagnose"}
+MOC_SIGNALS = ("moc", "obsidian", "图谱导航", "知识地图")
+MOC_REVIEW_SIGNALS = ("preview", "预览", "surgery", "手术", "分流", "审核", "审查", "复核")
+
+
+def _is_moc_surgery_preview_request(lowered: str) -> bool:
+    has_moc = any(signal in lowered for signal in MOC_SIGNALS)
+    has_review = any(signal in lowered for signal in MOC_REVIEW_SIGNALS)
+    return has_moc and has_review
 
 
 def classify_medical_intent(text: str) -> IntentResult:
@@ -56,6 +67,12 @@ def classify_medical_intent(text: str) -> IntentResult:
     expected_count = int(count_match.group(1)) if count_match else None
     if "legacy" in lowered or "debug" in lowered:
         return IntentResult("legacy_debug", expected_count, "explicit legacy/debug request")
+    if _is_moc_surgery_preview_request(lowered):
+        return IntentResult(
+            "moc_surgery_preview",
+            expected_count,
+            "user requested MOC surgery preview",
+        )
     if any(token in lowered for token in ["preview", "dry-run", "dry run", "预览"]):
         return IntentResult("treatment_preview", expected_count, "user requested treatment preview")
     if any(token in lowered for token in ["apply", "应用", "治疗这", "执行治疗"]):
@@ -142,6 +159,14 @@ def validate_case_action(
             intent,
             state,
             allowed_action="record_confirmed_decisions",
+            executable_count=treatment_count,
+        )
+    if intent == "moc_surgery_preview":
+        return ActionValidation(
+            True,
+            intent,
+            state,
+            allowed_action="preview_moc_surgery_plan",
             executable_count=treatment_count,
         )
     if intent == "treatment_preview":
@@ -284,6 +309,62 @@ def validate_resolved_case_action(
     )
 
 
+def _sample_moc_items(plan: dict[str, Any], limit: int = 5) -> list[dict[str, Any]]:
+    items = plan.get("moc_projection_items", [])
+    if not isinstance(items, list):
+        return []
+    sample: list[dict[str, Any]] = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        sample.append(
+            {
+                "action": str(item.get("action", "")),
+                "kind": str(item.get("kind", "")),
+                "key": str(item.get("key", "")),
+                "path": str(item.get("path", "")),
+                "link_count": int(item.get("link_count", 0) or 0),
+            }
+        )
+        if len(sample) >= limit:
+            break
+    return sample
+
+
+def build_moc_surgery_preview_payload(
+    root: Path | str,
+    case_path: Path | str,
+    moc_plan: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    root_path = Path(root).resolve()
+    case_file = Path(case_path).resolve()
+    if root_path not in case_file.parents and case_file != root_path:
+        raise ValueError("case path escapes root")
+    case_package = load_medical_case_file(case_file)
+    case_package["case_path"] = case_file.as_posix()
+    if moc_plan is None:
+        graph = load_graph(root_path, None)
+        moc_plan = build_moc_plan(root_path, graph)
+    surgery_plan = build_surgery_plan_from_case(case_package, moc_plan=moc_plan)
+    moc_summary = dict(moc_plan.get("summary", {})) if isinstance(moc_plan, dict) else {}
+    surgery_summary = surgery_plan.get("summary", {})
+    moc_projection_count = 0
+    if isinstance(surgery_summary, dict):
+        moc_projection_count = int(surgery_summary.get("moc_projection_count", 0) or 0)
+    return {
+        "moc_projection": moc_summary,
+        "surgery_preview": {
+            "moc_projection_count": moc_projection_count,
+            "sample_items": _sample_moc_items(surgery_plan),
+        },
+        "next_action": (
+            "review_moc_surgery_preview"
+            if moc_projection_count > 0
+            else "moc_projection_clean"
+        ),
+    }
+
+
 def build_status_payload(root: Path | str, intent_text: str) -> dict[str, Any]:
     intent = classify_medical_intent(intent_text)
     resolution = resolve_active_case(root)
@@ -307,7 +388,9 @@ def build_status_payload(root: Path | str, intent_text: str) -> dict[str, Any]:
         next_action = archive.get("next_action") if isinstance(archive, dict) else ""
         payload["executable_count"] = validation.executable_count
         payload["expected_count"] = validation.expected_count
-        if validation.allowed and next_action:
+        if validation.allowed and intent.intent == "moc_surgery_preview" and resolution.case_path is not None:
+            payload.update(build_moc_surgery_preview_payload(root, resolution.case_path))
+        elif validation.allowed and next_action:
             payload["next_action"] = str(next_action)
     return payload
 
