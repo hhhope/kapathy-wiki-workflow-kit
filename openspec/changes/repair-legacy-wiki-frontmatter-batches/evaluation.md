@@ -579,6 +579,66 @@ Boundary:
 - No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
   lifecycle state were changed.
 
+## Batch 14w Evidence
+
+Approved batch:
+
+- Batch 14w: untracked wiki surgery run record with the same shape as the
+  tracked surgery run record.
+
+Target set:
+
+- `wiki/ops/wiki-surgery-runs/2026-05-15-044434-surgery.md`
+
+Applied fields:
+
+- `layer: ops`
+- `domain: wiki`
+- `ops_area: wiki-runtime`
+- `canonical_object: wiki-surgery`
+- `artifact_type: surgery-plan`
+
+After target count:
+
+- target page reported `target.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 4
+- `summary.error`: 4
+- remaining blocking paths are the two `wiki/mnt/...` mirror paths:
+  - `wiki/mnt/d/cloud/account-meeting-lore/openspec/changes/archive/2026-04-18-formalize-example-driven-wiki-capture.md`
+  - `wiki/mnt/d/cloud/account-meeting-lore/wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md`
+- producer warnings remain non-blocking warnings
+
+OpenSpec validation:
+
+```bash
+openspec validate repair-legacy-wiki-frontmatter-batches --strict
+```
+
+Result:
+
+- `Change 'repair-legacy-wiki-frontmatter-batches' is valid`
+- PostHog DNS flush failed after validation; this did not change the command's
+  successful validation result.
+
+Boundary:
+
+- No relation fields were added.
+- Page body content was not changed.
+- `wiki/mnt` mirror paths were not repaired as ordinary wiki pages; the
+  classification plan already marks them as cleanup-decision items.
+- No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
+  lifecycle state were changed.
+
 ## Batch 1 Baseline
 
 Planner command:

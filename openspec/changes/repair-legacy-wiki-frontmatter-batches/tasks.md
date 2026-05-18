@@ -86,4 +86,6 @@
   account-clearing scenario-matrix ops pages.
 - [x] 45. Apply approved batch 14v to the tracked ops index, tracked template,
   and dirty tracked pages using frontmatter-only staging for dirty files.
-- [ ] 46. Add final evaluation evidence and run OpenSpec validation.
+- [x] 46. Add frontmatter to the untracked wiki surgery run record and preserve
+  the remaining `wiki/mnt` mirror blockers as cleanup residuals.
+- [ ] 47. Add final evaluation evidence and run OpenSpec validation.
