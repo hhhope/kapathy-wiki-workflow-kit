@@ -10,4 +10,4 @@
       blockers from repository-wide residual debt.
 - [x] 7. Run focused tests, target prechecks for changed pages, whole-wiki
       precheck, and OpenSpec strict validation.
-- [ ] 8. Commit verified implementation and stop at OpenSpec hard stop.
+- [x] 8. Commit verified implementation and stop at OpenSpec hard stop.
