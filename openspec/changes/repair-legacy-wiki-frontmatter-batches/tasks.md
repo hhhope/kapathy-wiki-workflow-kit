@@ -73,4 +73,6 @@
   contract, and explore pages using doctor candidate frontmatter only.
 - [x] 38. Apply approved batch 14o to clean nirvana project-management and
   reminder ops pages.
-- [ ] 39. Add final evaluation evidence and run OpenSpec validation.
+- [x] 39. Apply approved batch 14p to clean nirvana intake and public report
+  explore ops pages.
+- [ ] 40. Add final evaluation evidence and run OpenSpec validation.

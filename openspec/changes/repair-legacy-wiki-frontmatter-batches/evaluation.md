@@ -128,6 +128,66 @@ Boundary:
 - No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
   lifecycle state were changed.
 
+## Batch 14p Evidence
+
+Approved batch:
+
+- Batch 14p: clean nirvana intake and public report explore ops pages.
+
+Target set:
+
+- `wiki/ops/nirvana-协议支付涅槃需求文档-intake.md`
+- `wiki/ops/nirvana-涅槃产品上架梳理-intake.md`
+- `wiki/ops/public-report-skill-gate-wording-explore-2026-05-11.md`
+
+Applied fields:
+
+- `canonical_object` and `artifact_type` for the existing `nirvana` protocol
+  payment intake.
+- `layer: ops`, `ops_area: workflow-trace`, `canonical_object`, and
+  `artifact_type` for the existing `nirvana` product-listing intake.
+- `layer: ops`, `ops_area: workflow-trace`, `canonical_object`, and
+  `artifact_type` for the existing `report-workflow` public-report explore
+  trace.
+
+After target counts:
+
+- all 3 target pages reported `target.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 222
+- `summary.error`: 222
+- top remaining samples include `wiki/mnt/...`, `wiki/ops/index.md`,
+  `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`, and
+  `wiki/ops/product-alignment-drift-explore-2026-05-09.md`
+
+OpenSpec validation:
+
+```bash
+openspec validate repair-legacy-wiki-frontmatter-batches --strict
+```
+
+Result:
+
+- `Change 'repair-legacy-wiki-frontmatter-batches' is valid`
+- PostHog DNS flush failed after validation; this did not change the command's
+  successful validation result.
+
+Boundary:
+
+- No relation fields were added.
+- Page bodies were not changed.
+- No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
+  lifecycle state were changed.
+
 ## Batch 1 Baseline
 
 Planner command:

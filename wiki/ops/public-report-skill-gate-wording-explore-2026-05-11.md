@@ -1,5 +1,6 @@
 ---
 title: public-report skill gate wording / explore
+layer: ops
 type: intake
 language: zh-CN
 source_path: chat://openspec-explore/public-report-skill-gate-wording/2026-05-11
@@ -7,6 +8,9 @@ source_type: conversation
 audience: self
 knowledge_level: working
 domain: report-workflow
+ops_area: workflow-trace
+canonical_object: public-report-skill-gate-wording
+artifact_type: explore
 period: active
 confidence: medium
 status: active

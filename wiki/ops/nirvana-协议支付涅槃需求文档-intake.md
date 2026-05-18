@@ -9,6 +9,8 @@ knowledge_level: working
 layer: ops
 domain: nirvana
 ops_area: source-intake
+canonical_object: nirvana-协议支付涅槃需求文档
+artifact_type: intake
 period: evergreen
 confidence: medium
 status: active

@@ -1,5 +1,6 @@
 ---
 title: 涅槃产品上架梳理
+layer: ops
 type: intake
 language: zh-CN
 source_path: inbox/nirvana/涅槃产品上架梳理.xlsx
@@ -7,6 +8,9 @@ source_type: meeting-note
 audience: self
 knowledge_level: working
 domain: nirvana
+ops_area: workflow-trace
+canonical_object: nirvana-涅槃产品上架梳理
+artifact_type: intake
 period: evergreen
 confidence: high
 status: active
