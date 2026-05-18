@@ -1,6 +1,9 @@
 ---
 canonical_object: wiki-context-injection
 artifact_type: method
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 formalizes:
 - wiki-context-injection
 derived_from:

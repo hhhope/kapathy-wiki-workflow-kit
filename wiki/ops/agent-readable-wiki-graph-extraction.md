@@ -1,6 +1,9 @@
 ---
 canonical_object: wiki-graph-extraction
 artifact_type: method
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 related_objects:
 - wiki-frontmatter-model
 - wiki-naming-model

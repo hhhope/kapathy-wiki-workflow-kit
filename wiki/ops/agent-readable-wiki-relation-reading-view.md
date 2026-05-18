@@ -15,7 +15,9 @@ notes_scope: human-readable relation summary above the current graph extraction 
 language: zh-CN
 audience: self
 knowledge_level: working
-domain: personal-ops
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 status: active
 updated_at: 2026-04-20
 ai_generated: true

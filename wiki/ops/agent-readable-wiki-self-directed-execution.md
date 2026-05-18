@@ -1,6 +1,9 @@
 ---
 canonical_object: wiki-self-directed-execution
 artifact_type: method
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 formalizes:
 - wiki-self-directed-execution
 derived_from:

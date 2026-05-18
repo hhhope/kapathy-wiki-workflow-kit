@@ -27,6 +27,8 @@
 - [x] 14. Apply approved classification batches 7, 8, and 9.
 - [x] 15. Apply approved batch 10 to structural index pages.
 - [x] 16. Apply approved batch 11 to root, public report, and timeline pages.
-- [ ] 17. Get approval for the next classification batch before applying more
+- [x] 17. Apply approved batch 13a to wiki-runtime ops pages with existing
+  identity.
+- [ ] 18. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 18. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 19. Add final evaluation evidence and run OpenSpec validation.

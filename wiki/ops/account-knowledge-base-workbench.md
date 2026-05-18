@@ -3,6 +3,9 @@ canonical_object: account-knowledge-base
 artifact_type: ops-overview
 title: account-knowledge-base / team-knowledge-path
 type: ops
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 language: zh-CN
 status: active
 created_at: 2026-05-07

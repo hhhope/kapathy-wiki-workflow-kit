@@ -1,6 +1,9 @@
 ---
 canonical_object: wiki-runtime-auto-routing
 artifact_type: method
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 formalizes:
 - wiki-runtime-auto-routing
 derived_from:

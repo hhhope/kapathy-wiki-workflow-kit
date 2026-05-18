@@ -1,6 +1,9 @@
 ---
 canonical_object: wiki-utilization-layer
 artifact_type: method
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 formalizes:
 - wiki-utilization-layer
 ---

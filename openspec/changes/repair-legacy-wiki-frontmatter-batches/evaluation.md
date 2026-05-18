@@ -568,3 +568,57 @@ Boundary:
 
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
+
+## Batch 13a Evidence
+
+Approved batch:
+
+- Batch 13a: wiki-runtime ops pages with existing identity
+
+Applied fields:
+
+- `layer: ops`
+- `domain: wiki`
+- `ops_area: wiki-runtime`
+
+Target set:
+
+- `wiki/ops/account-knowledge-base-workbench.md`
+- `wiki/ops/agent-readable-wiki-artifact-grouping.md`
+- `wiki/ops/agent-readable-wiki-context-injection.md`
+- `wiki/ops/agent-readable-wiki-graph-extraction.md`
+- `wiki/ops/agent-readable-wiki-relation-analysis.md`
+- `wiki/ops/agent-readable-wiki-relation-reading-view.md`
+- `wiki/ops/agent-readable-wiki-runtime-auto-routing.md`
+- `wiki/ops/agent-readable-wiki-runtime-context-source-integration.md`
+- `wiki/ops/agent-readable-wiki-runtime-context.md`
+- `wiki/ops/agent-readable-wiki-self-directed-execution.md`
+- `wiki/ops/agent-readable-wiki-utilization-layer.md`
+- `wiki/ops/wiki-readable-views-validation-harness.md`
+
+Before target counts:
+
+- all 12 pages had 4 errors covering `layer`, `domain`, and `ops_area`
+- 3 pages also had forbidden `domain: personal-ops`
+
+After target counts:
+
+- all 12 target pages reported `after.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 589
+- `summary.error`: 589
+
+Boundary:
+
+- Existing `canonical_object` and `artifact_type` values were preserved.
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.

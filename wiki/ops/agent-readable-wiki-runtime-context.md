@@ -1,6 +1,9 @@
 ---
 canonical_object: wiki-runtime-context
 artifact_type: method
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 formalizes:
 - wiki-runtime-context
 ---
