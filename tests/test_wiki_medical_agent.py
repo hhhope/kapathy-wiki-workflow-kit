@@ -9,6 +9,7 @@ from pathlib import Path
 from scripts.wiki_medical_case import build_medical_case_package, load_medical_case_file, write_medical_case_file
 from scripts.wiki_medical_agent import (
     apply_confirmed_treatment_and_recover,
+    build_moc_surgery_preview_payload,
     build_status_payload,
     classify_medical_intent,
     resolve_active_case,
@@ -88,6 +89,24 @@ class WikiMedicalAgentTest(unittest.TestCase):
             "treatment_preview",
         )
 
+    def test_classifies_moc_preview_as_surgery_preview_before_treatment_preview(self) -> None:
+        self.assertEqual(
+            classify_medical_intent("moc preview surgery").intent,
+            "moc_surgery_preview",
+        )
+        self.assertEqual(
+            classify_medical_intent("Obsidian 知识地图 预览分流").intent,
+            "moc_surgery_preview",
+        )
+        self.assertEqual(
+            classify_medical_intent("MOC 审查").intent,
+            "moc_surgery_preview",
+        )
+        self.assertEqual(
+            classify_medical_intent("preview apply confirmed treatments").intent,
+            "treatment_preview",
+        )
+
     def test_resolve_active_case_blocks_multiple_active_cases(self) -> None:
         self._write_case(self._case_package(active=True), "2026-05-15T01:02:03+00:00")
         self._write_case(self._case_package(active=True), "2026-05-15T01:02:04+00:00")
@@ -137,6 +156,68 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertEqual(len(payload["candidate_cases"]), 2)
         self.assertEqual(payload["next_action"], "select_active_case")
 
+    def test_moc_surgery_preview_blocks_without_active_case(self) -> None:
+        payload = build_status_payload(self.tmpdir, "moc preview surgery")
+
+        self.assertEqual(payload["intent"], "moc_surgery_preview")
+        self.assertEqual(payload["case_path"], "")
+        self.assertEqual(payload["state"], "no_case")
+        self.assertFalse(payload["allowed"])
+        self.assertEqual(payload["blocked_reason"], "no_active_case")
+        self.assertEqual(payload["next_action"], "diagnose")
+
+    def test_moc_surgery_preview_blocks_with_multiple_active_cases(self) -> None:
+        self._write_case(self._case_package(active=True), "2026-05-15T01:02:03+00:00")
+        self._write_case(self._case_package(active=True), "2026-05-15T01:02:04+00:00")
+
+        payload = build_status_payload(self.tmpdir, "moc preview surgery")
+
+        self.assertEqual(payload["intent"], "moc_surgery_preview")
+        self.assertEqual(payload["state"], "multiple_active_cases")
+        self.assertFalse(payload["allowed"])
+        self.assertEqual(payload["blocked_reason"], "multiple_active_cases")
+        self.assertEqual(payload["next_action"], "select_active_case")
+        self.assertEqual(len(payload["candidate_cases"]), 2)
+
+    def test_builds_moc_surgery_preview_payload_from_active_case_and_moc_plan(self) -> None:
+        case_path = self._write_case(
+            self._case_package(status="archive_ready"),
+            "2026-05-15T01:02:03+00:00",
+        )
+        moc_plan = {
+            "summary": {
+                "candidate_count": 2,
+                "create_count": 1,
+                "update_count": 1,
+                "noop_count": 0,
+                "orphan_count": 0,
+            },
+            "entries": [
+                {
+                    "action": "create",
+                    "kind": "object",
+                    "key": "agent-governance-gate-gap",
+                    "path": "wiki/moc/object-agent-governance-gate-gap.md",
+                    "link_count": 2,
+                },
+                {
+                    "action": "update",
+                    "kind": "relation",
+                    "key": "validates",
+                    "path": "wiki/moc/relation-validates.md",
+                    "link_count": 9,
+                },
+            ],
+        }
+
+        payload = build_moc_surgery_preview_payload(self.tmpdir, case_path, moc_plan)
+
+        self.assertEqual(payload["moc_projection"]["candidate_count"], 2)
+        self.assertEqual(payload["surgery_preview"]["moc_projection_count"], 2)
+        self.assertEqual(len(payload["surgery_preview"]["sample_items"]), 2)
+        self.assertEqual(payload["next_action"], "review_moc_surgery_preview")
+        self.assertFalse((self.tmpdir / "wiki" / "moc").exists())
+
     def test_blocked_payload_does_not_use_stale_archive_next_action(self) -> None:
         package = self._case_package(status="awaiting_confirmation")
         package["archive_next_action"] = {"next_action": "archive_ready"}
@@ -173,6 +254,38 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertEqual(payload["case_path"], case_path.as_posix())
         self.assertEqual(payload["state"], "ready_for_treatment")
         self.assertIn("next_action", payload)
+
+    def test_cli_moc_surgery_preview_is_read_only(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        case_package = self._case_package(status="archive_ready")
+        case_path = self._write_case(case_package, "2026-05-15T01:02:03+00:00")
+        before = case_path.read_text(encoding="utf-8")
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_medical_agent.py",
+                "--root",
+                str(self.tmpdir),
+                "--intent-text",
+                "moc preview surgery",
+            ],
+            cwd=repo_root,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        payload = json.loads(result.stdout)
+
+        self.assertEqual(payload["intent"], "moc_surgery_preview")
+        self.assertTrue(payload["allowed"])
+        self.assertEqual(payload["allowed_action"], "preview_moc_surgery_plan")
+        self.assertIn("moc_projection", payload)
+        self.assertIn("surgery_preview", payload)
+        self.assertFalse((self.tmpdir / "wiki" / "moc").exists())
+        self.assertEqual(case_path.read_text(encoding="utf-8"), before)
+        self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-treatment-runs").exists())
+        self.assertFalse((self.tmpdir / "wiki" / "ops" / "wiki-surgery-runs").exists())
 
     def test_cli_applies_confirmed_treatment_then_runs_recovery(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
