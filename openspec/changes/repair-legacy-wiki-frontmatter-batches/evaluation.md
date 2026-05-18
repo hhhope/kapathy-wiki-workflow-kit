@@ -626,6 +626,52 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 13d Evidence
+
+Approved batch:
+
+- Batch 13d: product-engineering source-intake ops pages with existing identity
+
+Applied fields:
+
+- `layer: ops`
+- `domain: product-engineering-collaboration`
+- `ops_area: source-intake`
+
+Target set:
+
+- `wiki/ops/agentic-product-engineering-collaboration-article-evidence-matrix-2026-05-11.md`
+- `wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md`
+
+Before target counts:
+
+- both pages had 4 errors covering `layer`, `domain`, and `ops_area`
+
+After target counts:
+
+- both target pages reported `after.entry_count: 0`
+- both target precheck runs reported `target.entry_count: 0`; the precheck
+  command still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 533
+- `summary.error`: 533
+
+Boundary:
+
+- Existing `canonical_object` and `artifact_type` values were preserved.
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.
+
 ## Batch 13c Evidence
 
 Approved batch:

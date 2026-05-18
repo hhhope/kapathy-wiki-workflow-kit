@@ -2,6 +2,9 @@
 artifact_type: source-hardening-evidence
 title: agentic-product-engineering-collaboration / 300 source leads hardening evidence
 canonical_object: agentic-product-engineering-collaboration
+layer: ops
+domain: product-engineering-collaboration
+ops_area: source-intake
 created: 2026-05-12
 source_type: repo-visible-source-hardening
 related_sources:

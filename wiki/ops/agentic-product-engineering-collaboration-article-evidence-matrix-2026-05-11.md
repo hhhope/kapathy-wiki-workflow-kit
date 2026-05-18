@@ -2,6 +2,9 @@
 artifact_type: article-evidence-matrix
 title: agentic-product-engineering-collaboration / article evidence matrix
 canonical_object: agentic-product-engineering-collaboration
+layer: ops
+domain: product-engineering-collaboration
+ops_area: source-intake
 created: 2026-05-11
 status: draft
 derived_from:

@@ -33,6 +33,8 @@
   pages with existing identity.
 - [x] 19. Apply approved batch 13c to product-engineering workflow-trace ops
   pages with existing identity.
-- [ ] 20. Get approval for the next classification batch before applying more
+- [x] 20. Apply approved batch 13d to product-engineering source-intake ops
+  pages with existing identity.
+- [ ] 21. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 21. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 22. Add final evaluation evidence and run OpenSpec validation.
