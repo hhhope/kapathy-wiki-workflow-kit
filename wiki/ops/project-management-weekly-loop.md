@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: workflow-trace
+canonical_object: project-management-weekly-loop
+artifact_type: method
+---
+
 # 项目管理周推进循环
 
 这页定义“每周项目管理材料”如何进入当前 wiki，并被 agent 转成可跟进的动作和判断。

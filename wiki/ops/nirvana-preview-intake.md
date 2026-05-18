@@ -9,6 +9,8 @@ knowledge_level: working
 layer: ops
 domain: nirvana
 ops_area: source-intake
+canonical_object: nirvana-preview
+artifact_type: intake
 period: evergreen
 confidence: high
 status: active

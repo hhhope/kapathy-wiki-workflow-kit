@@ -1,5 +1,6 @@
 ---
 title: 涅槃项目周推进 intake 2026-04-13
+layer: ops
 type: intake
 language: zh-CN
 source_path: inbox/nirvana/涅槃焕新周报.xlsx
@@ -7,6 +8,9 @@ source_type: report
 audience: project
 knowledge_level: working
 domain: nirvana-project
+ops_area: workflow-trace
+canonical_object: nirvana-weekly
+artifact_type: intake
 period: 2026-w16
 confidence: high
 status: active

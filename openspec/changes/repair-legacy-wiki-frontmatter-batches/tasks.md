@@ -71,4 +71,6 @@
   frontmatter fields.
 - [x] 37. Apply approved batch 14n to clean ops method, learning, product
   contract, and explore pages using doctor candidate frontmatter only.
-- [ ] 38. Add final evaluation evidence and run OpenSpec validation.
+- [x] 38. Apply approved batch 14o to clean nirvana project-management and
+  reminder ops pages.
+- [ ] 39. Add final evaluation evidence and run OpenSpec validation.

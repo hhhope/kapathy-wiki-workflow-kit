@@ -65,6 +65,69 @@ Boundary:
 - No page bodies, taxonomy config, checker logic, MOC pages, ADRs, skills, or
   OpenSpec lifecycle state were changed.
 
+## Batch 14o Evidence
+
+Approved batch:
+
+- Batch 14o: clean nirvana project-management and reminder ops pages.
+
+Target set:
+
+- `wiki/ops/nirvana-preview-intake.md`
+- `wiki/ops/nirvana-weekly-intake-2026-04-13.md`
+- `wiki/ops/nirvana-weekly-reminder-2026-04-13.md`
+- `wiki/ops/project-management-weekly-loop.md`
+- `wiki/ops/reminders.md`
+
+Applied fields:
+
+- `layer: ops`
+- `domain: nirvana` for the preview intake with existing domain evidence
+- `domain: nirvana-project` for the project weekly intake and reminder
+- `domain: wiki` for the generic project-management loop and reminder panel
+- `ops_area`: `source-intake` or `workflow-trace`
+- missing `canonical_object` and `artifact_type`
+
+After target counts:
+
+- all 5 target pages reported `target.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 234
+- `summary.error`: 234
+- top remaining samples include `wiki/mnt/...`, `wiki/ops/index.md`,
+  `wiki/ops/nirvana-涅槃产品上架梳理-intake.md`, and
+  `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`
+
+OpenSpec validation:
+
+```bash
+openspec validate repair-legacy-wiki-frontmatter-batches --strict
+```
+
+Result:
+
+- `Change 'repair-legacy-wiki-frontmatter-batches' is valid`
+- PostHog DNS flush failed after validation; this did not change the command's
+  successful validation result.
+
+Boundary:
+
+- No relation fields were added.
+- Page bodies were not changed.
+- The `reminders.md` domain used existing `sample-reminder.md` frontmatter as
+  the local precedent for a generic reminder panel.
+- No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
+  lifecycle state were changed.
+
 ## Batch 1 Baseline
 
 Planner command:

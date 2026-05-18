@@ -1,10 +1,14 @@
 ---
 title: 涅槃项目本周跟进提醒 2026-04-13
+layer: ops
 type: reminder
 language: zh-CN
 audience: project
 knowledge_level: working
 domain: nirvana-project
+ops_area: workflow-trace
+canonical_object: nirvana-weekly-reminder
+artifact_type: method
 period: 2026-w16
 status: open
 updated_at: 2026-04-14

@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: workflow-trace
+canonical_object: reminders
+artifact_type: method
+---
+
 # 提醒面板
 
 这页只保留可执行提醒，不等于原始输入列表。
