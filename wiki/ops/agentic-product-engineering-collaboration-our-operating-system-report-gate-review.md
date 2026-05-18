@@ -106,12 +106,17 @@ Full-article roadmap correction on 2026-05-18:
 - User feedback: the four-layer correction should spread across the whole article, and the article needs a technical roadmap.
 - Response: added section `05B · 技术路线图`, translating the four cases into four build layers: work-object layer, Agent orchestration layer, evidence reaction chain, and memory/knowledge layer. The later sections now refer back to this roadmap when describing the minimum viable direction, the nine-step workflow, engineering reshaping, role ownership, the 30-day pilot, and the final judgment.
 
+Roadmap rewrite correction on 2026-05-18:
+
+- User feedback: the added roadmap still read poorly.
+- Response: rewrote section `05B` from a component-style matrix into a route narrative. Each step now explains the decision order: make one work object runnable, force方案竞争 before Spec, design engineering around evidence reaction time, and only then separate records, retrieval, rules, and preferences. Later sections were also softened so they point to one real chain rather than repeating roadmap slogans.
+
 Verification performed for this text-only update:
 
 - WeChat body fetched with `.codex/skills/weixin-reader/scripts/fetch_weixin.py`.
 - HTML syntax check: `python3 -m html.parser wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html`.
 - Text consistency check searched for old `8 步`, `8 状态`, and `7 件事` leftovers after adding the new step.
-- Technical roadmap screenshots: `/tmp/our-operating-system-technical-roadmap.png` and `/tmp/our-operating-system-technical-roadmap-mobile-long.png`.
+- Technical roadmap screenshots: `/tmp/our-operating-system-roadmap-rewrite-tall.png` and `/tmp/our-operating-system-roadmap-rewrite-mobile.png`.
 - Frontmatter precheck was run for the new source note. The repo-wide gate still reports legacy blockers; the target entry list has no target-specific drift entry.
 
 Boundary:

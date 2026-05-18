@@ -523,93 +523,103 @@
       line-height: 1.56;
     }
 
-    .tech-roadmap {
+    .roadmap-path {
       margin-top: 34px;
       border-top: 2px solid var(--ink);
-      border-left: 1px solid var(--line);
     }
 
-    .roadmap-row {
+    .roadmap-step {
       display: grid;
-      grid-template-columns: 190px repeat(3, minmax(0, 1fr));
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 34px;
+      padding: 30px 0;
       border-bottom: 1px solid var(--line);
-      background: #fffdf8;
     }
 
-    .roadmap-stage,
-    .roadmap-cell {
-      padding: 18px 18px;
-      border-right: 1px solid var(--line);
+    .roadmap-node {
+      padding-top: 2px;
     }
 
-    .roadmap-stage {
-      background: #f7efe1;
-    }
-
-    .roadmap-stage span {
+    .roadmap-node span {
       display: block;
       color: var(--accent-2);
       font-size: 0.76rem;
       font-weight: 900;
     }
 
-    .roadmap-stage strong {
+    .roadmap-node strong {
       display: block;
       margin-top: 7px;
       color: var(--accent);
-      font-size: 1.05rem;
+      font-size: 1.16rem;
       line-height: 1.3;
     }
 
-    .roadmap-stage em {
+    .roadmap-node em {
       display: block;
       margin-top: 8px;
       color: #675847;
-      font-size: 0.82rem;
+      font-size: 0.86rem;
       font-style: normal;
-      line-height: 1.4;
+      line-height: 1.48;
     }
 
-    .roadmap-cell b {
-      display: block;
-      margin-bottom: 7px;
-      color: var(--accent-2);
-      font-size: 0.78rem;
+    .roadmap-copy h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
     }
 
-    .roadmap-cell p {
-      margin: 0;
-      font-size: 0.92rem;
-      line-height: 1.58;
+    .roadmap-copy p {
+      margin-bottom: 14px;
     }
 
-    .roadmap-axis {
+    .roadmap-proof {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 22px;
-      border-top: 1px solid var(--line);
-      border-left: 1px solid var(--line);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .roadmap-proof div {
+      padding: 13px 14px;
+      border-left: 3px solid var(--accent);
       background: #fbf5e8;
     }
 
-    .roadmap-axis div {
-      padding: 14px 16px;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .roadmap-axis strong {
+    .roadmap-proof strong {
       display: block;
-      color: var(--accent);
+      color: var(--accent-2);
+      font-size: 0.78rem;
       line-height: 1.35;
     }
 
-    .roadmap-axis span {
+    .roadmap-proof span {
       display: block;
       margin-top: 6px;
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.48;
+      color: #28231e;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .roadmap-rhythm {
+      margin-top: 28px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .rhythm-row {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 26px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .rhythm-row strong {
+      color: var(--accent);
+    }
+
+    .rhythm-row p {
+      margin: 0;
     }
 
     .pilot {
@@ -719,19 +729,15 @@
         font-weight: 900;
       }
 
-      .roadmap-row,
-      .roadmap-axis {
+      .roadmap-step,
+      .roadmap-proof,
+      .rhythm-row {
         grid-template-columns: 1fr;
+        gap: 10px;
       }
 
-      .roadmap-stage,
-      .roadmap-cell,
-      .roadmap-axis div {
-        border-right: 0;
-      }
-
-      .roadmap-cell {
-        border-top: 1px solid var(--line);
+      .roadmap-step {
+        gap: 16px;
       }
 
       header {
@@ -1091,107 +1097,95 @@
 
     <section class="section" id="technical-roadmap">
       <p class="section-label">05B · 技术路线图</p>
-      <h2>不是先搭平台，而是分四层把产研反应链做出来</h2>
+      <h2>技术路线不是搭平台，而是把一条真实链路跑通</h2>
       <p class="reading">
-        技术路线不能写成“接入大模型、接入知识库、接入工作流”三件套。那样会重新回到工具堆叠。更合理的路线，是沿着四个层次建设：先有可跑的工作对象，再有可比较的方案，再有可审查的执行和证据，最后才有记录、检索和个性化。
+        这张路线图不能写成“接入大模型、接入知识库、接入工作流”。那还是工具堆叠。真正要回答的是四个顺序问题：先让什么工作对象可试，谁来比较方案，证据链怎么从后置验收前移，哪些东西应该沉淀成记录、检索和个性化。
       </p>
-      <div class="tech-roadmap" aria-label="AI-assisted 产研作业系统技术路线图">
-        <article class="roadmap-row">
-          <div class="roadmap-stage">
-            <span>Layer 1</span>
-            <strong>工作对象层</strong>
-            <em>对应 Cowork Demo</em>
+      <div class="roadmap-path" aria-label="AI-assisted 产研作业系统技术路线图">
+        <article class="roadmap-step">
+          <div class="roadmap-node">
+            <span>第一步</span>
+            <strong>先做一个可跑原型</strong>
+            <em>从 Cowork Demo 学到的不是“研究员会写代码”，而是判断要先变成可操作对象。</em>
           </div>
-          <div class="roadmap-cell">
-            <b>先建设</b>
-            <p>意图包、方案包、Spec / ADR、Review Packet 的结构化模板，让研究判断和业务需求先变成可试对象。</p>
-          </div>
-          <div class="roadmap-cell">
-            <b>接入数据</b>
-            <p>需求原话、会议纪要、看板指标、已有日志、测试结果、H5 / 报告 gate review。</p>
-          </div>
-          <div class="roadmap-cell">
-            <b>完成证据</b>
-            <p>一个真实场景能从用户原话进入 Demo / 样例，再被 HR、数仓、研发或测试讨论真实接入边界。</p>
+          <div class="roadmap-copy">
+            <h3>把“看板异常解释链路”先做成一个能点开的工作原型。</h3>
+            <p>用户看到指标异常后，系统要能带出原始样本、可能原因、处理动作和待确认问题。第一版不追求覆盖所有场景，也不先做平台权限和知识库全接入；它只证明一件事：产品、研发、测试和业务 owner 能围着同一个工作对象讨论，而不是各自拿文字材料猜。</p>
+            <div class="roadmap-proof">
+              <div><strong>输入</strong><span>用户原话、指标口径、样本数据、已知异常案例。</span></div>
+              <div><strong>动作</strong><span>做出可操作界面或 Demo，让真实角色能试。</span></div>
+              <div><strong>验收</strong><span>业务 owner 能指出缺口，数据团队能判断字段和权限边界。</span></div>
+            </div>
           </div>
         </article>
 
-        <article class="roadmap-row">
-          <div class="roadmap-stage">
-            <span>Layer 2</span>
-            <strong>Agent 编排层</strong>
-            <em>对应多方案流程</em>
+        <article class="roadmap-step">
+          <div class="roadmap-node">
+            <span>第二步</span>
+            <strong>方案先竞争，再进 Spec</strong>
+            <em>Agent 的价值不是替人拍板，而是把方案、反对意见和代价提前摊开。</em>
           </div>
-          <div class="roadmap-cell">
-            <b>先建设</b>
-            <p>分析、反向问题、多方案生成、方案打分、风险暴露、人工选择、执行包生成的固定流程。</p>
-          </div>
-          <div class="roadmap-cell">
-            <b>接入数据</b>
-            <p>历史方案、ADR、失败案例、性能约束、权限边界、成本估算和未决问题。</p>
-          </div>
-          <div class="roadmap-cell">
-            <b>完成证据</b>
-            <p>每个进入实现的需求都有至少两条可比较路径，专业 owner 明确选择、合并或打回，而不是默认执行第一稿。</p>
+          <div class="roadmap-copy">
+            <h3>不要让第一个方案直接变成开发任务。</h3>
+            <p>每个原型链路进入工程前，先让 Agent 产出两到三条可比较路径：最小可行方案、稳妥方案、长期可扩展方案。每条方案都要写清代价、风险、验证方式和放弃什么。人负责选择，Agent 负责把选择前的材料做完整。</p>
+            <div class="roadmap-proof">
+              <div><strong>输入</strong><span>原型反馈、历史 ADR、失败案例、权限和性能约束。</span></div>
+              <div><strong>动作</strong><span>分析 -> 多方案 -> 博弈/打分 -> 优化 -> 人选择。</span></div>
+              <div><strong>验收</strong><span>进入 Spec 的不是“第一稿”，而是被专业 owner 选择或合并后的方案。</span></div>
+            </div>
           </div>
         </article>
 
-        <article class="roadmap-row">
-          <div class="roadmap-stage">
-            <span>Layer 3</span>
-            <strong>证据反应链</strong>
-            <em>对应底盘智能</em>
+        <article class="roadmap-step">
+          <div class="roadmap-node">
+            <span>第三步</span>
+            <strong>按反应链设计工程</strong>
+            <em>底盘智能的启发是端到端链路变短，不是某个模型单点变强。</em>
           </div>
-          <div class="roadmap-cell">
-            <b>先建设</b>
-            <p>从 Spec 到 diff、测试、真实 API、真实 DB、浏览器截图、视觉验收、性能耗时、风险结论的证据链。</p>
-          </div>
-          <div class="roadmap-cell">
-            <b>接入数据</b>
-            <p>CI、测试日志、运行库检查、接口返回、截图、console、性能计时、项目状态。</p>
-          </div>
-          <div class="roadmap-cell">
-            <b>完成证据</b>
-            <p>从用户意图到 review packet 的周期变短；打回时能定位卡在意图、方案、实现、验证还是判断。</p>
+          <div class="roadmap-copy">
+            <h3>从用户意图到 review packet，中间每一段都要有证据。</h3>
+            <p>工程实现不能只交代码，测试也不能只在尾部找问题。被选中的方案要一路变成 Spec、diff、真实 DB/API 检查、浏览器截图、视觉验收、性能耗时和风险结论。我们要压短的不是“写代码时间”，而是从发现问题到能判断能不能上线的整条反应链。</p>
+            <div class="roadmap-proof">
+              <div><strong>输入</strong><span>被选方案、验收路径、真实数据和风险清单。</span></div>
+              <div><strong>动作</strong><span>Spec、实现、测试、截图、日志、review packet 同步推进。</span></div>
+              <div><strong>验收</strong><span>打回时能定位卡在意图、方案、实现、验证还是判断。</span></div>
+            </div>
           </div>
         </article>
 
-        <article class="roadmap-row">
-          <div class="roadmap-stage">
-            <span>Layer 4</span>
-            <strong>记忆与知识层</strong>
-            <em>对应车内 Agent 架构</em>
+        <article class="roadmap-step">
+          <div class="roadmap-node">
+            <span>第四步</span>
+            <strong>最后再做记忆分层</strong>
+            <em>记忆不是把所有历史塞进上下文，而是把记录、检索、规则和偏好分开。</em>
           </div>
-          <div class="roadmap-cell">
-            <b>先建设</b>
-            <p>把记录、知识图谱 / RAG、稳定偏好、团队规则、个性化指令分开，不把所有历史都塞进上下文。</p>
-          </div>
-          <div class="roadmap-cell">
-            <b>接入数据</b>
-            <p>ADR、ops、spec、skill、事故复盘、用户偏好、团队约束、业务术语和可复用样例。</p>
-          </div>
-          <div class="roadmap-cell">
-            <b>完成证据</b>
-            <p>下一次 Agent 能自动读到相关边界和失败教训；无关历史不会污染当前任务；偏好能被显式修改。</p>
+          <div class="roadmap-copy">
+            <h3>先让失败和选择可写回，再谈“系统会记住”。</h3>
+            <p>每次方案被打回、上线被拦、视觉验收失败、真实库字段不对，都要写回到对应位置：ADR 记录稳定决策，ops 记录过程教训，skill / gate 记录下次触发边界，RAG 负责检索事实，个性化只保存少量稳定偏好。这样下一次 Agent 读到的是边界，不是一堆历史聊天。</p>
+            <div class="roadmap-proof">
+              <div><strong>输入</strong><span>失败归因、review 结论、ADR、ops、skill、业务术语。</span></div>
+              <div><strong>动作</strong><span>记录归记录，检索归检索，规则归规则，偏好归偏好。</span></div>
+              <div><strong>验收</strong><span>下一次同类任务能自动触发边界；无关历史不会污染当前判断。</span></div>
+            </div>
           </div>
         </article>
       </div>
-      <div class="roadmap-axis" aria-label="路线图阶段">
-        <div>
-          <strong>30 天：跑通一个原型链路</strong>
-          <span>只选一个高频场景，先验证意图包、多方案、执行包和证据矩阵。</span>
+      <div class="roadmap-rhythm" aria-label="路线图阶段">
+        <div class="rhythm-row">
+          <strong>0-30 天</strong>
+          <p>只选一个高频场景，把原型、方案竞争、执行证据和一次失败写回跑完。这个阶段不追求平台化。</p>
         </div>
-        <div>
-          <strong>60 天：固化反应链</strong>
-          <span>把 review packet、真实环境验证和失败写回变成默认动作。</span>
+        <div class="rhythm-row">
+          <strong>31-60 天</strong>
+          <p>把 review packet、真实环境验证、视觉截图和打回归因固化成默认动作，让链路能稳定重复。</p>
         </div>
-        <div>
-          <strong>90 天：建设记忆层</strong>
-          <span>把 ADR、ops、skill、RAG 和个性化边界接起来，减少重复踩坑。</span>
+        <div class="rhythm-row">
+          <strong>61-90 天</strong>
+          <p>再接记忆与知识层：ADR、ops、skill、RAG、偏好分开建设，目标是减少重复踩坑，而不是制造一个万能助手。</p>
         </div>
       </div>
       <div class="pullquote">
-        技术路线图的核心不是“更多 Agent”，而是让 Agent 工作在明确对象、明确路由、明确证据和明确记忆边界里。
+        这条路线的重点不是“我们要建什么平台”，而是每一步都把不确定判断变成可试、可比、可证、可写回的工作对象。
       </div>
     </section>
 
@@ -1199,7 +1193,7 @@
       <p class="section-label">06 · 我们能做什么</p>
       <h2>最小可行方向：AI-assisted 产研作业系统</h2>
       <p class="reading">
-        这不是平台战略，是日常工作方式升级。我们已经有真实业务系统、真实看板、真实 DB、真实会议、真实需求、真实事故日志。AI 最应该进入的地方，是那些高频、重复、容易漂移、又必须留下证据的协作动作。对应技术路线，先不要做大而全平台，而是把一个场景的工作对象、方案编排、证据反应链和记忆写回跑通。
+        这不是平台战略，是日常工作方式升级。我们已经有真实业务系统、真实看板、真实 DB、真实会议、真实需求、真实事故日志。AI 最应该进入的地方，是那些高频、重复、容易漂移、又必须留下证据的协作动作。第一步只做一个场景，把“提出问题、比较方案、执行验证、失败写回”完整跑通。
       </p>
       <div class="role-list">
         <div class="role-row">
@@ -1229,7 +1223,7 @@
       <p class="section-label">07 · 模式变化</p>
       <h2>重点清单：重塑软件工程工作方式，不是加一个 AI 工具</h2>
       <p class="reading">
-        接下来要做的不是“推广 AI 使用”，而是改造软件工程的工作对象。以前的主线是需求、开发、测试、上线；新的主线应该是意图、方案、spec、Agent 执行、证据包、人类判断、失败写回。九步流程不是另一套管理表格，而是技术路线图的落地顺序：工作对象先定，Agent 再编排，证据链跟上，最后把失败写回记忆层。
+        接下来要做的不是“推广 AI 使用”，而是改造软件工程的工作对象。以前的主线是需求、开发、测试、上线；新的主线应该是意图、方案、spec、Agent 执行、证据包、人类判断、失败写回。九步流程的意义，不是多一套管理表格，而是保证每个需求都能从可试对象走到可审查结果。
       </p>
       <div class="phase-list">
         <div class="phase-row">
@@ -1474,7 +1468,7 @@
       <p class="section-label">13 · 角色变化</p>
       <h2>岗位怎么变：9 步流程里的 owner、产物和证据</h2>
       <p class="reading">
-        不是问“产品要不要写代码”，而是问每一步谁拥有产物、什么证据证明完成。技术路线图不会自己运行，必须落到 owner、产物和证据上。Agent 可以执行很多动作，但 owner、边界和完成判断必须落到人和系统记录上。专业的人不是被 AI 替代，而是用 AI 把自己的判断变成更早可验证、更容易被工程化的产物。
+        不是问“产品要不要写代码”，而是问每一步谁拥有产物、什么证据证明完成。路线不会自己运行，必须落到 owner、产物和证据上。Agent 可以执行很多动作，但 owner、边界和完成判断必须落到人和系统记录上。专业的人不是被 AI 替代，而是用 AI 把自己的判断变成更早可验证、更容易被工程化的产物。
       </p>
       <div class="phase-list">
         <div class="phase-row">
@@ -1614,7 +1608,7 @@
       <p class="section-label">15 · 下一步</p>
       <h2>先用一个真实链路做 30 天试点</h2>
       <p class="reading">
-        最合适的试点不是再写一套宏大制度，而是挑一个高频且容易暴露判断链的场景：看板指标异常解释链路。这个试点要同时验证技术路线图的四层：异常解释先做成可跑原型，处理路径先做多方案比较，真实 DB / API / 截图形成反应链，最后把失败样例、业务偏好和规则写回记忆层。
+        最合适的试点不是再写一套宏大制度，而是挑一个高频且容易暴露判断链的场景：看板指标异常解释链路。这个试点只验证一条线：异常解释先做成可跑原型，处理路径先做多方案比较，真实 DB / API / 截图形成证据链，最后把失败样例、业务偏好和规则写回。
       </p>
       <div class="pilot">
         <div class="image-band">
@@ -1645,7 +1639,7 @@
           产研工作方式的转变，不是把产品、研发、测试、项目管理都变成会提问的人，而是让每个角色都知道自己守哪一段责任链。人决定目标、边界和取舍；Agent 分析问题、生成多方案、放大专业判断、执行重复劳动、生成证据；系统留下可复盘、可回放、可检索、可改进的记录。
         </p>
         <p>
-          这就是我们接下来应该做的事：从“AI 帮忙”切到“AI 协作作业系统”。技术上先做四层：工作对象层、Agent 编排层、证据反应链、记忆与知识层；管理上守住 5W1H：为什么做、为谁做、做什么、不做什么、在哪里验证、怎么证明。SMART 可以作为检查表，但核心不是模型名称，而是把责任、证据和写回固定下来。
+          这就是我们接下来应该做的事：从“AI 帮忙”切到“AI 协作作业系统”。技术上不要先追平台完整度，而是先跑通一条真实链路；管理上守住 5W1H：为什么做、为谁做、做什么、不做什么、在哪里验证、怎么证明。SMART 可以作为检查表，但核心不是模型名称，而是把责任、证据和写回固定下来。
         </p>
       </div>
     </section>
