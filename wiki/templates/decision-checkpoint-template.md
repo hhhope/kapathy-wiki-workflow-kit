@@ -1,3 +1,8 @@
+---
+layer: examples
+domain: wiki
+---
+
 # <Decision Or Checkpoint Title>
 
 ## Scope

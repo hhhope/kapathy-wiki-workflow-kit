@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: public-report-output
+ops_area: report-quality
 artifact_type: runtime-replay
 title: team-knowledge-base-overview / paragraph-drift-runtime-replay
 canonical_object: team-knowledge-base-overview

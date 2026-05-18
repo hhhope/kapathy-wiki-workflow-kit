@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: none
+ops_area: workflow-trace
+canonical_object: wiki-ops-index
+artifact_type: index
+---
+
 # Personal Ops 总览
 
 这一层不是长期专题知识，而是个人工作流的操作层。

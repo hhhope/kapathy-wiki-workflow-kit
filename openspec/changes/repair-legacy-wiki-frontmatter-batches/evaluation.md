@@ -529,6 +529,56 @@ Boundary:
 - No taxonomy config, checker logic, MOC pages, ADRs, skills, templates, or
   OpenSpec lifecycle state were changed.
 
+## Batch 14v Evidence
+
+Approved batch:
+
+- Batch 14v: tracked ops index, tracked template, and dirty tracked pages using
+  frontmatter-only staging for dirty files.
+
+Target set:
+
+- `wiki/ops/index.md`
+- `wiki/templates/decision-checkpoint-template.md`
+- `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`
+- `wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md`
+
+Applied fields:
+
+- `wiki/ops/index.md`: `layer: ops`, `domain: none`,
+  `ops_area: workflow-trace`, `canonical_object: wiki-ops-index`,
+  `artifact_type: index`, following the structural index convention from
+  batch 10.
+- `wiki/templates/decision-checkpoint-template.md`: `layer: examples`,
+  `domain: wiki`, describing the template file itself and not a generated
+  target page.
+- `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`: `layer: ops`,
+  `domain: wiki`, `ops_area: learning-capture`.
+- `wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md`:
+  `layer: ops`, `domain: public-report-output`,
+  `ops_area: report-quality`.
+
+After target counts:
+
+- all 4 target pages reported `target.entry_count: 0`
+
+Whole-wiki residual:
+
+- target precheck output after this batch reported `blocking_count: 10`
+- remaining blocking paths are two untracked `wiki/mnt/...` mirror paths and
+  the untracked
+  `wiki/ops/wiki-surgery-runs/2026-05-15-044434-surgery.md`
+- producer warnings remain non-blocking warnings
+
+Boundary:
+
+- No relation fields were added.
+- Page bodies were not intentionally changed by this batch.
+- The dirty obsidian/team drift pages had pre-existing table-formatting diffs;
+  only the frontmatter hunks are task-related for this batch commit.
+- No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
+  lifecycle state were changed.
+
 ## Batch 1 Baseline
 
 Planner command:

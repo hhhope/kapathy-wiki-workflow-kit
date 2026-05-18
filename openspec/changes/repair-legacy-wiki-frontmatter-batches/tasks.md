@@ -84,4 +84,6 @@
   treatment, and surgery run record pages.
 - [x] 44. Apply approved batch 14u to clean visual-output-routing drift and
   account-clearing scenario-matrix ops pages.
-- [ ] 45. Add final evaluation evidence and run OpenSpec validation.
+- [x] 45. Apply approved batch 14v to the tracked ops index, tracked template,
+  and dirty tracked pages using frontmatter-only staging for dirty files.
+- [ ] 46. Add final evaluation evidence and run OpenSpec validation.

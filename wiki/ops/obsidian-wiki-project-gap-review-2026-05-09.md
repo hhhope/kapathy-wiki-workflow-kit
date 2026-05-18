@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: wiki
+ops_area: learning-capture
 canonical_object: obsidian-wiki-reference-gap-review
 artifact_type: learning-note
 related_objects:
