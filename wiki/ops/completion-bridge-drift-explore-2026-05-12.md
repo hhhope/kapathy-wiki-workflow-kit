@@ -8,7 +8,9 @@ source_path: chat://openspec-explore/completion-bridge-drift/2026-05-12
 source_type: conversation
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
 period: active
 confidence: medium
 status: active

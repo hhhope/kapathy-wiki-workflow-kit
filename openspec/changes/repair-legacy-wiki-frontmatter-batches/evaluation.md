@@ -626,6 +626,56 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14c Evidence
+
+Approved batch:
+
+- Batch 14c: clean completion/reanchor/root governance ops pages with existing
+  identity and forbidden `domain: personal-ops`
+
+Applied fields:
+
+- `domain: wiki`
+- `layer: ops`
+- `ops_area: agent-governance`
+
+Target set:
+
+- `wiki/ops/completion-bridge-drift-explore-2026-05-12.md`
+- `wiki/ops/live-conversation-reanchor-gate-replay-harness.md`
+- `wiki/ops/live-conversation-reanchor-gate-retro.md`
+- `wiki/ops/root-capability-extraction-retro.md`
+
+Before target counts:
+
+- all 4 pages had 4 errors covering forbidden `domain: personal-ops`,
+  missing `layer`, and missing `ops_area`
+
+After target counts:
+
+- all 4 target pages reported `after.entry_count: 0`
+- all 4 target precheck runs reported `target.entry_count: 0`; the precheck
+  command still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 456
+- `summary.error`: 456
+
+Boundary:
+
+- Existing `canonical_object` and `artifact_type` values were preserved.
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.
+
 ## Batch 14b Evidence
 
 Approved batch:

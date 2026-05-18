@@ -44,6 +44,9 @@
 - [x] 24. Apply approved batch 14b to remap clean behavior/Codex/OpenSpec
   governance ops pages from forbidden `personal-ops` to repo wiki governance
   fields.
-- [ ] 25. Get approval for the next classification batch before applying more
+- [x] 25. Apply approved batch 14c to remap clean completion/reanchor/root
+  governance ops pages from forbidden `personal-ops` to repo wiki governance
+  fields.
+- [ ] 26. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 26. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 27. Add final evaluation evidence and run OpenSpec validation.

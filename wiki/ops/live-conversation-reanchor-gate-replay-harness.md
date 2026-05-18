@@ -9,7 +9,9 @@ validates:
 language: zh-CN
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
 status: active
 updated_at: 2026-04-20
 ai_generated: true

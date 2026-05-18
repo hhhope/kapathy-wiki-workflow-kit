@@ -5,7 +5,9 @@ title: root-capability-extraction / retro
 type: retro
 language: zh-CN
 audience: self
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
 status: active
 updated_at: 2026-05-07
 ai_generated: true
