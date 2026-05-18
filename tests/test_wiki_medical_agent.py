@@ -257,6 +257,7 @@ class WikiMedicalAgentTest(unittest.TestCase):
 
     def test_cli_moc_surgery_preview_is_read_only(self) -> None:
         repo_root = Path(__file__).resolve().parents[1]
+        script = repo_root / "scripts" / "build_wiki_medical_agent.py"
         case_package = self._case_package(status="archive_ready")
         case_path = self._write_case(case_package, "2026-05-15T01:02:03+00:00")
         before = case_path.read_text(encoding="utf-8")
@@ -264,13 +265,13 @@ class WikiMedicalAgentTest(unittest.TestCase):
         result = subprocess.run(
             [
                 sys.executable,
-                "scripts/build_wiki_medical_agent.py",
+                str(script),
                 "--root",
                 str(self.tmpdir),
                 "--intent-text",
                 "moc preview surgery",
             ],
-            cwd=repo_root,
+            cwd=self.tmpdir,
             check=True,
             text=True,
             capture_output=True,
