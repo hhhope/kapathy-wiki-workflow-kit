@@ -146,14 +146,15 @@ def build_precheck_report(
 
     strict_gate = full_report.get("strict_gate", {})
     scorecard = full_report.get("scorecard", {})
+    blocking_count = int(strict_gate.get("blocking_entry_count", 0))
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "gate": "wiki-frontmatter-taxonomy",
         "mode": mode,
-        "passed": bool(strict_gate.get("passed", False)),
+        "passed": blocking_count == 0,
         "score": int(scorecard.get("score", 0)),
         "minimum_pass_score": int(scorecard.get("minimum_pass_score", 100)),
-        "blocking_count": int(strict_gate.get("blocking_entry_count", 0)),
+        "blocking_count": blocking_count,
         "summary": full_report.get("summary", {}),
         "top_blockers": _top_blockers(entries, max_items),
         "target": {

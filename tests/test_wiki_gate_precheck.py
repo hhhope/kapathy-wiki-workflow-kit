@@ -154,3 +154,23 @@ artifact_type: method
         self.assertEqual(report["target"]["path"], "wiki/ops/clean.md")
         self.assertEqual(report["target"]["entry_count"], 0)
         self.assertEqual(report["target"]["entries"], [])
+
+    def test_warning_only_producer_findings_do_not_fail_precheck(self) -> None:
+        write(
+            self.tmpdir / "scripts/frontmatter_writer.py",
+            'CONTENT = "---\\ndomain: personal-ops\\n---\\n"',
+        )
+
+        report = build_precheck_report(
+            root=self.tmpdir,
+            mode="frontmatter",
+            top=3,
+            json_output=self.tmpdir / "full.json",
+            markdown_output=self.tmpdir / "full.md",
+        )
+
+        self.assertTrue(report["passed"])
+        self.assertEqual(report["blocking_count"], 0)
+        self.assertEqual(report["summary"]["error"], 0)
+        self.assertEqual(report["summary"]["warn"], 1)
+        self.assertLess(report["score"], report["minimum_pass_score"])

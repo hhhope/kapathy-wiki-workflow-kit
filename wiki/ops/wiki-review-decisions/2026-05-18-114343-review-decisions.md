@@ -1,0 +1,5843 @@
+---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
+canonical_object: wiki-review-decisions
+artifact_type: review-decision
+---
+
+# wiki-confirm Confirmation Record
+
+## Source / 检查来源
+
+- Generated at: 2026-05-18T11:43:43.348597+00:00
+- Scan root: `/mnt/d/cloud/account-meeting-lore`
+- Detail limit: complete
+- Source record: none
+- Source package: scripts/build_wiki_content_adjudication.py
+
+## Decision Rules / 确诊标准
+- safe_to_apply_frontmatter=true -> treatment_candidates.
+- relation_weak_evidence, drift_risk, or adr_risk -> surgery_candidates.
+- openspec_required or taxonomy_candidate -> openspec_required.
+- agent_uncertain or needs_user_confirmation -> deferred_items.
+- reject or rejected candidate details -> rejected_candidates.
+- accept with no risk flags -> accepted_candidates.
+
+## Summary
+- accepted_candidates_count: 83
+- deferred_items_count: 73
+- openspec_required_count: 49
+- rejected_candidates_count: 6
+- source_detail_count: 156
+- surgery_candidates_count: 67
+- treatment_candidates_count: 83
+
+## Confirmed Buckets / 确诊分流
+
+## Accepted Candidates
+- detail-0003 `wiki/ops/account-knowledge-base-structure-explore.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0004 `wiki/ops/account-knowledge-base-workbench.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0005 `wiki/ops/ad-growth-cockpit-h5-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0006 `wiki/ops/ad-platform-operational-prototype-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0009 `wiki/ops/agent-harness-article-learning-intake.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0010 `wiki/ops/agent-harness-article-learning.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0012 `wiki/ops/agent-readable-wiki-artifact-grouping.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0013 `wiki/ops/agent-readable-wiki-context-injection.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0014 `wiki/ops/agent-readable-wiki-frontmatter.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0015 `wiki/ops/agent-readable-wiki-graph-extraction.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0016 `wiki/ops/agent-readable-wiki-naming-model.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0017 `wiki/ops/agent-readable-wiki-relation-analysis.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0018 `wiki/ops/agent-readable-wiki-relation-reading-view.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0019 `wiki/ops/agent-readable-wiki-runtime-auto-routing.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0020 `wiki/ops/agent-readable-wiki-runtime-context-source-integration.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0021 `wiki/ops/agent-readable-wiki-runtime-context.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0022 `wiki/ops/agent-readable-wiki-self-directed-execution.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0023 `wiki/ops/agent-readable-wiki-semantic-scoring.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0024 `wiki/ops/agent-readable-wiki-utilization-layer.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0025 `wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0026 `wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0027 `wiki/ops/agentic-product-engineering-collaboration-article-evidence-matrix-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0028 `wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0029 `wiki/ops/agentic-product-engineering-collaboration-company-playbook-role-change-diagnosis-2026-05-12.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0030 `wiki/ops/agentic-product-engineering-collaboration-image-model-visual-qa-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0031 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0032 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0033 `wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0034 `wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0035 `wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0036 `wiki/ops/agentic-product-engineering-collaboration-split-execution-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0037 `wiki/ops/agentic-product-engineering-collaboration-visual-production-brief-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0038 `wiki/ops/agentic-product-engineering-collaboration-workflow-gate-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0048 `wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0051 `wiki/ops/behavior-replay-gate.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0053 `wiki/ops/check-to-wiki-routing-explore.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0054 `wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0055 `wiki/ops/codex-handoff-rules.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0057 `wiki/ops/conversation-handoff-mode.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0058 `wiki/ops/disagreement-management-method.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0059 `wiki/ops/disagreement-management-replay-harness.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0060 `wiki/ops/disagreement-management-replay-validation-2026-04-20.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0062 `wiki/ops/evolver-self-evolving-harness-reading-notes.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0063 `wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0064 `wiki/ops/example-driven-wiki-capture.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0065 `wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0068 `wiki/ops/harness-engineering-overview-reading-notes.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0069 `wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0071 `wiki/ops/karpathy-llm-wiki-reading-notes.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0073 `wiki/ops/learning-capture-routing.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0074 `wiki/ops/learning-source-routing-gap-explore-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0077 `wiki/ops/llm-wiki-core-product-contract.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0078 `wiki/ops/llm-wiki-self-evolution-medical-loop.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0079 `wiki/ops/main-thread.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0080 `wiki/ops/multi-system-branch-spec-explore-2026-05-12.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0081 `wiki/ops/nirvana-preview-intake.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0082 `wiki/ops/nirvana-weekly-intake-2026-04-13.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0083 `wiki/ops/nirvana-weekly-reminder-2026-04-13.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0084 `wiki/ops/nirvana-协议支付涅槃需求文档-intake.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0085 `wiki/ops/nirvana-涅槃产品上架梳理-intake.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0086 `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0089 `wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0090 `wiki/ops/project-management-weekly-loop.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0091 `wiki/ops/public-report-skill-gate-wording-explore-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0094 `wiki/ops/reminders.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0095 `wiki/ops/report-wiki-product-plan-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0097 `wiki/ops/sample-codex-handoff.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0100 `wiki/ops/sample-focus-thread.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0101 `wiki/ops/sample-handoff-topic.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0102 `wiki/ops/sample-intake.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0103 `wiki/ops/sample-reminder.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0105 `wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0106 `wiki/ops/superpowers-brainstorming-skill-visibility-explore-2026-05-14.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0108 `wiki/ops/team-knowledge-base-overview-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0110 `wiki/ops/visual-output-routing-fix-recheck-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0111 `wiki/ops/visual-output-routing-residual-fallback-repair-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0112 `wiki/ops/visual-output-routing-skill-fix-evidence-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0114 `wiki/ops/wiki-react-decision-trace-runtime.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0115 `wiki/ops/wiki-readable-views-validation-harness.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0116 `wiki/ops/wiki-runtime-command-surface-explore-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0117 `wiki/ops/wiki-runtime-layer-contract.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0118 `wiki/ops/wiki-runtime-react-eval-apply-boundary-distill-2026-05-14.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0121 `wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md`: existing or strongly evidenced candidate without unresolved review risks
+
+## Treatment Candidates
+- detail-0003 `wiki/ops/account-knowledge-base-structure-explore.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0004 `wiki/ops/account-knowledge-base-workbench.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0005 `wiki/ops/ad-growth-cockpit-h5-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0006 `wiki/ops/ad-platform-operational-prototype-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0009 `wiki/ops/agent-harness-article-learning-intake.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0010 `wiki/ops/agent-harness-article-learning.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0012 `wiki/ops/agent-readable-wiki-artifact-grouping.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0013 `wiki/ops/agent-readable-wiki-context-injection.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0014 `wiki/ops/agent-readable-wiki-frontmatter.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0015 `wiki/ops/agent-readable-wiki-graph-extraction.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0016 `wiki/ops/agent-readable-wiki-naming-model.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0017 `wiki/ops/agent-readable-wiki-relation-analysis.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0018 `wiki/ops/agent-readable-wiki-relation-reading-view.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0019 `wiki/ops/agent-readable-wiki-runtime-auto-routing.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0020 `wiki/ops/agent-readable-wiki-runtime-context-source-integration.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0021 `wiki/ops/agent-readable-wiki-runtime-context.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0022 `wiki/ops/agent-readable-wiki-self-directed-execution.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0023 `wiki/ops/agent-readable-wiki-semantic-scoring.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0024 `wiki/ops/agent-readable-wiki-utilization-layer.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0025 `wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0026 `wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0027 `wiki/ops/agentic-product-engineering-collaboration-article-evidence-matrix-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0028 `wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0029 `wiki/ops/agentic-product-engineering-collaboration-company-playbook-role-change-diagnosis-2026-05-12.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0030 `wiki/ops/agentic-product-engineering-collaboration-image-model-visual-qa-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0031 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0032 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0033 `wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0034 `wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0035 `wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0036 `wiki/ops/agentic-product-engineering-collaboration-split-execution-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0037 `wiki/ops/agentic-product-engineering-collaboration-visual-production-brief-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0038 `wiki/ops/agentic-product-engineering-collaboration-workflow-gate-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0048 `wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0051 `wiki/ops/behavior-replay-gate.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0053 `wiki/ops/check-to-wiki-routing-explore.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0054 `wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0055 `wiki/ops/codex-handoff-rules.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0057 `wiki/ops/conversation-handoff-mode.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0058 `wiki/ops/disagreement-management-method.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0059 `wiki/ops/disagreement-management-replay-harness.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0060 `wiki/ops/disagreement-management-replay-validation-2026-04-20.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0062 `wiki/ops/evolver-self-evolving-harness-reading-notes.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0063 `wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0064 `wiki/ops/example-driven-wiki-capture.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0065 `wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0068 `wiki/ops/harness-engineering-overview-reading-notes.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0069 `wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0071 `wiki/ops/karpathy-llm-wiki-reading-notes.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0073 `wiki/ops/learning-capture-routing.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0074 `wiki/ops/learning-source-routing-gap-explore-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0077 `wiki/ops/llm-wiki-core-product-contract.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0078 `wiki/ops/llm-wiki-self-evolution-medical-loop.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0079 `wiki/ops/main-thread.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0080 `wiki/ops/multi-system-branch-spec-explore-2026-05-12.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0081 `wiki/ops/nirvana-preview-intake.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0082 `wiki/ops/nirvana-weekly-intake-2026-04-13.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0083 `wiki/ops/nirvana-weekly-reminder-2026-04-13.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0084 `wiki/ops/nirvana-协议支付涅槃需求文档-intake.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0085 `wiki/ops/nirvana-涅槃产品上架梳理-intake.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0086 `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0089 `wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0090 `wiki/ops/project-management-weekly-loop.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0091 `wiki/ops/public-report-skill-gate-wording-explore-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0094 `wiki/ops/reminders.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0095 `wiki/ops/report-wiki-product-plan-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0097 `wiki/ops/sample-codex-handoff.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0100 `wiki/ops/sample-focus-thread.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0101 `wiki/ops/sample-handoff-topic.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0102 `wiki/ops/sample-intake.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0103 `wiki/ops/sample-reminder.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0105 `wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0106 `wiki/ops/superpowers-brainstorming-skill-visibility-explore-2026-05-14.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0108 `wiki/ops/team-knowledge-base-overview-report-gate-review.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0110 `wiki/ops/visual-output-routing-fix-recheck-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0111 `wiki/ops/visual-output-routing-residual-fallback-repair-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0112 `wiki/ops/visual-output-routing-skill-fix-evidence-2026-05-11.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0114 `wiki/ops/wiki-react-decision-trace-runtime.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0115 `wiki/ops/wiki-readable-views-validation-harness.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0116 `wiki/ops/wiki-runtime-command-surface-explore-2026-05-09.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0117 `wiki/ops/wiki-runtime-layer-contract.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0118 `wiki/ops/wiki-runtime-react-eval-apply-boundary-distill-2026-05-14.md`: existing or strongly evidenced candidate without unresolved review risks
+- detail-0121 `wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md`: existing or strongly evidenced candidate without unresolved review risks
+
+## Surgery Candidates
+- detail-0007 `wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0008 `wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0011 `wiki/ops/agent-intent-routing-skill-drift-explore-2026-05-13.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0039 `wiki/ops/agentic-product-engineering-collaboration-workway-brainstorming-drift-2026-05-18.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0040 `wiki/ops/agents-governance-281-compression-retro-2026-05-06.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0041 `wiki/ops/agents-governance-drift-distill-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0042 `wiki/ops/agents-governance-drift-distill-calibration-retro.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0043 `wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0044 `wiki/ops/agents-governance-drift-explore.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0045 `wiki/ops/agents-governance-drift-playbook-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0046 `wiki/ops/agents-governance-drift-retro.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0047 `wiki/ops/agents-governance-remediation-explore-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0049 `wiki/ops/behavior-asset-governance-design-trace.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0050 `wiki/ops/behavior-asset-governance-zh.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0052 `wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0056 `wiki/ops/completion-bridge-drift-explore-2026-05-12.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0061 `wiki/ops/distill-calibration-replay-harness.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0067 `wiki/ops/gstack-lark-learning-retro-2026-04-18.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0072 `wiki/ops/karpathy-skills-learning-retro-2026-04-16.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0075 `wiki/ops/live-conversation-reanchor-gate-replay-harness.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0076 `wiki/ops/live-conversation-reanchor-gate-retro.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0087 `wiki/ops/openspec-explore-trigger-drift-retro.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0088 `wiki/ops/product-alignment-drift-explore-2026-05-09.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0092 `wiki/ops/readme-capability-map-boundary-drift-retro-2026-05-14.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0093 `wiki/ops/reference-driven-output-calibration-retro.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0096 `wiki/ops/root-capability-extraction-retro.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0098 `wiki/ops/sample-disagreement-retro.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0099 `wiki/ops/sample-explore-trace.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0104 `wiki/ops/scope-drift-retro.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0107 `wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0109 `wiki/ops/visual-output-routing-drift-explore-2026-05-11.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0113 `wiki/ops/wiki-medical-case-file-drift-retro-2026-05-15.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0119 `wiki/ops/wiki-status-slash-command-reanchor.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0123 `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0124 `wiki/adr/0002-stable-decisions-live-in-wiki-adr.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0125 `wiki/adr/0003-retros-stay-separate-from-adrs.md`: risks=adr_risk, drift_risk, openspec_required; candidate has review risks: adr_risk, drift_risk, openspec_required
+- detail-0126 `wiki/adr/0004-agent-self-evolution-over-skill-governance.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0127 `wiki/adr/0005-incremental-refresh-over-full-reprocessing.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0128 `wiki/adr/0006-formal-project-local-skills-over-drafts.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0129 `wiki/adr/0007-archive-review-before-archive.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0130 `wiki/adr/0008-human-governance-before-self-evolution-promotion.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0131 `wiki/adr/0009-explore-trace-before-openspec-explore.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0132 `wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0133 `wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0134 `wiki/adr/0012-disagreement-management-before-conclusion-promotion.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0135 `wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0136 `wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0137 `wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0138 `wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0139 `wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0140 `wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0141 `wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0142 `wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0143 `wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0144 `wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0145 `wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0146 `wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md`: risks=adr_risk, drift_risk, openspec_required; candidate has review risks: adr_risk, drift_risk, openspec_required
+- detail-0147 `wiki/adr/0025-readable-views-before-further-runtime-expansion.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0148 `wiki/adr/0026-retire-draft-skills-as-runtime-surface.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0149 `wiki/adr/0027-repo-phase0-before-repo-agents-migration.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0150 `wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0151 `wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0152 `wiki/adr/0030-no-repo-local-commit-hook-default.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0153 `wiki/adr/0031-root-capability-extraction-boundary.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0154 `wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0155 `wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0156 `wiki/adr/0034-readme-capability-map-is-project-description.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+
+## OpenSpec Required
+- detail-0007 `wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0008 `wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0040 `wiki/ops/agents-governance-281-compression-retro-2026-05-06.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0041 `wiki/ops/agents-governance-drift-distill-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0042 `wiki/ops/agents-governance-drift-distill-calibration-retro.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0043 `wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0044 `wiki/ops/agents-governance-drift-explore.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0045 `wiki/ops/agents-governance-drift-playbook-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0046 `wiki/ops/agents-governance-drift-retro.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0047 `wiki/ops/agents-governance-remediation-explore-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0049 `wiki/ops/behavior-asset-governance-design-trace.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0050 `wiki/ops/behavior-asset-governance-zh.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0061 `wiki/ops/distill-calibration-replay-harness.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0087 `wiki/ops/openspec-explore-trigger-drift-retro.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0099 `wiki/ops/sample-explore-trace.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0123 `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0124 `wiki/adr/0002-stable-decisions-live-in-wiki-adr.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0125 `wiki/adr/0003-retros-stay-separate-from-adrs.md`: risks=adr_risk, drift_risk, openspec_required; candidate has review risks: adr_risk, drift_risk, openspec_required
+- detail-0126 `wiki/adr/0004-agent-self-evolution-over-skill-governance.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0127 `wiki/adr/0005-incremental-refresh-over-full-reprocessing.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0128 `wiki/adr/0006-formal-project-local-skills-over-drafts.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0129 `wiki/adr/0007-archive-review-before-archive.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0130 `wiki/adr/0008-human-governance-before-self-evolution-promotion.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0131 `wiki/adr/0009-explore-trace-before-openspec-explore.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0132 `wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0133 `wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0134 `wiki/adr/0012-disagreement-management-before-conclusion-promotion.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0135 `wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0136 `wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0137 `wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0138 `wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0139 `wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0140 `wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0141 `wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0142 `wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0143 `wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0144 `wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0145 `wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0146 `wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md`: risks=adr_risk, drift_risk, openspec_required; candidate has review risks: adr_risk, drift_risk, openspec_required
+- detail-0147 `wiki/adr/0025-readable-views-before-further-runtime-expansion.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0148 `wiki/adr/0026-retire-draft-skills-as-runtime-surface.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0149 `wiki/adr/0027-repo-phase0-before-repo-agents-migration.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0150 `wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0151 `wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0152 `wiki/adr/0030-no-repo-local-commit-hook-default.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0153 `wiki/adr/0031-root-capability-extraction-boundary.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0154 `wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0155 `wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0156 `wiki/adr/0034-readme-capability-map-is-project-description.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+
+## Deferred Items
+- detail-0001 `wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0002 `wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0007 `wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0008 `wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0011 `wiki/ops/agent-intent-routing-skill-drift-explore-2026-05-13.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0039 `wiki/ops/agentic-product-engineering-collaboration-workway-brainstorming-drift-2026-05-18.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0040 `wiki/ops/agents-governance-281-compression-retro-2026-05-06.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0041 `wiki/ops/agents-governance-drift-distill-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0042 `wiki/ops/agents-governance-drift-distill-calibration-retro.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0043 `wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0044 `wiki/ops/agents-governance-drift-explore.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0045 `wiki/ops/agents-governance-drift-playbook-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0046 `wiki/ops/agents-governance-drift-retro.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0047 `wiki/ops/agents-governance-remediation-explore-2026-04-21.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0049 `wiki/ops/behavior-asset-governance-design-trace.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0050 `wiki/ops/behavior-asset-governance-zh.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0052 `wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0056 `wiki/ops/completion-bridge-drift-explore-2026-05-12.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0061 `wiki/ops/distill-calibration-replay-harness.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0066 `wiki/ops/go-engineering-security-rule-source-learning-2026-05-13.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0067 `wiki/ops/gstack-lark-learning-retro-2026-04-18.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0070 `wiki/ops/intelligence-native-organization-intake.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0072 `wiki/ops/karpathy-skills-learning-retro-2026-04-16.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0075 `wiki/ops/live-conversation-reanchor-gate-replay-harness.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0076 `wiki/ops/live-conversation-reanchor-gate-retro.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0087 `wiki/ops/openspec-explore-trigger-drift-retro.md`: risks=drift_risk, openspec_required; candidate has review risks: drift_risk, openspec_required
+- detail-0088 `wiki/ops/product-alignment-drift-explore-2026-05-09.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0092 `wiki/ops/readme-capability-map-boundary-drift-retro-2026-05-14.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0093 `wiki/ops/reference-driven-output-calibration-retro.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0096 `wiki/ops/root-capability-extraction-retro.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0098 `wiki/ops/sample-disagreement-retro.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0099 `wiki/ops/sample-explore-trace.md`: risks=openspec_required; candidate has review risks: openspec_required
+- detail-0104 `wiki/ops/scope-drift-retro.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0107 `wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0109 `wiki/ops/visual-output-routing-drift-explore-2026-05-11.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0113 `wiki/ops/wiki-medical-case-file-drift-retro-2026-05-15.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0119 `wiki/ops/wiki-status-slash-command-reanchor.md`: risks=drift_risk; candidate has review risks: drift_risk
+- detail-0120 `wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0122 `wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0123 `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0124 `wiki/adr/0002-stable-decisions-live-in-wiki-adr.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0125 `wiki/adr/0003-retros-stay-separate-from-adrs.md`: risks=adr_risk, drift_risk, openspec_required; candidate has review risks: adr_risk, drift_risk, openspec_required
+- detail-0126 `wiki/adr/0004-agent-self-evolution-over-skill-governance.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0127 `wiki/adr/0005-incremental-refresh-over-full-reprocessing.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0128 `wiki/adr/0006-formal-project-local-skills-over-drafts.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0129 `wiki/adr/0007-archive-review-before-archive.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0130 `wiki/adr/0008-human-governance-before-self-evolution-promotion.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0131 `wiki/adr/0009-explore-trace-before-openspec-explore.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0132 `wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0133 `wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0134 `wiki/adr/0012-disagreement-management-before-conclusion-promotion.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0135 `wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0136 `wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0137 `wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0138 `wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0139 `wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0140 `wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0141 `wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0142 `wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0143 `wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0144 `wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0145 `wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0146 `wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md`: risks=adr_risk, drift_risk, openspec_required; candidate has review risks: adr_risk, drift_risk, openspec_required
+- detail-0147 `wiki/adr/0025-readable-views-before-further-runtime-expansion.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0148 `wiki/adr/0026-retire-draft-skills-as-runtime-surface.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0149 `wiki/adr/0027-repo-phase0-before-repo-agents-migration.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0150 `wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0151 `wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0152 `wiki/adr/0030-no-repo-local-commit-hook-default.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0153 `wiki/adr/0031-root-capability-extraction-boundary.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0154 `wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0155 `wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+- detail-0156 `wiki/adr/0034-readme-capability-map-is-project-description.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
+
+## Rejected Candidates
+- detail-0001 `wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0002 `wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0066 `wiki/ops/go-engineering-security-rule-source-learning-2026-05-13.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0070 `wiki/ops/intelligence-native-organization-intake.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0120 `wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+- detail-0122 `wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md`: risks=agent_uncertain; candidate has review risks: agent_uncertain
+
+## Abnormal Findings / 异常明细
+- detail-0003 `wiki/ops/account-knowledge-base-structure-explore.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0004 `wiki/ops/account-knowledge-base-workbench.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0005 `wiki/ops/ad-growth-cockpit-h5-report-gate-review.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0006 `wiki/ops/ad-platform-operational-prototype-report-gate-review.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0009 `wiki/ops/agent-harness-article-learning-intake.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0010 `wiki/ops/agent-harness-article-learning.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0012 `wiki/ops/agent-readable-wiki-artifact-grouping.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0013 `wiki/ops/agent-readable-wiki-context-injection.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0014 `wiki/ops/agent-readable-wiki-frontmatter.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0015 `wiki/ops/agent-readable-wiki-graph-extraction.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0016 `wiki/ops/agent-readable-wiki-naming-model.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0017 `wiki/ops/agent-readable-wiki-relation-analysis.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0018 `wiki/ops/agent-readable-wiki-relation-reading-view.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0019 `wiki/ops/agent-readable-wiki-runtime-auto-routing.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0020 `wiki/ops/agent-readable-wiki-runtime-context-source-integration.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0021 `wiki/ops/agent-readable-wiki-runtime-context.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0022 `wiki/ops/agent-readable-wiki-self-directed-execution.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0023 `wiki/ops/agent-readable-wiki-semantic-scoring.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0024 `wiki/ops/agent-readable-wiki-utilization-layer.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0025 `wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0026 `wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0027 `wiki/ops/agentic-product-engineering-collaboration-article-evidence-matrix-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0028 `wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0029 `wiki/ops/agentic-product-engineering-collaboration-company-playbook-role-change-diagnosis-2026-05-12.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0030 `wiki/ops/agentic-product-engineering-collaboration-image-model-visual-qa-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0031 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0032 `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0033 `wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0034 `wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0035 `wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0036 `wiki/ops/agentic-product-engineering-collaboration-split-execution-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0037 `wiki/ops/agentic-product-engineering-collaboration-visual-production-brief-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0038 `wiki/ops/agentic-product-engineering-collaboration-workflow-gate-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0048 `wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0051 `wiki/ops/behavior-replay-gate.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0053 `wiki/ops/check-to-wiki-routing-explore.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0054 `wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0055 `wiki/ops/codex-handoff-rules.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0057 `wiki/ops/conversation-handoff-mode.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0058 `wiki/ops/disagreement-management-method.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0059 `wiki/ops/disagreement-management-replay-harness.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0060 `wiki/ops/disagreement-management-replay-validation-2026-04-20.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0062 `wiki/ops/evolver-self-evolving-harness-reading-notes.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0063 `wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0064 `wiki/ops/example-driven-wiki-capture.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0065 `wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0068 `wiki/ops/harness-engineering-overview-reading-notes.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0069 `wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0071 `wiki/ops/karpathy-llm-wiki-reading-notes.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0073 `wiki/ops/learning-capture-routing.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0074 `wiki/ops/learning-source-routing-gap-explore-2026-05-09.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0077 `wiki/ops/llm-wiki-core-product-contract.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0078 `wiki/ops/llm-wiki-self-evolution-medical-loop.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0079 `wiki/ops/main-thread.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0080 `wiki/ops/multi-system-branch-spec-explore-2026-05-12.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0081 `wiki/ops/nirvana-preview-intake.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0082 `wiki/ops/nirvana-weekly-intake-2026-04-13.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0083 `wiki/ops/nirvana-weekly-reminder-2026-04-13.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0084 `wiki/ops/nirvana-协议支付涅槃需求文档-intake.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0085 `wiki/ops/nirvana-涅槃产品上架梳理-intake.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0086 `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0089 `wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0090 `wiki/ops/project-management-weekly-loop.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0091 `wiki/ops/public-report-skill-gate-wording-explore-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0094 `wiki/ops/reminders.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0095 `wiki/ops/report-wiki-product-plan-2026-05-09.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0097 `wiki/ops/sample-codex-handoff.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0100 `wiki/ops/sample-focus-thread.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0101 `wiki/ops/sample-handoff-topic.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0102 `wiki/ops/sample-intake.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0103 `wiki/ops/sample-reminder.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0105 `wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0106 `wiki/ops/superpowers-brainstorming-skill-visibility-explore-2026-05-14.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0108 `wiki/ops/team-knowledge-base-overview-report-gate-review.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0110 `wiki/ops/visual-output-routing-fix-recheck-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0111 `wiki/ops/visual-output-routing-residual-fallback-repair-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0112 `wiki/ops/visual-output-routing-skill-fix-evidence-2026-05-11.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0114 `wiki/ops/wiki-react-decision-trace-runtime.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0115 `wiki/ops/wiki-readable-views-validation-harness.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0116 `wiki/ops/wiki-runtime-command-surface-explore-2026-05-09.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0117 `wiki/ops/wiki-runtime-layer-contract.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0118 `wiki/ops/wiki-runtime-react-eval-apply-boundary-distill-2026-05-14.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0121 `wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md` buckets=accepted_candidates, treatment_candidates; risks=none: existing or strongly evidenced candidate without unresolved review risks
+- detail-0001 `wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md` buckets=rejected_candidates, deferred_items; risks=agent_uncertain: candidate has review risks: agent_uncertain
+- detail-0002 `wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md` buckets=rejected_candidates, deferred_items; risks=agent_uncertain: candidate has review risks: agent_uncertain
+- detail-0066 `wiki/ops/go-engineering-security-rule-source-learning-2026-05-13.md` buckets=rejected_candidates, deferred_items; risks=agent_uncertain: candidate has review risks: agent_uncertain
+- detail-0070 `wiki/ops/intelligence-native-organization-intake.md` buckets=rejected_candidates, deferred_items; risks=agent_uncertain: candidate has review risks: agent_uncertain
+- detail-0120 `wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md` buckets=rejected_candidates, deferred_items; risks=agent_uncertain: candidate has review risks: agent_uncertain
+- detail-0122 `wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md` buckets=rejected_candidates, deferred_items; risks=agent_uncertain: candidate has review risks: agent_uncertain
+- detail-0007 `wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=openspec_required: candidate has review risks: openspec_required
+- detail-0008 `wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0011 `wiki/ops/agent-intent-routing-skill-drift-explore-2026-05-13.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0039 `wiki/ops/agentic-product-engineering-collaboration-workway-brainstorming-drift-2026-05-18.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0040 `wiki/ops/agents-governance-281-compression-retro-2026-05-06.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0041 `wiki/ops/agents-governance-drift-distill-2026-04-21.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0042 `wiki/ops/agents-governance-drift-distill-calibration-retro.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0043 `wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0044 `wiki/ops/agents-governance-drift-explore.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0045 `wiki/ops/agents-governance-drift-playbook-2026-04-21.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0046 `wiki/ops/agents-governance-drift-retro.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0047 `wiki/ops/agents-governance-remediation-explore-2026-04-21.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0049 `wiki/ops/behavior-asset-governance-design-trace.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=openspec_required: candidate has review risks: openspec_required
+- detail-0050 `wiki/ops/behavior-asset-governance-zh.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=openspec_required: candidate has review risks: openspec_required
+- detail-0052 `wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0056 `wiki/ops/completion-bridge-drift-explore-2026-05-12.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0061 `wiki/ops/distill-calibration-replay-harness.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0067 `wiki/ops/gstack-lark-learning-retro-2026-04-18.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0072 `wiki/ops/karpathy-skills-learning-retro-2026-04-16.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0075 `wiki/ops/live-conversation-reanchor-gate-replay-harness.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0076 `wiki/ops/live-conversation-reanchor-gate-retro.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0087 `wiki/ops/openspec-explore-trigger-drift-retro.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=drift_risk, openspec_required: candidate has review risks: drift_risk, openspec_required
+- detail-0088 `wiki/ops/product-alignment-drift-explore-2026-05-09.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0092 `wiki/ops/readme-capability-map-boundary-drift-retro-2026-05-14.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0093 `wiki/ops/reference-driven-output-calibration-retro.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0096 `wiki/ops/root-capability-extraction-retro.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0098 `wiki/ops/sample-disagreement-retro.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0099 `wiki/ops/sample-explore-trace.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=openspec_required: candidate has review risks: openspec_required
+- detail-0104 `wiki/ops/scope-drift-retro.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0107 `wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0109 `wiki/ops/visual-output-routing-drift-explore-2026-05-11.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0113 `wiki/ops/wiki-medical-case-file-drift-retro-2026-05-15.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0119 `wiki/ops/wiki-status-slash-command-reanchor.md` buckets=deferred_items, surgery_candidates; risks=drift_risk: candidate has review risks: drift_risk
+- detail-0123 `wiki/adr/0001-repository-default-workflow-changes-require-openspec.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0124 `wiki/adr/0002-stable-decisions-live-in-wiki-adr.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0125 `wiki/adr/0003-retros-stay-separate-from-adrs.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, drift_risk, openspec_required: candidate has review risks: adr_risk, drift_risk, openspec_required
+- detail-0126 `wiki/adr/0004-agent-self-evolution-over-skill-governance.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0127 `wiki/adr/0005-incremental-refresh-over-full-reprocessing.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0128 `wiki/adr/0006-formal-project-local-skills-over-drafts.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0129 `wiki/adr/0007-archive-review-before-archive.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0130 `wiki/adr/0008-human-governance-before-self-evolution-promotion.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0131 `wiki/adr/0009-explore-trace-before-openspec-explore.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0132 `wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0133 `wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0134 `wiki/adr/0012-disagreement-management-before-conclusion-promotion.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0135 `wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0136 `wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0137 `wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0138 `wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0139 `wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0140 `wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0141 `wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0142 `wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0143 `wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0144 `wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0145 `wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0146 `wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, drift_risk, openspec_required: candidate has review risks: adr_risk, drift_risk, openspec_required
+- detail-0147 `wiki/adr/0025-readable-views-before-further-runtime-expansion.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0148 `wiki/adr/0026-retire-draft-skills-as-runtime-surface.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0149 `wiki/adr/0027-repo-phase0-before-repo-agents-migration.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0150 `wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0151 `wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0152 `wiki/adr/0030-no-repo-local-commit-hook-default.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0153 `wiki/adr/0031-root-capability-extraction-boundary.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0154 `wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0155 `wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+- detail-0156 `wiki/adr/0034-readme-capability-map-is-project-description.md` buckets=deferred_items, surgery_candidates, openspec_required; risks=adr_risk, openspec_required: candidate has review risks: adr_risk, openspec_required
+
+## Medical Advice / 处理建议
+- Treatment candidates may enter `wiki-treatment` only after explicit approval.
+- Surgery candidates route to `wiki-surgery` planning.
+- OpenSpec-required items cannot be handled through treatment alone.
+- Deferred items need human review before routing.
+
+## Proof Boundary
+- This is draft review routing only, not human approval.
+- It does not write frontmatter, taxonomy, relations, MOC, or OpenSpec state.
+
+## Next Actions
+- Human review: confirm which candidates are accepted, deferred, rejected, treatment candidates, surgery candidates, or OpenSpec-required.
+- Treatment: apply only later, after explicit approval for low-risk frontmatter updates.
+- Surgery or OpenSpec: plan structural, taxonomy, relation, MOC, governance, or lifecycle changes separately.
+
+## Machine Decision Data
+<!-- wiki-review-decision-data:start -->
+```json
+{
+  "accepted_candidates": [
+    {
+      "detail_ref": "detail-0003",
+      "path": "wiki/ops/account-knowledge-base-structure-explore.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "account-knowledge-base-structure",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0004",
+      "path": "wiki/ops/account-knowledge-base-workbench.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "ops-overview",
+        "canonical_object": "account-knowledge-base",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0005",
+      "path": "wiki/ops/ad-growth-cockpit-h5-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report-gate-review",
+        "canonical_object": "ad-growth-cockpit-h5",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0006",
+      "path": "wiki/ops/ad-platform-operational-prototype-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report-gate-review",
+        "canonical_object": "ad-platform-operational-prototype",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0009",
+      "path": "wiki/ops/agent-harness-article-learning-intake.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "agent-harness-article-learning",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0010",
+      "path": "wiki/ops/agent-harness-article-learning.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "reading-notes",
+        "canonical_object": "agent-harness-article-learning",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0012",
+      "path": "wiki/ops/agent-readable-wiki-artifact-grouping.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "artifact-grouping-view",
+        "canonical_object": "wiki-readable-views",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0013",
+      "path": "wiki/ops/agent-readable-wiki-context-injection.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-context-injection",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0014",
+      "path": "wiki/ops/agent-readable-wiki-frontmatter.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "agent-readable-wiki-frontmatter",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0015",
+      "path": "wiki/ops/agent-readable-wiki-graph-extraction.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-graph-extraction",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0016",
+      "path": "wiki/ops/agent-readable-wiki-naming-model.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "agent-readable-wiki-naming-model",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0017",
+      "path": "wiki/ops/agent-readable-wiki-relation-analysis.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-relation-analysis",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0018",
+      "path": "wiki/ops/agent-readable-wiki-relation-reading-view.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "relation-reading-view",
+        "canonical_object": "wiki-readable-views",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0019",
+      "path": "wiki/ops/agent-readable-wiki-runtime-auto-routing.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-runtime-auto-routing",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0020",
+      "path": "wiki/ops/agent-readable-wiki-runtime-context-source-integration.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-runtime-context-source-integration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0021",
+      "path": "wiki/ops/agent-readable-wiki-runtime-context.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-runtime-context",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0022",
+      "path": "wiki/ops/agent-readable-wiki-self-directed-execution.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-self-directed-execution",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0023",
+      "path": "wiki/ops/agent-readable-wiki-semantic-scoring.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-semantic-scoring",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0024",
+      "path": "wiki/ops/agent-readable-wiki-utilization-layer.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-utilization-layer",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0025",
+      "path": "wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore_trace",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0026",
+      "path": "wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore_trace",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0027",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-article-evidence-matrix-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "article-evidence-matrix",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "source-intake"
+      }
+    },
+    {
+      "detail_ref": "detail-0028",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report_gate_review",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0029",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-company-playbook-role-change-diagnosis-2026-05-12.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "office_hours_design",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0030",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-image-model-visual-qa-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "visual-qa",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0031",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report-gate-review",
+        "canonical_object": "agentic-product-engineering-collaboration-our-operating-system",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0032",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "office_hours_design",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0033",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report-gate-review",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0034",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "ops-handoff",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0035",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "source-hardening-evidence",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "source-intake"
+      }
+    },
+    {
+      "detail_ref": "detail-0036",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-split-execution-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "ops-execution-plan",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0037",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-visual-production-brief-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "visual-production-brief",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0038",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-workflow-gate-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "workflow-gate",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0048",
+      "path": "wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "ai-chat-workflow-installer",
+        "domain": "ai-workflow",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0051",
+      "path": "wiki/ops/behavior-replay-gate.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "behavior-replay-gate",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0053",
+      "path": "wiki/ops/check-to-wiki-routing-explore.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "check-to-wiki-routing",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0054",
+      "path": "wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "codex-global-agents-md",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0055",
+      "path": "wiki/ops/codex-handoff-rules.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "codex-handoff-rules",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0057",
+      "path": "wiki/ops/conversation-handoff-mode.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "conversation-handoff",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0058",
+      "path": "wiki/ops/disagreement-management-method.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "disagreement-management",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0059",
+      "path": "wiki/ops/disagreement-management-replay-harness.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "disagreement-management-replay-harness",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0060",
+      "path": "wiki/ops/disagreement-management-replay-validation-2026-04-20.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "disagreement-management-replay-validation",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0062",
+      "path": "wiki/ops/evolver-self-evolving-harness-reading-notes.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "reading-notes",
+        "canonical_object": "evolver-self-evolving-harness",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0063",
+      "path": "wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "example-driven-capture-runtime-validation",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0064",
+      "path": "wiki/ops/example-driven-wiki-capture.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "example-driven-wiki-capture",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0065",
+      "path": "wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "feishu-image-client-freeze",
+        "domain": "public-report-output",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0068",
+      "path": "wiki/ops/harness-engineering-overview-reading-notes.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "reading-notes",
+        "canonical_object": "harness-engineering-overview",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0069",
+      "path": "wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "hermes-self-evolution-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0071",
+      "path": "wiki/ops/karpathy-llm-wiki-reading-notes.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "reading-notes",
+        "canonical_object": "karpathy-llm-wiki",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0073",
+      "path": "wiki/ops/learning-capture-routing.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "learning-capture-routing",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0074",
+      "path": "wiki/ops/learning-source-routing-gap-explore-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "learning-source-routing-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0077",
+      "path": "wiki/ops/llm-wiki-core-product-contract.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "product-contract",
+        "canonical_object": "llm-wiki-core-product-contract",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0078",
+      "path": "wiki/ops/llm-wiki-self-evolution-medical-loop.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "ops-model",
+        "canonical_object": "llm-wiki-self-evolution",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0079",
+      "path": "wiki/ops/main-thread.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "main-thread",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0080",
+      "path": "wiki/ops/multi-system-branch-spec-explore-2026-05-12.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "multi-system-branch-spec",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0081",
+      "path": "wiki/ops/nirvana-preview-intake.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "nirvana-preview",
+        "domain": "nirvana",
+        "layer": "ops",
+        "ops_area": "source-intake"
+      }
+    },
+    {
+      "detail_ref": "detail-0082",
+      "path": "wiki/ops/nirvana-weekly-intake-2026-04-13.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "nirvana-weekly",
+        "domain": "nirvana-project",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0083",
+      "path": "wiki/ops/nirvana-weekly-reminder-2026-04-13.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "nirvana-weekly-reminder",
+        "domain": "nirvana-project",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0084",
+      "path": "wiki/ops/nirvana-协议支付涅槃需求文档-intake.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "nirvana-协议支付涅槃需求文档",
+        "domain": "nirvana",
+        "layer": "ops",
+        "ops_area": "source-intake"
+      }
+    },
+    {
+      "detail_ref": "detail-0085",
+      "path": "wiki/ops/nirvana-涅槃产品上架梳理-intake.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "nirvana-涅槃产品上架梳理",
+        "domain": "nirvana",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0086",
+      "path": "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "learning-note",
+        "canonical_object": "obsidian-wiki-reference-gap-review",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0089",
+      "path": "wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "product-capability-and-graph-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0090",
+      "path": "wiki/ops/project-management-weekly-loop.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "project-management-weekly-loop",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0091",
+      "path": "wiki/ops/public-report-skill-gate-wording-explore-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "public-report-skill-gate-wording",
+        "domain": "report-workflow",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0094",
+      "path": "wiki/ops/reminders.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "reminders",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0095",
+      "path": "wiki/ops/report-wiki-product-plan-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "product-plan",
+        "canonical_object": "report-wiki-product-plan",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0097",
+      "path": "wiki/ops/sample-codex-handoff.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "sample-codex-handoff",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0100",
+      "path": "wiki/ops/sample-focus-thread.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "sample-focus-thread",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0101",
+      "path": "wiki/ops/sample-handoff-topic.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "sample",
+        "canonical_object": "conversation-handoff",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0102",
+      "path": "wiki/ops/sample-intake.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "sample",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0103",
+      "path": "wiki/ops/sample-reminder.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "sample-reminder",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0105",
+      "path": "wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "scorecard-calibration-gap",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0106",
+      "path": "wiki/ops/superpowers-brainstorming-skill-visibility-explore-2026-05-14.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "superpowers-brainstorming-skill-visibility",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0108",
+      "path": "wiki/ops/team-knowledge-base-overview-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report-gate-review",
+        "canonical_object": "account-knowledge-base",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0110",
+      "path": "wiki/ops/visual-output-routing-fix-recheck-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore_trace",
+        "canonical_object": "visual-output-routing",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0111",
+      "path": "wiki/ops/visual-output-routing-residual-fallback-repair-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "skill_fix_evidence",
+        "canonical_object": "visual-output-routing",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0112",
+      "path": "wiki/ops/visual-output-routing-skill-fix-evidence-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "skill_fix_evidence",
+        "canonical_object": "visual-output-routing",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0114",
+      "path": "wiki/ops/wiki-react-decision-trace-runtime.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-react-decision-trace",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0115",
+      "path": "wiki/ops/wiki-readable-views-validation-harness.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "replay-harness",
+        "canonical_object": "wiki-readable-views-validation",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0116",
+      "path": "wiki/ops/wiki-runtime-command-surface-explore-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "wiki-runtime-command-surface",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0117",
+      "path": "wiki/ops/wiki-runtime-layer-contract.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-runtime-layer-contract",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0118",
+      "path": "wiki/ops/wiki-runtime-react-eval-apply-boundary-distill-2026-05-14.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "distill",
+        "canonical_object": "wiki-runtime-layer-boundary",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0121",
+      "path": "wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "scenario-matrix",
+        "canonical_object": "baocaitong-split-account-migration",
+        "domain": "account-clearing",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    }
+  ],
+  "deferred_items": [
+    {
+      "detail_ref": "detail-0001",
+      "path": "wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "20260415100517-转写-yan的快速会议-纪要文本-1",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0002",
+      "path": "wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "20260415100517-转写-yan的快速会议-逐字稿文本-1",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0007",
+      "path": "wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "agent-governance-gate-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0008",
+      "path": "wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agent-governance-gate-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0011",
+      "path": "wiki/ops/agent-intent-routing-skill-drift-explore-2026-05-13.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "agent-intent-routing-skill-drift",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0039",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-workway-brainstorming-drift-2026-05-18.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agentic-product-engineering-collaboration-workway-brainstorming-drift",
+        "domain": "agentic-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0040",
+      "path": "wiki/ops/agents-governance-281-compression-retro-2026-05-06.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0041",
+      "path": "wiki/ops/agents-governance-drift-distill-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "distill",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0042",
+      "path": "wiki/ops/agents-governance-drift-distill-calibration-retro.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agents-governance-drift-distill-calibration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0043",
+      "path": "wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "replay-validation",
+        "canonical_object": "agents-governance-drift-distill-calibration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0044",
+      "path": "wiki/ops/agents-governance-drift-explore.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0045",
+      "path": "wiki/ops/agents-governance-drift-playbook-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "playbook",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0046",
+      "path": "wiki/ops/agents-governance-drift-retro.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0047",
+      "path": "wiki/ops/agents-governance-remediation-explore-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0049",
+      "path": "wiki/ops/behavior-asset-governance-design-trace.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "design-trace",
+        "canonical_object": "behavior-asset-governance",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0050",
+      "path": "wiki/ops/behavior-asset-governance-zh.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "summary",
+        "canonical_object": "behavior-asset-governance",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0052",
+      "path": "wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "brainstorming-drift-wiki-trace",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0056",
+      "path": "wiki/ops/completion-bridge-drift-explore-2026-05-12.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "completion-bridge-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0061",
+      "path": "wiki/ops/distill-calibration-replay-harness.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "replay-harness",
+        "canonical_object": "agents-governance-drift-distill-calibration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0066",
+      "path": "wiki/ops/go-engineering-security-rule-source-learning-2026-05-13.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "source-learning",
+        "canonical_object": "go-engineering-security-rule",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0067",
+      "path": "wiki/ops/gstack-lark-learning-retro-2026-04-18.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "gstack-lark-learning",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0070",
+      "path": "wiki/ops/intelligence-native-organization-intake.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "intelligence-native-organization",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0072",
+      "path": "wiki/ops/karpathy-skills-learning-retro-2026-04-16.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "karpathy-skills-learning",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0075",
+      "path": "wiki/ops/live-conversation-reanchor-gate-replay-harness.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "replay-harness",
+        "canonical_object": "live-conversation-reanchor-gate",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0076",
+      "path": "wiki/ops/live-conversation-reanchor-gate-retro.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "live-conversation-reanchor-gate",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0087",
+      "path": "wiki/ops/openspec-explore-trigger-drift-retro.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "openspec-explore-trigger-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0088",
+      "path": "wiki/ops/product-alignment-drift-explore-2026-05-09.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "product-alignment-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0092",
+      "path": "wiki/ops/readme-capability-map-boundary-drift-retro-2026-05-14.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "readme-capability-map-boundary",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0093",
+      "path": "wiki/ops/reference-driven-output-calibration-retro.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "reference-driven-output-calibration",
+        "domain": "public-report-output",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0096",
+      "path": "wiki/ops/root-capability-extraction-retro.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "root-capability-extraction",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0098",
+      "path": "wiki/ops/sample-disagreement-retro.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "sample-disagreement",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0099",
+      "path": "wiki/ops/sample-explore-trace.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "trace",
+        "canonical_object": "sample-explore",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0104",
+      "path": "wiki/ops/scope-drift-retro.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "scope-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0107",
+      "path": "wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "runtime-replay",
+        "canonical_object": "team-knowledge-base-overview",
+        "domain": "public-report-output",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0109",
+      "path": "wiki/ops/visual-output-routing-drift-explore-2026-05-11.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "visual-output-routing-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0113",
+      "path": "wiki/ops/wiki-medical-case-file-drift-retro-2026-05-15.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "wiki-medical-case-file",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0119",
+      "path": "wiki/ops/wiki-status-slash-command-reanchor.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "reanchor",
+        "canonical_object": "wiki-status-slash-command",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0120",
+      "path": "wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "reminder",
+        "canonical_object": "baocaitong-split-account-migration",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0122",
+      "path": "wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "文字转写-呼呼的快速会议-276823523",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0123",
+      "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "repository-default-workflow-changes-require-openspec",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0124",
+      "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "stable-decisions-live-in-wiki-adr",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0125",
+      "path": "wiki/adr/0003-retros-stay-separate-from-adrs.md",
+      "reason": "candidate has review risks: adr_risk, drift_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "retros-stay-separate-from-adrs",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0126",
+      "path": "wiki/adr/0004-agent-self-evolution-over-skill-governance.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-self-evolution-over-skill-governance",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0127",
+      "path": "wiki/adr/0005-incremental-refresh-over-full-reprocessing.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "incremental-refresh-over-full-reprocessing",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0128",
+      "path": "wiki/adr/0006-formal-project-local-skills-over-drafts.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "formal-project-local-skills-over-drafts",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0129",
+      "path": "wiki/adr/0007-archive-review-before-archive.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "archive-review-before-archive",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0130",
+      "path": "wiki/adr/0008-human-governance-before-self-evolution-promotion.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "human-governance-before-self-evolution-promotion",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0131",
+      "path": "wiki/adr/0009-explore-trace-before-openspec-explore.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "explore-trace-before-openspec-explore",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0132",
+      "path": "wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "shared-skill-authoring-contract-before-repo-local-overrides",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0133",
+      "path": "wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "canonical-ai-chat-installer-source-with-platform-adapters",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0134",
+      "path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "disagreement-management-before-conclusion-promotion",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0135",
+      "path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-naming-before-graph-growth",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0136",
+      "path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-frontmatter-before-graph-automation",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0137",
+      "path": "wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-graph-extraction-after-structure",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0138",
+      "path": "wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-relation-analysis-after-extraction",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0139",
+      "path": "wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-semantic-scoring-after-relation-analysis",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0140",
+      "path": "wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-utilization-layer-after-semantic-scoring",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0141",
+      "path": "wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-runtime-context-after-utilization",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0142",
+      "path": "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-runtime-context-source-integration",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0143",
+      "path": "wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-runtime-auto-routing",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0144",
+      "path": "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-context-injection",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0145",
+      "path": "wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-self-directed-execution",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0146",
+      "path": "wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md",
+      "reason": "candidate has review risks: adr_risk, drift_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "live-conversation-reanchor-gate",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0147",
+      "path": "wiki/adr/0025-readable-views-before-further-runtime-expansion.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-readable-views",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0148",
+      "path": "wiki/adr/0026-retire-draft-skills-as-runtime-surface.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "retire-draft-skills-as-runtime-surface",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0149",
+      "path": "wiki/adr/0027-repo-phase0-before-repo-agents-migration.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "repo-agents-governance-phase0",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0150",
+      "path": "wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "root-agents-archive-review-generic-with-repo-detail",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0151",
+      "path": "wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "intake-retractions-legitimate-with-reopen-triggers",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0152",
+      "path": "wiki/adr/0030-no-repo-local-commit-hook-default.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "no-repo-local-commit-hook-default",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0153",
+      "path": "wiki/adr/0031-root-capability-extraction-boundary.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "root-capability-extraction",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0154",
+      "path": "wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "whole-wiki-frontmatter-gate",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0155",
+      "path": "wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-runtime-layer-boundary",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0156",
+      "path": "wiki/adr/0034-readme-capability-map-is-project-description.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "readme-capability-map-boundary",
+        "domain": "none",
+        "layer": "adr"
+      }
+    }
+  ],
+  "generated_at": "2026-05-18T11:43:43.348597+00:00",
+  "mode": "wiki_review_decision_package",
+  "openspec_required": [
+    {
+      "detail_ref": "detail-0007",
+      "path": "wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "agent-governance-gate-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0008",
+      "path": "wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agent-governance-gate-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0040",
+      "path": "wiki/ops/agents-governance-281-compression-retro-2026-05-06.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0041",
+      "path": "wiki/ops/agents-governance-drift-distill-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "distill",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0042",
+      "path": "wiki/ops/agents-governance-drift-distill-calibration-retro.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agents-governance-drift-distill-calibration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0043",
+      "path": "wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "replay-validation",
+        "canonical_object": "agents-governance-drift-distill-calibration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0044",
+      "path": "wiki/ops/agents-governance-drift-explore.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0045",
+      "path": "wiki/ops/agents-governance-drift-playbook-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "playbook",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0046",
+      "path": "wiki/ops/agents-governance-drift-retro.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0047",
+      "path": "wiki/ops/agents-governance-remediation-explore-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0049",
+      "path": "wiki/ops/behavior-asset-governance-design-trace.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "design-trace",
+        "canonical_object": "behavior-asset-governance",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0050",
+      "path": "wiki/ops/behavior-asset-governance-zh.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "summary",
+        "canonical_object": "behavior-asset-governance",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0061",
+      "path": "wiki/ops/distill-calibration-replay-harness.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "replay-harness",
+        "canonical_object": "agents-governance-drift-distill-calibration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0087",
+      "path": "wiki/ops/openspec-explore-trigger-drift-retro.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "openspec-explore-trigger-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0099",
+      "path": "wiki/ops/sample-explore-trace.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "trace",
+        "canonical_object": "sample-explore",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0123",
+      "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "repository-default-workflow-changes-require-openspec",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0124",
+      "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "stable-decisions-live-in-wiki-adr",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0125",
+      "path": "wiki/adr/0003-retros-stay-separate-from-adrs.md",
+      "reason": "candidate has review risks: adr_risk, drift_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "retros-stay-separate-from-adrs",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0126",
+      "path": "wiki/adr/0004-agent-self-evolution-over-skill-governance.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-self-evolution-over-skill-governance",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0127",
+      "path": "wiki/adr/0005-incremental-refresh-over-full-reprocessing.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "incremental-refresh-over-full-reprocessing",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0128",
+      "path": "wiki/adr/0006-formal-project-local-skills-over-drafts.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "formal-project-local-skills-over-drafts",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0129",
+      "path": "wiki/adr/0007-archive-review-before-archive.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "archive-review-before-archive",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0130",
+      "path": "wiki/adr/0008-human-governance-before-self-evolution-promotion.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "human-governance-before-self-evolution-promotion",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0131",
+      "path": "wiki/adr/0009-explore-trace-before-openspec-explore.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "explore-trace-before-openspec-explore",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0132",
+      "path": "wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "shared-skill-authoring-contract-before-repo-local-overrides",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0133",
+      "path": "wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "canonical-ai-chat-installer-source-with-platform-adapters",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0134",
+      "path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "disagreement-management-before-conclusion-promotion",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0135",
+      "path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-naming-before-graph-growth",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0136",
+      "path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-frontmatter-before-graph-automation",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0137",
+      "path": "wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-graph-extraction-after-structure",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0138",
+      "path": "wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-relation-analysis-after-extraction",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0139",
+      "path": "wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-semantic-scoring-after-relation-analysis",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0140",
+      "path": "wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-utilization-layer-after-semantic-scoring",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0141",
+      "path": "wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-runtime-context-after-utilization",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0142",
+      "path": "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-runtime-context-source-integration",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0143",
+      "path": "wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-runtime-auto-routing",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0144",
+      "path": "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-context-injection",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0145",
+      "path": "wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-self-directed-execution",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0146",
+      "path": "wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md",
+      "reason": "candidate has review risks: adr_risk, drift_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "live-conversation-reanchor-gate",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0147",
+      "path": "wiki/adr/0025-readable-views-before-further-runtime-expansion.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-readable-views",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0148",
+      "path": "wiki/adr/0026-retire-draft-skills-as-runtime-surface.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "retire-draft-skills-as-runtime-surface",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0149",
+      "path": "wiki/adr/0027-repo-phase0-before-repo-agents-migration.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "repo-agents-governance-phase0",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0150",
+      "path": "wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "root-agents-archive-review-generic-with-repo-detail",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0151",
+      "path": "wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "intake-retractions-legitimate-with-reopen-triggers",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0152",
+      "path": "wiki/adr/0030-no-repo-local-commit-hook-default.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "no-repo-local-commit-hook-default",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0153",
+      "path": "wiki/adr/0031-root-capability-extraction-boundary.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "root-capability-extraction",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0154",
+      "path": "wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "whole-wiki-frontmatter-gate",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0155",
+      "path": "wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-runtime-layer-boundary",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0156",
+      "path": "wiki/adr/0034-readme-capability-map-is-project-description.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "readme-capability-map-boundary",
+        "domain": "none",
+        "layer": "adr"
+      }
+    }
+  ],
+  "proof_boundary_notes": [
+    "This is draft review routing only, not human approval.",
+    "It does not write frontmatter, taxonomy, relations, MOC, or OpenSpec state."
+  ],
+  "rejected_candidates": [
+    {
+      "detail_ref": "detail-0001",
+      "path": "wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "20260415100517-转写-yan的快速会议-纪要文本-1",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0002",
+      "path": "wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "20260415100517-转写-yan的快速会议-逐字稿文本-1",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0066",
+      "path": "wiki/ops/go-engineering-security-rule-source-learning-2026-05-13.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "source-learning",
+        "canonical_object": "go-engineering-security-rule",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0070",
+      "path": "wiki/ops/intelligence-native-organization-intake.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "intelligence-native-organization",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0120",
+      "path": "wiki/ops/宝财通分账开通与迁移边界提醒-2026-04-16.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "reminder",
+        "canonical_object": "baocaitong-split-account-migration",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0122",
+      "path": "wiki/ops/文字转写-呼呼的快速会议-276823523-intake.md",
+      "reason": "candidate has review risks: agent_uncertain",
+      "rejected_candidates": [
+        {
+          "field": "domain",
+          "reason": "unclassified domain requires review before structural write",
+          "value": "auto_accept_unclassified"
+        }
+      ],
+      "risk_flags": [
+        "agent_uncertain"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "文字转写-呼呼的快速会议-276823523",
+        "classification_needed": "true",
+        "domain": "unclassified",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    }
+  ],
+  "source_adjudication_summary": {
+    "candidate_count": 156,
+    "drift_trace_count": 67,
+    "full_detail_count": 156,
+    "review_focus_count": 73,
+    "taxonomy_candidate_count": 0
+  },
+  "source_record": null,
+  "summary": {
+    "accepted_candidates_count": 83,
+    "deferred_items_count": 73,
+    "openspec_required_count": 49,
+    "rejected_candidates_count": 6,
+    "source_detail_count": 156,
+    "surgery_candidates_count": 67,
+    "treatment_candidates_count": 83
+  },
+  "surgery_candidates": [
+    {
+      "detail_ref": "detail-0007",
+      "path": "wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "agent-governance-gate-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0008",
+      "path": "wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agent-governance-gate-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0011",
+      "path": "wiki/ops/agent-intent-routing-skill-drift-explore-2026-05-13.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "agent-intent-routing-skill-drift",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0039",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-workway-brainstorming-drift-2026-05-18.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agentic-product-engineering-collaboration-workway-brainstorming-drift",
+        "domain": "agentic-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0040",
+      "path": "wiki/ops/agents-governance-281-compression-retro-2026-05-06.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0041",
+      "path": "wiki/ops/agents-governance-drift-distill-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "distill",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0042",
+      "path": "wiki/ops/agents-governance-drift-distill-calibration-retro.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agents-governance-drift-distill-calibration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0043",
+      "path": "wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "replay-validation",
+        "canonical_object": "agents-governance-drift-distill-calibration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0044",
+      "path": "wiki/ops/agents-governance-drift-explore.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0045",
+      "path": "wiki/ops/agents-governance-drift-playbook-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "playbook",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0046",
+      "path": "wiki/ops/agents-governance-drift-retro.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0047",
+      "path": "wiki/ops/agents-governance-remediation-explore-2026-04-21.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "agents-governance-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0049",
+      "path": "wiki/ops/behavior-asset-governance-design-trace.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "design-trace",
+        "canonical_object": "behavior-asset-governance",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0050",
+      "path": "wiki/ops/behavior-asset-governance-zh.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "summary",
+        "canonical_object": "behavior-asset-governance",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0052",
+      "path": "wiki/ops/brainstorming-drift-wiki-trace-retro-2026-05-14.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "brainstorming-drift-wiki-trace",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0056",
+      "path": "wiki/ops/completion-bridge-drift-explore-2026-05-12.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "completion-bridge-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0061",
+      "path": "wiki/ops/distill-calibration-replay-harness.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "replay-harness",
+        "canonical_object": "agents-governance-drift-distill-calibration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0067",
+      "path": "wiki/ops/gstack-lark-learning-retro-2026-04-18.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "gstack-lark-learning",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0072",
+      "path": "wiki/ops/karpathy-skills-learning-retro-2026-04-16.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "karpathy-skills-learning",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0075",
+      "path": "wiki/ops/live-conversation-reanchor-gate-replay-harness.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "replay-harness",
+        "canonical_object": "live-conversation-reanchor-gate",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0076",
+      "path": "wiki/ops/live-conversation-reanchor-gate-retro.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "live-conversation-reanchor-gate",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0087",
+      "path": "wiki/ops/openspec-explore-trigger-drift-retro.md",
+      "reason": "candidate has review risks: drift_risk, openspec_required",
+      "risk_flags": [
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "openspec-explore-trigger-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0088",
+      "path": "wiki/ops/product-alignment-drift-explore-2026-05-09.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "product-alignment-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0092",
+      "path": "wiki/ops/readme-capability-map-boundary-drift-retro-2026-05-14.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "readme-capability-map-boundary",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0093",
+      "path": "wiki/ops/reference-driven-output-calibration-retro.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "reference-driven-output-calibration",
+        "domain": "public-report-output",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0096",
+      "path": "wiki/ops/root-capability-extraction-retro.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "root-capability-extraction",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0098",
+      "path": "wiki/ops/sample-disagreement-retro.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "sample-disagreement",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0099",
+      "path": "wiki/ops/sample-explore-trace.md",
+      "reason": "candidate has review risks: openspec_required",
+      "risk_flags": [
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "trace",
+        "canonical_object": "sample-explore",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0104",
+      "path": "wiki/ops/scope-drift-retro.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "scope-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0107",
+      "path": "wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "runtime-replay",
+        "canonical_object": "team-knowledge-base-overview",
+        "domain": "public-report-output",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0109",
+      "path": "wiki/ops/visual-output-routing-drift-explore-2026-05-11.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "visual-output-routing-drift",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0113",
+      "path": "wiki/ops/wiki-medical-case-file-drift-retro-2026-05-15.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "retro",
+        "canonical_object": "wiki-medical-case-file",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0119",
+      "path": "wiki/ops/wiki-status-slash-command-reanchor.md",
+      "reason": "candidate has review risks: drift_risk",
+      "risk_flags": [
+        "drift_risk"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "reanchor",
+        "canonical_object": "wiki-status-slash-command",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0123",
+      "path": "wiki/adr/0001-repository-default-workflow-changes-require-openspec.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "repository-default-workflow-changes-require-openspec",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0124",
+      "path": "wiki/adr/0002-stable-decisions-live-in-wiki-adr.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "stable-decisions-live-in-wiki-adr",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0125",
+      "path": "wiki/adr/0003-retros-stay-separate-from-adrs.md",
+      "reason": "candidate has review risks: adr_risk, drift_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "retros-stay-separate-from-adrs",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0126",
+      "path": "wiki/adr/0004-agent-self-evolution-over-skill-governance.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-self-evolution-over-skill-governance",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0127",
+      "path": "wiki/adr/0005-incremental-refresh-over-full-reprocessing.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "incremental-refresh-over-full-reprocessing",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0128",
+      "path": "wiki/adr/0006-formal-project-local-skills-over-drafts.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "formal-project-local-skills-over-drafts",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0129",
+      "path": "wiki/adr/0007-archive-review-before-archive.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "archive-review-before-archive",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0130",
+      "path": "wiki/adr/0008-human-governance-before-self-evolution-promotion.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "human-governance-before-self-evolution-promotion",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0131",
+      "path": "wiki/adr/0009-explore-trace-before-openspec-explore.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "explore-trace-before-openspec-explore",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0132",
+      "path": "wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "shared-skill-authoring-contract-before-repo-local-overrides",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0133",
+      "path": "wiki/adr/0011-canonical-ai-chat-installer-source-with-platform-adapters.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "canonical-ai-chat-installer-source-with-platform-adapters",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0134",
+      "path": "wiki/adr/0012-disagreement-management-before-conclusion-promotion.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "disagreement-management-before-conclusion-promotion",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0135",
+      "path": "wiki/adr/0013-agent-readable-wiki-naming-before-graph-growth.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-naming-before-graph-growth",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0136",
+      "path": "wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-frontmatter-before-graph-automation",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0137",
+      "path": "wiki/adr/0015-agent-readable-wiki-graph-extraction-after-structure.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-graph-extraction-after-structure",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0138",
+      "path": "wiki/adr/0016-agent-readable-wiki-relation-analysis-after-extraction.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-relation-analysis-after-extraction",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0139",
+      "path": "wiki/adr/0017-agent-readable-wiki-semantic-scoring-after-relation-analysis.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-semantic-scoring-after-relation-analysis",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0140",
+      "path": "wiki/adr/0018-agent-readable-wiki-utilization-layer-after-semantic-scoring.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-utilization-layer-after-semantic-scoring",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0141",
+      "path": "wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "agent-readable-wiki-runtime-context-after-utilization",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0142",
+      "path": "wiki/adr/0020-agent-readable-wiki-runtime-context-source-integration-after-runtime-context.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-runtime-context-source-integration",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0143",
+      "path": "wiki/adr/0021-agent-readable-wiki-runtime-auto-routing-after-source-integration.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-runtime-auto-routing",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0144",
+      "path": "wiki/adr/0022-agent-readable-wiki-context-injection-after-runtime-auto-routing.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-context-injection",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0145",
+      "path": "wiki/adr/0023-agent-readable-wiki-self-directed-execution-after-context-injection.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-self-directed-execution",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0146",
+      "path": "wiki/adr/0024-live-conversation-reanchor-before-continued-implementation.md",
+      "reason": "candidate has review risks: adr_risk, drift_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "drift_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "live-conversation-reanchor-gate",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0147",
+      "path": "wiki/adr/0025-readable-views-before-further-runtime-expansion.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-readable-views",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0148",
+      "path": "wiki/adr/0026-retire-draft-skills-as-runtime-surface.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "retire-draft-skills-as-runtime-surface",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0149",
+      "path": "wiki/adr/0027-repo-phase0-before-repo-agents-migration.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "repo-agents-governance-phase0",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0150",
+      "path": "wiki/adr/0028-root-agents-archive-review-generic-with-repo-detail.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "root-agents-archive-review-generic-with-repo-detail",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0151",
+      "path": "wiki/adr/0029-intake-retractions-legitimate-with-reopen-triggers.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "intake-retractions-legitimate-with-reopen-triggers",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0152",
+      "path": "wiki/adr/0030-no-repo-local-commit-hook-default.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "no-repo-local-commit-hook-default",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0153",
+      "path": "wiki/adr/0031-root-capability-extraction-boundary.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "root-capability-extraction",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0154",
+      "path": "wiki/adr/0032-whole-wiki-frontmatter-gate-must-be-strict-and-scorecarded.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "whole-wiki-frontmatter-gate",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0155",
+      "path": "wiki/adr/0033-wiki-react-eval-apply-openspec-boundary.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "wiki-runtime-layer-boundary",
+        "domain": "none",
+        "layer": "adr"
+      }
+    },
+    {
+      "detail_ref": "detail-0156",
+      "path": "wiki/adr/0034-readme-capability-map-is-project-description.md",
+      "reason": "candidate has review risks: adr_risk, openspec_required",
+      "risk_flags": [
+        "adr_risk",
+        "openspec_required"
+      ],
+      "suggested_frontmatter": {
+        "artifact_type": "adr",
+        "canonical_object": "readme-capability-map-boundary",
+        "domain": "none",
+        "layer": "adr"
+      }
+    }
+  ],
+  "treatment_candidates": [
+    {
+      "detail_ref": "detail-0003",
+      "path": "wiki/ops/account-knowledge-base-structure-explore.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "account-knowledge-base-structure",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0004",
+      "path": "wiki/ops/account-knowledge-base-workbench.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "ops-overview",
+        "canonical_object": "account-knowledge-base",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0005",
+      "path": "wiki/ops/ad-growth-cockpit-h5-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report-gate-review",
+        "canonical_object": "ad-growth-cockpit-h5",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0006",
+      "path": "wiki/ops/ad-platform-operational-prototype-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report-gate-review",
+        "canonical_object": "ad-platform-operational-prototype",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0009",
+      "path": "wiki/ops/agent-harness-article-learning-intake.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "agent-harness-article-learning",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0010",
+      "path": "wiki/ops/agent-harness-article-learning.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "reading-notes",
+        "canonical_object": "agent-harness-article-learning",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0012",
+      "path": "wiki/ops/agent-readable-wiki-artifact-grouping.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "artifact-grouping-view",
+        "canonical_object": "wiki-readable-views",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0013",
+      "path": "wiki/ops/agent-readable-wiki-context-injection.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-context-injection",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0014",
+      "path": "wiki/ops/agent-readable-wiki-frontmatter.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "agent-readable-wiki-frontmatter",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0015",
+      "path": "wiki/ops/agent-readable-wiki-graph-extraction.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-graph-extraction",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0016",
+      "path": "wiki/ops/agent-readable-wiki-naming-model.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "agent-readable-wiki-naming-model",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0017",
+      "path": "wiki/ops/agent-readable-wiki-relation-analysis.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-relation-analysis",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0018",
+      "path": "wiki/ops/agent-readable-wiki-relation-reading-view.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "relation-reading-view",
+        "canonical_object": "wiki-readable-views",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0019",
+      "path": "wiki/ops/agent-readable-wiki-runtime-auto-routing.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-runtime-auto-routing",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0020",
+      "path": "wiki/ops/agent-readable-wiki-runtime-context-source-integration.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-runtime-context-source-integration",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0021",
+      "path": "wiki/ops/agent-readable-wiki-runtime-context.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-runtime-context",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0022",
+      "path": "wiki/ops/agent-readable-wiki-self-directed-execution.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-self-directed-execution",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0023",
+      "path": "wiki/ops/agent-readable-wiki-semantic-scoring.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-semantic-scoring",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0024",
+      "path": "wiki/ops/agent-readable-wiki-utilization-layer.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-utilization-layer",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0025",
+      "path": "wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore_trace",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0026",
+      "path": "wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore_trace",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0027",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-article-evidence-matrix-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "article-evidence-matrix",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "source-intake"
+      }
+    },
+    {
+      "detail_ref": "detail-0028",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report_gate_review",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0029",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-company-playbook-role-change-diagnosis-2026-05-12.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "office_hours_design",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0030",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-image-model-visual-qa-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "visual-qa",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0031",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report-gate-review",
+        "canonical_object": "agentic-product-engineering-collaboration-our-operating-system",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0032",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "office_hours_design",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0033",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report-gate-review",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0034",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "ops-handoff",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0035",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-source-hardening-300-leads-2026-05-12.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "source-hardening-evidence",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "source-intake"
+      }
+    },
+    {
+      "detail_ref": "detail-0036",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-split-execution-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "ops-execution-plan",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0037",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-visual-production-brief-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "visual-production-brief",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0038",
+      "path": "wiki/ops/agentic-product-engineering-collaboration-workflow-gate-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "workflow-gate",
+        "canonical_object": "agentic-product-engineering-collaboration",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0048",
+      "path": "wiki/ops/ai-chat-一键安装-skill-探索-2026-04-17.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "ai-chat-workflow-installer",
+        "domain": "ai-workflow",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0051",
+      "path": "wiki/ops/behavior-replay-gate.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "behavior-replay-gate",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0053",
+      "path": "wiki/ops/check-to-wiki-routing-explore.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "check-to-wiki-routing",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0054",
+      "path": "wiki/ops/codex-global-agents-md-diagnosis-intake-2026-04-25.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "codex-global-agents-md",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0055",
+      "path": "wiki/ops/codex-handoff-rules.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "codex-handoff-rules",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0057",
+      "path": "wiki/ops/conversation-handoff-mode.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "conversation-handoff",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0058",
+      "path": "wiki/ops/disagreement-management-method.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "disagreement-management",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0059",
+      "path": "wiki/ops/disagreement-management-replay-harness.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "disagreement-management-replay-harness",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0060",
+      "path": "wiki/ops/disagreement-management-replay-validation-2026-04-20.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "disagreement-management-replay-validation",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0062",
+      "path": "wiki/ops/evolver-self-evolving-harness-reading-notes.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "reading-notes",
+        "canonical_object": "evolver-self-evolving-harness",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0063",
+      "path": "wiki/ops/example-driven-capture-runtime-validation-2026-04-18.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "example-driven-capture-runtime-validation",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0064",
+      "path": "wiki/ops/example-driven-wiki-capture.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "example-driven-wiki-capture",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0065",
+      "path": "wiki/ops/feishu-image-client-freeze-explore-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "feishu-image-client-freeze",
+        "domain": "public-report-output",
+        "layer": "ops",
+        "ops_area": "report-quality"
+      }
+    },
+    {
+      "detail_ref": "detail-0068",
+      "path": "wiki/ops/harness-engineering-overview-reading-notes.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "reading-notes",
+        "canonical_object": "harness-engineering-overview",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0069",
+      "path": "wiki/ops/hermes-self-evolution-gap-explore-2026-04-16.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "hermes-self-evolution-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0071",
+      "path": "wiki/ops/karpathy-llm-wiki-reading-notes.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "reading-notes",
+        "canonical_object": "karpathy-llm-wiki",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0073",
+      "path": "wiki/ops/learning-capture-routing.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "learning-capture-routing",
+        "domain": "none",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0074",
+      "path": "wiki/ops/learning-source-routing-gap-explore-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "learning-source-routing-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0077",
+      "path": "wiki/ops/llm-wiki-core-product-contract.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "product-contract",
+        "canonical_object": "llm-wiki-core-product-contract",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0078",
+      "path": "wiki/ops/llm-wiki-self-evolution-medical-loop.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "ops-model",
+        "canonical_object": "llm-wiki-self-evolution",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0079",
+      "path": "wiki/ops/main-thread.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "main-thread",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0080",
+      "path": "wiki/ops/multi-system-branch-spec-explore-2026-05-12.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "multi-system-branch-spec",
+        "domain": "product-engineering-collaboration",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0081",
+      "path": "wiki/ops/nirvana-preview-intake.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "nirvana-preview",
+        "domain": "nirvana",
+        "layer": "ops",
+        "ops_area": "source-intake"
+      }
+    },
+    {
+      "detail_ref": "detail-0082",
+      "path": "wiki/ops/nirvana-weekly-intake-2026-04-13.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "nirvana-weekly",
+        "domain": "nirvana-project",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0083",
+      "path": "wiki/ops/nirvana-weekly-reminder-2026-04-13.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "nirvana-weekly-reminder",
+        "domain": "nirvana-project",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0084",
+      "path": "wiki/ops/nirvana-协议支付涅槃需求文档-intake.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "nirvana-协议支付涅槃需求文档",
+        "domain": "nirvana",
+        "layer": "ops",
+        "ops_area": "source-intake"
+      }
+    },
+    {
+      "detail_ref": "detail-0085",
+      "path": "wiki/ops/nirvana-涅槃产品上架梳理-intake.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "nirvana-涅槃产品上架梳理",
+        "domain": "nirvana",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0086",
+      "path": "wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "learning-note",
+        "canonical_object": "obsidian-wiki-reference-gap-review",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "learning-capture"
+      }
+    },
+    {
+      "detail_ref": "detail-0089",
+      "path": "wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "product-capability-and-graph-gap",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0090",
+      "path": "wiki/ops/project-management-weekly-loop.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "project-management-weekly-loop",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0091",
+      "path": "wiki/ops/public-report-skill-gate-wording-explore-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "public-report-skill-gate-wording",
+        "domain": "report-workflow",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0094",
+      "path": "wiki/ops/reminders.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "reminders",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0095",
+      "path": "wiki/ops/report-wiki-product-plan-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "product-plan",
+        "canonical_object": "report-wiki-product-plan",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0097",
+      "path": "wiki/ops/sample-codex-handoff.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "sample-codex-handoff",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0100",
+      "path": "wiki/ops/sample-focus-thread.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "sample-focus-thread",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0101",
+      "path": "wiki/ops/sample-handoff-topic.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "sample",
+        "canonical_object": "conversation-handoff",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0102",
+      "path": "wiki/ops/sample-intake.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "intake",
+        "canonical_object": "sample",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0103",
+      "path": "wiki/ops/sample-reminder.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "sample-reminder",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    },
+    {
+      "detail_ref": "detail-0105",
+      "path": "wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore-trace",
+        "canonical_object": "scorecard-calibration-gap",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0106",
+      "path": "wiki/ops/superpowers-brainstorming-skill-visibility-explore-2026-05-14.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "superpowers-brainstorming-skill-visibility",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "agent-governance"
+      }
+    },
+    {
+      "detail_ref": "detail-0108",
+      "path": "wiki/ops/team-knowledge-base-overview-report-gate-review.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "report-gate-review",
+        "canonical_object": "account-knowledge-base",
+        "domain": "agent-harness",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0110",
+      "path": "wiki/ops/visual-output-routing-fix-recheck-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore_trace",
+        "canonical_object": "visual-output-routing",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0111",
+      "path": "wiki/ops/visual-output-routing-residual-fallback-repair-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "skill_fix_evidence",
+        "canonical_object": "visual-output-routing",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0112",
+      "path": "wiki/ops/visual-output-routing-skill-fix-evidence-2026-05-11.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "skill_fix_evidence",
+        "canonical_object": "visual-output-routing",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0114",
+      "path": "wiki/ops/wiki-react-decision-trace-runtime.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-react-decision-trace",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0115",
+      "path": "wiki/ops/wiki-readable-views-validation-harness.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "replay-harness",
+        "canonical_object": "wiki-readable-views-validation",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0116",
+      "path": "wiki/ops/wiki-runtime-command-surface-explore-2026-05-09.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "explore",
+        "canonical_object": "wiki-runtime-command-surface",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0117",
+      "path": "wiki/ops/wiki-runtime-layer-contract.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "method",
+        "canonical_object": "wiki-runtime-layer-contract",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0118",
+      "path": "wiki/ops/wiki-runtime-react-eval-apply-boundary-distill-2026-05-14.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "distill",
+        "canonical_object": "wiki-runtime-layer-boundary",
+        "domain": "wiki",
+        "layer": "ops",
+        "ops_area": "wiki-runtime"
+      }
+    },
+    {
+      "detail_ref": "detail-0121",
+      "path": "wiki/ops/宝财通分账开通迁移场景对照表-2026-04-16.md",
+      "reason": "existing or strongly evidenced candidate without unresolved review risks",
+      "risk_flags": [],
+      "suggested_frontmatter": {
+        "artifact_type": "scenario-matrix",
+        "canonical_object": "baocaitong-split-account-migration",
+        "domain": "account-clearing",
+        "layer": "ops",
+        "ops_area": "workflow-trace"
+      }
+    }
+  ]
+}
+```
+<!-- wiki-review-decision-data:end -->
