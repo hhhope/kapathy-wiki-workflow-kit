@@ -216,6 +216,28 @@
       color: #111;
     }
 
+    .spine-list {
+      margin-top: 34px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .spine-row {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 26px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .spine-row strong {
+      color: var(--accent);
+      line-height: 1.35;
+    }
+
+    .spine-row p {
+      margin: 0;
+    }
+
     .flow-line {
       margin: 34px 0 0;
       padding: 26px 0 8px;
@@ -683,7 +705,8 @@
 
       .evidence-row,
       .phase-row,
-      .role-row {
+      .role-row,
+      .spine-row {
         grid-template-columns: 1fr;
         gap: 8px;
       }
@@ -818,11 +841,33 @@
         <div class="pullquote">
           我们不是在学习一个工具，而是在决定哪些工作可以交给系统执行，哪些判断必须由人负责。
         </div>
+        <div class="spine-list" id="reading-spine" aria-label="全文递进主线">
+          <div class="spine-row">
+            <strong>先说为什么</strong>
+            <p>AI 让交付变快，也让错误方向的返工变快，所以问题不是工具，而是责任和证据。</p>
+          </div>
+          <div class="spine-row">
+            <strong>再看问题在哪</strong>
+            <p>我们的真实回路已经不是线性流程，而是意图、实现、验证、打回、写回反复循环。</p>
+          </div>
+          <div class="spine-row">
+            <strong>再找外部校准</strong>
+            <p>OpenAI、Anthropic、Stripe、Block 和李想访谈不是模板，而是用来校准边界、流程和反应链。</p>
+          </div>
+          <div class="spine-row">
+            <strong>再落技术路线</strong>
+            <p>路线不是搭平台，而是把一个真实场景做成可试、可比、可证、可写回的链路。</p>
+          </div>
+          <div class="spine-row">
+            <strong>最后落到角色</strong>
+            <p>产品、研发、测试、项目管理和 Boss 分别守住 owner、产物和证据，先用 30 天试点验证。</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <p class="section-label">02 · 我们的真实回路</p>
+      <p class="section-label">02 · 现场问题</p>
       <h2>现在的产研协作，已经不是线性流程</h2>
       <p class="reading">
         真实回路是反复翻译、验证、打回和写回。AI 可以处理大量中间劳动，但如果没有可审查的作业系统，它会把“看起来完成”推到最前面，把“真实可用”留到最后被用户发现。
@@ -866,7 +911,7 @@
     </section>
 
     <section class="section">
-      <p class="section-label">03 · 一图流</p>
+      <p class="section-label">03 · 先看结论图</p>
       <h2>先用一张图看清楚：我们要重塑的是作业方式</h2>
       <p class="reading">
         这张图把整篇 H5 压成一个判断：我们不做 AI 军备竞赛，而是把 AI 放进产研链路，让意图、执行、证据、判断和写回形成闭环。
@@ -893,10 +938,10 @@
     </section>
 
     <section class="section" id="workflow-provenance">
-      <p class="section-label">04 · 出处矩阵</p>
-      <h2>这 9 步不是拍脑袋，是外部调研和我们踩坑合出来的</h2>
+      <p class="section-label">04 · 来源与约束</p>
+      <h2>先交代来源：这 9 步是外部调研和本地踩坑合出来的</h2>
       <p class="reading">
-        我们最终要落地的是一套产研协作系统，所以每一步都必须有出处。外部材料给方向，本地事故给约束，最后才变成流程。OpenAI 证明工程系统要先变成 Agent 可读、可执行、可审查；Anthropic 证明专业工作流要先探索、计划、验证，再委托；Stripe 证明 Agent 参与业务动作时必须协议化责任链；Block 证明组织级 AI 要有 guardrails、skills、CI 和指标，同时不能只追使用率；李想访谈补上经营现场里的多方案、可验证 Demo 和专业 owner 视角。
+        上一节先给出闭环图，但图本身不能替代论证。这里先交代流程来源：外部材料给方向，本地事故给约束，最后才变成 9 个动作。OpenAI 证明工程系统要先变成 Agent 可读、可执行、可审查；Anthropic 证明专业工作流要先探索、计划、验证，再委托；Stripe 证明 Agent 参与业务动作时必须协议化责任链；Block 证明组织级 AI 要有 guardrails、skills、CI 和指标，同时不能只追使用率；李想访谈补上经营现场里的多方案、可验证 Demo 和专业 owner 视角。
       </p>
       <div class="phase-list">
         <div class="phase-row">
@@ -978,10 +1023,10 @@
     </section>
 
     <section class="section">
-      <p class="section-label">05 · 模式变化</p>
+      <p class="section-label">05 · 边界选择</p>
       <h2>我们不是互联网大厂，所以不做 AI 军备竞赛</h2>
       <p class="reading">
-        用六个问题重新校准后，这件事的边界更清楚：我们的目标不是成为 OpenAI、Anthropic、Stripe 或 Block。我们不是基座模型公司，不做通用 RAG 平台，不把组织精力砸进“先搭一个 AI 中台”的大工程，也不把 AI 使用率当成管理成绩。
+        有了来源和约束，下一步不是立刻开建，而是先划掉错误方向。我们的目标不是成为 OpenAI、Anthropic、Stripe 或 Block。我们不是基座模型公司，不做通用 RAG 平台，不把组织精力砸进“先搭一个 AI 中台”的大工程，也不把 AI 使用率当成管理成绩。
       </p>
       <div class="phase-list">
         <div class="phase-row">
@@ -1015,10 +1060,10 @@
     </section>
 
     <section class="section">
-      <p class="section-label">05A · 新材料校准</p>
+      <p class="section-label">06 · 访谈校准</p>
       <h2>四个层次讲清楚：原型、方案、反应链、分层架构</h2>
       <p class="reading">
-        这次李想访谈真正值得写的，不是“他也在用 Claude Code”，而是四个层次本身已经把 Agent 的价值边界讲出来了：第一层，研究团队先把判断做成原型；第二层，Agent 把方案生成和方案比较结构化；第三层，底盘智能把感知到执行的反应链压短；第四层，车内 Agent 架构把泛化能力和确定性能力分开。
+        边界划清后，李想访谈提供了更具体的建设顺序。它真正值得写的，不是“他也在用 Claude Code”，而是四个层次本身已经把 Agent 的价值边界讲出来了：第一层，研究团队先把判断做成原型；第二层，Agent 把方案生成和方案比较结构化；第三层，底盘智能把感知到执行的反应链压短；第四层，车内 Agent 架构把泛化能力和确定性能力分开。
       </p>
       <div class="case-matrix" aria-label="李想访谈四个 Agent 层次">
         <div class="case-matrix-head">
@@ -1096,7 +1141,7 @@
     </section>
 
     <section class="section" id="technical-roadmap">
-      <p class="section-label">05B · 技术路线图</p>
+      <p class="section-label">07 · 技术路线图</p>
       <h2>技术路线不是搭平台，而是把一条真实链路跑通</h2>
       <p class="reading">
         这张路线图不能写成“接入大模型、接入知识库、接入工作流”。那还是工具堆叠。真正要回答的是四个顺序问题：先让什么工作对象可试，谁来比较方案，证据链怎么从后置验收前移，哪些东西应该沉淀成记录、检索和个性化。
@@ -1190,10 +1235,10 @@
     </section>
 
     <section class="section">
-      <p class="section-label">06 · 我们能做什么</p>
+      <p class="section-label">08 · 最小系统</p>
       <h2>最小可行方向：AI-assisted 产研作业系统</h2>
       <p class="reading">
-        这不是平台战略，是日常工作方式升级。我们已经有真实业务系统、真实看板、真实 DB、真实会议、真实需求、真实事故日志。AI 最应该进入的地方，是那些高频、重复、容易漂移、又必须留下证据的协作动作。第一步只做一个场景，把“提出问题、比较方案、执行验证、失败写回”完整跑通。
+        技术路线已经收敛到“一条真实链路”，所以最小可行方向也要收窄。这不是平台战略，是日常工作方式升级。我们已经有真实业务系统、真实看板、真实 DB、真实会议、真实需求、真实事故日志。AI 最应该进入的地方，是那些高频、重复、容易漂移、又必须留下证据的协作动作。第一步只做一个场景，把“提出问题、比较方案、执行验证、失败写回”完整跑通。
       </p>
       <div class="role-list">
         <div class="role-row">
@@ -1220,10 +1265,10 @@
     </section>
 
     <section class="section">
-      <p class="section-label">07 · 模式变化</p>
+      <p class="section-label">09 · 工作流</p>
       <h2>重点清单：重塑软件工程工作方式，不是加一个 AI 工具</h2>
       <p class="reading">
-        接下来要做的不是“推广 AI 使用”，而是改造软件工程的工作对象。以前的主线是需求、开发、测试、上线；新的主线应该是意图、方案、spec、Agent 执行、证据包、人类判断、失败写回。九步流程的意义，不是多一套管理表格，而是保证每个需求都能从可试对象走到可审查结果。
+        最小系统要能重复运行，就需要把它拆成固定工作流。接下来要做的不是“推广 AI 使用”，而是改造软件工程的工作对象。以前的主线是需求、开发、测试、上线；新的主线应该是意图、方案、spec、Agent 执行、证据包、人类判断、失败写回。九步流程的意义，不是多一套管理表格，而是保证每个需求都能从可试对象走到可审查结果。
       </p>
       <div class="phase-list">
         <div class="phase-row">
@@ -1287,7 +1332,7 @@
     </section>
 
     <section class="section">
-      <p class="section-label">08 · 工程重塑</p>
+      <p class="section-label">10 · 工程重塑</p>
       <h2>软件工程从交付流水线，变成证据驱动的协作系统</h2>
       <div class="role-list">
         <div class="role-row">
@@ -1318,10 +1363,10 @@
     </section>
 
     <section class="section">
-      <p class="section-label">09 · 模式变化</p>
+      <p class="section-label">11 · 模式数据</p>
       <h2>没有 Spec 时像救火；有了 Spec 和 Skill 后，问题先变得更可见</h2>
       <p class="reading">
-        这组数据不能被解释成“上了 Spec 以后立刻少修 bug”。真实变化更像三段：先靠高频修复推进，再用 OpenSpec 把问题显性化，最后用 skill 门禁把输出形态、证据和回放约束住。短期内修复提交可能上升，因为以前藏在口头确认、局部 smoke、页面观感里的问题开始被命名。
+        工作流写完后，需要回到数据看它是不是凭空想象。这组数据不能被解释成“上了 Spec 以后立刻少修 bug”。真实变化更像三段：先靠高频修复推进，再用 OpenSpec 把问题显性化，最后用 skill 门禁把输出形态、证据和回放约束住。短期内修复提交可能上升，因为以前藏在口头确认、局部 smoke、页面观感里的问题开始被命名。
       </p>
       <div class="phase-list">
         <div class="phase-row">
@@ -1387,10 +1432,10 @@
     </section>
 
     <section class="section">
-      <p class="section-label">10 · 产出数据</p>
+      <p class="section-label">12 · 产出证据</p>
       <h2>总产出不是文件数量，而是证据种类变多了</h2>
       <p class="reading">
-        两个项目合计 966 个非合并提交，其中 2026-05-01 以后 268 个。account-team-efficiency 留下 160 条协作日志、118 个测试相关文件、37 条 RED 证据日志、33 条 GREEN 证据日志、26 条视觉或截图相关日志、81 条运行库或 DB 相关日志、91 条需求或范围漂移相关日志、13 条性能或超时相关日志。account-meeting-lore 留下 46 个 OpenSpec specs、32 条 ADR、105 条 ops 记录、26 个 repo-local skills、8 个 H5/report HTML、4 个 report gate review。
+        更重要的不是提交数量，而是证据种类是否变多。两个项目合计 966 个非合并提交，其中 2026-05-01 以后 268 个。account-team-efficiency 留下 160 条协作日志、118 个测试相关文件、37 条 RED 证据日志、33 条 GREEN 证据日志、26 条视觉或截图相关日志、81 条运行库或 DB 相关日志、91 条需求或范围漂移相关日志、13 条性能或超时相关日志。account-meeting-lore 留下 46 个 OpenSpec specs、32 条 ADR、105 条 ops 记录、26 个 repo-local skills、8 个 H5/report HTML、4 个 report gate review。
       </p>
       <div class="pullquote">
         变化不只是“做得更多”，而是每次产出都更容易回答：为什么做、做了什么、怎么验证、错在哪里、下次谁会读到。
@@ -1398,7 +1443,7 @@
     </section>
 
     <section class="section">
-      <p class="section-label">11 · 血泪史</p>
+      <p class="section-label">13 · 失败证据</p>
       <h2>我们踩过的坑，都说明“中间正确”不等于“用户成功”</h2>
       <div class="evidence-list">
         <div class="evidence-row">
@@ -1435,8 +1480,11 @@
     </section>
 
     <section class="section">
-      <p class="section-label">12 · 外部材料给我们的坐标</p>
-      <h2>四家公司不是模板，而是四个可选择的转型方向</h2>
+      <p class="section-label">14 · 外部坐标回看</p>
+      <h2>回头看外部材料：它们不是模板，而是四个可选择的转型方向</h2>
+      <p class="reading">
+        本地失败说明了为什么需要证据链，外部材料则说明这条路不是孤立经验。它们不是让我们照抄，而是帮助判断哪些方向适合我们、哪些方向应该避开。
+      </p>
       <div class="company-grid">
         <article class="company-item">
           <h3>OpenAI：工程系统 agent-first</h3>
@@ -1465,10 +1513,10 @@
     </section>
 
     <section class="section" id="role-changes">
-      <p class="section-label">13 · 角色变化</p>
+      <p class="section-label">15 · 角色变化</p>
       <h2>岗位怎么变：9 步流程里的 owner、产物和证据</h2>
       <p class="reading">
-        不是问“产品要不要写代码”，而是问每一步谁拥有产物、什么证据证明完成。路线不会自己运行，必须落到 owner、产物和证据上。Agent 可以执行很多动作，但 owner、边界和完成判断必须落到人和系统记录上。专业的人不是被 AI 替代，而是用 AI 把自己的判断变成更早可验证、更容易被工程化的产物。
+        到这里，流程、数据和失败案例都指向同一件事：路线不会自己运行，必须落到 owner、产物和证据上。不是问“产品要不要写代码”，而是问每一步谁拥有产物、什么证据证明完成。Agent 可以执行很多动作，但 owner、边界和完成判断必须落到人和系统记录上。专业的人不是被 AI 替代，而是用 AI 把自己的判断变成更早可验证、更容易被工程化的产物。
       </p>
       <div class="phase-list">
         <div class="phase-row">
@@ -1574,8 +1622,11 @@
     </section>
 
     <section class="section">
-      <p class="section-label">14 · 写作流程</p>
+      <p class="section-label">16 · 写作流程</p>
       <h2>以后写这类文章，先锁证据链，再写观点</h2>
+      <p class="reading">
+        这篇文章本身也是一次产研协作样例：如果证据、结构和结论没有先锁住，后面就会不断出现“局部改好了、全文又乱了”的问题。所以写作流程也要按同一套证据链处理。
+      </p>
       <div class="role-list">
         <div class="role-row">
           <strong>Why</strong>
@@ -1605,10 +1656,10 @@
     </section>
 
     <section class="section">
-      <p class="section-label">15 · 下一步</p>
+      <p class="section-label">17 · 下一步</p>
       <h2>先用一个真实链路做 30 天试点</h2>
       <p class="reading">
-        最合适的试点不是再写一套宏大制度，而是挑一个高频且容易暴露判断链的场景：看板指标异常解释链路。这个试点只验证一条线：异常解释先做成可跑原型，处理路径先做多方案比较，真实 DB / API / 截图形成证据链，最后把失败样例、业务偏好和规则写回。
+        现在才到行动建议：不要再写一套宏大制度，而是挑一个高频且容易暴露判断链的场景：看板指标异常解释链路。这个试点只验证一条线：异常解释先做成可跑原型，处理路径先做多方案比较，真实 DB / API / 截图形成证据链，最后把失败样例、业务偏好和规则写回。
       </p>
       <div class="pilot">
         <div class="image-band">
@@ -1633,7 +1684,7 @@
 
     <section class="section">
       <div class="reading">
-        <p class="section-label">16 · 最终判断</p>
+        <p class="section-label">18 · 最终判断</p>
         <h2>目标人定，过程可委托，结果可审计</h2>
         <p class="lead">
           产研工作方式的转变，不是把产品、研发、测试、项目管理都变成会提问的人，而是让每个角色都知道自己守哪一段责任链。人决定目标、边界和取舍；Agent 分析问题、生成多方案、放大专业判断、执行重复劳动、生成证据；系统留下可复盘、可回放、可检索、可改进的记录。

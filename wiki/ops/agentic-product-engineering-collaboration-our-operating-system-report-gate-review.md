@@ -65,11 +65,11 @@ Learning-use map:
 
 | Learning artifact | Capability type | Learning point | Output use |
 |---|---|---|---|
-| `wiki/sources/agentic-product-engineering-collaboration-lixiang-luoyonghao-ai-agent-reading-2026-05-18.md` | content | Agent value depends on real production environment and feedback, not generic AI usage. | Added section `05A · 新材料校准` and strengthened the section `01 · 判断` opening. |
+| `wiki/sources/agentic-product-engineering-collaboration-lixiang-luoyonghao-ai-agent-reading-2026-05-18.md` | content | Agent value depends on real production environment and feedback, not generic AI usage. | Added the interview calibration section and strengthened the section `01 · 判断` opening. |
 | same | structure | Agent workflow can be analysis -> competing方案 -> scoring -> optimization -> human selection -> execution. | Added `多方案验证` as a new workflow step before Spec / ADR and reflected it in role ownership and the 30-day pilot. |
 | same | boundary | Professional owners are amplified by AI; they are not replaced by generic prompt use. | Strengthened section `13 · 角色变化` and final judgment language. |
 | same | evidence | Hard problems are collaboration, governed data access, value measurement, and responsibility chain. | Used to keep the H5 focused on review packets, real evidence, and writeback rather than tool adoption. |
-| same | evidence | Specific cases make the abstract thesis concrete: research lead plus new graduates built a Cowork-like Demo, Agent multi-plan workflow, chassis 200ms/400ms full-chain response, and in-car Agent architecture splitting generic vs deterministic needs. | Rewrote section `05A` as case-led reasoning from point to system-level conclusion. |
+| same | evidence | Specific cases make the abstract thesis concrete: research lead plus new graduates built a Cowork-like Demo, Agent multi-plan workflow, chassis 200ms/400ms full-chain response, and in-car Agent architecture splitting generic vs deterministic needs. | Rewrote the interview calibration section as case-led reasoning from point to system-level conclusion. |
 
 Follow-up correction on 2026-05-18:
 
@@ -111,12 +111,18 @@ Roadmap rewrite correction on 2026-05-18:
 - User feedback: the added roadmap still read poorly.
 - Response: rewrote section `05B` from a component-style matrix into a route narrative. Each step now explains the decision order: make one work object runnable, force方案竞争 before Spec, design engineering around evidence reaction time, and only then separate records, retrieval, rules, and preferences. Later sections were also softened so they point to one real chain rather than repeating roadmap slogans.
 
+Progression correction on 2026-05-18:
+
+- User feedback: the article still felt structurally messy; paragraph-to-paragraph and section-to-section relationships were not progressively building the theme.
+- Response: added a front-loaded reading spine after section `01`, renumbered the article into a single 18-section progression, removed patch-like labels such as `05A / 05B`, and rewrote section opening paragraphs so the sequence now reads as: judgment ->现场问题 -> conclusion visual -> sources and constraints -> boundary -> interview calibration -> technical route -> minimum system -> workflow -> engineering change -> data and failure evidence -> external coordinate review -> role changes -> writing method -> 30-day pilot -> final judgment.
+
 Verification performed for this text-only update:
 
 - WeChat body fetched with `.codex/skills/weixin-reader/scripts/fetch_weixin.py`.
 - HTML syntax check: `python3 -m html.parser wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html`.
 - Text consistency check searched for old `8 步`, `8 状态`, and `7 件事` leftovers after adding the new step.
 - Technical roadmap screenshots: `/tmp/our-operating-system-roadmap-rewrite-tall.png` and `/tmp/our-operating-system-roadmap-rewrite-mobile.png`.
+- Progression-spine screenshots: `/tmp/our-operating-system-reading-spine.png` and `/tmp/our-operating-system-reading-spine-mobile.png`.
 - Frontmatter precheck was run for the new source note. The repo-wide gate still reports legacy blockers; the target entry list has no target-specific drift entry.
 
 Boundary:
