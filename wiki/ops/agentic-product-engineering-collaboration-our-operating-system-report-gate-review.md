@@ -25,11 +25,12 @@ updated: 2026-05-12
 
 - `agentic-product-engineering-collaboration-company-playbook.html`: reused as external company coordinate system: OpenAI, Anthropic, Stripe, Block.
 - `agentic-product-engineering-collaboration-newspaper.html`: reused as the dumbbell model and local operating-system framing.
+- `wiki/sources/agentic-product-engineering-collaboration-lixiang-luoyonghao-ai-agent-reading-2026-05-18.md`: reused as a secondary interview transcript / operator method reference for generic-vs-vertical AI, production feedback, professional owner value, and Agent multi-plan workflow.
 - `account-team-efficiency/logs/*`: reused as internal evidence for requirement drift, DB verification gaps, and visual acceptance failure.
 - Previous prose draft from this session: reused as the article spine, role map, blood-lessons section, and 30-day pilot.
 - Fresh git/file statistics gathered on 2026-05-11: reused for pre/post OpenSpec and skill-gate comparison.
 - Six-question diagnosis calibration: reused to sharpen the wedge around a non-internet-giant team's practical AI-assisted operating system.
-- `agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md`: reused to replace scattered role prose with an eight-step owner / artifact / evidence responsibility map.
+- `agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md`: reused as the original owner / artifact / evidence responsibility map, then extended by the 2026-05-18 text update.
 
 ## Learning Use Map
 
@@ -43,15 +44,43 @@ updated: 2026-05-12
   - Execution checklist: intent packet, Spec/ADR entry, Agent execution packet, evidence matrix, review packet, skill gates, failure writeback, weekly metrics.
   - Image-model infographic: inserted as the scan-first visual summary for the H5.
   - Workflow provenance: each of the eight landing steps now maps external company inspiration, local failure evidence, and implementation meaning.
-  - Role-change design: section `13 · 角色变化` now maps the eight-step operating system to owners, artifacts, completion evidence, and role behavior changes.
+  - Role-change design: section `13 · 角色变化` now maps the operating system to owners, artifacts, completion evidence, and role behavior changes.
+  - Li Xiang / Luo Yonghao interview reading note: added generic AI vs vertical production-environment calibration, added multi-plan verification before Spec / ADR, and strengthened the professional-owner boundary.
 - Modified:
   - External company analysis was compressed into a coordinate section instead of dominating the page.
   - Internal failure cases were rewritten as role-facing lessons.
   - SMART / 5W1H was kept as a lightweight check rather than the article structure.
   - The 30-day pilot was rewritten from a generic checklist into role-specific actions for product, engineering lead, engineer, QA, project management, Boss, and failure writeback.
+  - The previous eight-step operating workflow was extended to nine steps by adding `多方案验证` between intent capture and Spec / ADR entry.
 - Not formalized:
   - No new repository runtime rule is introduced by this H5.
   - No new skill behavior is claimed by the H5 itself.
+  - The WeChat interview is treated as a secondary operator-method reference, not proof for local headcount, org design, or production-data access policy.
+
+## 2026-05-18 Text-Only Update
+
+Trigger: user provided the WeChat article `https://mp.weixin.qq.com/s/Cz3fyYoqNdsSUFFtJdij7A` and asked to extract the useful parts into the existing H5 first, with image work deferred.
+
+Learning-use map:
+
+| Learning artifact | Capability type | Learning point | Output use |
+|---|---|---|---|
+| `wiki/sources/agentic-product-engineering-collaboration-lixiang-luoyonghao-ai-agent-reading-2026-05-18.md` | content | Agent value depends on real production environment and feedback, not generic AI usage. | Added section `05A · 新材料校准` and strengthened the section `01 · 判断` opening. |
+| same | structure | Agent workflow can be analysis -> competing方案 -> scoring -> optimization -> human selection -> execution. | Added `多方案验证` as a new workflow step before Spec / ADR and reflected it in role ownership and the 30-day pilot. |
+| same | boundary | Professional owners are amplified by AI; they are not replaced by generic prompt use. | Strengthened section `13 · 角色变化` and final judgment language. |
+| same | evidence | Hard problems are collaboration, governed data access, value measurement, and responsibility chain. | Used to keep the H5 focused on review packets, real evidence, and writeback rather than tool adoption. |
+
+Verification performed for this text-only update:
+
+- WeChat body fetched with `.codex/skills/weixin-reader/scripts/fetch_weixin.py`.
+- HTML syntax check: `python3 -m html.parser wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html`.
+- Text consistency check searched for old `8 步`, `8 状态`, and `7 件事` leftovers after adding the new step.
+- Frontmatter precheck was run for the new source note. The repo-wide gate still reports legacy blockers; the target entry list has no target-specific drift entry.
+
+Boundary:
+
+- Images, share zip, and Playwright visual screenshots were not regenerated in this text-only step.
+- The H5 remains an internal draft until the user confirms the new text direction and asks for image/share-package work.
 
 ## Hard Gate Results
 
