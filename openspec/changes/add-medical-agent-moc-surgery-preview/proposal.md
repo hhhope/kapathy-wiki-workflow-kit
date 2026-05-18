@@ -34,8 +34,8 @@ Out of scope:
 - Writing treatment records.
 - Writing surgery records.
 - Updating the active case file.
-- Mutating `Confirmed Decisions`, taxonomy config, ADRs, AGENTS, skills, or
-  OpenSpec lifecycle state.
+- Mutating `Confirmed Decisions`, taxonomy config, ADRs, AGENTS, skills,
+  unrelated OpenSpec lifecycle state, or archiving changes.
 
 ## Success Criteria
 
