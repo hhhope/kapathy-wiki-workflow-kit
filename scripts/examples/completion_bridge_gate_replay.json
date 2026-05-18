@@ -1,0 +1,24 @@
+{
+  "thread_label": "dual-track workflow experiment",
+  "delivery_result": "OpenSpec change completed and focused tests passed.",
+  "original_question_required": true,
+  "original_question": "What did the Superpowers + OpenSpec dual-track run prove?",
+  "bridge_answer": "It proved the lifecycle can stay bounded, but completion reporting needs this bridge gate.",
+  "next_action": "archive_review",
+  "red_baseline": [
+    "final report listed commits and tests but did not answer the dual-track question"
+  ],
+  "green_result": [
+    "final report includes delivery_result, original_question, and bridge_answer"
+  ],
+  "residual_risk": [
+    "structural replay only; live agent behavior still needs rollout observation"
+  ],
+  "checks": {
+    "delivery_result_present": true,
+    "original_question_identified": true,
+    "bridge_answer_present": true,
+    "no_scope_continuation": true,
+    "no_unearned_runtime_claim": true
+  }
+}
