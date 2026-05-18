@@ -96,6 +96,11 @@ Memory correction on 2026-05-18:
 - User feedback: the article's Agent memory discussion was missing, and each case still needed role / goal / action / result.
 - Response: section `05A` now rewrites all four layers with `角色 / 目标 / 做法 / 完成结果`. The fourth layer now covers Li Xiang's memory critique: "memory" as context stuffing is a poor abstraction; the useful architecture separates records, personalization, knowledge graph / RAG, simple parameter memory, Agent, and ChatBot.
 
+Visual structure correction on 2026-05-18:
+
+- User feedback: the role / goal / action / result text still looked like stacked paragraphs and was visually hard to read.
+- Response: section `05A` now uses a `case-matrix` layout: rows are the four layers, and columns are role, goal, action, and result. This removes the vertical paragraph stack and makes the case structure visually match the argument structure.
+
 Verification performed for this text-only update:
 
 - WeChat body fetched with `.codex/skills/weixin-reader/scripts/fetch_weixin.py`.

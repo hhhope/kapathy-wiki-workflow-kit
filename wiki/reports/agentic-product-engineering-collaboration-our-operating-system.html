@@ -449,6 +449,80 @@
       margin: 0;
     }
 
+    .case-matrix {
+      margin-top: 34px;
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .case-matrix-head,
+    .case-matrix-row {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 0.92fr) minmax(0, 1.05fr) minmax(0, 1.38fr) minmax(0, 1.28fr);
+    }
+
+    .case-matrix-head {
+      background: var(--ink);
+      color: #fffaf0;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .case-matrix-head span {
+      padding: 11px 14px;
+      border-right: 1px solid rgba(255, 250, 240, 0.18);
+    }
+
+    .case-matrix-head span:last-child,
+    .case-cell:last-child {
+      border-right: 0;
+    }
+
+    .case-matrix-row {
+      border-top: 1px solid var(--line);
+      background: #fffdf8;
+    }
+
+    .case-topic {
+      padding: 16px 14px;
+      border-right: 1px solid var(--line);
+      background: #f7efe1;
+    }
+
+    .case-topic span {
+      display: block;
+      color: var(--accent-2);
+      font-weight: 900;
+      font-size: 0.78rem;
+      line-height: 1.3;
+    }
+
+    .case-topic strong {
+      display: block;
+      margin-top: 7px;
+      color: var(--accent);
+      font-size: 0.98rem;
+      line-height: 1.35;
+    }
+
+    .case-topic em {
+      display: block;
+      margin-top: 7px;
+      color: #675847;
+      font-size: 0.82rem;
+      font-style: normal;
+      line-height: 1.45;
+    }
+
+    .case-cell {
+      padding: 14px 16px;
+      border-right: 1px solid var(--line);
+      color: #28231e;
+      font-size: 0.9rem;
+      line-height: 1.56;
+    }
+
     .pilot {
       margin-top: 32px;
       display: grid;
@@ -513,6 +587,47 @@
       .role-row {
         grid-template-columns: 1fr;
         gap: 8px;
+      }
+
+      .case-matrix {
+        border-bottom: 0;
+      }
+
+      .case-matrix-head {
+        display: none;
+      }
+
+      .case-matrix-row {
+        display: block;
+        margin-bottom: 18px;
+        border: 1px solid var(--line);
+      }
+
+      .case-topic {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .case-cell {
+        position: relative;
+        min-height: 58px;
+        padding: 12px 14px 12px 88px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .case-cell:last-child {
+        border-bottom: 0;
+      }
+
+      .case-cell::before {
+        content: attr(data-label);
+        position: absolute;
+        top: 12px;
+        left: 14px;
+        color: var(--accent-2);
+        font-size: 0.76rem;
+        font-weight: 900;
       }
 
       header {
@@ -795,27 +910,61 @@
       <p class="reading">
         这次李想访谈真正值得写的，不是“他也在用 Claude Code”，而是四个层次本身已经把 Agent 的价值边界讲出来了：第一层，研究团队先把判断做成原型；第二层，Agent 把方案生成和方案比较结构化；第三层，底盘智能把感知到执行的反应链压短；第四层，车内 Agent 架构把泛化能力和确定性能力分开。
       </p>
-      <div class="role-list">
-        <div class="role-row">
-          <strong>第一层：Cowork Demo，把研究判断变成可跑原型</strong>
-          <p><b>角色</b>是战略/研究负责人和几个校招生。<b>目标</b>不是证明自己会用 AI，而是回答三个经营问题：工作协同怎么做，数据怎么获取，人的工作价值怎么衡量。</p>
-          <p><b>做法</b>不是先写调研报告或 PRD，而是研究 Anthropic 的 Cowork 工作方式后，先做出一个可操作 Demo，把工作协同、数据打通、云端/本地模型选择、个人工作价值衡量放到同一个界面里。<b>完成结果</b>也不是“复刻了一个工具”，而是拿着 Demo 去和 HR 验证协同场景，和数仓团队验证数据怎么接、哪些能力走云端、哪些能力走本地、人的工作过程怎么衡量。这个案例说明：研究判断要先变成可试、可接、可放大的原型。</p>
+      <div class="case-matrix" aria-label="李想访谈四个 Agent 层次">
+        <div class="case-matrix-head">
+          <span>层次</span>
+          <span>角色</span>
+          <span>目标</span>
+          <span>做法</span>
+          <span>完成结果</span>
         </div>
-        <div class="role-row">
-          <strong>第二层：Agent 方案流程，把决策前置成可比较对象</strong>
-          <p><b>角色</b>是管理者或业务 owner。<b>目标</b>是在不确定问题上做更好的选择，而不是让 Agent 替人拍板。</p>
-          <p><b>做法</b>是把 Agent 变成方案生成和方案比较的工作流：分析 -> 多方案 -> 博弈/打分 -> 优化 -> 人选择 -> 执行。<b>完成结果</b>是把原来藏在会议、经验和单一路径包装里的反方意见、成本差异、风险路径、可验证样例提前摆出来。这个层次解决的是“方案质量”，不是简单追求执行速度。</p>
-        </div>
-        <div class="role-row">
-          <strong>第三层：底盘智能，把感知到执行的反应链压短</strong>
-          <p><b>角色</b>是整车智能系统团队，不只是模型团队。<b>目标</b>是让车从感知到执行的反应更快、更可控、更让人信任。</p>
-          <p><b>做法</b>是把感知、模型、控制和执行器一起设计，而不是只优化一个模型。李想给的数字是：人看到物体、踩刹车并执行到位大约 350-400ms，过去自动驾驶系统也在 400ms 上下，他们把感知到执行的系统反应降到 200 多 ms；线控电子制动也把原来机械制动六七十 ms 的响应压到 13ms。<b>完成结果</b>是整条反应链变短，而不是某个点单独变聪明。</p>
-        </div>
-        <div class="role-row">
-          <strong>第四层：Agent 记忆，不是上下文堆叠，而是记录和个性化分层</strong>
-          <p><b>角色</b>是车内 Agent 架构团队。<b>目标</b>不是做一个什么都记的万能助手，而是把用户在车里的不同需求分清楚：泛化任务、泛化信息获取、精确控制、必要记录和个性化。</p>
-          <p><b>做法</b>是先否定“记忆”这个过宽的词。李想说，很多所谓记忆只是上下文拼接，任何时候都把所有东西读进上下文，效率低、成本高、体验还会变差。用户真正需要的，很多时候不是记忆，而是记录：把对话、临时想法、待办问题留下来；再把少量关键偏好做成个性化，类似自定义指令；知识检索交给知识图谱和 RAG；稳定偏好用简单参数记忆。<b>完成结果</b>是 Agent、ChatBot、记录、知识图谱/RAG、个性化各司其职，而不是把所有东西塞进一个通用 Agent。</p>
-        </div>
+        <article class="case-matrix-row">
+          <div class="case-topic">
+            <span>第一层</span>
+            <strong>Cowork Demo</strong>
+            <em>研究判断先变成可跑原型</em>
+          </div>
+          <div class="case-cell" data-label="角色">战略/研究负责人带几个校招生，不是正式工程团队先上。</div>
+          <div class="case-cell" data-label="目标">回答工作协同、数据获取、人的工作价值衡量三个经营问题。</div>
+          <div class="case-cell" data-label="做法">研究 Anthropic Cowork 后做出 Demo，把协同、数据、云端/本地模型和价值衡量放进同一界面。</div>
+          <div class="case-cell" data-label="完成结果">Demo 成为和 HR、数仓团队讨论真实接入的对象，而不是一份抽象 PRD。</div>
+        </article>
+
+        <article class="case-matrix-row">
+          <div class="case-topic">
+            <span>第二层</span>
+            <strong>Agent 方案流程</strong>
+            <em>决策前先产生可比较方案</em>
+          </div>
+          <div class="case-cell" data-label="角色">管理者或业务 owner，负责选择，而不是把判断交给 Agent。</div>
+          <div class="case-cell" data-label="目标">提高方案质量，避免团队只包装一个主推路径。</div>
+          <div class="case-cell" data-label="做法">分析 -> 多方案 -> 博弈/打分 -> 优化 -> 人选择 -> 执行。</div>
+          <div class="case-cell" data-label="完成结果">决策前材料从“单一路径包装”变成“多方案比较”。</div>
+        </article>
+
+        <article class="case-matrix-row">
+          <div class="case-topic">
+            <span>第三层</span>
+            <strong>底盘智能</strong>
+            <em>压短感知到执行的整条反应链</em>
+          </div>
+          <div class="case-cell" data-label="角色">整车智能系统团队，不只是模型团队。</div>
+          <div class="case-cell" data-label="目标">让车从感知到执行更快、更可控、更让人信任。</div>
+          <div class="case-cell" data-label="做法">把感知、模型、控制和执行器一起设计，而不是只优化一个模型。</div>
+          <div class="case-cell" data-label="完成结果">人类反应约 350-400ms，旧系统约 400ms，新系统降到 200 多 ms；线控制动降到 13ms。</div>
+        </article>
+
+        <article class="case-matrix-row">
+          <div class="case-topic">
+            <span>第四层</span>
+            <strong>Agent 记忆</strong>
+            <em>从上下文堆叠改成记录和个性化分层</em>
+          </div>
+          <div class="case-cell" data-label="角色">车内 Agent 架构团队，负责拆分能力边界。</div>
+          <div class="case-cell" data-label="目标">不是做万能助手，而是让泛化任务、信息获取、精确控制、必要记录和个性化各走正确路径。</div>
+          <div class="case-cell" data-label="做法">记录归记录，个性化归个性化，检索交给知识图谱/RAG，稳定偏好用简单参数记忆。</div>
+          <div class="case-cell" data-label="完成结果">Agent、ChatBot、记录、知识图谱/RAG、个性化各司其职，不再把所有内容塞进上下文。</div>
+        </article>
       </div>
       <div class="pullquote">
         这四个层次放在一起看，重点不是“AI 很厉害”，而是“生产系统的反应链正在被重写”：研究先变成原型，决策先变成方案流程，硬件智能变成端到端反应时间，Agent 记忆变成记录、检索、个性化和路由的分层架构。
