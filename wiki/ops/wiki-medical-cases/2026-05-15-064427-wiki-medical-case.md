@@ -4,7 +4,7 @@ domain: wiki
 ops_area: wiki-runtime
 canonical_object: wiki-medical-case-file
 artifact_type: medical-case
-status: blocked
+status: archive_ready
 case_slug: wiki-medical-case
 created_at: 2026-05-15
 ---
@@ -520,8 +520,8 @@ created_at: 2026-05-15
 - Status: completed
 
 ## Archive / Next Action
-- Status: blocked
-- Next action: blocked
+- Status: archive_ready
+- Next action: archive_ready
 
 ## Evidence Attachments
 ### Doctor
@@ -537,101 +537,7 @@ created_at: 2026-05-15
 ### Recovery
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md`
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md`
-### OpenSpec Archive
-- `openspec/changes/archive/2026-05-18-classify-dialogue-agent-drift-traces/`
-- `openspec/specs/dialogue-agent-drift-trace-cleanup/spec.md`
-- `openspec/changes/archive/2026-05-18-add-completion-bridge-gate/`
-- `openspec/specs/completion-bridge-gate/spec.md`
-- `openspec/changes/archive/2026-05-18-rename-wiki-status-command-surface/`
-
-## Manual Surgery Triage Summary
-
-This summary preserves human review decisions from the 2026-05-18 live triage.
-It is recovery context only. It does not approve surgery application, relation
-writes, taxonomy changes, ADR edits, AGENTS edits, skill edits, or OpenSpec
-lifecycle changes.
-
-### Relation-only Items
-
-- Source set: 59 relation-only surgery items.
-- First triage:
-  - `confirm`: 35 items.
-  - `reject`: 10 items.
-  - `defer`: 14 items.
-- Evidence verification:
-  - 34 of the 35 confirmed items had strong structural evidence.
-  - `detail-0031` remains weak/defer because its identity resolves, but no
-    sibling node or explicit relation field was found.
-- Relation proposal result:
-  - 28 items already have explicit relation frontmatter; no new relation write
-    is recommended from this case.
-  - 6 items only show same-object sibling artifacts; keep object aggregation,
-    do not add relation fields from this case.
-- Current action: no relation-only item should be auto-applied.
-
-### Governance-only Items
-
-- Source set: 7 governance-only items without relation or OpenSpec flags.
-- `no-op confirmed`: `detail-0051`, `detail-0091`, `detail-0112`.
-- `defer to cleanup`: `detail-0011`, `detail-0056`, `detail-0103`.
-- `detail-0118` follow-up:
-  closed without implementation in
-  `openspec/changes/archive/2026-05-18-rename-wiki-status-command-surface/`
-  because the current runtime direction keeps `$wiki-status` as the active
-  repo-local skill surface and rejects slash command promotion.
-- Project-management correction:
-  - `detail-0081` should not be treated as learning; it is
-    `project-management / weekly-intake / project-report` for the Nirvana
-    project.
-
-### Relation plus Governance Items
-
-- Source set: 14 relation plus governance items without OpenSpec flag.
-- `no-op confirmed`: `detail-0074`, `detail-0075`, `detail-0092`,
-  `detail-0095`, `detail-0100`, `detail-0106`.
-- `defer to cleanup`: `detail-0057`, `detail-0066`, `detail-0071`,
-  `detail-0081`, `detail-0097`, `detail-0108`.
-- `detail-0087` no-op/defer:
-  covered by the existing product status contract at
-  `openspec/specs/product-status-contract/spec.md`; no new OpenSpec change is
-  opened from this case.
-- `detail-0055` follow-up:
-  archived in `openspec/changes/archive/2026-05-18-add-completion-bridge-gate/`;
-  stable spec created at `openspec/specs/completion-bridge-gate/spec.md`.
-  It adds structural replay proof for completion reports that must bridge back
-  to the user's original question.
-- Cleanup correction:
-  - `detail-0097` is a `dialogue-disagreement-example`, not a live incident.
-  - `detail-0108` is an `agent-drift-explore-trace`, a real visual-output
-    routing drift record.
-
-### OpenSpec-required Items
-
-- Source set: 51 OpenSpec-required items.
-- `wiki/adr`: 34 items. Default no-op; ADR changes must go through separate
-  OpenSpec changes if needed.
-- `wiki/ops`: 17 items. Grouped into:
-  - agent-governance / behavior-asset-governance candidates.
-  - dialogue-disagreement / agent-drift / reanchor-trace candidates.
-  - agentic-product-engineering source-hardening material.
-  - sample / explore trace cleanup.
-- Follow-up OpenSpec archived:
-  `openspec/changes/archive/2026-05-18-classify-dialogue-agent-drift-traces/`.
-- Stable review-only spec created:
-  `openspec/specs/dialogue-agent-drift-trace-cleanup/spec.md`.
-
-### Agreed Cleanup Vocabulary
-
-The live review agreed to use:
-
-```text
-dialogue-disagreement / agent-drift / reanchor-trace
-```
-
-as the review-only cleanup vocabulary for pages that preserve user-agent
-disagreement, agent route drift, and re-anchor evidence. This vocabulary is now
-captured in the archived OpenSpec spec above, but it is not an implemented
-taxonomy or write-capable workflow.
+- `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-122508-recovery.md`
 
 ## Proof Boundary
 - This is the canonical case file for review routing.
@@ -643,9 +549,9 @@ taxonomy or write-capable workflow.
 ```json
 {
   "archive_next_action": {
-    "next_action": "blocked",
+    "next_action": "archive_ready",
     "reason": "Recovery result set the next medical-loop action.",
-    "status": "blocked"
+    "status": "archive_ready"
   },
   "case_slug": "wiki-medical-case",
   "case_source": {
@@ -7913,7 +7819,8 @@ taxonomy or write-capable workflow.
     ],
     "recovery": [
       "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md",
-      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md"
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md",
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-122508-recovery.md"
     ],
     "surgery": [
       "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-surgery-runs/2026-05-18-023550-surgery.md"
@@ -7940,7 +7847,8 @@ taxonomy or write-capable workflow.
   "recovery": {
     "records": [
       "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md",
-      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md"
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md",
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-122508-recovery.md"
     ],
     "result": {
       "checks": [
@@ -7958,18 +7866,18 @@ taxonomy or write-capable workflow.
             "--full-markdown-output",
             "/tmp/wiki-recovery-frontmatter.md"
           ],
-          "exit_code": 1,
+          "exit_code": 0,
           "parsed_summary": {
-            "error": 892,
+            "error": 0,
             "info": 0,
             "mode": "frontmatter",
-            "passed": false,
-            "total": 897,
+            "passed": true,
+            "total": 5,
             "warn": 5
           },
-          "passed": false,
+          "passed": true,
           "stderr_tail": "",
-          "stdout_tail": ",\n    {\n      \"severity\": \"error\",\n      \"kind\": \"missing_required_field\",\n      \"field\": \"ops_area\",\n      \"dimension\": \"completeness\",\n      \"count\": 125,\n      \"sample_paths\": [\n        \"wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md\",\n        \"wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md\",\n        \"wiki/ops/account-knowledge-base-structure-explore.md\"\n      ]\n    },\n    {\n      \"severity\": \"error\",\n      \"kind\": \"missing_required_field\",\n      \"field\": \"canonical_object\",\n      \"dimension\": \"identity_coverage\",\n      \"count\": 81,\n      \"sample_paths\": [\n        \"wiki/adr/0001-repository-default-workflow-changes-require-openspec.md\",\n        \"wiki/adr/0002-stable-decisions-live-in-wiki-adr.md\",\n        \"wiki/adr/0003-retros-stay-separate-from-adrs.md\"\n      ]\n    }\n  ],\n  \"target\": null,\n  \"full_report\": {\n    \"json\": \"/tmp/wiki-recovery-frontmatter.json\",\n    \"markdown\": \"/tmp/wiki-recovery-frontmatter.md\"\n  },\n  \"proof_boundary\": [\n    \"This precheck is an agent-readable summary of the configured frontmatter gate.\",\n    \"It does not replace the full checker report written to full_report paths.\",\n    \"It does not infer missing business domains from prose.\"\n  ]\n}\n"
+          "stdout_tail": "{\n  \"generated_at\": \"2026-05-18T12:24:51.657213+00:00\",\n  \"gate\": \"wiki-frontmatter-taxonomy\",\n  \"mode\": \"frontmatter\",\n  \"passed\": true,\n  \"score\": 75,\n  \"minimum_pass_score\": 100,\n  \"blocking_count\": 0,\n  \"summary\": {\n    \"error\": 0,\n    \"warn\": 5,\n    \"info\": 0,\n    \"total\": 5\n  },\n  \"top_blockers\": [\n    {\n      \"severity\": \"warn\",\n      \"kind\": \"possible_unregistered_producer\",\n      \"field\": null,\n      \"dimension\": \"taxonomy_validity\",\n      \"count\": 5,\n      \"sample_paths\": [\n        \"scripts/check_wiki_frontmatter.py\",\n        \"scripts/wiki_medical_case.py\",\n        \"scripts/wiki_moc_projection.py\"\n      ]\n    }\n  ],\n  \"target\": null,\n  \"full_report\": {\n    \"json\": \"/tmp/wiki-recovery-frontmatter.json\",\n    \"markdown\": \"/tmp/wiki-recovery-frontmatter.md\"\n  },\n  \"proof_boundary\": [\n    \"This precheck is an agent-readable summary of the configured frontmatter gate.\",\n    \"It does not replace the full checker report written to full_report paths.\",\n    \"It does not infer missing business domains from prose.\"\n  ]\n}\n"
         },
         {
           "check_id": "doctor_adjudication",
@@ -7983,19 +7891,19 @@ taxonomy or write-capable workflow.
           ],
           "exit_code": 0,
           "parsed_summary": {
-            "candidate_count": 155,
-            "drift_trace_count": 72,
+            "candidate_count": 156,
+            "drift_trace_count": 67,
             "eval_error_count": 0,
             "eval_passed": true,
             "eval_warning_count": 0,
-            "full_detail_count": 155,
+            "full_detail_count": 156,
             "mode": "review_package_summary",
-            "review_focus_count": 145,
+            "review_focus_count": 73,
             "taxonomy_candidate_count": 0
           },
           "passed": true,
           "stderr_tail": "",
-          "stdout_tail": "{\n  \"generated_at\": \"2026-05-18T01:59:19.771161+00:00\",\n  \"mode\": \"review_package_summary\",\n  \"review_record_path\": \"/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-doctor-runs/2026-05-18-015919-review.md\",\n  \"preview_limit\": 0,\n  \"summary\": {\n    \"candidate_count\": 155,\n    \"full_detail_count\": 155,\n    \"review_focus_count\": 145,\n    \"taxonomy_candidate_count\": 0,\n    \"drift_trace_count\": 72\n  },\n  \"eval_result\": {\n    \"passed\": true,\n    \"error_count\": 0,\n    \"warning_count\": 112\n  },\n  \"proof_boundary_notes\": [\n    \"Content adjudication is deterministic review output only.\",\n    \"It does not write frontmatter.\",\n    \"It does not mutate taxonomy config.\",\n    \"It does not prove hidden semantic truth.\"\n  ]\n}\n"
+          "stdout_tail": "{\n  \"generated_at\": \"2026-05-18T12:24:57.024727+00:00\",\n  \"mode\": \"review_package_summary\",\n  \"review_record_path\": \"/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-doctor-runs/2026-05-18-122457-review.md\",\n  \"preview_limit\": 0,\n  \"summary\": {\n    \"candidate_count\": 156,\n    \"full_detail_count\": 156,\n    \"review_focus_count\": 73,\n    \"taxonomy_candidate_count\": 0,\n    \"drift_trace_count\": 67\n  },\n  \"eval_result\": {\n    \"passed\": true,\n    \"error_count\": 0,\n    \"warning_count\": 0\n  },\n  \"proof_boundary_notes\": [\n    \"Content adjudication is deterministic review output only.\",\n    \"It does not write frontmatter.\",\n    \"It does not mutate taxonomy config.\",\n    \"It does not prove hidden semantic truth.\"\n  ]\n}\n"
         },
         {
           "check_id": "review_decisions",
@@ -8009,18 +7917,18 @@ taxonomy or write-capable workflow.
           ],
           "exit_code": 0,
           "parsed_summary": {
-            "accepted_candidates_count": 10,
-            "deferred_items_count": 145,
+            "accepted_candidates_count": 83,
+            "deferred_items_count": 73,
             "mode": "wiki_review_decision_summary",
-            "openspec_required_count": 51,
-            "rejected_candidates_count": 113,
-            "source_detail_count": 155,
-            "surgery_candidates_count": 131,
-            "treatment_candidates_count": 10
+            "openspec_required_count": 49,
+            "rejected_candidates_count": 6,
+            "source_detail_count": 156,
+            "surgery_candidates_count": 67,
+            "treatment_candidates_count": 83
           },
           "passed": true,
           "stderr_tail": "",
-          "stdout_tail": "{\n  \"generated_at\": \"2026-05-18T01:59:23.895958+00:00\",\n  \"mode\": \"wiki_review_decision_summary\",\n  \"source_record\": null,\n  \"decision_record_path\": \"/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-review-decisions/2026-05-18-015923-review-decisions.md\",\n  \"preview_limit\": 0,\n  \"summary\": {\n    \"source_detail_count\": 155,\n    \"accepted_candidates_count\": 10,\n    \"rejected_candidates_count\": 113,\n    \"deferred_items_count\": 145,\n    \"treatment_candidates_count\": 10,\n    \"surgery_candidates_count\": 131,\n    \"openspec_required_count\": 51\n  },\n  \"proof_boundary_notes\": [\n    \"This is draft review routing only, not human approval.\",\n    \"It does not write frontmatter, taxonomy, relations, MOC, or OpenSpec state.\"\n  ]\n}\n"
+          "stdout_tail": "{\n  \"generated_at\": \"2026-05-18T12:25:02.670650+00:00\",\n  \"mode\": \"wiki_review_decision_summary\",\n  \"source_record\": null,\n  \"decision_record_path\": \"/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-review-decisions/2026-05-18-122502-review-decisions.md\",\n  \"preview_limit\": 0,\n  \"summary\": {\n    \"source_detail_count\": 156,\n    \"accepted_candidates_count\": 83,\n    \"rejected_candidates_count\": 6,\n    \"deferred_items_count\": 73,\n    \"treatment_candidates_count\": 83,\n    \"surgery_candidates_count\": 67,\n    \"openspec_required_count\": 49\n  },\n  \"proof_boundary_notes\": [\n    \"This is draft review routing only, not human approval.\",\n    \"It does not write frontmatter, taxonomy, relations, MOC, or OpenSpec state.\"\n  ]\n}\n"
         },
         {
           "check_id": "surgery_plan",
@@ -8032,44 +7940,60 @@ taxonomy or write-capable workflow.
           ],
           "exit_code": 0,
           "parsed_summary": {
-            "governance_change_count": 72,
+            "governance_change_count": 67,
             "moc_projection_count": 0,
             "mode": "wiki_surgery_plan",
-            "relation_rebuild_count": 112,
-            "source_detail_count": 155,
+            "relation_rebuild_count": 0,
+            "source_detail_count": 156,
             "status": "planned",
-            "surgery_item_count": 131,
+            "surgery_item_count": 67,
             "taxonomy_decision_count": 0
           },
           "passed": true,
           "stderr_tail": "",
-          "stdout_tail": "boundary.md\",\n      \"risk_flags\": [\n        \"adr_risk\",\n        \"openspec_required\"\n      ],\n      \"reason\": \"candidate has review risks: adr_risk, openspec_required\"\n    },\n    {\n      \"detail_ref\": \"detail-0155\",\n      \"path\": \"wiki/adr/0034-readme-capability-map-is-project-description.md\",\n      \"risk_flags\": [\n        \"adr_risk\",\n        \"openspec_required\"\n      ],\n      \"reason\": \"candidate has review risks: adr_risk, openspec_required\"\n    }\n  ],\n  \"taxonomy_decision_items\": [],\n  \"moc_projection_items\": [],\n  \"proof_boundary_notes\": [\n    \"This is a surgery plan only, not surgery approval.\",\n    \"It does not write frontmatter, taxonomy config, relations, MOC pages, ADR decisions, or OpenSpec state.\",\n    \"Surgery application requires a later explicit OpenSpec or human-approved apply workflow.\"\n  ],\n  \"next_review_actions\": [\n    \"Human review: decide which surgery items are real, duplicate, or obsolete.\",\n    \"OpenSpec: route governance, ADR, taxonomy, and broad relation changes to explicit changes.\",\n    \"MOC: review projection create/update/orphan entries before any generated file write.\",\n    \"Recovery: run checkers and doctor again only after surgery is applied.\"\n  ]\n}\n"
+          "stdout_tail": "boundary.md\",\n      \"risk_flags\": [\n        \"adr_risk\",\n        \"openspec_required\"\n      ],\n      \"reason\": \"candidate has review risks: adr_risk, openspec_required\"\n    },\n    {\n      \"detail_ref\": \"detail-0156\",\n      \"path\": \"wiki/adr/0034-readme-capability-map-is-project-description.md\",\n      \"risk_flags\": [\n        \"adr_risk\",\n        \"openspec_required\"\n      ],\n      \"reason\": \"candidate has review risks: adr_risk, openspec_required\"\n    }\n  ],\n  \"taxonomy_decision_items\": [],\n  \"moc_projection_items\": [],\n  \"proof_boundary_notes\": [\n    \"This is a surgery plan only, not surgery approval.\",\n    \"It does not write frontmatter, taxonomy config, relations, MOC pages, ADR decisions, or OpenSpec state.\",\n    \"Surgery application requires a later explicit OpenSpec or human-approved apply workflow.\"\n  ],\n  \"next_review_actions\": [\n    \"Human review: decide which surgery items are real, duplicate, or obsolete.\",\n    \"OpenSpec: route governance, ADR, taxonomy, and broad relation changes to explicit changes.\",\n    \"MOC: review projection create/update/orphan entries before any generated file write.\",\n    \"Recovery: run checkers and doctor again only after surgery is applied.\"\n  ]\n}\n"
         }
       ],
-      "generated_at": "2026-05-18T01:59:28.106611+00:00",
+      "frontmatter_status": {
+        "repository": {
+          "passed": true,
+          "summary": {
+            "error": 0,
+            "info": 0,
+            "mode": "frontmatter",
+            "passed": true,
+            "total": 5,
+            "warn": 5
+          }
+        },
+        "targets": [],
+        "targets_passed": false
+      },
+      "generated_at": "2026-05-18T12:25:08.004847+00:00",
       "mode": "wiki_recovery_package",
-      "next_route": "blocked_by_recovery_findings",
-      "passed": false,
+      "next_route": "archive-ready",
+      "passed": true,
       "proof_boundary_notes": [
         "Recovery records check results only.",
         "It does not apply treatment or surgery.",
         "It does not write frontmatter, taxonomy config, relations, MOC pages, ADR decisions, status files, or OpenSpec state.",
         "Nonzero checks are preserved as findings instead of hidden."
       ],
+      "recovery_record_path": "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-122508-recovery.md",
       "summary": {
         "check_count": 4,
-        "failed_count": 1,
-        "passed_count": 3
+        "failed_count": 0,
+        "passed_count": 4
       }
     },
     "status": "completed",
     "summary": {
       "check_count": 4,
-      "failed_count": 1,
-      "passed_count": 3
+      "failed_count": 0,
+      "passed_count": 4
     }
   },
-  "status": "blocked",
+  "status": "archive_ready",
   "surgery_plan": {
     "plan": {
       "generated_at": "2026-05-18T02:35:50.277548+00:00",
