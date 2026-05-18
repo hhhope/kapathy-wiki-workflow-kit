@@ -9,7 +9,7 @@ kind: report-gate-review
 created: 2026-05-11
 target: wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html
 status: review-ready
-updated: 2026-05-12
+updated: 2026-05-18
 ---
 
 # Report Gate Review
@@ -17,8 +17,8 @@ updated: 2026-05-12
 ## Article Intent Contract
 
 - Audience: internal product, engineering, QA, project-management, and management stakeholders.
-- Reader promise: explain what we should do after the company-playbook and newspaper H5 conclusions, using our own repository and ADR/log evidence, while stating what a non-internet-giant team should not do, where each step of the workflow comes from, and how our roles change inside that workflow.
-- Output shape: long-form H5 article with restrained newspaper/report layout, data strip, generated image-model one-page infographic, workflow provenance section, explicit do-not/do sections, Li Xiang four-layer case matrix, technical roadmap, priority execution checklist, software-engineering workflow reshape, role responsibility map, mode-change evidence rows, inline failure evidence, writing workflow, and a short role-specific pilot plan.
+- Reader promise: explain why we should move from AI tools to an AI-assisted operating system that rewrites product-engineering work, using our own repository evidence plus the split-account-core collaboration case, while stating what a non-internet-giant team should not do and how roles change inside the new workflow.
+- Output shape: long-form H5 article with restrained newspaper/report layout, data strip, generated image-model one-page infographic, split-account-core contrast case, five AI capability layers, explicit do-not/do sections, Li Xiang four-layer case matrix, technical roadmap, priority execution checklist, software-engineering workflow reshape, role responsibility map, mode-change evidence rows, inline failure evidence, writing workflow, and a short role-specific pilot plan.
 - Non-goals: not a dashboard, not a card wall, not a table-grid report, not a tool instruction page, not a generic AI trend article.
 
 ## Reference Structure Map
@@ -41,7 +41,7 @@ updated: 2026-05-12
   - Repository evidence numbers and concrete failure cases.
   - Mode-change data: account-team-efficiency pre-OpenSpec fixish 26.6%, OpenSpec early phase 32.2%, gate-pressure short window 24.5%; account-meeting-lore public report gate short window fixish 8.5%.
   - Explicit strategic boundary: do not build foundation models, generic RAG platform, AI middle-platform theater, or AI usage-rate management.
-  - Execution checklist: intent packet, Spec/ADR entry, Agent execution packet, evidence matrix, review packet, skill gates, failure writeback, weekly metrics.
+  - Execution checklist: intent recognition and requirement shaping, knowledge linking and code archaeology,方案推演, tool-connected execution, verification feedback, failure writeback, and operating observation.
   - Image-model infographic: inserted as the scan-first visual summary for the H5.
   - Workflow provenance: each of the eight landing steps now maps external company inspiration, local failure evidence, and implementation meaning.
   - Role-change design: section `13 · 角色变化` now maps the operating system to owners, artifacts, completion evidence, and role behavior changes.
@@ -121,6 +121,11 @@ Plain-language module correction on 2026-05-18:
 - User feedback: the nine-step explanation still sounded like process jargon; `意图包`, `多方案验证`, `Spec / ADR`, `Agent 执行包`, and `证据矩阵` needed to be explained in plain operational terms, the interview calibration should not be a standalone section, and company/interview references should show different role implications.
 - Response: rewrote section `04` as nine plain-language modules: process recording base, evaluation system, standard process documents, Agent creation center, evaluation/observability center, review packet, decision gate, failure writeback system, and operating dashboard. Removed the standalone interview-calibration section and merged Li Xiang's four-layer cases into the external-coordinate section. Role-change now includes separate external implications from OpenAI, Anthropic, Stripe, Block, and the Li Xiang interview before mapping internal owners.
 
+Workway rewrite correction on 2026-05-18:
+
+- User feedback: the article still drifted into module naming and did not foreground that AI must be fitted with "eyes and hands" inside the company's real operating system. The local split-account-core case should be used as a contrast case: 16 visible meetings, 9 requirement docs, 6 detailed designs, 3 meeting notes, around 90k words, and daily test progress still exposed goal drift, information mismatch, one-person judgment bottlenecks, and cross-team friction.
+- Response: rewrote the opening into a `from AI tool to AI operating system: rewrite our work方式` thesis. Section `02` now uses split-account-core as the first local contrast case. Section `04` now uses five AI capability layers instead of nine process modules: intent recognition and requirement shaping, knowledge linking and code archaeology,方案推演 and risk evaluation, tool-connected execution, and verification feedback / operating observation. Later workflow, role-change, pilot, and final-judgment sections were aligned to this five-layer structure.
+
 Verification performed for this text-only update:
 
 - WeChat body fetched with `.codex/skills/weixin-reader/scripts/fetch_weixin.py`.
@@ -129,6 +134,7 @@ Verification performed for this text-only update:
 - Technical roadmap screenshots: `/tmp/our-operating-system-roadmap-rewrite-tall.png` and `/tmp/our-operating-system-roadmap-rewrite-mobile.png`.
 - Progression-spine screenshots: `/tmp/our-operating-system-reading-spine.png` and `/tmp/our-operating-system-reading-spine-mobile.png`.
 - Plain-language module screenshots: `/tmp/our-operating-system-plain-modules.png`, `/tmp/our-operating-system-external-coordinates.png`, and `/tmp/our-operating-system-role-company-points.png`.
+- Workway rewrite screenshots: `/tmp/our-operating-system-workway-rewrite.png` and `/tmp/our-operating-system-workway-rewrite-mobile.png`.
 - Frontmatter precheck was run for the new source note. The repo-wide gate still reports legacy blockers; the target entry list has no target-specific drift entry.
 
 Boundary:
