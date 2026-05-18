@@ -39,6 +39,8 @@
   with existing identity.
 - [x] 22. Apply approved batch 13f to the ai-workflow trace ops page with
   existing identity.
-- [ ] 23. Get approval for the next classification batch before applying more
+- [x] 23. Apply approved batch 14a to remap clean `agents-governance-*` ops
+  pages from forbidden `personal-ops` to repo wiki governance fields.
+- [ ] 24. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 24. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 25. Add final evaluation evidence and run OpenSpec validation.

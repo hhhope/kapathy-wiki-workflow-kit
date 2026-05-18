@@ -672,6 +672,59 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14a Evidence
+
+Approved batch:
+
+- Batch 14a: clean `agents-governance-*` ops pages with existing identity and
+  forbidden `domain: personal-ops`
+
+Applied fields:
+
+- `domain: wiki`
+- `layer: ops`
+- `ops_area: agent-governance`
+
+Target set:
+
+- `wiki/ops/agents-governance-281-compression-retro-2026-05-06.md`
+- `wiki/ops/agents-governance-drift-distill-2026-04-21.md`
+- `wiki/ops/agents-governance-drift-distill-calibration-retro.md`
+- `wiki/ops/agents-governance-drift-explore.md`
+- `wiki/ops/agents-governance-drift-playbook-2026-04-21.md`
+- `wiki/ops/agents-governance-drift-retro.md`
+- `wiki/ops/agents-governance-remediation-explore-2026-04-21.md`
+
+Before target counts:
+
+- all 7 pages had 4 errors covering forbidden `domain: personal-ops`,
+  missing `layer`, and missing `ops_area`
+
+After target counts:
+
+- all 7 target pages reported `after.entry_count: 0`
+- all 7 target precheck runs reported `target.entry_count: 0`; the precheck
+  command still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 496
+- `summary.error`: 496
+
+Boundary:
+
+- Existing `canonical_object` and `artifact_type` values were preserved.
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.
+
 ## Batch 13f Evidence
 
 Approved batch:

@@ -5,7 +5,9 @@ canonical_object: agents-governance-drift-distill-calibration
 artifact_type: retro
 language: zh-CN
 audience: self
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
 status: active
 updated_at: 2026-04-21
 ai_generated: true
