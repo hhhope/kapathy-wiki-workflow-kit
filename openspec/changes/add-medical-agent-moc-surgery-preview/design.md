@@ -23,7 +23,8 @@ MOC routing must run before generic preview routing.
 
 MOC signals: `moc`, `obsidian`, `图谱导航`, `知识地图`.
 
-Review signals: `preview`, `预览`, `surgery`, `手术`, `分流`, `审`.
+Review signals: `preview`, `预览`, `surgery`, `手术`, `分流`, `审核`,
+`审查`, `复核`.
 
 ## Payload
 

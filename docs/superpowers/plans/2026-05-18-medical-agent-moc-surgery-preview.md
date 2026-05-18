@@ -91,8 +91,8 @@ Out of scope:
 - Writing treatment records.
 - Writing surgery records.
 - Updating the active case file.
-- Mutating `Confirmed Decisions`, taxonomy config, ADRs, AGENTS, skills, or
-  OpenSpec lifecycle state.
+- Mutating `Confirmed Decisions`, taxonomy config, ADRs, AGENTS, skills,
+  unrelated OpenSpec lifecycle state, or archiving changes.
 
 ## Success Criteria
 
@@ -132,7 +132,8 @@ MOC routing must run before generic preview routing.
 
 MOC signals: `moc`, `obsidian`, `图谱导航`, `知识地图`.
 
-Review signals: `preview`, `预览`, `surgery`, `手术`, `分流`, `审`.
+Review signals: `preview`, `预览`, `surgery`, `手术`, `分流`, `审核`,
+`审查`, `复核`.
 
 ## Payload
 
@@ -193,6 +194,14 @@ requests and route them to a read-only `moc_surgery_preview` action.
 - **WHEN** no active medical case exists
 - **THEN** the medical agent SHALL block `moc_surgery_preview`
 - **AND** it SHALL return `blocked_reason: no_active_case`.
+
+#### Scenario: User requests MOC preview with multiple active cases
+
+- **WHEN** multiple active medical cases exist
+- **THEN** the medical agent SHALL block `moc_surgery_preview`
+- **AND** it SHALL return `blocked_reason: multiple_active_cases`
+- **AND** it SHALL return active-case selection behavior
+- **AND** it SHALL NOT build or apply MOC writes.
 
 #### Scenario: User requests ordinary treatment preview
 
@@ -443,7 +452,7 @@ with:
 ```python
 READ_ONLY_INTENTS = {"status", "diagnose"}
 MOC_SIGNALS = ("moc", "obsidian", "图谱导航", "知识地图")
-MOC_REVIEW_SIGNALS = ("preview", "预览", "surgery", "手术", "分流", "审")
+MOC_REVIEW_SIGNALS = ("preview", "预览", "surgery", "手术", "分流", "审核", "审查", "复核")
 ```
 
 - [ ] **Step 2: Add MOC classifier helper**

@@ -25,6 +25,14 @@ requests and route them to a read-only `moc_surgery_preview` action.
 - **THEN** the medical agent SHALL block `moc_surgery_preview`
 - **AND** it SHALL return `blocked_reason: no_active_case`.
 
+#### Scenario: User requests MOC preview with multiple active cases
+
+- **WHEN** multiple active medical cases exist
+- **THEN** the medical agent SHALL block `moc_surgery_preview`
+- **AND** it SHALL return `blocked_reason: multiple_active_cases`
+- **AND** it SHALL return active-case selection behavior
+- **AND** it SHALL NOT build or apply MOC writes.
+
 #### Scenario: User requests ordinary treatment preview
 
 - **WHEN** the user asks to preview confirmed treatment candidates
