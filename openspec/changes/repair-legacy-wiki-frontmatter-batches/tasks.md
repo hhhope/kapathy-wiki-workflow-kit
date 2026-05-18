@@ -51,6 +51,8 @@
   public-report output calibration ops pages from forbidden `personal-ops`.
 - [x] 27. Apply approved batch 14e to remap unresolved intelligence-native
   organization intake to explicit unclassified learning-capture fields.
-- [ ] 28. Get approval for the next classification batch before applying more
+- [x] 28. Apply approved batch 14f to remap clean conversation handoff sample
+  from forbidden `personal-ops` to repo wiki governance fields.
+- [ ] 29. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 29. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 30. Add final evaluation evidence and run OpenSpec validation.

@@ -6,7 +6,9 @@ source_path: chat://handoff-mode/sample-north-star
 source_type: conversation
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
 period: active
 confidence: high
 status: active

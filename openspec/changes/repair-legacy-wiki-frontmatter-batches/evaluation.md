@@ -626,6 +626,54 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14f Evidence
+
+Approved batch:
+
+- Batch 14f: clean conversation handoff sample with existing identity and
+  forbidden `domain: personal-ops`
+
+Applied fields:
+
+- `domain: wiki`
+- `layer: ops`
+- `ops_area: agent-governance`
+
+Target set:
+
+- `wiki/ops/sample-handoff-topic.md`
+
+Before target counts:
+
+- the page had 4 errors covering forbidden `domain: personal-ops`,
+  missing `layer`, and missing `ops_area`
+
+After target counts:
+
+- the target precheck run reported `target.entry_count: 0`; the precheck
+  command still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 440
+- `summary.error`: 440
+
+Boundary:
+
+- Existing `canonical_object` and `artifact_type` values were preserved.
+- The page stayed in `wiki/ops`; no sample migration or relation edits were
+  attempted.
+- No body text, taxonomy config, checker logic, MOC, ADR, or OpenSpec lifecycle
+  state was changed.
+
 ## Batch 14e Evidence
 
 Approved batch:
