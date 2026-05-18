@@ -117,6 +117,14 @@ Use these scenarios to validate trigger and gate behavior.
 | A new visual skill is added for public materials but its evaluation does not test bypassing the public report gate | Skill Authoring Boundary + Outer Gate Role | FAIL until pressure evidence shows the parent gate is preserved |
 | A request names an existing `.html` report and asks for `一图流` / `知识卡`, and the agent completes the task by adding only HTML cards or sections | HTML-Target Visual Route + Visual Gate | FAIL; direct HTML editing must stop until visual script and standalone asset route are produced or explicitly declined |
 
+## Tool Executor Bypass Replay
+
+| Scenario | RED Baseline | GREEN Corrected Route | Proof Boundary |
+|---|---|---|---|
+| User asks for a reader-facing H5 report's section images and mentions image-model output, but no visual package or per-image script exists | Agent jumps directly to `imagegen` because the user named an image model | `public-report-quality-gate` remains the parent route; existing visuals are inspected when they exist; `knowledge-article-visual` owns the visual series; `infographic-onepager` scripts each image; `imagegen` is only the final bitmap executor | Validates routing and gate expectations, not automatic runtime dispatch in every future client |
+| User asks to sync a reader-facing report to Feishu and the agent jumps directly to `lark-doc` | Agent treats Feishu writing as the workflow owner because the user named the destination tool | Feishu writing is an executor after draft readiness, judgment ownership, sync approval, and post-write read-back boundaries | Validates routing and gate expectations, not automatic runtime dispatch in every future client |
+| User asks for source-backed report research and the agent jumps directly to search/browser results without source workflow boundaries | Agent treats search/browser output as sufficient evidence because the user asked to look something up | Search and browser tools are executors under the workflow that owns source selection, citation boundary, and evidence classification | Validates routing and gate expectations, not automatic runtime dispatch in every future client |
+
 ## Agent Intent Routing Replay
 
 | Scenario | Expected Result |

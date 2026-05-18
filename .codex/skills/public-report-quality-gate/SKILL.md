@@ -125,12 +125,11 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Ask the user at real output fork-points before acting, including image model
   vs H5/HTML, overwrite vs image-only update, draft-only vs Feishu sync, and
   publish title/status changes.
-- When a reader-facing `.html` report or H5 page is named together with
-  visual-deliverable wording such as `一图流`, `知识卡`, `章节配图`, `图片`,
-  `生图`, `跑图`, or `图片模型`, do not satisfy the request by editing only
-  in-page HTML sections. Stop direct HTML body edits first, route to visual
-  package scripting and output-mode selection or inference, and produce or plan
-  standalone visual assets before any optional HTML embedding.
+- When a reader-facing `.html` report or H5 page needs standalone visual
+  deliverables or section-level visual assets, do not satisfy the request by
+  editing only in-page HTML sections. Stop direct HTML body edits first, route
+  to visual package scripting and output-mode selection or inference, and
+  produce or plan standalone visual assets before any optional HTML embedding.
 - Generate required report visuals as local assets when requested, but do not
   insert images into Feishu by default. If the user will add images manually,
   keep Feishu sync text-only and preserve local asset paths.
@@ -144,6 +143,20 @@ implementation reports unless the user asks for a reader-facing deliverable.
   and final verification under their own skills.
 - Treat learning reuse as process evidence, not automatic promotion into
   `AGENTS.md`, specs, skills, or root instructions.
+
+## Anti-pattern: Tool Executor Bypass
+
+Tool Executor Bypass means routing delivery-sensitive work directly to a
+low-level executor because the user mentioned a tool, while skipping the parent
+workflow that owns intent, output shape, review, and evidence.
+
+Example: reader-facing H5/report visuals must not jump straight to image
+generation because the user mentioned an image model. First follow
+`public-report-quality-gate -> knowledge-article-visual ->
+infographic-onepager -> imagegen`.
+
+The same principle applies to search/browser, Feishu writing, code execution,
+and image generation: they are executors, not workflow owners.
 
 ## Load
 
