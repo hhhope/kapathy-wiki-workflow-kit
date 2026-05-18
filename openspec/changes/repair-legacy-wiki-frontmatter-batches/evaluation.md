@@ -626,6 +626,52 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 13e Evidence
+
+Approved batch:
+
+- Batch 13e: agent-harness learning-capture ops pages with existing identity
+
+Applied fields:
+
+- `layer: ops`
+- `ops_area: learning-capture`
+
+Target set:
+
+- `wiki/ops/evolver-self-evolving-harness-reading-notes.md`
+- `wiki/ops/harness-engineering-overview-reading-notes.md`
+
+Before target counts:
+
+- both pages had 3 errors covering `layer` and `ops_area`
+
+After target counts:
+
+- both target pages reported `after.entry_count: 0`
+- both target precheck runs reported `target.entry_count: 0`; the precheck
+  command still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 527
+- `summary.error`: 527
+
+Boundary:
+
+- Existing `domain`, `canonical_object`, and `artifact_type` values were
+  preserved.
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.
+
 ## Batch 13d Evidence
 
 Approved batch:

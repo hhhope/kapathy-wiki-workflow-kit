@@ -35,6 +35,8 @@
   pages with existing identity.
 - [x] 20. Apply approved batch 13d to product-engineering source-intake ops
   pages with existing identity.
-- [ ] 21. Get approval for the next classification batch before applying more
+- [x] 21. Apply approved batch 13e to agent-harness learning-capture ops pages
+  with existing identity.
+- [ ] 22. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 22. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 23. Add final evaluation evidence and run OpenSpec validation.

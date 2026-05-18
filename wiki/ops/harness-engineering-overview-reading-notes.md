@@ -7,6 +7,8 @@ language: zh-CN
 audience: self
 knowledge_level: working
 domain: agent-harness
+layer: ops
+ops_area: learning-capture
 status: active
 confidence: candidate
 updated_at: 2026-05-08
