@@ -4,7 +4,11 @@ type: focus-thread
 language: zh-CN
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: workflow-trace
+canonical_object: sample-focus-thread
+artifact_type: method
 period: active
 status: active
 updated_at: 2026-04-14

@@ -626,6 +626,61 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14h Evidence
+
+Approved batch:
+
+- Batch 14h: clean sample ops pages with doctor-run candidate frontmatter and
+  forbidden `domain: personal-ops`
+
+Applied fields:
+
+- `domain: wiki`
+- `layer: ops`
+- `ops_area: workflow-trace`
+- `canonical_object` and `artifact_type` from the stable sample filename/title
+  and prior doctor-run candidate frontmatter
+
+Target set:
+
+- `wiki/ops/sample-codex-handoff.md`
+- `wiki/ops/sample-disagreement-retro.md`
+- `wiki/ops/sample-explore-trace.md`
+- `wiki/ops/sample-focus-thread.md`
+- `wiki/ops/sample-intake.md`
+- `wiki/ops/sample-reminder.md`
+
+Before target counts:
+
+- all 6 pages had 6 errors covering forbidden `domain: personal-ops`, missing
+  `layer`, missing `ops_area`, missing `canonical_object`, and missing
+  `artifact_type`
+
+After target counts:
+
+- all 6 target precheck runs reported `target.entry_count: 0`; the precheck
+  commands still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 392
+- `summary.error`: 392
+
+Boundary:
+
+- Relation candidates from the doctor run were not applied.
+- The pages stayed in `wiki/ops`; no sample migration, page body edit,
+  taxonomy config edit, checker logic edit, MOC edit, ADR edit, or OpenSpec
+  lifecycle state change was attempted.
+
 ## Batch 14g Evidence
 
 Approved batch:

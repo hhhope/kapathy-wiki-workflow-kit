@@ -6,7 +6,11 @@ source_path: chat://openspec-explore/sample
 source_type: conversation
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: workflow-trace
+canonical_object: sample-explore
+artifact_type: trace
 period: active
 confidence: medium
 status: active

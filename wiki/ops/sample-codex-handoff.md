@@ -4,7 +4,11 @@ type: codex-handoff
 language: zh-CN
 audience: project
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: workflow-trace
+canonical_object: sample-codex-handoff
+artifact_type: method
 period: evergreen
 status: draft
 updated_at: 2026-04-14

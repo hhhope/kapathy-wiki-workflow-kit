@@ -55,6 +55,8 @@
   from forbidden `personal-ops` to repo wiki governance fields.
 - [x] 29. Apply approved batch 14g to rebuild clean agent-governance gate-gap
   ops identities and remap them from forbidden `personal-ops`.
-- [ ] 30. Get approval for the next classification batch before applying more
+- [x] 30. Apply approved batch 14h to rebuild clean sample ops identities and
+  remap them from forbidden `personal-ops`.
+- [ ] 31. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 31. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 32. Add final evaluation evidence and run OpenSpec validation.

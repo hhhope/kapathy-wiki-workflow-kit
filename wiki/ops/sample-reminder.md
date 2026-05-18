@@ -4,7 +4,11 @@ type: reminder
 language: zh-CN
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: workflow-trace
+canonical_object: sample-reminder
+artifact_type: method
 period: evergreen
 status: open
 updated_at: 2026-04-14

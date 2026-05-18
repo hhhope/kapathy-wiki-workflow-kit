@@ -6,7 +6,11 @@ source_path: inbox/dev-task-routing-note.md
 source_type: note
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: workflow-trace
+canonical_object: sample
+artifact_type: intake
 period: evergreen
 confidence: high
 status: active
