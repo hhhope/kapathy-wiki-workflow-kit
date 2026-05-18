@@ -1,11 +1,11 @@
 # Tasks
 
-- [ ] 1. Add tests for dialogue drift classification buckets and non-goals.
-- [ ] 2. Add a review-only classifier or report section for dialogue
+- [x] 1. Add tests for dialogue drift classification buckets and non-goals.
+- [x] 2. Add a review-only classifier or report section for dialogue
   disagreement, agent drift, re-anchor traces, supporting examples, and
   non-dialogue-drift pages.
-- [ ] 3. Cover the current medical-loop candidate set in fixture or replay
+- [x] 3. Cover the current medical-loop candidate set in fixture or replay
   evidence.
-- [ ] 4. Ensure output remains review-only and does not write frontmatter,
+- [x] 4. Ensure output remains review-only and does not write frontmatter,
   relations, taxonomy config, ADRs, AGENTS, skills, or OpenSpec lifecycle state.
-- [ ] 5. Validate focused tests and OpenSpec change validation.
+- [x] 5. Validate focused tests and OpenSpec change validation.
