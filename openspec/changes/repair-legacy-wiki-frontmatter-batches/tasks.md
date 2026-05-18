@@ -53,6 +53,8 @@
   organization intake to explicit unclassified learning-capture fields.
 - [x] 28. Apply approved batch 14f to remap clean conversation handoff sample
   from forbidden `personal-ops` to repo wiki governance fields.
-- [ ] 29. Get approval for the next classification batch before applying more
+- [x] 29. Apply approved batch 14g to rebuild clean agent-governance gate-gap
+  ops identities and remap them from forbidden `personal-ops`.
+- [ ] 30. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 30. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 31. Add final evaluation evidence and run OpenSpec validation.

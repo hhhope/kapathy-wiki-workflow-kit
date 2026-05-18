@@ -4,7 +4,11 @@ type: retro
 language: zh-CN
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
+canonical_object: agent-governance-gate-gap
+artifact_type: retro
 period: 2026-04
 status: active
 updated_at: 2026-04-18

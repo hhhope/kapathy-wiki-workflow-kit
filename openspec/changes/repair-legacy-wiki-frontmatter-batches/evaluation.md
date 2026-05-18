@@ -626,6 +626,58 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14g Evidence
+
+Approved batch:
+
+- Batch 14g: clean agent-governance gate-gap ops pages with filename/title
+  identity and forbidden `domain: personal-ops`
+
+Applied fields:
+
+- `domain: wiki`
+- `layer: ops`
+- `ops_area: agent-governance`
+- `canonical_object: agent-governance-gate-gap`
+- `artifact_type: explore` for the explore trace page
+- `artifact_type: retro` for the retro page
+
+Target set:
+
+- `wiki/ops/agent-governance-gate-gap-explore-2026-04-18.md`
+- `wiki/ops/agent-governance-gate-gap-retro-2026-04-18.md`
+
+Before target counts:
+
+- both pages had 6 errors covering forbidden `domain: personal-ops`, missing
+  `layer`, missing `ops_area`, missing `canonical_object`, and missing
+  `artifact_type`
+
+After target counts:
+
+- both target precheck runs reported `target.entry_count: 0`; the precheck
+  commands still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 428
+- `summary.error`: 428
+
+Boundary:
+
+- Identity values came from the stable filename/title object and artifact
+  suffixes, with matching prior doctor-run evidence.
+- No relation fields, body text, taxonomy config, checker logic, MOC, ADR, or
+  OpenSpec lifecycle state was changed.
+
 ## Batch 14f Evidence
 
 Approved batch:

@@ -6,7 +6,11 @@ source_path: chat://openspec-explore/agent-governance-gate-gap-2026-04-18
 source_type: conversation
 audience: self
 knowledge_level: working
-domain: personal-ops
+domain: wiki
+layer: ops
+ops_area: agent-governance
+canonical_object: agent-governance-gate-gap
+artifact_type: explore
 period: active
 confidence: high
 status: active
