@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 canonical_object: report-wiki-product-plan
 artifact_type: product-plan
 related_objects:

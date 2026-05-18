@@ -188,6 +188,71 @@ Boundary:
 - No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
   lifecycle state were changed.
 
+## Batch 14q Evidence
+
+Approved batch:
+
+- Batch 14q: clean product/runtime drift, product plan, and scorecard
+  calibration ops pages.
+
+Target set:
+
+- `wiki/ops/product-alignment-drift-explore-2026-05-09.md`
+- `wiki/ops/product-capability-and-graph-gap-explore-2026-05-09.md`
+- `wiki/ops/report-wiki-product-plan-2026-05-09.md`
+- `wiki/ops/scope-drift-retro.md`
+- `wiki/ops/scorecard-calibration-gap-explore-2026-05-09.md`
+
+Applied fields:
+
+- `layer: ops`
+- `domain: wiki` for product alignment, product capability, product plan, and
+  scope drift pages.
+- `domain: agent-harness` for the scorecard calibration gap page from doctor
+  candidate evidence.
+- `ops_area`: `wiki-runtime` or `workflow-trace`
+- missing identity fields on `scope-drift-retro.md`
+
+After target counts:
+
+- all 5 target pages reported `target.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 200
+- `summary.error`: 200
+- top remaining samples include `wiki/mnt/...`, `wiki/ops/index.md`,
+  `wiki/ops/obsidian-wiki-project-gap-review-2026-05-09.md`,
+  `wiki/ops/team-knowledge-base-overview-paragraph-drift-runtime-replay-2026-05-11.md`,
+  and `wiki/ops/wiki-doctor-runs/...`
+
+OpenSpec validation:
+
+```bash
+openspec validate repair-legacy-wiki-frontmatter-batches --strict
+```
+
+Result:
+
+- `Change 'repair-legacy-wiki-frontmatter-batches' is valid`
+- PostHog DNS flush failed after validation; this did not change the command's
+  successful validation result.
+
+Boundary:
+
+- No relation fields were added.
+- Existing relation fields were preserved.
+- Page bodies were not changed.
+- No taxonomy config, checker logic, MOC pages, ADRs, skills, or OpenSpec
+  lifecycle state were changed.
+
 ## Batch 1 Baseline
 
 Planner command:

@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: agent-harness
+ops_area: wiki-runtime
 canonical_object: scorecard-calibration-gap
 artifact_type: explore-trace
 related_objects:

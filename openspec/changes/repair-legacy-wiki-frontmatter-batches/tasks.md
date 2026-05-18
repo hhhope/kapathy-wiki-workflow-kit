@@ -75,4 +75,6 @@
   reminder ops pages.
 - [x] 39. Apply approved batch 14p to clean nirvana intake and public report
   explore ops pages.
-- [ ] 40. Add final evaluation evidence and run OpenSpec validation.
+- [x] 40. Apply approved batch 14q to clean product/runtime drift, product
+  plan, and scorecard calibration ops pages.
+- [ ] 41. Add final evaluation evidence and run OpenSpec validation.

@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: workflow-trace
+canonical_object: scope-drift
+artifact_type: retro
+---
+
 # Scope Drift 复盘
 
 这页记录一次典型的实施边界偏移：OpenSpec 变更已经完成，但实现继续自然延伸到了下一阶段自动化。

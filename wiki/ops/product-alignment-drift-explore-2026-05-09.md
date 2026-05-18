@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 canonical_object: product-alignment-drift
 artifact_type: explore-trace
 related_objects:

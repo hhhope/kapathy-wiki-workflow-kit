@@ -1,4 +1,7 @@
 ---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
 canonical_object: product-capability-and-graph-gap
 artifact_type: explore-trace
 related_objects:
