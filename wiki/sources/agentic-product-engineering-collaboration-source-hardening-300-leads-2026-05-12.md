@@ -2,6 +2,8 @@
 artifact_type: source-hardening
 title: agentic-product-engineering-collaboration / source hardening / 300 leads
 canonical_object: agentic-product-engineering-collaboration
+layer: sources
+domain: product-engineering-collaboration
 source_type: external-public-source-hardening
 created: 2026-05-12
 status: expanded-source-leads

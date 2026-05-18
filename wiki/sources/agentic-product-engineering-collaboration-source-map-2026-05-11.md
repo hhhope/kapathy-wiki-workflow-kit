@@ -2,6 +2,8 @@
 artifact_type: source-map
 title: agentic-product-engineering-collaboration / source-map
 canonical_object: agentic-product-engineering-collaboration
+layer: sources
+domain: product-engineering-collaboration
 source_type: external-article-collection
 created: 2026-05-11
 related_scan:

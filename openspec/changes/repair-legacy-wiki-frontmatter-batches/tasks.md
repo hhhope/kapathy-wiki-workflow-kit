@@ -24,6 +24,7 @@
   change the blocker state.
 - [x] 13. Split the remaining mixed root/index/ops classification blockers into
   an approved follow-up plan before applying more fields.
-- [ ] 14. Get approval for the next classification batch before applying more
+- [x] 14. Apply approved classification batches 7, 8, and 9.
+- [ ] 15. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 15. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 16. Add final evaluation evidence and run OpenSpec validation.

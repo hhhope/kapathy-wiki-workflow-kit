@@ -2,6 +2,8 @@
 artifact_type: report
 title: AI Agent 时代，产研协作从人力流水线走向人机作业系统
 canonical_object: agentic-product-engineering-collaboration
+layer: reports
+domain: product-engineering-collaboration
 status: draft
 audience: mixed-management
 created: 2026-05-11

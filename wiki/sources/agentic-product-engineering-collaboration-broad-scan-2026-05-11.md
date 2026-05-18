@@ -2,6 +2,8 @@
 artifact_type: broad-source-scan
 title: agentic-product-engineering-collaboration / broad-source-scan
 canonical_object: agentic-product-engineering-collaboration
+layer: sources
+domain: product-engineering-collaboration
 source_type: external-broad-scan
 created: 2026-05-11
 status: broad-scan

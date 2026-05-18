@@ -2,6 +2,8 @@
 artifact_type: public-source-timeline
 title: agentic-product-engineering-collaboration / public-timeline / 2026-01-to-2026-05
 canonical_object: agentic-product-engineering-collaboration
+layer: sources
+domain: product-engineering-collaboration
 source_type: external-public-source-timeline
 created: 2026-05-11
 date_range: 2026-01-01..2026-05-11

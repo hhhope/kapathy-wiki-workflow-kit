@@ -416,3 +416,42 @@ Boundary:
 - No wiki page frontmatter was changed in this step.
 - The next field-writing step requires approval for a named batch from
   `classification-plan.md`.
+
+## Batch 7-9 Evidence
+
+Approved batches:
+
+- Batch 7: Sources With Existing Source Identity
+- Batch 8: Unclassified Meeting Sources
+- Batch 9: Single Product Report
+
+Applied fields:
+
+- Batch 7 source pages: `layer: sources` and
+  `domain: product-engineering-collaboration`.
+- Batch 8 meeting-source pages: `layer: sources`, keep
+  `domain: unclassified`, and add `classification_needed: true`.
+- Batch 9 report page: `layer: reports` and
+  `domain: product-engineering-collaboration`.
+
+Target after counts:
+
+- all 9 target pages reported `after.entry_count: 0`.
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 683
+- `summary.error`: 683
+
+Boundary:
+
+- `wiki/sources/agentic-product-engineering-collaboration-public-timeline-2026-01-to-2026-05.md`
+  had pre-existing non-frontmatter table formatting changes. Only this
+  batch's frontmatter hunk is task-related for the commit.

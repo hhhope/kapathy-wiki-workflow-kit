@@ -2,6 +2,8 @@
 artifact_type: podcast-video-source-pool
 title: agentic-product-engineering-collaboration / podcast-video-discussions
 canonical_object: agentic-product-engineering-collaboration
+layer: sources
+domain: product-engineering-collaboration
 source_type: external-podcast-video-discussion-pool
 created: 2026-05-11
 status: broad-discussion-scan
