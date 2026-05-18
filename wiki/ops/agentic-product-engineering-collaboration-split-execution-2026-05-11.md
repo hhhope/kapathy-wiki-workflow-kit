@@ -2,6 +2,9 @@
 artifact_type: ops-execution-plan
 title: agentic-product-engineering-collaboration / split execution
 canonical_object: agentic-product-engineering-collaboration
+layer: ops
+domain: product-engineering-collaboration
+ops_area: workflow-trace
 created: 2026-05-11
 status: active
 derived_from:

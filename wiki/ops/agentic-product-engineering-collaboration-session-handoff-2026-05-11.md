@@ -2,6 +2,9 @@
 artifact_type: ops-handoff
 title: agentic-product-engineering-collaboration / session handoff
 canonical_object: agentic-product-engineering-collaboration
+layer: ops
+domain: product-engineering-collaboration
+ops_area: workflow-trace
 created: 2026-05-11
 updated: 2026-05-11 15:09 CST
 status: active

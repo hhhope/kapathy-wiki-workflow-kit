@@ -2,6 +2,9 @@
 artifact_type: workflow-gate
 title: agentic-product-engineering-collaboration / workflow gate
 canonical_object: agentic-product-engineering-collaboration
+layer: ops
+domain: product-engineering-collaboration
+ops_area: workflow-trace
 created: 2026-05-11
 status: active
 derived_from:
@@ -72,4 +75,3 @@ Feishu is blocked until hard gates pass and the user approves. Default Feishu
 output is text-only with local image paths or captions. Image insertion is a
 separate external operation because API read-back does not prove client-side
 usability.
-

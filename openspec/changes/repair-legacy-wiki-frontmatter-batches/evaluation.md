@@ -489,6 +489,9 @@ Before target counts:
 After target counts:
 
 - all 7 target pages reported `after.entry_count: 0`
+- all 7 target precheck runs reported `target.entry_count: 0`; the precheck
+  command still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
 
 Whole-wiki residual command:
 
@@ -616,6 +619,55 @@ Result:
 - `passed`: false
 - `blocking_count`: 589
 - `summary.error`: 589
+
+Boundary:
+
+- Existing `canonical_object` and `artifact_type` values were preserved.
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.
+
+## Batch 13c Evidence
+
+Approved batch:
+
+- Batch 13c: product-engineering workflow-trace ops pages with existing
+  identity
+
+Applied fields:
+
+- `layer: ops`
+- `domain: product-engineering-collaboration`
+- `ops_area: workflow-trace`
+
+Target set:
+
+- `wiki/ops/agentic-collaboration-company-playbook-page-explore-2026-05-11.md`
+- `wiki/ops/agentic-company-playbook-quality-failure-root-cause-explore-2026-05-11.md`
+- `wiki/ops/agentic-product-engineering-collaboration-company-playbook-role-change-diagnosis-2026-05-12.md`
+- `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-role-change-design-2026-05-12.md`
+- `wiki/ops/agentic-product-engineering-collaboration-session-handoff-2026-05-11.md`
+- `wiki/ops/agentic-product-engineering-collaboration-split-execution-2026-05-11.md`
+- `wiki/ops/agentic-product-engineering-collaboration-workflow-gate-2026-05-11.md`
+
+Before target counts:
+
+- all 7 pages had 4 errors covering `layer`, `domain`, and `ops_area`
+
+After target counts:
+
+- all 7 target pages reported `after.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 541
+- `summary.error`: 541
 
 Boundary:
 

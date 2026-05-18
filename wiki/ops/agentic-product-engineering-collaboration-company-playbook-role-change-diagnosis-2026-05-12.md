@@ -2,6 +2,9 @@
 title: agentic-product-engineering-collaboration company playbook role-change diagnosis
 canonical_object: agentic-product-engineering-collaboration
 artifact_type: office_hours_design
+layer: ops
+domain: product-engineering-collaboration
+ops_area: workflow-trace
 status: draft
 created: 2026-05-12
 target: wiki/reports/agentic-product-engineering-collaboration-company-playbook.html

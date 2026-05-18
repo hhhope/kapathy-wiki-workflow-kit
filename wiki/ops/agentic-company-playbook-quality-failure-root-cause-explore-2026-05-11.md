@@ -2,6 +2,9 @@
 title: agentic-company-playbook / quality failure root cause explore
 canonical_object: agentic-product-engineering-collaboration
 artifact_type: explore_trace
+layer: ops
+domain: product-engineering-collaboration
+ops_area: workflow-trace
 status: exploring
 source_path: chat://openspec-explore/agentic-company-playbook-quality-failure/2026-05-11
 updated: 2026-05-11
