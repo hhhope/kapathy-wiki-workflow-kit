@@ -2,6 +2,9 @@
 artifact_type: report-gate-review
 title: agentic-product-engineering-collaboration / report-gate-review
 canonical_object: agentic-product-engineering-collaboration
+layer: ops
+domain: product-engineering-collaboration
+ops_area: report-quality
 created: 2026-05-11
 derived_from:
   - wiki/reports/agentic-product-engineering-collaboration-management-report.md

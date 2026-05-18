@@ -622,3 +622,50 @@ Boundary:
 - Existing `canonical_object` and `artifact_type` values were preserved.
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
+
+## Batch 13b Evidence
+
+Approved batch:
+
+- Batch 13b: product-engineering report-quality ops pages with existing
+  identity
+
+Applied fields:
+
+- `layer: ops`
+- `domain: product-engineering-collaboration`
+- `ops_area: report-quality`
+
+Target set:
+
+- `wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md`
+- `wiki/ops/agentic-product-engineering-collaboration-image-model-visual-qa-2026-05-11.md`
+- `wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md`
+- `wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md`
+- `wiki/ops/agentic-product-engineering-collaboration-visual-production-brief-2026-05-11.md`
+
+Before target counts:
+
+- all 5 pages had 4 errors covering `layer`, `domain`, and `ops_area`
+
+After target counts:
+
+- all 5 target pages reported `after.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 569
+- `summary.error`: 569
+
+Boundary:
+
+- Existing `canonical_object` and `artifact_type` values were preserved.
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.

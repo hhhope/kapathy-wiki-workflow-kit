@@ -29,6 +29,8 @@
 - [x] 16. Apply approved batch 11 to root, public report, and timeline pages.
 - [x] 17. Apply approved batch 13a to wiki-runtime ops pages with existing
   identity.
-- [ ] 18. Get approval for the next classification batch before applying more
+- [x] 18. Apply approved batch 13b to product-engineering report-quality ops
+  pages with existing identity.
+- [ ] 19. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 19. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 20. Add final evaluation evidence and run OpenSpec validation.

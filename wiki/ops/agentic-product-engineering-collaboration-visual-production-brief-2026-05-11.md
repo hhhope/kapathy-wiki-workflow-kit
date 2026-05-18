@@ -2,6 +2,9 @@
 artifact_type: visual-production-brief
 title: agentic-product-engineering-collaboration / visual production brief
 canonical_object: agentic-product-engineering-collaboration
+layer: ops
+domain: product-engineering-collaboration
+ops_area: report-quality
 created: 2026-05-11
 status: draft
 derived_from:
@@ -211,4 +214,3 @@ Acceptance:
 - `Review Packet` is drawn as an evidence packet.
 - High-risk nodes require human review.
 - Includes all six loop nodes.
-

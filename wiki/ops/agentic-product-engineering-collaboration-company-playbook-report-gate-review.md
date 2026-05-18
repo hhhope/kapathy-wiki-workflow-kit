@@ -2,6 +2,9 @@
 title: agentic-product-engineering-collaboration-company-playbook / report gate review
 canonical_object: agentic-product-engineering-collaboration
 artifact_type: report_gate_review
+layer: ops
+domain: product-engineering-collaboration
+ops_area: report-quality
 status: draft
 source_path: wiki/reports/agentic-product-engineering-collaboration-company-playbook.html
 updated: 2026-05-12

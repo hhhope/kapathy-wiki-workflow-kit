@@ -2,6 +2,9 @@
 artifact_type: visual-qa
 title: agentic-product-engineering-collaboration / image-model visual qa
 canonical_object: agentic-product-engineering-collaboration
+layer: ops
+domain: product-engineering-collaboration
+ops_area: report-quality
 created: 2026-05-11
 status: partial
 derived_from:
