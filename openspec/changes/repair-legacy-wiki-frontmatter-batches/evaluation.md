@@ -352,3 +352,35 @@ Residual boundary:
 
 - Batch 6 reduced blockers by 26 because source pages had both whole-wiki
   `layer` requirements and source-page expected-layer checks.
+
+## Post-Batch 6 Medical Status
+
+Command:
+
+```bash
+python3 scripts/build_wiki_medical_agent.py --intent-text '$report-wiki-portfolio:wiki-medical-agent'
+```
+
+Result:
+
+- `intent`: `status`
+- `state`: `blocked`
+- `allowed_action`: `report_status`
+- `next_action`: `blocked`
+- `executable_count`: 10
+
+Remaining blocker shape:
+
+- `blocking_count`: 709
+- there are no remaining `layer`-only blocker pages
+- largest remaining groups require mixed classification:
+  - 65 pages with `domain`, `layer`, and `ops_area`
+  - 51 pages with `artifact_type`, `canonical_object`, `domain`, `layer`, and
+    `ops_area`
+  - 30 root/index-style pages with `domain` and `layer`
+
+Residual boundary:
+
+- More automatic layer-only repair would now be unsafe.
+- Next work must split root/index pages, mirrored `wiki/mnt` paths, and ops
+  pages into an approved classification plan before applying more fields.

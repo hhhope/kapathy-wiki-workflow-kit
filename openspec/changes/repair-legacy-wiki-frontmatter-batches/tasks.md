@@ -20,6 +20,8 @@
   need a domain decision.
 - [x] 11. Review and apply batch 6 to layer-only `wiki/reports`,
   `wiki/sources`, and `wiki/timeline` pages with existing domain values.
-- [ ] 12. Re-run medical recovery/status only after verified frontmatter batches
+- [x] 12. Re-run medical recovery/status only after verified frontmatter batches
   change the blocker state.
-- [ ] 13. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 13. Split the remaining mixed root/index/ops classification blockers into
+  an approved follow-up plan before applying more fields.
+- [ ] 14. Add final evaluation evidence and run OpenSpec validation.
