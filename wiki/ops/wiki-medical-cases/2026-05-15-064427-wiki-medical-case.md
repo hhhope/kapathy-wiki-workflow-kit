@@ -4,7 +4,7 @@ domain: wiki
 ops_area: wiki-runtime
 canonical_object: wiki-medical-case-file
 artifact_type: medical-case
-status: active
+status: blocked
 case_slug: wiki-medical-case
 created_at: 2026-05-15
 ---
@@ -23,6 +23,16 @@ created_at: 2026-05-15
 - full_detail_count: 155
 - review_focus_count: 145
 - taxonomy_candidate_count: 0
+
+## Proposed Decisions
+### Treatment Candidates
+- None
+### Surgery Candidates
+- None
+### Openspec Required
+- None
+### Blockers
+- None
 
 ## Confirmed Decisions
 ### Accepted Candidates
@@ -493,7 +503,7 @@ created_at: 2026-05-15
 - detail-0155 `wiki/adr/0034-readme-capability-map-is-project-description.md`: risks=adr_risk, openspec_required; candidate has review risks: adr_risk, openspec_required
 
 ## Treatment
-- Status: dry_run
+- Status: applied
 - Candidate count: 10
 
 ## Surgery Plan
@@ -501,11 +511,11 @@ created_at: 2026-05-15
 - Candidate count: 182
 
 ## Recovery
-- Status: pending
+- Status: completed
 
 ## Archive / Next Action
-- Status: pending
-- Next action: Use this case file as the source for treatment, surgery, recovery, and archive review.
+- Status: blocked
+- Next action: blocked
 
 ## Evidence Attachments
 ### Doctor
@@ -514,10 +524,13 @@ created_at: 2026-05-15
 - `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-review-decisions/2026-05-15-064420-review-decisions.md`
 ### Treatment
 - `wiki/ops/wiki-treatment-runs/2026-05-15-065102-treatment.md`
+- `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-treatment-runs/2026-05-18-014811-treatment.md`
+- `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-treatment-runs/2026-05-18-015905-treatment.md`
 ### Surgery
 - None
 ### Recovery
-- None
+- `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md`
+- `/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md`
 
 ## Proof Boundary
 - This is the canonical case file for review routing.
@@ -529,8 +542,9 @@ created_at: 2026-05-15
 ```json
 {
   "archive_next_action": {
-    "next_action": "Use this case file as the source for treatment, surgery, recovery, and archive review.",
-    "status": "pending"
+    "next_action": "blocked",
+    "reason": "Recovery result set the next medical-loop action.",
+    "status": "blocked"
   },
   "case_slug": "wiki-medical-case",
   "case_source": {
@@ -7630,63 +7644,153 @@ created_at: 2026-05-15
     "treatment_candidates": [
       {
         "detail_ref": "detail-0005",
+        "enrichment_confidence": "high",
+        "enrichment_needs_review": false,
         "path": "wiki/ops/ad-growth-cockpit-h5-report-gate-review.md",
         "reason": "existing or strongly evidenced candidate without unresolved review risks",
-        "risk_flags": []
+        "risk_flags": [],
+        "suggested_frontmatter": {
+          "artifact_type": "report-gate-review",
+          "canonical_object": "ad-growth-cockpit-h5",
+          "domain": "none",
+          "layer": "ops",
+          "ops_area": "report-quality"
+        }
       },
       {
         "detail_ref": "detail-0006",
+        "enrichment_confidence": "high",
+        "enrichment_needs_review": false,
         "path": "wiki/ops/ad-platform-operational-prototype-report-gate-review.md",
         "reason": "existing or strongly evidenced candidate without unresolved review risks",
-        "risk_flags": []
+        "risk_flags": [],
+        "suggested_frontmatter": {
+          "artifact_type": "report-gate-review",
+          "canonical_object": "ad-platform-operational-prototype",
+          "domain": "none",
+          "layer": "ops",
+          "ops_area": "report-quality"
+        }
       },
       {
         "detail_ref": "detail-0023",
+        "enrichment_confidence": "high",
+        "enrichment_needs_review": false,
         "path": "wiki/ops/agent-readable-wiki-semantic-scoring.md",
         "reason": "existing or strongly evidenced candidate without unresolved review risks",
-        "risk_flags": []
+        "risk_flags": [],
+        "suggested_frontmatter": {
+          "artifact_type": "method",
+          "canonical_object": "wiki-semantic-scoring",
+          "domain": "none",
+          "layer": "ops",
+          "ops_area": "wiki-runtime"
+        }
       },
       {
         "detail_ref": "detail-0050",
+        "enrichment_confidence": "high",
+        "enrichment_needs_review": false,
         "path": "wiki/ops/behavior-replay-gate.md",
         "reason": "existing or strongly evidenced candidate without unresolved review risks",
-        "risk_flags": []
+        "risk_flags": [],
+        "suggested_frontmatter": {
+          "artifact_type": "method",
+          "canonical_object": "behavior-replay-gate",
+          "domain": "none",
+          "layer": "ops",
+          "ops_area": "agent-governance"
+        }
       },
       {
         "detail_ref": "detail-0070",
+        "enrichment_confidence": "high",
+        "enrichment_needs_review": false,
         "path": "wiki/ops/karpathy-llm-wiki-reading-notes.md",
         "reason": "existing or strongly evidenced candidate without unresolved review risks",
-        "risk_flags": []
+        "risk_flags": [],
+        "suggested_frontmatter": {
+          "artifact_type": "reading-notes",
+          "canonical_object": "karpathy-llm-wiki",
+          "domain": "wiki",
+          "layer": "ops",
+          "ops_area": "learning-capture"
+        }
       },
       {
         "detail_ref": "detail-0072",
+        "enrichment_confidence": "high",
+        "enrichment_needs_review": false,
         "path": "wiki/ops/learning-capture-routing.md",
         "reason": "existing or strongly evidenced candidate without unresolved review risks",
-        "risk_flags": []
+        "risk_flags": [],
+        "suggested_frontmatter": {
+          "artifact_type": "intake",
+          "canonical_object": "learning-capture-routing",
+          "domain": "none",
+          "layer": "ops",
+          "ops_area": "learning-capture"
+        }
       },
       {
         "detail_ref": "detail-0077",
+        "enrichment_confidence": "high",
+        "enrichment_needs_review": false,
         "path": "wiki/ops/llm-wiki-self-evolution-medical-loop.md",
         "reason": "existing or strongly evidenced candidate without unresolved review risks",
-        "risk_flags": []
+        "risk_flags": [],
+        "suggested_frontmatter": {
+          "artifact_type": "ops-model",
+          "canonical_object": "llm-wiki-self-evolution",
+          "domain": "wiki",
+          "layer": "ops",
+          "ops_area": "wiki-runtime"
+        }
       },
       {
         "detail_ref": "detail-0113",
+        "enrichment_confidence": "high",
+        "enrichment_needs_review": false,
         "path": "wiki/ops/wiki-react-decision-trace-runtime.md",
         "reason": "existing or strongly evidenced candidate without unresolved review risks",
-        "risk_flags": []
+        "risk_flags": [],
+        "suggested_frontmatter": {
+          "artifact_type": "method",
+          "canonical_object": "wiki-react-decision-trace",
+          "domain": "wiki",
+          "layer": "ops",
+          "ops_area": "wiki-runtime"
+        }
       },
       {
         "detail_ref": "detail-0116",
+        "enrichment_confidence": "high",
+        "enrichment_needs_review": false,
         "path": "wiki/ops/wiki-runtime-layer-contract.md",
         "reason": "existing or strongly evidenced candidate without unresolved review risks",
-        "risk_flags": []
+        "risk_flags": [],
+        "suggested_frontmatter": {
+          "artifact_type": "method",
+          "canonical_object": "wiki-runtime-layer-contract",
+          "domain": "wiki",
+          "layer": "ops",
+          "ops_area": "wiki-runtime"
+        }
       },
       {
         "detail_ref": "detail-0117",
+        "enrichment_confidence": "high",
+        "enrichment_needs_review": false,
         "path": "wiki/ops/wiki-runtime-react-eval-apply-boundary-distill-2026-05-14.md",
         "reason": "existing or strongly evidenced candidate without unresolved review risks",
-        "risk_flags": []
+        "risk_flags": [],
+        "suggested_frontmatter": {
+          "artifact_type": "distill",
+          "canonical_object": "wiki-runtime-layer-boundary",
+          "domain": "wiki",
+          "layer": "ops",
+          "ops_area": "wiki-runtime"
+        }
       }
     ]
   },
@@ -7706,10 +7810,15 @@ created_at: 2026-05-15
     "doctor": [
       "wiki/ops/wiki-doctor-runs/2026-05-15-064214-review.md"
     ],
-    "recovery": [],
+    "recovery": [
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md",
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md"
+    ],
     "surgery": [],
     "treatment": [
-      "wiki/ops/wiki-treatment-runs/2026-05-15-065102-treatment.md"
+      "wiki/ops/wiki-treatment-runs/2026-05-15-065102-treatment.md",
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-treatment-runs/2026-05-18-014811-treatment.md",
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-treatment-runs/2026-05-18-015905-treatment.md"
     ]
   },
   "generated_at": "2026-05-15T06:44:20.893714+00:00",
@@ -7719,11 +7828,145 @@ created_at: 2026-05-15
     "Confirmed Decisions are the authority for surgery planning.",
     "Stage records are evidence attachments, not competing sources of truth."
   ],
-  "recovery": {
-    "records": [],
-    "status": "pending"
+  "proposed_decisions": {
+    "blockers": [],
+    "openspec_required": [],
+    "surgery_candidates": [],
+    "treatment_candidates": []
   },
-  "status": "active",
+  "recovery": {
+    "records": [
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-014833-recovery.md",
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-recovery-runs/2026-05-18-015928-recovery.md"
+    ],
+    "result": {
+      "checks": [
+        {
+          "check_id": "frontmatter_precheck",
+          "command": [
+            "/usr/bin/python3",
+            "scripts/wiki_gate_precheck.py",
+            "--root",
+            "/mnt/d/cloud/account-meeting-lore",
+            "--mode",
+            "frontmatter",
+            "--full-json-output",
+            "/tmp/wiki-recovery-frontmatter.json",
+            "--full-markdown-output",
+            "/tmp/wiki-recovery-frontmatter.md"
+          ],
+          "exit_code": 1,
+          "parsed_summary": {
+            "error": 892,
+            "info": 0,
+            "mode": "frontmatter",
+            "passed": false,
+            "total": 897,
+            "warn": 5
+          },
+          "passed": false,
+          "stderr_tail": "",
+          "stdout_tail": ",\n    {\n      \"severity\": \"error\",\n      \"kind\": \"missing_required_field\",\n      \"field\": \"ops_area\",\n      \"dimension\": \"completeness\",\n      \"count\": 125,\n      \"sample_paths\": [\n        \"wiki/ops/20260415100517-转写-yan的快速会议-纪要文本-1-intake.md\",\n        \"wiki/ops/20260415100517-转写-yan的快速会议-逐字稿文本-1-intake.md\",\n        \"wiki/ops/account-knowledge-base-structure-explore.md\"\n      ]\n    },\n    {\n      \"severity\": \"error\",\n      \"kind\": \"missing_required_field\",\n      \"field\": \"canonical_object\",\n      \"dimension\": \"identity_coverage\",\n      \"count\": 81,\n      \"sample_paths\": [\n        \"wiki/adr/0001-repository-default-workflow-changes-require-openspec.md\",\n        \"wiki/adr/0002-stable-decisions-live-in-wiki-adr.md\",\n        \"wiki/adr/0003-retros-stay-separate-from-adrs.md\"\n      ]\n    }\n  ],\n  \"target\": null,\n  \"full_report\": {\n    \"json\": \"/tmp/wiki-recovery-frontmatter.json\",\n    \"markdown\": \"/tmp/wiki-recovery-frontmatter.md\"\n  },\n  \"proof_boundary\": [\n    \"This precheck is an agent-readable summary of the configured frontmatter gate.\",\n    \"It does not replace the full checker report written to full_report paths.\",\n    \"It does not infer missing business domains from prose.\"\n  ]\n}\n"
+        },
+        {
+          "check_id": "doctor_adjudication",
+          "command": [
+            "/usr/bin/python3",
+            "scripts/build_wiki_content_adjudication.py",
+            "--root",
+            "/mnt/d/cloud/account-meeting-lore",
+            "--limit",
+            "0"
+          ],
+          "exit_code": 0,
+          "parsed_summary": {
+            "candidate_count": 155,
+            "drift_trace_count": 72,
+            "eval_error_count": 0,
+            "eval_passed": true,
+            "eval_warning_count": 0,
+            "full_detail_count": 155,
+            "mode": "review_package_summary",
+            "review_focus_count": 145,
+            "taxonomy_candidate_count": 0
+          },
+          "passed": true,
+          "stderr_tail": "",
+          "stdout_tail": "{\n  \"generated_at\": \"2026-05-18T01:59:19.771161+00:00\",\n  \"mode\": \"review_package_summary\",\n  \"review_record_path\": \"/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-doctor-runs/2026-05-18-015919-review.md\",\n  \"preview_limit\": 0,\n  \"summary\": {\n    \"candidate_count\": 155,\n    \"full_detail_count\": 155,\n    \"review_focus_count\": 145,\n    \"taxonomy_candidate_count\": 0,\n    \"drift_trace_count\": 72\n  },\n  \"eval_result\": {\n    \"passed\": true,\n    \"error_count\": 0,\n    \"warning_count\": 112\n  },\n  \"proof_boundary_notes\": [\n    \"Content adjudication is deterministic review output only.\",\n    \"It does not write frontmatter.\",\n    \"It does not mutate taxonomy config.\",\n    \"It does not prove hidden semantic truth.\"\n  ]\n}\n"
+        },
+        {
+          "check_id": "review_decisions",
+          "command": [
+            "/usr/bin/python3",
+            "scripts/build_wiki_review_decisions.py",
+            "--root",
+            "/mnt/d/cloud/account-meeting-lore",
+            "--limit",
+            "0"
+          ],
+          "exit_code": 0,
+          "parsed_summary": {
+            "accepted_candidates_count": 10,
+            "deferred_items_count": 145,
+            "mode": "wiki_review_decision_summary",
+            "openspec_required_count": 51,
+            "rejected_candidates_count": 113,
+            "source_detail_count": 155,
+            "surgery_candidates_count": 131,
+            "treatment_candidates_count": 10
+          },
+          "passed": true,
+          "stderr_tail": "",
+          "stdout_tail": "{\n  \"generated_at\": \"2026-05-18T01:59:23.895958+00:00\",\n  \"mode\": \"wiki_review_decision_summary\",\n  \"source_record\": null,\n  \"decision_record_path\": \"/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-review-decisions/2026-05-18-015923-review-decisions.md\",\n  \"preview_limit\": 0,\n  \"summary\": {\n    \"source_detail_count\": 155,\n    \"accepted_candidates_count\": 10,\n    \"rejected_candidates_count\": 113,\n    \"deferred_items_count\": 145,\n    \"treatment_candidates_count\": 10,\n    \"surgery_candidates_count\": 131,\n    \"openspec_required_count\": 51\n  },\n  \"proof_boundary_notes\": [\n    \"This is draft review routing only, not human approval.\",\n    \"It does not write frontmatter, taxonomy, relations, MOC, or OpenSpec state.\"\n  ]\n}\n"
+        },
+        {
+          "check_id": "surgery_plan",
+          "command": [
+            "/usr/bin/python3",
+            "scripts/build_wiki_surgery.py",
+            "--root",
+            "/mnt/d/cloud/account-meeting-lore"
+          ],
+          "exit_code": 0,
+          "parsed_summary": {
+            "governance_change_count": 72,
+            "moc_projection_count": 0,
+            "mode": "wiki_surgery_plan",
+            "relation_rebuild_count": 112,
+            "source_detail_count": 155,
+            "status": "planned",
+            "surgery_item_count": 131,
+            "taxonomy_decision_count": 0
+          },
+          "passed": true,
+          "stderr_tail": "",
+          "stdout_tail": "boundary.md\",\n      \"risk_flags\": [\n        \"adr_risk\",\n        \"openspec_required\"\n      ],\n      \"reason\": \"candidate has review risks: adr_risk, openspec_required\"\n    },\n    {\n      \"detail_ref\": \"detail-0155\",\n      \"path\": \"wiki/adr/0034-readme-capability-map-is-project-description.md\",\n      \"risk_flags\": [\n        \"adr_risk\",\n        \"openspec_required\"\n      ],\n      \"reason\": \"candidate has review risks: adr_risk, openspec_required\"\n    }\n  ],\n  \"taxonomy_decision_items\": [],\n  \"moc_projection_items\": [],\n  \"proof_boundary_notes\": [\n    \"This is a surgery plan only, not surgery approval.\",\n    \"It does not write frontmatter, taxonomy config, relations, MOC pages, ADR decisions, or OpenSpec state.\",\n    \"Surgery application requires a later explicit OpenSpec or human-approved apply workflow.\"\n  ],\n  \"next_review_actions\": [\n    \"Human review: decide which surgery items are real, duplicate, or obsolete.\",\n    \"OpenSpec: route governance, ADR, taxonomy, and broad relation changes to explicit changes.\",\n    \"MOC: review projection create/update/orphan entries before any generated file write.\",\n    \"Recovery: run checkers and doctor again only after surgery is applied.\"\n  ]\n}\n"
+        }
+      ],
+      "generated_at": "2026-05-18T01:59:28.106611+00:00",
+      "mode": "wiki_recovery_package",
+      "next_route": "blocked_by_recovery_findings",
+      "passed": false,
+      "proof_boundary_notes": [
+        "Recovery records check results only.",
+        "It does not apply treatment or surgery.",
+        "It does not write frontmatter, taxonomy config, relations, MOC pages, ADR decisions, status files, or OpenSpec state.",
+        "Nonzero checks are preserved as findings instead of hidden."
+      ],
+      "summary": {
+        "check_count": 4,
+        "failed_count": 1,
+        "passed_count": 3
+      }
+    },
+    "status": "completed",
+    "summary": {
+      "check_count": 4,
+      "failed_count": 1,
+      "passed_count": 3
+    }
+  },
+  "status": "blocked",
   "surgery_plan": {
     "candidate_count": 182,
     "records": [],
@@ -7732,14 +7975,17 @@ created_at: 2026-05-15
   "treatment": {
     "candidate_count": 10,
     "records": [
-      "wiki/ops/wiki-treatment-runs/2026-05-15-065102-treatment.md"
+      "wiki/ops/wiki-treatment-runs/2026-05-15-065102-treatment.md",
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-treatment-runs/2026-05-18-014811-treatment.md",
+      "/mnt/d/cloud/account-meeting-lore/wiki/ops/wiki-treatment-runs/2026-05-18-015905-treatment.md"
     ],
-    "status": "dry_run",
+    "status": "applied",
     "summary": {
-      "applied_count": 0,
+      "applied_count": 10,
       "blocked_count": 0,
-      "dry_run_count": 10,
-      "skipped_item_count": 145,
+      "dry_run_count": 0,
+      "skipped_item_count": 0,
+      "source_detail_count": 10,
       "treatment_item_count": 10
     }
   }

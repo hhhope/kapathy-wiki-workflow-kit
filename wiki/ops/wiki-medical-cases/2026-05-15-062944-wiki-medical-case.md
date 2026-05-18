@@ -4,7 +4,7 @@ domain: wiki
 ops_area: wiki-runtime
 canonical_object: wiki-medical-case-file
 artifact_type: medical-case
-status: active
+status: closed
 case_slug: wiki-medical-case
 created_at: 2026-05-15
 ---
@@ -530,7 +530,7 @@ created_at: 2026-05-15
 {
   "archive_next_action": {
     "next_action": "Use this case file as the source for treatment, surgery, recovery, and archive review.",
-    "status": "pending"
+    "status": "closed"
   },
   "case_slug": "wiki-medical-case",
   "case_source": {
@@ -7721,7 +7721,7 @@ created_at: 2026-05-15
     "records": [],
     "status": "pending"
   },
-  "status": "active",
+  "status": "closed",
   "surgery_plan": {
     "candidate_count": 182,
     "records": [],
