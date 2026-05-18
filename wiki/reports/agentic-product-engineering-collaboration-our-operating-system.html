@@ -927,7 +927,7 @@
           </div>
           <div class="poster-note">
             <strong>再跑闭环</strong>
-            <p>意图包、Spec / ADR、Agent 执行包、证据矩阵、Review Packet、人类判断、失败写回、周度指标。</p>
+            <p>过程记录、评估体系、标准过程文档、Agent 创作中心、评估与观测、评审包、人类判断、失败写回、运营指标。</p>
           </div>
           <div class="poster-note">
             <strong>最后改角色</strong>
@@ -938,82 +938,82 @@
     </section>
 
     <section class="section" id="workflow-provenance">
-      <p class="section-label">04 · 来源与约束</p>
-      <h2>先交代来源：这 9 步是外部调研和本地踩坑合出来的</h2>
+      <p class="section-label">04 · 系统拆法</p>
+      <h2>这 9 步先说成人话：核心是把全过程记录下来</h2>
       <p class="reading">
-        上一节先给出闭环图，但图本身不能替代论证。这里先交代流程来源：外部材料给方向，本地事故给约束，最后才变成 9 个动作。OpenAI 证明工程系统要先变成 Agent 可读、可执行、可审查；Anthropic 证明专业工作流要先探索、计划、验证，再委托；Stripe 证明 Agent 参与业务动作时必须协议化责任链；Block 证明组织级 AI 要有 guardrails、skills、CI 和指标，同时不能只追使用率；李想访谈补上经营现场里的多方案、可验证 Demo 和专业 owner 视角。
+        上一节先给出闭环图，但图本身不能替代论证。这里先把 9 步翻译成系统模块：第一件事不是让 Agent 开工，而是把从提问、评估、创作、验证、评审、拍板到复盘的全过程记录下来。没有记录，就没有责任链；没有评估，就只有单一路径；没有可观测证据，就只是在相信 Agent。
       </p>
       <div class="phase-list">
         <div class="phase-row">
-          <strong>1. 意图包</strong>
+          <strong>1. 过程记录底座<br>原来的“意图包”</strong>
           <div class="source-tags">
-            <span><b>外部出处</b>Anthropic 的 Claude Code 工作法强调先 explore、plan、verify，再 delegate；六个问题诊断法也要求先抓真实需求和现状成本。</span>
-            <span><b>本地证据</b>我们在共享 raw 数据需求里踩过“用户原话被翻译成内部表单能力”的漂移。</span>
-            <span><b>落地含义</b>每个需求先写用户原话、业务对象、动作、结果、非目标、验收路径。没有意图包，Agent 不开工。</span>
+            <span><b>说人话</b>意图包不是文档名，而是一条需求的原始记录：谁提的、要解决什么、对象是什么、希望看到什么结果、明确不做什么。</span>
+            <span><b>为什么要有</b>我们在共享 raw 数据需求里踩过“用户原话被翻译成内部表单能力”的漂移。原话不保留，后面所有执行都会越跑越偏。</span>
+            <span><b>系统形态</b>需求进入时先生成一张记录卡，后面的方案、Spec、执行、验证、评审都挂在这张卡下面。</span>
           </div>
         </div>
         <div class="phase-row">
-          <strong>2. 多方案验证</strong>
+          <strong>2. 评估体系<br>原来的“多方案验证”</strong>
           <div class="source-tags">
-            <span><b>外部出处</b>李想访谈里讲到 Agent 先分析、出多个方案、评分和优化，再由人选择；战略团队也先做可验证 Demo，再交工程专业化落地。</span>
-            <span><b>本地证据</b>我们的报告、H5 和需求任务多次不是缺执行，而是缺方案比较和取舍证据，导致后面反复改方向。</span>
-            <span><b>落地含义</b>重要需求进入实现前，先产出多个可验证方案、tradeoff、风险、评分和样例，由专业 owner 决定采用、合并或打回。</span>
+            <span><b>说人话</b>这不是“多写几个方案凑数”，而是正式开工前的评估体系：至少给出两条路径，说明成本、风险、收益、放弃什么。</span>
+            <span><b>为什么要有</b>很多返工不是缺执行，而是一开始没有比较方案，默认把第一稿推进成开发任务。</span>
+            <span><b>系统形态</b>Agent 负责生成候选方案和评分材料，专业 owner 负责选择、合并或打回。</span>
           </div>
         </div>
         <div class="phase-row">
-          <strong>3. Spec / ADR 入口</strong>
+          <strong>3. 标准过程文档<br>Spec / ADR 入口</strong>
           <div class="source-tags">
-            <span><b>外部出处</b>OpenAI Symphony 把 issue tracker 变成 Codex 编排入口；Stripe 把 Agent 交易做成可读协议链。</span>
-            <span><b>本地证据</b>本仓库已经沉淀 46 个 OpenSpec specs、32 条 ADR，说明跨角色决策需要稳定入口。</span>
-            <span><b>落地含义</b>跨模块、跨角色、改变默认协作方式的工作进入 Spec；稳定决策进入 ADR，不能散在聊天和会议里。</span>
+            <span><b>说人话</b>评估通过以后，不能直接丢给开发口头做。跨模块、跨角色、影响默认流程的事，必须进入标准过程文档。</span>
+            <span><b>为什么要有</b>本仓库已经沉淀 46 个 OpenSpec specs、32 条 ADR，说明稳定决策不能散在聊天、会议和临时笔记里。</span>
+            <span><b>系统形态</b>Spec 管变更范围、验收、风险和任务；ADR 管稳定决策和为什么这么选。</span>
           </div>
         </div>
         <div class="phase-row">
-          <strong>4. Agent 执行包</strong>
+          <strong>4. Agent 创作中心<br>原来的“执行包”</strong>
           <div class="source-tags">
-            <span><b>外部出处</b>OpenAI Codex / Harness 把 repo、tools、state、safety policy 放进执行循环；Anthropic Managed Agents 强调持久会话、沙箱和凭证隔离。</span>
-            <span><b>本地证据</b>我们多次遇到“代码改了，但假设、边界、未做事项、风险不清楚”。</span>
-            <span><b>落地含义</b>Agent 不只交代码，还要交任务范围、改动文件、假设、未做事项、验证命令和风险。</span>
+            <span><b>说人话</b>Agent 创作中心不是聊天窗口，而是一个能接收任务、产出代码/文案/测试/截图，并留下创作过程的工作台。</span>
+            <span><b>为什么要有</b>我们多次遇到“东西改了，但假设、边界、未做事项、风险不清楚”。没有执行记录，人没法审。</span>
+            <span><b>系统形态</b>每次 Agent 输出都附任务范围、改动文件、关键假设、未做事项、验证命令和风险说明。</span>
           </div>
         </div>
         <div class="phase-row">
-          <strong>5. 证据矩阵</strong>
+          <strong>5. 评估与观测中心<br>证据矩阵 / 可回放 / 可观测</strong>
           <div class="source-tags">
-            <span><b>外部出处</b>Block 的 testing pyramid、guardrails、Actionable CI 和 Stripe 的 integration eval 都指向同一件事：AI 产物必须被真实验证。</span>
-            <span><b>本地证据</b>raw list 优化里 mock 通过但真实 MySQL 缺字段；甘特图 DOM 存在但页面黑块不可用。</span>
-            <span><b>落地含义</b>按风险选择单测、集成、真实 API、真实 DB、权限、截图、视觉、性能、回放证据，不能只看构建成功。</span>
+            <span><b>说人话</b>证据矩阵不是单独一张表，它属于评估中心：这个结果能不能被真实验证、能不能回放、出了问题能不能观测到。</span>
+            <span><b>为什么要有</b>raw list 优化里 mock 通过但真实 MySQL 缺字段；甘特图 DOM 存在但页面黑块不可用。没有真实证据，就会把“中间正确”当成“用户成功”。</span>
+            <span><b>系统形态</b>按风险接入单测、集成、真实 API、真实 DB、权限、截图、视觉、性能、日志和回放材料。</span>
           </div>
         </div>
         <div class="phase-row">
-          <strong>6. Review Packet</strong>
+          <strong>6. 评审包<br>Review Packet</strong>
           <div class="source-tags">
-            <span><b>外部出处</b>OpenAI Symphony、GitHub issue-to-PR、Atlassian Rovo/Jira 都把 Agent 输出接到人类 review 对象上。</span>
-            <span><b>本地证据</b>我们的 H5 和 ops 记录已经把链路写成：diff / 草稿 / test / log -> review packet -> owner 判断。</span>
-            <span><b>落地含义</b>每个节点都要有 diff 摘要、业务映射、验证结果、截图或日志、风险和待判断问题。</span>
+            <span><b>说人话</b>Review Packet 就是交给人审的判断包，不是让负责人自己翻聊天、翻代码、翻日志重新拼上下文。</span>
+            <span><b>为什么要有</b>没有评审包，人类判断会退化成“听汇报”和“凭感觉”。</span>
+            <span><b>系统形态</b>固定包含业务映射、diff 摘要、验证结果、截图或日志、风险、待判断问题。</span>
           </div>
         </div>
         <div class="phase-row">
-          <strong>7. 人类判断</strong>
+          <strong>7. 决策关口<br>人类判断</strong>
           <div class="source-tags">
-            <span><b>外部出处</b>OpenAI 的核心表达是人负责驾驶、Agent 负责执行；Stripe 的启发是 Agent 参与业务动作时责任链必须清楚。</span>
-            <span><b>本地证据</b>我们已经把原则写成“目标人定，过程可委托，结果可审计”。</span>
-            <span><b>落地含义</b>目标、优先级、上线风险、业务取舍不能交给 Agent。Agent 给证据，人做判断。</span>
+            <span><b>说人话</b>人类判断不是流程末尾签个字，而是明确谁对目标、优先级、上线风险和业务取舍负责。</span>
+            <span><b>为什么要有</b>我们已经把原则写成“目标人定，过程可委托，结果可审计”。Agent 可以给证据，但不能替 owner 承担取舍。</span>
+            <span><b>系统形态</b>每个关键节点必须留下通过、打回、延期、缩范围或接受风险的结论和理由。</span>
           </div>
         </div>
         <div class="phase-row">
-          <strong>8. 失败写回</strong>
+          <strong>8. 失败写回系统</strong>
           <div class="source-tags">
-            <span><b>外部出处</b>Block 的 skills、guardrails、CI 反馈，OpenAI 的 feedback loop，Anthropic 的 verify / delegate 都要求失败进入下一轮系统。</span>
-            <span><b>本地证据</b>我们已经把需求漂移、真实 DB、视觉验收、报告形态漂移写进 logs、gate、skill 和 ops。</span>
-            <span><b>落地含义</b>每次打回必须归因，并写回 tests、ADR、ops、skill 或 checklist。只修当前 bug 不算闭环。</span>
+            <span><b>说人话</b>失败写回不是复盘作文，而是把这次踩坑变成下一次系统会提醒、会拦截、会检查的规则。</span>
+            <span><b>为什么要有</b>我们已经把需求漂移、真实 DB、视觉验收、报告形态漂移写进 logs、gate、skill 和 ops。只修当前 bug，不写回，就是下次继续交学费。</span>
+            <span><b>系统形态</b>失败归因后写回 tests、ADR、ops、skill、checklist 或项目规则。</span>
           </div>
         </div>
         <div class="phase-row">
-          <strong>9. 周度指标</strong>
+          <strong>9. 运营仪表<br>周度指标</strong>
           <div class="source-tags">
-            <span><b>外部出处</b>Block 给出了 AI 使用率、AI-authored code、节省时间、自动 PR 增长等指标，同时也暴露效率叙事和裁员绑定的风险。</span>
-            <span><b>本地证据</b>我们已经能统计 fixish 比例、RED/GREEN 证据、视觉日志、DB 日志、需求漂移日志和写回数量。</span>
-            <span><b>落地含义</b>管理层不看“谁用了 AI”，而看真实验证覆盖、返工下降、事故减少、写回增加和负责人是否清楚。</span>
+            <span><b>说人话</b>周度指标不是统计谁用了多少 AI，而是看这套作业系统有没有变健康。</span>
+            <span><b>为什么要有</b>我们已经能统计 fixish 比例、RED/GREEN 证据、视觉日志、DB 日志、需求漂移日志和写回数量，这些比“AI 使用率”更接近真实质量。</span>
+            <span><b>系统形态</b>看真实验证覆盖、返工下降、事故减少、写回增加、负责人是否清楚，以及同类问题是否重复发生。</span>
           </div>
         </div>
       </div>
@@ -1059,89 +1059,8 @@
       </div>
     </section>
 
-    <section class="section">
-      <p class="section-label">06 · 访谈校准</p>
-      <h2>四个层次讲清楚：原型、方案、反应链、分层架构</h2>
-      <p class="reading">
-        边界划清后，李想访谈提供了更具体的建设顺序。它真正值得写的，不是“他也在用 Claude Code”，而是四个层次本身已经把 Agent 的价值边界讲出来了：第一层，研究团队先把判断做成原型；第二层，Agent 把方案生成和方案比较结构化；第三层，底盘智能把感知到执行的反应链压短；第四层，车内 Agent 架构把泛化能力和确定性能力分开。
-      </p>
-      <div class="case-matrix" aria-label="李想访谈四个 Agent 层次">
-        <div class="case-matrix-head">
-          <span>层次</span>
-          <span>角色</span>
-          <span>目标</span>
-          <span>做法</span>
-          <span>完成结果</span>
-        </div>
-        <article class="case-matrix-row">
-          <div class="case-topic">
-            <span>第一层</span>
-            <strong>Cowork Demo</strong>
-            <em>研究判断先变成可跑原型</em>
-          </div>
-          <div class="case-cell" data-label="角色">战略/研究负责人带几个校招生，不是正式工程团队先上。</div>
-          <div class="case-cell" data-label="目标">回答工作协同、数据获取、人的工作价值衡量三个经营问题。</div>
-          <div class="case-cell" data-label="做法">研究 Anthropic Cowork 后做出 Demo，把协同、数据、云端/本地模型和价值衡量放进同一界面。</div>
-          <div class="case-cell" data-label="完成结果">Demo 成为和 HR、数仓团队讨论真实接入的对象，而不是一份抽象 PRD。</div>
-        </article>
-
-        <article class="case-matrix-row">
-          <div class="case-topic">
-            <span>第二层</span>
-            <strong>Agent 方案流程</strong>
-            <em>决策前先产生可比较方案</em>
-          </div>
-          <div class="case-cell" data-label="角色">管理者或业务 owner，负责选择，而不是把判断交给 Agent。</div>
-          <div class="case-cell" data-label="目标">提高方案质量，避免团队只包装一个主推路径。</div>
-          <div class="case-cell" data-label="做法">分析 -> 多方案 -> 博弈/打分 -> 优化 -> 人选择 -> 执行。</div>
-          <div class="case-cell" data-label="完成结果">决策前材料从“单一路径包装”变成“多方案比较”。</div>
-        </article>
-
-        <article class="case-matrix-row">
-          <div class="case-topic">
-            <span>第三层</span>
-            <strong>底盘智能</strong>
-            <em>压短感知到执行的整条反应链</em>
-          </div>
-          <div class="case-cell" data-label="角色">整车智能系统团队，不只是模型团队。</div>
-          <div class="case-cell" data-label="目标">让车从感知到执行更快、更可控、更让人信任。</div>
-          <div class="case-cell" data-label="做法">把感知、模型、控制和执行器一起设计，而不是只优化一个模型。</div>
-          <div class="case-cell" data-label="完成结果">人类反应约 350-400ms，旧系统约 400ms，新系统降到 200 多 ms；线控制动降到 13ms。</div>
-        </article>
-
-        <article class="case-matrix-row">
-          <div class="case-topic">
-            <span>第四层</span>
-            <strong>Agent 记忆</strong>
-            <em>从上下文堆叠改成记录和个性化分层</em>
-          </div>
-          <div class="case-cell" data-label="角色">车内 Agent 架构团队，负责拆分能力边界。</div>
-          <div class="case-cell" data-label="目标">不是做万能助手，而是让泛化任务、信息获取、精确控制、必要记录和个性化各走正确路径。</div>
-          <div class="case-cell" data-label="做法">记录归记录，个性化归个性化，检索交给知识图谱/RAG，稳定偏好用简单参数记忆。</div>
-          <div class="case-cell" data-label="完成结果">Agent、ChatBot、记录、知识图谱/RAG、个性化各司其职，不再把所有内容塞进上下文。</div>
-        </article>
-      </div>
-      <div class="pullquote">
-        这四个层次放在一起看，重点不是“AI 很厉害”，而是“生产系统的反应链正在被重写”：研究先变成原型，决策先变成方案流程，硬件智能变成端到端反应时间，Agent 记忆变成记录、检索、个性化和路由的分层架构。
-      </div>
-      <div class="role-list">
-        <div class="role-row">
-          <strong>回到我们的主题：产研协作也要先看反应链</strong>
-          <p>我们要借鉴的不是汽车行业的具体技术，而是这套看问题的方法：不要只看某个 Agent 能不能写得更快，而要看从用户意图到方案、从方案到 Spec、从 Spec 到执行、从执行到证据、从证据到判断、从失败到写回，整条链路有没有缩短、有没有更可靠、有没有更容易被审查。</p>
-        </div>
-        <div class="role-row">
-          <strong>专业的人做专业的事，但产物要更早可验证</strong>
-          <p>研究人员不是只交报告，而是交 Demo；产品不是只交需求摘要，而是交意图包和方案取舍；工程不是只交代码，而是交可运行系统和执行证据；测试不是只找问题，而是定义什么证据证明用户路径成立。AI 的价值，是把专业判断更早推到可验证状态。</p>
-        </div>
-        <div class="role-row">
-          <strong>做难而正确的事</strong>
-          <p>难点不是再接一个工具，而是解决协同、数据、安全、价值衡量和责任链：谁出题，谁给方案，谁验证，谁拍板，谁写回。这个链条固定住，AI 才不是局部提效。</p>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="technical-roadmap">
-      <p class="section-label">07 · 技术路线图</p>
+      <p class="section-label">06 · 技术路线图</p>
       <h2>技术路线不是搭平台，而是把一条真实链路跑通</h2>
       <p class="reading">
         这张路线图不能写成“接入大模型、接入知识库、接入工作流”。那还是工具堆叠。真正要回答的是四个顺序问题：先让什么工作对象可试，谁来比较方案，证据链怎么从后置验收前移，哪些东西应该沉淀成记录、检索和个性化。
@@ -1235,7 +1154,7 @@
     </section>
 
     <section class="section">
-      <p class="section-label">08 · 最小系统</p>
+      <p class="section-label">07 · 最小系统</p>
       <h2>最小可行方向：AI-assisted 产研作业系统</h2>
       <p class="reading">
         技术路线已经收敛到“一条真实链路”，所以最小可行方向也要收窄。这不是平台战略，是日常工作方式升级。我们已经有真实业务系统、真实看板、真实 DB、真实会议、真实需求、真实事故日志。AI 最应该进入的地方，是那些高频、重复、容易漂移、又必须留下证据的协作动作。第一步只做一个场景，把“提出问题、比较方案、执行验证、失败写回”完整跑通。
@@ -1265,52 +1184,52 @@
     </section>
 
     <section class="section">
-      <p class="section-label">09 · 工作流</p>
+      <p class="section-label">08 · 工作流</p>
       <h2>重点清单：重塑软件工程工作方式，不是加一个 AI 工具</h2>
       <p class="reading">
-        最小系统要能重复运行，就需要把它拆成固定工作流。接下来要做的不是“推广 AI 使用”，而是改造软件工程的工作对象。以前的主线是需求、开发、测试、上线；新的主线应该是意图、方案、spec、Agent 执行、证据包、人类判断、失败写回。九步流程的意义，不是多一套管理表格，而是保证每个需求都能从可试对象走到可审查结果。
+        最小系统要能重复运行，就需要把它拆成固定工作流。接下来要做的不是“推广 AI 使用”，而是改造软件工程的工作对象。以前的主线是需求、开发、测试、上线；新的主线应该是记录全过程、评估方案、沉淀标准文档、进入 Agent 创作中心、用评估与观测中心验收，再交给人审和写回。九步流程的意义，不是多一套管理表格，而是保证每个需求都能从可试对象走到可审查结果。
       </p>
       <div class="phase-list">
         <div class="phase-row">
-          <strong>1. 意图包</strong>
+          <strong>1. 过程记录底座</strong>
           <div>
-            <p>每个需求先沉淀用户原话、业务对象、动作、期望结果、非目标、负责人和验收路径。产品和 PM 对这里负责。没有意图包，Agent 不应直接开工；有了意图包，也要先让 Agent 做分析和反向问题，而不是立刻写实现。</p>
+            <p>每个需求先沉淀用户原话、业务对象、动作、期望结果、非目标、负责人和验收路径。没有这张记录卡，Agent 不应直接开工。</p>
           </div>
         </div>
         <div class="phase-row">
-          <strong>2. 多方案验证</strong>
+          <strong>2. 评估体系</strong>
           <div>
-            <p>进入正式实现前，先让 Agent 产出多个可验证方案，给出 tradeoff、风险、成本和评分；专业 owner 再选择或合并方案。这个动作把过去会议里的猜测，变成可审查的方案竞争。</p>
+            <p>进入正式实现前，先让 Agent 产出多个可验证方案，给出成本、风险、收益和评分；专业 owner 再选择、合并或打回。</p>
           </div>
         </div>
         <div class="phase-row">
-          <strong>3. Spec / ADR 入口</strong>
+          <strong>3. 标准过程文档</strong>
           <div>
             <p>跨模块、跨角色、会改变默认协作方式的工作进入 OpenSpec；稳定决策进入 ADR。研发组长负责判断是否需要 spec，不能让大改动伪装成小修。</p>
           </div>
         </div>
         <div class="phase-row">
-          <strong>4. Agent 执行包</strong>
+          <strong>4. Agent 创作中心</strong>
           <div>
-            <p>Agent 每次执行要留下任务范围、改动文件、假设、未做事项、测试和验证命令。工程师审查的是执行包，不是只看“代码已经改了”。</p>
+            <p>Agent 在这里生成代码、文案、测试、截图和验证材料，同时留下任务范围、假设、未做事项和风险。工程师审查的是创作过程和结果，不是只看“代码已经改了”。</p>
           </div>
         </div>
         <div class="phase-row">
-          <strong>5. 证据矩阵</strong>
+          <strong>5. 评估与观测中心</strong>
           <div>
-            <p>按风险选择证据：单测、集成、真实 API、真实 DB、权限路径、浏览器截图、视觉断言、性能耗时、回放场景。测试部门把证据矩阵变成准入标准。</p>
+            <p>按风险选择证据：单测、集成、真实 API、真实 DB、权限路径、浏览器截图、视觉断言、性能耗时、日志和回放场景。这里负责可验证、可观测、可回放。</p>
           </div>
         </div>
         <div class="phase-row">
-          <strong>6. Review packet</strong>
+          <strong>6. 评审包</strong>
           <div>
             <p>每个可审查节点都要有 diff 摘要、业务映射、验证结果、截图或日志、风险、需要人判断的问题。没有 review packet，就没有真正的“交付给人审”。</p>
           </div>
         </div>
         <div class="phase-row">
-          <strong>7. Skill 门禁</strong>
+          <strong>7. 人类判断</strong>
           <div>
-            <p>把高频失败写成 skill 或 gate：需求翻译漂移、真实 DB 验证、视觉验收、公共报告形态、H5 输出约束、行为回放。skill 不是提示词收藏，是下一轮运行时会触发的边界。</p>
+            <p>目标、优先级、上线风险和业务取舍必须由人明确决定。Agent 给证据，人给结论。</p>
           </div>
         </div>
         <div class="phase-row">
@@ -1320,7 +1239,7 @@
           </div>
         </div>
         <div class="phase-row">
-          <strong>9. 周度指标</strong>
+          <strong>9. 运营仪表</strong>
           <div>
             <p>管理层看趋势，不看口号：需求到 review packet 的周期、真实验证覆盖、返工次数、fixish 比例、RED/GREEN 证据、运行库事故、视觉打回、写回数量、重复坑是否下降。</p>
           </div>
@@ -1332,7 +1251,7 @@
     </section>
 
     <section class="section">
-      <p class="section-label">10 · 工程重塑</p>
+      <p class="section-label">09 · 工程重塑</p>
       <h2>软件工程从交付流水线，变成证据驱动的协作系统</h2>
       <div class="role-list">
         <div class="role-row">
@@ -1341,7 +1260,7 @@
         </div>
         <div class="role-row">
           <strong>新模式</strong>
-          <p>需求一进入就被结构化成意图包、方案包和 spec；Agent 负责生成多方案、代码、测试、报告、截图和证据；人负责判断目标、边界、取舍、上线风险；系统负责留下可回放记录、可检索知识和可修改偏好。</p>
+          <p>需求一进入就进入过程记录底座；评估体系先比较方案；标准过程文档锁住范围；Agent 创作中心产出代码、测试、报告、截图和证据；评估与观测中心负责真实验证；人负责判断目标、边界、取舍和上线风险。</p>
         </div>
         <div class="role-row">
           <strong>变化一</strong>
@@ -1363,7 +1282,7 @@
     </section>
 
     <section class="section">
-      <p class="section-label">11 · 模式数据</p>
+      <p class="section-label">10 · 模式数据</p>
       <h2>没有 Spec 时像救火；有了 Spec 和 Skill 后，问题先变得更可见</h2>
       <p class="reading">
         工作流写完后，需要回到数据看它是不是凭空想象。这组数据不能被解释成“上了 Spec 以后立刻少修 bug”。真实变化更像三段：先靠高频修复推进，再用 OpenSpec 把问题显性化，最后用 skill 门禁把输出形态、证据和回放约束住。短期内修复提交可能上升，因为以前藏在口头确认、局部 smoke、页面观感里的问题开始被命名。
@@ -1432,7 +1351,7 @@
     </section>
 
     <section class="section">
-      <p class="section-label">12 · 产出证据</p>
+      <p class="section-label">11 · 产出证据</p>
       <h2>总产出不是文件数量，而是证据种类变多了</h2>
       <p class="reading">
         更重要的不是提交数量，而是证据种类是否变多。两个项目合计 966 个非合并提交，其中 2026-05-01 以后 268 个。account-team-efficiency 留下 160 条协作日志、118 个测试相关文件、37 条 RED 证据日志、33 条 GREEN 证据日志、26 条视觉或截图相关日志、81 条运行库或 DB 相关日志、91 条需求或范围漂移相关日志、13 条性能或超时相关日志。account-meeting-lore 留下 46 个 OpenSpec specs、32 条 ADR、105 条 ops 记录、26 个 repo-local skills、8 个 H5/report HTML、4 个 report gate review。
@@ -1443,7 +1362,7 @@
     </section>
 
     <section class="section">
-      <p class="section-label">13 · 失败证据</p>
+      <p class="section-label">12 · 失败证据</p>
       <h2>我们踩过的坑，都说明“中间正确”不等于“用户成功”</h2>
       <div class="evidence-list">
         <div class="evidence-row">
@@ -1479,32 +1398,85 @@
       </div>
     </section>
 
-    <section class="section">
-      <p class="section-label">14 · 外部坐标回看</p>
-      <h2>回头看外部材料：它们不是模板，而是四个可选择的转型方向</h2>
+    <section class="section" id="external-coordinates">
+      <p class="section-label">13 · 外部坐标回看</p>
+      <h2>回头看外部材料：每家公司给的启发不一样</h2>
       <p class="reading">
-        本地失败说明了为什么需要证据链，外部材料则说明这条路不是孤立经验。它们不是让我们照抄，而是帮助判断哪些方向适合我们、哪些方向应该避开。
+        本地失败说明了为什么需要证据链，外部材料则说明这条路不是孤立经验。它们不是让我们照抄，也不是并列堆案例，而是各自提醒一个角色变化：工程系统怎么承接 Agent，专业 owner 怎么工作，业务动作怎么留责任链，组织怎么设指标，垂直生产场景怎么把判断做成原型。
       </p>
       <div class="company-grid">
         <article class="company-item">
-          <h3>OpenAI：工程系统 agent-first</h3>
-          <p>Harness 的重点不是“写更多代码”，而是 repo、issue、CI、review、观测和文档构成 agent 可以工作的操作系统。公开材料中的数字包括约 5 个月、约 100 万行代码、1500 个 PR、早期 3 名工程师后扩到 7 名。</p>
+          <h3>OpenAI：工程系统要能承接 Agent</h3>
+          <p>给研发组长和工程平台的启发：Agent 不是另一个聊天入口，而要进入 repo、issue、CI、review、观测和文档构成的工程系统。</p>
         </article>
         <article class="company-item">
-          <h3>Anthropic：专业工作流 human-AI 协作</h3>
-          <p>Claude 的价值在数据、产品、安全、营销、设计、法律等场景里展开。关键动作是先探索、再计划、再验证，同时管理上下文、MCP 和子任务边界。</p>
+          <h3>Anthropic：专业 owner 先探索再委托</h3>
+          <p>给产品、数据、安全、设计、法律等专业角色的启发：不要一上来让 Agent 开干，要先 explore、plan、verify，再 delegate。</p>
         </article>
         <article class="company-item">
-          <h3>Stripe：协议层 agent-readable</h3>
-          <p>Instant Checkout、ACP、SPT 的启发在于：当 Agent 进入商业交易，用户、Agent、商家和支付网络之间必须有协议化的责任链。</p>
+          <h3>Stripe：业务动作要有责任协议</h3>
+          <p>给业务 owner 和风控/财务的启发：当 Agent 进入交易、支付、审批这类动作，用户、Agent、商家和系统之间必须有可读责任链。</p>
         </article>
         <article class="company-item">
-          <h3>Block：组织制度和风险并存</h3>
-          <p>公开材料显示 95% 工程师经常使用 AI，50 位 AI Champions 投入 30% 时间做赋能，AI-authored code +69%，节省时间 +37%，自动 PR +21x。但组织叙事也会和裁员、岗位减少、信任边界缠在一起。</p>
+          <h3>Block：组织指标不能只看使用率</h3>
+          <p>给管理层和项目管理的启发：AI 使用率、AI-authored code、自动 PR 都可以看，但真正要管理的是 guardrails、skills、CI 反馈和组织信任风险。</p>
         </article>
         <article class="company-item">
-          <h3>李想访谈：垂直生产环境和专业 owner</h3>
-          <p>这次访谈补上一个经营视角：泛化问答只是入口，Agent 价值来自真实生产环境；专业人士用 AI 做可验证方案和 Demo，再由工程、测试和业务 owner 进入可规模化生产。它也把我们的路线拆清楚：原型、方案、反应链、分层架构。</p>
+          <h3>李想访谈：垂直生产场景先做原型</h3>
+          <p>给战略、产品和业务 owner 的启发：泛化问答只是入口，Agent 价值来自真实生产环境；专业人士先把判断做成 Demo 和可比较方案，再交给工程规模化。</p>
+        </article>
+      </div>
+      <div class="case-matrix" aria-label="李想访谈四个 Agent 层次">
+        <div class="case-matrix-head">
+          <span>层次</span>
+          <span>角色</span>
+          <span>目标</span>
+          <span>做法</span>
+          <span>完成结果</span>
+        </div>
+        <article class="case-matrix-row">
+          <div class="case-topic">
+            <span>第一层</span>
+            <strong>Cowork Demo</strong>
+            <em>判断先变成原型</em>
+          </div>
+          <div class="case-cell" data-label="角色">战略/研究负责人带几个校招生。</div>
+          <div class="case-cell" data-label="目标">回答协同怎么做、数据怎么接、人的工作价值怎么衡量。</div>
+          <div class="case-cell" data-label="做法">研究 Anthropic Cowork 后做出可操作 Demo。</div>
+          <div class="case-cell" data-label="完成结果">Demo 成为和 HR、数仓团队讨论真实接入的对象。</div>
+        </article>
+        <article class="case-matrix-row">
+          <div class="case-topic">
+            <span>第二层</span>
+            <strong>方案评估体系</strong>
+            <em>决策前先比较</em>
+          </div>
+          <div class="case-cell" data-label="角色">管理者或业务 owner。</div>
+          <div class="case-cell" data-label="目标">提高方案质量，而不是让 Agent 替人拍板。</div>
+          <div class="case-cell" data-label="做法">分析 -> 多方案 -> 博弈/打分 -> 优化 -> 人选择。</div>
+          <div class="case-cell" data-label="完成结果">单一路径包装变成多方案比较。</div>
+        </article>
+        <article class="case-matrix-row">
+          <div class="case-topic">
+            <span>第三层</span>
+            <strong>反应链</strong>
+            <em>从感知到执行变短</em>
+          </div>
+          <div class="case-cell" data-label="角色">整车智能系统团队。</div>
+          <div class="case-cell" data-label="目标">让系统从感知到执行更快、更可控。</div>
+          <div class="case-cell" data-label="做法">感知、模型、控制、执行器一起设计。</div>
+          <div class="case-cell" data-label="完成结果">系统反应从约 400ms 降到 200 多 ms，线控制动到 13ms。</div>
+        </article>
+        <article class="case-matrix-row">
+          <div class="case-topic">
+            <span>第四层</span>
+            <strong>记忆分层</strong>
+            <em>记录、检索、偏好分开</em>
+          </div>
+          <div class="case-cell" data-label="角色">车内 Agent 架构团队。</div>
+          <div class="case-cell" data-label="目标">不是万能助手，而是让不同需求走正确路径。</div>
+          <div class="case-cell" data-label="做法">记录归记录，检索交给知识图谱/RAG，偏好用简单参数记忆。</div>
+          <div class="case-cell" data-label="完成结果">Agent、ChatBot、记录、知识图谱/RAG、个性化各司其职。</div>
         </article>
       </div>
       <p class="source-note">
@@ -1513,14 +1485,36 @@
     </section>
 
     <section class="section" id="role-changes">
-      <p class="section-label">15 · 角色变化</p>
-      <h2>岗位怎么变：9 步流程里的 owner、产物和证据</h2>
+      <p class="section-label">14 · 角色变化</p>
+      <h2>岗位怎么变：9 个模块里的 owner、产物和证据</h2>
       <p class="reading">
         到这里，流程、数据和失败案例都指向同一件事：路线不会自己运行，必须落到 owner、产物和证据上。不是问“产品要不要写代码”，而是问每一步谁拥有产物、什么证据证明完成。Agent 可以执行很多动作，但 owner、边界和完成判断必须落到人和系统记录上。专业的人不是被 AI 替代，而是用 AI 把自己的判断变成更早可验证、更容易被工程化的产物。
       </p>
+      <div class="role-list">
+        <div class="role-row">
+          <strong>OpenAI 给研发组长的点</strong>
+          <p>研发组长要把 repo、issue、CI、review、观测和文档组织成 Agent 可工作的工程系统，而不是只分配开发任务。</p>
+        </div>
+        <div class="role-row">
+          <strong>Anthropic 给专业 owner 的点</strong>
+          <p>产品、数据、安全、设计、法律等角色要先探索、计划和验证，再把可执行部分委托给 Agent。</p>
+        </div>
+        <div class="role-row">
+          <strong>Stripe 给业务 owner 的点</strong>
+          <p>业务动作一旦涉及交易、支付、权限或审批，就必须有协议化责任链，不能让 Agent 动作变成黑箱。</p>
+        </div>
+        <div class="role-row">
+          <strong>Block 给管理层的点</strong>
+          <p>管理层不能只看 AI 使用率，要同时看 guardrails、skills、CI 反馈、组织信任和岗位风险。</p>
+        </div>
+        <div class="role-row">
+          <strong>李想访谈给战略/产品的点</strong>
+          <p>战略和产品不要只交判断报告，要把判断做成可试 Demo 和可比较方案，再让工程、测试和数据团队接真实系统。</p>
+        </div>
+      </div>
       <div class="phase-list">
         <div class="phase-row">
-          <strong>1. 意图包<br>Owner：产品 / PM</strong>
+          <strong>1. 过程记录底座<br>Owner：产品 / PM</strong>
           <div class="source-tags">
             <span><b>产物</b>用户原话、业务对象、动作、期望结果、非目标、负责人、验收路径。</span>
             <span><b>证据</b>Agent 能复述任务边界，不自行扩大范围；研发和测试能据此判断做与不做。</span>
@@ -1528,7 +1522,7 @@
           </div>
         </div>
         <div class="phase-row">
-          <strong>2. 多方案验证<br>Owner：业务 owner / 产品 / 专业负责人</strong>
+          <strong>2. 评估体系<br>Owner：业务 owner / 产品 / 专业负责人</strong>
           <div class="source-tags">
             <span><b>产物</b>Agent 分析、多个方案、评分、反向意见、可验证 Demo 或样例。</span>
             <span><b>证据</b>方案不是单一路径推销，而是能比较 tradeoff，并能被专业 owner 选择、打回或合并。</span>
@@ -1536,7 +1530,7 @@
           </div>
         </div>
         <div class="phase-row">
-          <strong>3. Spec / ADR 入口<br>Owner：研发组长</strong>
+          <strong>3. 标准过程文档<br>Owner：研发组长</strong>
           <div class="source-tags">
             <span><b>产物</b>OpenSpec、ADR 或明确的不进入理由，包含范围、非目标、验收、风险和回滚边界。</span>
             <span><b>证据</b>跨模块、跨角色、改变默认协作方式的工作没有伪装成小修；稳定决策能被下一轮读取。</span>
@@ -1544,7 +1538,7 @@
           </div>
         </div>
         <div class="phase-row">
-          <strong>4. Agent 执行包<br>Owner：研发工程师</strong>
+          <strong>4. Agent 创作中心<br>Owner：研发工程师</strong>
           <div class="source-tags">
             <span><b>产物</b>diff、改动文件、假设、未做事项、验证命令、风险清单和必要截图或日志。</span>
             <span><b>证据</b>Reviewer 不需要翻聊天记录，也能看清代码如何映射用户原话、哪些路径被验证、哪些只是 smoke。</span>
@@ -1552,7 +1546,7 @@
           </div>
         </div>
         <div class="phase-row">
-          <strong>5. 证据矩阵<br>Owner：QA / 测试</strong>
+          <strong>5. 评估与观测中心<br>Owner：QA / 测试</strong>
           <div class="source-tags">
             <span><b>产物</b>单测、集成、真实 API、真实 DB、权限路径、浏览器交互、截图、视觉断言、性能和回放要求。</span>
             <span><b>证据</b>证据覆盖用户真实路径和风险等级，不用 mock 字段、DOM 存在或构建通过冒充完成。</span>
@@ -1560,7 +1554,7 @@
           </div>
         </div>
         <div class="phase-row">
-          <strong>6. Review Packet<br>Owner：研发组长 / 业务 owner</strong>
+          <strong>6. 评审包<br>Owner：研发组长 / 业务 owner</strong>
           <div class="source-tags">
             <span><b>产物</b>业务映射、diff 摘要、验证结果、截图或日志、风险、待人判断问题。</span>
             <span><b>证据</b>人类可以直接做 approve / reject / defer 判断，而不是重新翻仓库、会议和聊天。</span>
@@ -1568,7 +1562,7 @@
           </div>
         </div>
         <div class="phase-row">
-          <strong>7. 人类判断<br>Owner：Boss / 指定 owner</strong>
+          <strong>7. 决策关口<br>Owner：Boss / 指定 owner</strong>
           <div class="source-tags">
             <span><b>产物</b>通过、打回、延期、缩范围或上线风险接受的明确结论。</span>
             <span><b>证据</b>决定和理由被写下，后续事故或复盘能回到当时的取舍。</span>
@@ -1584,7 +1578,7 @@
           </div>
         </div>
         <div class="phase-row">
-          <strong>9. 周度指标<br>Owner：Boss / 项目管理</strong>
+          <strong>9. 运营仪表<br>Owner：Boss / 项目管理</strong>
           <div class="source-tags">
             <span><b>产物</b>周期、验证覆盖、返工、事故、写回、重复坑、owner 清晰度趋势。</span>
             <span><b>证据</b>管理层看到的是作业系统健康度，而不是“谁用了多少 AI”。</span>
@@ -1600,7 +1594,7 @@
         </div>
         <div class="role-row">
           <strong>产品 / PM</strong>
-          <p>停止只交整理后的需求摘要；开始交意图包、非目标、验收路径、裁剪取舍和可验证方案；产物是用户路径验收样例和方案对比。</p>
+          <p>停止只交整理后的需求摘要；开始维护过程记录底座、非目标、验收路径、裁剪取舍和可验证方案；产物是用户路径验收样例和方案对比。</p>
         </div>
         <div class="role-row">
           <strong>研发组长</strong>
@@ -1608,21 +1602,21 @@
         </div>
         <div class="role-row">
           <strong>研发工程师</strong>
-          <p>停止让 AI 只交代码；开始把被选中的方案工程化，并交执行包：diff、假设、验证、风险和未做事项。</p>
+          <p>停止让 AI 只交代码；开始把被选中的方案工程化，并在 Agent 创作中心留下 diff、假设、验证、风险和未做事项。</p>
         </div>
         <div class="role-row">
           <strong>QA / 测试</strong>
-          <p>停止等功能完成后再进入；开始在执行前后定义证据矩阵、回放场景和真实环境检查。</p>
+          <p>停止等功能完成后再进入；开始维护评估与观测中心，定义证据、回放场景和真实环境检查。</p>
         </div>
         <div class="role-row">
           <strong>项目管理</strong>
-          <p>停止只报进行中、延期、完成；开始维护 9 状态链路：意图、方案验证、spec、执行、证据、review、人审、真实验证、写回。</p>
+          <p>停止只报进行中、延期、完成；开始维护 9 个模块的状态：记录、评估、文档、创作、观测、评审、决策、写回、运营指标。</p>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <p class="section-label">16 · 写作流程</p>
+      <p class="section-label">15 · 写作流程</p>
       <h2>以后写这类文章，先锁证据链，再写观点</h2>
       <p class="reading">
         这篇文章本身也是一次产研协作样例：如果证据、结构和结论没有先锁住，后面就会不断出现“局部改好了、全文又乱了”的问题。所以写作流程也要按同一套证据链处理。
@@ -1656,7 +1650,7 @@
     </section>
 
     <section class="section">
-      <p class="section-label">17 · 下一步</p>
+      <p class="section-label">16 · 下一步</p>
       <h2>先用一个真实链路做 30 天试点</h2>
       <p class="reading">
         现在才到行动建议：不要再写一套宏大制度，而是挑一个高频且容易暴露判断链的场景：看板指标异常解释链路。这个试点只验证一条线：异常解释先做成可跑原型，处理路径先做多方案比较，真实 DB / API / 截图形成证据链，最后把失败样例、业务偏好和规则写回。
@@ -1669,11 +1663,11 @@
         <div class="pilot-panel">
           <h3>30 天内按岗位只看 8 件事</h3>
           <ol>
-            <li>产品选一个看板指标异常场景，交第一版意图包。</li>
-            <li>业务 owner / 产品用 Agent 做分析、三套方案、评分和可验证样例。</li>
-            <li>研发组长判断是否进入 Spec / ADR，并写清执行边界。</li>
-            <li>研发工程师把被选中的方案工程化，同时提交执行包。</li>
-            <li>QA 定义真实 DB、真实 API、浏览器截图和视觉证据。</li>
+            <li>产品选一个看板指标异常场景，交第一版过程记录卡。</li>
+            <li>业务 owner / 产品用评估体系做三套方案、评分和可验证样例。</li>
+            <li>研发组长把被选方案写进标准过程文档，并写清执行边界。</li>
+            <li>研发工程师在 Agent 创作中心把方案工程化，同时留下过程记录。</li>
+            <li>QA 在评估与观测中心定义真实 DB、真实 API、浏览器截图和视觉证据。</li>
             <li>项目管理跟踪任务卡在哪个状态，而不是只跟日期。</li>
             <li>Boss 每周看返工、事故、写回和 owner 清晰度，不看 AI 使用率。</li>
             <li>每次打回都归因，并写回测试、ADR、skill 或项目规则。</li>
@@ -1684,7 +1678,7 @@
 
     <section class="section">
       <div class="reading">
-        <p class="section-label">18 · 最终判断</p>
+        <p class="section-label">17 · 最终判断</p>
         <h2>目标人定，过程可委托，结果可审计</h2>
         <p class="lead">
           产研工作方式的转变，不是把产品、研发、测试、项目管理都变成会提问的人，而是让每个角色都知道自己守哪一段责任链。人决定目标、边界和取舍；Agent 分析问题、生成多方案、放大专业判断、执行重复劳动、生成证据；系统留下可复盘、可回放、可检索、可改进的记录。

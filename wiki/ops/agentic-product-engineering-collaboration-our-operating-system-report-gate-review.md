@@ -114,7 +114,12 @@ Roadmap rewrite correction on 2026-05-18:
 Progression correction on 2026-05-18:
 
 - User feedback: the article still felt structurally messy; paragraph-to-paragraph and section-to-section relationships were not progressively building the theme.
-- Response: added a front-loaded reading spine after section `01`, renumbered the article into a single 18-section progression, removed patch-like labels such as `05A / 05B`, and rewrote section opening paragraphs so the sequence now reads as: judgment ->现场问题 -> conclusion visual -> sources and constraints -> boundary -> interview calibration -> technical route -> minimum system -> workflow -> engineering change -> data and failure evidence -> external coordinate review -> role changes -> writing method -> 30-day pilot -> final judgment.
+- Response: added a front-loaded reading spine after section `01`, renumbered the article into a single progression, removed patch-like labels such as `05A / 05B`, and rewrote section opening paragraphs so the sequence now reads as: judgment ->现场问题 -> conclusion visual -> sources and constraints -> boundary -> technical route -> minimum system -> workflow -> engineering change -> data and failure evidence -> external coordinate review -> role changes -> writing method -> 30-day pilot -> final judgment.
+
+Plain-language module correction on 2026-05-18:
+
+- User feedback: the nine-step explanation still sounded like process jargon; `意图包`, `多方案验证`, `Spec / ADR`, `Agent 执行包`, and `证据矩阵` needed to be explained in plain operational terms, the interview calibration should not be a standalone section, and company/interview references should show different role implications.
+- Response: rewrote section `04` as nine plain-language modules: process recording base, evaluation system, standard process documents, Agent creation center, evaluation/observability center, review packet, decision gate, failure writeback system, and operating dashboard. Removed the standalone interview-calibration section and merged Li Xiang's four-layer cases into the external-coordinate section. Role-change now includes separate external implications from OpenAI, Anthropic, Stripe, Block, and the Li Xiang interview before mapping internal owners.
 
 Verification performed for this text-only update:
 
@@ -123,6 +128,7 @@ Verification performed for this text-only update:
 - Text consistency check searched for old `8 步`, `8 状态`, and `7 件事` leftovers after adding the new step.
 - Technical roadmap screenshots: `/tmp/our-operating-system-roadmap-rewrite-tall.png` and `/tmp/our-operating-system-roadmap-rewrite-mobile.png`.
 - Progression-spine screenshots: `/tmp/our-operating-system-reading-spine.png` and `/tmp/our-operating-system-reading-spine-mobile.png`.
+- Plain-language module screenshots: `/tmp/our-operating-system-plain-modules.png`, `/tmp/our-operating-system-external-coordinates.png`, and `/tmp/our-operating-system-role-company-points.png`.
 - Frontmatter precheck was run for the new source note. The repo-wide gate still reports legacy blockers; the target entry list has no target-specific drift entry.
 
 Boundary:
