@@ -2,6 +2,7 @@
 title: Explore Trace Example
 type: example
 language: zh-CN
+layer: examples
 domain: workflow-example
 audience: self
 knowledge_level: working

@@ -2,6 +2,7 @@
 title: Account and Clearing
 type: domain
 language: zh-CN
+layer: domains
 domain: account-clearing
 audience: project
 knowledge_level: reusable

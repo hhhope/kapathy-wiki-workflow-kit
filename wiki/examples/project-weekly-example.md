@@ -2,6 +2,7 @@
 title: Project Weekly Example
 type: example
 language: zh-CN
+layer: examples
 domain: workflow-example
 audience: management
 knowledge_level: working

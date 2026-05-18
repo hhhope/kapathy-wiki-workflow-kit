@@ -238,3 +238,60 @@ Residual boundary:
 - Batch 4 reduced blockers by 10.
 - The remaining work is no longer a pure ADR-number batch and needs layer-by-
   layer review before broad apply.
+
+## Batch 5 Evidence
+
+Planner review:
+
+- The next blocker set moved into mixed root, domains, examples, and ops pages.
+- `wiki/domains/index.md` and `wiki/examples/index.md` need an explicit domain
+  decision and were deferred.
+- Batch 5 therefore includes only pages whose existing frontmatter already has
+  a domain value and whose only target blocker is missing `layer`.
+
+Batch 5 target set:
+
+- `wiki/domains/account-clearing.md`
+- `wiki/examples/explore-trace-example.md`
+- `wiki/examples/github-analysis-example.md`
+- `wiki/examples/learning-note-example.md`
+- `wiki/examples/meeting-note-example.md`
+- `wiki/examples/project-weekly-example.md`
+- `wiki/examples/weixin-summary-example.md`
+
+Before target counts:
+
+- every batch 5 page reported `before.entry_count: 1`
+- every batch 5 target entry was `missing_required_field: layer`
+
+Approved deterministic fields:
+
+- `wiki/domains/account-clearing.md`: add only `layer: domains`; keep existing
+  `domain: account-clearing`.
+- `wiki/examples/*.md`: add only `layer: examples`; keep existing
+  `domain: workflow-example`.
+
+After target counts:
+
+- all 7 batch 5 pages reported `after.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 5
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 735
+- `summary.error`: 735
+- top remaining samples include mixed root pages, deferred index pages, and ops
+  pages that still need `ops_area` / identity review
+
+Residual boundary:
+
+- Batch 5 reduced blockers by 7.
+- `wiki/domains/index.md` and `wiki/examples/index.md` remain intentionally
+  unresolved because they need a domain classification decision, not just a
+  layer insertion.

@@ -2,6 +2,7 @@
 title: Meeting Note Example
 type: example
 language: zh-CN
+layer: examples
 domain: workflow-example
 audience: project
 knowledge_level: working
