@@ -69,6 +69,12 @@ Learning-use map:
 | same | structure | Agent workflow can be analysis -> competing方案 -> scoring -> optimization -> human selection -> execution. | Added `多方案验证` as a new workflow step before Spec / ADR and reflected it in role ownership and the 30-day pilot. |
 | same | boundary | Professional owners are amplified by AI; they are not replaced by generic prompt use. | Strengthened section `13 · 角色变化` and final judgment language. |
 | same | evidence | Hard problems are collaboration, governed data access, value measurement, and responsibility chain. | Used to keep the H5 focused on review packets, real evidence, and writeback rather than tool adoption. |
+| same | evidence | Specific cases make the abstract thesis concrete: research lead plus new graduates built a Cowork-like Demo, Agent multi-plan workflow, chassis 200ms/400ms full-chain response, and in-car Agent architecture splitting generic vs deterministic needs. | Rewrote section `05A` as case-led reasoning from point to system-level conclusion. |
+
+Follow-up correction on 2026-05-18:
+
+- User feedback: the previous draft was not clear enough and should use concrete cases, especially the research lead bringing several new graduates to build the Cowork Demo and then work out how to connect with HR / data teams.
+- Response: section `05A` now starts from four cases and then lifts them into the product-engineering operating-system theme.
 
 Verification performed for this text-only update:
 

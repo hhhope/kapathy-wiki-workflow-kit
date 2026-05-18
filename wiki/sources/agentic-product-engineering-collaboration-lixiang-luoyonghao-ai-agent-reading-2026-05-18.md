@@ -49,6 +49,65 @@ Score breakdown:
 | Transfer path | 11 / 15 |
 | Verification path | 8 / 15 |
 
+## Case Notes For Current H5
+
+### Case 1: Research Team Built A Cowork Demo First
+
+The transcript's strongest collaboration case is the research / strategy group:
+a research lead brought several new graduates, studied Anthropic's workflow, and
+built a Cowork-like Demo instead of producing a traditional PRD. The Demo
+covered work collaboration, data connection, cloud/local model routing, and
+work-value measurement. They then validated collaboration with HR and data
+connection with the data warehouse team.
+
+Local transfer: use this as a case for "professional people move earlier into
+verifiable artifacts." Research/product can make the problem runnable first;
+engineering, data, security, and operations owners then turn it into a stable
+production system.
+
+### Case 2: Agent Workflow For Making Plans
+
+Li Xiang describes his own Agent workflow as:
+
+1. ask Agent to analyze;
+2. ask it to produce multiple competing plans;
+3. let the plans score or challenge each other;
+4. optimize the plan;
+5. human chooses;
+6. execute based on the chosen plan.
+
+Local transfer: this is the source for adding `多方案验证` before Spec / ADR.
+It makes the discussion visible and verifiable instead of relying on a leader's
+implicit intent or a single preselected plan.
+
+### Case 3: Chassis AI And 200ms / 400ms Reaction Gap
+
+The chassis case is a strong "vertical system" example. The useful claim for
+this H5 is not that our topic is automotive hardware; it is that vertical AI
+value comes from perception-to-execution optimization. Human reaction from
+seeing an object to braking and execution is described as roughly 350-400ms;
+older autonomous-driving reaction is described as around 400ms; the new system
+is described as a little over 200ms. A separate brake-by-wire detail contrasts
+older mechanical braking at roughly 60-70ms with electronic brake-by-wire at
+13ms.
+
+Local transfer: use this as analogy, not technical proof. In product-engineering
+collaboration, the equivalent is not one smarter model, but shortening the whole
+chain from intent -> plan -> spec -> execution -> evidence -> decision ->
+writeback.
+
+### Case 4: In-Car Agent Architecture Splits Generic And Deterministic Work
+
+The transcript splits user needs into generic tasks, generic information
+retrieval, precise control, necessary records, and personalization. It also
+contrasts an Agent-heavy weather query that wastes minutes and tokens with a
+local car interface that returns quickly and cheaply.
+
+Local transfer: generic Agent capability and deterministic vertical capability
+should coexist. Use general models for exploration and plans; use stable local
+interfaces, rules, tests, and governed data access where the job is known and
+must be reliable.
+
 ## Reusable Learning
 
 ### 1. Agent Needs A Real Production Environment
@@ -119,9 +178,10 @@ overseas-business sections into this H5.
 | Capability type | Learning point | H5 use |
 |---|---|---|
 | content | Agent needs real production feedback, not generic chat usage. | Added text calibration around generic vs vertical AI work. |
-| structure | Analyze, produce competing方案, score, optimize, human choose, execute. | Added into the 8-step workflow and 30-day pilot. |
+| structure | Analyze, produce competing方案, score, optimize, human choose, execute. | Added into the nine-step workflow and 30-day pilot. |
 | boundary | Specialist value increases when AI turns expertise into executable artifacts. | Strengthened role-change and final-judgment sections. |
 | evidence | Hard problems are collaboration, data access, and value measurement. | Used as a boundary for governed evidence and review packets. |
+| evidence | Cowork Demo, chassis 200ms/400ms contrast, and in-car Agent architecture show that vertical systems beat isolated generic tool use. | Rewrote section `05A · 新材料校准` as case-led reasoning from point to system-level conclusion. |
 
 ## Next Step
 
