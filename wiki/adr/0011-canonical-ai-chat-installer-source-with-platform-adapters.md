@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: canonical-ai-chat-installer-source-with-platform-adapters
+artifact_type: adr
+---
 # ADR-0011 Canonical AI Chat Installer Source With Platform Adapters
 
 - Status: accepted

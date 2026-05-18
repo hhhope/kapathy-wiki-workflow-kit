@@ -8,8 +8,10 @@
   approved frontmatter fields.
 - [x] 4. Record before/after target precheck evidence for every batch 1 page.
 - [x] 5. Record whole-wiki residual blocker count after batch 1.
-- [ ] 6. Review the next planner batch and decide whether it is deterministic,
+- [x] 6. Review and apply batch 2 to `wiki/adr/0011` through `wiki/adr/0020`;
+  preserve existing relation fields on pages that already had them.
+- [ ] 7. Review the next planner batch and decide whether it is deterministic,
   needs manual approval, or should split into a follow-up change.
-- [ ] 7. Re-run medical recovery/status only after verified frontmatter batches
+- [ ] 8. Re-run medical recovery/status only after verified frontmatter batches
   change the blocker state.
-- [ ] 8. Add evaluation evidence and run OpenSpec validation.
+- [ ] 9. Add final evaluation evidence and run OpenSpec validation.

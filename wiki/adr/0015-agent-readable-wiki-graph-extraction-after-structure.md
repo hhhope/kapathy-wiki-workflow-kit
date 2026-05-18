@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: agent-readable-wiki-graph-extraction-after-structure
+artifact_type: adr
+---
 # ADR-0015 Agent-Readable Wiki Graph Extraction After Structure
 
 - Status: accepted

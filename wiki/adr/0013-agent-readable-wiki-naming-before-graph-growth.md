@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: agent-readable-wiki-naming-before-graph-growth
+artifact_type: adr
+---
 # ADR-0013 Agent-Readable Wiki Naming Before Graph Growth
 
 - Status: accepted

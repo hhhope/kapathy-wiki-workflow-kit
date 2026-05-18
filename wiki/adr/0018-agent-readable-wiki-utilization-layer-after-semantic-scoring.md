@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: agent-readable-wiki-utilization-layer-after-semantic-scoring
+artifact_type: adr
+---
 # ADR-0018 Agent-Readable Wiki Utilization Layer After Semantic Scoring
 
 - Status: accepted

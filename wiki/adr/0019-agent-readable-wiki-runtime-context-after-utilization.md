@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: agent-readable-wiki-runtime-context-after-utilization
+artifact_type: adr
+---
 # ADR-0019 Agent-Readable Wiki Runtime Context After Utilization
 
 - Status: accepted

@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: agent-readable-wiki-frontmatter-before-graph-automation
+artifact_type: adr
+---
 # ADR-0014 Agent-Readable Wiki Frontmatter Before Graph Automation
 
 - Status: accepted

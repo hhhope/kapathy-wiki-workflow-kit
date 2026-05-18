@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: agent-readable-wiki-semantic-scoring-after-relation-analysis
+artifact_type: adr
+---
 # ADR-0017 Agent-Readable Wiki Semantic Scoring After Relation Analysis
 
 - Status: accepted

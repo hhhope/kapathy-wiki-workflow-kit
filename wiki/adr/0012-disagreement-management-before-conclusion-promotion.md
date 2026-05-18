@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: disagreement-management-before-conclusion-promotion
+artifact_type: adr
+---
 # ADR-0012 Disagreement Management Before Conclusion Promotion
 
 - Status: accepted

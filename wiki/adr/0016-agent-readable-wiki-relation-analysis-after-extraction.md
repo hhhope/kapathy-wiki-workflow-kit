@@ -1,3 +1,9 @@
+---
+layer: adr
+domain: none
+canonical_object: agent-readable-wiki-relation-analysis-after-extraction
+artifact_type: adr
+---
 # ADR-0016 Agent-Readable Wiki Relation Analysis After Extraction
 
 - Status: accepted
