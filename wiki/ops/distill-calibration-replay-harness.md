@@ -2,6 +2,9 @@
 title: distill-calibration / replay-harness
 canonical_object: agents-governance-drift-distill-calibration
 artifact_type: replay-harness
+layer: ops
+domain: wiki
+ops_area: workflow-trace
 ---
 
 # Distill Calibration Replay Harness

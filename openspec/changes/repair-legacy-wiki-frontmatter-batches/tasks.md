@@ -65,6 +65,8 @@
   ops pages by staging only frontmatter hunks.
 - [x] 34. Apply approved batch 14l to add frontmatter to clean wiki method ops
   pages.
-- [ ] 35. Get approval for the next classification batch before applying more
+- [x] 35. Apply approved batch 14m to add governance replay/method ops
+  frontmatter.
+- [ ] 36. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 36. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 37. Add final evaluation evidence and run OpenSpec validation.

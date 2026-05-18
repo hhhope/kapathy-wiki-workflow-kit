@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: agent-governance
+canonical_object: disagreement-management-replay-validation
+artifact_type: method
+---
+
 # 分歧管理 Replay 验证 2026-04-20
 
 这页记录在方法正式化之后追加的一轮 replay 验证。

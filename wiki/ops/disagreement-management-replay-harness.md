@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: workflow-trace
+canonical_object: disagreement-management-replay-harness
+artifact_type: method
+---
+
 # 分歧管理 Replay Harness
 
 这页不是新的 runtime 规则，而是一个可复用的验证框架。

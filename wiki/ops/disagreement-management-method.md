@@ -1,3 +1,11 @@
+---
+layer: ops
+domain: wiki
+ops_area: workflow-trace
+canonical_object: disagreement-management
+artifact_type: method
+---
+
 # 分歧管理方法
 
 这页定义什么情况下，agent 不应急着把分歧压成结论、规则或治理解释，而应先把分歧当成目标校准材料来保留。

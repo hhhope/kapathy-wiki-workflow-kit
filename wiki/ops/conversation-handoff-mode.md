@@ -1,6 +1,9 @@
 ---
 canonical_object: conversation-handoff
 artifact_type: method
+layer: ops
+domain: wiki
+ops_area: workflow-trace
 formalizes:
 - conversation-handoff
 ---

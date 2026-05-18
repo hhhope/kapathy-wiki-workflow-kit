@@ -626,6 +626,62 @@ Boundary:
 - No relation fields, body text, taxonomy config, or checker logic were
   changed.
 
+## Batch 14m Evidence
+
+Approved batch:
+
+- Batch 14m: clean governance replay/method ops pages with missing
+  frontmatter and doctor-run candidate frontmatter
+
+Applied fields:
+
+- `domain: wiki`
+- `layer: ops`
+- `ops_area` from the prior doctor-run candidate frontmatter
+- `canonical_object` and `artifact_type` from existing frontmatter where
+  present, otherwise from the prior doctor-run candidate frontmatter
+
+Target set:
+
+- `wiki/ops/agents-governance-drift-distill-replay-validation-2026-04-21.md`
+- `wiki/ops/conversation-handoff-mode.md`
+- `wiki/ops/disagreement-management-method.md`
+- `wiki/ops/disagreement-management-replay-harness.md`
+- `wiki/ops/disagreement-management-replay-validation-2026-04-20.md`
+- `wiki/ops/distill-calibration-replay-harness.md`
+
+Before target counts:
+
+- pages with existing identity had 4 errors for missing `layer`, `domain`,
+  `ops_area`, and unexpected `layer`
+- pages without frontmatter identity had 6 errors covering missing `layer`,
+  missing `domain`, missing `ops_area`, missing `canonical_object`, missing
+  `artifact_type`, and unexpected `layer`
+
+After target counts:
+
+- all 6 target precheck runs reported `target.entry_count: 0`; the precheck
+  commands still exited non-zero because the whole-wiki gate retained unrelated
+  blockers
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 10
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 294
+- `summary.error`: 294
+
+Boundary:
+
+- Relation candidates from the doctor run were not applied.
+- Existing body text, taxonomy config, checker logic, MOC, ADR, and OpenSpec
+  lifecycle state were not changed.
+
 ## Batch 14l Evidence
 
 Approved batch:

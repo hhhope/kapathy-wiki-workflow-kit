@@ -1,5 +1,8 @@
 ---
 title: agents-governance-drift-distill-calibration / replay-validation
+layer: ops
+domain: wiki
+ops_area: workflow-trace
 canonical_object: agents-governance-drift-distill-calibration
 artifact_type: replay-validation
 derived_from:
