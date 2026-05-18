@@ -1,3 +1,8 @@
+---
+layer: ops
+domain: wiki
+---
+
 # Team Lore Candidates
 
 这页是晋升缓冲区，不要把项目页直接送进 team lore。

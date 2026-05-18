@@ -1,3 +1,8 @@
+---
+layer: ops
+domain: ai-workflow
+---
+
 # AI Chat Workflow Installer
 
 这页定义项目级 AI workflow 的跨运行面安装模型。它不是某一个平台专用说明，也不是一个“万能 skill 文件”，而是仓库内的统一真源说明。

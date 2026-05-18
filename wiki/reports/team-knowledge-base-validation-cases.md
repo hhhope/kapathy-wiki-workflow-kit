@@ -1,3 +1,8 @@
+---
+layer: reports
+domain: wiki
+---
+
 <callout emoji="chart_with_upwards_trend" background-color="light-blue">
 本页解释 Account Wiki 怎么证明自己有用：用真实 case、分数变化、门禁结果、Feishu 回读日志和 RED/GREEN 回放，而不是只说“有流程”。
 </callout>

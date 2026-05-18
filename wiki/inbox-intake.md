@@ -1,3 +1,8 @@
+---
+layer: ops
+domain: report-workflow
+---
+
 # Inbox Intake
 
 这页定义 agent 应如何处理放进固定 `inbox/` 目录的文件。

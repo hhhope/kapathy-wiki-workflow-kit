@@ -1,3 +1,8 @@
+---
+layer: reports
+domain: wiki
+---
+
 <callout emoji="repeat" background-color="light-blue">
 本页解释 Account Wiki 的运行态：一份输入进入后，Wiki 结构、skills、reviewer 和验证门禁如何协作，把一次性材料变成可复用知识。
 </callout>

@@ -1,3 +1,8 @@
+---
+layer: timeline
+domain: wiki
+---
+
 # 2026-04-20 Agent-Readable Wiki Evolution Timeline
 
 这页只做一件事：把今天这条 wiki 治理主线按时间拉直，方便回看什么属于原始需求，什么属于后来的漂移。

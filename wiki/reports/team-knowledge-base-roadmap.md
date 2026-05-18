@@ -1,3 +1,8 @@
+---
+layer: reports
+domain: wiki
+---
+
 <callout emoji="dart" background-color="light-blue">
 本页只讲路线图：当前团队知识库处在哪个成熟阶段，下一步优先补什么，哪些自动化暂时不应该提前承诺。
 </callout>

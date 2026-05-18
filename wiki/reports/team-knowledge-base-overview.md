@@ -1,3 +1,8 @@
+---
+layer: reports
+domain: wiki
+---
+
 <callout emoji="map" background-color="light-blue">
 Account Wiki 是 raw sources 和未来问题之间的中间层：它把飞书材料、会议纪要、外部文章和项目记录，持续编译成可链接、可更新、可复用的 markdown wiki。
 </callout>

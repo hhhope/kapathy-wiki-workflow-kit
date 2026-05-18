@@ -1,3 +1,8 @@
+---
+layer: ops
+domain: ai-workflow
+---
+
 # AI Workflow
 
 这个仓库把“长期知识”与“AI 辅助产物”分开管理。AI 可以帮助整理和起草，但最终结论和正式汇报仍然需要人工确认。

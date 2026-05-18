@@ -506,3 +506,65 @@ Boundary:
 
 - No taxonomy config or checker logic was changed.
 - The `domain: none` convention was applied only to structural index pages.
+
+## Batch 11 Evidence
+
+Approved batch:
+
+- Batch 11: Root And Public Pages
+
+Applied fields:
+
+- Root workflow/guidance pages:
+  - `layer: ops`
+  - domain by content: `ai-workflow`, `report-workflow`, or `wiki`
+- Public/report pages:
+  - `layer: reports`
+  - domain by report subject: `product-engineering-collaboration`,
+    `ai-workflow`, `nirvana-project`, or `wiki`
+- Timeline page:
+  - `layer: timeline`
+  - `domain: wiki`
+
+Target set:
+
+- `wiki/ai-chat-workflow-installer.md`
+- `wiki/ai-workflow.md`
+- `wiki/inbox-intake.md`
+- `wiki/language-policy.md`
+- `wiki/role-boundaries.md`
+- `wiki/team-lore-candidates.md`
+- `wiki/reports/agentic-visual-assets-image-model/README.md`
+- `wiki/reports/ai-chat-workflow-installer-feishu-share.md`
+- `wiki/reports/nirvana-handover-account-owner.md`
+- `wiki/reports/team-knowledge-base-migration.md`
+- `wiki/reports/team-knowledge-base-overview.md`
+- `wiki/reports/team-knowledge-base-roadmap.md`
+- `wiki/reports/team-knowledge-base-runtime.md`
+- `wiki/reports/team-knowledge-base-validation-cases.md`
+- `wiki/timeline/2026-04-20-agent-readable-wiki-evolution.md`
+
+Before target counts:
+
+- all 15 pages had 2 errors: `domain` and `layer`
+
+After target counts:
+
+- all 15 target pages reported `after.entry_count: 0`
+
+Whole-wiki residual command:
+
+```bash
+python3 scripts/wiki_gate_precheck.py --mode frontmatter --top 8
+```
+
+Result:
+
+- `passed`: false
+- `blocking_count`: 637
+- `summary.error`: 637
+
+Boundary:
+
+- No relation fields, body text, taxonomy config, or checker logic were
+  changed.

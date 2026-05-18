@@ -1,3 +1,8 @@
+---
+layer: reports
+domain: wiki
+---
+
 <callout emoji="gift" background-color="light-blue">
 本页只讲迁移路径：一个项目如何接入团队知识库。它不展开日常运行细节，也不要求一次性搬完历史资料。
 </callout>

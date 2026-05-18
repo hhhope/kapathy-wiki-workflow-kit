@@ -1,3 +1,8 @@
+---
+layer: ops
+domain: wiki
+---
+
 # Role Boundaries
 
 用“角色”来判断内容该留在项目 wiki，还是进入 team lore，而不是先按仓库位置去想。

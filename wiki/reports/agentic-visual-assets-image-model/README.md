@@ -1,3 +1,8 @@
+---
+layer: reports
+domain: product-engineering-collaboration
+---
+
 # Agentic Visual Assets / Image Model
 
 This directory stores image-model visual assets for the AI Agent

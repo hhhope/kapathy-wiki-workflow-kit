@@ -1,3 +1,8 @@
+---
+layer: reports
+domain: ai-workflow
+---
+
 # AI Chat 一键安装工作流方案
 
 ## 一、要解决的问题

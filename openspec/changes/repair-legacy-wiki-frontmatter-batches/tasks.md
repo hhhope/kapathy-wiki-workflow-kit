@@ -26,6 +26,7 @@
   an approved follow-up plan before applying more fields.
 - [x] 14. Apply approved classification batches 7, 8, and 9.
 - [x] 15. Apply approved batch 10 to structural index pages.
-- [ ] 16. Get approval for the next classification batch before applying more
+- [x] 16. Apply approved batch 11 to root, public report, and timeline pages.
+- [ ] 17. Get approval for the next classification batch before applying more
   frontmatter fields.
-- [ ] 17. Add final evaluation evidence and run OpenSpec validation.
+- [ ] 18. Add final evaluation evidence and run OpenSpec validation.
