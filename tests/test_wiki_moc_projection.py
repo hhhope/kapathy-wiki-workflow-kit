@@ -53,6 +53,72 @@ class WikiMocProjectionTest(unittest.TestCase):
         self.assertIn("wiki/moc/object-wiki-frontmatter-model.md", paths)
         self.assertIn("wiki/moc/relation-formalizes.md", paths)
 
+    def test_object_preview_groups_pages_by_lifecycle_not_ops_area(self) -> None:
+        graph = {
+            "nodes": [
+                {
+                    "page_path": "wiki/ops/karpathy-llm-wiki-reading-notes.md",
+                    "canonical_object": "llm-wiki",
+                    "artifact_type": "reading-notes",
+                    "source_layer": "wiki/ops",
+                    "domain": "wiki",
+                    "ops_area": "learning-capture",
+                },
+                {
+                    "page_path": "openspec/specs/wiki-runtime-context/spec.md",
+                    "canonical_object": "llm-wiki",
+                    "artifact_type": "spec",
+                    "source_layer": "openspec/specs",
+                    "domain": "wiki",
+                },
+                {
+                    "page_path": "wiki/adr/0019-agent-readable-wiki-runtime-context-after-utilization.md",
+                    "canonical_object": "llm-wiki",
+                    "artifact_type": "adr",
+                    "source_layer": "wiki/adr",
+                    "domain": "none",
+                },
+                {
+                    "page_path": "wiki/ops/wiki-runtime-layer-contract.md",
+                    "canonical_object": "llm-wiki",
+                    "artifact_type": "method",
+                    "source_layer": "wiki/ops",
+                    "domain": "wiki",
+                    "ops_area": "wiki-runtime",
+                },
+                {
+                    "page_path": "wiki/ops/wiki-readable-views-validation-harness.md",
+                    "canonical_object": "llm-wiki",
+                    "artifact_type": "replay-harness",
+                    "source_layer": "wiki/ops",
+                    "domain": "wiki",
+                    "ops_area": "workflow-trace",
+                },
+            ],
+            "edges": [],
+        }
+
+        plan = build_moc_plan(self.tmpdir, graph)
+        object_entry = next(
+            entry
+            for entry in plan["entries"]
+            if entry["path"] == "wiki/moc/object-llm-wiki.md"
+        )
+        preview = object_entry["preview"]
+
+        for heading in [
+            "## Sources / Learning",
+            "## Specification",
+            "## Decisions",
+            "## Methods / Runtime",
+            "## Evidence / Replay",
+        ]:
+            self.assertIn(heading, preview)
+
+        self.assertNotIn("## learning-capture", preview)
+        self.assertNotIn("## workflow-trace", preview)
+        self.assertEqual(object_entry["link_count"], 5)
+
     def test_dry_run_plan_does_not_write_files(self) -> None:
         plan = build_moc_plan(self.tmpdir, self.sample_graph())
 

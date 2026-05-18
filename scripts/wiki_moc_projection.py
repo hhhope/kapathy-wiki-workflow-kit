@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from scripts.wiki_moc_lifecycle import grouped_lifecycle_nodes
+
 
 GENERATED_BEGIN_PREFIX = "<!-- BEGIN GENERATED MOC:"
 GENERATED_END = "<!-- END GENERATED MOC -->"
@@ -86,6 +88,27 @@ def _object_keys(nodes: list[dict[str, Any]]) -> set[str]:
     }
 
 
+def _node_line(node: dict[str, Any]) -> str:
+    return (
+        f"- {wikilink(page_link_target(node['page_path']))} "
+        f"({node.get('source_layer', 'unknown')} / {node.get('artifact_type', 'unknown')})"
+    )
+
+
+def _object_lines(nodes: list[dict[str, Any]]) -> list[str]:
+    lines: list[str] = []
+    for label, grouped_nodes in grouped_lifecycle_nodes(nodes):
+        if lines:
+            lines.append("")
+        lines.append(f"## {label}")
+        lines.extend(_node_line(node) for node in _sorted_nodes(grouped_nodes))
+    return lines
+
+
+def _link_count(lines: tuple[str, ...] | list[str]) -> int:
+    return sum(1 for line in lines if line.startswith("- "))
+
+
 def build_moc_candidates(graph: dict[str, Any], moc_dir: Path | str = DEFAULT_MOC_DIR) -> list[MocCandidate]:
     nodes = [node for node in graph.get("nodes", []) if isinstance(node, dict)]
     edges = [edge for edge in graph.get("edges", []) if isinstance(edge, dict)]
@@ -127,11 +150,7 @@ def build_moc_candidates(graph: dict[str, Any], moc_dir: Path | str = DEFAULT_MO
         )
 
     for canonical_object, grouped_nodes in sorted(object_nodes.items()):
-        lines = [
-            f"- {wikilink(page_link_target(node['page_path']))} "
-            f"({node.get('source_layer', 'unknown')} / {node.get('artifact_type', 'unknown')})"
-            for node in _sorted_nodes(grouped_nodes)
-        ]
+        lines = _object_lines(grouped_nodes)
         candidates.append(
             _candidate(
                 kind="object",
@@ -246,7 +265,7 @@ def build_moc_plan(root: Path | str, graph: dict[str, Any], moc_dir: Path | str 
                 "kind": candidate.kind,
                 "key": candidate.key,
                 "path": candidate.path,
-                "link_count": len(candidate.lines),
+                "link_count": _link_count(candidate.lines),
                 "preview": rendered,
             }
         )

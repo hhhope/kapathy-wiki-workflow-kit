@@ -22,11 +22,11 @@ Use explicit graph metadata rather than inferred prose:
 
 | Section | Source signal |
 | --- | --- |
-| Sources / Learning | `artifact_type` such as `intake`, `reading-notes`, `learning-note`, `article-evidence-matrix` |
+| Sources / Learning | `artifact_type` such as `intake`, `reading-notes`, `learning-note`, `article-evidence-matrix`, `explore`, `explore-trace`, `explore_trace` |
 | Specification | `source_layer: openspec/specs` or `artifact_type: spec` |
 | Decisions | `source_layer: wiki/adr` or `artifact_type: adr` |
 | Methods / Runtime | `artifact_type` such as `method`, `product-contract`, `ops-overview`, `ops-model`, `playbook` |
-| Evidence / Replay | `artifact_type` such as `review`, `review-decision`, `diagnosis`, `recovery`, `treatment`, `surgery-plan`, `replay-harness`, `replay-validation`, `skill_fix_evidence` |
+| Evidence / Replay | `artifact_type` such as `review`, `review-decision`, `diagnosis`, `recovery`, `treatment`, `surgery-plan`, `replay-harness`, `replay-validation`, `retro`, `trace`, `skill_fix_evidence` |
 | Other | Anything not covered above |
 
 Within each section, keep deterministic sorting by path and artifact type.
