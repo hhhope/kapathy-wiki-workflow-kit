@@ -51,12 +51,28 @@ class ActionValidation:
 
 
 READ_ONLY_INTENTS = {"status", "diagnose"}
-MOC_SIGNALS = ("moc", "obsidian", "图谱导航", "知识地图")
-MOC_REVIEW_SIGNALS = ("preview", "预览", "surgery", "手术", "分流", "审核", "审查", "复核")
+MOC_SIGNALS = ("obsidian", "knowledge-map", "knowledge map", "图谱导航", "知识地图")
+MOC_REVIEW_SIGNALS = (
+    "preview",
+    "review",
+    "预览",
+    "surgery",
+    "手术",
+    "分流",
+    "审核",
+    "审查",
+    "复核",
+)
+
+
+def _has_moc_signal(lowered: str) -> bool:
+    if re.search(r"\bmoc\b", lowered):
+        return True
+    return any(signal in lowered for signal in MOC_SIGNALS)
 
 
 def _is_moc_surgery_preview_request(lowered: str) -> bool:
-    has_moc = any(signal in lowered for signal in MOC_SIGNALS)
+    has_moc = _has_moc_signal(lowered)
     has_review = any(signal in lowered for signal in MOC_REVIEW_SIGNALS)
     return has_moc and has_review
 

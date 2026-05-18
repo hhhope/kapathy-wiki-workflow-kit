@@ -88,6 +88,10 @@ class WikiMedicalAgentTest(unittest.TestCase):
             classify_medical_intent("preview apply confirmed treatments").intent,
             "treatment_preview",
         )
+        self.assertEqual(
+            classify_medical_intent("mock preview apply confirmed treatments").intent,
+            "treatment_preview",
+        )
 
     def test_classifies_moc_preview_as_surgery_preview_before_treatment_preview(self) -> None:
         self.assertEqual(
@@ -100,6 +104,14 @@ class WikiMedicalAgentTest(unittest.TestCase):
         )
         self.assertEqual(
             classify_medical_intent("MOC 审查").intent,
+            "moc_surgery_preview",
+        )
+        self.assertEqual(
+            classify_medical_intent("MOC review").intent,
+            "moc_surgery_preview",
+        )
+        self.assertEqual(
+            classify_medical_intent("knowledge-map review").intent,
             "moc_surgery_preview",
         )
         self.assertEqual(
