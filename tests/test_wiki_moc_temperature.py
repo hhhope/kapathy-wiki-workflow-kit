@@ -181,6 +181,26 @@ class WikiMocTemperatureTest(unittest.TestCase):
         self.assertEqual(board["counts"]["needs_review"], 1)
         self.assertNotIn("validates", plan["admitted_relations"])
 
+    def test_whitespace_moc_admission_value_does_not_admit(self) -> None:
+        packages = build_relation_feature_packages(self.sample_graph())
+        board = build_temperature_clue_board(
+            packages,
+            reviews={
+                "relation:openspec/specs/runtime/spec.md:validates:runtime-method": {
+                    "temperature": 80,
+                    "moc_admission": " admit ",
+                    "rationale": "Admission values must match exactly.",
+                }
+            },
+        )
+
+        plan = build_moc_admission_plan(board)
+        validates_window = board["clue_windows"][1]
+
+        self.assertEqual(validates_window["moc_admission"], "needs_review")
+        self.assertEqual(validates_window["status"], "needs_review")
+        self.assertNotIn("validates", plan["admitted_relations"])
+
     def test_temperature_80_with_admit_admits_relation(self) -> None:
         packages = build_relation_feature_packages(self.sample_graph())
         board = build_temperature_clue_board(
