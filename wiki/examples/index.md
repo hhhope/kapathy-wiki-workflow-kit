@@ -15,3 +15,4 @@ These example pages show the current validated task families supported by this k
 - [Weixin Summary Example](weixin-summary-example.md)
 - [GitHub Analysis Example](github-analysis-example.md)
 - [Explore Trace Example](explore-trace-example.md)
+- [Li Xiang Interview Deep Reading Board Example](interview-deep-reading-board-lixiang-luoyonghao.md)

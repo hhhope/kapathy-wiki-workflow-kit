@@ -31,9 +31,12 @@
 
 ## 4. H5 Reference Example
 
-- [ ] 4.1 Add `wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md`.
-- [ ] 4.2 Link the validated H5, data file, source note, and old word-cloud counterexample.
-- [ ] 4.3 State the copyright-safe reference boundary: short evidence plus paraphrase and source position, not full verbatim transcript storage.
+- [x] 4.1 Add `wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md`.
+  <!-- 2026-05-19 — added validated output-shape example under wiki/examples and linked it from the examples index -->
+- [x] 4.2 Link the validated H5, data file, source note, and old word-cloud counterexample.
+  <!-- 2026-05-19 — example links reading-board HTML, data JS, source record, and word-cloud counterexample -->
+- [x] 4.3 State the copyright-safe reference boundary: short evidence plus paraphrase and source position, not full verbatim transcript storage.
+  <!-- 2026-05-19 — example records the copyright boundary and avoids full transcript storage -->
 
 ## 5. Evaluation and Replay
 
