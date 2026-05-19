@@ -42,7 +42,6 @@ COPY_DIRS = [
     ".codex/skills/surgical-changes",
     ".codex/skills/simplicity-first",
     ".codex/skills/learning-capture",
-    ".codex/skills/readme-learning-capture",
     ".codex/skills/material-collaboration-defaults",
     ".codex/skills/meeting-note-output",
     ".codex/skills/public-report-quality-gate",

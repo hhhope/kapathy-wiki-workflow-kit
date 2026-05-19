@@ -8,7 +8,6 @@ from scripts import llm_wiki_seed_manifest as manifest
 def test_seed_manifest_includes_real_wiki_skill_surface() -> None:
     required_skill_dirs = {
         ".codex/skills/learning-capture",
-        ".codex/skills/readme-learning-capture",
         ".codex/skills/material-collaboration-defaults",
         ".codex/skills/public-report-quality-gate",
         ".codex/skills/wiki-status",

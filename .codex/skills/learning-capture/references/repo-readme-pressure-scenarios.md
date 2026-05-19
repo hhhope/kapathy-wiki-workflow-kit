@@ -1,13 +1,14 @@
-# README Learning Capture Pressure Scenarios
+# Repo/README Learning Pressure Scenarios
 
-Use these scenarios when validating repo/README learning.
+Use these scenarios when validating repo/README learning through
+`learning-capture`.
 
 ## Should Trigger
 
 | Scenario | Expected | Result |
 |---|---|---|
-| User provides a GitHub repo and asks "这个方案能不能复用" | Trigger learning-capture, route to repo/README module, run admission and score first | PASS |
-| User provides a README and asks to learn its structure for a local SOP | Score first; deep-read only if 75+ | PASS |
+| User provides a GitHub repo and asks "这个方案能不能复用" | Trigger `learning-capture`, route to repo-readme module, run admission and score first | PASS |
+| User provides a README and asks to learn its structure for a local SOP | Trigger `learning-capture`; score first; deep-read only if 75+ | PASS |
 | User provides a repo after discussing reusable skill structure | Treat as learning context and score before deep reading | PASS |
 | User asks what to reuse, adapt, reject, or formalize from a repo | Preserve reused / modified / rejected / adoption boundary / status | PASS |
 
