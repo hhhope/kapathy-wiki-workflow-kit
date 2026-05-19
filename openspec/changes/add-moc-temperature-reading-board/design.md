@@ -40,6 +40,41 @@ review judgments as JSON and merges them with feature packages. Missing review
 judgment produces a `needs_review` clue window. Mechanical relation types are
 blocked unless the review explicitly admits them with high temperature.
 
+Minimum review JSON fields:
+
+- `candidate_id`: feature package identifier.
+- `temperature`: integer from `0` to `100`.
+- `moc_admission`: one of `admit`, `block`, or `needs_review`.
+- `rationale`: short human- or AI-authored reason.
+- `reviewer`: identifier for the reviewing human, agent, or imported review.
+- `reviewed_at`: ISO-8601 timestamp or date.
+
+High temperature means `temperature >= 80`. High temperature alone is not
+enough for MOC admission; `moc_admission` must also be `admit`.
+
+## Clue Windows
+
+The temperature module emits one clue window per relation feature package.
+Minimum clue-window fields:
+
+- `candidate_id`
+- `relation_type`
+- `source_page`
+- `source_object`
+- `target_object`
+- `evidence_refs`
+- `structural_features`
+- `temperature`
+- `status`
+- `moc_admission`
+- `rationale`
+
+Allowed `status` values are `admitted`, `blocked`, and `needs_review`.
+Missing review JSON produces `status: needs_review`, `temperature: null`, and
+`moc_admission: needs_review`. Mechanical relation types such as
+`derived_from` and `related_objects` produce `status: blocked` unless review
+JSON sets `temperature >= 80` and `moc_admission: admit`.
+
 ## MOC Admission
 
 Domain and object MOC candidates remain structural in this change. Relation MOC
@@ -50,6 +85,28 @@ pages are gated:
   `admitted_relations`.
 - `derived_from` and `related_objects` remain blocked unless explicit review
   evidence admits them.
+
+The admission plan contains these minimum fields:
+
+- `admitted_relations`: relation types eligible for generated relation MOC
+  pages.
+- `blocked_relations`: relation types represented only as blocked admission
+  state.
+- `review_needed_relations`: relation types represented only as review-needed
+  admission state.
+- `clue_windows`: bounded clue-window records used to derive the plan.
+- `counts`: object with `admitted`, `blocked`, `needs_review`, and `total`.
+
+Relation groups can still appear in graph summary, dry-run, or preview output
+as admission state. They SHALL NOT become generated `wiki/moc/relation-*.md`
+page candidates unless their relation type is listed in `admitted_relations`.
+
+Admission counts are computed from clue-window `status` values:
+
+- `admitted`: number of windows with `status: admitted`.
+- `blocked`: number of windows with `status: blocked`.
+- `needs_review`: number of windows with `status: needs_review`.
+- `total`: total number of relation clue windows.
 
 ## Medical Agent
 

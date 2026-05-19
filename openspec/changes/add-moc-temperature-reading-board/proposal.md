@@ -16,7 +16,8 @@ should reveal useful wiki relationships and clues, not raw edge dumps.
   bounded clue windows.
 - Keep Python responsible for structural feature packages only.
 - Require explicit AI or human review judgments for semantic temperature.
-- Gate relation MOC pages behind admitted high-temperature clue windows.
+- Gate relation MOC pages behind admitted clue windows where `temperature >= 80`
+  and `moc_admission` is explicitly `admit`.
 - Surface admitted, blocked, and review-needed counts in MOC dry-run and
   medical-agent MOC preview.
 - Keep MOC preview and medical-agent review read-only.

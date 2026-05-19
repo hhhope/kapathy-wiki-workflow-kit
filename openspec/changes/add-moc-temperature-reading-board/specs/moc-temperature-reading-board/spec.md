@@ -19,18 +19,34 @@ wiki graph edges without claiming semantic value from Python-only scoring.
 
 The repository SHALL prevent raw relation types from becoming standalone MOC
 pages unless an admission plan admits the relation from reviewed clue windows.
+This narrows existing Obsidian MOC projection behavior: relation-type groups
+MAY remain visible in graph summary, dry-run, and preview output as blocked or
+review-needed admission state, but SHALL NOT be treated as generated relation
+MOC page candidates unless admitted.
 
 #### Scenario: Raw mechanical relation is blocked
 
 - **GIVEN** graph edges with relation type `derived_from`
 - **WHEN** MOC candidates are built without an admission plan
 - **THEN** no `wiki/moc/relation-derived_from.md` candidate SHALL be produced.
+- **AND** the relation type SHALL be represented as blocked or review-needed
+  admission state in the temperature summary.
 
 #### Scenario: Reviewed relation is admitted
 
 - **GIVEN** a temperature clue board with an admitted relation type `validates`
 - **WHEN** MOC candidates are built with the derived admission plan
 - **THEN** `wiki/moc/relation-validates.md` SHALL be produced.
+
+#### Scenario: Graph summary preserves relation groups without generating raw relation pages
+
+- **GIVEN** graph summary includes relation-type MOC groups from explicit
+  frontmatter edges
+- **WHEN** no admission plan admits those relation types
+- **THEN** dry-run or preview output SHALL expose those groups only as
+  `blocked` or `needs_review` admission state
+- **AND** it SHALL NOT produce generated `wiki/moc/relation-*.md` page
+  candidates for those raw relation groups.
 
 ### Requirement: Medical-agent MOC preview SHALL remain read-only while surfacing admission state
 
