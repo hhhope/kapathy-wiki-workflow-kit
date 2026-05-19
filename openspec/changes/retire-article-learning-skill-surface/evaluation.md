@@ -258,6 +258,84 @@ Parent gate preservation:
 | Promotion or non-promotion boundary | Article takeaways remain candidate learning unless evidence and the relevant OpenSpec or behavior-asset gate support promotion. |
 | Proof boundary | Static behavior-asset checks and routing scans prove the current repository surface; they are not a live future runtime dispatch guarantee. |
 
+## Historical Replay Evidence
+
+This section closes the verification gap raised after the first pass: pressure
+scenarios and static scans are not enough proof that a real historical article
+learning case still routes and produces the expected durable artifact shape.
+
+Historical case selected:
+
+| Field | Evidence |
+|---|---|
+| Historical input | `wiki/ops/agent-harness-article-learning-intake.md`, created from a real 2026-05-06 request to deep-read agent / harness / eval / managed-agents articles. |
+| Historical output | `wiki/ops/agent-harness-article-learning.md`, a real produced reading-notes artifact with 10 source URLs, scoring, source grounding, reading notes, transferable learning, rejected moves, and next action. |
+| Replay reason | It is the strongest existing article-learning case because it was produced by the old article-learning flow and contains the exact behavior this change intends to preserve while retiring the separate skill surface. |
+| Replay method | Manual route replay against current `learning-capture` and article module wording, then output-shape comparison against the current article wiki template. No new wiki page was generated and no historical output was rewritten for the replay. |
+
+Replay route:
+
+| Step | Historical fact | Current expected behavior | Result |
+|---|---|---|---|
+| Intent classification | Intake says the user asked for article deep reading, reusable learning, and wiki capture rather than a raw summary. | Load `learning-capture` because the source is learning / reference material. | PASS |
+| Evidence object | Intake and output are article / blog / WeChat source collections. | Route to `references/article.md`. | PASS |
+| Runtime boundary | The old page previously contained stale article-skill wording; the active page now records `learning-capture -> article reference module`. | Do not load or expose a standalone `article-learning-capture` skill. | PASS |
+| Output language | Historical artifact frontmatter says `language: zh-CN` and the body is Chinese. | Durable internal wiki learning notes default to Chinese. | PASS |
+| Output target | Historical artifact is a `wiki/ops` reading-notes page. | Article learning may produce durable internal wiki notes in `wiki/ops` when there is reusable operating learning. | PASS |
+
+Output-shape consistency:
+
+| Template / module requirement | Historical output evidence | Result |
+|---|---|---|
+| `title: <canonical-object> / reading-notes` | `title: agent-harness-article-learning / reading-notes` | PASS |
+| `artifact_type: reading-notes` | `artifact_type: reading-notes` | PASS |
+| `language: zh-CN` | `language: zh-CN` | PASS |
+| `ops_area: learning-capture` | `ops_area: learning-capture` | PASS |
+| `derived_from` preserves original URLs | Historical output records 10 URLs from OpenAI, Claude, Anthropic, and WeChat sources. | PASS |
+| `notes_scope` preserves learning boundary | Historical output says it records route, source grounding, admission gate, scoring, structured paraphrase, transferable learning, and promotion boundary; it does not directly create `AGENTS.md`, skill, spec, checklist, or repo policy. | PASS |
+| Source / original evidence | `Original Source Grounding` records source class, source artifact, and grounding status. | PASS |
+| Admission / scoring before deep reading | `Admission Gate`, `Scoring Summary`, and `Score Detail Matrix` appear before per-article reading notes. | PASS |
+| Reading draft | Each article section includes `Reading Draft`. | PASS |
+| Transferable learning | Each article section includes `Transferable Learning`, followed by cross-article accepted / candidate learning sections. | PASS |
+| Rejected moves | `Rejected Moves` exists and keeps non-promoted takeaways out of policy. | PASS |
+| Next step | `Next Action` exists. It is an acceptable historical naming variant of the current template's `下一步` section. | PASS with naming variance |
+
+Replay command evidence:
+
+```text
+rg -n '^(title|artifact_type|language|ops_area|notes_scope|derived_from|related_objects):|^- https?://|^# |^## |^### ' wiki/ops/agent-harness-article-learning.md
+```
+
+Observed evidence included:
+
+- `title: agent-harness-article-learning / reading-notes`
+- `artifact_type: reading-notes`
+- `language: zh-CN`
+- `ops_area: learning-capture`
+- `Learning Capture Route`
+- `Admission Gate`
+- `Original Source Grounding`
+- `Scoring Summary`
+- `Score Detail Matrix`
+- per-article `Source`, `Reading Draft`, and `Transferable Learning`
+- `Rejected Moves`
+- `Next Action`
+
+Current template / module command evidence:
+
+```text
+rg -n '^(# |## |### |title:|artifact_type:|language:|ops_area:|notes_scope:|derived_from:|related_objects:)' .codex/skills/learning-capture/references/article-wiki-template.md .codex/skills/learning-capture/references/article.md .codex/skills/learning-capture/SKILL.md
+```
+
+Observed evidence included the current `learning-capture` module map, article
+module runtime boundary, `language: zh-CN`, `ops_area: learning-capture`,
+Chinese reading-note headings, and Chinese `可迁移学习` / `拒绝动作` / `下一步`
+template sections.
+
+Result: PASS for historical replay and output-shape consistency. The replay
+proves the preserved article-learning behavior against one real prior artifact,
+not a live future-dispatch guarantee for every agent session.
+
 ## Residual Risks
 
 - Historical wiki and archived OpenSpec references still mention

@@ -23,3 +23,5 @@
 - [x] 3.5 Run `python3 scripts/check_wiki_frontmatter.py` if template or
   frontmatter changes require it.
 - [x] 3.6 Commit only task-related files.
+- [x] 3.7 Add real historical replay evidence and output-shape consistency
+  check for an already-produced article learning page.
