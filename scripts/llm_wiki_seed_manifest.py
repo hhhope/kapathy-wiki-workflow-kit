@@ -112,6 +112,12 @@ EXCLUDE_GLOBS = [
 ]
 
 GENERATED_TEXT_FILES = {
+    ".gitignore": """__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.DS_Store
+""",
     "PROJECT.md": """---
 project: llm-wiki
 status: active

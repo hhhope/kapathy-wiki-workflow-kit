@@ -67,6 +67,13 @@ def test_seed_manifest_includes_config_and_runtime_scripts() -> None:
     assert required_files <= copied_files
 
 
+def test_seed_manifest_generates_runtime_gitignore() -> None:
+    gitignore = manifest.GENERATED_TEXT_FILES[".gitignore"]
+
+    assert "__pycache__/" in gitignore
+    assert "*.py[cod]" in gitignore
+
+
 def test_seed_manifest_rejects_archive_dump_paths() -> None:
     forbidden_fragments = {
         "inbox/",
