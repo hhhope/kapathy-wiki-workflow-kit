@@ -55,7 +55,7 @@ subagent / MCP section until the user pasted it back.
 
 ## GREEN Result
 
-Expected implementation evidence:
+Verified implementation evidence:
 
 - `SKILL.md` defines interview-like triggers and the required Chinese fork
   question.
@@ -66,6 +66,18 @@ Expected implementation evidence:
 - `AGENTS.md` includes a lightweight route to this skill.
 - `wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md` links the
   validated H5, data file, source note, and old word-cloud counterexample.
+
+Verification snippets:
+
+```text
+skill_exists_after=0
+example_exists_after=0
+
+AGENTS.md: route to `.codex/skills/interview-deep-reading-board/SKILL.md`
+public-report-quality-gate/SKILL.md: delegation row and hard route check
+SKILL.md: required Chinese fork question
+wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md: validated output-shape example
+```
 
 ## Prior-Art / Common-Rule Dedupe
 

@@ -92,16 +92,41 @@ Before this change:
 
 ## GREEN Result
 
-Expected GREEN evidence after implementation:
+Verified GREEN evidence after implementation:
 
 | Scenario | GREEN Evidence | Result |
 |---|---|---|
-| Interview deep-reading trigger asks the output-type fork question | `.codex/skills/interview-deep-reading-board/SKILL.md` includes the trigger and required fork question. | PENDING |
-| Word cloud is index-only | `references/h5-output-shape.md` states word cloud is an index into source-order windows and evidence. | PENDING |
-| User-highlighted passage protection is explicit | `SKILL.md` and `evaluation.md` require named passages to become explicit windows or window groups. | PENDING |
-| Public H5 output preserves parent gate | `public-report-quality-gate` delegates interview H5 structure while retaining public reader gates. | PENDING |
-| Repo entrypoint routes the skill | `AGENTS.md` includes a lightweight route to `interview-deep-reading-board`. | PENDING |
-| H5 reference/example is visible | `wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md` links the validated H5/data/source and old word-cloud counterexample. | PENDING |
+| Interview deep-reading trigger asks the output-type fork question | `.codex/skills/interview-deep-reading-board/SKILL.md` includes interview triggers and the Chinese full-window reading-board fork question. | PASS |
+| Word cloud is index-only | `.codex/skills/interview-deep-reading-board/references/h5-output-shape.md` states word cloud is an index into source-order windows and evidence. | PASS |
+| User-highlighted passage protection is explicit | `SKILL.md` and the skill evaluation require named passages to become explicit windows or window groups. | PASS |
+| Public H5 output preserves parent gate | `.codex/skills/public-report-quality-gate/SKILL.md` delegates interview H5 structure while retaining reader intent, reference, visual, judgment, publish, and sync blockers. | PASS |
+| Repo entrypoint routes the skill | `AGENTS.md` includes a lightweight route to `interview-deep-reading-board`. | PASS |
+| H5 reference/example is visible | `wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md` links the validated H5/data/source and old word-cloud counterexample. | PASS |
+
+Verification snippets:
+
+```text
+test -e .codex/skills/interview-deep-reading-board/SKILL.md
+skill_exists_after=0
+
+test -e wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md
+example_exists_after=0
+
+rg -n 'interview-deep-reading-board|全文窗口式精读板|temperature-axis evidence board|interview deep reading' AGENTS.md .codex/skills/public-report-quality-gate/SKILL.md .codex/skills/interview-deep-reading-board wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md
+AGENTS.md: route to `.codex/skills/interview-deep-reading-board/SKILL.md`
+public-report-quality-gate/SKILL.md: delegation row and hard route check
+interview-deep-reading-board/SKILL.md: required Chinese fork question
+wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md: validated output-shape example
+```
+
+## Behavior Replay Evidence
+
+| Situation | Trigger | Expected route | Repo-visible artifact | Expected output or non-output | Boundary |
+|---|---|---|---|---|---|
+| User asks for a word cloud from a long interview | Interview-like material plus word-cloud output | Ask whether to create the full-window interview reading board | `interview-deep-reading-board/SKILL.md` and `references/h5-output-shape.md` | Word cloud becomes an index into windows and evidence, not the main structure | Does not create a generic long-form article skill |
+| User says a passage was compressed or dropped | User names missing interview passage | Preserve the passage as an explicit window or window group | skill evaluation and Li Xiang wiki example | Named passage is not hidden under generic `Agent` keywords | Does not store full transcript verbatim |
+| User asks for a reader-facing interview H5 | H5/share/report output from interview-like material | `public-report-quality-gate` parent route, then interview module | public gate skill plus AGENTS route | Public output gates remain active before review/publish/sync claims | Interview module does not replace public gate |
+| Future agent needs the H5 shape | Similar interview reading-board request | Load H5 reference and wiki example | `references/h5-output-shape.md` and `wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md` | Validated H5 is the positive shape; old word cloud is the counterexample | Example is output-shape guidance, not publication proof |
 
 ## Prior-Art / Common-Rule Dedupe
 

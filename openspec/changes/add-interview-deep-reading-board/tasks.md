@@ -40,11 +40,16 @@
 
 ## 5. Evaluation and Replay
 
-- [ ] 5.1 Record RED baseline: interview word cloud compresses source order, hides speaker-turn logic, and drops the Coworker / Feishu / stable Agent / subagent / MCP section.
-- [ ] 5.2 Record GREEN result: trigger asks the full-window reading-board fork question and requires enough source-order windows, temperature-axis evidence, and user-highlighted passage protection.
-- [ ] 5.3 Record public-gate replay: reader-facing interview H5 routes through `public-report-quality-gate` before the interview module.
-- [ ] 5.4 Record AGENTS route replay: interview-like source plus compression-sensitive output loads the new skill.
-- [ ] 5.5 Record H5 reference replay: future agents can find the Li Xiang H5 example and distinguish the old word-cloud artifact as a counterexample.
+- [x] 5.1 Record RED baseline: interview word cloud compresses source order, hides speaker-turn logic, and drops the Coworker / Feishu / stable Agent / subagent / MCP section.
+  <!-- 2026-05-19 — OpenSpec and skill evaluations record the baseline failure and absence of runtime skill/route/example -->
+- [x] 5.2 Record GREEN result: trigger asks the full-window reading-board fork question and requires enough source-order windows, temperature-axis evidence, and user-highlighted passage protection.
+  <!-- 2026-05-19 — evaluations record implemented trigger, fork question, window/evidence structure, and named-passage protection -->
+- [x] 5.3 Record public-gate replay: reader-facing interview H5 routes through `public-report-quality-gate` before the interview module.
+  <!-- 2026-05-19 — OpenSpec evaluation records public gate parent route and non-replacement boundary -->
+- [x] 5.4 Record AGENTS route replay: interview-like source plus compression-sensitive output loads the new skill.
+  <!-- 2026-05-19 — AGENTS route and rg verification evidence recorded -->
+- [x] 5.5 Record H5 reference replay: future agents can find the Li Xiang H5 example and distinguish the old word-cloud artifact as a counterexample.
+  <!-- 2026-05-19 — wiki example and H5 reference record positive H5, source/data links, and word-cloud counterexample -->
 
 ## 6. Validation and Commit Discipline
 
