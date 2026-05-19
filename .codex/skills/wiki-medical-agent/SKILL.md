@@ -31,6 +31,20 @@ Authority model:
 - `Proposed Decisions` is not executable.
 - Stage records are evidence attachments only.
 
+Status / Blocked Response:
+
+- If the user only asks for status, report the fixed fields above.
+- If the user is trying to continue, modify, apply, repair, or decide next
+  steps, and the medical-agent result is `report_status`, `blocked`,
+  `awaiting_confirmation`, or `archive_ready`, do not stop at the fixed fields.
+- Before asking the user for missing details, provide a read-only prediagnosis
+  based on already available state or at most one local read-only check.
+- Include: script result, interpreted live user intent, read-only
+  prediagnosis, recommended next action, and the specific point that still
+  requires user confirmation, if any.
+- This rule does not expand write authority or bypass the case-file authority
+  model.
+
 Treatment apply:
 
 - Requires one active case file.
