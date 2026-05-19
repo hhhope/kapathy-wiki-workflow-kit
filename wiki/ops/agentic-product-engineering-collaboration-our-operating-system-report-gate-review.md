@@ -9,7 +9,7 @@ kind: report-gate-review
 created: 2026-05-11
 target: wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html
 status: review-ready
-updated: 2026-05-18
+updated: 2026-05-19
 ---
 
 # Report Gate Review
@@ -142,6 +142,60 @@ Boundary:
 - Images, share zip, and Playwright visual screenshots were not regenerated in this text-only step.
 - The H5 remains an internal draft until the user confirms the new text direction and asks for image/share-package work.
 
+## 2026-05-19 Image-Model Visual Update
+
+Trigger: user confirmed the H5 needed section visuals and explicitly corrected
+the route when deterministic rendering was used too early. The accepted route
+for this visual update is:
+
+`public-report-quality-gate -> knowledge-article-visual -> infographic-onepager -> imagegen`
+
+Route evidence:
+
+- Drift evidence:
+  `wiki/ops/agentic-product-engineering-collaboration-tool-executor-bypass-drift-2026-05-18.md`.
+- Visual scripts:
+  `wiki/ops/agentic-product-engineering-collaboration-workway-visual-production-brief-2026-05-18.md`.
+- Behavior repair:
+  `openspec/changes/harden-tool-executor-bypass-routing/evaluation.md`.
+
+Generated section assets:
+
+| Section | Asset | Role |
+|---|---|---|
+| `02 · 现场对照` | `wiki/reports/agentic-collaboration-images/workway-02-local-overload.png` | Shows the split-account-core overload case: many docs and meetings still create drift, bottlenecks, and friction without a shared work graph. |
+| `03 · 先看结论图` | `wiki/reports/agentic-collaboration-images/workway-03-operating-system.png` | Summarizes the thesis: AI is not a tool, but a product-engineering operating system with human judgment at the center. |
+| `04 · 能力拆法` | `wiki/reports/agentic-collaboration-images/workway-04-capability-layers.png` | Shows the five AI capability layers: eyes, knowledge archaeology, plan simulation, tool execution, feedback writeback. |
+| `06 · 技术路线图` | `wiki/reports/agentic-collaboration-images/workway-06-technical-route.png` | Turns the build path into one real chain rather than a platform stack. |
+| `08 · 工作流` | `wiki/reports/agentic-collaboration-images/workway-08-work-graph.png` | Shows a complex demand becoming an AI-participating work graph. |
+| `09 · 工程重塑` | `wiki/reports/agentic-collaboration-images/workway-09-evidence-system.png` | Contrasts delivery pipeline with evidence-driven collaboration. |
+
+Correction note:
+
+- A deterministic temporary HTML renderer was started as an execution shortcut,
+  but that contradicted the user's explicit image-model direction. Those
+  temporary rendered images were not committed.
+- The committed section assets are copied from the image-model output directory
+  into the repo image directory.
+- The original generated images remain under
+  `/home/yan/.codex/generated_images/019e3a16-82b4-7d70-a8cd-a0d322b24417/`.
+
+Embedding update:
+
+- The old top data strip was moved into section `10 · 模式数据`, where the
+  repository numbers are explained as local evidence rather than first-screen
+  proof.
+- Section 02 and section 03 now use new image-model assets instead of the older
+  dumbbell and one-page infographic.
+- Sections 04, 06, 08, and 09 now include dedicated image-model section visuals.
+
+Boundary:
+
+- This update does not regenerate the share zip.
+- Image generation quality was visually inspected for nonblank files, matching
+  hand-drawn visual grammar, section fit, and severe Chinese readability issues.
+  Final publication would still need stakeholder review.
+
 ## Hard Gate Results
 
 - Reader promise: pass. The page answers what we should do and what our writing/collaboration process should become.
@@ -151,7 +205,10 @@ Boundary:
 - Role Responsibility Gate: pass. The page now answers which role owns each workflow step, what artifact they produce, and what evidence proves the step is done.
 - Reference Output Shape Gate: pass. The selected shape is an H5 long-form article. It does not drift into dashboard panels, card wall, table grid, or colorful block collage.
 - Voice Quality Gate: pass. The page uses direct internal report prose and removes chat residue.
-- Visual Output Gate: pass with local-assets boundary. The page uses existing visual assets from the prior H5 and a generated image-model one-page infographic as the primary scan-first visual.
+- Visual Output Gate: pass with local-assets boundary. The page now uses six
+  section-specific image-model assets generated from the visual production brief
+  and embedded into the H5. Older visual assets remain as historical references,
+  not the primary section visuals.
 - Evidence Boundary Gate: pass. The page names repository evidence categories, date slices, counting method, and representative incidents, while stating that it is an internal H5 draft.
 - No production residue: pass. Reader-facing HTML contains no prompt script, route labels, or tool-execution notes.
 
@@ -182,12 +239,17 @@ Boundary:
 
 ## Visual Asset Boundary
 
-- Generated image source: `/home/yan/.codex/generated_images/019e1649-0b70-7dd1-a407-f2b5924caee3/ig_0c0d47dbac6051aa016a01cd74d33081919a4cc4ba38f75eea.png`.
-- Repo asset copy: `wiki/reports/agentic-collaboration-images/ai-collaboration-operating-system-onepager.png`.
-- H5 insertion: section `03 · 一图流`.
-- Share package: `wiki/reports/agentic-product-engineering-collaboration-our-operating-system-share.zip`.
-- Package contents: H5 plus the four image assets referenced by the H5.
-- Package verification: extracted to `/tmp/agentic-h5-share-check-20260512-provenance/` and opened with Playwright screenshot `/tmp/agentic-h5-share-check-20260512-provenance.png`.
+- Generated image source directory:
+  `/home/yan/.codex/generated_images/019e3a16-82b4-7d70-a8cd-a0d322b24417/`.
+- Repo asset copies:
+  `wiki/reports/agentic-collaboration-images/workway-02-local-overload.png`,
+  `wiki/reports/agentic-collaboration-images/workway-03-operating-system.png`,
+  `wiki/reports/agentic-collaboration-images/workway-04-capability-layers.png`,
+  `wiki/reports/agentic-collaboration-images/workway-06-technical-route.png`,
+  `wiki/reports/agentic-collaboration-images/workway-08-work-graph.png`, and
+  `wiki/reports/agentic-collaboration-images/workway-09-evidence-system.png`.
+- H5 insertion: sections `02`, `03`, `04`, `06`, `08`, and `09`.
+- Share package: not regenerated in this update.
 - Feishu sync: not performed. The package is local file delivery only.
 
 ## Behavior Replay Evidence

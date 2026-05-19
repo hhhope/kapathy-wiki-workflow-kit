@@ -805,25 +805,6 @@
     </div>
   </header>
 
-  <aside class="data-strip" aria-label="本次复盘数据">
-    <div class="metric">
-      <strong>966</strong>
-      <span>两个项目合计非合并提交，用真实仓库演化而不是概念图说话。</span>
-    </div>
-    <div class="metric">
-      <strong>268</strong>
-      <span>2026-05-01 以来两库新增非合并提交，说明这不是低频试验。</span>
-    </div>
-    <div class="metric">
-      <strong>55d / 28d</strong>
-      <span>account-team-efficiency 与 account-meeting-lore 当前分支的仓库演化跨度。</span>
-    </div>
-    <div class="metric">
-      <strong>46</strong>
-      <span>account-meeting-lore OpenSpec specs，配合 32 条 ADR、105 条 ops 记录固化边界。</span>
-    </div>
-  </aside>
-
   <main>
     <section class="section">
       <div class="reading">
@@ -905,8 +886,8 @@
         </div>
       </div>
       <div class="image-band">
-        <img src="agentic-collaboration-images/02-company-dumbbell.png" alt="AI 协作哑铃模型">
-        <p class="caption">前一版 H5 的核心模型仍然成立：左侧是人的目标、判断和责任，右侧是系统执行、验证和回放。现在要补强的是中间层：需求、知识库、代码、测试、问题和 owner 必须被连接成可追踪工作图。</p>
+        <img src="agentic-collaboration-images/workway-02-local-overload.png" alt="分账核心信息密度压穿传统协作">
+        <p class="caption">分账核心的启发不是“资料还不够”，而是资料、会议和日报已经很多，仍然缺少一张共同维护的全局工作图。</p>
       </div>
     </section>
 
@@ -916,24 +897,9 @@
       <p class="reading">
         这张图把整篇 H5 压成一个判断：我们不做 AI 军备竞赛，而是把 AI 放进产研链路，让意图、执行、证据、判断和写回形成闭环。
       </p>
-      <div class="poster-feature">
-        <figure class="poster-frame">
-          <img src="agentic-collaboration-images/ai-collaboration-operating-system-onepager.png" alt="AI 协作作业系统一图流">
-        </figure>
-        <div class="poster-notes">
-          <div class="poster-note">
-            <strong>先定边界</strong>
-            <p>不做基座模型、不做通用 RAG 平台、不追 AI 使用率、不让 AI 替代业务判断。</p>
-          </div>
-          <div class="poster-note">
-            <strong>再跑闭环</strong>
-            <p>意图识别、知识关联、方案推演、工具执行、验证反馈、运营观测。</p>
-          </div>
-          <div class="poster-note">
-            <strong>最后改角色</strong>
-            <p>产品守意图，研发交证据，测试定完成，项目管状态，老板看结果。</p>
-          </div>
-        </div>
+      <div class="image-band">
+        <img src="agentic-collaboration-images/workway-03-operating-system.png" alt="不是 AI 工具而是重塑产研作业方式">
+        <p class="caption">AI 不应该只是多一个聊天入口，而要进入意图、知识、方案、工具、证据和写回的完整作业链；人的判断仍在中心。</p>
       </div>
     </section>
 
@@ -943,6 +909,10 @@
       <p class="reading">
         分账核心这个对照案例说明，问题不是“再多写几份文档”就能解决。我们要利用 AI 的泛化能力放大专业人的能力：通用大模型负责理解、抽取、归纳、比较和推演；垂直知识库负责保存需求、详设、会议、代码、测试和线上问题；人负责目标、判断、取舍和责任。
       </p>
+      <div class="image-band">
+        <img src="agentic-collaboration-images/workway-04-capability-layers.png" alt="AI 放大人的判断能力拆法">
+        <p class="caption">这五层不是五个独立工具，而是一条协作能力链：AI 看见意图、接上知识、推演方案、进入工具、把验证和失败写回。</p>
+      </div>
       <div class="phase-list">
         <div class="phase-row">
           <strong>1. 意图识别与需求成型<br>给 AI 装眼睛</strong>
@@ -1033,6 +1003,10 @@
       <p class="reading">
         这张路线图不能写成“接入大模型、接入知识库、接入工作流”。那还是工具堆叠。真正要回答的是：AI 先看见什么，先连接哪些知识，怎么帮助一号位和团队比较方案，怎么进入工具执行，最后怎么用证据和写回降低下一次摩擦。
       </p>
+      <div class="image-band">
+        <img src="agentic-collaboration-images/workway-06-technical-route.png" alt="先跑通一条真实链路的技术路线">
+        <p class="caption">技术路线的顺序是先跑通一条真实链路：原型、多方案、Spec/ADR、工具执行、真实验证、写回记忆。</p>
+      </div>
       <div class="roadmap-path" aria-label="AI-assisted 产研作业系统技术路线图">
         <article class="roadmap-step">
           <div class="roadmap-node">
@@ -1157,6 +1131,10 @@
       <p class="reading">
         最小系统要能重复运行，就不能再把流程拆成一堆读者分不清的中心和关口。新的主线只有一句话：把复杂需求从“人翻文档、人开会、人追状态”，改成“AI 连接上下文、推演方案、进入工具执行、用证据暴露风险，人负责判断和取舍”。
       </p>
+      <div class="image-band">
+        <img src="agentic-collaboration-images/workway-08-work-graph.png" alt="复杂需求变成 AI 参与的工作图">
+        <p class="caption">复杂需求不是被更多会议解决，而是被拆成可连接、可判断、可写回的工作图。</p>
+      </div>
       <div class="phase-list">
         <div class="phase-row">
           <strong>1. 意图识别与需求成型</strong>
@@ -1197,6 +1175,10 @@
     <section class="section">
       <p class="section-label">09 · 工程重塑</p>
       <h2>软件工程从交付流水线，变成证据驱动的协作系统</h2>
+      <div class="image-band">
+        <img src="agentic-collaboration-images/workway-09-evidence-system.png" alt="从交付流水线到证据协作">
+        <p class="caption">新的工程协作不只交付代码，而是交付能让产品、研发、测试、项目和 owner 一起判断的证据链。</p>
+      </div>
       <div class="role-list">
         <div class="role-row">
           <strong>旧模式</strong>
@@ -1231,6 +1213,24 @@
       <p class="reading">
         工作流写完后，需要回到数据看它是不是凭空想象。这组数据不能被解释成“上了 Spec 以后立刻少修 bug”。真实变化更像三段：先靠高频修复推进，再用 OpenSpec 把问题显性化，最后用 skill 门禁把输出形态、证据和回放约束住。短期内修复提交可能上升，因为以前藏在口头确认、局部 smoke、页面观感里的问题开始被命名。
       </p>
+      <aside class="data-strip" aria-label="本次复盘数据">
+        <div class="metric">
+          <strong>966</strong>
+          <span>两个项目合计非合并提交，用真实仓库演化而不是概念图说话。</span>
+        </div>
+        <div class="metric">
+          <strong>268</strong>
+          <span>2026-05-01 以来两库新增非合并提交，说明这不是低频试验。</span>
+        </div>
+        <div class="metric">
+          <strong>55d / 28d</strong>
+          <span>account-team-efficiency 与 account-meeting-lore 当前分支的仓库演化跨度。</span>
+        </div>
+        <div class="metric">
+          <strong>46</strong>
+          <span>account-meeting-lore OpenSpec specs，配合 32 条 ADR、105 条 ops 记录固化边界。</span>
+        </div>
+      </aside>
       <div class="phase-list">
         <div class="phase-row">
           <strong>account-team-efficiency：OpenSpec 前</strong>
