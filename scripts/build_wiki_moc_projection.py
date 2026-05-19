@@ -23,7 +23,7 @@ from scripts.wiki_moc_temperature import (
 )
 
 
-REVIEW_OBJECT_FIELDS = {
+REQUIRED_REVIEW_FIELDS = {
     "candidate_id",
     "temperature",
     "moc_admission",
@@ -53,7 +53,7 @@ def load_temperature_admission(graph: dict, review_path: str | None) -> dict | N
     reviews = json.loads(Path(review_path).read_text(encoding="utf-8"))
     if not isinstance(reviews, dict):
         raise ValueError("temperature review JSON must be a keyed mapping from candidate_id strings to review objects")
-    if REVIEW_OBJECT_FIELDS.intersection(reviews):
+    if REQUIRED_REVIEW_FIELDS.intersection(reviews):
         raise ValueError(
             "temperature review JSON must be a keyed mapping from candidate_id strings to review objects, not a single review object"
         )
@@ -63,6 +63,15 @@ def load_temperature_admission(graph: dict, review_path: str | None) -> dict | N
         if not isinstance(review, dict):
             raise ValueError(
                 f"temperature review JSON value for {candidate_id!r} must be a review object"
+            )
+        missing_fields = sorted(REQUIRED_REVIEW_FIELDS - set(review))
+        if missing_fields:
+            raise ValueError(
+                f"temperature review JSON value for {candidate_id!r} missing required field(s): {', '.join(missing_fields)}"
+            )
+        if review["candidate_id"] != candidate_id:
+            raise ValueError(
+                f"temperature review JSON candidate_id mismatch for {candidate_id!r}: review candidate_id must match mapping key"
             )
 
     packages = build_relation_feature_packages(graph)
