@@ -240,6 +240,26 @@ class WikiMocTemperatureTest(unittest.TestCase):
         self.assertEqual(validates_window["status"], "needs_review")
         self.assertNotIn("validates", plan["admitted_relations"])
 
+    def test_negative_temperature_does_not_admit(self) -> None:
+        packages = build_relation_feature_packages(self.sample_graph())
+        board = build_temperature_clue_board(
+            packages,
+            reviews={
+                "relation:openspec/specs/runtime/spec.md:validates:runtime-method": {
+                    "temperature": -1,
+                    "moc_admission": "admit",
+                    "rationale": "Negative temperature is invalid.",
+                }
+            },
+        )
+
+        plan = build_moc_admission_plan(board)
+        validates_window = board["clue_windows"][1]
+
+        self.assertIsNone(validates_window["temperature"])
+        self.assertEqual(validates_window["status"], "needs_review")
+        self.assertNotIn("validates", plan["admitted_relations"])
+
     def test_non_int_temperature_does_not_admit(self) -> None:
         packages = build_relation_feature_packages(self.sample_graph())
         board = build_temperature_clue_board(
@@ -249,6 +269,26 @@ class WikiMocTemperatureTest(unittest.TestCase):
                     "temperature": "80",
                     "moc_admission": "admit",
                     "rationale": "String temperature is invalid.",
+                }
+            },
+        )
+
+        plan = build_moc_admission_plan(board)
+        validates_window = board["clue_windows"][1]
+
+        self.assertIsNone(validates_window["temperature"])
+        self.assertEqual(validates_window["status"], "needs_review")
+        self.assertNotIn("validates", plan["admitted_relations"])
+
+    def test_float_temperature_does_not_admit(self) -> None:
+        packages = build_relation_feature_packages(self.sample_graph())
+        board = build_temperature_clue_board(
+            packages,
+            reviews={
+                "relation:openspec/specs/runtime/spec.md:validates:runtime-method": {
+                    "temperature": 80.0,
+                    "moc_admission": "admit",
+                    "rationale": "Float temperature is invalid.",
                 }
             },
         )
