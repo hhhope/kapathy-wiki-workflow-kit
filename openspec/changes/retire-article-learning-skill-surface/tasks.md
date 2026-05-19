@@ -9,8 +9,8 @@
 - [x] 2.1 Add Chinese-first durable learning output rule to `learning-capture`.
 - [x] 2.2 Migrate useful article-specific rules into `learning-capture`
   references.
-- [ ] 2.3 Remove the active `article-learning-capture` skill surface.
-- [ ] 2.4 Remove or rewrite references that imply `article-learning-capture`
+- [x] 2.3 Remove the active `article-learning-capture` skill surface.
+- [x] 2.4 Remove or rewrite references that imply `article-learning-capture`
   remains a runtime entry.
 
 ## 3. Evidence and Verification

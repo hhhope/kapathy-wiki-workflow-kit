@@ -128,3 +128,42 @@ as `learning-capture` module/reference material.
 | General learning intent routing | Deduplicate | Owned by `learning-capture` |
 | Promotion into behavior assets | Reference only | Owned by repo governance and behavior-asset gates |
 | Old `description` and `When To Use` entry wording | Delete | It recreates runtime trigger pollution |
+
+## GREEN Result
+
+### Active Skill Surface
+
+Command:
+
+```bash
+find .codex/skills -maxdepth 2 -name SKILL.md | sort | rg 'article-learning-capture|learning-capture'
+```
+
+Expected result: only `.codex/skills/learning-capture/SKILL.md` appears for
+learning capture.
+
+Observed result after deletion:
+
+```text
+.codex/skills/learning-capture/SKILL.md
+.codex/skills/readme-learning-capture/SKILL.md
+```
+
+The retired `.codex/skills/article-learning-capture/SKILL.md` surface does not
+appear. The existing README learning skill also matches this broad grep pattern
+because its path contains `learning-capture`; it is outside this task's article
+surface retirement scope.
+
+### Active Description Scan
+
+Command:
+
+```bash
+rg -n '^description:.*(article|WeChat|deep reading|learning extraction)|article-learning-capture' .codex/skills/*/SKILL.md
+```
+
+Expected result: no active `article-learning-capture` description remains.
+
+Observed result after deletion: no active `article-learning-capture`
+description remains. The command still reports the intended `learning-capture`
+router description and the existing `weixin-reader` article-reader description.
