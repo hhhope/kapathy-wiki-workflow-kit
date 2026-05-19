@@ -219,6 +219,67 @@ class WikiMocTemperatureTest(unittest.TestCase):
         self.assertEqual(validates_window["status"], "needs_review")
         self.assertNotIn("validates", plan["admitted_relations"])
 
+    def test_temperature_over_100_does_not_admit(self) -> None:
+        packages = build_relation_feature_packages(self.sample_graph())
+        board = build_temperature_clue_board(
+            packages,
+            reviews={
+                "relation:openspec/specs/runtime/spec.md:validates:runtime-method": {
+                    "temperature": 101,
+                    "moc_admission": "admit",
+                    "rationale": "Out of range temperature.",
+                }
+            },
+        )
+
+        plan = build_moc_admission_plan(board)
+        validates_window = board["clue_windows"][1]
+
+        self.assertIsNone(validates_window["temperature"])
+        self.assertIsNone(validates_window["temperature_band"])
+        self.assertEqual(validates_window["status"], "needs_review")
+        self.assertNotIn("validates", plan["admitted_relations"])
+
+    def test_non_int_temperature_does_not_admit(self) -> None:
+        packages = build_relation_feature_packages(self.sample_graph())
+        board = build_temperature_clue_board(
+            packages,
+            reviews={
+                "relation:openspec/specs/runtime/spec.md:validates:runtime-method": {
+                    "temperature": "80",
+                    "moc_admission": "admit",
+                    "rationale": "String temperature is invalid.",
+                }
+            },
+        )
+
+        plan = build_moc_admission_plan(board)
+        validates_window = board["clue_windows"][1]
+
+        self.assertIsNone(validates_window["temperature"])
+        self.assertEqual(validates_window["status"], "needs_review")
+        self.assertNotIn("validates", plan["admitted_relations"])
+
+    def test_bool_temperature_does_not_admit(self) -> None:
+        packages = build_relation_feature_packages(self.sample_graph())
+        board = build_temperature_clue_board(
+            packages,
+            reviews={
+                "relation:openspec/specs/runtime/spec.md:validates:runtime-method": {
+                    "temperature": True,
+                    "moc_admission": "admit",
+                    "rationale": "Bool temperature is invalid.",
+                }
+            },
+        )
+
+        plan = build_moc_admission_plan(board)
+        validates_window = board["clue_windows"][1]
+
+        self.assertIsNone(validates_window["temperature"])
+        self.assertEqual(validates_window["status"], "needs_review")
+        self.assertNotIn("validates", plan["admitted_relations"])
+
     def test_moc_admission_block_preserves_blocked_status(self) -> None:
         packages = build_relation_feature_packages(self.sample_graph())
         board = build_temperature_clue_board(

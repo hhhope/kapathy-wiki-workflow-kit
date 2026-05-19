@@ -19,6 +19,14 @@ def temperature_band(value: int) -> str:
     return "noise"
 
 
+def _valid_temperature(value: Any) -> int | None:
+    if isinstance(value, bool) or not isinstance(value, int):
+        return None
+    if value < 0 or value > 100:
+        return None
+    return value
+
+
 def _nodes_by_page(nodes: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return {
         str(node.get("page_path")): node
@@ -151,7 +159,7 @@ def build_temperature_clue_board(
     for package in packages:
         candidate_id = str(package["candidate_id"])
         review = _review_for(candidate_id, reviews)
-        temperature = review.get("temperature")
+        temperature = _valid_temperature(review.get("temperature"))
         moc_admission = _moc_admission(review)
         status = _window_status(package, moc_admission, temperature)
         window = {
@@ -162,8 +170,8 @@ def build_temperature_clue_board(
             "target_object": package["target_object"],
             "evidence_refs": package["evidence_refs"],
             "structural_features": package["structural_features"],
-            "temperature": temperature if isinstance(temperature, int) else None,
-            "temperature_band": temperature_band(temperature) if isinstance(temperature, int) else None,
+            "temperature": temperature,
+            "temperature_band": temperature_band(temperature) if temperature is not None else None,
             "status": status,
             "moc_admission": moc_admission,
             "admission": _compat_admission(status, moc_admission),
