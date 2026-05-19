@@ -363,12 +363,16 @@ def build_moc_surgery_preview_payload(
         moc_plan = build_moc_plan(root_path, graph)
     surgery_plan = build_surgery_plan_from_case(case_package, moc_plan=moc_plan)
     moc_summary = dict(moc_plan.get("summary", {})) if isinstance(moc_plan, dict) else {}
+    temperature_admission = (
+        dict(moc_plan.get("temperature_admission", {})) if isinstance(moc_plan, dict) else {}
+    )
     surgery_summary = surgery_plan.get("summary", {})
     moc_projection_count = 0
     if isinstance(surgery_summary, dict):
         moc_projection_count = int(surgery_summary.get("moc_projection_count", 0) or 0)
     return {
         "moc_projection": moc_summary,
+        "temperature_admission": temperature_admission,
         "surgery_preview": {
             "moc_projection_count": moc_projection_count,
             "sample_items": _sample_moc_items(surgery_plan),

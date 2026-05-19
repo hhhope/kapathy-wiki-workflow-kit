@@ -220,11 +220,28 @@ class WikiMedicalAgentTest(unittest.TestCase):
                     "link_count": 9,
                 },
             ],
+            "temperature_admission": {
+                "counts": {
+                    "candidate_relations": 3,
+                    "admitted_relations": 2,
+                    "rejected_relations": 1,
+                },
+                "admitted_relations": ["validates", "blocks"],
+                "clue_windows": [
+                    {
+                        "relation": "validates",
+                        "start": "2026-05-15",
+                        "end": "2026-05-18",
+                    }
+                ],
+            },
         }
 
         payload = build_moc_surgery_preview_payload(self.tmpdir, case_path, moc_plan)
 
         self.assertEqual(payload["moc_projection"]["candidate_count"], 2)
+        self.assertEqual(payload["temperature_admission"]["admitted_relations"], ["validates", "blocks"])
+        self.assertEqual(payload["temperature_admission"]["counts"]["candidate_relations"], 3)
         self.assertEqual(payload["surgery_preview"]["moc_projection_count"], 2)
         self.assertEqual(len(payload["surgery_preview"]["sample_items"]), 2)
         self.assertEqual(payload["next_action"], "review_moc_surgery_preview")
@@ -294,6 +311,11 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertTrue(payload["allowed"])
         self.assertEqual(payload["allowed_action"], "preview_moc_surgery_plan")
         self.assertIn("moc_projection", payload)
+        self.assertIn("temperature_admission", payload)
+        self.assertTrue(
+            "counts" in payload["temperature_admission"]
+            or "summary" in payload["temperature_admission"]
+        )
         self.assertIn("surgery_preview", payload)
         self.assertFalse((self.tmpdir / "wiki" / "moc").exists())
         self.assertEqual(case_path.read_text(encoding="utf-8"), before)
