@@ -15,7 +15,6 @@ language: zh-CN
 period: active
 related_objects:
   - example-driven-capture
-  - article-learning-capture
   - readme-learning
 same_topic_rule: update-existing
 source_path: "chat://openspec-explore/learning-capture-routing/2026-05-06"
@@ -48,9 +47,10 @@ updated_at: 2026-05-07
 采用渐进式方案：
 
 - 新增薄的 `learning-capture` domain skill。
-- 保留 `article-learning-capture` 和 `readme-learning-capture` 作为兼容入口。
+- article 学习从独立 runtime skill 退为 `learning-capture` 内部 reference
+  module；`readme-learning-capture` 仍是相邻兼容入口。
 - 把 article、repo/README、example/reference 分成模块。
-- 不删除旧 skill，不重写历史 wiki，不新增自动抓取或调度代码。
+- 不重写历史学习页，不新增自动抓取或调度代码。
 
 ## 约束
 

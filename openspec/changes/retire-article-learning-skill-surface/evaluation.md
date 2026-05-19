@@ -276,7 +276,35 @@ Parent gate preservation:
 | Behavior asset checker | `python3 scripts/check_behavior_assets.py` | PASS. Initial run before final evidence failed on this change's missing `## Pressure Scenarios`, `## Residual Risks`, prior-art marker labels, parent-gate evidence, and replay fields. After adding the evidence above, the command exited 0 with no output. |
 | Wiki frontmatter checker | `python3 scripts/check_wiki_frontmatter.py` | PASS. Command exited 0 with no output. No actual wiki page frontmatter was changed by this task. |
 | OpenSpec validation | `openspec validate retire-article-learning-skill-surface --strict` | PASS. Output included `Change 'retire-article-learning-skill-surface' is valid`. PostHog telemetry flush then reported `getaddrinfo EAI_AGAIN edge.openspec.dev`; this occurred after validation and is non-blocking. |
-| Retired surface routing scan | `rg -n 'article-learning-capture' .codex/skills AGENTS.md PROJECT.md openspec/specs openspec/changes/retire-article-learning-skill-surface wiki/adr wiki/ops` | PASS. Output is limited to historical/current OpenSpec evidence, active negative-boundary references such as `.codex/skills/learning-capture/references/article.md:10`, pressure scenarios, and historical wiki/ops/spec references. It did not report an active `.codex/skills/article-learning-capture/SKILL.md` file. |
+| Retired surface routing scan | `rg -n 'article-learning-capture' .codex/skills AGENTS.md PROJECT.md openspec/specs openspec/changes/retire-article-learning-skill-surface wiki/adr wiki/ops` | PASS after stale active wiki routing text was corrected in `wiki/ops/agent-harness-article-learning.md`, `wiki/ops/agent-harness-article-learning-intake.md`, and `wiki/ops/learning-capture-routing.md`. Remaining hits are accepted spec references in `AGENTS.md`, current OpenSpec evidence, active negative-boundary references such as `.codex/skills/learning-capture/references/article.md:10`, pressure scenarios, exploratory/historical wiki ops notes, and generated doctor output. It did not report an active `.codex/skills/article-learning-capture/SKILL.md` file or active wiki text that routes through a standalone article skill. |
 | Active description scan | `rg -n '^description:.*(article\|WeChat\|deep reading\|learning extraction)' .codex/skills/*/SKILL.md` | PASS. Actual output was `.codex/skills/learning-capture/SKILL.md:3:description: Use when the user provides articles, repo/README links, or examples as learning, reference, or adaptation material, including bare links whose purpose is implied by recent context.` and `.codex/skills/weixin-reader/SKILL.md:3:description: Use when the user provides an mp.weixin.qq.com article link and wants to read, analyze, summarize, or extract the article content`. No retired article-learning skill description appeared. |
 | Article wiki template scan | `rg -n 'language: zh-CN\|# <主题> / 阅读笔记\|## 来源\|## 阅读草稿\|## 可迁移学习' .codex/skills/learning-capture/references/article-wiki-template.md` | PASS. Actual output: `12:language: zh-CN`, `32:# <主题> / 阅读笔记`, `34:## 来源`, `42:## 阅读草稿`, and `56:## 可迁移学习`. |
 | Active skill surface scan | `find .codex/skills -maxdepth 2 -name SKILL.md \| sort \| rg 'article-learning-capture\|learning-capture'` | PASS. Actual output: `.codex/skills/learning-capture/SKILL.md` and `.codex/skills/readme-learning-capture/SKILL.md`. The retired `.codex/skills/article-learning-capture/SKILL.md` surface is absent; the README learning surface is adjacent and out of scope. |
+
+## Wiki Routing Text Correction
+
+Final routing scan review found that an active wiki learning page still
+described the pre-retirement route as
+`learning-capture -> article module -> article-learning-capture skill`. The
+runtime skill surface had already been removed, but the active wiki text still
+looked like current route guidance.
+
+Correction applied:
+
+| File | Correction |
+|---|---|
+| `wiki/ops/agent-harness-article-learning.md` | Replaced the stale delegate-skill route with `learning-capture` article reference module wording. |
+| `wiki/ops/agent-harness-article-learning-intake.md` | Replaced the retired `.codex/skills/article-learning-capture/` next-step guidance with `learning-capture/references/article*.md`. |
+| `wiki/ops/learning-capture-routing.md` | Removed `article-learning-capture` from active `related_objects` and updated the current judgment to say article learning retired to an internal `learning-capture` reference module. |
+
+Frontmatter gate evidence for the `learning-capture-routing` frontmatter edit:
+
+```json
+{
+  "command": "python3 scripts/wiki_gate_precheck.py --mode frontmatter --target wiki/ops/learning-capture-routing.md",
+  "passed": true,
+  "blocking_count": 0,
+  "score": 75,
+  "warnings": "5 possible_unregistered_producer warnings unrelated to the target page"
+}
+```

@@ -93,9 +93,9 @@ notes_scope: agent / harness / eval / managed agents 外部文章精读专题的
 ## Next Step
 
 文章学习 SOP 已经固化到
-`.codex/skills/article-learning-capture/`，本批文章也已经按 score-first 和
-structured reading notes 返工到
+`.codex/skills/learning-capture/references/article*.md`，本批文章也已经按
+score-first 和 structured reading notes 返工到
 [agent-harness-article-learning.md](agent-harness-article-learning.md)。后续同类
-文章学习先走 skill 的 scorecard 和 wiki template；若要把某条学习升级成行为资产，
-需要另开明确任务，并补本地 RED/GREEN、demo、git 对照或 before / after behavior
-delta。
+文章学习先走 `learning-capture` 的 article reference module、scorecard 和 wiki
+template；若要把某条学习升级成行为资产，需要另开明确任务，并补本地
+RED/GREEN、demo、git 对照或 before / after behavior delta。

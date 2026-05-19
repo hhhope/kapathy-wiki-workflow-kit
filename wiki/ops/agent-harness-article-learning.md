@@ -29,7 +29,7 @@ related_objects:
   - behavior-asset-governance
   - codex-global-agents-md
 notes_scope: 外部 agent / harness / eval / managed agents 文章精读。按
-  learning-capture -> article module -> article-learning-capture skill 记录
+  learning-capture -> article reference module 记录
   route、source grounding、admission gate、评分、结构化意译、可迁移学习和
   promotion boundary；不直接形成 AGENTS、skill、spec、checklist 或 repo
   policy。
@@ -37,8 +37,8 @@ notes_scope: 外部 agent / harness / eval / managed agents 文章精读。按
 
 # Agent Harness 文章精读
 
-本页按 `.codex/skills/learning-capture/` 的 article module 和
-`.codex/skills/article-learning-capture/` 返工。它不是
+本页按 `.codex/skills/learning-capture/` 的 article reference module
+返工。它不是
 `behavior-asset-governance` 的设计正文，也不是规则发布页。
 
 本页只做六件事：
@@ -56,7 +56,7 @@ notes_scope: 外部 agent / harness / eval / managed agents 文章精读。按
 |---|---|
 | Domain Skill | `learning-capture` |
 | Module | article-shaped source -> `references/article.md` |
-| Delegate Skill | `article-learning-capture` |
+| Article Reference | `learning-capture/references/article.md` |
 | Source Kind | article / blog / engineering post / research post / WeChat reference |
 | User Intent | agent / harness / eval / managed-agents 外部文章精读与本地可迁移学习 |
 | Non-Goal | 不做新闻摘要、raw fetch、自动 crawler、规则发布或治理正文补丁 |
