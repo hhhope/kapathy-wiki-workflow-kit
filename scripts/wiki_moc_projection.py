@@ -7,6 +7,11 @@ from pathlib import Path
 from typing import Any
 
 from scripts.wiki_moc_lifecycle import grouped_lifecycle_nodes
+from scripts.wiki_moc_temperature import (
+    build_moc_admission_plan,
+    build_relation_feature_packages,
+    build_temperature_clue_board,
+)
 
 
 GENERATED_BEGIN_PREFIX = "<!-- BEGIN GENERATED MOC:"
@@ -109,9 +114,69 @@ def _link_count(lines: tuple[str, ...] | list[str]) -> int:
     return sum(1 for line in lines if line.startswith("- "))
 
 
-def build_moc_candidates(graph: dict[str, Any], moc_dir: Path | str = DEFAULT_MOC_DIR) -> list[MocCandidate]:
+def _normalized_string_list(value: Any) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return sorted({item.strip() for item in value if isinstance(item, str) and item.strip()})
+
+
+def _normalized_counts(value: Any) -> dict[str, int]:
+    defaults = {
+        "admitted": 0,
+        "blocked": 0,
+        "needs_review": 0,
+        "total": 0,
+    }
+    if isinstance(value, dict):
+        for key in defaults:
+            count = value.get(key)
+            if isinstance(count, int) and not isinstance(count, bool):
+                defaults[key] = count
+    return defaults
+
+
+def _normalized_clue_windows(value: Any) -> list[dict[str, Any]]:
+    if not isinstance(value, list):
+        return []
+    return [window for window in value if isinstance(window, dict)]
+
+
+def _normalized_admission_plan(
+    graph: dict[str, Any],
+    admission_plan: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    if admission_plan is None:
+        packages = build_relation_feature_packages(graph)
+        board = build_temperature_clue_board(packages)
+        admission_plan = build_moc_admission_plan(board)
+
+    clue_windows = _normalized_clue_windows(
+        admission_plan.get("clue_windows", admission_plan.get("windows", []))
+    )
+    counts = _normalized_counts(admission_plan.get("counts", admission_plan.get("summary", {})))
+    return {
+        **admission_plan,
+        "admitted_relations": _normalized_string_list(admission_plan.get("admitted_relations")),
+        "blocked_relations": _normalized_string_list(admission_plan.get("blocked_relations")),
+        "review_needed_relations": _normalized_string_list(
+            admission_plan.get("review_needed_relations")
+        ),
+        "counts": counts,
+        "summary": counts,
+        "clue_windows": clue_windows,
+        "windows": clue_windows,
+    }
+
+
+def build_moc_candidates(
+    graph: dict[str, Any],
+    moc_dir: Path | str = DEFAULT_MOC_DIR,
+    admission_plan: dict[str, Any] | None = None,
+) -> list[MocCandidate]:
     nodes = [node for node in graph.get("nodes", []) if isinstance(node, dict)]
     edges = [edge for edge in graph.get("edges", []) if isinstance(edge, dict)]
+    temperature_admission = _normalized_admission_plan(graph, admission_plan)
+    admitted_relations = set(temperature_admission["admitted_relations"])
     candidates: list[MocCandidate] = []
 
     domain_nodes: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -163,6 +228,8 @@ def build_moc_candidates(graph: dict[str, Any], moc_dir: Path | str = DEFAULT_MO
         )
 
     for relation_type, grouped_edges in sorted(relation_edges.items()):
+        if relation_type not in admitted_relations:
+            continue
         relation_lines = []
         for edge in sorted(
             grouped_edges,
@@ -245,9 +312,15 @@ def merge_generated_block(existing: str, candidate: MocCandidate) -> str:
     return existing.replace(existing_block, new_block)
 
 
-def build_moc_plan(root: Path | str, graph: dict[str, Any], moc_dir: Path | str = DEFAULT_MOC_DIR) -> dict[str, Any]:
+def build_moc_plan(
+    root: Path | str,
+    graph: dict[str, Any],
+    moc_dir: Path | str = DEFAULT_MOC_DIR,
+    admission_plan: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     root_path = Path(root)
-    candidates = build_moc_candidates(graph, moc_dir)
+    temperature_admission = _normalized_admission_plan(graph, admission_plan)
+    candidates = build_moc_candidates(graph, moc_dir, admission_plan=temperature_admission)
     candidate_paths = {candidate.path for candidate in candidates}
     entries: list[dict[str, Any]] = []
 
@@ -299,6 +372,7 @@ def build_moc_plan(root: Path | str, graph: dict[str, Any], moc_dir: Path | str 
     }
     return {
         "summary": summary,
+        "temperature_admission": temperature_admission,
         "entries": entries,
         "proof_boundary_notes": [
             "MOC projection is derived from explicit graph/frontmatter structure.",
@@ -308,19 +382,28 @@ def build_moc_plan(root: Path | str, graph: dict[str, Any], moc_dir: Path | str 
     }
 
 
-def apply_moc_plan(root: Path | str, graph: dict[str, Any], moc_dir: Path | str = DEFAULT_MOC_DIR) -> dict[str, Any]:
+def apply_moc_plan(
+    root: Path | str,
+    graph: dict[str, Any],
+    moc_dir: Path | str = DEFAULT_MOC_DIR,
+    admission_plan: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     root_path = Path(root)
-    plan = build_moc_plan(root_path, graph, moc_dir)
+    plan = build_moc_plan(root_path, graph, moc_dir, admission_plan=admission_plan)
+    candidates_by_path = {
+        candidate.path: candidate
+        for candidate in build_moc_candidates(
+            graph,
+            moc_dir,
+            admission_plan=plan["temperature_admission"],
+        )
+    }
     for entry in plan["entries"]:
         if entry["action"] not in {"create", "update"}:
             continue
         path = root_path / entry["path"]
         path.parent.mkdir(parents=True, exist_ok=True)
-        candidate = next(
-            candidate
-            for candidate in build_moc_candidates(graph, moc_dir)
-            if candidate.path == entry["path"]
-        )
+        candidate = candidates_by_path[entry["path"]]
         if entry["action"] == "create":
             path.write_text(render_moc_candidate(candidate), encoding="utf-8")
         else:
@@ -331,8 +414,13 @@ def apply_moc_plan(root: Path | str, graph: dict[str, Any], moc_dir: Path | str 
     return plan
 
 
-def build_moc_health(root: Path | str, graph: dict[str, Any], moc_dir: Path | str = DEFAULT_MOC_DIR) -> dict[str, Any]:
-    plan = build_moc_plan(root, graph, moc_dir)
+def build_moc_health(
+    root: Path | str,
+    graph: dict[str, Any],
+    moc_dir: Path | str = DEFAULT_MOC_DIR,
+    admission_plan: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    plan = build_moc_plan(root, graph, moc_dir, admission_plan=admission_plan)
     entries = [
         {
             "type": "moc_projection",

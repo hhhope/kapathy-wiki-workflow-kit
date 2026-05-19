@@ -45,12 +45,31 @@ class WikiMocProjectionTest(unittest.TestCase):
             ],
         }
 
-    def test_builds_domain_object_and_relation_candidates(self) -> None:
+    def test_builds_domain_and_object_candidates_by_default(self) -> None:
         candidates = build_moc_candidates(self.sample_graph())
         paths = {candidate.path for candidate in candidates}
 
         self.assertIn("wiki/moc/domain-wiki.md", paths)
         self.assertIn("wiki/moc/object-wiki-frontmatter-model.md", paths)
+        self.assertNotIn("wiki/moc/relation-formalizes.md", paths)
+
+    def test_builds_admitted_relation_candidates(self) -> None:
+        admission_plan = {
+            "admitted_relations": ["formalizes"],
+            "counts": {
+                "admitted": 1,
+                "blocked": 0,
+                "needs_review": 0,
+                "total": 1,
+            },
+            "clue_windows": [],
+        }
+        candidates = build_moc_candidates(
+            self.sample_graph(),
+            admission_plan=admission_plan,
+        )
+        paths = {candidate.path for candidate in candidates}
+
         self.assertIn("wiki/moc/relation-formalizes.md", paths)
 
     def test_object_preview_groups_pages_by_lifecycle_not_ops_area(self) -> None:
@@ -122,14 +141,16 @@ class WikiMocProjectionTest(unittest.TestCase):
     def test_dry_run_plan_does_not_write_files(self) -> None:
         plan = build_moc_plan(self.tmpdir, self.sample_graph())
 
-        self.assertEqual(plan["summary"]["create_count"], 3)
+        self.assertEqual(plan["summary"]["create_count"], 2)
+        self.assertIn("temperature_admission", plan)
+        self.assertEqual(plan["temperature_admission"]["admitted_relations"], [])
         self.assertFalse((self.tmpdir / "wiki" / "moc").exists())
 
     def test_apply_writes_generated_moc_files(self) -> None:
         plan = apply_moc_plan(self.tmpdir, self.sample_graph())
         domain_path = self.tmpdir / "wiki" / "moc" / "domain-wiki.md"
 
-        self.assertEqual(plan["summary"]["create_count"], 3)
+        self.assertEqual(plan["summary"]["create_count"], 2)
         self.assertTrue(domain_path.exists())
         text = domain_path.read_text(encoding="utf-8")
         self.assertIn("<!-- BEGIN GENERATED MOC: domain=wiki -->", text)
@@ -160,13 +181,13 @@ class WikiMocProjectionTest(unittest.TestCase):
     def test_health_reports_missing_and_then_passes_after_apply(self) -> None:
         missing = build_moc_health(self.tmpdir, self.sample_graph())
         self.assertEqual(missing["status"], "drift")
-        self.assertEqual(missing["summary"]["create_count"], 3)
+        self.assertEqual(missing["summary"]["create_count"], 2)
 
         apply_moc_plan(self.tmpdir, self.sample_graph())
         clean = build_moc_health(self.tmpdir, self.sample_graph())
 
         self.assertEqual(clean["status"], "pass")
-        self.assertEqual(clean["summary"]["noop_count"], 3)
+        self.assertEqual(clean["summary"]["noop_count"], 2)
 
 
 if __name__ == "__main__":
