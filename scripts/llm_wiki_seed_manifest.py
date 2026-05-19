@@ -31,6 +31,7 @@ COPY_FILES = [
     "scripts/wiki_content_adjudication.py",
     "scripts/wiki_content_enrichment.py",
     "scripts/wiki_moc_projection.py",
+    "scripts/wiki_moc_lifecycle.py",
     "scripts/wiki_product_status.py",
     "scripts/build_wiki_moc_projection.py",
 ]
@@ -165,6 +166,7 @@ domain: none
     "wiki/sources/index.md": """---
 layer: sources
 domain: none
+source_type: index
 ---
 
 # Sources
@@ -211,6 +213,8 @@ Validated output shapes and sanitized examples live here.
 layer: ops
 domain: none
 ops_area: wiki-runtime
+canonical_object: wiki-ops-index
+artifact_type: index
 ---
 
 # Ops
@@ -220,6 +224,8 @@ Workflow traces, runtime models, and medical-loop records live here.
     "wiki/adr/index.md": """---
 layer: adr
 domain: none
+canonical_object: adr-index
+artifact_type: index
 ---
 
 # ADR
@@ -274,6 +280,8 @@ full transcript.
 layer: ops
 domain: wiki
 ops_area: wiki-runtime
+canonical_object: llm-wiki-core-product-contract
+artifact_type: product-contract
 status: seed
 ---
 
@@ -285,6 +293,8 @@ Capture once. Compile once. Retrieve cheaply. Apply safely.
 layer: ops
 domain: wiki
 ops_area: wiki-runtime
+canonical_object: llm-wiki-self-evolution-medical-loop
+artifact_type: ops-model
 status: seed
 ---
 
@@ -296,6 +306,8 @@ proves; archive preserves.
     "wiki/adr/0001-seed-repo-boundaries.md": """---
 layer: adr
 domain: none
+canonical_object: seed-repo-boundaries
+artifact_type: adr
 status: accepted
 ---
 
