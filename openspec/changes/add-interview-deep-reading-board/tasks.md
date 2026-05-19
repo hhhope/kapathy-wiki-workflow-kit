@@ -22,9 +22,12 @@
 
 ## 3. Output Gate and Repo Routing
 
-- [ ] 3.1 Update `.codex/skills/public-report-quality-gate/SKILL.md` to delegate interview deep-reading, word-cloud, timeline, temperature-axis, and draggable-evidence H5 outputs to `interview-deep-reading-board`.
-- [ ] 3.2 Update `AGENTS.md` High-Frequency Skills / Agent Intent Routing with a lightweight route to the new skill.
-- [ ] 3.3 Preserve `public-report-quality-gate` as the parent gate for reader-facing H5/share/report outputs.
+- [x] 3.1 Update `.codex/skills/public-report-quality-gate/SKILL.md` to delegate interview deep-reading, word-cloud, timeline, temperature-axis, and draggable-evidence H5 outputs to `interview-deep-reading-board`.
+  <!-- 2026-05-19 — added delegation row, hard route check, and common mistake while preserving public gate ownership -->
+- [x] 3.2 Update `AGENTS.md` High-Frequency Skills / Agent Intent Routing with a lightweight route to the new skill.
+  <!-- 2026-05-19 — added one routing row without copying detailed interview-window rules -->
+- [x] 3.3 Preserve `public-report-quality-gate` as the parent gate for reader-facing H5/share/report outputs.
+  <!-- 2026-05-19 — public gate wording states the interview route does not replace reader intent, reference, visual, judgment, publish, or sync blockers -->
 
 ## 4. H5 Reference Example
 

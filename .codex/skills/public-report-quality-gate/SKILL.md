@@ -23,6 +23,7 @@ Use this delegation map without replacing the child skills' own rules:
 | Public output need | Delegate to |
 |---|---|
 | source or reference learning | `learning-capture` and narrower modules |
+| interview deep reading, interview word cloud, interview timeline, temperature-axis evidence board, or draggable-evidence H5 | `interview-deep-reading-board` |
 | article-level visual package | `knowledge-article-visual` |
 | per-image poster or card script | `infographic-onepager` |
 | generated bitmap assets | `imagegen` |
@@ -125,6 +126,12 @@ implementation reports unless the user asks for a reader-facing deliverable.
 - Ask the user at real output fork-points before acting, including image model
   vs H5/HTML, overwrite vs image-only update, draft-only vs Feishu sync, and
   publish title/status changes.
+- When interview-like material is headed toward a reader-facing deep-reading
+  H5, word cloud, timeline, temperature-axis, draggable-evidence board, or
+  no-compression/full-text-coverage output, route interview structure through
+  `interview-deep-reading-board` before ordinary report drafting or HTML
+  production. This route does not replace this gate's reader intent, reference,
+  visual, judgment, publish, or sync blockers.
 - When a reader-facing `.html` report or H5 page needs standalone visual
   deliverables or section-level visual assets, do not satisfy the request by
   editing only in-page HTML sections. Stop direct HTML body edits first, route
@@ -175,6 +182,9 @@ and image generation: they are executors, not workflow owners.
   a different primary structure
 - Treating linked reading-map articles as placeholders instead of sources
 - Silently choosing one output template when reviewer routing is required
+- Treating interview word clouds or timelines as ordinary HTML/report work
+  instead of routing the interview structure through
+  `interview-deep-reading-board`
 - Packing overview, runtime, migration, validation, and roadmap into one page
 - Using slogans such as "X = manages Y" instead of explaining the evolution
 - Letting repo paths, OpenSpec details, or agent workflow leak into public text
