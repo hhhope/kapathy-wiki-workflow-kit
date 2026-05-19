@@ -181,6 +181,28 @@ class WikiMocTemperatureTest(unittest.TestCase):
         self.assertEqual(board["counts"]["needs_review"], 1)
         self.assertNotIn("validates", plan["admitted_relations"])
 
+    def test_admission_plan_trusts_clue_window_status(self) -> None:
+        plan = build_moc_admission_plan(
+            {
+                "counts": {
+                    "admitted": 1,
+                    "blocked": 0,
+                    "needs_review": 0,
+                    "total": 1,
+                },
+                "clue_windows": [
+                    {
+                        "status": "admitted",
+                        "relation_type": "validates",
+                        "target_object": "runtime-method",
+                    }
+                ],
+            }
+        )
+
+        self.assertIn("validates", plan["admitted_relations"])
+        self.assertIn("runtime-method", plan["admitted_objects"])
+
     def test_admits_high_temperature_relation_when_review_says_admit(self) -> None:
         packages = build_relation_feature_packages(self.sample_graph())
         board = build_temperature_clue_board(

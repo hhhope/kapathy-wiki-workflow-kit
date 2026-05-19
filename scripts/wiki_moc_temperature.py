@@ -198,12 +198,7 @@ def build_temperature_clue_board(
 
 
 def _is_admitted(window: dict[str, Any]) -> bool:
-    return (
-        window.get("status") == "admitted"
-        and window.get("moc_admission") == ADMIT_DECISION
-        and isinstance(window.get("temperature"), int)
-        and int(window["temperature"]) >= 80
-    )
+    return window.get("status") == "admitted"
 
 
 def build_moc_admission_plan(board: dict[str, Any]) -> dict[str, Any]:
