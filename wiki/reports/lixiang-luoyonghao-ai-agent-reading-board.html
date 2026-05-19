@@ -524,8 +524,9 @@
     </main>
   </div>
 
+  <script src="./lixiang-luoyonghao-ai-agent-reading-board-data.js"></script>
   <script>
-    const sections = [
+    const fallbackSections = [
       {
         id: "learning-ai",
         step: "01",
@@ -665,7 +666,7 @@
       },
       {
         id: "overseas-system",
-        step: "09",
+        step: "10",
         title: "出海需要智能化系统通用能力",
         temperature: 63,
         y: 90,
@@ -679,16 +680,43 @@
         relation: "这是全文的回环：Agent to C 架构不是一个产品功能，而是公司全球化能力的一部分。",
         question: "这里要读出结构回环，而不是把出海单独当成汽车商业话题。",
         keywords: ["出海", "智能化", "Agent", "ChatBot", "知识图谱", "记录", "个性化", "利益联盟"]
+      },
+      {
+        id: "coworker-agent",
+        step: "09",
+        title: "代码不是问题，但不重写飞书",
+        temperature: 52,
+        y: 86,
+        summary: "罗永浩追问：既然 AI 让代码量不再是问题，为什么不重做大型办公软件？李想的回答是：飞书擅长的继续用，自己只做更贴近内部生产环境的 Coworker 和稳定 Agent 底座。",
+        evidence: ["代码完全不是问题了。", "没有机会做得更好，就用它。", "所有员工工作在一个稳定的 Agent 上。"],
+        chain: [
+          "罗永浩把问题推到极致：如果代码量不再是门槛，企业是不是应该重写飞书这类大型软件。",
+          "李想没有走“全部重做”的路线，而是先判断专业 To B 软件已有优势：文档、多维表格、面试系统等如果飞书更好，就继续用。",
+          "真正要自建的是连接层和工作底座：内部定制 Coworker，让员工在稳定 Agent 上工作。",
+          "这个稳定 Agent 接子 Agent、飞书员工账号、数据、必要软件和 MCP，把外部工具与内部生产环境连接起来。",
+          "这段和前面的 Cowork Demo、Agent 生产环境是同一条线：不是为了自嗨重写软件，而是把 Agent 放进组织真实工作链。"
+        ],
+        window: [
+          "罗永浩先确认代码量已经不是问题，然后追问是否要按内部需求重做大型办公软件。",
+          "李想承认代码不再是主要问题，但强调他们对办公软件的理解不一定比飞书强。",
+          "他区分了两件事：成熟办公能力继续用飞书；内部要做的是 Coworker 定制版。",
+          "目标不是替换一切，而是让所有员工工作在稳定 Agent 上，并通过子 Agent、飞书账号、数据、MCP 和必要软件连成工作环境。",
+          "罗永浩再推一步：很多企业会因为代码效率高而兴奋地替换多年软件。李想后续把重点拉回用户价值，避免自嗨做系统。"
+        ],
+        relation: "这是前面“生产环境”和“工作协同”的落地版本：稳定 Agent 不是一个聊天入口，而是组织工作台和连接层。",
+        question: "这段不能压成“做 Coworker”。核心判断是：代码不是问题以后，真正的问题变成边界、专业能力、连接层和用户价值。",
+        keywords: ["代码量", "飞书", "Coworker", "稳定 Agent", "子 Agent", "MCP", "数据", "用户价值"]
       }
     ];
 
+    const sections = Array.isArray(window.readingWindows) ? window.readingWindows : fallbackSections;
     const spine = document.getElementById("spine");
     const map = document.getElementById("map");
     const detail = document.getElementById("detail");
     const slider = document.getElementById("temperature");
     const cursor = document.getElementById("cursor");
     const temperatureValue = document.getElementById("temperatureValue");
-    let selectedId = "agent-to-c";
+    let selectedId = "w27-coworker-stable-agent";
 
     function render() {
       renderSpine();
@@ -698,7 +726,7 @@
     }
 
     function renderSpine() {
-      spine.innerHTML = sections.map((section) => `
+      spine.innerHTML = orderedSections().map((section) => `
         <button class="spine-item" type="button" data-id="${section.id}">
           <span class="step">${section.step}</span>
           <b>${escapeHtml(section.title)}</b>
@@ -711,7 +739,7 @@
     }
 
     function renderMap() {
-      map.innerHTML = sections.map((section) => `
+      map.innerHTML = orderedSections().map((section) => `
         <div class="rail-row">
           <div class="rail-track"></div>
           <button class="map-card" type="button" data-id="${section.id}" style="left:${section.temperature}%">
@@ -733,6 +761,12 @@
       document.querySelectorAll("[data-id]").forEach((node) => {
         node.classList.toggle("active", node.dataset.id === id);
       });
+      scrollChildInto(spine, spine.querySelector(`[data-id="${id}"]`));
+      const rail = map.closest(".temperature-rail");
+      const activeCard = map.querySelector(`[data-id="${id}"]`);
+      scrollChildInto(rail, activeCard ? activeCard.closest(".rail-row") : null);
+      slider.value = section.temperature;
+      updateTemperature(false);
       detail.innerHTML = `
         <div class="kicker">精读展开 · ${section.step}</div>
         <h2>${escapeHtml(section.title)}</h2>
@@ -748,6 +782,13 @@
           <h3>推理链</h3>
           <ul>${section.chain.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
         </div>
+
+        ${section.window ? `
+        <div class="block">
+          <h3>段落窗口</h3>
+          <ul>${section.window.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </div>
+        ` : ""}
 
         <div class="block">
           <h3>前后关系</h3>
@@ -766,7 +807,7 @@
       `;
     }
 
-    function updateTemperature() {
+    function updateTemperature(selectNearest = true) {
       const value = Number(slider.value);
       temperatureValue.textContent = value;
       cursor.style.left = `${value}%`;
@@ -774,6 +815,24 @@
         const section = sections.find((item) => item.id === card.dataset.id);
         card.classList.toggle("dimmed", Math.abs(section.temperature - value) > 28);
       });
+      if (selectNearest) {
+        const nearest = orderedSections().reduce((best, section) => {
+          const distance = Math.abs(section.temperature - value);
+          const bestDistance = Math.abs(best.temperature - value);
+          return distance < bestDistance ? section : best;
+        }, orderedSections()[0]);
+        if (nearest && nearest.id !== selectedId) selectSection(nearest.id);
+      }
+    }
+
+    function orderedSections() {
+      return [...sections].sort((a, b) => Number(a.step) - Number(b.step));
+    }
+
+    function scrollChildInto(container, child) {
+      if (!container || !child) return;
+      const top = child.offsetTop - container.clientHeight / 2 + child.clientHeight / 2;
+      container.scrollTop = Math.max(0, top);
     }
 
     function temperatureLabel(value) {
@@ -790,7 +849,7 @@
         .replaceAll('"', "&quot;");
     }
 
-    slider.addEventListener("input", updateTemperature);
+    slider.addEventListener("input", () => updateTemperature(true));
     render();
   </script>
 </body>
