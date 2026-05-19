@@ -55,6 +55,15 @@ class ParsedPage:
     metadata: dict
 
 
+def covered_dirs(root: Path = ROOT) -> list[Path]:
+    return [
+        root / "wiki" / "ops",
+        root / "wiki" / "adr",
+        root / "openspec" / "specs",
+        root / "wiki" / "examples",
+    ]
+
+
 def parse_frontmatter(text: str) -> tuple[dict, str]:
     if not text.startswith("---\n"):
         return {}, text
@@ -96,8 +105,8 @@ def parse_frontmatter(text: str) -> tuple[dict, str]:
     return meta, body
 
 
-def derive_layer(path: Path) -> str:
-    rel = path.relative_to(ROOT).as_posix()
+def derive_layer(path: Path, root: Path = ROOT) -> str:
+    rel = path.relative_to(root).as_posix()
     if rel.startswith("wiki/ops/"):
         return "wiki/ops"
     if rel.startswith("wiki/adr/"):
@@ -130,13 +139,17 @@ def derive_ops_object_and_type(rel: str, stem: str) -> tuple[str | None, str | N
     return None, None
 
 
-def derive_object_and_type(path: Path, meta: dict) -> tuple[str | None, str | None]:
+def derive_object_and_type(
+    path: Path,
+    meta: dict,
+    root: Path = ROOT,
+) -> tuple[str | None, str | None]:
     canonical_object = meta.get("canonical_object")
     artifact_type = meta.get("artifact_type")
     if isinstance(canonical_object, str) and isinstance(artifact_type, str):
         return canonical_object, artifact_type
 
-    rel = path.relative_to(ROOT).as_posix()
+    rel = path.relative_to(root).as_posix()
     stem = path.stem
 
     if rel in RUNTIME_ADR_IDENTITIES:
@@ -212,20 +225,21 @@ def normalize_relation_value(value: object) -> list[str]:
     return [str(value)]
 
 
-def collect_pages() -> tuple[list[dict], list[dict], list[str]]:
+def collect_pages(root: Path | str = ROOT) -> tuple[list[dict], list[dict], list[str]]:
+    root_path = Path(root).resolve()
     nodes: list[dict] = []
     edges: list[dict] = []
     warnings: list[str] = []
 
-    for base_dir in COVERED_DIRS:
+    for base_dir in covered_dirs(root_path):
         for path in sorted(base_dir.rglob("*.md")):
-            rel = path.relative_to(ROOT).as_posix()
+            rel = path.relative_to(root_path).as_posix()
             if path.name == "index.md":
                 continue
             text = path.read_text(encoding="utf-8")
             meta, _body = parse_frontmatter(text)
-            canonical_object, artifact_type = derive_object_and_type(path, meta)
-            layer = derive_layer(path)
+            canonical_object, artifact_type = derive_object_and_type(path, meta, root_path)
+            layer = derive_layer(path, root_path)
 
             if not canonical_object or not artifact_type:
                 warnings.append(f"unresolved_identity:{rel}")
@@ -258,7 +272,7 @@ def main() -> None:
     nodes, edges, warnings = collect_pages()
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "covered_layers": [p.relative_to(ROOT).as_posix() for p in COVERED_DIRS],
+        "covered_layers": [p.relative_to(ROOT).as_posix() for p in covered_dirs(ROOT)],
         "summary": {
             "node_count": len(nodes),
             "edge_count": len(edges),

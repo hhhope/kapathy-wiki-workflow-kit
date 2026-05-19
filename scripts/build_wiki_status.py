@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.check_wiki_frontmatter import build_report as build_taxonomy_report
 from scripts.extract_wiki_graph import RELATION_FIELDS as GRAPH_RELATION_FIELDS
+from scripts.extract_wiki_graph import collect_pages as collect_graph_pages
 from scripts.extract_wiki_graph import normalize_relation_value, parse_frontmatter
 from scripts.wiki_content_adjudication import build_adjudication_health
 from scripts.wiki_content_enrichment import build_enrichment_health
@@ -243,41 +244,17 @@ def _collect_graph_parse_health(root: Path) -> dict[str, Any]:
     }
 
 
-def _graph_from_pages(pages: list[dict[str, Any]]) -> dict[str, Any]:
-    nodes = []
-    edges = []
-    for page in pages:
-        canonical_object = page.get("canonical_object")
-        artifact_type = page.get("artifact_type")
-        if not canonical_object or not artifact_type:
-            continue
-        nodes.append(
-            {
-                "page_path": page["path"],
-                "canonical_object": canonical_object,
-                "artifact_type": artifact_type,
-                "source_layer": page["section"],
-                "domain": page.get("domain"),
-            }
-        )
-        for relation_type in GRAPH_RELATION_FIELDS:
-            for target in normalize_relation_value(page.get(relation_type)):
-                edges.append(
-                    {
-                        "source_page_path": page["path"],
-                        "relation_type": relation_type,
-                        "target": target,
-                    }
-                )
+def _moc_projection_graph(root: Path) -> dict[str, Any]:
+    nodes, edges, warnings = collect_graph_pages(root)
     return {
         "summary": {
             "node_count": len(nodes),
             "edge_count": len(edges),
-            "warning_count": 0,
+            "warning_count": len(warnings),
         },
         "nodes": nodes,
         "edges": edges,
-        "warnings": [],
+        "warnings": warnings,
     }
 
 
@@ -299,7 +276,7 @@ def build_manifest(root: Path | str) -> dict[str, Any]:
     graph_parse_health = _collect_graph_parse_health(root_path)
     content_enrichment_health = build_enrichment_health(root_path)
     content_adjudication_health = build_adjudication_health(root_path)
-    moc_projection_health = build_moc_health(root_path, _graph_from_pages(pages))
+    moc_projection_health = build_moc_health(root_path, _moc_projection_graph(root_path))
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),

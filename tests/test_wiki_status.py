@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from scripts.build_wiki_status import build_manifest, render_status_markdown, write_status_outputs
+from scripts.wiki_moc_projection import apply_moc_plan
 
 
 class WikiStatusTest(unittest.TestCase):
@@ -436,6 +437,114 @@ related_objects:
         self.assertIn("## MOC Projection Health", status_text)
         self.assertIn("obsidian-moc-projection", status_text)
         self.assertIn("Status does not write `wiki/moc` files", status_text)
+
+    def test_moc_projection_health_ignores_generated_moc_pages(self) -> None:
+        (self.tmpdir / "wiki" / "ops" / "moc-source.md").write_text(
+            """---
+layer: ops
+domain: wiki
+ops_area: wiki-runtime
+canonical_object: moc-source
+artifact_type: method
+---
+
+# MOC Source
+""",
+            encoding="utf-8",
+        )
+        graph = {
+            "summary": {"node_count": 1, "edge_count": 0, "warning_count": 0},
+            "nodes": [
+                {
+                    "page_path": "wiki/ops/moc-source.md",
+                    "canonical_object": "moc-source",
+                    "artifact_type": "method",
+                    "source_layer": "wiki/ops",
+                    "domain": "wiki",
+                }
+            ],
+            "edges": [],
+            "warnings": [],
+        }
+        apply_moc_plan(self.tmpdir, graph)
+
+        manifest = build_manifest(self.tmpdir)
+        health = manifest["moc_projection_health"]
+
+        self.assertEqual(health["status"], "pass")
+        self.assertEqual(health["summary"]["noop_count"], 2)
+        self.assertFalse(
+            any("obsidian-moc-" in entry["key"] for entry in health["entries"])
+        )
+
+    def test_moc_projection_health_includes_openspec_specs(self) -> None:
+        spec_dir = self.tmpdir / "openspec" / "specs" / "sample-runtime"
+        spec_dir.mkdir(parents=True)
+        (spec_dir / "spec.md").write_text(
+            "# sample-runtime Specification\n",
+            encoding="utf-8",
+        )
+        graph = {
+            "summary": {"node_count": 1, "edge_count": 0, "warning_count": 0},
+            "nodes": [
+                {
+                    "page_path": "openspec/specs/sample-runtime/spec.md",
+                    "canonical_object": "sample-runtime",
+                    "artifact_type": "spec",
+                    "source_layer": "openspec/specs",
+                    "domain": None,
+                }
+            ],
+            "edges": [],
+            "warnings": [],
+        }
+        apply_moc_plan(self.tmpdir, graph)
+
+        manifest = build_manifest(self.tmpdir)
+        health = manifest["moc_projection_health"]
+
+        self.assertEqual(health["status"], "pass")
+        self.assertEqual(health["summary"]["noop_count"], 1)
+
+    def test_moc_projection_health_uses_graph_extraction_identity_rules(self) -> None:
+        examples_dir = self.tmpdir / "wiki" / "examples"
+        examples_dir.mkdir(parents=True)
+        (examples_dir / "meeting-note-example.md").write_text(
+            "# Meeting Note Example\n",
+            encoding="utf-8",
+        )
+        (self.tmpdir / "wiki" / "ops" / "sample-focus-thread.md").write_text(
+            "# Sample Focus Thread\n",
+            encoding="utf-8",
+        )
+        graph = {
+            "summary": {"node_count": 2, "edge_count": 0, "warning_count": 0},
+            "nodes": [
+                {
+                    "page_path": "wiki/examples/meeting-note-example.md",
+                    "canonical_object": "meeting-note",
+                    "artifact_type": "example",
+                    "source_layer": "wiki/examples",
+                    "domain": None,
+                },
+                {
+                    "page_path": "wiki/ops/sample-focus-thread.md",
+                    "canonical_object": "focus-thread",
+                    "artifact_type": "sample",
+                    "source_layer": "wiki/ops",
+                    "domain": None,
+                },
+            ],
+            "edges": [],
+            "warnings": [],
+        }
+        apply_moc_plan(self.tmpdir, graph)
+
+        manifest = build_manifest(self.tmpdir)
+        health = manifest["moc_projection_health"]
+
+        self.assertEqual(health["status"], "pass")
+        self.assertEqual(health["summary"]["noop_count"], 2)
 
     def test_manifest_and_status_report_surface_content_enrichment_health(self) -> None:
         (self.tmpdir / "wiki" / "config" / "frontmatter-taxonomy.yaml").write_text(
