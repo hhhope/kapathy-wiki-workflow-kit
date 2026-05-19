@@ -1,4 +1,7 @@
+import json
 import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -144,6 +147,50 @@ class WikiMocProjectionTest(unittest.TestCase):
         self.assertEqual(plan["summary"]["create_count"], 2)
         self.assertIn("temperature_admission", plan)
         self.assertEqual(plan["temperature_admission"]["admitted_relations"], [])
+        self.assertFalse((self.tmpdir / "wiki" / "moc").exists())
+
+    def test_cli_accepts_temperature_review_json_without_writing_files(self) -> None:
+        graph_path = self.tmpdir / "graph.json"
+        review_path = self.tmpdir / "review.json"
+        graph_path.write_text(json.dumps(self.sample_graph()), encoding="utf-8")
+        review_path.write_text(
+            json.dumps(
+                {
+                    "relation:wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md:formalizes:wiki-frontmatter-model": {
+                        "temperature": 91,
+                        "moc_admission": "admit",
+                        "rationale": "ADR formalizes the runtime model.",
+                        "reviewer": "test",
+                        "reviewed_at": "2026-05-19",
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        repo_root = Path(__file__).resolve().parents[1]
+
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_moc_projection.py",
+                "--root",
+                str(self.tmpdir),
+                "--graph",
+                str(graph_path),
+                "--temperature-review",
+                str(review_path),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+            cwd=repo_root,
+        )
+        output = json.loads(completed.stdout)
+        paths = {entry["path"] for entry in output["entries"]}
+
+        self.assertIn("wiki/moc/relation-formalizes.md", paths)
+        self.assertEqual(output["temperature_admission"]["admitted_relations"], ["formalizes"])
+        self.assertEqual(output["mode"], "dry-run")
         self.assertFalse((self.tmpdir / "wiki" / "moc").exists())
 
     def test_apply_writes_generated_moc_files(self) -> None:
