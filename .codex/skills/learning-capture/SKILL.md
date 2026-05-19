@@ -60,6 +60,9 @@ short abstracts, or one-off digestion with no local reuse intent.
   rules, or archive-ready claims without the repository evidence-backed gate.
 - When a learned point is expected to shape a later report, H5, Feishu draft,
   skill, or OpenSpec change, preserve an output-use hint or skip reason.
+- Durable internal wiki learning notes default to Chinese output for
+  `wiki/sources` and `wiki/ops`; keep behavior assets such as `SKILL.md` and
+  English-facing public artifacts English-first unless the user asks otherwise.
 - Keep module-specific gates intact; the router does not weaken source
   grounding, scoring, adaptation-boundary, or promotion requirements.
 

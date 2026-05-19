@@ -34,3 +34,13 @@ Use these scenarios when validating `learning-capture`.
 | Article describes a repo, and user asks whether repo structure can be reused | Article module first, then repo-readme module after reading repo/README | PASS |
 | README is used only as an output-shape example | Example-reference module may be enough; do not force full repo learning | PASS |
 | Article or repo takeaway is proposed for `AGENTS.md` | Require evidence-backed promotion gate or scoped OpenSpec change | PASS |
+
+## Article Surface Retirement
+
+| Scenario | Expected behavior |
+|---|---|
+| User provides a Chinese WeChat article and says "学一下，落 wiki" | Load `learning-capture`, route to article module, produce Chinese durable learning notes |
+| User says "article learning 这套复用一下" | Load `learning-capture`, not a separate `article-learning-capture` skill |
+| User provides a GitHub README for reuse | Load `learning-capture`, route to repo/README module |
+| User provides an output-shape example | Load `learning-capture`, route to example/reference module |
+| User asks for an English public README update | Keep the target artifact English-first |

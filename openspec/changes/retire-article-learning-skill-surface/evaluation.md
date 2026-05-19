@@ -115,3 +115,16 @@ Observed summary:
 Result: RED. The change needs an `article-learning-capture` delta that removes
 the dedicated runtime skill requirement while preserving article-specific gates
 as `learning-capture` module/reference material.
+
+## Migration Classification
+
+| Old content | Result | Reason |
+|---|---|---|
+| Article metadata and source grounding | Keep | Article-specific audit value |
+| Score-first thresholds | Keep | Article-specific admission value |
+| Copyright boundary | Keep | Article-specific source handling |
+| Structured translation notes | Keep | Article-specific reading value |
+| Transferable learning and rejected moves | Keep | Article-specific local transfer value |
+| General learning intent routing | Deduplicate | Owned by `learning-capture` |
+| Promotion into behavior assets | Reference only | Owned by repo governance and behavior-asset gates |
+| Old `description` and `When To Use` entry wording | Delete | It recreates runtime trigger pollution |

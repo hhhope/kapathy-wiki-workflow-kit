@@ -1,12 +1,14 @@
 # Article Module
 
 Use this module for articles, blogs, papers, WeChat posts, newsletters, and
-article collections.
+article collections after `learning-capture` has classified the request as
+learning material.
 
-## Delegate
+## Runtime Boundary
 
-For full article workflow details, load
-`.codex/skills/article-learning-capture/SKILL.md`.
+`learning-capture` is the only runtime entry. This module does not delegate to
+an `article-learning-capture` skill and must not recreate a second trigger
+surface.
 
 ## Required Gates
 
@@ -26,24 +28,12 @@ For full article workflow details, load
 - Separate article comprehension from local transfer extraction.
 - Distinguish source domain/topic from reusable output capability type when
   recording transferable learning.
+- Write durable internal wiki learning output in Chinese by default, unless the
+  user or target artifact requires English.
 
-## When Article Becomes Repo Learning
+## References
 
-If the article describes a GitHub/GitLab project and the user asks whether the
-project structure or README can be reused, read the repo/README and then route
-that second step through `repo-readme.md`.
-
-## Output-Use Handoff
-
-When an article learning point is expected to shape a report, H5, Feishu draft,
-skill, or OpenSpec proposal, record the reusable capability type:
-
-- `content`
-- `structure`
-- `visual`
-- `evidence`
-- `boundary`
-
-Also record the intended output use or skip reason when it is already known.
-This is process evidence for the downstream output gate, not a public citation
-requirement.
+- SOP: `article-sop.md`
+- Scorecard: `article-scorecard.md`
+- Wiki template: `article-wiki-template.md`
+- Pressure scenarios: `article-pressure-scenarios.md`

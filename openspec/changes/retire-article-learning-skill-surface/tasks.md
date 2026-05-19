@@ -6,8 +6,8 @@
 
 ## 2. Skill Surface Retirement
 
-- [ ] 2.1 Add Chinese-first durable learning output rule to `learning-capture`.
-- [ ] 2.2 Migrate useful article-specific rules into `learning-capture`
+- [x] 2.1 Add Chinese-first durable learning output rule to `learning-capture`.
+- [x] 2.2 Migrate useful article-specific rules into `learning-capture`
   references.
 - [ ] 2.3 Remove the active `article-learning-capture` skill surface.
 - [ ] 2.4 Remove or rewrite references that imply `article-learning-capture`
@@ -15,7 +15,7 @@
 
 ## 3. Evidence and Verification
 
-- [ ] 3.1 Add pressure scenarios for article, WeChat, README/repo, example, and
+- [x] 3.1 Add pressure scenarios for article, WeChat, README/repo, example, and
   English-target learning requests.
 - [ ] 3.2 Add behavior replay evidence for future routing.
 - [ ] 3.3 Run `openspec validate retire-article-learning-skill-surface --strict`.
