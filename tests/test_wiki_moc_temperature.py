@@ -72,6 +72,14 @@ class WikiMocTemperatureTest(unittest.TestCase):
         self.assertTrue(first["structural_features"]["mechanical_relation"])
         self.assertNotIn("moc_admission", first)
 
+    def test_handles_malformed_top_level_graph_fields_as_empty(self) -> None:
+        self.assertEqual(build_relation_feature_packages({"nodes": None}), [])
+        self.assertEqual(build_relation_feature_packages({"edges": None}), [])
+        self.assertEqual(
+            build_relation_feature_packages({"nodes": None, "edges": None}),
+            [],
+        )
+
     def test_temperature_band_is_continuous_guidance(self) -> None:
         cases = {
             100: "strong",
@@ -151,7 +159,7 @@ class WikiMocTemperatureTest(unittest.TestCase):
         self.assertEqual(board["counts"]["total"], 2)
         self.assertNotIn("validates", plan["admitted_relations"])
 
-    def test_admits_high_temperature_relation_when_review_says_admit_relation(self) -> None:
+    def test_invalid_moc_admission_admit_relation_does_not_admit(self) -> None:
         packages = build_relation_feature_packages(self.sample_graph())
         board = build_temperature_clue_board(
             packages,
@@ -159,6 +167,28 @@ class WikiMocTemperatureTest(unittest.TestCase):
                 "relation:openspec/specs/runtime/spec.md:validates:runtime-method": {
                     "temperature": 88,
                     "moc_admission": "admit_relation",
+                    "rationale": "Invalid admission value must not drive admission.",
+                }
+            },
+        )
+
+        plan = build_moc_admission_plan(board)
+        validates_window = board["clue_windows"][1]
+
+        self.assertEqual(validates_window["status"], "needs_review")
+        self.assertEqual(validates_window["moc_admission"], "needs_review")
+        self.assertEqual(board["counts"]["admitted"], 0)
+        self.assertEqual(board["counts"]["needs_review"], 1)
+        self.assertNotIn("validates", plan["admitted_relations"])
+
+    def test_admits_high_temperature_relation_when_review_says_admit(self) -> None:
+        packages = build_relation_feature_packages(self.sample_graph())
+        board = build_temperature_clue_board(
+            packages,
+            reviews={
+                "relation:openspec/specs/runtime/spec.md:validates:runtime-method": {
+                    "temperature": 88,
+                    "moc_admission": "admit",
                     "rationale": "Spec validation is a strong reading clue.",
                 }
             },
@@ -168,7 +198,7 @@ class WikiMocTemperatureTest(unittest.TestCase):
         admitted_window = board["clue_windows"][1]
 
         self.assertEqual(admitted_window["status"], "admitted")
-        self.assertEqual(admitted_window["moc_admission"], "admit_relation")
+        self.assertEqual(admitted_window["moc_admission"], "admit")
         self.assertEqual(board["counts"]["admitted_count"], 1)
         self.assertEqual(board["counts"]["admitted"], 1)
         self.assertEqual(board["counts"]["blocked"], 1)

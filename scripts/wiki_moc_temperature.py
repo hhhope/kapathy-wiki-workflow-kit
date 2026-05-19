@@ -5,7 +5,8 @@ from typing import Any
 
 
 MECHANICAL_RELATION_TYPES = {"derived_from", "related_objects"}
-ADMIT_DECISIONS = {"admit", "admit_relation"}
+ADMIT_DECISION = "admit"
+VALID_MOC_ADMISSIONS = {"admit", "block", "needs_review"}
 
 
 def temperature_band(value: int) -> str:
@@ -61,8 +62,10 @@ def _candidate_id(source_page: str, relation_type: str, target_object: str) -> s
 
 
 def build_relation_feature_packages(graph: dict[str, Any]) -> list[dict[str, Any]]:
-    nodes = [node for node in graph.get("nodes", []) if isinstance(node, dict)]
-    edges = [edge for edge in graph.get("edges", []) if isinstance(edge, dict)]
+    raw_nodes = graph.get("nodes", [])
+    raw_edges = graph.get("edges", [])
+    nodes = [node for node in raw_nodes if isinstance(node, dict)] if isinstance(raw_nodes, list) else []
+    edges = [edge for edge in raw_edges if isinstance(edge, dict)] if isinstance(raw_edges, list) else []
     by_page = _nodes_by_page(nodes)
     by_object = _nodes_by_object(nodes)
     fanout = Counter(str(edge.get("source_page_path") or "") for edge in edges)
@@ -117,14 +120,14 @@ def _review_for(candidate_id: str, reviews: dict[str, Any] | None) -> dict[str, 
 
 def _moc_admission(review: dict[str, Any]) -> str:
     requested = str(review.get("moc_admission") or "").strip()
-    return requested if requested in {"admit", "admit_relation", "needs_review", "block"} else "needs_review"
+    return requested if requested in VALID_MOC_ADMISSIONS else "needs_review"
 
 
 def _window_status(package: dict[str, Any], moc_admission: str, temperature: Any) -> str:
     high_temperature = isinstance(temperature, int) and temperature >= 80
     mechanical = bool(package.get("structural_features", {}).get("mechanical_relation"))
 
-    if moc_admission in ADMIT_DECISIONS and high_temperature:
+    if moc_admission == ADMIT_DECISION and high_temperature:
         return "admitted"
     if moc_admission == "block" or mechanical:
         return "blocked"
@@ -197,7 +200,7 @@ def build_temperature_clue_board(
 def _is_admitted(window: dict[str, Any]) -> bool:
     return (
         window.get("status") == "admitted"
-        and window.get("moc_admission") in ADMIT_DECISIONS
+        and window.get("moc_admission") == ADMIT_DECISION
         and isinstance(window.get("temperature"), int)
         and int(window["temperature"]) >= 80
     )
@@ -220,7 +223,7 @@ def build_moc_admission_plan(board: dict[str, Any]) -> dict[str, Any]:
         {
             str(window.get("relation_type"))
             for window in windows
-            if _is_admitted(window) and window.get("moc_admission") == "admit_relation"
+            if _is_admitted(window)
         }
     )
     blocked_relations = sorted(
