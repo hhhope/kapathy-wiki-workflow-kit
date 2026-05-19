@@ -50,9 +50,20 @@ def _prepare_target(target: Path, force: bool) -> None:
     if target.exists() and any(target.iterdir()):
         if not force:
             raise ValueError(f"Refusing to write into non-empty target: {target}")
-        shutil.rmtree(target)
+        _clear_target_contents(target)
 
     target.mkdir(parents=True, exist_ok=True)
+
+
+def _clear_target_contents(target: Path) -> None:
+    preserve_git = (target / ".git").exists()
+    for child in target.iterdir():
+        if preserve_git and child.name == ".git":
+            continue
+        if child.is_dir() and not child.is_symlink():
+            shutil.rmtree(child)
+        else:
+            child.unlink()
 
 
 def _copy_directory(relative_path: str, target: Path) -> None:

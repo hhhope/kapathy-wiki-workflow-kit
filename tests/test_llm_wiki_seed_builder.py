@@ -102,6 +102,39 @@ def test_build_seed_refuses_non_empty_target_without_force(
     assert (target / "existing.txt").read_text(encoding="utf-8") == "keep me\n"
 
 
+def test_build_seed_force_preserves_existing_git_directory(
+    tmp_path: Path,
+) -> None:
+    target = tmp_path / "seed"
+    git_dir = target / ".git"
+    git_dir.mkdir(parents=True)
+    (git_dir / "HEAD").write_text("ref: refs/heads/main\n", encoding="utf-8")
+    (target / "stale.txt").write_text("remove me\n", encoding="utf-8")
+
+    build_seed(target, force=True)
+
+    assert (git_dir / "HEAD").read_text(encoding="utf-8") == "ref: refs/heads/main\n"
+    assert not (target / "stale.txt").exists()
+    assert (target / "PROJECT.md").is_file()
+
+
+def test_build_seed_force_unlinks_directory_symlink(
+    tmp_path: Path,
+) -> None:
+    target = tmp_path / "seed"
+    linked_dir = tmp_path / "linked"
+    linked_dir.mkdir()
+    target.mkdir()
+    symlink = target / "linked-dir"
+    symlink.symlink_to(linked_dir, target_is_directory=True)
+
+    build_seed(target, force=True)
+
+    assert linked_dir.is_dir()
+    assert not symlink.exists()
+    assert (target / "PROJECT.md").is_file()
+
+
 def test_build_seed_preserves_forced_target_when_manifest_source_missing(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
