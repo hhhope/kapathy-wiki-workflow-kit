@@ -123,11 +123,12 @@
 
     main {
       display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(360px, 0.72fr);
+      grid-template-columns: minmax(260px, 0.58fr) minmax(0, 1.35fr) minmax(360px, 0.72fr);
       min-height: 0;
       gap: 18px;
     }
 
+    .timeline-shell,
     .cloud-shell,
     .evidence-shell {
       min-height: 0;
@@ -136,6 +137,105 @@
       background: rgba(255, 255, 255, 0.68);
       box-shadow: var(--shadow);
       overflow: hidden;
+    }
+
+    .timeline-shell {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .timeline-head {
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid rgba(23, 32, 42, 0.1);
+    }
+
+    .timeline-head h2 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .timeline-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .timeline {
+      position: relative;
+      min-height: 0;
+      overflow: auto;
+      padding: 14px 14px 18px 26px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 23px;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: rgba(36, 95, 115, 0.18);
+    }
+
+    .stage {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin: 0 0 10px;
+      padding: 10px 12px 10px 18px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .stage::before {
+      content: "";
+      position: absolute;
+      left: -9px;
+      top: 18px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 2px solid var(--accent);
+    }
+
+    .stage:hover,
+    .stage:focus-visible,
+    .stage.active {
+      outline: none;
+      border-color: rgba(36, 95, 115, 0.24);
+      background: rgba(36, 95, 115, 0.08);
+    }
+
+    .stage .time {
+      display: block;
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 760;
+      line-height: 1.3;
+    }
+
+    .stage b {
+      display: block;
+      margin-top: 4px;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .stage span:last-child {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
     }
 
     .cloud-shell {
@@ -394,6 +494,14 @@
     </header>
 
     <main>
+      <section class="timeline-shell" aria-label="访谈时间轴">
+        <div class="timeline-head">
+          <h2>访谈时间轴</h2>
+          <p>先选一个访谈段落，再看它牵出的关键词和证据。Agent 段不再被压成单个词。</p>
+        </div>
+        <div id="timeline" class="timeline"></div>
+      </section>
+
       <section class="cloud-shell" aria-label="关键词云">
         <div class="cloud-toolbar" aria-label="视图模式">
           <button class="mode active" type="button" data-filter="all">全部</button>
@@ -635,6 +743,20 @@
         ]
       },
       {
+        term: "OpenClaw",
+        count: 8,
+        group: "ai",
+        x: 20,
+        y: 20,
+        mobile: [20, 20],
+        tone: "dark",
+        evidence: [
+          ["工具入口", "OpenClaw 和 Claude Code 一起出现在开场，作为李想推动内部使用 Agent 的具体工具。", "访谈开场学习 AI 段。"],
+          ["Agent 类比", "在五类需求段里，泛化任务被类比为 OpenClaw 这类 Agent 能完成的任务。", "访谈第 580 行。"],
+          ["反例边界", "问天气这类确定性需求不该让 OpenClaw 式 Agent 慢慢跑，应该由车内确定性界面快速返回。", "访谈第 586 行。"]
+        ]
+      },
+      {
         term: "工程师",
         count: 7,
         group: "org",
@@ -815,10 +937,224 @@
           ["好题和纠偏", "领导出题、团队纠正题目、方案可验证，共同让能力成长被看见。", "出好题讨论段。"],
           ["本地转译", "对我们精读有用的是：看关键词背后的证据链，而不是只抓热词。", "当前词云证据映射。"]
         ]
+      },
+      {
+        term: "记忆",
+        count: 9,
+        group: "ai",
+        x: 36,
+        y: 31,
+        mobile: [30, 31],
+        tone: "dark",
+        evidence: [
+          ["定义问题", "李想不是在泛泛抱怨记忆功能，而是指出当前所谓记忆更像上下文拼接，不是真正的长期记忆。", "访谈第 576-578 行：Claude 使用体验和 Agent to C 讨论。"],
+          ["成本问题", "他把糟糕记忆批评为累加式读取：什么都塞进上下文，效率低，也浪费 token 成本。", "访谈第 578 行：记忆与上下文拼接段。"],
+          ["需求重分解", "他随后把 C 端用户需求拆成五类，避免继续用“记忆”这个含混词统摄所有能力。", "访谈第 580-590 行：五类需求段。"]
+        ]
+      },
+      {
+        term: "Agent to C",
+        count: 1,
+        group: "ai",
+        x: 24,
+        y: 40,
+        mobile: [20, 42],
+        tone: "dark",
+        evidence: [
+          ["讨论入口", "这一段从 C 端用户体验切入：不是先问模型多强，而是先问用户到底有哪几类需求。", "访谈第 578-580 行。"],
+          ["架构判断", "Agent to C 的关键不是把所有能力都叫记忆，而是把任务、信息、控制、记录、个性化分层。", "访谈第 580-592 行。"],
+          ["车内映射", "李想把这个判断直接映射到车内系统：不同需求分别交给 Agent、ChatBot、知识图谱、RAG 和参数化个性化。", "访谈第 592、636、654 行。"]
+        ]
+      },
+      {
+        term: "上下文拼接",
+        count: 4,
+        group: "ai",
+        x: 20,
+        y: 48,
+        mobile: [21, 50],
+        tone: "dark",
+        evidence: [
+          ["不是记忆", "他把上下文拼接和真正记忆区分开：拼接只是把历史材料继续塞进当前窗口。", "访谈第 578 行。"],
+          ["效率损耗", "问题不只是体验差，还会让每次调用都背着无关历史运行，消耗 token 和时间。", "访谈第 578 行。"],
+          ["精读线索", "这一点解释了为什么后面要讲“记录”和“个性化”：它们是替代粗暴拼接的更细颗粒能力。", "访谈第 590-654 行。"]
+        ]
+      },
+      {
+        term: "五类需求",
+        count: 2,
+        group: "ai",
+        x: 45,
+        y: 33,
+        mobile: [43, 34],
+        tone: "dark",
+        evidence: [
+          ["用户需求拆分", "李想把 C 端用户需求拆为五层：泛化任务、泛化信息获取、精确控制、必要记录、个性化。", "访谈第 580-590 行。"],
+          ["不是统一入口", "五类需求不是都交给一个万能 Agent；不同层面要用不同系统能力承接。", "访谈第 592-654 行。"],
+          ["海外延伸", "这套 Agent、ChatBot、知识图谱、记录、个性化架构也被他用来解释海外智能化的通用底座。", "访谈第 1134 行。"]
+        ]
+      },
+      {
+        term: "泛化任务",
+        count: 3,
+        group: "ai",
+        x: 27,
+        y: 58,
+        mobile: [26, 58],
+        tone: "dark",
+        evidence: [
+          ["Agent 的任务", "五类需求里第一类是泛化任务，李想明确把这一层交给 Agent。", "访谈第 580、636 行。"],
+          ["深度调研", "当罗永浩提到深度调研时，李想把它归到调用 Agent 完成任务。", "访谈第 636 行。"],
+          ["边界清楚", "泛化任务可以调用模型，但不能吞掉控制、记录和个性化这些确定性更强的能力。", "访谈第 654 行。"]
+        ]
+      },
+      {
+        term: "信息获取",
+        count: 3,
+        group: "ai",
+        x: 31,
+        y: 64,
+        mobile: [32, 64],
+        tone: "dark",
+        evidence: [
+          ["ChatBot 层", "第二类需求是泛化信息获取，李想把它类比为豆包、千问这类 ChatBot 能力。", "访谈第 580、592 行。"],
+          ["区别于任务", "信息获取不是让 Agent 跑完整任务链，而是快速回答和检索知识。", "访谈第 636 行。"],
+          ["可换模型", "前两层都可以选择不同模型，理想自己的模型只是其中一个选项。", "访谈第 590-608 行。"]
+        ]
+      },
+      {
+        term: "精确控制",
+        count: 2,
+        group: "ai",
+        x: 63,
+        y: 33,
+        mobile: [67, 32],
+        tone: "warm",
+        evidence: [
+          ["天气例子", "李想用问天气作反例：让通用 Agent 跑几分钟没有意义，车内界面应当低成本秒级返回。", "访谈第 586 行。"],
+          ["知识图谱", "他把车辆控制交给知识图谱，因为这一层追求稳定、可靠、确定。", "访谈第 592、636、650 行。"],
+          ["确定性边界", "选择泛化就会牺牲确定性，所以控制类需求要和泛化模型分开。", "访谈第 650-654 行。"]
+        ]
+      },
+      {
+        term: "记录",
+        count: 10,
+        group: "ai",
+        x: 56,
+        y: 29,
+        mobile: [56, 28],
+        tone: "dark",
+        evidence: [
+          ["第四类需求", "李想把必要信息保存称为记录，而不是记忆；用户要的是对话和关键信息可被索引。", "访谈第 586、646 行。"],
+          ["RAG 承接", "记录后的信息存储和调用更适合用 RAG，而不是混进一个含混的记忆池。", "访谈第 592、654 行。"],
+          ["车和眼镜", "他特别强调车上和后续眼镜都要先把记录做好，这是 Agent to C 的底层体验。", "访谈第 646 行。"]
+        ]
+      },
+      {
+        term: "个性化",
+        count: 4,
+        group: "ai",
+        x: 68,
+        y: 25,
+        mobile: [72, 25],
+        tone: "dark",
+        evidence: [
+          ["第五类需求", "个性化只保存基础偏好和关键参数，接近自定义指令，而不是无限记住所有历史。", "访谈第 590 行。"],
+          ["简单参数记忆", "李想后面把这一层称为简单参数记忆，目的是避免和 Agent、ChatBot、RAG 混在一起。", "访谈第 654 行。"],
+          ["系统架构", "个性化和 Agent、ChatBot、知识图谱、记录一起构成系统级 Agent 架构。", "访谈第 590-592 行。"]
+        ]
+      },
+      {
+        term: "ChatBot",
+        count: 5,
+        group: "ai",
+        x: 74,
+        y: 36,
+        mobile: [76, 39],
+        tone: "dark",
+        evidence: [
+          ["第二层能力", "ChatBot 承接泛化知识和信息获取，和 Agent 共用或切换不同大模型。", "访谈第 592、608、636 行。"],
+          ["不要混用", "李想反复强调 Agent 做 Agent 的事，ChatBot 做 ChatBot 的事，避免一个入口吞掉所有需求。", "访谈第 654 行。"],
+          ["出海通用", "海外智能化段再次出现 Agent 加 ChatBot，说明这不是局部功能，而是跨市场架构。", "访谈第 1134 行。"]
+        ]
+      },
+      {
+        term: "知识图谱",
+        count: 5,
+        group: "ai",
+        x: 76,
+        y: 48,
+        mobile: [76, 49],
+        tone: "warm",
+        evidence: [
+          ["控制层", "车辆控制被放到知识图谱层，因为它更稳定、更可靠，也更能解决确定性。", "访谈第 592、636、650 行。"],
+          ["效率与确定性", "李想直接把知识图谱和效率、确定性绑定，而不是把控制交给泛化 Agent。", "访谈第 650 行。"],
+          ["系统组成", "知识图谱和记录、个性化一起，是车内系统级 Agent 架构的确定性底座。", "访谈第 654、1134 行。"]
+        ]
+      }
+    ];
+
+    const timelineStages = [
+      {
+        id: "learn-ai",
+        time: "开场",
+        title: "先把 AI 真用起来",
+        summary: "从 Claude Code、OpenClaw、同事安装和 token 观察进入访谈。",
+        terms: ["Claude Code", "OpenClaw", "token", "AI"]
+      },
+      {
+        id: "agent-work-env",
+        time: "AI 第一段",
+        title: "Agent 必须有生产环境",
+        summary: "把泛化搜索和 Agent 工作链条分开，强调任务、反馈和闭环。",
+        terms: ["Agent", "生产环境", "反馈", "效率"]
+      },
+      {
+        id: "talent-org",
+        time: "组织段",
+        title: "高 token 用户改变人才判断",
+        summary: "不急着按旧标准裁人，专业人被 AI 放大，而不是被普通人替代。",
+        terms: ["token", "裁人", "专业", "组织", "效率"]
+      },
+      {
+        id: "cowork-demo",
+        time: "协同段",
+        title: "三大问题到 Cowork Demo",
+        summary: "工作协同、数据获取、价值衡量先被做成可验证 Demo，再交给工程化。",
+        terms: ["工作协同", "数据", "数仓", "Cowork", "Demo", "PRD", "工程师", "可验证"]
+      },
+      {
+        id: "agent-to-c",
+        time: "Agent to C",
+        title: "记忆不是记忆，而是五类需求",
+        summary: "从 Claude 记忆体验切入，把 C 端需求拆成任务、信息、控制、记录、个性化。",
+        terms: ["记忆", "Agent to C", "上下文拼接", "五类需求", "泛化任务", "信息获取", "精确控制", "记录", "个性化", "ChatBot", "知识图谱"]
+      },
+      {
+        id: "plan-workflow",
+        time: "管理段",
+        title: "Agent 改变方案工作法",
+        summary: "分析、多方案、打分、博弈、优化、人来选择，组织从猜领导变成看证据。",
+        terms: ["方案", "博弈", "确定性", "能力成长", "可验证", "战略"]
+      },
+      {
+        id: "embodied-car",
+        time: "车与具身",
+        title: "具身智能和车内系统合流",
+        summary: "机器人、底盘、线控、芯片不是孤立硬件，而是垂直系统能力。",
+        terms: ["具身智能", "机器人", "底盘", "线控", "芯片", "精确控制", "知识图谱"]
+      },
+      {
+        id: "overseas",
+        time: "出海段",
+        title: "智能化出海需要系统通用能力",
+        summary: "Agent、ChatBot、知识图谱、记录和个性化被再次用于解释海外适配。",
+        terms: ["出海", "利益联盟", "Agent", "ChatBot", "知识图谱", "记录", "个性化"]
       }
     ];
 
     const cloud = document.getElementById("cloud");
+    const timeline = document.getElementById("timeline");
     const list = document.getElementById("evidenceList");
     const selectedWord = document.getElementById("selectedWord");
     const selectedMeta = document.getElementById("selectedMeta");
@@ -826,7 +1162,8 @@
     const reset = document.getElementById("reset");
     const guide = document.getElementById("guide");
     const maxCount = Math.max(...keywords.map((item) => item.count));
-    let selected = "生产环境";
+    let selected = "记忆";
+    let activeStage = "agent-to-c";
     let activeFilter = "all";
     let dragState = null;
 
@@ -859,12 +1196,41 @@
       selectKeyword(selected);
     }
 
-    function selectKeyword(term) {
+    function renderTimeline() {
+      timeline.innerHTML = timelineStages.map((stage) => `
+        <button class="stage" type="button" data-stage="${escapeHtml(stage.id)}">
+          <span class="time">${escapeHtml(stage.time)}</span>
+          <b>${escapeHtml(stage.title)}</b>
+          <span>${escapeHtml(stage.summary)}</span>
+        </button>
+      `).join("");
+      timeline.querySelectorAll(".stage").forEach((button) => {
+        button.addEventListener("click", () => selectStage(button.dataset.stage));
+      });
+      updateStageButtons();
+    }
+
+    function selectStage(stageId) {
+      activeStage = stageId;
+      updateStageButtons();
+      const stage = timelineStages.find((entry) => entry.id === stageId);
+      const firstTerm = stage?.terms.find((term) => keywords.some((item) => item.term === term));
+      applyFilters();
+      if (firstTerm) selectKeyword(firstTerm, true);
+    }
+
+    function selectKeyword(term, preserveStage = false) {
       selected = term;
       const item = keywords.find((entry) => entry.term === term);
       if (!item) return;
+      if (!preserveStage) {
+        const owningStage = timelineStages.find((stage) => stage.terms.includes(term));
+        if (owningStage) activeStage = owningStage.id;
+      }
+      updateStageButtons();
       selectedWord.textContent = item.term;
-      selectedMeta.textContent = `正文命中 ${item.count} 次 · ${labelForGroup(item.group)}`;
+      const stage = timelineStages.find((entry) => entry.id === activeStage);
+      selectedMeta.textContent = `正文命中 ${item.count} 次 · ${labelForGroup(item.group)} · ${stage ? stage.time : "全篇"}`;
       list.innerHTML = item.evidence.map(([title, body, where]) => `
         <article class="evidence">
           <b>${escapeHtml(title)}</b>
@@ -876,6 +1242,7 @@
         node.classList.toggle("active", node.dataset.term === term);
       });
       updateGuide();
+      applyFilters();
     }
 
     function labelForGroup(group) {
@@ -892,10 +1259,18 @@
 
     function applyFilters() {
       const query = search.value.trim().toLowerCase();
+      const stage = timelineStages.find((entry) => entry.id === activeStage);
       cloud.querySelectorAll(".keyword").forEach((node) => {
         const inMode = activeFilter === "all" || node.dataset.group === activeFilter;
         const inSearch = !query || node.dataset.term.toLowerCase().includes(query);
-        node.classList.toggle("dimmed", !(inMode && inSearch));
+        const inStage = !stage || stage.terms.includes(node.dataset.term);
+        node.classList.toggle("dimmed", !(inMode && inSearch && inStage));
+      });
+    }
+
+    function updateStageButtons() {
+      timeline.querySelectorAll(".stage").forEach((node) => {
+        node.classList.toggle("active", node.dataset.stage === activeStage);
       });
     }
 
@@ -972,9 +1347,12 @@
         "机器人": [50, 48], "AI": [36, 38], "芯片": [64, 40], "Agent": [24, 53], "数据": [72, 56],
         "具身智能": [52, 25], "效率": [31, 67], "方案": [48, 70], "专业": [17, 35], "生产环境": [43, 52],
         "战略": [70, 30], "线控": [82, 44], "组织": [58, 78], "token": [21, 78], "出海": [78, 69],
-        "Claude Code": [28, 24], "工程师": [38, 83], "确定性": [64, 84], "反馈": [13, 58], "底盘": [88, 55],
+        "Claude Code": [28, 24], "OpenClaw": [20, 20], "工程师": [38, 83], "确定性": [64, 84], "反馈": [13, 58], "底盘": [88, 55],
         "Demo": [46, 17], "Cowork": [57, 15], "可验证": [24, 45], "数仓": [74, 18], "工作协同": [15, 70],
-        "PRD": [34, 13], "博弈": [58, 62], "利益联盟": [86, 79], "裁人": [12, 26], "能力成长": [48, 88]
+        "PRD": [34, 13], "博弈": [58, 62], "利益联盟": [86, 79], "裁人": [12, 26], "能力成长": [48, 88],
+        "记忆": [36, 31], "Agent to C": [24, 40], "上下文拼接": [20, 48], "五类需求": [45, 33],
+        "泛化任务": [27, 58], "信息获取": [31, 64], "精确控制": [63, 33], "记录": [56, 29],
+        "个性化": [68, 25], "ChatBot": [74, 36], "知识图谱": [76, 48]
       };
       keywords.forEach((item) => {
         [item.x, item.y] = original[item.term];
@@ -1016,6 +1394,7 @@
     search.addEventListener("input", applyFilters);
     reset.addEventListener("click", restoreLayout);
     window.addEventListener("resize", updateKeywordSizes);
+    renderTimeline();
     renderCloud();
   </script>
 </body>
