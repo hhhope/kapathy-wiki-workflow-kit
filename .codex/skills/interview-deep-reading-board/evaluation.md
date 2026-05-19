@@ -81,6 +81,20 @@ wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md: validated outp
 
 ## Prior-Art / Common-Rule Dedupe
 
+Scanned:
+
+- repo `AGENTS.md`
+- `PROJECT.md`
+- `.codex/skills/material-collaboration-defaults/SKILL.md`
+- `.codex/skills/public-report-quality-gate/SKILL.md`
+- `.codex/skills/learning-capture/SKILL.md`
+- `.codex/skills/weixin-reader/SKILL.md`
+- `openspec/specs/public-report-quality-gate/spec.md`
+- `openspec/specs/skill-authoring-contract/spec.md`
+- `openspec/specs/skill-evaluation-evidence/spec.md`
+- `openspec/specs/local-skill-pressure-tests/spec.md`
+- `docs/superpowers/specs/2026-05-19-interview-deep-reading-board-design.md`
+
 Owns:
 
 - interview-specific full-window reading-board routing;

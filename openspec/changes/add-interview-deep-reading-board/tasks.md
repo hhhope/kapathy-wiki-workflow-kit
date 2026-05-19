@@ -53,8 +53,13 @@
 
 ## 6. Validation and Commit Discipline
 
-- [ ] 6.1 Run `python3 scripts/check_behavior_assets.py`.
-- [ ] 6.2 Run `rg -n 'interview-deep-reading-board|访谈|temperature|full-window|全文窗口' AGENTS.md .codex/skills openspec/changes/add-interview-deep-reading-board wiki/examples`.
-- [ ] 6.3 Run `python3 -m html.parser wiki/reports/lixiang-luoyonghao-ai-agent-reading-board.html`.
-- [ ] 6.4 If wiki frontmatter is added or modified, run `python3 scripts/check_wiki_frontmatter.py`.
-- [ ] 6.5 Commit only task-related files after verified implementation steps; do not stage unrelated dirty worktree files.
+- [x] 6.1 Run `python3 scripts/check_behavior_assets.py`.
+  <!-- 2026-05-19 — initially failed on missing exact "Scanned:" prior-art label; after evaluation wording fix, passed -->
+- [x] 6.2 Run `rg -n 'interview-deep-reading-board|访谈|temperature|full-window|全文窗口' AGENTS.md .codex/skills openspec/changes/add-interview-deep-reading-board wiki/examples`.
+  <!-- 2026-05-19 — passed; route, skill, public gate, OpenSpec, and wiki example hits found -->
+- [x] 6.3 Run `python3 -m html.parser wiki/reports/lixiang-luoyonghao-ai-agent-reading-board.html`.
+  <!-- 2026-05-19 — passed with no parser output -->
+- [x] 6.4 If wiki frontmatter is added or modified, run `python3 scripts/check_wiki_frontmatter.py`.
+  <!-- 2026-05-19 — passed with no checker output; target precheck also had blocking_count 0 -->
+- [x] 6.5 Commit only task-related files after verified implementation steps; do not stage unrelated dirty worktree files.
+  <!-- 2026-05-19 — final validation/evaluation files staged separately from unrelated dirty worktree files -->

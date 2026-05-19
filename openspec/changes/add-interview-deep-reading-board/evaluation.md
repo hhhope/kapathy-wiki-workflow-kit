@@ -130,7 +130,7 @@ wiki/examples/interview-deep-reading-board-lixiang-luoyonghao.md: validated outp
 
 ## Prior-Art / Common-Rule Dedupe
 
-Scanned before implementation:
+Scanned:
 
 - repo `AGENTS.md`
 - `PROJECT.md`
@@ -181,3 +181,32 @@ Rejects:
 - A visually polished H5 can still fail if the reading-window map is
   incomplete.
 - Existing historical interview outputs are not automatically repaired.
+
+## Validation Evidence
+
+Commands run on 2026-05-19:
+
+```text
+python3 scripts/check_behavior_assets.py
+PASS
+
+rg -n 'interview-deep-reading-board|访谈|temperature|full-window|全文窗口' AGENTS.md .codex/skills openspec/changes/add-interview-deep-reading-board wiki/examples
+PASS - route, skill, gate, OpenSpec, and wiki example hits found
+
+python3 -m html.parser wiki/reports/lixiang-luoyonghao-ai-agent-reading-board.html
+PASS
+
+python3 scripts/check_wiki_frontmatter.py
+PASS
+
+openspec validate add-interview-deep-reading-board --strict
+PASS - Change 'add-interview-deep-reading-board' is valid
+```
+
+The first behavior-asset check failed until this evaluation used the required
+`Scanned:` label for prior-art/common-rule dedupe. After the label was fixed,
+the checker passed.
+
+OpenSpec validation printed PostHog DNS flush errors after the local valid
+result. Those errors are telemetry network failures and do not change the local
+validation result.
