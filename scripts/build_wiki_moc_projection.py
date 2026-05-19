@@ -31,6 +31,7 @@ REQUIRED_REVIEW_FIELDS = {
     "reviewer",
     "reviewed_at",
 }
+VALID_MOC_ADMISSIONS = {"admit", "block", "needs_review"}
 
 
 def load_graph(root: Path, graph_path: str | None) -> dict:
@@ -46,6 +47,45 @@ def load_graph(root: Path, graph_path: str | None) -> dict:
     return json.loads(completed.stdout)
 
 
+def _required_non_empty_string(review: dict, field: str, candidate_id: str) -> str:
+    value = review[field]
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(
+            f"temperature review JSON value for {candidate_id!r} field {field!r} must be a non-empty string"
+        )
+    return value
+
+
+def _validate_review_object(candidate_id: str, review: dict) -> None:
+    missing_fields = sorted(REQUIRED_REVIEW_FIELDS - set(review))
+    if missing_fields:
+        raise ValueError(
+            f"temperature review JSON value for {candidate_id!r} missing required field(s): {', '.join(missing_fields)}"
+        )
+
+    review_candidate_id = _required_non_empty_string(review, "candidate_id", candidate_id)
+    if review_candidate_id != candidate_id:
+        raise ValueError(
+            f"temperature review JSON candidate_id mismatch for {candidate_id!r}: review candidate_id must match mapping key"
+        )
+
+    temperature = review["temperature"]
+    if isinstance(temperature, bool) or not isinstance(temperature, int) or not 0 <= temperature <= 100:
+        raise ValueError(
+            f"temperature review JSON value for {candidate_id!r} field 'temperature' must be an integer from 0 to 100"
+        )
+
+    moc_admission = review["moc_admission"]
+    if not isinstance(moc_admission, str) or moc_admission not in VALID_MOC_ADMISSIONS:
+        raise ValueError(
+            f"temperature review JSON value for {candidate_id!r} field 'moc_admission' must be one of admit, block, needs_review"
+        )
+
+    _required_non_empty_string(review, "rationale", candidate_id)
+    _required_non_empty_string(review, "reviewer", candidate_id)
+    _required_non_empty_string(review, "reviewed_at", candidate_id)
+
+
 def load_temperature_admission(graph: dict, review_path: str | None) -> dict | None:
     if review_path is None:
         return None
@@ -58,21 +98,13 @@ def load_temperature_admission(graph: dict, review_path: str | None) -> dict | N
             "temperature review JSON must be a keyed mapping from candidate_id strings to review objects, not a single review object"
         )
     for candidate_id, review in reviews.items():
-        if not isinstance(candidate_id, str):
-            raise ValueError("temperature review JSON keys must be candidate_id strings")
+        if not isinstance(candidate_id, str) or not candidate_id.strip():
+            raise ValueError("temperature review JSON keys must be non-empty candidate_id strings")
         if not isinstance(review, dict):
             raise ValueError(
                 f"temperature review JSON value for {candidate_id!r} must be a review object"
             )
-        missing_fields = sorted(REQUIRED_REVIEW_FIELDS - set(review))
-        if missing_fields:
-            raise ValueError(
-                f"temperature review JSON value for {candidate_id!r} missing required field(s): {', '.join(missing_fields)}"
-            )
-        if review["candidate_id"] != candidate_id:
-            raise ValueError(
-                f"temperature review JSON candidate_id mismatch for {candidate_id!r}: review candidate_id must match mapping key"
-            )
+        _validate_review_object(candidate_id, review)
 
     packages = build_relation_feature_packages(graph)
     board = build_temperature_clue_board(packages, reviews)

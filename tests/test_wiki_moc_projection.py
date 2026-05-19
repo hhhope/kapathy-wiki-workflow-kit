@@ -50,6 +50,16 @@ class WikiMocProjectionTest(unittest.TestCase):
             ],
         }
 
+    def valid_temperature_review(self) -> dict:
+        return {
+            "candidate_id": self.CANDIDATE_ID,
+            "temperature": 91,
+            "moc_admission": "admit",
+            "rationale": "ADR formalizes the runtime model.",
+            "reviewer": "test",
+            "reviewed_at": "2026-05-19",
+        }
+
     def test_builds_domain_and_object_candidates_by_default(self) -> None:
         candidates = build_moc_candidates(self.sample_graph())
         paths = {candidate.path for candidate in candidates}
@@ -158,14 +168,7 @@ class WikiMocProjectionTest(unittest.TestCase):
         review_path.write_text(
             json.dumps(
                 {
-                    self.CANDIDATE_ID: {
-                        "candidate_id": self.CANDIDATE_ID,
-                        "temperature": 91,
-                        "moc_admission": "admit",
-                        "rationale": "ADR formalizes the runtime model.",
-                        "reviewer": "test",
-                        "reviewed_at": "2026-05-19",
-                    }
+                    self.CANDIDATE_ID: self.valid_temperature_review()
                 }
             ),
             encoding="utf-8",
@@ -315,6 +318,50 @@ class WikiMocProjectionTest(unittest.TestCase):
         self.assertNotEqual(completed.returncode, 0)
         self.assertIn("--temperature-review", completed.stderr)
         self.assertIn("candidate_id mismatch", completed.stderr)
+
+    def test_cli_rejects_invalid_temperature_review_values(self) -> None:
+        cases = [
+            ("rationale", "  ", "rationale"),
+            ("reviewer", "", "reviewer"),
+            ("reviewed_at", {}, "reviewed_at"),
+            ("temperature", "91", "temperature"),
+            ("temperature", True, "temperature"),
+            ("temperature", 101, "temperature"),
+            ("moc_admission", "admit_relation", "moc_admission"),
+        ]
+        repo_root = Path(__file__).resolve().parents[1]
+
+        for field, value, expected_stderr in cases:
+            with self.subTest(field=field, value=value):
+                graph_path = self.tmpdir / f"graph-{field}-{value!r}.json"
+                review_path = self.tmpdir / f"review-{field}-{value!r}.json"
+                review = self.valid_temperature_review()
+                review[field] = value
+                graph_path.write_text(json.dumps(self.sample_graph()), encoding="utf-8")
+                review_path.write_text(
+                    json.dumps({self.CANDIDATE_ID: review}),
+                    encoding="utf-8",
+                )
+
+                completed = subprocess.run(
+                    [
+                        sys.executable,
+                        "scripts/build_wiki_moc_projection.py",
+                        "--root",
+                        str(self.tmpdir),
+                        "--graph",
+                        str(graph_path),
+                        "--temperature-review",
+                        str(review_path),
+                    ],
+                    capture_output=True,
+                    text=True,
+                    cwd=repo_root,
+                )
+
+                self.assertNotEqual(completed.returncode, 0)
+                self.assertIn("--temperature-review", completed.stderr)
+                self.assertIn(expected_stderr, completed.stderr)
 
     def test_cli_reports_malformed_temperature_review_json(self) -> None:
         graph_path = self.tmpdir / "graph.json"
