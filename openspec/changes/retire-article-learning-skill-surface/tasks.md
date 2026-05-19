@@ -17,9 +17,9 @@
 
 - [x] 3.1 Add pressure scenarios for article, WeChat, README/repo, example, and
   English-target learning requests.
-- [ ] 3.2 Add behavior replay evidence for future routing.
-- [ ] 3.3 Run `openspec validate retire-article-learning-skill-surface --strict`.
-- [ ] 3.4 Run `python3 scripts/check_behavior_assets.py` and preserve output.
-- [ ] 3.5 Run `python3 scripts/check_wiki_frontmatter.py` if template or
+- [x] 3.2 Add behavior replay evidence for future routing.
+- [x] 3.3 Run `openspec validate retire-article-learning-skill-surface --strict`.
+- [x] 3.4 Run `python3 scripts/check_behavior_assets.py` and preserve output.
+- [x] 3.5 Run `python3 scripts/check_wiki_frontmatter.py` if template or
   frontmatter changes require it.
-- [ ] 3.6 Commit only task-related files.
+- [x] 3.6 Commit only task-related files.
