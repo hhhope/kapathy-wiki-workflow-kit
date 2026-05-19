@@ -7,6 +7,33 @@
 3. User replies only `1` after options were presented.
 4. User asks why no prediagnosis was given.
 
+## Positive Trigger Scenario
+
+- Input or situation shape: user invokes `wiki-medical-agent` and uses
+  continuation or mutation language rather than a pure status question.
+- Trigger condition: the medical-agent script result is `report_status`,
+  `blocked`, `awaiting_confirmation`, or `archive_ready`.
+- Expected route: keep the fixed fields, then add read-only prediagnosis and a
+  recommended next action.
+- Repo-visible artifact: `.codex/skills/wiki-medical-agent/SKILL.md` plus this
+  evaluation record.
+- Expected output: script result, interpreted live user intent, read-only
+  prediagnosis, recommended next action, and any remaining user decision.
+- Promotion or non-promotion boundary: the rule is promoted only into the
+  repo-local medical-agent skill, not into global AGENTS or a common rule.
+- Proof boundary: this is skill-level replay evidence, not proof that clients
+  will comply without loading the skill.
+
+## Negative Should-Not-Trigger Scenario
+
+- Input or situation shape: user asks only for current medical-loop status.
+- Trigger condition: no continuation, mutation, apply, repair, or next-step
+  request is present.
+- Expected route: report the fixed `wiki-medical-agent` fields without adding a
+  speculative prediagnosis.
+- Expected output: Intent, Case, State, Allowed action, Blocked action when
+  blocked, and Next Action.
+
 ## RED Baseline
 
 - `.codex/skills/wiki-medical-agent/SKILL.md` has no
@@ -40,11 +67,71 @@
 
 ## GREEN Result
 
-Not recorded in this RED baseline commit. Task 4 replaces this section after
-the skill wording is updated and replay expectations are checked.
+The updated skill now includes a compact `Status / Blocked Response` section.
+
+GREEN wording check:
+
+```bash
+rg -n "Status / Blocked Response|read-only prediagnosis|interpreted live user intent" .codex/skills/wiki-medical-agent/SKILL.md
+```
+
+Expected result: matches the new section.
+
+Replay expectations:
+
+- `那我继续做什么`: report script status, interpret the live intent as next-route
+  selection, and recommend archive review or another bounded next workflow.
+- `改 wiki/moc`: report script status, preserve generated-output write
+  boundaries, provide a read-only prediagnosis, and recommend the safe next
+  route before asking for missing details.
+- Bare `1`: preserve prior option context and continue that option without
+  forcing the user to restate the full target.
+- `为什么没有预判断`: identify that fixed-field status was treated too
+  mechanically and state what prediagnosis should have happened.
+
+## Behavior Replay
+
+- Input or situation shape: user invokes `wiki-medical-agent` and uses continuation or
+  mutation language rather than a pure status question.
+- Trigger condition: the medical-agent script result is `report_status`,
+  `blocked`, `awaiting_confirmation`, or `archive_ready`.
+- Expected route: keep the existing fixed fields, then add read-only
+  prediagnosis and a recommended next action.
+- Repo-visible artifact: `.codex/skills/wiki-medical-agent/SKILL.md` plus this
+  evaluation record.
+- Expected output: script result, interpreted live user intent, read-only
+  prediagnosis, recommended next action, and any remaining user decision.
+- Promotion or non-promotion boundary: this does not grant write authority and
+  does not change `scripts/build_wiki_medical_agent.py`.
+- Proof boundary: this replay validates the behavior contract wording only.
+
+## Prior-Art / Common-Rule Dedupe
+
+- Scanned: repo `AGENTS.md`, `PROJECT.md`,
+  `.codex/skills/wiki-medical-agent/SKILL.md`,
+  `.codex/skills/clarify-before-acting/SKILL.md`,
+  `openspec/changes/introduce-wiki-medical-agent-state-machine`, and
+  `docs/superpowers/specs/2026-05-19-wiki-medical-agent-status-prediagnosis-design.md`.
+- Owns: `wiki-medical-agent` status/blocked response behavior for the wiki
+  medical-loop entry point.
+- References: `clarify-before-acting` already says to resolve local context
+  before asking the user; this change narrows that principle to medical-agent
+  status and blocked responses.
+- Rejects: global agent rules, AGENTS.md rewrites, script classifier changes,
+  and direct write authority expansion.
 
 ## Residual Risks
 
-- This RED baseline only proves the current skill lacks a response obligation.
-- It does not prove the future wording is sufficient until Task 4 records the
-  GREEN replay result.
+- This is skill-level behavior evidence, not proof that clients will comply
+  without loading the skill.
+- No script intent classifier was changed; unusual phrasing may still return
+  `status`, but the skill now defines how the agent should respond to that.
+- `openspec validate add-medical-agent-status-prediagnosis --strict`: PASS,
+  reported `Change 'add-medical-agent-status-prediagnosis' is valid`.
+- `python3 scripts/check_behavior_assets.py`: expected non-zero in the current
+  workspace due to unrelated active change
+  `openspec/changes/retire-article-learning-skill-surface/evaluation.md`.
+  The remaining errors are missing `Pressure Scenarios`, `Residual Risks`,
+  positive/negative trigger scenarios, parent-gate preservation, replay fields,
+  and prior-art dedupe in that other change. No checker errors remained for
+  `add-medical-agent-status-prediagnosis`.
