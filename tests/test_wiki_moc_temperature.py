@@ -102,14 +102,21 @@ class WikiMocTemperatureTest(unittest.TestCase):
         )
         derived_window = board["windows"][0]
 
+        self.assertEqual(derived_window["status"], "blocked")
+        self.assertEqual(derived_window["moc_admission"], "needs_review")
         self.assertEqual(derived_window["admission"], "block")
         self.assertEqual(derived_window["temperature"], 95)
         self.assertEqual(derived_window["temperature_band"], "strong")
+        self.assertEqual(board["counts"]["blocked_count"], 1)
+        self.assertEqual(board["counts"]["review_needed_count"], 1)
         self.assertEqual(board["summary"]["blocked_count"], 1)
         self.assertEqual(board["summary"]["review_needed_count"], 1)
+        self.assertIs(board["clue_windows"], board["windows"])
 
         plan = build_moc_admission_plan(board)
 
+        self.assertEqual(plan["counts"]["blocked_count"], 1)
+        self.assertIs(plan["clue_windows"], plan["windows"])
         self.assertNotIn("derived_from", plan["admitted_relations"])
         self.assertIn("derived_from", plan["blocked_relations"])
 
@@ -127,8 +134,12 @@ class WikiMocTemperatureTest(unittest.TestCase):
         )
 
         plan = build_moc_admission_plan(board)
+        admitted_window = board["clue_windows"][1]
 
-        self.assertEqual(board["summary"]["admitted_count"], 1)
+        self.assertEqual(admitted_window["status"], "admitted")
+        self.assertEqual(admitted_window["moc_admission"], "admit_relation")
+        self.assertEqual(board["counts"]["admitted_count"], 1)
+        self.assertEqual(plan["counts"]["admitted_count"], 1)
         self.assertIn("runtime-method", plan["admitted_objects"])
         self.assertIn("validates", plan["admitted_relations"])
         self.assertNotIn("derived_from", plan["admitted_relations"])

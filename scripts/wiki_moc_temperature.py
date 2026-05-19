@@ -115,17 +115,28 @@ def _review_for(candidate_id: str, reviews: dict[str, Any] | None) -> dict[str, 
     return review if isinstance(review, dict) else {}
 
 
-def _final_admission(package: dict[str, Any], review: dict[str, Any]) -> str:
-    requested = str(review.get("admission") or review.get("moc_admission") or "").strip()
-    temperature = review.get("temperature")
+def _moc_admission(review: dict[str, Any]) -> str:
+    requested = str(review.get("moc_admission") or review.get("admission") or "").strip()
+    return requested if requested in {"admit", "admit_relation", "needs_review", "block"} else "needs_review"
+
+
+def _window_status(package: dict[str, Any], moc_admission: str, temperature: Any) -> str:
     high_temperature = isinstance(temperature, int) and temperature >= 80
     mechanical = bool(package.get("structural_features", {}).get("mechanical_relation"))
 
-    if requested in ADMIT_DECISIONS and high_temperature:
-        return requested
-    if mechanical:
+    if moc_admission in ADMIT_DECISIONS and high_temperature:
+        return "admitted"
+    if moc_admission == "block" or mechanical:
+        return "blocked"
+    return "needs_review"
+
+
+def _compat_admission(status: str, moc_admission: str) -> str:
+    if status == "admitted":
+        return moc_admission
+    if status == "blocked":
         return "block"
-    return requested if requested in {"needs_review", "block"} else "needs_review"
+    return "needs_review"
 
 
 def build_temperature_clue_board(
@@ -138,7 +149,8 @@ def build_temperature_clue_board(
         candidate_id = str(package["candidate_id"])
         review = _review_for(candidate_id, reviews)
         temperature = review.get("temperature")
-        admission = _final_admission(package, review)
+        moc_admission = _moc_admission(review)
+        status = _window_status(package, moc_admission, temperature)
         window = {
             "candidate_id": candidate_id,
             "relation_type": package["relation_type"],
@@ -149,7 +161,9 @@ def build_temperature_clue_board(
             "structural_features": package["structural_features"],
             "temperature": temperature if isinstance(temperature, int) else None,
             "temperature_band": temperature_band(temperature) if isinstance(temperature, int) else None,
-            "admission": admission,
+            "status": status,
+            "moc_admission": moc_admission,
+            "admission": _compat_admission(status, moc_admission),
             "rationale": str(review.get("rationale") or ""),
             "reviewer": review.get("reviewer"),
             "reviewed_at": review.get("reviewed_at"),
@@ -157,36 +171,40 @@ def build_temperature_clue_board(
         windows.append(window)
 
     admitted_count = sum(
-        1
-        for window in windows
-        if window["admission"] in ADMIT_DECISIONS
-        and isinstance(window["temperature"], int)
-        and window["temperature"] >= 80
+        1 for window in windows if window["status"] == "admitted"
     )
-    blocked_count = sum(1 for window in windows if window["admission"] == "block")
-    review_needed_count = sum(1 for window in windows if window["admission"] == "needs_review")
+    blocked_count = sum(1 for window in windows if window["status"] == "blocked")
+    review_needed_count = sum(1 for window in windows if window["status"] == "needs_review")
+    counts = {
+        "window_count": len(windows),
+        "admitted_count": admitted_count,
+        "blocked_count": blocked_count,
+        "review_needed_count": review_needed_count,
+    }
 
     return {
-        "summary": {
-            "window_count": len(windows),
-            "admitted_count": admitted_count,
-            "blocked_count": blocked_count,
-            "review_needed_count": review_needed_count,
-        },
+        "summary": counts,
+        "counts": counts,
         "windows": windows,
+        "clue_windows": windows,
     }
 
 
 def _is_admitted(window: dict[str, Any]) -> bool:
     return (
-        window.get("admission") in ADMIT_DECISIONS
+        window.get("status") == "admitted"
+        and window.get("moc_admission") in ADMIT_DECISIONS
         and isinstance(window.get("temperature"), int)
         and int(window["temperature"]) >= 80
     )
 
 
 def build_moc_admission_plan(board: dict[str, Any]) -> dict[str, Any]:
-    windows = [window for window in board.get("windows", []) if isinstance(window, dict)]
+    windows = [
+        window
+        for window in board.get("clue_windows", board.get("windows", []))
+        if isinstance(window, dict)
+    ]
     admitted_objects = sorted(
         {
             str(window.get("target_object"))
@@ -198,29 +216,32 @@ def build_moc_admission_plan(board: dict[str, Any]) -> dict[str, Any]:
         {
             str(window.get("relation_type"))
             for window in windows
-            if _is_admitted(window) and window.get("admission") == "admit_relation"
+            if _is_admitted(window) and window.get("moc_admission") == "admit_relation"
         }
     )
     blocked_relations = sorted(
         {
             str(window.get("relation_type"))
             for window in windows
-            if not _is_admitted(window) and window.get("admission") == "block"
+            if not _is_admitted(window) and window.get("status") == "blocked"
         }
     )
     review_needed_relations = sorted(
         {
             str(window.get("relation_type"))
             for window in windows
-            if not _is_admitted(window) and window.get("admission") == "needs_review"
+            if not _is_admitted(window) and window.get("status") == "needs_review"
         }
     )
+    counts = dict(board.get("counts", board.get("summary", {})))
 
     return {
-        "summary": dict(board.get("summary", {})),
+        "summary": counts,
+        "counts": counts,
         "admitted_objects": admitted_objects,
         "admitted_relations": admitted_relations,
         "blocked_relations": blocked_relations,
         "review_needed_relations": review_needed_relations,
         "windows": windows,
+        "clue_windows": windows,
     }
