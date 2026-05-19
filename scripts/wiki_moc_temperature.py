@@ -128,6 +128,8 @@ def _review_for(candidate_id: str, reviews: dict[str, Any] | None) -> dict[str, 
 
 def _moc_admission(review: dict[str, Any]) -> str:
     requested = review.get("moc_admission")
+    if not isinstance(requested, str):
+        return "needs_review"
     return requested if requested in VALID_MOC_ADMISSIONS else "needs_review"
 
 
