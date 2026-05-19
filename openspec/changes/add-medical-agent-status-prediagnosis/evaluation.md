@@ -128,10 +128,5 @@ Replay expectations:
   `status`, but the skill now defines how the agent should respond to that.
 - `openspec validate add-medical-agent-status-prediagnosis --strict`: PASS,
   reported `Change 'add-medical-agent-status-prediagnosis' is valid`.
-- `python3 scripts/check_behavior_assets.py`: expected non-zero in the current
-  workspace due to unrelated active change
-  `openspec/changes/retire-article-learning-skill-surface/evaluation.md`.
-  The remaining errors are missing `Pressure Scenarios`, `Residual Risks`,
-  positive/negative trigger scenarios, parent-gate preservation, replay fields,
-  and prior-art dedupe in that other change. No checker errors remained for
-  `add-medical-agent-status-prediagnosis`.
+- `python3 scripts/check_behavior_assets.py`: PASS on fresh archive review
+  recheck, exited 0 with no output.

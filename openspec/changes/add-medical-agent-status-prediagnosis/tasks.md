@@ -6,3 +6,4 @@
 - [x] 4. Record GREEN replay evidence for the four pressure scenarios.
 - [x] 5. Run OpenSpec validation and behavior-asset checker.
 - [x] 6. Commit the verified implementation and stop at completion.
+- [x] 7. Archive review tail: refresh behavior-asset checker evidence after the unrelated checker failure is resolved.
