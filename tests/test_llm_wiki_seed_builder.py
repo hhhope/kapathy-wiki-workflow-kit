@@ -6,6 +6,7 @@ import pytest
 
 from scripts import llm_wiki_seed_manifest as manifest
 from scripts.build_llm_wiki_seed import build_seed, is_excluded_path
+from scripts.verify_llm_wiki_seed import verify_seed
 
 
 def test_build_seed_creates_required_structure_under_target(
@@ -31,6 +32,43 @@ def test_build_seed_creates_required_structure_under_target(
         *manifest.GENERATED_SAMPLE_FILES,
     }:
         assert (target / generated_file).is_file()
+
+
+def test_build_seed_output_passes_seed_verifier(tmp_path: Path) -> None:
+    target = tmp_path / "seed"
+
+    build_seed(target, force=False)
+
+    assert verify_seed(target) == 0
+
+
+def test_verify_seed_short_circuits_when_target_is_missing(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    result = verify_seed(tmp_path / "missing")
+
+    output = capsys.readouterr().out
+    assert result == 1
+    assert "missing target directory" in output
+    assert "missing required file" not in output
+    assert "missing required directory" not in output
+
+
+def test_verify_seed_short_circuits_when_target_is_not_directory(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    target = tmp_path / "not-a-dir"
+    target.write_text("not a directory\n", encoding="utf-8")
+
+    result = verify_seed(target)
+
+    output = capsys.readouterr().out
+    assert result == 1
+    assert "target is not a directory" in output
+    assert "missing required file" not in output
+    assert "missing required directory" not in output
 
 
 def test_build_seed_writes_sanitized_examples_without_local_project_names(
