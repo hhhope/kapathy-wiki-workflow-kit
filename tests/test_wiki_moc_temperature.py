@@ -95,7 +95,7 @@ class WikiMocTemperatureTest(unittest.TestCase):
             reviews={
                 "relation:wiki/adr/001-runtime.md:derived_from:runtime-method": {
                     "temperature": 95,
-                    "admission": "needs_review",
+                    "moc_admission": "needs_review",
                     "rationale": "Structural pointer only.",
                 }
             },
@@ -109,6 +109,10 @@ class WikiMocTemperatureTest(unittest.TestCase):
         self.assertEqual(derived_window["temperature_band"], "strong")
         self.assertEqual(board["counts"]["blocked_count"], 1)
         self.assertEqual(board["counts"]["review_needed_count"], 1)
+        self.assertEqual(board["counts"]["blocked"], 1)
+        self.assertEqual(board["counts"]["needs_review"], 1)
+        self.assertEqual(board["counts"]["admitted"], 0)
+        self.assertEqual(board["counts"]["total"], 2)
         self.assertEqual(board["summary"]["blocked_count"], 1)
         self.assertEqual(board["summary"]["review_needed_count"], 1)
         self.assertIs(board["clue_windows"], board["windows"])
@@ -116,9 +120,36 @@ class WikiMocTemperatureTest(unittest.TestCase):
         plan = build_moc_admission_plan(board)
 
         self.assertEqual(plan["counts"]["blocked_count"], 1)
+        self.assertEqual(plan["counts"]["blocked"], 1)
+        self.assertEqual(plan["counts"]["needs_review"], 1)
+        self.assertEqual(plan["counts"]["admitted"], 0)
+        self.assertEqual(plan["counts"]["total"], 2)
         self.assertIs(plan["clue_windows"], plan["windows"])
         self.assertNotIn("derived_from", plan["admitted_relations"])
         self.assertIn("derived_from", plan["blocked_relations"])
+
+    def test_legacy_admission_field_does_not_admit_relation(self) -> None:
+        packages = build_relation_feature_packages(self.sample_graph())
+        board = build_temperature_clue_board(
+            packages,
+            reviews={
+                "relation:openspec/specs/runtime/spec.md:validates:runtime-method": {
+                    "temperature": 88,
+                    "admission": "admit_relation",
+                    "rationale": "Legacy field must not drive admission.",
+                }
+            },
+        )
+
+        plan = build_moc_admission_plan(board)
+        validates_window = board["clue_windows"][1]
+
+        self.assertEqual(validates_window["status"], "needs_review")
+        self.assertEqual(validates_window["moc_admission"], "needs_review")
+        self.assertEqual(board["counts"]["admitted"], 0)
+        self.assertEqual(board["counts"]["needs_review"], 1)
+        self.assertEqual(board["counts"]["total"], 2)
+        self.assertNotIn("validates", plan["admitted_relations"])
 
     def test_admits_high_temperature_relation_when_review_says_admit_relation(self) -> None:
         packages = build_relation_feature_packages(self.sample_graph())
@@ -127,7 +158,7 @@ class WikiMocTemperatureTest(unittest.TestCase):
             reviews={
                 "relation:openspec/specs/runtime/spec.md:validates:runtime-method": {
                     "temperature": 88,
-                    "admission": "admit_relation",
+                    "moc_admission": "admit_relation",
                     "rationale": "Spec validation is a strong reading clue.",
                 }
             },
@@ -139,7 +170,15 @@ class WikiMocTemperatureTest(unittest.TestCase):
         self.assertEqual(admitted_window["status"], "admitted")
         self.assertEqual(admitted_window["moc_admission"], "admit_relation")
         self.assertEqual(board["counts"]["admitted_count"], 1)
+        self.assertEqual(board["counts"]["admitted"], 1)
+        self.assertEqual(board["counts"]["blocked"], 1)
+        self.assertEqual(board["counts"]["needs_review"], 0)
+        self.assertEqual(board["counts"]["total"], 2)
         self.assertEqual(plan["counts"]["admitted_count"], 1)
+        self.assertEqual(plan["counts"]["admitted"], 1)
+        self.assertEqual(plan["counts"]["blocked"], 1)
+        self.assertEqual(plan["counts"]["needs_review"], 0)
+        self.assertEqual(plan["counts"]["total"], 2)
         self.assertIn("runtime-method", plan["admitted_objects"])
         self.assertIn("validates", plan["admitted_relations"])
         self.assertNotIn("derived_from", plan["admitted_relations"])

@@ -116,7 +116,7 @@ def _review_for(candidate_id: str, reviews: dict[str, Any] | None) -> dict[str, 
 
 
 def _moc_admission(review: dict[str, Any]) -> str:
-    requested = str(review.get("moc_admission") or review.get("admission") or "").strip()
+    requested = str(review.get("moc_admission") or "").strip()
     return requested if requested in {"admit", "admit_relation", "needs_review", "block"} else "needs_review"
 
 
@@ -176,6 +176,10 @@ def build_temperature_clue_board(
     blocked_count = sum(1 for window in windows if window["status"] == "blocked")
     review_needed_count = sum(1 for window in windows if window["status"] == "needs_review")
     counts = {
+        "admitted": admitted_count,
+        "blocked": blocked_count,
+        "needs_review": review_needed_count,
+        "total": len(windows),
         "window_count": len(windows),
         "admitted_count": admitted_count,
         "blocked_count": blocked_count,
