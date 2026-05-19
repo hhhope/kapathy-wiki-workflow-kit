@@ -1,6 +1,6 @@
 # Tasks
 
-- [ ] 1. Create OpenSpec change artifacts.
+- [x] 1. Create OpenSpec change artifacts.
 - [x] 2. Record 2026-05-18 tool executor bypass drift evidence.
 - [x] 3. Update public report gate skill wording and pressure scenarios.
 - [x] 4. Add skill evaluation replay evidence.
