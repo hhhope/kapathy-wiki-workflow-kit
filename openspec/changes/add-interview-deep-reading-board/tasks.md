@@ -11,10 +11,14 @@
 
 ## 2. Skill and References
 
-- [ ] 2.1 Add `.codex/skills/interview-deep-reading-board/SKILL.md` as an English-first repo-local module.
-- [ ] 2.2 Add `.codex/skills/interview-deep-reading-board/references/h5-output-shape.md`.
-- [ ] 2.3 Add `.codex/skills/interview-deep-reading-board/evaluation.md` with local pressure-test evidence.
-- [ ] 2.4 Keep the main `SKILL.md` compact; move H5 details and long examples into references.
+- [x] 2.1 Add `.codex/skills/interview-deep-reading-board/SKILL.md` as an English-first repo-local module.
+  <!-- 2026-05-19 — added compact English-first skill with Chinese-facing fork question and parent-gate boundaries -->
+- [x] 2.2 Add `.codex/skills/interview-deep-reading-board/references/h5-output-shape.md`.
+  <!-- 2026-05-19 — added H5 shape reference covering source windows, timeline, temperature axis, word-cloud index, evidence panel, Li Xiang reference, and copyright boundary -->
+- [x] 2.3 Add `.codex/skills/interview-deep-reading-board/evaluation.md` with local pressure-test evidence.
+  <!-- 2026-05-19 — added pressure scenarios, RED baseline command evidence, expected GREEN evidence, prior-art/common-rule dedupe, and residual risks -->
+- [x] 2.4 Keep the main `SKILL.md` compact; move H5 details and long examples into references.
+  <!-- 2026-05-19 — SKILL.md is 77 lines; H5 details live in references/h5-output-shape.md -->
 
 ## 3. Output Gate and Repo Routing
 
