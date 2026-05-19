@@ -4,15 +4,15 @@
 
 ### Active Article Skill Description Pollution
 
-Command:
+Targeted failure command:
 
 ```bash
-rg -n '^description:.*(article|WeChat|deep reading|learning extraction)|article-learning-capture' .codex/skills/*/SKILL.md .codex/skills/learning-capture/references/article.md .codex/skills/article-learning-capture/references/wiki-template.md
+rg -n '^name: article-learning-capture|^description:.*(external articles|WeChat posts|deep reading|learning extraction)' .codex/skills/article-learning-capture/SKILL.md
 ```
 
 Expected baseline: the command returns the active
-`.codex/skills/article-learning-capture/SKILL.md` description and delegation
-references.
+`.codex/skills/article-learning-capture/SKILL.md` skill name and trigger
+description.
 
 Observed summary:
 
@@ -22,14 +22,41 @@ Observed summary:
   description for external articles, blogs, papers, WeChat posts, article
   collections, deep reading, learning extraction, scoring, wiki capture, and
   reusable adaptation decisions.
+
+Result: RED. The retired article module is still an active runtime skill
+surface.
+
+Broad inventory command:
+
+```bash
+rg -n '^description:.*(article|WeChat|deep reading|learning extraction)|article-learning-capture' .codex/skills/*/SKILL.md .codex/skills/learning-capture/references/article.md .codex/skills/article-learning-capture/references/wiki-template.md
+```
+
+Expected inventory: the command returns the active article skill trigger,
+`learning-capture` article delegation, and adjacent article/link surfaces that
+may remain valid after this change.
+
+Observed summary:
+
+- `.codex/skills/article-learning-capture/SKILL.md:2` still declares
+  `name: article-learning-capture`.
+- `.codex/skills/article-learning-capture/SKILL.md:3` still exposes the old
+  active article-learning description.
 - `.codex/skills/learning-capture/references/article.md:9` still references
   `.codex/skills/article-learning-capture/SKILL.md`.
 - The broad routing grep also matched the active `learning-capture` router
-  description and `weixin-reader` description, confirming adjacent active
-  article/link surfaces remain visible before this change is implemented.
+  description and `weixin-reader` description. Those matches are adjacency
+  inventory, not standalone RED failures for this retirement change.
 
-Result: RED. The retired article module is still an active runtime skill
-surface and `learning-capture` still delegates to it.
+Result: RED for the old article skill trigger and delegation reference only.
+Future GREEN audit should not treat desired `learning-capture` or
+`weixin-reader` adjacency matches as failures by themselves.
+
+Original broad baseline command retained for comparison:
+
+```bash
+rg -n '^description:.*(article|WeChat|deep reading|learning extraction)|article-learning-capture' .codex/skills/*/SKILL.md .codex/skills/learning-capture/references/article.md .codex/skills/article-learning-capture/references/wiki-template.md
+```
 
 ### English Article Template Body
 
@@ -68,3 +95,23 @@ despite the durable learning output needing a Chinese-first default.
 | `wiki/adr/0010-shared-skill-authoring-contract-before-repo-local-overrides.md` | English-first behavior asset contract and repo language carve-out |
 | `wiki/adr/0026-retire-draft-skills-as-runtime-surface.md` | Runtime surface must not keep misleading draft/duplicate skill signals |
 | `openspec/changes/archive/2026-05-06-formalize-article-learning-capture/*` | Historical article-learning source grounding and score-first design |
+
+## Accepted Spec Contradiction Baseline
+
+Command:
+
+```bash
+rg -n 'article-learning-capture/SKILL.md|dedicated article learning|dedicated skill' openspec/specs/article-learning-capture/spec.md openspec/changes/retire-article-learning-skill-surface/specs/learning-capture-runtime/spec.md
+```
+
+Observed summary:
+
+- `openspec/specs/article-learning-capture/spec.md:6` still contains
+  `Requirement: Repository SHALL provide a dedicated skill for external article
+  learning capture`.
+- `openspec/specs/article-learning-capture/spec.md:17` still routes deep
+  article learning through the dedicated article learning capture skill.
+
+Result: RED. The change needs an `article-learning-capture` delta that removes
+the dedicated runtime skill requirement while preserving article-specific gates
+as `learning-capture` module/reference material.

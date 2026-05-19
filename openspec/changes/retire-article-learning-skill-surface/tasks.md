@@ -1,8 +1,8 @@
 ## 1. OpenSpec Baseline
 
-- [ ] 1.1 Record RED baseline for active article skill description pollution.
-- [ ] 1.2 Record RED baseline for English article wiki template body prompts.
-- [ ] 1.3 Record prior-art and common-rule ownership scan.
+- [x] 1.1 Record RED baseline for active article skill description pollution.
+- [x] 1.2 Record RED baseline for English article wiki template body prompts.
+- [x] 1.3 Record prior-art and common-rule ownership scan.
 
 ## 2. Skill Surface Retirement
 
