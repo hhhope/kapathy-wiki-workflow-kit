@@ -23,6 +23,16 @@ from scripts.wiki_moc_temperature import (
 )
 
 
+REVIEW_OBJECT_FIELDS = {
+    "candidate_id",
+    "temperature",
+    "moc_admission",
+    "rationale",
+    "reviewer",
+    "reviewed_at",
+}
+
+
 def load_graph(root: Path, graph_path: str | None) -> dict:
     if graph_path:
         return json.loads(Path(graph_path).read_text(encoding="utf-8"))
@@ -42,7 +52,18 @@ def load_temperature_admission(graph: dict, review_path: str | None) -> dict | N
 
     reviews = json.loads(Path(review_path).read_text(encoding="utf-8"))
     if not isinstance(reviews, dict):
-        raise ValueError("temperature review JSON must be an object keyed by candidate_id")
+        raise ValueError("temperature review JSON must be a keyed mapping from candidate_id strings to review objects")
+    if REVIEW_OBJECT_FIELDS.intersection(reviews):
+        raise ValueError(
+            "temperature review JSON must be a keyed mapping from candidate_id strings to review objects, not a single review object"
+        )
+    for candidate_id, review in reviews.items():
+        if not isinstance(candidate_id, str):
+            raise ValueError("temperature review JSON keys must be candidate_id strings")
+        if not isinstance(review, dict):
+            raise ValueError(
+                f"temperature review JSON value for {candidate_id!r} must be a review object"
+            )
 
     packages = build_relation_feature_packages(graph)
     board = build_temperature_clue_board(packages, reviews)
@@ -60,7 +81,10 @@ def main() -> None:
 
     root = Path(args.root).resolve()
     graph = load_graph(root, args.graph)
-    admission_plan = load_temperature_admission(graph, args.temperature_review)
+    try:
+        admission_plan = load_temperature_admission(graph, args.temperature_review)
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        parser.error(f"--temperature-review: {exc}")
     plan = (
         apply_moc_plan(root, graph, args.moc_dir, admission_plan=admission_plan)
         if args.apply

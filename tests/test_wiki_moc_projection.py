@@ -193,6 +193,96 @@ class WikiMocProjectionTest(unittest.TestCase):
         self.assertEqual(output["mode"], "dry-run")
         self.assertFalse((self.tmpdir / "wiki" / "moc").exists())
 
+    def test_cli_rejects_single_temperature_review_object(self) -> None:
+        graph_path = self.tmpdir / "graph.json"
+        review_path = self.tmpdir / "review.json"
+        graph_path.write_text(json.dumps(self.sample_graph()), encoding="utf-8")
+        review_path.write_text(
+            json.dumps(
+                {
+                    "candidate_id": "relation:wiki/adr/0014-agent-readable-wiki-frontmatter-before-graph-automation.md:formalizes:wiki-frontmatter-model",
+                    "temperature": 91,
+                    "moc_admission": "admit",
+                    "rationale": "ADR formalizes the runtime model.",
+                    "reviewer": "test",
+                    "reviewed_at": "2026-05-19",
+                }
+            ),
+            encoding="utf-8",
+        )
+        repo_root = Path(__file__).resolve().parents[1]
+
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_moc_projection.py",
+                "--root",
+                str(self.tmpdir),
+                "--graph",
+                str(graph_path),
+                "--temperature-review",
+                str(review_path),
+            ],
+            capture_output=True,
+            text=True,
+            cwd=repo_root,
+        )
+
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn("--temperature-review", completed.stderr)
+        self.assertIn("keyed mapping", completed.stderr)
+
+    def test_cli_reports_malformed_temperature_review_json(self) -> None:
+        graph_path = self.tmpdir / "graph.json"
+        review_path = self.tmpdir / "review.json"
+        graph_path.write_text(json.dumps(self.sample_graph()), encoding="utf-8")
+        review_path.write_text("{", encoding="utf-8")
+        repo_root = Path(__file__).resolve().parents[1]
+
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_moc_projection.py",
+                "--root",
+                str(self.tmpdir),
+                "--graph",
+                str(graph_path),
+                "--temperature-review",
+                str(review_path),
+            ],
+            capture_output=True,
+            text=True,
+            cwd=repo_root,
+        )
+
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn("--temperature-review", completed.stderr)
+
+    def test_cli_reports_missing_temperature_review_file(self) -> None:
+        graph_path = self.tmpdir / "graph.json"
+        review_path = self.tmpdir / "missing-review.json"
+        graph_path.write_text(json.dumps(self.sample_graph()), encoding="utf-8")
+        repo_root = Path(__file__).resolve().parents[1]
+
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "scripts/build_wiki_moc_projection.py",
+                "--root",
+                str(self.tmpdir),
+                "--graph",
+                str(graph_path),
+                "--temperature-review",
+                str(review_path),
+            ],
+            capture_output=True,
+            text=True,
+            cwd=repo_root,
+        )
+
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn("--temperature-review", completed.stderr)
+
     def test_apply_writes_generated_moc_files(self) -> None:
         plan = apply_moc_plan(self.tmpdir, self.sample_graph())
         domain_path = self.tmpdir / "wiki" / "moc" / "domain-wiki.md"
