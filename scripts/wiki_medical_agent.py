@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 from dataclasses import dataclass
 from pathlib import Path
 import re
@@ -364,7 +365,7 @@ def build_moc_surgery_preview_payload(
     surgery_plan = build_surgery_plan_from_case(case_package, moc_plan=moc_plan)
     moc_summary = dict(moc_plan.get("summary", {})) if isinstance(moc_plan, dict) else {}
     temperature_admission = (
-        dict(moc_plan.get("temperature_admission", {})) if isinstance(moc_plan, dict) else {}
+        copy.deepcopy(moc_plan.get("temperature_admission", {})) if isinstance(moc_plan, dict) else {}
     )
     surgery_summary = surgery_plan.get("summary", {})
     moc_projection_count = 0

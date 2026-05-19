@@ -242,6 +242,10 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertEqual(payload["moc_projection"]["candidate_count"], 2)
         self.assertEqual(payload["temperature_admission"]["admitted_relations"], ["validates", "blocks"])
         self.assertEqual(payload["temperature_admission"]["counts"]["candidate_relations"], 3)
+        payload["temperature_admission"]["counts"]["candidate_relations"] = 99
+        payload["temperature_admission"]["clue_windows"][0]["relation"] = "mutated"
+        self.assertEqual(moc_plan["temperature_admission"]["counts"]["candidate_relations"], 3)
+        self.assertEqual(moc_plan["temperature_admission"]["clue_windows"][0]["relation"], "validates")
         self.assertEqual(payload["surgery_preview"]["moc_projection_count"], 2)
         self.assertEqual(len(payload["surgery_preview"]["sample_items"]), 2)
         self.assertEqual(payload["next_action"], "review_moc_surgery_preview")
