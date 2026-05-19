@@ -5,7 +5,7 @@ import argparse
 import json
 import subprocess
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 
@@ -56,6 +56,23 @@ def _required_non_empty_string(review: dict, field: str, candidate_id: str) -> s
     return value
 
 
+def _validate_reviewed_at(review: dict, candidate_id: str) -> None:
+    value = _required_non_empty_string(review, "reviewed_at", candidate_id)
+    try:
+        date.fromisoformat(value)
+        return
+    except ValueError:
+        pass
+
+    normalized_value = f"{value[:-1]}+00:00" if value.endswith("Z") else value
+    try:
+        datetime.fromisoformat(normalized_value)
+    except ValueError as exc:
+        raise ValueError(
+            f"temperature review JSON value for {candidate_id!r} field 'reviewed_at' must be an ISO-8601 date or timestamp"
+        ) from exc
+
+
 def _validate_review_object(candidate_id: str, review: dict) -> None:
     missing_fields = sorted(REQUIRED_REVIEW_FIELDS - set(review))
     if missing_fields:
@@ -83,7 +100,7 @@ def _validate_review_object(candidate_id: str, review: dict) -> None:
 
     _required_non_empty_string(review, "rationale", candidate_id)
     _required_non_empty_string(review, "reviewer", candidate_id)
-    _required_non_empty_string(review, "reviewed_at", candidate_id)
+    _validate_reviewed_at(review, candidate_id)
 
 
 def load_temperature_admission(graph: dict, review_path: str | None) -> dict | None:

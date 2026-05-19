@@ -324,6 +324,7 @@ class WikiMocProjectionTest(unittest.TestCase):
             ("rationale", "  ", "rationale"),
             ("reviewer", "", "reviewer"),
             ("reviewed_at", {}, "reviewed_at"),
+            ("reviewed_at", "not-a-date", "reviewed_at"),
             ("temperature", "91", "temperature"),
             ("temperature", True, "temperature"),
             ("temperature", 101, "temperature"),
