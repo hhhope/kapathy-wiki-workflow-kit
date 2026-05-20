@@ -379,7 +379,7 @@ def _temperature_band(value: Any) -> str:
     return "noise"
 
 
-def _clue_sort_key(window: dict[str, Any]) -> tuple[int, str, str]:
+def _clue_sort_key(window: dict[str, Any]) -> tuple[int, int, str]:
     status_rank = 0 if str(window.get("status", "")) == "needs_review" else 1
     temperature = _temperature_value(window.get("temperature"))
     return (
@@ -391,6 +391,7 @@ def _clue_sort_key(window: dict[str, Any]) -> tuple[int, str, str]:
 
 def _compact_clue(window: dict[str, Any]) -> dict[str, Any]:
     relation_type = str(window.get("relation_type") or window.get("relation") or "").strip()
+    relation_label = relation_type or "this relation candidate"
     source_page = str(window.get("source_page") or "").strip()
     source_object = str(window.get("source_object") or source_page).strip()
     target_object = str(window.get("target_object") or "").strip()
@@ -413,7 +414,7 @@ def _compact_clue(window: dict[str, Any]) -> dict[str, Any]:
         "temperature": temperature,
         "temperature_band": band,
         "rationale": rationale,
-        "confirmation_question": f"confirm whether {relation_type} should be admitted as a MOC clue",
+        "confirmation_question": f"confirm whether {relation_label} should be admitted as a MOC clue",
     }
 
 
@@ -544,13 +545,15 @@ def build_moc_surgery_preview_payload(
     moc_projection_count = 0
     if isinstance(surgery_summary, dict):
         moc_projection_count = int(surgery_summary.get("moc_projection_count", 0) or 0)
+    sample_items = _sample_moc_items(surgery_plan)
     return {
         "moc_projection": moc_summary,
         "temperature_admission": temperature_admission,
         "surgery_preview": {
             "moc_projection_count": moc_projection_count,
-            "sample_items": _sample_moc_items(surgery_plan),
+            "sample_items": sample_items,
         },
+        "prediagnosis": _build_moc_temperature_prediagnosis(moc_plan, sample_items),
         "next_action": (
             "review_moc_surgery_preview"
             if moc_projection_count > 0

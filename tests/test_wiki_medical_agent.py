@@ -368,7 +368,7 @@ class WikiMedicalAgentTest(unittest.TestCase):
                 "noop_count": 0,
                 "orphan_count": 2,
             },
-            "moc_projection_items": [
+            "entries": [
                 {
                     "action": "orphan",
                     "kind": "relation",
@@ -470,6 +470,9 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertEqual(payload["allowed_action"], "preview_moc_surgery_plan")
         self.assertIn("moc_projection", payload)
         self.assertIn("temperature_admission", payload)
+        self.assertEqual(payload["prediagnosis"]["kind"], "moc_temperature")
+        self.assertEqual(payload["prediagnosis"]["write_boundary"], "read_only_no_files_written")
+        self.assertNotIn("clue_windows", payload["prediagnosis"])
         self.assertTrue(
             "counts" in payload["temperature_admission"]
             or "summary" in payload["temperature_admission"]
