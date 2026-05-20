@@ -56,6 +56,12 @@ MOC_SIGNALS = ("obsidian", "knowledge-map", "knowledge map", "图谱导航", "�
 MOC_REVIEW_SIGNALS = (
     "preview",
     "review",
+    "temperature",
+    "clue",
+    "clues",
+    "noise",
+    "value",
+    "worth",
     "预览",
     "surgery",
     "手术",
@@ -63,7 +69,15 @@ MOC_REVIEW_SIGNALS = (
     "审核",
     "审查",
     "复核",
+    "温度",
+    "线索",
+    "噪音",
+    "价值",
+    "值得",
+    "进图",
+    "不要写",
 )
+MOC_RELATION_SIGNALS = ("derived_from", "related_objects", "formalizes", "validates")
 
 
 def _has_moc_signal(lowered: str) -> bool:
@@ -75,7 +89,8 @@ def _has_moc_signal(lowered: str) -> bool:
 def _is_moc_surgery_preview_request(lowered: str) -> bool:
     has_moc = _has_moc_signal(lowered)
     has_review = any(signal in lowered for signal in MOC_REVIEW_SIGNALS)
-    return has_moc and has_review
+    has_relation_signal = any(signal in lowered for signal in MOC_RELATION_SIGNALS)
+    return (has_moc and has_review) or (has_relation_signal and has_review)
 
 
 def classify_medical_intent(text: str) -> IntentResult:
@@ -326,6 +341,82 @@ def validate_resolved_case_action(
     )
 
 
+MECHANICAL_RELATION_FAMILIES = {"derived_from", "related_objects"}
+
+
+def _safe_int(value: Any) -> int:
+    if isinstance(value, bool) or not isinstance(value, int):
+        return 0
+    return value
+
+
+def _string_list(value: Any) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return sorted({item.strip() for item in value if isinstance(item, str) and item.strip()})
+
+
+def _temperature_value(value: Any) -> int | None:
+    if isinstance(value, bool) or not isinstance(value, int):
+        return None
+    if value < 0 or value > 100:
+        return None
+    return value
+
+
+def _temperature_band(value: Any) -> str:
+    if isinstance(value, str) and value.strip():
+        return value.strip()
+    temperature = _temperature_value(value)
+    if temperature is None:
+        return "unreviewed"
+    if temperature >= 80:
+        return "strong"
+    if temperature >= 60:
+        return "supporting"
+    if temperature >= 40:
+        return "weak"
+    return "noise"
+
+
+def _clue_sort_key(window: dict[str, Any]) -> tuple[int, str, str]:
+    status_rank = 0 if str(window.get("status", "")) == "needs_review" else 1
+    temperature = _temperature_value(window.get("temperature"))
+    return (
+        status_rank,
+        -(temperature if temperature is not None else -1),
+        str(window.get("relation_type") or window.get("relation") or ""),
+    )
+
+
+def _compact_clue(window: dict[str, Any]) -> dict[str, Any]:
+    relation_type = str(window.get("relation_type") or window.get("relation") or "").strip()
+    source_page = str(window.get("source_page") or "").strip()
+    source_object = str(window.get("source_object") or source_page).strip()
+    target_object = str(window.get("target_object") or "").strip()
+    evidence_refs = window.get("evidence_refs", [])
+    if not isinstance(evidence_refs, list):
+        evidence_refs = []
+    clean_refs = [str(item) for item in evidence_refs if isinstance(item, str) and item.strip()]
+    temperature = _temperature_value(window.get("temperature"))
+    band = _temperature_band(window.get("temperature_band") or temperature)
+    rationale = str(window.get("rationale") or "").strip()
+    if not rationale:
+        rationale = "Needs human review before it can become a MOC admission."
+    return {
+        "candidate_id": str(window.get("candidate_id") or ""),
+        "relation_type": relation_type,
+        "source_page": source_page,
+        "source_object": source_object,
+        "target_object": target_object,
+        "evidence_refs": clean_refs[:3],
+        "temperature": temperature,
+        "temperature_band": band,
+        "rationale": rationale,
+        "confirmation_question": f"confirm whether {relation_type} should be admitted as a MOC clue",
+    }
+
+
 def _sample_moc_items(plan: dict[str, Any], limit: int = 5) -> list[dict[str, Any]]:
     items = plan.get("moc_projection_items", [])
     if not isinstance(items, list):
@@ -346,6 +437,88 @@ def _sample_moc_items(plan: dict[str, Any], limit: int = 5) -> list[dict[str, An
         if len(sample) >= limit:
             break
     return sample
+
+
+def _build_moc_temperature_prediagnosis(
+    moc_plan: dict[str, Any],
+    surgery_sample_items: list[dict[str, Any]],
+) -> dict[str, Any]:
+    moc_summary = moc_plan.get("summary", {})
+    if not isinstance(moc_summary, dict):
+        moc_summary = {}
+    admission = moc_plan.get("temperature_admission", {})
+    if not isinstance(admission, dict):
+        admission = {}
+    counts = admission.get("counts", admission.get("summary", {}))
+    if not isinstance(counts, dict):
+        counts = {}
+    blocked_relations = _string_list(admission.get("blocked_relations"))
+    review_needed_relations = _string_list(admission.get("review_needed_relations"))
+    admitted_relations = _string_list(admission.get("admitted_relations"))
+    windows_value = admission.get("clue_windows", admission.get("windows", []))
+    windows = [item for item in windows_value if isinstance(item, dict)] if isinstance(windows_value, list) else []
+    review_windows = [
+        window
+        for window in windows
+        if str(window.get("status", "")) == "needs_review"
+        or str(window.get("relation_type") or window.get("relation") or "") in review_needed_relations
+    ]
+    compact_clues = [_compact_clue(window) for window in sorted(review_windows, key=_clue_sort_key)[:5]]
+    mechanical_families = [
+        {
+            "relation_type": relation,
+            "status": "blocked",
+            "reason": "mechanical source/proximity relation; not a standalone MOC reading clue by default",
+        }
+        for relation in blocked_relations
+        if relation in MECHANICAL_RELATION_FAMILIES
+    ]
+    orphan_relation_pages = [
+        {
+            "relation_type": str(item.get("key") or "").strip(),
+            "path": str(item.get("path") or "").strip(),
+            "surgery_candidate": True,
+            "reason": "orphan generated relation MOC page; review as cleanup candidate, not active clue value",
+        }
+        for item in surgery_sample_items
+        if item.get("action") == "orphan" and item.get("kind") == "relation"
+    ]
+    return {
+        "kind": "moc_temperature",
+        "script_result_summary": {
+            "moc_projection": {
+                "candidate_count": _safe_int(moc_summary.get("candidate_count")),
+                "create_count": _safe_int(moc_summary.get("create_count")),
+                "update_count": _safe_int(moc_summary.get("update_count")),
+                "noop_count": _safe_int(moc_summary.get("noop_count")),
+                "orphan_count": _safe_int(moc_summary.get("orphan_count")),
+            },
+            "temperature_admission": {
+                "admitted": _safe_int(counts.get("admitted")),
+                "blocked": _safe_int(counts.get("blocked")),
+                "needs_review": _safe_int(counts.get("needs_review")),
+                "total": _safe_int(counts.get("total")),
+                "admitted_relations": admitted_relations,
+                "blocked_relations": blocked_relations,
+                "review_needed_relations": review_needed_relations,
+            },
+        },
+        "interpreted_live_intent": (
+            "The user is asking whether current MOC evidence contains real reading clues, "
+            "not asking to apply MOC writes."
+        ),
+        "mechanical_relation_families": mechanical_families,
+        "review_needed_clues": compact_clues,
+        "orphan_relation_moc_pages": orphan_relation_pages,
+        "confirmation_points": [
+            "admit a specific clue candidate into review",
+            "block a relation family",
+            "route orphan relation MOC pages to cleanup surgery",
+            "expand one object chain for deeper diagnosis",
+            "keep everything read-only",
+        ],
+        "write_boundary": "read_only_no_files_written",
+    }
 
 
 def build_moc_surgery_preview_payload(
