@@ -119,6 +119,20 @@ class WikiMedicalAgentTest(unittest.TestCase):
             "treatment_preview",
         )
 
+    def test_classifies_moc_temperature_clues_as_surgery_preview(self) -> None:
+        self.assertEqual(
+            classify_medical_intent("MOC 温度线索 先不要写").intent,
+            "moc_surgery_preview",
+        )
+        self.assertEqual(
+            classify_medical_intent("MOC 哪些关系值得进图").intent,
+            "moc_surgery_preview",
+        )
+        self.assertEqual(
+            classify_medical_intent("看一下 derived_from / related_objects 是不是噪音").intent,
+            "moc_surgery_preview",
+        )
+
     def test_resolve_active_case_blocks_multiple_active_cases(self) -> None:
         self._write_case(self._case_package(active=True), "2026-05-15T01:02:03+00:00")
         self._write_case(self._case_package(active=True), "2026-05-15T01:02:04+00:00")
@@ -248,6 +262,146 @@ class WikiMedicalAgentTest(unittest.TestCase):
         self.assertEqual(moc_plan["temperature_admission"]["clue_windows"][0]["relation"], "validates")
         self.assertEqual(payload["surgery_preview"]["moc_projection_count"], 2)
         self.assertEqual(len(payload["surgery_preview"]["sample_items"]), 2)
+        self.assertEqual(payload["next_action"], "review_moc_surgery_preview")
+        self.assertFalse((self.tmpdir / "wiki" / "moc").exists())
+
+    def test_moc_surgery_preview_adds_bounded_temperature_prediagnosis(self) -> None:
+        case_path = self._write_case(
+            self._case_package(status="archive_ready"),
+            "2026-05-15T01:02:03+00:00",
+        )
+        moc_plan = {
+            "summary": {
+                "candidate_count": 4,
+                "create_count": 0,
+                "update_count": 0,
+                "noop_count": 2,
+                "orphan_count": 2,
+            },
+            "temperature_admission": {
+                "counts": {
+                    "admitted": 0,
+                    "blocked": 2,
+                    "needs_review": 2,
+                    "total": 4,
+                },
+                "admitted_relations": [],
+                "blocked_relations": ["derived_from", "related_objects"],
+                "review_needed_relations": ["formalizes", "validates"],
+                "clue_windows": [
+                    {
+                        "candidate_id": "relation:wiki/ops/a.md:formalizes:case-file",
+                        "relation_type": "formalizes",
+                        "source_page": "wiki/ops/a.md",
+                        "source_object": "medical-agent-design",
+                        "target_object": "case-file",
+                        "evidence_refs": ["wiki/ops/a.md", "openspec/specs/wiki-medical-agent/spec.md"],
+                        "temperature": 72,
+                        "temperature_band": "supporting",
+                        "status": "needs_review",
+                        "rationale": "Links a design decision to a stable contract.",
+                    },
+                    {
+                        "candidate_id": "relation:wiki/ops/b.md:validates:medical-agent",
+                        "relation_type": "validates",
+                        "source_page": "wiki/ops/b.md",
+                        "source_object": "moc-temperature-review",
+                        "target_object": "medical-agent",
+                        "evidence_refs": ["wiki/ops/b.md"],
+                        "temperature": None,
+                        "temperature_band": None,
+                        "status": "needs_review",
+                        "rationale": "",
+                    },
+                    {
+                        "candidate_id": "relation:wiki/ops/c.md:derived_from:source",
+                        "relation_type": "derived_from",
+                        "source_page": "wiki/ops/c.md",
+                        "source_object": "source-note",
+                        "target_object": "source",
+                        "evidence_refs": ["wiki/ops/c.md"],
+                        "temperature": None,
+                        "temperature_band": None,
+                        "status": "blocked",
+                        "rationale": "",
+                    },
+                ],
+            },
+        }
+        payload = build_moc_surgery_preview_payload(self.tmpdir, case_path, moc_plan)
+
+        prediagnosis = payload["prediagnosis"]
+        self.assertEqual(prediagnosis["kind"], "moc_temperature")
+        self.assertEqual(prediagnosis["write_boundary"], "read_only_no_files_written")
+        self.assertEqual(
+            prediagnosis["script_result_summary"]["moc_projection"]["candidate_count"],
+            4,
+        )
+        self.assertEqual(
+            prediagnosis["script_result_summary"]["temperature_admission"]["blocked"],
+            2,
+        )
+        self.assertEqual(
+            [item["relation_type"] for item in prediagnosis["mechanical_relation_families"]],
+            ["derived_from", "related_objects"],
+        )
+        self.assertEqual(
+            [item["relation_type"] for item in prediagnosis["review_needed_clues"]],
+            ["formalizes", "validates"],
+        )
+        self.assertEqual(prediagnosis["review_needed_clues"][0]["temperature"], 72)
+        self.assertEqual(prediagnosis["review_needed_clues"][0]["temperature_band"], "supporting")
+        self.assertIn("confirm", prediagnosis["review_needed_clues"][0]["confirmation_question"])
+        self.assertNotIn("clue_windows", prediagnosis)
+        self.assertFalse((self.tmpdir / "wiki" / "moc").exists())
+
+    def test_moc_prediagnosis_surfaces_orphan_relation_pages_as_surgery_candidates(self) -> None:
+        case_path = self._write_case(
+            self._case_package(status="archive_ready"),
+            "2026-05-15T01:02:03+00:00",
+        )
+        moc_plan = {
+            "summary": {
+                "candidate_count": 2,
+                "create_count": 0,
+                "update_count": 0,
+                "noop_count": 0,
+                "orphan_count": 2,
+            },
+            "moc_projection_items": [
+                {
+                    "action": "orphan",
+                    "kind": "relation",
+                    "key": "derived_from",
+                    "path": "wiki/moc/relation-derived_from.md",
+                    "link_count": 0,
+                },
+                {
+                    "action": "orphan",
+                    "kind": "relation",
+                    "key": "validates",
+                    "path": "wiki/moc/relation-validates.md",
+                    "link_count": 0,
+                },
+            ],
+            "temperature_admission": {
+                "counts": {"admitted": 0, "blocked": 1, "needs_review": 1, "total": 2},
+                "blocked_relations": ["derived_from"],
+                "review_needed_relations": ["validates"],
+                "clue_windows": [],
+            },
+        }
+
+        payload = build_moc_surgery_preview_payload(self.tmpdir, case_path, moc_plan)
+
+        orphans = payload["prediagnosis"]["orphan_relation_moc_pages"]
+        self.assertEqual(
+            [(item["relation_type"], item["path"], item["surgery_candidate"]) for item in orphans],
+            [
+                ("derived_from", "wiki/moc/relation-derived_from.md", True),
+                ("validates", "wiki/moc/relation-validates.md", True),
+            ],
+        )
         self.assertEqual(payload["next_action"], "review_moc_surgery_preview")
         self.assertFalse((self.tmpdir / "wiki" / "moc").exists())
 
