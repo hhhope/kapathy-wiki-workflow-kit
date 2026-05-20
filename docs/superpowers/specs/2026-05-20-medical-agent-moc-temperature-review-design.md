@@ -1,87 +1,89 @@
-# Medical Agent MOC Temperature Review Design
+# wiki-medical-agent MOC Read-only Prediagnosis Design
 
 > Supports a future OpenSpec change. This Superpowers design is not
 > authoritative lifecycle state until it is copied into OpenSpec and reviewed
 > there.
 
-## Context
+## Re-anchor
 
-The MOC temperature reading-board change repaired an important lower-level
-failure: raw graph relation types no longer become generated relation MOC pages
-by default. `derived_from` and `related_objects` are blocked unless a complete
-temperature review explicitly admits them.
+This design replaces the earlier framing of a "medical-agent MOC temperature
+review mode". That wording was too close to creating another MOC tool.
 
-That was necessary, but it did not finish the user-facing workflow. The current
-normal surface still exposes too much implementation detail:
+The correct framing is:
 
 ```text
-Python dry-run
-temperature_admission JSON
-review JSON
-admitted_relations
+wiki-medical-agent is the normal user-facing entry point and lifecycle
+controller. MOC temperature is a read-only prediagnosis section inside the
+existing MOC-sensitive medical-agent route.
 ```
 
-The repo already defines `wiki-medical-agent` as the single normal user-facing
-entry point for wiki medical-loop status, diagnosis, confirmation, treatment,
-surgery, recovery, archive checks, and MOC-sensitive findings. Therefore the
-next requirement is not another MOC tool. It is a medical-agent MOC temperature
-review mode that turns the existing `temperature_admission` payload into a
-readable diagnosis.
+The user-facing need is not to run Python, author review JSON, or inspect raw
+`temperature_admission` payloads. The need is to ask the medical-agent what the
+current MOC clues mean, see which lines have value, and confirm the next
+decision without granting write authority.
+
+## Existing Authority
+
+`wiki-medical-agent` already owns the normal medical-loop surface:
+
+- classify user intent;
+- resolve the active medical case;
+- validate state;
+- route to bounded workers;
+- preserve case-file authority;
+- report fixed fields and the next action.
+
+Its authority model still applies:
+
+- the case file is the only authority;
+- `Confirmed Decisions` is the only executable decision surface;
+- `Proposed Decisions` and prediagnosis are not executable;
+- relation, governance, ADR, MOC, and OpenSpec-sensitive findings route to
+  `surgery_required`, `awaiting_confirmation`, or `blocked`.
 
 ## Goal
 
-When the user asks:
+When the user asks through the medical-agent surface, for example:
 
 ```text
-medical-agent 看一下当前 MOC 温度线索，先不要写
+$report-wiki-portfolio:wiki-medical-agent 看一下当前 MOC 温度线索，先不要写
 ```
 
-the agent should answer through medical-agent, not by asking the user to run
-Python or hand-write JSON.
+the answer should be a bounded medical-agent response that shows:
 
-The output should help the user see:
+- the fixed medical-agent fields;
+- the script result summary;
+- the interpreted live intent;
+- a read-only MOC temperature prediagnosis;
+- the specific confirmation point required before any admission or cleanup.
 
-- which relations are structural noise;
-- which relations are real clue candidates;
-- why a clue may be high or low temperature;
-- which orphan relation MOC pages need surgery review;
-- what decision still requires human confirmation.
+The response must help the user see real clues rather than generated relation
+MOC noise.
 
-## Recommended Approach
+## Route
 
-Add a medical-agent read-only interpretation layer above the existing MOC
-temperature payload:
+Do not add a new normal user entry point.
+
+Use the existing MOC-sensitive medical-agent route:
 
 ```text
 user natural language
 -> wiki-medical-agent intent classification
--> build MOC temperature preview
--> readable temperature diagnosis
--> confirmation points
--> later review/surgery/apply flow
+-> intent: moc_surgery_preview
+-> active case / state validation
+-> bounded read-only MOC worker
+-> read-only prediagnosis, kind: moc_temperature
+-> confirmation point
 ```
 
-This keeps the recently built Python pieces as bounded workers. It does not
-make them the user experience.
-
-## Intent Model
-
-Add or refine a medical-agent intent such as:
+If implementation needs an internal subtype, it may use a field such as:
 
 ```text
-moc_temperature_review
+prediagnosis.kind = moc_temperature
 ```
 
-It should trigger for requests like:
-
-- `看当前 MOC 温度线索`
-- `medical-agent 看一下 MOC，不要写`
-- `MOC 哪些关系值得进图`
-- `这些 relation MOC 有什么价值`
-- `看一下 derived_from / related_objects 是不是噪音`
-
-If the existing `moc_surgery_preview` intent remains the route, the response
-must still include the readable temperature review before any surgery action.
+That subtype must not become a separate lifecycle authority and must not bypass
+`moc_surgery_preview`, the active case resolver, or case-file authority.
 
 ## Required Response Shape
 
@@ -93,134 +95,197 @@ Case
 State
 Allowed action
 Blocked action, when blocked
-Next action
+Next Action
 ```
 
-For MOC temperature review, add these sections:
+For MOC prediagnosis, add these bounded sections.
 
-### Current Overview
+### Script Result Summary
 
-Summarize:
+Summarize the worker output without dumping raw payloads:
 
 - MOC candidate count;
+- create / update / noop / orphan counts;
 - admitted / blocked / needs-review relation-window counts;
-- orphan relation MOC count;
+- admitted relation families;
+- blocked mechanical relation families;
+- review-needed relation families;
 - write boundary: no files written.
 
-### Blocked Mechanical Relations
+### Interpreted Live Intent
 
-Explain relation types such as:
+State what the user is trying to decide in plain language, such as:
 
-- `derived_from`
-- `related_objects`
+```text
+You are asking whether the current MOC graph has real reading clues, not asking
+to apply MOC writes.
+```
 
-The output must say why they are blocked by default: they are source/proximity
-structure, not navigation value by themselves.
+This prevents the response from collapsing into a CLI help screen.
 
-### Review-Needed Clues
+### Read-only Prediagnosis
 
-Surface the most useful relation clue candidates, especially non-mechanical
-types such as:
+Surface the useful judgment layer:
 
-- `formalizes`
-- `validates`
+- which relation families look structural and should stay blocked by default;
+- which relation families may contain clue value;
+- which specific clue windows deserve human review;
+- which orphan relation MOC pages look like surgery cleanup candidates;
+- what question the user must answer before anything becomes executable.
 
-Each item should include:
+Each clue candidate should be compact and include:
 
 - relation type;
 - source object and page;
 - target object;
 - evidence refs;
-- temperature candidate;
+- candidate temperature band or score;
 - rationale;
-- question for the user.
+- confirmation question.
 
-The agent may make a read-only AI judgment, but it must not mark the clue as
-admitted without user confirmation.
+The agent may provide a read-only temperature candidate and rationale. It must
+not mark the clue as admitted.
+
+### Mechanical Relation Families
+
+Relation families such as:
+
+```text
+derived_from
+related_objects
+```
+
+are blocked by default as standalone relation MOC pages because they usually
+represent source lineage or proximity structure. They do not create reading
+value by themselves.
+
+They may still appear as evidence inside a higher-value clue, but that is not
+the same as admitting the relation family into MOC.
+
+### Review-needed Clue Families
+
+Non-mechanical relation families such as:
+
+```text
+formalizes
+validates
+```
+
+can be presented as review-needed clue families when the payload contains
+evidence windows. They still require user confirmation before admission.
 
 ### Orphan Relation MOC Pages
 
-When old generated relation MOC pages now appear as orphan state, surface them
-as surgery candidates, not as active generated value.
+Existing generated relation MOC pages that now appear as orphan state should be
+shown as surgery candidates:
 
-### Confirmation Points
+```text
+relation-derived_from
+relation-related_objects
+relation-formalizes
+relation-validates
+```
 
-End with explicit choices the user can confirm later:
-
-- admit a specific clue into review;
-- block a relation family;
-- route orphan relation MOC pages to cleanup surgery;
-- expand one object chain for deeper diagnosis.
+The medical-agent should describe why each orphan is likely cleanup, review, or
+blocked. It must not clean them up in this prediagnosis step.
 
 ## Data Flow
+
+Use the existing worker surfaces as bounded evidence, not as the user
+experience:
 
 ```text
 scripts/build_wiki_medical_agent.py
   -> build_status_payload(...)
+  -> intent: moc_surgery_preview
   -> build_moc_surgery_preview_payload(...)
-  -> temperature_admission
-  -> readable MOC temperature diagnosis
+  -> moc_projection summary
+  -> temperature_admission summary
+  -> read-only prediagnosis
 ```
 
-The readable diagnosis is derived from existing payload fields:
+The prediagnosis can read from:
 
+- `moc_projection.candidate_count`;
+- create / update / noop / orphan counts;
 - `temperature_admission.counts`;
 - `blocked_relations`;
 - `review_needed_relations`;
-- `clue_windows`;
-- `surgery_preview.sample_items`;
-- `moc_projection`.
+- bounded samples from `clue_windows`;
+- `surgery_preview.sample_items`.
+
+Large `clue_windows` arrays must be summarized into a small number of ranked or
+representative candidates.
 
 ## Boundaries
 
 Medical-agent may:
 
-- run read-only MOC temperature preview;
-- summarize and rank clue candidates;
-- explain why mechanical relation families are blocked;
-- recommend next actions;
-- ask for confirmation.
+- run one read-only local check through the bounded worker;
+- summarize and interpret MOC temperature evidence;
+- provide candidate temperature and rationale as prediagnosis;
+- recommend the next confirmation point;
+- route orphan relation MOC pages as surgery candidates.
 
 Medical-agent must not:
 
 - write `wiki/moc`;
 - write relation frontmatter;
 - generate admitted review JSON automatically;
+- mark a clue admitted;
 - mutate OpenSpec state;
-- mark a clue admitted without user confirmation.
+- mutate ADRs, AGENTS, skills, or taxonomy config;
+- execute cleanup surgery from the prediagnosis response.
+
+## Confirmation Points
+
+End with explicit choices the user may confirm later:
+
+- admit a specific clue candidate into review;
+- block a relation family;
+- route orphan relation MOC pages to cleanup surgery;
+- expand one object chain for deeper diagnosis;
+- keep everything read-only and do nothing.
+
+These choices are proposed decision points. They are not executable until
+confirmed in the case-file authority path.
 
 ## Approaches Considered
 
-### Recommended: Medical-Agent Readable Diagnosis
+### Recommended: Read-only Prediagnosis Inside `moc_surgery_preview`
 
-Keep medical-agent as the single normal entry point and add a readable diagnosis
-layer above the existing payload.
-
-Pros:
-
-- Matches the repo skill contract.
-- Keeps Python/JSON as internal worker surfaces.
-- Solves the user's actual usage problem.
-- Preserves the safety gate already implemented.
-
-Cons:
-
-- Requires another small OpenSpec change before implementation.
-- Needs careful output shaping so large payloads do not flood the response.
-
-### Alternative: Separate MOC Review Skill
-
-Create a new skill or command for MOC temperature review.
+Keep `wiki-medical-agent` as the single normal entry point and add a readable
+prediagnosis section above existing MOC evidence.
 
 Pros:
 
-- The MOC review behavior can be isolated.
+- Matches the `wiki-medical-agent` skill contract.
+- Reuses the existing MOC surgery preview route.
+- Keeps Python/JSON as internal worker evidence.
+- Solves the actual user problem: seeing clue value and next confirmation.
+- Preserves the safety gate already implemented for relation MOC admission.
 
 Cons:
 
-- Splits the user-facing entry point.
-- Weakens the medical-agent ownership model.
-- Recreates the drift where users face tool internals.
+- Requires careful output shaping so raw `clue_windows` do not flood the user.
+- Requires a small OpenSpec change before implementation.
+
+### Alternative: New `moc_temperature_review` Intent
+
+Add a new top-level intent for MOC temperature review.
+
+Pros:
+
+- The classifier can name the request directly.
+
+Cons:
+
+- Risks splitting the medical-agent lifecycle surface.
+- Encourages a separate MOC tool mental model.
+- Makes admission and surgery authority easier to blur.
+
+Decision: do not use this as a normal user-facing route. If a subtype is needed,
+keep it internal as `prediagnosis.kind`.
 
 ### Alternative: Keep CLI/JSON As The Interface
 
@@ -233,33 +298,43 @@ Pros:
 Cons:
 
 - Fails the user need.
-- Makes AI judgment and medical-agent orchestration optional.
+- Hides AI judgment behind tooling mechanics.
 - Keeps the workflow too close to implementation details.
 
 ## Testing Strategy
 
 Tests should prove:
 
-- natural language MOC temperature requests route through medical-agent;
-- output includes fixed medical-agent fields;
-- output includes readable overview, blocked mechanical relations,
-  review-needed clues, orphan relation MOC pages, and confirmation points;
+- natural language MOC-sensitive requests route through
+  `intent: moc_surgery_preview`;
+- the response includes fixed medical-agent fields;
+- the response includes `prediagnosis.kind: moc_temperature` or equivalent
+  bounded section label;
+- script results are summarized rather than dumped as huge payloads;
+- mechanical relation families such as `derived_from` and `related_objects` are
+  blocked by default;
+- review-needed clue families can show temperature candidates and questions;
+- orphan relation MOC pages are surfaced only as surgery candidates;
 - no `wiki/moc` files are written;
 - no review JSON is generated without confirmation;
-- huge `clue_windows` payloads are summarized into bounded readable output.
+- no clue is admitted without case-file confirmation.
 
 ## Non-Goals
 
 - Rebuild the MOC temperature engine.
-- Add a new public entry point outside medical-agent.
+- Add a new public entry point outside `wiki-medical-agent`.
+- Add an independent MOC review skill.
 - Auto-admit relation MOC pages.
 - Clean existing orphan relation MOC pages in this change.
-- Build a human HTML board.
+- Build a human HTML reading board.
+- Change OpenSpec lifecycle state from this Superpowers spec.
 
 ## Spec Self-Review
 
-- No implementation is included in this design.
-- The design corrects the user-facing entrypoint drift while preserving the
-  completed lower-level safety gate.
-- OpenSpec remains read-only until the user reviews this written spec.
-- The next step after approval is an implementation plan, not direct code.
+- Placeholder scan: no placeholders remain.
+- Consistency check: route, authority, boundaries, and tests all use
+  `moc_surgery_preview` plus read-only prediagnosis.
+- Scope check: this is one implementation-plannable change after OpenSpec
+  proposal/review.
+- Ambiguity check: `moc_temperature_review` is rejected as a normal route; any
+  subtype is internal and non-authoritative.

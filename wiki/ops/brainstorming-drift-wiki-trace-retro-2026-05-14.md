@@ -9,7 +9,7 @@ type: retro
 language: zh-CN
 status: active
 created_at: 2026-05-14
-updated_at: 2026-05-14
+updated_at: 2026-05-20
 ai_generated: true
 derived_from:
   - chat://2026-05-14/wiki-runtime-brainstorming-drift
@@ -199,3 +199,70 @@ drift trace, and only then resume design discussion.
 ```
 
 后续再决定是否需要更新 repo guidance、repo-local skill reference，或新增 ADR。
+
+## 2026-05-20 Medical-Agent MOC Re-anchor
+
+### Trigger
+
+用户在 MOC 温度线索讨论中连续指出：
+
+- `derived_from` / `related_objects` 这类 relation MOC 没有实际价值；
+- MOC 的目标是看到真正线索，不是制造审计名义的噪音页；
+- 已经有温度、评分卡和 medical-agent 体系，不应继续把需求压成 Python
+  命令、JSON review 或独立 MOC 工具；
+- `$report-wiki-portfolio:wiki-medical-agent` 才是这个问题的入口。
+
+### Drift
+
+设计讨论一度把问题写成：
+
+```text
+medical-agent MOC temperature review mode
+```
+
+并提出可能新增：
+
+```text
+moc_temperature_review
+```
+
+这会把 `wiki-medical-agent` 从“单一正常用户入口 / 生命周期控制器”推偏成
+一个新的 MOC 分析工具，也会让用户再次面对内部 worker、Python dry-run、
+`temperature_admission` payload 和 review JSON。
+
+### Corrected Framing
+
+当前应锚定为：
+
+```text
+$report-wiki-portfolio:wiki-medical-agent
+  -> classify as existing MOC-sensitive preview route
+  -> resolve active case and state
+  -> run bounded read-only MOC worker
+  -> return read-only prediagnosis
+  -> ask for the confirmation point
+```
+
+`wiki-medical-agent` 负责入口、病例、状态、边界、worker 路由和 Next Action。
+MOC 温度只是它在 `moc_surgery_preview` 路由下展示的一段只读预诊断，不是新的
+正常用户入口，也不是可执行 admission。
+
+### Protected Boundary
+
+- 不新增独立 MOC review skill。
+- 不把 `moc_temperature_review` 作为新的顶层 lifecycle authority。
+- 不把 `derived_from` / `related_objects` 解释成默认有价值的 MOC 关系页。
+- 不自动生成 admitted review JSON。
+- 不写 `wiki/moc`、relation frontmatter、OpenSpec、ADR、AGENTS 或 skills。
+- AI 的价值在只读预诊断：候选温度、理由、疑问和下一步确认点；执行权仍然只来自
+  case file 的 `Confirmed Decisions`。
+
+### Next Action
+
+修正 `docs/superpowers/specs/2026-05-20-medical-agent-moc-temperature-review-design.md`：
+
+- title 改为 `wiki-medical-agent MOC Read-only Prediagnosis Design`；
+- 保留 `moc_surgery_preview` 作为正常 route；
+- 将温度判断降为 `prediagnosis.kind: moc_temperature`；
+- 明确输出是 bounded readable summary，不 dump `clue_windows`；
+- 明确下一步是用户确认 admission / block / surgery cleanup / expand chain。
