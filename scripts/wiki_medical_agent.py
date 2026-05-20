@@ -476,13 +476,14 @@ def _build_moc_temperature_prediagnosis(
     ]
     orphan_relation_pages = [
         {
-            "relation_type": str(item.get("key") or "").strip(),
+            "relation_type": relation_type,
             "path": str(item.get("path") or "").strip(),
             "surgery_candidate": True,
             "reason": "orphan generated relation MOC page; review as cleanup candidate, not active clue value",
         }
         for item in surgery_sample_items
-        if item.get("action") == "orphan" and item.get("kind") == "relation"
+        for relation_type in [_orphan_relation_type(item)]
+        if relation_type
     ]
     return {
         "kind": "moc_temperature",
@@ -520,6 +521,24 @@ def _build_moc_temperature_prediagnosis(
         ],
         "write_boundary": "read_only_no_files_written",
     }
+
+
+def _orphan_relation_type(item: dict[str, Any]) -> str:
+    if item.get("action") != "orphan":
+        return ""
+
+    kind = str(item.get("kind") or "").strip()
+    key = str(item.get("key") or "").strip()
+    path = str(item.get("path") or "").strip()
+    path_stem = Path(path).stem if path else ""
+
+    if key.startswith("relation-"):
+        return key.removeprefix("relation-").strip()
+    if path_stem.startswith("relation-"):
+        return path_stem.removeprefix("relation-").strip()
+    if kind == "relation":
+        return key
+    return ""
 
 
 def build_moc_surgery_preview_payload(

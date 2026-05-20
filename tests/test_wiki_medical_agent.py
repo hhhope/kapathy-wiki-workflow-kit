@@ -371,15 +371,15 @@ class WikiMedicalAgentTest(unittest.TestCase):
             "entries": [
                 {
                     "action": "orphan",
-                    "kind": "relation",
-                    "key": "derived_from",
+                    "kind": "unknown",
+                    "key": "relation-derived_from",
                     "path": "wiki/moc/relation-derived_from.md",
                     "link_count": 0,
                 },
                 {
                     "action": "orphan",
-                    "kind": "relation",
-                    "key": "validates",
+                    "kind": "unknown",
+                    "key": "relation-validates",
                     "path": "wiki/moc/relation-validates.md",
                     "link_count": 0,
                 },
