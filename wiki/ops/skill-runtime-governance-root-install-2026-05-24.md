@@ -4,7 +4,7 @@ domain: ai-workflow
 ops_area: agent-governance
 canonical_object: skill-runtime-governance-root-install
 artifact_type: retro
-title: skill-runtime-governance root install / retro
+title: skill-runtime-governance root 安装记录 / 复盘
 type: retro
 language: zh-CN
 status: active
@@ -21,51 +21,45 @@ related_objects:
 notes_scope: 记录 root skill-runtime-governance 的本机安装和局部 RED/GREEN 证据边界；不声明 root AGENTS 路由或多端 rollout。
 ---
 
-# skill-runtime-governance root install / retro
+# skill-runtime-governance root 安装记录 / 复盘
 
-## Installed Files
+## 已安装文件
 
 - `/home/yan/.codex/skills/skill-runtime-governance/SKILL.md`
 - `/home/yan/.codex/skills/skill-runtime-governance/evaluation.md`
 
-## Evidence
+## 证据
 
-- RED baseline: recorded in root evaluation file.
-- GREEN replay: recorded in root evaluation file.
-- Residual risks: recorded in root evaluation file.
-- `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target wiki/ops/skill-runtime-governance-root-install-2026-05-24.md` returned no blockers.
-- `python3 scripts/check_wiki_frontmatter.py` exited 0.
-- `python3 scripts/check_behavior_assets.py` exited 1 on an existing unrelated evaluation file:
+- RED baseline：记录在 root evaluation 文件中。
+- GREEN replay：记录在 root evaluation 文件中。
+- 残余风险：记录在 root evaluation 文件中。
+- `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target wiki/ops/skill-runtime-governance-root-install-2026-05-24.md` 没有返回 blocker。
+- `python3 scripts/check_wiki_frontmatter.py` 退出码为 0。
+- `python3 scripts/check_behavior_assets.py` 退出码为 1，指向一个既有且无关的 evaluation 文件：
   `openspec/changes/initialize-llm-wiki-seed-repo/evaluation.md`.
 
-## RED Boundary
+## RED 边界
 
-The prompted RED probes all returned `PASS`, but they were too explicit because
-the prompts already named the expected evaluation surface. The failing RED
-evidence therefore comes from the live incident before the skill existed:
+提示式 RED 探针全部返回 `PASS`，但这些 prompt 太显式，因为它们已经命名了期望的评估面。
+因此失败的 RED 证据来自这个 skill 存在之前的现场事故：
 
-- English-first behavior-asset guidance leaked into a `wiki/ops` note.
-- `$writing-skills` was treated as the center of an evaluation-routing question.
-- `skill-runtime-governance` was narrowed back into `$superpowers:brainstorming`
-  and then into "user questioning" as a trigger.
-- Continuation followed the visible technical chain until the user stopped and
-  re-anchored the scope.
+- English-first 行为资产指导泄漏进 `wiki/ops` 记录。
+- `$writing-skills` 被当成评估路由问题的中心。
+- `skill-runtime-governance` 被缩回 `$superpowers:brainstorming`，随后又被缩成“用户质疑”触发器。
+- 对话继续沿着可见技术链条推进，直到用户打断并重新锚定范围。
 
-## GREEN Boundary
+## GREEN 边界
 
-GREEN replay was run for all ten scenarios after installing the root skill. The
-replays selected fixed triage fields and routed to the expected evaluation
-surface before action.
+安装 root skill 后，对全部十个场景运行了 GREEN replay。replay 在行动前选择固定分诊字段，并路由到期望的评估面。
 
-This is still local pressure evidence only. It does not prove automatic loading,
-root `AGENTS.md` routing, or multi-client rollout.
+这仍然只是本地压力证据。它不证明自动加载、root `AGENTS.md` 路由，或多客户端 rollout。
 
-## Boundary
+## 边界
 
-This note records local root skill installation evidence. It does not claim:
+这页只记录本机 root skill 安装证据。它不声明：
 
-- root `AGENTS.md` routing;
-- automatic skill discovery in every future incident;
-- plugin/cache skill changes;
-- multi-client or multi-session rollout proof.
-- repository behavior-asset checker cleanliness; the observed non-zero result is unrelated to the new root skill files.
+- root `AGENTS.md` 路由已经完成；
+- 每个未来事故都会自动发现这个 skill；
+- 已经修改 plugin/cache skill；
+- 已经具备多客户端或多会话 rollout 证明；
+- 仓库行为资产检查器全量干净；这次观察到的非零结果与新 root skill 文件无关。
