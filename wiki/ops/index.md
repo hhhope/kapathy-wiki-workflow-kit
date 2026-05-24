@@ -29,6 +29,7 @@ artifact_type: index
 - [conversation-handoff / method](conversation-handoff-mode.md)
 - [例子驱动的 Wiki 留痕](example-driven-wiki-capture.md)
 - [learning-capture-routing / intake](learning-capture-routing.md)
+- [team-knowledge-dev-workflow-lease-drift / source-learning](team-knowledge-dev-workflow-lease-drift-learning-2026-05-24.md)
 - [learning source routing gap / explore 2026-05-09](learning-source-routing-gap-explore-2026-05-09.md)
 - [团队知识库构建路径](account-knowledge-base-workbench.md)
 - [团队知识库总览对外稿门禁复核](team-knowledge-base-overview-report-gate-review.md)
