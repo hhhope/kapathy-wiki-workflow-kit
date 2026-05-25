@@ -27,6 +27,10 @@ Change made:
 - Added image-model asset
   `wiki/reports/agentic-product-engineering-collaboration-company-playbook-assets/06-pod-role-boundary-card.png`
   to visualize old role walls, boundary collapse, and the new accountable loop.
+- Corrected the card bottom ribbon from an over-simplified efficiency slogan to
+  a risk-and-metric framing: high-efficiency people can be overextended if
+  evaluation stays tied to online time; the target evaluation moves toward loop
+  quality.
 - Kept the original company-playbook spine: OpenAI, Anthropic, Stripe, and
   Block remain the main comparison structure.
 - Added Meta / OpenAI Deployment Company / Tezign source links to the source
