@@ -25,6 +25,9 @@ Change made:
 - Added a POD block inside section `08 · 工作流`, immediately after the five-step
   work graph. This keeps POD inside the existing workway flow instead of
   creating a detached organization chapter.
+- Rewrote the POD block around role-boundary collapse, discomfort, invisible
+  labor, overwork risk for high-efficiency people, and the replacement of job
+  walls with work agreements.
 - Added the final-judgment sentence that our POD should mean "最小经营闭环",
   not an org-structure slogan.
 - Preserved the existing H5 shape, section images, role-change section, and
@@ -32,7 +35,7 @@ Change made:
 
 Boundary:
 
-- No image-model assets were regenerated.
+- The rejected image-model card draft was not kept in the H5.
 - `agentic-product-engineering-collaboration-our-operating-system-share.zip` was
   not refreshed.
 - This update does not introduce repo runtime policy.
