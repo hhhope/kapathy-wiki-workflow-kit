@@ -28,6 +28,11 @@ Change made:
 - Rewrote the POD block around role-boundary collapse, discomfort, invisible
   labor, overwork risk for high-efficiency people, and the replacement of job
   walls with work agreements.
+- Added image-model asset
+  `wiki/reports/agentic-collaboration-images/workway-08-pod-work-agreements.png`
+  to visualize the internal version: old role boundaries, boundary penetration,
+  and the work agreements needed to prevent high-efficiency people from being
+  overextended.
 - Added the final-judgment sentence that our POD should mean "最小经营闭环",
   not an org-structure slogan.
 - Preserved the existing H5 shape, section images, role-change section, and
@@ -35,7 +40,8 @@ Change made:
 
 Boundary:
 
-- The rejected image-model card draft was not kept in the H5.
+- The rejected image-model card draft was not kept in the H5; this new card is
+  limited to the internal POD work-agreement section.
 - `agentic-product-engineering-collaboration-our-operating-system-share.zip` was
   not refreshed.
 - This update does not introduce repo runtime policy.
