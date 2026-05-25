@@ -5,22 +5,50 @@ ops_area: report-quality
 canonical_object: agentic-product-engineering-collaboration-pod-h5-split
 artifact_type: h5-split-conclusion
 title: agentic-product-engineering-collaboration / pod h5 split conclusion / 2026-05-25
-status: draft
+status: corrected-draft
 created_at: 2026-05-25
 derived_from:
   - wiki/sources/agentic-product-engineering-collaboration-pod-organization-scorecard-2026-05-25.md
   - wiki/ops/agentic-product-engineering-collaboration-report-gate-review.md
   - wiki/ops/agentic-product-engineering-collaboration-workway-brainstorming-drift-2026-05-18.md
+  - wiki/reports/agentic-product-engineering-collaboration-newspaper.html
+  - wiki/reports/agentic-product-engineering-collaboration-company-playbook.html
+  - wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html
+  - wiki/ops/agentic-product-engineering-collaboration-company-playbook-report-gate-review.md
+  - wiki/ops/agentic-product-engineering-collaboration-our-operating-system-report-gate-review.md
 ---
 
 # POD H5 Split Conclusion
+
+## Correction Note
+
+This page originally treated `H5` too loosely as a future two-article content
+plan. That was incomplete.
+
+In this repo and topic, `H5` means the existing reader-facing HTML/share report
+artifacts and their visual reading experience, not just a markdown outline:
+
+| Existing H5 | Current job | How POD should enter |
+|---|---|---|
+| `wiki/reports/agentic-product-engineering-collaboration-company-playbook.html` | External company evidence page: OpenAI, Anthropic, Stripe, Block. | Add POD as an additional organization-design lens only if it strengthens company comparison; do not replace the four-company playbook spine. |
+| `wiki/reports/agentic-product-engineering-collaboration-newspaper.html` | Industry observation / newspaper-style H5: debate map, timeline, internal collaboration model, source boundary. | Add POD to the industry debate / dumbbell / operating-system sections as a named public discussion thread. |
+| `wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html` | Internal `我们怎么做` H5: our AI-assisted product-engineering operating system. | Translate POD into the local operating loop: owner, work object, agent execution, evidence review, writeback, and capability community. |
+
+Therefore the split is not "create two new H5s from scratch". The split is:
+
+- `其他人怎么做`: repair or extend the existing external-facing H5 path
+  (`company-playbook` plus the industry `newspaper` frame).
+- `我们怎么做`: repair or extend the existing `our-operating-system` H5.
+
+Any later H5 edit must preserve the existing page shape, assets, gate review,
+source boundary, and share-package status.
 
 ## Article Intent Contract
 
 | Field | Contract |
 |---|---|
 | Reader | Founder, business owner, product/engineering lead, and management team deciding how to reorganize AI work. |
-| Reader decision | Decide whether POD should become the organizing frame for the next H5 package and how to split "others" from "us". |
+| Reader decision | Decide how POD should be inserted into the existing H5 report group: external evidence pages versus our internal operating-system page. |
 | Main line | POD is not an org-chart fashion. In the AI era, it is the smallest accountable loop where business intent, cross-role building, agent execution, review, and writeback can happen together. |
 | Non-goals | Do not claim Meta invented POD. Do not claim POD alone solves organization problems. Do not turn source summaries into local policy. Do not publish as review-ready without citation and visual QA. |
 | User-owned judgments | Whether to officially name the local unit POD, what workflow to pilot first, and what local role names should be used. |
@@ -28,19 +56,20 @@ derived_from:
 
 ## Split Decision
 
-Do not write one giant H5.
+Do not write one giant H5, and do not start a brand-new H5 pair unless the
+existing pages are explicitly retired.
 
-The right package is two H5 pieces:
+The right split is two existing H5 directions:
 
-| H5 | Job | Reader Question | Main Conclusion |
+| H5 direction | Existing target | Reader Question | Main Conclusion |
 |---|---|---|---|
-| `其他人怎么做` | Evidence and landscape | Why are companies suddenly talking about POD, AI-native teams, FDEs, and agentic organizations? | The industry is converging on small outcome-aligned cells, embedded builders, workflow redesign, and governance loops. POD is one visible name for that shift. |
-| `我们怎么做` | Local method and operating design | If we accept this direction, what exactly changes in our way of working? | Our POD should be a work loop, not a department: requirement intake, solution scoring, agent execution, evidence review, decision, and system writeback. |
+| `其他人怎么做` | `company-playbook.html` and relevant sections in `newspaper.html` | Why are companies suddenly talking about POD, AI-native teams, FDEs, and agentic organizations? | The industry is converging on small outcome-aligned cells, embedded builders, workflow redesign, and governance loops. POD is one visible name for that shift, but not the whole external story. |
+| `我们怎么做` | `our-operating-system.html` | If we accept this direction, what exactly changes in our way of working? | Our POD should be a work loop, not a department: requirement intake, solution scoring, agent execution, evidence review, decision, and system writeback. |
 
-This split matches the earlier H5 correction: one article explains the external
-argument; the other explains our workway. It also prevents the article from
-mixing source proof, local operating design, and user-owned strategy into one
-unclear narrative.
+This split matches the existing H5 group: one external path explains the
+industry/company evidence, the internal path explains our workway. It also
+prevents source proof, local operating design, and user-owned strategy from
+collapsing into one unclear page.
 
 ## Final POD Conclusion
 
@@ -57,17 +86,22 @@ The stricter internal conclusion should be:
 > small accountable workflow cell + shared context system + agent execution
 > environment + evidence review loop + community capability spine.
 
-## H5 1: Other People Do It This Way
+## Existing H5 Direction 1: Other People Do It This Way
 
-Working title:
+Current targets:
+
+- `wiki/reports/agentic-product-engineering-collaboration-company-playbook.html`
+- `wiki/reports/agentic-product-engineering-collaboration-newspaper.html`
+
+Working insertion title if a POD section is added:
 
 > 为什么大家都在重组为 POD：AI 时代组织单元变小，闭环变短
 
-Reader path:
+Reader path inside the existing H5 shape:
 
 1. Open with the judgment: POD is old as an agile concept, but AI makes it newly
    consequential because one person or one small cell can now cross more roles.
-2. Show the evidence map:
+2. Show the evidence map without replacing the existing external evidence path:
    - Meta: reported AI-native pods inside Reality Labs, flatter titles, outcome
      focus.
    - OpenAI: FDEs go inside organizations, redesign workflows, connect AI to
@@ -87,14 +121,14 @@ Reader path:
    - Without shared context, evals, and communities, small teams become small
      silos.
 
-Visual plan:
+Visual insertion plan:
 
 | Visual | What It Carries |
 |---|---|
-| Source score heat map | Shows which sources are proof, support, or claim routers. |
-| Four-company comparison | Meta / OpenAI / Tezign / CEIBS-Microsoft-McKinsey as four routes into the same operating shift. |
-| Old vs AI-era collaboration loop | Shows handoff chain collapsing into outcome cell plus review loop. |
-| Copy / adapt / reject panel | Helps reader avoid copying Meta vocabulary without system design. |
+| Source score heat map | Can become a new evidence panel in the industry H5, not a replacement for the existing source boundary. |
+| Company comparison extension | Meta / OpenAI / Tezign can extend the current four-company evidence set only if the page is intentionally broadened beyond OpenAI / Anthropic / Stripe / Block. |
+| Old vs AI-era collaboration loop | Fits the newspaper H5's dumbbell / operating-system argument better than the company playbook's company-by-company spine. |
+| Copy / adapt / reject panel | Useful as a small boundary card: copy no vocabulary, adapt the loop, reject org-chart fashion. |
 
 Evidence boundary:
 
@@ -104,13 +138,17 @@ Evidence boundary:
 - OpenAI line is strongest for workflow redesign and embedded deployment, not
   for the POD label.
 
-## H5 2: We Do It This Way
+## Existing H5 Direction 2: We Do It This Way
 
-Working title:
+Current target:
+
+- `wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html`
+
+Working insertion title if a POD section is added:
 
 > 从 AI 工具到 AI 作业系统：我们的 POD 不是小组，是闭环
 
-Reader path:
+Reader path inside the existing H5 shape:
 
 1. Open with the local problem:
    - Tools are not enough.
@@ -145,14 +183,14 @@ Reader path:
    - Did reusable context grow?
    - Did fewer things rely on invisible personal memory?
 
-Visual plan:
+Visual insertion plan:
 
 | Visual | What It Carries |
 |---|---|
-| Our POD loop | Requirement -> scoring -> execution -> evidence -> decision -> writeback. |
-| Eyes and hands diagram | Context gives AI eyes; runtime gives AI hands; review gives AI brakes. |
-| Role-responsibility matrix | Shows owner, reviewer, agent worker, and community support. |
-| 30-day pilot scoreboard | Measures reaction time, rework, evidence completeness, reusable context, and human decision clarity. |
+| Our POD loop | Best inserted after the current workway / workflow sections: requirement -> scoring -> execution -> evidence -> decision -> writeback. |
+| Eyes and hands diagram | Should align with the existing "给 AI 装上眼睛、手脚和反应链" language in `our-operating-system.html`. |
+| Role-responsibility matrix | Should extend the existing role-change section, not create a separate generic role manual. |
+| 30-day pilot scoreboard | Should reuse the current role-specific pilot section and add POD metrics only if user confirms the pilot unit. |
 
 ## Local POD Definition Draft
 
@@ -179,12 +217,14 @@ Chinese reader-facing version:
 
 ## Next Drafting Move
 
-Draft order:
+Draft order if editing H5 files:
 
-1. Build `其他人怎么做` first because it gives the evidence surface and prevents
-   the local article from sounding like a private preference.
-2. Build `我们怎么做` second using the five-layer workway and local POD loop.
-3. Before review-ready status, update the report gate review with:
+1. Decide whether POD is an insert into `newspaper.html`, an extension of
+   `company-playbook.html`, or both. Do not silently alter the four-company
+   playbook spine.
+2. Update `our-operating-system.html` only after choosing the exact POD insertion
+   point inside the existing workway flow.
+3. Before review-ready status, update the applicable report gate review with:
    - learning use map for the POD scorecard;
    - reader-visible citations for load-bearing claims;
    - visual plan status;
