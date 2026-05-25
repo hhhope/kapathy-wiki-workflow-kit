@@ -12,6 +12,30 @@ updated: 2026-05-12
 
 # Company Playbook Report Gate Review
 
+## 2026-05-25 POD Text-Only Update
+
+Trigger: user clarified that POD should optimize the existing H5 artifacts, not
+be treated as a separate future outline.
+
+Change made:
+
+- Updated `wiki/reports/agentic-product-engineering-collaboration-company-playbook.html`.
+- Added POD as a cross-cutting organization lens after the four company modes.
+- Kept the original company-playbook spine: OpenAI, Anthropic, Stripe, and
+  Block remain the main comparison structure.
+- Added Meta / OpenAI Deployment Company / Tezign source links to the source
+  boundary.
+- Added the interpretive conclusion that POD is not a smaller department, but a
+  shorter accountable loop for target, agent execution, evidence review, and
+  writeback.
+
+Boundary:
+
+- No image-model assets were regenerated.
+- `agentic-product-engineering-collaboration-company-playbook-share.zip` was not
+  refreshed.
+- This update does not claim publish-ready status.
+
 ## Review Target
 
 - Target title: `四家公司看 Agent 协作怎么落地`

@@ -14,6 +14,29 @@ updated: 2026-05-19
 
 # Report Gate Review
 
+## 2026-05-25 POD Text-Only Update
+
+Trigger: user clarified that POD should optimize the existing H5 artifacts, not
+be treated as a separate future outline.
+
+Change made:
+
+- Updated `wiki/reports/agentic-product-engineering-collaboration-our-operating-system.html`.
+- Added a POD block inside section `08 · 工作流`, immediately after the five-step
+  work graph. This keeps POD inside the existing workway flow instead of
+  creating a detached organization chapter.
+- Added the final-judgment sentence that our POD should mean "最小经营闭环",
+  not an org-structure slogan.
+- Preserved the existing H5 shape, section images, role-change section, and
+  local evidence spine.
+
+Boundary:
+
+- No image-model assets were regenerated.
+- `agentic-product-engineering-collaboration-our-operating-system-share.zip` was
+  not refreshed.
+- This update does not introduce repo runtime policy.
+
 ## Article Intent Contract
 
 - Audience: internal product, engineering, QA, project-management, and management stakeholders.
