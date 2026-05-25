@@ -24,6 +24,9 @@ Change made:
 - Rewrote the POD section around role-boundary collapse, Amiba-vs-POD
   distinction, discomfort, overwork risk, and the shift from time-based
   efficiency to judgment / evidence / writeback efficiency.
+- Added image-model asset
+  `wiki/reports/agentic-product-engineering-collaboration-company-playbook-assets/06-pod-role-boundary-card.png`
+  to visualize old role walls, boundary collapse, and the new accountable loop.
 - Kept the original company-playbook spine: OpenAI, Anthropic, Stripe, and
   Block remain the main comparison structure.
 - Added Meta / OpenAI Deployment Company / Tezign source links to the source
@@ -34,7 +37,8 @@ Change made:
 
 Boundary:
 
-- The rejected image-model card draft was not kept in the H5.
+- The earlier rejected image-model card draft was not kept in the H5; the new
+  card is limited to this POD section.
 - `agentic-product-engineering-collaboration-company-playbook-share.zip` was not
   refreshed.
 - This update does not claim publish-ready status.
