@@ -40,7 +40,7 @@ ai_generated: true
 | --- | --- | --- |
 | 主工单 311.65 人日 | `主工单任务底表` 348 条计入人日的子工单，`日百分比/100` 汇总 | `日百分比` 解释为人日；需业务确认是否有其他权重 |
 | 总占用 356.4 人日 | 主工单 311.65 + 独立任务 44.75 | 独立任务缺日期，不进入周曲线 |
-| W17 峰值 53.05 人日 | 主工单解决日期按 ISO 周聚合 | fallback 日期仅在解决日期缺失时使用 |
+| 04/20-04/26 峰值 53.05 人日 | 主工单解决日期按 ISO 周聚合，H5 主标签改为周日期区间 | fallback 日期仅在解决日期缺失时使用；2026-W17 保留为辅助口径 |
 | 研发投入持续甘特 | 按组别、子工单内容主题、ISO 周汇总人日 | 主题为内容审阅分桶，用于解释持续占用，不是 Jira 原生字段 |
 | 账户组 112.3 人日内部消耗 | `研发部-账户组` 117 条计入人日子工单，按子工单概要关键词分桶 | 分桶是内容审阅口径，不等同 Jira 原生分类 |
 | Excel 代码净增 +51,271 | `代码量统计` sheet | Excel 行数口径由源表给出，未验证其采集脚本 |
@@ -77,3 +77,12 @@ ai_generated: true
 - Package check: `split-account-core-rd-investment-analysis-2026-05-26.tar.gz` contains the updated H5.
 - Playwright desktop screenshot: generated `/tmp/split-account-rd-fishbone-desktop.png`; fishbone section has 5 project rows and 20 bones, no console errors, no desktop horizontal overflow.
 - Playwright mobile screenshot: generated `/tmp/split-account-rd-fishbone-mobile.png`; fishbone itself fits within the viewport and stacks correctly. The WSL browser environment lacks a Chinese CJK font, so screenshot text renders as tofu boxes in that environment.
+
+## Verification Update: Week Date Labels
+
+- Reader feedback: W12-W21 table labels were hard to read.
+- Change: H5 primary weekly labels now use date ranges from 03/16-03/22 through 05/18-05/24; ISO week labels are kept only as secondary hints in the weekly bar chart and source evidence.
+- Boundary: data aggregation remains ISO-week based; this is a display/readability change, not a recalculation.
+- HTML parser, frontmatter precheck, full frontmatter checker, and `git diff --check` passed after the date-label update.
+- Playwright screenshots: `/tmp/split-account-rd-week-dates-desktop.png` and `/tmp/split-account-rd-week-dates-mobile.png`.
+- Playwright layout assertion: 10 weekly bar labels and 10 Gantt date headers rendered without clipping; desktop and mobile console checks had no errors. The wide Gantt table remains horizontally scrollable by design.
