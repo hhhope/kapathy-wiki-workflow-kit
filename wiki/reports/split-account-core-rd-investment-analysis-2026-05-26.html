@@ -58,27 +58,41 @@
   </div>
 
   <div class="section">
-    <h2>四、项目代码量：Excel 基线与本地 Git 复核</h2>
+    <h2>四、账户组内部：人力消耗在哪里</h2>
+    <p class="lead">账户组 112.3 人日、117 条计入人日子工单。按子工单内容看，最大消耗不是单纯“建账户模型”，而是宝财通/二级商户会员关系、结算/出款/清算链路，以及大量跨系统账户支持工作。</p>
+    <div class="two-col">
+      <div>
+        <table class=""><thead><tr><th>内容主题</th><th>人日</th><th>账户组占比</th><th>相对规模</th></tr></thead><tbody><tr><td><b>宝财通/二级商户与会员关系</b><br><span class="mini">二级升特约、SMID、会员号、开户/客户号</span></td><td>34</td><td>30.3%</td><td><div class="mini-track"><i style="width:100%"></i></div></td></tr><tr><td><b>结算/出款/清算链路</b><br><span class="mini">提现、代付、特下、清算、结算接口</span></td><td>28</td><td>24.9%</td><td><div class="mini-track"><i style="width:82.4%"></i></div></td></tr><tr><td><b>其他账户支持</b><br><span class="mini">分账接受方开通、计费配置、账户侧支持</span></td><td>23</td><td>20.5%</td><td><div class="mini-track"><i style="width:67.6%"></i></div></td></tr><tr><td><b>接口/报表/联调对接</b><br><span class="mini">报表、对账 SQL、线上商户对账、联调</span></td><td>10</td><td>8.9%</td><td><div class="mini-track"><i style="width:29.4%"></i></div></td></tr><tr><td><b>余额查询/账本验证</b></td><td>6.7</td><td>6.0%</td><td><div class="mini-track"><i style="width:19.7%"></i></div></td></tr><tr><td><b>发布验证/CR/历史梳理</b></td><td>6.6</td><td>5.9%</td><td><div class="mini-track"><i style="width:19.4%"></i></div></td></tr><tr><td><b>待分/接收户账户模型</b></td><td>4</td><td>3.6%</td><td><div class="mini-track"><i style="width:11.8%"></i></div></td></tr></tbody></table>
+      </div>
+      <div>
+        <table class=""><thead><tr><th>经办人</th><th>人日</th><th>主要消耗内容</th></tr></thead><tbody><tr><td><b>竹 王</b></td><td>30.8</td><td>宝财通/二级商户与会员关系 18；其他账户支持 8.8；余额查询 3</td></tr><tr><td><b>彭清正</b></td><td>26.3</td><td>结算/出款/清算 9；宝财通/二级商户 6；其他账户支持 5</td></tr><tr><td><b>焕焕 轩</b></td><td>25</td><td>结算/出款/清算 8；接口/报表/联调 5；其他账户支持 4</td></tr><tr><td><b>圣彬彬</b></td><td>12.7</td><td>结算/出款/清算 10.7；待分/接收户账户模型 1</td></tr><tr><td><b>鹏 严</b></td><td>11</td><td>宝财通/二级商户 5；其他账户支持 4；发布验证/CR 2</td></tr><tr><td><b>开发 刘</b></td><td>6</td><td>接口/报表/联调 4；宝财通/二级商户 1；发布验证 1</td></tr></tbody></table>
+      </div>
+    </div>
+    <div class="note">账户组内部结论：真正吃人力的是“账户能力进入业务闭环”之后的关系、结算、对账、验证和开通支持；待分/接收户模型本身只占 4 人日，但它触发了后面更大的链路改造和验证成本。</div>
+  </div>
+
+  <div class="section">
+    <h2>五、项目代码量：Excel 基线与本地 Git 复核</h2>
     <p class="lead">Excel 提供的是业务选定项目口径；本地 Git 复核只统计 2026-03-19 到 2026-05-22 的源码/配置后缀，且只把约定式提交标为“AI/规范化提交候选”。两者不强行对齐，差异本身就是管理信号。</p>
     <table class=""><thead><tr><th>项目</th><th>操作人</th><th>提交次数</th><th>新增</th><th>删除</th><th>净增</th></tr></thead><tbody><tr><td>cm-settle</td><td>彬彬</td><td>136</td><td>+20,033</td><td>-2,693</td><td>+17,340</td></tr><tr><td>clearing-trade</td><td>焕焕</td><td>13</td><td>+4,248</td><td>-274</td><td>+3,974</td></tr><tr><td>clearing-manager</td><td>焕焕</td><td>3</td><td>+42</td><td>-25</td><td>+17</td></tr><tr><td>cm-post</td><td>焕焕</td><td>5</td><td>+1,861</td><td>-31</td><td>+1,830</td></tr><tr><td>mandao-customer</td><td>王竹</td><td>167</td><td>+30,770</td><td>-15,043</td><td>+15,727</td></tr><tr><td>auxiliary-trade</td><td>王竹</td><td>16</td><td>+7,427</td><td>-201</td><td>+7,226</td></tr><tr><td>account-book-query</td><td>王竹</td><td>4</td><td>+1,340</td><td>-14</td><td>+1,326</td></tr><tr><td>bill-cache</td><td>王竹</td><td>3</td><td>+105</td><td>-54</td><td>+51</td></tr><tr><td>mandao-account-book</td><td>清正</td><td>18</td><td>+4,378</td><td>-598</td><td>+3,780</td></tr></tbody></table>
     <div class="note">Excel 基线显示，代码净增主要集中在 cm-settle、mandao-customer、auxiliary-trade、clearing-trade 和 mandao-account-book，说明改造穿透了清结算、会员/客户、辅助交易和账户账本，不是一个服务内的孤立改动。</div>
   </div>
 
   <div class="section">
-    <h2>五、本地 Git：规范化提交与修复窗口</h2>
+    <h2>六、本地 Git：规范化提交与修复窗口</h2>
     <p class="lead">本地 Git 扫描显示：源码口径合计 +48,729 / -17,059；AI/规范化提交候选 141 次，贡献 +19,743 / -6,807；fix 提交 25 次，贡献 +823 / -118。</p>
     <table class=""><thead><tr><th>项目</th><th>全量提交</th><th>非Merge</th><th>源码行</th><th>AI/规范化候选</th><th>fix</th><th>首个fix</th><th>主干最后合入</th><th>修复窗口天</th><th>边界</th></tr></thead><tbody><tr><td>cm-settle</td><td>227</td><td>149</td><td>+13,495/-2,492</td><td>2 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>2026-05-21</td><td>-</td><td><span class="">-</span></td></tr><tr><td>clearing-trade</td><td>23</td><td>13</td><td>+3,465/-274</td><td>12 次<br><span class="mini">+3,091/-219</span></td><td>3</td><td>2026-04-14</td><td>2026-05-20</td><td>37</td><td><span class="">-</span></td></tr><tr><td>clearing-manager</td><td>10</td><td>4</td><td>+628/-32</td><td>1 次<br><span class="mini">+23/-4</span></td><td>0</td><td>-</td><td>2026-05-20</td><td>-</td><td><span class="">-</span></td></tr><tr><td>cm-post</td><td>14</td><td>6</td><td>+1,104/-37</td><td>6 次<br><span class="mini">+1,104/-37</span></td><td>0</td><td>-</td><td>2026-05-21</td><td>-</td><td><span class="warn">Excel 项目 cm-post 映射到本地 cm-post-service。</span></td></tr><tr><td>mandao-customer</td><td>130</td><td>110</td><td>+22,451/-12,934</td><td>75 次<br><span class="mini">+13,627/-6,058</span></td><td>5</td><td>2026-04-20</td><td>2026-05-21</td><td>32</td><td><span class="">-</span></td></tr><tr><td>auxiliary-trade</td><td>338</td><td>164</td><td>+7,533/-1,278</td><td>45 次<br><span class="mini">+1,898/-489</span></td><td>17</td><td>2026-04-21</td><td>2026-05-21</td><td>31</td><td><span class="">-</span></td></tr><tr><td>account-book-query</td><td>0</td><td>0</td><td>+0/-0</td><td>0 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>-</td><td>-</td><td><span class="warn">本地使用 /mnt/d/cloud/account-query 作为候选映射；未扫到相关提交，需人工确认。</span></td></tr><tr><td>bill-cache</td><td>4</td><td>4</td><td>+53/-12</td><td>0 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>2026-05-21</td><td>-</td><td><span class="">-</span></td></tr><tr><td>mandao-account-book</td><td>0</td><td>0</td><td>+0/-0</td><td>0 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>-</td><td>-</td><td><span class="">-</span></td></tr></tbody></table>
     <div class="note">“AI/规范化候选”只是基于提交信息格式的代理指标，不能证明作者身份。可用来观察规范化编码/AI 协作在项目中的占比，但不能当作绩效归因。</div>
   </div>
 
   <div class="section">
-    <h2>六、主干修复时间</h2>
+    <h2>七、主干修复时间</h2>
     <p class="lead">能看到明确 fix 的项目里，修复窗口集中在 31-37 天：这说明主干稳定化不是上线前几天的尾巴，而是和开发并行存在了一个月左右。</p>
     <table class=""><thead><tr><th>项目</th><th>首个相关提交</th><th>首个fix</th><th>主干最后合入</th><th>修复窗口天</th><th>交付跨度天</th><th>主干合入证据</th></tr></thead><tbody><tr><td>cm-settle</td><td>2026-05-11</td><td>-</td><td>2026-05-21</td><td>-</td><td>11</td><td>Merge branch &#x27;user/baisheng/2026-05-20&#x27; into &#x27;master&#x27;</td></tr><tr><td>clearing-trade</td><td>2026-04-11</td><td>2026-04-14</td><td>2026-05-20</td><td>37</td><td>40</td><td>Merge branch &#x27;xuanyuanmiao/dev20260428-14792&#x27; into &#x27;master&#x27;</td></tr><tr><td>clearing-manager</td><td>2026-04-15</td><td>-</td><td>2026-05-20</td><td>-</td><td>36</td><td>Merge branch &#x27;xuanyuanmiao/dev20260428-16015&#x27; into &#x27;master&#x27;</td></tr><tr><td>cm-post</td><td>2026-05-19</td><td>-</td><td>2026-05-21</td><td>-</td><td>3</td><td>Merge branch &#x27;master&#x27; of http://gitlab.baofoo.net/clearing/cm-post-service into uat</td></tr><tr><td>mandao-customer</td><td>2026-05-13</td><td>2026-04-20</td><td>2026-05-21</td><td>32</td><td>9</td><td>Merge remote-tracking branch &#x27;origin/master&#x27;</td></tr><tr><td>auxiliary-trade</td><td>2026-04-18</td><td>2026-04-21</td><td>2026-05-21</td><td>31</td><td>34</td><td>Merge branch &#x27;feature/muyun/RCYW-17343&#x27; into &#x27;master_springboot&#x27;</td></tr></tbody></table>
   </div>
 
   <div class="section">
-    <h2>七、从背后看出什么</h2>
+    <h2>八、从背后看出什么</h2>
     <div class="findings">
       <div class="finding"><b>1. 这不是单项目开发，是跨域闭环</b><p>账户、支付、商业应用和测试同时高占用，说明需求本质是账户模型、资金流、交易接入、报表/查询和验证共同闭环。</p></div>
       <div class="finding"><b>2. 高峰不是“写代码”，而是复杂闭环被压缩</b><p>W16-W21 连续高位，说明 AI 或规范化编码即便提升写代码速度，也会把更多时间推到集成、修复、验证和主干合入。</p></div>
