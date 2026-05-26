@@ -163,6 +163,47 @@ Workbook total: `+70,204` / `-18,933` / net `+51,271`.
 
 Local Git source-like total: `+48,729` / `-17,059`. AI/规范化候选 source-like total: `141` commits, `+19,743` / `-6,807`. Fix total: `25` commits, `+823` / `-118`.
 
+## Daily Code Output Snapshot
+
+Daily figures use the 65-day local Git scan window from `2026-03-19` to `2026-05-22`. They are directional throughput indicators, not a quality score.
+
+| 指标 | 总量 | 日均 | 说明 |
+| --- | --- | --- | --- |
+| Excel 业务项目新增 | +70,204 行 | 约 +1,080 行/天 | Workbook project baseline; shows single-day output speed is high. |
+| Excel 业务项目净增 | +51,271 行 | 约 +789 行/天 | New minus deleted code in workbook-selected project scope. |
+| 本地 Git 全量提交 | 746 次 | 约 11.5 次/天 | Includes merge commits and branch flow. |
+| 本地 Git 非 Merge 提交 | 450 次 | 约 6.9 次/天 | Closer to coding, fixing, refactor, docs/CR activity. |
+| 本地 Git 源码净增 | +48,729 行 | 约 +750 行/天 | Local source-like suffix scan; differs from workbook line-count rules. |
+| AI/规范化候选提交 | 141 次 | 约 2.2 次/天 | Proxy indicator, not definitive authorship. |
+| AI/规范化候选新增 | +19,743 行 | 约 +304 行/天 | Proxy output volume under convention-based classification. |
+
+## AI / Human-Review Boundary Signals
+
+| 领域/项目 | AI/规范化候选占比 | 可读结论 | 边界 |
+| --- | --- | --- | --- |
+| 开户/客户关系类：mandao-customer | 75 / 110 非 Merge = 68.2% | 边界相对清晰的开户、客户关系出码自动化信号较高。 | Proxy indicator; not definitive AI authorship. |
+| cm-post | 6 / 6 非 Merge = 100% | 小范围功能补齐也呈现高规范化候选占比。 | Sample small; should not be overgeneralized. |
+| 清结算主干：cm-settle | 2 / 149 非 Merge = 1.3% | 清结算主干仍主要依赖人工处理和复核。 | cm-settle includes many branch/optimization/CR flows. |
+| clearing-trade | 12 / 13 非 Merge = 92.3%; fix/refactor 4 / 13 = 30.8% | 即使候选占比高，资金处理、账户类型和空指针仍需要强人工复核。 | High-risk clearing/trade logic; replacement rate does not remove review responsibility. |
+
+## Test Right-Shift Signal
+
+| 口径 | 数值 | 说明 |
+| --- | --- | --- |
+| 测试部总投入 | 47.5 人日 | Group investment baseline. |
+| 05/04-05/24 测试相关投入 | 37.0 人日 | Functional/regression support 27.8 + pre-production/launch validation 9.2. |
+| 后三周占测试总量 | 77.9% | Shows testing and validation were heavily right-shifted into the late delivery window. |
+
+## Interface Scope Supplement
+
+This is a user-provided review supplement for the H5 conclusion layer, not an independently extracted workbook field.
+
+| 指标 | 数值 | 管理含义 |
+| --- | --- | --- |
+| 新增内部接口 | 10 | Scope is broad enough to create cross-system coordination and regression pressure. |
+| 新增对外接口 | 8 | External contract changes require version ownership, not only interface documentation. |
+| API Fox 管理边界 | Existing API Fox management did not prevent an external-interface version-management blind spot | API documentation exists, but external version governance still needs explicit review and release gating. |
+
 ## Git AI/Rework Signal Snapshot
 
 | 指标 | 数值 | 说明 |

@@ -47,6 +47,11 @@ ai_generated: true
 | Git 源码 +48,729 / -17,059 | 本地 `/mnt/d` 仓库 `git log --numstat --no-merges` | 只统计常见源码/配置后缀；本地仓库可能不是完整远端状态 |
 | 本地 Git 总提交 746 | 相关仓库全分支扫描，Merge 296、非 Merge 450 | 全分支口径用于观察研发流转，不等同最终主干提交数 |
 | AI/规范化候选 141 与返工信号 97 | 提交前缀和标题关键词扫描 | 这是出码后返工/重构信号，不是作者身份或绩效归因 |
+| 日均出码 | 65 天扫描窗口下 Excel 新增约 +1,080 行/天，本地源码净增约 +750 行/天，AI/规范化候选约 2.2 次/天 | 吞吐指标，不等同稳定交付质量 |
+| 开户/客户关系类 AI 替代率信号 | mandao-customer 75/110 非 Merge = 68.2%，cm-post 6/6 = 100% | 规范化候选代理指标，不证明真实作者身份；cm-post 样本小 |
+| 清算和账户类人工复核红线 | cm-settle 2/149 候选占比低；clearing-trade 12/13 候选但 fix/refactor 4/13 | 资金、账户、清算类可提升出码比例，但不能取消人工复核 |
+| 测试右移 | 05/04-05/24 测试相关投入 37.0 人日，占测试总量 47.5 人日的 77.9% | 后三周口径用于说明右移压力，不代表所有测试只发生在后段 |
+| 接口范围与版本治理盲点 | 用户补充口径：新增 10 个内部接口、8 个对外接口，API Fox 管理下仍出现对外接口版本管理盲点 | 用户补充事实；未从 workbook 自动抽取，作为结论层管理判断使用 |
 | Git 修复鱼骨图 | 04-10 到 05-21 的业务开发、fix、refactor、merge、CR 提交，按 cm-settle、auxiliary-trade、mandao-customer、clearing-trade、cm-post/manager 分组 | 鱼骨图用于解释各项目研发消耗位置，主干合入不等同线上完成；项目分组是阅读结构，不是新的统计口径 |
 
 ## Section Drift Review
@@ -60,7 +65,7 @@ ai_generated: true
 | 账户组内部消耗 | 回答账户组人力具体耗在哪些子工单内容上 | Retain with classification boundary |
 | 代码提交与 AI 出码复核 | 合并 Excel 代码量、本地 Git 总提交、规范化候选、返工信号 | Retain with boundary |
 | Git 修复鱼骨图 | 按项目解释研发被消耗在哪里，避免线性时间轴只像流水账 | Retain with boundary |
-| 背后看出什么 | 从数据回到管理结论 | Retain |
+| 背后看出什么 | 同时说清楚做得好的、红线和暴露的问题 | Retain with user-supplied interface boundary |
 
 ## Decision
 
@@ -86,3 +91,12 @@ ai_generated: true
 - HTML parser, frontmatter precheck, full frontmatter checker, and `git diff --check` passed after the date-label update.
 - Playwright screenshots: `/tmp/split-account-rd-week-dates-desktop.png` and `/tmp/split-account-rd-week-dates-mobile.png`.
 - Playwright layout assertion: 10 weekly bar labels and 10 Gantt date headers rendered without clipping; desktop and mobile console checks had no errors. The wide Gantt table remains horizontally scrollable by design.
+
+## Verification Update: Good / Bad Findings
+
+- Reader feedback: section 8 should cover both good and bad findings; testing right-shift must be explicit; section 6 should include daily code-output analysis.
+- Change: section 6 adds a daily throughput table; section 8 is rewritten into six findings covering total investment visibility, opening/customer AI substitution signal, daily output speed, clearing/account human-review redline, testing right shift, and interface version-governance blind spot.
+- Boundary: AI substitution uses the existing convention-based proxy. The 10 internal / 8 external interface count is recorded as user-provided review input, not independently extracted workbook data.
+- HTML parser, frontmatter precheck, full frontmatter checker, and `git diff --check` passed after the rewrite.
+- Playwright screenshots: `/tmp/split-account-rd-good-bad-desktop.png` and `/tmp/split-account-rd-good-bad-mobile.png`.
+- Playwright layout assertion: section 8 renders 6 finding cards with no undersized boxes; the daily-output table renders 3 rows; section 8 contains both the 77.9% testing right-shift signal and the 10 internal / 8 external interface governance signal; desktop and mobile console checks had no errors.
