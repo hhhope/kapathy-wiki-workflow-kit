@@ -23,7 +23,7 @@
 <div class="wrap">
   <div class="header">
     <h1>分账核心改造：研发投入、代码量与修复时间</h1>
-    <p>这页不是看“谁提交多”，而是把工单人日、周投入、项目代码量和主干修复窗口放到同一张经营视图里：账户、支付、商业应用和测试到底被占用了多久，代码写了多少，修复和主干合入又消耗了多少时间。</p>
+    <p>这页不是看“谁提交多”，而是把工单人日、周投入、代码提交和 Git 修复时间轴放到同一张经营视图里：账户、支付、商业应用和测试到底被占用了多久，代码写完以后又把研发消耗在了哪里。</p>
     <span class="badge">Management H5 · 数据窗口 2026-03-19 - 2026-05-21</span>
   </div>
 
@@ -82,27 +82,27 @@
   </div>
 
   <div class="section">
-    <h2>六、项目代码量：Excel 基线与本地 Git 复核</h2>
-    <p class="lead">Excel 提供的是业务选定项目口径；本地 Git 复核只统计 2026-03-19 到 2026-05-22 的源码/配置后缀，且只把约定式提交标为“AI/规范化提交候选”。两者不强行对齐，差异本身就是管理信号。</p>
-    <table class=""><thead><tr><th>项目</th><th>操作人</th><th>提交次数</th><th>新增</th><th>删除</th><th>净增</th></tr></thead><tbody><tr><td>cm-settle</td><td>彬彬</td><td>136</td><td>+20,033</td><td>-2,693</td><td>+17,340</td></tr><tr><td>clearing-trade</td><td>焕焕</td><td>13</td><td>+4,248</td><td>-274</td><td>+3,974</td></tr><tr><td>clearing-manager</td><td>焕焕</td><td>3</td><td>+42</td><td>-25</td><td>+17</td></tr><tr><td>cm-post</td><td>焕焕</td><td>5</td><td>+1,861</td><td>-31</td><td>+1,830</td></tr><tr><td>mandao-customer</td><td>王竹</td><td>167</td><td>+30,770</td><td>-15,043</td><td>+15,727</td></tr><tr><td>auxiliary-trade</td><td>王竹</td><td>16</td><td>+7,427</td><td>-201</td><td>+7,226</td></tr><tr><td>account-book-query</td><td>王竹</td><td>4</td><td>+1,340</td><td>-14</td><td>+1,326</td></tr><tr><td>bill-cache</td><td>王竹</td><td>3</td><td>+105</td><td>-54</td><td>+51</td></tr><tr><td>mandao-account-book</td><td>清正</td><td>18</td><td>+4,378</td><td>-598</td><td>+3,780</td></tr></tbody></table>
-    <div class="note">Excel 基线显示，代码净增主要集中在 cm-settle、mandao-customer、auxiliary-trade、clearing-trade 和 mandao-account-book，说明改造穿透了清结算、会员/客户、辅助交易和账户账本，不是一个服务内的孤立改动。</div>
+    <h2>六、代码提交与 AI 出码复核</h2>
+    <p class="lead">这一章把 Excel 代码量和本地 Git 复核合在一起看。先看总提交，再看非 Merge、规范化提交、fix/refactor/优化调整等返工信号。这里的“AI/规范化候选”仍是提交格式代理指标，不做作者身份归因。</p>
+    <div class="cards" style="grid-template-columns:repeat(4,1fr);margin-bottom:14px">
+      <div class="card"><h3>本地 Git 总提交</h3><div class="big">746</div><div class="muted">全分支扫描；Merge 296，非 Merge 450。</div></div>
+      <div class="card"><h3>Excel 项目提交</h3><div class="big">365</div><div class="muted">业务选定项目口径；新增 +70,204，删除 -18,933，净增 +51,271。</div></div>
+      <div class="card"><h3>AI/规范化候选</h3><div class="big">141</div><div class="muted">feat 41、fix 25、refactor 9、docs 62、chore/style 4。</div></div>
+      <div class="card"><h3>返工/重构信号</h3><div class="big">97</div><div class="muted">标题含 fix、优化、调整、修复、问题、CR、审查、重构等；34 条命中分账/账户主题。</div></div>
+    </div>
+    <table class=""><thead><tr><th>项目</th><th>总提交</th><th>Merge/非Merge</th><th>源码行</th><th>AI/规范化候选</th><th>fix/refactor</th><th>返工信号</th><th>能看出什么</th></tr></thead><tbody><tr><td><b>cm-settle</b></td><td>227</td><td>78 / 149</td><td>+13,495 / -2,492</td><td>2</td><td>0 / 0</td><td>28</td><td>清结算侧多分支反复合入、优化、CR 和发布准备明显。</td></tr><tr><td><b>mandao-customer</b></td><td>130</td><td>20 / 110</td><td>+22,451 / -12,934</td><td>75</td><td>5 / 3</td><td>14</td><td>会员/客户关系改造产生大量结构调整；规范化提交多，但仍有 fix/refactor 跟进。</td></tr><tr><td><b>auxiliary-trade</b></td><td>338</td><td>174 / 164</td><td>+7,533 / -1,278</td><td>45</td><td>17 / 5</td><td>47</td><td>修复和重构最集中，自主结算、提现、余额查询、分账场景校验反复调整。</td></tr><tr><td><b>clearing-trade</b></td><td>23</td><td>10 / 13</td><td>+3,465 / -274</td><td>12</td><td>3 / 1</td><td>6</td><td>提交数不大，但 fix/refactor 比例高，集中在退款、分账接收户资金处理、空指针和账户类型异常。</td></tr><tr><td><b>cm-post</b></td><td>14</td><td>8 / 6</td><td>+1,104 / -37</td><td>6</td><td>0 / 0</td><td>1</td><td>更像功能补齐和合入，不是主要返工消耗点。</td></tr><tr><td><b>clearing-manager</b></td><td>10</td><td>6 / 4</td><td>+628 / -32</td><td>1</td><td>0 / 0</td><td>0</td><td>主要承担枚举、管理侧支持，代码量小但属于跨系统兼容入口。</td></tr></tbody></table>
+    <div class="note">结论要从“代码写了多少”改成“代码写完后发生了什么”：AI/规范化提交让代码产出更快，但 97 条返工/优化/调整/CR 信号说明出码后仍要花人力做重构、兼容、空指针、字段、校验、补偿任务、主干合入和代码审查。AI 能提升出码速度，但不会自动消除系统集成和质量闭环成本。</div>
   </div>
 
   <div class="section">
-    <h2>七、本地 Git：规范化提交与修复窗口</h2>
-    <p class="lead">本地 Git 扫描显示：源码口径合计 +48,729 / -17,059；AI/规范化提交候选 141 次，贡献 +19,743 / -6,807；fix 提交 25 次，贡献 +823 / -118。</p>
-    <table class=""><thead><tr><th>项目</th><th>全量提交</th><th>非Merge</th><th>源码行</th><th>AI/规范化候选</th><th>fix</th><th>首个fix</th><th>主干最后合入</th><th>修复窗口天</th><th>边界</th></tr></thead><tbody><tr><td>cm-settle</td><td>227</td><td>149</td><td>+13,495/-2,492</td><td>2 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>2026-05-21</td><td>-</td><td><span class="">-</span></td></tr><tr><td>clearing-trade</td><td>23</td><td>13</td><td>+3,465/-274</td><td>12 次<br><span class="mini">+3,091/-219</span></td><td>3</td><td>2026-04-14</td><td>2026-05-20</td><td>37</td><td><span class="">-</span></td></tr><tr><td>clearing-manager</td><td>10</td><td>4</td><td>+628/-32</td><td>1 次<br><span class="mini">+23/-4</span></td><td>0</td><td>-</td><td>2026-05-20</td><td>-</td><td><span class="">-</span></td></tr><tr><td>cm-post</td><td>14</td><td>6</td><td>+1,104/-37</td><td>6 次<br><span class="mini">+1,104/-37</span></td><td>0</td><td>-</td><td>2026-05-21</td><td>-</td><td><span class="warn">Excel 项目 cm-post 映射到本地 cm-post-service。</span></td></tr><tr><td>mandao-customer</td><td>130</td><td>110</td><td>+22,451/-12,934</td><td>75 次<br><span class="mini">+13,627/-6,058</span></td><td>5</td><td>2026-04-20</td><td>2026-05-21</td><td>32</td><td><span class="">-</span></td></tr><tr><td>auxiliary-trade</td><td>338</td><td>164</td><td>+7,533/-1,278</td><td>45 次<br><span class="mini">+1,898/-489</span></td><td>17</td><td>2026-04-21</td><td>2026-05-21</td><td>31</td><td><span class="">-</span></td></tr><tr><td>account-book-query</td><td>0</td><td>0</td><td>+0/-0</td><td>0 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>-</td><td>-</td><td><span class="warn">本地使用 /mnt/d/cloud/account-query 作为候选映射；未扫到相关提交，需人工确认。</span></td></tr><tr><td>bill-cache</td><td>4</td><td>4</td><td>+53/-12</td><td>0 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>2026-05-21</td><td>-</td><td><span class="">-</span></td></tr><tr><td>mandao-account-book</td><td>0</td><td>0</td><td>+0/-0</td><td>0 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>-</td><td>-</td><td><span class="">-</span></td></tr></tbody></table>
-    <div class="note">“AI/规范化候选”只是基于提交信息格式的代理指标，不能证明作者身份。可用来观察规范化编码/AI 协作在项目中的占比，但不能当作绩效归因。</div>
+    <h2>七、Git 修复时间轴：研发被消耗在哪里</h2>
+    <p class="lead">修复时间不再只看“首个 fix 到最后合入”的天数，而是按 Git 提交把消耗链路展开。可以看到研发被持续占用在四类事情上：业务链路补齐、AI/规范化代码后的重构优化、测试发现后的修复、主干合入和发布稳定。</p>
+    <table class=""><thead><tr><th>时间</th><th>Git 证据</th><th>研发消耗点</th><th>管理含义</th></tr></thead><tbody><tr><td><b>04-10 - 04-16</b></td><td>cm-settle 未结算明细/目标账户；clearing-trade 新增分账接收户退款未结算；clearing-manager 添加待分账户和分账接收户枚举；cm-post 支持退款未结算目标账户</td><td>账户模型、退款未结算、枚举兼容、目标账户链路补齐</td><td>这是“写功能”的阶段，但已经跨清结算、交易、管理、post 多个系统。</td></tr><tr><td><b>04-14 - 04-23</b></td><td>clearing-trade fix 账户类型异常、fix 分账接收户资金处理及空指针校验、refactor 移除未使用退款待结算状态更新</td><td>异常处理、空指针、退款状态、资金处理边界</td><td>出码后第一个明显消耗点是边界条件，不是继续新增功能。</td></tr><tr><td><b>04-25 - 05-09</b></td><td>cm-settle 多次“代码优化/逻辑优化/自主结算代码优化”；auxiliary-trade 主动建单退款 fix、RCYW-17140 特约商户接口请求方式和字段校验 fix</td><td>代码重构、字段校验、主动建单退款、特约商户余额查询</td><td>AI/规范化代码进入真实业务后，需要不断把字段、校验、接口方式和补偿逻辑补齐。</td></tr><tr><td><b>05-11 - 05-15</b></td><td>cm-settle 分账接收户下发传代理商 id 多次提交和 test 合入；auxiliary-trade RCYW-17224 连续 fix 自主结算提现、商户 ID 类型转换、缺失字段、订单号处理、余额查询账户类型；mandao-customer transaction type、代理关系控制、代理商配置 refactor</td><td>自主结算、提现补偿、分账接收户、会员/代理关系、账户类型列表</td><td>这是最大返工带：不是一个 bug，而是一组跨域字段、关系、补偿任务和账户类型的连续校正。</td></tr><tr><td><b>05-18 - 05-21</b></td><td>auxiliary-trade RCYW-17343/17224 多次合入 master_springboot；clearing-trade fix 费用账户 ID 空指针；mandao-customer fix 新特约关系查询、终端密钥类型；cm-settle docs(cr) 代码评审报告</td><td>主干合入、空指针、特约关系查询、代码审查、上线前稳定</td><td>最后消耗不是开发，而是主干稳定、生产发布前问题收敛和 CR 证据沉淀。</td></tr></tbody></table>
+    <div class="note">时间轴结论：研发持续投入的原因不是“开发拖太久”，而是代码从生成到可主干稳定之间经历了补字段、补校验、补偿任务、空指针、关系查询、提现/退款、测试回归、主干合入和 CR 审查。后续要管理的是这条出码后的修复时间轴，而不是只看 AI 写了多少行。</div>
   </div>
 
   <div class="section">
-    <h2>八、主干修复时间</h2>
-    <p class="lead">能看到明确 fix 的项目里，修复窗口集中在 31-37 天：这说明主干稳定化不是上线前几天的尾巴，而是和开发并行存在了一个月左右。</p>
-    <table class=""><thead><tr><th>项目</th><th>首个相关提交</th><th>首个fix</th><th>主干最后合入</th><th>修复窗口天</th><th>交付跨度天</th><th>主干合入证据</th></tr></thead><tbody><tr><td>cm-settle</td><td>2026-05-11</td><td>-</td><td>2026-05-21</td><td>-</td><td>11</td><td>Merge branch &#x27;user/baisheng/2026-05-20&#x27; into &#x27;master&#x27;</td></tr><tr><td>clearing-trade</td><td>2026-04-11</td><td>2026-04-14</td><td>2026-05-20</td><td>37</td><td>40</td><td>Merge branch &#x27;xuanyuanmiao/dev20260428-14792&#x27; into &#x27;master&#x27;</td></tr><tr><td>clearing-manager</td><td>2026-04-15</td><td>-</td><td>2026-05-20</td><td>-</td><td>36</td><td>Merge branch &#x27;xuanyuanmiao/dev20260428-16015&#x27; into &#x27;master&#x27;</td></tr><tr><td>cm-post</td><td>2026-05-19</td><td>-</td><td>2026-05-21</td><td>-</td><td>3</td><td>Merge branch &#x27;master&#x27; of http://gitlab.baofoo.net/clearing/cm-post-service into uat</td></tr><tr><td>mandao-customer</td><td>2026-05-13</td><td>2026-04-20</td><td>2026-05-21</td><td>32</td><td>9</td><td>Merge remote-tracking branch &#x27;origin/master&#x27;</td></tr><tr><td>auxiliary-trade</td><td>2026-04-18</td><td>2026-04-21</td><td>2026-05-21</td><td>31</td><td>34</td><td>Merge branch &#x27;feature/muyun/RCYW-17343&#x27; into &#x27;master_springboot&#x27;</td></tr></tbody></table>
-  </div>
-
-  <div class="section">
-    <h2>九、从背后看出什么</h2>
+    <h2>八、从背后看出什么</h2>
     <div class="findings">
       <div class="finding"><b>1. 这不是单项目开发，是跨域闭环</b><p>账户、支付、商业应用和测试同时高占用，说明需求本质是账户模型、资金流、交易接入、报表/查询和验证共同闭环。</p></div>
       <div class="finding"><b>2. 高峰不是“写代码”，而是复杂闭环被压缩</b><p>W16-W21 连续高位，说明 AI 或规范化编码即便提升写代码速度，也会把更多时间推到集成、修复、验证和主干合入。</p></div>
@@ -116,8 +116,8 @@
   <div class="section conclusion">
     <h2>结论</h2>
     <p><b>第一，分账核心改造的真实投入是闭环投入：</b>主工单 311.65 人日，加独立任务 44.75 人日，总占用 356.4 人日，其中研发四组 261.45 人日，测试 47.5 人日。</p>
-    <p><b>第二，代码生成/提交不是瓶颈的全部：</b>Excel 口径净增 +51,271 行，本地 Git 源码口径 +48,729 / -17,059，但明确 fix 的关键项目修复窗口达到 31-37 天。</p>
-    <p><b>第三，管理上真正要盯的是“写完之后”：</b>AI/规范化提交可以提高产出速度，但如果需求、验证、主干合入和失败写回没有同步工程化，高代码量会转化成更长的修复窗口和更高的测试/集成占用。</p>
+    <p><b>第二，代码生成/提交不是瓶颈的全部：</b>Excel 口径净增 +51,271 行，本地 Git 源码口径 +48,729 / -17,059，但本地 Git 显示 746 次提交、141 次 AI/规范化候选、97 条返工/重构信号。</p>
+    <p><b>第三，管理上真正要盯的是“写完之后”：</b>AI/规范化提交可以提高产出速度，但如果需求、验证、主干合入和失败写回没有同步工程化，高代码量会转化成重构、修复、测试、主干合入和 CR 审查的持续占用。</p>
   </div>
 
   <div class="section">

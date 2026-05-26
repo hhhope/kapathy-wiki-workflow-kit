@@ -163,6 +163,36 @@ Workbook total: `+70,204` / `-18,933` / net `+51,271`.
 
 Local Git source-like total: `+48,729` / `-17,059`. AI/规范化候选 source-like total: `141` commits, `+19,743` / `-6,807`. Fix total: `25` commits, `+823` / `-118`.
 
+## Git AI/Rework Signal Snapshot
+
+| 指标 | 数值 | 说明 |
+| --- | --- | --- |
+| 本地 Git 总提交 | 746 | `/mnt/d` 相关仓库全分支扫描，2026-03-19 to 2026-05-22 |
+| Merge 提交 | 296 | 反映多分支合入、test/uat/master 流转和主干稳定动作 |
+| 非 Merge 提交 | 450 | 更接近实际编码、修复、重构、文档/CR 动作 |
+| AI/规范化候选 | 141 | feat 41, fix 25, refactor 9, docs 62, chore/style 4；提交格式代理指标，不证明作者身份 |
+| 返工/重构信号 | 97 | 标题含 fix、优化、调整、修复、问题、CR、审查、重构等 |
+| 分账/账户主题返工信号 | 34 | 返工信号中命中分账、账户、接收户、宝财通、退款等关键词 |
+
+| 项目 | 总提交 | Merge/非Merge | 源码行 | AI/规范化候选 | fix/refactor | 返工信号 |
+| --- | --- | --- | --- | --- | --- | --- |
+| cm-settle | 227 | 78 / 149 | +13,495 / -2,492 | 2 | 0 / 0 | 28 |
+| mandao-customer | 130 | 20 / 110 | +22,451 / -12,934 | 75 | 5 / 3 | 14 |
+| auxiliary-trade | 338 | 174 / 164 | +7,533 / -1,278 | 45 | 17 / 5 | 47 |
+| clearing-trade | 23 | 10 / 13 | +3,465 / -274 | 12 | 3 / 1 | 6 |
+| cm-post | 14 | 8 / 6 | +1,104 / -37 | 6 | 0 / 0 | 1 |
+| clearing-manager | 10 | 6 / 4 | +628 / -32 | 1 | 0 / 0 | 0 |
+
+## Git Repair Timeline Evidence
+
+| 时间 | Git 证据 | 研发消耗点 |
+| --- | --- | --- |
+| 04-10 - 04-16 | cm-settle 未结算明细/目标账户；clearing-trade 新增分账接收户退款未结算；clearing-manager 添加待分账户和分账接收户枚举；cm-post 支持退款未结算目标账户 | 账户模型、退款未结算、枚举兼容、目标账户链路补齐 |
+| 04-14 - 04-23 | clearing-trade fix 账户类型异常、fix 分账接收户资金处理及空指针校验、refactor 移除未使用退款待结算状态更新 | 异常处理、空指针、退款状态、资金处理边界 |
+| 04-25 - 05-09 | cm-settle 多次代码优化/逻辑优化/自主结算代码优化；auxiliary-trade 主动建单退款 fix、RCYW-17140 特约商户接口请求方式和字段校验 fix | 代码重构、字段校验、主动建单退款、特约商户余额查询 |
+| 05-11 - 05-15 | cm-settle 分账接收户下发传代理商 id 多次提交；auxiliary-trade RCYW-17224 连续 fix 自主结算提现、商户 ID 类型转换、缺失字段、订单号处理、余额查询账户类型；mandao-customer transaction type、代理关系控制、代理商配置 refactor | 自主结算、提现补偿、分账接收户、会员/代理关系、账户类型列表 |
+| 05-18 - 05-21 | auxiliary-trade RCYW-17343/17224 多次合入 master_springboot；clearing-trade fix 费用账户 ID 空指针；mandao-customer fix 新特约关系查询、终端密钥类型；cm-settle docs(cr) 代码评审报告 | 主干合入、空指针、特约关系查询、代码审查、上线前稳定 |
+
 ## Evidence Boundary
 
 - `其他独立任务工单` has no weekly date field, so it is not added to the weekly curve.
