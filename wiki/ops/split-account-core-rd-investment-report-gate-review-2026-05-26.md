@@ -52,6 +52,7 @@ ai_generated: true
 | 清算和账户类人工复核红线 | cm-settle 2/149 候选占比低；clearing-trade 12/13 候选但 fix/refactor 4/13 | 资金、账户、清算类可提升出码比例，但不能取消人工复核 |
 | 测试右移 | 05/04-05/24 测试相关投入 37.0 人日，占测试总量 47.5 人日的 77.9% | 后三周口径用于说明右移压力，不代表所有测试只发生在后段 |
 | 接口范围与版本治理盲点 | 用户补充口径：新增 10 个内部接口、8 个对外接口，API Fox 管理下仍出现对外接口版本管理盲点 | 用户补充事实；未从 workbook 自动抽取，作为结论层管理判断使用 |
+| 生产问题、产品与测试要求 | 用户补充 2026-05-19 至 2026-05-22 聊天证据：4700 笔结算异常、约 12W 未结算、自助结算影响银企云、凌晨结算验证、客户结算规则告警、准生产缺陷与新增报表仍在调 | 用户补充事实；作为生产问题闭环分析，不替代事故复盘或资金最终影响确认 |
 | Git 修复鱼骨图 | 04-10 到 05-21 的业务开发、fix、refactor、merge、CR 提交，按 cm-settle、auxiliary-trade、mandao-customer、clearing-trade、cm-post/manager 分组 | 鱼骨图用于解释各项目研发消耗位置，主干合入不等同线上完成；项目分组是阅读结构，不是新的统计口径 |
 
 ## Section Drift Review
@@ -66,6 +67,7 @@ ai_generated: true
 | 代码提交与 AI 出码复核 | 合并 Excel 代码量、本地 Git 总提交、规范化候选、返工信号 | Retain with boundary |
 | Git 修复鱼骨图 | 按项目解释研发被消耗在哪里，避免线性时间轴只像流水账 | Retain with boundary |
 | 背后看出什么 | 同时说清楚做得好的、红线和暴露的问题 | Retain with user-supplied interface boundary |
+| 生产问题、产品与测试要求 | 单独列出生产问题，并把 cm-settle / clearing-trade / 账户 / 结算链路拆成产品和测试要求 | Retain as draft with chat-evidence boundary |
 
 ## Decision
 
@@ -100,3 +102,14 @@ ai_generated: true
 - HTML parser, frontmatter precheck, full frontmatter checker, and `git diff --check` passed after the rewrite.
 - Playwright screenshots: `/tmp/split-account-rd-good-bad-desktop.png` and `/tmp/split-account-rd-good-bad-mobile.png`.
 - Playwright layout assertion: section 8 renders 6 finding cards with no undersized boxes; the daily-output table renders 3 rows; section 8 contains both the 77.9% testing right-shift signal and the 10 internal / 8 external interface governance signal; desktop and mobile console checks had no errors.
+
+## Verification Update: Production / Product / Testing Requirements
+
+- Reader feedback: production issues need a separate column, and cm-settle / clearing-trade / account / settlement should be pulled out with product and testing requirements.
+- Change: H5 adds section 9 with columns `生产问题`, `证据/影响`, `牵涉链路`, `产品要求`, and `测试要求`.
+- Source update: records the 2026-05-19 to 2026-05-22 chat supplement as production-issue evidence.
+- Boundary: production issue claims come from user-provided chat evidence and should not be treated as final incident postmortem, final funding impact, or independently reconciled settlement data.
+- HTML parser, frontmatter precheck, full frontmatter checker, `git diff --check`, and tar package listing passed after the production issue update.
+- Playwright screenshots: `/tmp/split-account-rd-production-desktop.png` and `/tmp/split-account-rd-production-mobile.png`.
+- Playwright layout assertion: section 9 renders 5 production issue rows; headers include product and testing requirement columns; the section contains the 4700 / 12W settlement signal, 银企云 compatibility signal, and cm-settle / clearing-trade chain signal; desktop and mobile console checks had no errors.
+- Mobile boundary: overall body width is 624px at a 390px viewport because existing wide tables remain horizontally scrollable; the new section 9 content itself is present and readable in the mobile DOM check.
