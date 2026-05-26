@@ -87,6 +87,24 @@ ai_generated: true
 | 研发部-通用服务组 | 16.8 | 5.4% |
 | 产品管理部-SBU | 2.7 | 0.9% |
 
+## People Investment
+
+People count basis: unique `经办人` in `主工单任务底表` where `日百分比 > 0`, grouped by the actual child-ticket `组别` column. Cross-group handlers are counted once in the total but once in each group they worked in. `其他独立任务工单` lacks group fields, so it is used only for the total-person supplement, not for group split.
+
+| 口径 | 人数 | 说明 |
+| --- | --- | --- |
+| 主工单唯一经办人 | 29 | 主工单任务底表按经办人去重 |
+| 含独立任务保守去重 | 36 | 独立任务另有 10 个姓名记录，其中 3 个可与主工单倒名匹配；不合并疑似同人字形差异 |
+
+| 组别 | 主工单人数 | 主工单人日 | 口径说明 |
+| --- | --- | --- | --- |
+| 研发部-账户组 | 8 | 112.3 | 按组内唯一经办人去重 |
+| 研发部-支付组 | 7 | 70.45 | 焕焕、圣彬彬跨账户/支付两组，组内人数重复计入 |
+| 研发部-商业应用组 | 4 | 61.9 | 按组内唯一经办人去重 |
+| 测试部 | 6 | 47.5 | 按组内唯一经办人去重 |
+| 研发部-通用服务组 | 4 | 16.8 | 按组内唯一经办人去重 |
+| 产品管理部-SBU | 2 | 2.7 | 按组内唯一经办人去重 |
+
 ## Account Group Internal Breakdown
 
 Account group scope: 117计入人日子工单，合计112.3人日。Classification basis: child ticket summary keywords, grouped by consumed business/technical content.

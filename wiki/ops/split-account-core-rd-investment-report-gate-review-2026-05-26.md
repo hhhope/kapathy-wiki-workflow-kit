@@ -40,6 +40,7 @@ ai_generated: true
 | --- | --- | --- |
 | 主工单 311.65 人日 | `主工单任务底表` 348 条计入人日的子工单，`日百分比/100` 汇总 | `日百分比` 解释为人日；需业务确认是否有其他权重 |
 | 总占用 356.4 人日 | 主工单 311.65 + 独立任务 44.75 | 独立任务缺日期，不进入周曲线 |
+| 投入人数 | 主工单实际组别 + 经办人去重：29 人；含独立任务保守去重 36 人 | 独立任务缺组别，不拆到各组；跨组人员在组内人数重复计入 |
 | 04/20-04/26 峰值 53.05 人日 | 主工单解决日期按 ISO 周聚合，H5 主标签改为周日期区间 | fallback 日期仅在解决日期缺失时使用；2026-W17 保留为辅助口径 |
 | 研发投入持续甘特 | 按组别、子工单内容主题、ISO 周汇总人日 | 主题为内容审阅分桶，用于解释持续占用，不是 Jira 原生字段 |
 | 账户组 112.3 人日内部消耗 | `研发部-账户组` 117 条计入人日子工单，按子工单概要关键词分桶 | 分桶是内容审阅口径，不等同 Jira 原生分类 |
@@ -62,7 +63,7 @@ ai_generated: true
 | 摘要卡 | 快速给出投入、占用、峰值、代码量 | Retain |
 | 周投入 | 体现各组按周研发投入 | Retain |
 | 研发投入持续甘特 | 回答为什么开发完成后研发人力仍未释放 | Retain with classification boundary |
-| 各组占用 | 防止只看总人日，看不到组间压力 | Retain |
+| 各组占用 | 防止只看总人日，看不到组间人数和压力 | Retain |
 | 账户组内部消耗 | 回答账户组人力具体耗在哪些子工单内容上 | Retain with classification boundary |
 | 代码提交与 AI 出码复核 | 合并 Excel 代码量、本地 Git 总提交、规范化候选、返工信号 | Retain with boundary |
 | Git 修复鱼骨图 | 按项目解释研发被消耗在哪里，避免线性时间轴只像流水账 | Retain with boundary |
@@ -102,6 +103,15 @@ ai_generated: true
 - HTML parser, frontmatter precheck, full frontmatter checker, and `git diff --check` passed after the rewrite.
 - Playwright screenshots: `/tmp/split-account-rd-good-bad-desktop.png` and `/tmp/split-account-rd-good-bad-mobile.png`.
 - Playwright layout assertion: section 8 renders 6 finding cards with no undersized boxes; the daily-output table renders 3 rows; section 8 contains both the 77.9% testing right-shift signal and the 10 internal / 8 external interface governance signal; desktop and mobile console checks had no errors.
+
+## Verification Update: People Count
+
+- Reader feedback: the report was missing total invested people and people by group.
+- Change: summary card and section 3 now state 29 unique main-task handlers and 36 people under the conservative main-task + independent-task dedupe; section 3 adds a people-count column by group.
+- Source update: records the people-count basis and group split in `People Investment`.
+- Boundary: independent tasks lack group fields, so they are included only in the total-person supplement; cross-group handlers are counted once in the main-task total but once in each group they worked in.
+- Playwright screenshots: `/tmp/split-account-rd-people-count-desktop.png` and `/tmp/split-account-rd-people-count-mobile.png`.
+- Playwright layout assertion: section 3 renders the people-count header, 6 group rows, and group counts 8 / 7 / 4 / 4 / 6 / 2 for account, payment, commercial application, general service, testing, and product; the summary card contains 29 main-task people and 36 conservative deduped people; desktop console check had no errors.
 
 ## Verification Update: Production / Product / Engineering / Testing Requirements
 
