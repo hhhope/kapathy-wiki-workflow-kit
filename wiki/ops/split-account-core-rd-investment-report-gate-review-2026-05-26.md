@@ -31,7 +31,7 @@ ai_generated: true
 
 - Selected shape: `inbox/nirvana/preview .html` 的管理 H5 风格。
 - Retained patterns: 深色渐变头部、四张摘要卡、白底分区、legend、表格、扫描式甘特/条形视图、橙色 note 风险提示。
-- Modified patterns: 原甘特图改为周投入堆叠条、代码提交/AI 出码复核表、Git 修复时间轴和结论卡。
+- Modified patterns: 原甘特图改为周投入堆叠条、代码提交/AI 出码复核表、按项目拆分的 Git 修复鱼骨图和结论卡。
 - Rejected patterns: 不做纯表格堆叠；不做个人排名式榜单。
 
 ## Evidence Map
@@ -47,7 +47,7 @@ ai_generated: true
 | Git 源码 +48,729 / -17,059 | 本地 `/mnt/d` 仓库 `git log --numstat --no-merges` | 只统计常见源码/配置后缀；本地仓库可能不是完整远端状态 |
 | 本地 Git 总提交 746 | 相关仓库全分支扫描，Merge 296、非 Merge 450 | 全分支口径用于观察研发流转，不等同最终主干提交数 |
 | AI/规范化候选 141 与返工信号 97 | 提交前缀和标题关键词扫描 | 这是出码后返工/重构信号，不是作者身份或绩效归因 |
-| Git 修复时间轴 | 04-10 到 05-21 的业务开发、fix、refactor、merge、CR 提交 | 时间轴用于解释研发消耗位置，主干合入不等同线上完成 |
+| Git 修复鱼骨图 | 04-10 到 05-21 的业务开发、fix、refactor、merge、CR 提交，按 cm-settle、auxiliary-trade、mandao-customer、clearing-trade、cm-post/manager 分组 | 鱼骨图用于解释各项目研发消耗位置，主干合入不等同线上完成；项目分组是阅读结构，不是新的统计口径 |
 
 ## Section Drift Review
 
@@ -59,7 +59,7 @@ ai_generated: true
 | 各组占用 | 防止只看总人日，看不到组间压力 | Retain |
 | 账户组内部消耗 | 回答账户组人力具体耗在哪些子工单内容上 | Retain with classification boundary |
 | 代码提交与 AI 出码复核 | 合并 Excel 代码量、本地 Git 总提交、规范化候选、返工信号 | Retain with boundary |
-| Git 修复时间轴 | 用提交时间轴解释研发被消耗在哪里 | Retain with boundary |
+| Git 修复鱼骨图 | 按项目解释研发被消耗在哪里，避免线性时间轴只像流水账 | Retain with boundary |
 | 背后看出什么 | 从数据回到管理结论 | Retain |
 
 ## Decision
@@ -67,3 +67,13 @@ ai_generated: true
 - Draft may be used as internal review H5.
 - Do not claim final authoritative AI code volume until Git convention-to-AI ownership is confirmed.
 - Next useful validation: confirm `account-book-query` exact local repository and whether Excel `日百分比` should be interpreted as exactly `人日 * 100`.
+
+## Verification Update: Git Repair Fishbone
+
+- HTML parser: passed for `wiki/reports/split-account-core-rd-investment-analysis-2026-05-26.html`.
+- Frontmatter precheck: passed for `wiki/sources/split-account-core-rd-investment-source-2026-05-26.md` with 0 blocking entries; repo-level producer warnings remain unrelated.
+- Full frontmatter checker: passed with 0 blocking entries.
+- `git diff --check`: passed for the changed H5, source, gate review, and tar package.
+- Package check: `split-account-core-rd-investment-analysis-2026-05-26.tar.gz` contains the updated H5.
+- Playwright desktop screenshot: generated `/tmp/split-account-rd-fishbone-desktop.png`; fishbone section has 5 project rows and 20 bones, no console errors, no desktop horizontal overflow.
+- Playwright mobile screenshot: generated `/tmp/split-account-rd-fishbone-mobile.png`; fishbone itself fits within the viewport and stacks correctly. The WSL browser environment lacks a Chinese CJK font, so screenshot text renders as tofu boxes in that environment.

@@ -183,15 +183,24 @@ Local Git source-like total: `+48,729` / `-17,059`. AI/规范化候选 source-li
 | cm-post | 14 | 8 / 6 | +1,104 / -37 | 6 | 0 / 0 | 1 |
 | clearing-manager | 10 | 6 / 4 | +628 / -32 | 1 | 0 / 0 | 0 |
 
-## Git Repair Timeline Evidence
+## Git Repair Fishbone Evidence
 
-| 时间 | Git 证据 | 研发消耗点 |
-| --- | --- | --- |
-| 04-10 - 04-16 | cm-settle 未结算明细/目标账户；clearing-trade 新增分账接收户退款未结算；clearing-manager 添加待分账户和分账接收户枚举；cm-post 支持退款未结算目标账户 | 账户模型、退款未结算、枚举兼容、目标账户链路补齐 |
-| 04-14 - 04-23 | clearing-trade fix 账户类型异常、fix 分账接收户资金处理及空指针校验、refactor 移除未使用退款待结算状态更新 | 异常处理、空指针、退款状态、资金处理边界 |
-| 04-25 - 05-09 | cm-settle 多次代码优化/逻辑优化/自主结算代码优化；auxiliary-trade 主动建单退款 fix、RCYW-17140 特约商户接口请求方式和字段校验 fix | 代码重构、字段校验、主动建单退款、特约商户余额查询 |
-| 05-11 - 05-15 | cm-settle 分账接收户下发传代理商 id 多次提交；auxiliary-trade RCYW-17224 连续 fix 自主结算提现、商户 ID 类型转换、缺失字段、订单号处理、余额查询账户类型；mandao-customer transaction type、代理关系控制、代理商配置 refactor | 自主结算、提现补偿、分账接收户、会员/代理关系、账户类型列表 |
-| 05-18 - 05-21 | auxiliary-trade RCYW-17343/17224 多次合入 master_springboot；clearing-trade fix 费用账户 ID 空指针；mandao-customer fix 新特约关系查询、终端密钥类型；cm-settle docs(cr) 代码评审报告 | 主干合入、空指针、特约关系查询、代码审查、上线前稳定 |
+The H5 uses a project-based fishbone view instead of a flat timeline. The fishbone keeps the same Git evidence but groups it by repository so the reader can see where post-code-generation effort was consumed.
+
+| 项目 | 时间 | Git 证据 | 研发消耗点 |
+| --- | --- | --- | --- |
+| cm-settle | 04-10 - 05-21 | 未结算明细/目标账户；多次代码优化/逻辑优化/自主结算代码优化；分账接收户下发传代理商 id 多次提交和 test 合入；docs(cr) 代码评审报告 | 清结算入口补齐、自主结算重构、代理商 ID 下发、CR 与主干稳定 |
+| auxiliary-trade | 04-21 - 05-21 | 主动建单退款 fix；RCYW-17140 特约商户接口请求方式和字段校验 fix；RCYW-17224 连续 fix 自主结算提现、商户 ID 类型转换、缺失字段、订单号处理、余额查询账户类型；RCYW-17343/17224 多次合入 master_springboot | 退款、字段校验、提现补偿、账户类型、master 合入 |
+| mandao-customer | 05-11 - 05-21 | transaction type、代理关系控制、代理商配置 refactor；fix 新特约关系查询、终端密钥类型 | 会员/代理关系、客户关系查询、类型兼容、规范化提交后的关系边界修复 |
+| clearing-trade | 04-10 - 05-20 | 新增分账接收户退款未结算；fix 账户类型异常、fix 分账接收户资金处理及空指针校验；refactor 移除未使用退款待结算状态更新；fix 费用账户 ID 空指针 | 分账接收户退款、账户类型、资金处理、空指针、退款状态重构 |
+| cm-post / clearing-manager | 04-10 - 05-21 | cm-post 支持退款未结算目标账户；clearing-manager 添加待分账户和分账接收户枚举；管理侧主干合入 | 退款目标账户、枚举兼容、跨系统联调入口 |
+
+Fishbone management buckets:
+
+- 业务链路补齐：未结算、退款、目标账户、分账接收户。
+- 出码后重构：代码优化、refactor、字段校验、类型转换。
+- 测试暴露修复：空指针、账户类型、查询关系、缺失字段。
+- 主干/发布稳定：master 合入、test 合入、CR 报告、上线前修复。
 
 ## Evidence Boundary
 
