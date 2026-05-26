@@ -222,6 +222,16 @@ This is a user-provided review supplement for the H5 conclusion layer, not an in
 | 新增对外接口 | 8 | External contract changes require version ownership, not only interface documentation. |
 | API Fox 管理边界 | Existing API Fox management did not prevent an external-interface version-management blind spot | API documentation exists, but external version governance still needs explicit review and release gating. |
 
+## Meeting Alignment Supplement
+
+User-provided management review input, used only for section 8 interpretation.
+
+| 指标 | 数值 | 解释 |
+| --- | --- | --- |
+| 本人参与会议 | 16 次 | 会议参与口径由用户补充 |
+| 上线方案对齐 | 3 次 | 3 次属于上线方案对齐 |
+| 方案反复沟通 | 13 次 | 除上线方案对齐外，其余主要是方案对齐；相同需求反复沟通，指向团队摩擦和返工成本 |
+
 ## Production Issue Supplement
 
 This is a user-provided chat evidence supplement from `2026-05-19` to `2026-05-22`, used to draft the H5 production-issue / product-requirement / engineering-requirement / testing-requirement section. It is not extracted from the workbook.
