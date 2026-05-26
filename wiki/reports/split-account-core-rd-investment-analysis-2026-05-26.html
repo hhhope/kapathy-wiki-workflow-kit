@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>分账核心改造研发投入分析</title>
+<style>
+:root{--bg:#f7f9fc;--card:#fff;--text:#1f2937;--muted:#64748b;--line:#e5e7eb;--done:#22c55e;--doing:#f59e0b;--risk:#ef4444;--dark:#0f172a;--dark2:#1e293b;--blue:#2563eb;--shadow:0 8px 20px rgba(15,23,42,.06)}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC","WenQuanYi Micro Hei","Droid Sans Fallback","SimHei",sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:1560px;margin:0 auto;padding:24px} .header{background:linear-gradient(135deg,var(--dark),var(--dark2));color:#fff;border-radius:20px;padding:26px 30px;margin-bottom:20px;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+.header h1{margin:0 0 10px;font-size:32px;line-height:1.2} .header p{margin:6px 0;color:#cbd5e1;line-height:1.75;max-width:1180px} .badge{display:inline-block;margin-top:8px;padding:5px 10px;border:1px solid rgba(255,255,255,.22);border-radius:999px;color:#e2e8f0;font-size:12px;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px} .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow)} .card h3{margin:0 0 8px;font-size:15px} .big{font-size:27px;font-weight:800;letter-spacing:-.02em} .muted{color:var(--muted);line-height:1.65} .mini{font-size:12px;color:var(--muted)}
+.section{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px;margin-bottom:20px;box-shadow:var(--shadow)} .section h2{margin:0 0 8px;font-size:22px} .lead{margin:0 0 14px;color:var(--muted);line-height:1.7} .note{margin-top:12px;padding:12px 14px;border-radius:14px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;line-height:1.7}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0 14px} .legend span{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px} .dot{width:12px;height:12px;border-radius:50%}
+.week-row{display:grid;grid-template-columns:92px 1fr 70px;gap:10px;align-items:center;margin:9px 0} .week-label{font-weight:700;color:#334155} .week-bar{height:26px;border-radius:999px;background:#f1f5f9;overflow:hidden;display:flex;border:1px solid #e2e8f0} .seg{height:100%;display:block} .week-total{font-weight:800;text-align:right}
+.two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:20px} table{width:100%;border-collapse:collapse;font-size:14px} th,td{border:1px solid var(--line);padding:9px 10px;vertical-align:top;text-align:left} th{background:#f8fafc} .num{font-variant-numeric:tabular-nums} .mini-track{height:10px;border-radius:999px;background:#e5e7eb;overflow:hidden} .mini-track i{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#22c55e);border-radius:999px} .warn{color:#b45309;font-weight:700}
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} .finding{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fcfcfd} .finding b{display:block;margin-bottom:6px} .finding p{margin:0;color:var(--muted);line-height:1.65} .conclusion{background:linear-gradient(135deg,#111827,#334155);color:#fff} .conclusion p{color:#dbe4f0} .pill{display:inline-block;padding:4px 9px;border-radius:999px;background:#eef2ff;color:#3730a3;font-weight:700;font-size:12px}
+@media(max-width:1100px){.cards,.two-col,.findings{grid-template-columns:1fr}.wrap{padding:14px}.header h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>分账核心改造：研发投入、代码量与修复时间</h1>
+    <p>这页不是看“谁提交多”，而是把工单人日、周投入、项目代码量和主干修复窗口放到同一张经营视图里：账户、支付、商业应用和测试到底被占用了多久，代码写了多少，修复和主干合入又消耗了多少时间。</p>
+    <span class="badge">Management H5 · 数据窗口 2026-03-19 - 2026-05-21</span>
+  </div>
+
+  <div class="cards">
+    <div class="card"><h3>主工单投入</h3><div class="big">311.65 人日</div><div class="muted">348 条计入人日的开发/测试子工单；研发类 246.1 人日，测试类 47.4 人日。</div></div>
+    <div class="card"><h3>总占用口径</h3><div class="big">356.4 人日</div><div class="muted">主工单 + 其他独立任务；独立任务 44.75 人日因缺日期，不并入周趋势。</div></div>
+    <div class="card"><h3>投入峰值</h3><div class="big">2026-W17</div><div class="muted">峰值周 53.05 人日；W16-W21 连续高位，说明联调、修复、验证同时挤压。</div></div>
+    <div class="card"><h3>代码量基线</h3><div class="big">+51,271 净增</div><div class="muted">Excel 项目口径 +70,204 / -18,933；本地 Git 源码口径 +48,729 / -17,059。</div></div>
+  </div>
+
+  <div class="section">
+    <h2>一、每周研发投入曲线</h2>
+    <p class="lead">按照子工单日期聚合后，投入从 W16 开始进入高位，W17 达到峰值。后续 W18-W21 没有快速回落，说明这不是单点开发，而是账户、支付、商业应用、测试共同进入闭环验证。</p>
+    <div class="legend">
+      <span><i class="dot" style="background:#2563eb"></i>研发部-账户组</span><span><i class="dot" style="background:#16a34a"></i>研发部-支付组</span><span><i class="dot" style="background:#f59e0b"></i>研发部-商业应用组</span><span><i class="dot" style="background:#ef4444"></i>测试部</span><span><i class="dot" style="background:#7c3aed"></i>研发部-通用服务组</span><span><i class="dot" style="background:#64748b"></i>产品管理部-SBU</span>
+    </div>
+    <div class="week-row"><div class="week-label">2026-W12</div><div class="week-bar"><span class="seg" style="width:3.00%;background:#2563eb" title="研发部-账户组 0.2人日"></span></div><div class="week-total">0.2</div></div><div class="week-row"><div class="week-label">2026-W13</div><div class="week-bar"><span class="seg" style="width:3.00%;background:#2563eb" title="研发部-账户组 1人日"></span><span class="seg" style="width:3.00%;background:#f59e0b" title="研发部-商业应用组 1人日"></span><span class="seg" style="width:3.00%;background:#64748b" title="产品管理部-SBU 1.1人日"></span></div><div class="week-total">3.1</div></div><div class="week-row"><div class="week-label">2026-W14</div><div class="week-bar"><span class="seg" style="width:3.77%;background:#2563eb" title="研发部-账户组 2人日"></span><span class="seg" style="width:3.77%;background:#16a34a" title="研发部-支付组 2人日"></span><span class="seg" style="width:9.43%;background:#f59e0b" title="研发部-商业应用组 5人日"></span><span class="seg" style="width:3.00%;background:#64748b" title="产品管理部-SBU 0.4人日"></span></div><div class="week-total">9.4</div></div><div class="week-row"><div class="week-label">2026-W15</div><div class="week-bar"><span class="seg" style="width:18.85%;background:#2563eb" title="研发部-账户组 10人日"></span><span class="seg" style="width:3.00%;background:#16a34a" title="研发部-支付组 1人日"></span><span class="seg" style="width:11.12%;background:#f59e0b" title="研发部-商业应用组 5.9人日"></span><span class="seg" style="width:3.00%;background:#ef4444" title="测试部 1人日"></span></div><div class="week-total">17.9</div></div><div class="week-row"><div class="week-label">2026-W16</div><div class="week-bar"><span class="seg" style="width:42.79%;background:#2563eb" title="研发部-账户组 22.7人日"></span><span class="seg" style="width:21.87%;background:#16a34a" title="研发部-支付组 11.6人日"></span><span class="seg" style="width:18.66%;background:#f59e0b" title="研发部-商业应用组 9.9人日"></span><span class="seg" style="width:3.77%;background:#ef4444" title="测试部 2人日"></span><span class="seg" style="width:3.77%;background:#7c3aed" title="研发部-通用服务组 2人日"></span></div><div class="week-total">48.2</div></div><div class="week-row"><div class="week-label">2026-W17</div><div class="week-bar"><span class="seg" style="width:41.47%;background:#2563eb" title="研发部-账户组 22人日"></span><span class="seg" style="width:29.31%;background:#16a34a" title="研发部-支付组 15.55人日"></span><span class="seg" style="width:22.62%;background:#f59e0b" title="研发部-商业应用组 12人日"></span><span class="seg" style="width:3.00%;background:#ef4444" title="测试部 1.5人日"></span><span class="seg" style="width:3.77%;background:#7c3aed" title="研发部-通用服务组 2人日"></span></div><div class="week-total">53.05</div></div><div class="week-row"><div class="week-label">2026-W18</div><div class="week-bar"><span class="seg" style="width:18.47%;background:#2563eb" title="研发部-账户组 9.8人日"></span><span class="seg" style="width:28.65%;background:#16a34a" title="研发部-支付组 15.2人日"></span><span class="seg" style="width:20.74%;background:#f59e0b" title="研发部-商业应用组 11人日"></span><span class="seg" style="width:11.31%;background:#ef4444" title="测试部 6人日"></span><span class="seg" style="width:5.66%;background:#7c3aed" title="研发部-通用服务组 3人日"></span></div><div class="week-total">45</div></div><div class="week-row"><div class="week-label">2026-W19</div><div class="week-bar"><span class="seg" style="width:32.05%;background:#2563eb" title="研发部-账户组 17人日"></span><span class="seg" style="width:13.95%;background:#16a34a" title="研发部-支付组 7.4人日"></span><span class="seg" style="width:15.27%;background:#f59e0b" title="研发部-商业应用组 8.1人日"></span><span class="seg" style="width:20.55%;background:#ef4444" title="测试部 10.9人日"></span><span class="seg" style="width:7.54%;background:#7c3aed" title="研发部-通用服务组 4人日"></span></div><div class="week-total">47.4</div></div><div class="week-row"><div class="week-label">2026-W20</div><div class="week-bar"><span class="seg" style="width:23.94%;background:#2563eb" title="研发部-账户组 12.7人日"></span><span class="seg" style="width:15.08%;background:#16a34a" title="研发部-支付组 8人日"></span><span class="seg" style="width:11.31%;background:#f59e0b" title="研发部-商业应用组 6人日"></span><span class="seg" style="width:25.26%;background:#ef4444" title="测试部 13.4人日"></span><span class="seg" style="width:7.54%;background:#7c3aed" title="研发部-通用服务组 4人日"></span></div><div class="week-total">44.1</div></div><div class="week-row"><div class="week-label">2026-W21</div><div class="week-bar"><span class="seg" style="width:28.09%;background:#2563eb" title="研发部-账户组 14.9人日"></span><span class="seg" style="width:18.28%;background:#16a34a" title="研发部-支付组 9.7人日"></span><span class="seg" style="width:5.66%;background:#f59e0b" title="研发部-商业应用组 3人日"></span><span class="seg" style="width:23.94%;background:#ef4444" title="测试部 12.7人日"></span><span class="seg" style="width:3.39%;background:#7c3aed" title="研发部-通用服务组 1.8人日"></span><span class="seg" style="width:3.00%;background:#64748b" title="产品管理部-SBU 1.2人日"></span></div><div class="week-total">43.3</div></div>
+    <div class="note">周投入只包含有日期的主工单子工单；独立任务另列，避免把没有时间证据的任务强行摊到周。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <h2>二、各组研发/验证占用</h2>
+      <p class="lead">核心研发占用集中在账户、支付、商业应用、通用服务四组，共 261.45 人日；测试部 47.5 人日，且在 W19-W21 明显上升。</p>
+      <table class=""><thead><tr><th>组别</th><th>人日</th><th>占主工单</th><th>相对规模</th></tr></thead><tbody><tr><td><b>研发部-账户组</b></td><td>112.3 人日</td><td>36.0%</td><td><div class="mini-track"><i style="width:100.0%"></i></div></td></tr><tr><td><b>研发部-支付组</b></td><td>70.45 人日</td><td>22.6%</td><td><div class="mini-track"><i style="width:62.7%"></i></div></td></tr><tr><td><b>研发部-商业应用组</b></td><td>61.9 人日</td><td>19.9%</td><td><div class="mini-track"><i style="width:55.1%"></i></div></td></tr><tr><td><b>测试部</b></td><td>47.5 人日</td><td>15.2%</td><td><div class="mini-track"><i style="width:42.3%"></i></div></td></tr><tr><td><b>研发部-通用服务组</b></td><td>16.8 人日</td><td>5.4%</td><td><div class="mini-track"><i style="width:15.0%"></i></div></td></tr><tr><td><b>产品管理部-SBU</b></td><td>2.7 人日</td><td>0.9%</td><td><div class="mini-track"><i style="width:2.4%"></i></div></td></tr></tbody></table>
+    </div>
+    <div class="section">
+      <h2>三、任务类型拆分</h2>
+      <p class="lead">投入主干是研发，不是单纯测试排期；但测试后移的高占用表明后期缺陷验证、回归和主干稳定化承担了很大隐性成本。</p>
+      <table class=""><thead><tr><th>类型</th><th>人日</th><th>占比</th></tr></thead><tbody><tr><td>研发</td><td>246.1</td><td>79.0%</td></tr><tr><td>测试</td><td>47.4</td><td>15.2%</td></tr><tr><td>其他</td><td>13.15</td><td>4.2%</td></tr><tr><td>产品</td><td>2.7</td><td>0.9%</td></tr><tr><td>日常</td><td>2.3</td><td>0.7%</td></tr></tbody></table>
+      <div class="note">结论口径：研发投入看“闭环占用”，不是只看编码天数；修复和验证也是研发资源消耗。</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>四、项目代码量：Excel 基线与本地 Git 复核</h2>
+    <p class="lead">Excel 提供的是业务选定项目口径；本地 Git 复核只统计 2026-03-19 到 2026-05-22 的源码/配置后缀，且只把约定式提交标为“AI/规范化提交候选”。两者不强行对齐，差异本身就是管理信号。</p>
+    <table class=""><thead><tr><th>项目</th><th>操作人</th><th>提交次数</th><th>新增</th><th>删除</th><th>净增</th></tr></thead><tbody><tr><td>cm-settle</td><td>彬彬</td><td>136</td><td>+20,033</td><td>-2,693</td><td>+17,340</td></tr><tr><td>clearing-trade</td><td>焕焕</td><td>13</td><td>+4,248</td><td>-274</td><td>+3,974</td></tr><tr><td>clearing-manager</td><td>焕焕</td><td>3</td><td>+42</td><td>-25</td><td>+17</td></tr><tr><td>cm-post</td><td>焕焕</td><td>5</td><td>+1,861</td><td>-31</td><td>+1,830</td></tr><tr><td>mandao-customer</td><td>王竹</td><td>167</td><td>+30,770</td><td>-15,043</td><td>+15,727</td></tr><tr><td>auxiliary-trade</td><td>王竹</td><td>16</td><td>+7,427</td><td>-201</td><td>+7,226</td></tr><tr><td>account-book-query</td><td>王竹</td><td>4</td><td>+1,340</td><td>-14</td><td>+1,326</td></tr><tr><td>bill-cache</td><td>王竹</td><td>3</td><td>+105</td><td>-54</td><td>+51</td></tr><tr><td>mandao-account-book</td><td>清正</td><td>18</td><td>+4,378</td><td>-598</td><td>+3,780</td></tr></tbody></table>
+    <div class="note">Excel 基线显示，代码净增主要集中在 cm-settle、mandao-customer、auxiliary-trade、clearing-trade 和 mandao-account-book，说明改造穿透了清结算、会员/客户、辅助交易和账户账本，不是一个服务内的孤立改动。</div>
+  </div>
+
+  <div class="section">
+    <h2>五、本地 Git：规范化提交与修复窗口</h2>
+    <p class="lead">本地 Git 扫描显示：源码口径合计 +48,729 / -17,059；AI/规范化提交候选 141 次，贡献 +19,743 / -6,807；fix 提交 25 次，贡献 +823 / -118。</p>
+    <table class=""><thead><tr><th>项目</th><th>全量提交</th><th>非Merge</th><th>源码行</th><th>AI/规范化候选</th><th>fix</th><th>首个fix</th><th>主干最后合入</th><th>修复窗口天</th><th>边界</th></tr></thead><tbody><tr><td>cm-settle</td><td>227</td><td>149</td><td>+13,495/-2,492</td><td>2 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>2026-05-21</td><td>-</td><td><span class="">-</span></td></tr><tr><td>clearing-trade</td><td>23</td><td>13</td><td>+3,465/-274</td><td>12 次<br><span class="mini">+3,091/-219</span></td><td>3</td><td>2026-04-14</td><td>2026-05-20</td><td>37</td><td><span class="">-</span></td></tr><tr><td>clearing-manager</td><td>10</td><td>4</td><td>+628/-32</td><td>1 次<br><span class="mini">+23/-4</span></td><td>0</td><td>-</td><td>2026-05-20</td><td>-</td><td><span class="">-</span></td></tr><tr><td>cm-post</td><td>14</td><td>6</td><td>+1,104/-37</td><td>6 次<br><span class="mini">+1,104/-37</span></td><td>0</td><td>-</td><td>2026-05-21</td><td>-</td><td><span class="warn">Excel 项目 cm-post 映射到本地 cm-post-service。</span></td></tr><tr><td>mandao-customer</td><td>130</td><td>110</td><td>+22,451/-12,934</td><td>75 次<br><span class="mini">+13,627/-6,058</span></td><td>5</td><td>2026-04-20</td><td>2026-05-21</td><td>32</td><td><span class="">-</span></td></tr><tr><td>auxiliary-trade</td><td>338</td><td>164</td><td>+7,533/-1,278</td><td>45 次<br><span class="mini">+1,898/-489</span></td><td>17</td><td>2026-04-21</td><td>2026-05-21</td><td>31</td><td><span class="">-</span></td></tr><tr><td>account-book-query</td><td>0</td><td>0</td><td>+0/-0</td><td>0 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>-</td><td>-</td><td><span class="warn">本地使用 /mnt/d/cloud/account-query 作为候选映射；未扫到相关提交，需人工确认。</span></td></tr><tr><td>bill-cache</td><td>4</td><td>4</td><td>+53/-12</td><td>0 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>2026-05-21</td><td>-</td><td><span class="">-</span></td></tr><tr><td>mandao-account-book</td><td>0</td><td>0</td><td>+0/-0</td><td>0 次<br><span class="mini">+0/-0</span></td><td>0</td><td>-</td><td>-</td><td>-</td><td><span class="">-</span></td></tr></tbody></table>
+    <div class="note">“AI/规范化候选”只是基于提交信息格式的代理指标，不能证明作者身份。可用来观察规范化编码/AI 协作在项目中的占比，但不能当作绩效归因。</div>
+  </div>
+
+  <div class="section">
+    <h2>六、主干修复时间</h2>
+    <p class="lead">能看到明确 fix 的项目里，修复窗口集中在 31-37 天：这说明主干稳定化不是上线前几天的尾巴，而是和开发并行存在了一个月左右。</p>
+    <table class=""><thead><tr><th>项目</th><th>首个相关提交</th><th>首个fix</th><th>主干最后合入</th><th>修复窗口天</th><th>交付跨度天</th><th>主干合入证据</th></tr></thead><tbody><tr><td>cm-settle</td><td>2026-05-11</td><td>-</td><td>2026-05-21</td><td>-</td><td>11</td><td>Merge branch &#x27;user/baisheng/2026-05-20&#x27; into &#x27;master&#x27;</td></tr><tr><td>clearing-trade</td><td>2026-04-11</td><td>2026-04-14</td><td>2026-05-20</td><td>37</td><td>40</td><td>Merge branch &#x27;xuanyuanmiao/dev20260428-14792&#x27; into &#x27;master&#x27;</td></tr><tr><td>clearing-manager</td><td>2026-04-15</td><td>-</td><td>2026-05-20</td><td>-</td><td>36</td><td>Merge branch &#x27;xuanyuanmiao/dev20260428-16015&#x27; into &#x27;master&#x27;</td></tr><tr><td>cm-post</td><td>2026-05-19</td><td>-</td><td>2026-05-21</td><td>-</td><td>3</td><td>Merge branch &#x27;master&#x27; of http://gitlab.baofoo.net/clearing/cm-post-service into uat</td></tr><tr><td>mandao-customer</td><td>2026-05-13</td><td>2026-04-20</td><td>2026-05-21</td><td>32</td><td>9</td><td>Merge remote-tracking branch &#x27;origin/master&#x27;</td></tr><tr><td>auxiliary-trade</td><td>2026-04-18</td><td>2026-04-21</td><td>2026-05-21</td><td>31</td><td>34</td><td>Merge branch &#x27;feature/muyun/RCYW-17343&#x27; into &#x27;master_springboot&#x27;</td></tr></tbody></table>
+  </div>
+
+  <div class="section">
+    <h2>七、从背后看出什么</h2>
+    <div class="findings">
+      <div class="finding"><b>1. 这不是单项目开发，是跨域闭环</b><p>账户、支付、商业应用和测试同时高占用，说明需求本质是账户模型、资金流、交易接入、报表/查询和验证共同闭环。</p></div>
+      <div class="finding"><b>2. 高峰不是“写代码”，而是复杂闭环被压缩</b><p>W16-W21 连续高位，说明 AI 或规范化编码即便提升写代码速度，也会把更多时间推到集成、修复、验证和主干合入。</p></div>
+      <div class="finding"><b>3. 代码量不能单独解释投入</b><p>代码净增高的项目不一定修复窗口最长；真正需要管理的是代码生成后到主干稳定之间的返修时间和测试占用。</p></div>
+      <div class="finding"><b>4. 测试后移是风险信号</b><p>测试部在 W19-W21 占用上升，意味着问题发现和回归集中在后段；如果需求边界继续变化，后段会继续吸收成本。</p></div>
+      <div class="finding"><b>5. main 合入日不是项目完成日</b><p>主干最后合入只能说明代码进入主线；真正完成还要看线上验证、失败写回、回归结论和后续缺陷是否收敛。</p></div>
+      <div class="finding"><b>6. 研发投入要从人日升级到闭环指标</b><p>建议后续同时追踪：周人日、代码净增、fix 窗口、测试回归占用、主干合入后缺陷数和失败写回质量。</p></div>
+    </div>
+  </div>
+
+  <div class="section conclusion">
+    <h2>结论</h2>
+    <p><b>第一，分账核心改造的真实投入是闭环投入：</b>主工单 311.65 人日，加独立任务 44.75 人日，总占用 356.4 人日，其中研发四组 261.45 人日，测试 47.5 人日。</p>
+    <p><b>第二，代码生成/提交不是瓶颈的全部：</b>Excel 口径净增 +51,271 行，本地 Git 源码口径 +48,729 / -17,059，但明确 fix 的关键项目修复窗口达到 31-37 天。</p>
+    <p><b>第三，管理上真正要盯的是“写完之后”：</b>AI/规范化提交可以提高产出速度，但如果需求、验证、主干合入和失败写回没有同步工程化，高代码量会转化成更长的修复窗口和更高的测试/集成占用。</p>
+  </div>
+
+  <div class="section">
+    <h2>证据边界</h2>
+    <p class="lead">数据来自 Excel 工单、Excel 代码量页和本地 `/mnt/d` Git 仓库。`account-book-query` 本地映射未确认；`其他独立任务工单` 没有日期，不进入周曲线；AI 代码量按提交规范做代理识别，不作绝对归因。</p>
+    <p class="mini">Source record: ../sources/split-account-core-rd-investment-source-2026-05-26.md · Gate review: ../ops/split-account-core-rd-investment-report-gate-review-2026-05-26.md</p>
+  </div>
+</div>
+</body>
+</html>
