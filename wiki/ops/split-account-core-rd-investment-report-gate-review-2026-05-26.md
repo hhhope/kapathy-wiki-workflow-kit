@@ -40,7 +40,7 @@ ai_generated: true
 | --- | --- | --- |
 | 主工单 311.65 人日 | `主工单任务底表` 348 条计入人日的子工单，`日百分比/100` 汇总 | `日百分比` 解释为人日；需业务确认是否有其他权重 |
 | 总占用 356.4 人日 | 主工单 311.65 + 独立任务 44.75 | 独立任务缺日期，不进入周曲线 |
-| 投入人数 | 主工单实际组别 + 规范化完整人名去重：29 人；含独立任务规范化去重 36 人 | 独立任务缺组别，不拆到各组；跨组人员在组内人数重复计入，各组人数不可相加 |
+| 投入人数 | 剔除小于 1 人日后，主工单有效投入 25 人；含独立任务有效投入 32 人 | 独立任务缺组别，不拆到各组；跨组人员在组内人数重复计入，各组人数不可相加 |
 | 04/20-04/26 峰值 53.05 人日 | 主工单解决日期按 ISO 周聚合，H5 主标签改为周日期区间 | fallback 日期仅在解决日期缺失时使用；2026-W17 保留为辅助口径 |
 | 研发投入持续甘特 | 按组别、子工单内容主题、ISO 周汇总人日 | 主题为内容审阅分桶，用于解释持续占用，不是 Jira 原生字段 |
 | 账户组 112.3 人日内部消耗 | `研发部-账户组` 117 条计入人日子工单，按子工单概要关键词分桶 | 分桶是内容审阅口径，不等同 Jira 原生分类 |
@@ -107,12 +107,12 @@ ai_generated: true
 ## Verification Update: People Count
 
 - Reader feedback: the report was missing total invested people and people by group.
-- Change: summary card and section 3 now state 29 unique main-task handlers and 36 people under the normalized main-task + independent-task dedupe; section 3 labels the group column as `组内去重人数`.
+- Change: summary card and section 3 now state 25 effective main-task handlers and 32 effective people under the normalized main-task + independent-task dedupe after excluding people below 1 person-day; section 3 labels the group column as `有效人数 ≥1 人日`.
 - Source update: records the normalized full-name basis and group split in `People Investment`.
 - Boundary: independent tasks lack group fields, so they are included only in the total-person supplement; cross-group handlers are counted once in the main-task total but once in each group they worked in, so group counts are not additive.
 - Playwright screenshots: `/tmp/split-account-rd-people-count-desktop.png` and `/tmp/split-account-rd-people-count-mobile.png`.
-- User follow-up: clarify whether account-group names were deduped and apply full-name dedupe.
-- Playwright layout assertion: section 3 renders the group-deduped people header, 6 group rows, and group counts 8 / 7 / 4 / 4 / 6 / 2 for account, payment, commercial application, general service, testing, and product; the summary card contains 29 main-task people and 36 normalized deduped people; desktop console check had no errors.
+- User follow-up: clarify whether account-group names were deduped, apply full-name dedupe, and then exclude all people below 1 person-day.
+- Playwright layout assertion: section 3 renders the effective-people header, 6 group rows, and group counts 6 / 7 / 4 / 5 / 3 / 2 for account, payment, commercial application, testing, general service, and product; the summary card contains 25 main-task effective people and 32 effective people including independent tasks; desktop console check had no errors.
 
 ## Verification Update: Production / Product / Engineering / Testing Requirements
 

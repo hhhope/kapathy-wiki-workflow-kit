@@ -89,20 +89,20 @@ ai_generated: true
 
 ## People Investment
 
-People count basis: unique normalized full person names in `主工单任务底表` where `日百分比 > 0`, grouped by the actual child-ticket `组别` column. Normalization removes whitespace and aligns reversed display names such as `婷婷 马 / 马婷婷`, `志宇 张 / 张志宇`, and `婷 刘 / 刘婷`. Cross-group handlers are counted once in the total but once in each group they worked in. `其他独立任务工单` lacks group fields, so it is used only for the total-person supplement, not for group split.
+People count basis: unique normalized full person names in `主工单任务底表` where `日百分比 >= 100`, grouped by the actual child-ticket `组别` column. Normalization removes whitespace and aligns reversed display names such as `婷婷 马 / 马婷婷`, `志宇 张 / 张志宇`, and `婷 刘 / 刘婷`. Cross-group handlers are counted once in the total but once in each group they worked in. `其他独立任务工单` lacks group fields, so it is used only for the total-person supplement, not for group split.
 
 | 口径 | 人数 | 说明 |
 | --- | --- | --- |
-| 主工单全局姓名去重 | 29 | 主工单任务底表按规范化完整人名去重 |
-| 含独立任务姓名规范化去重 | 36 | 独立任务另有 10 个姓名记录，其中 3 个可与主工单规范化匹配；不合并疑似同人字形差异 |
+| 主工单全局有效人数 | 25 | 主工单任务底表按规范化完整人名去重，并剔除小于 1 人日 |
+| 含独立任务有效人数 | 32 | 主工单 + 独立任务合并后按规范化完整人名去重，并剔除合计小于 1 人日 |
 
-| 组别 | 组内去重人数 | 主工单人日 | 口径说明 |
+| 组别 | 组内有效人数 | 主工单人日 | 口径说明 |
 | --- | --- | --- | --- |
-| 研发部-账户组 | 8 | 112.3 | 按组内规范化完整人名去重 |
+| 研发部-账户组 | 6 | 112.3 | 剔除吴龙伟 0.3、任利利 0.2 |
 | 研发部-支付组 | 7 | 70.45 | 焕焕、圣彬彬跨账户/支付两组，组内人数重复计入 |
 | 研发部-商业应用组 | 4 | 61.9 | 按组内规范化完整人名去重 |
-| 测试部 | 6 | 47.5 | 按组内规范化完整人名去重 |
-| 研发部-通用服务组 | 4 | 16.8 | 按组内规范化完整人名去重 |
+| 测试部 | 5 | 47.5 | 剔除马婷婷 0.3 |
+| 研发部-通用服务组 | 3 | 16.8 | 剔除杨锋将 0.2 |
 | 产品管理部-SBU | 2 | 2.7 | 按组内规范化完整人名去重 |
 
 ## Account Group Internal Breakdown
