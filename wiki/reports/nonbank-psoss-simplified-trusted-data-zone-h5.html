@@ -19,14 +19,14 @@
 
   <div class="cards">
     <div class="card"><h3>建设对象</h3><div class="big">简化可信数据区</div><div class="muted">适合不提供本地计算能力的中小机构路径，重点建设本地专属数据存储、处理、SFTP 报送和运行管理。</div></div>
-    <div class="card"><h3>交互方式</h3><div class="big">代理采集</div><div class="muted">内部系统不直接暴露给监管系统；非现场监管系统通过简化可信数据代理访问简化可信数据区。</div></div>
+    <div class="card"><h3>联调入口</h3><div class="big">网联测试平台</div><div class="muted">对接先走网联测试平台，网络侧按共用网联专线准备，并在监管侧标记为通过网联专线转发至 CCPC。</div></div>
     <div class="card"><h3>业务里程碑</h3><div class="big">2026 年 8 月</div><div class="muted">业务侧完成数据口径确认，先把表范围、字段规则、频次、勾稽和留存边界对齐。</div></div>
     <div class="card"><h3>技术里程碑</h3><div class="big">2027 年 1 月</div><div class="muted">完成系统联调对接，验证网络、SFTP、证书、加解密、数据校验、采集和回执闭环。</div></div>
   </div>
 
   <section class="section">
     <h2>一、35 图对应的系统交互方式</h2>
-    <p class="lead">简化可信数据区的关键边界在参与者本地。内部系统负责生成和推送报送数据；简化可信数据区负责数据服务、存储、处理和运行管理；监管系统通过简化可信数据代理发起采集操作，再服务人民银行总行和分支机构的非现场监管工作。</p>
+    <p class="lead">简化可信数据区的关键边界在参与者本地。内部系统负责生成和推送报送数据；简化可信数据区负责数据服务、存储、处理和运行管理；联调阶段先对接网联测试平台，网络侧共用网联专线，非现场监管系统在交互图中直接标记为通过网联专线转发至 CCPC。</p>
     <div class="flow">
       <svg viewBox="0 0 1200 360" role="img" aria-label="简化可信数据区交互方式">
         <defs>
@@ -45,20 +45,24 @@
         <rect x="252" y="212" width="186" height="42" class="sys"/><text x="345" y="239" text-anchor="middle" class="small">数据处理</text>
         <rect x="252" y="262" width="186" height="42" class="sys"/><text x="345" y="289" text-anchor="middle" class="small">运行管理</text>
         <rect x="565" y="28" width="315" height="302" class="box"/>
-        <text x="722" y="58" text-anchor="middle" class="label">非现场监管系统</text>
+        <text x="722" y="54" text-anchor="middle" class="label">非现场监管系统</text>
+        <text x="722" y="78" text-anchor="middle" class="small">通过网联专线转发至 CCPC</text>
         <rect x="595" y="92" width="48" height="160" class="agent"/>
         <text x="619" y="128" writing-mode="tb" glyph-orientation-vertical="0" class="small">简化可信数据代理</text>
         <path d="M595 179 L470 179" class="arrow"/>
-        <rect x="690" y="92" width="150" height="42" class="box"/><text x="765" y="119" text-anchor="middle" class="small">机构前置</text>
-        <rect x="690" y="162" width="150" height="42" class="box"/><text x="765" y="189" text-anchor="middle" class="small">归集平台</text>
-        <rect x="690" y="232" width="150" height="42" class="box"/><text x="765" y="259" text-anchor="middle" class="small">业务平台</text>
+        <rect x="690" y="90" width="150" height="36" class="agent"/><text x="765" y="113" text-anchor="middle" class="small">网联测试平台</text>
+        <rect x="690" y="134" width="150" height="36" class="box"/><text x="765" y="157" text-anchor="middle" class="small">机构前置</text>
+        <rect x="690" y="180" width="150" height="36" class="box"/><text x="765" y="203" text-anchor="middle" class="small">归集平台</text>
+        <rect x="690" y="226" width="150" height="36" class="box"/><text x="765" y="249" text-anchor="middle" class="small">业务平台</text>
+        <text x="532" y="158" text-anchor="middle" class="small">共用网联专线</text>
+        <text x="532" y="202" text-anchor="middle" class="small">测试平台联调</text>
         <path d="M920 126 L1010 126" class="bi"/>
         <path d="M920 240 L1010 240" class="bi"/>
         <rect x="1015" y="96" width="165" height="58" class="bank"/><text x="1098" y="132" text-anchor="middle" class="label">人民银行总行</text>
         <rect x="1015" y="210" width="165" height="58" class="bank"/><text x="1098" y="246" text-anchor="middle" class="label">人民银行分支机构</text>
       </svg>
     </div>
-    <div class="note">建设判断：简化路径不是把监管数据放在普通文件服务器上，而是把“数据准备、校验、SFTP、采集、审计、监控、安全隔离”收敛在一个受控区域里。</div>
+    <div class="note">建设判断：简化路径不是把监管数据放在普通文件服务器上，而是把“数据准备、校验、SFTP、网联测试平台联调、共用网联专线、转发至 CCPC、采集、审计、监控、安全隔离”收敛在一个受控区域里。</div>
   </section>
 
   <section class="section">
@@ -76,7 +80,7 @@
         <tr><td><b>可用性</b></td><td>系统可用性至少 99.9%，业务连续性 RTO <= 4 小时、RPO <= 1 小时。</td><td>不能只部署单点 SFTP；要准备故障切换、备份恢复和联调期间的应急路径。</td></tr>
         <tr><td><b>采集时效</b></td><td>单日数据采集 2 小时内完成，节假日后多日数据不应超过 4 小时。</td><td>业务口径确认后要提前压测数据量、文件生成时间、上传时间和采集回执。</td></tr>
         <tr><td><b>数据范围</b></td><td>规范一 47 张表供采集并进入中心端处理区；规范二 2 张表只留存在机构端可信数据区。</td><td>先做本机构涉及表清单，再拆必报、指定报送、机构端留存和不适用范围。</td></tr>
-        <tr><td><b>专线要求</b></td><td>复用专线或金融城域网接入；单根专线故障时备用专线可继续连接。</td><td>复用现有线路前要评估对生产业务的影响，并把备用线路纳入联调测试。</td></tr>
+        <tr><td><b>网联测试平台与专线</b></td><td>通过共用网联专线对接网联测试平台，并在非现场监管系统侧明确为通过网联专线转发至 CCPC；规范允许复用现有网络专线或金融城域网接入。</td><td>先确认共用网联专线的网络策略、路由、端口、SFTP 访问、CCPC 转发边界和证书配置，再把备用线路纳入联调测试。</td></tr>
       </tbody>
     </table>
   </section>
@@ -91,7 +95,7 @@
             <tr><td><span class="pill p-blue">口径确认</span></td><td>按表确认字段、频次、金额单位、枚举、日期格式、条件必填和勾稽关系。</td><td>2026 年 8 月前，业务侧要把口径确认到可开发、可校验、可验收。</td></tr>
             <tr><td><span class="pill p-green">数据准备</span></td><td>从内部系统抽取明细、汇总、指标类数据，生成接口规范要求的数据文件。</td><td>原始业务流水、账户余额、交易汇总和监管报表之间要能追溯。</td></tr>
             <tr><td><span class="pill p-orange">校验整改</span></td><td>按规范性、准确性、完整性、一致性生成校验结果台账。</td><td>不能只看文件是否生成，要看错误项能否定位到业务系统和责任人。</td></tr>
-            <tr><td><span class="pill p-red">报送采集</span></td><td>处理好的数据上传至参与者 SFTP 目录，由监管侧通过代理采集。</td><td>联调要覆盖采集、回执、补录、更正、重报和异常恢复。</td></tr>
+        <tr><td><span class="pill p-red">报送采集</span></td><td>处理好的数据上传至参与者 SFTP 目录，先通过网联测试平台和共用网联专线完成联调采集。</td><td>联调要覆盖采集、回执、补录、更正、重报、异常恢复和专线故障切换。</td></tr>
           </tbody>
         </table>
       </div>
@@ -126,8 +130,8 @@
     <div class="timeline">
       <div class="step"><time>2026-06 至 2026-08</time><b>业务口径确认</b><span>确认表范围、字段规则、频次、勾稽、敏感字段、留存边界和不适用说明。</span></div>
       <div class="step"><time>2026-08 至 2026-10</time><b>数据加工建设</b><span>完成抽取、清洗、校验、台账、文件生成和 SFTP 目录规范。</span></div>
-      <div class="step"><time>2026-10 至 2026-11</time><b>安全和环境准备</b><span>准备证书、SFTP 密钥、专线、访问控制、审计监控、备份恢复。</span></div>
-      <div class="step"><time>2026-11 至 2027-01</time><b>系统联调对接</b><span>验证网络、SFTP、加解密、采集、回执、补录、更正、重报和异常恢复。</span></div>
+      <div class="step"><time>2026-10 至 2026-11</time><b>安全和环境准备</b><span>准备证书、SFTP 密钥、共用网联专线、访问控制、审计监控、备份恢复。</span></div>
+      <div class="step"><time>2026-11 至 2027-01</time><b>网联测试平台联调</b><span>通过共用网联专线验证网络、SFTP、加解密、采集、回执、补录、更正、重报和异常恢复。</span></div>
       <div class="step"><time>2027-01 以后</time><b>生产测试和验收</b><span>执行生产案例，完成分行和网联确认，准备测试记录、配置清单和验收结论。</span></div>
       <div class="step"><time>常态化</time><b>正式报送跟踪</b><span>跟踪报送结果、回执、补报、重报、问题处理记录和后续整改。</span></div>
     </div>
@@ -137,7 +141,7 @@
     <h2>结论</h2>
     <p><b>第一，简化可信数据区是中小机构的可落地路径：</b>它弱化本地计算要求，但没有弱化数据边界、存储、处理、审计、监控、安全和恢复责任。</p>
     <p><b>第二，2026 年 8 月前最关键的是业务口径：</b>表范围、字段规则、频次、勾稽、敏感字段和机构端留存不确认，后面的 SFTP、联调和验收都会变成反复返工。</p>
-    <p><b>第三，2027 年 1 月联调要按生产闭环验收：</b>不是只测连通性，还要测加解密、双盐双密差异、采集回执、异常恢复、审计监控和备份恢复。</p>
+    <p><b>第三，2027 年 1 月联调要按生产闭环验收：</b>不是只测连通性，还要通过网联测试平台、共用网联专线和转发至 CCPC 的链路验证加解密、双盐双密差异、采集回执、异常恢复、审计监控和备份恢复。</p>
   </section>
 
   <section class="section">

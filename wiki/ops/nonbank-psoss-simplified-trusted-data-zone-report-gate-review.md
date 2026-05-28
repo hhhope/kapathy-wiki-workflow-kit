@@ -50,7 +50,7 @@ Template status: user selected a reference direction by naming `split-account-co
 | Field | Contract |
 |---|---|
 | Reader | 中小非银行支付机构内部业务、技术、运维、合规协同读者 |
-| Reader decision or action | Understand what simplified trusted data zone construction means at system level, what must be built first, what safety requirements cannot be skipped, and how the 2026-08 / 2027-01 milestones divide responsibility. |
+| Reader decision or action | Understand what simplified trusted data zone construction means at system level, how the NetUnion testing platform, shared NetUnion dedicated line, and forwarding to CCPC fit into integration, what must be built first, what safety requirements cannot be skipped, and how the 2026-08 / 2027-01 milestones divide responsibility. |
 | Main line | Simplified trusted data zone is not just an SFTP directory; it is a controlled reporting boundary with data service, storage, processing, operations, security, and acceptance responsibilities. |
 | Non-goals | No full table-field catalog, no final architecture procurement plan, no production runbook, no legal opinion. |
 | User-owned judgments | Whether the current “one salt one cipher” scheme can be upgraded or mapped to the required “two salts two ciphers” scheme; final milestone ownership and acceptance status. |
@@ -63,7 +63,7 @@ Template status: user selected a reference direction by naming `split-account-co
 | Source | `wiki/reports/split-account-core-rd-investment-analysis-2026-05-26.html` |
 | Reader job | Scan a management/technical topic quickly through title, summary cards, structured sections, tables/diagrams, notes, and evidence boundary. |
 | Page group | One standalone H5 report. |
-| Reading path | Header and cards -> system interaction -> construction requirements -> data flow -> security requirements -> launch/acceptance flow -> evidence boundary. |
+| Reading path | Header and cards -> system interaction with NetUnion testing platform/shared dedicated line/CCPC forwarding -> construction requirements -> data flow -> security requirements -> launch/acceptance flow -> evidence boundary. |
 | Visual logic | Reuse the reference's dense management-H5 rhythm: dark header, metric cards, white sections, diagrams, tables, orange note boxes, and closing evidence boundary. |
 | Writing standard | Chinese internal training/report language, concise and source-bounded. |
 | Reuse boundary | The visual rhythm is reused; the content is rebuilt around the simplified trusted data zone evidence and does not copy the split-account report's business conclusions. |
@@ -104,7 +104,7 @@ Learning Use Gate: PASS.
 | Section | Objective | Mainline fit | Drift risk | Action |
 |---|---|---:|---:|---|
 | Header and cards | Establish small/mid institution construction perspective and milestones. | 5 | 0 | Retain. |
-| Interaction model | Translate 35 image into system boundary and interaction view. | 5 | 0 | Retain. |
+| Interaction model | Translate 35 image into system boundary and interaction view, with user-supplied NetUnion testing platform/shared line context added. | 5 | 0 | Retain. |
 | Construction requirements | Explain data service, storage, processing, operations. | 5 | 0 | Retain. |
 | Data flow | Show data口径,校验,SFTP,采集,留存 path. | 5 | 0 | Retain. |
 | Security requirements | Separate safety requirements from general construction. | 5 | 0 | Retain. |
@@ -122,6 +122,7 @@ Paragraph Drift Gate: PASS for draft.
 | 34 provides interface/encryption/retention/backup boundary | Source document | confirmed | None. |
 | One salt one cipher vs two salts two ciphers is a gap to call out | User-supplied judgment + 34 double-salt/double-cipher wording | needs implementation confirmation | Treat as risk and design-check item. |
 | 2026-08 business口径确认, 2027-01 system联调对接 | User-supplied timeline | planning anchor | Confirm with official project plan before external use. |
+| NetUnion testing platform, shared NetUnion dedicated line, and forwarding to CCPC | User-supplied implementation constraint + 36 reusable dedicated-line boundary | project-specific anchor | Confirm network strategy, route, ports, platform address, CCPC forwarding boundary, and certificate configuration in integration materials. |
 
 ## Hard Gate Results
 
@@ -174,9 +175,17 @@ Completed on 2026-05-28:
 - Playwright desktop screenshot generated: `/tmp/nonbank-psoss-tdz-desktop.png` at 1440 x 2905.
 - Playwright mobile screenshot generated: `/tmp/nonbank-psoss-tdz-mobile.png` at 390 x 5942.
 - The H5 contains no inline JavaScript or script tags, so console-error behavior is not driven by page script.
-- Static content assertion confirmed the H5 includes 2026 年 8 月, 2027 年 1 月, 一盐一密, 双盐双密 / 2 盐 2 密, RTO <= 4 小时, RPO <= 1 小时, 99.9%, SFTP, 单日数据采集 2 小时, and 节假日后多日数据不超过 4 小时.
+- Static content assertion confirmed the H5 includes 2026 年 8 月, 2027 年 1 月, 一盐一密, 双盐双密 / 2 盐 2 密, RTO <= 4 小时, RPO <= 1 小时, 99.9%, SFTP, 单日数据采集 2 小时, 节假日后多日数据不超过 4 小时, 网联测试平台, 共用网联专线, and 转发至 CCPC.
 
 Visual proof boundary:
 
 - The Playwright screenshot environment rendered Chinese as tofu boxes because the WSL browser environment lacks an accessible CJK font.
 - Layout evidence remains useful for section structure, card/grid stacking, the inline interaction diagram, and mobile responsive flow, but final human readability should be checked in a normal browser with Chinese fonts.
+
+## Verification Update: NetUnion Line And CCPC
+
+- Reader feedback: the system interaction section must explicitly show NetUnion testing-platform integration, shared NetUnion dedicated line, and that the off-site supervision system forwards through the NetUnion dedicated line to CCPC.
+- Change: the H5 first-card copy, system-interaction lead paragraph, inline diagram subtitle, construction requirement table, data-flow row, launch timeline, and conclusion now include `网联测试平台`, `共用网联专线`, and `通过网联专线转发至 CCPC`.
+- Source update: the source record now captures these as user-supplied project implementation constraints and keeps the proof boundary that concrete route, port, platform address, CCPC forwarding boundary, and certificate configuration still need project integration materials.
+- HTML parser, target frontmatter prechecks, `git diff --check`, and static text assertions passed after the update.
+- Playwright desktop screenshot generated: `/tmp/nonbank-psoss-tdz-ccpc-desktop.png`.
