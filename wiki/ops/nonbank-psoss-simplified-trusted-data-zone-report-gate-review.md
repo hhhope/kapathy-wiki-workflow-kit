@@ -84,7 +84,7 @@ Retained patterns:
 
 Rejected patterns:
 
-- No code-volume charts, fishbone, or R&D investment metrics.
+- No code-volume charts, R&D repair fishbone, or R&D investment metrics; launch fishbone is allowed because the user requested the 9-step上线流程 view.
 - No personal performance or project staffing analysis.
 - No decorative visuals that do not carry the system interaction or requirement model.
 
@@ -108,7 +108,7 @@ Learning Use Gate: PASS.
 | Construction requirements | Explain data service, storage, processing, operations. | 5 | 0 | Retain. |
 | Data flow | Show data口径,校验,SFTP,采集,留存 path. | 5 | 0 | Retain. |
 | Security requirements | Separate safety requirements from general construction. | 5 | 0 | Retain. |
-| Launch and acceptance | Connect business口径 and联调 milestones to acceptance flow. | 5 | 0 | Retain. |
+| Launch and acceptance | Preserve the 9 steps from `2026-05-28-training-debugging-notes.md`, combine time anchors with a fishbone view, and emphasize on-site acceptance. | 5 | 0 | Retain. |
 | Evidence boundary | Prevent overclaiming compliance or final implementation. | 5 | 0 | Retain. |
 
 Paragraph Drift Gate: PASS for draft.
@@ -189,3 +189,12 @@ Visual proof boundary:
 - Source update: the source record now captures these as user-supplied project implementation constraints and keeps the proof boundary that concrete route, port, platform address, CCPC forwarding boundary, and certificate configuration still need project integration materials.
 - HTML parser, target frontmatter prechecks, `git diff --check`, and static text assertions passed after the update.
 - Playwright desktop screenshot generated: `/tmp/nonbank-psoss-tdz-ccpc-desktop.png`.
+
+## Verification Update: 9-Step Launch Fishbone
+
+- Reader feedback: the launch section should combine time anchors with a fishbone, but the emphasis must be the 9 steps from `2026-05-28-training-debugging-notes.md`; do not drift into a new 6-step project timeline.
+- Change: section 5 now has three compact time anchors and a 9-step fishbone: 明确上线范围和投产日程, 接入准备, 确认报送口径和数据规则, 联调, 开展生产测试, 验收确认, 现场验收, 形成投产材料, 常态化报送.
+- Visual emphasis: step 7 `现场验收` is highlighted as the hard node for 人行分行 data acceptance and system acceptance.
+- Source update: the derived source record now states that the 9-step fishbone comes from `wiki/sources/2026-05-28-training-debugging-notes.md`.
+- Verification: HTML parser, `git diff --check`, and target frontmatter precheck passed after the fishbone update.
+- Playwright screenshots generated: `/tmp/nonbank-psoss-tdz-fishbone-desktop-v2.png` and `/tmp/nonbank-psoss-tdz-fishbone-mobile.png`; the desktop fishbone renders all 9 steps and the mobile view stacks all 9 steps.
