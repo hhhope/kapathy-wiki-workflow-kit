@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">账户体系能力地图重绘</title>
+  <desc id="desc">基于账户组技术规划材料重绘，展示账户基础、统一账务、清结算、统一余额、对账报表、数据服务和收益分润能力。</desc>
+  <defs>
+    <style>
+      @font-face{font-family:YaHeiLocal;src:url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype")}.bg{fill:#fffaf0}.grid{stroke:#eadfca;stroke-width:1;fill:none}.title{font:800 38px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#141414}.sub{font:600 18px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#5b6472}.hub{fill:#14213d;stroke:#141414;stroke-width:5}.hubtext{font:800 24px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#fff}.cluster{fill:#fff;stroke:#141414;stroke-width:4}.cname{font:800 25px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#141414}.node{stroke:#141414;stroke-width:2.5}.ntext{font:700 18px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#141414}.small{font:600 15px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#5b6472}.line{fill:none;stroke-width:6;stroke-linecap:round;opacity:.78}.line2{fill:none;stroke:#141414;stroke-width:2;stroke-dasharray:7 7;opacity:.32}.tag{font:800 15px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#fff}.safe{fill:#0f9d7a}.build{fill:#f3c64f}.plan{fill:#7d55a8}.blue{fill:#cde7ff}.green{fill:#cef5e8}.orange{fill:#ffe0c8}.purple{fill:#eadcff}.yellow{fill:#fff1b8}.red{fill:#ffe0e0}
+    </style>
+    <pattern id="paperGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path class="grid" d="M32 0H0V32"/>
+    </pattern>
+  </defs>
+  <rect class="bg" width="1600" height="980"/>
+  <rect width="1600" height="980" fill="url(#paperGrid)" opacity=".55"/>
+  <text x="64" y="70" class="title">账户体系能力地图</text>
+  <text x="64" y="106" class="sub">从源 PPT 能力地图重绘：保留账户组相关能力，剔除非当前培训边界能力。</text>
+
+  <path class="line" stroke="#f3c64f" d="M800 490 C645 355 510 280 350 210"/>
+  <path class="line" stroke="#0f9d7a" d="M800 490 C650 510 470 560 300 680"/>
+  <path class="line" stroke="#2f77c5" d="M800 490 C910 335 1050 240 1240 170"/>
+  <path class="line" stroke="#7d55a8" d="M800 490 C1045 485 1220 545 1410 650"/>
+  <path class="line" stroke="#e96b2c" d="M800 490 C800 670 760 790 650 880"/>
+  <path class="line" stroke="#6b7280" d="M800 490 C740 360 730 230 760 140"/>
+
+  <circle class="hub" cx="800" cy="490" r="106"/>
+  <text x="800" y="482" text-anchor="middle" class="hubtext">账户体系</text>
+  <text x="800" y="516" text-anchor="middle" class="hubtext">能力地图</text>
+
+  <g transform="translate(70 145)">
+    <rect class="cluster" width="470" height="220" rx="24"/>
+    <text x="28" y="46" class="cname">账户基础能力</text>
+    <rect class="node yellow" x="28" y="72" width="138" height="42" rx="10"/><text class="ntext" x="97" y="99" text-anchor="middle">账户生命周期</text>
+    <rect class="node yellow" x="182" y="72" width="138" height="42" rx="10"/><text class="ntext" x="251" y="99" text-anchor="middle">账户类型管理</text>
+    <rect class="node yellow" x="336" y="72" width="106" height="42" rx="10"/><text class="ntext" x="389" y="99" text-anchor="middle">账户属性</text>
+    <rect class="node yellow" x="28" y="130" width="150" height="42" rx="10"/><text class="ntext" x="103" y="157" text-anchor="middle">母子账户关系</text>
+    <rect class="node yellow" x="194" y="130" width="122" height="42" rx="10"/><text class="ntext" x="255" y="157" text-anchor="middle">多账户模型</text>
+    <rect class="node yellow" x="332" y="130" width="110" height="42" rx="10"/><text class="ntext" x="387" y="157" text-anchor="middle">嵌入式账户</text>
+    <text x="28" y="198" class="small">新人先看对象关系：谁开户、谁拥有、谁出资、谁结算。</text>
+  </g>
+
+  <g transform="translate(55 560)">
+    <rect class="cluster" width="500" height="250" rx="24"/>
+    <text x="28" y="48" class="cname">统一账务能力</text>
+    <rect class="node green" x="28" y="78" width="132" height="42" rx="10"/><text class="ntext" x="94" y="105" text-anchor="middle">分录规则引擎</text>
+    <rect class="node green" x="176" y="78" width="112" height="42" rx="10"/><text class="ntext" x="232" y="105" text-anchor="middle">凭证中心</text>
+    <rect class="node green" x="304" y="78" width="96" height="42" rx="10"/><text class="ntext" x="352" y="105" text-anchor="middle">日切处理</text>
+    <rect class="node green" x="28" y="138" width="112" height="42" rx="10"/><text class="ntext" x="84" y="165" text-anchor="middle">账务查询</text>
+    <rect class="node green" x="156" y="138" width="126" height="42" rx="10"/><text class="ntext" x="219" y="165" text-anchor="middle">冲正调账</text>
+    <rect class="node green" x="298" y="138" width="144" height="42" rx="10"/><text class="ntext" x="370" y="165" text-anchor="middle">标准记账模型</text>
+    <text x="28" y="216" class="small">账务能力把业务动作变成账本证据，是余额、报表、对账的基础。</text>
+  </g>
+
+  <g transform="translate(1120 95)">
+    <rect class="cluster" width="410" height="245" rx="24"/>
+    <text x="28" y="48" class="cname">数据与服务</text>
+    <rect class="node blue" x="28" y="78" width="112" height="42" rx="10"/><text class="ntext" x="84" y="105" text-anchor="middle">余额查询</text>
+    <rect class="node blue" x="154" y="78" width="112" height="42" rx="10"/><text class="ntext" x="210" y="105" text-anchor="middle">账务查询</text>
+    <rect class="node blue" x="280" y="78" width="96" height="42" rx="10"/><text class="ntext" x="328" y="105" text-anchor="middle">报表能力</text>
+    <rect class="node blue" x="28" y="138" width="146" height="42" rx="10"/><text class="ntext" x="101" y="165" text-anchor="middle">数据对外服务</text>
+    <rect class="node blue" x="190" y="138" width="116" height="42" rx="10"/><text class="ntext" x="248" y="165" text-anchor="middle">凭证查询</text>
+    <text x="28" y="212" class="small">给联调、排障、财务、商户和运营提供可验证结果。</text>
+  </g>
+
+  <g transform="translate(1120 540)">
+    <rect class="cluster" width="410" height="250" rx="24"/>
+    <text x="28" y="48" class="cname">统一余额能力</text>
+    <rect class="node purple" x="28" y="78" width="138" height="42" rx="10"/><text class="ntext" x="97" y="105" text-anchor="middle">统一余额引擎</text>
+    <rect class="node purple" x="182" y="78" width="100" height="42" rx="10"/><text class="ntext" x="232" y="105" text-anchor="middle">可用余额</text>
+    <rect class="node purple" x="28" y="138" width="100" height="42" rx="10"/><text class="ntext" x="78" y="165" text-anchor="middle">实时余额</text>
+    <rect class="node purple" x="144" y="138" width="100" height="42" rx="10"/><text class="ntext" x="194" y="165" text-anchor="middle">冻结余额</text>
+    <rect class="node purple" x="260" y="138" width="100" height="42" rx="10"/><text class="ntext" x="310" y="165" text-anchor="middle">余额对账</text>
+    <text x="28" y="218" class="small">余额是交易、清结算、风控和问题定位共同依赖的状态。</text>
+  </g>
+
+  <g transform="translate(560 690)">
+    <rect class="cluster" width="500" height="230" rx="24"/>
+    <text x="28" y="48" class="cname">清结算能力</text>
+    <rect class="node orange" x="28" y="78" width="108" height="42" rx="10"/><text class="ntext" x="82" y="105" text-anchor="middle">基础对账</text>
+    <rect class="node orange" x="152" y="78" width="108" height="42" rx="10"/><text class="ntext" x="206" y="105" text-anchor="middle">账期管理</text>
+    <rect class="node orange" x="276" y="78" width="108" height="42" rx="10"/><text class="ntext" x="330" y="105" text-anchor="middle">轧差能力</text>
+    <rect class="node orange" x="28" y="138" width="136" height="42" rx="10"/><text class="ntext" x="96" y="165" text-anchor="middle">统一对账平台</text>
+    <rect class="node orange" x="180" y="138" width="116" height="42" rx="10"/><text class="ntext" x="238" y="165" text-anchor="middle">资金归集</text>
+    <rect class="node orange" x="312" y="138" width="116" height="42" rx="10"/><text class="ntext" x="370" y="165" text-anchor="middle">结算收敛</text>
+  </g>
+
+  <g transform="translate(575 60)">
+    <rect class="cluster" width="430" height="180" rx="24"/>
+    <text x="28" y="48" class="cname">对账 / 报表 / 收益</text>
+    <rect class="node red" x="28" y="78" width="116" height="42" rx="10"/><text class="ntext" x="86" y="105" text-anchor="middle">商户对账</text>
+    <rect class="node red" x="158" y="78" width="116" height="42" rx="10"/><text class="ntext" x="216" y="105" text-anchor="middle">渠道对账</text>
+    <rect class="node red" x="288" y="78" width="96" height="42" rx="10"/><text class="ntext" x="336" y="105" text-anchor="middle">财务报表</text>
+    <rect class="node red" x="28" y="128" width="116" height="34" rx="8"/><text class="small" x="86" y="150" text-anchor="middle">分润分账</text>
+    <rect class="node red" x="158" y="128" width="116" height="34" rx="8"/><text class="small" x="216" y="150" text-anchor="middle">收益计算</text>
+  </g>
+
+  <path class="line2" d="M540 250 C665 285 725 340 760 394"/>
+  <path class="line2" d="M555 675 C670 650 720 620 755 585"/>
+  <path class="line2" d="M1120 235 C1015 300 930 370 858 420"/>
+  <path class="line2" d="M1120 665 C1025 610 945 570 894 525"/>
+  <path class="line2" d="M800 240 C800 300 800 350 800 384"/>
+  <path class="line2" d="M810 596 C770 640 725 675 680 710"/>
+
+  <g transform="translate(64 875)">
+    <rect x="0" y="0" width="270" height="42" rx="21" class="safe"/><text x="135" y="27" text-anchor="middle" class="tag">新人先掌握：对象关系</text>
+    <rect x="290" y="0" width="270" height="42" rx="21" class="build"/><text x="425" y="27" text-anchor="middle" class="tag" fill="#141414">再进入：账务和余额</text>
+    <rect x="580" y="0" width="270" height="42" rx="21" class="plan"/><text x="715" y="27" text-anchor="middle" class="tag">最后闭环：清结算对账</text>
+  </g>
+</svg>

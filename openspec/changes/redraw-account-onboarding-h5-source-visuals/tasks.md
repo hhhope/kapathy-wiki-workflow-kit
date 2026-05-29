@@ -5,7 +5,7 @@
   - Record why the box-heavy H5 failed the reader-facing Visual Gate.
   - Commit only OpenSpec and gate-review baseline files if needed.
 
-- [ ] 2. Produce standalone source-backed visuals
+- [x] 2. Produce standalone source-backed visuals
   - Create account capability map SVG.
   - Create account system architecture SVG.
   - Create account core chain SVG.
