@@ -77,7 +77,11 @@
     .visual-card { border: 3px solid var(--ink); border-radius: 16px; background: #fff; padding: 14px; min-height: 156px; }
     .visual-card strong { display: block; font-size: 20px; margin: 8px 0 6px; }
     .visual-frame { border: 3px solid var(--ink); border-radius: 18px; background: #fff; padding: 10px; margin: 14px 0; box-shadow: 0 8px 0 rgba(20, 20, 20, .06); overflow: auto; }
-    .source-visual { display: block; width: 100%; min-width: 920px; height: auto; border-radius: 10px; }
+    .source-visual { display: block; width: 100%; min-width: 920px; aspect-ratio: var(--ratio, 16 / 10); height: auto; border: 0; border-radius: 10px; background: #fff; }
+    .capability-visual { --ratio: 1600 / 980; }
+    .architecture-visual { --ratio: 1600 / 1040; }
+    .chain-visual { --ratio: 1600 / 860; }
+    .nirvana-visual { --ratio: 1600 / 1080; }
     .visual-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
     .visual-note { border: 2px solid var(--line); border-radius: 14px; background: #fff; padding: 12px; }
     .visual-note b { display: block; margin-bottom: 4px; font-size: 17px; }
@@ -167,7 +171,7 @@
       <h2>账户体系能力地图</h2>
       <p class="lead">这张图按源 PPT 能力地图重绘。新人先抓三条主线：对象关系、账务和余额、清结算对账。</p>
       <figure class="visual-frame">
-        <img class="source-visual" src="assets/account-group-onboarding-h5/account-capability-map.svg" alt="账户体系能力地图重绘图，包含账户基础、统一账务、清结算、统一余额、对账报表、数据服务和收益分润能力" />
+        <img class="source-visual capability-visual" src="assets/account-group-onboarding-h5/account-capability-map.png" alt="账户体系能力地图重绘图" />
       </figure>
       <div class="visual-notes">
         <div class="visual-note">
@@ -188,7 +192,7 @@
       <h2>系统架构怎么看</h2>
       <p class="lead">这张图按多渠道收款和宝财通架构重绘。新人要知道每个产品对象落在哪一层，账户组重点在哪里。</p>
       <figure class="visual-frame">
-        <img class="source-visual" src="assets/account-group-onboarding-h5/account-system-architecture.svg" alt="账户组系统架构重绘图，展示入口、产品、服务、数据、支付渠道、合作银行和运营管理" />
+        <img class="source-visual architecture-visual" src="assets/account-group-onboarding-h5/account-system-architecture.png" alt="账户组系统架构重绘图" />
       </figure>
       <div class="visual-notes">
         <div class="visual-note">
@@ -209,7 +213,7 @@
       <h2>核心业务链路</h2>
       <p class="lead">这张图把核心链路重绘成资金结果责任链。它不是五个动作，而是四层证据：入口、账户关系、资金动作、内部证据。</p>
       <figure class="visual-frame">
-        <img class="source-visual" src="assets/account-group-onboarding-h5/account-core-chain.svg" alt="账户核心链路重绘图，展示业务入口、账户关系、资金动作和内部证据的责任链" />
+        <img class="source-visual chain-visual" src="assets/account-group-onboarding-h5/account-core-chain.png" alt="账户核心链路重绘图" />
       </figure>
       <div class="visual-notes">
         <div class="visual-note">
@@ -323,7 +327,7 @@
       <h2>正在做的项目入口</h2>
       <p class="lead">这张图把涅槃材料和最新分账核心/宝财通改造报告合起来看：为什么要做、目标是什么、账户组新人能从哪里上手。</p>
       <figure class="visual-frame">
-        <img class="source-visual" src="assets/account-group-onboarding-h5/nirvana-project-entry-map.svg" alt="涅槃与最新项目入口重绘图，展示现状烟囱化、目标方案、清算内容和新人任务入口" />
+        <img class="source-visual nirvana-visual" src="assets/account-group-onboarding-h5/nirvana-project-entry-map.png" alt="涅槃与最新项目入口重绘图" />
       </figure>
       <div class="visual-notes">
         <div class="visual-note">

@@ -20,7 +20,7 @@
   - Keep the accepted section order and onboarding/AI content.
   - Preserve the sensitive-info boundary.
 
-- [ ] 4. Run visual and content verification
+- [x] 4. Run visual and content verification
   - Run HTML parser.
   - Run asset-reference grep.
   - Run excluded capability grep.
@@ -28,7 +28,7 @@
   - Take and inspect desktop and mobile screenshots.
   - Run `git diff --check`.
 
-- [ ] 5. Finalize repair evidence
+- [x] 5. Finalize repair evidence
   - Update the gate review with new asset paths, screenshots, proof boundary,
     and decision.
   - Run `openspec validate redraw-account-onboarding-h5-source-visuals

@@ -151,7 +151,36 @@ Allowed in the H5:
 
 ## Rewrite Decision
 
-- Local H5 rewrite is ready for user review.
-- The rewrite fixes the failed first draft by adding real capability-map depth, layered system architecture, complete core chain, and account-domain AI collaboration.
+- Superseded by Visual Gate Failure Override above. The rewrite added domain
+  depth but still failed because it reduced the source visuals to box/card
+  layouts.
 - Feishu sync is not approved by default and remains a separate follow-up.
 - Sensitive onboarding access details from Feishu source documents were intentionally excluded.
+
+## Source-Visual Repair Evidence
+
+| Asset | Editable Source | H5 Embed | Verification Role |
+| --- | --- | --- | --- |
+| Account capability map | `wiki/reports/assets/account-group-onboarding-h5/account-capability-map.svg` | `wiki/reports/assets/account-group-onboarding-h5/account-capability-map.png` | Replaces card-based capability blocks with a source-backed map. |
+| Account system architecture | `wiki/reports/assets/account-group-onboarding-h5/account-system-architecture.svg` | `wiki/reports/assets/account-group-onboarding-h5/account-system-architecture.png` | Replaces layered CSS boxes with a diagram based on source architecture slides. |
+| Account core chain | `wiki/reports/assets/account-group-onboarding-h5/account-core-chain.svg` | `wiki/reports/assets/account-group-onboarding-h5/account-core-chain.png` | Replaces wrapped flow cards with a lane-based funds-result responsibility chain. |
+| Nirvana / latest project entry map | `wiki/reports/assets/account-group-onboarding-h5/nirvana-project-entry-map.svg` | `wiki/reports/assets/account-group-onboarding-h5/nirvana-project-entry-map.png` | Adds Nirvana current-state, target architecture, clearing/account relation, and latest project entry points. |
+
+## Source-Visual Repair Verification Log
+
+- SVG parser check: passed for all four SVG assets with `python3 -m xml.etree.ElementTree`.
+- PNG export check: passed after exporting all four SVG assets with `playwright screenshot`.
+- H5 embed check: switched from SVG-as-`img`, then `iframe`, then `object` after screenshots showed font or loading failures; final H5 embeds PNG assets generated from the SVG source visuals.
+- HTML parser check: passed with `python3 -m html.parser wiki/reports/account-group-onboarding-h5.html`.
+- Asset-reference grep: passed with `rg -n "account-capability-map\\.png|account-system-architecture\\.png|account-core-chain\\.png|nirvana-project-entry-map\\.png|这版先看重绘图|涅槃与最新项目" wiki/reports/account-group-onboarding-h5.html`.
+- Excluded capability grep: passed with no matches for `授信能力|垫资能力` across H5 and visual assets.
+- Sensitive-info grep: passed with no matches for credentials, internal URLs, Feishu URLs, token strings, QR-code instructions, personal emails, or access instructions across H5 and visual assets.
+- Desktop screenshot: passed after visual inspection with `/tmp/account-group-onboarding-source-visuals-desktop.png`; all four PNG visuals render with readable Chinese text and no blank frames.
+- Mobile screenshot: passed after visual inspection with `/tmp/account-group-onboarding-source-visuals-mobile.png`; visuals render as complete scaled images without horizontal clipping.
+- Diff hygiene: passed with `git diff --check`.
+
+## Source-Visual Repair Decision
+
+- Local H5 draft is repaired for user review as a source-visual-driven version.
+- Prior Visual Gate pass is invalid and remains recorded as a failure.
+- Feishu sync is not approved by default and remains a separate follow-up.
