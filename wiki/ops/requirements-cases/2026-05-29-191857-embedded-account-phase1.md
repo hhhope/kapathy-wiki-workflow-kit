@@ -51,7 +51,13 @@ created_at: 2026-05-29
 
 ## User Stories
 
-- None
+- US-001: role=financial_customer; 商户希望通过 API 为终端用户开立嵌入式账户，并在开户流程内完成首卡绑定；benefit=为订阅支付场景建立可用的账户与首张可支付银行卡基础。
+- US-002: role=retail_customer; 终端用户希望在商户引导下完成首卡绑定或追加绑卡；benefit=后续账户支付可以使用已绑定银行卡完成扣款。
+- US-003: role=financial_customer; 商户希望在账户开户成功后为终端用户追加绑定银行卡；benefit=提高账户支付成功率并支持多卡支付准备。
+- US-004: role=financial_customer; 商户希望解除账户与银行卡之间的绑定关系；benefit=已解绑卡不再参与账户支付或订阅自动扣款。
+- US-005: role=financial_customer; 商户希望在订阅支付中显式选择账户支付；benefit=订阅支付可以接入嵌入式账户能力且不发生自动支付方式路由。
+- US-006: role=system_actor; 嵌入式账户前置希望按已绑卡优先级轮询发起快捷支付；benefit=在高优先级卡明确失败后可以继续尝试低优先级卡。
+- US-007: role=system_actor; 嵌入式账户前置希望在支付异常或结果未明时通过查单与补偿收敛结果；benefit=保证单笔支付只有一个唯一最终状态且不重复扣款。
 
 ## Acceptance Functions
 
@@ -75,13 +81,13 @@ created_at: 2026-05-29
 ## Readiness / Next Action
 
 - Status: diagnose
-- Next action: write_user_stories
-- Reason: domain and roles are normalized; hard-gate readiness still requires user stories and acceptance functions.
+- Next action: write_acceptance_functions
+- Reason: domain, roles, and user stories are normalized; hard-gate readiness still requires acceptance functions and story-to-acceptance mappings.
 
 ### Blockers
 
-- user_stories_missing: PRD functions have not been converted to role/want/benefit stories.
 - acceptance_functions_missing: PRD acceptance criteria have not been converted to observable acceptance functions mapped to stories.
+- story_acceptance_mapping_missing: user stories are intentionally not mapped until the req-acceptance worker writes acceptance functions.
 
 ## Evidence Attachments
 
@@ -107,6 +113,7 @@ created_at: 2026-05-29
 - Hard-gate validation belongs to the requirements checker.
 - Domain `account` is confirmed by user approval on 2026-05-29.
 - Roles are normalized to existing requirements taxonomy IDs; exact PRD actor names are preserved as source notes.
+- User stories are extracted from F-001 through F-007 and preserve role, want, and benefit; acceptance mapping remains pending.
 - API, business-rule, and acceptance-table evidence are supporting evidence, not an OpenSpec draft.
 - No OpenSpec draft or implementation work has been created.
 
@@ -119,12 +126,12 @@ created_at: 2026-05-29
   "active": true,
   "blockers": [
     {
-      "id": "user_stories_missing",
-      "reason": "PRD functions have not been converted to role/want/benefit stories"
-    },
-    {
       "id": "acceptance_functions_missing",
       "reason": "PRD acceptance criteria have not been converted to observable acceptance functions mapped to stories"
+    },
+    {
+      "id": "story_acceptance_mapping_missing",
+      "reason": "user stories are intentionally not mapped until the req-acceptance worker writes acceptance functions"
     }
   ],
   "case_slug": "embedded-account-phase1",
@@ -184,12 +191,13 @@ created_at: 2026-05-29
     "Hard-gate validation belongs to the requirements checker.",
     "Domain `account` is confirmed by user approval on 2026-05-29.",
     "Roles are normalized to existing requirements taxonomy IDs; exact PRD actor names are preserved as source notes.",
+    "User stories are extracted from F-001 through F-007 and preserve role, want, and benefit; acceptance mapping remains pending.",
     "API, business-rule, and acceptance-table evidence are supporting evidence, not an OpenSpec draft.",
     "No OpenSpec draft or implementation work has been created."
   ],
   "readiness_next_action": {
-    "next_action": "write_user_stories",
-    "reason": "domain and roles are normalized; hard-gate readiness still requires user stories and acceptance functions.",
+    "next_action": "write_acceptance_functions",
+    "reason": "domain, roles, and user stories are normalized; hard-gate readiness still requires acceptance functions and story-to-acceptance mappings.",
     "status": "diagnose"
   },
   "roles": [
@@ -283,7 +291,73 @@ created_at: 2026-05-29
     ]
   },
   "status": "diagnose",
-  "user_stories": []
+  "user_stories": [
+    {
+      "benefit": "为订阅支付场景建立可用的账户与首张可支付银行卡基础。",
+      "id": "US-001",
+      "role": "financial_customer",
+      "source_functions": [
+        "F-001",
+        "F-002"
+      ],
+      "want": "商户希望通过 API 为终端用户开立嵌入式账户，并在开户流程内完成首卡绑定。"
+    },
+    {
+      "benefit": "后续账户支付可以使用已绑定银行卡完成扣款。",
+      "id": "US-002",
+      "role": "retail_customer",
+      "source_functions": [
+        "F-002",
+        "F-003"
+      ],
+      "want": "终端用户希望在商户引导下完成首卡绑定或追加绑卡。"
+    },
+    {
+      "benefit": "提高账户支付成功率并支持多卡支付准备。",
+      "id": "US-003",
+      "role": "financial_customer",
+      "source_functions": [
+        "F-003"
+      ],
+      "want": "商户希望在账户开户成功后为终端用户追加绑定银行卡。"
+    },
+    {
+      "benefit": "已解绑卡不再参与账户支付或订阅自动扣款。",
+      "id": "US-004",
+      "role": "financial_customer",
+      "source_functions": [
+        "F-004"
+      ],
+      "want": "商户希望解除账户与银行卡之间的绑定关系。"
+    },
+    {
+      "benefit": "订阅支付可以接入嵌入式账户能力且不发生自动支付方式路由。",
+      "id": "US-005",
+      "role": "financial_customer",
+      "source_functions": [
+        "F-005"
+      ],
+      "want": "商户希望在订阅支付中显式选择账户支付。"
+    },
+    {
+      "benefit": "在高优先级卡明确失败后可以继续尝试低优先级卡。",
+      "id": "US-006",
+      "role": "system_actor",
+      "source_functions": [
+        "F-006"
+      ],
+      "want": "嵌入式账户前置希望按已绑卡优先级轮询发起快捷支付。"
+    },
+    {
+      "benefit": "保证单笔支付只有一个唯一最终状态且不重复扣款。",
+      "id": "US-007",
+      "role": "system_actor",
+      "source_functions": [
+        "F-007"
+      ],
+      "want": "嵌入式账户前置希望在支付异常或结果未明时通过查单与补偿收敛结果。"
+    }
+  ]
 }
 ```
 <!-- requirements-case-data:end -->
