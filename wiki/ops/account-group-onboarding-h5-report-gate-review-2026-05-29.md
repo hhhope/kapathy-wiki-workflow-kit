@@ -81,6 +81,7 @@ Allowed in the H5:
 ## Verification Log
 
 - Feishu sync: not performed; local H5 review only until explicit user approval.
+- Account-domain content check: passed after sections 0-7 included capability map, business chain, business objects, typical problems, active projects, and technical planning.
 - Pending: HTML parser check.
 - Pending: source-to-screen mapping check.
 - Pending: sensitive-info grep.

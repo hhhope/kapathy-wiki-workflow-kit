@@ -14,7 +14,7 @@
   - Run a basic HTML parse check.
   - Commit only the H5 skeleton and this task status update if needed.
 
-- [ ] 3. Add account-domain content
+- [x] 3. Add account-domain content
   - Fill the cover, group, capability map, business chain, business objects,
     typical problems, active projects, and technical planning sections.
   - Verify required account-domain phrases are present.
