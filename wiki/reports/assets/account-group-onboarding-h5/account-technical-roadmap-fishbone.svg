@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="950" viewBox="0 0 1600 950" role="img" aria-labelledby="title desc">
+  <title id="title">账户组技术规划路线鱼骨图</title>
+  <desc id="desc">展示账户组技术规划从账户模型收敛到资金结果可信治理的路线。</desc>
+  <defs>
+    <style>
+      @font-face{font-family:YaHeiLocal;src:url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype")}
+      .bg{fill:#fffaf0}.grid{stroke:#eadfca;stroke-width:1;fill:none}.title{font:800 38px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#111827}.sub{font:600 17px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#64748b}
+      .spine{stroke:#111827;stroke-width:10;stroke-linecap:round;marker-end:url(#arrow)}.bone{stroke:#111827;stroke-width:5;stroke-linecap:round}.panel{fill:#fff;stroke:#111827;stroke-width:3}.p1{fill:#fff7cc}.p2{fill:#dff7ef}.p3{fill:#e4f0ff}.p4{fill:#efe5ff}.p5{fill:#ffe6dd}.p6{fill:#eef2ff}
+      .h{font:800 24px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#111827}.t{font:700 17px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#111827}.s{font:600 14px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#475569}.tag{font:800 14px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#fff}.tagBox{fill:#14213d}.milestone{fill:#111827}.mileText{font:800 16px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#fff}.axis{font:700 16px YaHeiLocal,"Microsoft YaHei",Arial,sans-serif;fill:#334155}
+    </style>
+    <marker id="arrow" markerWidth="18" markerHeight="14" refX="16" refY="7" orient="auto">
+      <path d="M0 0L18 7L0 14Z" fill="#111827"/>
+    </marker>
+    <pattern id="paperGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path class="grid" d="M32 0H0V32"/>
+    </pattern>
+  </defs>
+  <rect class="bg" width="1600" height="950"/>
+  <rect width="1600" height="950" fill="url(#paperGrid)" opacity=".55"/>
+  <text x="60" y="72" class="title">技术规划路线：从模型收敛到资金结果可信</text>
+  <text x="60" y="108" class="sub">不是口号清单，而是账户组未来工作的主干路线：模型、余额、账务、清结算对账、风险可观测、技术治理。</text>
+
+  <line class="spine" x1="165" y1="500" x2="1420" y2="500"/>
+  <text x="600" y="488" class="axis">账户组技术规划主干</text>
+
+  <circle class="milestone" cx="190" cy="500" r="48"/><text class="mileText" x="190" y="495" text-anchor="middle">现状</text><text class="mileText" x="190" y="518" text-anchor="middle">多模型并行</text>
+  <circle class="milestone" cx="1400" cy="500" r="58"/><text class="mileText" x="1400" y="493" text-anchor="middle">目标</text><text class="mileText" x="1400" y="518" text-anchor="middle">可信资金结果</text>
+
+  <line class="bone" x1="360" y1="500" x2="245" y2="285"/>
+  <g transform="translate(85 145)">
+    <rect class="panel p1" width="390" height="170" rx="22"/>
+    <rect class="tagBox" x="22" y="20" width="95" height="28" rx="14"/><text class="tag" x="70" y="39" text-anchor="middle">模型收敛</text>
+    <text class="h" x="22" y="80">统一账户模型</text>
+    <text class="t" x="22" y="112">账户类型与属性盘点</text>
+    <text class="s" x="22" y="140">母子账户、多账户模型、母实子虚账户体系</text>
+    <text class="s" x="22" y="164">电子户 / 宝财通 / 特约商户体系打通</text>
+  </g>
+
+  <line class="bone" x1="555" y1="500" x2="450" y2="715"/>
+  <g transform="translate(285 660)">
+    <rect class="panel p2" width="420" height="180" rx="22"/>
+    <rect class="tagBox" x="22" y="20" width="95" height="28" rx="14"/><text class="tag" x="70" y="39" text-anchor="middle">资金底座</text>
+    <text class="h" x="22" y="82">余额服务规划</text>
+    <text class="t" x="22" y="116">可用 / 实时 / 冻结余额统一</text>
+    <text class="s" x="22" y="146">余额查询、余额变动、余额对账和监控沉淀</text>
+    <text class="s" x="22" y="170">支撑交易、结算、风控和问题定位</text>
+  </g>
+
+  <line class="bone" x1="710" y1="500" x2="620" y2="285"/>
+  <g transform="translate(510 145)">
+    <rect class="panel p3" width="410" height="170" rx="22"/>
+    <rect class="tagBox" x="22" y="20" width="95" height="28" rx="14"/><text class="tag" x="70" y="39" text-anchor="middle">账务治理</text>
+    <text class="h" x="22" y="80">账务标准化</text>
+    <text class="t" x="22" y="112">科目体系、凭证模板、分录规则</text>
+    <text class="s" x="22" y="140">日切健康检查、凭证对平、账务口径统一</text>
+    <text class="s" x="22" y="164">让报表、对账和排障使用共同语言</text>
+  </g>
+
+  <line class="bone" x1="900" y1="500" x2="795" y2="715"/>
+  <g transform="translate(720 660)">
+    <rect class="panel p4" width="430" height="180" rx="22"/>
+    <rect class="tagBox" x="22" y="20" width="120" height="28" rx="14"/><text class="tag" x="82" y="39" text-anchor="middle">链路收敛</text>
+    <text class="h" x="22" y="82">结算 / 对账平台收敛</text>
+    <text class="t" x="22" y="116">结算能力盘点、对账能力盘点</text>
+    <text class="s" x="22" y="146">配置化试点、平台能力复用、差错 T+0</text>
+    <text class="s" x="22" y="170">降低人工干预，稳定外部资金结果闭环</text>
+  </g>
+
+  <line class="bone" x1="1055" y1="500" x2="965" y2="285"/>
+  <g transform="translate(930 145)">
+    <rect class="panel p5" width="430" height="170" rx="22"/>
+    <rect class="tagBox" x="22" y="20" width="120" height="28" rx="14"/><text class="tag" x="82" y="39" text-anchor="middle">工程可见</text>
+    <text class="h" x="22" y="80">可观测与风险地图</text>
+    <text class="t" x="22" y="112">账户、账务、清结算、对账核心指标</text>
+    <text class="s" x="22" y="140">账务一致性、核心表增量、性能指标</text>
+    <text class="s" x="22" y="164">风险入口、慢链路、配置风险和回滚边界显性化</text>
+  </g>
+
+  <line class="bone" x1="1210" y1="500" x2="1135" y2="715"/>
+  <g transform="translate(1120 660)">
+    <rect class="panel p6" width="395" height="180" rx="22"/>
+    <rect class="tagBox" x="22" y="20" width="120" height="28" rx="14"/><text class="tag" x="82" y="39" text-anchor="middle">技术治理</text>
+    <text class="h" x="22" y="82">技术栈升级与知识复用</text>
+    <text class="t" x="22" y="116">JDK21 + SpringBoot3.x、可观测接入</text>
+    <text class="s" x="22" y="146">详设知识库、历史实现复用、能力清单比对</text>
+    <text class="s" x="22" y="170">减少相似需求各做一套和历史交接断层</text>
+  </g>
+
+  <g transform="translate(150 875)">
+    <rect class="panel" width="1300" height="48" rx="24"/>
+    <text class="t" x="32" y="31">新人读法：</text>
+    <text class="s" x="130" y="31">先定位自己参与的需求落在哪根鱼骨，再确认它服务的是模型收敛、资金底座、账务治理、清结算对账、风险可观测还是技术治理。</text>
+  </g>
+</svg>

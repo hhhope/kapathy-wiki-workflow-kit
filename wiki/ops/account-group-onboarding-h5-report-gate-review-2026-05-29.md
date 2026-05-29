@@ -184,3 +184,60 @@ Allowed in the H5:
 - Local H5 draft is repaired for user review as a source-visual-driven version.
 - Prior Visual Gate pass is invalid and remains recorded as a failure.
 - Feishu sync is not approved by default and remains a separate follow-up.
+
+## Heading And Roadmap Repair
+
+- User feedback: the source-visual repair still carried a process-oriented
+  section title, changed several chapter titles into informal wording, and left
+  `技术规划` as card fragments instead of a planning route.
+- Repair boundary: preserve the user's requested chapter structure, remove the
+  process-oriented visual-index section, and treat `技术规划路线` as a first-class
+  visual section.
+- Removed reader-facing title: `这版先看重绘图，再看说明`.
+- Restored / repaired section titles: `你加入的是什么小组`, `账户体系能力地图`,
+  `核心业务链路`, `我们支撑的对象`, `正在做的项目`, `技术规划路线`,
+  `AI 如何与我们协作`, `AI Coding 成熟度：当前站在哪一层`.
+- Group-section rewrite: `你加入的是什么小组` now introduces the account
+  technical group as the technical base for account relationships, accounting,
+  balance, clearing/settlement, reconciliation/reporting, bank-account
+  relations, channels, and observable funds results.
+
+## Heading And Roadmap Visual Evidence
+
+| Asset | Editable Source | H5 Embed | Verification Role |
+| --- | --- | --- | --- |
+| Technical planning fishbone roadmap | `wiki/reports/assets/account-group-onboarding-h5/account-technical-roadmap-fishbone.svg` | `wiki/reports/assets/account-group-onboarding-h5/account-technical-roadmap-fishbone.png` | Replaces technical-planning cards with a route from current multi-model / silo state to trustworthy funds results. |
+
+## Heading And Roadmap Verification Log
+
+- SVG parser check: passed for `account-technical-roadmap-fishbone.svg` with
+  `python3 -m xml.etree.ElementTree`.
+- PNG export check: passed after exporting the fishbone SVG with
+  `playwright screenshot`; visual inspection used
+  `/tmp/account-technical-roadmap-fishbone.png`.
+- HTML parser check: passed with
+  `python3 -m html.parser wiki/reports/account-group-onboarding-h5.html`.
+- Required-heading grep: passed for the user-requested section titles and the
+  repaired `我们支撑的对象` title.
+- Removed-title grep: passed with no reader-facing matches for the rejected or
+  informal titles.
+- Sensitive-info grep: passed with no matches for credentials, internal URLs,
+  Feishu URLs, token strings, QR-code instructions, personal emails, or access
+  instructions across the H5 and the fishbone SVG.
+- Desktop screenshot: passed after visual inspection with
+  `/tmp/account-h5-heading-roadmap-desktop.png`; section order, source visuals,
+  and the technical planning fishbone are visible.
+- Mobile screenshot: passed after visual inspection with
+  `/tmp/account-h5-heading-roadmap-mobile.png`; sections stack without visible
+  horizontal clipping and the fishbone remains embedded as a complete image.
+- Diff hygiene: passed with `git diff --check`.
+- OpenSpec validation: passed with
+  `openspec validate repair-account-h5-headings-roadmap --strict`; PostHog
+  network flush errors were emitted after the local validation success and do
+  not change the validation result.
+
+## Heading And Roadmap Decision
+
+- Local H5 draft now follows the requested chapter titles and adds a fishbone
+  roadmap for `技术规划路线`.
+- Feishu sync is not approved by default and remains a separate follow-up.

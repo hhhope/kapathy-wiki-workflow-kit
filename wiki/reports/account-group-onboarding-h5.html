@@ -82,6 +82,7 @@
     .architecture-visual { --ratio: 1600 / 1040; }
     .chain-visual { --ratio: 1600 / 860; }
     .nirvana-visual { --ratio: 1600 / 1080; }
+    .fishbone-visual { --ratio: 1600 / 950; }
     .visual-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
     .visual-note { border: 2px solid var(--line); border-radius: 14px; background: #fff; padding: 12px; }
     .visual-note b { display: block; margin-bottom: 4px; font-size: 17px; }
@@ -121,49 +122,23 @@
       </div>
     </section>
     <section class="section" id="group">
-      <h2>账户组管的是资金结果</h2>
-      <p class="lead">账户组不是一个后台系统，而是把“谁的钱、在哪个账户、发生了什么资金动作、账上是否正确、是否完成结算和对账”管成可信结果的工程团队。</p>
+      <h2>你加入的是什么小组</h2>
+      <p class="lead">你加入的是账户技术小组，主要支撑账户体系、账务处理、余额服务、清结算、对账报表、银行账户关系和账户渠道接入。</p>
       <div class="grid-3">
         <div class="card">
-          <span class="tag">我们管什么</span>
-          <b>资金对象和账户关系</b>
-          <p>商户、会员、客户、个人户、企业户、母子账户、银行账户和渠道账户之间的关系，决定资金能不能进、怎么记、怎么结。</p>
+          <span class="tag">小组定位</span>
+          <b>账户与资金结果的技术底座</b>
+          <p>围绕商户、会员、客户、个人户、企业户、母子账户、银行账户和渠道账户建立稳定的账户关系与资金处理能力。</p>
         </div>
         <div class="card">
-          <span class="tag">我们有什么</span>
+          <span class="tag">能力范围</span>
           <b>账户、账务、余额、清结算、对账</b>
-          <p>我们手里有账户模型、账务规则、余额能力、结算出款、清算对账、报表数据、通道接入和风险可观测这些工程能力。</p>
+          <p>小组沉淀账户模型、账务规则、余额能力、结算出款、清算对账、报表数据、通道接入和风险可观测能力。</p>
         </div>
         <div class="card">
-          <span class="tag">新人能练什么</span>
-          <b>从字段到资金闭环</b>
-          <p>新人不是先背系统名，而是练对象建模、链路拆解、账务一致性、清结算差错、对账报表、联调验证和生产问题定位。</p>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="source-visual-index">
-      <h2>这版先看重绘图，再看说明</h2>
-      <p class="lead">前一版的问题是把真实图示压成卡片。这一版把源 PPT、涅槃图、清算图和最新项目报告重绘成四张主视觉，正文只做解释。</p>
-      <div class="visual-index">
-        <div class="visual-card">
-          <span class="tag">源 PPT 能力图</span>
-          <strong>账户体系能力地图</strong>
-          <p>看账户基础、账务、余额、清结算、对账报表、数据服务和收益分润能力怎么连成体系。</p>
-        </div>
-        <div class="visual-card">
-          <span class="tag">现状架构图</span>
-          <strong>账户组系统架构</strong>
-          <p>看入口、产品、服务、数据、支付渠道、合作银行和运营侧分别承担什么。</p>
-        </div>
-        <div class="visual-card">
-          <span class="tag">资金责任链</span>
-          <strong>核心账户链路</strong>
-          <p>看一笔资金从进件开户到交易、账务、余额、清结算、对账和可观测怎么闭合。</p>
-        </div>
-        <div class="visual-card">
-          <span class="tag">涅槃 + 最新项目</span>
-          <strong>真实项目入口</strong>
-          <p>看烟囱化现状、涅槃目标、清算/账户服务关系，以及新人能进入的任务位置。</p>
+          <span class="tag">成长入口</span>
+          <b>从模块任务进入资金链路</b>
+          <p>新人从字段理解、接口联调、账本/余额验证、清算回执、对账差异和问题复盘进入真实工程任务。</p>
         </div>
       </div>
     </section>
@@ -189,7 +164,7 @@
       </div>
     </section>
     <section class="section" id="system-architecture">
-      <h2>系统架构怎么看</h2>
+      <h2>整体系统架构</h2>
       <p class="lead">这张图按多渠道收款和宝财通架构重绘。新人要知道每个产品对象落在哪一层，账户组重点在哪里。</p>
       <figure class="visual-frame">
         <img class="source-visual architecture-visual" src="assets/account-group-onboarding-h5/account-system-architecture.png" alt="账户组系统架构重绘图" />
@@ -231,7 +206,7 @@
       </div>
     </section>
     <section class="section" id="business-objects">
-      <h2>典型业务对象</h2>
+      <h2>我们支撑的对象</h2>
       <p class="lead">业务对象要放回架构里看：它们分别占住入口、产品、服务、通道或银行连接位置，决定账户关系、字段校验、交易入口和结算规则如何组合。</p>
       <div class="grid-4">
         <div class="card">
@@ -277,7 +252,7 @@
       </div>
     </section>
     <section class="section" id="typical-problems">
-      <h2>常见问题怎么入手</h2>
+      <h2>常见问题定位</h2>
       <p class="lead">问题排查不是猜系统，而是把异常放回链路：入口是否正确、账户关系是否成立、账务余额是否一致、结算对账是否闭合。</p>
       <div class="grid-4">
         <div class="card">
@@ -324,7 +299,7 @@
       <div class="footer-note">新人处理问题时，先画出链路位置，再找证据：入口参数、账户关系、账务分录、余额状态、清算结果、对账差异和报表口径。</div>
     </section>
     <section class="section" id="active-projects">
-      <h2>正在做的项目入口</h2>
+      <h2>正在做的项目</h2>
       <p class="lead">这张图把涅槃材料和最新分账核心/宝财通改造报告合起来看：为什么要做、目标是什么、账户组新人能从哪里上手。</p>
       <figure class="visual-frame">
         <img class="source-visual nirvana-visual" src="assets/account-group-onboarding-h5/nirvana-project-entry-map.png" alt="涅槃与最新项目入口重绘图" />
@@ -345,58 +320,28 @@
       </div>
     </section>
     <section class="section" id="technical-planning">
-      <h2>技术规划看什么</h2>
-      <p class="lead">技术规划不是口号，而是把多账户模型并行、烟囱式实现、清结算差异、账务口径差异和不可见风险收敛成稳定工程能力。</p>
-      <div class="grid-3">
-        <div class="card">
-          <span class="tag">模型收敛</span>
-          <b>统一账户模型</b>
-          <p>盘点现有账户类型和账户属性，收敛个人户、企业户、母子账户、多账户模型和母实子虚账户方向。</p>
+      <h2>技术规划路线</h2>
+      <p class="lead">技术规划按路线理解：从多账户模型并行、烟囱式实现和账务口径差异，逐步收敛到账户模型、余额底座、账务标准、结算对账、可观测和技术治理。</p>
+      <figure class="visual-frame">
+        <img class="source-visual fishbone-visual" src="assets/account-group-onboarding-h5/account-technical-roadmap-fishbone.png" alt="账户组技术规划路线鱼骨图" />
+      </figure>
+      <div class="visual-notes">
+        <div class="visual-note">
+          <b>模型与资金底座</b>
+          <p>统一账户类型、账户属性、母子账户和多账户模型，同时沉淀可用余额、实时余额、冻结余额和余额对账能力。</p>
         </div>
-        <div class="card">
-          <span class="tag">资金底座</span>
-          <b>余额服务规划</b>
-          <p>把余额查询、可用余额、实时余额、冻结余额、变动和校验能力沉淀为稳定底座，支撑账务、结算和风控判断。</p>
+        <div class="visual-note">
+          <b>账务与清结算收敛</b>
+          <p>统一科目体系、凭证模板、分录规则和账务口径，推动结算、对账、差错处理和平台能力复用。</p>
         </div>
-        <div class="card">
-          <span class="tag">账务治理</span>
-          <b>账务标准化</b>
-          <p>统一科目体系、凭证模板、分录规则、日切健康检查和账务口径，让报表、对账和问题定位有共同语言。</p>
-        </div>
-        <div class="card">
-          <span class="tag">链路治理</span>
-          <b>结算 / 对账平台收敛</b>
-          <p>盘点多套结算和对账能力，推动规则可配置、能力可复用、差错处理 T+0 和人工干预比例下降。</p>
-        </div>
-        <div class="card">
-          <span class="tag">工程可见</span>
-          <b>可观测</b>
-          <p>资金类指标、账户类指标、核心链路监控、账务一致性监控和异常发现时长，都要成为可查询证据。</p>
-        </div>
-        <div class="card">
-          <span class="tag">风险治理</span>
-          <b>风险地图</b>
-          <p>把高风险入口、核心表增量、慢 SQL、慢接口、配置问题和回滚边界显性化，让新人知道哪些地方必须慢下来确认。</p>
-        </div>
-        <div class="card">
-          <span class="tag">技术栈</span>
-          <b>应用升级</b>
-          <p>JDK21 + SpringBoot3.x 这类升级不是单纯换版本，而是和稳定性、监控、接口标准化、技术债治理一起推进。</p>
-        </div>
-        <div class="card">
-          <span class="tag">知识复用</span>
-          <b>详设知识库机制</b>
-          <p>新需求先对照已有账户能力清单、历史详设和典型实现，减少“各做一套”和重复造轮子。</p>
-        </div>
-        <div class="card">
-          <span class="tag">质量底线</span>
-          <b>事件治理闭环</b>
-          <p>把生产事件、复发问题、技术债和治理动作绑定到指标，推动问题从事后补救走向事前识别。</p>
+        <div class="visual-note">
+          <b>风险可观测与技术治理</b>
+          <p>把核心链路指标、账务一致性、核心表增量、慢链路、配置风险、技术栈升级和知识复用纳入规划主线。</p>
         </div>
       </div>
     </section>
     <section class="section" id="ai-collaboration">
-      <h2>AI 协作体系怎么进入工程</h2>
+      <h2>AI 如何与我们协作</h2>
       <p class="lead">AI体系建设不是多接几个工具，而是把账户域里的需求、设计、实现、评审、验收和沉淀放进可检查的工程 gate。</p>
       <div class="grid-4">
         <div class="card">
@@ -549,7 +494,7 @@
       </div>
     </section>
     <section class="section" id="closing">
-      <h2>最后记住这句话</h2>
+      <h2>学习目标总结</h2>
       <p class="lead">你不是来接需求，而是学习如何管住资金账户链路。</p>
       <div class="footer-note">能把账户对象、账务规则、余额状态、清结算结果、对账差异、验证证据和协作边界讲清楚，才算真正进入账户组的工程现场。</div>
     </section>
