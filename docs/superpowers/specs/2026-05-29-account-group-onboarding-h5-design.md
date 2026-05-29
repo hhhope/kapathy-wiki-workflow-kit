@@ -1,8 +1,21 @@
 # Account Group Onboarding H5 Design
 
 Date: 2026-05-29
-Status: written-spec-review-pending
+Status: revision-written-review-pending
 Route: brainstorm -> superpowers spec; OpenSpec read-only until spec review.
+
+## Revision Note
+
+The first H5 draft failed the reader job. Its sections were acceptable, but the
+content inside them was too thin: the account capability map collapsed into a
+few generic cards, the system architecture was absent, and core account-group
+domains such as account model, bank-account / channel connection, accounting,
+settlement, reconciliation, reporting, balance, and parent-child account
+structure were not explained with enough engineering substance.
+
+This revision keeps the screen order but changes the content standard: each
+section must expose the real account-domain structure, not motivational
+onboarding prose.
 
 ## Goal
 
@@ -22,11 +35,14 @@ Reader: new graduates joining the account technical group.
 
 Reader job-to-be-done: quickly build a mental model of the account domain, know how to start work, and understand which engineering capabilities they will grow.
 
-Main line: from account-domain cognition to real project entry, then to AI-assisted engineering collaboration and growth path.
+Main line: first build the account-domain architecture and capability map, then
+walk the fund/account chain through real modules, then land on project entry and
+AI-assisted engineering collaboration.
 
 Non-goals:
 
-- do not reproduce every slide from the source PPT/PDF;
+- do not reproduce every slide from the source PPT/PDF, but do preserve the
+  load-bearing domain structure from the source visuals;
 - do not expose unnecessary personal names, sensitive customer details, or overly granular production data;
 - do not make the page a management performance report;
 - do not turn AI体系建设 into a generic AI tool advertisement.
@@ -68,9 +84,27 @@ Source roles:
 - 新人入职指引: Day 1/2/3, first-week tasks, development flow, monitoring, incident and duty practices.
 - Account Harness and AICoding roadmap: AI collaboration model, maturity path, and engineering gates.
 
+New extraction emphasis after user feedback:
+
+- `账户体系能力地图` slide: treat the map as a capability graph, not a
+  three-card summary. It includes account basic capability, unified accounting
+  capability, clearing/settlement capability, unified balance capability,
+  revenue capability, data/service capability, reporting capability, and
+  reconciliation-related capability. Do not add 授信能力 or 垫资能力 as H5
+  capability groups; the user explicitly rejected them.
+- `宝财通` architecture slide: use the layered structure as the system
+  architecture baseline: gateway layer, product layer, service layer, data
+  layer, payment channels, partner banks, operation/back-office sides, and
+  modules such as member system, transaction system, clearing system, risk
+  control system, refund center, agent system, channel system, and account
+  posting.
+- `多渠道收款` architecture slide: use the upstream/middle/downstream structure:
+  upstream product entrances, middle product implementations such as 银户通 /
+  债转 / 宝财通 / 宝户通, and downstream direct banks plus self-owned channels.
+
 ## Output Shape
 
-Build a long-scroll internal H5 page with roughly 14 screens. It should feel like a hybrid of:
+Build a long-scroll internal H5 page with roughly 15 screens. It should feel like a hybrid of:
 
 - technical architecture poster: bold visual map, strong section hierarchy, reusable historical account/wiki H5 language;
 - training journey: explicit newcomer path, task pool, and capability growth.
@@ -96,41 +130,122 @@ Avoid a one-note single-hue page, decorative gradients as the main visual, and t
 ## Screen Plan
 
 0. Cover: `账户组体系：从资金账户链路到 AI 协作成长`.
-1. What group am I joining: account-group responsibility boundary, business objects, system scale, and why it matters.
-2. Account capability map: account opening, account model, accounting, balance, settlement, reconciliation, channel, reporting, and risk.
-3. Core business chain: account opening -> acquiring/payment -> split account/withdrawal -> posting/accounting -> reconciliation.
-4. Typical business objects: multi-channel collection, 宝财通, 宝户通, 银企云/银企通, and where they sit in the map.
-5. Typical problems and handling: withdrawal failure, account-opening failure, deposit failure, slow posting, hot updates, pressure testing.
-6. Active project entries: 宝财通/二级商户关系, settlement/withdrawal/clearing, report/integration, balance and ledger verification.
-7. Technical planning: unified account model, balance center, accounting standardization, settlement/reconciliation convergence, observability, risk map.
-8. AI collaboration system: OpenSpec manages change, Lore manages durable memory, Graphify manages structure, lore-bootstrap manages adoption.
-9. AI Coding maturity: L1-L4 model, current L2 baseline, next target L2 -> L3 stage collaboration.
-10. Newcomer 3 days / first week: Day 1 accounts/tools, Day 2 environment/code/project run, Day 3 norms/small task, first-week core flow.
-11. Newcomer 30/60/90: understand chain, join modules, independently troubleshoot and deliver small work, use AI collaboration safely.
-12. Task pool and gained capabilities: development, integration, reconciliation/reporting, production incident handling, monitoring/duty, knowledge-base writing, AI collaboration materials.
-13. Closing: newcomers are not only "receiving requirements"; they learn to control a fund-account chain and turn complex engineering into verifiable results.
+1. What group am I joining: account-group responsibility boundary, product
+   objects, system scale, and why the group is the engineering owner of
+   trustworthy fund/account results.
+2. Account capability map: a real capability graph, not three buckets. It must
+   include account basic capability, parent-child / multi-account model,
+   unified accounting capability, clearing/settlement capability, unified
+   balance capability, reconciliation/reporting/data-service capability, and
+   revenue capability. Exclude 授信能力 and 垫资能力 as capability groups.
+3. System architecture: layered architecture from entrances to services and
+   data: API/H5/BM entrances; product layer; service layer; data layer; payment
+   channels and partner banks; operation management and back-office sides.
+4. Core business chain: entry / onboarding / account opening -> account model
+   and bank-account relation -> transaction / collection / payment -> split
+   account / withdrawal / refund -> accounting / voucher / balance -> clearing
+   and settlement -> reconciliation / reports / difference handling -> risk,
+   monitoring, and observability.
+5. Typical business objects: multi-channel collection, 宝财通, 宝户通, 银企云 /
+   银企通, bank-account access, and where each object sits in the architecture.
+6. Typical problems and handling: withdrawal failure, account-opening failure,
+   deposit failure, slow posting, hot updates, pressure testing, reconciliation
+   differences, settlement differences, and account/balance inconsistency.
+7. Active project entries: 宝财通 / 二级商户关系, settlement / withdrawal /
+   clearing, reports / integration, balance-ledger verification, account merge,
+   parent-child account or mother-real-child-virtual account direction.
+8. Technical planning: unified account model, balance service, accounting
+   standardization, settlement/reconciliation platform convergence,
+   observability, risk map, technical debt governance, and JDK / Spring Boot
+   upgrade where relevant.
+9. AI collaboration system: OpenSpec manages change, Lore manages durable
+   memory, Graphify manages structure, lore-bootstrap manages adoption. This
+   section must be connected to account-domain work, not isolated tooling.
+10. AI Coding maturity: L1-L4 model, current L2 baseline, next target L2 -> L3
+    stage collaboration, and what this means for account-domain design,
+    implementation, review, verification, and knowledge capture.
+11. Newcomer 3 days / first week: Day 1 accounts/tools, Day 2 environment/code
+    run, Day 3 norms/small task, first-week target: run one core account flow,
+    read one module, and produce one evidence-backed note.
+12. Newcomer 30/60/90: 30 days understand account-domain objects and chain, 60
+    days participate in one module, 90 days independently troubleshoot and ship
+    a small verifiable task with design, test, review, and evidence.
+13. Task pool and gained capabilities: development, integration, accounting /
+    settlement / reconciliation / reporting, production incident handling,
+    monitoring/duty, knowledge-base writing, and AI collaboration materials.
+14. Closing: newcomers are not only "receiving requirements"; they learn to
+    control a fund/account chain and turn complex engineering into verifiable
+    results.
 
 ## Content Components
 
 Capability map:
 
-- one large poster-like map with account-domain capabilities grouped by lifecycle.
-- should be the first durable visual anchor.
+- one large poster-like map with account-domain capabilities grouped by
+  ownership area and maturity status.
+- must show more than three groups. Minimum groups:
+  - account basic capability: account lifecycle, account type management,
+    personal wallet account, parent-child account relation, multi-account
+    model, mother-real-child-virtual account direction;
+  - unified accounting capability: accounting query, daily cut, reverse /
+    adjustment, entry-rule engine, standard posting model, voucher center where
+    applicable;
+  - clearing/settlement capability: clearing/settlement rules, settlement /
+    withdrawal / clearing result handling, unified reconciliation platform,
+    basic reconciliation, difference handling;
+  - unified balance capability: available balance, real-time balance,
+    frozen balance, balance engine or balance-service convergence;
+  - data/report/service capability: data and service, balance query, report
+    capability, data external service;
+  - revenue capability: revenue account, split profit / split account, revenue
+    calculation and account handling where source-backed.
+- do not introduce 授信能力 or 垫资能力 as capability groups.
 
 Business chain diagram:
 
-- flow diagram showing where account, clearing, settlement, reconciliation, and reporting happen.
-- should explain direction and dependency, not every system detail.
+- flow diagram showing where account, bank-account relation, transaction,
+  accounting, balance, clearing/settlement, reconciliation, reports, and risk
+  observability happen.
+- it should make dependencies visible: upstream product entrance creates
+  identity and account relation; transaction creates fund movement; accounting
+  and balance make the result internally trustworthy; clearing/settlement and
+  reconciliation verify it against external or downstream results.
+
+System architecture diagram:
+
+- use the 宝财通 / 多渠道 architecture slides as the baseline.
+- show layers rather than slogans:
+  - entrance / gateway: API, H5, BM and upstream product entrances;
+  - product: payment split-account product and account product;
+  - service: base service, member system, transaction system, clearing system,
+    risk system, refund center, agent system, channel system;
+  - data: merchant, user, payment, channel, finance, and risk data;
+  - external connections: bank union / network union / self-owned payment
+    channels and partner banks such as bank-enterprise channel connections;
+  - operation / back-office sides: operation management platform, AD, BM.
 
 Project entry cards:
 
-- each active project card includes "what it is", "what a newcomer can do", and "what capability it trains".
+- each active project card includes "domain position", "what it changes",
+  "what a newcomer can do", and "what capability it trains".
+- cards should be concrete enough for onboarding:
+  - account model / account merge;
+  - parent-child account / mother-real-child-virtual account direction;
+  - balance and ledger verification;
+  - settlement / withdrawal / clearing;
+  - reconciliation / reports / data validation;
+  - 宝财通 / 二级商户关系;
+  - bank-account / channel access.
 
 AI collaboration panel:
 
 - four-layer model: OpenSpec, Lore, Graphify, lore-bootstrap.
 - maturity ladder: L1, L2, L3, L4.
 - plain-language explanation of why the next step is stage collaboration, not blind automation.
+- must show how AI helps with account-domain work: reading historical designs,
+  checking whether a new requirement duplicates existing account capability,
+  comparing module boundaries, producing design / review / verification
+  evidence, and preserving reusable knowledge.
 
 Newcomer path:
 
@@ -165,7 +280,14 @@ De-noise or abstract:
 
 Before claiming the H5 draft is review-ready:
 
-- verify source-to-screen mapping for all 14 screens;
+- verify source-to-screen mapping for all 15 screens;
+- verify the revised capability map contains the required account-domain groups
+  and does not include 授信能力 or 垫资能力 as groups;
+- verify system architecture includes layered entrance/product/service/data/
+  channel/bank/back-office structure;
+- verify the core chain includes account model, bank-account relation,
+  accounting, balance, clearing/settlement, reconciliation, reports, and
+  difference handling;
 - check that every screen has one clear reader question;
 - check no sensitive account, credential, or internal URL residue leaks into reader-facing text;
 - run a visual QA pass at desktop and mobile widths if an HTML draft is implemented;
