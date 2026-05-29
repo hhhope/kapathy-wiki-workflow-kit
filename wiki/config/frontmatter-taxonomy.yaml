@@ -84,6 +84,7 @@ producer_paths:
     - .codex/skills/**/references/*template*.md
   scripts:
     - scripts/inbox_intake.py
+    - scripts/requirements_case.py
 
 sample_migration_paths:
   - wiki/ops/behavior-replay-gate.md
