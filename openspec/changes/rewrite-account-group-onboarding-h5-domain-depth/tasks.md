@@ -12,7 +12,7 @@
   - Verify required account-domain content and excluded capability groups.
   - Commit only the H5, gate review, and this task status update if needed.
 
-- [ ] 3. Rewrite AI and newcomer sections
+- [x] 3. Rewrite AI and newcomer sections
   - Rewrite AI collaboration, AI maturity, 3-day / first-week path, 30/60/90
     path, task pool, and closing.
   - Tie AI content to account-domain engineering work.

@@ -113,6 +113,7 @@ Allowed in the H5:
 - Final index link check: passed after adding `wiki/reports/index.md` entry for `account-group-onboarding-h5.html`.
 - Rewrite account-domain content check: passed after cover, engineering boundary, capability map, system architecture, core chain, business objects, problem handling, active project entries, and technical planning were rewritten with domain-dense content.
 - Rewrite excluded capability check: passed after `授信能力` and `垫资能力` were absent from the reader-facing H5.
+- Rewrite AI/newcomer content check: passed after AI collaboration was tied to account-domain design, module lookup, verification evidence, and knowledge reuse, and after Day 1/2/3, first-week, and 30/60/90 paths were rewritten.
 
 ## Decision
 
