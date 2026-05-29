@@ -241,3 +241,49 @@ Allowed in the H5:
 - Local H5 draft now follows the requested chapter titles and adds a fishbone
   roadmap for `技术规划路线`.
 - Feishu sync is not approved by default and remains a separate follow-up.
+
+## AI Offering And Visual Style Repair
+
+- User feedback: `AI 如何与我们协作` should explain what the account group can
+  provide, including Account Harness, and the overall H5 style still looked
+  rough and visually poor.
+- Repair change: `openspec/changes/refine-account-h5-ai-offering-style`.
+- AI section repair: the section now starts from account-group offerings:
+  account-domain maps, Account Harness constraints, source material,
+  verification evidence, and human judgment boundaries.
+- Tool framing repair: OpenSpec, Lore, Graphify, and lore-bootstrap are now
+  presented as supporting mechanisms rather than the lead message.
+- Visual repair: the H5 removed the graph-paper background, thick black section
+  borders, heavy block shadows, and repeated heavy card outlines. The page now
+  uses a calmer internal technical-training style with lighter containers,
+  disciplined card hierarchy, restrained shadows, and source-backed diagrams as
+  the primary visual evidence.
+
+## AI Offering And Visual Style Verification Log
+
+- HTML parser check: passed with
+  `python3 -m html.parser wiki/reports/account-group-onboarding-h5.html`.
+- Required AI-offering grep: passed for `账户组能提供什么`,
+  `Account Harness 约束`, `账户域输入`, `人工判断边界`, `OpenSpec`, `Lore`,
+  `Graphify`, and `lore-bootstrap`.
+- Undesired phrase grep: passed with no reader-facing matches for the old
+  tool-first or rejected-process phrasing.
+- Sensitive-info grep: passed with no matches for credentials, internal URLs,
+  Feishu URLs, token strings, QR-code instructions, personal emails, or access
+  instructions.
+- Desktop screenshot: passed after visual inspection with
+  `/tmp/account-h5-ai-style-desktop.png`; the page is calmer and source-backed
+  diagrams remain primary.
+- Mobile screenshot: passed after visual inspection with
+  `/tmp/account-h5-ai-style-mobile.png`; sections stack without visible
+  horizontal clipping.
+- Diff hygiene: passed with `git diff --check`.
+- OpenSpec validation: passed with
+  `openspec validate refine-account-h5-ai-offering-style --strict`; PostHog
+  network flush errors were emitted after the local validation success and do
+  not change the validation result.
+
+## AI Offering And Visual Style Decision
+
+- Local H5 draft is repaired for user review on AI offering and visual style.
+- Feishu sync is not approved by default and remains a separate follow-up.

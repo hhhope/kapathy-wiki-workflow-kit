@@ -10,55 +10,71 @@
       src: url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype");
     }
     :root {
-      --paper: #f8efd8;
-      --sheet: #fffaf0;
-      --ink: #141414;
-      --muted: #5b6472;
-      --line: rgba(20, 20, 20, .22);
-      --navy: #14213d;
-      --blue: #2f77c5;
-      --green: #0f9d7a;
-      --orange: #e96b2c;
-      --purple: #7d55a8;
-      --yellow: #f3c64f;
+      --page: #f5f7fb;
+      --sheet: #ffffff;
+      --ink: #18202f;
+      --muted: #5d6878;
+      --line: #d7dee8;
+      --line-strong: #a9b7c9;
+      --blue: #2563ad;
+      --green: #16806a;
+      --orange: #c65f2a;
+      --purple: #6f55a8;
+      --yellow: #d8a72f;
       --card: #ffffff;
-      --shadow: 0 14px 0 rgba(20, 20, 20, .08);
+      --shadow: 0 14px 34px rgba(24, 32, 47, .08);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       background:
-        linear-gradient(rgba(20, 20, 20, .045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(20, 20, 20, .045) 1px, transparent 1px),
-        #efe6d2;
-      background-size: 28px 28px;
+        radial-gradient(circle at 15% 0%, rgba(37, 99, 173, .08), transparent 34%),
+        linear-gradient(180deg, #f9fbff 0%, var(--page) 48%, #eef2f7 100%);
       color: var(--ink);
       font-family: YaHeiLocal, "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
       letter-spacing: 0;
       line-height: 1.55;
     }
-    .page { width: min(1180px, calc(100vw - 28px)); margin: 0 auto; padding: 22px 0 56px; }
+    .page { width: min(1160px, calc(100vw - 32px)); margin: 0 auto; padding: 28px 0 64px; }
     .hero, .section {
-      border: 4px solid var(--ink);
-      border-radius: 22px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
       background: var(--sheet);
       box-shadow: var(--shadow);
-      margin: 0 0 18px;
-      padding: 24px;
+      margin: 0 0 20px;
+      padding: 26px;
       overflow: hidden;
     }
-    .hero { min-height: 560px; display: grid; align-content: space-between; }
-    .kicker { display: inline-flex; width: fit-content; border: 3px solid var(--ink); border-radius: 999px; background: var(--orange); color: #fff; padding: 6px 12px; font-weight: 900; }
+    .hero {
+      min-height: 520px;
+      display: grid;
+      align-content: space-between;
+      border-top: 6px solid var(--blue);
+      background:
+        linear-gradient(135deg, rgba(37, 99, 173, .08), transparent 42%),
+        var(--sheet);
+    }
+    .kicker { display: inline-flex; width: fit-content; border-radius: 999px; background: #eaf1fb; color: var(--blue); padding: 6px 12px; font-weight: 900; }
     h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 860px; font-size: clamp(38px, 7vw, 82px); line-height: 1.02; text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 8px; text-underline-offset: 10px; }
-    h2 { font-size: clamp(26px, 4vw, 42px); line-height: 1.14; }
-    .lead { color: var(--muted); font-size: clamp(17px, 2vw, 22px); font-weight: 800; }
+    h1 { max-width: 900px; font-size: clamp(34px, 6vw, 72px); line-height: 1.04; letter-spacing: 0; }
+    h2 { font-size: clamp(25px, 3.4vw, 40px); line-height: 1.15; margin-bottom: 10px; }
+    .lead { color: var(--muted); font-size: clamp(16px, 1.7vw, 21px); font-weight: 700; }
     .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-    .card { border: 2px solid var(--line); border-radius: 14px; background: var(--card); padding: 14px; }
-    .card b { display: block; margin-bottom: 6px; font-size: 18px; }
-    .tag { display: inline-flex; width: fit-content; border-radius: 999px; padding: 4px 9px; background: #eef2ff; color: #3730a3; font-size: 12px; font-weight: 900; }
+    .card {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      background: var(--card);
+      padding: 14px;
+      min-width: 0;
+    }
+    .card:nth-child(3n + 2) { border-left-color: var(--green); }
+    .card:nth-child(3n) { border-left-color: var(--orange); }
+    .card b { display: block; margin: 8px 0 6px; font-size: 18px; line-height: 1.3; }
+    .card p { color: #384457; margin-bottom: 0; }
+    .tag { display: inline-flex; width: fit-content; border-radius: 999px; padding: 3px 8px; background: #eef4fb; color: var(--blue); font-size: 12px; font-weight: 900; }
     .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; align-items: stretch; }
     .flow .node { border: 3px solid var(--ink); border-radius: 16px; background: #fff; padding: 14px; min-height: 120px; }
     .capability-map { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
@@ -70,13 +86,13 @@
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chip { border: 2px solid var(--line); border-radius: 999px; background: #f8fafc; padding: 6px 10px; font-weight: 900; }
     .roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .level { border: 3px solid var(--ink); border-radius: 16px; background: #fff; padding: 14px; min-height: 170px; }
-    .level.current { background: #faf5ff; border-color: var(--purple); }
-    .footer-note { border: 2px dashed var(--blue); border-radius: 16px; background: #f8fafc; padding: 16px; font-weight: 800; }
+    .level { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 14px; min-height: 170px; }
+    .level.current { background: #f6f0ff; border-color: rgba(111, 85, 168, .42); box-shadow: inset 0 0 0 1px rgba(111, 85, 168, .12); }
+    .footer-note { border: 1px solid #b8c7dc; border-radius: 8px; background: #f8fafc; padding: 16px; font-weight: 800; }
     .visual-index { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
     .visual-card { border: 3px solid var(--ink); border-radius: 16px; background: #fff; padding: 14px; min-height: 156px; }
     .visual-card strong { display: block; font-size: 20px; margin: 8px 0 6px; }
-    .visual-frame { border: 3px solid var(--ink); border-radius: 18px; background: #fff; padding: 10px; margin: 14px 0; box-shadow: 0 8px 0 rgba(20, 20, 20, .06); overflow: auto; }
+    .visual-frame { border: 1px solid var(--line-strong); border-radius: 10px; background: #fff; padding: 10px; margin: 16px 0; box-shadow: 0 10px 26px rgba(24, 32, 47, .08); overflow: auto; }
     .source-visual { display: block; width: 100%; min-width: 920px; aspect-ratio: var(--ratio, 16 / 10); height: auto; border: 0; border-radius: 10px; background: #fff; }
     .capability-visual { --ratio: 1600 / 980; }
     .architecture-visual { --ratio: 1600 / 1040; }
@@ -84,12 +100,23 @@
     .nirvana-visual { --ratio: 1600 / 1080; }
     .fishbone-visual { --ratio: 1600 / 950; }
     .visual-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
-    .visual-note { border: 2px solid var(--line); border-radius: 14px; background: #fff; padding: 12px; }
+    .visual-note { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 12px; }
     .visual-note b { display: block; margin-bottom: 4px; font-size: 17px; }
+    .ai-offering { display: grid; grid-template-columns: 1.15fr .85fr; gap: 16px; align-items: stretch; margin: 16px 0; }
+    .ai-panel { border: 1px solid var(--line-strong); border-radius: 10px; background: #fbfdff; padding: 18px; }
+    .ai-panel.primary { border-top: 5px solid var(--green); background: #f6fffb; }
+    .ai-panel h3 { margin: 0 0 12px; font-size: 22px; }
+    .ai-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .ai-list li { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 10px 12px; }
+    .ai-list b { display: block; margin-bottom: 3px; color: var(--ink); }
+    .ai-list span { color: #425067; }
+    .mechanism-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+    .mechanism { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 12px; }
+    .mechanism b { display: block; margin-bottom: 4px; }
     @media (max-width: 860px) {
       .page { width: min(100vw - 18px, 680px); padding-top: 10px; }
-      .hero, .section { border-width: 3px; border-radius: 18px; padding: 18px; }
-      .grid-2, .grid-3, .grid-4, .flow, .capability-map, .roadmap, .layer-row, .visual-index, .visual-notes { grid-template-columns: 1fr; }
+      .hero, .section { border-radius: 10px; padding: 18px; }
+      .grid-2, .grid-3, .grid-4, .flow, .capability-map, .roadmap, .layer-row, .visual-index, .visual-notes, .ai-offering, .mechanism-strip { grid-template-columns: 1fr; }
       .source-visual { min-width: 0; }
       .hero { min-height: auto; gap: 28px; }
     }
@@ -342,47 +369,70 @@
     </section>
     <section class="section" id="ai-collaboration">
       <h2>AI 如何与我们协作</h2>
-      <p class="lead">AI体系建设不是多接几个工具，而是把账户域里的需求、设计、实现、评审、验收和沉淀放进可检查的工程 gate。</p>
-      <div class="grid-4">
-        <div class="card">
+      <p class="lead">账户组与 AI 协作要先给出账户域上下文、约束、证据和判断边界，让协作有输入、有门禁、有复盘。</p>
+      <div class="ai-offering">
+        <div class="ai-panel primary">
+          <h3>账户组能提供什么</h3>
+          <ul class="ai-list">
+            <li>
+              <b>账户域地图</b>
+              <span>商户、会员、账户、银行账户、账本、余额、清结算、对账和报表之间的对象关系与链路位置。</span>
+            </li>
+            <li>
+              <b>Account Harness 约束</b>
+              <span>把需求边界、源材料、章节结构、敏感信息过滤、验证命令、截图证据和门禁结论固定成可复用协作框架。</span>
+            </li>
+            <li>
+              <b>验证证据</b>
+              <span>字段、状态、账务分录、余额变化、清算结果、对账差异、截图、命令输出和 CR 记录，支撑 AI 结论可复查。</span>
+            </li>
+            <li>
+              <b>人工判断边界</b>
+              <span>账户模型取舍、账务口径、资金风险、上线节奏和产品承诺仍由工程师判断，AI 只能在约束内组织、比较、生成和检查。</span>
+            </li>
+          </ul>
+        </div>
+        <div class="ai-panel">
+          <h3>新人怎么用这套协作</h3>
+          <ul class="ai-list">
+            <li>
+              <b>设计前</b>
+              <span>先给 AI 账户对象、链路位置、已有能力和不做范围，让它帮你找重复能力和影响面。</span>
+            </li>
+            <li>
+              <b>实现中</b>
+              <span>让 AI 围绕接口、字段、状态、分录、余额、清算和对账生成检查清单，但每条结论都要回到证据。</span>
+            </li>
+            <li>
+              <b>收尾后</b>
+              <span>把联调、差错、复盘和典型链路沉淀成后续新人能复用的对象、步骤、边界和验证材料。</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mechanism-strip">
+        <div class="mechanism">
           <span class="tag">变更边界</span>
-          <b>OpenSpec 管变更</b>
-          <p>账户模型、清结算、对账或余额改动先写清为什么做、做什么、不做什么和验收证据，避免实现中不断漂移。</p>
+          <b>OpenSpec</b>
+          <p>管为什么做、做什么、不做什么、验收什么。</p>
         </div>
-        <div class="card">
+        <div class="mechanism">
           <span class="tag">现场记忆</span>
-          <b>Lore 管记忆</b>
-          <p>查历史详设、历史坑点、项目背景和本次证据，避免新人只靠口口相传理解账户规则和账务口径。</p>
+          <b>Lore</b>
+          <p>管历史详设、历史坑点、项目背景和复盘材料。</p>
         </div>
-        <div class="card">
+        <div class="mechanism">
           <span class="tag">结构证据</span>
-          <b>Graphify 管结构</b>
-          <p>定位模块边界、调用入口、相邻系统和可能影响面，辅助判断一个改动落在账户、账务、清结算还是对账侧。</p>
+          <b>Graphify</b>
+          <p>管模块边界、调用入口、相邻系统和影响面。</p>
         </div>
-        <div class="card">
+        <div class="mechanism">
           <span class="tag">落地路径</span>
-          <b>lore-bootstrap 管安装</b>
-          <p>让新项目先具备最小治理、知识入口和验证路径，再逐步把账户域协作方式接入工程现场。</p>
+          <b>lore-bootstrap</b>
+          <p>管新项目最小治理、知识入口和验证路径。</p>
         </div>
       </div>
-      <div class="grid-3">
-        <div class="card">
-          <span class="tag">设计前</span>
-          <b>识别重复能力</b>
-          <p>先对照账户能力清单、历史详设和已有模块，判断新需求是不是已有能力的组合、收敛或差异化扩展。</p>
-        </div>
-        <div class="card">
-          <span class="tag">实现中</span>
-          <b>留下验证证据</b>
-          <p>把字段、状态、账务分录、余额变化、结算结果、对账差异和回归用例沉淀成可复查证据。</p>
-        </div>
-        <div class="card">
-          <span class="tag">收尾后</span>
-          <b>沉淀可复用知识</b>
-          <p>把一次联调、一个差错、一条账户链路写成后续新人能复用的对象、步骤、边界和证据。</p>
-        </div>
-      </div>
-      <div class="footer-note">对新人来说，AI 协作的第一课不是让工具替你判断，而是把目标、边界、模块结构、验证证据和复盘写清楚。</div>
+      <div class="footer-note">对新人来说，AI 协作的第一课是把账户域输入、Account Harness 约束、验证证据和人工判断边界讲清楚。</div>
     </section>
     <section class="section" id="ai-maturity">
       <h2>AI Coding 成熟度：当前站在哪一层</h2>
