@@ -18,7 +18,7 @@
   - Tie AI content to account-domain engineering work.
   - Commit only the H5, gate review, and this task status update if needed.
 
-- [ ] 4. Verify visual quality and sensitive boundary
+- [x] 4. Verify visual quality and sensitive boundary
   - Run HTML parser.
   - Run required content grep.
   - Run excluded capability grep.

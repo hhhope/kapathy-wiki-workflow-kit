@@ -114,6 +114,11 @@ Allowed in the H5:
 - Rewrite account-domain content check: passed after cover, engineering boundary, capability map, system architecture, core chain, business objects, problem handling, active project entries, and technical planning were rewritten with domain-dense content.
 - Rewrite excluded capability check: passed after `授信能力` and `垫资能力` were absent from the reader-facing H5.
 - Rewrite AI/newcomer content check: passed after AI collaboration was tied to account-domain design, module lookup, verification evidence, and knowledge reuse, and after Day 1/2/3, first-week, and 30/60/90 paths were rewritten.
+- Rewrite HTML parser check: passed with `python3 -m html.parser wiki/reports/account-group-onboarding-h5.html`.
+- Rewrite required content check: passed for capability map, system architecture, core chain, account-domain AI collaboration, and newcomer path.
+- Rewrite sensitive-info grep: passed with no reader-facing matches for credentials, personal names, internal URLs, Feishu URLs, token strings, QR-code, GitLab, Jira, VPN, docs, or Apifox project links.
+- Rewrite desktop screenshot: passed with `/tmp/account-group-onboarding-rewrite-desktop-full.png`.
+- Rewrite mobile screenshot: passed with `/tmp/account-group-onboarding-rewrite-mobile-full.png`.
 
 ## Decision
 
