@@ -7,6 +7,6 @@
 - [x] 5. Add intent and domain recognition tests.
 - [x] 6. Implement requirements analysis agent routing and CLI.
 - [x] 7. Add OpenSpec draft handoff and tests.
-- [ ] 8. Record behavior replay evidence for intent routing, domain candidates, hard-gate blocking, wiki-independent gating, and draft collision blocking.
-- [ ] 9. Run focused tests and record verification evidence.
+- [x] 8. Record behavior replay evidence for intent routing, domain candidates, hard-gate blocking, wiki-independent gating, and draft collision blocking.
+- [x] 9. Run focused tests and record verification evidence.
 - [ ] 10. Commit verified implementation and stop at OpenSpec hard stop.
