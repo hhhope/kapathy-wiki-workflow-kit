@@ -1,7 +1,7 @@
 # Tasks
 
 - [x] 1. Create OpenSpec change artifacts.
-- [ ] 2. Add requirements taxonomy and taxonomy loading tests.
+- [x] 2. Add requirements taxonomy and taxonomy loading tests.
 - [ ] 3. Add requirements case-file helpers and tests.
 - [ ] 4. Add requirements checker hard gate and soft-warning tests.
 - [ ] 5. Add intent and domain recognition tests.
