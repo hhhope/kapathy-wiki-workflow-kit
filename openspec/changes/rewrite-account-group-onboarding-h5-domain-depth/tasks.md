@@ -5,7 +5,7 @@
     standard, and source-to-section map in the gate review.
   - Commit only the gate review and this task status update if needed.
 
-- [ ] 2. Rewrite account-domain H5 sections
+- [x] 2. Rewrite account-domain H5 sections
   - Rewrite cover, group responsibility, capability map, system architecture,
     core chain, business objects, typical problems, active projects, and
     technical planning.

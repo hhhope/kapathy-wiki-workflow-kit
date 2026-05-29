@@ -111,6 +111,8 @@ Allowed in the H5:
 - Mobile screenshot: passed with `playwright screenshot --full-page --viewport-size=390,1200 file:///mnt/d/cloud/account-meeting-lore/wiki/reports/account-group-onboarding-h5.html /tmp/account-group-onboarding-mobile-full.png`; cards stack cleanly and no horizontal overflow is visible.
 - Font boundary: H5 uses a local Windows CJK font-face for WSL/Playwright readability; this is a local QA dependency, not a credential or publication claim.
 - Final index link check: passed after adding `wiki/reports/index.md` entry for `account-group-onboarding-h5.html`.
+- Rewrite account-domain content check: passed after cover, engineering boundary, capability map, system architecture, core chain, business objects, problem handling, active project entries, and technical planning were rewritten with domain-dense content.
+- Rewrite excluded capability check: passed after `授信能力` and `垫资能力` were absent from the reader-facing H5.
 
 ## Decision
 
