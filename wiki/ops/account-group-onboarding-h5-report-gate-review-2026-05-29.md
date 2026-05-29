@@ -326,3 +326,61 @@ Allowed in the H5:
 
 - Local H5 draft is repaired away from card-style dominance for user review.
 - Feishu sync is not approved by default and remains a separate follow-up.
+
+## Image-Model Visual Replacement
+
+- User feedback: corresponding SVG visuals should all be output through the
+  image model.
+- Repair change:
+  `openspec/changes/replace-account-h5-svg-with-image-model`.
+- Generation mode: built-in `image_gen` tool.
+- Source directory:
+  `/home/yan/.codex/generated_images/019e719f-40cf-7fe1-ac86-8fcd803c2a2a/`.
+- H5 decision: keep historical SVG-derived assets in the repo as prior
+  references, but switch the reader-facing H5 to the image-model `*-ai.png`
+  assets.
+
+| H5 Section | Image-Model Asset | Prompt Shape |
+| --- | --- | --- |
+| 账户体系能力地图 | `wiki/reports/assets/account-group-onboarding-h5/account-capability-map-ai.png` | Chinese account capability map with central `账户体系` and six sparse capability domains. |
+| 整体系统架构 | `wiki/reports/assets/account-group-onboarding-h5/account-system-architecture-ai.png` | Layered account-group architecture from entrance/product to account, accounting, balance, clearing, reconciliation, channels, data, and risk. |
+| 核心业务链路 | `wiki/reports/assets/account-group-onboarding-h5/account-core-chain-ai.png` | Left-to-right funds-result chain from onboarding/opening to account relation, transaction, accounting, balance, clearing, reconciliation, and monitoring. |
+| 正在做的项目 | `wiki/reports/assets/account-group-onboarding-h5/nirvana-project-entry-map-ai.png` | Nirvana/project map from current silo state to target convergence and newcomer project entry points. |
+| 技术规划路线 | `wiki/reports/assets/account-group-onboarding-h5/account-technical-roadmap-fishbone-ai.png` | Fishbone roadmap from multi-model / silo current state to trustworthy funds results. |
+
+## Image-Model Visual Verification Log
+
+- Generated asset copy check: passed after copying five generated PNG files
+  from the built-in image-generation directory into
+  `wiki/reports/assets/account-group-onboarding-h5/`.
+- Image dimension check: passed with `file`; generated PNGs are 1536px or wider.
+- Visual inspection: passed for all five generated assets using local image
+  inspection. Dense explanations remain in the H5 text because image-model
+  Chinese can be less deterministic than authored SVG text.
+- H5 reference check: passed after all five main visual sections referenced
+  `account-capability-map-ai.png`, `account-system-architecture-ai.png`,
+  `account-core-chain-ai.png`, `nirvana-project-entry-map-ai.png`, and
+  `account-technical-roadmap-fishbone-ai.png`.
+- Previous displayed asset grep: passed with no H5 matches for the old
+  SVG-derived PNG filenames.
+- HTML parser check: passed with
+  `python3 -m html.parser wiki/reports/account-group-onboarding-h5.html`.
+- Sensitive-info grep: passed with no matches across the H5 and the active
+  OpenSpec change for internal access, owner, URL, token, or QR-code patterns.
+- Desktop screenshot: passed after visual inspection with
+  `/tmp/account-h5-image-model-desktop.png`; the five image-model outputs
+  render in the H5.
+- Mobile screenshot: passed after visual inspection with
+  `/tmp/account-h5-image-model-mobile.png`; the five image-model outputs render
+  as complete images in the mobile layout.
+- Diff hygiene: passed with `git diff --check`.
+- OpenSpec validation: passed with
+  `openspec validate replace-account-h5-svg-with-image-model --strict`;
+  PostHog network flush errors were emitted after the local validation success
+  and do not change the validation result.
+
+## Image-Model Visual Decision
+
+- Local H5 draft now uses image-model generated bitmap visuals for the five
+  corresponding SVG-derived sections.
+- Feishu sync is not approved by default and remains a separate follow-up.
