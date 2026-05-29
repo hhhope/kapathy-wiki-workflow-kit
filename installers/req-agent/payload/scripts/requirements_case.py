@@ -1,0 +1,296 @@
+from __future__ import annotations
+
+import copy
+import json
+import re
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+
+DEFAULT_REQUIREMENTS_CASE_DIR = Path("wiki/ops/requirements-cases")
+CASE_DATA_START = "<!-- requirements-case-data:start -->"
+CASE_DATA_END = "<!-- requirements-case-data:end -->"
+
+CASE_STATUSES = {"intake", "diagnose", "awaiting_confirmation", "candidate_pending", "requirements_ready", "blocked", "recovery_required", "archived"}
+DEFAULT_PROOF_BOUNDARY_NOTES = [
+    "This case file records requirement readiness evidence.",
+    "Hard-gate validation belongs to the requirements checker.",
+    "API, DDL, and release details are supporting evidence, not first-version requirement authority.",
+]
+
+
+def _iso_timestamp(timestamp: datetime | str | None = None) -> str:
+    if timestamp is None:
+        return datetime.now(timezone.utc).isoformat()
+    if isinstance(timestamp, datetime):
+        return timestamp.astimezone(timezone.utc).isoformat()
+    return timestamp
+
+
+def _timestamp_slug(timestamp: datetime | str | None) -> str:
+    if timestamp is None:
+        return datetime.now(timezone.utc).strftime("%Y-%m-%d-%H%M%S")
+    if isinstance(timestamp, datetime):
+        return timestamp.astimezone(timezone.utc).strftime("%Y-%m-%d-%H%M%S")
+    try:
+        parsed = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+    except ValueError:
+        return timestamp
+    return parsed.astimezone(timezone.utc).strftime("%Y-%m-%d-%H%M%S")
+
+
+def _slugify(value: str | None) -> str:
+    text = str(value or "requirements-case").strip().lower()
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    return text.strip("-") or "requirements-case"
+
+
+def _as_list(value: Any) -> list[Any]:
+    return value if isinstance(value, list) else []
+
+
+def _copy_dict_list(value: Any) -> list[dict[str, Any]]:
+    return [copy.deepcopy(item) for item in _as_list(value) if isinstance(item, dict)]
+
+
+def _copy_dict(value: Any) -> dict[str, Any]:
+    return copy.deepcopy(value) if isinstance(value, dict) else {}
+
+
+def _attachment_dict(value: Any) -> dict[str, list[str]]:
+    if not isinstance(value, dict):
+        return {}
+    attachments: dict[str, list[str]] = {}
+    for key, items in sorted(value.items()):
+        values = [str(item) for item in _as_list(items) if str(item).strip()]
+        attachments[str(key)] = values
+    return attachments
+
+
+def build_requirements_case_package(
+    *,
+    case_slug: str | None = None,
+    status: str = "intake",
+    active: bool = True,
+    current_intent: dict[str, Any] | None = None, domain: dict[str, Any] | None = None,
+    roles: list[dict[str, Any]] | None = None, user_stories: list[dict[str, Any]] | None = None,
+    acceptance_functions: list[dict[str, Any]] | None = None, soft_evidence: dict[str, Any] | None = None,
+    blockers: list[dict[str, Any]] | None = None, evidence_attachments: dict[str, list[str]] | None = None,
+    proof_boundary_notes: list[str] | None = None, case_source: dict[str, Any] | None = None,
+    timestamp: datetime | str | None = None,
+) -> dict[str, Any]:
+    normalized_status = status if status in CASE_STATUSES else str(status or "intake")
+    return {
+        "generated_at": _iso_timestamp(timestamp),
+        "mode": "requirements_case",
+        "case_slug": _slugify(case_slug),
+        "status": normalized_status,
+        "active": bool(active),
+        "current_intent": _copy_dict(current_intent),
+        "case_source": _copy_dict(case_source),
+        "domain": {
+            "status": str((domain or {}).get("status", "candidate_pending")),
+            "confirmed": str((domain or {}).get("confirmed", "")),
+            "candidates": _copy_dict_list((domain or {}).get("candidates", [])),
+        },
+        "roles": _copy_dict_list(roles or []),
+        "user_stories": _copy_dict_list(user_stories or []),
+        "acceptance_functions": _copy_dict_list(acceptance_functions or []),
+        "soft_evidence": _copy_dict(soft_evidence),
+        "blockers": _copy_dict_list(blockers or []),
+        "readiness_next_action": {
+            "status": normalized_status,
+            "next_action": "run_requirements_checker",
+            "reason": "Hard-gate validation belongs to the requirements checker lifecycle.",
+        },
+        "evidence_attachments": _attachment_dict(evidence_attachments or {}),
+        "proof_boundary_notes": [
+            str(note)
+            for note in _as_list(proof_boundary_notes or DEFAULT_PROOF_BOUNDARY_NOTES)
+        ],
+    }
+
+
+def _frontmatter_lines(package: dict[str, Any]) -> list[str]:
+    created_at = str(package.get("generated_at", "")).split("T", 1)[0] or datetime.now(timezone.utc).date().isoformat()
+    return [
+        "---",
+        "layer: ops",
+        "domain: unclassified",
+        "classification_needed: true",
+        "ops_area: workflow-trace",
+        "canonical_object: requirements-case-file",
+        "artifact_type: requirements-case",
+        f"status: {package.get('status', 'intake')}",
+        f"case_slug: {package.get('case_slug', 'requirements-case')}",
+        f"created_at: {created_at}",
+        "---",
+        "",
+    ]
+
+
+def _summary_lines(value: Any) -> list[str]:
+    if isinstance(value, dict) and value:
+        return [f"- {key}: {value[key]}" for key in sorted(value)]
+    if isinstance(value, list) and value:
+        return [f"- {item}" for item in value]
+    return ["- None"]
+
+
+def _role_line(item: dict[str, Any]) -> str:
+    role_id = str(item.get("id") or item.get("role") or "unknown")
+    label = str(item.get("label") or role_id)
+    category = str(item.get("category", ""))
+    suffix = f" ({category})" if category else ""
+    return f"- {role_id}: {label}{suffix}"
+
+
+def _story_line(item: dict[str, Any]) -> str:
+    story_id = str(item.get("id", "unknown"))
+    role = str(item.get("role", ""))
+    want = str(item.get("want") or item.get("story") or item.get("summary") or "")
+    benefit = str(item.get("benefit", ""))
+    refs = ", ".join(str(ref) for ref in _as_list(item.get("acceptance_function_ids")))
+    parts = [part for part in [f"role={role}" if role else "", want, f"benefit={benefit}" if benefit else "", f"acceptance={refs}" if refs else ""] if part]
+    return f"- {story_id}: {'; '.join(parts)}" if parts else f"- {story_id}"
+
+
+def _acceptance_line(item: dict[str, Any]) -> str:
+    function_id = str(item.get("id", "unknown"))
+    name = str(item.get("name") or item.get("summary") or "")
+    refs = ", ".join(str(ref) for ref in _as_list(item.get("user_story_ids")))
+    parts = [part for part in [name, f"stories={refs}" if refs else "", str(item.get("then", ""))] if part]
+    return f"- {function_id}: {'; '.join(parts)}" if parts else f"- {function_id}"
+
+
+def render_requirements_case_markdown(package: dict[str, Any], scan_root: Path | str) -> str:
+    lines = _frontmatter_lines(package)
+    lines.extend(
+        [
+            "# requirements-case",
+            "",
+            "## Case Source",
+            f"- Generated at: {package.get('generated_at', 'unknown')}",
+            f"- Scan root: `{Path(scan_root)}`",
+        ]
+    )
+    lines.extend(_summary_lines(package.get("case_source", {})))
+
+    lines.extend(["", "## Intent"])
+    lines.extend(_summary_lines(package.get("current_intent", {})))
+
+    domain = package.get("domain", {})
+    lines.extend(["", "## Domain"])
+    if isinstance(domain, dict):
+        lines.append(f"- Status: {domain.get('status', 'candidate_pending')}")
+        lines.append(f"- Confirmed: {domain.get('confirmed', '')}")
+        lines.append("### Candidates")
+        candidates = _copy_dict_list(domain.get("candidates", []))
+        lines.extend([f"- {item.get('id', 'unknown')}: {item.get('reason', '')}" for item in candidates] or ["- None"])
+    else:
+        lines.append("- None")
+
+    lines.extend(["", "## Roles"])
+    lines.extend([_role_line(item) for item in _copy_dict_list(package.get("roles", []))] or ["- None"])
+
+    lines.extend(["", "## User Stories"])
+    lines.extend([_story_line(item) for item in _copy_dict_list(package.get("user_stories", []))] or ["- None"])
+
+    lines.extend(["", "## Acceptance Functions"])
+    lines.extend([_acceptance_line(item) for item in _copy_dict_list(package.get("acceptance_functions", []))] or ["- None"])
+
+    lines.extend(["", "## Soft Evidence"])
+    soft_evidence = package.get("soft_evidence", {})
+    if isinstance(soft_evidence, dict) and soft_evidence:
+        for key in sorted(soft_evidence):
+            lines.append(f"### {str(key).replace('_', ' ').title()}")
+            values = soft_evidence[key]
+            if isinstance(values, list):
+                lines.extend([f"- {json.dumps(item, ensure_ascii=False, sort_keys=True)}" for item in values] or ["- None"])
+            else:
+                lines.append(f"- {values}")
+    else:
+        lines.append("- None")
+
+    lines.extend(["", "## Readiness / Next Action"])
+    readiness = package.get("readiness_next_action", {})
+    if isinstance(readiness, dict):
+        lines.append(f"- Status: {readiness.get('status', package.get('status', 'intake'))}")
+        lines.append(f"- Next action: {readiness.get('next_action', '')}")
+        lines.append(f"- Reason: {readiness.get('reason', '')}")
+    blockers = _copy_dict_list(package.get("blockers", []))
+    lines.append("### Blockers")
+    lines.extend([f"- {item.get('id', 'blocker')}: {item.get('reason', item.get('summary', ''))}" for item in blockers] or ["- None"])
+
+    lines.extend(["", "## Evidence Attachments"])
+    evidence = package.get("evidence_attachments", {})
+    if isinstance(evidence, dict) and evidence:
+        for key in sorted(evidence):
+            lines.append(f"### {str(key).title()}")
+            lines.extend([f"- `{value}`" for value in _as_list(evidence.get(key))] or ["- None"])
+    else:
+        lines.append("- None")
+
+    lines.extend(["", "## Proof Boundary"])
+    lines.extend([f"- {note}" for note in _as_list(package.get("proof_boundary_notes"))] or ["- None"])
+
+    machine_json = json.dumps(package, ensure_ascii=False, indent=2, sort_keys=True)
+    lines.extend(
+        [
+            "",
+            "## Machine Case Data",
+            CASE_DATA_START,
+            "```json",
+            machine_json,
+            "```",
+            CASE_DATA_END,
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
+def next_requirements_case_path(output_dir: Path, case_slug: str | None = None, timestamp: datetime | str | None = None) -> Path:
+    slug = _timestamp_slug(timestamp)
+    case_part = _slugify(case_slug)
+    base = output_dir / f"{slug}-{case_part}.md"
+    if not base.exists():
+        return base
+    counter = 2
+    while True:
+        candidate = output_dir / f"{slug}-{case_part}-{counter}.md"
+        if not candidate.exists():
+            return candidate
+        counter += 1
+
+
+def write_requirements_case_file(package: dict[str, Any], root: Path | str, output_dir: Path | str | None = None, timestamp: datetime | str | None = None) -> Path:
+    root_path = Path(root)
+    target_dir = Path(output_dir) if output_dir is not None else root_path / DEFAULT_REQUIREMENTS_CASE_DIR
+    target_dir.mkdir(parents=True, exist_ok=True)
+    markdown = render_requirements_case_markdown(package, scan_root=root_path)
+    while True:
+        target = next_requirements_case_path(target_dir, case_slug=str(package.get("case_slug", "")), timestamp=timestamp)
+        try:
+            with target.open("x", encoding="utf-8") as handle:
+                handle.write(markdown)
+            return target.resolve()
+        except FileExistsError:
+            continue
+
+
+def load_requirements_case_file(path: Path | str) -> dict[str, Any]:
+    text = Path(path).read_text(encoding="utf-8")
+    start = text.find(CASE_DATA_START)
+    end = text.find(CASE_DATA_END)
+    if start < 0 or end < 0 or end <= start:
+        raise ValueError(f"requirements case data block not found: {path}")
+    data = text[start + len(CASE_DATA_START) : end].strip()
+    if data.startswith("```json"):
+        data = data[len("```json") :].strip()
+    if data.endswith("```"):
+        data = data[:-3].strip()
+    payload = json.loads(data)
+    if not isinstance(payload, dict):
+        raise ValueError(f"requirements case data is not an object: {path}")
+    return payload

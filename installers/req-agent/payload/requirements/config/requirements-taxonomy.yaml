@@ -1,0 +1,149 @@
+version: 1
+authority: requirements-readiness
+independent_from:
+  - wiki/config/frontmatter-taxonomy.yaml
+
+domains:
+  - id: account
+    label: account
+    aliases:
+      - 账户
+      - 账户域
+      - 账户体系
+    description: Account lifecycle, account operation, and account-facing requirement material.
+  - id: settlement
+    label: settlement
+    aliases:
+      - 结算
+      - 结算域
+      - 结算体系
+    description: Settlement processing, settlement operations, and settlement-facing requirement material.
+  - id: clearing
+    label: clearing
+    aliases:
+      - 清分
+      - 清分域
+      - 清分体系
+    description: Clearing flows, clearing operations, and clearing-facing requirement material.
+
+roles:
+  categories:
+    business_actors:
+      description: People or organizations whose business outcome is represented by the requirement.
+    operation_owners:
+      description: Business or operational owners accountable for process execution and controls.
+    system_actors:
+      description: Systems or automated participants that perform or receive requirement actions.
+    delivery_owners:
+      description: Product, engineering, and quality owners accountable for delivery and verification.
+  vocabulary:
+    retail_operations:
+      label: retail operations
+      aliases:
+        - 零售运营
+      category: operation_owners
+    financial_operations:
+      label: financial operations
+      aliases:
+        - 金融运营
+      category: operation_owners
+    product:
+      label: product
+      aliases:
+        - 产品
+      category: delivery_owners
+    finance:
+      label: finance
+      aliases:
+        - 财务
+      category: operation_owners
+    clearing:
+      label: clearing
+      aliases:
+        - 清算
+        - 清分
+      category: operation_owners
+    compliance:
+      label: compliance
+      aliases:
+        - 合规
+      category: operation_owners
+    retail_customer:
+      label: retail customer
+      aliases:
+        - 零售客户
+      category: business_actors
+    financial_customer:
+      label: financial customer
+      aliases:
+        - 金融客户
+      category: business_actors
+    system_actor:
+      label: system actor
+      aliases:
+        - 系统
+        - 外部系统
+        - 内部系统
+      category: system_actors
+    engineering:
+      label: engineering
+      aliases:
+        - 研发
+        - 技术
+      category: delivery_owners
+    qa:
+      label: QA
+      aliases:
+        - 测试
+        - 质量
+      category: delivery_owners
+    risk_control:
+      label: risk control
+      aliases:
+        - 风控
+        - 风险控制
+      category: operation_owners
+
+hard_gate_fields:
+  domain:
+    label: domain
+    description: Confirmed requirement domain from this taxonomy.
+  roles:
+    label: roles
+    description: Explicit requirement actors and owners using the role vocabulary.
+  user_stories:
+    label: user stories
+    description: User- or actor-centered requirement statements.
+  acceptance_functions:
+    label: acceptance functions
+    description: Traceable acceptance checks mapped back to user stories.
+
+soft_evidence_categories:
+  business_rules:
+    label: business rules
+    classification: soft_warning
+    description: Business constraints that may need design follow-up but are not first-version hard gate fields.
+  exception_scenarios:
+    label: exception scenarios
+    classification: soft_warning
+    description: Edge cases, reversals, failures, and manual recovery paths for design follow-up.
+  api:
+    label: API
+    classification: design_evidence
+    description: Interface evidence that supports later design validation.
+  ddl:
+    label: DDL
+    classification: design_evidence
+    description: Database schema evidence that supports later design validation.
+  adr:
+    label: ADR
+    classification: design_evidence
+    description: Decision records or decision candidates that inform later design.
+  test_plan:
+    label: test plan
+    classification: design_evidence
+    description: Verification planning evidence outside the first-version hard gate.
+  release_plan:
+    label: release plan
+    classification: design_evidence
+    description: Rollout and release planning evidence outside the first-version hard gate.
