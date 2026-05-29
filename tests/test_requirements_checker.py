@@ -5,7 +5,6 @@ from pathlib import Path
 
 import yaml
 
-
 TAXONOMY_PATH = Path("requirements/config/requirements-taxonomy.yaml")
 
 
