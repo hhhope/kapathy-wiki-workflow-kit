@@ -130,9 +130,11 @@ Avoid a one-note single-hue page, decorative gradients as the main visual, and t
 ## Screen Plan
 
 0. Cover: `账户组体系：从资金账户链路到 AI 协作成长`.
-1. What group am I joining: account-group responsibility boundary, product
-   objects, system scale, and why the group is the engineering owner of
-   trustworthy fund/account results.
+1. Account-group engineering boundary: explain that the group owns trustworthy
+   fund/account results, not a single backend system. This section must answer
+   three concrete questions: what money/account outcomes the group controls,
+   what domain capabilities the team has, and what hard engineering abilities a
+   newcomer can learn from these capabilities.
 2. Account capability map: a real capability graph, not three buckets. It must
    include account basic capability, parent-child / multi-account model,
    unified accounting capability, clearing/settlement capability, unified
@@ -251,6 +253,8 @@ Newcomer path:
 
 - Day 1/2/3 and first-week checklist from onboarding docs.
 - 30/60/90 path as the H5's practical landing section.
+- Do not use generic onboarding labels as the content. The reader-facing wording should be closer to:
+  "账户组管的是资金结果", "我们手里有哪些能力", and "新人能练到哪些硬能力".
 
 Task pool:
 
