@@ -1,6 +1,6 @@
 # Tasks
 
-- [ ] 1. Create rewrite gate baseline
+- [x] 1. Create rewrite gate baseline
   - Record the failed-draft diagnosis, revised article intent, revised content
     standard, and source-to-section map in the gate review.
   - Commit only the gate review and this task status update if needed.

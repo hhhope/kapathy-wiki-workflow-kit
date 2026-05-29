@@ -78,6 +78,27 @@ Allowed in the H5:
 | Newcomer path and task pool | Tell newcomer what to do and gain | Task 4 passed |
 | Closing | Reframe newcomer role from requirement receiver to accountable engineer | Task 4 passed |
 
+## Rewrite Diagnosis
+
+- User feedback: the chapter order is acceptable, but the content is too thin.
+- Failure mode: the first draft collapsed the account capability map into generic cards and omitted the real system architecture.
+- Missing domain depth: account model, bank-account / channel connection, accounting, balance, clearing/settlement, reconciliation, reports, parent-child account, multi-account model, and difference handling were not explained as an engineering structure.
+- Corrected boundary: `授信能力` and `垫资能力` must not be presented as account-group capability groups; reconciliation and parent-child account capability must be present.
+- Rewrite standard: each section must explain real domain objects, module boundaries, chain dependencies, and newcomer task entry.
+
+## Revised Source-To-Section Map
+
+| H5 Section | Required Source Anchor | Rewrite Use |
+| --- | --- | --- |
+| Capability map | `账户体系能力地图` slide | Rebuild as multi-cluster capability graph; include account basic, unified accounting, clearing/settlement, unified balance, data/report/service, revenue, reconciliation, parent-child and multi-account model; exclude 授信/垫资 groups. |
+| System architecture | 宝财通 architecture slide, 多渠道收款 architecture slide | Rebuild layered architecture: entrance/gateway, product, service, data, payment channels, partner banks, operation/back-office. |
+| Core chain | 账户技术现状 + 规划 slides | Explain entry/opening, account model, bank-account relation, transaction, split/withdraw/refund, accounting/voucher/balance, clearing/settlement, reconciliation/report/difference, monitoring/risk. |
+| Business objects | 多渠道收款、宝户通、宝财通、银企通/债转 slides | Show product objects by architecture position, not as isolated product names. |
+| Problems | Typical problem slide | Map withdrawal failure, opening failure, deposit failure, slow posting, reconciliation difference, settlement difference, account/balance inconsistency to chain checkpoints. |
+| Projects | Split-account source and 2026 planning slides | Map project entries to account model, parent-child account, balance-ledger verification, settlement/clearing, reconciliation/reporting, bank-account/channel access. |
+| AI collaboration | Account Harness and AICoding roadmap | Explain how AI supports account-domain design, review, verification, structure lookup, and knowledge reuse. |
+| Newcomer path | Account and IT onboarding docs | Keep Day 1/2/3 and first-week rhythm while removing credentials, URLs, personal contacts, and QR-code instructions. |
+
 ## Verification Log
 
 - Feishu sync: not performed; local H5 review only until explicit user approval.
