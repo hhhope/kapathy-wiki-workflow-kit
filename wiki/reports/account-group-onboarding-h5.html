@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>账户组体系新人培训 H5</title>
   <style>
+    @font-face {
+      font-family: YaHeiLocal;
+      src: url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype");
+    }
     :root {
       --paper: #f8efd8;
       --sheet: #fffaf0;
@@ -29,7 +33,7 @@
         #efe6d2;
       background-size: 28px 28px;
       color: var(--ink);
-      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      font-family: YaHeiLocal, "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
       letter-spacing: 0;
       line-height: 1.55;
     }
@@ -221,6 +225,7 @@
           <p>区分交易完成、记账完成、余额更新、报表生成和对账完成，避免把不同阶段混成一个问题。</p>
         </div>
       </div>
+      <div class="footer-note">排查时也要留意运营侧信号：热点更新意味着配置、规则或缓存可能在变；压测调优意味着慢链路、批处理和外部依赖需要单独验证。</div>
     </section>
     <section class="section" id="active-projects">
       <h2>正在做的项目入口</h2>

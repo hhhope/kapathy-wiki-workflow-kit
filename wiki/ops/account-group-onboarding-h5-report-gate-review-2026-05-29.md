@@ -69,11 +69,11 @@ Allowed in the H5:
 
 | Section | Objective | Status |
 | --- | --- | --- |
-| Cover | Establish the training promise | Planned |
-| Group and capability map | Build first mental model | Planned |
-| Business chain and objects | Explain domain flow | Planned |
-| Problems and active projects | Show real work entry | Planned |
-| Technical planning | Connect work to future direction | Planned |
+| Cover | Establish the training promise | Task 3 passed |
+| Group and capability map | Build first mental model | Task 3 passed |
+| Business chain and objects | Explain domain flow | Task 3 passed |
+| Problems and active projects | Show real work entry | Task 3 passed |
+| Technical planning | Connect work to future direction | Task 3 passed |
 | AI collaboration and maturity | Explain AI体系建设 as engineering gates | Planned |
 | Newcomer path and task pool | Tell newcomer what to do and gain | Planned |
 | Closing | Reframe newcomer role from requirement receiver to accountable engineer | Planned |
