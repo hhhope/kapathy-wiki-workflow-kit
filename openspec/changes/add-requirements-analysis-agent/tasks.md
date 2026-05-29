@@ -9,4 +9,4 @@
 - [x] 7. Add OpenSpec draft handoff and tests.
 - [x] 8. Record behavior replay evidence for intent routing, domain candidates, hard-gate blocking, wiki-independent gating, and draft collision blocking.
 - [x] 9. Run focused tests and record verification evidence.
-- [ ] 10. Commit verified implementation and stop at OpenSpec hard stop.
+- [x] 10. Commit verified implementation and stop at OpenSpec hard stop.
