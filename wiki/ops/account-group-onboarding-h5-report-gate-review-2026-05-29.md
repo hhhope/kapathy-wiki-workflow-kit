@@ -89,4 +89,10 @@ Allowed in the H5:
 - Desktop screenshot: passed with `playwright screenshot --full-page --viewport-size=1440,1800 file:///mnt/d/cloud/account-meeting-lore/wiki/reports/account-group-onboarding-h5.html /tmp/account-group-onboarding-desktop-full.png`; cover, capability map, business chain, AI maturity, 30/60/90 path, and task pool are readable without overlap.
 - Mobile screenshot: passed with `playwright screenshot --full-page --viewport-size=390,1200 file:///mnt/d/cloud/account-meeting-lore/wiki/reports/account-group-onboarding-h5.html /tmp/account-group-onboarding-mobile-full.png`; cards stack cleanly and no horizontal overflow is visible.
 - Font boundary: H5 uses a local Windows CJK font-face for WSL/Playwright readability; this is a local QA dependency, not a credential or publication claim.
-- Pending: final index link check.
+- Final index link check: passed after adding `wiki/reports/index.md` entry for `account-group-onboarding-h5.html`.
+
+## Decision
+
+- Local H5 draft is ready for user review.
+- Feishu sync is not approved by default and remains a separate follow-up.
+- Extracted image assets were not required because primary visuals were rebuilt in HTML/CSS.

@@ -36,7 +36,7 @@
   - Update the gate review verification log with evidence.
   - Commit only the gate review and this task status update if needed.
 
-- [ ] 6. Add reports index entry
+- [x] 6. Add reports index entry
   - Update `wiki/reports/index.md` with one entry for the H5.
   - Verify the link path exists.
   - Add the final local-review decision to the gate review.
