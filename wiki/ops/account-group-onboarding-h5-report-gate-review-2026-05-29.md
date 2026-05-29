@@ -80,6 +80,7 @@ Allowed in the H5:
 
 ## Verification Log
 
+- Feishu sync: not performed; local H5 review only until explicit user approval.
 - Pending: HTML parser check.
 - Pending: source-to-screen mapping check.
 - Pending: sensitive-info grep.
