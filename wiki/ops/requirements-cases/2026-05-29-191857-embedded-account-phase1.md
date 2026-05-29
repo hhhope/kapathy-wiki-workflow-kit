@@ -5,7 +5,7 @@ classification_needed: true
 ops_area: workflow-trace
 canonical_object: requirements-case-file
 artifact_type: requirements-case
-status: candidate_pending
+status: diagnose
 case_slug: embedded-account-phase1
 created_at: 2026-05-29
 ---
@@ -31,14 +31,14 @@ created_at: 2026-05-29
 
 ## Domain
 
-- Status: candidate_pending
-- Confirmed:
+- Status: confirmed
+- Confirmed: account
 
 ### Candidates
 
-- embedded_wallet: internal analyzer flagged embedded wallet/payment vocabulary because the PRD includes wallet/balance-payment boundary terms
-- wallet_payment: internal analyzer flagged wallet payment ambiguity
-- account: PRD title and main scope repeatedly use `账户`; not confirmed because seeded taxonomy does not explicitly separate embedded-account product scope from generic account domain
+- account: confirmed by user on 2026-05-29; PRD title and main scope repeatedly use `账户`, and `account` is a known requirements taxonomy domain
+- embedded_wallet: retained as rejected analyzer ambiguity; not a requirements taxonomy domain
+- wallet_payment: retained as rejected analyzer ambiguity; not a requirements taxonomy domain
 
 ## Roles
 
@@ -69,13 +69,12 @@ created_at: 2026-05-29
 
 ## Readiness / Next Action
 
-- Status: candidate_pending
-- Next action: confirm_domain
-- Reason: `req-intake` created the case and recorded provenance; hard-gate readiness still requires confirmed domain, roles, user stories, and acceptance functions.
+- Status: diagnose
+- Next action: normalize_roles
+- Reason: domain is confirmed as `account`; hard-gate readiness still requires normalized roles, user stories, and acceptance functions.
 
 ### Blockers
 
-- domain_confirmation_required: choose an existing taxonomy domain such as `account`, or explicitly create a future scoped taxonomy change if embedded-account requires a new domain.
 - roles_missing: requirement actors and owners have not been normalized to `requirements/config/requirements-taxonomy.yaml`.
 - user_stories_missing: PRD functions have not been converted to role/want/benefit stories.
 - acceptance_functions_missing: PRD acceptance criteria have not been converted to observable acceptance functions mapped to stories.
@@ -102,7 +101,7 @@ created_at: 2026-05-29
 
 - This case file records requirement intake evidence only.
 - Hard-gate validation belongs to the requirements checker.
-- Domain `account` remains a candidate, not a confirmed assignment.
+- Domain `account` is confirmed by user approval on 2026-05-29.
 - API, business-rule, and acceptance-table evidence are supporting evidence, not an OpenSpec draft.
 - No OpenSpec draft or implementation work has been created.
 
@@ -114,10 +113,6 @@ created_at: 2026-05-29
   "acceptance_functions": [],
   "active": true,
   "blockers": [
-    {
-      "id": "domain_confirmation_required",
-      "reason": "choose an existing taxonomy domain such as `account`, or explicitly create a future scoped taxonomy change if embedded-account requires a new domain"
-    },
     {
       "id": "roles_missing",
       "reason": "requirement actors and owners have not been normalized to `requirements/config/requirements-taxonomy.yaml`"
@@ -148,23 +143,23 @@ created_at: 2026-05-29
   "domain": {
     "candidates": [
       {
+        "confidence": "high",
+        "id": "account",
+        "reason": "confirmed by user on 2026-05-29; PRD title and main scope repeatedly use `账户`, and `account` is a known requirements taxonomy domain"
+      },
+      {
         "confidence": "medium",
         "id": "embedded_wallet",
-        "reason": "internal analyzer flagged embedded wallet/payment vocabulary because the PRD includes wallet/balance-payment boundary terms"
+        "reason": "rejected analyzer ambiguity; not a requirements taxonomy domain"
       },
       {
         "confidence": "medium",
         "id": "wallet_payment",
-        "reason": "internal analyzer flagged wallet payment ambiguity"
-      },
-      {
-        "confidence": "medium",
-        "id": "account",
-        "reason": "PRD title and main scope repeatedly use `账户`; not confirmed because seeded taxonomy does not explicitly separate embedded-account product scope from generic account domain"
+        "reason": "rejected analyzer ambiguity; not a requirements taxonomy domain"
       }
     ],
-    "confirmed": "",
-    "status": "candidate_pending"
+    "confirmed": "account",
+    "status": "confirmed"
   },
   "evidence_attachments": {
     "lore": [
@@ -186,14 +181,14 @@ created_at: 2026-05-29
   "proof_boundary_notes": [
     "This case file records requirement intake evidence only.",
     "Hard-gate validation belongs to the requirements checker.",
-    "Domain `account` remains a candidate, not a confirmed assignment.",
+    "Domain `account` is confirmed by user approval on 2026-05-29.",
     "API, business-rule, and acceptance-table evidence are supporting evidence, not an OpenSpec draft.",
     "No OpenSpec draft or implementation work has been created."
   ],
   "readiness_next_action": {
-    "next_action": "confirm_domain",
-    "reason": "`req-intake` created the case and recorded provenance; hard-gate readiness still requires confirmed domain, roles, user stories, and acceptance functions.",
-    "status": "candidate_pending"
+    "next_action": "normalize_roles",
+    "reason": "domain is confirmed as `account`; hard-gate readiness still requires normalized roles, user stories, and acceptance functions.",
+    "status": "diagnose"
   },
   "roles": [],
   "soft_evidence": {
@@ -216,7 +211,7 @@ created_at: 2026-05-29
       }
     ]
   },
-  "status": "candidate_pending",
+  "status": "diagnose",
   "user_stories": []
 }
 ```
