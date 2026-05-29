@@ -31,6 +31,28 @@ The agent SHALL not force unknown domains into existing domain IDs.
 - **AND** it SHALL include candidate domains with reasons
 - **AND** it SHALL require user confirmation before hard-gate readiness
 
+### Requirement: Taxonomy SHALL seed account settlement and clearing requirement vocabulary
+
+The requirements taxonomy SHALL define the first-version requirement readiness vocabulary independently from wiki frontmatter taxonomy.
+
+#### Scenario: Initial taxonomy is loaded
+
+- **WHEN** the requirements taxonomy is loaded
+- **THEN** it SHALL include known domains for account, settlement, and clearing
+- **AND** it SHALL include role vocabulary for retail operations, financial operations, product, finance, clearing, compliance, retail customer, financial customer, system actor, engineering, QA, and risk control
+- **AND** the role vocabulary SHALL distinguish business actors, operation owners, system actors, and delivery owners
+
+### Requirement: Requirements gate SHALL not depend on wiki taxonomy
+
+The requirements gate SHALL use requirements taxonomy and requirements case data as its readiness authority, even when a case file is stored under the wiki tree.
+
+#### Scenario: Requirement case is stored inside wiki
+
+- **WHEN** a requirements case file path is under `wiki/`
+- **THEN** the requirements checker SHALL evaluate it with `requirements/config/requirements-taxonomy.yaml`
+- **AND** it SHALL NOT require `wiki/config/frontmatter-taxonomy.yaml` to pass the requirements hard gate
+- **AND** missing or unrelated wiki frontmatter SHALL NOT block requirement readiness
+
 ### Requirement: Checker SHALL enforce the first-version hard gate
 
 The checker SHALL block requirement readiness unless confirmed domain, roles, user stories, and acceptance functions are complete and traceable.
@@ -45,9 +67,9 @@ The checker SHALL block requirement readiness unless confirmed domain, roles, us
 
 Detailed design sections SHALL not become first-version requirement authority.
 
-#### Scenario: Case contains API or DDL evidence
+#### Scenario: Case contains detailed design evidence
 
-- **WHEN** a requirements case includes API, DDL, ADR, test-plan, or release-plan sections
+- **WHEN** a requirements case includes business-rule, exception-scenario, API, DDL, ADR, test-plan, or release-plan sections
 - **THEN** the checker SHALL classify them as soft warnings or design evidence
 - **AND** it SHALL NOT fail the hard gate solely because of those sections
 
@@ -73,3 +95,10 @@ The agent SHALL generate OpenSpec draft artifacts from confirmed requirement dat
 - **THEN** the agent SHALL create proposal, design, tasks, and spec draft files
 - **AND** each OpenSpec requirement SHALL trace to user story and acceptance function IDs
 - **AND** implementation SHALL still require user review after draft creation
+
+#### Scenario: Draft change id already exists
+
+- **WHEN** user intent is `create_openspec_draft`
+- **AND** the target OpenSpec change id already exists
+- **THEN** the agent SHALL NOT overwrite existing OpenSpec artifacts
+- **AND** it SHALL return a blocking reason that asks for a different change id or explicit user selection
