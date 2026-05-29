@@ -1,6 +1,6 @@
 # Tasks
 
-- [ ] 1. Add public-output gate review
+- [x] 1. Add public-output gate review
   - Create `wiki/ops/account-group-onboarding-h5-report-gate-review-2026-05-29.md`.
   - Record reader intent, selected output shape, evidence map,
     sensitive-information boundary, section drift review, and pending
