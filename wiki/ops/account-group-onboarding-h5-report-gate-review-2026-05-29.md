@@ -74,9 +74,9 @@ Allowed in the H5:
 | Business chain and objects | Explain domain flow | Task 3 passed |
 | Problems and active projects | Show real work entry | Task 3 passed |
 | Technical planning | Connect work to future direction | Task 3 passed |
-| AI collaboration and maturity | Explain AI体系建设 as engineering gates | Planned |
-| Newcomer path and task pool | Tell newcomer what to do and gain | Planned |
-| Closing | Reframe newcomer role from requirement receiver to accountable engineer | Planned |
+| AI collaboration and maturity | Explain AI体系建设 as engineering gates | Task 4 passed |
+| Newcomer path and task pool | Tell newcomer what to do and gain | Task 4 passed |
+| Closing | Reframe newcomer role from requirement receiver to accountable engineer | Task 4 passed |
 
 ## Verification Log
 
