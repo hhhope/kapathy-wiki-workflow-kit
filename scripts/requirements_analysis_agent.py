@@ -5,6 +5,8 @@ from typing import Any
 
 import yaml
 
+from scripts.requirements_openspec_draft import create_openspec_draft_from_case
+
 
 TAXONOMY_PATH = Path("requirements/config/requirements-taxonomy.yaml")
 
@@ -127,3 +129,4 @@ def analyze_requirements_intake(material: str, repo_root: Path | str = ".") -> d
         "domain": domain,
         "next_action": next_action,
     }
+

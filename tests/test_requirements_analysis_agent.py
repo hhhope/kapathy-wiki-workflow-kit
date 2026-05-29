@@ -1,15 +1,83 @@
 from __future__ import annotations
 
+import shutil
+import tempfile
 import unittest
+from pathlib import Path
 
+from scripts.requirements_case import (
+    build_requirements_case_package,
+    write_requirements_case_file,
+)
 from scripts.requirements_analysis_agent import (
     analyze_requirements_intake,
     classify_intent,
+    create_openspec_draft_from_case,
     resolve_domain,
 )
 
 
+TAXONOMY_PATH = Path("requirements/config/requirements-taxonomy.yaml")
+
+
 class RequirementsAnalysisAgentTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmpdir = Path(tempfile.mkdtemp(prefix="requirements-agent-test-"))
+        requirements_config = self.tmpdir / "requirements" / "config"
+        requirements_config.mkdir(parents=True)
+        shutil.copyfile(
+            TAXONOMY_PATH,
+            requirements_config / "requirements-taxonomy.yaml",
+        )
+
+    def tearDown(self) -> None:
+        shutil.rmtree(self.tmpdir)
+
+    def _package(self, **overrides: object) -> dict:
+        data = {
+            "case_slug": "account-reconciliation",
+            "status": "requirements_ready",
+            "domain": {
+                "status": "confirmed",
+                "confirmed": "account",
+                "candidates": [{"id": "account", "reason": "material names accounts"}],
+            },
+            "roles": [
+                {"id": "finance", "label": "finance"},
+                {"id": "system_actor", "label": "system actor"},
+            ],
+            "user_stories": [
+                {
+                    "id": "US-1",
+                    "role": "finance",
+                    "want": "review unreconciled account entries",
+                    "benefit": "settlement exceptions are resolved before close",
+                    "acceptance_function_ids": ["AF-1"],
+                }
+            ],
+            "acceptance_functions": [
+                {
+                    "id": "AF-1",
+                    "name": "list_unreconciled_entries",
+                    "user_story_ids": ["US-1"],
+                    "given": "entries exist",
+                    "when": "finance opens reconciliation",
+                    "then": "unreconciled entries are visible",
+                }
+            ],
+            "timestamp": "2026-05-29T01:02:03+00:00",
+        }
+        data.update(overrides)
+        return build_requirements_case_package(**data)
+
+    def _write_case(self, package: dict) -> Path:
+        return write_requirements_case_file(
+            package,
+            self.tmpdir,
+            output_dir=self.tmpdir / "cases",
+            timestamp="2026-05-29T01:02:03+00:00",
+        )
+
     def test_classify_intent_treats_raw_requirement_material_as_intake_not_draft(self) -> None:
         result = classify_intent(
             """
@@ -98,6 +166,95 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
             {"implementation", "implement", "create_openspec_draft", "generate_draft"},
         )
         self.assertFalse(result["intent"]["draft_requested"])
+
+    def test_create_openspec_draft_blocks_unready_case_without_creating_files(self) -> None:
+        case_file = self._write_case(
+            self._package(
+                status="awaiting_confirmation",
+                user_stories=[
+                    {
+                        "id": "US-1",
+                        "role": "finance",
+                        "want": "review unreconciled account entries",
+                        "benefit": "settlement exceptions are resolved before close",
+                    }
+                ],
+            )
+        )
+
+        result = create_openspec_draft_from_case(
+            case_file,
+            "draft-blocked-case",
+            repo_root=self.tmpdir,
+        )
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertEqual(result["reason"], "requirements_not_ready")
+        self.assertFalse((self.tmpdir / "openspec" / "changes" / "draft-blocked-case").exists())
+        blocker_text = "\n".join(blocker["reason"] for blocker in result["blockers"])
+        self.assertIn("US-1", blocker_text)
+        self.assertIn("acceptance_function_ids", blocker_text)
+
+    def test_create_openspec_draft_writes_traceable_files_for_ready_case(self) -> None:
+        case_file = self._write_case(self._package())
+
+        result = create_openspec_draft_from_case(
+            case_file,
+            "draft-account-reconciliation",
+            repo_root=self.tmpdir,
+        )
+
+        change_dir = self.tmpdir / "openspec" / "changes" / "draft-account-reconciliation"
+        self.assertEqual(result["status"], "draft_created")
+        self.assertTrue(result["requires_user_review"])
+        expected_files = [
+            change_dir / "proposal.md",
+            change_dir / "design.md",
+            change_dir / "tasks.md",
+            change_dir / "specs" / "requirements-analysis-agent" / "spec.md",
+        ]
+        for path in expected_files:
+            with self.subTest(path=path):
+                self.assertTrue(path.exists())
+        combined = "\n".join(path.read_text(encoding="utf-8") for path in expected_files)
+        self.assertIn("US-1", combined)
+        self.assertIn("AF-1", combined)
+        self.assertIn("review unreconciled account entries", combined)
+        self.assertIn("Implementation requires user review", combined)
+
+    def test_create_openspec_draft_blocks_existing_change_id_without_overwrite(self) -> None:
+        case_file = self._write_case(self._package())
+        change_dir = self.tmpdir / "openspec" / "changes" / "draft-existing"
+        change_dir.mkdir(parents=True)
+        existing_proposal = change_dir / "proposal.md"
+        existing_proposal.write_text("existing proposal\n", encoding="utf-8")
+
+        result = create_openspec_draft_from_case(
+            case_file,
+            "draft-existing",
+            repo_root=self.tmpdir,
+        )
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertEqual(result["reason"], "change_id_collision")
+        self.assertEqual(existing_proposal.read_text(encoding="utf-8"), "existing proposal\n")
+        blocker_text = "\n".join(blocker["reason"] for blocker in result["blockers"])
+        self.assertIn("draft-existing", blocker_text)
+        self.assertIn("different change id", blocker_text)
+
+    def test_create_openspec_draft_blocks_invalid_capability_path(self) -> None:
+        case_file = self._write_case(self._package())
+
+        result = create_openspec_draft_from_case(
+            case_file,
+            "draft-invalid-capability",
+            repo_root=self.tmpdir,
+            capability="../outside",
+        )
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertEqual(result["reason"], "invalid_capability")
+        self.assertFalse((self.tmpdir / "openspec" / "changes" / "draft-invalid-capability").exists())
 
 
 if __name__ == "__main__":
