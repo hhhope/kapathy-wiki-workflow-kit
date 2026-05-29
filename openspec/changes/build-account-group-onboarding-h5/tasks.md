@@ -28,7 +28,7 @@
   - Update the gate review verification log.
   - Commit only the H5, gate review, and this task status update if needed.
 
-- [ ] 5. Verify sensitive-info and visual quality
+- [x] 5. Verify sensitive-info and visual quality
   - Run sensitive-info grep against the reader-facing H5.
   - Run source-to-screen coverage check against the gate review.
   - Run HTML parse check after final content.

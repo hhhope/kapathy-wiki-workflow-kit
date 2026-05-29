@@ -83,9 +83,10 @@ Allowed in the H5:
 - Feishu sync: not performed; local H5 review only until explicit user approval.
 - Account-domain content check: passed after sections 0-7 included capability map, business chain, business objects, typical problems, active projects, and technical planning.
 - AI and onboarding content check: passed after sections 8-13 included four-layer AI collaboration, L1-L4 maturity, 3-day onboarding, first-week task, 30/60/90 growth path, and task pool.
-- Pending: HTML parser check.
-- Pending: source-to-screen mapping check.
-- Pending: sensitive-info grep.
-- Pending: desktop screenshot.
-- Pending: mobile screenshot.
+- HTML parser check: passed with `python3 -m html.parser wiki/reports/account-group-onboarding-h5.html`.
+- Source-to-screen mapping check: passed after the gate review covered the three local source files plus Feishu onboarding and AI roadmap sources.
+- Sensitive-info grep: passed with no reader-facing matches for account/password, internal IP or URL, personal names, Feishu URLs, token strings, QR-code, GitLab, Jira, or VPN terms.
+- Desktop screenshot: passed with `/tmp/account-group-onboarding-desktop-full.png`; cover, capability map, business chain, AI maturity, 30/60/90 path, and task pool are readable without overlap.
+- Mobile screenshot: passed with `/tmp/account-group-onboarding-mobile-full.png`; cards stack cleanly and no horizontal overflow is visible.
+- Font boundary: H5 uses a local Windows CJK font-face for WSL/Playwright readability; this is a local QA dependency, not a credential or publication claim.
 - Pending: final index link check.
