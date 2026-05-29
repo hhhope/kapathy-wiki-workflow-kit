@@ -13,7 +13,7 @@
   - Verify the SVG files parse and do not contain sensitive source URLs,
     credentials, personal contacts, or excluded capability groups.
 
-- [ ] 3. Refactor the H5 around redrawn visuals
+- [x] 3. Refactor the H5 around redrawn visuals
   - Add a source-visual index.
   - Replace the capability, architecture, core-chain, and active-project
     sections with image-first sections.

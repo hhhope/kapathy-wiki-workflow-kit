@@ -73,10 +73,19 @@
     .level { border: 3px solid var(--ink); border-radius: 16px; background: #fff; padding: 14px; min-height: 170px; }
     .level.current { background: #faf5ff; border-color: var(--purple); }
     .footer-note { border: 2px dashed var(--blue); border-radius: 16px; background: #f8fafc; padding: 16px; font-weight: 800; }
+    .visual-index { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .visual-card { border: 3px solid var(--ink); border-radius: 16px; background: #fff; padding: 14px; min-height: 156px; }
+    .visual-card strong { display: block; font-size: 20px; margin: 8px 0 6px; }
+    .visual-frame { border: 3px solid var(--ink); border-radius: 18px; background: #fff; padding: 10px; margin: 14px 0; box-shadow: 0 8px 0 rgba(20, 20, 20, .06); overflow: auto; }
+    .source-visual { display: block; width: 100%; min-width: 920px; height: auto; border-radius: 10px; }
+    .visual-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+    .visual-note { border: 2px solid var(--line); border-radius: 14px; background: #fff; padding: 12px; }
+    .visual-note b { display: block; margin-bottom: 4px; font-size: 17px; }
     @media (max-width: 860px) {
       .page { width: min(100vw - 18px, 680px); padding-top: 10px; }
       .hero, .section { border-width: 3px; border-radius: 18px; padding: 18px; }
-      .grid-2, .grid-3, .grid-4, .flow, .capability-map, .roadmap, .layer-row { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .grid-4, .flow, .capability-map, .roadmap, .layer-row, .visual-index, .visual-notes { grid-template-columns: 1fr; }
+      .source-visual { min-width: 0; }
       .hero { min-height: auto; gap: 28px; }
     }
   </style>
@@ -128,150 +137,92 @@
         </div>
       </div>
     </section>
+    <section class="section" id="source-visual-index">
+      <h2>这版先看重绘图，再看说明</h2>
+      <p class="lead">前一版的问题是把真实图示压成卡片。这一版把源 PPT、涅槃图、清算图和最新项目报告重绘成四张主视觉，正文只做解释。</p>
+      <div class="visual-index">
+        <div class="visual-card">
+          <span class="tag">源 PPT 能力图</span>
+          <strong>账户体系能力地图</strong>
+          <p>看账户基础、账务、余额、清结算、对账报表、数据服务和收益分润能力怎么连成体系。</p>
+        </div>
+        <div class="visual-card">
+          <span class="tag">现状架构图</span>
+          <strong>账户组系统架构</strong>
+          <p>看入口、产品、服务、数据、支付渠道、合作银行和运营侧分别承担什么。</p>
+        </div>
+        <div class="visual-card">
+          <span class="tag">资金责任链</span>
+          <strong>核心账户链路</strong>
+          <p>看一笔资金从进件开户到交易、账务、余额、清结算、对账和可观测怎么闭合。</p>
+        </div>
+        <div class="visual-card">
+          <span class="tag">涅槃 + 最新项目</span>
+          <strong>真实项目入口</strong>
+          <p>看烟囱化现状、涅槃目标、清算/账户服务关系，以及新人能进入的任务位置。</p>
+        </div>
+      </div>
+    </section>
     <section class="section" id="capability-map">
       <h2>账户体系能力地图</h2>
-      <p class="lead">能力地图不能压成三块。账户组的核心是把账户基础、统一账务、清结算、统一余额、对账报表、数据服务和收益能力串成可治理体系。</p>
-      <div class="capability-map">
-        <div class="capability-group">
-          <span class="tag">账户基础能力</span>
-          <h3>账户生命周期 / 账户类型管理</h3>
-          <p>覆盖开户、变更、冻结、销户和账户属性管理，支撑个人钱包账户、企业账户、账户类型管理和账户生命周期。</p>
-          <ul>
-            <li>母子账户关系、母实子虚账户</li>
-            <li>多账户模型、账户基础能力</li>
-          </ul>
+      <p class="lead">这张图按源 PPT 能力地图重绘。新人先抓三条主线：对象关系、账务和余额、清结算对账。</p>
+      <figure class="visual-frame">
+        <img class="source-visual" src="assets/account-group-onboarding-h5/account-capability-map.svg" alt="账户体系能力地图重绘图，包含账户基础、统一账务、清结算、统一余额、对账报表、数据服务和收益分润能力" />
+      </figure>
+      <div class="visual-notes">
+        <div class="visual-note">
+          <b>先看账户对象</b>
+          <p>账户生命周期、账户类型、账户属性、母子账户、多账户模型决定资金能不能进入正确账户。</p>
         </div>
-        <div class="capability-group">
-          <span class="tag">统一账务能力</span>
-          <h3>账务查询 / 标准记账模型</h3>
-          <p>把业务动作落到账本，统一账务查询、日切处理、冲正调账能力、分录规则引擎和标准记账模型。</p>
-          <ul>
-            <li>凭证中心、账务口径统一</li>
-            <li>账务一致性和异常补偿</li>
-          </ul>
+        <div class="visual-note">
+          <b>再看账务和余额</b>
+          <p>分录规则、凭证、日切、冲正调账、可用余额、实时余额和冻结余额证明内部账是否正确。</p>
         </div>
-        <div class="capability-group">
-          <span class="tag">清结算能力</span>
-          <h3>清算 / 结算 / 出款</h3>
-          <p>围绕结算规则、提现出款、清算结果、差错处理和结算能力收敛，保障资金从内部账走向外部结果。</p>
-          <ul>
-            <li>结算规则配置、出款结果处理</li>
-            <li>清算接口和结算平台收敛</li>
-          </ul>
-        </div>
-        <div class="capability-group">
-          <span class="tag">统一余额能力</span>
-          <h3>可用余额 / 实时余额 / 冻结余额</h3>
-          <p>余额不是一个查询字段，而是交易、账务、结算和风控共同依赖的状态能力。</p>
-          <ul>
-            <li>余额引擎、可用余额</li>
-            <li>实时余额、冻结余额</li>
-          </ul>
-        </div>
-        <div class="capability-group">
-          <span class="tag">对账与报表</span>
-          <h3>统一对账平台 / 基础对账</h3>
-          <p>用统一对账平台、基础对账、轧差能力、报表能力和差错处理证明资金结果最终闭合。</p>
-          <ul>
-            <li>商户对账、渠道对账、财务报表</li>
-            <li>差错定位、账表一致性</li>
-          </ul>
-        </div>
-        <div class="capability-group">
-          <span class="tag">数据与服务</span>
-          <h3>数据对外服务 / 收益能力</h3>
-          <p>把账户、账务、余额、结算和对账结果沉淀为可查询、可报表、可服务的工程资产。</p>
-          <ul>
-            <li>余额查询、报表能力、数据对外服务</li>
-            <li>收益账户、分润分账、收益计算口径</li>
-          </ul>
+        <div class="visual-note">
+          <b>最后看清结算对账</b>
+          <p>基础对账、账期、轧差、资金归集、报表和数据服务负责把内部结果对到外部事实。</p>
         </div>
       </div>
     </section>
     <section class="section" id="system-architecture">
       <h2>系统架构怎么看</h2>
-      <p class="lead">系统架构要按层看：入口把请求带进来，产品层表达业务形态，服务层承接账户和资金能力，数据层留下证据，外部连接负责支付渠道和合作银行。</p>
-      <div class="architecture">
-        <div class="layer layer-row">
-          <h3>网关层</h3>
-          <div>
-            <div class="chips"><span class="chip">API</span><span class="chip">H5</span><span class="chip">BM</span><span class="chip">上游产品入口</span></div>
-            <p>承接宝付、商户直客和内部运营入口，决定请求从哪个产品、哪个身份、哪个场景进入账户链路。</p>
-          </div>
+      <p class="lead">这张图按多渠道收款和宝财通架构重绘。新人要知道每个产品对象落在哪一层，账户组重点在哪里。</p>
+      <figure class="visual-frame">
+        <img class="source-visual" src="assets/account-group-onboarding-h5/account-system-architecture.svg" alt="账户组系统架构重绘图，展示入口、产品、服务、数据、支付渠道、合作银行和运营管理" />
+      </figure>
+      <div class="visual-notes">
+        <div class="visual-note">
+          <b>入口层看来源</b>
+          <p>API、H5、BM、商户直客入口决定请求从哪个产品、哪个身份、哪个场景进入资金链路。</p>
         </div>
-        <div class="layer layer-row">
-          <h3>产品层</h3>
-          <div>
-            <div class="chips"><span class="chip">支付分账户产品</span><span class="chip">账户产品</span><span class="chip">多渠道收款</span><span class="chip">宝财通</span><span class="chip">宝户通</span></div>
-            <p>产品层不是页面集合，而是定义收款、付款、分账、提现、个人开户、企业开户等能力如何暴露给业务。</p>
-          </div>
+        <div class="visual-note">
+          <b>服务层看责任</b>
+          <p>账户记账、清算系统、交易系统、会员系统、退款中心和风控系统共同决定资金动作是否被正确处理。</p>
         </div>
-        <div class="layer layer-row">
-          <h3>服务层</h3>
-          <div>
-            <div class="chips"><span class="chip">基础服务</span><span class="chip">会员系统</span><span class="chip">交易系统</span><span class="chip">清算系统</span><span class="chip">风控系统</span><span class="chip">退款中心</span><span class="chip">代理商系统</span><span class="chip">渠道系统</span><span class="chip">账户记账</span></div>
-            <p>服务层负责把身份、交易、风控、退款、渠道和账户记账串起来，决定一笔资金动作能不能被正确识别和处理。</p>
-          </div>
-        </div>
-        <div class="layer layer-row">
-          <h3>数据层</h3>
-          <div>
-            <div class="chips"><span class="chip">商户数据</span><span class="chip">用户数据</span><span class="chip">支付数据</span><span class="chip">渠道数据</span><span class="chip">财务数据</span><span class="chip">风控数据</span></div>
-            <p>数据层提供对账、报表、问题定位和风险治理的证据。新人排障时要能说清哪类数据证明哪段链路。</p>
-          </div>
-        </div>
-        <div class="layer layer-row">
-          <h3>外部连接</h3>
-          <div>
-            <div class="chips"><span class="chip">支付渠道</span><span class="chip">银联</span><span class="chip">网联</span><span class="chip">自有支付渠道</span><span class="chip">合作银行</span><span class="chip">银企通</span><span class="chip">运营管理平台</span></div>
-            <p>外部连接决定银行账户、通道返回、结算结果和内部账务如何对齐，也是很多差错、告警和对账问题的来源。</p>
-          </div>
+        <div class="visual-note">
+          <b>外部层看回执</b>
+          <p>银联、网联、自有渠道、银企通和合作银行的返回结果，会影响清结算、对账和差错处理。</p>
         </div>
       </div>
     </section>
     <section class="section" id="business-chain">
       <h2>核心业务链路</h2>
-      <p class="lead">核心链路不是五个动词，而是一条从身份、账户、银行关系到内部账、外部结算和最终对账的责任链。</p>
-      <div class="flow">
-        <div class="node">
-          <span class="tag">01</span>
-          <h3>进件 / 开户</h3>
-          <p>确认主体、产品、协议、渠道准入和账户基础资料是否具备进入资金链路的条件。</p>
+      <p class="lead">这张图把核心链路重绘成资金结果责任链。它不是五个动作，而是四层证据：入口、账户关系、资金动作、内部证据。</p>
+      <figure class="visual-frame">
+        <img class="source-visual" src="assets/account-group-onboarding-h5/account-core-chain.svg" alt="账户核心链路重绘图，展示业务入口、账户关系、资金动作和内部证据的责任链" />
+      </figure>
+      <div class="visual-notes">
+        <div class="visual-note">
+          <b>链路定位</b>
+          <p>先判断问题发生在进件开户、账户关系、交易资金动作，还是账务余额和清结算对账。</p>
         </div>
-        <div class="node">
-          <span class="tag">02</span>
-          <h3>账户模型 / 银行账户关系</h3>
-          <p>把会员、商户、客户、个人户、企业户、母子账户和银行账户关系配置清楚。</p>
+        <div class="visual-note">
+          <b>证据闭环</b>
+          <p>不要只说“失败了”，要能拿出入口参数、账户关系、交易状态、账务分录、余额变化和通道回执。</p>
         </div>
-        <div class="node">
-          <span class="tag">03</span>
-          <h3>交易 / 收款 / 付款</h3>
-          <p>业务动作进入交易系统，字段、身份、渠道和风控结果必须能被账户侧识别。</p>
-        </div>
-        <div class="node">
-          <span class="tag">04</span>
-          <h3>分账 / 提现 / 退款</h3>
-          <p>资金按规则拆分、沉淀、出款或退回，最容易暴露账户关系、余额和通道结果问题。</p>
-        </div>
-        <div class="node">
-          <span class="tag">05</span>
-          <h3>账务 / 凭证 / 余额</h3>
-          <p>账务动作落到账本，生成凭证和余额变化，后续报表、清结算和对账都依赖这里。</p>
-        </div>
-        <div class="node">
-          <span class="tag">06</span>
-          <h3>清算 / 结算</h3>
-          <p>把内部账务结果转成清算、结算、出款和外部银行或通道结果。</p>
-        </div>
-        <div class="node">
-          <span class="tag">07</span>
-          <h3>对账 / 报表 / 差错处理</h3>
-          <p>用账本、流水、通道、银行、报表结果互相校验，定位差错并形成可追溯闭环。</p>
-        </div>
-        <div class="node">
-          <span class="tag">08</span>
-          <h3>风险 / 监控 / 可观测</h3>
-          <p>把失败原因、处理耗时、余额异常、对账差异和核心链路指标变成可查询证据。</p>
+        <div class="visual-note">
+          <b>新人训练</b>
+          <p>从这条链路练对象建模、链路拆解、清结算差错、账务一致性、联调验证和生产问题定位。</p>
         </div>
       </div>
     </section>
@@ -370,37 +321,22 @@
     </section>
     <section class="section" id="active-projects">
       <h2>正在做的项目入口</h2>
-      <p class="lead">项目入口要能映射到能力地图：新人先做字段理解、接口联调、回归验证和问题复盘，再逐步接完整链路。</p>
-      <div class="grid-3">
-        <div class="card">
-          <span class="tag">商户关系</span>
-          <b>宝财通 / 二级商户关系</b>
-          <p>位置：产品层 + 账户模型。新人可从会员号、客户号、SMID、商户关系和交易入口校验开始，训练二级商户识别、分账关系和回归验证。</p>
+      <p class="lead">这张图把涅槃材料和最新分账核心/宝财通改造报告合起来看：为什么要做、目标是什么、账户组新人能从哪里上手。</p>
+      <figure class="visual-frame">
+        <img class="source-visual" src="assets/account-group-onboarding-h5/nirvana-project-entry-map.svg" alt="涅槃与最新项目入口重绘图，展示现状烟囱化、目标方案、清算内容和新人任务入口" />
+      </figure>
+      <div class="visual-notes">
+        <div class="visual-note">
+          <b>涅槃不是项目名堆叠</b>
+          <p>核心是把入口、交易、账户、清结算、对账从烟囱式实现里拆出来，重新定义边界和协作方式。</p>
         </div>
-        <div class="card">
-          <span class="tag">清结算</span>
-          <b>结算 / 出款 / 清算</b>
-          <p>位置：清结算能力。新人可从提现、代付、清算接口、结算规则和出款回执入手，训练外部结果校验。</p>
+        <div class="visual-note">
+          <b>最新汇报里的账户组投入</b>
+          <p>宝财通/二级商户、结算/出款/清算、报表/对账、余额/账本验证、账户模型和银行/渠道连接都在账户组工作面内。</p>
         </div>
-        <div class="card">
-          <span class="tag">对账报表</span>
-          <b>接口 / 报表 / 对账联调</b>
-          <p>位置：数据与服务。新人可对齐接口字段、商户对账、报表口径和差错样例，训练把业务口径变成证据。</p>
-        </div>
-        <div class="card">
-          <span class="tag">账务余额</span>
-          <b>余额 / 账本验证</b>
-          <p>位置：统一账务 + 统一余额。新人可围绕账务查询、账本记录、可用余额、实时余额和冻结余额做验证。</p>
-        </div>
-        <div class="card">
-          <span class="tag">账户模型</span>
-          <b>账户合并 / 母子账户</b>
-          <p>位置：账户基础能力。新人可从账户类型管理、母子账户关系、多账户模型和母实子虚账户方向理解模型收敛。</p>
-        </div>
-        <div class="card">
-          <span class="tag">外部连接</span>
-          <b>银行账户 / 渠道接入</b>
-          <p>位置：支付渠道 + 合作银行。新人可从银企通、渠道路由、银行回执和对账文件入手，理解外部依赖如何影响内部闭环。</p>
+        <div class="visual-note">
+          <b>新人能获得什么</b>
+          <p>从字段校验、联调验证、账本/余额证明、清算回执、对账差异和复盘沉淀开始，逐步进入完整资金链路。</p>
         </div>
       </div>
     </section>
