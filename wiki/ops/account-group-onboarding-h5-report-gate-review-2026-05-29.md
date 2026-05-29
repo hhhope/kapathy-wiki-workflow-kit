@@ -287,3 +287,42 @@ Allowed in the H5:
 
 - Local H5 draft is repaired for user review on AI offering and visual style.
 - Feishu sync is not approved by default and remains a separate follow-up.
+
+## Card Layout Rejection And Repair
+
+- User feedback: the H5 still looked like an ugly card-based template.
+- Repair change: `openspec/changes/replace-account-h5-card-layout`.
+- Failure mode: repeated boxed card grids were still the primary information
+  structure, so the page read as generic blocks instead of an account-group
+  technical training handout.
+- Repair decision: remove card-style visual dominance. Repeated content now
+  uses technical handout rows, separators, compact matrices, and definition
+  blocks. Source-backed diagrams remain the only load-bearing framed visuals.
+
+## Card Layout Verification Log
+
+- HTML parser check: passed with
+  `python3 -m html.parser wiki/reports/account-group-onboarding-h5.html`.
+- Desktop screenshot: passed after visual inspection with
+  `/tmp/account-h5-no-card-desktop.png`; repeated text blocks no longer render
+  as boxed card grids.
+- Mobile screenshot: passed after visual inspection with
+  `/tmp/account-h5-no-card-mobile.png`; repeated content stacks as separated
+  handout rows rather than card blocks.
+- Required title / AI-offering grep: passed for the stable H5 headings and
+  Account Harness / account-domain offering language.
+- Removed-title and rejected-phrase grep: passed with no reader-facing matches
+  for process-title or old AI tool-first phrasing.
+- Sensitive-info grep: passed with no matches for credentials, internal URLs,
+  Feishu URLs, token strings, QR-code instructions, personal emails, or access
+  instructions.
+- Diff hygiene: passed with `git diff --check`.
+- OpenSpec validation: passed with
+  `openspec validate replace-account-h5-card-layout --strict`; PostHog network
+  flush errors were emitted after the local validation success and do not
+  change the validation result.
+
+## Card Layout Decision
+
+- Local H5 draft is repaired away from card-style dominance for user review.
+- Feishu sync is not approved by default and remains a separate follow-up.
