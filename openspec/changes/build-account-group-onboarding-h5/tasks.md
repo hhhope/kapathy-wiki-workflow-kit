@@ -7,7 +7,7 @@
     verification log.
   - Commit only the gate review file and this task status update if needed.
 
-- [ ] 2. Build H5 skeleton and visual system
+- [x] 2. Build H5 skeleton and visual system
   - Create `wiki/reports/account-group-onboarding-h5.html`.
   - Include the complete HTML document shell, inline CSS, responsive layout
     rules, and fourteen semantic section IDs.

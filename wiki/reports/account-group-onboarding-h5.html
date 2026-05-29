@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>账户组体系新人培训 H5</title>
+  <style>
+    :root {
+      --paper: #f8efd8;
+      --sheet: #fffaf0;
+      --ink: #141414;
+      --muted: #5b6472;
+      --line: rgba(20, 20, 20, .22);
+      --navy: #14213d;
+      --blue: #2f77c5;
+      --green: #0f9d7a;
+      --orange: #e96b2c;
+      --purple: #7d55a8;
+      --yellow: #f3c64f;
+      --card: #ffffff;
+      --shadow: 0 14px 0 rgba(20, 20, 20, .08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(20, 20, 20, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 20, 20, .045) 1px, transparent 1px),
+        #efe6d2;
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      letter-spacing: 0;
+      line-height: 1.55;
+    }
+    .page { width: min(1180px, calc(100vw - 28px)); margin: 0 auto; padding: 22px 0 56px; }
+    .hero, .section {
+      border: 4px solid var(--ink);
+      border-radius: 22px;
+      background: var(--sheet);
+      box-shadow: var(--shadow);
+      margin: 0 0 18px;
+      padding: 24px;
+      overflow: hidden;
+    }
+    .hero { min-height: 560px; display: grid; align-content: space-between; }
+    .kicker { display: inline-flex; width: fit-content; border: 3px solid var(--ink); border-radius: 999px; background: var(--orange); color: #fff; padding: 6px 12px; font-weight: 900; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 860px; font-size: clamp(38px, 7vw, 82px); line-height: 1.02; text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 8px; text-underline-offset: 10px; }
+    h2 { font-size: clamp(26px, 4vw, 42px); line-height: 1.14; }
+    .lead { color: var(--muted); font-size: clamp(17px, 2vw, 22px); font-weight: 800; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .card { border: 2px solid var(--line); border-radius: 14px; background: var(--card); padding: 14px; }
+    .card b { display: block; margin-bottom: 6px; font-size: 18px; }
+    .tag { display: inline-flex; width: fit-content; border-radius: 999px; padding: 4px 9px; background: #eef2ff; color: #3730a3; font-size: 12px; font-weight: 900; }
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; align-items: stretch; }
+    .flow .node { border: 3px solid var(--ink); border-radius: 16px; background: #fff; padding: 14px; min-height: 120px; }
+    .capability-map { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .capability-group { border: 3px solid var(--ink); border-radius: 16px; background: #fff; padding: 14px; }
+    .roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .level { border: 3px solid var(--ink); border-radius: 16px; background: #fff; padding: 14px; min-height: 170px; }
+    .level.current { background: #faf5ff; border-color: var(--purple); }
+    .footer-note { border: 2px dashed var(--blue); border-radius: 16px; background: #f8fafc; padding: 16px; font-weight: 800; }
+    @media (max-width: 860px) {
+      .page { width: min(100vw - 18px, 680px); padding-top: 10px; }
+      .hero, .section { border-width: 3px; border-radius: 18px; padding: 18px; }
+      .grid-2, .grid-3, .grid-4, .flow, .capability-map, .roadmap { grid-template-columns: 1fr; }
+      .hero { min-height: auto; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" id="cover"></section>
+    <section class="section" id="group"></section>
+    <section class="section" id="capability-map"></section>
+    <section class="section" id="business-chain"></section>
+    <section class="section" id="business-objects"></section>
+    <section class="section" id="typical-problems"></section>
+    <section class="section" id="active-projects"></section>
+    <section class="section" id="technical-planning"></section>
+    <section class="section" id="ai-collaboration"></section>
+    <section class="section" id="ai-maturity"></section>
+    <section class="section" id="first-week"></section>
+    <section class="section" id="growth-path"></section>
+    <section class="section" id="task-pool"></section>
+    <section class="section" id="closing"></section>
+  </main>
+</body>
+</html>
