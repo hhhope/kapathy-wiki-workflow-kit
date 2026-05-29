@@ -10,9 +10,10 @@
     "install.sh",
     "README.md",
     "MANIFEST.txt",
+    "AGENTS_SNIPPET.md",
     "payload"
   ],
   "scripts": {
-    "smoke": "tmp=$(mktemp -d /tmp/req-agent-npm-smoke.XXXXXX) && mkdir -p \"$tmp/target\" && bash ./install.sh \"$tmp/target\" --verify"
+    "smoke": "tmp=$(mktemp -d /tmp/req-agent-npm-smoke.XXXXXX) && mkdir -p \"$tmp/target\" && bash ./install.sh \"$tmp/target\" --mode codex-repo --update-agents --verify"
   }
 }

@@ -12,6 +12,7 @@ scripts/requirements_openspec_draft.py
 requirements/config/requirements-taxonomy.yaml
 tests/test_req_agent_skills.py
 tests/test_requirements_analysis_agent.py
+docs/req-agent/AGENTS_SNIPPET.md
 openspec/changes/req-agent/proposal.md
 openspec/changes/req-agent/design.md
 openspec/changes/req-agent/tasks.md
