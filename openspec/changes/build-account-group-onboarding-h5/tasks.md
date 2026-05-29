@@ -21,7 +21,7 @@
   - Update the gate review verification log.
   - Commit only the H5, gate review, and this task status update if needed.
 
-- [ ] 4. Add AI collaboration and newcomer path content
+- [x] 4. Add AI collaboration and newcomer path content
   - Fill the AI collaboration, AI maturity, first-week, 30/60/90, task-pool,
     and closing sections.
   - Verify required AI and onboarding phrases are present.

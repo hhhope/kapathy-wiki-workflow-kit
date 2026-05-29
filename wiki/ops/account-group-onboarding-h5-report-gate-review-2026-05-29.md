@@ -82,6 +82,7 @@ Allowed in the H5:
 
 - Feishu sync: not performed; local H5 review only until explicit user approval.
 - Account-domain content check: passed after sections 0-7 included capability map, business chain, business objects, typical problems, active projects, and technical planning.
+- AI and onboarding content check: passed after sections 8-13 included four-layer AI collaboration, L1-L4 maturity, 3-day onboarding, first-week task, 30/60/90 growth path, and task pool.
 - Pending: HTML parser check.
 - Pending: source-to-screen mapping check.
 - Pending: sensitive-info grep.
