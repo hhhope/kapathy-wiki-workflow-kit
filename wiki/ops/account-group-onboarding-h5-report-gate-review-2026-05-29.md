@@ -125,3 +125,10 @@ Allowed in the H5:
 - Local H5 draft is ready for user review.
 - Feishu sync is not approved by default and remains a separate follow-up.
 - Extracted image assets were not required because primary visuals were rebuilt in HTML/CSS.
+
+## Rewrite Decision
+
+- Local H5 rewrite is ready for user review.
+- The rewrite fixes the failed first draft by adding real capability-map depth, layered system architecture, complete core chain, and account-domain AI collaboration.
+- Feishu sync is not approved by default and remains a separate follow-up.
+- Sensitive onboarding access details from Feishu source documents were intentionally excluded.

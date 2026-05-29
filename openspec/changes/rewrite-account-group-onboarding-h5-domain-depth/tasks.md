@@ -27,7 +27,7 @@
   - Run `git diff --check`.
   - Commit only the gate review and this task status update if needed.
 
-- [ ] 5. Final local review status
+- [x] 5. Final local review status
   - Update gate review decision.
   - Verify report index still links to the H5.
   - Run `openspec validate rewrite-account-group-onboarding-h5-domain-depth
