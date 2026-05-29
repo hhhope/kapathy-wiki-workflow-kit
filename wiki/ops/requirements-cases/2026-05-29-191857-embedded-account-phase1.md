@@ -42,7 +42,12 @@ created_at: 2026-05-29
 
 ## Roles
 
-- None
+- financial_customer: financial customer (business_actors); source actors: 商户、目标客户、权益类商户
+- retail_customer: retail customer (business_actors); source actors: 商户终端用户、终端用户
+- system_actor: system actor (system_actors); source actors: 商户系统、统一网关、通知中心、产品中心、嵌入式账户前置、账户核心、订阅支付产品、宝付通道
+- product: product (delivery_owners); source actors: 产品中心、订阅支付产品、嵌入式账户产品需求 owner
+- engineering: engineering (delivery_owners); source actors: 嵌入式账户前置、账户核心、统一网关、通知中心、订阅支付产品相关研发团队
+- qa: QA (delivery_owners); source actors: 联调、测试、验收责任方
 
 ## User Stories
 
@@ -70,12 +75,11 @@ created_at: 2026-05-29
 ## Readiness / Next Action
 
 - Status: diagnose
-- Next action: normalize_roles
-- Reason: domain is confirmed as `account`; hard-gate readiness still requires normalized roles, user stories, and acceptance functions.
+- Next action: write_user_stories
+- Reason: domain and roles are normalized; hard-gate readiness still requires user stories and acceptance functions.
 
 ### Blockers
 
-- roles_missing: requirement actors and owners have not been normalized to `requirements/config/requirements-taxonomy.yaml`.
 - user_stories_missing: PRD functions have not been converted to role/want/benefit stories.
 - acceptance_functions_missing: PRD acceptance criteria have not been converted to observable acceptance functions mapped to stories.
 
@@ -102,6 +106,7 @@ created_at: 2026-05-29
 - This case file records requirement intake evidence only.
 - Hard-gate validation belongs to the requirements checker.
 - Domain `account` is confirmed by user approval on 2026-05-29.
+- Roles are normalized to existing requirements taxonomy IDs; exact PRD actor names are preserved as source notes.
 - API, business-rule, and acceptance-table evidence are supporting evidence, not an OpenSpec draft.
 - No OpenSpec draft or implementation work has been created.
 
@@ -113,10 +118,6 @@ created_at: 2026-05-29
   "acceptance_functions": [],
   "active": true,
   "blockers": [
-    {
-      "id": "roles_missing",
-      "reason": "requirement actors and owners have not been normalized to `requirements/config/requirements-taxonomy.yaml`"
-    },
     {
       "id": "user_stories_missing",
       "reason": "PRD functions have not been converted to role/want/benefit stories"
@@ -182,15 +183,85 @@ created_at: 2026-05-29
     "This case file records requirement intake evidence only.",
     "Hard-gate validation belongs to the requirements checker.",
     "Domain `account` is confirmed by user approval on 2026-05-29.",
+    "Roles are normalized to existing requirements taxonomy IDs; exact PRD actor names are preserved as source notes.",
     "API, business-rule, and acceptance-table evidence are supporting evidence, not an OpenSpec draft.",
     "No OpenSpec draft or implementation work has been created."
   ],
   "readiness_next_action": {
-    "next_action": "normalize_roles",
-    "reason": "domain is confirmed as `account`; hard-gate readiness still requires normalized roles, user stories, and acceptance functions.",
+    "next_action": "write_user_stories",
+    "reason": "domain and roles are normalized; hard-gate readiness still requires user stories and acceptance functions.",
     "status": "diagnose"
   },
-  "roles": [],
+  "roles": [
+    {
+      "category": "business_actors",
+      "id": "financial_customer",
+      "label": "financial customer",
+      "normalization_note": "Used for merchant/customer-side business actor vocabulary without mutating the taxonomy.",
+      "source_actors": [
+        "商户",
+        "目标客户",
+        "权益类商户"
+      ]
+    },
+    {
+      "category": "business_actors",
+      "id": "retail_customer",
+      "label": "retail customer",
+      "normalization_note": "Used for merchant terminal users whose account opening and card binding outcome is represented by the requirement.",
+      "source_actors": [
+        "商户终端用户",
+        "终端用户"
+      ]
+    },
+    {
+      "category": "system_actors",
+      "id": "system_actor",
+      "label": "system actor",
+      "source_actors": [
+        "商户系统",
+        "统一网关",
+        "通知中心",
+        "产品中心",
+        "嵌入式账户前置",
+        "账户核心",
+        "订阅支付产品",
+        "宝付通道"
+      ]
+    },
+    {
+      "category": "delivery_owners",
+      "id": "product",
+      "label": "product",
+      "source_actors": [
+        "产品中心",
+        "订阅支付产品",
+        "嵌入式账户产品需求 owner"
+      ]
+    },
+    {
+      "category": "delivery_owners",
+      "id": "engineering",
+      "label": "engineering",
+      "source_actors": [
+        "嵌入式账户前置",
+        "账户核心",
+        "统一网关",
+        "通知中心",
+        "订阅支付产品相关研发团队"
+      ]
+    },
+    {
+      "category": "delivery_owners",
+      "id": "qa",
+      "label": "QA",
+      "source_actors": [
+        "联调",
+        "测试",
+        "验收责任方"
+      ]
+    }
+  ],
   "soft_evidence": {
     "api": [
       {
