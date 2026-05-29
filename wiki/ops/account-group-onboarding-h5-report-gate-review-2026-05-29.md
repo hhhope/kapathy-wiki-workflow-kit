@@ -19,6 +19,29 @@ ai_generated: true
 
 # account-group-onboarding-h5 / report gate review
 
+## Visual Gate Failure Override
+
+- Current status: previous Visual Gate pass claim is invalid.
+- User rejection: the H5 reduced source architecture diagrams, capability maps,
+  Nirvana diagrams, and latest project-report evidence into generic CSS boxes.
+- Failure mode: the page looked like a generic card-based explanation rather
+  than account-group technical training material. It did not preserve or redraw
+  the source diagrams that carry architecture, domain structure, project scope,
+  and onboarding entry points.
+- Gate consequence: the earlier local-review decision is superseded. The H5 is
+  not review-ready until it has standalone source-backed visual assets, embeds
+  them in the key sections, and passes fresh desktop/mobile visual inspection.
+- Repair change: `openspec/changes/redraw-account-onboarding-h5-source-visuals`.
+
+## Repair Visual Plan
+
+| Visual | Source Anchor | H5 Job | Repair Standard |
+| --- | --- | --- | --- |
+| Account capability map | `账户体系能力地图` slide | Teach the account capability landscape | Redraw as a map/graph; exclude `授信能力` and `垫资能力`; do not use six isolated cards as the primary visual. |
+| Account system architecture | 多渠道收款 architecture + 宝财通 architecture slides | Show entrance, product, service, data, channel, and bank layers | Redraw as a layered architecture diagram with account, clearing, transaction, channel, and bank positions visible. |
+| Account core chain | account technical status + clearing/account materials | Show how funds and account evidence flow | Redraw as a lane diagram from onboarding/opening to accounting, balance, clearing, reconciliation, and observability. |
+| Nirvana / latest project map | `现状.png`, `最终方案.png`, `优化后图示.png`, `清算的内容.png`, split-account/core report | Show what the team is really doing now | Redraw current pressure, target architecture, clearing/account-service relation, and newcomer task entry points in one source-backed section. |
+
 ## Article Intent Contract
 
 - Reader: 账户组新入职应届生。
