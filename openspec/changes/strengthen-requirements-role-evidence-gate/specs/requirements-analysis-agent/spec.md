@@ -49,7 +49,7 @@ requiring immediate migration.
 - **GIVEN** a legacy case uses `story.role`
 - **WHEN** compatibility mode is used
 - **THEN** the checker SHALL use existing taxonomy role validation
-- **AND** the summary SHALL mark the case as legacy-compatible
+- **AND** the summary SHALL include `legacy_compatible: true`
 
 ### Requirement: OpenSpec draft generation SHALL require strict readiness
 

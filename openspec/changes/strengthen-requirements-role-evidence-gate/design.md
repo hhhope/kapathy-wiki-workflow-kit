@@ -66,8 +66,11 @@ Object-specific anchors:
 
 - UserStory: `source_functions`
 - AcceptanceFunction: `source_acceptance`, `source_functions`
-- Role: `source_actors` plus `normalization_note`, with `evidence_anchor`
-  preferred for new cases
+- Role: `evidence_anchor` OR `source_actors` plus `normalization_note`
+
+For roles, `normalization_note` is optional when `evidence_anchor` exists.
+New cases should prefer `evidence_anchor` because it makes the role source
+trace directly readable.
 
 ## Checker Modes
 
@@ -83,7 +86,7 @@ Strict mode blocks:
 - story or acceptance function lacks an evidence anchor
 
 Compatibility mode allows legacy `story.role` checks and reports
-`legacy_shape: true` in the summary.
+`legacy_compatible: true` in the summary.
 
 ## Golden Sample
 
