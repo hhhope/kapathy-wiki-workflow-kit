@@ -42,7 +42,7 @@ def _story_trace(case_data: dict[str, Any]) -> list[dict[str, str]]:
             {
                 "story_id": story_id,
                 "acceptance_ids": ", ".join(acceptance_ids) or "none",
-                "role": str(story.get("role", "")).strip(),
+                "role": str(story.get("role_ref") or story.get("role") or "").strip(),
                 "want": str(story.get("want") or story.get("goal") or story.get("story") or story.get("summary") or "").strip(),
                 "benefit": str(story.get("benefit") or story.get("value") or story.get("so_that") or "").strip(),
             }
@@ -155,7 +155,7 @@ def create_openspec_draft_from_case(
 ) -> dict[str, Any]:
     root = Path(repo_root)
     case_path = Path(case_file)
-    readiness = check_requirements_case_file(case_path, repo_root=root)
+    readiness = check_requirements_case_file(case_path, repo_root=root, strict=True)
     if readiness.get("summary", {}).get("status") != "requirements_ready":
         return {"status": "blocked", "reason": "requirements_not_ready", "blockers": _dict_items(readiness.get("blockers")), "checker": readiness, "created_files": [], "requires_user_review": True}
 

@@ -24,6 +24,29 @@ def _contains_any(text: str, markers: tuple[str, ...]) -> bool:
     return any(marker.lower() in lowered for marker in markers)
 
 
+def build_role_instance(
+    *,
+    role_id: str,
+    mention: str,
+    confirmed_as: str,
+    status: str = "confirmed",
+    category: str = "",
+    source_section: str = "",
+) -> dict[str, object]:
+    role: dict[str, object] = {
+        "id": role_id,
+        "mention": mention,
+        "confirmed_as": confirmed_as,
+        "status": status,
+        "source_actors": [mention],
+    }
+    if category:
+        role["category"] = category
+    if source_section:
+        role["evidence_anchor"] = {"source_section": source_section}
+    return role
+
+
 def classify_intent(material: str) -> dict[str, Any]:
     text = str(material or "").strip()
     if _contains_any(text, ("openspec draft", "open spec draft", "创建 openspec", "生成 openspec")):
@@ -129,4 +152,3 @@ def analyze_requirements_intake(material: str, repo_root: Path | str = ".") -> d
         "domain": domain,
         "next_action": next_action,
     }
-

@@ -140,19 +140,28 @@ def _summary_lines(value: Any) -> list[str]:
 
 def _role_line(item: dict[str, Any]) -> str:
     role_id = str(item.get("id") or item.get("role") or "unknown")
-    label = str(item.get("label") or role_id)
+    mention = str(item.get("mention") or item.get("label") or role_id)
+    confirmed_as = str(item.get("confirmed_as", ""))
+    status = str(item.get("status", ""))
     category = str(item.get("category", ""))
-    suffix = f" ({category})" if category else ""
-    return f"- {role_id}: {label}{suffix}"
+    parts = [
+        mention,
+        f"confirmed_as={confirmed_as}" if confirmed_as else "",
+        f"status={status}" if status else "",
+        f"category={category}" if category else "",
+    ]
+    return f"- {role_id}: {'; '.join(part for part in parts if part)}"
 
 
 def _story_line(item: dict[str, Any]) -> str:
     story_id = str(item.get("id", "unknown"))
+    role_ref = str(item.get("role_ref", ""))
     role = str(item.get("role", ""))
+    role_part = f"role_ref={role_ref}" if role_ref else f"role={role}" if role else ""
     want = str(item.get("want") or item.get("story") or item.get("summary") or "")
     benefit = str(item.get("benefit", ""))
     refs = ", ".join(str(ref) for ref in _as_list(item.get("acceptance_function_ids")))
-    parts = [part for part in [f"role={role}" if role else "", want, f"benefit={benefit}" if benefit else "", f"acceptance={refs}" if refs else ""] if part]
+    parts = [part for part in [role_part, want, f"benefit={benefit}" if benefit else "", f"acceptance={refs}" if refs else ""] if part]
     return f"- {story_id}: {'; '.join(parts)}" if parts else f"- {story_id}"
 
 

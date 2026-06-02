@@ -11,6 +11,7 @@ from scripts.requirements_case import (
 )
 from scripts.requirements_analysis_agent import (
     analyze_requirements_intake,
+    build_role_instance,
     classify_intent,
     create_openspec_draft_from_case,
     resolve_domain,
@@ -43,16 +44,29 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
                 "candidates": [{"id": "account", "reason": "material names accounts"}],
             },
             "roles": [
-                {"id": "finance", "label": "finance"},
-                {"id": "system_actor", "label": "system actor"},
+                build_role_instance(
+                    role_id="R-finance",
+                    mention="finance",
+                    confirmed_as="finance",
+                    category="business_roles",
+                    source_section="roles",
+                ),
+                build_role_instance(
+                    role_id="R-system",
+                    mention="reconciliation system",
+                    confirmed_as="system_actor",
+                    category="system_actors",
+                    source_section="systems",
+                ),
             ],
             "user_stories": [
                 {
                     "id": "US-1",
-                    "role": "finance",
+                    "role_ref": "R-finance",
                     "want": "review unreconciled account entries",
                     "benefit": "settlement exceptions are resolved before close",
                     "acceptance_function_ids": ["AF-1"],
+                    "evidence_anchor": {"source_functions": ["F-1"]},
                 }
             ],
             "acceptance_functions": [
@@ -63,6 +77,7 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
                     "given": "entries exist",
                     "when": "finance opens reconciliation",
                     "then": "unreconciled entries are visible",
+                    "source_acceptance": "AC-001",
                 }
             ],
             "timestamp": "2026-05-29T01:02:03+00:00",
@@ -194,6 +209,44 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
         blocker_text = "\n".join(blocker["reason"] for blocker in result["blockers"])
         self.assertIn("US-1", blocker_text)
         self.assertIn("acceptance_function_ids", blocker_text)
+
+    def test_create_openspec_draft_blocks_candidate_role_reference(self) -> None:
+        case_file = self._write_case(
+            self._package(
+                roles=[
+                    build_role_instance(
+                        role_id="R-ops",
+                        mention="finance ops",
+                        confirmed_as="financial_operations",
+                        status="candidate_pending",
+                        category="business_roles",
+                        source_section="roles",
+                    )
+                ],
+                user_stories=[
+                    {
+                        "id": "US-1",
+                        "role_ref": "R-ops",
+                        "want": "review unreconciled account entries",
+                        "benefit": "settlement exceptions are resolved before close",
+                        "acceptance_function_ids": ["AF-1"],
+                        "evidence_anchor": {"source_functions": ["F-1"]},
+                    }
+                ],
+            )
+        )
+
+        result = create_openspec_draft_from_case(
+            case_file,
+            "draft-candidate-role-reference",
+            repo_root=self.tmpdir,
+        )
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertEqual(result["reason"], "requirements_not_ready")
+        self.assertFalse((self.tmpdir / "openspec" / "changes" / "draft-candidate-role-reference").exists())
+        blocker_codes = {blocker["code"] for blocker in result["blockers"]}
+        self.assertIn("story_role_not_confirmed", blocker_codes)
 
     def test_create_openspec_draft_writes_traceable_files_for_ready_case(self) -> None:
         case_file = self._write_case(self._package())
