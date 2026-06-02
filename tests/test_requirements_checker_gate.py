@@ -131,6 +131,11 @@ class RequirementsCheckerGateTests(unittest.TestCase):
     def _blocker_codes(self, report: dict) -> set[str]:
         return {str(blocker.get("code", "")) for blocker in report["blockers"]}
 
+    def _check_strict_requirements_case_file(self, path: Path, *, strict: bool) -> dict:
+        # RED intent: Task 3 adds this keyword. Until then, these tests fail at
+        # the checker signature; after that they exercise strict gate semantics.
+        return check_requirements_case_file(path, repo_root=self.tmpdir, strict=strict)
+
     def test_ready_case_passes_hard_gate(self) -> None:
         path = self._write_case(self._legacy_package())
 
@@ -141,14 +146,14 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         self.assertEqual(report["blockers"], [])
 
     def test_missing_acceptance_mapping_fails_naming_user_story(self) -> None:
-        package = self._package(
+        package = self._legacy_package(
+            roles=[{"id": "finance", "label": "finance"}],
             user_stories=[
                 {
                     "id": "US-1",
-                    "role_ref": "R-finance",
+                    "role": "finance",
                     "want": "review unreconciled account entries",
                     "benefit": "settlement exceptions are resolved before close",
-                    "evidence_anchor": {"source_functions": ["F-1"]},
                 }
             ]
         )
@@ -157,7 +162,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
         self.assertEqual(report["summary"]["status"], "blocked")
-        self.assertIn("US-1", "\n".join(blocker["reason"] for blocker in report["blockers"]))
+        self.assertIn("story_acceptance_mapping_missing", self._blocker_codes(report))
 
     def test_story_without_goal_value_or_declared_role_fails(self) -> None:
         package = self._legacy_package(
@@ -181,17 +186,17 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         self.assertIn("no benefit, value, or so_that", reasons)
 
     def test_acceptance_without_reverse_mapping_or_observable_content_fails(self) -> None:
-        package = self._package(
-            acceptance_functions=[{"id": "AF-1", "source_acceptance": "AC-1"}],
+        package = self._legacy_package(
+            roles=[{"id": "finance", "label": "finance"}],
+            acceptance_functions=[{"id": "AF-1"}],
         )
         path = self._write_case(package)
 
         report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
-        reasons = "\n".join(blocker["reason"] for blocker in report["blockers"])
         self.assertEqual(report["summary"]["status"], "blocked")
-        self.assertIn("acceptance function AF-1 has no user_story_ids", reasons)
-        self.assertIn("acceptance function AF-1 has no observable", reasons)
+        self.assertIn("acceptance_story_mapping_missing", self._blocker_codes(report))
+        self.assertIn("acceptance_observable_missing", self._blocker_codes(report))
 
     def test_candidate_unconfirmed_domain_fails(self) -> None:
         path = self._write_case(
@@ -278,7 +283,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         )
         path = self._write_case(package)
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = self._check_strict_requirements_case_file(path, strict=True)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("story_role_ref_missing", self._blocker_codes(report))
@@ -298,7 +303,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         )
         path = self._write_case(package)
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = self._check_strict_requirements_case_file(path, strict=True)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("story_role_not_confirmed", self._blocker_codes(report))
@@ -306,7 +311,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
     def test_acceptance_source_acceptance_counts_as_evidence_anchor(self) -> None:
         path = self._write_case(self._package())
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = self._check_strict_requirements_case_file(path, strict=True)
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertEqual(report["blockers"], [])
@@ -326,7 +331,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         )
         path = self._write_case(package)
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = self._check_strict_requirements_case_file(path, strict=True)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("acceptance_evidence_missing", self._blocker_codes(report))
@@ -334,7 +339,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
     def test_legacy_case_shape_remains_readable_in_compatibility_mode(self) -> None:
         path = self._write_case(self._legacy_package())
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
+        report = self._check_strict_requirements_case_file(path, strict=False)
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertTrue(report["summary"]["hard_gate_passed"])
@@ -355,7 +360,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         )
         path = self._write_case(package)
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = self._check_strict_requirements_case_file(path, strict=True)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("role_evidence_missing", self._blocker_codes(report))
