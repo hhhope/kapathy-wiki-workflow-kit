@@ -154,7 +154,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         )
         path = self._write_case(package)
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("US-1", "\n".join(blocker["reason"] for blocker in report["blockers"]))
@@ -186,7 +186,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         )
         path = self._write_case(package)
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
         reasons = "\n".join(blocker["reason"] for blocker in report["blockers"])
         self.assertEqual(report["summary"]["status"], "blocked")
@@ -308,7 +308,8 @@ class RequirementsCheckerGateTests(unittest.TestCase):
 
         report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
 
-        self.assertNotIn("acceptance_evidence_missing", self._blocker_codes(report))
+        self.assertEqual(report["summary"]["status"], "requirements_ready")
+        self.assertEqual(report["blockers"], [])
 
     def test_acceptance_without_evidence_anchor_fails(self) -> None:
         package = self._package(
