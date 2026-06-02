@@ -221,7 +221,7 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
                 )
             else:
                 role_status = str(referenced_role.get("status", "")).strip()
-                role_taxonomy = _role_confirmed_as(referenced_role)
+                role_taxonomy = str(referenced_role.get("confirmed_as", "")).strip()
                 role_canonical = role_lookup.get(role_taxonomy)
                 if role_status != "confirmed":
                     blockers.append(

@@ -365,6 +365,35 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("role_evidence_missing", self._blocker_codes(report))
 
+    def test_strict_referenced_role_without_confirmed_as_fails(self) -> None:
+        package = self._package(
+            roles=[
+                {
+                    "id": "finance",
+                    "mention": "finance",
+                    "status": "confirmed",
+                    "category": "business_roles",
+                    "evidence_anchor": {"source_section": "roles"},
+                }
+            ],
+            user_stories=[
+                {
+                    "id": "US-1",
+                    "role_ref": "finance",
+                    "want": "review unreconciled account entries",
+                    "benefit": "settlement exceptions are resolved before close",
+                    "acceptance_function_ids": ["AF-1"],
+                    "evidence_anchor": {"source_functions": ["F-1"]},
+                }
+            ],
+        )
+        path = self._write_case(package)
+
+        report = self._check_strict_requirements_case_file(path, strict=True)
+
+        self.assertEqual(report["summary"]["status"], "blocked")
+        self.assertIn("story_role_taxonomy_unknown", self._blocker_codes(report))
+
 
 if __name__ == "__main__":
     unittest.main()
