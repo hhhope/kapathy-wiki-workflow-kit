@@ -132,9 +132,9 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         return {str(blocker.get("code", "")) for blocker in report["blockers"]}
 
     def test_ready_case_passes_hard_gate(self) -> None:
-        path = self._write_case(self._package())
+        path = self._write_case(self._legacy_package())
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertTrue(report["summary"]["hard_gate_passed"])
@@ -145,9 +145,10 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             user_stories=[
                 {
                     "id": "US-1",
-                    "role": "finance",
+                    "role_ref": "R-finance",
                     "want": "review unreconciled account entries",
                     "benefit": "settlement exceptions are resolved before close",
+                    "evidence_anchor": {"source_functions": ["F-1"]},
                 }
             ]
         )
@@ -171,7 +172,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         )
         path = self._write_case(package)
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
         reasons = "\n".join(blocker["reason"] for blocker in report["blockers"])
         self.assertEqual(report["summary"]["status"], "blocked")
@@ -181,7 +182,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
 
     def test_acceptance_without_reverse_mapping_or_observable_content_fails(self) -> None:
         package = self._package(
-            acceptance_functions=[{"id": "AF-1"}],
+            acceptance_functions=[{"id": "AF-1", "source_acceptance": "AC-1"}],
         )
         path = self._write_case(package)
 
@@ -194,7 +195,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
 
     def test_candidate_unconfirmed_domain_fails(self) -> None:
         path = self._write_case(
-            self._package(
+            self._legacy_package(
                 domain={
                     "status": "candidate_pending",
                     "confirmed": "lending",
@@ -203,7 +204,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             )
         )
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         reasons = "\n".join(blocker["reason"] for blocker in report["blockers"])
@@ -215,7 +216,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             self._legacy_package(roles=[{"id": "mystery_owner", "label": "mystery owner"}])
         )
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("mystery_owner", "\n".join(blocker["reason"] for blocker in report["blockers"]))
@@ -225,14 +226,14 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             self._legacy_package(roles=[{"id": "财务", "label": "财务"}, {"id": "清算", "label": "清算"}])
         )
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertEqual(report["blockers"], [])
 
     def test_soft_evidence_does_not_fail_readiness(self) -> None:
         path = self._write_case(
-            self._package(
+            self._legacy_package(
                 soft_evidence={
                     "business_rules": [{"summary": "late entries need review"}],
                     "exception_scenarios": [{"summary": "manual reversal"}],
@@ -245,7 +246,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             )
         )
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertEqual(report["blockers"], [])
@@ -254,10 +255,10 @@ class RequirementsCheckerGateTests(unittest.TestCase):
 
     def test_wiki_stored_case_does_not_need_wiki_frontmatter_taxonomy(self) -> None:
         wiki_case_dir = self.tmpdir / "wiki" / "ops" / "requirements-cases"
-        path = self._write_case(self._package(), output_dir=wiki_case_dir)
+        path = self._write_case(self._legacy_package(), output_dir=wiki_case_dir)
         self.assertFalse((self.tmpdir / "wiki" / "config" / "frontmatter-taxonomy.yaml").exists())
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir)
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertEqual(report["summary"]["taxonomy_path"], "requirements/config/requirements-taxonomy.yaml")
