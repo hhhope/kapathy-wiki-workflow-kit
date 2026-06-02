@@ -83,6 +83,8 @@ Strict mode blocks:
 - `role_ref` points to a missing role
 - `role_ref` points to non-confirmed role
 - referenced role's `confirmed_as` does not map to taxonomy
+- referenced confirmed role lacks role evidence, where role evidence passes
+  with `evidence_anchor` OR `source_actors` plus `normalization_note`
 - story or acceptance function lacks an evidence anchor
 
 Compatibility mode allows legacy `story.role` checks and reports

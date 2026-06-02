@@ -39,6 +39,13 @@ object to use the field name `evidence_refs`.
 - **WHEN** strict readiness is checked
 - **THEN** the checker SHALL block with `acceptance_evidence_missing`
 
+#### Scenario: Referenced confirmed role has no evidence anchor
+
+- **GIVEN** a referenced confirmed role instance lacks `evidence_anchor`
+- **AND** it lacks `source_actors` plus `normalization_note`
+- **WHEN** strict readiness is checked
+- **THEN** the checker SHALL block with `role_evidence_missing`
+
 ### Requirement: Legacy case files SHALL remain readable
 
 Compatibility mode SHALL allow existing legacy case files to be checked without

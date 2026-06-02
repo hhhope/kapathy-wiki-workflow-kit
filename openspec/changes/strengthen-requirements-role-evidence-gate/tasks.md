@@ -1,7 +1,7 @@
 # Tasks
 
 - [ ] 1. Add OpenSpec requirements for strict role instance and evidence anchor gates.
-- [ ] 2. Add failing checker tests for strict role/evidence behavior.
+- [ ] 2. Add failing checker tests for strict role/evidence behavior, including missing role evidence.
 - [ ] 3. Add failing draft-generation tests for strict readiness before draft creation.
 - [ ] 4. Implement checker strict mode, compatibility mode, and rich blockers.
 - [ ] 5. Update requirements case rendering for role instances and role refs.
