@@ -62,8 +62,59 @@ def _role_lookup(taxonomy: dict[str, Any]) -> dict[str, str]:
     return lookup
 
 
-def _blocker(code: str, reason: str) -> dict[str, str]:
-    return {"code": code, "reason": reason}
+def _blocker(
+    code: str,
+    reason: str,
+    *,
+    field: str = "",
+    question: str = "",
+    evidence: str = "",
+) -> dict[str, str]:
+    item = {"code": code, "reason": reason}
+    if field:
+        item["field"] = field
+    if question:
+        item["question"] = question
+    if evidence:
+        item["evidence"] = evidence
+    return item
+
+
+def _has_value(value: Any) -> bool:
+    if isinstance(value, str):
+        return bool(value.strip())
+    if isinstance(value, (list, tuple, set)):
+        return any(_has_value(item) for item in value)
+    if isinstance(value, dict):
+        return any(_has_value(item) for item in value.values())
+    return value is not None
+
+
+def has_evidence_anchor(item: dict[str, Any], object_type: str) -> bool:
+    common_fields = (
+        "evidence_refs",
+        "evidence_anchor",
+        "source_section",
+        "source_quote",
+        "source_line",
+    )
+    if any(_has_value(item.get(field)) for field in common_fields):
+        return True
+    if object_type == "user_story":
+        return _has_value(item.get("source_functions"))
+    if object_type == "acceptance_function":
+        return _has_value(item.get("source_acceptance")) or _has_value(item.get("source_functions"))
+    if object_type == "role":
+        return _has_value(item.get("source_actors")) and _has_value(item.get("normalization_note"))
+    return False
+
+
+def _role_confirmed_as(role: dict[str, Any]) -> str:
+    return str(role.get("confirmed_as") or role.get("id") or role.get("role") or role.get("label") or "").strip()
+
+
+def _role_instance_id(role: dict[str, Any]) -> str:
+    return str(role.get("id") or role.get("role") or role.get("label") or "").strip()
 
 
 def _first_text(item: dict[str, Any], keys: tuple[str, ...]) -> str:
@@ -100,10 +151,11 @@ def _soft_evidence_report(taxonomy: dict[str, Any], case_data: dict[str, Any]) -
     return warnings, evidence
 
 
-def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any]) -> dict[str, Any]:
+def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any], *, strict: bool = True) -> dict[str, Any]:
     blockers: list[dict[str, str]] = []
     domains = _known_domains(taxonomy)
     role_lookup = _role_lookup(taxonomy)
+    legacy_compatible = False
 
     domain = case_data.get("domain", {})
     domain_status = str(domain.get("status", "")) if isinstance(domain, dict) else ""
@@ -118,15 +170,28 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any])
 
     case_roles = _dict_items(case_data.get("roles"))
     declared_roles: set[str] = set()
+    role_instances: dict[str, dict[str, Any]] = {}
     if not case_roles:
         blockers.append(_blocker("roles_missing", "roles are required"))
     for role in case_roles:
-        role_id = str(role.get("id") or role.get("role") or role.get("label") or "").strip()
-        canonical = role_lookup.get(role_id)
-        if not role_id or not canonical:
-            blockers.append(_blocker("role_unknown", f"role is missing or unknown: {role_id or 'missing'}"))
+        role_id = _role_instance_id(role)
+        if role_id:
+            role_instances[role_id] = role
+        taxonomy_role = _role_confirmed_as(role)
+        canonical = role_lookup.get(taxonomy_role)
+        if not taxonomy_role or not canonical:
+            blockers.append(_blocker("role_unknown", f"role is missing or unknown: {taxonomy_role or 'missing'}"))
         else:
             declared_roles.add(canonical)
+        if strict and str(role.get("status", "")).strip() == "confirmed" and not has_evidence_anchor(role, "role"):
+            blockers.append(
+                _blocker(
+                    "role_evidence_missing",
+                    f"confirmed role {role_id or taxonomy_role or 'missing'} has no evidence anchor",
+                    field="roles",
+                    evidence=role_id or taxonomy_role,
+                )
+            )
 
     stories = _dict_items(case_data.get("user_stories"))
     story_ids = {str(story.get("id", "")).strip() for story in stories if str(story.get("id", "")).strip()}
@@ -140,14 +205,62 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any])
 
     for story in stories:
         story_id = str(story.get("id", "")).strip() or "missing"
-        story_role = str(story.get("role", "")).strip()
-        story_role_canonical = role_lookup.get(story_role)
-        if not story_role:
-            blockers.append(_blocker("story_role_missing", f"user story {story_id} has no role"))
-        elif not story_role_canonical:
-            blockers.append(_blocker("story_role_unknown", f"user story {story_id} has unknown role: {story_role}"))
-        elif story_role_canonical not in declared_roles:
-            blockers.append(_blocker("story_role_not_declared", f"user story {story_id} role is not declared: {story_role}"))
+        if strict:
+            story_role_ref = str(story.get("role_ref", "")).strip()
+            referenced_role = role_instances.get(story_role_ref)
+            if not story_role_ref:
+                blockers.append(_blocker("story_role_ref_missing", f"user story {story_id} has no role_ref", field="user_stories"))
+            elif referenced_role is None:
+                blockers.append(
+                    _blocker(
+                        "story_role_ref_unknown",
+                        f"user story {story_id} references unknown role_ref: {story_role_ref}",
+                        field="user_stories",
+                        evidence=story_role_ref,
+                    )
+                )
+            else:
+                role_status = str(referenced_role.get("status", "")).strip()
+                role_taxonomy = _role_confirmed_as(referenced_role)
+                role_canonical = role_lookup.get(role_taxonomy)
+                if role_status != "confirmed":
+                    blockers.append(
+                        _blocker(
+                            "story_role_not_confirmed",
+                            f"user story {story_id} references role {story_role_ref} with status={role_status or 'missing'}",
+                            field="user_stories",
+                            evidence=story_role_ref,
+                        )
+                    )
+                if not role_canonical:
+                    blockers.append(
+                        _blocker(
+                            "story_role_taxonomy_unknown",
+                            f"user story {story_id} references role {story_role_ref} with unknown taxonomy role: {role_taxonomy or 'missing'}",
+                            field="user_stories",
+                            evidence=story_role_ref,
+                        )
+                    )
+            if not has_evidence_anchor(story, "user_story"):
+                blockers.append(
+                    _blocker(
+                        "story_evidence_missing",
+                        f"user story {story_id} has no evidence anchor",
+                        field="user_stories",
+                        evidence=story_id,
+                    )
+                )
+        else:
+            story_role = str(story.get("role", "")).strip()
+            story_role_canonical = role_lookup.get(story_role)
+            if not story_role:
+                blockers.append(_blocker("story_role_missing", f"user story {story_id} has no role"))
+            elif not story_role_canonical:
+                blockers.append(_blocker("story_role_unknown", f"user story {story_id} has unknown role: {story_role}"))
+            elif story_role_canonical not in declared_roles:
+                blockers.append(_blocker("story_role_not_declared", f"user story {story_id} role is not declared: {story_role}"))
+            else:
+                legacy_compatible = True
         if not _first_text(story, ("want", "goal", "story", "summary")):
             blockers.append(_blocker("story_goal_missing", f"user story {story_id} has no want, goal, story, or summary"))
         if not _first_text(story, ("benefit", "value", "so_that")):
@@ -180,6 +293,15 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any])
                     f"acceptance function {function_id} references missing user stories: {', '.join(sorted(missing_story_refs))}",
                 )
             )
+        if strict and not has_evidence_anchor(function, "acceptance_function"):
+            blockers.append(
+                _blocker(
+                    "acceptance_evidence_missing",
+                    f"acceptance function {function_id} has no evidence anchor",
+                    field="acceptance_functions",
+                    evidence=function_id,
+                )
+            )
 
     warnings, evidence = _soft_evidence_report(taxonomy, case_data)
     status = READY_STATUS if not blockers else BLOCKED_STATUS
@@ -189,6 +311,8 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any])
             "hard_gate_passed": not blockers,
             "taxonomy_path": str(TAXONOMY_PATH),
             "case_slug": str(case_data.get("case_slug", "")),
+            "strict": strict,
+            "legacy_compatible": legacy_compatible,
         },
         "blockers": sorted(blockers, key=lambda item: (item["code"], item["reason"])),
         "warnings": warnings,
@@ -196,10 +320,10 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any])
     }
 
 
-def check_requirements_case_file(case_file: Path | str, repo_root: Path | str = ".") -> dict[str, Any]:
+def check_requirements_case_file(case_file: Path | str, repo_root: Path | str = ".", *, strict: bool = True) -> dict[str, Any]:
     taxonomy = _load_taxonomy(repo_root)
     case_data = load_requirements_case_file(case_file)
-    return check_requirements_case(case_data, taxonomy)
+    return check_requirements_case(case_data, taxonomy, strict=strict)
 
 
 def render_markdown_report(report: dict[str, Any]) -> str:
@@ -230,9 +354,10 @@ def main() -> int:
     parser.add_argument("case_file")
     parser.add_argument("--repo-root", default=".")
     parser.add_argument("--format", choices=("json", "markdown"), default="json")
+    parser.add_argument("--compat", action="store_true", help="Use legacy story.role compatibility mode.")
     args = parser.parse_args()
 
-    report = check_requirements_case_file(args.case_file, repo_root=args.repo_root)
+    report = check_requirements_case_file(args.case_file, repo_root=args.repo_root, strict=not args.compat)
     if args.format == "markdown":
         print(render_markdown_report(report), end="")
     else:

@@ -139,7 +139,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
     def test_ready_case_passes_hard_gate(self) -> None:
         path = self._write_case(self._legacy_package())
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertTrue(report["summary"]["hard_gate_passed"])
@@ -159,7 +159,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         )
         path = self._write_case(package)
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("story_acceptance_mapping_missing", self._blocker_codes(report))
@@ -177,7 +177,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         )
         path = self._write_case(package)
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
 
         reasons = "\n".join(blocker["reason"] for blocker in report["blockers"])
         self.assertEqual(report["summary"]["status"], "blocked")
@@ -192,7 +192,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         )
         path = self._write_case(package)
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("acceptance_story_mapping_missing", self._blocker_codes(report))
@@ -209,7 +209,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             )
         )
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         reasons = "\n".join(blocker["reason"] for blocker in report["blockers"])
@@ -221,7 +221,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             self._legacy_package(roles=[{"id": "mystery_owner", "label": "mystery owner"}])
         )
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("mystery_owner", "\n".join(blocker["reason"] for blocker in report["blockers"]))
@@ -231,7 +231,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             self._legacy_package(roles=[{"id": "财务", "label": "财务"}, {"id": "清算", "label": "清算"}])
         )
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertEqual(report["blockers"], [])
@@ -251,7 +251,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             )
         )
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertEqual(report["blockers"], [])
@@ -263,7 +263,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         path = self._write_case(self._legacy_package(), output_dir=wiki_case_dir)
         self.assertFalse((self.tmpdir / "wiki" / "config" / "frontmatter-taxonomy.yaml").exists())
 
-        report = check_requirements_case_file(path, repo_root=self.tmpdir)
+        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=False)
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertEqual(report["summary"]["taxonomy_path"], "requirements/config/requirements-taxonomy.yaml")
