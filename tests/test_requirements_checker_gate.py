@@ -394,6 +394,47 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("story_role_taxonomy_unknown", self._blocker_codes(report))
 
+    def test_strict_story_boolean_evidence_anchor_fails(self) -> None:
+        package = self._package(
+            user_stories=[
+                {
+                    "id": "US-1",
+                    "role_ref": "R-finance",
+                    "want": "review unreconciled account entries",
+                    "benefit": "settlement exceptions are resolved before close",
+                    "acceptance_function_ids": ["AF-1"],
+                    "evidence_anchor": False,
+                }
+            ]
+        )
+        path = self._write_case(package)
+
+        report = self._check_strict_requirements_case_file(path, strict=True)
+
+        self.assertEqual(report["summary"]["status"], "blocked")
+        self.assertIn("story_evidence_missing", self._blocker_codes(report))
+
+    def test_strict_acceptance_numeric_source_acceptance_fails(self) -> None:
+        package = self._package(
+            acceptance_functions=[
+                {
+                    "id": "AF-1",
+                    "name": "list_unreconciled_entries",
+                    "user_story_ids": ["US-1"],
+                    "given": "entries exist",
+                    "when": "finance opens reconciliation",
+                    "then": "unreconciled entries are visible",
+                    "source_acceptance": 0,
+                }
+            ]
+        )
+        path = self._write_case(package)
+
+        report = self._check_strict_requirements_case_file(path, strict=True)
+
+        self.assertEqual(report["summary"]["status"], "blocked")
+        self.assertIn("acceptance_evidence_missing", self._blocker_codes(report))
+
 
 if __name__ == "__main__":
     unittest.main()

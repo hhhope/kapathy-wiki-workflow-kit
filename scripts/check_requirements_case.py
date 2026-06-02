@@ -87,7 +87,7 @@ def _has_value(value: Any) -> bool:
         return any(_has_value(item) for item in value)
     if isinstance(value, dict):
         return any(_has_value(item) for item in value.values())
-    return value is not None
+    return False
 
 
 def has_evidence_anchor(item: dict[str, Any], object_type: str) -> bool:
