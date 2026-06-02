@@ -42,22 +42,29 @@ created_at: 2026-05-29
 
 ## Roles
 
-- financial_customer: financial customer (business_actors); source actors: 商户、目标客户、权益类商户
-- retail_customer: retail customer (business_actors); source actors: 商户终端用户、终端用户
-- system_actor: system actor (system_actors); source actors: 商户系统、统一网关、通知中心、产品中心、嵌入式账户前置、账户核心、订阅支付产品、宝付通道
-- product: product (delivery_owners); source actors: 产品中心、订阅支付产品、嵌入式账户产品需求 owner
-- engineering: engineering (delivery_owners); source actors: 嵌入式账户前置、账户核心、统一网关、通知中心、订阅支付产品相关研发团队
-- qa: QA (delivery_owners); source actors: 联调、测试、验收责任方
+- R-merchant: 商户; confirmed_as=financial_customer; status=confirmed; category=business_actors; source actors: 商户、目标客户、权益类商户
+- R-terminal-user: 终端用户; confirmed_as=retail_customer; status=confirmed; category=business_actors; source actors: 商户终端用户、终端用户
+- R-merchant-system: 商户系统; confirmed_as=system_actor; status=confirmed; category=system_actors; source actors: 商户系统
+- R-unified-gateway: 统一网关; confirmed_as=system_actor; status=confirmed; category=system_actors; source actors: 统一网关
+- R-notification-center: 通知中心; confirmed_as=system_actor; status=confirmed; category=system_actors; source actors: 通知中心
+- R-product-center: 产品中心; confirmed_as=product; status=confirmed; category=delivery_owners; source actors: 产品中心
+- R-embedded-account-front: 嵌入式账户前置; confirmed_as=system_actor; status=confirmed; category=system_actors; source actors: 嵌入式账户前置
+- R-account-core: 账户核心; confirmed_as=system_actor; status=confirmed; category=system_actors; source actors: 账户核心
+- R-subscription-payment-product: 订阅支付产品; confirmed_as=system_actor; status=confirmed; category=system_actors; source actors: 订阅支付产品
+- R-baofoo-channel: 宝付通道; confirmed_as=system_actor; status=confirmed; category=system_actors; source actors: 宝付通道
+- R-product-owner: 嵌入式账户产品需求 owner; confirmed_as=product; status=confirmed; category=delivery_owners; source actors: 嵌入式账户产品需求 owner
+- R-engineering: 相关研发团队; confirmed_as=engineering; status=confirmed; category=delivery_owners; source actors: 嵌入式账户前置、账户核心、统一网关、通知中心、订阅支付产品相关研发团队
+- R-qa: 联调、测试、验收责任方; confirmed_as=qa; status=confirmed; category=delivery_owners; source actors: 联调、测试、验收责任方
 
 ## User Stories
 
-- US-001: role=financial_customer; 商户希望通过 API 为终端用户开立嵌入式账户，并在开户流程内完成首卡绑定；benefit=为订阅支付场景建立可用的账户与首张可支付银行卡基础。
-- US-002: role=retail_customer; 终端用户希望在商户引导下完成首卡绑定或追加绑卡；benefit=后续账户支付可以使用已绑定银行卡完成扣款。
-- US-003: role=financial_customer; 商户希望在账户开户成功后为终端用户追加绑定银行卡；benefit=提高账户支付成功率并支持多卡支付准备。
-- US-004: role=financial_customer; 商户希望解除账户与银行卡之间的绑定关系；benefit=已解绑卡不再参与账户支付或订阅自动扣款。
-- US-005: role=financial_customer; 商户希望在订阅支付中显式选择账户支付；benefit=订阅支付可以接入嵌入式账户能力且不发生自动支付方式路由。
-- US-006: role=system_actor; 嵌入式账户前置希望按已绑卡优先级轮询发起快捷支付；benefit=在高优先级卡明确失败后可以继续尝试低优先级卡。
-- US-007: role=system_actor; 嵌入式账户前置希望在支付异常或结果未明时通过查单与补偿收敛结果；benefit=保证单笔支付只有一个唯一最终状态且不重复扣款。
+- US-001: role_ref=R-merchant; 商户希望通过 API 为终端用户开立嵌入式账户，并在开户流程内完成首卡绑定。; benefit=为订阅支付场景建立可用的账户与首张可支付银行卡基础。
+- US-002: role_ref=R-terminal-user; 终端用户希望在商户引导下完成首卡绑定或追加绑卡。; benefit=后续账户支付可以使用已绑定银行卡完成扣款。
+- US-003: role_ref=R-merchant; 商户希望在账户开户成功后为终端用户追加绑定银行卡。; benefit=提高账户支付成功率并支持多卡支付准备。
+- US-004: role_ref=R-merchant; 商户希望解除账户与银行卡之间的绑定关系。; benefit=已解绑卡不再参与账户支付或订阅自动扣款。
+- US-005: role_ref=R-merchant; 商户希望在订阅支付中显式选择账户支付。; benefit=订阅支付可以接入嵌入式账户能力且不发生自动支付方式路由。
+- US-006: role_ref=R-embedded-account-front; 嵌入式账户前置希望按已绑卡优先级轮询发起快捷支付。; benefit=在高优先级卡明确失败后可以继续尝试低优先级卡。
+- US-007: role_ref=R-embedded-account-front; 嵌入式账户前置希望在支付异常或结果未明时通过查单与补偿收敛结果。; benefit=保证单笔支付只有一个唯一最终状态且不重复扣款。
 
 ## Acceptance Functions
 
@@ -136,8 +143,8 @@ created_at: 2026-05-29
 - This case file records requirement intake evidence only.
 - Hard-gate validation belongs to the requirements checker.
 - Domain `account` is confirmed by user approval on 2026-05-29.
-- Roles are normalized to existing requirements taxonomy IDs; exact PRD actor names are preserved as source notes.
-- User stories are extracted from F-001 through F-007 and preserve role, want, and benefit.
+- Roles are case-local confirmed role instances; confirmed_as maps each role back to the requirements taxonomy.
+- User stories are extracted from F-001 through F-007 and preserve role_ref, want, and benefit.
 - Acceptance functions are extracted from AC-001 through AC-026 and mapped back to user stories.
 - API, business-rule, and acceptance-table evidence are supporting evidence, not an OpenSpec draft.
 - No OpenSpec draft or implementation work has been created.
@@ -538,8 +545,8 @@ created_at: 2026-05-29
     "This case file records requirement intake evidence only.",
     "Hard-gate validation belongs to the requirements checker.",
     "Domain `account` is confirmed by user approval on 2026-05-29.",
-    "Roles are normalized to existing requirements taxonomy IDs; exact PRD actor names are preserved as source notes.",
-    "User stories are extracted from F-001 through F-007 and preserve role, want, and benefit.",
+    "Roles are case-local confirmed role instances; confirmed_as maps each role back to the requirements taxonomy.",
+    "User stories are extracted from F-001 through F-007 and preserve role_ref, want, and benefit.",
     "Acceptance functions are extracted from AC-001 through AC-026 and mapped back to user stories.",
     "API, business-rule, and acceptance-table evidence are supporting evidence, not an OpenSpec draft.",
     "No OpenSpec draft or implementation work has been created."
@@ -552,71 +559,189 @@ created_at: 2026-05-29
   "roles": [
     {
       "category": "business_actors",
-      "id": "financial_customer",
-      "label": "financial customer",
-      "normalization_note": "Used for merchant/customer-side business actor vocabulary without mutating the taxonomy.",
+      "confirmed_as": "financial_customer",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-merchant",
+      "mention": "商户",
       "source_actors": [
         "商户",
         "目标客户",
         "权益类商户"
-      ]
+      ],
+      "status": "confirmed"
     },
     {
       "category": "business_actors",
-      "id": "retail_customer",
-      "label": "retail customer",
-      "normalization_note": "Used for merchant terminal users whose account opening and card binding outcome is represented by the requirement.",
+      "confirmed_as": "retail_customer",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-terminal-user",
+      "mention": "终端用户",
       "source_actors": [
         "商户终端用户",
         "终端用户"
-      ]
+      ],
+      "status": "confirmed"
     },
     {
       "category": "system_actors",
-      "id": "system_actor",
-      "label": "system actor",
+      "confirmed_as": "system_actor",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-merchant-system",
+      "mention": "商户系统",
       "source_actors": [
-        "商户系统",
-        "统一网关",
-        "通知中心",
-        "产品中心",
-        "嵌入式账户前置",
-        "账户核心",
-        "订阅支付产品",
+        "商户系统"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "system_actors",
+      "confirmed_as": "system_actor",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-unified-gateway",
+      "mention": "统一网关",
+      "source_actors": [
+        "统一网关"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "system_actors",
+      "confirmed_as": "system_actor",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-notification-center",
+      "mention": "通知中心",
+      "source_actors": [
+        "通知中心"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "delivery_owners",
+      "confirmed_as": "product",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-product-center",
+      "mention": "产品中心",
+      "source_actors": [
+        "产品中心"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "system_actors",
+      "confirmed_as": "system_actor",
+      "evidence_anchor": {
+        "source_functions": [
+          "F-006",
+          "F-007"
+        ],
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-embedded-account-front",
+      "mention": "嵌入式账户前置",
+      "source_actors": [
+        "嵌入式账户前置"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "system_actors",
+      "confirmed_as": "system_actor",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-account-core",
+      "mention": "账户核心",
+      "source_actors": [
+        "账户核心"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "system_actors",
+      "confirmed_as": "system_actor",
+      "evidence_anchor": {
+        "source_functions": [
+          "F-005",
+          "F-007"
+        ],
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-subscription-payment-product",
+      "mention": "订阅支付产品",
+      "source_actors": [
+        "订阅支付产品"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "system_actors",
+      "confirmed_as": "system_actor",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-baofoo-channel",
+      "mention": "宝付通道",
+      "source_actors": [
         "宝付通道"
-      ]
+      ],
+      "status": "confirmed"
     },
     {
       "category": "delivery_owners",
-      "id": "product",
-      "label": "product",
+      "confirmed_as": "product",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-product-owner",
+      "mention": "嵌入式账户产品需求 owner",
       "source_actors": [
-        "产品中心",
-        "订阅支付产品",
         "嵌入式账户产品需求 owner"
-      ]
+      ],
+      "status": "confirmed"
     },
     {
       "category": "delivery_owners",
-      "id": "engineering",
-      "label": "engineering",
+      "confirmed_as": "engineering",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-engineering",
+      "mention": "相关研发团队",
       "source_actors": [
         "嵌入式账户前置",
         "账户核心",
         "统一网关",
         "通知中心",
         "订阅支付产品相关研发团队"
-      ]
+      ],
+      "status": "confirmed"
     },
     {
       "category": "delivery_owners",
-      "id": "qa",
-      "label": "QA",
+      "confirmed_as": "qa",
+      "evidence_anchor": {
+        "source_section": "5.1 参与角色/系统"
+      },
+      "id": "R-qa",
+      "mention": "联调、测试、验收责任方",
       "source_actors": [
         "联调",
         "测试",
         "验收责任方"
-      ]
+      ],
+      "status": "confirmed"
     }
   ],
   "soft_evidence": {
@@ -653,8 +778,14 @@ created_at: 2026-05-29
         "AF-024"
       ],
       "benefit": "为订阅支付场景建立可用的账户与首张可支付银行卡基础。",
+      "evidence_anchor": {
+        "source_functions": [
+          "F-001",
+          "F-002"
+        ]
+      },
       "id": "US-001",
-      "role": "financial_customer",
+      "role_ref": "R-merchant",
       "source_functions": [
         "F-001",
         "F-002"
@@ -669,8 +800,14 @@ created_at: 2026-05-29
         "AF-021"
       ],
       "benefit": "后续账户支付可以使用已绑定银行卡完成扣款。",
+      "evidence_anchor": {
+        "source_functions": [
+          "F-002",
+          "F-003"
+        ]
+      },
       "id": "US-002",
-      "role": "retail_customer",
+      "role_ref": "R-terminal-user",
       "source_functions": [
         "F-002",
         "F-003"
@@ -686,8 +823,13 @@ created_at: 2026-05-29
         "AF-025"
       ],
       "benefit": "提高账户支付成功率并支持多卡支付准备。",
+      "evidence_anchor": {
+        "source_functions": [
+          "F-003"
+        ]
+      },
       "id": "US-003",
-      "role": "financial_customer",
+      "role_ref": "R-merchant",
       "source_functions": [
         "F-003"
       ],
@@ -702,8 +844,13 @@ created_at: 2026-05-29
         "AF-025"
       ],
       "benefit": "已解绑卡不再参与账户支付或订阅自动扣款。",
+      "evidence_anchor": {
+        "source_functions": [
+          "F-004"
+        ]
+      },
       "id": "US-004",
-      "role": "financial_customer",
+      "role_ref": "R-merchant",
       "source_functions": [
         "F-004"
       ],
@@ -716,8 +863,13 @@ created_at: 2026-05-29
         "AF-026"
       ],
       "benefit": "订阅支付可以接入嵌入式账户能力且不发生自动支付方式路由。",
+      "evidence_anchor": {
+        "source_functions": [
+          "F-005"
+        ]
+      },
       "id": "US-005",
-      "role": "financial_customer",
+      "role_ref": "R-merchant",
       "source_functions": [
         "F-005"
       ],
@@ -733,8 +885,13 @@ created_at: 2026-05-29
         "AF-017"
       ],
       "benefit": "在高优先级卡明确失败后可以继续尝试低优先级卡。",
+      "evidence_anchor": {
+        "source_functions": [
+          "F-006"
+        ]
+      },
       "id": "US-006",
-      "role": "system_actor",
+      "role_ref": "R-embedded-account-front",
       "source_functions": [
         "F-006"
       ],
@@ -750,8 +907,13 @@ created_at: 2026-05-29
         "AF-026"
       ],
       "benefit": "保证单笔支付只有一个唯一最终状态且不重复扣款。",
+      "evidence_anchor": {
+        "source_functions": [
+          "F-007"
+        ]
+      },
       "id": "US-007",
-      "role": "system_actor",
+      "role_ref": "R-embedded-account-front",
       "source_functions": [
         "F-007"
       ],

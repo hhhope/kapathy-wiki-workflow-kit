@@ -8,11 +8,13 @@ from pathlib import Path
 from scripts.check_requirements_case import check_requirements_case_file
 from scripts.requirements_case import (
     build_requirements_case_package,
+    load_requirements_case_file,
     write_requirements_case_file,
 )
 
 
 TAXONOMY_PATH = Path("requirements/config/requirements-taxonomy.yaml")
+EMBEDDED_ACCOUNT_SAMPLE_PATH = Path("wiki/ops/requirements-cases/2026-05-29-191857-embedded-account-phase1.md")
 
 
 class RequirementsCheckerGateTests(unittest.TestCase):
@@ -434,6 +436,25 @@ class RequirementsCheckerGateTests(unittest.TestCase):
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("acceptance_evidence_missing", self._blocker_codes(report))
+
+    def test_embedded_account_sample_is_strict_golden_case(self) -> None:
+        report = check_requirements_case_file(
+            EMBEDDED_ACCOUNT_SAMPLE_PATH,
+            repo_root=Path("."),
+            strict=True,
+        )
+        case_data = load_requirements_case_file(EMBEDDED_ACCOUNT_SAMPLE_PATH)
+        stories = {
+            str(story.get("id")): story
+            for story in case_data.get("user_stories", [])
+            if isinstance(story, dict)
+        }
+
+        self.assertEqual(report["summary"]["status"], "requirements_ready")
+        self.assertEqual(report["blockers"], [])
+        self.assertEqual(stories["US-006"].get("role_ref"), "R-embedded-account-front")
+        self.assertNotIn("role", stories["US-006"])
+        self.assertNotEqual(stories["US-006"].get("role"), "system_actor")
 
 
 if __name__ == "__main__":
