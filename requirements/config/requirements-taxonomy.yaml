@@ -25,6 +25,117 @@ domains:
       - 清分域
       - 清分体系
     description: Clearing flows, clearing operations, and clearing-facing requirement material.
+  - id: merchant_platform_relationship
+    label: merchant platform relationship
+    aliases:
+      - 商户与平台关系
+      - 商户平台关系
+      - 商户
+      - 平台
+      - 服务方
+      - 服务商
+      - 入驻
+      - 资质
+      - 能力开通
+    description: Merchant, platform, service-provider identity, onboarding, qualification, capability enablement, and platform responsibility boundaries.
+  - id: payment_transaction
+    label: payment transaction
+    aliases:
+      - 支付交易
+      - 支付订单
+      - 支付方式
+      - 授权
+      - 扣款
+      - 退款
+      - 拒付
+      - 支付状态
+      - 失败重试
+    description: Payment order lifecycle, payment method use, authorization, debit, refund, dispute, status, and retry semantics.
+  - id: billing_revenue
+    label: billing revenue
+    aliases:
+      - 计费与收入
+      - 计费
+      - 收入
+      - 订阅
+      - 套餐
+      - 价格
+      - 用量
+      - 席位
+      - 账单
+      - 催缴
+      - 宽限期
+      - 收入恢复
+      - 发票
+    description: Pricing, subscription lifecycle, usage billing, seat billing, invoice, dunning, grace-period, retention, and revenue-recovery rules.
+  - id: account_balance
+    label: account balance
+    aliases:
+      - 账户与余额
+      - 账户余额
+      - 支付账户
+      - 钱包
+      - 余额
+      - 资金归属
+      - 可用资金
+      - 在途资金
+      - 冻结资金
+      - 账本视图
+    description: Payment account, wallet, balance, ownership, available funds, pending funds, reserved funds, and ledger-view semantics.
+  - id: funds_movement_settlement
+    label: funds movement settlement
+    aliases:
+      - 资金流转与结算
+      - 资金流转
+      - transfer
+      - payout
+      - 提现
+      - 出款
+      - 分账
+      - 结算批次
+      - 结算周期
+      - 平台费
+      - 收款方结算
+    description: Transfer, payout, withdrawal, split settlement, settlement batch, settlement cycle, platform fee, and receiver-settlement movement rules.
+  - id: financial_operations
+    label: financial operations
+    aliases:
+      - 财务运营
+      - 清分证据
+      - 对账
+      - 报表
+      - 费用核算
+      - 差错处理
+      - 财务关账
+      - 运营审计
+    description: Clearing evidence, reconciliation, reporting, fee accounting, exception handling, financial close support, and auditability.
+  - id: risk_compliance
+    label: risk compliance
+    aliases:
+      - 风险与合规
+      - 风控
+      - 合规
+      - KYC
+      - KYB
+      - AML
+      - 欺诈
+      - 交易监控
+      - 自动扣款授权
+      - 消费者保护
+      - 税务合规
+    description: KYC, KYB, AML, fraud, transaction monitoring, authorization constraints, consumer protection, and tax compliance decisions.
+  - id: embedded_financial_products
+    label: embedded financial products
+    aliases:
+      - 嵌入式金融产品
+      - 发卡
+      - issuing
+      - treasury
+      - capital
+      - spend
+      - BaaS
+      - Banking as a Service
+    description: Issuing, treasury, capital, spend, and BaaS requirements when financial product scope is explicit.
 
 roles:
   categories:
