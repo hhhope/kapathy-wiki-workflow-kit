@@ -14,6 +14,10 @@ Responsibility:
 
 - Extract observable acceptance function candidates.
 - Keep bidirectional user story to acceptance function mappings.
+- Add `coverage_types` for observable domain coverage: `state_change`,
+  `handoff`, `failure_path`, and `evidence`.
+- Tie acceptance functions back to relevant contexts and aggregate roots when
+  strict DDD coverage is active.
 - Report missing user story or acceptance function links as blockers for
   handoff.
 

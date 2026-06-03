@@ -66,6 +66,9 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
                     "want": "review unreconciled account entries",
                     "benefit": "settlement exceptions are resolved before close",
                     "acceptance_function_ids": ["AF-1"],
+                    "domain_refs": ["account_balance", "financial_operations"],
+                    "context_refs": ["balance_ledger_context", "reconciliation_context"],
+                    "aggregate_refs": ["payment_account", "ledger_entry", "reconciliation_record"],
                     "evidence_anchor": {"source_functions": ["F-1"]},
                 }
             ],
@@ -74,6 +77,9 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
                     "id": "AF-1",
                     "name": "list_unreconciled_entries",
                     "user_story_ids": ["US-1"],
+                    "coverage_types": ["state_change", "handoff", "evidence"],
+                    "context_refs": ["balance_ledger_context", "reconciliation_context"],
+                    "aggregate_refs": ["payment_account", "ledger_entry", "reconciliation_record"],
                     "given": "entries exist",
                     "when": "finance opens reconciliation",
                     "then": "unreconciled entries are visible",
@@ -101,6 +107,26 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
                 }
             ],
         }
+        package["domain_coverage"] = [
+            {
+                "subdomain": "account_balance",
+                "coverage_type": "primary",
+                "contexts": ["balance_ledger_context"],
+                "aggregate_roots": ["payment_account", "ledger_entry"],
+                "user_story_ids": ["US-1"],
+                "acceptance_function_ids": ["AF-1"],
+                "review_note": "ledger facts used for reconciliation",
+            },
+            {
+                "subdomain": "financial_operations",
+                "coverage_type": "required_payment",
+                "contexts": ["reconciliation_context"],
+                "aggregate_roots": ["reconciliation_record"],
+                "user_story_ids": ["US-1"],
+                "acceptance_function_ids": ["AF-1"],
+                "review_note": "reconciliation evidence is in scope",
+            },
+        ]
         return package
 
     def _write_case(self, package: dict) -> Path:
@@ -291,6 +317,7 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
         combined = "\n".join(path.read_text(encoding="utf-8") for path in expected_files)
         self.assertIn("US-1", combined)
         self.assertIn("AF-1", combined)
+        self.assertIn("Domain Coverage", combined)
         self.assertIn("review unreconciled account entries", combined)
         self.assertIn("Implementation requires user review", combined)
 

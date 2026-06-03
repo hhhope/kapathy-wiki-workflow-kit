@@ -15,6 +15,7 @@ from scripts.requirements_ddd_readiness import (
     taxonomy_version,
 )
 from scripts.requirements_case import load_requirements_case_file
+from scripts.requirements_domain_coverage import evaluate_domain_coverage_gate
 
 
 TAXONOMY_PATH = Path("requirements/config/requirements-taxonomy.yaml")
@@ -147,7 +148,9 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
     use_ddd_gate = strict and taxonomy_version(taxonomy) == 2
     role_lookup = _role_lookup(taxonomy, include_legacy=not use_ddd_gate)
     domain_model_gate, domain_model_blockers = evaluate_domain_model_gate(case_data, taxonomy, strict=strict)
+    domain_coverage_gate, domain_coverage_blockers = evaluate_domain_coverage_gate(case_data, taxonomy, strict=strict)
     blockers.extend(domain_model_blockers)
+    blockers.extend(domain_coverage_blockers)
 
     if not use_ddd_gate:
         domain = case_data.get("domain", {})
@@ -296,7 +299,12 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
                 )
             )
 
-    delivery_blockers = [blocker for blocker in blockers if not blocker["code"].startswith("domain_model_")]
+    delivery_blockers = [
+        blocker
+        for blocker in blockers
+        if not blocker["code"].startswith("domain_model_")
+        and not blocker["code"].startswith("domain_coverage_")
+    ]
     requirement_delivery_gate = {
         "passed": not delivery_blockers,
         "mode": "strict" if strict else "legacy_compatibility",
@@ -313,6 +321,7 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
             "legacy_compatible": legacy_compatible,
         },
         "domain_model_gate": domain_model_gate,
+        "domain_coverage_gate": domain_coverage_gate,
         "requirement_delivery_gate": requirement_delivery_gate,
         "blockers": sorted(blockers, key=lambda item: (item["code"], item["reason"])),
         "warnings": warnings,

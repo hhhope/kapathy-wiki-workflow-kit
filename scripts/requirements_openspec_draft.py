@@ -61,6 +61,35 @@ def _story_trace(case_data: dict[str, Any]) -> list[dict[str, str]]:
     return traces
 
 
+def _coverage_items(case_data: dict[str, Any]) -> list[dict[str, Any]]:
+    items = _dict_items(case_data.get("domain_coverage"))
+    if items:
+        return items
+    soft_evidence = case_data.get("soft_evidence", {})
+    if isinstance(soft_evidence, dict):
+        return _dict_items(soft_evidence.get("domain_coverage_matrix"))
+    return []
+
+
+def _coverage_lines(case_data: dict[str, Any]) -> list[str]:
+    lines: list[str] = []
+    for item in _coverage_items(case_data):
+        subdomain = str(item.get("subdomain") or item.get("domain") or "unknown").strip()
+        coverage_type = str(item.get("coverage_type") or item.get("type") or "").strip()
+        contexts = ", ".join(_string_list(item.get("contexts"))) or "none"
+        aggregates = ", ".join(_string_list(item.get("aggregate_roots"))) or "none"
+        stories = ", ".join(_string_list(item.get("user_story_ids") or item.get("user_stories"))) or "none"
+        functions = ", ".join(_string_list(item.get("acceptance_function_ids") or item.get("acceptance_functions"))) or "none"
+        note = str(item.get("review_note") or item.get("reason") or item.get("next_action") or "").strip()
+        note_part = f"; note={note}" if note else ""
+        lines.append(
+            f"- {subdomain}: coverage_type={coverage_type or 'missing'}; "
+            f"contexts={contexts}; aggregates={aggregates}; stories={stories}; "
+            f"acceptance={functions}{note_part}"
+        )
+    return lines or ["- No domain coverage entries"]
+
+
 def _trace_lines(case_data: dict[str, Any]) -> list[str]:
     lines = []
     for trace in _story_trace(case_data):
@@ -88,8 +117,13 @@ def _proposal_markdown(change_id: str, case_file: Path, case_data: dict[str, Any
         f"- Confirmed domain: {confirmed_domain}",
         "- Implementation requires user review before planning or coding.",
         "",
-        "## Requirement Trace",
+        "## Domain Coverage",
     ]
+    lines.extend(_coverage_lines(case_data))
+    lines.extend([
+        "",
+        "## Requirement Trace",
+    ])
     lines.extend(_trace_lines(case_data))
     lines.extend(["", "## Out of Scope", "", "- Automatic implementation after draft creation."])
     return "\n".join(lines) + "\n"
@@ -105,8 +139,13 @@ def _design_markdown(case_file: Path, case_data: dict[str, Any]) -> str:
         "- Requirements checker status: requirements_ready",
         "- Implementation requires user review.",
         "",
-        "## Trace",
+        "## Domain Coverage",
     ]
+    lines.extend(_coverage_lines(case_data))
+    lines.extend([
+        "",
+        "## Trace",
+    ])
     lines.extend(_trace_lines(case_data))
     return "\n".join(lines) + "\n"
 
@@ -125,7 +164,9 @@ def _tasks_markdown(case_file: Path) -> str:
 
 
 def _spec_markdown(capability: str, case_data: dict[str, Any]) -> str:
-    lines = ["## ADDED Requirements", ""]
+    lines = ["## Domain Coverage", ""]
+    lines.extend(_coverage_lines(case_data))
+    lines.extend(["", "## ADDED Requirements", ""])
     functions = {
         str(function.get("id", "")).strip(): function
         for function in _dict_items(case_data.get("acceptance_functions"))

@@ -33,10 +33,14 @@ Internal tools:
 - `scripts/check_requirements_case.py`
 - `scripts/requirements_openspec_draft.py`
 
+Readiness evidence must include `domain_model_gate`, `domain_coverage_gate`,
+and `requirement_delivery_gate` before handoff is allowed.
+
 Worker routing:
 
 - `req-intake`: source material and case creation or append.
-- `req-domain-analysis`: domain classification after intake and before scope.
+- `req-domain-analysis`: domain classification and coverage obligations after
+  intake and before scope.
 - `req-scope`: roles, ownership, boundaries, and unknowns after domain analysis.
 - `req-stories`: user stories with role, want, and benefit.
 - `req-acceptance`: observable acceptance functions and story mappings.

@@ -64,6 +64,9 @@ class RequirementsCheckerGateTests(unittest.TestCase):
                     "want": "review unreconciled account entries",
                     "benefit": "settlement exceptions are resolved before close",
                     "acceptance_function_ids": ["AF-1"],
+                    "domain_refs": ["billing_revenue", "account_balance"],
+                    "context_refs": ["commercial_subscription_context", "balance_ledger_context"],
+                    "aggregate_refs": ["commercial_subscription", "ledger_entry"],
                     "evidence_anchor": {"source_functions": ["F-1"]},
                 }
             ],
@@ -72,6 +75,9 @@ class RequirementsCheckerGateTests(unittest.TestCase):
                     "id": "AF-1",
                     "name": "list_unreconciled_entries",
                     "user_story_ids": ["US-1"],
+                    "coverage_types": ["state_change", "handoff", "evidence"],
+                    "context_refs": ["commercial_subscription_context", "balance_ledger_context"],
+                    "aggregate_refs": ["commercial_subscription", "ledger_entry"],
                     "given": "entries exist",
                     "when": "finance opens reconciliation",
                     "then": "unreconciled entries are visible",
@@ -100,6 +106,26 @@ class RequirementsCheckerGateTests(unittest.TestCase):
                 }
             ],
         }
+        package["domain_coverage"] = [
+            {
+                "subdomain": "billing_revenue",
+                "coverage_type": "primary",
+                "contexts": ["commercial_subscription_context"],
+                "aggregate_roots": ["commercial_subscription"],
+                "user_story_ids": ["US-1"],
+                "acceptance_function_ids": ["AF-1"],
+                "review_note": "subscription lifecycle coverage",
+            },
+            {
+                "subdomain": "account_balance",
+                "coverage_type": "required_payment",
+                "contexts": ["balance_ledger_context"],
+                "aggregate_roots": ["ledger_entry"],
+                "user_story_ids": ["US-1"],
+                "acceptance_function_ids": ["AF-1"],
+                "review_note": "ledger evidence coverage",
+            },
+        ]
         return package
 
     def _legacy_package(self, **overrides: object) -> dict:

@@ -32,6 +32,7 @@ class ReqAgentSkillSurfaceTest(unittest.TestCase):
             "scripts/build_requirements_analysis_agent.py",
             "scripts/check_requirements_case.py",
             "scripts/requirements_openspec_draft.py",
+            "domain_coverage_gate",
             "Do not ask the user to run Python as the normal path.",
         ]
         for marker in required_markers:
@@ -48,21 +49,31 @@ class ReqAgentSkillSurfaceTest(unittest.TestCase):
             "req-scope": [
                 "requirements/config/requirements-taxonomy.yaml",
                 "candidate_pending",
+                "domain coverage obligations",
                 "does not mutate taxonomy",
             ],
             "req-stories": [
                 "role",
                 "want",
                 "benefit",
+                "domain_refs",
+                "context_refs",
+                "aggregate_refs",
                 "does not write acceptance conclusions",
             ],
             "req-acceptance": [
                 "bidirectional",
                 "user story",
                 "acceptance function",
+                "coverage_types",
+                "state_change",
+                "handoff",
+                "failure_path",
+                "evidence",
             ],
             "req-handoff": [
                 "hard readiness gate",
+                "domain_coverage_gate",
                 "OpenSpec draft",
                 "Do not continue into implementation automatically.",
             ],
@@ -76,6 +87,18 @@ class ReqAgentSkillSurfaceTest(unittest.TestCase):
                 self.assertIn("explicit debug or worker context", text)
                 for marker in markers:
                     self.assertIn(marker, text)
+
+    def test_domain_analysis_emits_domain_coverage_obligations(self) -> None:
+        text = self._skill_text("req-domain-analysis")
+
+        required_markers = [
+            "domain coverage obligations",
+            "required/in-scope subdomains",
+            "bounded contexts",
+            "aggregate roots",
+        ]
+        for marker in required_markers:
+            self.assertIn(marker, text)
 
     def test_narrow_requirements_analysis_skill_entry_artifacts_are_retired(self) -> None:
         self.assertFalse(OLD_CHANGE.exists(), OLD_CHANGE)

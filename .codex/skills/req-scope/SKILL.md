@@ -19,6 +19,8 @@ Responsibility:
 - Use source actors as the starting point for user-story role refs.
 - Assign DDD role obligations from `domain_model.role_obligations` to concrete
   owners, systems, or explicit open questions.
+- Map domain coverage obligations to confirmed scope decisions, concrete owner
+  gaps, or explicit open questions.
 - Keep unknown actors, owners, domains, contexts, or obligations as
   `candidate_pending` or awaiting
   confirmation.

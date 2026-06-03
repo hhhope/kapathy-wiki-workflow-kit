@@ -14,6 +14,10 @@ Responsibility:
 
 - Extract or review user stories.
 - Check that each story has role, want, and benefit.
+- Check that each strict DDD story has `domain_refs`, `context_refs`, and
+  `aggregate_refs` tied to the case domain coverage obligations.
+- Write lifecycle stories for covered domain objects and context transitions,
+  not only actor-oriented feature requests.
 - Preserve story IDs so later acceptance work can map back to them.
 
 Boundaries:

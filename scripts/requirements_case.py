@@ -76,6 +76,7 @@ def build_requirements_case_package(
     current_intent: dict[str, Any] | None = None, domain: dict[str, Any] | None = None,
     roles: list[dict[str, Any]] | None = None, user_stories: list[dict[str, Any]] | None = None,
     acceptance_functions: list[dict[str, Any]] | None = None, soft_evidence: dict[str, Any] | None = None,
+    domain_coverage: list[dict[str, Any]] | None = None,
     blockers: list[dict[str, Any]] | None = None, evidence_attachments: dict[str, list[str]] | None = None,
     proof_boundary_notes: list[str] | None = None, case_source: dict[str, Any] | None = None,
     timestamp: datetime | str | None = None,
@@ -97,6 +98,7 @@ def build_requirements_case_package(
         "roles": _copy_dict_list(roles or []),
         "user_stories": _copy_dict_list(user_stories or []),
         "acceptance_functions": _copy_dict_list(acceptance_functions or []),
+        "domain_coverage": _copy_dict_list(domain_coverage or []),
         "soft_evidence": _copy_dict(soft_evidence),
         "blockers": _copy_dict_list(blockers or []),
         "readiness_next_action": {
@@ -161,7 +163,22 @@ def _story_line(item: dict[str, Any]) -> str:
     want = str(item.get("want") or item.get("story") or item.get("summary") or "")
     benefit = str(item.get("benefit", ""))
     refs = ", ".join(str(ref) for ref in _as_list(item.get("acceptance_function_ids")))
-    parts = [part for part in [role_part, want, f"benefit={benefit}" if benefit else "", f"acceptance={refs}" if refs else ""] if part]
+    domains = ", ".join(str(ref) for ref in _as_list(item.get("domain_refs")))
+    contexts = ", ".join(str(ref) for ref in _as_list(item.get("context_refs")))
+    aggregates = ", ".join(str(ref) for ref in _as_list(item.get("aggregate_refs")))
+    parts = [
+        part
+        for part in [
+            role_part,
+            want,
+            f"benefit={benefit}" if benefit else "",
+            f"domains={domains}" if domains else "",
+            f"contexts={contexts}" if contexts else "",
+            f"aggregates={aggregates}" if aggregates else "",
+            f"acceptance={refs}" if refs else "",
+        ]
+        if part
+    ]
     return f"- {story_id}: {'; '.join(parts)}" if parts else f"- {story_id}"
 
 
@@ -169,8 +186,42 @@ def _acceptance_line(item: dict[str, Any]) -> str:
     function_id = str(item.get("id", "unknown"))
     name = str(item.get("name") or item.get("summary") or "")
     refs = ", ".join(str(ref) for ref in _as_list(item.get("user_story_ids")))
-    parts = [part for part in [name, f"stories={refs}" if refs else "", str(item.get("then", ""))] if part]
+    coverage = ", ".join(str(ref) for ref in _as_list(item.get("coverage_types")))
+    parts = [part for part in [name, f"stories={refs}" if refs else "", f"coverage={coverage}" if coverage else "", str(item.get("then", ""))] if part]
     return f"- {function_id}: {'; '.join(parts)}" if parts else f"- {function_id}"
+
+
+def _coverage_line(item: dict[str, Any]) -> str:
+    subdomain = str(item.get("subdomain") or item.get("domain") or "unknown")
+    coverage_type = str(item.get("coverage_type") or item.get("type") or "")
+    contexts = ", ".join(str(ref) for ref in _as_list(item.get("contexts")))
+    aggregates = ", ".join(str(ref) for ref in _as_list(item.get("aggregate_roots")))
+    stories = ", ".join(str(ref) for ref in _as_list(item.get("user_story_ids") or item.get("user_stories")))
+    functions = ", ".join(str(ref) for ref in _as_list(item.get("acceptance_function_ids") or item.get("acceptance_functions")))
+    note = str(item.get("review_note") or item.get("reason") or item.get("next_action") or "")
+    parts = [
+        part
+        for part in [
+            f"coverage_type={coverage_type}" if coverage_type else "",
+            f"contexts={contexts}" if contexts else "",
+            f"aggregates={aggregates}" if aggregates else "",
+            f"stories={stories}" if stories else "",
+            f"acceptance={functions}" if functions else "",
+            f"note={note}" if note else "",
+        ]
+        if part
+    ]
+    return f"- {subdomain}: {'; '.join(parts)}" if parts else f"- {subdomain}"
+
+
+def _domain_coverage(package: dict[str, Any]) -> list[dict[str, Any]]:
+    coverage = _copy_dict_list(package.get("domain_coverage", []))
+    if coverage:
+        return coverage
+    soft_evidence = package.get("soft_evidence", {})
+    if isinstance(soft_evidence, dict):
+        return _copy_dict_list(soft_evidence.get("domain_coverage_matrix", []))
+    return []
 
 
 def render_requirements_case_markdown(package: dict[str, Any], scan_root: Path | str) -> str:
@@ -199,6 +250,9 @@ def render_requirements_case_markdown(package: dict[str, Any], scan_root: Path |
         lines.extend([f"- {item.get('id', 'unknown')}: {item.get('reason', '')}" for item in candidates] or ["- None"])
     else:
         lines.append("- None")
+
+    lines.extend(["", "## Domain Coverage"])
+    lines.extend([_coverage_line(item) for item in _domain_coverage(package)] or ["- None"])
 
     lines.extend(["", "## Roles"])
     lines.extend([_role_line(item) for item in _copy_dict_list(package.get("roles", []))] or ["- None"])

@@ -15,6 +15,8 @@ Responsibility:
 - Run the hard readiness gate.
 - Use `scripts/check_requirements_case.py` as internal evidence when a case is
   available.
+- Confirm `domain_model_gate`, `domain_coverage_gate`, and
+  `requirement_delivery_gate` all pass before draft creation.
 - Create an OpenSpec draft only after the hard readiness gate passes.
 - Treat draft creation as a stop condition.
 

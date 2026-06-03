@@ -41,6 +41,9 @@ class RequirementsCaseTest(unittest.TestCase):
                     "want": "review unreconciled account entries",
                     "benefit": "settlement exceptions are resolved before close",
                     "acceptance_function_ids": ["AF-1"],
+                    "domain_refs": ["account_balance"],
+                    "context_refs": ["balance_ledger_context"],
+                    "aggregate_refs": ["ledger_entry"],
                 }
             ],
             acceptance_functions=[
@@ -48,9 +51,21 @@ class RequirementsCaseTest(unittest.TestCase):
                     "id": "AF-1",
                     "name": "list_unreconciled_entries",
                     "user_story_ids": ["US-1"],
+                    "coverage_types": ["state_change", "evidence"],
                     "given": "entries exist",
                     "when": "finance opens reconciliation",
                     "then": "unreconciled entries are visible",
+                }
+            ],
+            domain_coverage=[
+                {
+                    "subdomain": "account_balance",
+                    "coverage_type": "primary",
+                    "contexts": ["balance_ledger_context"],
+                    "aggregate_roots": ["ledger_entry"],
+                    "user_story_ids": ["US-1"],
+                    "acceptance_function_ids": ["AF-1"],
+                    "review_note": "ledger review lifecycle",
                 }
             ],
             soft_evidence={
@@ -83,6 +98,7 @@ class RequirementsCaseTest(unittest.TestCase):
             "## Case Source",
             "## Intent",
             "## Domain",
+            "## Domain Coverage",
             "## Roles",
             "## User Stories",
             "## Acceptance Functions",
@@ -99,6 +115,8 @@ class RequirementsCaseTest(unittest.TestCase):
         self.assertIn("ops_area: workflow-trace", markdown)
         self.assertIn("US-1", markdown)
         self.assertIn("AF-1", markdown)
+        self.assertIn("account_balance", markdown)
+        self.assertIn("coverage_type=primary", markdown)
 
     def test_write_and_load_round_trip_preserves_stories_and_acceptance_functions(self) -> None:
         package = self._package()
@@ -115,6 +133,7 @@ class RequirementsCaseTest(unittest.TestCase):
         self.assertEqual(path.name, "2026-05-29-010203-account-reconciliation.md")
         self.assertEqual(loaded["user_stories"], package["user_stories"])
         self.assertEqual(loaded["acceptance_functions"], package["acceptance_functions"])
+        self.assertEqual(loaded["domain_coverage"], package["domain_coverage"])
 
     def test_write_suffixes_existing_filename_without_overwriting(self) -> None:
         package = self._package()

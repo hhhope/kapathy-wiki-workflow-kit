@@ -18,6 +18,9 @@ Responsibility:
 - Produce DDD `domain_model` evidence: ecosystems, subdomains, bounded
   contexts, aggregate roots, fact owners, role obligations, context handoffs,
   non-domain terms, and open questions.
+- Produce domain coverage obligations for required/in-scope subdomains,
+  bounded contexts, aggregate roots, lifecycle handoffs, failure paths, and
+  auditable evidence surfaces.
 - Separate real actors from DDD role obligations. Actors are people,
   organizations, systems, or automation named by the source. Role obligations
   are fact-owner obligations derived from contexts and handoffs.
@@ -30,6 +33,8 @@ Output evidence:
 - DDD domain model candidate, if one is supportable.
 - Collaborating context candidates, when relevant.
 - Role obligations that `req-scope` must assign to concrete owners.
+- Domain coverage obligations that later stories and acceptance functions must
+  satisfy or explicitly classify as light coverage, out of scope, or follow-up.
 - Candidate classification table.
 - Rejected or demoted names with reasons.
 - Open questions and needed confirmation.

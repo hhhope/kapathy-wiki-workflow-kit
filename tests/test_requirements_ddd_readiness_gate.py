@@ -62,6 +62,9 @@ class RequirementsDddReadinessGateTests(unittest.TestCase):
                     "want": "manage commercial subscription renewal",
                     "benefit": "paid Agent service access follows billing state",
                     "acceptance_function_ids": ["AF-1"],
+                    "domain_refs": ["billing_revenue", "account_balance"],
+                    "context_refs": ["commercial_subscription_context", "balance_ledger_context"],
+                    "aggregate_refs": ["commercial_subscription", "ledger_entry"],
                     "evidence_anchor": {"source_functions": ["F-1"]},
                 }
             ],
@@ -70,6 +73,9 @@ class RequirementsDddReadinessGateTests(unittest.TestCase):
                     "id": "AF-1",
                     "name": "renew_subscription_and_post_ledger_entry",
                     "user_story_ids": ["US-1"],
+                    "coverage_types": ["state_change", "handoff", "evidence"],
+                    "context_refs": ["commercial_subscription_context", "balance_ledger_context"],
+                    "aggregate_refs": ["commercial_subscription", "ledger_entry"],
                     "given": "a subscription is due",
                     "when": "payment succeeds",
                     "then": "subscription renews and ledger entry is posted",
@@ -100,6 +106,26 @@ class RequirementsDddReadinessGateTests(unittest.TestCase):
         }
         domain_model.update(domain_model_overrides)
         package["domain_model"] = domain_model
+        package["domain_coverage"] = [
+            {
+                "subdomain": "billing_revenue",
+                "coverage_type": "primary",
+                "contexts": ["commercial_subscription_context"],
+                "aggregate_roots": ["commercial_subscription"],
+                "user_story_ids": ["US-1"],
+                "acceptance_function_ids": ["AF-1"],
+                "review_note": "subscription renewal lifecycle",
+            },
+            {
+                "subdomain": "account_balance",
+                "coverage_type": "required_payment",
+                "contexts": ["balance_ledger_context"],
+                "aggregate_roots": ["ledger_entry"],
+                "user_story_ids": ["US-1"],
+                "acceptance_function_ids": ["AF-1"],
+                "review_note": "ledger evidence after renewal",
+            },
+        ]
         return package
 
     def _blocker_codes(self, report: dict) -> set[str]:
@@ -113,6 +139,7 @@ class RequirementsDddReadinessGateTests(unittest.TestCase):
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertTrue(report["summary"]["hard_gate_passed"])
         self.assertTrue(report.get("domain_model_gate", {}).get("passed"))
+        self.assertTrue(report.get("domain_coverage_gate", {}).get("passed"))
         self.assertTrue(report.get("requirement_delivery_gate", {}).get("passed"))
         self.assertFalse(report["summary"]["legacy_compatible"])
         self.assertEqual(report["blockers"], [])
