@@ -82,7 +82,25 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             "timestamp": "2026-05-29T01:02:03+00:00",
         }
         data.update(overrides)
-        return build_requirements_case_package(**data)
+        package = build_requirements_case_package(**data)
+        package["domain_model"] = {
+            "status": "confirmed",
+            "business_ecosystems": ["payment_ecosystem"],
+            "subdomains": ["billing_revenue", "account_balance"],
+            "bounded_contexts": ["commercial_subscription_context", "balance_ledger_context"],
+            "aggregate_roots": ["commercial_subscription", "ledger_entry"],
+            "fact_owners": ["subscription_owner", "ledger_owner"],
+            "role_obligations": ["subscription_owner", "ledger_owner"],
+            "context_handoffs": [
+                {
+                    "from_context": "commercial_subscription_context",
+                    "to_context": "balance_ledger_context",
+                    "type": "domain_event",
+                    "name": "CommercialSubscriptionRenewed",
+                }
+            ],
+        }
+        return package
 
     def _legacy_package(self, **overrides: object) -> dict:
         data = {
@@ -437,7 +455,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("acceptance_evidence_missing", self._blocker_codes(report))
 
-    def test_embedded_account_sample_is_strict_golden_case(self) -> None:
+    def test_embedded_account_sample_blocks_on_missing_ddd_domain_model(self) -> None:
         report = check_requirements_case_file(
             EMBEDDED_ACCOUNT_SAMPLE_PATH,
             repo_root=Path("."),
@@ -450,8 +468,10 @@ class RequirementsCheckerGateTests(unittest.TestCase):
             if isinstance(story, dict)
         }
 
-        self.assertEqual(report["summary"]["status"], "requirements_ready")
-        self.assertEqual(report["blockers"], [])
+        self.assertEqual(report["summary"]["status"], "blocked")
+        self.assertFalse(report["domain_model_gate"]["passed"])
+        self.assertTrue(report["requirement_delivery_gate"]["passed"])
+        self.assertIn("domain_model_missing", self._blocker_codes(report))
         self.assertEqual(stories["US-006"].get("role_ref"), "R-embedded-account-front")
         self.assertNotIn("role", stories["US-006"])
         self.assertNotEqual(stories["US-006"].get("role"), "system_actor")

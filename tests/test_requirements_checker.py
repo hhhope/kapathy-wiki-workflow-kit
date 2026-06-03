@@ -5,6 +5,7 @@ from pathlib import Path
 
 import yaml
 
+
 TAXONOMY_PATH = Path("requirements/config/requirements-taxonomy.yaml")
 
 
@@ -15,117 +16,78 @@ class RequirementsTaxonomyTests(unittest.TestCase):
         self.assertIsInstance(taxonomy, dict)
         return taxonomy
 
-    def test_taxonomy_defines_initial_known_domains(self) -> None:
+    def test_taxonomy_declares_ddd_authority(self) -> None:
         taxonomy = self.load_taxonomy()
 
-        domain_ids = {domain["id"] for domain in taxonomy["domains"]}
-        domain_aliases = {
-            alias
-            for domain in taxonomy["domains"]
-            for alias in domain.get("aliases", [])
-        }
+        self.assertEqual(taxonomy["version"], 2)
+        self.assertEqual(taxonomy["authority"], "requirements-ddd-model")
+        self.assertIn("wiki/config/frontmatter-taxonomy.yaml", taxonomy["independent_from"])
 
-        self.assertSetEqual(domain_ids, {"account", "settlement", "clearing"})
-        self.assertTrue({"账户", "结算", "清分"}.issubset(domain_aliases))
-
-    def test_taxonomy_declares_independent_requirements_authority(self) -> None:
+    def test_taxonomy_exposes_ddd_model_roots(self) -> None:
         taxonomy = self.load_taxonomy()
 
-        self.assertEqual(taxonomy["authority"], "requirements-readiness")
-        self.assertIn(
-            "wiki/config/frontmatter-taxonomy.yaml",
-            taxonomy["independent_from"],
+        self.assertSetEqual(
+            {
+                "business_ecosystems",
+                "subdomains",
+                "bounded_contexts",
+                "role_archetypes",
+                "context_map",
+                "case_classification",
+                "candidate_evolution",
+                "readiness_gate_model",
+            },
+            {
+                key
+                for key in taxonomy
+                if key
+                in {
+                    "business_ecosystems",
+                    "subdomains",
+                    "bounded_contexts",
+                    "role_archetypes",
+                    "context_map",
+                    "case_classification",
+                    "candidate_evolution",
+                    "readiness_gate_model",
+                }
+            },
         )
 
-    def test_taxonomy_defines_roles_and_categories(self) -> None:
+    def test_payment_and_agent_service_ecosystems_are_defined(self) -> None:
         taxonomy = self.load_taxonomy()
 
-        roles = taxonomy["roles"]["vocabulary"]
-        role_labels = {role["label"] for role in roles.values()}
-        role_categories = {role["category"] for role in roles.values()}
-        role_aliases = {
-            alias
-            for role in roles.values()
-            for alias in role.get("aliases", [])
-        }
+        self.assertSetEqual(
+            set(taxonomy["business_ecosystems"]),
+            {"payment_ecosystem", "agent_service_ecosystem"},
+        )
+        self.assertIn("billing_revenue", taxonomy["business_ecosystems"]["payment_ecosystem"]["subdomains"])
+        self.assertIn("agent_entitlement", taxonomy["business_ecosystems"]["agent_service_ecosystem"]["subdomains"])
 
-        self.assertSetEqual(
-            role_labels,
-            {
-                "retail operations",
-                "financial operations",
-                "product",
-                "finance",
-                "clearing",
-                "compliance",
-                "retail customer",
-                "financial customer",
-                "system actor",
-                "engineering",
-                "QA",
-                "risk control",
-            },
-        )
-        self.assertSetEqual(
-            role_categories,
-            {
-                "business_actors",
-                "operation_owners",
-                "system_actors",
-                "delivery_owners",
-            },
-        )
-        self.assertSetEqual(
-            set(taxonomy["roles"]["categories"]),
-            {
-                "business_actors",
-                "operation_owners",
-                "system_actors",
-                "delivery_owners",
-            },
-        )
+    def test_role_archetypes_include_funds_and_agent_obligations(self) -> None:
+        taxonomy = self.load_taxonomy()
+
         self.assertTrue(
             {
-                "零售运营",
-                "金融运营",
-                "产品",
-                "财务",
-                "清算",
-                "合规",
-                "零售客户",
-                "金融客户",
-            }.issubset(role_aliases)
+                "subscription_owner",
+                "ledger_owner",
+                "funds_account_owner",
+                "agent_entitlement_owner",
+                "access_policy_owner",
+            }.issubset(taxonomy["role_archetypes"])
         )
 
-    def test_taxonomy_defines_hard_gate_fields(self) -> None:
+    def test_readiness_gate_model_splits_domain_and_delivery_gates(self) -> None:
         taxonomy = self.load_taxonomy()
+        readiness = taxonomy["readiness_gate_model"]
 
-        self.assertSetEqual(
-            set(taxonomy["hard_gate_fields"]),
-            {"domain", "roles", "user_stories", "acceptance_functions"},
+        self.assertIn("domain_model_gate", readiness)
+        self.assertIn("requirement_delivery_gate", readiness)
+        self.assertIn("bounded_contexts", readiness["domain_model_gate"]["required_fields"])
+        self.assertIn(
+            "acceptance_functions_for_handoffs",
+            readiness["requirement_delivery_gate"]["required_fields"],
         )
-
-    def test_taxonomy_defines_soft_evidence_categories(self) -> None:
-        taxonomy = self.load_taxonomy()
-
-        soft_evidence = taxonomy["soft_evidence_categories"]
-
-        self.assertSetEqual(
-            set(soft_evidence),
-            {
-                "business_rules",
-                "exception_scenarios",
-                "api",
-                "ddl",
-                "adr",
-                "test_plan",
-                "release_plan",
-            },
-        )
-        classifications = {
-            category["classification"] for category in soft_evidence.values()
-        }
-        self.assertLessEqual(classifications, {"soft_warning", "design_evidence"})
 
 
 if __name__ == "__main__":

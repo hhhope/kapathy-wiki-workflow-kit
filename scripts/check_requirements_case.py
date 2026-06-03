@@ -7,6 +7,13 @@ from typing import Any
 
 import yaml
 
+from scripts.requirements_ddd_readiness import (
+    evaluate_domain_model_gate,
+    known_domain_ids,
+    role_lookup,
+    soft_evidence_categories,
+    taxonomy_version,
+)
 from scripts.requirements_case import load_requirements_case_file
 
 
@@ -37,29 +44,11 @@ def _load_taxonomy(repo_root: Path | str) -> dict[str, Any]:
 
 
 def _known_domains(taxonomy: dict[str, Any]) -> set[str]:
-    return {
-        str(domain.get("id"))
-        for domain in _dict_items(taxonomy.get("domains"))
-        if str(domain.get("id", "")).strip()
-    }
+    return known_domain_ids(taxonomy)
 
 
 def _role_lookup(taxonomy: dict[str, Any]) -> dict[str, str]:
-    roles = taxonomy.get("roles", {})
-    vocabulary = roles.get("vocabulary", {}) if isinstance(roles, dict) else {}
-    if not isinstance(vocabulary, dict):
-        return {}
-    lookup: dict[str, str] = {}
-    for role_id, role in vocabulary.items():
-        canonical = str(role_id)
-        lookup[canonical] = canonical
-        if isinstance(role, dict):
-            label = str(role.get("label", "")).strip()
-            if label:
-                lookup[label] = canonical
-            for alias in _string_list(role.get("aliases")):
-                lookup[alias] = canonical
-    return lookup
+    return role_lookup(taxonomy)
 
 
 def _blocker(
@@ -126,7 +115,7 @@ def _first_text(item: dict[str, Any], keys: tuple[str, ...]) -> str:
 
 
 def _soft_evidence_report(taxonomy: dict[str, Any], case_data: dict[str, Any]) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
-    categories = taxonomy.get("soft_evidence_categories", {})
+    categories = soft_evidence_categories(taxonomy)
     soft_evidence = case_data.get("soft_evidence", {})
     warnings: list[dict[str, str]] = []
     evidence: list[dict[str, str]] = []
@@ -156,17 +145,21 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
     domains = _known_domains(taxonomy)
     role_lookup = _role_lookup(taxonomy)
     legacy_compatible = False
+    use_ddd_gate = strict and taxonomy_version(taxonomy) == 2
+    domain_model_gate, domain_model_blockers = evaluate_domain_model_gate(case_data, taxonomy, strict=strict)
+    blockers.extend(domain_model_blockers)
 
-    domain = case_data.get("domain", {})
-    domain_status = str(domain.get("status", "")) if isinstance(domain, dict) else ""
-    confirmed_domain = str(domain.get("confirmed", "")).strip() if isinstance(domain, dict) else ""
-    if domain_status != "confirmed" or not confirmed_domain or confirmed_domain not in domains:
-        blockers.append(
-            _blocker(
-                "domain_not_confirmed_known",
-                f"domain must be confirmed and known; status={domain_status or 'missing'} confirmed={confirmed_domain or 'missing'}",
+    if not use_ddd_gate:
+        domain = case_data.get("domain", {})
+        domain_status = str(domain.get("status", "")) if isinstance(domain, dict) else ""
+        confirmed_domain = str(domain.get("confirmed", "")).strip() if isinstance(domain, dict) else ""
+        if domain_status != "confirmed" or not confirmed_domain or confirmed_domain not in domains:
+            blockers.append(
+                _blocker(
+                    "domain_not_confirmed_known",
+                    f"domain must be confirmed and known; status={domain_status or 'missing'} confirmed={confirmed_domain or 'missing'}",
+                )
             )
-        )
 
     case_roles = _dict_items(case_data.get("roles"))
     declared_roles: set[str] = set()
@@ -303,6 +296,11 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
                 )
             )
 
+    delivery_blockers = [blocker for blocker in blockers if not blocker["code"].startswith("domain_model_")]
+    requirement_delivery_gate = {
+        "passed": not delivery_blockers,
+        "mode": "strict" if strict else "legacy_compatibility",
+    }
     warnings, evidence = _soft_evidence_report(taxonomy, case_data)
     status = READY_STATUS if not blockers else BLOCKED_STATUS
     return {
@@ -314,6 +312,8 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
             "strict": strict,
             "legacy_compatible": legacy_compatible,
         },
+        "domain_model_gate": domain_model_gate,
+        "requirement_delivery_gate": requirement_delivery_gate,
         "blockers": sorted(blockers, key=lambda item: (item["code"], item["reason"])),
         "warnings": warnings,
         "evidence": evidence,

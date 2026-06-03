@@ -780,10 +780,9 @@ readiness_gate_model:
   proof_boundary: Model-only change; readiness checker and req-agent runtime changes come later.
   domain_model_gate:
     required_fields:
-      - business_ecosystem
+      - business_ecosystems
       - primary_subdomain
-      - primary_contexts
-      - required_contexts
+      - bounded_contexts
       - aggregate_roots
       - fact_owners
       - role_obligations
