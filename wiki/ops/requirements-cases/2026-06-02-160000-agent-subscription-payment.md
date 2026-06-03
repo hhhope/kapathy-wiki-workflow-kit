@@ -5,7 +5,7 @@ classification_needed: true
 ops_area: workflow-trace
 canonical_object: requirements-case-file
 artifact_type: requirements-case
-status: intake
+status: diagnose
 case_slug: agent-subscription-payment
 created_at: 2026-06-03
 ---
@@ -33,7 +33,16 @@ created_at: 2026-06-03
 - billing_revenue: derived from DDD domain_model primary subdomain
 
 ## Roles
-- None
+- R-ai-service-provider: AI 服务商; confirmed_as=subscription_owner; status=confirmed; category=business_actor_owner
+- R-billing-platform: 订阅支付平台; confirmed_as=billing_ops_owner; status=confirmed; category=system_owner
+- R-revenue-recovery-owner: 续费与催缴运营责任方; confirmed_as=dunning_owner; status=confirmed; category=operation_owner
+- R-usage-rating-owner: 混合计费规则责任方; confirmed_as=usage_rating_owner; status=confirmed; category=pricing_owner
+- R-agent-entitlement-owner: Agent 服务权益责任方; confirmed_as=agent_entitlement_owner; status=confirmed; category=agent_service_owner
+- R-seat-owner: 席位计费责任方; confirmed_as=seat_owner; status=confirmed; category=agent_service_owner
+- R-metering-owner: 用量计量责任方; confirmed_as=metering_owner; status=confirmed; category=agent_service_owner
+- R-mandate-owner: 支付授权责任方; confirmed_as=mandate_owner; status=confirmed; category=risk_compliance_owner
+- R-split-settlement-owner: 分账结算责任方; confirmed_as=settlement_owner; status=confirmed; category=settlement_owner
+- R-payout-owner: 出款责任方; confirmed_as=payout_owner; status=confirmed; category=settlement_owner
 
 ## User Stories
 - None
@@ -51,26 +60,32 @@ created_at: 2026-06-03
 - {"id": "recurring_billing_job", "label": "recurring billing automation", "type": "system"}
 - {"id": "payment_channel", "label": "payment channel", "type": "external_system"}
 ### Open Questions
-- {"question": "Confirm whether first release includes split allocation, settlement batch, and payout, or records them as follow-up scope."}
-- {"question": "Confirm target customers and integration boundary: standalone Agent provider, Agent marketplace/platform, or both."}
-- {"question": "Confirm supported commercial models: fixed subscription, usage billing, seat billing, or mixed billing."}
-- {"question": "Confirm whether payment method authorization/mandate and recurring deduction retry policy are in first-release scope."}
+- {"question": "为 AI 服务商定义首版用户故事，覆盖订阅开通、混合计费、自动续费、催缴、权益开通、分账结算和出款。"}
+- {"question": "为每个用户故事定义可观察验收函数并绑定 story id。"}
+### Scope Decisions
+- {"decision": "first_release_split_settlement", "evidence": "用户确认 1: 包含", "value": "in_scope"}
+- {"decision": "target_customer", "evidence": "用户确认 2: AI 服务商", "value": "AI 服务商"}
+- {"decision": "commercial_model", "evidence": "用户确认 3: 混合", "value": "混合计费"}
+- {"decision": "mandate_and_recurring_retry", "evidence": "用户确认 4: 是", "value": "in_scope"}
 ### Source Material
 - {"summary": "Agent service subscription payment market and pain points"}
 - {"pain_point": "payment threshold is high; service providers lack subscription payment lifecycle capability"}
 - {"pain_point": "renewal rate is low; dunning, grace period, and retention mechanisms are missing"}
 - {"pain_point": "billing models are too simple; fixed subscription dominates while usage and seat billing are needed"}
 - {"pain_point": "split settlement is complex for AI application marketplace and platform models"}
+### Taxonomy Candidate Terms
+- {"reason": "Analyzer surfaced term, but requirements taxonomy does not currently register it as an aggregate root.", "term": "mandate"}
+- {"reason": "Analyzer surfaced term, but requirements taxonomy does not currently register it as an aggregate root.", "term": "usage_event"}
+### User Confirmation
+- {"answers": [{"answer": "包含", "question": "首版是否包含分账分配、结算批次和出款？"}, {"answer": "AI 服务商", "question": "目标客户和集成边界是什么？"}, {"answer": "混合计费", "question": "支持哪些商业计费模型？"}, {"answer": "是", "question": "支付方式授权/委托扣款与周期扣款重试是否进入首版？"}], "confirmed_at": "2026-06-03", "source": "chat_user_confirmation"}
 
 ## Readiness / Next Action
-- Status: intake
-- Next action: run_requirements_checker
-- Reason: Hard-gate validation belongs to the requirements checker lifecycle.
+- Status: diagnose
+- Next action: req-stories
+- Reason: User confirmed first-release scope and target customer; next worker should normalize role-bound user stories.
 ### Blockers
-- roles_missing: Source material names actor types, but case roles have not been confirmed or normalized.
-- user_stories_missing: No role/want/benefit user stories have been normalized from the material yet.
-- acceptance_functions_missing: No observable acceptance functions have been defined or mapped to user stories yet.
-- scope_confirmation_needed: First-release split settlement, metering, seat billing, mandate, retry, and dunning scope need confirmation.
+- user_stories_missing: Confirmed roles and scope now exist, but role/want/benefit user stories have not been normalized yet.
+- acceptance_functions_missing: Observable acceptance functions still need to be defined and mapped to user stories.
 
 ## Evidence Attachments
 ### Analysis
@@ -81,9 +96,9 @@ created_at: 2026-06-03
 - `requirements/config/requirements-taxonomy.yaml`
 
 ## Proof Boundary
-- This case records intake evidence for user-provided market pain-point material.
-- Domain analysis is taxonomy-derived; first-release scope still requires product confirmation.
-- Actors are detected source signals, not confirmed case roles.
+- This case now records intake and req-scope evidence for user-provided market pain-point material.
+- User confirmed first-release split settlement, AI service provider target customer, mixed billing, mandate, and recurring retry scope on 2026-06-03.
+- Roles are confirmed case-local responsibility mappings, not implementation owners.
 - No user stories, acceptance functions, OpenSpec draft, or implementation work has been created.
 
 ## Machine Case Data
@@ -94,20 +109,12 @@ created_at: 2026-06-03
   "active": true,
   "blockers": [
     {
-      "id": "roles_missing",
-      "reason": "Source material names actor types, but case roles have not been confirmed or normalized."
-    },
-    {
       "id": "user_stories_missing",
-      "reason": "No role/want/benefit user stories have been normalized from the material yet."
+      "reason": "Confirmed roles and scope now exist, but role/want/benefit user stories have not been normalized yet."
     },
     {
       "id": "acceptance_functions_missing",
-      "reason": "No observable acceptance functions have been defined or mapped to user stories yet."
-    },
-    {
-      "id": "scope_confirmation_needed",
-      "reason": "First-release split settlement, metering, seat billing, mandate, retry, and dunning scope need confirmation."
+      "reason": "Observable acceptance functions still need to be defined and mapped to user stories."
     }
   ],
   "case_slug": "agent-subscription-payment",
@@ -279,17 +286,176 @@ created_at: 2026-06-03
   "generated_at": "2026-06-03T11:19:10.812029+00:00",
   "mode": "requirements_case",
   "proof_boundary_notes": [
-    "This case records intake evidence for user-provided market pain-point material.",
-    "Domain analysis is taxonomy-derived; first-release scope still requires product confirmation.",
-    "Actors are detected source signals, not confirmed case roles.",
+    "This case now records intake and req-scope evidence for user-provided market pain-point material.",
+    "User confirmed first-release split settlement, AI service provider target customer, mixed billing, mandate, and recurring retry scope on 2026-06-03.",
+    "Roles are confirmed case-local responsibility mappings, not implementation owners.",
     "No user stories, acceptance functions, OpenSpec draft, or implementation work has been created."
   ],
   "readiness_next_action": {
-    "next_action": "run_requirements_checker",
-    "reason": "Hard-gate validation belongs to the requirements checker lifecycle.",
-    "status": "intake"
+    "next_action": "req-stories",
+    "reason": "User confirmed first-release scope and target customer; next worker should normalize role-bound user stories.",
+    "status": "diagnose"
   },
-  "roles": [],
+  "roles": [
+    {
+      "category": "business_actor_owner",
+      "confirmed_as": "subscription_owner",
+      "evidence_anchor": {
+        "source_section": "用户确认 2: AI 服务商"
+      },
+      "id": "R-ai-service-provider",
+      "mention": "AI 服务商",
+      "normalization_note": "目标客户已由用户确认为 AI 服务商；在订阅商业关系中作为 subscription_owner 的业务角色代表。",
+      "source_actors": [
+        "智能体服务方",
+        "AI 服务商",
+        "技术型团队"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "system_owner",
+      "confirmed_as": "billing_ops_owner",
+      "evidence_anchor": {
+        "source_section": "原始痛点: 支付门槛高 / 周期扣款 / 订阅生命周期"
+      },
+      "id": "R-billing-platform",
+      "mention": "订阅支付平台",
+      "normalization_note": "平台承载账单生成、订阅状态和计费运营责任，映射到 billing_ops_owner。",
+      "source_actors": [
+        "订阅支付能力",
+        "周期扣款",
+        "订阅生命周期"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "operation_owner",
+      "confirmed_as": "dunning_owner",
+      "evidence_anchor": {
+        "source_section": "原始痛点: 续费率低"
+      },
+      "id": "R-revenue-recovery-owner",
+      "mention": "续费与催缴运营责任方",
+      "normalization_note": "续费率、催缴、宽限期和挽留机制属于 revenue_recovery_context，映射到 dunning_owner。",
+      "source_actors": [
+        "催缴",
+        "宽限期",
+        "挽留机制"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "pricing_owner",
+      "confirmed_as": "usage_rating_owner",
+      "evidence_anchor": {
+        "source_section": "用户确认 3: 混合计费"
+      },
+      "id": "R-usage-rating-owner",
+      "mention": "混合计费规则责任方",
+      "normalization_note": "用户确认首版支持混合计费，按量和席位价格计算责任映射到 usage_rating_owner。",
+      "source_actors": [
+        "固定订阅",
+        "按量计费",
+        "席位计费",
+        "混合计费"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "agent_service_owner",
+      "confirmed_as": "agent_entitlement_owner",
+      "evidence_anchor": {
+        "source_section": "原始材料: 智能体服务订阅"
+      },
+      "id": "R-agent-entitlement-owner",
+      "mention": "Agent 服务权益责任方",
+      "normalization_note": "商业订阅激活后需要开通或保持 Agent 服务权益，映射到 agent_entitlement_owner。",
+      "source_actors": [
+        "智能体服务",
+        "持续服务",
+        "订阅服务"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "agent_service_owner",
+      "confirmed_as": "seat_owner",
+      "evidence_anchor": {
+        "source_section": "用户确认 3: 混合计费"
+      },
+      "id": "R-seat-owner",
+      "mention": "席位计费责任方",
+      "normalization_note": "用户确认混合计费包含席位模型，席位分配责任映射到 seat_owner。",
+      "source_actors": [
+        "席位计费",
+        "混合计费"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "agent_service_owner",
+      "confirmed_as": "metering_owner",
+      "evidence_anchor": {
+        "source_section": "用户确认 3: 混合计费"
+      },
+      "id": "R-metering-owner",
+      "mention": "用量计量责任方",
+      "normalization_note": "用户确认混合计费包含按量模型，计量事实责任映射到 metering_owner。",
+      "source_actors": [
+        "按量计费",
+        "混合计费"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "risk_compliance_owner",
+      "confirmed_as": "mandate_owner",
+      "evidence_anchor": {
+        "source_section": "用户确认 4: 是"
+      },
+      "id": "R-mandate-owner",
+      "mention": "支付授权责任方",
+      "normalization_note": "用户确认支付授权/委托扣款进入首版，映射到 mandate_owner。",
+      "source_actors": [
+        "支付方式授权",
+        "委托扣款",
+        "周期扣款"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "settlement_owner",
+      "confirmed_as": "settlement_owner",
+      "evidence_anchor": {
+        "source_section": "用户确认 1: 包含"
+      },
+      "id": "R-split-settlement-owner",
+      "mention": "分账结算责任方",
+      "normalization_note": "用户确认首版包含分账、结算和出款，结算批次责任映射到 settlement_owner。",
+      "source_actors": [
+        "分账结算",
+        "结算批次",
+        "出款"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "settlement_owner",
+      "confirmed_as": "payout_owner",
+      "evidence_anchor": {
+        "source_section": "用户确认 1: 包含"
+      },
+      "id": "R-payout-owner",
+      "mention": "出款责任方",
+      "normalization_note": "用户确认出款进入首版，外部出款责任映射到 payout_owner。",
+      "source_actors": [
+        "出款",
+        "分账结算"
+      ],
+      "status": "confirmed"
+    }
+  ],
   "soft_evidence": {
     "domain_model": [
       {
@@ -454,16 +620,32 @@ created_at: 2026-06-03
     ],
     "open_questions": [
       {
-        "question": "Confirm whether first release includes split allocation, settlement batch, and payout, or records them as follow-up scope."
+        "question": "为 AI 服务商定义首版用户故事，覆盖订阅开通、混合计费、自动续费、催缴、权益开通、分账结算和出款。"
       },
       {
-        "question": "Confirm target customers and integration boundary: standalone Agent provider, Agent marketplace/platform, or both."
+        "question": "为每个用户故事定义可观察验收函数并绑定 story id。"
+      }
+    ],
+    "scope_decisions": [
+      {
+        "decision": "first_release_split_settlement",
+        "evidence": "用户确认 1: 包含",
+        "value": "in_scope"
       },
       {
-        "question": "Confirm supported commercial models: fixed subscription, usage billing, seat billing, or mixed billing."
+        "decision": "target_customer",
+        "evidence": "用户确认 2: AI 服务商",
+        "value": "AI 服务商"
       },
       {
-        "question": "Confirm whether payment method authorization/mandate and recurring deduction retry policy are in first-release scope."
+        "decision": "commercial_model",
+        "evidence": "用户确认 3: 混合",
+        "value": "混合计费"
+      },
+      {
+        "decision": "mandate_and_recurring_retry",
+        "evidence": "用户确认 4: 是",
+        "value": "in_scope"
       }
     ],
     "source_material": [
@@ -492,9 +674,33 @@ created_at: 2026-06-03
         "reason": "Analyzer surfaced term, but requirements taxonomy does not currently register it as an aggregate root.",
         "term": "usage_event"
       }
+    ],
+    "user_confirmation": [
+      {
+        "answers": [
+          {
+            "answer": "包含",
+            "question": "首版是否包含分账分配、结算批次和出款？"
+          },
+          {
+            "answer": "AI 服务商",
+            "question": "目标客户和集成边界是什么？"
+          },
+          {
+            "answer": "混合计费",
+            "question": "支持哪些商业计费模型？"
+          },
+          {
+            "answer": "是",
+            "question": "支付方式授权/委托扣款与周期扣款重试是否进入首版？"
+          }
+        ],
+        "confirmed_at": "2026-06-03",
+        "source": "chat_user_confirmation"
+      }
     ]
   },
-  "status": "intake",
+  "status": "diagnose",
   "user_stories": []
 }
 ```
