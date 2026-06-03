@@ -36,7 +36,8 @@ Internal tools:
 Worker routing:
 
 - `req-intake`: source material and case creation or append.
-- `req-scope`: domain, roles, ownership, boundaries, and unknowns.
+- `req-domain-analysis`: domain classification after intake and before scope.
+- `req-scope`: roles, ownership, boundaries, and unknowns after domain analysis.
 - `req-stories`: user stories with role, want, and benefit.
 - `req-acceptance`: observable acceptance functions and story mappings.
 - `req-handoff`: readiness gate and OpenSpec draft creation.

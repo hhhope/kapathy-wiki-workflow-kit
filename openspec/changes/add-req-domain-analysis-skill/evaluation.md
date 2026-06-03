@@ -113,11 +113,41 @@ Why this is the right RED case:
 
 ## GREEN Result
 
-Pending until `.codex/skills/req-domain-analysis/SKILL.md`,
-`.codex/skills/req-agent/SKILL.md`, and validation evidence are updated.
+Observed behavior after implementation:
+
+- `.codex/skills/req-domain-analysis/SKILL.md` exists and defines the worker as
+  direct-use-only for explicit debug or worker context.
+- `sed -n '30,55p' .codex/skills/req-agent/SKILL.md` shows the worker routing
+  order as `req-intake`, `req-domain-analysis`, `req-scope`, `req-stories`,
+  `req-acceptance`, and `req-handoff`.
+- `rg -n "req-domain-analysis|req-scope|req-intake"
+  .codex/skills/req-agent/SKILL.md
+  .codex/skills/req-domain-analysis/SKILL.md` shows `req-domain-analysis`
+  present in the parent route and the new worker skill.
+
+Expected behavior with the new worker:
+
+- Intake-created requirement material can route to `req-domain-analysis` before
+  `req-scope`.
+- The worker classifies candidates against the DDD standard and active
+  taxonomy.
+- `req-scope` no longer carries the domain-classification step; it starts after
+  domain analysis and focuses on roles, ownership, boundaries, and unknowns.
+- Direct worker output remains evidence only and does not create OpenSpec
+  drafts or mutate taxonomy.
+
+Validation evidence:
+
+- `openspec validate add-req-domain-analysis-skill --strict` -> valid.
+- `python3 scripts/check_behavior_assets.py` -> non-zero because unrelated
+  active change `openspec/changes/initialize-llm-wiki-seed-repo/evaluation.md`
+  is missing required behavior-asset evaluation fields. The output did not
+  report errors for `add-req-domain-analysis-skill`.
 
 ## Residual Risks
 
 - The worker is a skill, so future sessions still need to load `req-agent` or
   the worker explicitly for the behavior to activate.
 - This change proves local behavior-asset routing, not broad multi-end rollout.
+- Global behavior-asset validation is currently blocked by an unrelated active
+  change. This change records that blocker but does not repair it.
