@@ -5,6 +5,12 @@ from typing import Any
 
 import yaml
 
+from scripts.requirements_ddd_analysis import (
+    analyze_ddd_domain,
+    compatibility_domain_summary,
+    identify_actors,
+)
+from scripts.requirements_ddd_readiness import taxonomy_version
 from scripts.requirements_openspec_draft import create_openspec_draft_from_case
 
 
@@ -115,6 +121,10 @@ def _unknown_domain_candidates(material: str) -> list[dict[str, str]]:
 
 def resolve_domain(material: str, repo_root: Path | str = ".") -> dict[str, Any]:
     text = str(material or "")
+    taxonomy = _load_taxonomy(repo_root)
+    if taxonomy_version(taxonomy) == 2:
+        return compatibility_domain_summary(analyze_ddd_domain(text, taxonomy))
+
     lowered = text.lower()
     if _contains_any(text, ("embedded wallet", "wallet payment", "钱包", "余额支付")):
         return {
@@ -123,7 +133,7 @@ def resolve_domain(material: str, repo_root: Path | str = ".") -> dict[str, Any]
             "candidates": _unknown_domain_candidates(text),
             "requires_user_confirmation": True,
         }
-    for alias, domain_id in sorted(_domain_aliases(_load_taxonomy(repo_root)).items(), key=lambda item: len(item[0]), reverse=True):
+    for alias, domain_id in sorted(_domain_aliases(taxonomy).items(), key=lambda item: len(item[0]), reverse=True):
         if alias and alias in lowered:
             return {
                 "status": "confirmed",
@@ -141,6 +151,9 @@ def resolve_domain(material: str, repo_root: Path | str = ".") -> dict[str, Any]
 
 def analyze_requirements_intake(material: str, repo_root: Path | str = ".") -> dict[str, Any]:
     intent = classify_intent(material)
+    taxonomy = _load_taxonomy(repo_root)
+    domain_model = analyze_ddd_domain(material, taxonomy)
+    actors = identify_actors(material)
     domain = resolve_domain(material, repo_root=repo_root)
     next_action = "confirm_domain" if domain["status"] == "candidate_pending" else "normalize_requirement"
     if intent["intent"] == "check_requirements_ready":
@@ -149,6 +162,8 @@ def analyze_requirements_intake(material: str, repo_root: Path | str = ".") -> d
         next_action = "check_requirements_ready"
     return {
         "intent": intent,
+        "actors": actors,
         "domain": domain,
+        "domain_model": domain_model,
         "next_action": next_action,
     }

@@ -40,21 +40,21 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
             "status": "requirements_ready",
             "domain": {
                 "status": "confirmed",
-                "confirmed": "account",
-                "candidates": [{"id": "account", "reason": "material names accounts"}],
+                "confirmed": "account_balance",
+                "candidates": [{"id": "account_balance", "reason": "material names accounts"}],
             },
             "roles": [
                 build_role_instance(
                     role_id="R-finance",
                     mention="finance",
-                    confirmed_as="finance",
+                    confirmed_as="ledger_owner",
                     category="business_roles",
                     source_section="roles",
                 ),
                 build_role_instance(
                     role_id="R-system",
                     mention="reconciliation system",
-                    confirmed_as="system_actor",
+                    confirmed_as="reconciliation_owner",
                     category="system_actors",
                     source_section="systems",
                 ),
@@ -83,7 +83,25 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
             "timestamp": "2026-05-29T01:02:03+00:00",
         }
         data.update(overrides)
-        return build_requirements_case_package(**data)
+        package = build_requirements_case_package(**data)
+        package["domain_model"] = {
+            "status": "confirmed",
+            "business_ecosystems": ["payment_ecosystem"],
+            "subdomains": ["account_balance", "financial_operations"],
+            "bounded_contexts": ["balance_ledger_context", "reconciliation_context"],
+            "aggregate_roots": ["payment_account", "ledger_entry", "reconciliation_record"],
+            "fact_owners": ["ledger_owner", "reconciliation_owner"],
+            "role_obligations": ["ledger_owner", "reconciliation_owner"],
+            "context_handoffs": [
+                {
+                    "from_context": "balance_ledger_context",
+                    "to_context": "reconciliation_context",
+                    "type": "evidence",
+                    "name": "LedgerEntryPosted",
+                }
+            ],
+        }
+        return package
 
     def _write_case(self, package: dict) -> Path:
         return write_requirements_case_file(
@@ -128,9 +146,9 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
 
     def test_resolve_domain_matches_known_taxonomy_aliases_including_chinese(self) -> None:
         cases = [
-            ("账户体系需要支持冻结和解冻", "account"),
-            ("结算域需要补充日切后的对账规则", "settlement"),
-            ("清分流程需要输出渠道分润结果", "clearing"),
+            ("账户体系需要支持冻结和解冻", "account_balance"),
+            ("结算域需要补充日切后的对账规则", "funds_movement_settlement"),
+            ("清分流程需要输出渠道分润结果", "financial_operations"),
         ]
 
         for material, expected_domain in cases:
@@ -175,7 +193,8 @@ class RequirementsAnalysisAgentTests(unittest.TestCase):
 
         self.assertEqual(result["intent"]["intent"], "new_requirement_intake")
         self.assertEqual(result["domain"]["status"], "confirmed")
-        self.assertEqual(result["domain"]["confirmed"], "account")
+        self.assertEqual(result["domain"]["confirmed"], "account_balance")
+        self.assertIn("account_balance", result["domain_model"]["subdomains"])
         self.assertNotIn(
             result["next_action"],
             {"implementation", "implement", "create_openspec_draft", "generate_draft"},
