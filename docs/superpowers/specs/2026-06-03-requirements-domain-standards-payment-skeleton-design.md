@@ -1,7 +1,7 @@
 # Requirements Domain Standards And Payment Skeleton Design
 
 Date: 2026-06-03
-Status: written-for-user-review
+Status: user-reviewed-split-change-direction
 Repository: report-wiki-portfolio
 
 ## Problem
@@ -31,10 +31,15 @@ Current gaps:
 
 ## Goal
 
-Create an OpenSpec change named
-`define-requirements-domain-standards-and-payment-skeleton`.
+Create two OpenSpec changes.
 
-The change should define:
+First change:
+
+```text
+define-requirements-domain-standards-and-payment-skeleton
+```
+
+It should define:
 
 1. DDD domain standards.
 2. Payment domain skeleton.
@@ -42,8 +47,19 @@ The change should define:
 4. Compounding asset mechanism.
 5. Taxonomy admission standards.
 6. Current taxonomy mapping.
-7. A `req-agent` domain-analysis stage that brings the standard into the
-   requirements workflow.
+
+It should also write the first payment skeleton into
+`requirements/config/requirements-taxonomy.yaml` so the process can run against
+real taxonomy values instead of staying as a document-only proposal.
+
+Second change:
+
+```text
+add-req-domain-analysis-skill
+```
+
+It should add the formal `req-domain-analysis` skill and wire it into the
+`req-agent` workflow.
 
 The design's central claim:
 
@@ -54,7 +70,7 @@ collaboration, not a static classification list
 
 ## Non-Goals
 
-- Do not finalize all payment taxonomy values in this change.
+- Do not claim the first payment taxonomy skeleton is perfect or final.
 - Do not batch-migrate historical requirements cases.
 - Do not change `wiki/config/frontmatter-taxonomy.yaml`.
 - Do not implement tactical DDD objects such as aggregates, entities, value
@@ -62,6 +78,8 @@ collaboration, not a static classification list
 - Do not make Agent subscription payments a top-level domain.
 - Do not let the domain model authorize implementation without normal OpenSpec
   review.
+- Do not implement `req-domain-analysis` in the first change; it is explicitly
+  split into the second change.
 
 ## DDD Basis
 
@@ -82,7 +100,7 @@ admission requirements.
 
 ## OpenSpec Shape
 
-Create:
+First change should create:
 
 ```text
 openspec/changes/define-requirements-domain-standards-and-payment-skeleton/
@@ -91,11 +109,21 @@ openspec/changes/define-requirements-domain-standards-and-payment-skeleton/
   tasks.md
   specs/
     requirements-domain-model/spec.md
+```
+
+Second change should create:
+
+```text
+openspec/changes/add-req-domain-analysis-skill/
+  proposal.md
+  design.md
+  tasks.md
+  specs/
     req-agent/spec.md
 ```
 
-If existing OpenSpec conventions require a different spec name, keep the change
-name stable and choose the nearest existing capability name.
+If existing OpenSpec conventions require different spec names, keep the change
+names stable and choose the nearest existing capability names.
 
 ## Spec Requirements
 
@@ -111,8 +139,9 @@ Required requirements:
   interface, system, team, or case names.
 - Domain candidates SHALL be classified as top-level domain, subdomain,
   capability, case, or non-domain item.
-- Payment domain skeleton SHALL be recorded as candidate first-pass structure,
-  not final taxonomy approval.
+- Payment domain skeleton SHALL be written into the requirements taxonomy as
+  the first runnable skeleton while remaining explicitly reviewable and
+  evolvable.
 - Existing `account`, `clearing`, and `settlement` values SHALL be mapped to
   the new skeleton with explicit compatibility boundaries.
 - Domain collaboration SHALL describe upstream, downstream, shared language,
@@ -121,7 +150,7 @@ Required requirements:
   decisions, counterexamples, collaboration patterns, handoff modes, acceptance
   patterns, or taxonomy gaps.
 
-### req-agent
+### req-agent, in second change
 
 The existing `req-agent` behavior should gain a domain-analysis stage.
 
@@ -136,7 +165,8 @@ req-intake
   -> req-handoff
 ```
 
-`req-domain-analysis` should:
+The second change should create `req-domain-analysis` as a formal repo-local
+skill. It should:
 
 - classify the primary domain candidate;
 - identify supporting domains;
@@ -157,8 +187,8 @@ It should not:
 
 ## Payment Domain Skeleton Candidate
 
-The OpenSpec change should preserve these as candidates, not final approved
-taxonomy IDs:
+The first OpenSpec change should write these into the requirements taxonomy as
+the first runnable payment skeleton:
 
 | Candidate Domain | Business Concern |
 |---|---|
@@ -194,9 +224,9 @@ Expected mapping:
 
 ## Data And Case Shape
 
-The change should not redesign the full requirements case schema in one step.
-It should add a minimal domain-analysis section that can be rendered in case
-files and checked for OpenSpec handoff readiness.
+The second change should not redesign the full requirements case schema in one
+step. It should add a minimal domain-analysis section that can be rendered in
+case files and checked for OpenSpec handoff readiness.
 
 Candidate section shape:
 
@@ -237,38 +267,46 @@ names to fit existing scripts and case output conventions.
 
 ## Verification
 
-The OpenSpec change should include verification for:
+The first OpenSpec change should include verification for:
 
 - domain standard text is present in specs or design;
-- payment skeleton candidates are documented and explicitly marked non-final;
+- payment skeleton values are present in
+  `requirements/config/requirements-taxonomy.yaml`;
 - existing taxonomy mapping for `account`, `clearing`, and `settlement` is
   documented;
+- taxonomy checker / requirements checker still handles known domain values;
+- Agent subscription-payment material can be mapped to `计费与收入` primary
+  domain at analysis level.
+
+The second OpenSpec change should include verification for:
+
 - `req-agent` routing includes domain analysis between intake and scope;
 - readiness/handoff behavior does not allow taxonomy gaps to become automatic
   taxonomy mutations;
-- Agent subscription-payment material can be analyzed as `计费与收入` primary
-  domain with supporting domains.
+- Agent subscription-payment material can be analyzed by `req-domain-analysis`
+  as `计费与收入` primary domain with supporting domains.
 
 ## Risks
 
 - The payment skeleton could still read like a function list if each candidate
   domain is not backed by problem space, language, object, lifecycle, rule, and
   collaboration evidence.
-- Adding `req-domain-analysis` could bloat the first version if it tries to
+- Writing the first payment skeleton directly into taxonomy could create
+  naming debt if domain owners later disagree with labels.
+- Adding `req-domain-analysis` could bloat the second change if it tries to
   solve all taxonomy migration and case migration at once.
 - Existing `account`, `clearing`, and `settlement` values must remain
   compatible until migration is explicitly scoped.
 - Domain standards must not become a checklist that hides the original purpose:
   compounding human-Agent business cognition.
 
-## Review Questions
+## User Decisions
 
-1. Is this OpenSpec change scope correct, or should the domain standard and
-   `req-agent` domain-analysis stage be split into separate changes?
-2. Should `req-domain-analysis` be a formal repo-local skill in the first
-   implementation, or only a new case section and controller route?
-3. Should payment skeleton candidates be added to
-   `requirements/config/requirements-taxonomy.yaml` in the first implementation,
-   or only documented as candidates until owner review?
-4. Is `define-requirements-domain-standards-and-payment-skeleton` the right
-   change name?
+1. The user decided to split this into two changes:
+   `define-requirements-domain-standards-and-payment-skeleton` and
+   `add-req-domain-analysis-skill`.
+2. The user decided `req-domain-analysis` should be a formal repo-local skill.
+3. The user decided the payment skeleton should be written directly into
+   `requirements/config/requirements-taxonomy.yaml` in the first implementation.
+4. The user accepted `define-requirements-domain-standards-and-payment-skeleton`
+   as the first change name.
