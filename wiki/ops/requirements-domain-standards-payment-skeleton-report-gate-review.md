@@ -128,6 +128,9 @@ May create a Feishu review draft. Do not claim final taxonomy approval.
 - Read-back log id: not exposed by `docs +fetch --format pretty`.
 - Opening text confirmed: `这是一份评审稿。它不是 taxonomy 定稿，也不是实施方案。`
 - Permission result: current user `ou_b39a01208a81abcbce459659d082e4f9` granted `full_access`.
+- Follow-up update: reordered the final scope list in section `十、后续动作建议`.
+- Follow-up update log id: `20260603140954961B9D241F2B5C732BDB`.
+- Follow-up read-back result: success; confirmed final order as DDD domain standard, payment domain skeleton, domain collaboration relationships, compounding asset mechanism, taxonomy admission standard, and current taxonomy mapping.
 
 ## Visual Asset Boundary
 
