@@ -45,7 +45,17 @@ created_at: 2026-06-03
 - R-payout-owner: 出款责任方; confirmed_as=payout_owner; status=confirmed; category=settlement_owner
 
 ## User Stories
-- None
+- US-001: role_ref=R-ai-service-provider; 作为 AI 服务商，我希望接入订阅支付能力，配置面向消费者的 Agent 服务订阅关系。; benefit=不用自建银行通道和订阅生命周期能力，就能商业化提供持续 Agent 服务。
+- US-002: role_ref=R-billing-platform; 作为订阅支付平台，我希望管理订阅创建、生效、续期、暂停和终止等生命周期状态。; benefit=AI 服务商可以获得完整订阅生命周期能力，而不是只完成一次性扣款。
+- US-003: role_ref=R-usage-rating-owner; 作为混合计费规则责任方，我希望支持固定订阅、按量计费和席位计费的组合计价。; benefit=Agent 服务可以按真实商业模型收费，而不是被限制在单一固定订阅。
+- US-004: role_ref=R-metering-owner; 作为用量计量责任方，我希望记录和汇总 Agent 服务使用量，供按量计费计算。; benefit=按量收费可以基于可追溯的用量事实，而不是人工估算或离线结算。
+- US-005: role_ref=R-seat-owner; 作为席位计费责任方，我希望管理服务席位数量和席位变更对账单的影响。; benefit=团队型或多用户 Agent 服务可以按席位扩缩容并形成正确应收。
+- US-006: role_ref=R-mandate-owner; 作为支付授权责任方，我希望在周期扣款前完成支付方式授权或委托扣款授权，并保留授权证据。; benefit=自动续费和重试扣款具备合规依据，降低扣款争议和失败风险。
+- US-007: role_ref=R-billing-platform; 作为订阅支付平台，我希望在续期日自动生成账单并发起周期扣款和失败重试。; benefit=AI 服务商可以提高续费成功率，并减少人工催收和重复对接成本。
+- US-008: role_ref=R-revenue-recovery-owner; 作为续费与催缴运营责任方，我希望对续费失败用户触发催缴、宽限期和挽留策略。; benefit=在扣款失败后仍能恢复收入并提升月续费率。
+- US-009: role_ref=R-agent-entitlement-owner; 作为 Agent 服务权益责任方，我希望根据订阅和付款状态开通、保持、降级或暂停 Agent 服务权益。; benefit=商业订阅状态可以准确驱动消费者可用的 Agent 服务访问权限。
+- US-010: role_ref=R-split-settlement-owner; 作为分账结算责任方，我希望按平台和服务方约定规则计算收入分账并形成结算批次。; benefit=平台型 Agent 服务可以把收入准确分配给多个服务方，降低结算链路复杂度。
+- US-011: role_ref=R-payout-owner; 作为出款责任方，我希望将已结算金额按结算批次出款给对应服务方。; benefit=服务方可以按可追溯的结算结果收到资金，平台减少人工付款和对账负担。
 
 ## Acceptance Functions
 - None
@@ -60,8 +70,8 @@ created_at: 2026-06-03
 - {"id": "recurring_billing_job", "label": "recurring billing automation", "type": "system"}
 - {"id": "payment_channel", "label": "payment channel", "type": "external_system"}
 ### Open Questions
-- {"question": "为 AI 服务商定义首版用户故事，覆盖订阅开通、混合计费、自动续费、催缴、权益开通、分账结算和出款。"}
-- {"question": "为每个用户故事定义可观察验收函数并绑定 story id。"}
+- {"question": "为 US-001 至 US-011 定义可观察验收函数。"}
+- {"question": "将每个验收函数双向映射到对应 user_story_ids 和 acceptance_function_ids。"}
 ### Scope Decisions
 - {"decision": "first_release_split_settlement", "evidence": "用户确认 1: 包含", "value": "in_scope"}
 - {"decision": "target_customer", "evidence": "用户确认 2: AI 服务商", "value": "AI 服务商"}
@@ -73,6 +83,8 @@ created_at: 2026-06-03
 - {"pain_point": "renewal rate is low; dunning, grace period, and retention mechanisms are missing"}
 - {"pain_point": "billing models are too simple; fixed subscription dominates while usage and seat billing are needed"}
 - {"pain_point": "split settlement is complex for AI application marketplace and platform models"}
+### Story Extraction
+- {"source": "req-stories", "summary": "Normalized role/want/benefit stories from confirmed AI 服务商 scope, mixed billing, recurring mandate/retry, revenue recovery, entitlement, split settlement, and payout decisions."}
 ### Taxonomy Candidate Terms
 - {"reason": "Analyzer surfaced term, but requirements taxonomy does not currently register it as an aggregate root.", "term": "mandate"}
 - {"reason": "Analyzer surfaced term, but requirements taxonomy does not currently register it as an aggregate root.", "term": "usage_event"}
@@ -81,11 +93,11 @@ created_at: 2026-06-03
 
 ## Readiness / Next Action
 - Status: diagnose
-- Next action: req-stories
-- Reason: User confirmed first-release scope and target customer; next worker should normalize role-bound user stories.
+- Next action: req-acceptance
+- Reason: Role-bound user stories have been normalized; next worker should define observable acceptance functions and story mappings.
 ### Blockers
-- user_stories_missing: Confirmed roles and scope now exist, but role/want/benefit user stories have not been normalized yet.
-- acceptance_functions_missing: Observable acceptance functions still need to be defined and mapped to user stories.
+- acceptance_functions_missing: User stories now exist, but observable acceptance functions still need to be defined.
+- story_acceptance_mapping_missing: Acceptance worker must map each user story to one or more acceptance functions.
 
 ## Evidence Attachments
 ### Analysis
@@ -96,10 +108,9 @@ created_at: 2026-06-03
 - `requirements/config/requirements-taxonomy.yaml`
 
 ## Proof Boundary
-- This case now records intake and req-scope evidence for user-provided market pain-point material.
-- User confirmed first-release split settlement, AI service provider target customer, mixed billing, mandate, and recurring retry scope on 2026-06-03.
-- Roles are confirmed case-local responsibility mappings, not implementation owners.
-- No user stories, acceptance functions, OpenSpec draft, or implementation work has been created.
+- This case now records intake, req-scope, and req-stories evidence for user-provided market pain-point material.
+- User stories are role-bound and evidence-anchored, but acceptance functions have not been created.
+- No OpenSpec draft or implementation work has been created.
 
 ## Machine Case Data
 <!-- requirements-case-data:start -->
@@ -109,12 +120,12 @@ created_at: 2026-06-03
   "active": true,
   "blockers": [
     {
-      "id": "user_stories_missing",
-      "reason": "Confirmed roles and scope now exist, but role/want/benefit user stories have not been normalized yet."
+      "id": "acceptance_functions_missing",
+      "reason": "User stories now exist, but observable acceptance functions still need to be defined."
     },
     {
-      "id": "acceptance_functions_missing",
-      "reason": "Observable acceptance functions still need to be defined and mapped to user stories."
+      "id": "story_acceptance_mapping_missing",
+      "reason": "Acceptance worker must map each user story to one or more acceptance functions."
     }
   ],
   "case_slug": "agent-subscription-payment",
@@ -286,14 +297,13 @@ created_at: 2026-06-03
   "generated_at": "2026-06-03T11:19:10.812029+00:00",
   "mode": "requirements_case",
   "proof_boundary_notes": [
-    "This case now records intake and req-scope evidence for user-provided market pain-point material.",
-    "User confirmed first-release split settlement, AI service provider target customer, mixed billing, mandate, and recurring retry scope on 2026-06-03.",
-    "Roles are confirmed case-local responsibility mappings, not implementation owners.",
-    "No user stories, acceptance functions, OpenSpec draft, or implementation work has been created."
+    "This case now records intake, req-scope, and req-stories evidence for user-provided market pain-point material.",
+    "User stories are role-bound and evidence-anchored, but acceptance functions have not been created.",
+    "No OpenSpec draft or implementation work has been created."
   ],
   "readiness_next_action": {
-    "next_action": "req-stories",
-    "reason": "User confirmed first-release scope and target customer; next worker should normalize role-bound user stories.",
+    "next_action": "req-acceptance",
+    "reason": "Role-bound user stories have been normalized; next worker should define observable acceptance functions and story mappings.",
     "status": "diagnose"
   },
   "roles": [
@@ -620,10 +630,10 @@ created_at: 2026-06-03
     ],
     "open_questions": [
       {
-        "question": "为 AI 服务商定义首版用户故事，覆盖订阅开通、混合计费、自动续费、催缴、权益开通、分账结算和出款。"
+        "question": "为 US-001 至 US-011 定义可观察验收函数。"
       },
       {
-        "question": "为每个用户故事定义可观察验收函数并绑定 story id。"
+        "question": "将每个验收函数双向映射到对应 user_story_ids 和 acceptance_function_ids。"
       }
     ],
     "scope_decisions": [
@@ -665,6 +675,12 @@ created_at: 2026-06-03
         "pain_point": "split settlement is complex for AI application marketplace and platform models"
       }
     ],
+    "story_extraction": [
+      {
+        "source": "req-stories",
+        "summary": "Normalized role/want/benefit stories from confirmed AI 服务商 scope, mixed billing, recurring mandate/retry, revenue recovery, entitlement, split settlement, and payout decisions."
+      }
+    ],
     "taxonomy_candidate_terms": [
       {
         "reason": "Analyzer surfaced term, but requirements taxonomy does not currently register it as an aggregate root.",
@@ -701,7 +717,161 @@ created_at: 2026-06-03
     ]
   },
   "status": "diagnose",
-  "user_stories": []
+  "user_stories": [
+    {
+      "acceptance_function_ids": [],
+      "benefit": "不用自建银行通道和订阅生命周期能力，就能商业化提供持续 Agent 服务。",
+      "evidence_anchor": {
+        "source_section": "原始材料: AI 产品采用订阅制收费模式向消费者提供持续服务"
+      },
+      "id": "US-001",
+      "role_ref": "R-ai-service-provider",
+      "source_functions": [
+        "原始痛点: 支付门槛高",
+        "用户确认 2: AI 服务商"
+      ],
+      "want": "作为 AI 服务商，我希望接入订阅支付能力，配置面向消费者的 Agent 服务订阅关系。"
+    },
+    {
+      "acceptance_function_ids": [],
+      "benefit": "AI 服务商可以获得完整订阅生命周期能力，而不是只完成一次性扣款。",
+      "evidence_anchor": {
+        "source_section": "原始痛点: 支付门槛高"
+      },
+      "id": "US-002",
+      "role_ref": "R-billing-platform",
+      "source_functions": [
+        "原始痛点: 实现周期扣款、管理订阅生命周期"
+      ],
+      "want": "作为订阅支付平台，我希望管理订阅创建、生效、续期、暂停和终止等生命周期状态。"
+    },
+    {
+      "acceptance_function_ids": [],
+      "benefit": "Agent 服务可以按真实商业模型收费，而不是被限制在单一固定订阅。",
+      "evidence_anchor": {
+        "source_section": "用户确认 3: 混合"
+      },
+      "id": "US-003",
+      "role_ref": "R-usage-rating-owner",
+      "source_functions": [
+        "原始痛点: 计费模式单一",
+        "用户确认 3: 混合计费"
+      ],
+      "want": "作为混合计费规则责任方，我希望支持固定订阅、按量计费和席位计费的组合计价。"
+    },
+    {
+      "acceptance_function_ids": [],
+      "benefit": "按量收费可以基于可追溯的用量事实，而不是人工估算或离线结算。",
+      "evidence_anchor": {
+        "source_section": "用户确认 3: 混合"
+      },
+      "id": "US-004",
+      "role_ref": "R-metering-owner",
+      "source_functions": [
+        "原始痛点: 按量计费",
+        "用户确认 3: 混合计费"
+      ],
+      "want": "作为用量计量责任方，我希望记录和汇总 Agent 服务使用量，供按量计费计算。"
+    },
+    {
+      "acceptance_function_ids": [],
+      "benefit": "团队型或多用户 Agent 服务可以按席位扩缩容并形成正确应收。",
+      "evidence_anchor": {
+        "source_section": "用户确认 3: 混合"
+      },
+      "id": "US-005",
+      "role_ref": "R-seat-owner",
+      "source_functions": [
+        "原始痛点: 席位计费",
+        "用户确认 3: 混合计费"
+      ],
+      "want": "作为席位计费责任方，我希望管理服务席位数量和席位变更对账单的影响。"
+    },
+    {
+      "acceptance_function_ids": [],
+      "benefit": "自动续费和重试扣款具备合规依据，降低扣款争议和失败风险。",
+      "evidence_anchor": {
+        "source_section": "用户确认 4: 是"
+      },
+      "id": "US-006",
+      "role_ref": "R-mandate-owner",
+      "source_functions": [
+        "用户确认 4: 是",
+        "领域模型: mandate_authorization_context"
+      ],
+      "want": "作为支付授权责任方，我希望在周期扣款前完成支付方式授权或委托扣款授权，并保留授权证据。"
+    },
+    {
+      "acceptance_function_ids": [],
+      "benefit": "AI 服务商可以提高续费成功率，并减少人工催收和重复对接成本。",
+      "evidence_anchor": {
+        "source_section": "原始痛点: 支付门槛高 / 续费率低"
+      },
+      "id": "US-007",
+      "role_ref": "R-billing-platform",
+      "source_functions": [
+        "原始痛点: 周期扣款",
+        "用户确认 4: 是"
+      ],
+      "want": "作为订阅支付平台，我希望在续期日自动生成账单并发起周期扣款和失败重试。"
+    },
+    {
+      "acceptance_function_ids": [],
+      "benefit": "在扣款失败后仍能恢复收入并提升月续费率。",
+      "evidence_anchor": {
+        "source_section": "原始痛点: 续费率低"
+      },
+      "id": "US-008",
+      "role_ref": "R-revenue-recovery-owner",
+      "source_functions": [
+        "原始痛点: 续费率低",
+        "催缴、宽限期、挽留机制"
+      ],
+      "want": "作为续费与催缴运营责任方，我希望对续费失败用户触发催缴、宽限期和挽留策略。"
+    },
+    {
+      "acceptance_function_ids": [],
+      "benefit": "商业订阅状态可以准确驱动消费者可用的 Agent 服务访问权限。",
+      "evidence_anchor": {
+        "source_section": "原始材料: 智能体服务订阅"
+      },
+      "id": "US-009",
+      "role_ref": "R-agent-entitlement-owner",
+      "source_functions": [
+        "原始材料: 向消费者提供持续服务",
+        "领域模型: CommercialSubscriptionActivated"
+      ],
+      "want": "作为 Agent 服务权益责任方，我希望根据订阅和付款状态开通、保持、降级或暂停 Agent 服务权益。"
+    },
+    {
+      "acceptance_function_ids": [],
+      "benefit": "平台型 Agent 服务可以把收入准确分配给多个服务方，降低结算链路复杂度。",
+      "evidence_anchor": {
+        "source_section": "用户确认 1: 包含"
+      },
+      "id": "US-010",
+      "role_ref": "R-split-settlement-owner",
+      "source_functions": [
+        "原始痛点: 分账结算复杂",
+        "用户确认 1: 包含"
+      ],
+      "want": "作为分账结算责任方，我希望按平台和服务方约定规则计算收入分账并形成结算批次。"
+    },
+    {
+      "acceptance_function_ids": [],
+      "benefit": "服务方可以按可追溯的结算结果收到资金，平台减少人工付款和对账负担。",
+      "evidence_anchor": {
+        "source_section": "用户确认 1: 包含"
+      },
+      "id": "US-011",
+      "role_ref": "R-payout-owner",
+      "source_functions": [
+        "用户确认 1: 包含",
+        "领域模型: payout_context"
+      ],
+      "want": "作为出款责任方，我希望将已结算金额按结算批次出款给对应服务方。"
+    }
+  ]
 }
 ```
 <!-- requirements-case-data:end -->
