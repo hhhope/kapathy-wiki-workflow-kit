@@ -722,24 +722,44 @@ case_classification:
         - if: paid_agent_service_access=true
           require_contexts:
             - agent_entitlement_context
+          require_role_archetypes:
+            - agent_entitlement_owner
+            - access_policy_owner
         - if: usage_based_billing=true
           require_contexts:
             - usage_rating_context
             - agent_usage_metering_context
+          require_role_archetypes:
+            - usage_rating_owner
+            - agent_usage_owner
+            - metering_owner
         - if: seat_based_billing=true
           require_contexts:
             - usage_rating_context
             - agent_workspace_seat_context
+          require_role_archetypes:
+            - usage_rating_owner
+            - workspace_owner
+            - seat_owner
         - if: merchant_settlement_in_scope=true
           require_contexts:
             - settlement_batch_context
             - payout_context
+          require_role_archetypes:
+            - settlement_owner
+            - payout_owner
         - if: split_settlement_in_scope=true
           require_contexts:
             - split_allocation_context
+          require_role_archetypes:
+            - split_rule_owner
+            - platform_fee_owner
         - if: recurring_payment=true
           require_contexts:
             - mandate_authorization_context
+          require_role_archetypes:
+            - mandate_owner
+            - compliance_owner
 
 candidate_evolution:
   candidate_types:
