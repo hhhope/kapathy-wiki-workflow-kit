@@ -5,6 +5,7 @@ independent_from:
 
 business_ecosystems:
   payment_ecosystem:
+    label: payment ecosystem
     description: Primary ecosystem for payment requirements.
     subdomains:
       - merchant_platform_relationship
@@ -16,6 +17,7 @@ business_ecosystems:
       - risk_compliance
       - embedded_financial_products
   agent_service_ecosystem:
+    label: agent service ecosystem
     description: Adjacent ecosystem for Agent service access, usage, seats, catalog, and delivery.
     subdomains:
       - agent_entitlement
@@ -86,8 +88,14 @@ subdomains:
       - merchant_subscription_offering belongs to merchant_platform_relationship.
       - agent_entitlement belongs to agent_service_ecosystem.
     trigger_rules:
-      - usage_based_billing=true requires usage_rating_context and agent_usage_metering_context.
-      - seat_based_billing=true requires usage_rating_context and agent_workspace_seat_context.
+      - if: usage_based_billing=true
+        require_contexts:
+          - usage_rating_context
+          - agent_usage_metering_context
+      - if: seat_based_billing=true
+        require_contexts:
+          - usage_rating_context
+          - agent_workspace_seat_context
 
   payment_transaction:
     business_ecosystem: payment_ecosystem
@@ -148,7 +156,15 @@ subdomains:
       - ledger_entry is not a financial report.
       - Available balance is not payment success.
     trigger_rules:
-      - real_funds_processing=true requires account_balance, balance_ledger_context, funds_account_owner, ledger_owner, and balance_state_owner.
+      - if: real_funds_processing=true
+        require_subdomains:
+          - account_balance
+        require_contexts:
+          - balance_ledger_context
+        require_role_archetypes:
+          - funds_account_owner
+          - ledger_owner
+          - balance_state_owner
 
   funds_movement_settlement:
     business_ecosystem: payment_ecosystem
@@ -182,8 +198,13 @@ subdomains:
       - settlement means settlement batch, schedule, or settlement accounting fact.
       - split means allocation rule or result.
     trigger_rules:
-      - merchant_settlement_in_scope=true requires settlement_batch_context and payout_context.
-      - split_settlement_in_scope=true requires split_allocation_context.
+      - if: merchant_settlement_in_scope=true
+        require_contexts:
+          - settlement_batch_context
+          - payout_context
+      - if: split_settlement_in_scope=true
+        require_contexts:
+          - split_allocation_context
 
   financial_operations:
     business_ecosystem: payment_ecosystem
@@ -247,7 +268,9 @@ subdomains:
       - Payment authorization answers whether one payment attempt is authorized.
       - Risk decision answers whether an action is allowed.
     trigger_rules:
-      - recurring_payment=true requires mandate_authorization_context.
+      - if: recurring_payment=true
+        require_contexts:
+          - mandate_authorization_context
 
   embedded_financial_products:
     business_ecosystem: payment_ecosystem
@@ -277,9 +300,15 @@ subdomains:
     disambiguation:
       - Embedded financial product scope is not ordinary payment processing.
     trigger_rules:
-      - issuing_in_scope=true requires embedded_financial_products.
-      - treasury_in_scope=true requires embedded_financial_products.
-      - capital_in_scope=true requires embedded_financial_products.
+      - if: issuing_in_scope=true
+        require_subdomains:
+          - embedded_financial_products
+      - if: treasury_in_scope=true
+        require_subdomains:
+          - embedded_financial_products
+      - if: capital_in_scope=true
+        require_subdomains:
+          - embedded_financial_products
 
   agent_entitlement:
     business_ecosystem: agent_service_ecosystem
@@ -297,7 +326,9 @@ subdomains:
     disambiguation:
       - agent_entitlement is service access, not commercial_subscription.
     trigger_rules:
-      - paid_agent_service_access=true requires agent_service_ecosystem and agent_entitlement_context.
+      - if: paid_agent_service_access=true
+        require_contexts:
+          - agent_entitlement_context
 
   agent_usage_metering:
     business_ecosystem: agent_service_ecosystem
@@ -314,7 +345,9 @@ subdomains:
     disambiguation:
       - Agent usage metering is not payment transaction evidence.
     trigger_rules:
-      - usage_based_billing=true requires agent_usage_metering_context.
+      - if: usage_based_billing=true
+        require_contexts:
+          - agent_usage_metering_context
 
   agent_workspace_seat:
     business_ecosystem: agent_service_ecosystem
@@ -331,7 +364,9 @@ subdomains:
     disambiguation:
       - Agent workspace seats are access and usage facts, not payment accounts.
     trigger_rules:
-      - seat_based_billing=true requires agent_workspace_seat_context.
+      - if: seat_based_billing=true
+        require_contexts:
+          - agent_workspace_seat_context
 
   agent_service_catalog:
     business_ecosystem: agent_service_ecosystem
@@ -675,30 +710,36 @@ case_classification:
         - agent_usage_metering_context
         - agent_workspace_seat_context
       trigger_rules:
-        real_funds_processing:
-          when: true
-          requires_subdomains: [account_balance]
-          requires_contexts: [balance_ledger_context]
-          requires_role_archetypes: [funds_account_owner, ledger_owner, balance_state_owner]
-        paid_agent_service_access:
-          when: true
-          requires_ecosystems: [agent_service_ecosystem]
-          requires_contexts: [agent_entitlement_context]
-        usage_based_billing:
-          when: true
-          requires_contexts: [usage_rating_context, agent_usage_metering_context]
-        seat_based_billing:
-          when: true
-          requires_contexts: [usage_rating_context, agent_workspace_seat_context]
-        merchant_settlement_in_scope:
-          when: true
-          requires_contexts: [settlement_batch_context, payout_context]
-        split_settlement_in_scope:
-          when: true
-          requires_contexts: [split_allocation_context]
-        recurring_payment:
-          when: true
-          requires_contexts: [mandate_authorization_context]
+        - if: real_funds_processing=true
+          require_subdomains:
+            - account_balance
+          require_contexts:
+            - balance_ledger_context
+          require_role_archetypes:
+            - funds_account_owner
+            - ledger_owner
+            - balance_state_owner
+        - if: paid_agent_service_access=true
+          require_contexts:
+            - agent_entitlement_context
+        - if: usage_based_billing=true
+          require_contexts:
+            - usage_rating_context
+            - agent_usage_metering_context
+        - if: seat_based_billing=true
+          require_contexts:
+            - usage_rating_context
+            - agent_workspace_seat_context
+        - if: merchant_settlement_in_scope=true
+          require_contexts:
+            - settlement_batch_context
+            - payout_context
+        - if: split_settlement_in_scope=true
+          require_contexts:
+            - split_allocation_context
+        - if: recurring_payment=true
+          require_contexts:
+            - mandate_authorization_context
 
 candidate_evolution:
   candidate_types:
