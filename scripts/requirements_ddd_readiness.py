@@ -81,7 +81,7 @@ def known_domain_ids(taxonomy: dict[str, Any]) -> set[str]:
     }
 
 
-def role_lookup(taxonomy: dict[str, Any]) -> dict[str, str]:
+def role_lookup(taxonomy: dict[str, Any], *, include_legacy: bool = True) -> dict[str, str]:
     lookup: dict[str, str] = {}
 
     roles = taxonomy.get("roles", {})
@@ -103,10 +103,11 @@ def role_lookup(taxonomy: dict[str, Any]) -> dict[str, str]:
             canonical = str(role_id)
             lookup[canonical] = canonical
 
-    for canonical, aliases in LEGACY_ROLE_ALIASES.items():
-        lookup.setdefault(canonical, canonical)
-        for alias in aliases:
-            lookup.setdefault(alias, canonical)
+    if include_legacy:
+        for canonical, aliases in LEGACY_ROLE_ALIASES.items():
+            lookup.setdefault(canonical, canonical)
+            for alias in aliases:
+                lookup.setdefault(alias, canonical)
     return lookup
 
 

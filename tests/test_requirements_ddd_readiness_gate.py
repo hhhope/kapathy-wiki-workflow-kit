@@ -136,6 +136,27 @@ class RequirementsDddReadinessGateTests(unittest.TestCase):
         self.assertFalse(report.get("domain_model_gate", {}).get("passed", True))
         self.assertIn("domain_model_role_obligation_unknown", self._blocker_codes(report))
 
+    def test_strict_ddd_case_rejects_legacy_actor_roles(self) -> None:
+        package = self._ddd_package()
+        package["roles"] = [
+            {
+                "id": "R-system",
+                "mention": "legacy system actor",
+                "confirmed_as": "system_actor",
+                "status": "confirmed",
+                "evidence_anchor": {"source_section": "legacy roles"},
+            }
+        ]
+        package["user_stories"][0]["role_ref"] = "R-system"
+        path = self._write_case(package)
+
+        report = check_requirements_case_file(path, repo_root=self.tmpdir, strict=True)
+
+        self.assertEqual(report["summary"]["status"], "blocked")
+        self.assertTrue(report["domain_model_gate"]["passed"])
+        self.assertFalse(report["requirement_delivery_gate"]["passed"])
+        self.assertIn("role_unknown", self._blocker_codes(report))
+
 
 if __name__ == "__main__":
     unittest.main()

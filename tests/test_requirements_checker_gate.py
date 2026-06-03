@@ -43,7 +43,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
                 {
                     "id": "R-finance",
                     "mention": "finance",
-                    "confirmed_as": "finance",
+                    "confirmed_as": "subscription_owner",
                     "status": "confirmed",
                     "category": "business_roles",
                     "evidence_anchor": {"source_section": "roles"},
@@ -51,7 +51,7 @@ class RequirementsCheckerGateTests(unittest.TestCase):
                 {
                     "id": "R-system",
                     "mention": "reconciliation system",
-                    "confirmed_as": "system_actor",
+                    "confirmed_as": "ledger_owner",
                     "status": "confirmed",
                     "category": "system_actors",
                     "evidence_anchor": {"source_section": "systems"},
@@ -470,8 +470,9 @@ class RequirementsCheckerGateTests(unittest.TestCase):
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertFalse(report["domain_model_gate"]["passed"])
-        self.assertTrue(report["requirement_delivery_gate"]["passed"])
+        self.assertFalse(report["requirement_delivery_gate"]["passed"])
         self.assertIn("domain_model_missing", self._blocker_codes(report))
+        self.assertIn("role_unknown", self._blocker_codes(report))
         self.assertEqual(stories["US-006"].get("role_ref"), "R-embedded-account-front")
         self.assertNotIn("role", stories["US-006"])
         self.assertNotEqual(stories["US-006"].get("role"), "system_actor")

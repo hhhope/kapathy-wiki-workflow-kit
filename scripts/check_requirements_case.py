@@ -10,7 +10,7 @@ import yaml
 from scripts.requirements_ddd_readiness import (
     evaluate_domain_model_gate,
     known_domain_ids,
-    role_lookup,
+    role_lookup as ddd_role_lookup,
     soft_evidence_categories,
     taxonomy_version,
 )
@@ -47,8 +47,8 @@ def _known_domains(taxonomy: dict[str, Any]) -> set[str]:
     return known_domain_ids(taxonomy)
 
 
-def _role_lookup(taxonomy: dict[str, Any]) -> dict[str, str]:
-    return role_lookup(taxonomy)
+def _role_lookup(taxonomy: dict[str, Any], *, include_legacy: bool = True) -> dict[str, str]:
+    return ddd_role_lookup(taxonomy, include_legacy=include_legacy)
 
 
 def _blocker(
@@ -143,9 +143,9 @@ def _soft_evidence_report(taxonomy: dict[str, Any], case_data: dict[str, Any]) -
 def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any], *, strict: bool = True) -> dict[str, Any]:
     blockers: list[dict[str, str]] = []
     domains = _known_domains(taxonomy)
-    role_lookup = _role_lookup(taxonomy)
     legacy_compatible = False
     use_ddd_gate = strict and taxonomy_version(taxonomy) == 2
+    role_lookup = _role_lookup(taxonomy, include_legacy=not use_ddd_gate)
     domain_model_gate, domain_model_blockers = evaluate_domain_model_gate(case_data, taxonomy, strict=strict)
     blockers.extend(domain_model_blockers)
 
