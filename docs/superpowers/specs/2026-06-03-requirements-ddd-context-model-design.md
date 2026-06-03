@@ -58,6 +58,10 @@ Use these concepts consistently:
   policy decisions, queries, reports, or evidence.
 - `case_mapping`: mapping from one requirement case to ecosystems, subdomains,
   contexts, aggregates, owners, handoffs, and open questions.
+- `candidate_subdomain`: a proposed stable business problem space that current
+  subdomains cannot explain yet.
+- `candidate_context`: a proposed model boundary that current bounded contexts
+  cannot explain yet.
 
 ## Taxonomy Shape
 
@@ -74,11 +78,67 @@ bounded_contexts: {}
 role_archetypes: {}
 context_map: []
 case_classification: {}
+candidate_evolution: {}
 readiness_gate_model: {}
 ```
 
 This is a replacement model, not a compatibility-first projection. Historical
 case migration is out of scope for the first change.
+
+## Semantic Disambiguation And Evolution
+
+The model must treat high-conflict business terms as context-specific language,
+not as globally shared objects. This applies to terms such as:
+
+- `subscription`
+- `account`
+- `settlement`
+- `payment`
+- `balance`
+- `merchant`
+- `entitlement`
+- `invoice`
+- `refund`
+
+Each high-conflict term must be resolved by answering:
+
+- which ecosystem owns this meaning;
+- which subdomain owns the business problem;
+- which bounded context owns the model boundary;
+- which aggregate root owns lifecycle and consistency;
+- which fact owner owns the truth;
+- which commands, events, policies, or evidence connect it to other contexts.
+
+Examples:
+
+- `merchant_account` belongs to merchant/platform relationship.
+- `payment_account` belongs to account/balance.
+- `ledger_account` belongs to account/balance or financial operations,
+  depending on the fact being discussed.
+- `merchant_subscription_offering` belongs to merchant/platform relationship.
+- `commercial_subscription` belongs to billing/revenue.
+- `agent_entitlement` belongs to Agent service ecosystem.
+- `settlement_batch` belongs to funds movement/settlement.
+- `settlement_report` belongs to financial operations.
+
+New requirements must map to the existing ecosystem skeleton first. If the
+current skeleton cannot explain a requirement, the requirement may propose a
+`candidate_subdomain` or `candidate_context`, but the candidate must not become
+formal taxonomy just because a case introduced a new term.
+
+Candidate promotion requires a DDD card:
+
+- business problem;
+- ubiquitous language;
+- aggregate roots;
+- lifecycle;
+- invariants;
+- fact owners;
+- context map;
+- why existing subdomains or contexts do not fit.
+
+This keeps the skeleton stable while still allowing the model to evolve as the
+business expands.
 
 ## Payment Ecosystem Skeleton
 
@@ -714,7 +774,10 @@ workflows, so the local model uses DDD boundaries to reduce term conflicts.
 - No implementation is included.
 - The first change scope is limited to standards and taxonomy model.
 - Checker and req-agent behavior are explicitly deferred.
-- `subscription` is disambiguated into merchant offering, commercial
-  subscription, and Agent entitlement.
+- High-conflict terms are treated as context-specific language, with
+  `subscription`, `account`, and `settlement` included as examples.
+- New requirements map to existing skeleton first and may only propose
+  `candidate_subdomain` or `candidate_context` when the skeleton cannot explain
+  them.
 - `account` is disambiguated across merchant/platform, payment account, and
   ledger/balance facts.
