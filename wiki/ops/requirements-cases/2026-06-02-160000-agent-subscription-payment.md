@@ -32,6 +32,23 @@ created_at: 2026-06-03
 ### Candidates
 - billing_revenue: derived from DDD domain_model primary subdomain
 
+## Domain Coverage
+- Primary subdomain: billing_revenue
+- Coverage stance: payment_ecosystem is primary; agent_service_ecosystem is adjacent service-access evidence.
+- Review boundary: this section makes taxonomy coverage visible; it is not yet enforced by the checker.
+
+### Coverage Matrix
+- billing_revenue (primary): contexts=commercial_subscription_context, billing_invoice_context, usage_rating_context, revenue_recovery_context; stories=US-001, US-002, US-003, US-004, US-005, US-007, US-008; acceptance=AF-001, AF-002, AF-003, AF-004, AF-005, AF-006, AF-008, AF-009, AF-010, AF-011; note=主域覆盖订阅关系、账单、混合计费、续期、重试和催缴。
+- merchant_platform_relationship (supporting_payment): contexts=merchant_identity_context, merchant_capability_context, merchant_service_offering_context, platform_responsibility_context; stories=US-001; acceptance=AF-001; note=当前仅轻覆盖 AI 服务商接入和订阅配置；商户身份、能力开通、服务供给若要展开，需要后续补更细故事。
+- payment_transaction (required_payment): contexts=payment_intent_context, payment_attempt_authorization_context, payment_method_context; stories=US-006, US-007, US-012; acceptance=AF-007, AF-008, AF-009, AF-017; note=补强后覆盖授权校验、续期扣款、失败重试、支付意图和支付尝试结果收敛。
+- account_balance (required_payment): contexts=balance_ledger_context, fund_state_context; stories=US-013; acceptance=AF-018, AF-016; note=补强后覆盖支付成功后的账本分录和资金状态；余额、reserve、limit 暂不展开。
+- financial_operations (required_payment): contexts=reconciliation_context; stories=US-014; acceptance=AF-019, AF-016; note=补强后覆盖账单、支付、账本、分账、结算和出款链路对账；财务报表和关账暂不展开。
+- risk_compliance (required_payment): contexts=mandate_authorization_context; stories=US-006; acceptance=AF-007; note=覆盖周期扣款授权证据；KYB、AML、交易风控不在当前首版故事中展开。
+- funds_movement_settlement (conditional_payment_in_scope): contexts=split_allocation_context, settlement_batch_context, payout_context; stories=US-010, US-011, US-015, US-016; acceptance=AF-013, AF-014, AF-015, AF-020, AF-016; note=用户确认首版包含分账、结算和出款；补强后覆盖分账规则、平台费用、结算批次和出款。
+- agent_entitlement (adjacent_agent_service): contexts=agent_entitlement_context; stories=US-009; acceptance=AF-010, AF-011, AF-012, AF-016; note=覆盖订阅和付款状态驱动 Agent 权益开通、保持、降级或暂停。
+- agent_usage_metering (adjacent_agent_service_conditional): contexts=agent_usage_metering_context; stories=US-004; acceptance=AF-004, AF-005; note=覆盖按量计费用量汇总；usage_event 仍是 taxonomy 候选术语，当前作为邻接证据保留。
+- agent_workspace_seat (adjacent_agent_service_conditional): contexts=agent_workspace_seat_context; stories=US-005; acceptance=AF-004, AF-006; note=覆盖席位数量和席位变更对账单影响。
+
 ## Roles
 - R-ai-service-provider: AI 服务商; confirmed_as=subscription_owner; status=confirmed; category=business_actor_owner
 - R-billing-platform: 订阅支付平台; confirmed_as=billing_ops_owner; status=confirmed; category=system_owner
@@ -43,6 +60,12 @@ created_at: 2026-06-03
 - R-mandate-owner: 支付授权责任方; confirmed_as=mandate_owner; status=confirmed; category=risk_compliance_owner
 - R-split-settlement-owner: 分账结算责任方; confirmed_as=settlement_owner; status=confirmed; category=settlement_owner
 - R-payout-owner: 出款责任方; confirmed_as=payout_owner; status=confirmed; category=settlement_owner
+- R-payment-ops-owner: 支付交易处理责任方; confirmed_as=payment_ops_owner; status=confirmed; category=payment_owner
+- R-ledger-owner: 账本入账责任方; confirmed_as=ledger_owner; status=confirmed; category=funds_owner
+- R-balance-state-owner: 资金状态责任方; confirmed_as=balance_state_owner; status=confirmed; category=funds_owner
+- R-reconciliation-owner: 对账责任方; confirmed_as=reconciliation_owner; status=confirmed; category=financial_ops_owner
+- R-split-rule-owner: 分账规则责任方; confirmed_as=split_rule_owner; status=confirmed; category=settlement_owner
+- R-platform-fee-owner: 平台手续费责任方; confirmed_as=platform_fee_owner; status=confirmed; category=settlement_owner
 
 ## User Stories
 - US-001: role_ref=R-ai-service-provider; 作为 AI 服务商，我希望接入订阅支付能力，配置面向消费者的 Agent 服务订阅关系。; benefit=不用自建银行通道和订阅生命周期能力，就能商业化提供持续 Agent 服务。; acceptance=AF-001, AF-016
@@ -51,11 +74,16 @@ created_at: 2026-06-03
 - US-004: role_ref=R-metering-owner; 作为用量计量责任方，我希望记录和汇总 Agent 服务使用量，供按量计费计算。; benefit=按量收费可以基于可追溯的用量事实，而不是人工估算或离线结算。; acceptance=AF-004, AF-005
 - US-005: role_ref=R-seat-owner; 作为席位计费责任方，我希望管理服务席位数量和席位变更对账单的影响。; benefit=团队型或多用户 Agent 服务可以按席位扩缩容并形成正确应收。; acceptance=AF-004, AF-006
 - US-006: role_ref=R-mandate-owner; 作为支付授权责任方，我希望在周期扣款前完成支付方式授权或委托扣款授权，并保留授权证据。; benefit=自动续费和重试扣款具备合规依据，降低扣款争议和失败风险。; acceptance=AF-007
-- US-007: role_ref=R-billing-platform; 作为订阅支付平台，我希望在续期日自动生成账单并发起周期扣款和失败重试。; benefit=AI 服务商可以提高续费成功率，并减少人工催收和重复对接成本。; acceptance=AF-007, AF-008, AF-009, AF-016
+- US-007: role_ref=R-billing-platform; 作为订阅支付平台，我希望在续期日自动生成账单并发起周期扣款和失败重试。; benefit=AI 服务商可以提高续费成功率，并减少人工催收和重复对接成本。; acceptance=AF-007, AF-008, AF-009, AF-016, AF-017
 - US-008: role_ref=R-revenue-recovery-owner; 作为续费与催缴运营责任方，我希望对续费失败用户触发催缴、宽限期和挽留策略。; benefit=在扣款失败后仍能恢复收入并提升月续费率。; acceptance=AF-009, AF-010, AF-011
 - US-009: role_ref=R-agent-entitlement-owner; 作为 Agent 服务权益责任方，我希望根据订阅和付款状态开通、保持、降级或暂停 Agent 服务权益。; benefit=商业订阅状态可以准确驱动消费者可用的 Agent 服务访问权限。; acceptance=AF-010, AF-011, AF-012, AF-016
-- US-010: role_ref=R-split-settlement-owner; 作为分账结算责任方，我希望按平台和服务方约定规则计算收入分账并形成结算批次。; benefit=平台型 Agent 服务可以把收入准确分配给多个服务方，降低结算链路复杂度。; acceptance=AF-013, AF-014, AF-016
-- US-011: role_ref=R-payout-owner; 作为出款责任方，我希望将已结算金额按结算批次出款给对应服务方。; benefit=服务方可以按可追溯的结算结果收到资金，平台减少人工付款和对账负担。; acceptance=AF-014, AF-015, AF-016
+- US-010: role_ref=R-split-settlement-owner; 作为分账结算责任方，我希望按平台和服务方约定规则计算收入分账并形成结算批次。; benefit=平台型 Agent 服务可以把收入准确分配给多个服务方，降低结算链路复杂度。; acceptance=AF-013, AF-014, AF-016, AF-019, AF-020
+- US-011: role_ref=R-payout-owner; 作为出款责任方，我希望将已结算金额按结算批次出款给对应服务方。; benefit=服务方可以按可追溯的结算结果收到资金，平台减少人工付款和对账负担。; acceptance=AF-014, AF-015, AF-016, AF-019
+- US-012: role_ref=R-payment-ops-owner; 作为支付交易处理责任方，我希望订阅账单扣款能够生成支付意图和支付尝试，并收敛出唯一支付结果。; benefit=订阅续费不会停留在账单视角，支付交易状态可以明确驱动后续权益、入账和催缴。; acceptance=AF-016, AF-017, AF-018
+- US-013: role_ref=R-ledger-owner; 作为账本入账责任方，我希望支付成功后生成账本分录并更新资金状态。; benefit=后续分账、结算、出款和对账可以基于真实资金事实，而不是只依赖支付成功事件。; acceptance=AF-016, AF-018, AF-019
+- US-014: role_ref=R-reconciliation-owner; 作为对账责任方，我希望账单、支付、账本、分账、结算和出款记录可以被核对并标记异常。; benefit=财务运营可以发现链路不一致，保障收入、资金和结算证据一致。; acceptance=AF-016, AF-019
+- US-015: role_ref=R-split-rule-owner; 作为分账规则责任方，我希望配置服务方分账规则、平台手续费规则和规则版本。; benefit=平台型 Agent 服务的收入分配可以按可追溯规则计算，而不是在结算时临时人工拆分。; acceptance=AF-016, AF-020
+- US-016: role_ref=R-platform-fee-owner; 作为平台手续费责任方，我希望平台费用从服务收入中按规则计算并纳入分账结果。; benefit=平台收入和服务方收入可以在同一分账链路中清晰区分并进入结算。; acceptance=AF-016, AF-020
 
 ## Acceptance Functions
 - AF-001: AI 服务商完成订阅支付接入配置; stories=US-001; AI 服务商完成订阅支付能力接入后，系统可保存面向消费者的 Agent 服务订阅配置，并返回可用于后续订阅创建的配置标识。
@@ -73,11 +101,28 @@ created_at: 2026-06-03
 - AF-013: 按规则生成分账结果; stories=US-010; 账单收款成功后，系统可按平台和服务方约定规则生成收入分账结果，并保留平台、服务方、金额和规则版本。
 - AF-014: 分账结果可汇入结算批次; stories=US-010, US-011; 满足结算条件后，系统可将待结算分账结果汇入结算批次，并记录批次状态、金额合计和明细。
 - AF-015: 按结算批次完成出款; stories=US-011; 结算批次确认后，系统可根据批次明细向对应服务方发起出款，并记录出款状态和结果。
-- AF-016: 支付、账单、权益、结算链路可追溯; stories=US-001, US-002, US-007, US-009, US-010, US-011; 针对同一订阅周期，系统可从订阅、账单、支付结果、权益状态、分账结果、结算批次和出款记录追溯完整链路。
+- AF-016: 支付、账单、权益、结算链路可追溯; stories=US-001, US-002, US-007, US-009, US-010, US-011, US-012, US-013, US-014, US-015, US-016; 针对同一订阅周期，系统可从订阅、账单、支付结果、权益状态、分账结果、结算批次和出款记录追溯完整链路。
+- AF-017: 支付意图和支付尝试收敛唯一结果; stories=US-007, US-012; 订阅账单发起扣款后，系统创建支付意图和支付尝试；支付完成、失败或处理中状态最终收敛为一个可查询的最终结果。
+- AF-018: 支付成功后生成账本和资金状态; stories=US-012, US-013; 支付成功事件产生后，系统生成对应账本分录，并把资金状态标记为可用于后续分账或结算的状态。
+- AF-019: 支付到账本到结算链路可对账; stories=US-013, US-014, US-010, US-011; 系统可对同一订阅周期的账单、支付结果、账本分录、分账结果、结算批次和出款记录生成对账记录；不一致时生成对账异常。
+- AF-020: 分账规则和平台费用参与分配计算; stories=US-010, US-015, US-016; 生成分账结果时，系统使用生效的分账规则版本和平台手续费规则计算平台收入与服务方收入，并记录规则版本。
 
 ## Soft Evidence
 ### Acceptance Extraction
 - {"source": "req-acceptance", "summary": "Defined observable acceptance functions for subscription setup, lifecycle, mixed billing, metering, seats, mandate, renewal retry, dunning, entitlement, split settlement, payout, and traceability."}
+### Domain Coverage Matrix
+- {"acceptance_functions": ["AF-001", "AF-002", "AF-003", "AF-004", "AF-005", "AF-006", "AF-008", "AF-009", "AF-010", "AF-011"], "aggregate_roots": ["commercial_subscription", "invoice", "price_plan", "billing_schedule", "usage_record", "rating_rule", "seat_assignment", "dunning_case", "grace_period", "retry_schedule"], "contexts": ["commercial_subscription_context", "billing_invoice_context", "usage_rating_context", "revenue_recovery_context"], "coverage_type": "primary", "review_note": "主域覆盖订阅关系、账单、混合计费、续期、重试和催缴。", "subdomain": "billing_revenue", "user_stories": ["US-001", "US-002", "US-003", "US-004", "US-005", "US-007", "US-008"]}
+- {"acceptance_functions": ["AF-001"], "aggregate_roots": ["merchant", "capability_grant", "service_offering", "platform_relationship"], "contexts": ["merchant_identity_context", "merchant_capability_context", "merchant_service_offering_context", "platform_responsibility_context"], "coverage_type": "supporting_payment", "review_note": "当前仅轻覆盖 AI 服务商接入和订阅配置；商户身份、能力开通、服务供给若要展开，需要后续补更细故事。", "subdomain": "merchant_platform_relationship", "user_stories": ["US-001"]}
+- {"acceptance_functions": ["AF-007", "AF-008", "AF-009", "AF-017"], "aggregate_roots": ["payment_intent", "payment_attempt", "charge", "payment_method_authorization"], "contexts": ["payment_intent_context", "payment_attempt_authorization_context", "payment_method_context"], "coverage_type": "required_payment", "review_note": "补强后覆盖授权校验、续期扣款、失败重试、支付意图和支付尝试结果收敛。", "subdomain": "payment_transaction", "user_stories": ["US-006", "US-007", "US-012"]}
+- {"acceptance_functions": ["AF-018", "AF-016"], "aggregate_roots": ["ledger_entry", "fund_state"], "contexts": ["balance_ledger_context", "fund_state_context"], "coverage_type": "required_payment", "review_note": "补强后覆盖支付成功后的账本分录和资金状态；余额、reserve、limit 暂不展开。", "subdomain": "account_balance", "user_stories": ["US-013"]}
+- {"acceptance_functions": ["AF-019", "AF-016"], "aggregate_roots": ["reconciliation_record", "reconciliation_exception"], "contexts": ["reconciliation_context"], "coverage_type": "required_payment", "review_note": "补强后覆盖账单、支付、账本、分账、结算和出款链路对账；财务报表和关账暂不展开。", "subdomain": "financial_operations", "user_stories": ["US-014"]}
+- {"acceptance_functions": ["AF-007"], "aggregate_roots": ["payment_mandate", "authorization_consent", "consent_record"], "contexts": ["mandate_authorization_context"], "coverage_type": "required_payment", "review_note": "覆盖周期扣款授权证据；KYB、AML、交易风控不在当前首版故事中展开。", "subdomain": "risk_compliance", "user_stories": ["US-006"]}
+- {"acceptance_functions": ["AF-013", "AF-014", "AF-015", "AF-020", "AF-016"], "aggregate_roots": ["split_rule", "allocation_result", "platform_fee", "settlement_batch", "payout"], "contexts": ["split_allocation_context", "settlement_batch_context", "payout_context"], "coverage_type": "conditional_payment_in_scope", "review_note": "用户确认首版包含分账、结算和出款；补强后覆盖分账规则、平台费用、结算批次和出款。", "subdomain": "funds_movement_settlement", "user_stories": ["US-010", "US-011", "US-015", "US-016"]}
+- {"acceptance_functions": ["AF-010", "AF-011", "AF-012", "AF-016"], "aggregate_roots": ["agent_entitlement"], "contexts": ["agent_entitlement_context"], "coverage_type": "adjacent_agent_service", "review_note": "覆盖订阅和付款状态驱动 Agent 权益开通、保持、降级或暂停。", "subdomain": "agent_entitlement", "user_stories": ["US-009"]}
+- {"acceptance_functions": ["AF-004", "AF-005"], "aggregate_roots": ["usage_event"], "contexts": ["agent_usage_metering_context"], "coverage_type": "adjacent_agent_service_conditional", "review_note": "覆盖按量计费用量汇总；usage_event 仍是 taxonomy 候选术语，当前作为邻接证据保留。", "subdomain": "agent_usage_metering", "user_stories": ["US-004"]}
+- {"acceptance_functions": ["AF-004", "AF-006"], "aggregate_roots": ["seat_assignment"], "contexts": ["agent_workspace_seat_context"], "coverage_type": "adjacent_agent_service_conditional", "review_note": "覆盖席位数量和席位变更对账单影响。", "subdomain": "agent_workspace_seat", "user_stories": ["US-005"]}
+### Domain Coverage Review
+- {"review_focus": "Decide whether light coverage for merchant_platform_relationship, risk_compliance, account_balance, and financial_operations is enough for first release or should become more detailed stories.", "status": "review_candidate", "summary": "This revision exposes taxonomy subdomain/context/aggregate coverage explicitly and adds lifecycle stories for payment transaction, ledger/fund state, reconciliation, split rule, and platform fee."}
 ### Domain Model
 - {"aggregate_roots": ["commercial_subscription", "invoice", "dunning_case", "payment_intent", "payment_attempt", "ledger_entry", "fund_state", "reconciliation_record", "mandate", "agent_entitlement", "usage_event", "seat_assignment", "split_rule", "settlement_batch", "payout"], "bounded_contexts": ["commercial_subscription_context", "billing_invoice_context", "revenue_recovery_context", "payment_intent_context", "payment_attempt_authorization_context", "balance_ledger_context", "fund_state_context", "reconciliation_context", "mandate_authorization_context", "agent_entitlement_context", "agent_usage_metering_context", "agent_workspace_seat_context", "split_allocation_context", "settlement_batch_context", "payout_context"], "business_ecosystems": ["payment_ecosystem", "agent_service_ecosystem"], "candidates": [], "context_handoffs": [{"from_context": "commercial_subscription_context", "name": "GenerateInvoice", "to_context": "billing_invoice_context", "type": "command"}, {"from_context": "billing_invoice_context", "name": "ChargeInvoice", "to_context": "payment_intent_context", "type": "command"}, {"from_context": "payment_attempt_authorization_context", "name": "PaymentSucceeded", "to_context": "balance_ledger_context", "type": "domain_event"}, {"from_context": "commercial_subscription_context", "name": "CommercialSubscriptionActivated", "to_context": "agent_entitlement_context", "type": "domain_event"}], "fact_owners": ["subscription_owner", "subscription_policy_owner", "billing_ops_owner", "payment_ops_owner", "funds_account_owner", "ledger_owner", "balance_state_owner", "reconciliation_owner", "mandate_owner", "compliance_owner", "agent_entitlement_owner", "access_policy_owner", "usage_rating_owner", "agent_usage_owner", "metering_owner", "workspace_owner", "seat_owner", "split_rule_owner", "settlement_owner", "payout_owner"], "non_domain_terms": ["subscription", "account", "settlement"], "open_questions": ["Confirm first-release payout/split settlement scope."], "role_obligations": ["subscription_owner", "subscription_policy_owner", "billing_ops_owner", "payment_ops_owner", "funds_account_owner", "ledger_owner", "balance_state_owner", "reconciliation_owner", "mandate_owner", "compliance_owner", "agent_entitlement_owner", "access_policy_owner", "usage_rating_owner", "agent_usage_owner", "metering_owner", "workspace_owner", "seat_owner", "split_rule_owner", "settlement_owner", "payout_owner"], "status": "confirmed", "subdomains": ["billing_revenue", "merchant_platform_relationship", "payment_transaction", "account_balance", "funds_movement_settlement", "financial_operations", "risk_compliance", "agent_entitlement", "agent_usage_metering", "agent_workspace_seat"]}
 ### Intake Actors
@@ -87,8 +132,9 @@ created_at: 2026-06-03
 - {"id": "recurring_billing_job", "label": "recurring billing automation", "type": "system"}
 - {"id": "payment_channel", "label": "payment channel", "type": "external_system"}
 ### Open Questions
-- {"question": "是否进入 req-handoff 生成 OpenSpec draft？"}
-- {"question": "如不进入 handoff，是否需要先评审 US-001 至 US-011 和 AF-001 至 AF-016？"}
+- {"question": "这些 subdomain/context 覆盖是否符合你预期的领域颗粒度？"}
+- {"question": "merchant_platform_relationship、risk_compliance、account_balance、financial_operations 是否需要从轻覆盖升级为完整首版故事？"}
+- {"question": "确认后再讨论如何把这类覆盖矩阵纳入 checker/门禁。"}
 ### Scope Decisions
 - {"decision": "first_release_split_settlement", "evidence": "用户确认 1: 包含", "value": "in_scope"}
 - {"decision": "target_customer", "evidence": "用户确认 2: AI 服务商", "value": "AI 服务商"}
@@ -110,8 +156,8 @@ created_at: 2026-06-03
 
 ## Readiness / Next Action
 - Status: requirements_ready
-- Next action: req-handoff
-- Reason: Domain model, roles, user stories, acceptance functions, and bidirectional mappings are normalized; OpenSpec draft creation remains a separate handoff action.
+- Next action: user_review_domain_coverage
+- Reason: Formal requirements gate still passes; domain coverage matrix has been added for semantic review before OpenSpec handoff.
 ### Blockers
 - None
 
@@ -124,9 +170,9 @@ created_at: 2026-06-03
 - `requirements/config/requirements-taxonomy.yaml`
 
 ## Proof Boundary
-- This case now records intake, req-scope, req-stories, and req-acceptance evidence for user-provided market pain-point material.
-- Acceptance functions are observable and bidirectionally mapped to user stories.
-- Requirements checker must pass before OpenSpec handoff is claimed.
+- This case now records intake, req-scope, req-stories, req-acceptance, and domain coverage review evidence.
+- Domain coverage matrix is review evidence; current checker does not yet enforce per-subdomain or per-context story coverage.
+- Formal requirements checker passes, but OpenSpec handoff is intentionally deferred for user review of domain coverage.
 - No OpenSpec draft or implementation work has been created.
 
 ## Machine Case Data
@@ -396,7 +442,79 @@ created_at: 2026-06-03
         "US-007",
         "US-009",
         "US-010",
+        "US-011",
+        "US-012",
+        "US-013",
+        "US-014",
+        "US-015",
+        "US-016"
+      ]
+    },
+    {
+      "evidence_anchor": {
+        "source_section": "domain coverage: payment_transaction"
+      },
+      "id": "AF-017",
+      "name": "支付意图和支付尝试收敛唯一结果",
+      "source_acceptance": "US-012",
+      "source_functions": [
+        "domain coverage: payment_transaction"
+      ],
+      "then": "订阅账单发起扣款后，系统创建支付意图和支付尝试；支付完成、失败或处理中状态最终收敛为一个可查询的最终结果。",
+      "user_story_ids": [
+        "US-007",
+        "US-012"
+      ]
+    },
+    {
+      "evidence_anchor": {
+        "source_section": "domain coverage: account_balance"
+      },
+      "id": "AF-018",
+      "name": "支付成功后生成账本和资金状态",
+      "source_acceptance": "US-013",
+      "source_functions": [
+        "domain coverage: account_balance"
+      ],
+      "then": "支付成功事件产生后，系统生成对应账本分录，并把资金状态标记为可用于后续分账或结算的状态。",
+      "user_story_ids": [
+        "US-012",
+        "US-013"
+      ]
+    },
+    {
+      "evidence_anchor": {
+        "source_section": "domain coverage: financial_operations"
+      },
+      "id": "AF-019",
+      "name": "支付到账本到结算链路可对账",
+      "source_acceptance": "US-014",
+      "source_functions": [
+        "domain coverage: financial_operations"
+      ],
+      "then": "系统可对同一订阅周期的账单、支付结果、账本分录、分账结果、结算批次和出款记录生成对账记录；不一致时生成对账异常。",
+      "user_story_ids": [
+        "US-013",
+        "US-014",
+        "US-010",
         "US-011"
+      ]
+    },
+    {
+      "evidence_anchor": {
+        "source_section": "domain coverage: split_allocation_context"
+      },
+      "id": "AF-020",
+      "name": "分账规则和平台费用参与分配计算",
+      "source_acceptance": "US-015,US-016",
+      "source_functions": [
+        "domain coverage: split_allocation_context"
+      ],
+      "then": "生成分账结果时，系统使用生效的分账规则版本和平台手续费规则计算平台收入与服务方收入，并记录规则版本。",
+      "user_story_ids": [
+        "US-010",
+        "US-015",
+        "US-016"
       ]
     }
   ],
@@ -571,14 +689,14 @@ created_at: 2026-06-03
   "generated_at": "2026-06-03T11:19:10.812029+00:00",
   "mode": "requirements_case",
   "proof_boundary_notes": [
-    "This case now records intake, req-scope, req-stories, and req-acceptance evidence for user-provided market pain-point material.",
-    "Acceptance functions are observable and bidirectionally mapped to user stories.",
-    "Requirements checker must pass before OpenSpec handoff is claimed.",
+    "This case now records intake, req-scope, req-stories, req-acceptance, and domain coverage review evidence.",
+    "Domain coverage matrix is review evidence; current checker does not yet enforce per-subdomain or per-context story coverage.",
+    "Formal requirements checker passes, but OpenSpec handoff is intentionally deferred for user review of domain coverage.",
     "No OpenSpec draft or implementation work has been created."
   ],
   "readiness_next_action": {
-    "next_action": "req-handoff",
-    "reason": "Domain model, roles, user stories, acceptance functions, and bidirectional mappings are normalized; OpenSpec draft creation remains a separate handoff action.",
+    "next_action": "user_review_domain_coverage",
+    "reason": "Formal requirements gate still passes; domain coverage matrix has been added for semantic review before OpenSpec handoff.",
     "status": "requirements_ready"
   },
   "roles": [
@@ -739,6 +857,101 @@ created_at: 2026-06-03
         "分账结算"
       ],
       "status": "confirmed"
+    },
+    {
+      "category": "payment_owner",
+      "confirmed_as": "payment_ops_owner",
+      "evidence_anchor": {
+        "source_section": "领域覆盖补强: payment_transaction"
+      },
+      "id": "R-payment-ops-owner",
+      "mention": "支付交易处理责任方",
+      "normalization_note": "订阅续期扣款需要 payment_intent 和 payment_attempt 状态收敛，映射到 payment_ops_owner。",
+      "source_actors": [
+        "周期扣款",
+        "支付结果",
+        "失败重试"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "funds_owner",
+      "confirmed_as": "ledger_owner",
+      "evidence_anchor": {
+        "source_section": "领域覆盖补强: account_balance"
+      },
+      "id": "R-ledger-owner",
+      "mention": "账本入账责任方",
+      "normalization_note": "订阅扣款成功后的账本分录和资金事实映射到 ledger_owner。",
+      "source_actors": [
+        "收款成功",
+        "账本",
+        "资金状态"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "funds_owner",
+      "confirmed_as": "balance_state_owner",
+      "evidence_anchor": {
+        "source_section": "领域覆盖补强: account_balance"
+      },
+      "id": "R-balance-state-owner",
+      "mention": "资金状态责任方",
+      "normalization_note": "收款后资金状态从支付成功到可结算/待结算的变化映射到 balance_state_owner。",
+      "source_actors": [
+        "资金状态",
+        "可结算金额",
+        "待结算金额"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "financial_ops_owner",
+      "confirmed_as": "reconciliation_owner",
+      "evidence_anchor": {
+        "source_section": "领域覆盖补强: financial_operations"
+      },
+      "id": "R-reconciliation-owner",
+      "mention": "对账责任方",
+      "normalization_note": "支付、账本、结算和出款之间的可核对证据映射到 reconciliation_owner。",
+      "source_actors": [
+        "账单",
+        "支付结果",
+        "账本",
+        "结算批次"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "settlement_owner",
+      "confirmed_as": "split_rule_owner",
+      "evidence_anchor": {
+        "source_section": "领域覆盖补强: funds_movement_settlement"
+      },
+      "id": "R-split-rule-owner",
+      "mention": "分账规则责任方",
+      "normalization_note": "用户确认首版包含分账，分账规则和分配结果映射到 split_rule_owner。",
+      "source_actors": [
+        "分账规则",
+        "服务方收入分配"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "settlement_owner",
+      "confirmed_as": "platform_fee_owner",
+      "evidence_anchor": {
+        "source_section": "领域覆盖补强: funds_movement_settlement"
+      },
+      "id": "R-platform-fee-owner",
+      "mention": "平台手续费责任方",
+      "normalization_note": "平台抽佣或服务费作为分账规则的一部分，映射到 platform_fee_owner。",
+      "source_actors": [
+        "平台型智能体服务",
+        "收入分给多个服务方"
+      ],
+      "status": "confirmed"
     }
   ],
   "soft_evidence": {
@@ -746,6 +959,253 @@ created_at: 2026-06-03
       {
         "source": "req-acceptance",
         "summary": "Defined observable acceptance functions for subscription setup, lifecycle, mixed billing, metering, seats, mandate, renewal retry, dunning, entitlement, split settlement, payout, and traceability."
+      }
+    ],
+    "domain_coverage_matrix": [
+      {
+        "acceptance_functions": [
+          "AF-001",
+          "AF-002",
+          "AF-003",
+          "AF-004",
+          "AF-005",
+          "AF-006",
+          "AF-008",
+          "AF-009",
+          "AF-010",
+          "AF-011"
+        ],
+        "aggregate_roots": [
+          "commercial_subscription",
+          "invoice",
+          "price_plan",
+          "billing_schedule",
+          "usage_record",
+          "rating_rule",
+          "seat_assignment",
+          "dunning_case",
+          "grace_period",
+          "retry_schedule"
+        ],
+        "contexts": [
+          "commercial_subscription_context",
+          "billing_invoice_context",
+          "usage_rating_context",
+          "revenue_recovery_context"
+        ],
+        "coverage_type": "primary",
+        "review_note": "主域覆盖订阅关系、账单、混合计费、续期、重试和催缴。",
+        "subdomain": "billing_revenue",
+        "user_stories": [
+          "US-001",
+          "US-002",
+          "US-003",
+          "US-004",
+          "US-005",
+          "US-007",
+          "US-008"
+        ]
+      },
+      {
+        "acceptance_functions": [
+          "AF-001"
+        ],
+        "aggregate_roots": [
+          "merchant",
+          "capability_grant",
+          "service_offering",
+          "platform_relationship"
+        ],
+        "contexts": [
+          "merchant_identity_context",
+          "merchant_capability_context",
+          "merchant_service_offering_context",
+          "platform_responsibility_context"
+        ],
+        "coverage_type": "supporting_payment",
+        "review_note": "当前仅轻覆盖 AI 服务商接入和订阅配置；商户身份、能力开通、服务供给若要展开，需要后续补更细故事。",
+        "subdomain": "merchant_platform_relationship",
+        "user_stories": [
+          "US-001"
+        ]
+      },
+      {
+        "acceptance_functions": [
+          "AF-007",
+          "AF-008",
+          "AF-009",
+          "AF-017"
+        ],
+        "aggregate_roots": [
+          "payment_intent",
+          "payment_attempt",
+          "charge",
+          "payment_method_authorization"
+        ],
+        "contexts": [
+          "payment_intent_context",
+          "payment_attempt_authorization_context",
+          "payment_method_context"
+        ],
+        "coverage_type": "required_payment",
+        "review_note": "补强后覆盖授权校验、续期扣款、失败重试、支付意图和支付尝试结果收敛。",
+        "subdomain": "payment_transaction",
+        "user_stories": [
+          "US-006",
+          "US-007",
+          "US-012"
+        ]
+      },
+      {
+        "acceptance_functions": [
+          "AF-018",
+          "AF-016"
+        ],
+        "aggregate_roots": [
+          "ledger_entry",
+          "fund_state"
+        ],
+        "contexts": [
+          "balance_ledger_context",
+          "fund_state_context"
+        ],
+        "coverage_type": "required_payment",
+        "review_note": "补强后覆盖支付成功后的账本分录和资金状态；余额、reserve、limit 暂不展开。",
+        "subdomain": "account_balance",
+        "user_stories": [
+          "US-013"
+        ]
+      },
+      {
+        "acceptance_functions": [
+          "AF-019",
+          "AF-016"
+        ],
+        "aggregate_roots": [
+          "reconciliation_record",
+          "reconciliation_exception"
+        ],
+        "contexts": [
+          "reconciliation_context"
+        ],
+        "coverage_type": "required_payment",
+        "review_note": "补强后覆盖账单、支付、账本、分账、结算和出款链路对账；财务报表和关账暂不展开。",
+        "subdomain": "financial_operations",
+        "user_stories": [
+          "US-014"
+        ]
+      },
+      {
+        "acceptance_functions": [
+          "AF-007"
+        ],
+        "aggregate_roots": [
+          "payment_mandate",
+          "authorization_consent",
+          "consent_record"
+        ],
+        "contexts": [
+          "mandate_authorization_context"
+        ],
+        "coverage_type": "required_payment",
+        "review_note": "覆盖周期扣款授权证据；KYB、AML、交易风控不在当前首版故事中展开。",
+        "subdomain": "risk_compliance",
+        "user_stories": [
+          "US-006"
+        ]
+      },
+      {
+        "acceptance_functions": [
+          "AF-013",
+          "AF-014",
+          "AF-015",
+          "AF-020",
+          "AF-016"
+        ],
+        "aggregate_roots": [
+          "split_rule",
+          "allocation_result",
+          "platform_fee",
+          "settlement_batch",
+          "payout"
+        ],
+        "contexts": [
+          "split_allocation_context",
+          "settlement_batch_context",
+          "payout_context"
+        ],
+        "coverage_type": "conditional_payment_in_scope",
+        "review_note": "用户确认首版包含分账、结算和出款；补强后覆盖分账规则、平台费用、结算批次和出款。",
+        "subdomain": "funds_movement_settlement",
+        "user_stories": [
+          "US-010",
+          "US-011",
+          "US-015",
+          "US-016"
+        ]
+      },
+      {
+        "acceptance_functions": [
+          "AF-010",
+          "AF-011",
+          "AF-012",
+          "AF-016"
+        ],
+        "aggregate_roots": [
+          "agent_entitlement"
+        ],
+        "contexts": [
+          "agent_entitlement_context"
+        ],
+        "coverage_type": "adjacent_agent_service",
+        "review_note": "覆盖订阅和付款状态驱动 Agent 权益开通、保持、降级或暂停。",
+        "subdomain": "agent_entitlement",
+        "user_stories": [
+          "US-009"
+        ]
+      },
+      {
+        "acceptance_functions": [
+          "AF-004",
+          "AF-005"
+        ],
+        "aggregate_roots": [
+          "usage_event"
+        ],
+        "contexts": [
+          "agent_usage_metering_context"
+        ],
+        "coverage_type": "adjacent_agent_service_conditional",
+        "review_note": "覆盖按量计费用量汇总；usage_event 仍是 taxonomy 候选术语，当前作为邻接证据保留。",
+        "subdomain": "agent_usage_metering",
+        "user_stories": [
+          "US-004"
+        ]
+      },
+      {
+        "acceptance_functions": [
+          "AF-004",
+          "AF-006"
+        ],
+        "aggregate_roots": [
+          "seat_assignment"
+        ],
+        "contexts": [
+          "agent_workspace_seat_context"
+        ],
+        "coverage_type": "adjacent_agent_service_conditional",
+        "review_note": "覆盖席位数量和席位变更对账单影响。",
+        "subdomain": "agent_workspace_seat",
+        "user_stories": [
+          "US-005"
+        ]
+      }
+    ],
+    "domain_coverage_review": [
+      {
+        "review_focus": "Decide whether light coverage for merchant_platform_relationship, risk_compliance, account_balance, and financial_operations is enough for first release or should become more detailed stories.",
+        "status": "review_candidate",
+        "summary": "This revision exposes taxonomy subdomain/context/aggregate coverage explicitly and adds lifecycle stories for payment transaction, ledger/fund state, reconciliation, split rule, and platform fee."
       }
     ],
     "domain_model": [
@@ -911,10 +1371,13 @@ created_at: 2026-06-03
     ],
     "open_questions": [
       {
-        "question": "是否进入 req-handoff 生成 OpenSpec draft？"
+        "question": "这些 subdomain/context 覆盖是否符合你预期的领域颗粒度？"
       },
       {
-        "question": "如不进入 handoff，是否需要先评审 US-001 至 US-011 和 AF-001 至 AF-016？"
+        "question": "merchant_platform_relationship、risk_compliance、account_balance、financial_operations 是否需要从轻覆盖升级为完整首版故事？"
+      },
+      {
+        "question": "确认后再讨论如何把这类覆盖矩阵纳入 checker/门禁。"
       }
     ],
     "scope_decisions": [
@@ -1104,7 +1567,8 @@ created_at: 2026-06-03
         "AF-007",
         "AF-008",
         "AF-009",
-        "AF-016"
+        "AF-016",
+        "AF-017"
       ],
       "benefit": "AI 服务商可以提高续费成功率，并减少人工催收和重复对接成本。",
       "evidence_anchor": {
@@ -1159,7 +1623,9 @@ created_at: 2026-06-03
       "acceptance_function_ids": [
         "AF-013",
         "AF-014",
-        "AF-016"
+        "AF-016",
+        "AF-019",
+        "AF-020"
       ],
       "benefit": "平台型 Agent 服务可以把收入准确分配给多个服务方，降低结算链路复杂度。",
       "evidence_anchor": {
@@ -1177,7 +1643,8 @@ created_at: 2026-06-03
       "acceptance_function_ids": [
         "AF-014",
         "AF-015",
-        "AF-016"
+        "AF-016",
+        "AF-019"
       ],
       "benefit": "服务方可以按可追溯的结算结果收到资金，平台减少人工付款和对账负担。",
       "evidence_anchor": {
@@ -1190,6 +1657,147 @@ created_at: 2026-06-03
         "领域模型: payout_context"
       ],
       "want": "作为出款责任方，我希望将已结算金额按结算批次出款给对应服务方。"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-016",
+        "AF-017",
+        "AF-018"
+      ],
+      "aggregate_refs": [
+        "payment_intent",
+        "payment_attempt",
+        "charge"
+      ],
+      "benefit": "订阅续费不会停留在账单视角，支付交易状态可以明确驱动后续权益、入账和催缴。",
+      "context_refs": [
+        "payment_intent_context",
+        "payment_attempt_authorization_context"
+      ],
+      "domain_refs": [
+        "payment_transaction"
+      ],
+      "evidence_anchor": {
+        "source_section": "domain coverage: payment_transaction"
+      },
+      "id": "US-012",
+      "role_ref": "R-payment-ops-owner",
+      "source_functions": [
+        "领域覆盖补强: payment_transaction",
+        "context: payment_intent_context / payment_attempt_authorization_context"
+      ],
+      "want": "作为支付交易处理责任方，我希望订阅账单扣款能够生成支付意图和支付尝试，并收敛出唯一支付结果。"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-016",
+        "AF-018",
+        "AF-019"
+      ],
+      "aggregate_refs": [
+        "ledger_entry",
+        "fund_state"
+      ],
+      "benefit": "后续分账、结算、出款和对账可以基于真实资金事实，而不是只依赖支付成功事件。",
+      "context_refs": [
+        "balance_ledger_context",
+        "fund_state_context"
+      ],
+      "domain_refs": [
+        "account_balance"
+      ],
+      "evidence_anchor": {
+        "source_section": "domain coverage: account_balance"
+      },
+      "id": "US-013",
+      "role_ref": "R-ledger-owner",
+      "source_functions": [
+        "领域覆盖补强: account_balance",
+        "context: balance_ledger_context / fund_state_context"
+      ],
+      "want": "作为账本入账责任方，我希望支付成功后生成账本分录并更新资金状态。"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-016",
+        "AF-019"
+      ],
+      "aggregate_refs": [
+        "reconciliation_record",
+        "reconciliation_exception"
+      ],
+      "benefit": "财务运营可以发现链路不一致，保障收入、资金和结算证据一致。",
+      "context_refs": [
+        "reconciliation_context"
+      ],
+      "domain_refs": [
+        "financial_operations"
+      ],
+      "evidence_anchor": {
+        "source_section": "domain coverage: financial_operations"
+      },
+      "id": "US-014",
+      "role_ref": "R-reconciliation-owner",
+      "source_functions": [
+        "领域覆盖补强: financial_operations",
+        "context: reconciliation_context"
+      ],
+      "want": "作为对账责任方，我希望账单、支付、账本、分账、结算和出款记录可以被核对并标记异常。"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-016",
+        "AF-020"
+      ],
+      "aggregate_refs": [
+        "split_rule",
+        "allocation_result",
+        "platform_fee"
+      ],
+      "benefit": "平台型 Agent 服务的收入分配可以按可追溯规则计算，而不是在结算时临时人工拆分。",
+      "context_refs": [
+        "split_allocation_context"
+      ],
+      "domain_refs": [
+        "funds_movement_settlement"
+      ],
+      "evidence_anchor": {
+        "source_section": "domain coverage: split_allocation_context"
+      },
+      "id": "US-015",
+      "role_ref": "R-split-rule-owner",
+      "source_functions": [
+        "领域覆盖补强: funds_movement_settlement",
+        "用户确认 1: 包含"
+      ],
+      "want": "作为分账规则责任方，我希望配置服务方分账规则、平台手续费规则和规则版本。"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-016",
+        "AF-020"
+      ],
+      "aggregate_refs": [
+        "platform_fee",
+        "allocation_result"
+      ],
+      "benefit": "平台收入和服务方收入可以在同一分账链路中清晰区分并进入结算。",
+      "context_refs": [
+        "split_allocation_context"
+      ],
+      "domain_refs": [
+        "funds_movement_settlement"
+      ],
+      "evidence_anchor": {
+        "source_section": "domain coverage: platform_fee"
+      },
+      "id": "US-016",
+      "role_ref": "R-platform-fee-owner",
+      "source_functions": [
+        "领域覆盖补强: funds_movement_settlement",
+        "原始痛点: 分账结算复杂"
+      ],
+      "want": "作为平台手续费责任方，我希望平台费用从服务收入中按规则计算并纳入分账结果。"
     }
   ]
 }
