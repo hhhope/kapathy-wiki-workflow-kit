@@ -34,7 +34,7 @@ created_at: 2026-06-03
 
 ## Domain Coverage
 - billing_revenue: coverage_type=primary; contexts=commercial_subscription_context, billing_invoice_context, usage_rating_context, revenue_recovery_context; aggregates=commercial_subscription, invoice, price_plan, billing_schedule, usage_record, rating_rule, seat_assignment, dunning_case, grace_period, retry_schedule; stories=US-001, US-002, US-003, US-004, US-005, US-007, US-008; acceptance=AF-001, AF-002, AF-003, AF-004, AF-005, AF-006, AF-008, AF-009, AF-010, AF-011; note=主域覆盖订阅关系、账单、混合计费、续期、重试和催缴。
-- merchant_platform_relationship: coverage_type=supporting_payment; contexts=merchant_identity_context, merchant_capability_context, merchant_service_offering_context, platform_responsibility_context; aggregates=merchant, capability_grant, service_offering, platform_relationship; stories=US-001; acceptance=AF-001; note=当前仅轻覆盖 AI 服务商接入和订阅配置；商户身份、能力开通、服务供给若要展开，需要后续补更细故事。
+- merchant_platform_relationship: coverage_type=full_coverage; contexts=merchant_identity_context, merchant_capability_context, merchant_service_offering_context, platform_responsibility_context; aggregates=merchant, platform_account, capability_grant, service_offering, platform_relationship; stories=US-001, US-017, US-018, US-019, US-020; acceptance=AF-001, AF-021, AF-022, AF-023, AF-024; note=用户审核确认 4：商户身份、能力开通、服务供给和平台责任边界进入首版完整故事。
 - payment_transaction: coverage_type=required_payment; contexts=payment_intent_context, payment_attempt_authorization_context, payment_method_context; aggregates=payment_intent, payment_attempt, charge, payment_method_authorization; stories=US-006, US-007, US-012; acceptance=AF-007, AF-008, AF-009, AF-017; note=补强后覆盖授权校验、续期扣款、失败重试、支付意图和支付尝试结果收敛。
 - account_balance: coverage_type=required_payment; contexts=balance_ledger_context, fund_state_context; aggregates=ledger_entry, fund_state; stories=US-013; acceptance=AF-018, AF-016; note=补强后覆盖支付成功后的账本分录和资金状态；余额、reserve、limit 暂不展开。
 - financial_operations: coverage_type=required_payment; contexts=reconciliation_context; aggregates=reconciliation_record, reconciliation_exception; stories=US-014; acceptance=AF-019, AF-016; note=补强后覆盖账单、支付、账本、分账、结算和出款链路对账；财务报表和关账暂不展开。
@@ -61,6 +61,10 @@ created_at: 2026-06-03
 - R-reconciliation-owner: 对账责任方; confirmed_as=reconciliation_owner; status=confirmed; category=financial_ops_owner
 - R-split-rule-owner: 分账规则责任方; confirmed_as=split_rule_owner; status=confirmed; category=settlement_owner
 - R-platform-fee-owner: 平台手续费责任方; confirmed_as=platform_fee_owner; status=confirmed; category=settlement_owner
+- R-merchant-profile-owner: AI 服务商身份责任方; confirmed_as=merchant_profile_owner; status=confirmed; category=merchant_platform_owner
+- R-capability-owner: 订阅支付能力开通责任方; confirmed_as=capability_owner; status=confirmed; category=merchant_platform_owner
+- R-service-offering-owner: Agent 服务供给责任方; confirmed_as=service_offering_owner; status=confirmed; category=merchant_platform_owner
+- R-platform-relationship-owner: 平台责任边界责任方; confirmed_as=platform_relationship_owner; status=confirmed; category=merchant_platform_owner
 
 ## User Stories
 - US-001: role_ref=R-ai-service-provider; 作为 AI 服务商，我希望接入订阅支付能力，配置面向消费者的 Agent 服务订阅关系。; benefit=不用自建银行通道和订阅生命周期能力，就能商业化提供持续 Agent 服务。; acceptance=AF-001, AF-016
@@ -79,6 +83,10 @@ created_at: 2026-06-03
 - US-014: role_ref=R-reconciliation-owner; 作为对账责任方，我希望账单、支付、账本、分账、结算和出款记录可以被核对并标记异常。; benefit=财务运营可以发现链路不一致，保障收入、资金和结算证据一致。; acceptance=AF-016, AF-019
 - US-015: role_ref=R-split-rule-owner; 作为分账规则责任方，我希望配置服务方分账规则、平台手续费规则和规则版本。; benefit=平台型 Agent 服务的收入分配可以按可追溯规则计算，而不是在结算时临时人工拆分。; acceptance=AF-016, AF-020
 - US-016: role_ref=R-platform-fee-owner; 作为平台手续费责任方，我希望平台费用从服务收入中按规则计算并纳入分账结果。; benefit=平台收入和服务方收入可以在同一分账链路中清晰区分并进入结算。; acceptance=AF-016, AF-020
+- US-017: role_ref=R-merchant-profile-owner; 作为 AI 服务商身份责任方，我希望记录 AI 服务商的平台账户、商户身份和收款主体信息。; benefit=订阅支付接入前可以明确谁提供服务、谁收款、谁承担平台关系责任。; acceptance=AF-021, AF-024
+- US-018: role_ref=R-capability-owner; 作为订阅支付能力开通责任方，我希望为 AI 服务商开通订阅创建、周期扣款、混合计费和分账结算所需能力。; benefit=服务方不需要自行对接银行通道或拆分实现订阅支付基础能力。; acceptance=AF-022, AF-024
+- US-019: role_ref=R-service-offering-owner; 作为 Agent 服务供给责任方，我希望把 Agent 服务、订阅方案和可售能力发布为可配置的服务供给。; benefit=消费者订阅的是明确的 Agent 服务和方案，而不是孤立的支付配置。; acceptance=AF-023, AF-024
+- US-020: role_ref=R-platform-relationship-owner; 作为平台责任边界责任方，我希望明确平台与 AI 服务商在订阅、收款、权益、分账和结算中的责任边界。; benefit=平台型 Agent 服务可以在多服务方分账结算时保留清晰责任和追溯依据。; acceptance=AF-024
 
 ## Acceptance Functions
 - AF-001: AI 服务商完成订阅支付接入配置; stories=US-001; coverage=state_change; AI 服务商完成订阅支付能力接入后，系统可保存面向消费者的 Agent 服务订阅配置，并返回可用于后续订阅创建的配置标识。
@@ -101,6 +109,10 @@ created_at: 2026-06-03
 - AF-018: 支付成功后生成账本和资金状态; stories=US-012, US-013; coverage=evidence, handoff, state_change; 支付成功事件产生后，系统生成对应账本分录，并把资金状态标记为可用于后续分账或结算的状态。
 - AF-019: 支付到账本到结算链路可对账; stories=US-013, US-014, US-010, US-011; coverage=evidence; 系统可对同一订阅周期的账单、支付结果、账本分录、分账结果、结算批次和出款记录生成对账记录；不一致时生成对账异常。
 - AF-020: 分账规则和平台费用参与分配计算; stories=US-010, US-015, US-016; coverage=state_change; 生成分账结果时，系统使用生效的分账规则版本和平台手续费规则计算平台收入与服务方收入，并记录规则版本。
+- AF-021: AI 服务商身份和平台账户可记录; stories=US-017; coverage=state_change, evidence; AI 服务商接入前，系统可记录并查询其平台账户、商户身份、收款主体和平台关系状态。
+- AF-022: 订阅支付能力可按服务方开通; stories=US-018; coverage=state_change; 平台可为 AI 服务商开通订阅创建、周期扣款、混合计费和分账结算能力，并记录能力开通状态、范围和生效时间。
+- AF-023: Agent 服务供给可绑定订阅方案; stories=US-019; coverage=state_change; AI 服务商可发布 Agent 服务供给，并将服务供给绑定到固定订阅、按量计费、席位计费或混合订阅方案。
+- AF-024: 平台责任边界可追溯; stories=US-017, US-018, US-019, US-020; coverage=evidence; 系统可查询平台与 AI 服务商在订阅配置、收款、权益、分账、结算和出款中的责任边界，并保留版本和生效记录。
 
 ## Soft Evidence
 ### Acceptance Extraction
@@ -118,6 +130,7 @@ created_at: 2026-06-03
 - {"acceptance_function_ids": ["AF-004", "AF-006"], "aggregate_roots": ["seat_assignment"], "contexts": ["agent_workspace_seat_context"], "coverage_type": "adjacent_agent_service_conditional", "review_note": "覆盖席位数量和席位变更对账单影响。", "subdomain": "agent_workspace_seat", "user_story_ids": ["US-005"]}
 ### Domain Coverage Review
 - {"review_focus": "Decide whether light coverage for merchant_platform_relationship, risk_compliance, account_balance, and financial_operations is enough for first release or should become more detailed stories.", "status": "review_candidate", "summary": "This revision exposes taxonomy subdomain/context/aggregate coverage explicitly and adds lifecycle stories for payment transaction, ledger/fund state, reconciliation, split rule, and platform fee."}
+- {"review_focus": "merchant_platform_relationship first-release depth", "status": "confirmed", "summary": "User review confirmed merchant platform relationship full-story scope."}
 ### Domain Model
 - {"aggregate_roots": ["commercial_subscription", "invoice", "dunning_case", "payment_intent", "payment_attempt", "ledger_entry", "fund_state", "reconciliation_record", "mandate", "agent_entitlement", "usage_event", "seat_assignment", "split_rule", "settlement_batch", "payout"], "bounded_contexts": ["commercial_subscription_context", "billing_invoice_context", "revenue_recovery_context", "payment_intent_context", "payment_attempt_authorization_context", "balance_ledger_context", "fund_state_context", "reconciliation_context", "mandate_authorization_context", "agent_entitlement_context", "agent_usage_metering_context", "agent_workspace_seat_context", "split_allocation_context", "settlement_batch_context", "payout_context"], "business_ecosystems": ["payment_ecosystem", "agent_service_ecosystem"], "candidates": [], "context_handoffs": [{"from_context": "commercial_subscription_context", "name": "GenerateInvoice", "to_context": "billing_invoice_context", "type": "command"}, {"from_context": "billing_invoice_context", "name": "ChargeInvoice", "to_context": "payment_intent_context", "type": "command"}, {"from_context": "payment_attempt_authorization_context", "name": "PaymentSucceeded", "to_context": "balance_ledger_context", "type": "domain_event"}, {"from_context": "commercial_subscription_context", "name": "CommercialSubscriptionActivated", "to_context": "agent_entitlement_context", "type": "domain_event"}], "fact_owners": ["subscription_owner", "subscription_policy_owner", "billing_ops_owner", "payment_ops_owner", "funds_account_owner", "ledger_owner", "balance_state_owner", "reconciliation_owner", "mandate_owner", "compliance_owner", "agent_entitlement_owner", "access_policy_owner", "usage_rating_owner", "agent_usage_owner", "metering_owner", "workspace_owner", "seat_owner", "split_rule_owner", "settlement_owner", "payout_owner"], "non_domain_terms": ["subscription", "account", "settlement"], "open_questions": ["Confirm first-release payout/split settlement scope."], "role_obligations": ["subscription_owner", "subscription_policy_owner", "billing_ops_owner", "payment_ops_owner", "funds_account_owner", "ledger_owner", "balance_state_owner", "reconciliation_owner", "mandate_owner", "compliance_owner", "agent_entitlement_owner", "access_policy_owner", "usage_rating_owner", "agent_usage_owner", "metering_owner", "workspace_owner", "seat_owner", "split_rule_owner", "settlement_owner", "payout_owner"], "status": "confirmed", "subdomains": ["billing_revenue", "merchant_platform_relationship", "payment_transaction", "account_balance", "funds_movement_settlement", "financial_operations", "risk_compliance", "agent_entitlement", "agent_usage_metering", "agent_workspace_seat"]}
 ### Intake Actors
@@ -131,10 +144,11 @@ created_at: 2026-06-03
 - {"question": "merchant_platform_relationship、risk_compliance、account_balance、financial_operations 是否需要从轻覆盖升级为完整首版故事？"}
 - {"question": "确认后再讨论如何把这类覆盖矩阵纳入 checker/门禁。"}
 ### Scope Decisions
-- {"decision": "first_release_split_settlement", "evidence": "用户确认 1: 包含", "value": "in_scope"}
-- {"decision": "target_customer", "evidence": "用户确认 2: AI 服务商", "value": "AI 服务商"}
+- {"decision": "first_release_split_settlement", "evidence": "用户复审确认 2: 确认", "value": "in_scope"}
+- {"decision": "target_customer", "evidence": "用户复审确认 1: 没错", "value": "AI 服务商"}
 - {"decision": "commercial_model", "evidence": "用户确认 3: 混合", "value": "混合计费"}
-- {"decision": "mandate_and_recurring_retry", "evidence": "用户确认 4: 是", "value": "in_scope"}
+- {"decision": "mandate_and_recurring_retry", "evidence": "用户复审确认 3: 确认", "value": "in_scope"}
+- {"decision": "merchant_platform_relationship_full_stories", "evidence": "用户复审确认 4: 确认", "value": "in_scope"}
 ### Source Material
 - {"summary": "Agent service subscription payment market and pain points"}
 - {"pain_point": "payment threshold is high; service providers lack subscription payment lifecycle capability"}
@@ -148,11 +162,12 @@ created_at: 2026-06-03
 - {"reason": "Analyzer surfaced term, but requirements taxonomy does not currently register it as an aggregate root.", "term": "usage_event"}
 ### User Confirmation
 - {"answers": [{"answer": "包含", "question": "首版是否包含分账分配、结算批次和出款？"}, {"answer": "AI 服务商", "question": "目标客户和集成边界是什么？"}, {"answer": "混合计费", "question": "支持哪些商业计费模型？"}, {"answer": "是", "question": "支付方式授权/委托扣款与周期扣款重试是否进入首版？"}], "confirmed_at": "2026-06-03", "source": "chat_user_confirmation"}
+- {"answers": [{"answer": "没错", "question": "US-001 首版是否只做 AI 服务商接入并配置订阅支付关系？"}, {"answer": "确认", "question": "首版是否包含分账、结算批次、出款、平台手续费？"}, {"answer": "确认", "question": "周期扣款授权/委托扣款是否进入首版？"}, {"answer": "确认", "question": "商户身份、能力开通、服务供给、平台责任边界是否升级为完整故事？"}], "confirmed_at": "2026-06-04", "source": "chat_user_review"}
 
 ## Readiness / Next Action
 - Status: requirements_ready
 - Next action: user_review_or_openspec_handoff
-- Reason: Domain model, domain coverage, and requirement delivery gates are now machine-checkable; reviewer can proceed to handoff review.
+- Reason: User review confirmed the listed scope boundaries; rerun requirements checker before handoff.
 ### Blockers
 - None
 
@@ -910,6 +925,90 @@ created_at: 2026-06-03
         "US-015",
         "US-016"
       ]
+    },
+    {
+      "aggregate_refs": [
+        "merchant",
+        "platform_account",
+        "platform_relationship"
+      ],
+      "context_refs": [
+        "merchant_identity_context",
+        "platform_responsibility_context"
+      ],
+      "coverage_types": [
+        "state_change",
+        "evidence"
+      ],
+      "id": "AF-021",
+      "name": "AI 服务商身份和平台账户可记录",
+      "source_acceptance": "用户审核确认 4 / 商户身份完整故事",
+      "then": "AI 服务商接入前，系统可记录并查询其平台账户、商户身份、收款主体和平台关系状态。",
+      "user_story_ids": [
+        "US-017"
+      ]
+    },
+    {
+      "aggregate_refs": [
+        "capability_grant",
+        "platform_relationship"
+      ],
+      "context_refs": [
+        "merchant_capability_context",
+        "platform_responsibility_context"
+      ],
+      "coverage_types": [
+        "state_change"
+      ],
+      "id": "AF-022",
+      "name": "订阅支付能力可按服务方开通",
+      "source_acceptance": "用户审核确认 4 / 能力开通完整故事",
+      "then": "平台可为 AI 服务商开通订阅创建、周期扣款、混合计费和分账结算能力，并记录能力开通状态、范围和生效时间。",
+      "user_story_ids": [
+        "US-018"
+      ]
+    },
+    {
+      "aggregate_refs": [
+        "service_offering",
+        "platform_relationship"
+      ],
+      "context_refs": [
+        "merchant_service_offering_context",
+        "platform_responsibility_context"
+      ],
+      "coverage_types": [
+        "state_change"
+      ],
+      "id": "AF-023",
+      "name": "Agent 服务供给可绑定订阅方案",
+      "source_acceptance": "用户审核确认 4 / 服务供给完整故事",
+      "then": "AI 服务商可发布 Agent 服务供给，并将服务供给绑定到固定订阅、按量计费、席位计费或混合订阅方案。",
+      "user_story_ids": [
+        "US-019"
+      ]
+    },
+    {
+      "aggregate_refs": [
+        "platform_relationship",
+        "platform_account"
+      ],
+      "context_refs": [
+        "platform_responsibility_context"
+      ],
+      "coverage_types": [
+        "evidence"
+      ],
+      "id": "AF-024",
+      "name": "平台责任边界可追溯",
+      "source_acceptance": "用户审核确认 4 / 平台责任边界完整故事",
+      "then": "系统可查询平台与 AI 服务商在订阅配置、收款、权益、分账、结算和出款中的责任边界，并保留版本和生效记录。",
+      "user_story_ids": [
+        "US-017",
+        "US-018",
+        "US-019",
+        "US-020"
+      ]
     }
   ],
   "active": true,
@@ -984,10 +1083,15 @@ created_at: 2026-06-03
     },
     {
       "acceptance_function_ids": [
-        "AF-001"
+        "AF-001",
+        "AF-021",
+        "AF-022",
+        "AF-023",
+        "AF-024"
       ],
       "aggregate_roots": [
         "merchant",
+        "platform_account",
         "capability_grant",
         "service_offering",
         "platform_relationship"
@@ -998,11 +1102,15 @@ created_at: 2026-06-03
         "merchant_service_offering_context",
         "platform_responsibility_context"
       ],
-      "coverage_type": "supporting_payment",
-      "review_note": "当前仅轻覆盖 AI 服务商接入和订阅配置；商户身份、能力开通、服务供给若要展开，需要后续补更细故事。",
+      "coverage_type": "full_coverage",
+      "review_note": "用户审核确认 4：商户身份、能力开通、服务供给和平台责任边界进入首版完整故事。",
       "subdomain": "merchant_platform_relationship",
       "user_story_ids": [
-        "US-001"
+        "US-001",
+        "US-017",
+        "US-018",
+        "US-019",
+        "US-020"
       ]
     },
     {
@@ -1329,7 +1437,7 @@ created_at: 2026-06-03
   ],
   "readiness_next_action": {
     "next_action": "user_review_or_openspec_handoff",
-    "reason": "Domain model, domain coverage, and requirement delivery gates are now machine-checkable; reviewer can proceed to handoff review.",
+    "reason": "User review confirmed the listed scope boundaries; rerun requirements checker before handoff.",
     "status": "requirements_ready"
   },
   "roles": [
@@ -1583,6 +1691,60 @@ created_at: 2026-06-03
       "source_actors": [
         "平台型智能体服务",
         "收入分给多个服务方"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "merchant_platform_owner",
+      "confirmed_as": "merchant_profile_owner",
+      "evidence_anchor": {
+        "source_section": "用户审核确认: 商户身份升级为完整首版故事"
+      },
+      "id": "R-merchant-profile-owner",
+      "mention": "AI 服务商身份责任方",
+      "source_actors": [
+        "AI 服务商"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "merchant_platform_owner",
+      "confirmed_as": "capability_owner",
+      "evidence_anchor": {
+        "source_section": "用户审核确认: 能力开通升级为完整首版故事"
+      },
+      "id": "R-capability-owner",
+      "mention": "订阅支付能力开通责任方",
+      "source_actors": [
+        "订阅支付平台"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "merchant_platform_owner",
+      "confirmed_as": "service_offering_owner",
+      "evidence_anchor": {
+        "source_section": "用户审核确认: 服务供给升级为完整首版故事"
+      },
+      "id": "R-service-offering-owner",
+      "mention": "Agent 服务供给责任方",
+      "source_actors": [
+        "AI 服务商",
+        "平台型智能体服务"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "category": "merchant_platform_owner",
+      "confirmed_as": "platform_relationship_owner",
+      "evidence_anchor": {
+        "source_section": "用户审核确认: 平台责任边界升级为完整首版故事"
+      },
+      "id": "R-platform-relationship-owner",
+      "mention": "平台责任边界责任方",
+      "source_actors": [
+        "AI 服务商",
+        "平台"
       ],
       "status": "confirmed"
     }
@@ -1839,6 +2001,11 @@ created_at: 2026-06-03
         "review_focus": "Decide whether light coverage for merchant_platform_relationship, risk_compliance, account_balance, and financial_operations is enough for first release or should become more detailed stories.",
         "status": "review_candidate",
         "summary": "This revision exposes taxonomy subdomain/context/aggregate coverage explicitly and adds lifecycle stories for payment transaction, ledger/fund state, reconciliation, split rule, and platform fee."
+      },
+      {
+        "review_focus": "merchant_platform_relationship first-release depth",
+        "status": "confirmed",
+        "summary": "User review confirmed merchant platform relationship full-story scope."
       }
     ],
     "domain_model": [
@@ -2016,12 +2183,12 @@ created_at: 2026-06-03
     "scope_decisions": [
       {
         "decision": "first_release_split_settlement",
-        "evidence": "用户确认 1: 包含",
+        "evidence": "用户复审确认 2: 确认",
         "value": "in_scope"
       },
       {
         "decision": "target_customer",
-        "evidence": "用户确认 2: AI 服务商",
+        "evidence": "用户复审确认 1: 没错",
         "value": "AI 服务商"
       },
       {
@@ -2031,7 +2198,12 @@ created_at: 2026-06-03
       },
       {
         "decision": "mandate_and_recurring_retry",
-        "evidence": "用户确认 4: 是",
+        "evidence": "用户复审确认 3: 确认",
+        "value": "in_scope"
+      },
+      {
+        "decision": "merchant_platform_relationship_full_stories",
+        "evidence": "用户复审确认 4: 确认",
         "value": "in_scope"
       }
     ],
@@ -2090,6 +2262,28 @@ created_at: 2026-06-03
         ],
         "confirmed_at": "2026-06-03",
         "source": "chat_user_confirmation"
+      },
+      {
+        "answers": [
+          {
+            "answer": "没错",
+            "question": "US-001 首版是否只做 AI 服务商接入并配置订阅支付关系？"
+          },
+          {
+            "answer": "确认",
+            "question": "首版是否包含分账、结算批次、出款、平台手续费？"
+          },
+          {
+            "answer": "确认",
+            "question": "周期扣款授权/委托扣款是否进入首版？"
+          },
+          {
+            "answer": "确认",
+            "question": "商户身份、能力开通、服务供给、平台责任边界是否升级为完整故事？"
+          }
+        ],
+        "confirmed_at": "2026-06-04",
+        "source": "chat_user_review"
       }
     ]
   },
@@ -2669,6 +2863,101 @@ created_at: 2026-06-03
         "原始痛点: 分账结算复杂"
       ],
       "want": "作为平台手续费责任方，我希望平台费用从服务收入中按规则计算并纳入分账结果。"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-021",
+        "AF-024"
+      ],
+      "aggregate_refs": [
+        "merchant",
+        "platform_account",
+        "platform_relationship"
+      ],
+      "benefit": "订阅支付接入前可以明确谁提供服务、谁收款、谁承担平台关系责任。",
+      "context_refs": [
+        "merchant_identity_context",
+        "platform_responsibility_context"
+      ],
+      "domain_refs": [
+        "merchant_platform_relationship"
+      ],
+      "evidence_anchor": {
+        "source_section": "用户审核确认 4: 商户身份升级为完整首版故事"
+      },
+      "id": "US-017",
+      "role_ref": "R-merchant-profile-owner",
+      "want": "作为 AI 服务商身份责任方，我希望记录 AI 服务商的平台账户、商户身份和收款主体信息。"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-022",
+        "AF-024"
+      ],
+      "aggregate_refs": [
+        "capability_grant",
+        "platform_relationship"
+      ],
+      "benefit": "服务方不需要自行对接银行通道或拆分实现订阅支付基础能力。",
+      "context_refs": [
+        "merchant_capability_context",
+        "platform_responsibility_context"
+      ],
+      "domain_refs": [
+        "merchant_platform_relationship"
+      ],
+      "evidence_anchor": {
+        "source_section": "用户审核确认 4: 能力开通升级为完整首版故事"
+      },
+      "id": "US-018",
+      "role_ref": "R-capability-owner",
+      "want": "作为订阅支付能力开通责任方，我希望为 AI 服务商开通订阅创建、周期扣款、混合计费和分账结算所需能力。"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-023",
+        "AF-024"
+      ],
+      "aggregate_refs": [
+        "service_offering",
+        "platform_relationship"
+      ],
+      "benefit": "消费者订阅的是明确的 Agent 服务和方案，而不是孤立的支付配置。",
+      "context_refs": [
+        "merchant_service_offering_context",
+        "platform_responsibility_context"
+      ],
+      "domain_refs": [
+        "merchant_platform_relationship"
+      ],
+      "evidence_anchor": {
+        "source_section": "用户审核确认 4: 服务供给升级为完整首版故事"
+      },
+      "id": "US-019",
+      "role_ref": "R-service-offering-owner",
+      "want": "作为 Agent 服务供给责任方，我希望把 Agent 服务、订阅方案和可售能力发布为可配置的服务供给。"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-024"
+      ],
+      "aggregate_refs": [
+        "platform_relationship",
+        "platform_account"
+      ],
+      "benefit": "平台型 Agent 服务可以在多服务方分账结算时保留清晰责任和追溯依据。",
+      "context_refs": [
+        "platform_responsibility_context"
+      ],
+      "domain_refs": [
+        "merchant_platform_relationship"
+      ],
+      "evidence_anchor": {
+        "source_section": "用户审核确认 4: 平台责任边界升级为完整首版故事"
+      },
+      "id": "US-020",
+      "role_ref": "R-platform-relationship-owner",
+      "want": "作为平台责任边界责任方，我希望明确平台与 AI 服务商在订阅、收款、权益、分账和结算中的责任边界。"
     }
   ]
 }
