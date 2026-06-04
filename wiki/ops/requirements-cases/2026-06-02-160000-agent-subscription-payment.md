@@ -117,6 +117,14 @@ created_at: 2026-06-03
 ## Soft Evidence
 ### Acceptance Extraction
 - {"source": "req-acceptance", "summary": "Defined observable acceptance functions for subscription setup, lifecycle, mixed billing, metering, seats, mandate, renewal retry, dunning, entitlement, split settlement, payout, and traceability."}
+### Design Clarification Gate
+- {"design_boundary": "没有材料时只能保留需求骨架和待确认项，不能由 AGI 推断现状。", "gate": "current_state_materials", "must_clarify": "现有订阅、扣款、账单、权益、分账、结算、出款和对账流程是否已有系统、人工流程、合同或数据样例。", "owner": "requirement_proposer"}
+- {"design_boundary": "需求只确认规则归属、版本和计算顺序；具体表达式和异常规则进入详细设计门禁。", "gate": "rule_detail_materials", "must_clarify": "平台手续费、服务方分账、尾差舍入、退款/拒付/补偿、税费或成本扣减等规则是否进入首版以及具体口径。", "owner": "rule_owner_and_settlement_owner"}
+- {"design_boundary": "验收只要求状态可流转和可追溯；策略参数不能凭行业默认值生成。", "gate": "lifecycle_policy_materials", "must_clarify": "订阅状态、续期日、扣款重试次数和间隔、宽限期、催缴/挽留触发条件、权益降级或暂停策略。", "owner": "billing_ops_owner_and_revenue_recovery_owner"}
+- {"design_boundary": "需求可确认上下文交接，详细接口契约必须等系统边界材料确认。", "gate": "integration_boundary_materials", "must_clarify": "AI 服务、服务供给、席位、用量、权益系统与订阅支付平台之间的 API、事件、回调、幂等和失败补偿边界。", "owner": "platform_relationship_owner_and_agent_service_owner"}
+- {"design_boundary": "验收只要求链路可追溯和可对账；账务分录、资金状态机和批次规则需要设计前材料。", "gate": "funds_accounting_materials", "must_clarify": "支付成功如何入账、资金何时可分账/可结算/可出款、结算批次条件、出款失败处理、对账异常口径。", "owner": "ledger_owner_reconciliation_owner_and_payout_owner"}
+- {"design_boundary": "需求已把该域升为首版完整故事；详细设计不能假设平台主体、商户主体或责任划分。", "gate": "merchant_platform_responsibility_materials", "must_clarify": "AI 服务商身份、收款主体、平台账户、能力开通范围、平台与服务商责任边界及版本化协议材料。", "owner": "merchant_profile_owner_capability_owner_and_platform_relationship_owner"}
+- {"design_boundary": "验收要求可追溯；字段级审计模型和证据保留周期需在设计门禁中确认。", "gate": "traceability_and_audit_materials", "must_clarify": "哪些对象必须保留版本、生效时间、操作者、来源证据、外部流水号和跨链路追溯 ID。", "owner": "requirement_proposer_with_domain_owners"}
 ### Domain Coverage Matrix
 - {"acceptance_function_ids": ["AF-001", "AF-002", "AF-003", "AF-004", "AF-005", "AF-006", "AF-008", "AF-009", "AF-010", "AF-011"], "aggregate_roots": ["commercial_subscription", "invoice", "price_plan", "billing_schedule", "usage_record", "rating_rule", "seat_assignment", "dunning_case", "grace_period", "retry_schedule"], "contexts": ["commercial_subscription_context", "billing_invoice_context", "usage_rating_context", "revenue_recovery_context"], "coverage_type": "primary", "review_note": "主域覆盖订阅关系、账单、混合计费、续期、重试和催缴。", "subdomain": "billing_revenue", "user_story_ids": ["US-001", "US-002", "US-003", "US-004", "US-005", "US-007", "US-008"]}
 - {"acceptance_function_ids": ["AF-001", "AF-021", "AF-022", "AF-023", "AF-024"], "aggregate_roots": ["merchant", "platform_account", "capability_grant", "service_offering", "platform_relationship"], "contexts": ["merchant_identity_context", "merchant_capability_context", "merchant_service_offering_context", "platform_responsibility_context"], "coverage_type": "full_coverage", "review_note": "用户审核确认 4：商户身份、能力开通、服务供给和平台责任边界进入首版完整故事。", "subdomain": "merchant_platform_relationship", "user_story_ids": ["US-001", "US-017", "US-018", "US-019", "US-020"]}
@@ -131,6 +139,7 @@ created_at: 2026-06-03
 ### Domain Coverage Review
 - {"review_focus": "merchant_platform_relationship first-release depth", "status": "confirmed", "summary": "User review confirmed merchant platform relationship full-story scope."}
 - {"review_focus": "US-010 US-015 US-016 split rule relationship", "status": "clarified", "summary": "User review asked to clarify the agreed rules and relationship among split settlement, split rule, and platform fee stories."}
+- {"review_focus": "detail-design-clarification-gate", "status": "accepted_as_gate", "summary": "User accepted the requirement skeleton and clarified that missing current-state materials must become proposer clarification gates before detailed design, not AGI-inferred design facts."}
 ### Domain Model
 - {"aggregate_roots": ["commercial_subscription", "invoice", "dunning_case", "payment_intent", "payment_attempt", "ledger_entry", "fund_state", "reconciliation_record", "mandate", "agent_entitlement", "usage_event", "seat_assignment", "split_rule", "settlement_batch", "payout"], "bounded_contexts": ["commercial_subscription_context", "billing_invoice_context", "revenue_recovery_context", "payment_intent_context", "payment_attempt_authorization_context", "balance_ledger_context", "fund_state_context", "reconciliation_context", "mandate_authorization_context", "agent_entitlement_context", "agent_usage_metering_context", "agent_workspace_seat_context", "split_allocation_context", "settlement_batch_context", "payout_context"], "business_ecosystems": ["payment_ecosystem", "agent_service_ecosystem"], "candidates": [], "context_handoffs": [{"from_context": "commercial_subscription_context", "name": "GenerateInvoice", "to_context": "billing_invoice_context", "type": "command"}, {"from_context": "billing_invoice_context", "name": "ChargeInvoice", "to_context": "payment_intent_context", "type": "command"}, {"from_context": "payment_attempt_authorization_context", "name": "PaymentSucceeded", "to_context": "balance_ledger_context", "type": "domain_event"}, {"from_context": "commercial_subscription_context", "name": "CommercialSubscriptionActivated", "to_context": "agent_entitlement_context", "type": "domain_event"}], "fact_owners": ["subscription_owner", "subscription_policy_owner", "billing_ops_owner", "payment_ops_owner", "funds_account_owner", "ledger_owner", "balance_state_owner", "reconciliation_owner", "mandate_owner", "compliance_owner", "agent_entitlement_owner", "access_policy_owner", "usage_rating_owner", "agent_usage_owner", "metering_owner", "workspace_owner", "seat_owner", "split_rule_owner", "settlement_owner", "payout_owner"], "non_domain_terms": ["subscription", "account", "settlement"], "open_questions": ["Confirm first-release payout/split settlement scope."], "role_obligations": ["subscription_owner", "subscription_policy_owner", "billing_ops_owner", "payment_ops_owner", "funds_account_owner", "ledger_owner", "balance_state_owner", "reconciliation_owner", "mandate_owner", "compliance_owner", "agent_entitlement_owner", "access_policy_owner", "usage_rating_owner", "agent_usage_owner", "metering_owner", "workspace_owner", "seat_owner", "split_rule_owner", "settlement_owner", "payout_owner"], "status": "confirmed", "subdomains": ["billing_revenue", "merchant_platform_relationship", "payment_transaction", "account_balance", "funds_movement_settlement", "financial_operations", "risk_compliance", "agent_entitlement", "agent_usage_metering", "agent_workspace_seat"]}
 ### Intake Actors
@@ -140,9 +149,13 @@ created_at: 2026-06-03
 - {"id": "recurring_billing_job", "label": "recurring billing automation", "type": "system"}
 - {"id": "payment_channel", "label": "payment channel", "type": "external_system"}
 ### Open Questions
+- {"question": "详细设计前，需求提出方能否提供现有流程、合同、配置样例、账务样例或系统截图来判断现状？"}
 - {"question": "首版平台手续费是否只支持按比例和固定金额，还是需要阶梯费率？"}
 - {"question": "尾差和舍入金额默认归平台、归最大服务方，还是要求显式配置？"}
 - {"question": "退款、拒付、补偿是否进入首版反向分账规则，还是作为后续规则扩展？"}
+- {"question": "订阅重试、宽限期、催缴、挽留和权益降级是否已有运营策略参数，还是只先设计配置能力？"}
+- {"question": "Agent 服务供给、用量、席位和权益系统的接口/事件边界由谁提供材料并确认？"}
+- {"question": "账本入账、资金状态、结算批次、出款失败和对账异常的业务口径由谁确认？"}
 ### Rule Clarification
 - {"summary": "US-015 owns service-provider split rule configuration; US-016 owns platform fee rule configuration; US-010 consumes the effective versions of both rules to produce allocation results and settlement batches.", "topic": "rule_ownership"}
 - {"summary": "首版规则集合包括适用服务供给、收款主体、参与分配服务方、费用基数、平台手续费、服务方分配比例或固定金额、生效时间、规则版本、结算条件和追溯引用。", "topic": "first_release_rule_set"}
@@ -168,11 +181,12 @@ created_at: 2026-06-03
 ### User Confirmation
 - {"answers": [{"answer": "包含", "question": "首版是否包含分账分配、结算批次和出款？"}, {"answer": "AI 服务商", "question": "目标客户和集成边界是什么？"}, {"answer": "混合计费", "question": "支持哪些商业计费模型？"}, {"answer": "是", "question": "支付方式授权/委托扣款与周期扣款重试是否进入首版？"}], "confirmed_at": "2026-06-03", "source": "chat_user_confirmation"}
 - {"answers": [{"answer": "没错", "question": "US-001 首版是否只做 AI 服务商接入并配置订阅支付关系？"}, {"answer": "确认", "question": "首版是否包含分账、结算批次、出款、平台手续费？"}, {"answer": "确认", "question": "周期扣款授权/委托扣款是否进入首版？"}, {"answer": "确认", "question": "商户身份、能力开通、服务供给、平台责任边界是否升级为完整故事？"}], "confirmed_at": "2026-06-04", "source": "chat_user_review"}
+- {"answers": [{"answer": "可以", "question": "US-010/US-015/US-016 规则关系是否可接受？"}, {"answer": "确认，应泛化到规则以外的详细设计前澄清点。", "question": "缺少现状材料时是否应通过门禁要求需求提出方澄清，而不是由 AGI 推断设计？"}], "confirmed_at": "2026-06-04", "source": "chat_user_design_gate_confirmation_2026_06_04"}
 
 ## Readiness / Next Action
 - Status: requirements_ready
-- Next action: user_review_rule_clarification
-- Reason: US-010, US-015, and US-016 rule ownership and calculation relationship were clarified; user should review remaining rule-detail questions before OpenSpec handoff.
+- Next action: user_review_design_clarification_gates
+- Reason: Requirement skeleton is accepted as reviewable; unresolved rule and current-state details are now captured as detailed-design clarification gates for the requirement proposer before implementation design.
 ### Blockers
 - None
 
@@ -188,6 +202,8 @@ created_at: 2026-06-03
 - This case records intake, scope, stories, acceptance functions, and domain coverage evidence.
 - The requirements checker now enforces domain_model_gate, domain_coverage_gate, and requirement_delivery_gate for strict taxonomy v2 cases.
 - Passing gates prove the requirement case is reviewable for OpenSpec handoff; they do not prove implementation design, API, DDL, or release correctness.
+- The acceptance skeleton is ready for review, but detailed design must pass proposer clarification gates for missing current-state materials, policy parameters, integration boundaries, accounting rules, and audit evidence.
+- AGI-generated analysis must not infer current implementation state, rule parameters, operating policies, or accounting treatment without proposer-provided material evidence.
 
 ## Machine Case Data
 <!-- requirements-case-data:start -->
@@ -1438,11 +1454,13 @@ created_at: 2026-06-03
   "proof_boundary_notes": [
     "This case records intake, scope, stories, acceptance functions, and domain coverage evidence.",
     "The requirements checker now enforces domain_model_gate, domain_coverage_gate, and requirement_delivery_gate for strict taxonomy v2 cases.",
-    "Passing gates prove the requirement case is reviewable for OpenSpec handoff; they do not prove implementation design, API, DDL, or release correctness."
+    "Passing gates prove the requirement case is reviewable for OpenSpec handoff; they do not prove implementation design, API, DDL, or release correctness.",
+    "The acceptance skeleton is ready for review, but detailed design must pass proposer clarification gates for missing current-state materials, policy parameters, integration boundaries, accounting rules, and audit evidence.",
+    "AGI-generated analysis must not infer current implementation state, rule parameters, operating policies, or accounting treatment without proposer-provided material evidence."
   ],
   "readiness_next_action": {
-    "next_action": "user_review_rule_clarification",
-    "reason": "US-010, US-015, and US-016 rule ownership and calculation relationship were clarified; user should review remaining rule-detail questions before OpenSpec handoff.",
+    "next_action": "user_review_design_clarification_gates",
+    "reason": "Requirement skeleton is accepted as reviewable; unresolved rule and current-state details are now captured as detailed-design clarification gates for the requirement proposer before implementation design.",
     "status": "requirements_ready"
   },
   "roles": [
@@ -1761,6 +1779,50 @@ created_at: 2026-06-03
         "summary": "Defined observable acceptance functions for subscription setup, lifecycle, mixed billing, metering, seats, mandate, renewal retry, dunning, entitlement, split settlement, payout, and traceability."
       }
     ],
+    "design_clarification_gate": [
+      {
+        "design_boundary": "没有材料时只能保留需求骨架和待确认项，不能由 AGI 推断现状。",
+        "gate": "current_state_materials",
+        "must_clarify": "现有订阅、扣款、账单、权益、分账、结算、出款和对账流程是否已有系统、人工流程、合同或数据样例。",
+        "owner": "requirement_proposer"
+      },
+      {
+        "design_boundary": "需求只确认规则归属、版本和计算顺序；具体表达式和异常规则进入详细设计门禁。",
+        "gate": "rule_detail_materials",
+        "must_clarify": "平台手续费、服务方分账、尾差舍入、退款/拒付/补偿、税费或成本扣减等规则是否进入首版以及具体口径。",
+        "owner": "rule_owner_and_settlement_owner"
+      },
+      {
+        "design_boundary": "验收只要求状态可流转和可追溯；策略参数不能凭行业默认值生成。",
+        "gate": "lifecycle_policy_materials",
+        "must_clarify": "订阅状态、续期日、扣款重试次数和间隔、宽限期、催缴/挽留触发条件、权益降级或暂停策略。",
+        "owner": "billing_ops_owner_and_revenue_recovery_owner"
+      },
+      {
+        "design_boundary": "需求可确认上下文交接，详细接口契约必须等系统边界材料确认。",
+        "gate": "integration_boundary_materials",
+        "must_clarify": "AI 服务、服务供给、席位、用量、权益系统与订阅支付平台之间的 API、事件、回调、幂等和失败补偿边界。",
+        "owner": "platform_relationship_owner_and_agent_service_owner"
+      },
+      {
+        "design_boundary": "验收只要求链路可追溯和可对账；账务分录、资金状态机和批次规则需要设计前材料。",
+        "gate": "funds_accounting_materials",
+        "must_clarify": "支付成功如何入账、资金何时可分账/可结算/可出款、结算批次条件、出款失败处理、对账异常口径。",
+        "owner": "ledger_owner_reconciliation_owner_and_payout_owner"
+      },
+      {
+        "design_boundary": "需求已把该域升为首版完整故事；详细设计不能假设平台主体、商户主体或责任划分。",
+        "gate": "merchant_platform_responsibility_materials",
+        "must_clarify": "AI 服务商身份、收款主体、平台账户、能力开通范围、平台与服务商责任边界及版本化协议材料。",
+        "owner": "merchant_profile_owner_capability_owner_and_platform_relationship_owner"
+      },
+      {
+        "design_boundary": "验收要求可追溯；字段级审计模型和证据保留周期需在设计门禁中确认。",
+        "gate": "traceability_and_audit_materials",
+        "must_clarify": "哪些对象必须保留版本、生效时间、操作者、来源证据、外部流水号和跨链路追溯 ID。",
+        "owner": "requirement_proposer_with_domain_owners"
+      }
+    ],
     "domain_coverage_matrix": [
       {
         "acceptance_function_ids": [
@@ -2020,6 +2082,11 @@ created_at: 2026-06-03
         "review_focus": "US-010 US-015 US-016 split rule relationship",
         "status": "clarified",
         "summary": "User review asked to clarify the agreed rules and relationship among split settlement, split rule, and platform fee stories."
+      },
+      {
+        "review_focus": "detail-design-clarification-gate",
+        "status": "accepted_as_gate",
+        "summary": "User accepted the requirement skeleton and clarified that missing current-state materials must become proposer clarification gates before detailed design, not AGI-inferred design facts."
       }
     ],
     "domain_model": [
@@ -2185,6 +2252,9 @@ created_at: 2026-06-03
     ],
     "open_questions": [
       {
+        "question": "详细设计前，需求提出方能否提供现有流程、合同、配置样例、账务样例或系统截图来判断现状？"
+      },
+      {
         "question": "首版平台手续费是否只支持按比例和固定金额，还是需要阶梯费率？"
       },
       {
@@ -2192,6 +2262,15 @@ created_at: 2026-06-03
       },
       {
         "question": "退款、拒付、补偿是否进入首版反向分账规则，还是作为后续规则扩展？"
+      },
+      {
+        "question": "订阅重试、宽限期、催缴、挽留和权益降级是否已有运营策略参数，还是只先设计配置能力？"
+      },
+      {
+        "question": "Agent 服务供给、用量、席位和权益系统的接口/事件边界由谁提供材料并确认？"
+      },
+      {
+        "question": "账本入账、资金状态、结算批次、出款失败和对账异常的业务口径由谁确认？"
       }
     ],
     "rule_clarification": [
@@ -2316,6 +2395,20 @@ created_at: 2026-06-03
         ],
         "confirmed_at": "2026-06-04",
         "source": "chat_user_review"
+      },
+      {
+        "answers": [
+          {
+            "answer": "可以",
+            "question": "US-010/US-015/US-016 规则关系是否可接受？"
+          },
+          {
+            "answer": "确认，应泛化到规则以外的详细设计前澄清点。",
+            "question": "缺少现状材料时是否应通过门禁要求需求提出方澄清，而不是由 AGI 推断设计？"
+          }
+        ],
+        "confirmed_at": "2026-06-04",
+        "source": "chat_user_design_gate_confirmation_2026_06_04"
       }
     ]
   },
