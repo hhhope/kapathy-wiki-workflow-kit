@@ -34,7 +34,22 @@ Internal tools:
 - `scripts/requirements_openspec_draft.py`
 
 Readiness evidence must include `domain_model_gate`, `domain_coverage_gate`,
-and `requirement_delivery_gate` before handoff is allowed.
+`requirement_delivery_gate`, and `detailed_design_gate`.
+
+Requirement readiness and detailed-design readiness are separate:
+
+- `requirements_ready` means the requirement skeleton is reviewable.
+- `detailed_design_gate` blocks API, DDL/schema, state-machine, rule-model,
+  integration-contract, and engineering-breakdown design until product provides
+  or explicitly waives the current-state material package, business rule
+  position table, and system boundary contract table.
+- Required product input: current-state material package.
+- Required product input: business rule position table.
+- Required product input: system boundary contract table.
+- Missing detailed-design materials must not be hidden by AGI assumptions about
+  current state, rule parameters, accounting treatment, or system boundaries.
+- Do not claim detailed design can start when `detailed_design_gate.passed` is
+  false, even if the requirements hard gate passes.
 
 Worker routing:
 

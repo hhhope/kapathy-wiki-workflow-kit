@@ -90,6 +90,22 @@ class RequirementsCaseTest(unittest.TestCase):
         self.assertEqual(package["roles"][0]["id"], "finance")
         self.assertEqual(package["user_stories"][0]["id"], "US-1")
         self.assertEqual(package["acceptance_functions"][0]["id"], "AF-1")
+        hard_gates = package["soft_evidence"]["detailed_design_hard_gates"]
+        gate_ids = {gate["gate"] for gate in hard_gates}
+        self.assertEqual(
+            gate_ids,
+            {
+                "current_state_material_package",
+                "business_rule_position_table",
+                "system_boundary_contract_table",
+            },
+        )
+        for gate in hard_gates:
+            with self.subTest(gate=gate["gate"]):
+                self.assertTrue(gate["hard_gate"])
+                self.assertEqual(gate["material_status"], "missing")
+                self.assertIn("required_material", gate)
+                self.assertIn("pass_condition", gate)
 
     def test_renders_required_sections_and_machine_data(self) -> None:
         markdown = render_requirements_case_markdown(self._package(), scan_root=self.tmpdir)
@@ -117,6 +133,7 @@ class RequirementsCaseTest(unittest.TestCase):
         self.assertIn("AF-1", markdown)
         self.assertIn("account_balance", markdown)
         self.assertIn("coverage_type=primary", markdown)
+        self.assertIn("### Detailed Design Hard Gates", markdown)
 
     def test_story_line_keeps_product_review_fields_only(self) -> None:
         markdown = render_requirements_case_markdown(self._package(), scan_root=self.tmpdir)

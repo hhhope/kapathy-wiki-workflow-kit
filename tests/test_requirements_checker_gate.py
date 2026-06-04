@@ -361,6 +361,16 @@ class RequirementsCheckerGateTests(unittest.TestCase):
 
         self.assertEqual(report["summary"]["status"], "requirements_ready")
         self.assertEqual(report["blockers"], [])
+        self.assertFalse(report["detailed_design_gate"]["passed"])
+        self.assertEqual(
+            {blocker["gate"] for blocker in report["detailed_design_gate"]["blockers"]},
+            {
+                "current_state_material_package",
+                "business_rule_position_table",
+                "system_boundary_contract_table",
+            },
+        )
+        self.assertTrue(report["summary"]["hard_gate_passed"])
 
     def test_acceptance_without_evidence_anchor_fails(self) -> None:
         package = self._package(
@@ -381,6 +391,20 @@ class RequirementsCheckerGateTests(unittest.TestCase):
 
         self.assertEqual(report["summary"]["status"], "blocked")
         self.assertIn("acceptance_evidence_missing", self._blocker_codes(report))
+
+    def test_detailed_design_gate_passes_when_product_materials_are_provided(self) -> None:
+        package = self._package()
+        for gate in package["soft_evidence"]["detailed_design_hard_gates"]:
+            gate["material_status"] = "provided"
+            gate["evidence_ref"] = f"product/{gate['gate']}.md"
+        path = self._write_case(package)
+
+        report = self._check_strict_requirements_case_file(path, strict=True)
+
+        self.assertEqual(report["summary"]["status"], "requirements_ready")
+        self.assertTrue(report["summary"]["hard_gate_passed"])
+        self.assertTrue(report["detailed_design_gate"]["passed"])
+        self.assertEqual(report["detailed_design_gate"]["blockers"], [])
 
     def test_legacy_case_shape_remains_readable_in_compatibility_mode(self) -> None:
         path = self._write_case(self._legacy_package())

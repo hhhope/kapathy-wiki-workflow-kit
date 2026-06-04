@@ -21,6 +21,12 @@ from scripts.requirements_domain_coverage import evaluate_domain_coverage_gate
 TAXONOMY_PATH = Path("requirements/config/requirements-taxonomy.yaml")
 READY_STATUS = "requirements_ready"
 BLOCKED_STATUS = "blocked"
+DETAILED_DESIGN_HARD_GATE_IDS = {
+    "current_state_material_package",
+    "business_rule_position_table",
+    "system_boundary_contract_table",
+}
+DETAILED_DESIGN_PASS_STATUSES = {"provided", "waived"}
 
 
 def _as_list(value: Any) -> list[Any]:
@@ -139,6 +145,59 @@ def _soft_evidence_report(taxonomy: dict[str, Any], case_data: dict[str, Any]) -
         else:
             evidence.append(item)
     return warnings, evidence
+
+
+def _detailed_design_gate(case_data: dict[str, Any]) -> dict[str, Any]:
+    soft_evidence = case_data.get("soft_evidence", {})
+    values = soft_evidence.get("detailed_design_hard_gates", []) if isinstance(soft_evidence, dict) else []
+    gates = _dict_items(values)
+    gates_by_id = {str(gate.get("gate", "")).strip(): gate for gate in gates if str(gate.get("gate", "")).strip()}
+    blockers: list[dict[str, str]] = []
+
+    for gate_id in sorted(DETAILED_DESIGN_HARD_GATE_IDS):
+        gate = gates_by_id.get(gate_id)
+        if gate is None:
+            blockers.append(
+                _blocker(
+                    "detailed_design_gate_missing",
+                    f"detailed design hard gate is missing: {gate_id}",
+                    field="soft_evidence.detailed_design_hard_gates",
+                    evidence=gate_id,
+                )
+            )
+            blockers[-1]["gate"] = gate_id
+            continue
+
+        status = str(gate.get("material_status", "")).strip()
+        has_material_evidence = _has_value(gate.get("evidence_ref")) or _has_value(gate.get("evidence_refs"))
+        has_waiver_evidence = _has_value(gate.get("waiver_reason")) or _has_value(gate.get("waiver_ref"))
+        if status == "provided" and has_material_evidence:
+            continue
+        if status == "waived" and has_waiver_evidence:
+            continue
+
+        if status not in DETAILED_DESIGN_PASS_STATUSES:
+            reason = f"detailed design hard gate {gate_id} requires product material or explicit waiver; material_status={status or 'missing'}"
+        elif status == "provided":
+            reason = f"detailed design hard gate {gate_id} is marked provided but has no evidence_ref or evidence_refs"
+        else:
+            reason = f"detailed design hard gate {gate_id} is marked waived but has no waiver_reason or waiver_ref"
+        blockers.append(
+            _blocker(
+                "detailed_design_gate_not_satisfied",
+                reason,
+                field="soft_evidence.detailed_design_hard_gates",
+                evidence=gate_id,
+            )
+        )
+        blockers[-1]["gate"] = gate_id
+
+    return {
+        "passed": not blockers,
+        "mode": "product_materials_required",
+        "required_gates": sorted(DETAILED_DESIGN_HARD_GATE_IDS),
+        "blockers": sorted(blockers, key=lambda item: (item.get("gate", ""), item["reason"])),
+    }
 
 
 def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any], *, strict: bool = True) -> dict[str, Any]:
@@ -309,6 +368,7 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
         "passed": not delivery_blockers,
         "mode": "strict" if strict else "legacy_compatibility",
     }
+    detailed_design_gate = _detailed_design_gate(case_data)
     warnings, evidence = _soft_evidence_report(taxonomy, case_data)
     status = READY_STATUS if not blockers else BLOCKED_STATUS
     return {
@@ -323,6 +383,7 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
         "domain_model_gate": domain_model_gate,
         "domain_coverage_gate": domain_coverage_gate,
         "requirement_delivery_gate": requirement_delivery_gate,
+        "detailed_design_gate": detailed_design_gate,
         "blockers": sorted(blockers, key=lambda item: (item["code"], item["reason"])),
         "warnings": warnings,
         "evidence": evidence,
@@ -342,11 +403,17 @@ def render_markdown_report(report: dict[str, Any]) -> str:
         f"- Status: {report.get('summary', {}).get('status', BLOCKED_STATUS)}",
         f"- Hard gate passed: {report.get('summary', {}).get('hard_gate_passed', False)}",
         f"- Taxonomy: `{report.get('summary', {}).get('taxonomy_path', TAXONOMY_PATH)}`",
+        f"- Detailed design gate passed: {report.get('detailed_design_gate', {}).get('passed', False)}",
         "",
         "## Blockers",
     ]
     blockers = _dict_items(report.get("blockers"))
     lines.extend([f"- {item.get('code')}: {item.get('reason')}" for item in blockers] or ["- None"])
+    lines.append("")
+    lines.append("## Detailed Design Gate")
+    design_gate = report.get("detailed_design_gate", {})
+    design_blockers = _dict_items(design_gate.get("blockers")) if isinstance(design_gate, dict) else []
+    lines.extend([f"- {item.get('gate')}: {item.get('reason')}" for item in design_blockers] or ["- None"])
     lines.append("")
     lines.append("## Warnings")
     warnings = _dict_items(report.get("warnings"))

@@ -33,6 +33,10 @@ class ReqAgentSkillSurfaceTest(unittest.TestCase):
             "scripts/check_requirements_case.py",
             "scripts/requirements_openspec_draft.py",
             "domain_coverage_gate",
+            "detailed_design_gate",
+            "current-state material package",
+            "business rule position table",
+            "system boundary contract table",
             "Do not ask the user to run Python as the normal path.",
         ]
         for marker in required_markers:

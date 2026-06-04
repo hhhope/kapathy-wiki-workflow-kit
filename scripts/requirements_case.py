@@ -18,6 +18,58 @@ DEFAULT_PROOF_BOUNDARY_NOTES = [
     "Hard-gate validation belongs to the requirements checker.",
     "API, DDL, and release details are supporting evidence, not first-version requirement authority.",
 ]
+DEFAULT_DETAILED_DESIGN_HARD_GATES = [
+    {
+        "gate": "current_state_material_package",
+        "hard_gate": True,
+        "material_status": "missing",
+        "required_from": "product_owner_or_requirement_proposer",
+        "required_material": (
+            "Current-state material package: current subscription, payment, billing, "
+            "entitlement, split, settlement, payout, and reconciliation flows, with "
+            "process diagrams, screenshots, configuration samples, contract terms, "
+            "invoice/accounting examples, or an explicit greenfield confirmation."
+        ),
+        "pass_condition": (
+            "Product provides referenceable materials, or explicitly confirms there is "
+            "no existing system/manual flow and gives first-release constraints."
+        ),
+        "blocks_until_passed": "Detailed design, API contracts, DDL/schema design, state machines, and engineering breakdown.",
+    },
+    {
+        "gate": "business_rule_position_table",
+        "hard_gate": True,
+        "material_status": "missing",
+        "required_from": "product_owner_with_rule_owner_and_settlement_owner",
+        "required_material": (
+            "Business rule position table: first-release and deferred scope for "
+            "platform fees, service-provider split, rounding residuals, refunds, "
+            "chargebacks, compensation, taxes, settlement conditions, payout failure, "
+            "and reconciliation exceptions."
+        ),
+        "pass_condition": (
+            "Product states whether each rule is in first release, who owns it, and "
+            "which business position applies; deferred rules have explicit boundaries."
+        ),
+        "blocks_until_passed": "Rule model, amount calculation, settlement batch generation, reverse split, and exception handling design.",
+    },
+    {
+        "gate": "system_boundary_contract_table",
+        "hard_gate": True,
+        "material_status": "missing",
+        "required_from": "product_owner_with_platform_relationship_owner_and_agent_service_owner",
+        "required_material": (
+            "System boundary contract table: APIs, events, callbacks, idempotency keys, "
+            "failure recovery, responsibility ownership, and data owners between Agent "
+            "service offering, usage, seat, entitlement, and subscription payment systems."
+        ),
+        "pass_condition": (
+            "Product identifies which system initiates each handoff, which system owns "
+            "the resulting fact, how failures recover, and who owns required fields."
+        ),
+        "blocks_until_passed": "API design, event design, entitlement linkage, usage billing linkage, and end-to-end sequence design.",
+    },
+]
 
 
 def _iso_timestamp(timestamp: datetime | str | None = None) -> str:
@@ -82,6 +134,11 @@ def build_requirements_case_package(
     timestamp: datetime | str | None = None,
 ) -> dict[str, Any]:
     normalized_status = status if status in CASE_STATUSES else str(status or "intake")
+    normalized_soft_evidence = _copy_dict(soft_evidence)
+    normalized_soft_evidence.setdefault(
+        "detailed_design_hard_gates",
+        copy.deepcopy(DEFAULT_DETAILED_DESIGN_HARD_GATES),
+    )
     return {
         "generated_at": _iso_timestamp(timestamp),
         "mode": "requirements_case",
@@ -99,7 +156,7 @@ def build_requirements_case_package(
         "user_stories": _copy_dict_list(user_stories or []),
         "acceptance_functions": _copy_dict_list(acceptance_functions or []),
         "domain_coverage": _copy_dict_list(domain_coverage or []),
-        "soft_evidence": _copy_dict(soft_evidence),
+        "soft_evidence": normalized_soft_evidence,
         "blockers": _copy_dict_list(blockers or []),
         "readiness_next_action": {
             "status": normalized_status,
