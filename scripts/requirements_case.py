@@ -7,6 +7,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from scripts.requirements_review_template import render_reviewable_coverage
+
 
 DEFAULT_REQUIREMENTS_CASE_DIR = Path("wiki/ops/requirements-cases")
 CASE_DATA_START = "<!-- requirements-case-data:start -->"
@@ -253,6 +255,7 @@ def render_requirements_case_markdown(package: dict[str, Any], scan_root: Path |
 
     lines.extend(["", "## Domain Coverage"])
     lines.extend([_coverage_line(item) for item in _domain_coverage(package)] or ["- None"])
+    lines.extend(render_reviewable_coverage(package))
 
     lines.extend(["", "## Roles"])
     lines.extend([_role_line(item) for item in _copy_dict_list(package.get("roles", []))] or ["- None"])
