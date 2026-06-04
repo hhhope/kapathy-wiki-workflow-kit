@@ -118,17 +118,17 @@ created_at: 2026-06-03
 ### Acceptance Extraction
 - {"source": "req-acceptance", "summary": "Defined observable acceptance functions for subscription setup, lifecycle, mixed billing, metering, seats, mandate, renewal retry, dunning, entitlement, split settlement, payout, and traceability."}
 ### Design Clarification Gate
-- {"design_boundary": "没有材料时只能保留需求骨架和待确认项，不能由 AGI 推断现状。", "gate": "current_state_materials", "gate_strength": "hard_before_detailed_design", "hard_gate_ref": "current_state_material_package", "must_clarify": "现有订阅、扣款、账单、权益、分账、结算、出款和对账流程是否已有系统、人工流程、合同或数据样例。", "owner": "requirement_proposer"}
-- {"design_boundary": "需求只确认规则归属、版本和计算顺序；具体表达式和异常规则进入详细设计门禁。", "gate": "rule_detail_materials", "gate_strength": "hard_before_detailed_design", "hard_gate_ref": "business_rule_position_table", "must_clarify": "平台手续费、服务方分账、尾差舍入、退款/拒付/补偿、税费或成本扣减等规则是否进入首版以及具体口径。", "owner": "rule_owner_and_settlement_owner"}
+- {"approval_status": "approved_by_user", "design_boundary": "没有材料时只能保留需求骨架和待确认项，不能由 AGI 推断现状。", "gate": "current_state_materials", "gate_strength": "hard_before_detailed_design", "hard_gate_ref": "current_state_material_package", "must_clarify": "现有订阅、扣款、账单、权益、分账、结算、出款和对账流程是否已有系统、人工流程、合同或数据样例。", "owner": "requirement_proposer"}
+- {"approval_status": "approved_by_user", "design_boundary": "需求只确认规则归属、版本和计算顺序；具体表达式和异常规则进入详细设计门禁。", "gate": "rule_detail_materials", "gate_strength": "hard_before_detailed_design", "hard_gate_ref": "business_rule_position_table", "must_clarify": "平台手续费、服务方分账、尾差舍入、退款/拒付/补偿、税费或成本扣减等规则是否进入首版以及具体口径。", "owner": "rule_owner_and_settlement_owner"}
 - {"design_boundary": "验收只要求状态可流转和可追溯；策略参数不能凭行业默认值生成。", "gate": "lifecycle_policy_materials", "gate_strength": "dependent_before_detailed_design", "must_clarify": "订阅状态、续期日、扣款重试次数和间隔、宽限期、催缴/挽留触发条件、权益降级或暂停策略。", "owner": "billing_ops_owner_and_revenue_recovery_owner"}
-- {"design_boundary": "需求可确认上下文交接，详细接口契约必须等系统边界材料确认。", "gate": "integration_boundary_materials", "gate_strength": "hard_before_detailed_design", "hard_gate_ref": "system_boundary_contract_table", "must_clarify": "AI 服务、服务供给、席位、用量、权益系统与订阅支付平台之间的 API、事件、回调、幂等和失败补偿边界。", "owner": "platform_relationship_owner_and_agent_service_owner"}
+- {"approval_status": "approved_by_user", "design_boundary": "需求可确认上下文交接，详细接口契约必须等系统边界材料确认。", "gate": "integration_boundary_materials", "gate_strength": "hard_before_detailed_design", "hard_gate_ref": "system_boundary_contract_table", "must_clarify": "AI 服务、服务供给、席位、用量、权益系统与订阅支付平台之间的 API、事件、回调、幂等和失败补偿边界。", "owner": "platform_relationship_owner_and_agent_service_owner"}
 - {"design_boundary": "验收只要求链路可追溯和可对账；账务分录、资金状态机和批次规则需要设计前材料。", "gate": "funds_accounting_materials", "gate_strength": "dependent_before_detailed_design", "must_clarify": "支付成功如何入账、资金何时可分账/可结算/可出款、结算批次条件、出款失败处理、对账异常口径。", "owner": "ledger_owner_reconciliation_owner_and_payout_owner"}
 - {"design_boundary": "需求已把该域升为首版完整故事；详细设计不能假设平台主体、商户主体或责任划分。", "gate": "merchant_platform_responsibility_materials", "gate_strength": "dependent_before_detailed_design", "must_clarify": "AI 服务商身份、收款主体、平台账户、能力开通范围、平台与服务商责任边界及版本化协议材料。", "owner": "merchant_profile_owner_capability_owner_and_platform_relationship_owner"}
 - {"design_boundary": "验收要求可追溯；字段级审计模型和证据保留周期需在设计门禁中确认。", "gate": "traceability_and_audit_materials", "gate_strength": "dependent_before_detailed_design", "must_clarify": "哪些对象必须保留版本、生效时间、操作者、来源证据、外部流水号和跨链路追溯 ID。", "owner": "requirement_proposer_with_domain_owners"}
 ### Detailed Design Hard Gates
-- {"blocks_until_passed": "详细设计、API 契约、DDL/表结构、状态机和研发拆解。", "gate": "current_state_material_package", "hard_gate": true, "pass_condition": "产品明确提供可引用材料，或明确确认当前没有存量系统/人工流程并给出首版约束。", "reason": "没有现状材料时，AGI 只能生成需求骨架，不能判断迁移约束、兼容约束或现有职责边界。", "required_from": "product_owner_or_requirement_proposer", "required_material": "现状材料：现有订阅、扣款、账单、权益、分账、结算、出款、对账流程的流程图、系统截图、配置样例、合同口径、账单样例或明确的 greenfield 确认。"}
-- {"blocks_until_passed": "详细设计中的规则模型、金额计算、批次生成、反向分账和异常处理。", "gate": "business_rule_position_table", "hard_gate": true, "pass_condition": "产品明确每类规则是否进入首版、由谁维护、使用什么业务口径；未进入首版的规则必须记录延期边界。", "reason": "验收只确认规则可配置、可追溯和计算顺序；具体金额口径不能用行业默认值补齐。", "required_from": "product_owner_with_rule_owner_and_settlement_owner", "required_material": "规则口径表：平台手续费、服务方分账、尾差舍入、退款、拒付、补偿、税费、结算条件、出款失败和对账异常的首版/非首版边界及计算口径。"}
-- {"blocks_until_passed": "接口设计、事件设计、权限/权益联动、用量计费联动和端到端时序设计。", "gate": "system_boundary_contract_table", "hard_gate": true, "pass_condition": "产品明确每个上下文交接由哪个系统发起、哪个系统承接、失败如何恢复、哪些字段由谁负责。", "reason": "需求可以确认上下文关系，但系统集成契约必须由真实系统边界材料决定。", "required_from": "product_owner_with_platform_relationship_owner_and_agent_service_owner", "required_material": "系统边界表：Agent 服务供给、用量、席位、权益系统与订阅支付平台之间的 API、事件、回调、幂等键、失败补偿、责任归属和数据 owner。"}
+- {"approval_status": "approved_by_user", "approved_at": "2026-06-04", "blocks_until_passed": "详细设计、API 契约、DDL/表结构、状态机和研发拆解。", "gate": "current_state_material_package", "hard_gate": true, "pass_condition": "产品明确提供可引用材料，或明确确认当前没有存量系统/人工流程并给出首版约束。", "reason": "没有现状材料时，AGI 只能生成需求骨架，不能判断迁移约束、兼容约束或现有职责边界。", "required_from": "product_owner_or_requirement_proposer", "required_material": "现状材料：现有订阅、扣款、账单、权益、分账、结算、出款、对账流程的流程图、系统截图、配置样例、合同口径、账单样例或明确的 greenfield 确认。"}
+- {"approval_status": "approved_by_user", "approved_at": "2026-06-04", "blocks_until_passed": "详细设计中的规则模型、金额计算、批次生成、反向分账和异常处理。", "gate": "business_rule_position_table", "hard_gate": true, "pass_condition": "产品明确每类规则是否进入首版、由谁维护、使用什么业务口径；未进入首版的规则必须记录延期边界。", "reason": "验收只确认规则可配置、可追溯和计算顺序；具体金额口径不能用行业默认值补齐。", "required_from": "product_owner_with_rule_owner_and_settlement_owner", "required_material": "规则口径表：平台手续费、服务方分账、尾差舍入、退款、拒付、补偿、税费、结算条件、出款失败和对账异常的首版/非首版边界及计算口径。"}
+- {"approval_status": "approved_by_user", "approved_at": "2026-06-04", "blocks_until_passed": "接口设计、事件设计、权限/权益联动、用量计费联动和端到端时序设计。", "gate": "system_boundary_contract_table", "hard_gate": true, "pass_condition": "产品明确每个上下文交接由哪个系统发起、哪个系统承接、失败如何恢复、哪些字段由谁负责。", "reason": "需求可以确认上下文关系，但系统集成契约必须由真实系统边界材料决定。", "required_from": "product_owner_with_platform_relationship_owner_and_agent_service_owner", "required_material": "系统边界表：Agent 服务供给、用量、席位、权益系统与订阅支付平台之间的 API、事件、回调、幂等键、失败补偿、责任归属和数据 owner。"}
 ### Domain Coverage Matrix
 - {"acceptance_function_ids": ["AF-001", "AF-002", "AF-003", "AF-004", "AF-005", "AF-006", "AF-008", "AF-009", "AF-010", "AF-011"], "aggregate_roots": ["commercial_subscription", "invoice", "price_plan", "billing_schedule", "usage_record", "rating_rule", "seat_assignment", "dunning_case", "grace_period", "retry_schedule"], "contexts": ["commercial_subscription_context", "billing_invoice_context", "usage_rating_context", "revenue_recovery_context"], "coverage_type": "primary", "review_note": "主域覆盖订阅关系、账单、混合计费、续期、重试和催缴。", "subdomain": "billing_revenue", "user_story_ids": ["US-001", "US-002", "US-003", "US-004", "US-005", "US-007", "US-008"]}
 - {"acceptance_function_ids": ["AF-001", "AF-021", "AF-022", "AF-023", "AF-024"], "aggregate_roots": ["merchant", "platform_account", "capability_grant", "service_offering", "platform_relationship"], "contexts": ["merchant_identity_context", "merchant_capability_context", "merchant_service_offering_context", "platform_responsibility_context"], "coverage_type": "full_coverage", "review_note": "用户审核确认 4：商户身份、能力开通、服务供给和平台责任边界进入首版完整故事。", "subdomain": "merchant_platform_relationship", "user_story_ids": ["US-001", "US-017", "US-018", "US-019", "US-020"]}
@@ -145,6 +145,7 @@ created_at: 2026-06-03
 - {"review_focus": "US-010 US-015 US-016 split rule relationship", "status": "clarified", "summary": "User review asked to clarify the agreed rules and relationship among split settlement, split rule, and platform fee stories."}
 - {"review_focus": "detail-design-clarification-gate", "status": "accepted_as_gate", "summary": "User accepted the requirement skeleton and clarified that missing current-state materials must become proposer clarification gates before detailed design, not AGI-inferred design facts."}
 - {"review_focus": "product-hard-design-gates", "status": "accepted_as_hard_gate", "summary": "User asked whether the three missing material packages can become hard gates; case now treats them as product clarification gates that block detailed design but not the already reviewable requirement skeleton."}
+- {"review_focus": "product-hard-design-gates-final-review", "status": "approved", "summary": "User confirmed the three hard design gates are acceptable; case can move from user review to waiting for product-provided gate materials."}
 ### Domain Model
 - {"aggregate_roots": ["commercial_subscription", "invoice", "dunning_case", "payment_intent", "payment_attempt", "ledger_entry", "fund_state", "reconciliation_record", "mandate", "agent_entitlement", "usage_event", "seat_assignment", "split_rule", "settlement_batch", "payout"], "bounded_contexts": ["commercial_subscription_context", "billing_invoice_context", "revenue_recovery_context", "payment_intent_context", "payment_attempt_authorization_context", "balance_ledger_context", "fund_state_context", "reconciliation_context", "mandate_authorization_context", "agent_entitlement_context", "agent_usage_metering_context", "agent_workspace_seat_context", "split_allocation_context", "settlement_batch_context", "payout_context"], "business_ecosystems": ["payment_ecosystem", "agent_service_ecosystem"], "candidates": [], "context_handoffs": [{"from_context": "commercial_subscription_context", "name": "GenerateInvoice", "to_context": "billing_invoice_context", "type": "command"}, {"from_context": "billing_invoice_context", "name": "ChargeInvoice", "to_context": "payment_intent_context", "type": "command"}, {"from_context": "payment_attempt_authorization_context", "name": "PaymentSucceeded", "to_context": "balance_ledger_context", "type": "domain_event"}, {"from_context": "commercial_subscription_context", "name": "CommercialSubscriptionActivated", "to_context": "agent_entitlement_context", "type": "domain_event"}], "fact_owners": ["subscription_owner", "subscription_policy_owner", "billing_ops_owner", "payment_ops_owner", "funds_account_owner", "ledger_owner", "balance_state_owner", "reconciliation_owner", "mandate_owner", "compliance_owner", "agent_entitlement_owner", "access_policy_owner", "usage_rating_owner", "agent_usage_owner", "metering_owner", "workspace_owner", "seat_owner", "split_rule_owner", "settlement_owner", "payout_owner"], "non_domain_terms": ["subscription", "account", "settlement"], "open_questions": ["Confirm first-release payout/split settlement scope."], "role_obligations": ["subscription_owner", "subscription_policy_owner", "billing_ops_owner", "payment_ops_owner", "funds_account_owner", "ledger_owner", "balance_state_owner", "reconciliation_owner", "mandate_owner", "compliance_owner", "agent_entitlement_owner", "access_policy_owner", "usage_rating_owner", "agent_usage_owner", "metering_owner", "workspace_owner", "seat_owner", "split_rule_owner", "settlement_owner", "payout_owner"], "status": "confirmed", "subdomains": ["billing_revenue", "merchant_platform_relationship", "payment_transaction", "account_balance", "funds_movement_settlement", "financial_operations", "risk_compliance", "agent_entitlement", "agent_usage_metering", "agent_workspace_seat"]}
 ### Intake Actors
@@ -187,11 +188,12 @@ created_at: 2026-06-03
 - {"answers": [{"answer": "没错", "question": "US-001 首版是否只做 AI 服务商接入并配置订阅支付关系？"}, {"answer": "确认", "question": "首版是否包含分账、结算批次、出款、平台手续费？"}, {"answer": "确认", "question": "周期扣款授权/委托扣款是否进入首版？"}, {"answer": "确认", "question": "商户身份、能力开通、服务供给、平台责任边界是否升级为完整故事？"}], "confirmed_at": "2026-06-04", "source": "chat_user_review"}
 - {"answers": [{"answer": "可以", "question": "US-010/US-015/US-016 规则关系是否可接受？"}, {"answer": "确认，应泛化到规则以外的详细设计前澄清点。", "question": "缺少现状材料时是否应通过门禁要求需求提出方澄清，而不是由 AGI 推断设计？"}], "confirmed_at": "2026-06-04", "source": "chat_user_design_gate_confirmation_2026_06_04"}
 - {"answers": [{"answer": "可以；作为详细设计前硬门禁，由产品/需求提出方澄清。", "question": "现状材料、规则口径表、系统边界表是否可以变成硬门禁要求产品澄清？"}], "confirmed_at": "2026-06-04", "source": "chat_user_hard_gate_confirmation_2026_06_04"}
+- {"answers": [{"answer": "认可，没问题。", "question": "三项详细设计硬门禁是否认可，可以作为后续要求产品澄清的规则？"}], "confirmed_at": "2026-06-04", "source": "chat_user_hard_gate_final_approval_2026_06_04"}
 
 ## Readiness / Next Action
 - Status: requirements_ready
-- Next action: product_clarify_hard_design_gates
-- Reason: The requirement skeleton remains reviewable, but detailed design is blocked until product clarifies the current-state material package, business rule position table, and system boundary contract table.
+- Next action: await_product_hard_gate_materials
+- Reason: The user approved the three detailed-design hard gates; product/requirement proposer must now provide the current-state material package, business rule position table, and system boundary contract table before detailed design starts.
 ### Blockers
 - None
 
@@ -1468,8 +1470,8 @@ created_at: 2026-06-03
     "These hard gates are product clarification gates for design readiness; they do not invalidate the current requirements_ready skeleton or its acceptance coverage."
   ],
   "readiness_next_action": {
-    "next_action": "product_clarify_hard_design_gates",
-    "reason": "The requirement skeleton remains reviewable, but detailed design is blocked until product clarifies the current-state material package, business rule position table, and system boundary contract table.",
+    "next_action": "await_product_hard_gate_materials",
+    "reason": "The user approved the three detailed-design hard gates; product/requirement proposer must now provide the current-state material package, business rule position table, and system boundary contract table before detailed design starts.",
     "status": "requirements_ready"
   },
   "roles": [
@@ -1790,6 +1792,7 @@ created_at: 2026-06-03
     ],
     "design_clarification_gate": [
       {
+        "approval_status": "approved_by_user",
         "design_boundary": "没有材料时只能保留需求骨架和待确认项，不能由 AGI 推断现状。",
         "gate": "current_state_materials",
         "gate_strength": "hard_before_detailed_design",
@@ -1798,6 +1801,7 @@ created_at: 2026-06-03
         "owner": "requirement_proposer"
       },
       {
+        "approval_status": "approved_by_user",
         "design_boundary": "需求只确认规则归属、版本和计算顺序；具体表达式和异常规则进入详细设计门禁。",
         "gate": "rule_detail_materials",
         "gate_strength": "hard_before_detailed_design",
@@ -1813,6 +1817,7 @@ created_at: 2026-06-03
         "owner": "billing_ops_owner_and_revenue_recovery_owner"
       },
       {
+        "approval_status": "approved_by_user",
         "design_boundary": "需求可确认上下文交接，详细接口契约必须等系统边界材料确认。",
         "gate": "integration_boundary_materials",
         "gate_strength": "hard_before_detailed_design",
@@ -1844,6 +1849,8 @@ created_at: 2026-06-03
     ],
     "detailed_design_hard_gates": [
       {
+        "approval_status": "approved_by_user",
+        "approved_at": "2026-06-04",
         "blocks_until_passed": "详细设计、API 契约、DDL/表结构、状态机和研发拆解。",
         "gate": "current_state_material_package",
         "hard_gate": true,
@@ -1853,6 +1860,8 @@ created_at: 2026-06-03
         "required_material": "现状材料：现有订阅、扣款、账单、权益、分账、结算、出款、对账流程的流程图、系统截图、配置样例、合同口径、账单样例或明确的 greenfield 确认。"
       },
       {
+        "approval_status": "approved_by_user",
+        "approved_at": "2026-06-04",
         "blocks_until_passed": "详细设计中的规则模型、金额计算、批次生成、反向分账和异常处理。",
         "gate": "business_rule_position_table",
         "hard_gate": true,
@@ -1862,6 +1871,8 @@ created_at: 2026-06-03
         "required_material": "规则口径表：平台手续费、服务方分账、尾差舍入、退款、拒付、补偿、税费、结算条件、出款失败和对账异常的首版/非首版边界及计算口径。"
       },
       {
+        "approval_status": "approved_by_user",
+        "approved_at": "2026-06-04",
         "blocks_until_passed": "接口设计、事件设计、权限/权益联动、用量计费联动和端到端时序设计。",
         "gate": "system_boundary_contract_table",
         "hard_gate": true,
@@ -2140,6 +2151,11 @@ created_at: 2026-06-03
         "review_focus": "product-hard-design-gates",
         "status": "accepted_as_hard_gate",
         "summary": "User asked whether the three missing material packages can become hard gates; case now treats them as product clarification gates that block detailed design but not the already reviewable requirement skeleton."
+      },
+      {
+        "review_focus": "product-hard-design-gates-final-review",
+        "status": "approved",
+        "summary": "User confirmed the three hard design gates are acceptable; case can move from user review to waiting for product-provided gate materials."
       }
     ],
     "domain_model": [
@@ -2469,6 +2485,16 @@ created_at: 2026-06-03
         ],
         "confirmed_at": "2026-06-04",
         "source": "chat_user_hard_gate_confirmation_2026_06_04"
+      },
+      {
+        "answers": [
+          {
+            "answer": "认可，没问题。",
+            "question": "三项详细设计硬门禁是否认可，可以作为后续要求产品澄清的规则？"
+          }
+        ],
+        "confirmed_at": "2026-06-04",
+        "source": "chat_user_hard_gate_final_approval_2026_06_04"
       }
     ]
   },
