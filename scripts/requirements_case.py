@@ -7,8 +7,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from scripts.requirements_review_template import render_reviewable_coverage
-
 
 DEFAULT_REQUIREMENTS_CASE_DIR = Path("wiki/ops/requirements-cases")
 CASE_DATA_START = "<!-- requirements-case-data:start -->"
@@ -165,18 +163,12 @@ def _story_line(item: dict[str, Any]) -> str:
     want = str(item.get("want") or item.get("story") or item.get("summary") or "")
     benefit = str(item.get("benefit", ""))
     refs = ", ".join(str(ref) for ref in _as_list(item.get("acceptance_function_ids")))
-    domains = ", ".join(str(ref) for ref in _as_list(item.get("domain_refs")))
-    contexts = ", ".join(str(ref) for ref in _as_list(item.get("context_refs")))
-    aggregates = ", ".join(str(ref) for ref in _as_list(item.get("aggregate_refs")))
     parts = [
         part
         for part in [
             role_part,
             want,
             f"benefit={benefit}" if benefit else "",
-            f"domains={domains}" if domains else "",
-            f"contexts={contexts}" if contexts else "",
-            f"aggregates={aggregates}" if aggregates else "",
             f"acceptance={refs}" if refs else "",
         ]
         if part
@@ -255,7 +247,6 @@ def render_requirements_case_markdown(package: dict[str, Any], scan_root: Path |
 
     lines.extend(["", "## Domain Coverage"])
     lines.extend([_coverage_line(item) for item in _domain_coverage(package)] or ["- None"])
-    lines.extend(render_reviewable_coverage(package))
 
     lines.extend(["", "## Roles"])
     lines.extend([_role_line(item) for item in _copy_dict_list(package.get("roles", []))] or ["- None"])

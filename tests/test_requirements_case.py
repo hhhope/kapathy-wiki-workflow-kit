@@ -80,91 +80,6 @@ class RequirementsCaseTest(unittest.TestCase):
             timestamp="2026-05-29T01:02:03+00:00",
         )
 
-    def _payment_transaction_package(self) -> dict:
-        return build_requirements_case_package(
-            case_slug="agent-subscription-payment",
-            status="requirements_ready",
-            current_intent={"intent": "new_requirement_intake"},
-            domain={
-                "status": "confirmed",
-                "confirmed": "billing_revenue",
-                "candidates": [{"id": "billing_revenue", "reason": "subscription payment"}],
-            },
-            roles=[
-                {
-                    "id": "R-payment-ops-owner",
-                    "mention": "支付交易处理责任方",
-                    "confirmed_as": "payment_ops_owner",
-                    "status": "confirmed",
-                    "evidence_anchor": {"source_section": "原始痛点: 周期扣款"},
-                }
-            ],
-            user_stories=[
-                {
-                    "id": "US-012",
-                    "role_ref": "R-payment-ops-owner",
-                    "want": "作为支付交易处理责任方，我希望订阅账单扣款能够生成支付意图和支付尝试，并收敛出唯一支付结果。",
-                    "benefit": "订阅续费不会停留在账单视角，支付交易状态可以明确驱动权益、入账、催缴和分账。",
-                    "acceptance_function_ids": ["AF-017"],
-                    "domain_refs": ["payment_transaction"],
-                    "context_refs": [
-                        "payment_attempt_authorization_context",
-                        "payment_intent_context",
-                        "payment_method_context",
-                    ],
-                    "aggregate_refs": [
-                        "charge",
-                        "payment_attempt",
-                        "payment_intent",
-                        "payment_method_authorization",
-                    ],
-                    "evidence_anchor": {"source_section": "US-012 / 订阅账单扣款"},
-                }
-            ],
-            acceptance_functions=[
-                {
-                    "id": "AF-017",
-                    "name": "支付意图和支付尝试收敛唯一结果",
-                    "user_story_ids": ["US-012"],
-                    "coverage_types": ["state_change"],
-                    "context_refs": [
-                        "payment_attempt_authorization_context",
-                        "payment_intent_context",
-                        "payment_method_context",
-                    ],
-                    "aggregate_refs": [
-                        "charge",
-                        "payment_attempt",
-                        "payment_intent",
-                        "payment_method_authorization",
-                    ],
-                    "then": "订阅账单发起扣款后，系统创建 payment_intent 和 payment_attempt；支付完成、失败或处理中状态最终收敛为一个可查询的最终结果。",
-                    "source_acceptance": "AC-017",
-                }
-            ],
-            domain_coverage=[
-                {
-                    "subdomain": "payment_transaction",
-                    "coverage_type": "required_payment",
-                    "contexts": [
-                        "payment_attempt_authorization_context",
-                        "payment_intent_context",
-                        "payment_method_context",
-                    ],
-                    "aggregate_roots": [
-                        "charge",
-                        "payment_attempt",
-                        "payment_intent",
-                        "payment_method_authorization",
-                    ],
-                    "user_story_ids": ["US-012"],
-                    "acceptance_function_ids": ["AF-017"],
-                    "review_note": "升级为首版完整故事；首版覆盖支付意图、支付尝试、授权校验和扣款结果收敛。",
-                }
-            ],
-            timestamp="2026-06-04T01:02:03+00:00",
-        )
-
     def test_builds_package_with_mode_status_and_hard_gate_sections(self) -> None:
         package = self._package()
 
@@ -203,23 +118,17 @@ class RequirementsCaseTest(unittest.TestCase):
         self.assertIn("account_balance", markdown)
         self.assertIn("coverage_type=primary", markdown)
 
-    def test_renders_reviewable_json_for_payment_transaction_story(self) -> None:
-        markdown = render_requirements_case_markdown(self._payment_transaction_package(), scan_root=self.tmpdir)
+    def test_story_line_keeps_product_review_fields_only(self) -> None:
+        markdown = render_requirements_case_markdown(self._package(), scan_root=self.tmpdir)
+        story_line = next(line for line in markdown.splitlines() if line.startswith("- US-1:"))
 
-        self.assertIn("## Reviewable Coverage", markdown)
-        self.assertIn('"review_judgment"', markdown)
-        self.assertIn('"coverage_decision": "full_story"', markdown)
-        self.assertIn('"taxonomy_refs"', markdown)
-        self.assertIn('"id": "payment_transaction"', markdown)
-        self.assertIn('"id": "payment_intent_context"', markdown)
-        self.assertIn('"id": "payment_attempt"', markdown)
-        self.assertIn('"meaning"', markdown)
-        self.assertIn('"gate_closure"', markdown)
-        self.assertIn('"domain_model_gate"', markdown)
-        self.assertIn('"human_review_gate"', markdown)
-        self.assertIn('"eval_plan"', markdown)
-        self.assertIn('"red_cases"', markdown)
-        self.assertIn('"green_cases"', markdown)
+        self.assertIn("role=finance", story_line)
+        self.assertIn("review unreconciled account entries", story_line)
+        self.assertIn("benefit=settlement exceptions are resolved before close", story_line)
+        self.assertIn("acceptance=AF-1", story_line)
+        self.assertNotIn("domains=", story_line)
+        self.assertNotIn("contexts=", story_line)
+        self.assertNotIn("aggregates=", story_line)
 
     def test_write_and_load_round_trip_preserves_stories_and_acceptance_functions(self) -> None:
         package = self._package()
