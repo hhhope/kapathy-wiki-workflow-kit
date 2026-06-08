@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2026 年上海市支付结算重点工作段落精读板</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17212b;
+      --muted: #5e6a75;
+      --line: #d7dde3;
+      --paper: #f7f8f5;
+      --panel: #ffffff;
+      --red: #b9342f;
+      --blue: #256f8f;
+      --green: #29765f;
+      --amber: #a86b12;
+      --shadow: 0 18px 44px rgba(23, 33, 43, 0.12);
+    }
+
+    @font-face {
+      font-family: "LocalCJK";
+      src: url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype");
+      font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "LocalCJK", -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: #175d78;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .app {
+      min-height: 100vh;
+      padding: 22px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .hero,
+    .control-panel,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 26px 30px;
+      min-height: 178px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .kicker {
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 8px 0 10px;
+      font-size: clamp(28px, 4vw, 50px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 960px;
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #34414d;
+      background: #fbfbfa;
+    }
+
+    .control-panel {
+      padding: 18px;
+    }
+
+    .control-panel h2,
+    .panel h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .control-panel p,
+    .panel-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .range-wrap {
+      margin-top: 18px;
+    }
+
+    .range-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--red);
+    }
+
+    .mode-buttons,
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .keywords {
+      max-height: 132px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 8px 10px;
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    button.active {
+      border-color: var(--red);
+      background: #fff1ef;
+      color: #8d201c;
+      font-weight: 700;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 310px minmax(0, 1fr) 380px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      min-width: 0;
+      padding: 18px;
+    }
+
+    .panel-head {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .spine {
+      display: grid;
+      gap: 9px;
+      max-height: 720px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .spine-item {
+      width: 100%;
+      text-align: left;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: #fbfbfa;
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 8px;
+    }
+
+    .spine-item.active {
+      background: #fff1ef;
+      border-color: #c94a43;
+    }
+
+    .step {
+      color: var(--red);
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .spine-title {
+      font-weight: 800;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .spine-sub {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .map {
+      min-height: 1420px;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(41, 118, 95, 0.09), rgba(168, 107, 18, 0.08), rgba(185, 52, 47, 0.11)),
+        repeating-linear-gradient(0deg, transparent 0, transparent 66px, rgba(23, 33, 43, 0.06) 67px);
+      overflow: hidden;
+    }
+
+    .axis-labels {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .cursor {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--red);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .map-card {
+      position: absolute;
+      width: 210px;
+      border: 1px solid rgba(23, 33, 43, 0.18);
+      background: rgba(255, 255, 255, 0.94);
+      padding: 10px;
+      box-shadow: 0 8px 22px rgba(23, 33, 43, 0.12);
+      cursor: pointer;
+    }
+
+    .map-card.active {
+      border-color: var(--red);
+      box-shadow: 0 12px 28px rgba(185, 52, 47, 0.22);
+    }
+
+    .map-card .mini {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .map-card h3 {
+      margin: 4px 0 5px;
+      font-size: 14px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .map-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .detail {
+      min-height: 720px;
+    }
+
+    .detail h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .detail .tagline {
+      color: var(--muted);
+      margin: 0 0 14px;
+      font-size: 14px;
+    }
+
+    .detail-section {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+
+    .detail-section h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+
+    .detail-section ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .detail-section li {
+      margin: 6px 0;
+    }
+
+    .evidence {
+      background: #f7f8f5;
+      border-left: 4px solid var(--blue);
+      padding: 10px 12px;
+      color: #2c3a45;
+      font-size: 13px;
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .source-card {
+      border: 1px solid var(--line);
+      padding: 12px;
+      background: #fbfbfa;
+    }
+
+    .source-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .source-card p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    .footnote {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 1180px) {
+      header,
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .spine,
+      .map,
+      .detail {
+        max-height: none;
+        min-height: auto;
+      }
+
+      .map {
+        min-height: 640px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .app {
+        padding: 12px;
+      }
+
+      .hero {
+        padding: 20px;
+      }
+
+      .map-card {
+        width: 170px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <section class="hero">
+        <div>
+          <div class="kicker">内部 H5 草稿 · 段落精读板 · 2026-06-08</div>
+          <h1>2026 年上海市支付结算重点工作</h1>
+          <p class="lead">按源文件 16 个工作段落拆成阅读窗口。左侧保留段落顺序，中间用“服务优化 -> 风险约束”横轴看执行强度，右侧把每段的执行动作和法规原文依据连起来。</p>
+        </div>
+        <div class="meta-row">
+          <span class="pill">来源：上海银发〔2026〕100 号扫描件</span>
+          <span class="pill">模板：李想访谈精读板结构</span>
+          <span class="pill">状态：first draft, not review-ready</span>
+        </div>
+      </section>
+
+      <aside class="control-panel">
+        <h2>阅读控制</h2>
+        <p>拖动游标查看更偏服务优化或更偏合规风控的段落；点关键词只作为索引，不替代段落阅读。</p>
+        <div class="range-wrap">
+          <div class="range-label"><span>服务优化</span><span id="scoreValue">50</span><span>风险约束</span></div>
+          <input id="riskRange" type="range" min="0" max="100" value="50" aria-label="执行强度游标" />
+        </div>
+        <div class="mode-buttons" aria-label="主题筛选">
+          <button class="active" data-mode="all">全部</button>
+          <button data-mode="supervision">强监管</button>
+          <button data-mode="service">提质效</button>
+          <button data-mode="system">系统底线</button>
+          <button data-mode="data">数据研究</button>
+        </div>
+        <div id="keywords" class="keywords"></div>
+      </aside>
+    </header>
+
+    <main>
+      <section class="panel">
+        <div class="panel-head">
+          <h2>监管段落脊柱</h2>
+          <p>按文件顺序读。每个节点对应一个工作段落。</p>
+        </div>
+        <div id="spine" class="spine"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>执行强度地图</h2>
+          <p>横向位置表示服务/风控重心，纵向保持源文件推进顺序。</p>
+        </div>
+        <div class="axis-labels"><span>便民、普惠、效率</span><span>穿透、监测、执法</span></div>
+        <div id="map" class="map"><div id="cursor" class="cursor"></div></div>
+      </section>
+
+      <aside class="panel detail" aria-label="段落展开">
+        <div id="detail"></div>
+      </aside>
+
+      <section class="panel wide">
+        <div class="panel-head">
+          <h2>法规原文索引</h2>
+          <p>本版只保留官方或主责机关来源；正文中用法规 ID 回链。</p>
+        </div>
+        <div id="sources" class="source-grid"></div>
+        <p class="footnote">边界：扫描件正文为人工读图结构化，法规映射为内部讨论草稿；涉及制度落地、客户通知、系统改造和监管报送前，仍需合规/法务确认条款适用和最新口径。</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const regulations = {
+      "Reg-01": {
+        title: "非银行支付机构监督管理条例",
+        url: "https://www.gov.cn/zhengce/content/202312/content_6920724.htm",
+        note: "用于支付机构治理、业务边界、用户权益、备付金与清算边界。"
+      },
+      "Reg-02": {
+        title: "非银行支付机构监督管理条例实施细则",
+        url: "https://www.pbc.gov.cn/zhengwugongkai/4081330/4406346/4406348/2025092319185596862/index.html",
+        note: "用于许可变更、重大事项、备付金安全、用户权益和业务终止安排。"
+      },
+      "Reg-03": {
+        title: "银发〔2021〕259 号：支付受理终端及相关业务管理",
+        url: "https://www.pbc.gov.cn/tiaofasi/144941/3581332/4359567/index.html",
+        note: "用于终端、条码、商户、结算账户、位置和交易信息一致性监测。"
+      },
+      "Reg-04": {
+        title: "银发〔2015〕392 号：改进个人银行账户服务加强账户管理",
+        url: "https://www.pbc.gov.cn/tiaofasi/144941/3581332/3588291/index.html",
+        note: "用于个人账户服务、账户分类管理和账户风险控制的基础依据。"
+      },
+      "Reg-05": {
+        title: "中华人民共和国反电信网络诈骗法",
+        url: "https://www.npc.gov.cn/c2/c30834/202209/t20220902_319186.html",
+        note: "用于客户尽调、异常账户、可疑交易、交易信息真实完整和警银协同。"
+      },
+      "Reg-06": {
+        title: "中华人民共和国数据安全法",
+        url: "https://www.cac.gov.cn/2021-06/11/c_1624994566919140.htm",
+        note: "用于数据全流程安全、风险监测、重要数据评估和最小必要采集。"
+      },
+      "Reg-07": {
+        title: "人民币银行结算账户管理办法",
+        url: "https://www.pbc.gov.cn/redianzhuanti/118742/118666/119015/119762/2873253/index.html",
+        note: "用于银行结算账户开立、使用、变更、撤销和账户资料管理。"
+      },
+      "Reg-08": {
+        title: "中央银行存款账户管理办法",
+        url: "https://www.gov.cn/gongbao/2023/issue_10646/202308/content_6898885.html",
+        note: "用于央行账户服务、全生命周期管理、风险防范和系统应急。"
+      },
+      "Reg-09": {
+        title: "降低小微企业和个体工商户支付手续费的通知",
+        url: "https://www.gov.cn/zhengce/zhengceku/2021-06/26/content_5620936.htm",
+        note: "用于小微、个体工商户支付服务降费让利和服务实体经济。"
+      }
+    };
+
+    const windows = [
+      {
+        id: "p01",
+        step: "P01",
+        mode: "supervision",
+        title: "穿透式监管先看机构本体",
+        source: "严实非银行支付机构穿透式监管",
+        risk: 88,
+        y: 5,
+        summary: "治理结构、股权控制、关联交易、业务连续性、退出安排和用户权益，都不能只看表面材料，要看真实控制和实际经营。",
+        actions: ["建立股权、实控人、董监高、关联方变更清单。", "重大事项前置识别：名称、控制权、注册资本、重要系统、业务范围。", "把许可证、备付金、投诉处罚、整改记录放入持续经营画像。"],
+        evidence: "源文件要求“坚持监管长牙带刺”，并把非银行支付机构监管作为第一组重点。",
+        regs: ["Reg-01", "Reg-02"],
+        keywords: ["穿透监管", "股权", "实控人", "重大事项", "用户权益"]
+      },
+      {
+        id: "p02",
+        step: "P02",
+        mode: "supervision",
+        title: "备付金是安全底线",
+        source: "切实防范化解支付机构客户备付金风险",
+        risk: 96,
+        y: 11,
+        summary: "重点不是账面余额，而是资金是否被挪用、占用、借用，结算户是否与交易和入网信息一致。",
+        actions: ["核对备付金、收单结算账户、虚拟支付账户、商户实名和交易场景。", "对“账外账”、非同名账户、虚假商户、沉淀资金异常做专项排查。", "高风险问题进入自查、整改、清退、处罚或移送线索。"],
+        evidence: "源文件把客户备付金风险放在强监管段落第二位。",
+        regs: ["Reg-01", "Reg-02", "Reg-03"],
+        keywords: ["备付金", "账外账", "结算账户", "虚拟账户", "清退"]
+      },
+      {
+        id: "p03",
+        step: "P03",
+        mode: "supervision",
+        title: "非法支付要从链路上切断",
+        source: "坚决打击整治非法支付活动",
+        risk: 100,
+        y: 17,
+        summary: "无证经营、非法集资、涉赌涉诈、虚假商户、跨境电商收款绕道，都不是单点风险，而是账户、商户、终端、清算和报送共同失守。",
+        actions: ["对非法支付、涉赌涉诈和非法金融活动建立名单、规则和线索移送机制。", "跨境电商收款不得把境内商户拓展、支付指令发起等核心环节规避到境外。", "银行和支付机构不得为非法金融活动提供账户或支付服务。"],
+        evidence: "源文件明确要求打击整治无证经营和非法支付活动。",
+        regs: ["Reg-01", "Reg-03", "Reg-05"],
+        keywords: ["非法支付", "涉赌涉诈", "跨境电商", "虚假商户", "移送"]
+      },
+      {
+        id: "p04",
+        step: "P04",
+        mode: "supervision",
+        title: "收单和预付卡要全链条看",
+        source: "加强收单业务和预付卡业务全链条监管",
+        risk: 90,
+        y: 23,
+        summary: "监管关注点从终端入网扩展到二维码、收款码、特约商户、预付卡、结算账户和交易位置。",
+        actions: ["落实 259 号文的终端、条码、商户和结算账户数据绑定。", "对高风险收单、预付卡、跨境和个人码经营收款做专项监测。", "发现终端、商户、交易位置或结算资金不一致时触发排查和暂停措施。"],
+        evidence: "源文件点名 259 号文并要求强化收单、预付卡和支付清算协会联动。",
+        regs: ["Reg-03"],
+        keywords: ["收单", "预付卡", "二维码", "终端", "位置监测"]
+      },
+      {
+        id: "p05",
+        step: "P05",
+        mode: "supervision",
+        title: "非现场监管先补齐数据接口",
+        source: "加快建设支付机构非现场监管系统",
+        risk: 74,
+        y: 29,
+        summary: "非现场监管不是报表整理，而是上传线路、测试、接口、数据口径、培训和系统稳定性的组合任务。",
+        actions: ["完成系统开发、测试、上线业务培训和数据接入口径确认。", "按阶段联调接口、报文、证书、账户、数据质量和异常回执。", "把非现场数据从临时报送转为可追踪的数据契约。"],
+        evidence: "源文件要求配合人民银行总行完成系统开发、测试和上线业务培训。",
+        regs: ["Reg-02", "Reg-06"],
+        keywords: ["非现场监管", "接口", "上传线路", "数据口径", "培训"]
+      },
+      {
+        id: "p06",
+        step: "P06",
+        mode: "supervision",
+        title: "执法检查要闭环到整改",
+        source: "依法依规开展执法检查",
+        risk: 86,
+        y: 35,
+        summary: "现场检查、日常监管、协会协作和专项排查的结果，要落到问题清单、整改进度、案例剖析和处罚移送。",
+        actions: ["年度检查计划同步人员、系统、数据、访谈和证据清单。", "对历史处罚和同类问题做回头看，避免整改只停在材料层。", "投诉举报、检查、处罚和培训结果进入统一风险台账。"],
+        evidence: "源文件要求依法依规、风险为本、统筹日常监管与现场检查。",
+        regs: ["Reg-01", "Reg-02"],
+        keywords: ["执法检查", "整改", "处罚", "回头看", "台账"]
+      },
+      {
+        id: "p07",
+        step: "P07",
+        mode: "supervision",
+        title: "投诉举报不是客服尾巴",
+        source: "稳妥做好举报投诉处置工作",
+        risk: 68,
+        y: 41,
+        summary: "投诉举报要同时服务消费者权益、风险线索、机构责任和监管统计，不能只做话术闭环。",
+        actions: ["聚焦 12363、客户投诉和举报线索的分类、核查、反馈和复盘。", "对压降投诉、减少重复投诉、保护金融消费者权益设量化指标。", "把非法支付线索和重大风险及时报告或移送。"],
+        evidence: "源文件要求举报投诉处置、压降投诉数量和提升处置质效。",
+        regs: ["Reg-02", "Reg-05"],
+        keywords: ["投诉", "12363", "消费者权益", "举报", "复盘"]
+      },
+      {
+        id: "p08",
+        step: "P08",
+        mode: "service",
+        title: "便利化要落到场景和人群",
+        source: "拓展支付便利化工作",
+        risk: 34,
+        y: 47,
+        summary: "跨境入境、夜市、餐饮、交通、校园、医院和小微商户，都需要可用的卡、现金、移动支付和外籍来沪支付服务。",
+        actions: ["联动跨部门扩大银行卡、现金、移动支付、外卡受理和外籍来沪支付服务。", "对重点场景做服务覆盖、故障响应、支付标识和人员培训。", "把便利性指标和交易安全、投诉、拒收现金风险一起看。"],
+        evidence: "源文件把入境游客、支付便利化和重点场景列为服务实体经济能力的一部分。",
+        regs: ["Reg-09"],
+        keywords: ["支付便利化", "外卡", "现金", "入境", "场景"]
+      },
+      {
+        id: "p09",
+        step: "P09",
+        mode: "service",
+        title: "账户服务要提效，也要解释清楚",
+        source: "持续提升银行账户服务质效",
+        risk: 58,
+        y: 53,
+        summary: "账户管控不能只看风险模型，也要解决开户、变更、被管控账户申诉、账户分类分级和客户解释。",
+        actions: ["优化账户服务流程，降低正常客户开户和恢复使用成本。", "对账户分类分级、异常管控、申诉处理和客户告知建立一致口径。", "持续推进涉赌涉诈风险治理，但避免简单一刀切。"],
+        evidence: "源文件要求优化银行账户服务，同时处理断卡、账户风险和投诉。",
+        regs: ["Reg-04", "Reg-07", "Reg-05"],
+        keywords: ["账户服务", "断卡", "分类分级", "申诉", "解释"]
+      },
+      {
+        id: "p10",
+        step: "P10",
+        mode: "supervision",
+        title: "涉赌涉诈资金链要模型和人工一起管",
+        source: "稳妥受理涉赌涉诈资金链治理",
+        risk: 98,
+        y: 59,
+        summary: "反诈治理要把实名、账户数量、异常账户、可疑交易、交易信息真实完整和警银联动串起来。",
+        actions: ["落实客户尽调、受益所有人识别、异常账户和可疑交易监测。", "完善公安、银行、支付机构、清算机构的线索对接和核验机制。", "推动模型筛查、名单反馈、处置复盘和误伤修正共同运行。"],
+        evidence: "源文件明确要求落实反电信网络诈骗法，强化涉诈涉赌风险防控。",
+        regs: ["Reg-05", "Reg-03"],
+        keywords: ["反诈", "资金链", "异常账户", "可疑交易", "警银联动"]
+      },
+      {
+        id: "p11",
+        step: "P11",
+        mode: "service",
+        title: "普惠支付不能只做线上新增",
+        source: "做深做细普惠支付服务",
+        risk: 28,
+        y: 65,
+        summary: "农村、老人、公共缴费、医疗、餐饮、休闲等场景，需要新工具，也要保留可理解、可操作、可求助的传统路径。",
+        actions: ["优化农村和老年人支付服务，保留现金、柜面、人工协助等必要选择。", "拓展电子支付、银行卡、数字人民币和线上服务，但不强制替代。", "把普惠服务满意度、可达性和异常响应纳入评价。"],
+        evidence: "源文件强调农村、老年人、小程序、医疗、餐饮休闲等多样化支付需求。",
+        regs: ["Reg-09"],
+        keywords: ["普惠支付", "老人", "农村", "数字人民币", "公共缴费"]
+      },
+      {
+        id: "p12",
+        step: "P12",
+        mode: "system",
+        title: "支付清算系统先守稳定运行",
+        source: "强化支付清算系统业务管理和系统建设",
+        risk: 76,
+        y: 71,
+        summary: "系统参与者管理、业务连续性、应急管理、跨境支付通道和清算纪律，是支付系统安全高效运行的底座。",
+        actions: ["检查支付清算系统参与者管理、权限、应急预案和演练。", "关注跨境支付通道、业务连续性保障和系统稳定运行。", "把参与者责任、直连接入和业务培训纳入常态化管理。"],
+        evidence: "源文件第三部分要求确保支付系统安全高效运行。",
+        regs: ["Reg-08"],
+        keywords: ["支付清算", "系统参与者", "业务连续性", "应急", "跨境"]
+      },
+      {
+        id: "p13",
+        step: "P13",
+        mode: "system",
+        title: "央行账户要做生命周期管理",
+        source: "持续优化会计核算服务和央行账户管理",
+        risk: 72,
+        y: 77,
+        summary: "央行账户、ACS 前置、账户使用、系统布置、凭证报表和应急演练，需要从申请到撤销全周期管理。",
+        actions: ["按中央银行存款账户管理办法优化开户、变更、销户和账户使用。", "加强会计核算业务、ACS 前置、报表、证书和凭证管理。", "定期开展低频差错、应急切换和系统演练。"],
+        evidence: "源文件要求优化央行存款账户服务，并加强系统功能升级和会计核算风险防控。",
+        regs: ["Reg-08"],
+        keywords: ["央行账户", "ACS", "会计核算", "凭证", "演练"]
+      },
+      {
+        id: "p14",
+        step: "P14",
+        mode: "system",
+        title: "应急处置要能真实触发",
+        source: "加强系统应急管理和舆情处置信息急处置",
+        risk: 80,
+        y: 83,
+        summary: "系统应急不是写预案，而是应急演练、故障核查、结果不一致处理、舆情响应和常态管理一起跑。",
+        actions: ["建立系统应急演练、故障复盘、核查结果差异处理和信息报告机制。", "加强一线业务培训，拒绝办理、信息处置、异常核查都要有依据。", "把支付清算、央行账户和相关系统纳入统一应急视图。"],
+        evidence: "源文件要求完善应急预案和演练，提升系统异常情况应对能力。",
+        regs: ["Reg-08", "Reg-06"],
+        keywords: ["应急", "舆情", "演练", "故障", "处置"]
+      },
+      {
+        id: "p15",
+        step: "P15",
+        mode: "data",
+        title: "支付数据要先守住质量和安全",
+        source: "加强支付数据管理和信息分析",
+        risk: 70,
+        y: 89,
+        summary: "数据采集、报送、统计、分析和使用都要符合最小必要、安全管理和质量控制要求。",
+        actions: ["按最小必要采集支付业务数据，加强数据质量、准确性和完整性。", "对非银支付机构、银行结算账户和个人账户数据建立统计校验。", "对重要数据、接口、报送和分析输出设置安全边界。"],
+        evidence: "源文件第四部分把支付数据管理与信息分析作为基础支撑。",
+        regs: ["Reg-06"],
+        keywords: ["数据安全", "统计", "报送", "最小必要", "质量"]
+      },
+      {
+        id: "p16",
+        step: "P16",
+        mode: "data",
+        title: "调查研究要回到政策和场景",
+        source: "深入开展支付领域调查研究",
+        risk: 42,
+        y: 95,
+        summary: "围绕金融五篇大文章、重点支付场景、新技术和区域创新做研究，目标是改进政策建议和真实服务能力。",
+        actions: ["围绕支付领域痛点、难点、创新应用和区域实践做专题调研。", "把调研结果转成政策建议、风险提示、产品改造和现场建设任务。", "研究报告要有数据、场景、问题成因和可执行建议。"],
+        evidence: "源文件要求开展支付领域调查研究，服务政策建议和提质增效。",
+        regs: [],
+        keywords: ["调查研究", "五篇大文章", "新技术", "区域创新", "政策建议"]
+      }
+    ];
+
+    let selectedId = windows[0].id;
+    let mode = "all";
+    let keyword = null;
+
+    const spine = document.getElementById("spine");
+    const map = document.getElementById("map");
+    const detail = document.getElementById("detail");
+    const cursor = document.getElementById("cursor");
+    const range = document.getElementById("riskRange");
+    const scoreValue = document.getElementById("scoreValue");
+    const keywordsEl = document.getElementById("keywords");
+
+    function visibleWindows() {
+      return windows.filter((item) => {
+        const modeMatch = mode === "all" || item.mode === mode;
+        const keywordMatch = !keyword || item.keywords.includes(keyword);
+        return modeMatch && keywordMatch;
+      });
+    }
+
+    function renderSpine() {
+      spine.innerHTML = "";
+      visibleWindows().forEach((item, index) => {
+        const button = document.createElement("button");
+        button.className = "spine-item" + (item.id === selectedId ? " active" : "");
+        button.innerHTML = `
+          <span class="step">${item.step}</span>
+          <span>
+            <span class="spine-title">${item.title}</span>
+            <span class="spine-sub">${item.source}</span>
+          </span>`;
+        button.addEventListener("click", () => select(item.id));
+        spine.appendChild(button);
+      });
+    }
+
+    function renderMap() {
+      map.querySelectorAll(".map-card").forEach((el) => el.remove());
+      cursor.style.left = `${range.value}%`;
+      const mapWidth = map.clientWidth || 640;
+      visibleWindows().forEach((item, index) => {
+        const card = document.createElement("article");
+        card.className = "map-card" + (item.id === selectedId ? " active" : "");
+        const left = Math.max(4, Math.min(mapWidth - 220, Math.round((item.risk / 100) * mapWidth) - 105));
+        card.style.left = `${left}px`;
+        card.style.top = `${index * 86 + 14}px`;
+        card.innerHTML = `
+          <div class="mini">${item.step} · ${item.risk}</div>
+          <h3>${item.title}</h3>
+          <p>${item.source}</p>`;
+        card.addEventListener("click", () => select(item.id));
+        map.appendChild(card);
+      });
+    }
+
+    function renderDetail() {
+      const item = windows.find((entry) => entry.id === selectedId) || visibleWindows()[0] || windows[0];
+      selectedId = item.id;
+      const regs = item.regs.length
+        ? item.regs.map((id) => `<li><a href="${regulations[id].url}" target="_blank" rel="noreferrer">${id}：${regulations[id].title}</a><br /><span>${regulations[id].note}</span></li>`).join("")
+        : "<li>本段主要是调研与政策建议任务，没有单一强制法规条款作为唯一依据。</li>";
+      detail.innerHTML = `
+        <h2>${item.step} ${item.title}</h2>
+        <p class="tagline">${item.source}</p>
+        <div class="evidence">${item.evidence}</div>
+        <div class="detail-section">
+          <h3>段落判断</h3>
+          <p>${item.summary}</p>
+        </div>
+        <div class="detail-section">
+          <h3>落地动作</h3>
+          <ul>${item.actions.map((action) => `<li>${action}</li>`).join("")}</ul>
+        </div>
+        <div class="detail-section">
+          <h3>法规原文依据</h3>
+          <ul>${regs}</ul>
+        </div>
+        <div class="detail-section">
+          <h3>关键词索引</h3>
+          <p>${item.keywords.map((tag) => `<button data-keyword="${tag}">${tag}</button>`).join(" ")}</p>
+        </div>`;
+      detail.querySelectorAll("[data-keyword]").forEach((button) => {
+        button.addEventListener("click", () => {
+          keyword = button.dataset.keyword;
+          render();
+        });
+      });
+    }
+
+    function renderKeywords() {
+      const tags = Array.from(new Set(windows.flatMap((item) => item.keywords)));
+      keywordsEl.innerHTML = `<button class="${keyword ? "" : "active"}" data-keyword="">全部关键词</button>` +
+        tags.map((tag) => `<button class="${keyword === tag ? "active" : ""}" data-keyword="${tag}">${tag}</button>`).join("");
+      keywordsEl.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", () => {
+          keyword = button.dataset.keyword || null;
+          const first = visibleWindows()[0];
+          if (first) selectedId = first.id;
+          render();
+        });
+      });
+    }
+
+    function renderSources() {
+      const sources = document.getElementById("sources");
+      sources.innerHTML = Object.entries(regulations).map(([id, reg]) => `
+        <article class="source-card">
+          <strong><a href="${reg.url}" target="_blank" rel="noreferrer">${id} · ${reg.title}</a></strong>
+          <p>${reg.note}</p>
+        </article>
+      `).join("");
+    }
+
+    function select(id) {
+      selectedId = id;
+      render();
+    }
+
+    function render() {
+      const visible = visibleWindows();
+      if (!visible.some((item) => item.id === selectedId) && visible[0]) {
+        selectedId = visible[0].id;
+      }
+      renderSpine();
+      renderMap();
+      renderDetail();
+      renderKeywords();
+    }
+
+    range.addEventListener("input", () => {
+      scoreValue.textContent = range.value;
+      cursor.style.left = `${range.value}%`;
+    });
+
+    document.querySelectorAll("[data-mode]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-mode]").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        mode = button.dataset.mode;
+        const first = visibleWindows()[0];
+        if (first) selectedId = first.id;
+        render();
+      });
+    });
+
+    renderSources();
+    render();
+  </script>
+</body>
+</html>

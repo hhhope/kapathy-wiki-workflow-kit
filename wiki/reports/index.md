@@ -27,6 +27,7 @@ Report pages are audience-oriented outputs or draft workspaces built from source
 - [AI Agent Company Playbook Newspaper H5](agentic-product-engineering-collaboration-company-playbook.html): first-draft standalone H5 comparing OpenAI, Anthropic, Stripe, and Block collaboration modes and translating them into a local operating loop
 - [非银非现场监管简化可信数据区建设 H5](nonbank-psoss-simplified-trusted-data-zone-h5.html): internal training H5 explaining the simplified trusted data zone interaction model, construction requirements, security requirements, and launch/acceptance milestones for small and mid-sized payment institutions
 - [账户组体系新人培训 H5](account-group-onboarding-h5.html): internal H5 onboarding draft explaining the account-group capability map, business chain, active project entries, AI collaboration system, and newcomer growth path.
+- [2026 年上海市支付结算重点工作段落精读板 H5](shanghai-payment-settlement-priorities-2026-h5.html): first-draft internal H5 that splits 上海银发〔2026〕100 号 by paragraph and maps strict compliance work to original regulation sources.
 
 ## Usage Notes
 
