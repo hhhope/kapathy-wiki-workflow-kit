@@ -52,10 +52,7 @@
     }
 
     header {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 360px;
-      gap: 18px;
-      align-items: start;
+      display: block;
       margin-bottom: 18px;
     }
 
@@ -113,6 +110,11 @@
 
     .control-panel {
       padding: 18px;
+      display: grid;
+      grid-template-columns: minmax(180px, 260px) minmax(260px, 360px) minmax(0, 1fr);
+      gap: 10px 18px;
+      align-items: start;
+      margin-bottom: 18px;
     }
 
     .control-panel h2,
@@ -130,7 +132,9 @@
     }
 
     .range-wrap {
-      margin-top: 18px;
+      margin-top: 0;
+      grid-column: 2;
+      grid-row: 1 / span 2;
     }
 
     .range-label {
@@ -151,13 +155,18 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 18px;
+      margin-top: 0;
     }
 
     .keywords {
-      max-height: 132px;
+      grid-column: 3;
+      max-height: 48px;
       overflow: auto;
       padding-right: 4px;
+    }
+
+    .mode-buttons {
+      grid-column: 3;
     }
 
     button {
@@ -379,9 +388,16 @@
     }
 
     @media (max-width: 1180px) {
-      header,
+      .control-panel,
       main {
         grid-template-columns: 1fr;
+      }
+
+      .range-wrap,
+      .mode-buttons,
+      .keywords {
+        grid-column: auto;
+        grid-row: auto;
       }
 
       .spine,
@@ -405,6 +421,10 @@
         padding: 20px;
       }
 
+      .control-panel {
+        padding: 16px;
+      }
+
       .map-card {
         width: 170px;
       }
@@ -426,24 +446,26 @@
           <span class="pill">状态：first draft, not review-ready</span>
         </div>
       </section>
+    </header>
 
-      <aside class="control-panel">
+    <aside class="control-panel">
+      <div>
         <h2>阅读控制</h2>
         <p>拖动游标查看更偏服务优化或更偏合规风控的段落；点关键词只作为索引，不替代段落阅读。</p>
-        <div class="range-wrap">
-          <div class="range-label"><span>服务优化</span><span id="scoreValue">50</span><span>风险约束</span></div>
-          <input id="riskRange" type="range" min="0" max="100" value="50" aria-label="执行强度游标" />
-        </div>
-        <div class="mode-buttons" aria-label="主题筛选">
-          <button class="active" data-mode="all">全部</button>
-          <button data-mode="supervision">强监管</button>
-          <button data-mode="service">提质效</button>
-          <button data-mode="system">系统底线</button>
-          <button data-mode="data">数据研究</button>
-        </div>
-        <div id="keywords" class="keywords"></div>
-      </aside>
-    </header>
+      </div>
+      <div class="range-wrap">
+        <div class="range-label"><span>服务优化</span><span id="scoreValue">50</span><span>风险约束</span></div>
+        <input id="riskRange" type="range" min="0" max="100" value="50" aria-label="执行强度游标" />
+      </div>
+      <div class="mode-buttons" aria-label="主题筛选">
+        <button class="active" data-mode="all">全部</button>
+        <button data-mode="supervision">强监管</button>
+        <button data-mode="service">提质效</button>
+        <button data-mode="system">系统底线</button>
+        <button data-mode="data">数据研究</button>
+      </div>
+      <div id="keywords" class="keywords"></div>
+    </aside>
 
     <main>
       <section class="panel">
@@ -794,12 +816,16 @@
       map.querySelectorAll(".map-card").forEach((el) => el.remove());
       cursor.style.left = `${range.value}%`;
       const mapWidth = map.clientWidth || 640;
-      visibleWindows().forEach((item, index) => {
+      const items = visibleWindows();
+      const cardWidth = window.matchMedia("(max-width: 620px)").matches ? 170 : 210;
+      const rowHeight = 118;
+      map.style.minHeight = `${items.length * rowHeight + 24}px`;
+      items.forEach((item, index) => {
         const card = document.createElement("article");
         card.className = "map-card" + (item.id === selectedId ? " active" : "");
-        const left = Math.max(4, Math.min(mapWidth - 220, Math.round((item.risk / 100) * mapWidth) - 105));
+        const left = Math.max(4, Math.min(mapWidth - cardWidth - 4, Math.round((item.risk / 100) * mapWidth) - Math.round(cardWidth / 2)));
         card.style.left = `${left}px`;
-        card.style.top = `${index * 86 + 14}px`;
+        card.style.top = `${index * rowHeight + 14}px`;
         card.innerHTML = `
           <div class="mini">${item.step} · ${item.risk}</div>
           <h3>${item.title}</h3>
