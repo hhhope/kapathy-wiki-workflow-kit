@@ -36,8 +36,8 @@ created_at: 2026-06-09
 - account_balance: rejected as primary domain; electronic account complaint is risk background, not the requested account/balance lifecycle design
 
 ## Domain Coverage
-- merchant_platform_relationship: coverage_type=primary; contexts=merchant_onboarding_context, merchant_capability_context; aggregates=onboarding_application, capability_grant, merchant; stories=US-001, US-002, US-004, US-005, US-006, US-007; acceptance=AF-001, AF-002, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011; note=merchant opening gate, capability progress, stock merchant targeting, and resend operations are first-release surfaces.
-- risk_compliance: coverage_type=primary; contexts=mandate_authorization_context, compliance_review_context, risk_decision_context; aggregates=authorization_consent, consent_record, compliance_review, risk_rule, risk_decision; stories=US-001, US-002, US-003, US-004, US-005, US-006, US-007; acceptance=AF-001, AF-002, AF-003, AF-004, AF-005, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-012; note=legal representative consent verification, retry/failure behavior, compliance evidence, and skip-policy decisions are primary compliance coverage.
+- merchant_platform_relationship: coverage_type=primary; contexts=merchant_onboarding_context, merchant_capability_context; aggregates=onboarding_application, capability_grant, merchant; stories=US-001, US-002, US-004, US-005, US-006, US-007; acceptance=AF-001, AF-002, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-013; note=merchant opening gate, capability progress, stock merchant targeting, and resend operations are first-release surfaces.
+- risk_compliance: coverage_type=primary; contexts=mandate_authorization_context, compliance_review_context, risk_decision_context; aggregates=authorization_consent, consent_record, compliance_review, risk_rule, risk_decision; stories=US-001, US-002, US-003, US-004, US-005, US-006, US-007; acceptance=AF-001, AF-002, AF-003, AF-004, AF-005, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-012, AF-013; note=legal representative consent verification, retry/failure behavior, compliance evidence, and skip-policy decisions are primary compliance coverage.
 
 ## Roles
 - R-onboarding-owner: 新会员/老前置进件开通流程 owner; confirmed_as=onboarding_owner; status=confirmed; category=fact_owner
@@ -47,11 +47,11 @@ created_at: 2026-06-09
 - R-risk-owner: 短验跳过规则 owner; confirmed_as=risk_owner; status=confirmed; category=fact_owner
 
 ## User Stories
-- US-001: role_ref=R-onboarding-owner; 在新会员 BM/API 入口开通多渠道收款且命中范围时，提交 118 流程前进入等待法人短验，并向法人发送含 H5 链接的短验通知短信; benefit=法人完成真实意愿核验后才继续产品开通，降低电子户开通不知情风险。; acceptance=AF-001, AF-008, AF-009
-- US-002: role_ref=R-onboarding-owner; 在老前置进件机审完成后、发起 83 流程前进入等待法人短验，并向法人发送含 H5 链接的短验通知短信; benefit=老前置链路也能在产品开通前取得法人短信认证。; acceptance=AF-002, AF-008, AF-010
-- US-003: role_ref=R-legal-representative; 通过短信链接进入 H5 页面，手动触发验证码短信并回填验证码; benefit=法人可以完成特约商户开立意愿核验，验证成功后页面进入完成状态且流程可继续。; acceptance=AF-003, AF-004, AF-005, AF-012
-- US-004: role_ref=R-compliance-owner; 按合规提供的存量商户列表一次性批量发送法人短验通知短信，并由研发配合查看短验进展; benefit=存量多渠道收款商户的法人意愿核验可以被核查和追踪，不新增存量进度功能。; acceptance=AF-011
-- US-005: role_ref=R-onboarding-owner; 对等待验证状态的商户在宝付 AD 或融证通 OMS 重新触发法人短验通知短信并重置验证码次数; benefit=验证码过期或法人未完成时，业务侧可以重新发起核验而不是让流程永久卡死。; acceptance=AF-006, AF-007
+- US-001: role_ref=R-onboarding-owner; 在新会员 BM/API 入口开通多渠道收款且命中范围时，提交 118 流程前进入等待法人短验，并向法人发送含 H5 链接的短验通知短信; benefit=法人完成真实意愿核验后才继续产品开通，降低电子户开通不知情风险。; acceptance=AF-001, AF-008, AF-009, AF-013
+- US-002: role_ref=R-onboarding-owner; 在老前置进件机审完成后、发起 83 流程前进入等待法人短验，并向法人发送含 H5 链接的短验通知短信; benefit=老前置链路也能在产品开通前取得法人短信认证。; acceptance=AF-002, AF-008, AF-010, AF-013
+- US-003: role_ref=R-legal-representative; 通过短信链接进入 H5 页面，手动触发验证码短信并回填验证码; benefit=法人可以完成特约商户开立意愿核验，验证成功后页面进入完成状态且流程可继续。; acceptance=AF-003, AF-004, AF-005, AF-012, AF-013
+- US-004: role_ref=R-compliance-owner; 按合规提供的存量商户列表一次性批量发送法人短验通知短信，并由研发配合查看短验进展; benefit=存量多渠道收款商户的法人意愿核验可以被核查和追踪，不新增存量进度功能。; acceptance=AF-011, AF-013
+- US-005: role_ref=R-onboarding-owner; 对等待验证状态的商户在宝付 AD 或融证通 OMS 重新触发法人短验通知短信并重置验证码次数; benefit=验证码过期或法人未完成时，业务侧可以重新发起核验而不是让流程永久卡死。; acceptance=AF-006, AF-007, AF-013
 - US-006: role_ref=R-capability-owner; 在新会员、宝付 AD、新 BM 和老前置 OMS 中展示法人短验等待、已短验、未短验或无需短验进展; benefit=产品开通进度能解释当前卡点并支持运营核查。; acceptance=AF-009, AF-010
 - US-007: role_ref=R-risk-owner; 按代理商 Apollo 配置跳过法人短验，同时保证直客必须短验、代理商本身无需短验; benefit=短验范围可以按业务风险策略落地，并避免误阻断代理商自身或配置允许的代客。; acceptance=AF-008
 
@@ -68,6 +68,7 @@ created_at: 2026-06-09
 - AF-010: legacy_front_progress_shows_legal_sms_status; stories=US-002, US-006; coverage=evidence, state_change; 页面展示“是否法人短验”字段，枚举为“已短验、未短验、无需短验”。
 - AF-011: stock_merchant_batch_sms_requires_compliance_list; stories=US-004; coverage=state_change, handoff, evidence; 按合规提供的存量商户列表一次性发送短验通知短信；不新增存量进度功能，由研发配合查看短验进展。
 - AF-012: completed_link_is_read_only; stories=US-003; coverage=state_change, evidence; 页面不能填写验证码或触发短信，并展示“已完成法人信息核验”。
+- AF-013: sms_templates_match_required_content; stories=US-001, US-002, US-003, US-004, US-005; coverage=evidence; 短验通知短信包含监管身份识别、特约商户真实意愿确认、H5 链接、客服热线和非本人说明；验证码短信包含特约商户开立意愿核验、验证码和 5 分钟有效期。
 
 ## Soft Evidence
 ### Api
@@ -89,7 +90,7 @@ created_at: 2026-06-09
 - "超过 3 次仍未验证成功 blocks H5 resend and asks legal representative to contact Baofoo."
 - "Stock merchant handling is one-time: no new progress-view function; engineering only cooperates with progress lookup."
 ### Test Plan
-- "AF-001 through AF-012 provide observable acceptance functions and story mappings."
+- "AF-001 through AF-013 provide observable acceptance functions and story mappings."
 
 ## Readiness / Next Action
 - Status: requirements_ready
@@ -102,7 +103,7 @@ created_at: 2026-06-09
 ## Evidence Attachments
 ### Analysis
 - `scripts/build_requirements_analysis_agent.py output rejected account_balance as primary-domain false positive`
-### Human Review
+### Human_Review
 - `wiki/ops/requirements-cases/2026-06-09-baofu-legal-sms-human-review.md`
 ### Source
 - `/tmp/baofu-legal-sms-verification-requirement.txt`
@@ -418,6 +419,33 @@ created_at: 2026-06-09
         "US-003"
       ],
       "when": "法人再次打开短验链接页面"
+    },
+    {
+      "aggregate_refs": [
+        "authorization_consent",
+        "consent_record",
+        "onboarding_application"
+      ],
+      "context_refs": [
+        "mandate_authorization_context",
+        "merchant_onboarding_context"
+      ],
+      "coverage_types": [
+        "evidence"
+      ],
+      "given": "系统发送法人短验通知短信或验证码短信",
+      "id": "AF-013",
+      "name": "sms_templates_match_required_content",
+      "source_acceptance": "短信内容",
+      "then": "短验通知短信包含监管身份识别、特约商户真实意愿确认、H5 链接、客服热线和非本人说明；验证码短信包含特约商户开立意愿核验、验证码和 5 分钟有效期。",
+      "user_story_ids": [
+        "US-001",
+        "US-002",
+        "US-003",
+        "US-004",
+        "US-005"
+      ],
+      "when": "法人收到短信并进入验证流程"
     }
   ],
   "active": true,
@@ -473,7 +501,8 @@ created_at: 2026-06-09
         "AF-008",
         "AF-009",
         "AF-010",
-        "AF-011"
+        "AF-011",
+        "AF-013"
       ],
       "aggregate_roots": [
         "onboarding_application",
@@ -509,7 +538,8 @@ created_at: 2026-06-09
         "AF-009",
         "AF-010",
         "AF-011",
-        "AF-012"
+        "AF-012",
+        "AF-013"
       ],
       "aggregate_roots": [
         "authorization_consent",
@@ -744,7 +774,7 @@ created_at: 2026-06-09
       "Stock merchant handling is one-time: no new progress-view function; engineering only cooperates with progress lookup."
     ],
     "test_plan": [
-      "AF-001 through AF-012 provide observable acceptance functions and story mappings."
+      "AF-001 through AF-013 provide observable acceptance functions and story mappings."
     ]
   },
   "status": "requirements_ready",
@@ -753,7 +783,8 @@ created_at: 2026-06-09
       "acceptance_function_ids": [
         "AF-001",
         "AF-008",
-        "AF-009"
+        "AF-009",
+        "AF-013"
       ],
       "aggregate_refs": [
         "onboarding_application",
@@ -788,7 +819,8 @@ created_at: 2026-06-09
       "acceptance_function_ids": [
         "AF-002",
         "AF-008",
-        "AF-010"
+        "AF-010",
+        "AF-013"
       ],
       "aggregate_refs": [
         "onboarding_application",
@@ -824,7 +856,8 @@ created_at: 2026-06-09
         "AF-003",
         "AF-004",
         "AF-005",
-        "AF-012"
+        "AF-012",
+        "AF-013"
       ],
       "aggregate_refs": [
         "authorization_consent",
@@ -849,7 +882,8 @@ created_at: 2026-06-09
     },
     {
       "acceptance_function_ids": [
-        "AF-011"
+        "AF-011",
+        "AF-013"
       ],
       "aggregate_refs": [
         "compliance_review",
@@ -880,7 +914,8 @@ created_at: 2026-06-09
     {
       "acceptance_function_ids": [
         "AF-006",
-        "AF-007"
+        "AF-007",
+        "AF-013"
       ],
       "aggregate_refs": [
         "onboarding_application",
