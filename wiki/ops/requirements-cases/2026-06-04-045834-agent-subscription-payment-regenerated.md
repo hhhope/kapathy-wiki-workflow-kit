@@ -199,6 +199,8 @@ created_at: 2026-06-04
 ## Evidence Attachments
 ### Analysis
 - `scripts/build_requirements_analysis_agent.py --material-file /tmp/agent-subscription-payment-material.md`
+### Human_Review
+- `wiki/ops/requirements-cases/2026-06-09-agent-subscription-payment-human-review.md`
 ### Source
 - `/tmp/agent-subscription-payment-material.md`
 ### Taxonomy
@@ -1452,6 +1454,9 @@ created_at: 2026-06-04
   "evidence_attachments": {
     "analysis": [
       "scripts/build_requirements_analysis_agent.py --material-file /tmp/agent-subscription-payment-material.md"
+    ],
+    "human_review": [
+      "wiki/ops/requirements-cases/2026-06-09-agent-subscription-payment-human-review.md"
     ],
     "source": [
       "/tmp/agent-subscription-payment-material.md"
