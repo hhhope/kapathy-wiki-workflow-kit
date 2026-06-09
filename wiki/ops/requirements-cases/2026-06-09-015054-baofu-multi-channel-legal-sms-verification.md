@@ -50,7 +50,7 @@ created_at: 2026-06-09
 - US-001: role_ref=R-onboarding-owner; 在新会员 BM/API 入口开通多渠道收款且命中范围时，提交 118 流程前进入等待法人短验，并向法人发送含 H5 链接的短验通知短信; benefit=法人完成真实意愿核验后才继续产品开通，降低电子户开通不知情风险。; acceptance=AF-001, AF-008, AF-009
 - US-002: role_ref=R-onboarding-owner; 在老前置进件机审完成后、发起 83 流程前进入等待法人短验，并向法人发送含 H5 链接的短验通知短信; benefit=老前置链路也能在产品开通前取得法人短信认证。; acceptance=AF-002, AF-008, AF-010
 - US-003: role_ref=R-legal-representative; 通过短信链接进入 H5 页面，手动触发验证码短信并回填验证码; benefit=法人可以完成特约商户开立意愿核验，验证成功后页面进入完成状态且流程可继续。; acceptance=AF-003, AF-004, AF-005, AF-012
-- US-004: role_ref=R-compliance-owner; 按合规提供的存量商户列表批量发送法人短验通知短信，并保留可查询的进展证据; benefit=存量多渠道收款商户的法人意愿核验可以被核查和追踪。; acceptance=AF-011
+- US-004: role_ref=R-compliance-owner; 按合规提供的存量商户列表一次性批量发送法人短验通知短信，并由研发配合查看短验进展; benefit=存量多渠道收款商户的法人意愿核验可以被核查和追踪，不新增存量进度功能。; acceptance=AF-011
 - US-005: role_ref=R-onboarding-owner; 对等待验证状态的商户在宝付 AD 或融证通 OMS 重新触发法人短验通知短信并重置验证码次数; benefit=验证码过期或法人未完成时，业务侧可以重新发起核验而不是让流程永久卡死。; acceptance=AF-006, AF-007
 - US-006: role_ref=R-capability-owner; 在新会员、宝付 AD、新 BM 和老前置 OMS 中展示法人短验等待、已短验、未短验或无需短验进展; benefit=产品开通进度能解释当前卡点并支持运营核查。; acceptance=AF-009, AF-010
 - US-007: role_ref=R-risk-owner; 按代理商 Apollo 配置跳过法人短验，同时保证直客必须短验、代理商本身无需短验; benefit=短验范围可以按业务风险策略落地，并避免误阻断代理商自身或配置允许的代客。; acceptance=AF-008
@@ -66,7 +66,7 @@ created_at: 2026-06-09
 - AF-008: agent_skip_policy_applies_only_to_configured_agent_chain; stories=US-001, US-002, US-007; coverage=state_change, handoff, evidence; 代理商本身无需法人短验；配置权限代理商直接或间接拓展的代客可跳过法人短验；直客必须进行法人短验。
 - AF-009: new_member_progress_shows_waiting_legal_sms; stories=US-001, US-006; coverage=evidence, state_change; 审批步骤展示“等待法人短验”阶段。
 - AF-010: legacy_front_progress_shows_legal_sms_status; stories=US-002, US-006; coverage=evidence, state_change; 页面展示“是否法人短验”字段，枚举为“已短验、未短验、无需短验”。
-- AF-011: stock_merchant_batch_sms_requires_compliance_list; stories=US-004; coverage=state_change, handoff, evidence; 每个目标商户形成可追踪的法人短验等待、成功、失败或无需短验进展；存量是否必须发送及 AD 是否新增存量进度查看仍需产品确认。
+- AF-011: stock_merchant_batch_sms_requires_compliance_list; stories=US-004; coverage=state_change, handoff, evidence; 按合规提供的存量商户列表一次性发送短验通知短信；不新增存量进度功能，由研发配合查看短验进展。
 - AF-012: completed_link_is_read_only; stories=US-003; coverage=state_change, evidence; 页面不能填写验证码或触发短信，并展示“已完成法人信息核验”。
 
 ## Soft Evidence
@@ -76,17 +76,18 @@ created_at: 2026-06-09
 - "Scope: multi-channel collection business with business attribute 抖音平台-商品购销、本地生活-商品购销、掌财狸."
 - "New member path waits before 118; legacy front path waits before 83."
 - "H5 code is triggered manually from the link; code SMS is valid for 5 minutes."
+- "Waiting for legal representative SMS verification is an onboarding process stage with no expiry; only the SMS verification code expires."
 - "H5 trigger attempts over 3 without success require Baofoo-side resend."
 - "Baofoo AD and OMS resend reset verification-code attempts only for waiting-verification merchants."
 - "Agent itself needs no verification; configured first-level agent direct clients and second-level agent clients may skip; direct clients must verify."
 ### Detailed Design Hard Gates
-- {"blocks_until_passed": "Detailed design, API contracts, state machines, and engineering breakdown.", "gate": "current_state_material_package", "hard_gate": true, "material_status": "missing", "pass_condition": "Product provides referenceable current-state flows/screens/contracts or explicitly waives each current-state dependency.", "required_from": "product_owner_or_requirement_proposer", "required_material": "Current-state materials for new member BM/API product opening, old front onboarding, 118/83 process entry criteria, SMS channel behavior, current AD/OMS progress pages, and H5 sample attachment."}
-- {"blocks_until_passed": "Rule model, status machine, retry/reset behavior, skip-policy implementation, and acceptance finalization.", "gate": "business_rule_position_table", "hard_gate": true, "material_status": "missing", "pass_condition": "Product confirms first-release rules, deferred rules, owners, and exact rule parameters or explicitly waives them.", "required_from": "product_owner_with_compliance_owner_and_onboarding_owner", "required_material": "Business rule position table for scope predicates, stock merchant handling, skip policy, resend reset semantics, retry counters, expiration rules, waiting timeout/no-timeout rule, and progress enums."}
-- {"blocks_until_passed": "API design, event/callback design, table/schema design, and integration breakdown.", "gate": "system_boundary_contract_table", "hard_gate": true, "material_status": "missing", "pass_condition": "Product identifies initiator, fact owner, API/event/callback boundary, idempotency/retry behavior, and failure recovery for each handoff.", "required_from": "product_owner_with_member_group_account_group_compliance_and_sms_channel_owner", "required_material": "System boundary contract table for new member, old front, AD, OMS, H5, SMS channels, Apollo skip config, 118/83 workflow handoff, stock batch sender, and progress-query ownership."}
+- {"blocks_until_passed": "Detailed design, API contracts, state machines, and engineering breakdown.", "gate": "current_state_material_package", "hard_gate": true, "material_status": "missing", "pass_condition": "Product provides referenceable current-state flows/screens/contracts or explicitly waives each current-state dependency.", "required_from": "product_owner_or_requirement_proposer", "required_material": "For detailed design: current 118/83 entry points, existing new-member and old-front progress/status fields, current AD/OMS operation locations, SMS channel template/sending constraints, and the H5 page sample or confirmed no-sample boundary."}
+- {"blocks_until_passed": "Rule model, status machine, retry/reset behavior, skip-policy implementation, and acceptance finalization.", "gate": "business_rule_position_table", "hard_gate": true, "material_status": "missing", "pass_condition": "Product confirms first-release rules, deferred rules, owners, and exact rule parameters or explicitly waives them.", "required_from": "product_owner_with_compliance_owner_and_onboarding_owner", "required_material": "For detailed design: exact scope predicates, skip-policy matching order, waiting status enum, code validity, H5 trigger limit, Baofoo-side resend reset semantics, stock one-time handling, and progress enum mapping."}
+- {"blocks_until_passed": "API design, event/callback design, table/schema design, and integration breakdown.", "gate": "system_boundary_contract_table", "hard_gate": true, "material_status": "missing", "pass_condition": "Product identifies initiator, fact owner, API/event/callback boundary, idempotency/retry behavior, and failure recovery for each handoff.", "required_from": "product_owner_with_member_group_account_group_compliance_and_sms_channel_owner", "required_material": "For detailed design: owner and handoff table for new member, old front, AD, OMS, H5, SMS channel, Apollo config, 118/83 workflow continuation, and one-time stock batch progress lookup."}
 ### Exception Scenarios
 - "验证码有误或验证码超时 prompts retry."
 - "超过 3 次仍未验证成功 blocks H5 resend and asks legal representative to contact Baofoo."
-- "存量商户是否必须短验 and whether AD needs a stock progress view remain confirmation items."
+- "Stock merchant handling is one-time: no new progress-view function; engineering only cooperates with progress lookup."
 ### Test Plan
 - "AF-001 through AF-012 provide observable acceptance functions and story mappings."
 
@@ -95,7 +96,6 @@ created_at: 2026-06-09
 - Next action: run_requirements_checker
 - Reason: Hard-gate validation belongs to the requirements checker lifecycle.
 ### Blockers
-- stock-merchant-scope-unconfirmed: 待确认存量商户是否必须发送验证码；若需要，AD 是否新增存量短验进度查看仍需产品确认。
 - flowchart-missing: 流程图待补充，当前只能按文字触发点记录流程阻断与继续条件。
 - h5-attachment-missing: 页面样例附件未随本次聊天提供，H5 细节只能按文字规则记录。
 
@@ -388,8 +388,8 @@ created_at: 2026-06-09
       "given": "合规提供存量需发送短信的商户列表",
       "id": "AF-011",
       "name": "stock_merchant_batch_sms_requires_compliance_list",
-      "source_acceptance": "场景三、待确认存量商户是否需要发送验证码",
-      "then": "每个目标商户形成可追踪的法人短验等待、成功、失败或无需短验进展；存量是否必须发送及 AD 是否新增存量进度查看仍需产品确认。",
+      "source_acceptance": "场景三、2026-06-08 会议确认存量为一次性事项不新增功能",
+      "then": "按合规提供的存量商户列表一次性发送短验通知短信；不新增存量进度功能，由研发配合查看短验进展。",
       "user_story_ids": [
         "US-004"
       ],
@@ -420,10 +420,6 @@ created_at: 2026-06-09
   ],
   "active": true,
   "blockers": [
-    {
-      "id": "stock-merchant-scope-unconfirmed",
-      "reason": "待确认存量商户是否必须发送验证码；若需要，AD 是否新增存量短验进度查看仍需产品确认。"
-    },
     {
       "id": "flowchart-missing",
       "reason": "流程图待补充，当前只能按文字触发点记录流程阻断与继续条件。"
@@ -596,9 +592,6 @@ created_at: 2026-06-09
       "Apollo"
     ],
     "open_questions": [
-      "存量商户是否必须发送验证码？",
-      "若存量商户需要短验，AD 是否新增功能查看存量商户短验进度？",
-      "不填写验证码一直等待是否存在运营超时、提醒、关闭或人工处理策略？",
       "验证码次数重置是重置 H5 触发次数、验证码校验次数，还是两者都重置？",
       "短验通知短信中的链接 token、有效期、幂等和访问安全规则是什么？"
     ],
@@ -706,6 +699,7 @@ created_at: 2026-06-09
       "Scope: multi-channel collection business with business attribute 抖音平台-商品购销、本地生活-商品购销、掌财狸.",
       "New member path waits before 118; legacy front path waits before 83.",
       "H5 code is triggered manually from the link; code SMS is valid for 5 minutes.",
+      "Waiting for legal representative SMS verification is an onboarding process stage with no expiry; only the SMS verification code expires.",
       "H5 trigger attempts over 3 without success require Baofoo-side resend.",
       "Baofoo AD and OMS resend reset verification-code attempts only for waiting-verification merchants.",
       "Agent itself needs no verification; configured first-level agent direct clients and second-level agent clients may skip; direct clients must verify."
@@ -718,7 +712,7 @@ created_at: 2026-06-09
         "material_status": "missing",
         "pass_condition": "Product provides referenceable current-state flows/screens/contracts or explicitly waives each current-state dependency.",
         "required_from": "product_owner_or_requirement_proposer",
-        "required_material": "Current-state materials for new member BM/API product opening, old front onboarding, 118/83 process entry criteria, SMS channel behavior, current AD/OMS progress pages, and H5 sample attachment."
+        "required_material": "For detailed design: current 118/83 entry points, existing new-member and old-front progress/status fields, current AD/OMS operation locations, SMS channel template/sending constraints, and the H5 page sample or confirmed no-sample boundary."
       },
       {
         "blocks_until_passed": "Rule model, status machine, retry/reset behavior, skip-policy implementation, and acceptance finalization.",
@@ -727,7 +721,7 @@ created_at: 2026-06-09
         "material_status": "missing",
         "pass_condition": "Product confirms first-release rules, deferred rules, owners, and exact rule parameters or explicitly waives them.",
         "required_from": "product_owner_with_compliance_owner_and_onboarding_owner",
-        "required_material": "Business rule position table for scope predicates, stock merchant handling, skip policy, resend reset semantics, retry counters, expiration rules, waiting timeout/no-timeout rule, and progress enums."
+        "required_material": "For detailed design: exact scope predicates, skip-policy matching order, waiting status enum, code validity, H5 trigger limit, Baofoo-side resend reset semantics, stock one-time handling, and progress enum mapping."
       },
       {
         "blocks_until_passed": "API design, event/callback design, table/schema design, and integration breakdown.",
@@ -736,13 +730,13 @@ created_at: 2026-06-09
         "material_status": "missing",
         "pass_condition": "Product identifies initiator, fact owner, API/event/callback boundary, idempotency/retry behavior, and failure recovery for each handoff.",
         "required_from": "product_owner_with_member_group_account_group_compliance_and_sms_channel_owner",
-        "required_material": "System boundary contract table for new member, old front, AD, OMS, H5, SMS channels, Apollo skip config, 118/83 workflow handoff, stock batch sender, and progress-query ownership."
+        "required_material": "For detailed design: owner and handoff table for new member, old front, AD, OMS, H5, SMS channel, Apollo config, 118/83 workflow continuation, and one-time stock batch progress lookup."
       }
     ],
     "exception_scenarios": [
       "验证码有误或验证码超时 prompts retry.",
       "超过 3 次仍未验证成功 blocks H5 resend and asks legal representative to contact Baofoo.",
-      "存量商户是否必须短验 and whether AD needs a stock progress view remain confirmation items."
+      "Stock merchant handling is one-time: no new progress-view function; engineering only cooperates with progress lookup."
     ],
     "test_plan": [
       "AF-001 through AF-012 provide observable acceptance functions and story mappings."
@@ -858,7 +852,7 @@ created_at: 2026-06-09
         "consent_record",
         "merchant"
       ],
-      "benefit": "存量多渠道收款商户的法人意愿核验可以被核查和追踪。",
+      "benefit": "存量多渠道收款商户的法人意愿核验可以被核查和追踪，不新增存量进度功能。",
       "context_refs": [
         "compliance_review_context",
         "mandate_authorization_context",
@@ -876,7 +870,7 @@ created_at: 2026-06-09
       },
       "id": "US-004",
       "role_ref": "R-compliance-owner",
-      "want": "按合规提供的存量商户列表批量发送法人短验通知短信，并保留可查询的进展证据"
+      "want": "按合规提供的存量商户列表一次性批量发送法人短验通知短信，并由研发配合查看短验进展"
     },
     {
       "acceptance_function_ids": [
