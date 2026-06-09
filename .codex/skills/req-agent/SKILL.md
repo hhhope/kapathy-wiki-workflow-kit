@@ -59,12 +59,19 @@ Worker routing:
 - `req-scope`: roles, ownership, boundaries, and unknowns after domain analysis.
 - `req-stories`: user stories with role, want, and benefit.
 - `req-acceptance`: observable acceptance functions and story mappings.
+- `req-human-review`: human-readable review artifact, scenario/rule coverage,
+  gap classification, and machine-case synchronization before handoff.
 - `req-handoff`: readiness gate and OpenSpec draft creation.
 
 Boundaries:
 
 - Do not ask the user to run Python as the normal path.
 - Do not force unknown domains or roles into existing taxonomy IDs.
+- Do not skip `req-human-review` before handoff when the user asks for a human
+  readable requirements review or when a Human Review artifact exists.
+- Do not let Human Review become a second source of truth: demand facts that
+  change domain, scope, stories, acceptance, roles, readiness, or blockers must
+  be synchronized into the requirements case.
 - Do not mutate requirements taxonomy, wiki taxonomy, AGENTS, skills, or
   OpenSpec lifecycle state unless the active OpenSpec change explicitly scopes
   it.
