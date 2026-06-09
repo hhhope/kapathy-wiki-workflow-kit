@@ -42,7 +42,7 @@ derived_from:
 | `payment_transaction` | 支付意图、支付订单、渠道交易、退款、交易状态、交易时间、支付方式授权结果 |
 | `risk_compliance` | 签约协议、扣款授权、银行卡认证、身份信息、风控参数、终端风险信号、合规证据 |
 | `funds_movement_settlement` | 分账、代付、转账、结算金额、收款方、批次、资金划拨 |
-| `account_balance` | 资金账户、付款账户、出资账户、余额或账务状态引用 |
+| `account_balance` | 资金账户、账户类型、可用余额、不可用余额、冻结/保留余额、余额流水、可用时间、余额状态 |
 | `financial_operations` | 账单、对账下载、费用、手续费、渠道响应、异常备注、财务运营证据 |
 | `gateway_common_contract` | 请求时间、回调地址、通知类型、保留域、业务参数集合等网关公共协议字段 |
 
@@ -158,12 +158,48 @@ derived_from:
 
 ### account_balance
 
+当前原表只覆盖了账户引用，缺少真正的余额事实。按微信支付和 Stripe 的账户余额模型看，`account_balance` 至少应覆盖两层：
+
+| 层级 | 含义 | 外部参照 |
+|---|---|---|
+| 账户余额快照 | 某个资金账户在某个时点的可用、不可用、冻结、保留或待结算资金状态 | 微信支付实时余额查询返回账户类型、可用余额、不可用余额；Stripe Balance 对象区分 `available` 和 `pending` |
+| 余额流水/账务影响 | 每一笔交易、退款、转账、费用、提现等动作如何增加或减少余额；必须表达原始金额、费用、净额影响 | Stripe Balance Transaction 有 `amount`、`fee`、`net`、`status`、`available_on`、`source`、`type` |
+
+#### 已有字段归属
+
 | 字段 | 原定义 | 建议领域 | 解释与边界 |
 |---|---|---|---|
-| `payer_account_no` | 付款账户号 | `account_balance` | 付款账户标识，表达资金账户引用。当前只有账号，没有余额、冻结、记账分录。 |
-| `payer_account_type` | 付款账户类型 | `account_balance` | 付款账户类型，服务于资金账户识别。 |
-| `account_type` | 资金账户类型 | `account_balance` | 申请资金账单时使用的资金账户类型。 |
-| `refund_fund_account_type` | 出资账户类型 | `account_balance` | 退款出资账户类型，涉及退款资金从哪个账户类型出。 |
+| `payer_account_no` | 付款账户号 | `account_balance` | 付款账户标识，表达资金从哪个账户出。当前只有账号，没有余额、冻结、可用时间或记账分录。 |
+| `payer_account_type` | 付款账户类型 | `account_balance` | 付款账户类型，服务于资金账户识别；应和余额账户类型字典统一。 |
+| `account_type` | 资金账户类型 | `account_balance` | 申请资金账单或余额查询时使用的资金账户类型。可参考微信支付的基本账户、运营账户、手续费账户、保证金账户这类账户类型分层。 |
+| `refund_fund_account_type` | 出资账户类型 | `account_balance` | 退款出资账户类型，表示退款从哪类资金账户出。主领域是账户余额，退款场景是次领域。 |
+
+#### 建议补充字段
+
+这些字段当前原表没有，但如果要把“账户和余额领域”补全，应作为候选字段登记：
+
+| 建议字段 | 中文名 | 建议领域 | 解释与边界 |
+|---|---|---|---|
+| `balance_account_no` | 余额账户号 | `account_balance` | 平台内部资金账户标识。不要和商户号、渠道商户号混用。 |
+| `balance_account_type` | 余额账户类型 | `account_balance` | 账户类型，如基本账户、运营账户、手续费账户、保证金账户、分账接收账户等。 |
+| `available_amount` | 可用余额 | `account_balance` | 当前可提现、可出款或可用于资金动作的余额。支付成功金额不能直接等于可用余额。 |
+| `pending_amount` | 待可用余额 | `account_balance` | 已进入账户但尚不可用的余额，可对应待结算、在途或未到可用时间的资金。 |
+| `unavailable_amount` | 不可用余额 | `account_balance` | 不可用于提现或出款的余额。可作为微信支付“不可用余额”口径的通用字段。 |
+| `frozen_amount` | 冻结余额 | `account_balance` | 因风险、争议、保证金、规则限制等被冻结的资金。若冻结原因来自风控，次领域为 `risk_compliance`。 |
+| `reserved_amount` | 保留余额 | `account_balance` | 预留、保证金、最低留存、网络规则保留等不能立即出款的余额。 |
+| `instant_available_amount` | 即时可用余额 | `account_balance` | 可即时转出或加速提现的余额。若一期没有即时出款能力，可先不登记。 |
+| `balance_currency` | 余额币种 | `account_balance` | 余额金额对应币种。不要直接复用交易币种，跨币种清结算时二者可能不同。 |
+| `balance_snapshot_time` | 余额快照时间 | `account_balance` | 余额查询或余额快照生成时间，用于判断余额是否实时。 |
+| `available_on` | 预计可用时间 | `account_balance` | 待可用资金预计变为可用的时间。Stripe 余额流水用这个表达净资金可用日期。 |
+| `balance_transaction_no` | 余额流水号 | `account_balance` | 余额变化流水标识，用于连接交易、退款、转账、费用和账户余额变化。 |
+| `balance_transaction_type` | 余额流水类型 | `account_balance` | 余额变化类型，如支付入账、退款出账、提现、转账、手续费、保留释放等。 |
+| `balance_transaction_status` | 余额流水状态 | `account_balance` | 余额流水对余额的影响状态，如待可用、已可用、失败、冲正。 |
+| `balance_source_no` | 余额来源单号 | `account_balance` | 触发余额变化的来源对象，如支付单、退款单、转账单、提现单、费用单。 |
+| `gross_amount` | 入账/出账原始金额 | `account_balance` | 余额流水原始金额。可为正或负，表示资金进入或流出。 |
+| `fee_amount` | 费用金额 | `account_balance` | 影响净额的手续费或平台费。费用核算次领域为 `financial_operations`。 |
+| `net_amount` | 余额净影响金额 | `account_balance` | 一笔余额流水对账户余额的最终净影响。不要只看交易金额；手续费、平台费、退款、冲正、汇兑、保留释放等都可能改变净额。 |
+| `balance_after_amount` | 变动后余额 | `account_balance` | 本次余额流水入账或出账后的账户余额。用于对账和审计；如底层系统不提供，可作为派生字段或不登记。 |
+| `source_type` | 余额来源类型 | `account_balance` | 余额按来源支付方式或资金来源拆分，如银行卡、卡支付、账户余额、分账等。 |
 
 ### financial_operations
 
@@ -197,7 +233,7 @@ derived_from:
 
 1. `AUTH` 分类已定义，但实际认证、签约、授权字段大多放在 `支付类`，例如 `bank_card_auth_info`、`payment_protocol_list`、`period_rule_params`。
 2. `store_id`、`store_name` 这类字段出现在支付接口里，但字段事实不是支付订单，而是商户经营资源。
-3. `payer_account_no`、`account_type` 这类账户字段当前只是账户引用，不足以构成完整 `account_balance` 需求。
+3. `payer_account_no`、`account_type` 这类账户字段当前只是账户引用，不足以构成完整 `account_balance` 需求；还应补可用余额、不可用余额、冻结/保留余额、余额流水和净额影响字段。
 4. `refund_fee`、`transfer_fee`、`billing_merchant_id`、`fee_bearer_merchant_id` 已经显露费用/计费/财务运营语义，不宜只归为金额类或标识类。
 5. 保留域、`biz_content`、回调地址等字段必须保持网关公共契约身份，不能为追求领域拆分而硬归类。
 
@@ -212,3 +248,17 @@ derived_from:
 | `settlement_total` | 金额类 | `funds_movement_settlement` | `financial_operations` | false | 应结金额，不等同于支付金额。 |
 | `request_time` | 时间类 | `gateway_common_contract` |  | true | 请求协议时间，不是业务生命周期状态。 |
 | `biz_content` | 支付类 | `gateway_common_contract` |  | true | 参数承载结构，不应作为业务事实字段。 |
+| `available_amount` | 金额类 | `account_balance` | `funds_movement_settlement` | false | 可用余额，表达账户资金状态，不等同于支付成功金额。 |
+| `pending_amount` | 金额类 | `account_balance` | `funds_movement_settlement` | false | 待可用或不可用余额，需结合账户口径确认是否等同冻结、在途或待结算。 |
+| `balance_transaction_no` | 单号类 | `account_balance` | `financial_operations` | false | 余额变化流水号，用于追踪交易、费用、退款、提现对余额的净影响。 |
+| `gross_amount` | 金额类 | `account_balance` | `financial_operations` | false | 余额流水原始金额，应和 `fee_amount`、`net_amount` 成组看。 |
+| `fee_amount` | 金额类 | `account_balance` | `financial_operations` | false | 余额流水费用金额，影响净额。 |
+| `net_amount` | 金额类 | `account_balance` | `financial_operations` | false | 余额流水对账户余额的最终净影响，是账户余额领域的核心字段。 |
+
+## 外部参照
+
+| 来源 | 可借鉴点 | 使用边界 |
+|---|---|---|
+| [微信支付：查询账户实时余额](https://pay.wechatpay.cn/doc/v3/partner/4012721477) | 余额查询按账户类型进入，返回可用余额和不可用余额；账户类型包括基本账户、运营账户、手续费账户等 | 只借鉴账户类型和余额状态口径，不直接搬微信字段到统一网关 |
+| [Stripe Balance](https://docs.stripe.com/api/balance) | 余额对象区分 `available` 和 `pending`，并按币种、资金来源类型拆分 | 适合验证“支付成功不等于可用余额”的建模边界 |
+| [Stripe Balance Transaction](https://docs.stripe.com/api/balance_transactions/object) | 余额流水记录资金进出、费用、净额、可用时间、状态、来源对象和类型 | 适合补齐余额流水，而不是只维护余额快照 |
