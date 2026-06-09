@@ -102,6 +102,8 @@ created_at: 2026-06-09
 ## Evidence Attachments
 ### Analysis
 - `scripts/build_requirements_analysis_agent.py output rejected account_balance as primary-domain false positive`
+### Human Review
+- `wiki/ops/requirements-cases/2026-06-09-baofu-legal-sms-human-review.md`
 ### Source
 - `/tmp/baofu-legal-sms-verification-requirement.txt`
 ### Taxonomy
@@ -611,6 +613,9 @@ created_at: 2026-06-09
   "evidence_attachments": {
     "analysis": [
       "scripts/build_requirements_analysis_agent.py output rejected account_balance as primary-domain false positive"
+    ],
+    "human_review": [
+      "wiki/ops/requirements-cases/2026-06-09-baofu-legal-sms-human-review.md"
     ],
     "source": [
       "/tmp/baofu-legal-sms-verification-requirement.txt"
