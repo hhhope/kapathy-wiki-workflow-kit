@@ -36,8 +36,8 @@ created_at: 2026-06-09
 - account_balance: rejected as primary domain; electronic account complaint is risk background, not the requested account/balance lifecycle design
 
 ## Domain Coverage
-- merchant_platform_relationship: coverage_type=primary; contexts=merchant_onboarding_context, merchant_capability_context; aggregates=onboarding_application, capability_grant, merchant; stories=US-001, US-002, US-004, US-005, US-006, US-007; acceptance=AF-001, AF-002, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-013; note=merchant opening gate, capability progress, stock merchant targeting, and resend operations are first-release surfaces.
-- risk_compliance: coverage_type=primary; contexts=mandate_authorization_context, compliance_review_context, risk_decision_context; aggregates=authorization_consent, consent_record, compliance_review, risk_rule, risk_decision; stories=US-001, US-002, US-003, US-004, US-005, US-006, US-007; acceptance=AF-001, AF-002, AF-003, AF-004, AF-005, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-012, AF-013; note=legal representative consent verification, retry/failure behavior, compliance evidence, and skip-policy decisions are primary compliance coverage.
+- merchant_platform_relationship: coverage_type=primary; contexts=merchant_onboarding_context, merchant_capability_context; aggregates=onboarding_application, capability_grant, merchant; stories=US-001, US-002, US-004, US-005, US-006, US-007, US-008, US-009, US-010; acceptance=AF-001, AF-002, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-013, AF-014, AF-015, AF-016; note=merchant opening gate, capability progress, stock merchant targeting, and resend operations are first-release surfaces.
+- risk_compliance: coverage_type=primary; contexts=mandate_authorization_context, compliance_review_context, risk_decision_context; aggregates=authorization_consent, consent_record, compliance_review, risk_rule, risk_decision; stories=US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010; acceptance=AF-001, AF-002, AF-003, AF-004, AF-005, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-012, AF-013, AF-014, AF-015, AF-016; note=legal representative consent verification, retry/failure behavior, compliance evidence, and skip-policy decisions are primary compliance coverage.
 
 ## Roles
 - R-onboarding-owner: 新会员/老前置进件开通流程 owner; confirmed_as=onboarding_owner; status=confirmed; category=fact_owner
@@ -54,6 +54,9 @@ created_at: 2026-06-09
 - US-005: role_ref=R-onboarding-owner; 对等待验证状态的商户在宝付 AD 或融证通 OMS 重新触发法人短验通知短信并重置验证码次数; benefit=验证码过期或法人未完成时，业务侧可以重新发起核验而不是让流程永久卡死。; acceptance=AF-006, AF-007, AF-013
 - US-006: role_ref=R-capability-owner; 在新会员、宝付 AD、新 BM 和老前置 OMS 中展示法人短验等待、已短验、未短验或无需短验进展; benefit=产品开通进度能解释当前卡点并支持运营核查。; acceptance=AF-009, AF-010
 - US-007: role_ref=R-risk-owner; 按代理商 Apollo 配置跳过法人短验，同时保证直客必须短验、代理商本身无需短验; benefit=短验范围可以按业务风险策略落地，并避免误阻断代理商自身或配置允许的代客。; acceptance=AF-008
+- US-008: role_ref=R-risk-owner; 不命中首版范围的商户不进入法人短验，也不阻断 118 / 83; benefit=避免把合规短验扩大到范围外商户，造成误阻断。; acceptance=AF-014
+- US-009: role_ref=R-onboarding-owner; 非等待法人短验状态不能触发宝付 AD / 融证通 OMS 法人短验重发; benefit=避免已完成、无需短验或范围外商户被重复发送短信。; acceptance=AF-015
+- US-010: role_ref=R-capability-owner; 短验状态在 H5、AD、新 BM 和 OMS 的展示与阻断口径保持一致; benefit=评审和运营可以判断当前到底是等待、已短验、无需短验还是 H5 超限待宝付重发。; acceptance=AF-009, AF-010, AF-016
 
 ## Acceptance Functions
 - AF-001: new_member_waits_for_legal_sms_before_118; stories=US-001; coverage=state_change, handoff, evidence; 系统发送含 H5 链接的短验通知短信给法人，产品开通停留在等待法人短验，法人验证成功前不提交后续 118 流程。
@@ -69,6 +72,9 @@ created_at: 2026-06-09
 - AF-011: stock_merchant_batch_sms_requires_compliance_list; stories=US-004; coverage=state_change, handoff, evidence; 按合规提供的存量商户列表一次性发送短验通知短信；不新增存量进度功能，由研发配合查看短验进展。
 - AF-012: completed_link_is_read_only; stories=US-003; coverage=state_change, evidence; 页面不能填写验证码或触发短信，并展示“已完成法人信息核验”。
 - AF-013: sms_templates_match_required_content; stories=US-001, US-002, US-003, US-004, US-005; coverage=evidence; 短验通知短信包含监管身份识别、特约商户真实意愿确认、H5 链接、客服热线和非本人说明；验证码短信包含特约商户开立意愿核验、验证码和 5 分钟有效期。
+- AF-014: out_of_scope_merchants_do_not_trigger_legal_sms; stories=US-008; coverage=state_change, handoff; 不属于首版范围的商户不发送法人短验通知、不展示等待法人短验、不阻断 118 / 83。
+- AF-015: non_waiting_merchants_cannot_resend_legal_sms; stories=US-009; coverage=failure_path, state_change; 商户不处于等待法人短验状态时，AD / OMS 不允许触发法人短验重发，且不重置验证码次数。
+- AF-016: legal_sms_status_mapping_is_consistent; stories=US-006, US-010; coverage=evidence, state_change; H5、AD、新 BM 和 OMS 对等待、已短验、无需短验、H5 超限待宝付重发的展示和阻断口径一致。
 
 ## Soft Evidence
 ### Api
@@ -90,7 +96,7 @@ created_at: 2026-06-09
 - "超过 3 次仍未验证成功 blocks H5 resend and asks legal representative to contact Baofoo."
 - "Stock merchant handling is one-time: no new progress-view function; engineering only cooperates with progress lookup."
 ### Test Plan
-- "AF-001 through AF-013 provide observable acceptance functions and story mappings."
+- "AF-001 through AF-016 provide observable acceptance functions and story mappings."
 
 ## Readiness / Next Action
 - Status: requirements_ready
@@ -446,6 +452,82 @@ created_at: 2026-06-09
         "US-005"
       ],
       "when": "法人收到短信并进入验证流程"
+    },
+    {
+      "aggregate_refs": [
+        "onboarding_application",
+        "capability_grant",
+        "risk_rule"
+      ],
+      "context_refs": [
+        "merchant_onboarding_context",
+        "merchant_capability_context",
+        "risk_decision_context"
+      ],
+      "coverage_types": [
+        "state_change",
+        "handoff"
+      ],
+      "given": "商户不属于首版业务范围，或不是多渠道收款业务",
+      "id": "AF-014",
+      "name": "out_of_scope_merchants_do_not_trigger_legal_sms",
+      "source_acceptance": "首版范围、场景覆盖矩阵",
+      "then": "不发送法人短验通知，不展示等待法人短验，不阻断 118 / 83。",
+      "user_story_ids": [
+        "US-008"
+      ],
+      "when": "系统进行法人短验范围判定"
+    },
+    {
+      "aggregate_refs": [
+        "onboarding_application",
+        "authorization_consent",
+        "consent_record"
+      ],
+      "context_refs": [
+        "merchant_onboarding_context",
+        "mandate_authorization_context"
+      ],
+      "coverage_types": [
+        "failure_path",
+        "state_change"
+      ],
+      "given": "商户不处于等待法人短验状态",
+      "id": "AF-015",
+      "name": "non_waiting_merchants_cannot_resend_legal_sms",
+      "source_acceptance": "验证码重发、场景覆盖矩阵",
+      "then": "AD / OMS 不允许触发法人短验重发，且不重置验证码次数。",
+      "user_story_ids": [
+        "US-009"
+      ],
+      "when": "业务处理方尝试触发法人短验重发"
+    },
+    {
+      "aggregate_refs": [
+        "capability_grant",
+        "authorization_consent",
+        "consent_record",
+        "compliance_review"
+      ],
+      "context_refs": [
+        "merchant_capability_context",
+        "mandate_authorization_context",
+        "compliance_review_context"
+      ],
+      "coverage_types": [
+        "evidence",
+        "state_change"
+      ],
+      "given": "商户存在法人短验判定或验证进展",
+      "id": "AF-016",
+      "name": "legal_sms_status_mapping_is_consistent",
+      "source_acceptance": "进度展示、规则/状态矩阵",
+      "then": "H5、AD、新 BM 和 OMS 对等待、已短验、无需短验、H5 超限待宝付重发的展示和阻断口径一致。",
+      "user_story_ids": [
+        "US-006",
+        "US-010"
+      ],
+      "when": "页面或后台展示短验状态、判断是否阻断流程或是否允许后台重发"
     }
   ],
   "active": true,
@@ -502,7 +584,10 @@ created_at: 2026-06-09
         "AF-009",
         "AF-010",
         "AF-011",
-        "AF-013"
+        "AF-013",
+        "AF-014",
+        "AF-015",
+        "AF-016"
       ],
       "aggregate_roots": [
         "onboarding_application",
@@ -522,7 +607,10 @@ created_at: 2026-06-09
         "US-004",
         "US-005",
         "US-006",
-        "US-007"
+        "US-007",
+        "US-008",
+        "US-009",
+        "US-010"
       ]
     },
     {
@@ -539,7 +627,10 @@ created_at: 2026-06-09
         "AF-010",
         "AF-011",
         "AF-012",
-        "AF-013"
+        "AF-013",
+        "AF-014",
+        "AF-015",
+        "AF-016"
       ],
       "aggregate_roots": [
         "authorization_consent",
@@ -563,7 +654,10 @@ created_at: 2026-06-09
         "US-004",
         "US-005",
         "US-006",
-        "US-007"
+        "US-007",
+        "US-008",
+        "US-009",
+        "US-010"
       ]
     }
   ],
@@ -774,7 +868,7 @@ created_at: 2026-06-09
       "Stock merchant handling is one-time: no new progress-view function; engineering only cooperates with progress lookup."
     ],
     "test_plan": [
-      "AF-001 through AF-013 provide observable acceptance functions and story mappings."
+      "AF-001 through AF-016 provide observable acceptance functions and story mappings."
     ]
   },
   "status": "requirements_ready",
@@ -998,6 +1092,95 @@ created_at: 2026-06-09
       "id": "US-007",
       "role_ref": "R-risk-owner",
       "want": "按代理商 Apollo 配置跳过法人短验，同时保证直客必须短验、代理商本身无需短验"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-014"
+      ],
+      "aggregate_refs": [
+        "onboarding_application",
+        "capability_grant",
+        "risk_rule"
+      ],
+      "benefit": "避免把合规短验扩大到范围外商户，造成误阻断。",
+      "context_refs": [
+        "merchant_onboarding_context",
+        "merchant_capability_context",
+        "risk_decision_context"
+      ],
+      "domain_refs": [
+        "merchant_platform_relationship",
+        "risk_compliance"
+      ],
+      "evidence_anchor": {
+        "source_functions": [
+          "首版范围",
+          "场景覆盖矩阵"
+        ]
+      },
+      "id": "US-008",
+      "role_ref": "R-risk-owner",
+      "want": "不命中首版范围的商户不进入法人短验，也不阻断 118 / 83"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-015"
+      ],
+      "aggregate_refs": [
+        "onboarding_application",
+        "authorization_consent",
+        "consent_record"
+      ],
+      "benefit": "避免已完成、无需短验或范围外商户被重复发送短信。",
+      "context_refs": [
+        "merchant_onboarding_context",
+        "mandate_authorization_context"
+      ],
+      "domain_refs": [
+        "merchant_platform_relationship",
+        "risk_compliance"
+      ],
+      "evidence_anchor": {
+        "source_functions": [
+          "验证码重发",
+          "场景覆盖矩阵"
+        ]
+      },
+      "id": "US-009",
+      "role_ref": "R-onboarding-owner",
+      "want": "非等待法人短验状态不能触发宝付 AD / 融证通 OMS 法人短验重发"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-009",
+        "AF-010",
+        "AF-016"
+      ],
+      "aggregate_refs": [
+        "capability_grant",
+        "authorization_consent",
+        "consent_record",
+        "compliance_review"
+      ],
+      "benefit": "评审和运营可以判断当前到底是等待、已短验、无需短验还是 H5 超限待宝付重发。",
+      "context_refs": [
+        "merchant_capability_context",
+        "mandate_authorization_context",
+        "compliance_review_context"
+      ],
+      "domain_refs": [
+        "merchant_platform_relationship",
+        "risk_compliance"
+      ],
+      "evidence_anchor": {
+        "source_functions": [
+          "进度展示",
+          "规则/状态矩阵"
+        ]
+      },
+      "id": "US-010",
+      "role_ref": "R-capability-owner",
+      "want": "短验状态在 H5、AD、新 BM 和 OMS 的展示与阻断口径保持一致"
     }
   ]
 }
