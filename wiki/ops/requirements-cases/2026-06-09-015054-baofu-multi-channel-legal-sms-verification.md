@@ -5,7 +5,7 @@ classification_needed: true
 ops_area: workflow-trace
 canonical_object: requirements-case-file
 artifact_type: requirements-case
-status: requirements_ready
+status: blocked
 case_slug: baofu-multi-channel-legal-sms-verification
 created_at: 2026-06-09
 ---
@@ -36,8 +36,8 @@ created_at: 2026-06-09
 - account_balance: rejected as primary domain; electronic account complaint is risk background, not the requested account/balance lifecycle design
 
 ## Domain Coverage
-- merchant_platform_relationship: coverage_type=primary; contexts=merchant_onboarding_context, merchant_capability_context; aggregates=onboarding_application, capability_grant, merchant; stories=US-001, US-002, US-004, US-005, US-006, US-007, US-008, US-009, US-010; acceptance=AF-001, AF-002, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-013, AF-014, AF-015, AF-016; note=merchant opening gate, capability progress, stock merchant targeting, and resend operations are first-release surfaces.
-- risk_compliance: coverage_type=primary; contexts=mandate_authorization_context, compliance_review_context, risk_decision_context; aggregates=authorization_consent, consent_record, compliance_review, risk_rule, risk_decision; stories=US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010; acceptance=AF-001, AF-002, AF-003, AF-004, AF-005, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-012, AF-013, AF-014, AF-015, AF-016; note=legal representative consent verification, retry/failure behavior, compliance evidence, and skip-policy decisions are primary compliance coverage.
+- merchant_platform_relationship: coverage_type=primary; contexts=merchant_onboarding_context, merchant_capability_context; aggregates=onboarding_application, capability_grant, merchant; stories=US-001, US-002, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-012; acceptance=AF-001, AF-002, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-013, AF-014, AF-015, AF-016, AF-017, AF-019; note=merchant opening gate, capability progress, stock merchant targeting, resend operations, and H5 identity-facing merchant context are first-release surfaces.
+- risk_compliance: coverage_type=primary; contexts=mandate_authorization_context, compliance_review_context, risk_decision_context; aggregates=authorization_consent, consent_record, compliance_review, risk_rule, risk_decision; stories=US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-012; acceptance=AF-001, AF-002, AF-003, AF-004, AF-005, AF-006, AF-007, AF-008, AF-009, AF-010, AF-011, AF-012, AF-013, AF-014, AF-015, AF-016, AF-017, AF-018, AF-019, AF-020; note=legal representative consent verification, retry/failure behavior, compliance evidence, URL/token safety, identity binding, and skip-policy decisions are primary compliance coverage.
 
 ## Roles
 - R-onboarding-owner: 新会员/老前置进件开通流程 owner; confirmed_as=onboarding_owner; status=confirmed; category=fact_owner
@@ -57,6 +57,8 @@ created_at: 2026-06-09
 - US-008: role_ref=R-risk-owner; 不命中首版范围的商户不进入法人短验，也不阻断 118 / 83; benefit=避免把合规短验扩大到范围外商户，造成误阻断。; acceptance=AF-014
 - US-009: role_ref=R-onboarding-owner; 非等待法人短验状态不能触发宝付 AD / 融证通 OMS 法人短验重发; benefit=避免已完成、无需短验或范围外商户被重复发送短信。; acceptance=AF-015
 - US-010: role_ref=R-capability-owner; 短验状态在 H5、AD、新 BM 和 OMS 的展示与阻断口径保持一致; benefit=评审和运营可以判断当前到底是等待、已短验、无需短验还是 H5 超限待宝付重发。; acceptance=AF-009, AF-010, AF-016
+- US-011: role_ref=R-compliance-owner; 确认法人短信链接、验证码、H5 访问和证据记录满足监管、个人信息保护和安全要求; benefit=短验结果能作为合规证据，而不是产生新的钓鱼、冒用或个人信息泄露风险。; acceptance=AF-017, AF-018, AF-019, AF-020
+- US-012: role_ref=R-legal-representative; 通过简短可信短信链接进入 H5，识别被核验商户和业务，并通过足够核身步骤确认意愿; benefit=法人能识别宝付真实核验流程，且不会因链接过长、信息不清或核身不足造成误操作。; acceptance=AF-017, AF-018, AF-019, AF-020
 
 ## Acceptance Functions
 - AF-001: new_member_waits_for_legal_sms_before_118; stories=US-001; coverage=state_change, handoff, evidence; 系统发送含 H5 链接的短验通知短信给法人，产品开通停留在等待法人短验，法人验证成功前不提交后续 118 流程。
@@ -75,6 +77,10 @@ created_at: 2026-06-09
 - AF-014: out_of_scope_merchants_do_not_trigger_legal_sms; stories=US-008; coverage=state_change, handoff; 不属于首版范围的商户不发送法人短验通知、不展示等待法人短验、不阻断 118 / 83。
 - AF-015: non_waiting_merchants_cannot_resend_legal_sms; stories=US-009; coverage=failure_path, state_change; 商户不处于等待法人短验状态时，AD / OMS 不允许触发法人短验重发，且不重置验证码次数。
 - AF-016: legal_sms_status_mapping_is_consistent; stories=US-006, US-010; coverage=evidence, state_change; H5、AD、新 BM 和 OMS 对等待、已短验、无需短验、H5 超限待宝付重发的展示和阻断口径一致。
+- AF-017: sms_url_length_and_payload_are_bounded; stories=US-011, US-012; coverage=evidence, failure_path; 短验通知短信有明确模板长度预算；H5 链接使用可信域名下短路径/短 token；不得把明文商户、法人或业务敏感参数放进 URL；链接超长时有降级或拒发处理。
+- AF-018: h5_link_token_is_secure; stories=US-011, US-012; coverage=evidence, failure_path; H5 链接使用 HTTPS、可信域名和不可枚举 token；token 有有效期、状态、失效机制和访问频控；服务端不依赖客户端隐藏字段；日志、Referer 和页面跳转不泄露 token 或敏感信息。
+- AF-019: legal_representative_identity_binding_is_verified; stories=US-011, US-012; coverage=state_change, evidence; 系统不能仅凭短信链接点击和验证码回填判断点击者就是法人；必须按合规确认的手机号来源、法人身份绑定、二次核身或人工兜底规则完成核身。
+- AF-020: compliance_evidence_and_personal_information_controls_exist; stories=US-011, US-012; coverage=evidence; 系统记录核验对象、页面文案版本、短信模板版本、发送/重发记录、核身方式、验证码结果、意愿确认动作、时间、IP/设备、操作人和失败原因，并明确个人信息最小必要采集、脱敏展示、访问权限、留存期限和导出边界。
 
 ## Soft Evidence
 ### Api
@@ -87,6 +93,9 @@ created_at: 2026-06-09
 - "H5 trigger attempts over 3 without success require Baofoo-side resend."
 - "Baofoo AD and OMS resend reset verification-code attempts only for waiting-verification merchants."
 - "Agent itself needs no verification; configured first-level agent direct clients and second-level agent clients may skip; direct clients must verify."
+- "SMS notification links must be short enough for the message template budget and must not carry plaintext merchant, legal representative, phone, certificate, or business-sensitive parameters."
+- "SMS OTP proves phone possession or reachability only; legal representative identity binding and intent confirmation require compliance-confirmed identity evidence or compensating controls."
+- "Consent and verification evidence must be retained with least-necessary personal information and controlled access."
 ### Detailed Design Hard Gates
 - {"blocks_until_passed": "Detailed design, API contracts, state machines, and engineering breakdown.", "gate": "current_state_material_package", "hard_gate": true, "material_status": "missing", "pass_condition": "Product provides referenceable current-state flows/screens/contracts or explicitly waives each current-state dependency.", "required_from": "product_owner_or_requirement_proposer", "required_material": "For detailed design: current 118/83 entry points, existing new-member and old-front progress/status fields, current AD/OMS operation locations, SMS channel template/sending constraints, and the H5 page sample or confirmed no-sample boundary."}
 - {"blocks_until_passed": "Rule model, status machine, retry/reset behavior, skip-policy implementation, and acceptance finalization.", "gate": "business_rule_position_table", "hard_gate": true, "material_status": "missing", "pass_condition": "Product confirms first-release rules, deferred rules, owners, and exact rule parameters or explicitly waives them.", "required_from": "product_owner_with_compliance_owner_and_onboarding_owner", "required_material": "For detailed design: exact scope predicates, skip-policy matching order, waiting status enum, code validity, H5 trigger limit, Baofoo-side resend reset semantics, stock one-time handling, and progress enum mapping."}
@@ -99,12 +108,16 @@ created_at: 2026-06-09
 - "AF-001 through AF-016 provide observable acceptance functions and story mappings."
 
 ## Readiness / Next Action
-- Status: requirements_ready
-- Next action: run_requirements_checker
-- Reason: Hard-gate validation belongs to the requirements checker lifecycle.
+- Status: blocked
+- Next action: supplement_sms_url_security_identity_and_compliance_facts
+- Reason: Human review found demand-fact gaps around regulation, SMS URL length, link/token security, H5 identity binding, and compliance evidence. Re-run requirements checker and human review after synchronization.
 ### Blockers
 - flowchart-missing: 流程图待补充，当前只能按文字触发点记录流程阻断与继续条件。
 - h5-attachment-missing: 页面样例附件未随本次聊天提供，H5 细节只能按文字规则记录。
+- legal-compliance-position-missing: 法规依据、监管口径、个人信息处理依据、证据留存期限和合规 owner 确认缺失。
+- sms-url-constraint-missing: 短信模板长度预算、可信域名、短 token/短链方案、超长 URL 降级策略缺失。
+- link-token-security-missing: token 有效期、单次/多次访问语义、重发后旧 token 处理、频控、日志脱敏和 Referer 防泄露规则缺失。
+- identity-binding-missing: 法人手机号来源、身份绑定依据、二次核身字段和人工兜底规则缺失。
 
 ## Evidence Attachments
 ### Analysis
@@ -120,6 +133,7 @@ created_at: 2026-06-09
 - This case records requirements intake and readiness evidence only.
 - Analyzer output misclassified the case as account_balance because of the electronic account complaint; this case keeps account_balance as rejected primary-domain evidence.
 - Electronic account is background risk evidence; first-pass requirement scope is legal representative SMS verification before multi-channel collection product opening continues.
+- Human review on 2026-06-10 found that regulation, SMS URL length, H5 link security, identity binding, and compliance evidence are demand facts, not optional design polish.
 - Detailed design, API contracts, DDL/schema, state machine, and engineering breakdown remain blocked until the detailed_design_hard_gates are provided or explicitly waived.
 - No OpenSpec draft or implementation work has been created.
 
@@ -528,6 +542,107 @@ created_at: 2026-06-09
         "US-010"
       ],
       "when": "页面或后台展示短验状态、判断是否阻断流程或是否允许后台重发"
+    },
+    {
+      "aggregate_refs": [
+        "authorization_consent",
+        "consent_record",
+        "compliance_review"
+      ],
+      "context_refs": [
+        "mandate_authorization_context",
+        "compliance_review_context"
+      ],
+      "coverage_types": [
+        "evidence",
+        "failure_path"
+      ],
+      "given": "系统准备发送法人短验通知短信",
+      "id": "AF-017",
+      "name": "sms_url_length_and_payload_are_bounded",
+      "source_acceptance": "人工评审补充-短信 URL 长度与承载",
+      "then": "短验通知短信有明确模板长度预算；H5 链接使用可信域名下短路径/短 token；不得把明文商户、法人或业务敏感参数放进 URL；链接超长时有降级或拒发处理。",
+      "user_story_ids": [
+        "US-011",
+        "US-012"
+      ],
+      "when": "短信模板渲染并生成 H5 链接"
+    },
+    {
+      "aggregate_refs": [
+        "authorization_consent",
+        "consent_record",
+        "compliance_review"
+      ],
+      "context_refs": [
+        "mandate_authorization_context",
+        "compliance_review_context"
+      ],
+      "coverage_types": [
+        "evidence",
+        "failure_path"
+      ],
+      "given": "法人或持有短信链接的人访问 H5",
+      "id": "AF-018",
+      "name": "h5_link_token_is_secure",
+      "source_acceptance": "人工评审补充-链接与 token 安全",
+      "then": "H5 链接使用 HTTPS、可信域名和不可枚举 token；token 有有效期、状态、失效机制和访问频控；服务端不依赖客户端隐藏字段；日志、Referer 和页面跳转不泄露 token 或敏感信息。",
+      "user_story_ids": [
+        "US-011",
+        "US-012"
+      ],
+      "when": "系统校验 H5 链接和 token"
+    },
+    {
+      "aggregate_refs": [
+        "authorization_consent",
+        "consent_record",
+        "compliance_review",
+        "merchant"
+      ],
+      "context_refs": [
+        "mandate_authorization_context",
+        "compliance_review_context",
+        "merchant_onboarding_context"
+      ],
+      "coverage_types": [
+        "state_change",
+        "evidence"
+      ],
+      "given": "点击者可以打开短信链接并回填验证码",
+      "id": "AF-019",
+      "name": "legal_representative_identity_binding_is_verified",
+      "source_acceptance": "人工评审补充-法人身份核验",
+      "then": "系统不能仅凭短信链接点击和验证码回填判断点击者就是法人；必须按合规确认的手机号来源、法人身份绑定、二次核身或人工兜底规则完成核身。",
+      "user_story_ids": [
+        "US-011",
+        "US-012"
+      ],
+      "when": "系统准备记录法人短验成功"
+    },
+    {
+      "aggregate_refs": [
+        "authorization_consent",
+        "consent_record",
+        "compliance_review"
+      ],
+      "context_refs": [
+        "mandate_authorization_context",
+        "compliance_review_context"
+      ],
+      "coverage_types": [
+        "evidence"
+      ],
+      "given": "系统完成或拒绝法人短验",
+      "id": "AF-020",
+      "name": "compliance_evidence_and_personal_information_controls_exist",
+      "source_acceptance": "人工评审补充-合规证据链和个人信息保护",
+      "then": "系统记录核验对象、页面文案版本、短信模板版本、发送/重发记录、核身方式、验证码结果、意愿确认动作、时间、IP/设备、操作人和失败原因，并明确个人信息最小必要采集、脱敏展示、访问权限、留存期限和导出边界。",
+      "user_story_ids": [
+        "US-011",
+        "US-012"
+      ],
+      "when": "合规或运营查询核验结果和证据"
     }
   ],
   "active": true,
@@ -539,6 +654,22 @@ created_at: 2026-06-09
     {
       "id": "h5-attachment-missing",
       "reason": "页面样例附件未随本次聊天提供，H5 细节只能按文字规则记录。"
+    },
+    {
+      "id": "legal-compliance-position-missing",
+      "reason": "法规依据、监管口径、个人信息处理依据、证据留存期限和合规 owner 确认缺失。"
+    },
+    {
+      "id": "sms-url-constraint-missing",
+      "reason": "短信模板长度预算、可信域名、短 token/短链方案、超长 URL 降级策略缺失。"
+    },
+    {
+      "id": "link-token-security-missing",
+      "reason": "token 有效期、单次/多次访问语义、重发后旧 token 处理、频控、日志脱敏和 Referer 防泄露规则缺失。"
+    },
+    {
+      "id": "identity-binding-missing",
+      "reason": "法人手机号来源、身份绑定依据、二次核身字段和人工兜底规则缺失。"
     }
   ],
   "case_slug": "baofu-multi-channel-legal-sms-verification",
@@ -587,7 +718,9 @@ created_at: 2026-06-09
         "AF-013",
         "AF-014",
         "AF-015",
-        "AF-016"
+        "AF-016",
+        "AF-017",
+        "AF-019"
       ],
       "aggregate_roots": [
         "onboarding_application",
@@ -599,7 +732,7 @@ created_at: 2026-06-09
         "merchant_capability_context"
       ],
       "coverage_type": "primary",
-      "review_note": "merchant opening gate, capability progress, stock merchant targeting, and resend operations are first-release surfaces.",
+      "review_note": "merchant opening gate, capability progress, stock merchant targeting, resend operations, and H5 identity-facing merchant context are first-release surfaces.",
       "subdomain": "merchant_platform_relationship",
       "user_story_ids": [
         "US-001",
@@ -610,7 +743,8 @@ created_at: 2026-06-09
         "US-007",
         "US-008",
         "US-009",
-        "US-010"
+        "US-010",
+        "US-012"
       ]
     },
     {
@@ -630,7 +764,11 @@ created_at: 2026-06-09
         "AF-013",
         "AF-014",
         "AF-015",
-        "AF-016"
+        "AF-016",
+        "AF-017",
+        "AF-018",
+        "AF-019",
+        "AF-020"
       ],
       "aggregate_roots": [
         "authorization_consent",
@@ -645,7 +783,7 @@ created_at: 2026-06-09
         "risk_decision_context"
       ],
       "coverage_type": "primary",
-      "review_note": "legal representative consent verification, retry/failure behavior, compliance evidence, and skip-policy decisions are primary compliance coverage.",
+      "review_note": "legal representative consent verification, retry/failure behavior, compliance evidence, URL/token safety, identity binding, and skip-policy decisions are primary compliance coverage.",
       "subdomain": "risk_compliance",
       "user_story_ids": [
         "US-001",
@@ -657,7 +795,9 @@ created_at: 2026-06-09
         "US-007",
         "US-008",
         "US-009",
-        "US-010"
+        "US-010",
+        "US-011",
+        "US-012"
       ]
     }
   ],
@@ -719,7 +859,11 @@ created_at: 2026-06-09
     ],
     "open_questions": [
       "验证码次数重置是重置 H5 触发次数、验证码校验次数，还是两者都重置？",
-      "短验通知短信中的链接 token、有效期、幂等和访问安全规则是什么？"
+      "短验通知短信中的链接 token、有效期、幂等和访问安全规则是什么？",
+      "适用法规、监管口径、个人信息处理依据、证据留存期限和合规 owner 确认是什么？",
+      "短信模板长度预算、可信域名、短 token/短链方案、超长 URL 降级策略是什么？",
+      "法人手机号来源、身份绑定依据、二次核身字段和人工兜底规则是什么？",
+      "token 访问频控、重发后旧 token 处理、日志脱敏、Referer 防泄露和异常告警规则是什么？"
     ],
     "role_obligations": [
       "onboarding_owner",
@@ -754,13 +898,14 @@ created_at: 2026-06-09
     "This case records requirements intake and readiness evidence only.",
     "Analyzer output misclassified the case as account_balance because of the electronic account complaint; this case keeps account_balance as rejected primary-domain evidence.",
     "Electronic account is background risk evidence; first-pass requirement scope is legal representative SMS verification before multi-channel collection product opening continues.",
+    "Human review on 2026-06-10 found that regulation, SMS URL length, H5 link security, identity binding, and compliance evidence are demand facts, not optional design polish.",
     "Detailed design, API contracts, DDL/schema, state machine, and engineering breakdown remain blocked until the detailed_design_hard_gates are provided or explicitly waived.",
     "No OpenSpec draft or implementation work has been created."
   ],
   "readiness_next_action": {
-    "next_action": "run_requirements_checker",
-    "reason": "Hard-gate validation belongs to the requirements checker lifecycle.",
-    "status": "requirements_ready"
+    "next_action": "supplement_sms_url_security_identity_and_compliance_facts",
+    "reason": "Human review found demand-fact gaps around regulation, SMS URL length, link/token security, H5 identity binding, and compliance evidence. Re-run requirements checker and human review after synchronization.",
+    "status": "blocked"
   },
   "roles": [
     {
@@ -831,7 +976,10 @@ created_at: 2026-06-09
       "Waiting for legal representative SMS verification is an onboarding process stage with no expiry; only the SMS verification code expires.",
       "H5 trigger attempts over 3 without success require Baofoo-side resend.",
       "Baofoo AD and OMS resend reset verification-code attempts only for waiting-verification merchants.",
-      "Agent itself needs no verification; configured first-level agent direct clients and second-level agent clients may skip; direct clients must verify."
+      "Agent itself needs no verification; configured first-level agent direct clients and second-level agent clients may skip; direct clients must verify.",
+      "SMS notification links must be short enough for the message template budget and must not carry plaintext merchant, legal representative, phone, certificate, or business-sensitive parameters.",
+      "SMS OTP proves phone possession or reachability only; legal representative identity binding and intent confirmation require compliance-confirmed identity evidence or compensating controls.",
+      "Consent and verification evidence must be retained with least-necessary personal information and controlled access."
     ],
     "detailed_design_hard_gates": [
       {
@@ -868,10 +1016,10 @@ created_at: 2026-06-09
       "Stock merchant handling is one-time: no new progress-view function; engineering only cooperates with progress lookup."
     ],
     "test_plan": [
-      "AF-001 through AF-016 provide observable acceptance functions and story mappings."
+      "AF-001 through AF-020 provide observable acceptance functions and story mappings after 2026-06-10 human-review supplementation."
     ]
   },
-  "status": "requirements_ready",
+  "status": "blocked",
   "user_stories": [
     {
       "acceptance_function_ids": [
@@ -1181,6 +1329,69 @@ created_at: 2026-06-09
       "id": "US-010",
       "role_ref": "R-capability-owner",
       "want": "短验状态在 H5、AD、新 BM 和 OMS 的展示与阻断口径保持一致"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-017",
+        "AF-018",
+        "AF-019",
+        "AF-020"
+      ],
+      "aggregate_refs": [
+        "authorization_consent",
+        "consent_record",
+        "compliance_review"
+      ],
+      "benefit": "短验结果能作为合规证据，而不是产生新的钓鱼、冒用或个人信息泄露风险。",
+      "context_refs": [
+        "mandate_authorization_context",
+        "compliance_review_context"
+      ],
+      "domain_refs": [
+        "risk_compliance"
+      ],
+      "evidence_anchor": {
+        "source_functions": [
+          "人工评审补充-法规与安全缺口",
+          "人工评审补充-短信 URL 与核身"
+        ]
+      },
+      "id": "US-011",
+      "role_ref": "R-compliance-owner",
+      "want": "确认法人短信链接、验证码、H5 访问和证据记录满足监管、个人信息保护和安全要求"
+    },
+    {
+      "acceptance_function_ids": [
+        "AF-017",
+        "AF-018",
+        "AF-019",
+        "AF-020"
+      ],
+      "aggregate_refs": [
+        "authorization_consent",
+        "consent_record",
+        "compliance_review",
+        "merchant"
+      ],
+      "benefit": "法人能识别宝付真实核验流程，且不会因链接过长、信息不清或核身不足造成误操作。",
+      "context_refs": [
+        "mandate_authorization_context",
+        "compliance_review_context",
+        "merchant_onboarding_context"
+      ],
+      "domain_refs": [
+        "merchant_platform_relationship",
+        "risk_compliance"
+      ],
+      "evidence_anchor": {
+        "source_functions": [
+          "人工评审补充-短信链接体验",
+          "人工评审补充-H5 法人核身"
+        ]
+      },
+      "id": "US-012",
+      "role_ref": "R-legal-representative",
+      "want": "通过简短可信短信链接进入 H5，识别被核验商户和业务，并通过足够核身步骤确认意愿"
     }
   ]
 }
