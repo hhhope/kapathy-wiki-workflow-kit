@@ -1,228 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <style>
-@page {
-    size: A4;
-    margin: 25mm 20mm 20mm 20mm;
-
-    @top-center {
-        content: "从 Claude Code 到 Claude Cowork  |  横纵分析法深度研究报告";
-        font-family: "Droid Sans Fallback", Helvetica, Arial, sans-serif;
-        font-size: 8pt;
-        color: #95a5a6;
-        border-bottom: 0.5pt solid #ecf0f1;
-        padding-bottom: 3mm;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>从 Claude Code 到 Claude Cowork：Anthropic 如何把强模型推进真实工作环境</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5f6f7a;
+      --line: #d9e2e8;
+      --paper: #fbfcfd;
+      --panel: #ffffff;
+      --accent: #135d75;
+      --accent-2: #7a3f22;
+      --soft: #eef6f8;
+      --soft-2: #f7f1ed;
     }
-
-    @bottom-center {
-        content: "第 " counter(page) " 页";
-        font-family: "Droid Sans Fallback", Helvetica, Arial, sans-serif;
-        font-size: 8pt;
-        color: #95a5a6;
-        border-top: 0.8pt solid #1a5276;
-        padding-top: 2mm;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.76;
+      letter-spacing: 0;
     }
-}
-
-@page :first {
-    @top-center { content: none; }
-    @bottom-center { content: none; }
-}
-
-body {
-    font-family: "Droid Sans Fallback", Helvetica, Arial, sans-serif;
-    font-size: 10.5pt;
-    line-height: 1.75;
-    color: #2c3e50;
-    text-align: justify;
-}
-
-/* 封面 */
-.cover {
-    page-break-after: always;
-    text-align: center;
-    padding-top: 45%;
-}
-.cover h1 {
-    font-size: 28pt;
-    color: #1a5276;
-    margin-bottom: 8mm;
-    font-weight: bold;
-    letter-spacing: 2pt;
-}
-.cover .subtitle {
-    font-size: 14pt;
-    color: #95a5a6;
-    margin-bottom: 6mm;
-}
-.cover .meta {
-    font-size: 11pt;
-    color: #95a5a6;
-    margin-bottom: 4mm;
-}
-.cover .divider {
-    width: 60%;
-    margin: 8mm auto;
-    border: none;
-    border-top: 1.5pt solid #1a5276;
-}
-
-/* 一级标题 */
-h1 {
-    font-size: 20pt;
-    color: #1a5276;
-    margin-top: 16mm;
-    margin-bottom: 6mm;
-    padding-bottom: 3mm;
-    border-bottom: 2pt solid #1a5276;
-    page-break-before: always;
-    font-weight: bold;
-}
-
-/* 二级标题 */
-h2 {
-    font-size: 14pt;
-    color: #1e8449;
-    margin-top: 10mm;
-    margin-bottom: 5mm;
-    font-weight: bold;
-}
-
-/* 三级标题 */
-h3 {
-    font-size: 12pt;
-    color: #2e86c1;
-    margin-top: 6mm;
-    margin-bottom: 3mm;
-    font-weight: bold;
-}
-
-h4 {
-    font-size: 11pt;
-    color: #5b2c6f;
-    margin-top: 5mm;
-    margin-bottom: 2mm;
-    font-weight: bold;
-}
-
-/* 段落 */
-p {
-    margin-top: 1.5mm;
-    margin-bottom: 1.5mm;
-    orphans: 3;
-    widows: 3;
-}
-
-/* 引用块 */
-blockquote {
-    margin: 4mm 0;
-    padding: 4mm 4mm 4mm 10mm;
-    background: #f8f9fa;
-    border-left: 3pt solid #1a5276;
-    color: #5d6d7e;
-    font-size: 10pt;
-}
-blockquote p {
-    margin: 1mm 0;
-}
-
-/* 粗体 */
-strong, b {
-    font-weight: bold;
-    color: #1a252f;
-}
-
-/* 行内代码 */
-code {
-    font-family: "Courier New", Courier, monospace;
-    background: #fdf2e9;
-    color: #c0392b;
-    padding: 0.5mm 1.5mm;
-    border-radius: 2pt;
-    font-size: 9.5pt;
-}
-
-/* 表格 */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 4mm 0;
-    font-size: 9.5pt;
-}
-thead th {
-    background: #1a5276;
-    color: white;
-    padding: 3mm;
-    text-align: left;
-    font-weight: bold;
-}
-tbody td {
-    padding: 2.5mm 3mm;
-    border-bottom: 0.5pt solid #bdc3c7;
-}
-tbody tr:nth-child(even) {
-    background: #f8f9fa;
-}
-
-/* 分隔线 */
-hr {
-    border: none;
-    border-top: 0.5pt solid #bdc3c7;
-    margin: 4mm 0;
-}
-
-/* 列表 */
-ul, ol {
-    margin: 2mm 0;
-    padding-left: 8mm;
-}
-li {
-    margin-bottom: 1mm;
-}
-
-/* 链接 */
-a {
-    color: #2e86c1;
-    text-decoration: none;
-}
-</style>
+    .hero {
+      min-height: 58vh;
+      display: grid;
+      align-items: end;
+      padding: 72px 28px 36px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(251,252,253,.96)),
+        linear-gradient(135deg, #d9ecef 0%, #f5efe8 52%, #e8eef4 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-inner, main, .nav-inner { max-width: 1080px; margin: 0 auto; width: 100%; }
+    .kicker { color: var(--accent); font-size: 14px; font-weight: 700; margin-bottom: 18px; }
+    h1 { font-size: clamp(34px, 5vw, 64px); line-height: 1.08; margin: 0 0 18px; max-width: 980px; }
+    .meta { color: var(--muted); font-size: 15px; max-width: 880px; }
+    nav { position: sticky; top: 0; z-index: 4; background: rgba(251,252,253,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav-inner { display: flex; gap: 10px; overflow-x: auto; padding: 12px 24px; }
+    nav a { flex: 0 0 auto; color: var(--accent); text-decoration: none; border: 1px solid var(--line); background: var(--panel); padding: 7px 10px; border-radius: 6px; font-size: 13px; }
+    main { padding: 38px 28px 80px; }
+    article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: clamp(22px, 4vw, 54px); box-shadow: 0 14px 40px rgba(35, 55, 70, .07); }
+    article > h1 { display: none; }
+    h2 { margin: 54px 0 18px; font-size: clamp(24px, 3vw, 36px); line-height: 1.22; color: var(--accent); padding-top: 8px; }
+    h2:first-of-type { margin-top: 0; }
+    h3 { margin: 34px 0 12px; font-size: 22px; line-height: 1.35; color: #244a5a; }
+    h4 { margin: 24px 0 8px; font-size: 17px; color: var(--accent-2); }
+    p { margin: 0 0 16px; font-size: 16.5px; }
+    blockquote { margin: 20px 0; padding: 16px 18px; background: var(--soft); border-left: 4px solid var(--accent); color: #294653; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 14.5px; display: block; overflow-x: auto; }
+    th, td { border: 1px solid var(--line); padding: 10px 12px; vertical-align: top; min-width: 120px; }
+    th { background: var(--soft); color: #163947; text-align: left; white-space: nowrap; }
+    tr:nth-child(even) td { background: #fcfbfa; }
+    ul, ol { padding-left: 1.4em; }
+    li { margin: 7px 0; }
+    a { color: #0b6685; text-underline-offset: 3px; }
+    code { background: #eef1f4; padding: 2px 5px; border-radius: 4px; font-family: "SFMono-Regular", Consolas, monospace; font-size: .92em; }
+    pre { overflow-x: auto; padding: 16px; background: #16232b; color: #edf5f7; border-radius: 8px; }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
+    .footer { max-width: 1080px; margin: 0 auto; padding: 0 28px 32px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 720px) {
+      .hero { min-height: auto; padding: 46px 18px 26px; }
+      main { padding: 20px 14px 56px; }
+      article { padding: 20px 16px; }
+      p { font-size: 15.5px; }
+      .nav-inner { padding: 10px 14px; }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="cover">
-        <h1 style="page-break-before: avoid; border: none;">从 Claude Code 到 Claude Cowork</h1>
-        <div class="subtitle">横纵分析法深度研究报告</div>
-        <div class='meta'>研究时间：2026-06-10 | 研究对象类型：产品 / 公司路径 | 方法：横纵分析法 | 稿件状态：内部调研稿</div>
-        <hr class="divider">
-        <div class="meta">作者: 数字生命卡兹克</div>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="kicker">横纵分析法深度研究</div>
+      <h1>从 Claude Code 到 Claude Cowork：Anthropic 如何把强模型推进真实工作环境</h1>
+      <div class="meta">研究时间：2026-06-10 | 研究对象类型：产品 / 公司路径 | 方法：横纵分析法 | 稿件状态：内部调研稿</div>
     </div>
-    
-<hr>
-<p>layer: reports<br>
-domain: agentic-collaboration<br>
-title: "从 Claude Code 到 Claude Cowork：Anthropic 如何把强模型推进真实工作环境"<br>
-status: draft<br>
-created: 2026-06-10<br>
-source_type: research-report</p>
-<hr>
-
+  </header>
+  <nav><div class="nav-inner"><a href="#一句话定义">一句话定义</a>
+<a href="#核心判断">核心判断</a>
+<a href="#研究方法-李想访谈是因子-不是结论">研究方法：李想访谈是因子，不是结论</a>
+<a href="#纵向分析-claude-code-的历史线">纵向分析：Claude Code 的历史线</a>
+<a href="#横向分析-同行共识只用于验证-不抢主线">横向分析：同行共识只用于验证，不抢主线</a>
+<a href="#横纵交汇洞察">横纵交汇洞察</a>
+<a href="#未来推演">未来推演</a>
+<a href="#对现有材料的事实清洗建议">对现有材料的事实清洗建议</a>
+<a href="#结论">结论</a>
+<a href="#信息来源">信息来源</a>
+<a href="#方法论说明">方法论说明</a></div></nav>
+  <main><article><h1 id="claude-code-claude-coworkanthropic">从 Claude Code 到 Claude Cowork：Anthropic 如何把强模型推进真实工作环境</h1>
 <blockquote>
 <p>研究时间：2026-06-10 | 研究对象类型：产品 / 公司路径 | 方法：横纵分析法 | 稿件状态：内部调研稿</p>
 </blockquote>
-<h2>一句话定义</h2>
+<h2 id="一句话定义">一句话定义</h2>
 <p>Claude Code 不是一个普通编程工具，而是 Anthropic 用来验证「强模型如何进入真实工作环境」的旗舰项目；Claude Cowork 则说明，这条路径正在从研发现场外溢到更广的知识工作现场。</p>
 <p>这份报告不做三家公司横评，也不改 PPT。它只回答一个问题：</p>
 <p><strong>Anthropic 为什么会从 Claude 走到 Claude Code，再走到 Claude Cowork？这条历史线暴露了它对未来 AI 组织协作方式的什么判断？</strong></p>
-<h2>核心判断</h2>
+<h2 id="核心判断">核心判断</h2>
 <p>Anthropic 的公开使命不是做聊天产品，也不是做办公软件。它把自己定义为 AI safety and research company，目标是构建可靠、可解释、可引导的 AI 系统。Dario Amodei 在《Machines of Loving Grace》里也没有把未来强 AI 描述成一个更好用的问答界面，而是描述为能使用文本、音频、视频、鼠标键盘、互联网等接口，能像聪明员工一样接收长任务并自主推进的系统。</p>
 <p>用这个尺度看 Claude Code，它的重要性不在「会写代码」。代码只是第一个足够适合强模型行动化的真实工作场。</p>
 <p>研发现场有几个天然优势：文件可读，工具可调用，测试可运行，版本可追溯，错误可复现，结果可审查。这让 Anthropic 能在一个相对可控的环境里，把 Claude 从「能回答」推向「能行动」。</p>
 <p>所以 Claude Code 是一次组织实验：当模型进入真实工作链路后，人、模型、文件、工具、权限、测试、评审、记忆之间应该怎样重新分工。</p>
 <p>Claude Cowork 的出现，是这条实验线的第二个信号。Anthropic 官方说明里提到，Marketing、Data 等非技术团队开始绕过普通对话界面去使用 Claude Code，因为它能处理复杂、多步骤任务，例如建工具、挖数据。Cowork 正是把这种行动能力做成更适合知识工作者的产品形态。</p>
 <p>我的判断是：Anthropic 的产品演进不是从「聊天」走向「办公」，而是从「强模型」走向「受控行动」。Claude Code 和 Claude Cowork 是这条路径上两个可观察的大事件。</p>
-<h2>研究方法：李想访谈是因子，不是结论</h2>
+<h2 id="研究方法-李想访谈是因子-不是结论">研究方法：李想访谈是因子，不是结论</h2>
 <p>李想和罗永浩访谈里最有价值的部分，不是「人体器官」这个比喻本身，而是它提供了一个观察 AI 公司的方法。</p>
 <p>传统公司可以按职能理解：研发、产品、销售、运营、财务、人力。AI 公司不能只这么看。更有效的看法是：它有没有在构建一个能工作的智能体，这个智能体有哪些器官，哪些器官还缺，哪些器官已经变成产品。</p>
 <p>按这个方法看 Anthropic：</p>
@@ -268,13 +152,13 @@ source_type: research-report</p>
 </tbody>
 </table>
 <p>这个框架不是为了写漂亮类比，而是为了避免报告滑成产品功能清单。每个新产品和新机制，都要问它补的是哪一个器官，它改变了哪条协作链路。</p>
-<h2>纵向分析：Claude Code 的历史线</h2>
-<h3>1. Anthropic 的起点不是产品，而是强 AI 的安全部署问题</h3>
+<h2 id="纵向分析-claude-code-的历史线">纵向分析：Claude Code 的历史线</h2>
+<h3 id="1-anthropic-的起点不是产品-而是强-ai-的安全部署问题">1. Anthropic 的起点不是产品，而是强 AI 的安全部署问题</h3>
 <p>Anthropic 官网对自己的描述很直接：它是 AI safety and research company，构建 reliable、interpretable、steerable 的 AI systems。公司团队公开分为 Research、Policy、Product、Operations，这个划分本身就说明，Anthropic 不是把安全、政策和产品分开叙事，而是把它们放在同一条部署链路里。</p>
 <p>RSP（Responsible Scaling Policy）也是这条线的一部分。2023 年版本提出 AI Safety Levels，用模型能力和风险等级绑定安全、安保、运营要求。2026 年 v3.0 后，具体政策有调整，也受到外界质疑，但它仍然暴露了 Anthropic 的基本问题意识：模型能力越强，行动能力越高，部署越不能只靠产品增长逻辑。</p>
 <p>这决定了 Claude Code 的解读方式。</p>
 <p>如果把 Claude Code 当成「更强的代码助手」，会低估它。如果把它放回 Anthropic 的使命线里，它更像一个实验场：强模型怎样进入真实工作环境，怎样被限制、被观察、被评估、被人接管。</p>
-<h3>2. 为什么第一个突破口是研发现场</h3>
+<h3 id="2-为什么第一个突破口是研发现场">2. 为什么第一个突破口是研发现场</h3>
 <p>Claude Code 官方产品页给出的定义很清楚：它能读代码库、跨文件修改、运行测试，并交付已提交代码。它还强调自己不是 autocomplete，而是 project-level 的 agentic coding system。</p>
 <p>这句话背后有两个关键点。</p>
 <p>第一个点，代码场景天然有反馈。</p>
@@ -282,7 +166,7 @@ source_type: research-report</p>
 <p>第二个点，研发现场天然有边界。</p>
 <p>代码库、权限、分支、PR、review、CI、release，本来就是一套边界系统。Claude Code 进入的不是空地，而是一个已经被工程行业打磨几十年的受控行动环境。Anthropic 选择终端和代码库，不只是因为程序员爱用命令行，而是因为这里最容易把「行动」变成可追踪的行动。</p>
 <p>所以 Claude Code 的真正问题不是「AI 能不能写代码」，而是「一个强模型在现实工作环境里，怎样安全地看、改、验证、交付」。</p>
-<h3>3. 内部扩散：从工程工具变成组织协作样本</h3>
+<h3 id="3-内部扩散-从工程工具变成组织协作样本">3. 内部扩散：从工程工具变成组织协作样本</h3>
 <p>Anthropic 的《How Anthropic teams use Claude Code》是目前最重要的公开材料之一。它不是讲产品功能，而是讲公司内部团队怎么用。</p>
 <p>文章里提到的团队包括 Infrastructure、Product Engineering、Product Design、Security Engineering、Growth Marketing、Legal 等。数据科学家用它理解代码库和数据 pipeline；产品工程用它快速定位要看的文件；设计团队用它写测试和自动化 PR 评论；营销团队用它批量生成广告变体；法律团队甚至做了内部 phone tree 原型。</p>
 <p>这些例子最容易被误读成「非技术岗位也会写代码了」。这句话太浅，也容易错。</p>
@@ -290,7 +174,7 @@ source_type: research-report</p>
 <p>专业判断没有消失。工程责任没有消失。产品、设计、法律、营销也没有变成工程部门。改变的是协作链路：过去他们只能把想法写成需求、文档、表格或会议纪要，现在他们可以把一部分想法提前变成可执行对象。</p>
 <p>这就是组织边界的变化。</p>
 <p>旧边界是岗位边界：谁写需求，谁写代码，谁测试，谁上线。新边界是行动边界：哪些工作可以交给 agent 执行，哪些必须由人判断，哪些需要系统评估，哪些要进入权限控制。</p>
-<h3>4. Claude Cowork：研发现场之外的第二次外化</h3>
+<h3 id="4-claude-cowork-研发现场之外的第二次外化">4. Claude Cowork：研发现场之外的第二次外化</h3>
 <p>Claude Cowork 官方页写得很直接：它处理任务，给它一个目标，它会在你的电脑、本地文件和应用里工作，然后返回完成的交付物。页面还解释了它为什么出现：Anthropic 观察到非技术团队开始绕过 Claude 的对话界面去用 Claude Code，因为 Claude Code 更适合复杂、多步骤工作。</p>
 <p>这段材料非常关键。</p>
 <p>它说明 Cowork 不是随手做出来的「低代码版 Claude Code」。它是一个内部行为模式被产品化的结果。Anthropic 先在研发现场验证了模型的行动能力，再看到这种行动能力被非技术团队借用，于是把它从终端和代码库迁移到桌面、文件夹、日常应用和知识工作。</p>
@@ -299,58 +183,58 @@ source_type: research-report</p>
 <p>Claude Code 证明模型能在受控工程环境里行动。</p>
 <p>Claude Cowork 证明这种行动模式正在寻找更通用的工作环境。</p>
 <p>这不是「聊天界面升级」。恰恰相反，Cowork 的出现说明普通对话界面不够了。强模型要承担真实任务，就不能永远停留在一问一答里。它需要进入文件、应用、工具链、权限和交付物。</p>
-<h3>5. 记忆、权限、hooks、subagents：不是功能堆叠，而是行动系统的基础设施</h3>
+<h3 id="5-记忆-权限-hooks-subagents-不是功能堆叠-而是行动系统的基础设施">5. 记忆、权限、hooks、subagents：不是功能堆叠，而是行动系统的基础设施</h3>
 <p>Claude Code 文档里有几类机制值得放在一起看。</p>
 <p>CLAUDE.md 和 auto memory 解决的是记忆问题。官方文档说，每个 Claude Code session 都从新的 context window 开始，所以需要 CLAUDE.md 和 auto memory 承载跨会话知识。CLAUDE.md 是人写的规则和项目上下文，auto memory 是 Claude 根据纠正和偏好自动记下的学习。</p>
 <p>settings 和 permissions 解决的是组织边界问题。配置分 managed、user、project、local 等 scope。managed scope 用于组织级安全政策和合规要求，project scope 用于团队共享配置。这不是普通软件设置，而是把「谁能规定什么」写进产品结构。</p>
 <p>subagents 解决的是分工问题。官方文档强调 subagents 有自己的 context window、system prompt、工具访问和独立权限，用于专门任务和上下文管理。这让复杂工作从一个 agent 一口气做到底，变成不同角色分担探索、计划、实现、验证。</p>
 <p>hooks 解决的是生命周期控制问题。它们能在 Claude Code 的不同事件点自动执行命令、HTTP endpoint 或提示逻辑，包括工具调用前后、权限请求、任务创建完成、子 agent 启停、文件变化等。换成组织语言，hooks 是行动系统的神经反射。</p>
 <p>这些机制合起来，才是 Claude Code 作为旗舰项目的深层价值。Anthropic 不是只在提升模型，而是在补齐模型进入组织工作所需的环境部件：记忆、权限、分工、触发、审计、反馈。</p>
-<h2>横向分析：同行共识只用于验证，不抢主线</h2>
-<h3>OpenAI：同样把重点放在 agent 可读的工作环境</h3>
+<h2 id="横向分析-同行共识只用于验证-不抢主线">横向分析：同行共识只用于验证，不抢主线</h2>
+<h3 id="openai-同样把重点放在-agent-可读的工作环境">OpenAI：同样把重点放在 agent 可读的工作环境</h3>
 <p>OpenAI 的 Harness Engineering 文章是最强旁证。它讲的不是某个模型，而是一个 agent-first codebase 如何组织。</p>
 <p>OpenAI 的核心经验是：repo 里的知识要成为 system of record，AGENTS.md 不该是一千页手册，而该像目录；真正重要的是结构化文档、测试、脚本、计划、质量记录、评审反馈都能被 agent 读取和验证。文章还强调，当 agent throughput 提升后，人类工程师的工作层级会变化：人优先处理用户反馈、验收标准、结果验证，以及当 agent 失败时补齐工具、文档和 guardrails。</p>
 <p>这与 Anthropic 的路径高度相似。区别在于，OpenAI 说的是 Codex 如何改变工程组织，Anthropic 的公开材料更明显地展示了 Claude Code 如何从工程部门扩散到设计、营销、法律、安全等职能。</p>
 <p>OpenAI 证明的是行业共识：强模型要真正工作，组织必须把知识、规则、反馈、测试和评审变成 agent 可读、可执行、可验证的环境。</p>
-<h3>Seed：能力版图显示「器官化」趋势，但不能当组织图</h3>
+<h3 id="seed-能力版图显示-器官化-趋势-但不能当组织图">Seed：能力版图显示「器官化」趋势，但不能当组织图</h3>
 <p>ByteDance Seed 官方模型页列出 Foundation Models、GenMedia、AI for Science、Robotics 等方向，也列出 LLM、Infrastructures、Vision、Speech、Multimodal Interaction &amp; World Model、AI for Science、Robotics、Responsible AI 等团队方向。</p>
 <p>Seed Infrastructures 页面把团队职责写为分布式训练、强化学习框架、高性能推理、异构硬件编译等。</p>
 <p>这能支持一个谨慎判断：头部 AI 公司公开能力版图正在从传统职能语言转向能力模块语言。大脑、感官、身体、基础设施、免疫系统这类观察框架，不是凭空套上去的。</p>
 <p>但边界也要清楚：这些页面不是字节内部组织架构图，不能把它们写成「字节就是按人体结构设组织」。它只能作为外部共识信号，说明李想访谈里的观察并非孤例。</p>
-<h2>横纵交汇洞察</h2>
-<h3>洞察一：Claude Code 的历史地位，不在 coding，而在 action</h3>
+<h2 id="横纵交汇洞察">横纵交汇洞察</h2>
+<h3 id="洞察一-claude-code-的历史地位-不在-coding-而在-action">洞察一：Claude Code 的历史地位，不在 coding，而在 action</h3>
 <p>如果只看产品名，Claude Code 是 coding tool。如果看历史线，它更像 Anthropic 的 action lab。</p>
 <p>代码场景有文件、有工具、有测试、有版本、有审查，适合让强模型练习行动。Claude Code 在这个场景里跑通了读、改、测、交付、反馈。然后这套能力被内部非技术团队借用，最后沉淀成 Claude Cowork。</p>
 <p>这说明 Anthropic 的真实问题不是「怎样让模型更会写代码」，而是「怎样让模型承担越来越长、越来越复杂、越来越贴近真实世界的任务，同时还能被人监督和组织控制」。</p>
-<h3>洞察二：Anthropic 的安全叙事不是产品外壳，而是行动化的必要条件</h3>
+<h3 id="洞察二-anthropic-的安全叙事不是产品外壳-而是行动化的必要条件">洞察二：Anthropic 的安全叙事不是产品外壳，而是行动化的必要条件</h3>
 <p>当模型只回答问题，安全主要体现在输出内容上。当模型能改文件、跑命令、访问数据、控制应用，安全就变成行动边界问题。</p>
 <p>所以 RSP、ASL、permissions、managed settings、human approval、hooks、subagents、evaluation，这些东西不能分开看。它们共同回答一个问题：模型越像一个能工作的个体，组织越需要明确它能看什么、能做什么、何时停下、谁来批准、如何复盘。</p>
 <p>这也是 Anthropic 与普通应用公司不一样的地方。它不是在给产品加安全功能，而是在为「强模型进入现实任务」设计行动约束。</p>
-<h3>洞察三：组织变化不是「所有人都会写代码」，而是「专业人更早接近可执行物」</h3>
+<h3 id="洞察三-组织变化不是-所有人都会写代码-而是-专业人更早接近可执行物">洞察三：组织变化不是「所有人都会写代码」，而是「专业人更早接近可执行物」</h3>
 <p>Claude Code 内部案例最容易被传播成一句话：非技术团队也能构建东西。</p>
 <p>这句话没有错，但不够深。</p>
 <p>真正的变化是，专业人员的输出形态变了。产品不只写需求，可以做可跑原型；设计不只交静态稿，可以做可验证交互；法律不只写意见，可以做内部查询和分流工具；营销不只提创意，可以批量生成、测试、比较方案。</p>
 <p>这不是岗位合并，而是交付物提前。</p>
 <p>过去组织里的很多工作要经过多轮翻译：想法翻译成需求，需求翻译成设计，设计翻译成代码，代码再翻译成测试和上线证据。Agent 进入后，一部分翻译链条会缩短。人仍然负责判断、责任和品味，但人的判断对象会从「文字描述」更多变成「可执行 artifact」。</p>
-<h3>洞察四：Cowork 是 Claude Code 的外溢，不是旁支</h3>
+<h3 id="洞察四-cowork-是-claude-code-的外溢-不是旁支">洞察四：Cowork 是 Claude Code 的外溢，不是旁支</h3>
 <p>如果报告只讲 Claude Code，会漏掉 Anthropic 路径里最关键的转折。Cowork 说明 Anthropic 已经看到：行动能力不应被锁在研发现场。</p>
 <p>研发现场只是第一个训练场。知识工作现场才是更大的外部世界。</p>
 <p>但这不等于 Anthropic 要做一个普通企业办公套件。更准确的判断是：Anthropic 正在寻找强模型进入现实组织的通用接口。今天这个接口可能是终端、代码库、桌面、本地文件、应用连接器；明天可能是更长任务、更复杂权限、更深企业系统。</p>
 <p>Claude Cowork 的价值不在「给非技术用户一个简单界面」，而在它把 Claude Code 里验证过的行动模式带到了更大的任务空间。</p>
-<h2>未来推演</h2>
-<h3>最可能剧本：Claude Code 成为 Anthropic 的行动能力样板</h3>
+<h2 id="未来推演">未来推演</h2>
+<h3 id="最可能剧本-claude-code-成为-anthropic-的行动能力样板">最可能剧本：Claude Code 成为 Anthropic 的行动能力样板</h3>
 <p>Claude Code 会继续在研发场景里深化：更多 IDE / web / desktop / mobile 入口，更多并行 agent，更多权限配置，更多企业级治理。它不一定永远是营收最大的产品，但很可能长期承担 Anthropic 的样板角色：证明 Claude 不只会说，还能在真实环境里完成工作。</p>
 <p>Claude Cowork 会沿着文件、桌面、企业应用、数据连接器继续扩展。它会吸收 Claude Code 的机制，但降低技术门槛。</p>
 <p>这个剧本下，Anthropic 的产品线看起来会越来越像「Claude 在不同工作环境中的行动入口」。</p>
-<h3>最危险剧本：行动能力增长快于边界系统成熟</h3>
+<h3 id="最危险剧本-行动能力增长快于边界系统成熟">最危险剧本：行动能力增长快于边界系统成熟</h3>
 <p>Claude Code 和 Cowork 的风险也来自同一个地方：它们越有用，越会被放进更多真实系统。</p>
 <p>如果权限、审计、评估、组织配置跟不上，模型行动能力会把旧流程里的模糊地带放大。错误不再只是一个回答错了，而可能是文件被改错、数据被误读、流程被误触发、责任归属说不清。</p>
 <p>Anthropic 的安全叙事在这里会遇到最硬的考验。外界不会只听它怎么讲 RSP，而会看这些行动产品在真实企业环境里如何处理越权、误操作、提示注入、数据泄露、责任归属和复盘。</p>
-<h3>最乐观剧本：Anthropic 找到强模型进入组织的标准形态</h3>
+<h3 id="最乐观剧本-anthropic-找到强模型进入组织的标准形态">最乐观剧本：Anthropic 找到强模型进入组织的标准形态</h3>
 <p>最乐观的情况是，Claude Code 与 Claude Cowork 逐渐沉淀出一种标准组织形态：每个任务有目标，有上下文，有权限，有工具，有验证，有审计，有人类决策点，有失败回写。</p>
 <p>这会把很多公司的协作方式从「人把信息传给人」改成「工作对象自己携带上下文、约束和验收」。不是人被替代，而是组织里的低效翻译层被压缩。</p>
 <p>如果这条路走通，Anthropic 的护城河不只是模型能力，而是它对「强模型如何被组织使用」的系统理解。</p>
-<h2>对现有材料的事实清洗建议</h2>
+<h2 id="对现有材料的事实清洗建议">对现有材料的事实清洗建议</h2>
 <p>原材料里有几类表述需要谨慎处理：</p>
 <table>
 <thead>
@@ -386,14 +270,14 @@ source_type: research-report</p>
 </tr>
 </tbody>
 </table>
-<h2>结论</h2>
+<h2 id="结论">结论</h2>
 <p>Claude Code 的重要性，不是它让程序员快了多少，也不是它把非技术人员变成工程师。</p>
 <p>它真正暴露的是 Anthropic 的路线：让强模型从语言能力走向行动能力，再把行动能力放进真实组织环境，同时用记忆、权限、评估、分工、人工确认和安全政策来控制风险。</p>
 <p>Claude Code 是这条路线的第一个高密度样本。Claude Cowork 是第二个信号：行动能力正在从研发现场走向知识工作现场。</p>
 <p>OpenAI 的 Harness Engineering 和 Seed 的能力版图说明，这不是 Anthropic 单点创意，而是头部 AI 公司共同面对的问题：模型越来越强之后，真正稀缺的不是「再多一个功能」，而是能让模型可靠行动的组织环境。</p>
 <p>李想访谈提供的因子在这里闭合了。AI 公司不能只按部门看，要按一个能工作的智能体来看。Anthropic 正在做的事情，就是不断给 Claude 补器官：大脑之后是手脚，手脚之后是记忆、权限、评估和边界。</p>
 <p>这条路径还没有完成。正因为没有完成，Claude Code 和 Claude Cowork 才值得持续跟踪。</p>
-<h2>信息来源</h2>
+<h2 id="信息来源">信息来源</h2>
 <ul>
 <li>Anthropic Company: https://www.anthropic.com/company</li>
 <li>Claude Code product page: https://www.anthropic.com/product/claude-code</li>
@@ -411,7 +295,8 @@ source_type: research-report</p>
 <li>ByteDance Seed Infrastructures: https://seed.bytedance.com/en/direction/infrastructures</li>
 <li>Repo-local 李想/罗永浩访谈学习记录: <code>wiki/sources/agentic-product-engineering-collaboration-lixiang-luoyonghao-ai-agent-reading-2026-05-18.md</code></li>
 </ul>
-<h2>方法论说明</h2>
-<p>本报告使用横纵分析法：纵轴追踪 Anthropic 从 Claude 到 Claude Code 再到 Claude Cowork 的事件链；横轴只选 OpenAI 与 Seed 作为同阶段共识验证；交汇处输出对 Anthropic 路径的判断。</p>
+<h2 id="方法论说明">方法论说明</h2>
+<p>本报告使用横纵分析法：纵轴追踪 Anthropic 从 Claude 到 Claude Code 再到 Claude Cowork 的事件链；横轴只选 OpenAI 与 Seed 作为同阶段共识验证；交汇处输出对 Anthropic 路径的判断。</p></article></main>
+  <div class="footer">Source: wiki/reports/anthropic-claude-code-hv-analysis-2026-06-10.md</div>
 </body>
 </html>
