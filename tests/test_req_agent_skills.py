@@ -104,6 +104,51 @@ class ReqAgentSkillSurfaceTest(unittest.TestCase):
         for marker in required_markers:
             self.assertIn(marker, text)
 
+    def test_req_agent_surfaces_regulatory_gate(self) -> None:
+        text = self._skill_text("req-agent")
+
+        required_markers = [
+            "regulatory_gate",
+            "regulatory obligations",
+            "risk_compliance",
+            "requirements_ready",
+            "Do not create an OpenSpec draft until the hard readiness gate passes.",
+        ]
+        for marker in required_markers:
+            with self.subTest(marker=marker):
+                self.assertIn(marker, text)
+
+    def test_workers_route_regulatory_obligations_through_lifecycle(self) -> None:
+        expectations = {
+            "req-domain-analysis": [
+                "regulatory obligation",
+                "risk_compliance",
+                "compliance",
+                "identity",
+            ],
+            "req-scope": [
+                "regulatory obligation",
+                "owner",
+                "blocked",
+            ],
+            "req-acceptance": [
+                "regulatory obligation",
+                "observable acceptance",
+                "evidence",
+            ],
+            "req-human-review": [
+                "regulatory",
+                "demand_fact",
+                "machine requirements case",
+            ],
+        }
+
+        for skill, markers in expectations.items():
+            text = self._skill_text(skill)
+            for marker in markers:
+                with self.subTest(skill=skill, marker=marker):
+                    self.assertIn(marker, text)
+
     def test_narrow_requirements_analysis_skill_entry_artifacts_are_retired(self) -> None:
         self.assertFalse(OLD_CHANGE.exists(), OLD_CHANGE)
         self.assertFalse(OLD_TEST.exists(), OLD_TEST)

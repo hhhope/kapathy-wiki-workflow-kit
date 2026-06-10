@@ -166,6 +166,98 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         data.update(overrides)
         return build_requirements_case_package(**data)
 
+    def _risk_compliance_package(self, *, soft_evidence: dict | None = None) -> dict:
+        package = build_requirements_case_package(
+            case_slug="legal-sms-verification",
+            status="awaiting_confirmation",
+            domain={
+                "status": "confirmed",
+                "confirmed": "risk_compliance",
+                "candidates": [
+                    {
+                        "id": "risk_compliance",
+                        "reason": "legal representative SMS verification requires compliance evidence",
+                    }
+                ],
+            },
+            roles=[
+                {
+                    "id": "R-compliance",
+                    "mention": "compliance",
+                    "confirmed_as": "compliance_owner",
+                    "status": "confirmed",
+                    "category": "fact_owner",
+                    "evidence_anchor": {"source_section": "compliance review"},
+                },
+                {
+                    "id": "R-legal-representative",
+                    "mention": "legal representative",
+                    "confirmed_as": "mandate_owner",
+                    "status": "confirmed",
+                    "category": "business_actor",
+                    "evidence_anchor": {"source_section": "legal representative SMS link"},
+                },
+            ],
+            user_stories=[
+                {
+                    "id": "US-1",
+                    "role_ref": "R-compliance",
+                    "want": "confirm legal representative SMS verification satisfies compliance and identity obligations",
+                    "benefit": "merchant onboarding evidence can be reviewed before product activation",
+                    "acceptance_function_ids": ["AF-1"],
+                    "domain_refs": ["risk_compliance"],
+                    "context_refs": ["mandate_authorization_context", "compliance_review_context"],
+                    "aggregate_refs": ["authorization_consent", "consent_record", "compliance_review"],
+                    "evidence_anchor": {"source_functions": ["legal-sms-review"]},
+                }
+            ],
+            acceptance_functions=[
+                {
+                    "id": "AF-1",
+                    "name": "legal_sms_identity_and_evidence_are_confirmed",
+                    "user_story_ids": ["US-1"],
+                    "coverage_types": ["state_change", "handoff", "evidence"],
+                    "context_refs": ["mandate_authorization_context", "compliance_review_context"],
+                    "aggregate_refs": ["authorization_consent", "consent_record", "compliance_review"],
+                    "given": "legal representative receives an SMS link",
+                    "when": "the system records verification success",
+                    "then": "identity binding and compliance evidence are recorded",
+                    "source_acceptance": "AC-regulatory",
+                }
+            ],
+            soft_evidence=soft_evidence or {},
+            timestamp="2026-06-10T01:02:03+00:00",
+        )
+        package["domain_model"] = {
+            "status": "confirmed",
+            "business_ecosystems": ["payment_ecosystem"],
+            "subdomains": ["risk_compliance"],
+            "bounded_contexts": ["mandate_authorization_context", "compliance_review_context"],
+            "aggregate_roots": ["authorization_consent", "consent_record", "compliance_review"],
+            "fact_owners": ["compliance_owner", "mandate_owner"],
+            "role_obligations": ["compliance_owner", "mandate_owner"],
+            "context_handoffs": [
+                {
+                    "from_context": "mandate_authorization_context",
+                    "to_context": "compliance_review_context",
+                    "type": "compliance_evidence",
+                    "name": "LegalRepresentativeConsentRecorded",
+                }
+            ],
+        }
+        package["domain_coverage"] = [
+            {
+                "subdomain": "risk_compliance",
+                "coverage_type": "primary",
+                "contexts": ["mandate_authorization_context", "compliance_review_context"],
+                "aggregate_roots": ["authorization_consent", "consent_record", "compliance_review"],
+                "user_story_ids": ["US-1"],
+                "acceptance_function_ids": ["AF-1"],
+                "review_note": "legal representative verification and compliance evidence coverage",
+            }
+        ]
+        return package
+
     def _write_case(self, package: dict, output_dir: Path | None = None) -> Path:
         return write_requirements_case_file(
             package,
@@ -405,6 +497,51 @@ class RequirementsCheckerGateTests(unittest.TestCase):
         self.assertTrue(report["summary"]["hard_gate_passed"])
         self.assertTrue(report["detailed_design_gate"]["passed"])
         self.assertEqual(report["detailed_design_gate"]["blockers"], [])
+
+    def test_regulatory_gate_not_triggered_for_non_regulatory_case(self) -> None:
+        path = self._write_case(self._package())
+
+        report = self._check_strict_requirements_case_file(path, strict=True)
+
+        self.assertEqual(report["summary"]["status"], "requirements_ready")
+        self.assertTrue(report["regulatory_gate"]["passed"])
+        self.assertEqual(report["regulatory_gate"]["mode"], "not_triggered")
+
+    def test_risk_compliance_case_missing_regulatory_obligations_blocks_readiness(self) -> None:
+        path = self._write_case(self._risk_compliance_package())
+
+        report = self._check_strict_requirements_case_file(path, strict=True)
+
+        self.assertEqual(report["summary"]["status"], "blocked")
+        self.assertFalse(report["summary"]["hard_gate_passed"])
+        self.assertFalse(report["regulatory_gate"]["passed"])
+        self.assertIn("regulatory_obligations_missing", self._blocker_codes(report))
+
+    def test_confirmed_regulatory_obligation_passes_gate(self) -> None:
+        path = self._write_case(
+            self._risk_compliance_package(
+                soft_evidence={
+                    "regulatory_obligations": [
+                        {
+                            "id": "REG-001",
+                            "status": "confirmed",
+                            "owner_refs": ["R-compliance"],
+                            "source_basis": "compliance review",
+                            "obligation": "Confirm identity binding and consent evidence before success.",
+                            "acceptance_function_ids": ["AF-1"],
+                            "evidence_anchor": {"source_section": "regulatory review"},
+                        }
+                    ]
+                }
+            )
+        )
+
+        report = self._check_strict_requirements_case_file(path, strict=True)
+
+        self.assertEqual(report["summary"]["status"], "requirements_ready")
+        self.assertTrue(report["summary"]["hard_gate_passed"])
+        self.assertTrue(report["regulatory_gate"]["passed"])
+        self.assertEqual(report["regulatory_gate"]["blockers"], [])
 
     def test_legacy_case_shape_remains_readable_in_compatibility_mode(self) -> None:
         path = self._write_case(self._legacy_package())

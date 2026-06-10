@@ -27,6 +27,36 @@ DETAILED_DESIGN_HARD_GATE_IDS = {
     "system_boundary_contract_table",
 }
 DETAILED_DESIGN_PASS_STATUSES = {"provided", "waived"}
+REGULATORY_PASS_STATUSES = {"confirmed", "waived"}
+REGULATORY_TRIGGER_TERMS = {
+    "aml",
+    "authorization",
+    "compliance",
+    "consent",
+    "identity",
+    "kyb",
+    "kyc",
+    "law",
+    "legal",
+    "personal information",
+    "regulation",
+    "regulatory",
+    "sms link",
+    "token",
+    "url",
+    "个人信息",
+    "同意",
+    "合规",
+    "授权",
+    "核身",
+    "法务",
+    "法人",
+    "法规",
+    "监管",
+    "真实意愿",
+    "短信链接",
+    "身份",
+}
 
 
 def _as_list(value: Any) -> list[Any]:
@@ -200,6 +230,119 @@ def _detailed_design_gate(case_data: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _collect_text(value: Any) -> list[str]:
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, dict):
+        return [text for item in value.values() for text in _collect_text(item)]
+    if isinstance(value, (list, tuple, set)):
+        return [text for item in value for text in _collect_text(item)]
+    return []
+
+
+def _has_risk_compliance_domain(case_data: dict[str, Any]) -> bool:
+    domain = case_data.get("domain", {})
+    if isinstance(domain, dict):
+        if str(domain.get("confirmed", "")).strip() == "risk_compliance":
+            return True
+        for candidate in _dict_items(domain.get("candidates")):
+            if str(candidate.get("id", "")).strip() == "risk_compliance":
+                return True
+
+    domain_model = case_data.get("domain_model", {})
+    if isinstance(domain_model, dict) and "risk_compliance" in _string_list(domain_model.get("subdomains")):
+        return True
+
+    for item in _dict_items(case_data.get("domain_coverage")):
+        if str(item.get("subdomain") or item.get("domain") or "").strip() == "risk_compliance":
+            return True
+    return False
+
+
+def _regulatory_trigger_signals(case_data: dict[str, Any]) -> list[str]:
+    signals: set[str] = set()
+    if _has_risk_compliance_domain(case_data):
+        signals.add("risk_compliance")
+
+    scanned_parts = [
+        case_data.get("case_source"),
+        case_data.get("domain"),
+        case_data.get("domain_model", {}).get("open_questions") if isinstance(case_data.get("domain_model"), dict) else {},
+        case_data.get("roles"),
+        case_data.get("user_stories"),
+        case_data.get("acceptance_functions"),
+        case_data.get("soft_evidence"),
+        case_data.get("blockers"),
+        case_data.get("proof_boundary_notes"),
+    ]
+    haystack = "\n".join(_collect_text(scanned_parts)).lower()
+    for term in REGULATORY_TRIGGER_TERMS:
+        if term.lower() in haystack:
+            signals.add(term)
+    return sorted(signals)
+
+
+def _regulatory_gate(case_data: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str, str]]]:
+    signals = _regulatory_trigger_signals(case_data)
+    if not signals:
+        return {"passed": True, "mode": "not_triggered", "trigger_signals": [], "blockers": []}, []
+
+    soft_evidence = case_data.get("soft_evidence", {})
+    values = soft_evidence.get("regulatory_obligations", []) if isinstance(soft_evidence, dict) else []
+    obligations = _dict_items(values)
+    blockers: list[dict[str, str]] = []
+    role_ids = {str(role.get("id", "")).strip() for role in _dict_items(case_data.get("roles")) if str(role.get("id", "")).strip()}
+    function_ids = {str(function.get("id", "")).strip() for function in _dict_items(case_data.get("acceptance_functions")) if str(function.get("id", "")).strip()}
+
+    if not obligations:
+        blockers.append(
+            _blocker(
+                "regulatory_obligations_missing",
+                "regulatory obligations are required when risk/compliance or explicit regulatory signals are present",
+                field="soft_evidence.regulatory_obligations",
+                evidence=", ".join(signals),
+            )
+        )
+
+    for index, obligation in enumerate(obligations, start=1):
+        obligation_id = str(obligation.get("id", "")).strip() or f"item-{index}"
+        status = str(obligation.get("status", "")).strip()
+        if not status:
+            blockers.append(_blocker("regulatory_obligation_status_missing", f"regulatory obligation {obligation_id} has no status", field="soft_evidence.regulatory_obligations", evidence=obligation_id))
+        elif status not in REGULATORY_PASS_STATUSES:
+            blockers.append(_blocker("regulatory_obligation_unresolved", f"regulatory obligation {obligation_id} is not confirmed or waived: status={status}", field="soft_evidence.regulatory_obligations", evidence=obligation_id))
+
+        for field_name in ("source_basis", "obligation"):
+            if not _has_value(obligation.get(field_name)):
+                blockers.append(_blocker("regulatory_obligation_field_missing", f"regulatory obligation {obligation_id} has no {field_name}", field=f"soft_evidence.regulatory_obligations.{field_name}", evidence=obligation_id))
+
+        owner_refs = _string_list(obligation.get("owner_refs"))
+        if not owner_refs:
+            blockers.append(_blocker("regulatory_obligation_owner_refs_missing", f"regulatory obligation {obligation_id} has no owner_refs", field="soft_evidence.regulatory_obligations.owner_refs", evidence=obligation_id))
+        for owner_ref in sorted(ref for ref in owner_refs if role_ids and ref not in role_ids):
+            blockers.append(_blocker("regulatory_obligation_owner_ref_unknown", f"regulatory obligation {obligation_id} references unknown owner role: {owner_ref}", field="soft_evidence.regulatory_obligations.owner_refs", evidence=owner_ref))
+
+        acceptance_refs = _string_list(obligation.get("acceptance_function_ids"))
+        if not acceptance_refs:
+            blockers.append(_blocker("regulatory_obligation_acceptance_refs_missing", f"regulatory obligation {obligation_id} has no acceptance_function_ids", field="soft_evidence.regulatory_obligations.acceptance_function_ids", evidence=obligation_id))
+        for acceptance_ref in sorted(ref for ref in acceptance_refs if ref not in function_ids):
+            blockers.append(_blocker("regulatory_obligation_acceptance_ref_unknown", f"regulatory obligation {obligation_id} references missing acceptance function: {acceptance_ref}", field="soft_evidence.regulatory_obligations.acceptance_function_ids", evidence=acceptance_ref))
+
+        if not has_evidence_anchor(obligation, "regulatory_obligation"):
+            blockers.append(_blocker("regulatory_obligation_evidence_missing", f"regulatory obligation {obligation_id} has no evidence anchor", field="soft_evidence.regulatory_obligations", evidence=obligation_id))
+
+        if status == "waived" and not (_has_value(obligation.get("waiver_reason")) or _has_value(obligation.get("waiver_ref"))):
+            blockers.append(_blocker("regulatory_waiver_evidence_missing", f"regulatory obligation {obligation_id} is waived without waiver evidence", field="soft_evidence.regulatory_obligations", evidence=obligation_id))
+
+    return {
+        "passed": not blockers,
+        "mode": "triggered",
+        "trigger_signals": signals,
+        "obligation_count": len(obligations),
+        "blockers": sorted(blockers, key=lambda item: (item["code"], item["reason"])),
+    }, blockers
+
+
 def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any], *, strict: bool = True) -> dict[str, Any]:
     blockers: list[dict[str, str]] = []
     domains = _known_domains(taxonomy)
@@ -210,6 +353,8 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
     domain_coverage_gate, domain_coverage_blockers = evaluate_domain_coverage_gate(case_data, taxonomy, strict=strict)
     blockers.extend(domain_model_blockers)
     blockers.extend(domain_coverage_blockers)
+    regulatory_gate, regulatory_blockers = _regulatory_gate(case_data)
+    blockers.extend(regulatory_blockers)
 
     if not use_ddd_gate:
         domain = case_data.get("domain", {})
@@ -383,6 +528,7 @@ def check_requirements_case(case_data: dict[str, Any], taxonomy: dict[str, Any],
         "domain_model_gate": domain_model_gate,
         "domain_coverage_gate": domain_coverage_gate,
         "requirement_delivery_gate": requirement_delivery_gate,
+        "regulatory_gate": regulatory_gate,
         "detailed_design_gate": detailed_design_gate,
         "blockers": sorted(blockers, key=lambda item: (item["code"], item["reason"])),
         "warnings": warnings,
@@ -403,6 +549,7 @@ def render_markdown_report(report: dict[str, Any]) -> str:
         f"- Status: {report.get('summary', {}).get('status', BLOCKED_STATUS)}",
         f"- Hard gate passed: {report.get('summary', {}).get('hard_gate_passed', False)}",
         f"- Taxonomy: `{report.get('summary', {}).get('taxonomy_path', TAXONOMY_PATH)}`",
+        f"- Regulatory gate passed: {report.get('regulatory_gate', {}).get('passed', False)}",
         f"- Detailed design gate passed: {report.get('detailed_design_gate', {}).get('passed', False)}",
         "",
         "## Blockers",

@@ -21,6 +21,10 @@ Responsibility:
 - Produce domain coverage obligations for required/in-scope subdomains,
   bounded contexts, aggregate roots, lifecycle handoffs, failure paths, and
   auditable evidence surfaces.
+- Produce regulatory obligation questions when `risk_compliance` is in scope or
+  source material mentions compliance, regulation, legal representative,
+  identity, authorization, consent, personal information, SMS link, token, or
+  similar regulated-action signals.
 - Separate real actors from DDD role obligations. Actors are people,
   organizations, systems, or automation named by the source. Role obligations
   are fact-owner obligations derived from contexts and handoffs.
@@ -35,6 +39,8 @@ Output evidence:
 - Role obligations that `req-scope` must assign to concrete owners.
 - Domain coverage obligations that later stories and acceptance functions must
   satisfy or explicitly classify as light coverage, out of scope, or follow-up.
+- Regulatory obligation candidates that `req-scope` must assign to concrete
+  owners or preserve as blockers.
 - Candidate classification table.
 - Rejected or demoted names with reasons.
 - Open questions and needed confirmation.

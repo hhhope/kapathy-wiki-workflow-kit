@@ -18,8 +18,12 @@ Responsibility:
   `handoff`, `failure_path`, and `evidence`.
 - Tie acceptance functions back to relevant contexts and aggregate roots when
   strict DDD coverage is active.
+- Convert confirmed regulatory obligation items into observable acceptance
+  functions or map them to existing observable acceptance functions.
 - Report missing user story or acceptance function links as blockers for
   handoff.
+- Report regulatory obligation items without observable acceptance mappings as
+  blockers for handoff.
 
 Boundaries:
 

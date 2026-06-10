@@ -21,6 +21,9 @@ Responsibility:
   owners, systems, or explicit open questions.
 - Map domain coverage obligations to confirmed scope decisions, concrete owner
   gaps, or explicit open questions.
+- Assign each regulatory obligation to concrete owner refs such as compliance,
+  risk, mandate, legal, security, or channel owners; leave the requirement
+  blocked when ownership is unresolved.
 - Keep unknown actors, owners, domains, contexts, or obligations as
   `candidate_pending` or awaiting
   confirmation.

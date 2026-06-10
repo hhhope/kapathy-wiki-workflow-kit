@@ -17,10 +17,14 @@ Responsibility:
 - Use `wiki/templates/requirements-human-review-template.md` as the output
   shape.
 - Review source coverage, domain judgment, scope, roles, user stories,
-  scenario coverage, rule/status coverage, acceptance scope, and design gates.
+  scenario coverage, rule/status coverage, regulatory coverage, acceptance
+  scope, and design gates.
 - Classify Human Review findings as `demand_fact`, `review_prompt`, or
   `design_gate_gap`.
 - Synchronize every `demand_fact` back to the machine requirements case before
+  handoff.
+- Synchronize every accepted regulatory `demand_fact` into
+  `soft_evidence.regulatory_obligations` and mapped acceptance functions before
   handoff.
 
 Boundaries:

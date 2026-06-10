@@ -34,7 +34,18 @@ Internal tools:
 - `scripts/requirements_openspec_draft.py`
 
 Readiness evidence must include `domain_model_gate`, `domain_coverage_gate`,
-`requirement_delivery_gate`, and `detailed_design_gate`.
+`requirement_delivery_gate`, `regulatory_gate`, and `detailed_design_gate`.
+
+Regulatory readiness is part of requirement readiness:
+
+- `regulatory_gate` triggers when the case includes `risk_compliance` or
+  explicit regulation, compliance, identity, authorization, consent, personal
+  information, SMS link, token, or similar regulated-action signals.
+- Triggered cases must carry case-local regulatory obligations in
+  `soft_evidence.regulatory_obligations`.
+- Missing or unresolved regulatory obligations block `requirements_ready`.
+- Do not treat regulatory obligations as generic design polish; they can change
+  domain, scope, stories, acceptance, readiness, and blockers.
 
 Requirement readiness and detailed-design readiness are separate:
 
@@ -54,13 +65,16 @@ Requirement readiness and detailed-design readiness are separate:
 Worker routing:
 
 - `req-intake`: source material and case creation or append.
-- `req-domain-analysis`: domain classification and coverage obligations after
-  intake and before scope.
-- `req-scope`: roles, ownership, boundaries, and unknowns after domain analysis.
+- `req-domain-analysis`: domain classification, regulatory obligations, and
+  coverage obligations after intake and before scope.
+- `req-scope`: roles, ownership, regulatory obligation ownership, boundaries,
+  and unknowns after domain analysis.
 - `req-stories`: user stories with role, want, and benefit.
-- `req-acceptance`: observable acceptance functions and story mappings.
+- `req-acceptance`: observable acceptance functions, regulatory obligation
+  mappings, and story mappings.
 - `req-human-review`: human-readable review artifact, scenario/rule coverage,
-  gap classification, and machine-case synchronization before handoff.
+  regulatory demand-fact coverage, gap classification, and machine-case
+  synchronization before handoff.
 - `req-handoff`: readiness gate and OpenSpec draft creation.
 
 Boundaries:
