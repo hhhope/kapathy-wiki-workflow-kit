@@ -136,6 +136,7 @@ This is a runtime routing map, not an ownership map.
 | Situation | Load | Ownership |
 |---|---|---|
 | External articles, repos, READMEs, or examples used as learning, reference, or adaptation material | `.codex/skills/learning-capture/SKILL.md` | shared: root-candidate learning core; repo-owned output routing |
+| PM/product-discovery analysis with explicit wiki, durable-memory, reuse, or follow-up intent | `.codex/skills/product-discovery-wiki-capture/SKILL.md` | repo-owned bridge from product discovery output to wiki records |
 | Material, reports, attachments, preview HTML, or source files | `.codex/skills/material-collaboration-defaults/SKILL.md` | repo-owned |
 | Reader-facing reports, Feishu review drafts, H5/share drafts, public materials, reference-shaped outputs, or repo-public artifacts such as `README.md`, `docs/*`, `examples/*`, and published templates | `.codex/skills/public-report-quality-gate/SKILL.md` | repo-owned reader-facing output gate |
 | Interview, podcast transcript, dialogue, or Q&A material where the user asks for deep reading, word cloud, timeline, temperature axis, draggable evidence, H5 exploration, or no-compression/full-text coverage | `.codex/skills/interview-deep-reading-board/SKILL.md` | repo-owned module under material/public output gates |
