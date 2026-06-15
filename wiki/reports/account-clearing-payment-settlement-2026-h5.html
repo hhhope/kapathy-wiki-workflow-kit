@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>账户清算侧 2026 支付结算重点工作汇报</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #667085;
+      --line: #d9dee8;
+      --paper: #f6f7f9;
+      --surface: #ffffff;
+      --green: #1f7a5c;
+      --red: #b63f3a;
+      --amber: #b7791f;
+      --blue: #2f5d8c;
+      --violet: #7253a4;
+      --shadow: 0 18px 45px rgba(31, 41, 51, 0.12);
+    }
+
+    @font-face {
+      font-family: "ReportCJK";
+      src:
+        local("Microsoft YaHei"),
+        local("Microsoft YaHei UI"),
+        url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype");
+      font-display: swap;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "ReportCJK", "Microsoft YaHei", "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: end;
+      padding: 56px clamp(20px, 5vw, 72px) 40px;
+      color: #f8fafc;
+      background:
+        linear-gradient(90deg, rgba(14, 24, 36, 0.94), rgba(35, 49, 61, 0.72)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='900' viewBox='0 0 1400 900'%3E%3Crect width='1400' height='900' fill='%23323b45'/%3E%3Cg fill='none' stroke='%23d7dde6' stroke-opacity='.2'%3E%3Cpath d='M80 130h1230M80 270h1230M80 410h1230M80 550h1230M80 690h1230'/%3E%3Cpath d='M210 80v720M430 80v720M650 80v720M870 80v720M1090 80v720'/%3E%3C/g%3E%3Cg fill='%23f8fafc' fill-opacity='.16'%3E%3Crect x='155' y='155' width='215' height='74' rx='6'/%3E%3Crect x='520' y='155' width='240' height='74' rx='6'/%3E%3Crect x='900' y='155' width='235' height='74' rx='6'/%3E%3Crect x='210' y='360' width='220' height='86' rx='6'/%3E%3Crect x='590' y='360' width='240' height='86' rx='6'/%3E%3Crect x='970' y='360' width='220' height='86' rx='6'/%3E%3Crect x='420' y='590' width='220' height='72' rx='6'/%3E%3Crect x='770' y='590' width='220' height='72' rx='6'/%3E%3C/g%3E%3Cg stroke='%23f2c15a' stroke-opacity='.55' stroke-width='4' fill='none'%3E%3Cpath d='M370 192h150M760 192h140M320 229v131M710 229v131M1018 229v131M430 403h160M830 403h140M640 446v144M880 446v144'/%3E%3C/g%3E%3C/svg%3E") center/cover;
+    }
+
+    .hero-inner {
+      width: min(1180px, 100%);
+      display: grid;
+      gap: 28px;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      padding: 6px 10px;
+      border: 1px solid rgba(248, 250, 252, 0.28);
+      border-radius: 999px;
+      color: #d7dee8;
+      font-size: 13px;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 860px;
+      margin: 0;
+      color: #d8e1ea;
+      font-size: clamp(17px, 2vw, 22px);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 1000px;
+    }
+
+    .metric {
+      min-height: 104px;
+      padding: 18px;
+      border: 1px solid rgba(248, 250, 252, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .metric span {
+      color: #d7dee8;
+      font-size: 13px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      padding: 10px clamp(16px, 5vw, 64px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav a {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      background: #eef1f5;
+      color: var(--ink);
+    }
+
+    main {
+      display: grid;
+      gap: 22px;
+      padding: 30px clamp(16px, 5vw, 64px) 70px;
+    }
+
+    section {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 8px 24px rgba(31, 41, 51, 0.05);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 22px;
+    }
+
+    h2, h3 {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.15;
+    }
+
+    h3 {
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .section-head p,
+    .note,
+    .small {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #edf3f0;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      min-height: 148px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .card .label {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .card .num {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .card.green { border-top: 4px solid var(--green); }
+    .card.red { border-top: 4px solid var(--red); }
+    .card.amber { border-top: 4px solid var(--amber); }
+    .card.blue { border-top: 4px solid var(--blue); }
+    .card.violet { border-top: 4px solid var(--violet); }
+
+    .source-card {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+
+    .source-card:nth-child(2) { border-left-color: var(--violet); }
+    .source-card:nth-child(3) { border-left-color: var(--amber); }
+    .source-card:nth-child(4) { border-left-color: var(--green); }
+
+    .source-card code {
+      display: block;
+      color: #3f4754;
+      font-size: 13px;
+      line-height: 1.45;
+      white-space: normal;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(120px, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 98px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfd;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      width: 10px;
+      border-top: 2px solid #b7c0cc;
+    }
+
+    .flow-step b {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      background: #eef1f5;
+      color: #3f4754;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .lifecycle {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .life-node {
+      min-height: 104px;
+      padding: 14px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+    }
+
+    .life-node b {
+      display: block;
+      margin-bottom: 8px;
+      color: #2c3440;
+      font-size: 14px;
+    }
+
+    .matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .control-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .control-list li {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfd;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      margin-top: 7px;
+      border-radius: 999px;
+      background: var(--green);
+    }
+
+    .dot.red { background: var(--red); }
+    .dot.amber { background: var(--amber); }
+    .dot.blue { background: var(--blue); }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .phase {
+      display: grid;
+      grid-template-columns: 120px 1fr 230px;
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .phase strong {
+      color: var(--blue);
+    }
+
+    .evidence {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .source-box {
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fbfcfd;
+    }
+
+    .source-box h3 {
+      margin-bottom: 10px;
+    }
+
+    .source-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .toolbar button {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+      background: #fff;
+      color: var(--muted);
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .toolbar button.active {
+      border-color: var(--green);
+      background: #edf7f3;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .workpack {
+      display: none;
+    }
+
+    .workpack.active {
+      display: block;
+    }
+
+    .footer-note {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 18px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        min-height: auto;
+        padding-top: 44px;
+      }
+
+      .hero-metrics,
+      .grid.cols-4,
+      .grid.cols-3,
+      .grid.cols-2,
+      .matrix,
+      .evidence {
+        grid-template-columns: 1fr;
+      }
+
+      .flow,
+      .lifecycle {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step:not(:last-child)::after {
+        display: none;
+      }
+
+      .phase {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      .nav,
+      .toolbar {
+        display: none;
+      }
+
+      .hero {
+        min-height: 0;
+        color: var(--ink);
+        background: #fff;
+      }
+
+      section {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">账户清算侧 · 监管报送与备付金治理 · H5 汇报稿</div>
+        <h1>2026 支付结算重点工作账户清算实施框架</h1>
+        <p>基于上海银发〔2026〕100 号及非现场监管系统培训材料，聚焦账户结算、备付金全生命周期管理、非现场监管系统报送三项职责边界。</p>
+        <div class="hero-metrics" aria-label="核心数字">
+          <div class="metric"><strong>47</strong><span>规范一采集表，进入机构端可信数据区并供系统采集</span></div>
+          <div class="metric"><strong>2</strong><span>规范二本地留存表，客户与商户敏感信息留存在机构端</span></div>
+          <div class="metric"><strong>19</strong><span>备付金模块采集表，用于 ACS、分类账、分户账核验</span></div>
+          <div class="metric"><strong>4</strong><span>核心材料：接口规范2、接口规范3、填报指引、备付金模块</span></div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav" aria-label="页面导航">
+      <a href="#scope">报送范围</a>
+      <a href="#materials">材料体系</a>
+      <a href="#flow">报送链路</a>
+      <a href="#account">账户结算</a>
+      <a href="#reserve">备付金治理</a>
+      <a href="#plan">推进计划</a>
+      <a href="#evidence">依据边界</a>
+    </nav>
+
+    <main>
+      <section id="scope">
+        <div class="section-head">
+          <div>
+            <h2>非现场监管报送范围</h2>
+            <p>本次报送准备以监管接口规范和可信数据区为边界，先完成表范围、适用性、字段口径和报送链路的统一。</p>
+          </div>
+          <span class="tag">Scope Definition</span>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card blue">
+            <span class="label">规范一</span>
+            <span class="num">47 张</span>
+            <p class="small">进入机构端可信数据区，供非现场监管系统按需采集并进入中心端数据处理区。</p>
+          </div>
+          <div class="card amber">
+            <span class="label">规范二</span>
+            <span class="num">2 张</span>
+            <p class="small">客户信息表、商户信息表仅在机构端本地留存，支撑监管触发后的核查验证。</p>
+          </div>
+          <div class="card green">
+            <span class="label">备付金模块</span>
+            <span class="num">19 张</span>
+            <p class="small">围绕 ACS、分类账、分户账、清算核验和结算资金匹配建立资金穿透视图。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="materials">
+        <div class="section-head">
+          <div>
+            <h2>四份核心材料分层</h2>
+            <p>材料体系不以备付金模块替代全量非现场口径；备付金模块是账户清算侧的重点落地模块。</p>
+          </div>
+          <span class="tag">Source Structure</span>
+        </div>
+
+        <div class="grid cols-2">
+          <article class="source-card">
+            <h3>接口规范2：专项数据报送</h3>
+            <code>【技术培训-接口规范2】支付机构非现场监督管理系统-数据接口规范V2.0-专项数据报送-0530.pdf</code>
+            <p class="small">确定专项数据报送范围、字段、频次、适用条件和监管指定报送边界。</p>
+          </article>
+          <article class="source-card">
+            <h3>接口规范3：机构信息管理</h3>
+            <code>【技术培训-接口规范3】支付机构非现场监督管理系统数据接口规范填报说明-机构信息管理-0530.pdf</code>
+            <p class="small">确定公司、分支机构、董监高、股权、机构基础信息等机构管理类填报口径。</p>
+          </article>
+          <article class="source-card">
+            <h3>填报指引：执行规则</h3>
+            <code>【技术培训-填报指引】支付机构非现场监督管理系统数据填报指引-0530.pdf</code>
+            <p class="small">明确文件、字段、枚举、日期、金额、空值、频次、校验、回执、补报重报规则。</p>
+          </article>
+          <article class="source-card">
+            <h3>备付金模块：填报与核验</h3>
+            <code>备付金模块数据接口及填报20260601.pptx</code>
+            <p class="small">明确 ACS、分类账、分户账、客户清单、交易要素、清算核验之间的数据关系。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="flow">
+        <div class="section-head">
+          <div>
+            <h2>非现场报送闭环</h2>
+            <p>报送链路覆盖数据加工、可信数据区、SFTP、加密验签、系统采集、回执处理和差异整改。</p>
+          </div>
+          <span class="tag">Reporting Flow</span>
+        </div>
+
+        <div class="flow" aria-label="报送链路">
+          <div class="flow-step"><b>数据来源</b><span class="small">业务系统、账务系统、清算对账文件、交易报文</span></div>
+          <div class="flow-step"><b>加工映射</b><span class="small">表范围、字段来源、业务口径、枚举值和金额单位</span></div>
+          <div class="flow-step"><b>可信数据区</b><span class="small">机构端存储、规范校验、敏感信息本地留存</span></div>
+          <div class="flow-step"><b>SFTP 报送</b><span class="small">目录、文件、加密、验签、状态文件</span></div>
+          <div class="flow-step"><b>系统采集</b><span class="small">非现场监管系统按规范采集并反馈回执</span></div>
+          <div class="flow-step"><b>差异闭环</b><span class="small">报送失败、余额不平、字段错误、补报重报</span></div>
+        </div>
+      </section>
+
+      <section id="account">
+        <div class="section-head">
+          <div>
+            <h2>账户结算全生命周期管理</h2>
+            <p>账户结算侧以主体、交易要素、结算账户、分类账、分户账和 ACS 账户为核心对象。</p>
+          </div>
+          <span class="tag">Account Lifecycle</span>
+        </div>
+
+        <div class="lifecycle">
+          <div class="life-node"><b>入网签约</b><span class="small">客户 ID、客户类型、客户状态、签约日期</span></div>
+          <div class="life-node"><b>要素登记</b><span class="small">商户号、账号、交易方向、清算机构</span></div>
+          <div class="life-node"><b>资金入账</b><span class="small">按清算对账和交易报文确认业务类型</span></div>
+          <div class="life-node"><b>内部调账</b><span class="small">本代本交易、分账、暂挂、业务类型调整</span></div>
+          <div class="life-node"><b>出金结算</b><span class="small">按实际影响 ACS 日期填报出金</span></div>
+          <div class="life-node"><b>余额核验</b><span class="small">ACS、分类账、分户账总分核对</span></div>
+          <div class="life-node"><b>变更注销</b><span class="small">状态变更、账户撤销、留痕和资料归档</span></div>
+        </div>
+
+        <div style="margin-top: 18px;">
+          <table>
+            <thead>
+              <tr><th>控制规则</th><th>专业口径</th><th>输出物</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>业务类型判定</td><td>依据清算对账文件、原始交易报文和清算机构业务类型映射表，不以业务描述主观归类。</td><td>业务类型映射表</td></tr>
+              <tr><td>跨机构交易入账</td><td>以资金实际影响 ACS 账户余额的日期作为入金、出金填报日期。</td><td>入出金明细核验</td></tr>
+              <tr><td>本代本调账记录</td><td>不影响 ACS 总余额，但改变客户归属或业务类型归属，按发生日进入调账表。</td><td>调账台账</td></tr>
+              <tr><td>余额勾稽</td><td>分类账余额合计、分户账余额合计、ACS 账户余额必须形成可解释的总分关系。</td><td>日终核对表</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="reserve">
+        <div class="section-head">
+          <div>
+            <h2>备付金模块治理模型</h2>
+            <p>备付金模块以“谁的钱、什么业务的钱、何时影响 ACS”为核心，形成资金穿透、账务勾稽和风险处置闭环。</p>
+          </div>
+          <span class="tag">Reserve Governance</span>
+        </div>
+
+        <div class="toolbar" aria-label="备付金工作包切换">
+          <button class="active" data-pack="pack-identity">主体与要素</button>
+          <button data-pack="pack-ledger">分类账与分户账</button>
+          <button data-pack="pack-check">清算核验</button>
+          <button data-pack="pack-risk">异常治理</button>
+        </div>
+
+        <div id="pack-identity" class="workpack active">
+          <div class="matrix">
+            <div class="card green">
+              <h3>主体和交易要素</h3>
+              <p class="small">以客户清单和客户交易要素登记表为入口，统一客户 ID、客户类型、商户号、账号、交易方向、清算机构和业务类型。</p>
+            </div>
+            <ul class="control-list">
+              <li><span class="dot"></span><span>客户、商户、机构自有资金、暂挂户均需明确主体标识。</span></li>
+              <li><span class="dot blue"></span><span>账号类交易要素按敏感信息规则处理，保留内部追溯索引。</span></li>
+              <li><span class="dot amber"></span><span>交易要素登记应覆盖入金、出金两个方向。</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="pack-ledger" class="workpack">
+          <div class="matrix">
+            <div class="card blue">
+              <h3>分类账与分户账</h3>
+              <p class="small">分类账回答业务类型归属，分户账回答客户归属，两者共同支撑 ACS 账户余额拆分。</p>
+            </div>
+            <ul class="control-list">
+              <li><span class="dot blue"></span><span>分类账按收单结算、支付账户、预付卡、自有资金、暂挂账等业务类型组织。</span></li>
+              <li><span class="dot"></span><span>分户账按客户、商户、暂挂户、自有资金户组织余额和变动。</span></li>
+              <li><span class="dot amber"></span><span>调账表记录不影响 ACS 总额但改变归属关系的内部调整。</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="pack-check" class="workpack">
+          <div class="matrix">
+            <div class="card amber">
+              <h3>清算核验</h3>
+              <p class="small">通过 ACS 时点余额、清算机构入出金统计、核验情况表和结算资金匹配表，校验机构侧账务数据。</p>
+            </div>
+            <ul class="control-list">
+              <li><span class="dot amber"></span><span>ACS 时点余额用于核验分类账和分户账总额。</span></li>
+              <li><span class="dot blue"></span><span>按业务类型统计用于核验分类账入出金。</span></li>
+              <li><span class="dot"></span><span>按交易要素统计用于核验分户账入出金。</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="pack-risk" class="workpack">
+          <div class="matrix">
+            <div class="card red">
+              <h3>异常治理</h3>
+              <p class="small">异常资金处置聚焦非同名结算、长期暂挂、负余额、异常沉淀、账实不符和补报重报。</p>
+            </div>
+            <ul class="control-list">
+              <li><span class="dot red"></span><span>备付金不得与机构自有资金混用，充值、回提归集户需要明确客户备付金属性。</span></li>
+              <li><span class="dot amber"></span><span>长期暂挂和负余额需要记录原因、账龄、处理人和关闭依据。</span></li>
+              <li><span class="dot blue"></span><span>报送差异进入整改台账，区分数据错误、口径差异和系统链路异常。</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="plan">
+        <div class="section-head">
+          <div>
+            <h2>实施推进计划</h2>
+            <p>推进节奏采用“范围冻结、规范拆解、数据试跑、联调验证、常态运行”五阶段。</p>
+          </div>
+          <span class="tag">Execution Plan</span>
+        </div>
+
+        <div class="timeline">
+          <div class="phase"><strong>第 1 周</strong><span>冻结 47+2 表清单，标记账户清算主责、配合、不适用和监管指定报送范围。</span><span class="small">输出：表清单责任矩阵</span></div>
+          <div class="phase"><strong>第 1-2 周</strong><span>按接口规范2、接口规范3、填报指引拆解表范围、适用性、字段规则、频次、回执和补报规则。</span><span class="small">输出：填报 SOP</span></div>
+          <div class="phase"><strong>第 2-3 周</strong><span>围绕备付金模块试跑样例数据，校验分类账、分户账、ACS 和清算机构数据。</span><span class="small">输出：试跑结果与差异清单</span></div>
+          <div class="phase"><strong>第 3-4 周</strong><span>验证 SFTP、加密验签、文件目录、状态文件、回执处理和补报重报。</span><span class="small">输出：联调记录</span></div>
+          <div class="phase"><strong>常态运行</strong><span>建立报送监控、差异整改、账户结算和备付金生命周期复盘机制。</span><span class="small">输出：月度报送与整改台账</span></div>
+        </div>
+      </section>
+
+      <section id="evidence">
+        <div class="section-head">
+          <div>
+            <h2>依据与边界</h2>
+            <p>本页为内部汇报 H5 草稿，不替代监管正式填报口径、法律意见或生产系统改造方案。</p>
+          </div>
+          <span class="tag">Evidence Boundary</span>
+        </div>
+
+        <div class="evidence">
+          <div class="source-box">
+            <h3>主要依据</h3>
+            <ul>
+              <li>上海银发〔2026〕100 号《2026 年上海市支付结算重点工作》</li>
+              <li>支付机构非现场监督管理系统数据接口规范 V2.0 专项数据报送材料</li>
+              <li>支付机构非现场监督管理系统数据接口规范填报说明机构信息管理材料</li>
+              <li>支付机构非现场监督管理系统数据填报指引</li>
+              <li>备付金模块数据接口及填报 20260601</li>
+            </ul>
+          </div>
+          <div class="source-box">
+            <h3>确认事项</h3>
+            <ul>
+              <li>预付卡业务是否适用及不适用说明口径</li>
+              <li>支付账户充值是否存在垫资模式及对应分户账处理</li>
+              <li>商户结算是否存在非同名或特殊路径</li>
+              <li>47+2 表中已具备数据源的表范围</li>
+              <li>ACS、分类账、分户账是否具备日终自动核对能力</li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-note">状态：内部汇报草稿。正式对外、对监管或同步至 Feishu 前，需要合规、技术、数据、账户清算负责人复核字段、频次、适用性和不适用范围。</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const buttons = Array.from(document.querySelectorAll("[data-pack]"));
+    const packs = Array.from(document.querySelectorAll(".workpack"));
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.pack;
+        buttons.forEach((item) => item.classList.toggle("active", item === button));
+        packs.forEach((pack) => pack.classList.toggle("active", pack.id === target));
+      });
+    });
+  </script>
+</body>
+</html>
