@@ -12,7 +12,8 @@ artifact_type: report-gate-review
 
 - Target: `wiki/reports/agent-merchant-144-421-access-guide.md`
 - Source: `wiki/sources/agent-merchant-opening-product-144-421-2026-06-15.md`
-- Destination: repo-local Feishu draft text.
+- Destination: new Feishu document.
+- Feishu URL: `https://www.feishu.cn/docx/Q5TCdjeIXoKO1DxuTYNc5Iasnuf`
 - Non-scope: 不直接同步飞书，不确认生产费率，不确认最终产品货架，不提供完整接口字段字典。
 
 ## Article Intent Contract
@@ -55,10 +56,19 @@ artifact_type: report-gate-review
 | Reference output shape | PARTIAL: Feishu source link未读取到正文，但已按用户要求输出可贴飞书的接入指引结构。 |
 | Voice quality | PASS |
 | Judgment ownership | PASS: 未替用户确认生产货架、费率和绑定策略。 |
-| Publish gate | BLOCKED: 未同步飞书，需用户确认后再发布。 |
+| Publish gate | PASS for requested Feishu creation: user explicitly asked “直接写飞书”, and a new document was created rather than modifying the referenced Yeepay manual. |
 
 ## Residual Risks
 
 1. 在线 baofu 文档和飞书原文当前未通过工具读取到正文，正式字段约束仍需以接口文档为准。
 2. `M2503000004` 来自本地样例，正式 144 协议支付货架需产品侧确认。
 3. `shareProdRatio`、`bankType=HT`、资质文件类型等生产口径需产品/技术确认。
+
+## Feishu Write Evidence
+
+| Item | Evidence |
+|---|---|
+| Operation | Created new Feishu document, did not edit the existing Yeepay manual. |
+| Title | `代运营商户开通 144 + 421 产品接入指引` |
+| URL | `https://www.feishu.cn/docx/Q5TCdjeIXoKO1DxuTYNc5Iasnuf` |
+| Read-back | `docs +fetch` returned the title, interface list, flow section, 144/421 sections, receiver onboarding, binding, acceptance checklist, common errors, and pending confirmations. |
