@@ -36,7 +36,7 @@ Result: keep as internal H5 draft. Do not claim Feishu-ready or external-review-
 |---|---|
 | Reader | 账户清算、合规、数据、技术、财务清算相关负责人 |
 | Reader decision or action | 理解账户清算侧在 2026 支付结算重点工作中的职责边界，确认非现场报送材料体系、备付金模块落点、账户结算治理对象和推进计划。 |
-| Main line | 非现场监管准备不能简化为备付金 19 张表；本次应以支付机构报送主体为边界，按接口规范2、接口规范3、填报指引、备付金模块四层组织，再落到账户清算和备付金生命周期治理。 |
+| Main line | 非现场监管准备不能简化为备付金 19 张表；应按接口规范2、接口规范3、填报指引、备付金模块四层组织，再落到账户清算和备付金生命周期治理。 |
 | Non-goals | 不列全量字段字典，不提供生产系统方案，不给法律意见，不确认最终不适用表范围。 |
 | User-owned judgments | 最终汇报口径、适用/不适用表判断、预付卡业务适用性、垫资模式、非同名结算路径、正式对外表述。 |
 | Agent-allowed work | 将既有结构稿改成专业 H5，组织信息架构、视觉层级、表格、链路图、控制点和证据边界。 |
@@ -58,12 +58,12 @@ Result: keep as internal H5 draft. Do not claim Feishu-ready or external-review-
 | Section | Objective | Result |
 |---|---|---|
 | Hero metrics | Establish scope numbers and professional framing. | PASS |
-| Reporting scope | Preserve payment-institution reporting scope and keep 47+2 as interface-spec background only. | PASS |
+| Reporting scope | Preserve 47+2 and 19-table boundary without conflating them. | PASS |
 | Implementation architecture | Show account settlement, reserve fund lifecycle, and non-site reporting as three implementation lanes. | PASS |
 | Material structure | Make four core materials primary and map them to concrete deliverables. | PASS |
 | Reporting flow | Show operational chain from source systems to回执差异. | PASS |
 | Account lifecycle | Present account settlement governance objects and controls. | PASS |
-| Reserve governance | Present reserve module as account-clearing focus module with payment-institution direct-fill tables and external verification boundary. | PASS |
+| Reserve governance | Present reserve module as account-clearing focus module, including 19-table reserve module, ACS, ledgers, sub-ledgers, and clearing verification. | PASS |
 | Execution plan | Convert actions into phased delivery. | PASS |
 | Evidence boundary | Prevent publication or compliance overclaim. | PASS |
 
