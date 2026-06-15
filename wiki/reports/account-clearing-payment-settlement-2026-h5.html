@@ -265,6 +265,77 @@
       white-space: normal;
     }
 
+    .architecture {
+      display: grid;
+      grid-template-columns: 220px repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .arch-root,
+    .arch-lane {
+      min-height: 100%;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfd;
+    }
+
+    .arch-root {
+      display: grid;
+      align-content: center;
+      border-color: #b8c7d6;
+      background: #eef4f8;
+    }
+
+    .arch-root strong,
+    .arch-lane strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .arch-lane {
+      display: grid;
+      gap: 10px;
+      border-top: 4px solid var(--blue);
+    }
+
+    .arch-lane.reserve { border-top-color: var(--green); }
+    .arch-lane.report { border-top-color: var(--amber); }
+
+    .arch-item {
+      min-height: 48px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #ffffff;
+      color: #3f4754;
+      font-size: 13px;
+    }
+
+    .deliverable-map {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .deliverable {
+      min-height: 122px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .deliverable b {
+      display: block;
+      margin-bottom: 8px;
+      color: #2c3440;
+      font-size: 14px;
+    }
+
     .flow {
       display: grid;
       grid-template-columns: repeat(6, minmax(120px, 1fr));
@@ -345,6 +416,50 @@
       margin-bottom: 8px;
       color: #2c3440;
       font-size: 14px;
+    }
+
+    .money-cycle {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .cycle-step {
+      position: relative;
+      min-height: 112px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfd;
+    }
+
+    .cycle-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -8px;
+      top: 32px;
+      width: 8px;
+      border-top: 2px solid #b7c0cc;
+    }
+
+    .cycle-step b {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .cycle-step .index {
+      display: inline-grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      background: #edf3f0;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
     }
 
     .matrix {
@@ -477,17 +592,21 @@
       .grid.cols-4,
       .grid.cols-3,
       .grid.cols-2,
+      .architecture,
+      .deliverable-map,
       .matrix,
       .evidence {
         grid-template-columns: 1fr;
       }
 
       .flow,
-      .lifecycle {
+      .lifecycle,
+      .money-cycle {
         grid-template-columns: 1fr;
       }
 
-      .flow-step:not(:last-child)::after {
+      .flow-step:not(:last-child)::after,
+      .cycle-step:not(:last-child)::after {
         display: none;
       }
 
@@ -525,11 +644,11 @@
       <div class="hero-inner">
         <div class="eyebrow">账户清算侧 · 监管报送与备付金治理 · H5 汇报稿</div>
         <h1>2026 支付结算重点工作账户清算实施框架</h1>
-        <p>基于上海银发〔2026〕100 号及非现场监管系统培训材料，聚焦账户结算、备付金全生命周期管理、非现场监管系统报送三项职责边界。</p>
+        <p>基于上海银发〔2026〕100 号及非现场监管系统培训材料，聚焦支付机构报送主体下的账户结算、备付金全生命周期管理与非现场监管系统报送职责边界。</p>
         <div class="hero-metrics" aria-label="核心数字">
-          <div class="metric"><strong>47</strong><span>规范一采集表，进入机构端可信数据区并供系统采集</span></div>
+          <div class="metric"><strong>支付机构</strong><span>本次非现场以支付机构为报送主体，不纳入清算机构或 CFS 填报表</span></div>
           <div class="metric"><strong>2</strong><span>规范二本地留存表，客户与商户敏感信息留存在机构端</span></div>
-          <div class="metric"><strong>19</strong><span>备付金模块采集表，用于 ACS、分类账、分户账核验</span></div>
+          <div class="metric"><strong>10</strong><span>备付金模块中支付机构直接填报的账户、分类账、分户账相关表</span></div>
           <div class="metric"><strong>4</strong><span>核心材料：接口规范2、接口规范3、填报指引、备付金模块</span></div>
         </div>
       </div>
@@ -537,6 +656,7 @@
 
     <nav class="nav" aria-label="页面导航">
       <a href="#scope">报送范围</a>
+      <a href="#framework">实施架构</a>
       <a href="#materials">材料体系</a>
       <a href="#flow">报送链路</a>
       <a href="#account">账户结算</a>
@@ -550,16 +670,16 @@
         <div class="section-head">
           <div>
             <h2>非现场监管报送范围</h2>
-            <p>本次报送准备以监管接口规范和可信数据区为边界，先完成表范围、适用性、字段口径和报送链路的统一。</p>
+            <p>本次报送准备以支付机构为填报主体，先完成适用表范围、字段口径、报送链路和本地留存边界的统一。</p>
           </div>
           <span class="tag">Scope Definition</span>
         </div>
 
         <div class="grid cols-3">
           <div class="card blue">
-            <span class="label">规范一</span>
-            <span class="num">47 张</span>
-            <p class="small">进入机构端可信数据区，供非现场监管系统按需采集并进入中心端数据处理区。</p>
+            <span class="label">报送主体</span>
+            <span class="num" style="font-size: 32px;">支付机构</span>
+            <p class="small">本次只冻结填报机构为支付机构的表清单；清算机构、CFS 填报表不纳入本次责任矩阵。</p>
           </div>
           <div class="card amber">
             <span class="label">规范二</span>
@@ -567,9 +687,45 @@
             <p class="small">客户信息表、商户信息表仅在机构端本地留存，支撑监管触发后的核查验证。</p>
           </div>
           <div class="card green">
-            <span class="label">备付金模块</span>
-            <span class="num">19 张</span>
-            <p class="small">围绕 ACS、分类账、分户账、清算核验和结算资金匹配建立资金穿透视图。</p>
+            <span class="label">备付金模块直填</span>
+            <span class="num">10 张</span>
+            <p class="small">支付机构直接填报客户清单、交易要素、分类账、分户账等账户清算核心数据。</p>
+          </div>
+        </div>
+        <p class="footer-note">说明：47+2 是接口规范层面的总体背景，不作为本次账户清算侧冻结对象；本次工作清单以支付机构报送和机构端留存为边界。</p>
+      </section>
+
+      <section id="framework">
+        <div class="section-head">
+          <div>
+            <h2>账户清算侧实施架构</h2>
+            <p>本次工作按三条主线组织：账户结算负责基础对象和资金路径，备付金负责余额穿透和账务勾稽，非现场报送负责接口、可信数据区和回执闭环。</p>
+          </div>
+          <span class="tag">Operating Architecture</span>
+        </div>
+
+        <div class="architecture" aria-label="账户清算侧三条实施主线">
+          <div class="arch-root">
+            <strong>上海银发〔2026〕100 号</strong>
+            <p class="small">账户清算侧承接监管要求，形成报送、治理、整改一体化工作框架。</p>
+          </div>
+          <div class="arch-lane account">
+            <strong>账户结算</strong>
+            <div class="arch-item">开户、签约、客户与商户主体识别</div>
+            <div class="arch-item">交易要素登记、变更、停用和归档</div>
+            <div class="arch-item">入金、调账、出金、结算账户一致性管理</div>
+          </div>
+          <div class="arch-lane reserve">
+            <strong>备付金全生命周期</strong>
+            <div class="arch-item">ACS 账户与日终余额核对</div>
+            <div class="arch-item">分类账回答“什么业务的钱”</div>
+            <div class="arch-item">分户账回答“谁的钱”</div>
+          </div>
+          <div class="arch-lane report">
+            <strong>非现场监管系统报送</strong>
+            <div class="arch-item">接口规范2：专项数据报送范围</div>
+            <div class="arch-item">接口规范3：机构信息管理口径</div>
+            <div class="arch-item">填报指引与备付金模块：执行和核验规则</div>
           </div>
         </div>
       </section>
@@ -578,7 +734,7 @@
         <div class="section-head">
           <div>
             <h2>四份核心材料分层</h2>
-            <p>材料体系不以备付金模块替代全量非现场口径；备付金模块是账户清算侧的重点落地模块。</p>
+            <p>材料体系不以备付金模块替代全量非现场口径；备付金模块仅作为支付机构账户清算侧的重点落地模块。</p>
           </div>
           <span class="tag">Source Structure</span>
         </div>
@@ -587,7 +743,7 @@
           <article class="source-card">
             <h3>接口规范2：专项数据报送</h3>
             <code>【技术培训-接口规范2】支付机构非现场监督管理系统-数据接口规范V2.0-专项数据报送-0530.pdf</code>
-            <p class="small">确定专项数据报送范围、字段、频次、适用条件和监管指定报送边界。</p>
+            <p class="small">确定专项数据报送范围、字段、频次、适用条件和监管指定报送边界，并筛出填报机构为支付机构的表。</p>
           </article>
           <article class="source-card">
             <h3>接口规范3：机构信息管理</h3>
@@ -602,8 +758,27 @@
           <article class="source-card">
             <h3>备付金模块：填报与核验</h3>
             <code>备付金模块数据接口及填报20260601.pptx</code>
-            <p class="small">明确 ACS、分类账、分户账、客户清单、交易要素、清算核验之间的数据关系。</p>
+            <p class="small">明确支付机构侧客户清单、交易要素、分类账、分户账的填报逻辑，并说明与外部核验数据的勾稽关系。</p>
           </article>
+        </div>
+
+        <div class="deliverable-map" aria-label="材料到交付物映射">
+          <div class="deliverable">
+            <b>支付机构适用表矩阵</b>
+            <p class="small">基于接口规范2、接口规范3筛出支付机构适用表和机构端留存表，剔除清算机构、CFS 填报表。</p>
+          </div>
+          <div class="deliverable">
+            <b>填报 SOP</b>
+            <p class="small">固化字段来源、金额单位、日期口径、枚举值、空值规则、频次、回执和补报重报机制。</p>
+          </div>
+          <div class="deliverable">
+            <b>备付金字段映射</b>
+            <p class="small">围绕支付机构直填 10 张表，明确客户、交易要素、分类账、分户账字段来源和加工规则。</p>
+          </div>
+          <div class="deliverable">
+            <b>差异整改台账</b>
+            <p class="small">记录报送失败、字段错误、余额不平、口径差异和系统链路异常，形成闭环整改依据。</p>
+          </div>
         </div>
       </section>
 
@@ -651,7 +826,7 @@
               <tr><th>控制规则</th><th>专业口径</th><th>输出物</th></tr>
             </thead>
             <tbody>
-              <tr><td>业务类型判定</td><td>依据清算对账文件、原始交易报文和清算机构业务类型映射表，不以业务描述主观归类。</td><td>业务类型映射表</td></tr>
+              <tr><td>业务类型判定</td><td>依据清算对账文件、原始交易报文和业务类型映射规则，不以业务描述主观归类。</td><td>业务类型映射表</td></tr>
               <tr><td>跨机构交易入账</td><td>以资金实际影响 ACS 账户余额的日期作为入金、出金填报日期。</td><td>入出金明细核验</td></tr>
               <tr><td>本代本调账记录</td><td>不影响 ACS 总余额，但改变客户归属或业务类型归属，按发生日进入调账表。</td><td>调账台账</td></tr>
               <tr><td>余额勾稽</td><td>分类账余额合计、分户账余额合计、ACS 账户余额必须形成可解释的总分关系。</td><td>日终核对表</td></tr>
@@ -672,8 +847,19 @@
         <div class="toolbar" aria-label="备付金工作包切换">
           <button class="active" data-pack="pack-identity">主体与要素</button>
           <button data-pack="pack-ledger">分类账与分户账</button>
-          <button data-pack="pack-check">清算核验</button>
+          <button data-pack="pack-check">外部核验</button>
           <button data-pack="pack-risk">异常治理</button>
+        </div>
+
+        <div class="money-cycle" aria-label="备付金资金生命周期">
+          <div class="cycle-step"><span class="index">1</span><b>资金进入</b><span class="small">充值、收单、待结算资金进入备付金管理视图。</span></div>
+          <div class="cycle-step"><span class="index">2</span><b>归属识别</b><span class="small">确认客户、商户、业务类型、交易方向和账户属性。</span></div>
+          <div class="cycle-step"><span class="index">3</span><b>分类账入金</b><span class="small">按业务类型记录入金，解释 ACS 余额的业务构成。</span></div>
+          <div class="cycle-step"><span class="index">4</span><b>分户账入金</b><span class="small">按客户、商户、暂挂户或自有资金户记录资金归属。</span></div>
+          <div class="cycle-step"><span class="index">5</span><b>调账处理</b><span class="small">记录分账、暂挂、归属调整和业务类型调整。</span></div>
+          <div class="cycle-step"><span class="index">6</span><b>出金结算</b><span class="small">按实际影响 ACS 账户余额日期确认出金和结算。</span></div>
+          <div class="cycle-step"><span class="index">7</span><b>余额核对</b><span class="small">核对 ACS、分类账、分户账和外部核验数据。</span></div>
+          <div class="cycle-step"><span class="index">8</span><b>整改留痕</b><span class="small">对长期暂挂、负余额、账实不符和补报重报形成闭环。</span></div>
         </div>
 
         <div id="pack-identity" class="workpack active">
@@ -707,13 +893,13 @@
         <div id="pack-check" class="workpack">
           <div class="matrix">
             <div class="card amber">
-              <h3>清算核验</h3>
-              <p class="small">通过 ACS 时点余额、清算机构入出金统计、核验情况表和结算资金匹配表，校验机构侧账务数据。</p>
+              <h3>外部核验</h3>
+              <p class="small">清算机构及 CFS 相关数据作为外部核验依据，用于校验机构侧账务数据，不纳入支付机构报送责任矩阵。</p>
             </div>
             <ul class="control-list">
-              <li><span class="dot amber"></span><span>ACS 时点余额用于核验分类账和分户账总额。</span></li>
-              <li><span class="dot blue"></span><span>按业务类型统计用于核验分类账入出金。</span></li>
-              <li><span class="dot"></span><span>按交易要素统计用于核验分户账入出金。</span></li>
+              <li><span class="dot amber"></span><span>ACS 时点余额用于核验分类账和分户账总额，作为外部核验数据处理。</span></li>
+              <li><span class="dot blue"></span><span>按业务类型统计用于核验分类账入出金，不列入支付机构直填表。</span></li>
+              <li><span class="dot"></span><span>按交易要素统计用于核验分户账入出金，不列入本次报送主责范围。</span></li>
             </ul>
           </div>
         </div>
@@ -743,9 +929,9 @@
         </div>
 
         <div class="timeline">
-          <div class="phase"><strong>第 1 周</strong><span>冻结 47+2 表清单，标记账户清算主责、配合、不适用和监管指定报送范围。</span><span class="small">输出：表清单责任矩阵</span></div>
-          <div class="phase"><strong>第 1-2 周</strong><span>按接口规范2、接口规范3、填报指引拆解表范围、适用性、字段规则、频次、回执和补报规则。</span><span class="small">输出：填报 SOP</span></div>
-          <div class="phase"><strong>第 2-3 周</strong><span>围绕备付金模块试跑样例数据，校验分类账、分户账、ACS 和清算机构数据。</span><span class="small">输出：试跑结果与差异清单</span></div>
+          <div class="phase"><strong>第 1 周</strong><span>冻结支付机构报送和机构端留存表清单，剔除填报机构为清算机构或 CFS 的表。</span><span class="small">输出：支付机构报送责任矩阵</span></div>
+          <div class="phase"><strong>第 1-2 周</strong><span>按接口规范2、接口规范3、填报指引拆解支付机构适用表、字段规则、频次、回执和补报规则。</span><span class="small">输出：填报 SOP</span></div>
+          <div class="phase"><strong>第 2-3 周</strong><span>围绕备付金模块支付机构直填表试跑样例数据，校验分类账、分户账和 ACS 勾稽关系。</span><span class="small">输出：试跑结果与差异清单</span></div>
           <div class="phase"><strong>第 3-4 周</strong><span>验证 SFTP、加密验签、文件目录、状态文件、回执处理和补报重报。</span><span class="small">输出：联调记录</span></div>
           <div class="phase"><strong>常态运行</strong><span>建立报送监控、差异整改、账户结算和备付金生命周期复盘机制。</span><span class="small">输出：月度报送与整改台账</span></div>
         </div>
@@ -777,7 +963,7 @@
               <li>预付卡业务是否适用及不适用说明口径</li>
               <li>支付账户充值是否存在垫资模式及对应分户账处理</li>
               <li>商户结算是否存在非同名或特殊路径</li>
-              <li>47+2 表中已具备数据源的表范围</li>
+              <li>支付机构适用表中已具备数据源的表范围</li>
               <li>ACS、分类账、分户账是否具备日终自动核对能力</li>
             </ul>
           </div>
