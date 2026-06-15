@@ -660,6 +660,7 @@
       <a href="#framework">实施架构</a>
       <a href="#materials">材料体系</a>
       <a href="#flow">报送链路</a>
+      <a href="#control">控制主线</a>
       <a href="#account">账户结算</a>
       <a href="#reserve">备付金治理</a>
       <a href="#plan">推进计划</a>
@@ -689,8 +690,8 @@
           </div>
           <div class="card green">
             <span class="label">账户落点</span>
-            <h3>从资金动作到账户全生命周期</h3>
-            <p class="small">账户清算侧需要讲清客户、商户、总分账户、分类账、分户账、ACS 与清算核验之间的关系。</p>
+            <h3>从资金动作到关键控制点</h3>
+            <p class="small">账户清算侧需要讲清客户、账户、资金归属、ACS 与清算核验之间的关系，支撑资金安全和备付金底线管理。</p>
           </div>
         </div>
       </section>
@@ -735,7 +736,7 @@
         <div class="architecture" aria-label="账户清算侧三条实施主线">
           <div class="arch-root">
             <strong>上海银发〔2026〕100 号</strong>
-            <p class="small">账户清算侧承接监管要求，形成报送、治理、整改一体化工作框架。</p>
+            <p class="small">账户清算侧承接监管要求，将日常数据沉淀为可报送、可核验、可整改的一体化工作框架。</p>
           </div>
           <div class="arch-lane account">
             <strong>账户结算</strong>
@@ -826,6 +827,34 @@
           <div class="flow-step"><b>SFTP 报送</b><span class="small">目录、文件、加密、验签、状态文件</span></div>
           <div class="flow-step"><b>系统采集</b><span class="small">非现场监管系统按规范采集并反馈回执</span></div>
           <div class="flow-step"><b>差异闭环</b><span class="small">报送失败、余额不平、字段错误、补报重报</span></div>
+        </div>
+      </section>
+
+      <section id="control">
+        <div class="section-head">
+          <div>
+            <h2>账户清算控制主线</h2>
+            <p>账户清算侧的汇报重点不是新增一组表，而是说明客户、账户、资金和 ACS 如何形成可解释、可核验、可整改的控制关系。</p>
+          </div>
+          <span class="tag">Control Spine</span>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card green">
+            <span class="label">主体一致</span>
+            <h3>客户与账户对得上</h3>
+            <p class="small">客户、商户、交易要素、结算账户、总账户和子账户需要形成稳定映射，支持敏感信息本地留存和监管核查。</p>
+          </div>
+          <div class="card blue">
+            <span class="label">资金归属</span>
+            <h3>账户与资金对得上</h3>
+            <p class="small">入金、调账、分账、暂挂、出金和结算路径要能回到分类账和分户账，说明什么业务的钱、谁的钱。</p>
+          </div>
+          <div class="card amber">
+            <span class="label">余额核验</span>
+            <h3>资金与 ACS 对得上</h3>
+            <p class="small">ACS 时点余额、分类账余额、分户账余额和清算核验数据应形成总分关系，差异进入整改台账闭环。</p>
+          </div>
         </div>
       </section>
 
@@ -961,7 +990,7 @@
           <div class="phase"><strong>第 1-2 周</strong><span>按接口规范2、接口规范3、填报指引拆解表范围、适用性、字段规则、频次、回执和补报规则。</span><span class="small">输出：填报 SOP</span></div>
           <div class="phase"><strong>第 2-3 周</strong><span>围绕备付金模块试跑样例数据，校验分类账、分户账、ACS 和清算机构数据。</span><span class="small">输出：试跑结果与差异清单</span></div>
           <div class="phase"><strong>第 3-4 周</strong><span>验证 SFTP、加密验签、文件目录、状态文件、回执处理和补报重报。</span><span class="small">输出：联调记录</span></div>
-          <div class="phase"><strong>常态运行</strong><span>建立报送监控、差异整改、账户结算和备付金生命周期复盘机制。</span><span class="small">输出：月度报送与整改台账</span></div>
+          <div class="phase"><strong>常态运行</strong><span>建立报送状态监测、差异整改、账户结算和备付金生命周期复盘机制。</span><span class="small">输出：月度报送与整改台账</span></div>
         </div>
       </section>
 

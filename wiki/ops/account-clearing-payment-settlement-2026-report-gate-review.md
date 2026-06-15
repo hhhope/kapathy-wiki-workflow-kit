@@ -45,11 +45,11 @@ Result: keep as internal H5 draft. Do not claim Feishu-ready or external-review-
 
 | Field | Result |
 |---|---|
-| Source | `wiki/reports/account-clearing-payment-settlement-2026-brief.md`, `wiki/sources/文字转写-yan的快速会议-418853724.md`, and `wiki/reports/shanghai-payment-settlement-priorities-2026-h5.html` |
+| Source | `wiki/reports/account-clearing-payment-settlement-2026-brief.md`, `wiki/sources/文字转写-yan的快速会议-418853724.md`, `wiki/sources/文字转写-yan的快速会议-551670973.md`, `wiki/sources/文字转写-yan的快速会议-709621698.md`, and `wiki/reports/shanghai-payment-settlement-priorities-2026-h5.html` |
 | Reader job | 快速扫描账户清算侧的监管实施框架，并识别后续分工和确认事项。 |
 | Page group | One standalone internal H5 report. |
-| Reading path | Hero metrics -> regulatory shift -> reporting scope -> implementation architecture -> material structure -> reporting flow -> account lifecycle -> reserve governance -> execution plan -> evidence boundary. |
-| Visual logic | Dense management report layout, structured cards, regulatory-shift cards, tables, three-lane implementation architecture, material-to-deliverable map, reporting flow, account lifecycle, reserve fund cycle, work package tabs. |
+| Reading path | Hero metrics -> regulatory shift -> reporting scope -> implementation architecture -> material structure -> reporting flow -> control spine -> account lifecycle -> reserve governance -> execution plan -> evidence boundary. |
+| Visual logic | Dense management report layout, structured cards, regulatory-shift cards, tables, three-lane implementation architecture, material-to-deliverable map, reporting flow, account-clearing control spine, account lifecycle, reserve fund cycle, work package tabs. |
 | Writing standard | 专业内部汇报语言；删除口语化讲稿；保留证据边界。 |
 | Reuse boundary | Reuse source facts and H5 interaction style only; do not copy unrelated regulatory paragraph board content. |
 
@@ -63,6 +63,7 @@ Result: keep as internal H5 draft. Do not claim Feishu-ready or external-review-
 | Implementation architecture | Show account settlement, reserve fund lifecycle, and non-site reporting as three implementation lanes. | PASS |
 | Material structure | Make four core materials primary and map them to concrete deliverables. | PASS |
 | Reporting flow | Show operational chain from source systems to回执差异. | PASS |
+| Control spine | Show customer, account, fund, and ACS alignment as the account-clearing control logic from the third rehearsal. | PASS |
 | Account lifecycle | Present account settlement governance objects and controls. | PASS |
 | Reserve governance | Present reserve module as account-clearing focus module, including 19-table reserve module, ACS, ledgers, sub-ledgers, and clearing verification. | PASS |
 | Execution plan | Convert actions into phased delivery. | PASS |
@@ -77,7 +78,7 @@ Result: keep as internal H5 draft. Do not claim Feishu-ready or external-review-
 | Voice quality | PASS: no口语化讲稿 in H5 |
 | Narrative preservation | PASS |
 | Judgment ownership | PASS with residual confirmations |
-| Visual gate | PASS for internal draft: visuals carry regulatory shift, scope, implementation architecture, material-to-deliverable mapping, flow, lifecycle, reserve fund cycle, and governance |
+| Visual gate | PASS for internal draft: visuals carry regulatory shift, scope, implementation architecture, material-to-deliverable mapping, flow, control spine, lifecycle, reserve fund cycle, and governance |
 | Publish gate | BLOCKED for external publication; no Feishu sync requested |
 
 ## Scorecard
