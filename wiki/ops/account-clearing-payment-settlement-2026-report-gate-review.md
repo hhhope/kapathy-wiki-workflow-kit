@@ -10,7 +10,9 @@ artifact_type: report-gate-review
 
 ## Review Target
 
-- Target: `wiki/reports/account-clearing-payment-settlement-2026-h5.html`
+- Targets:
+  - `wiki/reports/account-clearing-payment-settlement-2026-h5.html`
+  - `wiki/reports/account-clearing-payment-settlement-2026-15min-script.md`
 - Destination: repo-local standalone H5.
 - Scope: 将账户清算侧结构稿转成专业汇报页面，覆盖账户结算、备付金全生命周期管理、非现场监管系统报送和推进计划。
 - Non-scope: 不同步 Feishu，不发布外部版本，不形成监管正式报送口径，不替代合规、技术、数据、账户清算负责人的复核。
@@ -47,9 +49,9 @@ Result: keep as internal H5 draft. Do not claim Feishu-ready or external-review-
 |---|---|
 | Source | `wiki/reports/account-clearing-payment-settlement-2026-brief.md`, `wiki/sources/文字转写-yan的快速会议-418853724.md`, `wiki/sources/文字转写-yan的快速会议-551670973.md`, `wiki/sources/文字转写-yan的快速会议-709621698.md`, and `wiki/reports/shanghai-payment-settlement-priorities-2026-h5.html` |
 | Reader job | 快速扫描账户清算侧的监管实施框架，并识别后续分工和确认事项。 |
-| Page group | One standalone internal H5 report. |
-| Reading path | Hero metrics -> regulatory shift -> reporting scope -> implementation architecture -> material structure -> reporting flow -> control spine -> account lifecycle -> reserve governance -> execution plan -> evidence boundary. |
-| Visual logic | Dense management report layout, structured cards, regulatory-shift cards, tables, three-lane implementation architecture, material-to-deliverable map, reporting flow, account-clearing control spine, account lifecycle, reserve fund cycle, work package tabs. |
+| Page group | One standalone internal H5 report plus one 15-minute speaking manuscript. |
+| Reading path | H5: Hero metrics -> regulatory shift -> reporting scope -> implementation architecture -> material structure -> reporting flow -> control spine -> account lifecycle -> reserve governance -> execution plan -> evidence boundary. Script: positioning -> regulatory shift -> account-clearing rationale -> non-site reporting -> reserve module -> lifecycle -> work plan -> confirmations. |
+| Visual logic | Dense management report layout, structured cards, regulatory-shift cards, tables, three-lane implementation architecture, material-to-deliverable map, reporting flow, account-clearing control spine, account lifecycle, reserve fund cycle, work package tabs. Script carries the same logic in speakable prose. |
 | Writing standard | 专业内部汇报语言；删除口语化讲稿；保留证据边界。 |
 | Reuse boundary | Reuse source facts and H5 interaction style only; do not copy unrelated regulatory paragraph board content. |
 
@@ -67,6 +69,7 @@ Result: keep as internal H5 draft. Do not claim Feishu-ready or external-review-
 | Account lifecycle | Present account settlement governance objects and controls. | PASS |
 | Reserve governance | Present reserve module as account-clearing focus module, including 19-table reserve module, ACS, ledgers, sub-ledgers, and clearing verification. | PASS |
 | Execution plan | Convert actions into phased delivery. | PASS |
+| 15-minute script | Provide a second reader-facing file that can be used as the formal meeting manuscript paired with the H5. | PASS |
 | Evidence boundary | Prevent publication or compliance overclaim. | PASS |
 
 ## Hard Gate Results
