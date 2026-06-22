@@ -172,3 +172,27 @@ The corrected business-analysis frame:
 Implementation remains stopped. The next H5 revision must start from company
 evolution and strategy causality, not from evidence labels or invented reader
 concepts.
+
+## 2026-06-22 Fourth Drift Correction
+
+The business-analysis rewrite still risked becoming a fill-in template. The
+user clarified that the H5 must explain why Stripe keeps doing hard industry
+work: standards, API discipline, domain models, object boundaries, and
+infrastructure normalization.
+
+Corrected requirements:
+
+- The first screen should use growth lines and peer benchmarks, not isolated
+  metric cards.
+- Peer analysis must separate card networks, policy/regulatory infrastructure,
+  PSP/acquirer/gateway competitors, wallets/ecosystem entrances, and new
+  stablecoin / machine-payment rails.
+- AI-era change must explain what Stripe actually did and why those actions
+  continue its long strategy.
+- The page must explain how Stripe competes: not only by processing payments or
+  lowering fees, but by moving the abstraction layer upward through APIs,
+  domain objects, developer defaults, risk infrastructure, and merchant
+  operating primitives.
+- The former "capability migration" idea should become a strategic correctness
+  validation: strategic choice -> capability built -> market/product evidence
+  -> AI-era reuse.

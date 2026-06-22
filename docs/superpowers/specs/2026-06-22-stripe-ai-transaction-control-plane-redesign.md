@@ -78,13 +78,21 @@ Route: brainstorm -> superpowers spec; OpenSpec 在本设计稿审核通过前�
 - AI 时代不是凭空新增章节，而是前面战略积累的再解释。
 - 1000 条来源是底层材料，不是主叙事。
 
-首屏指标：
+首屏主图：
 
-- 2023：Stripe 处理规模 $1T。
-- 2025：Stripe 处理规模 $1.9T。
-- 2025：Stripe 自披露约等于全球 GDP 的 1.6%。
-- 2026：Sessions 发布 288 项产品和功能。
-- 来源队列：1000 concrete URL rows，明确是 triage queue，不是 1000 条已读结论。
+- 不做孤立指标卡，改成一张增长折线图。
+- 主线：Stripe processed volume，展示 2023 $1T、2024 约 $1.4T、2025 $1.9T。
+- 副线：Stripe GDP-equivalent framing，展示 2023 1.0%、2025 1.6%。
+- 标注：2026 Sessions 发布 288 项产品和功能，作为 AI 时代产品扩张节点，不和交易量混成同一指标。
+- 来源队列：1000 concrete URL rows 放在图下注释或来源热力入口，明确是 triage queue，不是 1000 条已读结论。
+
+同业基准：
+
+- 首屏或首屏下方要有 peer benchmark 入口，不能只看 Stripe 自己增长。
+- 同业不强行放进同一条曲线。用两个视图更清楚：
+  - `处理规模/TPV 量级视图`：Stripe、PayPal、Adyen、Worldpay/Global Payments 等可比口径。
+  - `增长指数视图`：把各家公司同一年归一为 100，看增长斜率，而不是混淆收入、TPV 和净收入。
+- take-rate、revenue / TPV、processed volume / net revenue 的公式放展开面板，主图只表达规模、增长和相对量级。
 
 ## BVP 例子怎么用
 
@@ -210,32 +218,62 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 
 > 战略选择 -> 能力沉淀 -> 后续产品/并购 -> AI 时代复用。
 
-### 5. AI 时代后的变化：总分总专题
+### 5. Stripe 为什么坚持做难事：API、规范和领域模型
 
 作用：
 
-AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一句抽象判断，而是 2023-2026 的新阶段。
+回答一个更深的问题：Stripe 为什么长期做行业里最难、最慢、最不讨巧的事情，包括 API 抽象、对象模型、文档、测试环境、协议、风控规则、税务和合规边界。
+
+这不是工程洁癖，而是商业战略。
+
+核心解释：
+
+> 支付和金融基础设施行业的问题不是“有没有支付能力”，而是每个国家、支付方式、商户类型、风险场景、税务规则和结算轨道都高度碎片化。Stripe 的长期策略，是把这些碎片化规则抽象成稳定的领域对象和开发者接口，让新业务可以用同一套模型接入复杂金融世界。
+
+它一直在做的难事：
+
+| 难事 | 表面动作 | 商业意义 |
+|---|---|---|
+| 统一领域模型 | PaymentIntent、Checkout Session、Customer、Subscription、Invoice、Account、Balance、Payout 等对象 | 把复杂金融动作变成可复用的业务对象 |
+| API 和文档标准化 | API-first、SDK、docs、test mode、webhook、preview API | 降低接入成本，让开发者把 Stripe 当默认入口 |
+| 商户经营抽象 | Connect、Billing、Radar、Tax、Terminal、Treasury | 从单笔支付扩到商户经营系统 |
+| 风险和合规内嵌 | Radar、Identity、KYC/KYB、AI Security、token theft protection | 把风险从人工流程变成交易基础能力 |
+| 新轨道接入 | Bridge、Privy、Metronome、MPP、x402、stablecoin、wallet | 把新金融轨道纳入同一套商业基础设施 |
+
+为什么这能形成壁垒：
+
+- **开发者默认选择**：谁定义了更好用的 API 和对象模型，谁就更容易成为新业务的第一接入点。
+- **迁移成本**：一旦商户把支付、订阅、税务、风控、分账、账务和结算都接进同一套对象，替换成本远高于替换单个支付通道。
+- **复合能力**：竞争对手可以复制一个功能，但很难同时复制支付、计费、税务、风控、全球化、本地支付、钱包和稳定币的组合。
+- **行业抽象层**：Stripe 不是只和 PSP 比费率，它试图把自己放在更高的抽象层，成为开发者和商户理解金融复杂性的接口。
+- **新场景复用**：AI 时代出现 Agent、usage billing、machine payment、stablecoin 时，Stripe 可以把旧能力重新组合，而不是从零开始。
+
+这一章要回答：
+
+> Stripe 的正确性不是“产品多”，而是它长期把行业复杂性标准化，并把标准化能力变成商业分发和锁定机制。
+
+### 6. AI 时代后的变化：做了什么，以及为什么
 
 总：
 
-> AI 之后，Stripe 面对的变化不是“支付多了 AI 功能”，而是 AI 公司和 Agent 场景改变了交易需求：客户增长更快、用量更细、交易入口更分散、商品表达更机器可读、结算轨道更多、风险更实时。
+> AI 之后，Stripe 做的不是给支付加 AI 功能，而是把过去积累的 API、领域模型、计费、风控、钱包、稳定币和开发者工具，放到 AI 公司和 Agent 交易的新需求里。重点不是“它发布了什么”，而是这些动作如何延续它过去十五年的战略。
 
 分六类变化：
 
-| AI 后变化 | 商业含义 | Stripe 对应动作 |
+| AI 后变化 | Stripe 做了什么 | 为什么符合长期战略 |
 |---|---|---|
-| 客户结构变化 | AI 公司高增长、高用量、全球化，成本随 token/event 波动 | Revenue suite、global tax、usage billing、Metronome |
-| 交易入口变化 | 商品发现和购买进入 Copilot、Gemini、ChatGPT、agent surface | Copilot Checkout、Agentic Commerce Suite |
-| 商品表达变化 | 商品页变成 catalog feed、inventory feed、pricing feed | ProductCatalogImport、seller docs、preview API |
-| 计费方式变化 | 订阅之外出现 token、event、usage、outcome billing | Billing、Metronome、streaming payments |
-| 结算方式变化 | card rails 之外出现 stablecoin、wallet、machine payment | Bridge、Privy、Tempo、MPP、x402 |
-| 风险对象变化 | 风险从盗卡扩到 token theft、fake signup、tool misuse、resource abuse | Radar token theft、AI Security JD、approval hook |
+| AI 客户成为高强度客户 | 强化 Revenue suite、global tax、usage billing，并收购 Metronome | 延续收入运营战略，把订阅/发票扩到 token、event、usage、outcome |
+| 交易入口进入 AI surface | Copilot Checkout、Agentic Commerce Suite、partner launches | 延续开发者和平台入口战略，让 Stripe 进入新的购买入口 |
+| 商品表达机器可读 | ProductCatalogImport、seller docs、preview API、inventory/pricing feed | 延续领域模型战略，把商品、库存、价格、订单审批做成对象和接口 |
+| 买方授权和钱包变化 | Link wallets for agents、Privy、Shared Payment Token | 延续账户/凭据抽象，把人的支付凭据迁移到 agent 可控的授权模型 |
+| 结算轨道扩张 | Bridge、Tempo、MPP、x402、stablecoin/machine payment docs | 延续新金融轨道接入战略，把稳定币和机器支付接入主栈 |
+| 风险对象变实时 | Radar token theft、approval hook、AI Security JD、risk roles | 延续风险基础设施战略，把风险前移到注册、授权、工具调用和资源访问 |
 
 总：
 
-> AI 没有推翻 Stripe 原有能力，而是重新解释这些能力的价值。过去的 API、平台、计费、风控、全球化和金融运营能力，在 AI 客户和 Agent 交易里被重新组合。
+> AI 没有推翻 Stripe 原有能力，而是验证了这些能力的可迁移性。Stripe 过去做的难事，包括领域模型、API、文档、计费、风控和全球化，在 AI 客户和 Agent 交易中被重新定价。
 
-### 6. 市场位置与增长
+### 7. 市场位置与增长
 
 作用：
 
@@ -246,15 +284,27 @@ AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一
 - 处理规模：2023 $1T，2024 约 $1.4T，2025 $1.9T。
 - GDP 等价口径：2023 1.0%，2025 1.6%。
 - 估值/流动性：2021 $95B，2023 $50B，2025 $91.5B tender valuation。
-- 同业参照：PayPal、Adyen、Worldpay/Global Payments，只在口径可比处使用。
+- 同业参照：PayPal、Adyen、Worldpay/Global Payments、Block/Square、Checkout.com、Shopify Payments，只在口径可比处使用。
 
 分析口径：
 
 - 这里不是要硬算“全球支付市场份额”。
-- 这里要说明 Stripe 的处理规模、增长速度和同业量级，已经足够让它进入 AI 金融基础设施讨论。
+- 这里要说明 Stripe 的处理规模、增长速度、同业量级和能力覆盖，是否足够支持“公司战略正确性”的判断。
 - take-rate、revenue sensitivity、同业 TPV 参照放在展开面板，不占主叙事。
 
-### 7. 并购与能力补位
+同业视角必须分层：
+
+- 卡组织 / 清算网络：Visa、Mastercard。它们掌握网络规则和卡组织清算，不是 Stripe 的同一类公司。
+- 政策/监管/央行类基础设施：它们决定边界，不是商业竞争对手。
+- PSP / gateway / acquirer / processor：Adyen、Worldpay、Checkout.com、Global Payments 等，是支付处理和企业商户竞争层。
+- 钱包和超级 App：PayPal、Block/Square、Apple Pay、Shopify Payments 等，是商户、消费者和生态入口竞争层。
+- 新金融轨道：stablecoin、crypto wallet、machine payment、agent commerce protocol 相关公司，是 AI 时代新增竞争层。
+
+这一章回答：
+
+> Stripe 不是在同一个平面上和所有公司竞争。它的策略是从支付处理层往开发者接口、商户经营、收入运营、风险和新金融轨道上移，把竞争从费率变成系统能力。
+
+### 8. 并购与能力补位
 
 作用：
 
@@ -278,7 +328,7 @@ AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一
 | Privy | 钱包抽象 | 买方/应用授权基础设施 | agent/app wallet 基础设施 |
 | Metronome | usage/event/token 计费 | 收入运营 | AI 产品实时收入模型 |
 
-### 8. 技术事件时间线
+### 9. 技术事件时间线
 
 作用：
 
@@ -302,7 +352,34 @@ AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一
 - MPP、x402、HTTP 402、machine payments
 - Radar token theft、AI Security、risk jobs
 
-### 9. 1000 条来源如何进入判断
+### 10. 战略正确性验证图
+
+作用：
+
+用户问的“能力迁移地图”或“证据坐标”不应该只是图名。它真正要证明的是：Stripe 为什么能做到现在这个规模，这些战略选择是否被市场和产品结果验证。
+
+建议改名：
+
+- `战略正确性验证图`
+- `战略复利图`
+- `从战略选择到规模结果`
+
+图的结构：
+
+| 战略选择 | 能力沉淀 | 验证指标 | AI 时代复用 |
+|---|---|---|---|
+| 开发者入口 | API、SDK、docs、test mode、webhook | 开发者采用、客户扩散、文档/API source density | agents.md、MCP、llms.txt、agent toolkit、sandbox |
+| 平台商户 | Connect、account model、分账、平台风控 | 平台/SaaS/marketplace 客户、处理规模增长 | agent commerce、merchant control、catalog integration |
+| 收入运营 | Billing、Tax、Revenue suite、Invoicing | usage billing、global tax、AI 客户需求 | Metronome、streaming payments、token/event billing |
+| 风险基础设施 | Radar、Identity、KYC/KYB、review、risk graph | Radar token theft、risk JD、fraud/risk roles | fake signup、token theft、tool misuse、approval hook |
+| 全球化补位 | Paystack、TaxJar、Recko、BBPOS、本地支付 | 国际客户、新市场、税务/对账能力 | AI 公司 global-by-default |
+| 新金融轨道 | Bridge、Privy、Tempo、MPP、x402 | stablecoin/wallet/machine payment product signals | machine payment、agent wallet、stablecoin settlement |
+
+这一章回答：
+
+> 不是“Stripe 做了很多事”，而是哪些选择形成了复利，并在 AI 时代继续有效。
+
+### 11. 1000 条来源如何进入判断
 
 作用：
 
@@ -335,7 +412,7 @@ AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一
 
 > 我们如何从 1000 条材料里形成分层判断？
 
-### 10. 我们能学什么
+### 12. 我们能学什么
 
 作用：
 
@@ -344,6 +421,7 @@ AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一
 结论方向：
 
 - 基础设施公司的战略价值，不在于产品名多，而在于能否把复杂业务动作做成可复用接口。
+- Stripe 的核心不是“做支付”，而是把混乱的行业流程抽象成领域模型、API、文档、规则和可复用对象。
 - 看 AI 金融机会，要从交易对象和交易流程变化入手，而不是从 AI 功能清单入手。
 - 看公司战略，要把并购、产品、API、JD、市场指标放回时间线。
 - AI 时代的变化，经常不是全新能力，而是旧能力在新客户、新入口、新计费和新风险下被重新组合。
@@ -358,7 +436,8 @@ AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一
 1. 2010-2026 公司演进总时间线。
 2. 公司战略 / 市场位置 / 并购补位 / 技术产品 / AI 变化五线并读。
 3. AI 后变化专题图。
-4. 来源热力图。
+4. 同业基准和战略正确性验证图。
+5. 来源热力图。
 
 视觉规则：
 
@@ -367,6 +446,8 @@ AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一
 - 不再使用词云证明研究深度。
 - 不再用内部分析概念做页面标题。
 - 颜色固定对应：战略、市场、并购、技术、AI、来源状态。
+- 首屏增长指标必须优先用折线/阶梯面积图表达，不用孤立指标卡堆叠。
+- 同业数据必须分口径呈现，不能把 TPV、收入、净收入、估值混在一张无解释图里。
 - 移动端也保留时间主轴，不能退化成普通卡片堆叠。
 
 ## 来源与边界模型
@@ -393,10 +474,13 @@ AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一
 - 页面主图是公司演进时间线，不是抽象概念图。
 - 每个阶段都按战略押注、目标客户、商业模式影响、能力沉淀、技术选择、并购补位、指标证据、AI 时代复用来分析。
 - 主时间轴支持拖拽，并能并读公司战略、市场位置、并购补位、技术产品、AI 变化五条线。
-- AI 后变化采用总分总，并放回公司演进最新阶段。
-- 市场位置有增长图和同业参照，不再只写口径声明。
+- AI 后变化采用总分总，并解释 Stripe 做了什么、为什么这么做、如何延续长期战略。
+- 市场位置有折线增长图、同业参照和口径分层，不再只写口径声明。
+- 页面解释行业竞争格局：卡组织、监管/政策基础设施、PSP/acquirer/gateway、钱包/生态入口、新金融轨道分别处在哪一层。
+- 页面解释 Stripe 如何通过 API、领域模型、文档、对象和规则，把竞争从费率竞争上移到系统能力竞争。
 - 并购以时间和能力补位组织，不是列表。
 - 技术事件有独立视角，并说明商业战略与技术选择的相互影响。
+- 有一张战略正确性验证图，说明战略选择如何转化为能力沉淀、指标结果和 AI 时代复用。
 - 1000 条来源以热力图或矩阵表达，不再用词云。
 - 页面不使用 `交易控制面` 作为读者标题或核心概念。
 - H5 仍是内部草稿，必须经过 screenshot QA、interaction QA、source integrity check 和 report gate review 后才能说 review-ready。
@@ -416,8 +500,8 @@ AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一
 
 占位符检查：无占位符。
 
-一致性检查：全文主轴改为时间线和公司发展路径。每个阶段都有商业分析口径，AI 后变化作为最新阶段和专题展开。
+一致性检查：全文主轴改为时间线和公司发展路径。每个阶段都有商业分析口径，AI 后变化作为最新阶段和专题展开，并解释 Stripe 长期做 API、规范、领域模型和复杂基础设施的商业原因。
 
 范围检查：这是一个 H5 重设计，范围限定在 Stripe H5、gate review notes 和必要视觉资产，不扩到其它报告。
 
-歧义检查：后续实现必须围绕 `公司演进时间线 + 阶段商业分析 + AI 时代变革专题` 重建页面。不能继续从当前 `证据坐标` 模块修补，也不能再把内部分析工具写成读者标题。
+歧义检查：后续实现必须围绕 `公司演进时间线 + 阶段商业分析 + 行业竞争格局 + 战略正确性验证 + AI 时代变革专题` 重建页面。不能继续从当前 `证据坐标` 模块修补，也不能再把内部分析工具写成读者标题。
