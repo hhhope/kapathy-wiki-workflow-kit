@@ -10,5 +10,9 @@
       the remaining account-skills follow-up boundary.
 - [x] Run scoped runtime discovery, fixed-trigger scans, `git diff --check`,
       OpenSpec validation, and behavior-asset checks; record residual risks.
-- [ ] Commit only scoped repo-local files and stop before editing
+- [x] Commit only scoped repo-local files and stop before editing
       `/mnt/d/skills/account-skills`.
+
+Verification note: committed scoped repo-local visual runtime repair as
+`767870b Fix repo visual-agent runtime surface`. Account-skills package cleanup
+remains a separate follow-up phase.
