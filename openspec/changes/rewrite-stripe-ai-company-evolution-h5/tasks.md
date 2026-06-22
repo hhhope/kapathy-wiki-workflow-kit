@@ -1,6 +1,6 @@
 # Tasks
 
-- [ ] 1. Audit current Stripe artifacts
+- [x] 1. Audit current Stripe artifacts
   - Read the current H5, source note, 1000-source queue headers/sample, gate
     review, and existing screenshot assets.
   - Identify current sections that must be replaced or merged.
