@@ -26,7 +26,7 @@ created: 2026-06-22
 |---|---|
 | Reader | 内部读者，需要快速理解 Stripe 为什么值得从 AI/金融基础设施角度研究 |
 | Reader decision or action | 判断 1000-source queue 中哪些来源应继续晋级到 PPT、长 H5 或专题研究 |
-| Main line | 用一条公司/市场/并购/技术时间线解释 Stripe 发生了什么，再用一条 AI 交易链路时间线解释交易从哪里被改写，最后在全面看里定位能力迁移 |
+| Main line | 采用 BVP-style trend report：先给出 AI 交易基础设施 thesis，再用五个趋势、三维时间轴、市场位置 lane、并购能力缺口、AI 交易链和证据坐标回答 Stripe 如何重新定位 |
 | Non-goals | 不做投资建议；不把官方产品声明当独立效果证明；不推导中国监管落地结论 |
 | User-owned judgments | 最终叙事强度、PPT 取舍、是否进入金融 AI 产品方案 |
 | Agent-allowed work | 公开来源收集、证据矩阵、H5 初稿、后续阅读队列 |
@@ -35,6 +35,7 @@ created: 2026-06-22
 
 | Reference | Reused element | Boundary |
 |---|---|---|
+| `https://www.bvp.com/atlas/state-of-the-cloud-2024` | 一个强主题、trend area、key takeaway、notable data points、implication 的报告组织方式 | 不复制 BVP 视觉品牌；只复用趋势报告的叙事骨架 |
 | `inbox/Anthropic研发调研报告.pptx` | 公司演进、核心模块、内部实践、工程范式、启示的层次 | 不复刻具体 Anthropic 结论 |
 | `wiki/reports/lixiang-luoyonghao-ai-agent-reading-board.html` | 脊柱 + 温度/强度地图 + 详情展开 | Stripe 不是访谈，不做“原文逐段”伪装 |
 | `wiki/ops/anthropic-claude-code-khazix-article-report-gate-review-2026-06-10.md` | 事实矩阵、学习使用边界、非发布边界 | 本稿是调研板，不套公众号口吻 |
@@ -71,24 +72,24 @@ created: 2026-06-22
 | Main timeline now merges company operating path, market position, acquisitions, technology events, and commercial/technical mutual influence | H5 timeline model and source addendum | Verified structurally | Narrative structure evidence; each factual claim still needs source boundary |
 | Timeline now carries valuation/liquidity markers: $95B in 2021, $50B in 2023, $91.5B in 2025 | Axios/FT links added to source pack | Verified as secondary coverage | Private-company valuation/tender context, not public market cap |
 | Timeline now carries processed-volume markers: $1T in 2023, around $1.4T in 2024, $1.9T in 2025 | Stripe annual updates plus secondary coverage | Verified with boundary | 2024 figure remains secondary/proxy; 2025 is official self-report |
-| Market position is now handled as a calculation panel, not a one-sentence disclaimer | H5 market-position panel and source addendum | Verified structurally | Public-ready version should promote direct PayPal 10-K and Adyen shareholder-letter tables |
+| Market position is now handled as a scale/market evidence lane inside the trend report, not as a standalone calculation panel | H5 market-position section and three-dimensional timeline | Verified structurally | Public-ready version should promote direct PayPal 10-K and Adyen shareholder-letter tables |
 | Stripe GDP-equivalent share increased from 1.0% in 2023 to 1.6% in 2025 under Stripe's own framing | Stripe 2023 and 2025 annual letters | Verified from official annual-letter pages | GDP ratio is not a payments-market share denominator |
 | PayPal and Adyen are used as take-rate mechanics: revenue / TPV or net revenue / processed volume | PayPal secondary financial summary, Adyen IR entry, MarketWatch Q1 Adyen coverage | Partial-pass | Comparison only; different accounting models; not Stripe revenue proof |
-| H5 now folds market-position evidence into the main timeline: processed volume, valuation/liquidity events, and share-gain proxy wording | Stripe annual updates, Axios/FT/IBD, secondary compiled sources | Verified with boundary | Not a precise market-share estimate |
+| H5 now folds market-position evidence into the three-dimensional timeline: processed volume, valuation/liquidity events, and share-gain proxy wording | Stripe annual updates, Axios/FT/IBD, secondary compiled sources | Verified with boundary | Not a precise market-share estimate |
 | H5 now folds acquisition/event evidence into the main timeline and AI timeline: Paystack, TaxJar/Recko, OpenChannel/BBPOS, Lemon Squeezy, Bridge, Privy, Metronome | Annual letter, Axios TaxJar, secondary compiled acquisition routes | Partial-pass | Original deal announcements still need promotion before public-ready use |
-| AI transaction-chain section is now a separate draggable timeline from 2023 to 2026-06 | H5 AI timeline model | Verified structurally | Interaction state still needs console-event QA before review-ready |
-| Capability migration map is now framed as a comprehensive evidence coordinate layer, not an independent proof | H5 comprehensive-view section | Verified wording | Map node details still depend on source-promotion strength |
+| AI transaction section is now led by a six-step chain from demand discovery to risk movement, with the draggable timeline as supporting evidence | H5 AI transaction-chain section | Verified structurally | Interaction state still needs console-event QA before review-ready |
+| Capability map is now framed as evidence coordinates, not an independent proof or standalone conclusion | H5 evidence-coordinate section | Verified wording | Map node details still depend on source-promotion strength |
 
 ## Hard Gate Results
 
 | Gate | Result |
 |---|---|
 | Reader intent | pass for internal draft |
-| Reference structure | pass |
+| Reference structure | pass: BVP-style trend report shape selected and mapped |
 | Learning/source use | partial-pass: verified source pack created, 1000-row concrete-source queue added, JD signal scan promoted, and expanded H5 system map / merged company-market-acquisition-tech timeline / AI timeline added; not all rows are read materials |
 | Split strategy | pass: H5 for reading, source pack for material density |
 | Voice | pass for internal research draft |
-| Visual | partial-pass: standalone H5 created and screenshot-checked; console event check blocked by missing local Playwright module |
+| Visual | partial-pass: standalone H5 structure rewritten; fresh screenshot QA still pending for the latest A-direction version |
 | Judgment ownership | pass: official claims are labeled as official/vendor claims |
 | Publish | not applicable: no Feishu sync or public release |
 
@@ -108,6 +109,7 @@ created: 2026-06-22
 - A live re-anchor corrected the page style from abstract thesis language to research-control-surface language. Future edits should preserve this: source organization first, staged judgments second.
 - A follow-up structure pass corrected the relationship between modules: the main timeline is the company/market/acquisition/technology sequence, the AI timeline is the transaction-chain sequence, and the comprehensive view is the capability-positioning layer.
 - Main timeline and AI timeline interactions are browser-rendered and screenshot-checked at initial state; drag/click state changes still need console-event QA before review-ready.
+- 2026-06-22 A-direction rewrite replaced the rejected visible chapter grammar with a BVP-style trend report, a three-dimensional evidence timeline, a capability-gap acquisition map, and an AI transaction-chain section. This improves structure but still requires fresh screenshot QA and interaction checks.
 
 ## Verification Evidence
 
@@ -115,8 +117,8 @@ created: 2026-06-22
 |---|---|---|
 | HTML parser | pass | `python3 -m html.parser wiki/reports/stripe-ai-company-evolution-h5.html` |
 | Diff whitespace | pass | `git diff --check -- wiki/sources/stripe-ai-company-evolution-research-2026-06-22.md wiki/ops/stripe-ai-company-evolution-report-gate-review-2026-06-22.md wiki/reports/stripe-ai-company-evolution-h5.html` |
-| Desktop screenshot | pass after market-calculation repair | `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` full-page screenshot shows five-stage company base map, market-position calculation panel, merged company/market/acquisition/technology timeline with colored evidence cards, separate AI transaction-chain timeline, comprehensive evidence view, capability coordinate map, and source cards. |
-| Mobile screenshot | pass after market-calculation repair | `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` full-page screenshot shows the same structure in a readable single-column layout with no obvious overlap. |
+| Desktop screenshot | pending refresh after A-direction rewrite | Existing `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` reflects the earlier market-calculation repair, not the latest BVP-style trend report structure. |
+| Mobile screenshot | pending refresh after A-direction rewrite | Existing `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` reflects the earlier structure and must be regenerated before review-ready claims. |
 | Chinese rendering | fixed | Initial screenshots showed missing CJK glyphs; H5 now imports Noto Sans SC and screenshots render Chinese correctly. |
 | Frontmatter precheck | inconclusive for target, blocked globally by legacy pages | `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target ...` returned existing unrelated legacy blockers and `target.entry_count: 0`; target pages include required fields from repair hints. |
 | Console event check | blocked | `node -e require('playwright')...` failed with `MODULE_NOT_FOUND`; CLI screenshot still worked. |
@@ -124,10 +126,10 @@ created: 2026-06-22
 | Recruitment/JD coverage | pass for current-source queue and focused scan, partial for historical change evidence | CSV includes 292 `jobs-jd` rows: 260 concrete Stripe job-description pages and 32 Stripe jobs search pages. Focused read opened AI Security, AI Conversation Platform, Developer Productivity AI, ML Platform, Capital Underwriting, Crypto/Stablecoins, Privy, Stablecoin Audit/Reporting, and Radar/Fraud/Risk roles. Historical JD change analysis still needs archive or dated mirror evidence. |
 | H5 source reference integrity | pass | Inline source key/reference check found 24 source keys, 66 H5 refs, and 0 missing referenced source keys after timeline expansion. |
 | H5 source reference integrity after market-calculation repair | pass | Inline source key/reference check found 30 source keys, 81 H5 refs, and 0 missing referenced source keys. |
-| Market-position visual repair | pass | H5 now includes a charted market-position panel with reader-visible source links, formula cards, and color-coded metric cards in the draggable timeline. |
+| Market-position visual repair | pass for structure | H5 now treats market position as a supporting scale/market lane and removes the rejected standalone calculation-panel framing. |
 | CSV field correction | pass | Queue check uses `url_or_query`, not `url`: 1000 rows, 0 empty `url_or_query`, 0 duplicate `url_or_query`, 0 `SEARCH:` placeholders, 292 `jobs-jd` rows. |
 | Live re-anchor trace | pass | `wiki/ops/stripe-ai-company-evolution-h5-reanchor-2026-06-22.md` records the user's correction: source organization, unified style, and evidence-bound wording. |
 
 ## Decision
 
-Use as an internal first draft and research control surface. Do not claim final PPT, review-ready H5, Feishu sync, or completed 1000-source read pack. The 1000-row CSV is now a concrete-source triage queue; only read and promoted rows should become H5/PPT evidence.
+Use as an internal first draft and research control surface. The latest version follows the selected A direction but is not review-ready until fresh screenshot QA and interaction checks pass. Do not claim final PPT, Feishu sync, public publication, or completed 1000-source read pack. The 1000-row CSV is a concrete-source triage queue; only read and promoted rows should become H5/PPT evidence.

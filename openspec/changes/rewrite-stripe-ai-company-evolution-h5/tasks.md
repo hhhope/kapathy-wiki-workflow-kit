@@ -24,7 +24,7 @@
     boundary.
   - Add final lessons without praising Stripe or overclaiming market share.
 
-- [ ] 5. Update gate review and evidence boundary
+- [x] 5. Update gate review and evidence boundary
   - Update `wiki/ops/stripe-ai-company-evolution-report-gate-review-2026-06-22.md`.
   - Record selected reference shape, reader intent, source-use model, section
     drift decisions, and verification evidence.
