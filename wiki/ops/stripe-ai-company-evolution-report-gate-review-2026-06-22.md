@@ -89,7 +89,7 @@ created: 2026-06-22
 | Learning/source use | partial-pass: verified source pack created, 1000-row concrete-source queue added, JD signal scan promoted, and expanded H5 system map / merged company-market-acquisition-tech timeline / AI timeline added; not all rows are read materials |
 | Split strategy | pass: H5 for reading, source pack for material density |
 | Voice | pass for internal research draft |
-| Visual | partial-pass: standalone H5 structure rewritten; fresh screenshot QA still pending for the latest A-direction version |
+| Visual | partial-pass: standalone H5 structure rewritten and fresh desktop/mobile screenshots generated; console event check still not covered |
 | Judgment ownership | pass: official claims are labeled as official/vendor claims |
 | Publish | not applicable: no Feishu sync or public release |
 
@@ -117,8 +117,8 @@ created: 2026-06-22
 |---|---|---|
 | HTML parser | pass | `python3 -m html.parser wiki/reports/stripe-ai-company-evolution-h5.html` |
 | Diff whitespace | pass | `git diff --check -- wiki/sources/stripe-ai-company-evolution-research-2026-06-22.md wiki/ops/stripe-ai-company-evolution-report-gate-review-2026-06-22.md wiki/reports/stripe-ai-company-evolution-h5.html` |
-| Desktop screenshot | pending refresh after A-direction rewrite | Existing `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` reflects the earlier market-calculation repair, not the latest BVP-style trend report structure. |
-| Mobile screenshot | pending refresh after A-direction rewrite | Existing `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` reflects the earlier structure and must be regenerated before review-ready claims. |
+| Desktop screenshot | pass after A-direction rewrite | `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` full-page screenshot shows the BVP-style trend cards, market-position lane, three-dimensional timeline, acquisition gap map, AI transaction chain, evidence coordinate map, and source cards without obvious overlap. |
+| Mobile screenshot | pass after A-direction rewrite | `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` full-page screenshot shows the same structure in a readable single-column layout with no obvious overlap. |
 | Chinese rendering | fixed | Initial screenshots showed missing CJK glyphs; H5 now imports Noto Sans SC and screenshots render Chinese correctly. |
 | Frontmatter precheck | inconclusive for target, blocked globally by legacy pages | `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target ...` returned existing unrelated legacy blockers and `target.entry_count: 0`; target pages include required fields from repair hints. |
 | Console event check | blocked | `node -e require('playwright')...` failed with `MODULE_NOT_FOUND`; CLI screenshot still worked. |
@@ -127,6 +127,8 @@ created: 2026-06-22
 | H5 source reference integrity | pass | Inline source key/reference check found 24 source keys, 66 H5 refs, and 0 missing referenced source keys after timeline expansion. |
 | H5 source reference integrity after market-calculation repair | pass | Inline source key/reference check found 30 source keys, 81 H5 refs, and 0 missing referenced source keys. |
 | Market-position visual repair | pass for structure | H5 now treats market position as a supporting scale/market lane and removes the rejected standalone calculation-panel framing. |
+| H5 source reference integrity after A-direction rewrite | pass | Inline source key/reference check found 30 source keys, 81 H5 refs, and 0 missing referenced source keys. |
+| OpenSpec strict validation | pass | `openspec validate rewrite-stripe-ai-company-evolution-h5 --strict` returned valid; only telemetry flush reported a network error after local validation. |
 | CSV field correction | pass | Queue check uses `url_or_query`, not `url`: 1000 rows, 0 empty `url_or_query`, 0 duplicate `url_or_query`, 0 `SEARCH:` placeholders, 292 `jobs-jd` rows. |
 | Live re-anchor trace | pass | `wiki/ops/stripe-ai-company-evolution-h5-reanchor-2026-06-22.md` records the user's correction: source organization, unified style, and evidence-bound wording. |
 

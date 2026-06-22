@@ -29,7 +29,7 @@
   - Record selected reference shape, reader intent, source-use model, section
     drift decisions, and verification evidence.
 
-- [ ] 6. Verify and commit scoped changes
+- [x] 6. Verify and commit scoped changes
   - Run structural/static checks against the H5 and gate review.
   - Run `git diff --check`.
   - Refresh local screenshots if browser tooling is available.
