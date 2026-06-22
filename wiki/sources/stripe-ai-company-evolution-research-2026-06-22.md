@@ -51,7 +51,7 @@ Stripe 在 AI 后的变化不是简单多卖一个支付 API，而是把自身�
 
 Admission rule for this pass: official Stripe/partner docs and newsroom items are load-bearing; secondary media are route leads only until opened and checked. The current source pool is intentionally broader than the H5 can display.
 
-This table is not the full quantity target. It is the evidence-grade source pool. The 1000-row candidate/discovery queue lives in `stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv` so that route-only items do not pollute verified claims.
+This table is not the full quantity target. It is the evidence-grade source pool. The 1000-row concrete-source triage queue lives in `stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv` so that unread candidate URLs do not pollute verified claims.
 
 | ID | Source | Type | What it contributes | Use boundary |
 |---|---|---|---|---|
@@ -179,22 +179,27 @@ The source pool should grow by bucket, not by random search volume.
 | Regulatory and risk context | 80 | 2 | PCI, card network rules, US/EU stablecoin rules, consumer protection |
 | Peer comparison | 80 | 4 | Adyen, PayPal, Visa, Mastercard, Coinbase, Shopify, OpenAI, Anthropic |
 
-Current queue state after the correction pass:
+Current queue state after the concrete-source correction pass:
 
 | Queue layer | Count | Meaning |
 |---|---:|---|
 | Verified/high-priority source pack | 155 | Opened or routed sources with explicit notes in this file; only these should support H5 claims without further promotion. |
-| 1000-source CSV rows | 1000 | Working queue for discovery and triage. Includes concrete URLs, GitHub/package routes, and search routes. |
-| Concrete URL/package/repo routes in CSV | 426 | Direct pages or repo/package/community routes that can be opened next. |
-| Search discovery routes in CSV | 574 | Query routes that must be promoted to concrete source URLs before they can count as read material. |
+| 1000-source CSV rows | 1000 | Working queue for discovery and triage. Every row now has a concrete URL, repo, package, official page, or job page/search page; no `SEARCH:` placeholders remain. |
+| Stripe docs/API/changelog URLs | 487 | Concrete docs pages for API, changelog, agentic commerce, billing, Connect, risk, and adjacent product mechanics. |
+| Recruitment / JD URLs | 292 | 260 concrete job detail pages plus 32 Stripe jobs search pages, used to trace current AI, ML, risk, crypto, payments, platform, and go-to-market hiring signals. |
+| GitHub code/community URLs | 160 | Concrete Stripe repo, package, example, issue, and discussion routes for developer-surface evidence. |
+| Package registry URLs | 16 | PyPI/npm/package routes for SDK, agent toolkit, MCP, and related implementation surfaces. |
+| Official Stripe / partner / media / protocol / regulatory / research / community URLs | 45 | Stripe annual/news/product pages, partner announcements, peer media, protocol pages, regulatory/risk context, research papers, and social/community routes. |
 | Verified rows marked in CSV | 17 | Highest-load sources already proven in the current gate review; the rest require promotion/checking. |
 
 The next source-counting standard should be stricter:
 
 1. `verified`: opened, cited, and summarized with boundary.
 2. `candidate-url`: concrete URL exists but has not been read.
-3. `candidate-search`: query route only; not a material until promoted.
+3. `candidate-search`: deprecated for this queue; pure query routes must be resolved to concrete URLs before they count toward the 1000-source target.
 4. `rejected`: duplicate, irrelevant, inaccessible, or too weak.
+
+Recruitment/JD boundary: current Stripe job detail pages are valid sources for present organization and capability signals. Historical JD change analysis still needs archive snapshots, old job-board mirrors, or dated reposts before it can support a "how hiring changed over time" claim.
 
 ## Second-Pass Expansion: API, Protocol, Package, Community
 
@@ -322,6 +327,7 @@ This pass strengthens the weakest parts of the first draft: API/version evidence
 2. Compare API changelog around `2025-10-29.clover`, `2025-12-15.preview`, `2026-05-27.preview`.
 3. Read `stripe/ai` package subfolders: agent-toolkit, token-meter, MCP, skills.
 4. Pull partner announcements from AWS, Microsoft, OpenAI, Google, Meta, Shopify, Bridge, Privy, Metronome, Tempo.
-5. Build a 1000-source CSV with fields: date, source owner, source type, product, AI signal, finance signal, proof strength, H5 use, skip reason.
-6. Query GitHub issues/PRs and Stripe Discord entry points for real developer friction: ACS feed errors, SPT setup, MPP/x402 testnet failures, restricted-key permissions, `2026-05-27.preview` breakage.
-7. Separate peer protocols in the next H5 revision: ACP/Stripe, UCP/Google, TAP/Visa, Mastercard Agent Pay, x402/Coinbase, MPP/Stripe.
+5. Promote the 1000 concrete-source CSV row by row: read, summarize, date, classify product/AI/finance signal, mark proof strength, and assign H5/PPT use or skip reason.
+6. Add historical recruiting evidence: archived Stripe JD snapshots, dated job-board mirrors, repost histories, and hiring pages around AI, ML, risk, crypto, payments, platform, and GTM roles.
+7. Query GitHub issues/PRs and Stripe Discord entry points for real developer friction: ACS feed errors, SPT setup, MPP/x402 testnet failures, restricted-key permissions, `2026-05-27.preview` breakage.
+8. Separate peer protocols in the next H5 revision: ACP/Stripe, UCP/Google, TAP/Visa, Mastercard Agent Pay, x402/Coinbase, MPP/Stripe.

@@ -75,7 +75,7 @@ created: 2026-06-22
 |---|---|
 | Reader intent | pass for internal draft |
 | Reference structure | pass |
-| Learning/source use | partial-pass: verified source pack created and 1000-row candidate queue added; not all rows are read materials |
+| Learning/source use | partial-pass: verified source pack created and 1000-row concrete-source queue added; not all rows are read materials |
 | Split strategy | pass: H5 for reading, source pack for material density |
 | Voice | pass for internal research draft |
 | Visual | partial-pass: standalone H5 created and screenshot-checked; console event check blocked by missing local Playwright module |
@@ -84,7 +84,8 @@ created: 2026-06-22
 
 ## Residual Risks
 
-- The previous 155-source pack was materially below the user's requested 1000-source ceiling. This pass adds `wiki/sources/stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv` with 1000 rows, but many rows are candidate/search routes rather than read materials.
+- The previous 155-source pack was materially below the user's requested 1000-source ceiling. The queue has now been corrected to `wiki/sources/stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv` with 1000 concrete URL rows and no `SEARCH:` placeholders, but most rows are still candidate URLs rather than read materials.
+- Recruitment coverage now includes 292 Stripe jobs/JD URLs, including 260 concrete job detail pages. These support current capability and organization signals; historical JD change claims still need archived snapshots or dated job-board mirrors.
 - Several official claims are product-positioning or vendor metrics; they need partner/customer corroboration before stronger public claims.
 - API/version-change section now has concrete ACS/MPP/x402 preview headers and object routes, but is not yet fully mined from Stripe changelog or package diffs.
 - H5 has desktop/mobile screenshots, but should still receive console-event QA and deeper interaction QA before review-ready.
@@ -101,8 +102,9 @@ created: 2026-06-22
 | Chinese rendering | fixed | Initial screenshots showed missing CJK glyphs; H5 now imports Noto Sans SC and screenshots render Chinese correctly. |
 | Frontmatter precheck | inconclusive for target, blocked globally by legacy pages | `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target ...` returned existing unrelated legacy blockers and `target.entry_count: 0`; target pages include required fields from repair hints. |
 | Console event check | blocked | `node -e require('playwright')...` failed with `MODULE_NOT_FOUND`; CLI screenshot still worked. |
-| 1000-source queue row count | pass for queue, not for read-material completion | `wiki/sources/stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv` has 1000 data rows, 0 empty URL/query fields, and 0 duplicate URL/query fields. |
+| 1000-source queue row count | pass for concrete-source queue, not for read-material completion | `wiki/sources/stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv` has 1000 data rows, 0 empty URL fields, 0 duplicate URL fields, and 0 `SEARCH:` placeholder rows. |
+| Recruitment/JD coverage | pass for current-source queue, partial for historical change evidence | CSV includes 292 `jobs-jd` rows: 260 concrete Stripe job detail pages and 32 Stripe jobs search pages. Historical JD change analysis still needs archive or dated mirror evidence. |
 
 ## Decision
 
-Use as an internal first draft and research control surface. Do not claim final PPT, review-ready H5, Feishu sync, or completed 1000-source read pack. The 1000-row CSV is a discovery queue; only promoted rows should become H5/PPT evidence.
+Use as an internal first draft and research control surface. Do not claim final PPT, review-ready H5, Feishu sync, or completed 1000-source read pack. The 1000-row CSV is now a concrete-source triage queue; only read and promoted rows should become H5/PPT evidence.
