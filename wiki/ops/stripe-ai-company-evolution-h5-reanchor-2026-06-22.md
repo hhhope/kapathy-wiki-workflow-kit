@@ -196,3 +196,36 @@ Corrected requirements:
 - The former "capability migration" idea should become a strategic correctness
   validation: strategic choice -> capability built -> market/product evidence
   -> AI-era reuse.
+
+## 2026-06-22 Fifth Drift Correction
+
+The next correction exposed another substantive gap: the AI-era payment section
+still reduced the change to wallets, preauthorization, machine payments, and
+stablecoins. It missed the card/benefit surface and MCP/skill tool-routing
+surface.
+
+Corrected requirements:
+
+- Co-branded cards, benefit cards, tokenized card credentials, virtual cards,
+  card personalization, spending controls, and real-time authorizations must be
+  part of the AI payment argument. They explain why "AI co-branded card" and
+  "agent wallet" are not separate curiosities: they are ways to bind payment
+  credentials, benefits, budgets, merchant scope, and liability to an AI entry
+  point.
+- MCP payment is not a side detail. MCP/skills answer how agents discover and
+  invoke payment capabilities; AP2/ACP/MPP/x402 answer how the invoked action
+  becomes an auditable and attributable transaction.
+- The AI payment chapter must use a three-layer model:
+  1. benefit/card/credential entry
+  2. MCP/skills/API tooling
+  3. authorization/protocol/settlement accountability
+- Peer evidence must include Mastercard Agent Pay, Google AP2, and current
+  Visa/ChatGPT reporting as industry-position context, while preserving source
+  strength boundaries.
+- Stripe evidence must include Issuing, virtual cards, personalization designs,
+  issuing tokens, spending controls, Link wallets, MCP, agent skills, machine
+  payments, MPP, and x402.
+
+Implementation remains stopped. The next H5 revision must rebuild the AI-era
+chapter around payment-industry recomposition, not around a loose list of AI
+features.

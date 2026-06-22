@@ -1,23 +1,28 @@
-# Stripe 公司演进与 AI 时代变革 H5 设计稿
+# Stripe 公司演进与 AI 时代支付变革 H5 设计稿
 
 ## 路由状态
 
 Route: brainstorm -> superpowers spec; OpenSpec 在本设计稿审核通过前保持只读。
 
-本稿是重新锚定后的中文审核稿。它不再把内部分析概念写成标题，也不再按“材料模块”堆页面。它把 Stripe 当作一个公司案例做商业分析：**这家公司如何选择战略楔子，如何扩张能力边界，哪些选择造成了今天的位置，AI 时代又如何重新放大或改写这些能力。**
+本稿是重新锚定后的中文审核稿。它不再把内部分析概念写成标题，也不再按“材料模块”堆页面。它把 Stripe 当作一个支付行业样本做商业分析：**这家公司如何选择战略楔子，如何扩张能力边界，哪些选择造成了今天的位置，AI 时代又如何把支付、发卡、权益、授权、计费、钱包、风控和协议重新组合成 Agent 可调用的金融能力。**
 
 ## 这篇 H5 到底要回答什么
 
 主问题：
 
-> Stripe 如何从一个支付 API 公司，演进为可以承接 AI 时代新交易需求的金融基础设施公司？
+> Stripe 的公司发展路径，如何解释 AI 时代支付行业的生存之道？
 
-拆成四个商业分析问题：
+更具体地说：
+
+> AI 不是凭空创造一套新金融。它把预授权、发卡、联名权益、token、钱包、用量计费、风控、KYC/KYB、争议处理和清结算这些旧能力，重新包装成 Agent 能发现、调用、授权、支付、对账和追责的接口。Stripe 的研究价值在于：它过去十五年一直在把金融复杂性做成 API、对象模型、文档、测试环境和风控规则，所以更容易把这些能力迁移到 AI 交易场景。
+
+拆成五个商业分析问题：
 
 1. **路径问题**：Stripe 在 2010-2026 每个阶段解决的核心商业问题是什么？
 2. **战略问题**：哪些长期战略选择造就了 Stripe 的能力结构？
-3. **变化问题**：AI 时代之后，客户需求、交易入口、计费、结算、风险发生了什么变化？
-4. **启发问题**：我们如何用 Stripe 的路径理解 AI 金融基础设施，而不是只看产品发布？
+3. **变化问题**：AI 时代之后，支付行业哪些旧能力被重新排列组合？
+4. **竞争问题**：Stripe、Visa、Mastercard、Google/OpenAI、PayPal/Adyen/Checkout.com、钱包和稳定币公司分别在争夺哪一层入口？
+5. **启发问题**：我们如何用 Stripe 的路径理解 AI 支付基础设施，而不是只看产品发布？
 
 这篇 H5 的主轴是时间。时间不是装饰，而是分析方法：只有把产品、并购、市场指标、技术接口、JD 和来源放回时间线上，才能看出哪些是战略选择，哪些是结果，哪些只是当期噪音。
 
@@ -42,17 +47,17 @@ Route: brainstorm -> superpowers spec; OpenSpec 在本设计稿审核通过前�
 
 主标题：
 
-> Stripe 公司演进：从支付 API 到 AI 时代金融基础设施
+> Stripe 公司演进与 AI 时代支付变革
 
 副标题：
 
-> 2010-2026 年，Stripe 的关键变化不是产品越来越多，而是它不断把商户收款、平台分账、订阅计费、风控、税务、钱包、稳定币和机器支付接进同一条交易基础设施路径。AI 时代让这条路径被重新放大。
+> 2010-2026 年，Stripe 的关键变化不是产品越来越多，而是它不断把商户收款、平台分账、订阅计费、发卡、风控、税务、钱包、稳定币和机器支付做成可调用的金融接口。AI 时代的变化，不是支付行业从零发明新东西，而是把这些既有能力重组给 Agent、AI 应用和机器交易使用。
 
 备用标题：
 
 - `Stripe 的发展路径与 AI 时代变革`
 - `从 Stripe 看 AI 时代金融基础设施的演进`
-- `Stripe 2010-2026：战略选择、能力扩张与 AI 交易变化`
+- `Stripe 2010-2026：公司路径、支付能力重组与 AI 交易变化`
 
 明确不用：
 
@@ -71,11 +76,15 @@ Route: brainstorm -> superpowers spec; OpenSpec 在本设计稿审核通过前�
 
 > 这页从 2010 到 2026 追踪 Stripe 的公司演进。Stripe 先用 API-first 降低在线收款接入门槛，再把能力扩到平台分账、订阅计费、风控、税务、金融账户和全球化运营。AI 时代之后，AI 公司和 Agent 交易把原有能力重新推到前台：用量计费、商品数据、钱包授权、稳定币结算、机器支付和实时风控成为新的增长线索。
 
+改写后的首屏判断：
+
+> AI 时代的支付变革不是“AI 会不会帮你付钱”，而是“谁来封装授权、预算、权益、凭据、风控、争议和清结算”。从联名卡、权益卡、Agent 钱包，到 MCP payment tools、AP2、ACP、MPP 和 x402，行业正在把原来给人和商户用的金融能力，改造成 AI 可以调用、但必须被约束和审计的交易接口。
+
 首屏要让读者立刻知道：
 
 - 这是 Stripe 公司路径研究。
 - 核心视角是 2010-2026 的时间变化。
-- AI 时代不是凭空新增章节，而是前面战略积累的再解释。
+- AI 时代不是凭空新增章节，而是前面战略积累在支付行业新入口里的再组合。
 - 1000 条来源是底层材料，不是主叙事。
 
 首屏主图：
@@ -126,7 +135,7 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 | 商户经营系统 | 2015-2019 | 平台、SaaS、订阅和线下场景变复杂 | Connect、Billing、Radar、Terminal、Atlas | Stripe 从支付入口进入商户经营层 |
 | 金融运营平台 | 2020-2022 | 全球化、税务、账户、风控、资金和合规压力上升 | Treasury、Capital、Identity、Tax、Issuing，以及区域/税务/对账/硬件补位 | Stripe 扩成更完整的金融运营栈 |
 | AI 客户压力 | 2023-2024 | AI 公司高增长、高用量、全球化、风险和成本波动 | Revenue suite、usage billing、global tax、risk、agent tooling、Bridge | 原有收入和风控能力被 AI 客户重新放大 |
-| AI 时代金融基础设施 | 2025-2026 | Agent 交易、稳定币、钱包、机器支付和实时风控进入主线 | Bridge、Privy、Metronome、Link wallets、MPP、x402、Radar token theft | Stripe 把原有交易能力接入 AI 时代新交易形态 |
+| AI 时代支付能力重组 | 2025-2026 | Agent 交易、权益/凭据重组、稳定币、钱包、机器支付和实时风控进入主线 | Bridge、Privy、Metronome、Issuing/Link wallets、MCP/skills、MPP、x402、Radar token theft | Stripe 把原有支付、发卡、计费、风控和开发者能力接入 AI 时代新交易形态 |
 
 视觉：
 
@@ -175,7 +184,7 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 2. 市场位置线：处理规模、估值、客户规模、同业参照。
 3. 并购补位线：哪些能力通过收购或合作补齐。
 4. 技术产品线：API、docs、对象模型、风控、计费、协议。
-5. AI 变化线：2023 之后 AI 客户、Agent 交易、usage billing、stablecoin、machine payment、风险对象如何出现。
+5. AI 支付重组线：2023 之后 AI 客户、Agent 交易、权益/联名卡、usage billing、MCP/skills、stablecoin、machine payment、风险对象如何出现。
 
 交互：
 
@@ -211,7 +220,10 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 5. **全球化和本地化补位战略**
    Paystack、TaxJar、Recko、BBPOS 等动作不是并购新闻，而是补全球化、本地支付、税务、对账和线下场景的缺口。
 
-6. **新金融轨道接入战略**
+6. **发卡、钱包和权益入口战略**
+   Issuing、virtual cards、spending controls、card personalization、tokens、Link wallets 和 Privy 说明 Stripe 不只处理商户收款，也在构建买方凭据、平台权益和受限授权能力。AI 时代的联名卡、权益卡、Agent 任务卡和钱包，会重新使用这些能力。
+
+7. **新金融轨道接入战略**
    Bridge、Privy、Metronome、Tempo、MPP、x402 表明 Stripe 正在把稳定币、钱包、用量计费和机器支付接入自己的主线。
 
 这一章必须用图表示因果：
@@ -238,40 +250,118 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 | API 和文档标准化 | API-first、SDK、docs、test mode、webhook、preview API | 降低接入成本，让开发者把 Stripe 当默认入口 |
 | 商户经营抽象 | Connect、Billing、Radar、Tax、Terminal、Treasury | 从单笔支付扩到商户经营系统 |
 | 风险和合规内嵌 | Radar、Identity、KYC/KYB、AI Security、token theft protection | 把风险从人工流程变成交易基础能力 |
+| 发卡和权益入口 | Issuing、virtual cards、personalization designs、tokens、spending controls、Link wallets | 把卡、权益、凭据、预算和授权做成可编程能力 |
 | 新轨道接入 | Bridge、Privy、Metronome、MPP、x402、stablecoin、wallet | 把新金融轨道纳入同一套商业基础设施 |
 
 为什么这能形成壁垒：
 
 - **开发者默认选择**：谁定义了更好用的 API 和对象模型，谁就更容易成为新业务的第一接入点。
 - **迁移成本**：一旦商户把支付、订阅、税务、风控、分账、账务和结算都接进同一套对象，替换成本远高于替换单个支付通道。
-- **复合能力**：竞争对手可以复制一个功能，但很难同时复制支付、计费、税务、风控、全球化、本地支付、钱包和稳定币的组合。
+- **复合能力**：竞争对手可以复制一个功能，但很难同时复制支付、发卡、计费、税务、风控、全球化、本地支付、钱包和稳定币的组合。
 - **行业抽象层**：Stripe 不是只和 PSP 比费率，它试图把自己放在更高的抽象层，成为开发者和商户理解金融复杂性的接口。
-- **新场景复用**：AI 时代出现 Agent、usage billing、machine payment、stablecoin 时，Stripe 可以把旧能力重新组合，而不是从零开始。
+- **新场景复用**：AI 时代出现联名权益、Agent 钱包、MCP payment tools、usage billing、machine payment、stablecoin 时，Stripe 可以把旧能力重新组合，而不是从零开始。
 
 这一章要回答：
 
 > Stripe 的正确性不是“产品多”，而是它长期把行业复杂性标准化，并把标准化能力变成商业分发和锁定机制。
 
-### 6. AI 时代后的变化：做了什么，以及为什么
+### 6. AI 时代支付行业重组：从权益入口到工具化支付
 
-总：
+作用：
 
-> AI 之后，Stripe 做的不是给支付加 AI 功能，而是把过去积累的 API、领域模型、计费、风控、钱包、稳定币和开发者工具，放到 AI 公司和 Agent 交易的新需求里。重点不是“它发布了什么”，而是这些动作如何延续它过去十五年的战略。
+这一章不再泛泛写“AI 后变化”。它要回答支付行业在 AI 时代到底发生了什么，以及 Stripe 为什么能接住这件事。
 
-分六类变化：
+总判断：
+
+> AI 支付不是新金融物种，而是既有金融能力的重新编排。过去这些能力分别存在于联名卡、发卡、预授权、钱包、token、订阅、风控、授信、争议和清结算里；现在它们被包装成 Agent 可以调用的工具、协议和商业入口。
+
+这章分三层讲。
+
+#### 6.1 权益化入口：联名卡、权益卡和 tokenized credential
+
+要补上的核心点：
+
+联名卡和权益卡不是边角案例。它们说明支付从来不只是“扣款”，而是把身份、权益、额度、返佣、风控、品牌关系和消费场景绑定到一张卡或一个凭据上。AI 时代的“AI 联名卡”“Agent 钱包”“平台内支付 token”，延续的是同一套商业逻辑：把支付凭据变成某个入口的权益和控制层。
+
+读者要看到的映射：
+
+| 传统金融机制 | AI 时代对应形态 | 需要解释的商业含义 |
+|---|---|---|
+| 联名卡 / 权益卡 | AI 应用绑定卡、平台权益卡、Agent 可用凭据 | 入口方用权益和分润绑定支付关系 |
+| 预授权 | Agent 预算、单次任务授权、购物条件授权 | 用户不是每次点击付款，而是提前定义边界 |
+| tokenized card-on-file | Agentic Token、Shared Payment Token、数字钱包 token | 不把原始卡号暴露给 Agent 或商户 |
+| virtual card / commercial card | Agent 任务卡、企业采购 Agent、一次性卡 | 把支付责任限制在场景、金额、商户和时间内 |
+| spending controls | 预算、MCC、地域、商户白名单、审批流 | 支付公司把“人类意图”转成机器可执行规则 |
+| rewards / offers | 个性化 bundle、平台权益、AI 推荐返佣 | 入口从搜索/广告转向 Agent 推荐与交易分发 |
+
+应放入的案例：
+
+- Visa 把 Visa 网络接入 ChatGPT，重点不是“ChatGPT 会买东西”，而是卡网络把持卡人授权、消费限额、商户限制、审批和争议处理带进 AI 入口。
+- Mastercard Agent Pay 使用 tokenization / Agentic Token 思路，把 AI 发起的支付请求变成可追踪、带权限规则的支付凭据。
+- Stripe Issuing 不是 AI 新产品，但它已经具备发卡、虚拟卡、卡面/卡函个性化、实时授权、spending controls、digital wallet token 等机制；这些机制解释了“权益类/联名卡/Agent 任务卡”为什么不是另一个平行话题。
+- Stripe Link wallets for agents 和 Privy 钱包能力，应被解释为买方授权和钱包抽象，不只是“又一个钱包产品”。
+
+这一层回答：
+
+> AI 时代的支付入口，仍然绕不开“谁持有支付关系、谁定义权益、谁承担授权和争议责任”。联名卡/权益卡/Agent 钱包是一条线，不是三个孤立产品。
+
+#### 6.2 工具化支付：MCP、skills、sandbox 和支付 API 给 Agent 用
+
+要补上的核心点：
+
+MCP 支付不是“技术细节”。它改变的是支付能力被调用的方式：过去开发者读文档、写代码、调用 API；现在 Agent 通过 MCP server、skills、CLI、plain-text docs、llms.txt、sandbox 和工具描述来发现能力、组合参数、创建资源、测试交易。
+
+Stripe 的对应动作：
+
+| Agent 调用层 | Stripe 对应材料 | 商业含义 |
+|---|---|---|
+| MCP server | `mcp.stripe.com`、`docs.stripe.com/mcp` | 让 MCP-compatible client 直接搜索文档、交互 Stripe 资源 |
+| Agent skills | `docs.stripe.com/skills`、skills catalog | 把最佳实践包装成 Agent 可安装指令 |
+| Agent-first docs | plain-text docs、`llms.txt` | 把文档从人类阅读优化到机器读取 |
+| sandbox / CLI | no-login sandbox、Stripe CLI | 降低 Agent 自动创建测试环境的摩擦 |
+| agent toolkit | Stripe AI / agent toolkit | 把支付、计费、客户对象、产品对象接进 AI 应用开发 |
+
+这一层回答：
+
+> AI 时代支付公司的关键能力之一，是让自己的金融对象被 Agent 正确调用。谁的 API、docs、sandbox、skills 和 MCP 工具更机器可读，谁更容易成为 Agent 开发栈里的默认支付接口。
+
+#### 6.3 协议化授权：AP2、ACP、MPP、x402 和机器支付
+
+要补上的核心点：
+
+当 Agent 真正替用户或企业花钱时，支付问题不只是“能不能扣款”，而是授权、真实性、责任、争议、清算和风控如何落地。Google AP2、OpenAI/Stripe ACP、Stripe MPP、x402、Visa Intelligent Commerce、Mastercard Agent Pay 都在争夺这个层。
+
+协议层要解释的对象：
+
+| 协议/机制 | 解决的问题 | 与 Stripe 路径的关系 |
+|---|---|---|
+| AP2 | 用 mandate / verifiable credential 证明用户授权、真实意图和责任边界 | 说明支付行业正在把“人类点击购买”改成“可审计授权链” |
+| ACP / Instant Checkout | 把 AI 对话里的商品发现和购买接到商户订单与支付流程 | Stripe 进入 AI commerce surface |
+| MPP / HTTP 402 | 让 API、内容、数据、服务可以被机器按价格/许可购买 | Stripe 把收款 API 延伸到机器可购买资源 |
+| x402 | 把 HTTP 402 和稳定币/链上支付接到机器支付 | Bridge、stablecoin 和 machine payment 的新轨道 |
+| Visa / Mastercard agentic payment | 把卡网络的 token、授权、争议、风控带进 Agent 交易 | 卡组织不是普通竞品，而是在定义网络规则层 |
+
+这一层回答：
+
+> MCP 解决“Agent 怎么调用工具”，AP2/ACP/MPP/x402 解决“Agent 调用后怎么形成可追责交易”。支付公司的 AI 机会不只在收单费率，而在谁能定义授权、凭据、责任和结算接口。
+
+#### 6.4 回到 Stripe：为什么这些变化能接回公司路径
+
+分七类变化：
 
 | AI 后变化 | Stripe 做了什么 | 为什么符合长期战略 |
 |---|---|---|
 | AI 客户成为高强度客户 | 强化 Revenue suite、global tax、usage billing，并收购 Metronome | 延续收入运营战略，把订阅/发票扩到 token、event、usage、outcome |
-| 交易入口进入 AI surface | Copilot Checkout、Agentic Commerce Suite、partner launches | 延续开发者和平台入口战略，让 Stripe 进入新的购买入口 |
+| 交易入口进入 AI surface | Copilot Checkout、Agentic Commerce Suite、OpenAI/Google/Microsoft/Meta partner launches | 延续开发者和平台入口战略，让 Stripe 进入新的购买入口 |
 | 商品表达机器可读 | ProductCatalogImport、seller docs、preview API、inventory/pricing feed | 延续领域模型战略，把商品、库存、价格、订单审批做成对象和接口 |
-| 买方授权和钱包变化 | Link wallets for agents、Privy、Shared Payment Token | 延续账户/凭据抽象，把人的支付凭据迁移到 agent 可控的授权模型 |
+| 权益和凭据被重组 | Issuing、virtual cards、personalization designs、tokens、spending controls、Link wallets for agents、Privy、Shared Payment Token | 延续发卡/钱包/凭据抽象，把“卡 + 权益 + 授权”迁移到 Agent 可控模型 |
+| 支付能力被工具化 | MCP server、agent skills、plain-text docs、llms.txt、sandbox、agent toolkit | 延续 API-first 和开发者体验战略，把 Stripe 从人类开发者入口迁移到 Agent 开发入口 |
 | 结算轨道扩张 | Bridge、Tempo、MPP、x402、stablecoin/machine payment docs | 延续新金融轨道接入战略，把稳定币和机器支付接入主栈 |
 | 风险对象变实时 | Radar token theft、approval hook、AI Security JD、risk roles | 延续风险基础设施战略，把风险前移到注册、授权、工具调用和资源访问 |
 
-总：
+收束判断：
 
-> AI 没有推翻 Stripe 原有能力，而是验证了这些能力的可迁移性。Stripe 过去做的难事，包括领域模型、API、文档、计费、风控和全球化，在 AI 客户和 Agent 交易中被重新定价。
+> AI 没有推翻 Stripe 原有能力，而是验证了这些能力的可迁移性。Stripe 过去做的难事，包括领域模型、API、文档、发卡、计费、风控、钱包、稳定币和全球化，在 AI 客户和 Agent 交易中被重新定价。
 
 ### 7. 市场位置与增长
 
@@ -292,17 +382,19 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 - 这里要说明 Stripe 的处理规模、增长速度、同业量级和能力覆盖，是否足够支持“公司战略正确性”的判断。
 - take-rate、revenue sensitivity、同业 TPV 参照放在展开面板，不占主叙事。
 
-同业视角必须分层：
+同业视角必须分层，并把 AI 支付入口补进去：
 
 - 卡组织 / 清算网络：Visa、Mastercard。它们掌握网络规则和卡组织清算，不是 Stripe 的同一类公司。
 - 政策/监管/央行类基础设施：它们决定边界，不是商业竞争对手。
 - PSP / gateway / acquirer / processor：Adyen、Worldpay、Checkout.com、Global Payments 等，是支付处理和企业商户竞争层。
 - 钱包和超级 App：PayPal、Block/Square、Apple Pay、Shopify Payments 等，是商户、消费者和生态入口竞争层。
+- AI 入口和协议层：OpenAI、Google、Microsoft、Anthropic/Claude ecosystem、AP2、ACP、MCP/A2A。它们可能不直接做清结算，但会争夺商品发现、意图捕获和 Agent 工具入口。
+- 发卡/权益/凭据层：Visa Intelligent Commerce、Mastercard Agent Pay、Stripe Issuing、虚拟卡、tokenized credential、联名权益和平台卡。它们争夺的是“用户授权和支付关系”。
 - 新金融轨道：stablecoin、crypto wallet、machine payment、agent commerce protocol 相关公司，是 AI 时代新增竞争层。
 
 这一章回答：
 
-> Stripe 不是在同一个平面上和所有公司竞争。它的策略是从支付处理层往开发者接口、商户经营、收入运营、风险和新金融轨道上移，把竞争从费率变成系统能力。
+> Stripe 不是在同一个平面上和所有公司竞争。它的策略是从支付处理层往开发者接口、商户经营、发卡/授权、收入运营、风险和新金融轨道上移，把竞争从费率变成系统能力。AI 时代的关键问题，是 Stripe 能否在 OpenAI/Google 这类入口、Visa/Mastercard 这类网络、Adyen/PayPal 这类支付同行、以及稳定币/钱包新轨道之间，保住自己的接口层位置。
 
 ### 8. 并购与能力补位
 
@@ -327,6 +419,7 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 | Bridge | 稳定币编排和跨境结算 | 新金融轨道 | stablecoin settlement 进入主线 |
 | Privy | 钱包抽象 | 买方/应用授权基础设施 | agent/app wallet 基础设施 |
 | Metronome | usage/event/token 计费 | 收入运营 | AI 产品实时收入模型 |
+| Issuing / card personalization / tokens | 发卡、权益、数字钱包 token、实时授权 | 发卡和权益入口 | agent task card、联名权益、受限凭据和预算控制 |
 
 ### 9. 技术事件时间线
 
@@ -348,6 +441,7 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 - Connect / Billing / Radar / Terminal
 - Tax / Treasury / Issuing / Identity
 - docs for agents、MCP、llms.txt、agent toolkit
+- Issuing、virtual cards、personalization designs、tokens、spending controls、real-time authorizations
 - ProductCatalogImport、preview API、seller docs
 - MPP、x402、HTTP 402、machine payments
 - Radar token theft、AI Security、risk jobs
@@ -372,6 +466,7 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 | 平台商户 | Connect、account model、分账、平台风控 | 平台/SaaS/marketplace 客户、处理规模增长 | agent commerce、merchant control、catalog integration |
 | 收入运营 | Billing、Tax、Revenue suite、Invoicing | usage billing、global tax、AI 客户需求 | Metronome、streaming payments、token/event billing |
 | 风险基础设施 | Radar、Identity、KYC/KYB、review、risk graph | Radar token theft、risk JD、fraud/risk roles | fake signup、token theft、tool misuse、approval hook |
+| 发卡和权益入口 | Issuing、virtual cards、personalization designs、tokens、spending controls、real-time authorization | 发卡 API、卡面/卡函个性化、digital wallet token、授权控制 | AI 联名卡、agent task card、权益化支付入口、受限凭据 |
 | 全球化补位 | Paystack、TaxJar、Recko、BBPOS、本地支付 | 国际客户、新市场、税务/对账能力 | AI 公司 global-by-default |
 | 新金融轨道 | Bridge、Privy、Tempo、MPP、x402 | stablecoin/wallet/machine payment product signals | machine payment、agent wallet、stablecoin settlement |
 
@@ -423,6 +518,8 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 - 基础设施公司的战略价值，不在于产品名多，而在于能否把复杂业务动作做成可复用接口。
 - Stripe 的核心不是“做支付”，而是把混乱的行业流程抽象成领域模型、API、文档、规则和可复用对象。
 - 看 AI 金融机会，要从交易对象和交易流程变化入手，而不是从 AI 功能清单入手。
+- 支付行业 AI 化不是只有“支付”和“信贷”两条线。H5 主线可以收敛成支付/授权与信贷/风险两大业务线，但底层还必须覆盖发卡权益、钱包凭据、计费、税务、对账、清结算、争议和合规。
+- 联名卡、权益卡、Agent 钱包、MCP payment tools 和 AP2/ACP/MPP/x402 是一组连续变化：入口绑定权益，Agent 调用工具，协议记录授权，支付网络承担风控和争议。
 - 看公司战略，要把并购、产品、API、JD、市场指标放回时间线。
 - AI 时代的变化，经常不是全新能力，而是旧能力在新客户、新入口、新计费和新风险下被重新组合。
 - 市场位置分析不能停在“没有公开份额”，要用处理规模、增长、同业参照和采用信号构建判断边界。
@@ -435,7 +532,7 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 
 1. 2010-2026 公司演进总时间线。
 2. 公司战略 / 市场位置 / 并购补位 / 技术产品 / AI 变化五线并读。
-3. AI 后变化专题图。
+3. AI 支付重组专题图：权益化入口、工具化支付、协议化授权三层，不再用松散词云。
 4. 同业基准和战略正确性验证图。
 5. 来源热力图。
 
@@ -444,8 +541,13 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 - 时间轴是主角。
 - 图表要服务商业问题。
 - 不再使用词云证明研究深度。
+- 如保留词条云，必须可点击筛选时间轴，并按 `权益/发卡`、`工具/API`、`授权/协议`、`风险/责任`、`计费/结算` 分类；词条数量不能只展示少数高频词。
 - 不再用内部分析概念做页面标题。
 - 颜色固定对应：战略、市场、并购、技术、AI、来源状态。
+- AI 支付重组图使用三层视觉，而不是平铺卡片：
+  - 上层：入口和权益，展示联名卡、权益卡、AI 应用入口、Link wallet、Issuing。
+  - 中层：Agent 工具调用，展示 MCP、skills、sandbox、toolkit、docs。
+  - 下层：授权和结算协议，展示 AP2、ACP、MPP、x402、Visa/Mastercard token、risk/dispute。
 - 首屏增长指标必须优先用折线/阶梯面积图表达，不用孤立指标卡堆叠。
 - 同业数据必须分口径呈现，不能把 TPV、收入、净收入、估值混在一张无解释图里。
 - 移动端也保留时间主轴，不能退化成普通卡片堆叠。
@@ -474,9 +576,11 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 - 页面主图是公司演进时间线，不是抽象概念图。
 - 每个阶段都按战略押注、目标客户、商业模式影响、能力沉淀、技术选择、并购补位、指标证据、AI 时代复用来分析。
 - 主时间轴支持拖拽，并能并读公司战略、市场位置、并购补位、技术产品、AI 变化五条线。
-- AI 后变化采用总分总，并解释 Stripe 做了什么、为什么这么做、如何延续长期战略。
+- AI 后变化先给行业判断，再拆成权益化入口、工具化支付、协议化授权三层，并解释支付行业如何把联名权益、预授权、发卡、token、钱包、MCP/skills、AP2/ACP/MPP/x402、风控和清结算重新编排给 Agent。
+- 联名卡/权益卡不能缺席。必须把它与 Issuing、virtual card、personalization designs、tokens、spending controls、Link wallets、Visa/Mastercard agentic payment 案例放在同一条“权益化入口”线上。
+- MCP 支付不能缺席。必须解释 MCP/skills 是“支付能力工具化”，并区分 MCP 解决调用、AP2/ACP/MPP/x402 解决可追责交易。
 - 市场位置有折线增长图、同业参照和口径分层，不再只写口径声明。
-- 页面解释行业竞争格局：卡组织、监管/政策基础设施、PSP/acquirer/gateway、钱包/生态入口、新金融轨道分别处在哪一层。
+- 页面解释行业竞争格局：卡组织、监管/政策基础设施、PSP/acquirer/gateway、钱包/生态入口、AI 入口和协议层、发卡/权益/凭据层、新金融轨道分别处在哪一层。
 - 页面解释 Stripe 如何通过 API、领域模型、文档、对象和规则，把竞争从费率竞争上移到系统能力竞争。
 - 并购以时间和能力补位组织，不是列表。
 - 技术事件有独立视角，并说明商业战略与技术选择的相互影响。
