@@ -1,347 +1,282 @@
 # Stripe H5 Research Logic Redesign
 
-## Context
+## Selected Direction
 
-The current Stripe H5 drifted because it kept adding visible material blocks
-without first fixing the research argument. The user rejected three chapters in
+Use direction A from the visual companion:
+
+> BVP-style trend report + three-dimensional timeline.
+
+The user selected this because it is easier to understand than a flat chapter
+list. The H5 should learn from `State of the Cloud 2024`: start with a strong
+theme, split the argument into trend cards, and give every trend a compact set
+of notable data points and implications.
+
+Reference used for shape:
+
+- `https://www.bvp.com/atlas/state-of-the-cloud-2024`
+
+The design should not copy BVP's visual identity. It should copy the reporting
+logic:
+
+- one top theme
+- several trend areas
+- each trend has a takeaway
+- each trend has notable data points
+- each trend has an implication
+- charts support trends rather than becoming raw source dumps
+
+## Problem Being Fixed
+
+The current H5 drifted because it kept adding visible material blocks without
+first fixing the research argument. The user rejected three sections in
 particular:
 
 - `市场位置计算面板`
 - `公司运营、市场位置、并购与技术事件线`
 - `AI 交易链路时间线：从商品发现到机器支付`
 
-The shared failure is not a missing data point. The failure is that each chapter
-looks like a source bucket, while no chapter clearly says what it proves.
-Charts, timelines, acquisitions, market metrics, and AI transaction evidence
-compete for the same explanatory role.
+The shared failure is that each section looks like a source bucket. None of the
+three clearly says what it proves. Market metrics, acquisitions, technology
+events, and AI transaction changes are mixed into charts without a visual
+grammar.
 
-No more H5 implementation should happen until this redesign is reviewed.
+## Core Reader Question
 
-## Reader Question
+The H5 should answer:
 
-The H5 should answer one question:
+> Stripe 如何理解 AI 时代的交易变化，它如何重新定位自己，我们能从它的路径中学到什么？
 
-> How does Stripe understand the AI-era change in economic activity, how is it
-> positioning itself, and what can we learn from that positioning?
+The answer:
 
-The answer should not be "Stripe is strong" or "Stripe has many AI products."
-The answer should be:
+> Stripe's AI-era bet is not "payments plus AI." It is that AI changes the
+> transaction system itself: who buys, where demand appears, how products are
+> represented, how usage is priced, how payment is authorized, how settlement
+> happens, and where risk appears. Stripe is using its payment, billing, risk,
+> wallet, stablecoin, and developer-interface capabilities to position itself
+> as infrastructure for that new transaction system.
 
-> Stripe appears to believe that AI changes who initiates transactions, how
-> products are represented, how usage is priced, how payment is authorized, how
-> settlement happens, and where risk appears. Stripe's strategy is to turn its
-> existing payment, billing, risk, wallet, and settlement capabilities into
-> infrastructure for that new transaction shape.
+## Page-Level Structure
 
-## Use Of The 1000 Sources
+The H5 should use this reader-facing sequence:
 
-The 1000-source queue is not a page-content target. It is the evidence supply
-chain.
+1. `AI 时代，Stripe 要争夺的不是支付按钮，而是交易系统入口`
+2. `五个趋势定义 Stripe 的 AI 交易基础设施路径`
+3. `三维时间轴：时间 x 证据维度 x 证明任务`
+4. `趋势 1：交易入口从网站迁移到 Agent surface`
+5. `趋势 2：商品表达从网页转向机器可读 catalog / API`
+6. `趋势 3：计费从订阅转向 usage / token / event`
+7. `趋势 4：结算从 card rails 扩到 wallet / stablecoin / machine payment`
+8. `趋势 5：风险从盗卡扩到 token theft / tool misuse / resource abuse`
+9. `Stripe 的定位：从支付 API 到 AI 交易基础设施`
+10. `我们能学什么`
+11. `来源与证据边界`
 
-Sources must be promoted through four states:
+Do not use internal chapter names such as `核心判断`, `原有能力底座`,
+`市场位置计算面板`, or `公司运营、市场位置、并购与技术事件线` as visible
+reader-facing headings.
+
+## BVP-Style Trend Card Model
+
+Each trend should follow the same visual grammar:
+
+| Field | Meaning |
+|---|---|
+| Trend area | What is changing in the market or transaction system |
+| Key takeaway | One sentence the reader should remember |
+| Notable data points | 3-5 metrics / events / launches / acquisitions |
+| Stripe implication | What this means for Stripe's positioning |
+| Evidence trail | Promoted sources that support the claim |
+
+Example trend card:
+
+| Field | Draft content |
+|---|---|
+| Trend area | Agent commerce |
+| Key takeaway | Demand generation and checkout are moving into AI surfaces. |
+| Notable data points | Copilot Checkout; Agentic Commerce Suite; ProductCatalogImport; Shared Payment Token |
+| Stripe implication | Stripe must make product catalogs, payment authorization, and merchant controls machine-readable. |
+| Evidence trail | Stripe Copilot release; agentic commerce docs; seller docs |
+
+## Three-Dimensional Timeline
+
+The timeline is the central visual. It should not be a flat list of events.
+
+Dimensions:
+
+1. `time`: 2010, 2015, 2020, 2023, 2024, 2025, 2026.
+2. `evidence lane`: company scale, market position, acquisition / capability
+   gap, product / technical event, AI transaction shift, organization signal.
+3. `proof tag`: what the event proves.
+
+Example layout:
+
+| Time | Company scale | Market position | Acquisition / gap | Product / tech | AI transaction shift | Proof tag |
+|---|---|---|---|---|---|---|
+| 2010-2014 | developer adoption | no scale claim | none | API / SDK / docs | none | interface foundation |
+| 2015-2019 | platforms / SaaS | merchant expansion | none | Connect / Billing / Radar / Terminal | none | merchant operating layer |
+| 2020-2022 | pandemic growth / valuation cycle | funding context | Paystack / TaxJar / BBPOS | Treasury / Tax / Identity / Issuing | early AI not central | financial operations layer |
+| 2023 | $1T processed volume | 1% GDP equivalent | none | Revenue suite pressure | AI customers pressure billing / risk | system-scale signal |
+| 2024 | ~$1.4T secondary volume | peer/share-gain signals | Bridge announced | agent docs begin mattering | AI distribution pressure | market-position expansion |
+| 2025 | $1.9T / 5M+ businesses | 1.6% GDP equivalent | Bridge / Privy / Metronome | stablecoin / wallet / usage stack | agent commerce becomes productized | capability gap closing |
+| 2026 | Sessions 288 launches | AI infra narrative | Tempo / ecosystem moves | Link wallets / MPP / x402 / Radar token theft | machine payment and agent wallets | AI transaction infrastructure |
+
+Visual requirements:
+
+- Use horizontal time.
+- Use lanes for evidence categories.
+- Use colors consistently:
+  - scale / market: green
+  - acquisition / capability gap: red
+  - product / technical event: gold
+  - AI transaction shift: blue
+  - organization / risk: slate
+- Each node has one proof tag.
+- Clicking or tapping a node opens evidence details.
+
+The timeline should answer: "When did Stripe's positioning change, and which
+evidence supports that change?"
+
+## Market Position Visual
+
+Market position should become one sub-view inside the three-dimensional
+timeline, not a standalone calculation panel.
+
+Reader-facing title:
+
+> Stripe 是否已经接近系统级入口？
+
+Visual design:
+
+- first show Stripe processed-volume growth: `$1T -> ~$1.4T -> $1.9T`
+- then show GDP-equivalent movement: `1.0% -> 1.6%`
+- then show peer reference bands: PayPal, Adyen, Worldpay / Global Payments
+  where comparable
+- formulas and take-rate notes go in an expandable evidence drawer
+
+Do not show:
+
+- `两公司 TPV 参照`
+- unexplained sensitivity ranges like `$2.8B-$35.9B`
+- formulas as the main story
+
+The claim should be:
+
+> Stripe's visible processing surface is large enough to treat it as a serious
+> candidate for AI-era transaction infrastructure, but the page must not claim a
+> precise audited global market share.
+
+## Acquisition / Capability Gap Visual
+
+Acquisitions should be shown as capability gap closures, not as a flat M&A list.
+
+| Gap | Stripe move | What it enables in the AI-era transaction system |
+|---|---|---|
+| local payment network | Paystack | regional payment coverage |
+| tax and reconciliation | TaxJar / Recko | global merchant operations |
+| offline / hardware | BBPOS / Terminal | omnichannel payment surface |
+| merchant-of-record | Lemon Squeezy | software and digital goods selling |
+| stablecoin orchestration | Bridge | stablecoin settlement and orchestration |
+| wallet abstraction | Privy | agent / app wallet infrastructure |
+| usage and event rating | Metronome | token / event / outcome billing |
+
+This visual answers:
+
+> What gaps did Stripe have to close before it could credibly move from
+> payments into AI transaction infrastructure?
+
+## AI Transaction Visual
+
+AI transaction change should be a chain, not a timeline.
+
+Chain:
+
+1. demand appears: website / app -> Copilot / Gemini / ChatGPT / agent surface
+2. product is represented: page -> catalog / API / inventory / price feed
+3. price is calculated: subscription -> usage / token / event / outcome
+4. buyer is authorized: card entry -> wallet / one-time token / approval
+5. payment settles: card rails -> stablecoin / MPP / x402 / machine payment
+6. risk moves: card fraud -> token theft / fake signup / tool misuse /
+   resource abuse
+
+Each step should show:
+
+- old state
+- AI-era state
+- Stripe evidence
+- open proof boundary
+
+This visual answers:
+
+> Which parts of the transaction does AI rewrite, and where does Stripe place
+> itself?
+
+## Source Use Model
+
+The 1000-source queue should not appear as a content brag. It should power the
+evidence trails.
+
+States:
 
 1. `queued`: concrete URL collected but not read.
 2. `read`: source opened, dated, and summarized.
-3. `classified`: assigned to one or more evidence roles.
-4. `promoted`: allowed to support a visible H5 claim.
+3. `classified`: assigned to a trend, lane, and proof tag.
+4. `promoted`: allowed to support visible H5 claims.
 
 Evidence roles:
 
-- `company_scale`: TPV, customers, valuation, liquidity events, profitability
-  signals.
-- `market_position`: peer TPV, processed volume, revenue / TPV, take-rate
-  mechanics, analyst share-gain commentary.
-- `capability_base`: API, docs, SDK, Billing, Radar, Connect, Tax, Treasury,
-  Issuing, Link.
-- `capability_gap`: acquisitions and product launches that fill a missing
-  ability.
-- `ai_transaction_shift`: agent checkout, catalog feed, usage billing, wallet
-  authorization, stablecoin, machine payment, AI risk.
-- `organization_signal`: JD, team, audit, compliance, AI platform, risk and
-  stablecoin roles.
-
-The H5 should show only promoted evidence. The source pack and queue can show
-the rest.
-
-## Approaches Considered
-
-### A. Keep Current Structure And Improve Charts
-
-This keeps the existing three chapters and makes each chart prettier.
-
-Trade-off: lowest effort, but it preserves the core problem. The reader still
-has to assemble the argument from scattered modules.
-
-Decision: reject.
-
-### B. Rebuild Around A Research Argument
-
-This reorganizes the H5 into a sequence of proof jobs:
-
-1. state the thesis
-2. show Stripe's existing capability base
-3. prove market position and scale
-4. show how acquisitions fill capability gaps
-5. show how AI changes the transaction chain
-6. infer Stripe's AI-era worldview
-7. extract lessons
-
-Trade-off: higher rewrite cost, but it gives every chart a job and makes the
-page readable as research rather than a dashboard.
-
-Decision: recommended.
-
-### C. Turn It Into A Research Dashboard
-
-This treats the H5 as an analyst console with filters for source type, year,
-product, acquisition, market metric, and AI transaction component.
-
-Trade-off: strong for internal exploration, weak as a reader-facing argument.
-It would also invite more source dumping.
-
-Decision: reject for the current H5, keep as possible future internal tool.
-
-## Recommended Chapter Design
-
-### 01 Core Thesis
-
-Job: tell the reader what the H5 is trying to prove.
-
-Content:
-
-- one paragraph thesis
-- four proof anchors: 2025 TPV, AI customer pressure, Bridge / Privy /
-  Metronome, agentic commerce / machine payments
-
-Visual:
-
-- one horizontal "from payments to AI economic infrastructure" path
-
-Not allowed:
-
-- source queue explanation
-- market-share caveats
-- general AI rhetoric
-
-### 02 Original Capability Base
-
-Job: explain why Stripe can plausibly move into AI economic infrastructure.
-
-Argument:
-
-Stripe did not start as an AI company. It built a reusable interface layer for
-payments, then expanded into merchant operations and financial operations.
-
-Structure:
-
-- API / SDK / docs / testing
-- Connect / Billing / Radar / Tax
-- Treasury / Capital / Issuing / Link
-- Stablecoin / wallet / agent-facing interfaces
-
-Visual:
-
-- capability ladder, not a year-by-year timeline
-
-Evidence:
-
-- official annual letters
-- docs and API references
-- product pages
-
-### 03 Market Position And Scale
-
-Job: answer whether Stripe has enough scale and relative market position for
-the AI-infrastructure claim to matter.
-
-This chapter should not be named `市场位置计算面板`. It should be named:
-
-> Stripe 是否已经接近系统级入口
-
-Reader-facing claims:
-
-- Stripe's processed volume grew from $1T in 2023 to $1.9T in 2025.
-- Stripe's own GDP-equivalent framing moved from 1.0% to 1.6%.
-- Peer comparison should show relative position, not pretend to produce global
-  audited market share.
-- Take-rate formulas belong in a footnote or expandable detail, not the main
-  visual.
-
-Visual:
-
-- primary chart: Stripe TPV growth line / bars
-- secondary chart: peer TPV reference band for PayPal, Adyen, Worldpay /
-  Global Payments where comparable
-- small note: revenue / TPV is a method, not Stripe revenue
-
-Not allowed:
-
-- "two-company TPV share" as a headline number
-- unexplained sensitivity range such as `$2.8B-$35.9B`
-- leading with caveats before the reader sees the trend
-
-### 04 Capability Gaps And Acquisitions
-
-Job: prove that acquisitions are not trivia; they map to missing capabilities.
-
-Structure:
-
-| Gap | Acquisition / event | Why it matters |
-|---|---|---|
-| local payment network | Paystack | Africa and local payment coverage |
-| tax and finance ops | TaxJar / Recko | sales tax, reconciliation |
-| physical / offline | BBPOS / Terminal | hardware and offline payment |
-| merchant-of-record | Lemon Squeezy | software and digital goods selling |
-| stablecoin orchestration | Bridge | stablecoin payment and settlement |
-| wallet abstraction | Privy | agent / app wallet infrastructure |
-| usage rating | Metronome | token / event / outcome billing |
-
-Visual:
-
-- capability-gap matrix
-- optional timeline only as a secondary axis
-
-Not allowed:
-
-- a flat acquisition list
-- mixing valuation, product release, and acquisition in the same card without a
-  clear "gap" label
-
-### 05 AI Transaction Chain
-
-Job: explain exactly what AI changes in the transaction.
-
-This chapter should not be another timeline. It should be a chain:
-
-1. discovery: human search / website -> AI app / Copilot / Gemini / ChatGPT
-2. product representation: webpage -> catalog / API / inventory / price feed
-3. pricing: subscription -> usage / token / event / outcome
-4. authorization: card entry -> wallet / one-time token / approval
-5. settlement: cards -> stablecoin / machine payment / MPP / x402
-6. risk: card fraud -> token theft / fake signup / tool misuse / prompt
-   injection / resource abuse
-
-Visual:
-
-- transaction-chain diagram with before / after rows
-- evidence chips attached to each step
-
-Evidence:
-
-- agentic commerce docs
-- Copilot Checkout
-- Sessions 2026
-- machine payment docs
-- AI security / Radar / relevant JDs
-
-Not allowed:
-
-- time-only timeline cards
-- abstract section titles like `AI changes financial objects`
-- evidence labels that do not point to a transaction-chain step
-
-### 06 Stripe's AI-Era Worldview
-
-Job: infer Stripe's strategy from the evidence.
-
-Claims:
-
-- AI increases company creation and product launch speed.
-- AI moves commerce entry points away from merchant websites and toward agent
-  surfaces.
-- AI products need more granular billing and faster feedback between cost and
-  revenue.
-- Agent commerce needs wallet, authorization, approval, and risk infrastructure.
-- Content, APIs, and data sources become monetizable resources through machine
-  payment protocols.
-
-Visual:
-
-- five "Stripe believes..." cards, each with one evidence trail
-
-Not allowed:
-
-- claiming Stripe has already won the AI infrastructure layer
-- claiming protocol adoption without customer / partner / community evidence
-
-### 07 What We Learn
-
-Job: turn Stripe's path into reusable lessons.
-
-Lessons:
-
-- In infrastructure markets, the winning move is often to turn messy operations
-  into programmable interfaces.
-- AI changes distribution, billing, authorization, settlement, and risk at the
-  same time.
-- Documentation, SDKs, sandboxes, and agent-readable interfaces become
-  distribution channels.
-- M&A should be read as capability-gap filling, not only revenue expansion.
-- A finance AI infrastructure company should be evaluated across scale,
-  customer structure, technical interfaces, protocol participation, M&A, and
-  hiring.
-
-Visual:
-
-- final synthesis map
-
-## Visual Grammar
-
-Each visual type must have one job:
-
-- `path`: explain strategic evolution.
-- `bar / line chart`: show growth and relative scale.
-- `matrix`: map capability gaps to acquisitions or products.
-- `chain`: show how AI changes transaction steps.
-- `evidence trail`: connect a claim to sources.
-
-One visual must not mix all jobs. If a chart contains timeline, acquisition,
-market, and AI evidence at once, it should be split.
-
-## Information Architecture
-
-The reader-facing H5 should hide source-management mechanics until the end.
-
-Recommended order:
-
-1. thesis
-2. capability base
-3. scale and market position
-4. capability gaps and acquisitions
-5. AI transaction chain
-6. Stripe's AI-era worldview
-7. lessons
-8. source appendix
-
-The source appendix should explain the 1000-source queue, promoted evidence, and
-remaining evidence gaps.
+- `scale`: TPV, customers, valuation, liquidity.
+- `market`: peer TPV, take-rate mechanics, share-gain commentary.
+- `product`: Billing, Radar, Connect, Tax, Treasury, Link.
+- `acquisition`: capability-gap closure.
+- `technical`: API, docs, MCP, preview headers, GitHub.
+- `ai_transaction`: agent checkout, catalog, wallet, stablecoin, MPP / x402.
+- `organization`: JD, audit, compliance, stablecoin, AI platform roles.
+
+The page should show promoted evidence only. The source appendix can explain
+queue size and unresolved evidence gaps.
+
+## What We Learn
+
+The final section should not praise Stripe. It should extract reusable lessons:
+
+- Infrastructure strategy means turning messy financial operations into
+  programmable interfaces.
+- AI changes more than the payment step; it changes demand generation, product
+  representation, pricing, authorization, settlement, and risk.
+- Docs, APIs, SDKs, sandboxes, and agent-readable files become distribution
+  channels.
+- Acquisitions should be read as capability-gap closure.
+- To evaluate an AI-finance infrastructure company, look across scale, market
+  position, capability gaps, transaction-chain coverage, technical interfaces,
+  organization signals, and evidence strength.
 
 ## Acceptance Criteria
 
-- A reader can explain the H5 thesis in one sentence after the first screen.
-- Every chapter has a visible "this chapter proves..." role.
-- No chapter title is a raw source bucket such as `company operations, market
-  position, acquisitions, and technical events`.
-- Market-position visuals show growth and relative position before formulas.
-- Acquisition visuals are organized by capability gap.
-- AI visuals are organized by transaction-chain step, not by time alone.
-- Source references are visible on load-bearing claims.
+- The first screen states the AI-era transaction infrastructure thesis.
+- The page uses BVP-style trend cards: trend area, key takeaway, notable data
+  points, implication, evidence trail.
+- The central timeline is three-dimensional: time, evidence lane, proof tag.
+- Market position is a trend-supporting visual, not a calculation panel.
+- Acquisitions are organized by capability gap.
+- AI transaction change is shown as a chain, not a time-only timeline.
+- Every visual has one job.
+- Every load-bearing claim links to promoted evidence.
 - The page does not imply all 1000 sources have been read.
-- The H5 remains an internal draft unless source promotion and review gates pass.
+- The result stays an internal draft until source promotion and report review
+  gates pass.
 
-## Out Of Scope For The Next Implementation
+## Out Of Scope For Next Implementation
 
-- Feishu sync
-- public-ready investment conclusion
-- exact audited global market-share percentage
-- full reading of all 1000 queued sources
-- new external dashboard or database UI
+- Feishu sync.
+- public-ready investment conclusion.
+- exact audited global market-share percentage.
+- full reading of all 1000 queued sources.
+- new external dashboard or database UI.
+- unrelated style overhaul outside the Stripe H5.
 
-## Open Questions For User Review
+## Implementation Boundary
 
-1. Should the H5 thesis emphasize "AI transaction infrastructure" or broader
-   "AI economic infrastructure"?
-2. Should peer comparison include only payment companies, or also commerce /
-   cloud / stablecoin infrastructure comparables?
-3. Should the final lesson section target internal product strategy, investment
-   research, or AI-finance architecture learning?
+Implementation may begin only after this selected direction is reviewed and the
+next implementation plan is approved. The next implementation should update the
+H5 structure and supporting source/gate notes, not add another independent
+visual module.
