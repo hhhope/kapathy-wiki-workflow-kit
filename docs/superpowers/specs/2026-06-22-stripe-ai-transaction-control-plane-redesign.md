@@ -16,6 +16,13 @@ Route: brainstorm -> superpowers spec; OpenSpec 在本设计稿审核通过前�
 
 > 预授权、发卡、联名权益、token、钱包、用量计费、风控、KYC/KYB、争议处理和清结算，本来就是支付行业已有的能力。AI 时代真正值得看的，不是这些名词被重新列一遍，而是行业会在它们之上创新什么：让 Agent 理解商业对象、拿到受限权限、按预算执行任务、触发实时风控、留下可审计证据，并在出错时能分清责任。Stripe 的研究价值在于：它过去十五年一直在把金融复杂性做成 API、对象模型、文档、测试环境和风控规则，因此更有可能把这些底层能力升级成 Agent 可操作的交易基础设施。
 
+金融对象先拆成两条主线，再看 AI 如何改写它们：
+
+1. **活动交易线**：人与人、人与商户、平台参与方、企业与供应商、Agent 与商户之间如何发生一笔活动交易。重点不是“付钱按钮”，而是商品发现、价格表达、授权、履约、分账、结算、争议和责任。
+2. **信用关系线**：当下先获得商品、服务、库存、广告、算力或经营资金，未来再付款或还款。重点不是“贷款”这个产品名，而是谁授信、依据什么数据授信、额度和价格如何定、风险如何监控、还款从哪里来、逾期和争议如何处理。
+
+Stripe 的路径必须同时放进这两条线。Payments、Checkout、Connect、Billing、Tax、Radar、Link、Agentic Commerce、MCP/skills、MPP/x402 主要解释活动交易线；Capital、BNPL 支付方式、Issuing、Financial Connections、Identity、Radar、Capital underwriting 和 ML 风控解释信用关系线。AI 时代的支付机会不能只讲“Agent 替人付款”，还要讲“Agent 或平台如何拿到受限信用、如何用交易数据形成授信、如何把还款和风控嵌回交易流”。
+
 拆成五个商业分析问题：
 
 1. **路径问题**：Stripe 在 2010-2026 每个阶段解决的核心商业问题是什么？
@@ -285,7 +292,7 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 | 执行 | 不是让 AI 模拟人点网页 | Agent 通过 MCP、skills、API、sandbox、protocol 调用支付和商户系统 |
 | 责任 | 不是交易完成就结束 | 授权证据、风控信号、争议材料、清结算状态和审计轨迹成为交易的一部分 |
 
-这一章先给出 Stripe 必须做基础设施的判断，再分三层解释创新控制点。
+这一章先给出 Stripe 必须做基础设施的判断，再把支付行业拆成活动交易线和信用关系线，最后解释权益入口、工具化支付、协议化授权和信用风控这些创新控制点。
 
 #### 6.0 为什么 Stripe 一定要做基础设施
 
@@ -311,7 +318,37 @@ Stripe 做基础设施不是为了显得更底层，而是因为 AI 时代会把
 
 > Stripe 做基建，是为了保住并扩大“交易规则层”的位置。AI 入口可以拿走用户意图，卡网络可以拿走凭据规则，稳定币协议可以拿走结算路径，商户 SaaS 可以拿走经营关系。Stripe 只有把 API、对象模型、钱包、计费、风控、发卡和结算连成基础设施，才不会在 AI 交易链路里被压缩成普通支付通道。
 
-#### 6.1 权益化入口：联名卡、权益卡和 tokenized credential
+#### 6.1 两条金融主线：活动交易和信用关系
+
+这一节是 AI 支付分析的底座。支付行业不是只有“扣款”和“清算”，更底层的是两类金融关系：
+
+| 主线 | 本质问题 | 传统形态 | AI 时代新问题 | Stripe 对应能力 |
+|---|---|---|---|---|
+| 活动交易线 | 一次商业活动如何被发现、表达、授权、履约、结算和追责 | C2B 支付、B2B 付款、平台分账、订阅、发票、线下收单、钱包 | Agent 如何读懂商品和价格、代表用户执行任务、遵守预算和商户规则、留下授权证据 | Payments、Checkout、Connect、Billing、Tax、Radar、Link、Agentic Commerce、MCP/skills、MPP/x402 |
+| 信用关系线 | 价值先发生，资金以后支付或偿还 | 信用卡、赊账、BNPL、消费分期、商户贷款、现金垫款、营运资金 | Agent 或平台如何获得受限信用额度，如何按交易数据动态授信，如何实时控额、还款和处置风险 | Capital、BNPL payment methods、Issuing、Financial Connections、Identity、Radar、Capital underwriting、ML platform |
+
+活动交易线回答“这笔交易怎么发生”。信用关系线回答“这笔交易的钱是否可以晚点付，以及谁承担期间风险”。两条线经常绑定在一起：BNPL 是在 checkout 里嵌入消费信用；信用卡和联名卡是把支付、授信、权益和争议处理绑在同一张凭据上；Stripe Capital 是把商户经营现金流、销售历史和还款机制绑回 Stripe 交易系统。
+
+这会改变 AI 时代支付的分析方式：
+
+- **Agent 购物不是完整问题**。完整问题是：Agent 代表谁、买什么、额度从哪里来、是否可以赊、风险谁承担、失败后谁追责。
+- **信用不是支付之外的平行产品**。信用建立在身份、交易历史、现金流、商户经营数据、风控和还款控制之上；这些正是 Stripe 长期沉淀的数据和系统位置。
+- **赊和贷款是交易时间结构的变化**。活动现在发生，资金在未来偿还，系统必须同时处理定价、期限、额度、还款来源、逾期、欺诈和监管。
+
+Stripe 相关证据要这样组织：
+
+| 证据对象 | 支撑哪条主线 | 该怎么解读 |
+|---|---|---|
+| Stripe Capital | 信用关系线 | 资格与 Stripe 上的交易量和历史相关，还款从每日销售中自动扣取，说明 Stripe 可以把交易流变成授信和还款控制面 |
+| Capital underwriting JD | 信用关系线 | 招聘信号显示 Capital underwriting 使用 Stripe 内外的 business activity 和 ML model 定制融资 offer，说明信用评估已经是机器学习和业务活动数据问题 |
+| BNPL payment methods | 信用关系线 + 活动交易线 | Affirm、Klarna、Afterpay/Clearpay 等 pay-later 方式把消费信用嵌进 checkout；它不是“另一个支付按钮”，而是结账时的授信和分期决策 |
+| Financial Connections | 信用关系线 | 银行账户和金融数据连接用于补足账户、现金流和还款能力判断，是信用风控的数据接口之一 |
+| Identity / Radar | 两条线共同基础 | 身份验证、欺诈识别和风险控制既服务交易通过率，也服务授信、额度、逾期和争议责任 |
+| Issuing / spending controls | 信用关系线 + 权益入口 | 发卡、额度、MCC/商户/地域/时间控制和实时授权，是把信用、预算和权益做成可编程凭据 |
+
+本 H5 不能把信用线压缩成一个词。信用线要作为独立章节进入时间轴：2015-2019 看平台和风控如何沉淀信用数据；2020-2022 看 Capital、Treasury、Identity、Issuing 进入金融运营平台；2023-2026 看 AI 客户、Agent 任务、用量计费和钱包凭据如何把“动态授信、受限信用、信用风控”推到前台。
+
+#### 6.2 权益化入口：联名卡、权益卡和 tokenized credential
 
 要补上的核心点：
 
@@ -339,7 +376,7 @@ Stripe 做基础设施不是为了显得更底层，而是因为 AI 时代会把
 
 > AI 时代的支付入口，仍然绕不开“谁持有支付关系、谁定义权益、谁承担授权和争议责任”。联名卡/权益卡/Agent 钱包是一条线，不是三个孤立产品。
 
-#### 6.2 工具化支付：MCP、skills、sandbox 和支付 API 给 Agent 用
+#### 6.3 工具化支付：MCP、skills、sandbox 和支付 API 给 Agent 用
 
 要补上的核心点：
 
@@ -359,7 +396,7 @@ Stripe 的对应动作：
 
 > AI 时代支付公司的关键能力之一，是让自己的金融对象被 Agent 正确调用。谁的 API、docs、sandbox、skills 和 MCP 工具更机器可读，谁更容易成为 Agent 开发栈里的默认支付接口。
 
-#### 6.3 协议化授权：AP2、ACP、MPP、x402 和机器支付
+#### 6.4 协议化授权：AP2、ACP、MPP、x402 和机器支付
 
 要补上的核心点：
 
@@ -379,7 +416,7 @@ Stripe 的对应动作：
 
 > MCP 解决“Agent 怎么调用工具”，AP2/ACP/MPP/x402 解决“Agent 调用后怎么形成可追责交易”。支付公司的 AI 机会不只在收单费率，而在谁能定义授权、凭据、责任和结算接口。
 
-#### 6.4 回到 Stripe：为什么这些变化能接回公司路径
+#### 6.5 回到 Stripe：为什么这些变化能接回公司路径
 
 分七类变化：
 
@@ -389,6 +426,7 @@ Stripe 的对应动作：
 | 交易入口进入 AI surface | Copilot Checkout、Agentic Commerce Suite、OpenAI/Google/Microsoft/Meta partner launches | 延续开发者和平台入口战略，让 Stripe 进入新的购买入口 |
 | 商品表达机器可读 | ProductCatalogImport、seller docs、preview API、inventory/pricing feed | 延续领域模型战略，把商品、库存、价格、订单审批做成对象和接口 |
 | 权益和凭据被重组 | Issuing、virtual cards、personalization designs、tokens、spending controls、Link wallets for agents、Privy、Shared Payment Token | 延续发卡/钱包/凭据抽象，把“卡 + 权益 + 授权”迁移到 Agent 可控模型 |
+| 信用和赊账被数据化 | Capital、BNPL payment methods、Financial Connections、Identity、Capital underwriting、ML platform | 延续交易数据和风险基础设施战略，把商户现金流、消费分期、额度、还款和风控接进同一条交易链 |
 | 支付能力被工具化 | MCP server、agent skills、plain-text docs、llms.txt、sandbox、agent toolkit | 延续 API-first 和开发者体验战略，把 Stripe 从人类开发者入口迁移到 Agent 开发入口 |
 | 结算轨道扩张 | Bridge、Tempo、MPP、x402、stablecoin/machine payment docs | 延续新金融轨道接入战略，把稳定币和机器支付接入主栈 |
 | 风险对象变实时 | Radar token theft、approval hook、AI Security JD、risk roles | 延续风险基础设施战略，把风险前移到注册、授权、工具调用和资源访问 |
@@ -501,6 +539,7 @@ Stripe 的对应动作：
 | 收入运营 | Billing、Tax、Revenue suite、Invoicing | usage billing、global tax、AI 客户需求 | Metronome、streaming payments、token/event billing |
 | 风险基础设施 | Radar、Identity、KYC/KYB、review、risk graph | Radar token theft、risk JD、fraud/risk roles | fake signup、token theft、tool misuse、approval hook |
 | 发卡和权益入口 | Issuing、virtual cards、personalization designs、tokens、spending controls、real-time authorization | 发卡 API、卡面/卡函个性化、digital wallet token、授权控制 | AI 联名卡、agent task card、权益化支付入口、受限凭据 |
+| 信用和赊账 | Capital、BNPL payment methods、Financial Connections、Capital underwriting、ML risk | Stripe Capital、Capital underwriting JD、BNPL docs、Financial Connections docs | Agent 受限信用、消费分期、商户营运资金、动态授信、实时还款和风险控制 |
 | 全球化补位 | Paystack、TaxJar、Recko、BBPOS、本地支付 | 国际客户、新市场、税务/对账能力 | AI 公司 global-by-default |
 | 新金融轨道 | Bridge、Privy、Tempo、MPP、x402 | stablecoin/wallet/machine payment product signals | machine payment、agent wallet、stablecoin settlement |
 
@@ -552,7 +591,8 @@ Stripe 的对应动作：
 - 基础设施公司的战略价值，不在于产品名多，而在于能否把复杂业务动作做成可复用接口。
 - Stripe 的核心不是“做支付”，而是把混乱的行业流程抽象成领域模型、API、文档、规则和可复用对象。
 - 看 AI 金融机会，要从交易对象和交易流程变化入手，而不是从 AI 功能清单入手。
-- 支付行业 AI 化不是只有“支付”和“信贷”两条线。H5 主线可以收敛成支付/授权与信贷/风险两大业务线，但底层还必须覆盖发卡权益、钱包凭据、计费、税务、对账、清结算、争议和合规。
+- 支付行业 AI 化要先分清两条金融对象：活动交易线和信用关系线。前者看交易如何发生和履约，后者看赊、信用付、贷款、额度、还款和风险如何被交易数据驱动。
+- 信用不是支付旁边的孤立产品。BNPL、信用卡、联名权益卡、商户贷款和现金垫款，都说明“先发生价值、后完成资金偿付”是支付行业的核心结构之一。
 - 联名卡、权益卡、Agent 钱包、MCP payment tools 和 AP2/ACP/MPP/x402 是一组连续变化：入口绑定权益，Agent 调用工具，协议记录授权，支付网络承担风控和争议。
 - 看公司战略，要把并购、产品、API、JD、市场指标放回时间线。
 - AI 时代的变化，经常不是全新金融能力，而是已有能力上方出现新的入口、权限、机器可读对象、风险和责任控制点。
@@ -566,7 +606,7 @@ Stripe 的对应动作：
 
 1. 2010-2026 公司演进总时间线。
 2. 公司战略 / 市场位置 / 并购补位 / 技术产品 / AI 变化五线并读。
-3. AI 支付重组专题图：权益化入口、工具化支付、协议化授权三层，不再用松散词云。
+3. AI 支付重组专题图：活动交易线、信用关系线、权益化入口、工具化支付、协议化授权五层，不再用松散词云。
 4. 同业基准和战略正确性验证图。
 5. 来源热力图。
 
@@ -578,7 +618,8 @@ Stripe 的对应动作：
 - 如保留词条云，必须可点击筛选时间轴，并按 `权益/发卡`、`工具/API`、`授权/协议`、`风险/责任`、`计费/结算` 分类；词条数量不能只展示少数高频词。
 - 不再用内部分析概念做页面标题。
 - 颜色固定对应：战略、市场、并购、技术、AI、来源状态。
-- AI 支付重组图使用三层视觉，而不是平铺卡片：
+- AI 支付重组图使用五层视觉，而不是平铺卡片：
+  - 底层：两条金融对象，展示活动交易线和信用关系线。
   - 上层：入口和权益，展示联名卡、权益卡、AI 应用入口、Link wallet、Issuing。
   - 中层：Agent 工具调用，展示 MCP、skills、sandbox、toolkit、docs。
   - 下层：授权和结算协议，展示 AP2、ACP、MPP、x402、Visa/Mastercard token、risk/dispute。
@@ -610,7 +651,8 @@ Stripe 的对应动作：
 - 页面主图是公司演进时间线，不是抽象概念图。
 - 每个阶段都按战略押注、目标客户、商业模式影响、能力沉淀、技术选择、并购补位、指标证据、AI 时代复用来分析。
 - 主时间轴支持拖拽，并能并读公司战略、市场位置、并购补位、技术产品、AI 变化五条线。
-- AI 后变化先给行业判断，再拆成权益化入口、工具化支付、协议化授权三层，并解释支付行业如何把联名权益、预授权、发卡、token、钱包、MCP/skills、AP2/ACP/MPP/x402、风控和清结算重新编排给 Agent。
+- AI 后变化先给行业判断，再拆成活动交易线、信用关系线、权益化入口、工具化支付、协议化授权，并解释支付行业如何把联名权益、预授权、发卡、token、钱包、赊账/信用付/贷款、MCP/skills、AP2/ACP/MPP/x402、风控和清结算升级给 Agent。
+- 赊、信用付和贷款不能缺席。必须把 Stripe Capital、BNPL payment methods、Financial Connections、Identity、Radar、Capital underwriting JD 和 ML platform 放进一条“信用关系线”，解释它们如何把交易数据、现金流、额度、还款和风险连起来。
 - 联名卡/权益卡不能缺席。必须把它与 Issuing、virtual card、personalization designs、tokens、spending controls、Link wallets、Visa/Mastercard agentic payment 案例放在同一条“权益化入口”线上。
 - MCP 支付不能缺席。必须解释 MCP/skills 是“支付能力工具化”，并区分 MCP 解决调用、AP2/ACP/MPP/x402 解决可追责交易。
 - 市场位置有折线增长图、同业参照和口径分层，不再只写口径声明。

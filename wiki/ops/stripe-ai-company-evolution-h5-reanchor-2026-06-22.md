@@ -258,3 +258,40 @@ Corrected requirement:
 
 Implementation remains stopped until this corrected thesis is accepted and
 translated into the H5 design.
+
+## 2026-06-22 Seventh Drift Correction
+
+The user clarified that the analysis still missed a more basic financial split:
+one direction is activity transactions between people, merchants, platforms, and
+agents; another direction is `赊`, credit pay, deferred payment, and lending.
+
+Corrected requirement:
+
+- The H5 must stop treating payment as a single action. It must separate two
+  financial-object lines:
+  - activity transaction line: discovery, pricing, authorization, fulfillment,
+    settlement, dispute, and liability for a commercial activity;
+  - credit relationship line: value occurs now and payment or repayment happens
+    later through credit cards, BNPL, trade credit, merchant loans, cash
+    advances, controlled spend, or other credit structures.
+- Stripe Capital, BNPL payment methods, Financial Connections, Identity, Radar,
+  Capital underwriting, ML platform, Issuing, and spending controls must be
+  organized as the credit relationship line, not as isolated product mentions.
+- The credit line must explain the mechanism: who grants credit, what data
+  supports underwriting, how limits and pricing are set, where repayment comes
+  from, and how delinquency, fraud, disputes, and regulation are handled.
+- Stripe Capital is especially important because public Stripe material ties
+  eligibility to Stripe payment volume/history and repayment to a fixed
+  percentage of daily sales. That supports the thesis that transaction data can
+  become credit underwriting and repayment infrastructure.
+- BNPL must be treated as checkout-embedded credit/deferred payment. Provider
+  details such as affordability checks, APR, installment terms, and regulatory
+  status need separate primary-source follow-up before public-ready claims.
+- AI-era payment analysis must ask: when an Agent acts, is it spending a user's
+  existing money, using a pre-authorized credential, drawing on a platform
+  credit line, triggering BNPL, or using merchant working capital? Without this,
+  the H5 only explains payment execution and misses the credit/risk half.
+
+Implementation remains stopped. The next H5 revision must make the activity
+transaction line and credit relationship line visible in the structure, timeline,
+visual design, and acceptance criteria.
