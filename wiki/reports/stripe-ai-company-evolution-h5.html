@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>从 Stripe 看 AI 之后的金融基础设施</title>
+  <title>Stripe 正在迁移到 Agent 经济操作系统</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800;900&display=swap");
 
@@ -273,6 +273,81 @@
       font-size: 13px;
     }
 
+    .evidence-strip {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .evidence-item {
+      min-height: 82px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .evidence-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--slate);
+      font-size: 15px;
+    }
+
+    .evidence-item span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .dual-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .lane-card,
+    .impact-card,
+    .metric-note,
+    .signal-group {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .lane-card strong,
+    .impact-card strong,
+    .metric-note strong,
+    .signal-group strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--slate);
+      font-size: 15px;
+    }
+
+    .lane-card ul,
+    .impact-card ul,
+    .signal-group ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .impact-card {
+      background: #f0fdfa;
+    }
+
+    .metric-note {
+      margin-top: 14px;
+      background: #fff7ed;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
     .stage-label {
       display: inline-flex;
       width: fit-content;
@@ -387,6 +462,13 @@
 
     .word-cloud .risk-word {
       color: var(--red);
+    }
+
+    .signal-groups {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
     }
 
     .control-panel,
@@ -697,6 +779,9 @@
       .dimension-grid,
       .timeline-control,
       .timeline-detail,
+      .evidence-strip,
+      .dual-timeline,
+      .signal-groups,
       .flow-thesis,
       .flow-grid,
       .closing {
@@ -746,8 +831,8 @@
     <header class="hero">
       <div>
         <div class="kicker">内部 H5 草稿 · Stripe / AI / Finance Infrastructure · 2026-06-22</div>
-        <h1>从 Stripe 看 AI 之后的金融基础设施</h1>
-        <p class="lead">Stripe 的变化不是“支付公司也做 AI”。更关键的是：AI 正在改变交易主体、计费颗粒、风控对象和结算轨道，Stripe 把这些变化收束成新的经济基础设施。</p>
+        <h1>Stripe 正在迁移到 Agent 经济操作系统</h1>
+        <p class="lead">这不是“支付公司也做 AI”的故事。更像是 Stripe 沿着自己的老路径继续前进：先把收款 API 化，再把商户经营系统化，现在开始把 Agent 交易、机器计费、稳定币结算和实时风控协议化。</p>
       </div>
       <div class="meta-row">
         <span class="pill">结构参考：Anthropic 研发调研 PPT</span>
@@ -765,8 +850,8 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>公司路径：Stripe 不是突然进入 AI</h2>
-        <p>先把公司演进看完整，再看 AI 后的跃迁。</p>
+          <h2>研究主线：Stripe 不是突然进入 AI</h2>
+          <p>先看它一直在做什么，再判断 AI 之后它为什么顺势扩张。</p>
       </div>
       <div class="path-grid">
         <article class="path-card">
@@ -819,8 +904,8 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>公司演进时间轴</h2>
-        <p>拖动年份，先看路径再看事件。</p>
+        <h2>证据一：公司运营与技术路径的双轨时间轴</h2>
+        <p>拖动年份，看商业事件、估值/交易量/并购指标，以及技术接口如何互相推动。</p>
       </div>
       <div class="timeline-reader">
         <div class="timeline-control">
@@ -835,19 +920,24 @@
           <div id="timelinePills" class="timeline-pills"></div>
         </div>
         <div id="timelineDetail" class="timeline-detail"></div>
+        <div id="timelineLanes" class="dual-timeline"></div>
+        <div class="metric-note">
+          <strong>市场占有率读法</strong>
+          Stripe 未披露可审计的全球支付市场份额百分比；本稿暂用处理交易量、全球 GDP 占比、客户数、估值/流动性事件、AI 客户覆盖和分析师“share gain”判断作为市场位置代理，不把它写成精确份额。
+        </div>
       </div>
     </section>
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>AI 之后的变化：总分总</h2>
-        <p>先看总论，再拆六个对象，最后回到金融基础设施判断。</p>
+        <h2>证据二：AI 到底改变了哪些金融对象</h2>
+        <p>不是泛泛说 AI，而是拆解交易、商品、计费、结算、风险、组织六个对象。</p>
       </div>
       <div class="ai-flow">
         <div class="flow-thesis">
           <div>
-            <span class="stage-label">总论</span>
-            <strong>AI 没有只改变“支付入口”，它改变的是经济活动对象。</strong>
+            <span class="stage-label">核心判断</span>
+            <strong>AI 没有只改变“支付入口”，它改变的是经济活动里的对象和协议。</strong>
           </div>
           <p>Stripe 的变化要从一个系统看：谁发起交易、商品如何被机器读取、费用如何按 token/event 发生、用什么轨道结算、风险如何前置、组织能力如何跟上。</p>
         </div>
@@ -856,17 +946,17 @@
           <div id="flowDetail" class="flow-detail"></div>
         </div>
         <div class="flow-synthesis">
-          <span class="stage-label">总括</span>
-          <strong>结论：Stripe 不是把 AI 当功能，而是在把交易协议、计费协议、风控协议和结算协议重新软件化。</strong>
-          <p>所以这份材料的主线不应是“Stripe 做了哪些 AI 功能”，而应是“AI 之后金融基础设施哪些对象被重写，Stripe 正在哪些层上占位”。</p>
+          <span class="stage-label">回到主线</span>
+          <strong>结论：Stripe 的机会不在“AI 功能”，而在成为 Agent 经济的操作系统层。</strong>
+          <p>它试图占住四个关键协议面：交易入口、计费颗粒、风险控制、结算轨道。后续判断要看这些协议面能否从 Stripe 自有生态扩展到跨平台标准。</p>
         </div>
       </div>
     </section>
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>信号词云</h2>
-        <p>词越大，越应该在后续 PPT/H5 里形成独立论证。</p>
+        <h2>证据三：高频信号和待验证假设</h2>
+        <p>这些词不是装饰词云，而是后续 PPT/H5 应继续展开的证据入口。</p>
       </div>
       <div class="word-cloud" aria-label="Stripe AI finance signal cloud">
         <span class="xl">agentic commerce</span>
@@ -899,13 +989,70 @@
         <span>AI Conversation Platform</span>
         <span>Developer Productivity AI</span>
         <span>Stablecoin Audit</span>
+        <span>PaymentIntents</span>
+        <span>Checkout Sessions</span>
+        <span>Accounts v2</span>
+        <span>Webhooks</span>
+        <span>Idempotency</span>
+        <span>Event Destinations</span>
+        <span>Data Pipeline</span>
+        <span>Issuing</span>
+        <span>Financial Accounts</span>
+        <span>Open Issuance</span>
+        <span>Bridge orchestration</span>
+        <span>Privy wallet abstraction</span>
+        <span>Tempo settlement</span>
+        <span>x402</span>
+        <span>USDC micropayments</span>
+        <span>Preview API</span>
+        <span>Stripe-Version</span>
+        <span>claimable sandbox</span>
+        <span>AI Mode / Gemini</span>
+        <span>Copilot surface</span>
+        <span>merchant approval</span>
+        <span>policy engine</span>
+        <span>reserve / audit</span>
+      </div>
+      <div class="signal-groups">
+        <article class="signal-group">
+          <strong>技术接口</strong>
+          <ul>
+            <li>MCP / skills / llms.txt</li>
+            <li>ProductCatalogImport / preview API</li>
+            <li>PaymentIntents / Checkout Sessions / webhooks</li>
+          </ul>
+        </article>
+        <article class="signal-group">
+          <strong>商业行为</strong>
+          <ul>
+            <li>估值回调与反弹</li>
+            <li>Paystack / TaxJar / Bridge / Privy / Metronome</li>
+            <li>AI 客户全球化与 usage billing</li>
+          </ul>
+        </article>
+        <article class="signal-group">
+          <strong>金融轨道</strong>
+          <ul>
+            <li>stablecoin / USDC / Tempo</li>
+            <li>machine payments / HTTP 402 / x402</li>
+            <li>Issuing / Link wallets / Open Issuance</li>
+          </ul>
+        </article>
+        <article class="signal-group">
+          <strong>风险控制</strong>
+          <ul>
+            <li>Radar token theft</li>
+            <li>prompt injection / tool misuse</li>
+            <li>KYC/KYB / reserve audit / idempotency</li>
+          </ul>
+        </article>
       </div>
     </section>
 
     <aside class="control-panel">
       <div>
-        <h2>阅读控制</h2>
-        <p>拖动游标看重心位置；用维度按钮切换公司路径、产品扩张、AI/Agent、金融轨道、风险和组织能力。</p>
+        <h2>辅助地图</h2>
+        <p>地图只做定位：横轴看它离传统支付 API 还是 Agent 经济协议更近，按钮用于切换证据面。</p>
       </div>
       <div class="range-wrap">
         <div class="range-label"><span>公司路径</span><span id="scoreValue">55</span><span>AI 金融形态</span></div>
@@ -925,16 +1072,16 @@
     <main>
       <section class="panel">
         <div class="panel-head">
-          <h2>发展脊柱</h2>
-          <p>按公司演进顺序读。</p>
+          <h2>证据节点</h2>
+          <p>按时间和能力迁移顺序读。</p>
         </div>
         <div id="spine" class="spine"></div>
       </section>
 
       <section class="panel">
         <div class="panel-head">
-          <h2>变化地图</h2>
-          <p>横轴：越右越接近 AI 后的新交易/结算形态。</p>
+          <h2>协议迁移地图</h2>
+          <p>横轴：越右越接近 Agent 经济操作系统。</p>
         </div>
         <div class="axis-labels"><span>支付 API / 商户增长</span><span>Agent / token / stablecoin / machine payment</span></div>
         <div id="map" class="map"><div id="cursor" class="cursor"></div></div>
@@ -951,12 +1098,12 @@
         </div>
         <div class="closing">
           <div class="note">
-            <strong>发展规律</strong>
-            <p>Stripe 每一轮扩张都在降低“新业务从想法到收钱”的摩擦。AI 后，这个摩擦不再只是开发者接入支付，而是 Agent 能否发现商品、理解价格、获得授权、完成支付、留下可追责记录。</p>
+            <strong>主判断</strong>
+            <p>Stripe 每一轮扩张都在降低“新业务从想法到收钱”的摩擦。AI 后，这个摩擦变成 Agent 能否发现商品、理解价格、获得授权、完成支付、留下可追责记录。</p>
           </div>
           <div class="note">
-            <strong>后续形态</strong>
-            <p>金融领域 AI 的高价值形态不会只停在助手，而会进入协议和基础设施：agent wallet、machine payment、token streaming billing、稳定币微支付、内容/API 的 402 付费访问、实时风控和账务自动化。</p>
+            <strong>待验证</strong>
+            <p>关键问题不是 Stripe 能否发布更多 AI 功能，而是 agent wallet、machine payment、token streaming billing、稳定币微支付和实时风控能否形成跨平台网络效应。</p>
           </div>
         </div>
       </section>
@@ -989,10 +1136,35 @@
         url: "https://stripe.com/annual-updates/2023",
         note: "$1T processed volume baseline and post-GPT internet economy context."
       },
+      annual2022: {
+        title: "Stripe 2022 annual update",
+        url: "https://stripe.com/annual-updates/2022",
+        note: "Macro reset and long-term product investment context."
+      },
       companyInfo: {
         title: "Stripe newsroom information",
         url: "https://stripe.com/newsroom/information",
         note: "Company identity, economic infrastructure framing, leadership facts."
+      },
+      valuation2021: {
+        title: "Axios: Stripe valued at $95B",
+        url: "https://www.axios.com/2021/03/14/stripe-is-now-valued-at-95-billion",
+        note: "2021 funding and peak private-market valuation marker."
+      },
+      valuation2023: {
+        title: "Axios: Stripe raises $6.5B at $50B valuation",
+        url: "https://www.axios.com/2023/03/15/stripe-50-billion",
+        note: "2023 liquidity round and valuation reset marker."
+      },
+      valuation2025: {
+        title: "FT: Stripe rebounds to $91.5B valuation",
+        url: "https://www.ft.com/content/ba8c698b-3d47-405e-ae21-7a1f2bd796a1",
+        note: "2025 tender valuation, $1.4T 2024 volume, AI demand context."
+      },
+      marketShareProxy: {
+        title: "IBD: Stripe market-share proxy coverage",
+        url: "https://www.investors.com/news/technology/stripe-ipo-paypal-stock-nvidia-shopify-adyen/",
+        note: "Analyst framing on share gains versus payment peers; not audited market-share percentage."
       },
       sessions2026: {
         title: "Stripe Sessions 2026 newsroom",
@@ -1044,6 +1216,16 @@
         url: "https://stripe.com/nz/use-cases/crypto",
         note: "Bridge, Privy, stablecoin payments, payouts, digital asset stack."
       },
+      machinePayments: {
+        title: "Stripe machine payments docs",
+        url: "https://docs.stripe.com/payments/machine",
+        note: "Machine-initiated payments, x402/MPP rails, low-value USDC payment examples."
+      },
+      acquisitionTaxJar: {
+        title: "Axios: Stripe's TaxJar deal",
+        url: "https://www.axios.com/2024/10/24/inside-stripe-taxjar-deal",
+        note: "Secondary reporting on TaxJar acquisition scale and tax-automation rationale."
+      },
       jdAiSecurity: {
         title: "Stripe JD: AI Security",
         url: "https://stripe.com/jobs/listing/backend-engineer-ai-security/7826765",
@@ -1069,7 +1251,18 @@
         stage: "公司路径",
         event: "Stripe 从在线收款 API、SDK、文档和测试体验切入，建立 API-first 支付入口。",
         meaning: "第一性原理不是“做支付”，而是降低新业务上线收钱的摩擦。",
-        signals: ["API-first", "developer experience", "payments"]
+        signals: ["API-first", "developer experience", "payments"],
+        metrics: [
+          { value: "2010", label: "公司成立，支付 API 成为最小入口" },
+          { value: "2011", label: "公开推出，开发者体验成为增长渠道" },
+          { value: "API / SDK", label: "技术选择先于大规模销售组织" },
+          { value: "市场代理", label: "无公开份额；看开发者采用和客户扩散" }
+        ],
+        business: ["以开发者为第一客户，不从传统收单销售切入。", "把复杂金融接入卖给互联网创业公司和软件公司。", "公司运营重点是降低上线收款时间。"],
+        technology: ["API、SDK、测试卡、错误处理和文档成为产品本体。", "Payment object、webhook、dashboard 共同形成可编程支付接口。", "技术路线决定了后续可复制到 Billing、Connect、Radar。"],
+        impact: "技术推动商业：API-first 让 Stripe 可以先占开发者心智，再把商业边界从收款扩到经营系统。",
+        majorEvents: ["2010 founded", "2011 public launch", "developer-first payments"],
+        refs: ["companyInfo"]
       },
       {
         year: "2015-2019",
@@ -1078,7 +1271,18 @@
         stage: "产品扩张",
         event: "Stripe 从支付入口扩到平台分账、创业入口、风控、订阅计费、线下支付等商户生命周期能力。",
         meaning: "AI 公司后来需要的全球收款、订阅、风控、税务、平台分账，很多都在这一阶段沉淀。",
-        signals: ["Connect", "Atlas", "Radar", "Billing", "Terminal"]
+        signals: ["Connect", "Atlas", "Radar", "Billing", "Terminal"],
+        metrics: [
+          { value: "Connect", label: "平台/marketplace 分账成为关键商业面" },
+          { value: "Atlas", label: "把创业公司设立纳入基础设施" },
+          { value: "Radar / Billing", label: "收入模型和风险模型进入核心产品" },
+          { value: "Terminal", label: "从纯线上扩到线下统一支付" }
+        ],
+        business: ["客户从单个网站扩到平台、市场、SaaS 和多渠道商户。", "商业问题从“能否收款”变成“能否经营、分账、订阅、防欺诈”。", "Stripe 开始像商户操作系统，而不是单一 processor。"],
+        technology: ["Connect 账户模型、分账和身份对象变重。", "Radar 把机器学习风控嵌入支付路径。", "Billing 把订阅、价格、发票和收入事件结构化。"],
+        impact: "商业推动技术：平台客户和订阅客户的增长，逼出账户模型、风控模型、订阅计费对象和线下硬件接口。",
+        majorEvents: ["Connect scale-up", "Atlas", "Radar", "Billing", "Terminal"],
+        refs: ["annual2025", "companyInfo"]
       },
       {
         year: "2020-2022",
@@ -1087,7 +1291,18 @@
         stage: "金融底座",
         event: "Stripe 继续扩展 Treasury、Capital、Identity、Tax、Issuing、Data Pipeline 等资金、合规和数据能力。",
         meaning: "这让 Stripe 从交易处理进一步靠近完整金融操作系统。",
-        signals: ["Treasury", "Capital", "Identity", "Tax"]
+        signals: ["Treasury", "Capital", "Identity", "Tax"],
+        metrics: [
+          { value: "$95B", label: "2021 私募估值高点；随后进入估值修正周期" },
+          { value: "Paystack", label: "2020 收购，扩展非洲支付网络和本地化能力" },
+          { value: "TaxJar / Recko", label: "2021 税务自动化和对账能力补强" },
+          { value: "BBPOS / OpenChannel", label: "硬件/POS 与 app ecosystem 拼图" }
+        ],
+        business: ["疫情期间线上经济放大支付基础设施需求。", "估值高点后进入利率和科技股修正环境。", "并购从地理扩张、税务、对账、硬件、生态入口补齐经营系统。"],
+        technology: ["Treasury / Capital / Issuing 把资金账户、融资和发卡能力产品化。", "Tax / Identity / Data Pipeline 把合规和数据变成商户基础设施。", "OpenChannel/App Marketplace 思路为后续可组合生态打底。"],
+        impact: "商业推动技术：全球化和平台客户需要税务、对账、资金账户、线下硬件；技术沉淀后又让 Stripe 能承接更复杂的 AI 公司经营需求。",
+        majorEvents: ["Paystack acquisition", "2021 $95B valuation", "TaxJar / Recko / OpenChannel", "2022 macro reset"],
+        refs: ["valuation2021", "acquisitionTaxJar", "annual2022"]
       },
       {
         year: "2023",
@@ -1096,7 +1311,18 @@
         stage: "规模基线",
         event: "2023 年度更新披露用户处理规模达到 $1T，约等于全球 GDP 1%。",
         meaning: "Stripe 不再只是支付插件，而是互联网经济活动的测量面和执行层。",
-        signals: ["$1T", "GDP lens", "internet economy"]
+        signals: ["$1T", "GDP lens", "internet economy"],
+        metrics: [
+          { value: "$1T", label: "2023 用户处理规模，约等于全球 GDP 1%" },
+          { value: "$50B", label: "2023 Series I 估值重置；流动性优先于 IPO" },
+          { value: "$6.5B+", label: "Series I 融资额，用于员工流动性和税务义务" },
+          { value: "GPT-4", label: "AI 客户压力开始进入 Stripe 叙事背景" }
+        ],
+        business: ["估值回调迫使公司从高估值叙事回到经营质量。", "处理规模成为衡量市场位置的核心代理指标。", "AI 公司开始从客户结构上改变需求密度。"],
+        technology: ["Revenue suite、Billing、Tax、Radar 的重要性被 AI 公司放大。", "更复杂的价格、用量和全球税务需求开始压到现有对象模型。", "AI 还不是单独产品线，而是对旧技术栈的压力测试。"],
+        impact: "商业推动技术：AI 公司高速上线和全球化，把用量计费、税务、风控、收入核算推到同一个运行面。",
+        majorEvents: ["2023 annual update", "$1T processed volume", "Series I at $50B", "GPT-era AI demand"],
+        refs: ["annual2023", "valuation2023"]
       },
       {
         year: "2024",
@@ -1105,7 +1331,18 @@
         stage: "客户变化",
         event: "AI 公司需要同时处理全球收款、用量计费、税务、欺诈、账务和跨境。",
         meaning: "AI 先改变 Stripe 的客户结构，再推动它重组产品叙事。",
-        signals: ["AI companies", "usage billing", "global by default"]
+        signals: ["AI companies", "usage billing", "global by default"],
+        metrics: [
+          { value: "$1.4T", label: "2024 处理规模代理值；较 2023 显著增长" },
+          { value: "+38%", label: "二级报道口径的 2024 payment volume 增速" },
+          { value: "profitable", label: "2024 盈利信号强化长期 R&D 投入空间" },
+          { value: "share gain", label: "分析师称 Stripe 对 Braintree / Adyen / Fiserv 有份额获取压力" }
+        ],
+        business: ["AI 客户增长、企业大客户和国际化共同驱动处理体量。", "市场位置不能只看份额百分比，要看处理规模和高增长客户覆盖。", "Bridge 等稳定币动作开始把跨境和新轨道推入公司主线。"],
+        technology: ["Usage billing、Revenue Recognition、Tax、Radar 被 AI 产品成本结构重新放大。", "Agent toolkit、MCP、plain-text docs 的前置条件开始出现。", "稳定币不是单点支付，而是钱包、KYC/KYB、结算和审计栈。"],
+        impact: "技术反推商业：AI 产品的 token/event 成本结构，让 Stripe 必须从订阅账单走向更细颗粒的 usage、risk 和 settlement 产品。",
+        majorEvents: ["2024 volume acceleration", "Bridge acquisition plan", "AI-company customer pressure", "market-share proxy coverage"],
+        refs: ["annual2024", "valuation2025", "marketShareProxy"]
       },
       {
         year: "2025",
@@ -1114,7 +1351,18 @@
         stage: "战略拼图",
         event: "2025 年信把 $1.9T、5M+ businesses、100k+ claimable sandboxes、Privy、Metronome、Bridge、stablecoins 放在同一叙事里。",
         meaning: "Stripe 开始显式把 AI 创业速度、用量计费、钱包和稳定币连接起来。",
-        signals: ["Privy", "Metronome", "Bridge", "stablecoin"]
+        signals: ["Privy", "Metronome", "Bridge", "stablecoin"],
+        metrics: [
+          { value: "$1.9T", label: "2025 用户处理规模，约全球 GDP 1.6%" },
+          { value: "+34%", label: "2025 处理规模同比增长" },
+          { value: "5M+", label: "直接或经平台使用 Stripe 的 businesses" },
+          { value: "$91.5B", label: "2025 tender 估值；接近 2021 高点" }
+        ],
+        business: ["处理体量、客户数和估值反弹共同支撑“经济基础设施”叙事。", "Privy、Metronome、Bridge/Stablecoin 形成钱包、用量、结算三块拼图。", "AI 公司、稳定币和大客户被放进同一个增长解释里。"],
+        technology: ["100,000+ claimable sandboxes 说明开发者接口开始适配 AI coding tools。", "Metronome 把 usage/event rating 变成 AI 产品计费底座。", "Privy / Bridge 把 wallet abstraction、stablecoin orchestration 接进 Stripe stack。"],
+        impact: "商业与技术互推：AI 客户让用量计费和钱包/稳定币有商业必要，并购补齐技术栈后又打开 agent commerce 和 machine payment 的产品空间。",
+        majorEvents: ["2025 annual letter", "Bridge closed", "Privy acquisition", "Metronome acquisition", "claimable sandboxes"],
+        refs: ["annual2025", "valuation2025", "stablecoin"]
       },
       {
         year: "2025-09",
@@ -1123,7 +1371,18 @@
         stage: "大事件",
         event: "Open Issuance、agentic commerce、AI monetization 工具同场出现。",
         meaning: "AI 不是客户行业标签，而开始成为交易入口和商品发现方式。",
-        signals: ["Agentic Commerce Suite", "AI monetization", "Open Issuance"]
+        signals: ["Agentic Commerce Suite", "AI monetization", "Open Issuance"],
+        metrics: [
+          { value: "Tour 2025", label: "Agentic commerce 被打包成正式产品叙事" },
+          { value: "OpenAI / Google", label: "AI 应用和搜索入口成为 commerce partner surface" },
+          { value: "Open Issuance", label: "发卡和稳定币能力进入可编程资金工具" },
+          { value: "AI monetization", label: "从支付 API 转向 AI 应用收入基础设施" }
+        ],
+        business: ["Stripe 把 AI 入口、商户控制、发卡、稳定币放在同一场发布里。", "商户不只等用户进站，而要让商品进入 AI app/search/chat。", "合作伙伴从普通商户扩到 AI 平台和协议参与方。"],
+        technology: ["商品目录、库存、价格、订单审批和支付 token 要机器可读。", "Agentic Commerce Suite 把 checkout、catalog、merchant controls 连接起来。", "Open Issuance 把资金工具进一步 API 化。"],
+        impact: "技术反推商业：当商品能被 Agent 读取和购买，商业渠道从网站流量变成 AI surface 分发，Stripe 开始卖“商户进入 Agent 经济”的入口。",
+        majorEvents: ["New York Tour", "Agentic Commerce Suite", "Open Issuance", "AI monetization tools"],
+        refs: ["tour2025", "agenticCommerce"]
       },
       {
         year: "2026-01",
@@ -1132,7 +1391,18 @@
         stage: "大事件",
         event: "Copilot Checkout 由 Stripe 支撑，Shared Payment Token 降低买家凭据暴露。",
         meaning: "Agent/聊天界面开始成为 commerce surface。",
-        signals: ["Copilot Checkout", "ACP", "SPT"]
+        signals: ["Copilot Checkout", "ACP", "SPT"],
+        metrics: [
+          { value: "Copilot", label: "AI 对话界面成为 checkout surface" },
+          { value: "ACP", label: "Agentic Commerce Protocol 连接 AI app、商户和支付" },
+          { value: "SPT", label: "Shared Payment Token 降低凭据暴露" },
+          { value: "partner proof", label: "微软场景是 agent commerce 的大型入口证明" }
+        ],
+        business: ["购物入口从商户网站迁移到 Copilot 这样的 AI 工作台。", "Stripe 的客户不只商户，还包括承载消费意图的 AI 平台。", "交易控制和责任划分成为商业合作前提。"],
+        technology: ["Shared Payment Token 解决 Agent 场景中的凭据边界。", "ACP 类协议把商品发现、支付授权、商户履约连成链路。", "Checkout 从页面组件变成对话/agent 可调用能力。"],
+        impact: "商业推动技术：大型 AI 分发入口要求支付凭据、授权和商户控制可协议化，技术设计反过来决定哪些商户能进入对话购物。",
+        majorEvents: ["Microsoft Copilot Checkout", "Shared Payment Token", "Agentic Commerce Protocol"],
+        refs: ["copilot"]
       },
       {
         year: "2026-04",
@@ -1141,7 +1411,18 @@
         stage: "大事件",
         event: "Google AI Mode/Gemini、Link wallets for agents、streaming payments、Radar token theft、Stripe Projects 等共同出现。",
         meaning: "AI 后变化横跨支付、风控、账务、开发工具、稳定币和 agent wallets。",
-        signals: ["288 launches", "Link wallets", "streaming payments", "Radar token theft"]
+        signals: ["288 launches", "Link wallets", "streaming payments", "Radar token theft"],
+        metrics: [
+          { value: "288", label: "Sessions 2026 发布的产品/功能数量" },
+          { value: "3.3M", label: "Radar 一个月拦截八家 AI 企业 risky sign-ups" },
+          { value: "Link wallets", label: "Agent 任务级一次性卡/审批能力" },
+          { value: "streaming", label: "Metronome + Tempo 支持 token 级收款叙事" }
+        ],
+        business: ["Sessions 不是单一 AI 产品，而是把 AI 经济基础设施作为公司主线。", "风险、钱包、计费、稳定币和开发工具同时变成可销售模块。", "大事件证明 Stripe 已把 AI 作为横向经营主题。"],
+        technology: ["Radar 从盗卡扩展到 token theft / fake sign-up。", "Streaming payments 把成本发生和收款时点拉近。", "Projects、agent tools、wallets 把开发和交易运行面连接起来。"],
+        impact: "技术反推商业：token 级成本、agent wallet 和 AI 风控对象出现后，Stripe 的商业包装从 payments suite 升级为 AI infrastructure suite。",
+        majorEvents: ["Sessions 2026", "Google AI Mode / Gemini", "Link wallets for agents", "streaming payments", "Radar token theft"],
+        refs: ["sessions2026"]
       },
       {
         year: "2026-06",
@@ -1150,7 +1431,18 @@
         stage: "大事件",
         event: "AWS WAF 可返回 HTTP 402，并通过 Stripe / Machine Payments Protocol 让 Agent 支付。",
         meaning: "机器支付把“访问资源”变成可定价、可授权、可结算的协议问题。",
-        signals: ["HTTP 402", "MPP", "AI traffic monetization"]
+        signals: ["HTTP 402", "MPP", "AI traffic monetization"],
+        metrics: [
+          { value: "HTTP 402", label: "资源访问可直接返回机器可读支付要求" },
+          { value: "MPP / x402", label: "机器支付协议进入 Stripe 文档和产品叙事" },
+          { value: "$0.01 USDC", label: "docs 中低值机器支付示例，指向微额场景" },
+          { value: "AWS WAF", label: "基础设施层可参与 agent traffic monetization" }
+        ],
+        business: ["被 AI agent 抓取/调用的内容、API、数据源，需要新商业化方式。", "Publisher、API provider、基础设施厂商进入 Stripe 的可支付资源网络。", "支付不再只发生在 checkout，也发生在资源访问边界。"],
+        technology: ["HTTP 402 response 包含价格、license、可接受支付方式。", "MPP / x402 让 agent 请求、付款、重试和获取资源可协议化。", "AWS WAF 位置说明机器支付可以靠近网络访问控制层。"],
+        impact: "技术推动商业：协议层把原本免费抓取或人工授权的资源访问变成可定价交易，Stripe 的商业对象从商户商品扩到 API、内容和数据。",
+        majorEvents: ["AWS WAF + Stripe", "Machine Payments Protocol", "x402", "AI traffic monetization"],
+        refs: ["awsWaf", "machinePayments"]
       }
     ];
 
@@ -1526,6 +1818,7 @@
     const timelineRangeEl = document.getElementById("timelineRange");
     const timelinePillsEl = document.getElementById("timelinePills");
     const timelineDetailEl = document.getElementById("timelineDetail");
+    const timelineLanesEl = document.getElementById("timelineLanes");
     const timelineTitleEl = document.getElementById("timelineTitle");
     const timelineCaptionEl = document.getElementById("timelineCaption");
     const timelineYearEl = document.getElementById("timelineYear");
@@ -1566,6 +1859,8 @@
 
     function renderTimeline(index) {
       const item = timelineItems[index] || timelineItems[0];
+      const metrics = item.metrics || [];
+      const majorEvents = item.majorEvents || [];
       timelineTitleEl.textContent = `${item.year}：${item.title}`;
       timelineCaptionEl.textContent = item.caption;
       timelineYearEl.textContent = item.year.split("-")[0];
@@ -1580,6 +1875,36 @@
           <p>${item.meaning}</p>
           <ul>${item.signals.map((signal) => `<li>${signal}</li>`).join("")}</ul>
         </div>
+        <div class="evidence-strip">
+          ${metrics.map((metric) => `
+            <div class="evidence-item">
+              <strong>${metric.value}</strong>
+              <span>${metric.label}</span>
+            </div>
+          `).join("")}
+        </div>
+        <div>
+          <h3>大事件</h3>
+          <ul>${majorEvents.map((event) => `<li>${event}</li>`).join("")}</ul>
+        </div>
+        <div>
+          <h3>来源</h3>
+          <p class="footnote">${sourceLinks(item.refs || [])}</p>
+        </div>
+      `;
+      timelineLanesEl.innerHTML = `
+        <article class="lane-card">
+          <strong>公司运营轨</strong>
+          <ul>${item.business.map((point) => `<li>${point}</li>`).join("")}</ul>
+        </article>
+        <article class="lane-card">
+          <strong>技术事件轨</strong>
+          <ul>${item.technology.map((point) => `<li>${point}</li>`).join("")}</ul>
+        </article>
+        <article class="impact-card">
+          <strong>双向影响</strong>
+          <p>${item.impact}</p>
+        </article>
       `;
 
       timelinePillsEl.querySelectorAll("button").forEach((button, buttonIndex) => {

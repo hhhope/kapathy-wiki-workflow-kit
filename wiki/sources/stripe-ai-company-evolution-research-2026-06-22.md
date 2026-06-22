@@ -60,6 +60,10 @@ Current structure:
 5. Timeline reader: company evolution is now controlled by a draggable range plus year buttons, so the reader can move from 2010-2014 to 2026-06 instead of scanning static cards.
 6. AI-after flow: the AI change chapter now follows a `总论 -> 六个维度分解 -> 总括` flow. The six dimensions are transaction actor, product representation, billing granularity, settlement rail, risk object, and organization capability.
 7. Interactive map: expanded from 8 nodes to 22 nodes, ordered by time and filterable by company path, product expansion, Agent, finance rail, risk, and organization capability. It is now a secondary map, not the only structure.
+8. Company/technology dual timeline: the main timeline now has a draggable year control plus three layers for each stage: company operating path, technical event path, and the two-way influence between commercial behavior and technical choices.
+9. Timeline evidence metrics: each timeline stage now carries indicator cards for valuation or liquidity events, processed volume, GDP-share proxy, acquisition/product events, partner proof, risk metrics, and machine-payment protocol signals where available.
+10. Market-share boundary: Stripe does not disclose a public audited global payment market-share percentage. This draft therefore uses proxies: processed volume, GDP share, businesses served, valuation/liquidity events, AI-customer coverage, acquisition direction, and secondary analyst "share gain" commentary. It should not be presented as a precise market-share estimate.
+11. Signal expansion: the H5 signal surface now separates technology interface, commercial behavior, finance rails, and risk/control signals so the reader can trace which words are source-backed evidence routes rather than decorative word-cloud terms.
 
 ## High-Density Source Pool
 
@@ -157,6 +161,12 @@ This table is not the full quantity target. It is the evidence-grade source pool
 | S086 | https://www.cnbc.com | media source | Bridge/valuation coverage | Route only |
 | S087 | https://techcrunch.com | media source | startup/acquisition coverage | Route only |
 | S088 | https://www.bloomberg.com | media source | valuation/tender coverage | Route only |
+| S089 | https://www.axios.com/2021/03/14/stripe-is-now-valued-at-95-billion | secondary media | 2021 $95B private valuation marker | Secondary source; use as valuation context |
+| S090 | https://www.axios.com/2023/03/15/stripe-50-billion | secondary media | 2023 $6.5B Series I and $50B valuation reset | Secondary source; use as liquidity/valuation context |
+| S091 | https://www.ft.com/content/ba8c698b-3d47-405e-ae21-7a1f2bd796a1 | secondary media | 2025 $91.5B tender valuation, $1.4T 2024 payment volume, AI demand framing | Paywalled/secondary; use with boundary |
+| S092 | https://www.investors.com/news/technology/stripe-ipo-paypal-stock-nvidia-shopify-adyen/ | secondary media / analyst coverage | 2024 $1.4T volume, 38% growth, profitability, analyst share-gain framing versus payment peers | Not audited market-share percentage |
+| S093 | https://www.axios.com/2024/10/24/inside-stripe-taxjar-deal | secondary media | TaxJar acquisition scale and tax-automation rationale | Secondary deal-price reporting |
+| S094 | https://docs.stripe.com/payments/machine | official docs | Machine payments, x402/MPP rails, low-value USDC examples | Product docs; availability varies |
 
 ## Evidence Matrix For H5 Claims
 
@@ -175,6 +185,11 @@ This table is not the full quantity target. It is the evidence-grade source pool
 | AWS WAF + Stripe use HTTP 402 and MPP for machine-readable price/license and agent payment. | S011 | Official Stripe release; AWS blog should be opened in next pass. |
 | Agent docs now expose MCP, agent skills, plain-text docs, llms.txt, and no-login sandbox flow. | S016/S017/S024 | Direct docs/GitHub evidence. |
 | Agentic commerce seller docs require catalog feeds, 15-minute inventory/pricing refresh, idempotent hooks, and webhook fulfillment. | S018 | Direct docs evidence. |
+| Stripe's private-market valuation moved from $95B in 2021 to $50B in 2023 and rebounded to $91.5B in 2025. | S089/S090/S091 | Secondary media/liquidity-event evidence; not public-market valuation. |
+| 2024 processed volume is treated as around $1.4T in secondary coverage, with about 38% growth from 2023. | S091/S092 | Secondary coverage and Stripe-linked context; use as proxy, not audited market share. |
+| Analyst commentary describes Stripe gaining share versus payment peers, but no audited global share percentage is used. | S092 | Market-position proxy only. |
+| TaxJar, Paystack, Recko/OpenChannel/BBPOS, Bridge, Privy, and Metronome are treated as capability-expansion events, not only M&A trivia. | S002/S093 plus source queue routes | Deal terms vary by source; public-ready version needs separate acquisition source checks. |
+| Machine payments docs support a protocol-level reading: HTTP 402, MPP/x402, machine-readable price/license, and low-value USDC examples. | S094/S111-S113 | Product docs; availability and real adoption still need partner/customer checks. |
 
 ## Research Buckets Toward 1000 Sources
 
@@ -365,6 +380,25 @@ This pass strengthens the weakest parts of the first draft: API/version evidence
 6. MPP offers two settlement modes: crypto/on-chain for low-dollar transactions and SPT/card/wallet over Stripe rails for broader payment methods. x402 in Stripe docs is focused on crypto/stablecoin deposit mode and Base/USDC.
 7. The package surface confirms Stripe is building for agent frameworks directly, not only docs: PyPI lists `stripe-agent-toolkit` with OpenAI Agent SDK, LangChain, CrewAI, Strands extras, restricted-key guidance, and release history starting in November 2024.
 8. Security research around x402 should be treated as a risk lens, not a direct indictment of Stripe. The relevant H5 point is that AI finance protocols add new state-binding, replay, concurrency, finality, and clearing problems.
+
+## Company / Technology Timeline Evidence Addendum
+
+The timeline should now be read through two tracks, not a single company-story line.
+
+| Period | Company operating evidence | Technical event evidence | Commercial / technical influence |
+|---|---|---|---|
+| 2010-2014 | Founded / public API launch / developer-first go-to-market. | API, SDK, docs, testing, webhooks become part of the product. | Technical choice drives commercial model: developer adoption becomes distribution. |
+| 2015-2019 | Platform, marketplace, SaaS, global and omnichannel customers increase product breadth. | Connect, Atlas, Radar, Billing, Terminal add account, risk, revenue, and offline primitives. | Business complexity drives technical objects: accounts, subscriptions, risk models, invoices, in-person devices. |
+| 2020-2022 | $95B 2021 valuation peak, macro/valuation reset, Paystack/TaxJar/Recko/OpenChannel/BBPOS capability expansion. | Treasury, Capital, Identity, Tax, Issuing, Data Pipeline, app ecosystem and hardware/POS layers deepen the stack. | Globalization and platform growth force tax, reconciliation, local payment, hardware and embedded-finance infrastructure. |
+| 2023 | $1T processed volume, about 1% global GDP; $6.5B Series I at $50B valuation. | Existing Revenue suite, Billing, Tax, Radar and global payments become the AI-customer pressure surface. | AI first changes customer demand, then forces monetization/risk/tax objects to handle usage-heavy products. |
+| 2024 | Around $1.4T processed volume in secondary coverage, 38% growth, profitability, share-gain commentary, Bridge strategic move. | Usage billing, stablecoin, agent tooling, docs and product APIs become more important. | Token/event economics push Stripe beyond monthly subscriptions toward finer-grained billing and settlement. |
+| 2025 | $1.9T processed volume, 1.6% GDP, +34% YoY, 5M+ businesses, $91.5B tender valuation, Bridge/Privy/Metronome. | Claimable sandboxes, MCP/llms.txt/agent toolkit, wallet abstraction, stablecoin orchestration, usage/event rating. | AI demand justifies acquisitions; acquisitions make agent commerce and machine payments technically feasible. |
+| 2025-09 | New York Tour packages Open Issuance, agentic commerce and AI monetization. | Catalog feeds, merchant controls, ACP/SPT-adjacent flows, machine-readable commerce objects. | Agent-readable product data changes distribution: merchants need to sell inside AI surfaces. |
+| 2026-01 | Microsoft Copilot Checkout proves a large AI interface can become a commerce surface. | Shared Payment Token and Agentic Commerce Protocol manage credentials and transaction control. | Partner channel pressure forces payment credentials and authorization to become protocol objects. |
+| 2026-04 | Sessions 2026 announces 288 products/features; Radar blocks 3.3M risky AI sign-ups across eight AI businesses in one month. | Link wallets for agents, streaming payments, Radar token theft, Tempo/Metronome, Projects. | Technical risk and token-level cost reshape business packaging into AI infrastructure modules. |
+| 2026-06 | AWS WAF + Stripe monetizes AI agent traffic for protected resources. | HTTP 402, MPP, x402, machine-readable price/license, low-value USDC examples. | Protocol capability creates a new commercial object: API/content/data access as machine-payable resources. |
+
+Market-share note: do not state a precise Stripe market-share percentage from the current evidence. Use "market position proxy" or "share-gain signal" unless a public audited denominator and numerator are added later.
 
 ## Draft Conclusions
 
