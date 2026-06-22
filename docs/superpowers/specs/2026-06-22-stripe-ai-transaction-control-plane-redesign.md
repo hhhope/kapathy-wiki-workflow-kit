@@ -1,404 +1,405 @@
-# Stripe AI 交易控制面 H5 重设计
+# Stripe 公司演进与 AI 时代变革 H5 设计稿
 
 ## 路由状态
 
 Route: brainstorm -> superpowers spec; OpenSpec 在本设计稿审核通过前保持只读。
 
-本稿替换上一版失败的 `证据坐标` 修复方向。它是设计审核稿，不授权直接改 H5。
+本稿是重新锚定后的中文审核稿。它不再把内部分析概念写成标题，也不再按“材料模块”堆页面。它把 Stripe 当作一个公司案例做商业分析：**这家公司如何选择战略楔子，如何扩张能力边界，哪些选择造成了今天的位置，AI 时代又如何重新放大或改写这些能力。**
 
-## 我们到底在做什么
+## 这篇 H5 到底要回答什么
 
-这篇 H5 不是 Stripe 资料库，也不是把 1000 条 URL 摆出来证明“材料很多”。
+主问题：
 
-我们要做的是一篇可阅读、可交互、可继续扩展成 PPT 或长报告的研究型 H5。它要回答一个问题：
+> Stripe 如何从一个支付 API 公司，演进为可以承接 AI 时代新交易需求的金融基础设施公司？
 
-> AI 时代，Stripe 认为交易系统正在变成什么？Stripe 把自己放在这个新系统里的什么位置？我们从它的公司路径、技术选择、并购、市场规模和招聘信号里能学到什么？
+拆成四个商业分析问题：
 
-这篇 H5 要检验的核心判断是：
+1. **路径问题**：Stripe 在 2010-2026 每个阶段解决的核心商业问题是什么？
+2. **战略问题**：哪些长期战略选择造就了 Stripe 的能力结构？
+3. **变化问题**：AI 时代之后，客户需求、交易入口、计费、结算、风险发生了什么变化？
+4. **启发问题**：我们如何用 Stripe 的路径理解 AI 金融基础设施，而不是只看产品发布？
 
-> AI 不是只让支付更智能，而是把交易从人的 checkout 流程，改成一套机器可发现、可读取、可计量、可授权、可结算、可风控的交易控制面。Stripe 的产品、并购、开发者接口、市场规模和招聘信号，都应该放到这些交易控制点上理解。
+这篇 H5 的主轴是时间。时间不是装饰，而是分析方法：只有把产品、并购、市场指标、技术接口、JD 和来源放回时间线上，才能看出哪些是战略选择，哪些是结果，哪些只是当期噪音。
 
-换句话说，我们不是在写“Stripe 很厉害”。我们是在研究：
+## 商业分析口径
 
-- AI 到底改写了交易系统的哪些环节。
-- Stripe 在哪些环节放了能力。
-- 这些能力是自己长出来的，还是靠并购补的。
-- 这些动作有没有市场规模支撑。
-- 1000 条来源如何支持、限制或推迟这些判断。
-- 我们如何把 Stripe 的路径抽象成金融 AI 基础设施的分析框架。
+每个阶段统一用八个字段分析，避免写成流水账：
 
-## 为什么当前稿失败
+| 字段 | 要回答的问题 |
+|---|---|
+| 战略押注 | Stripe 当时押了什么方向？ |
+| 目标客户 | 谁的痛点最先被解决？ |
+| 商业模式影响 | 这一步如何扩大处理规模、收入机会或客户粘性？ |
+| 能力沉淀 | 这阶段留下了什么可复用能力？ |
+| 技术选择 | 哪些 API、对象、文档、工具或协议支撑这个战略？ |
+| 并购/补位 | 哪些能力不是自然长出来的，需要收购或合作补齐？ |
+| 指标证据 | 哪些数据说明这一步真的扩大了位置？ |
+| AI 时代复用 | 这阶段能力在 AI 时代被怎样重新调用？ |
 
-当前稿不是完全没材料，问题在于设计逻辑错了。
+这才是页面应该呈现的“体系”。不是证据分类体系，而是公司战略演进体系。
 
-主要失败点：
+## 推荐标题
 
-- 把 `证据` 做成了读者主框架。读者看到的是证据坐标、证据节点、证据库存，而不是 Stripe 的战略位置。
-- 市场面板、时间轴、AI 链路、能力图、词云、来源库存是并列模块。它们各讲各的，没有共同回答一个问题。
-- BVP 参考只学到了 trend card 的表面格式，没有学到它“强主题 + 趋势 + 数据点 + implication”的报告结构。
-- 1000-source queue 只是被展示成数量，读者看不出这些来源如何改变文章判断。
-- 词云虽然可点击，但没有实际阅读价值。它没有过滤时间轴，没有展示信号密度，也没有把来源分类变成洞察。
-- 并购被做成能力卡片，但没有叠回交易系统，看不出 Bridge、Privy、Metronome 分别补了哪个交易环节。
-- 视觉增强停留在卡片、条形图、列表，没有形成一个能承载全文的主图。
+主标题：
 
-下一版必须先解决“关系”，再解决“文案”。
+> Stripe 公司演进：从支付 API 到 AI 时代金融基础设施
 
-## BVP 例子怎么用到 Stripe
+副标题：
 
-参考页面：`https://www.bvp.com/atlas/state-of-the-cloud-2024`
+> 2010-2026 年，Stripe 的关键变化不是产品越来越多，而是它不断把商户收款、平台分账、订阅计费、风控、税务、钱包、稳定币和机器支付接进同一条交易基础设施路径。AI 时代让这条路径被重新放大。
 
-BVP 页值得借鉴的不是视觉品牌，而是报告组织方式：
+备用标题：
 
-- 先给一个强主题。
-- 再给少数几个趋势。
-- 每个趋势有清楚的变化、数据点和影响。
-- 图表服务趋势，不是把资料铺满。
-- 读者可以跳转浏览，也可以顺着主线读完。
+- `Stripe 的发展路径与 AI 时代变革`
+- `从 Stripe 看 AI 时代金融基础设施的演进`
+- `Stripe 2010-2026：战略选择、能力扩张与 AI 交易变化`
 
-我们要借的：
+明确不用：
 
-- 一个主判断。
-- 一组趋势块。
-- 每个趋势固定结构：变化、Stripe 动作、关键数据/事件、影响、来源。
-- 大图先行，细节后置。
-- 数据点服务判断，而不是让数据点自己堆出来。
-
-我们不要借的：
-
-- BVP 的视觉风格、配色、插画和品牌感。
-- VC 式预测口吻。
-- 用宏大趋势替代事实证明。
-- 直接照搬 AI Cloud 的趋势标签。
-
-Stripe 的改造方式：
-
-- BVP 的研究对象是 `AI Cloud`。
-- 本文的研究对象是 `AI 交易控制面`。
-- BVP 的五个趋势，在本文中变成交易系统的六个控制点。
-- BVP 的 notable data points，在本文中变成 Stripe 的交易规模、并购、API/docs、合作发布、JD 信号和来源密度。
-
-## 读者可见主标题和主判断
-
-工作标题：
-
-> Stripe：从支付 API 到 AI 交易控制面
-
-首屏主判断：
-
-> AI 不只是让支付更智能，而是把交易拆成机器可以发现、读取、计量、授权、结算和风控的系统。Stripe 的路径，是把支付、账单、风控、钱包、稳定币、协议和开发者工具接到这些控制点上。
-
-页面里避免使用这些作为读者标题：
-
+- `Stripe：从支付 API 到 AI 交易控制面`
 - `证据坐标`
+- `能力迁移地图`
 - `核心判断`
 - `原有能力底座`
 - `市场位置计算面板`
-- `能力迁移地图`
-- 反复出现的 `不是...而是...`
-- `proof tag`、`evidence lane`、`source queue` 这类生产过程标签
 
-证据仍然存在，但它应该放在来源抽屉、source chips、图表脚注和附录里，不再站到页面最前面。
+## 首屏应该怎么说
+
+首屏不讲抽象概念，先交代研究对象、时间范围和结论方向。
+
+推荐文案：
+
+> 这页从 2010 到 2026 追踪 Stripe 的公司演进。Stripe 先用 API-first 降低在线收款接入门槛，再把能力扩到平台分账、订阅计费、风控、税务、金融账户和全球化运营。AI 时代之后，AI 公司和 Agent 交易把原有能力重新推到前台：用量计费、商品数据、钱包授权、稳定币结算、机器支付和实时风控成为新的增长线索。
+
+首屏要让读者立刻知道：
+
+- 这是 Stripe 公司路径研究。
+- 核心视角是 2010-2026 的时间变化。
+- AI 时代不是凭空新增章节，而是前面战略积累的再解释。
+- 1000 条来源是底层材料，不是主叙事。
+
+首屏指标：
+
+- 2023：Stripe 处理规模 $1T。
+- 2025：Stripe 处理规模 $1.9T。
+- 2025：Stripe 自披露约等于全球 GDP 的 1.6%。
+- 2026：Sessions 发布 288 项产品和功能。
+- 来源队列：1000 concrete URL rows，明确是 triage queue，不是 1000 条已读结论。
+
+## BVP 例子怎么用
+
+BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而是“年度状态报告”的结构：
+
+- 一个清楚的大主题。
+- 几个能解释主题的趋势。
+- 每个趋势配数据点和影响。
+- 视觉图表服务判断，而不是展示材料数量。
+
+本文的改造：
+
+- BVP 的主题是 AI Cloud。
+- 本文主题是 Stripe 公司演进与 AI 时代变革。
+- BVP 的趋势卡，在这里变成“阶段战略卡 + AI 后变化专题”。
+- BVP 的 notable data points，在这里变成处理规模、估值、并购、产品发布、API/docs、合作事件、JD 信号和来源热力图。
 
 ## 页面结构
 
-### 1. 首屏：先把研究问题讲清楚
+### 1. 公司演进总览：2010-2026
 
 作用：
 
-让读者一进来就知道这篇 H5 在证明什么。
+用一张主时间线建立全篇。读者先看到公司怎么走，而不是看到证据怎么分。
 
-首屏内容：
+五个阶段：
 
-- 标题：`Stripe：从支付 API 到 AI 交易控制面`
-- 副标题：AI 改写的是整个交易系统，不只是 checkout。
-- 四个关键指标：
-  - `$1.9T`：Stripe 2025 年处理规模。
-  - `1.6%`：Stripe 自披露的 GDP 等价口径。
-  - `288`：Sessions 2026 发布的产品和功能数量。
-  - `1000`：具体 URL 来源队列，但标注为 triage queue，不等于 1000 条结论。
+| 阶段 | 时间 | 核心商业问题 | 战略押注 | 结果 |
+|---|---|---|---|---|
+| 支付 API 起点 | 2010-2014 | 新互联网业务收款接入复杂 | API-first、开发者体验、文档和测试 | Stripe 拿到开发者入口 |
+| 商户经营系统 | 2015-2019 | 平台、SaaS、订阅和线下场景变复杂 | Connect、Billing、Radar、Terminal、Atlas | Stripe 从支付入口进入商户经营层 |
+| 金融运营平台 | 2020-2022 | 全球化、税务、账户、风控、资金和合规压力上升 | Treasury、Capital、Identity、Tax、Issuing，以及区域/税务/对账/硬件补位 | Stripe 扩成更完整的金融运营栈 |
+| AI 客户压力 | 2023-2024 | AI 公司高增长、高用量、全球化、风险和成本波动 | Revenue suite、usage billing、global tax、risk、agent tooling、Bridge | 原有收入和风控能力被 AI 客户重新放大 |
+| AI 时代金融基础设施 | 2025-2026 | Agent 交易、稳定币、钱包、机器支付和实时风控进入主线 | Bridge、Privy、Metronome、Link wallets、MPP、x402、Radar token theft | Stripe 把原有交易能力接入 AI 时代新交易形态 |
 
 视觉：
 
-- 首屏不再是普通 hero 图加卡片。
-- 首屏应该露出一张主系统图。
-- 六个交易控制点在第一屏就能看到。
-- Stripe 的产品、并购、API、协议和 JD 信号以标记形式挂在图上。
+- 横向年份主轴。
+- 每个阶段有一句战略判断。
+- 每个阶段附 3-5 个关键事件或指标。
+- AI 阶段作为最新阶段，但必须显示它依赖前面阶段。
 
-### 2. 主图：AI 交易控制面
-
-作用：
-
-承载整篇文章的关系。后面的时间轴、市场图、并购图、来源热力图都回到这张图。
-
-横向六个控制点：
-
-1. 交易入口
-2. 商品表达
-3. 计费与计量
-4. 买方授权
-5. 结算轨道
-6. 风险控制
-
-每个控制点展示五件事：
-
-- 原来的交易对象是什么。
-- AI 时代变成什么。
-- Stripe 放了什么能力。
-- 哪类来源支持这个判断。
-- 还有什么证明边界。
-
-初始映射：
-
-| 控制点 | 原交易对象 | AI 后交易对象 | Stripe 信号 |
-|---|---|---|---|
-| 交易入口 | 网站、App、商户 checkout 流量 | Copilot、Gemini、ChatGPT、agent surface | Copilot Checkout、Agentic Commerce Suite |
-| 商品表达 | 商品页、SKU、checkout 参数 | catalog feed、inventory feed、pricing feed、order approval | ProductCatalogImport、15-minute inventory/pricing refresh、Checkout Session fulfillment |
-| 计费与计量 | 订阅、账单、发票 | token、event、usage、outcome | Billing、Revenue suite、Metronome、streaming payments |
-| 买方授权 | 输入卡号、保存支付凭据 | wallet、one-time token、approval hook、Shared Payment Token | Link wallets for agents、SPT、Privy |
-| 结算轨道 | card rails、银行 payout | stablecoin、MPP、x402、machine payment | Bridge、Tempo、machine payments docs |
-| 风险控制 | 盗卡、拒付、支付欺诈 | token theft、fake signup、prompt/tool misuse、resource abuse | Radar token theft、AI Security JD、seller approval hook |
-
-交互要求：
-
-- 点击某个控制点，下方所有板块按该控制点过滤。
-- hover/click 时出现来源 chips 和来源强度。
-- 颜色代表控制点，不代表笼统的证据类别。
-
-### 3. 趋势块：用 BVP 的结构讲六个控制点
+### 2. 阶段战略卡：每个阶段都按同一口径展开
 
 作用：
 
-用统一语法解释每个控制点，而不是每段都换一套说法。
+避免写成公司百科。每个阶段都用同一商业分析框架。
 
-每个趋势块固定五栏：
+每张阶段卡包含：
 
-- `变化`：交易系统哪里变了。
-- `Stripe 动作`：Stripe 在这个位置放了什么能力。
-- `关键数据/事件`：3-5 个硬标记。
-- `影响`：这说明 Stripe 的位置发生了什么变化。
-- `来源`：已晋级来源和证明边界。
+- 战略押注
+- 目标客户
+- 商业模式影响
+- 能力沉淀
+- 技术选择
+- 并购/补位
+- 指标证据
+- AI 时代复用
 
-示例：交易入口
+示例：2010-2014 支付 API 起点
 
-- 变化：交易入口从商户网站进入 AI surface。
-- Stripe 动作：Copilot Checkout 和 Agentic Commerce Suite 把 Stripe 放进 agent-driven discovery 和 purchase flow。
-- 关键数据/事件：Microsoft Copilot Checkout、Agentic Commerce Protocol、Shared Payment Token、Sessions 2026 中 Google/Gemini 相关发布。
-- 影响：Stripe 不只是处理 checkout，它在争夺 agent、商户和买方凭据之间的交易接口。
+- 战略押注：把在线收款从银行/支付机构接入问题，改成开发者 API 接入问题。
+- 目标客户：互联网创业公司、开发者团队、需要快速上线收款的新业务。
+- 商业模式影响：用低摩擦接入扩大商户获取，处理规模随客户增长累积。
+- 能力沉淀：API、SDK、文档、测试卡、Dashboard、webhook。
+- 技术选择：把金融动作封装成可调用接口。
+- 并购/补位：早期不是并购驱动。
+- 指标证据：早期公开份额不足，使用官方历史材料、客户扩散和开发者采用作为代理。
+- AI 时代复用：agent docs、MCP、llms.txt、sandbox 和 toolkit 仍然继承 developer-first 分发逻辑。
 
-### 4. 三维时间轴：这些控制点何时形成
-
-作用：
-
-时间轴不是主论点，而是历史证明层。它回答：Stripe 是怎样一步步从支付 API 扩到 AI 交易控制面的。
-
-三维结构：
-
-- x 轴：时间，从 2010 到 2026。
-- y 轴：信号轨道。
-- 第三维：这个节点加强了哪个交易控制点。
-
-信号轨道：
-
-- 公司规模和经营路径。
-- 市场位置、估值和流动性事件。
-- 并购和能力缺口。
-- 产品与 API。
-- AI 协议和合作发布。
-- 组织、JD 和风险信号。
-
-交互要求：
-
-- 年份可拖拽。
-- 节点颜色按六个控制点统一。
-- 每条轨道有清楚图标或标签。
-- 每个节点打开详情抽屉。
-- 详情抽屉只讲三件事：发生了什么、为什么重要、来源强度。
-
-关键年份锚点：
-
-- 2010-2014：API、SDK、文档、测试环境形成可编程支付入口。
-- 2015-2019：Connect、Billing、Radar、Terminal 和平台/SaaS 客户让 Stripe 进入商户经营层。
-- 2020-2022：Treasury、Capital、Identity、Tax、Issuing，以及 Paystack、TaxJar、Recko、OpenChannel、BBPOS，补深金融运营能力。
-- 2023：$1T 处理规模和 AI 客户压力，让 billing、tax、risk 变得更关键。
-- 2024：usage billing、stablecoin、agent tooling 和 Bridge 进入主叙事。
-- 2025：$1.9T、1.6% GDP 等价口径、5M+ businesses、Bridge/Privy/Metronome、claimable sandboxes。
-- 2026：Copilot Checkout、Sessions 2026、Link wallets for agents、streaming payments、Radar token theft、HTTP 402、MPP、x402。
-
-### 5. 市场位置图：Stripe 是否有资格进入系统级讨论
+### 3. 主时间轴：五条线并读
 
 作用：
 
-回答一个很具体的问题：Stripe 的规模是否足以支撑“AI 交易基础设施候选者”这个讨论。
+这是 H5 的核心交互。拖动年份时，读者同时看到商业战略、市场位置、并购、技术和 AI 变化。
 
-读者可见判断：
+五条线：
 
-> Stripe 披露的处理规模已经足够大，可以把它作为 AI 交易基础设施候选者来分析。但页面不能把它写成已经拥有可审计的全球支付市场份额。
-
-主视觉：
-
-- 处理规模增长线或阶梯面积图：`$1T -> ~$1.4T -> $1.9T`
-- GDP 等价口径变化：`1.0% -> 1.6%`
-- 同业参照条形图：PayPal、Adyen、Worldpay/Global Payments，能比的才比。
-- take-rate 敏感性放抽屉，不做主画面。
-
-规则：
-
-- 不再出现 `两公司 TPV 参照` 这种读者看不懂的标签。
-- 不把巨大收入敏感性区间放在主画面吓人。
-- 主画面讲增长和相对量级。
-- 公式和口径放在可展开抽屉里。
-- 每个数字标清楚：官方自披露、二级报道、同业机制参考。
-
-### 6. 并购覆盖图：并购补了哪个控制点
-
-作用：
-
-并购不是大事件列表，而是能力缺口修补图。
-
-它应该叠在主图上，而不是单独成为 M&A 列表。
-
-映射关系：
-
-| 动作 | 对应控制点 | 补的缺口 |
-|---|---|---|
-| Paystack | 结算 / 本地收单 | 区域支付覆盖 |
-| TaxJar / Recko | 商户运营 | 税务、财务自动化、对账 |
-| BBPOS / Terminal | 交易入口 / 支付场景 | 线下和 omnichannel |
-| Lemon Squeezy | 商品与商户运营 | merchant-of-record、数字商品销售 |
-| Bridge | 结算轨道 | 稳定币编排 |
-| Privy | 买方授权 | 钱包抽象 |
-| Metronome | 计费与计量 | usage、event、token、outcome rating |
+1. 公司战略线：Stripe 在这个阶段解决什么商业问题。
+2. 市场位置线：处理规模、估值、客户规模、同业参照。
+3. 并购补位线：哪些能力通过收购或合作补齐。
+4. 技术产品线：API、docs、对象模型、风控、计费、协议。
+5. AI 变化线：2023 之后 AI 客户、Agent 交易、usage billing、stablecoin、machine payment、风险对象如何出现。
 
 交互：
 
-- 有 `Acquisitions` 图层开关。
-- 打开后，并购能力在主图对应控制点亮起。
-- 点击并购节点显示：时间、来源强度、补了什么缺口、为什么和 AI 交易有关。
+- 年份可拖拽。
+- 点击年份显示五条线同屏信息。
+- 节点颜色固定：战略、市场、并购、技术、AI。
+- 点击节点打开详情抽屉：事实、商业意义、来源强度。
 
-### 7. 来源热力图：替代词云
+这一章回答：
+
+> 这些事件如何共同解释 Stripe 的变迁？
+
+### 4. 哪些战略造就了 Stripe
 
 作用：
 
-让 1000 条来源的工作方式可见，但不假装 1000 条都已经读完、都能支撑正文。
+把“战略因果”讲清楚。不是列产品，而是解释长期选择如何造成今天的位置。
 
-替代当前词云，改成矩阵：
+六个战略选择：
 
-- 行：来源类型
-  - official annual/newsroom
-  - docs/API/changelog
-  - jobs/JD
-  - GitHub/code/community
-  - partner/media/protocol
-  - research/risk
-- 列：六个交易控制点
-- 时间筛选：2010-2022、2023、2024、2025、2026
+1. **开发者入口战略**
+   Stripe 用 API、SDK、文档和测试体验进入市场。它不是先做大销售组织，而是把支付接入变成开发者体验。这造就了后续 docs、agent toolkit、MCP、llms.txt、sandbox 的分发基础。
 
-每个格子展示：
+2. **平台商户战略**
+   Connect 让 Stripe 服务 marketplace、platform 和 SaaS，而不只是单个商户。平台客户带来更复杂的账户、分账、风控和合规问题，也让 Stripe 更深入商户经营层。
 
-- queued 数量。
-- read/classified 数量。
-- promoted 数量。
-- 代表来源。
-- 为什么进入正文，或为什么暂时不能进入正文。
+3. **收入运营战略**
+   Billing、Revenue suite、Tax、Invoicing 让 Stripe 从收单扩到收入管理。AI 公司的 token、event、usage、outcome 计费需求，让这条战略线在 2023 之后变得更关键。
 
-已知库存要展示：
+4. **风险基础设施战略**
+   Radar、Identity、KYC/KYB、Capital underwriting、AI Security JD 和 token theft protection 说明风险不是支付之后的售后问题，而是交易系统基础能力。
 
-- 1000 条 concrete URL rows。
+5. **全球化和本地化补位战略**
+   Paystack、TaxJar、Recko、BBPOS 等动作不是并购新闻，而是补全球化、本地支付、税务、对账和线下场景的缺口。
+
+6. **新金融轨道接入战略**
+   Bridge、Privy、Metronome、Tempo、MPP、x402 表明 Stripe 正在把稳定币、钱包、用量计费和机器支付接入自己的主线。
+
+这一章必须用图表示因果：
+
+> 战略选择 -> 能力沉淀 -> 后续产品/并购 -> AI 时代复用。
+
+### 5. AI 时代后的变化：总分总专题
+
+作用：
+
+AI 后变化要单独看，但必须放回 Stripe 的公司路径。它不是一句抽象判断，而是 2023-2026 的新阶段。
+
+总：
+
+> AI 之后，Stripe 面对的变化不是“支付多了 AI 功能”，而是 AI 公司和 Agent 场景改变了交易需求：客户增长更快、用量更细、交易入口更分散、商品表达更机器可读、结算轨道更多、风险更实时。
+
+分六类变化：
+
+| AI 后变化 | 商业含义 | Stripe 对应动作 |
+|---|---|---|
+| 客户结构变化 | AI 公司高增长、高用量、全球化，成本随 token/event 波动 | Revenue suite、global tax、usage billing、Metronome |
+| 交易入口变化 | 商品发现和购买进入 Copilot、Gemini、ChatGPT、agent surface | Copilot Checkout、Agentic Commerce Suite |
+| 商品表达变化 | 商品页变成 catalog feed、inventory feed、pricing feed | ProductCatalogImport、seller docs、preview API |
+| 计费方式变化 | 订阅之外出现 token、event、usage、outcome billing | Billing、Metronome、streaming payments |
+| 结算方式变化 | card rails 之外出现 stablecoin、wallet、machine payment | Bridge、Privy、Tempo、MPP、x402 |
+| 风险对象变化 | 风险从盗卡扩到 token theft、fake signup、tool misuse、resource abuse | Radar token theft、AI Security JD、approval hook |
+
+总：
+
+> AI 没有推翻 Stripe 原有能力，而是重新解释这些能力的价值。过去的 API、平台、计费、风控、全球化和金融运营能力，在 AI 客户和 Agent 交易里被重新组合。
+
+### 6. 市场位置与增长
+
+作用：
+
+回答 Stripe 是否已经有足够规模进入系统级基础设施讨论。
+
+主图：
+
+- 处理规模：2023 $1T，2024 约 $1.4T，2025 $1.9T。
+- GDP 等价口径：2023 1.0%，2025 1.6%。
+- 估值/流动性：2021 $95B，2023 $50B，2025 $91.5B tender valuation。
+- 同业参照：PayPal、Adyen、Worldpay/Global Payments，只在口径可比处使用。
+
+分析口径：
+
+- 这里不是要硬算“全球支付市场份额”。
+- 这里要说明 Stripe 的处理规模、增长速度和同业量级，已经足够让它进入 AI 金融基础设施讨论。
+- take-rate、revenue sensitivity、同业 TPV 参照放在展开面板，不占主叙事。
+
+### 7. 并购与能力补位
+
+作用：
+
+把并购从“大事件列表”改成战略补位图。
+
+展示方式：
+
+- 放在时间轴上。
+- 同时提供能力补位视图。
+- 每个节点显示：时间、补的缺口、对应战略、AI 时代是否重新变重要、来源强度。
+
+初始映射：
+
+| 并购/动作 | 补的能力 | 对应战略 | AI 时代意义 |
+|---|---|---|---|
+| Paystack | 区域支付和本地收单 | 全球化和本地化补位 | 支撑更多地区的新业务收款 |
+| TaxJar / Recko | 税务、财务自动化、对账 | 收入运营和商户后台 | AI 公司全球化和税务复杂度上升 |
+| BBPOS / Terminal | 线下支付和硬件入口 | 商户经营系统 | omnichannel 交易入口 |
+| Lemon Squeezy | MOR、数字商品销售 | 软件和开发者产品销售 | AI 工具和数字产品销售路径 |
+| Bridge | 稳定币编排和跨境结算 | 新金融轨道 | stablecoin settlement 进入主线 |
+| Privy | 钱包抽象 | 买方/应用授权基础设施 | agent/app wallet 基础设施 |
+| Metronome | usage/event/token 计费 | 收入运营 | AI 产品实时收入模型 |
+
+### 8. 技术事件时间线
+
+作用：
+
+技术不是独立炫技章节，而是解释商业战略如何落成系统能力。
+
+技术线必须回答：
+
+- 这个技术选择服务哪个商业阶段？
+- 它降低了谁的摩擦？
+- 它如何扩大 Stripe 的能力边界？
+- 它在 AI 时代是否被重新调用？
+
+技术节点类型：
+
+- API / SDK / docs / test mode
+- PaymentIntent / Checkout Session / webhook
+- Connect / Billing / Radar / Terminal
+- Tax / Treasury / Issuing / Identity
+- docs for agents、MCP、llms.txt、agent toolkit
+- ProductCatalogImport、preview API、seller docs
+- MPP、x402、HTTP 402、machine payments
+- Radar token theft、AI Security、risk jobs
+
+### 9. 1000 条来源如何进入判断
+
+作用：
+
+解释研究材料如何支撑 H5，而不是展示链接数量。
+
+展示方式：
+
+- 来源热力图：时间阶段 x 来源类型。
+- 第二视图：战略主题 x 来源类型。
+- 每个格子展示 queued、read/classified、promoted 数量。
+- 点击格子显示代表来源、进入正文原因、未进入正文原因。
+
+来源类型：
+
+- 官方年信 / 新闻稿
+- docs / API / changelog
+- 招聘 / JD
+- GitHub / code / community
+- partner / media / protocol
+- research / risk
+
+已知库存：
+
+- 1000 条具体 URL。
 - 487 条 docs/API/changelog。
-- 292 条 jobs/JD，其中 260 条是职位详情页。
+- 292 条 jobs/JD，其中 260 条职位详情页。
 - 160 条 GitHub/code/community routes。
-- promoted source count 单独显示，不能和 queue 数量混在一起。
 
-这个板块回答：
+这一章回答：
 
-> 这些来源如何塑造本文判断？
+> 我们如何从 1000 条材料里形成分层判断？
 
-它不回答：
-
-> 我们收集了多少 URL？
-
-### 8. 我们能学什么
+### 10. 我们能学什么
 
 作用：
 
-把 Stripe 分析抽象成我们自己的分析框架。
+把 Stripe 的路径变成可复用的商业分析框架。
 
-不要写成“Stripe 很先进”。要写成方法：
+结论方向：
 
-- 看 AI 金融基础设施，不只看产品名，要看交易对象是否被改写。
-- 基础设施优势来自多个控制点的连接能力。
-- 并购只有在补上控制面缺口时才是战略信号。
-- docs、API、sandbox、SDK、MCP、llms.txt、sample repo 在 agent 时代也是分发面。
-- 市场规模重要，因为没有足够交易量，控制面判断很虚。
-- JD 信号只有绑定到具体控制点和具体日期时才有意义。
+- 基础设施公司的战略价值，不在于产品名多，而在于能否把复杂业务动作做成可复用接口。
+- 看 AI 金融机会，要从交易对象和交易流程变化入手，而不是从 AI 功能清单入手。
+- 看公司战略，要把并购、产品、API、JD、市场指标放回时间线。
+- AI 时代的变化，经常不是全新能力，而是旧能力在新客户、新入口、新计费和新风险下被重新组合。
+- 市场位置分析不能停在“没有公开份额”，要用处理规模、增长、同业参照和采用信号构建判断边界。
 
-## 视觉风格
+## 视觉设计要求
 
-这页应该像 strategy atlas，不像 dashboard dump。
+这页应该像公司演进 atlas，不像 dashboard dump。
+
+主视觉结构：
+
+1. 2010-2026 公司演进总时间线。
+2. 公司战略 / 市场位置 / 并购补位 / 技术产品 / AI 变化五线并读。
+3. AI 后变化专题图。
+4. 来源热力图。
 
 视觉规则：
 
-- 只有一张主导图：AI 交易控制面。
-- 少用独立卡片。
-- 每个图表必须有明确任务。
-- 颜色始终映射六个控制点。
-- 来源细节放在抽屉、chips、脚注里。
-- 不做装饰性词云。
-- 不做卡片套卡片。
-- 不把生产过程写进读者正文。
-- 移动端保留主图逻辑，可以横向滚动或堆叠，但不能变回普通列表。
-
-建议控制点配色：
-
-- 交易入口：blue
-- 商品表达：teal
-- 计费与计量：amber
-- 买方授权：violet
-- 结算轨道：green
-- 风险控制：red
+- 时间轴是主角。
+- 图表要服务商业问题。
+- 不再使用词云证明研究深度。
+- 不再用内部分析概念做页面标题。
+- 颜色固定对应：战略、市场、并购、技术、AI、来源状态。
+- 移动端也保留时间主轴，不能退化成普通卡片堆叠。
 
 ## 来源与边界模型
 
-H5 可以展示来源强度，但来源强度不能变成页面主框架。
-
 来源状态：
 
-- queued：已经收集具体 URL。
-- read：已经打开、确认日期、摘要。
-- classified：已经归入控制点和信号轨道。
-- promoted：可以支撑页面可见判断。
+- queued：已有具体 URL。
+- read：已打开、确认日期、摘要。
+- classified：已归入年份、来源类型、战略主题。
+- promoted：可支撑页面可见判断。
 
-读者可见来源标签：
+页面需要标注：
 
-- official self-report
-- direct docs/API
-- partner release
-- job signal
-- secondary report
-- community/code route
-- research/risk lens
-
-边界写法：
-
-- Stripe annual figures 是官方自披露，不是独立审计。
-- GDP 等价口径不是全球支付市场份额。
-- 2024 processed volume 如果没有更强来源，仍是 secondary/proxy。
-- 二级来源整理出的并购时间线不能当作 public-ready M&A diligence。
-- x402/MPP 安全研究是风险视角，不是 Stripe-specific failure claim。
+- 官方自披露，不等于独立审计。
+- GDP 等价口径，不等于全球支付市场份额。
+- 二级报道和 compiled sources 不能直接当 public-ready diligence。
+- JD 是组织信号，不是战略事实本身。
+- GitHub/community 是采用和摩擦线索，不是市场份额证明。
 
 ## 验收标准
 
-- 首屏明确提出 AI 交易控制面判断。
-- 主图先解释交易变化和 Stripe 能力的关系，再出现来源库存。
-- BVP 影响体现在结构上：主判断、趋势块、数据点、影响、可跳转章节。
-- 时间轴是历史证明层，采用时间 x 信号轨道 x 控制点，不是平铺事件表。
-- 市场位置用增长和相对规模图呈现，公式放抽屉。
-- 并购显示在它修补的控制点上。
-- 词云被来源热力图或信号矩阵替代。
-- 1000 条来源被表达成 triage / promotion 系统，不写成 1000 条结论。
-- 读者标题不使用 `证据坐标`、`能力迁移地图`、`核心判断` 等内部标签。
-- 每个视觉组件都能用一句话说清它的任务。
-- H5 仍是内部草稿，必须等 screenshot QA、interaction QA、source integrity check 和 report gate review 通过后，才能说 review-ready。
+- 标题回到 Stripe 公司发展路径与 AI 时代变革。
+- 首屏明确 2010-2026 时间跨度。
+- 页面主图是公司演进时间线，不是抽象概念图。
+- 每个阶段都按战略押注、目标客户、商业模式影响、能力沉淀、技术选择、并购补位、指标证据、AI 时代复用来分析。
+- 主时间轴支持拖拽，并能并读公司战略、市场位置、并购补位、技术产品、AI 变化五条线。
+- AI 后变化采用总分总，并放回公司演进最新阶段。
+- 市场位置有增长图和同业参照，不再只写口径声明。
+- 并购以时间和能力补位组织，不是列表。
+- 技术事件有独立视角，并说明商业战略与技术选择的相互影响。
+- 1000 条来源以热力图或矩阵表达，不再用词云。
+- 页面不使用 `交易控制面` 作为读者标题或核心概念。
+- H5 仍是内部草稿，必须经过 screenshot QA、interaction QA、source integrity check 和 report gate review 后才能说 review-ready。
 
 ## 下一步不做什么
 
@@ -415,8 +416,8 @@ H5 可以展示来源强度，但来源强度不能变成页面主框架。
 
 占位符检查：无占位符。
 
-一致性检查：全文主对象是 AI 交易控制面。证据是支撑层，不是读者主框架。
+一致性检查：全文主轴改为时间线和公司发展路径。每个阶段都有商业分析口径，AI 后变化作为最新阶段和专题展开。
 
 范围检查：这是一个 H5 重设计，范围限定在 Stripe H5、gate review notes 和必要视觉资产，不扩到其它报告。
 
-歧义检查：后续实现不能从当前 `证据坐标` 模块继续修补，必须围绕主控制面重建页面，再把时间轴、市场图、并购覆盖图和来源热力图接上去。
+歧义检查：后续实现必须围绕 `公司演进时间线 + 阶段商业分析 + AI 时代变革专题` 重建页面。不能继续从当前 `证据坐标` 模块修补，也不能再把内部分析工具写成读者标题。

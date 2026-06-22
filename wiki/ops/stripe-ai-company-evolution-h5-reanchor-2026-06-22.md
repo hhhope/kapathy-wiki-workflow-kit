@@ -148,3 +148,27 @@ system being studied:
 
 Implementation remains stopped until the new visual and article design is
 reviewed.
+
+## 2026-06-22 Third Drift Correction
+
+The second redesign still failed the business-analysis bar. It renamed the page
+around a `transaction control plane` concept and still centered an analytical
+tool instead of Stripe's company path.
+
+The corrected business-analysis frame:
+
+- The H5's visible subject is Stripe's company evolution and AI-era change, not
+  a coined control-plane label.
+- Time is the main analytical axis, not one module among several modules.
+- Each stage must answer the same business questions: strategic bet, target
+  customer, business-model effect, capability built, technical choice,
+  acquisition/gap fill, metric evidence, and AI-era reuse.
+- AI-era change must be treated as the latest phase in Stripe's long path, plus
+  a focused topic, not as an abstract standalone framework.
+- The page must explain which strategic choices made Stripe what it is:
+  developer entry, platform merchants, revenue operations, risk infrastructure,
+  global/local coverage, and new financial rails.
+
+Implementation remains stopped. The next H5 revision must start from company
+evolution and strategy causality, not from evidence labels or invented reader
+concepts.
