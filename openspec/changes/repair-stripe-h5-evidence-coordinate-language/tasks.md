@@ -17,7 +17,7 @@
   - Show grouped 1000-source queue counts.
   - Clarify that coordinate nodes are proof nodes, not source count.
 
-- [ ] 5. Verify, update gate review, and commit
+- [x] 5. Verify, update gate review, and commit
   - Run HTML parser, rejected-heading grep, source-ref check, and diff check.
   - Refresh desktop/mobile screenshots.
   - Update gate review with evidence.
