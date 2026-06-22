@@ -262,18 +262,17 @@ translated into the H5 design.
 ## 2026-06-22 Seventh Drift Correction
 
 The user clarified that the analysis still missed a more basic financial split:
-one direction is activity transactions between people, merchants, platforms, and
-agents; another direction is `赊`, credit pay, deferred payment, and lending.
+one direction is how transaction relationships are created and fulfilled;
+another direction is how credit relationships are granted and recovered.
 
 Corrected requirement:
 
 - The H5 must stop treating payment as a single action. It must separate two
   financial-object lines:
-  - activity transaction line: discovery, pricing, authorization, fulfillment,
-    settlement, dispute, and liability for a commercial activity;
-  - credit relationship line: value occurs now and payment or repayment happens
-    later through credit cards, BNPL, trade credit, merchant loans, cash
-    advances, controlled spend, or other credit structures.
+  - transaction relationship line: how a transaction relationship is created,
+    confirmed, authorized, fulfilled, settled, disputed, and attributed;
+  - credit relationship line: how a credit relationship is granted, used,
+    priced, monitored, repaid, and recovered.
 - Stripe Capital, BNPL payment methods, Financial Connections, Identity, Radar,
   Capital underwriting, ML platform, Issuing, and spending controls must be
   organized as the credit relationship line, not as isolated product mentions.
@@ -292,6 +291,6 @@ Corrected requirement:
   credit line, triggering BNPL, or using merchant working capital? Without this,
   the H5 only explains payment execution and misses the credit/risk half.
 
-Implementation remains stopped. The next H5 revision must make the activity
-transaction line and credit relationship line visible in the structure, timeline,
+Implementation remains stopped. The next H5 revision must make the transaction
+relationship line and credit relationship line visible in the structure, timeline,
 visual design, and acceptance criteria.

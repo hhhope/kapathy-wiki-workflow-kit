@@ -30,8 +30,8 @@ Stripe 在 AI 后的变化不是简单多卖一个支付 API，而是把自身�
 
 Two financial-object lines:
 
-1. Activity transaction line: people, merchants, platforms, enterprises, suppliers, and agents need a system for discovery, pricing, authorization, fulfillment, split settlement, clearing, dispute, and liability.
-2. Credit relationship line: consumers, businesses, platforms, and agents receive value now and pay later through credit cards, BNPL, trade credit, merchant loans, cash advances, or controlled spend programs. This requires underwriting, limits, pricing, repayment source, delinquency handling, fraud/risk, and regulation.
+1. Transaction relationship line: how a transaction relationship is created, confirmed, authorized, fulfilled, settled, disputed, and attributed.
+2. Credit relationship line: how a credit relationship is granted, used, priced, monitored, repaid, and recovered.
 
 Company transition lines:
 
@@ -201,7 +201,7 @@ This table is not the full quantity target. It is the evidence-grade source pool
 | S168 | https://docs.stripe.com/capital | official docs | Capital docs entry | Use with S051/S167; exact integration details need deeper page extraction |
 | S169 | https://docs.stripe.com/payments/buy-now-pay-later | official docs | Buy now, pay later payment methods route | Primary route for embedded pay-later at checkout; provider-level terms need provider sources |
 | S170 | https://docs.stripe.com/financial-connections | official docs | Financial Connections docs route | Primary route for consented bank/financial-data connection; use as credit-data rail after exact subpage extraction |
-| S171 | https://docs.stripe.com/identity | official docs | Identity verification docs route | Supports identity/risk layer shared by activity transactions and credit underwriting |
+| S171 | https://docs.stripe.com/identity | official docs | Identity verification docs route | Supports identity/risk layer shared by transaction relationships and credit underwriting |
 
 ## Evidence Matrix For H5 Claims
 
@@ -225,7 +225,7 @@ This table is not the full quantity target. It is the evidence-grade source pool
 | Google AP2 explicitly connects agent-led payments with A2A and MCP, and uses mandates/verifiable credentials to address authorization, authenticity and accountability. | S161 | Official protocol evidence; AP2 is peer/protocol context, not Stripe-owned. |
 | Visa/ChatGPT coverage shows card networks moving payment credentials, spending limits, approvals, merchant restrictions, fraud monitoring and disputes into AI agent shopping. | S162/S163 | Secondary report; promote only after official Visa/OpenAI source follow-up or keep as dated media context. |
 | MCP/skills should be treated as payment capability tooling: MCP addresses how agents discover and call tools; AP2/ACP/MPP/x402 address how a tool call becomes a payable, auditable, attributable transaction. | S016/S022/S023/S024/S094/S161 | Analytical synthesis from docs/protocol sources; label as analysis, not a quoted source claim. |
-| The H5 now separates AI-era payment analysis into two financial-object lines: activity transactions and credit relationships. Activity transactions explain how a commercial interaction is discovered, priced, authorized, fulfilled, settled, disputed, and attributed; credit relationships explain how value is received now and paid later through credit, BNPL, merchant financing, controlled spend, or lending. | S001-S024/S035-S059/S156-S171 plus JD rows | Analytical synthesis; the split is an organizing model, not a source quote. |
+| The H5 now separates AI-era payment analysis into two financial-object lines: transaction relationships and credit relationships. Transaction relationships explain how a commercial relationship is created, confirmed, authorized, fulfilled, settled, disputed, and attributed; credit relationships explain how credit is granted, used, priced, monitored, repaid, and recovered. | S001-S024/S035-S059/S156-S171 plus JD rows | Analytical synthesis; the split is an organizing model, not a source quote. |
 | Stripe Capital supports the credit-relationship line because its public page ties eligibility to factors such as Stripe payment volume/history and ties repayment to a fixed percentage of sales. | S167/S168 | Official Stripe product claim; financing availability, issuer/provider, and regulatory treatment vary by country and product type. |
 | BNPL belongs in the same credit-relationship line, not only the payment-method list, because pay-later methods embed a credit or deferred-payment decision into checkout. | S169 plus provider follow-up needed | Stripe docs route is promoted; provider-level underwriting, APR, affordability, and regulation require Affirm/Klarna/Afterpay/Clearpay primary sources. |
 | Financial Connections, Identity, Radar, Capital underwriting, and ML platform signals should be read as a credit/risk data stack: account and identity data, transaction/cash-flow signals, risk models, limits, repayment, and dispute handling. | S043/S047/S167/S170/S171 plus JD rows | Analytical synthesis; public-ready version should extract exact Financial Connections subpage details and avoid implying Stripe uses a specific datum for credit decisions unless sourced. |
