@@ -113,3 +113,38 @@ This is still an internal draft. Further HTML/page implementation should not
 continue until a new design is approved through the brainstorming flow. The next
 design must first define the argument structure, visual grammar, market-position
 method, and where the 1000-source queue actually appears.
+
+## 2026-06-22 Second Drift Correction
+
+The follow-up repair still drifted. The visible H5 replaced several rejected
+phrases with `证据坐标`, but did not fix the design problem. The page still reads
+as a source-and-section warehouse:
+
+- `证据坐标 01-07` became a visible wrapper, but it does not tell the reader what
+  strategic question each view answers.
+- The market-position panel still exposes calculation mechanics before the
+  reader understands the market-position claim.
+- The main timeline, AI transaction chain, capability map, and source inventory
+  still behave as adjacent modules instead of one argument viewed through
+  different lenses.
+- The signal cloud is interactive, but its job is unclear: it does not filter
+  the timeline, explain density over time, or promote source triage into a
+  readable insight.
+- The 1000-source queue appears as inventory proof, but the page does not show
+  how those sources reshape the article's judgment.
+- Visual enhancement stayed inside cards, bars, and lists. It did not create a
+  strong BVP-like visual spine.
+
+The next design must not start from `证据` as the reader-facing frame. Evidence
+belongs underneath the argument. The reader-facing frame should be the strategic
+system being studied:
+
+1. What changes in AI-era transactions.
+2. Where Stripe is placing control points.
+3. Which company, market, acquisition, technology, organization, and source
+   signals support that interpretation.
+4. What can be learned from Stripe's path without turning the page into praise
+   or investment advice.
+
+Implementation remains stopped until the new visual and article design is
+reviewed.
