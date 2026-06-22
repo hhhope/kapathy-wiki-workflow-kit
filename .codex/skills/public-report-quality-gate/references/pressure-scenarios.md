@@ -16,10 +16,10 @@ Use these scenarios to validate trigger and gate behavior.
 | User asks "帮我润色成正式稿" for a report intended for managers/readers | Apply voice gate and scorecard | PASS |
 | User says "可以，发飞书" after a draft with unresolved hard-gate failures | Block sync and report failing gates | PASS |
 | User says "图片我自己添加，正文同步飞书" | Generate or preserve local image assets, keep Feishu sync text-only, and record asset paths | PASS |
-| User asks "基于这个对外 H5 生成知识卡和一图流" | Load public-report-quality-gate first, then delegate visual package work to `knowledge-article-visual` and per-image scripting to `infographic-onepager` | PASS |
-| User asks "这篇分享稿每家公司一张知识卡，最终一张总览图" | Preserve Article Intent, Judgment Ownership, Visual Gate, and Publish Gate while delegating visual production | PASS |
-| User asks "`agentic-product-engineering-collaboration-company-playbook.html` 要增加一图流，每个公司要增加章节知识卡" | Do not edit only in-page HTML sections; stop and route to visual package scripting, output-mode selection or inference, and standalone visual asset production/planning before optional HTML embedding | PASS |
-| User asks "这个 H5 加一组章节配图，别再做成 H5/SVG 卡片" | Treat prior H5/SVG rejection as image-model or hybrid routing pressure; do not use deterministic HTML/SVG unless the user explicitly re-chooses it | PASS |
+| User asks "基于这个对外 H5 生成知识卡和一图流" | Load public-report-quality-gate first, then enter `visual-agent` for mode choice before delegating visual package work to `knowledge-article-visual` and per-image scripting to `infographic-onepager` | PASS |
+| User asks "这篇分享稿每家公司一张知识卡，最终一张总览图" | Preserve Article Intent, Judgment Ownership, Visual Gate, and Publish Gate while routing visual production through `visual-agent` before child workers | PASS |
+| User asks "`agentic-product-engineering-collaboration-company-playbook.html` 要增加一图流，每个公司要增加章节知识卡" | Do not edit only in-page HTML sections; stop and route through `visual-agent` for output-mode selection or inference, then visual package scripting and standalone visual asset production/planning before optional HTML embedding | PASS |
+| User asks "这个 H5 加一组章节配图，别再做成 H5/SVG 卡片" | Enter `visual-agent`; treat prior H5/SVG rejection as image-model or hybrid routing pressure; do not use deterministic HTML/SVG unless the user explicitly re-chooses it | PASS |
 
 ## Should Not Trigger
 
@@ -116,12 +116,13 @@ Use these scenarios to validate trigger and gate behavior.
 | A visual child skill produces knowledge cards for a public article and claims the draft is ready to share | Publish Gate + Judgment Ownership Gate | FAIL; child skill output is production evidence, not review-ready approval |
 | A new visual skill is added for public materials but its evaluation does not test bypassing the public report gate | Skill Authoring Boundary + Outer Gate Role | FAIL until pressure evidence shows the parent gate is preserved |
 | A request names an existing `.html` report and asks for `一图流` / `知识卡`, and the agent completes the task by adding only HTML cards or sections | HTML-Target Visual Route + Visual Gate | FAIL; direct HTML editing must stop until visual script and standalone asset route are produced or explicitly declined |
+| A request names `knowledge-article-visual`, `infographic-onepager`, `svg-flow-diagram`, or `imagegen` for ordinary visual production and the agent starts that worker without `visual-agent` mode confirmation | Visual-Agent Entry Gate | FAIL; named visual workers are child routes unless the user is debugging that worker |
 
 ## Tool Executor Bypass Replay
 
 | Scenario | RED Baseline | GREEN Corrected Route | Proof Boundary |
 |---|---|---|---|
-| User asks for a reader-facing H5 report's section images and mentions image-model output, but no visual package or per-image script exists | Agent jumps directly to `imagegen` because the user named an image model | `public-report-quality-gate` remains the parent route; existing visuals are inspected when they exist; `knowledge-article-visual` owns the visual series; `infographic-onepager` scripts each image; `imagegen` is only the final bitmap executor | Validates routing and gate expectations, not automatic runtime dispatch in every future client |
+| User asks for a reader-facing H5 report's section images and mentions image-model output, but no visual package or per-image script exists | Agent jumps directly to `imagegen` because the user named an image model | `public-report-quality-gate` remains the reader-facing parent route; `visual-agent` owns the visual mode fork; existing visuals are inspected when they exist; `knowledge-article-visual` owns the visual series; `infographic-onepager` scripts each image; `imagegen` is only the final bitmap executor | Validates routing and gate expectations, not automatic runtime dispatch in every future client |
 | User asks to sync a reader-facing report to Feishu and the agent jumps directly to `lark-doc` | Agent treats Feishu writing as the workflow owner because the user named the destination tool | Feishu writing is an executor after draft readiness, judgment ownership, sync approval, and post-write read-back boundaries | Validates routing and gate expectations, not automatic runtime dispatch in every future client |
 | User asks for source-backed report research and the agent jumps directly to search/browser results without source workflow boundaries | Agent treats search/browser output as sufficient evidence because the user asked to look something up | Search and browser tools are executors under the workflow that owns source selection, citation boundary, and evidence classification | Validates routing and gate expectations, not automatic runtime dispatch in every future client |
 

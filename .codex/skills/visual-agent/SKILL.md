@@ -15,6 +15,7 @@ do not become the renderer itself.
 Every normal response MUST show these fields when routing or executing visual
 work:
 
+- `Using visual-agent`
 - `Intent`
 - `Visual Case`
 - `Content Shape`
@@ -26,6 +27,8 @@ work:
 - `Evidence`
 
 Keep the fields compact. Use `Blocked Action: none` only when the route is ready.
+If a visual response lacks `Using visual-agent`, treat it as a controller bypass
+unless the task is explicitly a debug review of another skill.
 
 ## Intent Classes
 
@@ -84,24 +87,42 @@ If neither preference nor content shape is decisive, ask a bounded fork:
 3. `Image model`: higher visual richness, weaker exact Chinese text control.
 4. `Hybrid`: generated visual assets with deterministic text and layout.
 
+Do not default ambiguous visual requests to H5/HTML, SVG, browser screenshots,
+or deterministic cards only because those routes are easier to render or safer
+for Chinese text. If the user complains that prior output became H5/SVG-like, or
+uses direct image terms such as 图片模型, 生图, 跑图, 出图, or 图片, treat
+`image_model` or `hybrid` as the active route pressure until the user explicitly
+chooses deterministic SVG/H5 output.
+
+If the user names a worker directly, such as `knowledge-article-visual`,
+`infographic-onepager`, `svg-flow-diagram`, `architecture-diagram`, or
+`imagegen`, still enter through `visual-agent` first unless the user is asking
+for debug review of that worker. Confirm the mode/evidence, then delegate to the
+named worker only if it matches the route.
+
 ## Worker Routing
 
 Route to the smallest bounded worker that owns the next action:
 
-- Reader-facing H5/share/report/Feishu visual output: load
-  `.codex/skills/public-report-quality-gate/SKILL.md` first.
-- Article or report visual package: use `knowledge-article-visual`.
-- Single infographic, one-card summary, poster, or per-image script: use
-  `infographic-onepager`.
+- Reader-facing H5/share/report/Feishu visual output:
+  `public-report-quality-gate -> visual-agent`.
+- Article or report visual package:
+  `public-report-quality-gate -> visual-agent -> knowledge-article-visual`
+  when reader-facing; otherwise `visual-agent -> knowledge-article-visual`.
+- Single infographic, one-card summary, poster, or per-image script:
+  `visual-agent -> infographic-onepager`, or
+  `public-report-quality-gate -> visual-agent -> infographic-onepager` when the
+  asset is reader-facing.
 - Business flow, payment flow, fund flow, state, process, or Mermaid sequence:
-  use `svg-flow-diagram`.
+  `visual-agent -> svg-flow-diagram`.
 - System architecture, deployment, topology, technical integration, or data
-  pipeline: use `architecture-diagram`.
-- H5/HTML one-page visual board: use `visual-knowledge-onepager` if available;
-  otherwise use the repo's frontend/H5 workflow under the public-report gate.
-- Direct bitmap execution: use `imagegen` only after source, mode, prompt/script,
-  and verification boundary are established.
-- Feishu whiteboard work: use `lark-whiteboard`.
+  pipeline: `visual-agent -> architecture-diagram`.
+- H5/HTML one-page visual board: `visual-agent -> visual-knowledge-onepager` if
+  available; otherwise use the repo's frontend/H5 workflow under the
+  public-report gate.
+- Direct bitmap execution: `visual-agent -> imagegen` only after source, mode,
+  prompt/script, and verification boundary are established.
+- Feishu whiteboard work: `visual-agent -> lark-whiteboard`.
 
 ## Hard Boundaries
 

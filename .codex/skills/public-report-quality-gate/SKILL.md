@@ -24,9 +24,10 @@ Use this delegation map without replacing the child skills' own rules:
 |---|---|
 | source or reference learning | `learning-capture` and narrower modules |
 | interview deep reading, interview word cloud, interview timeline, temperature-axis evidence board, or draggable-evidence H5 | `interview-deep-reading-board` |
-| article-level visual package | `knowledge-article-visual` |
-| per-image poster or card script | `infographic-onepager` |
-| generated bitmap assets | `imagegen` |
+| visual mode choice, drawing route, or visual deliverable | `visual-agent` first |
+| article-level visual package | `public-report-quality-gate -> visual-agent -> knowledge-article-visual` |
+| per-image poster or card script | `public-report-quality-gate -> visual-agent -> infographic-onepager` |
+| generated bitmap assets | `public-report-quality-gate -> visual-agent -> imagegen` |
 | Feishu document write | `lark-doc` |
 | final verification | gate-review artifact, read-back, and visual QA |
 
@@ -159,7 +160,7 @@ workflow that owns intent, output shape, review, and evidence.
 
 Example: reader-facing H5/report visuals must not jump straight to image
 generation because the user mentioned an image model. First follow
-`public-report-quality-gate -> knowledge-article-visual ->
+`public-report-quality-gate -> visual-agent -> knowledge-article-visual ->
 infographic-onepager -> imagegen`.
 
 The same principle applies to search/browser, Feishu writing, code execution,
