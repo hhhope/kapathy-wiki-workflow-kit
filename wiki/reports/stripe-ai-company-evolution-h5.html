@@ -2434,7 +2434,7 @@
           <p>${item.event}</p>
         </div>
         <div>
-          <h3>证据怎么读</h3>
+          <h3>Evidence lane</h3>
           <p>${item.meaning}</p>
           <ul>${item.signals.map((signal) => `<li>${signal}</li>`).join("")}</ul>
         </div>
@@ -2447,7 +2447,7 @@
           `).join("")}
         </div>
         <div>
-          <h3>大事件</h3>
+          <h3>Proof tag</h3>
           <ul>${majorEvents.map((event) => `<li>${event}</li>`).join("")}</ul>
         </div>
         <div>
@@ -2457,19 +2457,19 @@
       `;
       timelineLanesEl.innerHTML = `
         <article class="lane-card">
-          <strong>市场 / 并购 / 指标轨</strong>
+          <strong>Scale / market lane</strong>
           <ul>${metrics.map((metric) => `<li>${metric.value}：${metric.label}</li>`).join("")}</ul>
         </article>
         <article class="lane-card">
-          <strong>公司运营轨</strong>
+          <strong>Business pressure lane</strong>
           <ul>${item.business.map((point) => `<li>${point}</li>`).join("")}</ul>
         </article>
         <article class="lane-card">
-          <strong>技术事件轨</strong>
+          <strong>Product / technical lane</strong>
           <ul>${item.technology.map((point) => `<li>${point}</li>`).join("")}</ul>
         </article>
         <article class="impact-card">
-          <strong>双向影响</strong>
+          <strong>Proof job</strong>
           <p>${item.impact}</p>
         </article>
       `;
@@ -2492,7 +2492,7 @@
           <p>${item.event}</p>
         </div>
         <div>
-          <h3>交易链路读法</h3>
+          <h3>Transaction-chain proof</h3>
           <p>${item.meaning}</p>
           <ul>${item.signals.map((signal) => `<li>${signal}</li>`).join("")}</ul>
         </div>
@@ -2511,19 +2511,19 @@
       `;
       aiTimelineLanesEl.innerHTML = `
         <article class="lane-card">
-          <strong>交易变化</strong>
+          <strong>Chain step rewritten</strong>
           <ul>${item.chain.map((point) => `<li>${point}</li>`).join("")}</ul>
         </article>
         <article class="lane-card">
-          <strong>技术对象</strong>
+          <strong>Stripe technical object</strong>
           <ul>${item.technology.map((point) => `<li>${point}</li>`).join("")}</ul>
         </article>
         <article class="impact-card">
-          <strong>商业含义</strong>
+          <strong>Proof job</strong>
           <p>${item.impact}</p>
         </article>
         <article class="lane-card">
-          <strong>仍需晋级</strong>
+          <strong>Evidence to promote</strong>
           <ul>
             <li>区分已上线产品、preview API、协议叙事和伙伴案例。</li>
             <li>继续用 changelog、客户案例、GitHub/community 验证采用强度。</li>
