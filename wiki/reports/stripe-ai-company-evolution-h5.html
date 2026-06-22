@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stripe 研究控制台：从支付 API 到 Agent 交易网络</title>
+  <title>Stripe：从支付 API 到 Agent 交易网络</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800;900&display=swap");
 
@@ -148,6 +148,67 @@
 
     .path-grid {
       grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 14px;
+    }
+
+    .market-stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .market-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .market-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--slate);
+      font-size: 18px;
+    }
+
+    .market-card p,
+    .deal-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .deal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .deal-card {
+      min-height: 132px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfbf9;
+    }
+
+    .deal-card strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--slate);
+      font-size: 14px;
+    }
+
+    .deal-card span {
+      display: inline-flex;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
     }
 
     .reading-flow {
@@ -340,7 +401,7 @@
 
     .dual-timeline {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin-top: 14px;
     }
@@ -376,6 +437,25 @@
 
     .impact-card {
       background: #f0fdfa;
+    }
+
+    .section-bridge {
+      margin: 18px 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(39, 52, 73, 0.08);
+    }
+
+    .section-bridge h2 {
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .section-bridge p {
+      margin-bottom: 0;
+      color: var(--muted);
     }
 
     .metric-note {
@@ -813,6 +893,8 @@
       .summary-grid,
       .path-grid,
       .reading-flow,
+      .market-grid,
+      .deal-grid,
       .event-rail,
       .dimension-grid,
       .timeline-control,
@@ -876,12 +958,12 @@
     <header class="hero">
       <div>
         <div class="kicker">内部 H5 草稿 · Stripe / AI / Finance Infrastructure · 2026-06-22</div>
-        <h1>Stripe 研究控制台：从支付 API 到 Agent 交易网络</h1>
-        <p class="lead">研究目标：以 1000 条候选来源为证据底座，梳理 Stripe 的公司演进、技术事件与 AI 后交易链路变化，并标出哪些判断已经可用、哪些仍需继续晋级证据。</p>
+        <h1>Stripe：从支付 API 到 Agent 交易网络</h1>
+        <p class="lead">Stripe 的演进不是从支付跳到 AI，而是沿着一条更长的商业与技术路径展开：先把收款接口化，再把商户经营平台化，最后把商品、计费、钱包、风控和结算推进到 Agent 可调用的交易网络。</p>
       </div>
       <div class="meta-row">
-        <span class="pill">证据库：1000 rows / 292 JD rows</span>
-        <span class="pill">阅读顺序：证据分层 -> 时间轴 -> AI 链路 -> 能力地图</span>
+        <span class="pill">1000-source evidence base</span>
+        <span class="pill">company path · technical events · transaction chain</span>
         <span class="pill">状态：internal research draft</span>
       </div>
     </header>
@@ -895,138 +977,53 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>证据分层</h2>
-        <p>1000 条来源先作为研究底座管理，进入正文的只保留可回溯、可解释、可继续验证的证据。</p>
-      </div>
-      <div class="reading-flow">
-        <article class="relation-card">
-          <strong>已晋级证据</strong>
-          <p>官方年信、新闻稿、docs/API、GitHub、重点 JD。</p>
-          <ul>
-            <li>承载页面中的数字、发布、API 路径和招聘信号。</li>
-            <li>进入正文的判断必须能回到来源索引。</li>
-          </ul>
-        </article>
-        <article class="relation-card">
-          <strong>候选证据库</strong>
-          <p>1000 行具体 URL，不再使用搜索占位。</p>
-          <ul>
-            <li>487 条 docs/API/changelog。</li>
-            <li>292 条招聘/JD，包括 260 条职位详情页。</li>
-            <li>160 条 GitHub/code/community 路由。</li>
-          </ul>
-        </article>
-        <article class="relation-card">
-          <strong>待晋级证据</strong>
-          <p>媒体、伙伴、监管、社区、竞品材料。</p>
-          <ul>
-            <li>估值和份额判断只作为二级证据。</li>
-            <li>市场份额没有公开审计分母，先用代理指标。</li>
-            <li>历史 JD 变化还需要 archive 或 dated mirror。</li>
-          </ul>
-        </article>
-        <article class="relation-card">
-          <strong>正文组织轴</strong>
-          <p>正文只围绕三条轴展开。</p>
-          <ul>
-            <li>公司运营线：估值、交易量、并购、客户结构。</li>
-            <li>技术事件线：API、文档、计费、风控、协议。</li>
-            <li>AI 变化线：交易入口、商品表达、计费、结算、风险、组织。</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="panel wide">
-      <div class="panel-head">
-        <h2>阅读路径：三张图的关系</h2>
-        <p>后面的时间轴、AI 链路和能力地图不是并列素材，而是同一组证据的三次处理。</p>
-      </div>
-      <div class="reading-flow">
-        <article class="relation-card">
-          <strong>01 证据分层</strong>
-          <p>先判断一条信息处在已晋级、候选、还是待晋级状态。</p>
-          <ul>
-            <li>解决“哪些来源能支撑正文”。</li>
-            <li>控制口径和证据强度。</li>
-          </ul>
-        </article>
-        <article class="relation-card">
-          <strong>02 时间轴</strong>
-          <p>把公司运营事件和技术事件放回时间顺序。</p>
-          <ul>
-            <li>回答“发生了什么”。</li>
-            <li>连接估值、交易量、并购、API、风控和协议。</li>
-          </ul>
-        </article>
-        <article class="relation-card">
-          <strong>03 AI 交易链路</strong>
-          <p>从时间轴中抽出 AI 后真正被改写的交易环节。</p>
-          <ul>
-            <li>回答“改写了哪一段链路”。</li>
-            <li>交易入口、商品表达、计费、结算、风险、组织逐项拆开。</li>
-          </ul>
-        </article>
-        <article class="relation-card">
-          <strong>04 能力迁移地图</strong>
-          <p>把事件和链路变化定位到能力迁移上。</p>
-          <ul>
-            <li>回答“Stripe 从什么能力迁到什么能力”。</li>
-            <li>用于回看某个节点属于公司、产品、Agent、金融轨道还是风险控制。</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="panel wide">
-      <div class="panel-head">
-          <h2>背景层：公司路径按阶段归档</h2>
-          <p>这一层只建立阶段背景，后面的时间轴、AI 链路和能力地图都从这里取公司语境。</p>
+          <h2>五阶段底图：公司路径先归档</h2>
+          <p>这一层只给后面的时间线提供语境。真正承载市场位置、并购、大事件和技术选择的是下一条可拖拽时间线。</p>
       </div>
       <div class="path-grid">
         <article class="path-card">
           <strong>2010-2014：支付 API 起点</strong>
-          <span>材料显示：早期核心是在线收款 API、SDK、文档和测试。</span>
+          <span>商业压力：互联网业务需要更快接入在线收款。</span>
           <ul>
-            <li>API、SDK、文档、测试环境成为产品核心。</li>
-            <li>客户是互联网业务和开发者团队。</li>
-            <li>后续要用官方早期材料继续补强日期和客户案例。</li>
+            <li>技术选择：API、SDK、文档、测试环境。</li>
+            <li>交易变化：收款从项目工程变成开发者可复用接口。</li>
+            <li>后续延展：Connect、Billing、Radar 都沿接口化路径扩张。</li>
           </ul>
         </article>
         <article class="path-card">
           <strong>2015-2019：商户经营系统</strong>
-          <span>从支付入口扩到平台、风控、账单和线下。</span>
+          <span>商业压力：平台、SaaS 和多渠道商户需要经营能力。</span>
           <ul>
-            <li>Connect 承接 marketplace/platform。</li>
-            <li>Atlas、Radar、Billing、Terminal 加深业务栈。</li>
-            <li>Stripe 从 processor 变成 operating layer。</li>
+            <li>技术选择：Connect、Atlas、Radar、Billing、Terminal。</li>
+            <li>交易变化：分账、订阅、风控、线下收款进入同一商户栈。</li>
+            <li>后续延展：AI 公司后来的全球订阅和风控需求复用这一层。</li>
           </ul>
         </article>
         <article class="path-card">
           <strong>2020-2022：金融产品和韧性</strong>
-          <span>疫情增长、估值回调、长期产品投资并存。</span>
+          <span>商业压力：全球化、税务、资金账户和合规复杂度上升。</span>
           <ul>
-            <li>Treasury、Identity、Tax、Climate/Frontier 扩张。</li>
-            <li>互联网经济成为年度叙事主轴。</li>
-            <li>金融、合规、数据和平台能力继续沉淀。</li>
+            <li>技术选择：Treasury、Capital、Identity、Tax、Issuing。</li>
+            <li>交易变化：支付后端扩展到账户、融资、税务、身份和数据。</li>
+            <li>后续延展：为 stablecoin、wallet、machine payment 留下金融底座。</li>
           </ul>
         </article>
         <article class="path-card">
           <strong>2023-2024：AI 客户进入叙事</strong>
-          <span>GPT 后 AI 公司成为高强度客户群。</span>
+          <span>商业压力：AI 产品上线即全球化、用量化、成本波动化。</span>
           <ul>
-            <li>全球化、订阅、usage billing、税务、风控同时变重。</li>
-            <li>Stripe 的 Revenue suite 和国际化能力被重新放大。</li>
-            <li>AI 还不是单独产品线，而是客户结构变化。</li>
+            <li>技术选择：Revenue suite、Tax、Radar、usage billing。</li>
+            <li>交易变化：收入模型从固定订阅扩展到 token、event、outcome。</li>
+            <li>后续延展：AI 先改变客户结构，再改变产品包装。</li>
           </ul>
         </article>
         <article class="path-card">
           <strong>2025-2026：AI 经济基础设施</strong>
-          <span>AI、agentic commerce、stablecoin、machine payment 汇合。</span>
+          <span>商业压力：Agent 开始发现商品、发起购买、访问付费资源。</span>
           <ul>
-            <li>Privy、Metronome、Bridge 把钱包、用量计费、稳定币接进主线。</li>
-            <li>Agent 能买东西、调用 API、消耗 token、触发风控。</li>
-            <li>Stripe 的对象从“商户收款”扩到“机器参与经济活动”。</li>
+            <li>技术选择：Privy、Metronome、Bridge、SPT、MPP/x402。</li>
+            <li>交易变化：商品、授权、计费、风控、结算都要机器可读。</li>
+            <li>后续延展：Stripe 从商户收款扩到机器参与交易。</li>
           </ul>
         </article>
       </div>
@@ -1034,8 +1031,8 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>02 时间轴：公司运营线和技术事件线并读</h2>
-        <p>时间轴负责回答“发生了什么”。拖动年份，先看证据指标，再看商业动作影响了哪些技术选择，或技术能力反过来打开了哪些商业动作。</p>
+        <h2>公司运营、市场位置、并购与技术事件线</h2>
+        <p>拖动年份，把处理规模、估值/流动性、并购、产品发布和技术选择放在同一条线上读。这里负责回答：商业行为怎样改变技术选择，技术能力又怎样打开新的商业动作。</p>
       </div>
       <div class="timeline-reader">
         <div class="timeline-control">
@@ -1053,40 +1050,51 @@
         <div id="timelineLanes" class="dual-timeline"></div>
         <div class="metric-note">
           <strong>市场占有率读法</strong>
-          Stripe 未披露可审计的全球支付市场份额百分比；本稿暂用处理交易量、全球 GDP 占比、客户数、估值/流动性事件、AI 客户覆盖和分析师“share gain”判断作为市场位置代理，不把它写成精确份额。
+          Stripe 未披露可审计的全球支付市场份额百分比；本稿不用精确份额冒充结论，而是用处理规模、全球 GDP 占比、客户数、估值/流动性事件、并购方向、AI 客户覆盖和分析师 share-gain 判断作为市场位置代理。
         </div>
       </div>
     </section>
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>03 AI 交易链路：这些事件改写了哪一段交易</h2>
-        <p>AI 链路负责解释时间轴。它把事件拆到交易入口、商品表达、计费、结算、风险、组织六个环节，说明变化发生在交易链条的哪里。</p>
+        <h2>AI 交易链路时间线：从商品发现到机器支付</h2>
+        <p>这一条时间线只看 AI 之后交易链路被改写的位置：客户压力、商品机器可读、Agent checkout、钱包、用量计费、风险对象和机器支付协议。</p>
       </div>
       <div class="ai-flow">
         <div class="flow-thesis">
           <div>
-            <span class="stage-label">研究假设</span>
-            <strong>AI 不是给支付加一个助手，而是让交易链路多了 Agent、机器可读商品、用量计费和机器支付协议。</strong>
+            <span class="stage-label">总判断</span>
+            <strong>AI 没有单独替代支付；它把交易入口、商品表达、计费颗粒、钱包授权、风险对象和结算轨道一起前移。</strong>
           </div>
-          <p>下面六个标签不是概念框架，而是证据库的整理维度。每个维度都必须继续回到 docs、发布会、API、JD 和伙伴公告里补证据。</p>
+          <p>所以这一段不再按概念标签拆，而按时间推进：先是 AI 客户对原有计费/风控系统施压，再到 agentic commerce、Copilot、Sessions 2026，最后进入 HTTP 402 / MPP / x402 的机器支付问题。</p>
         </div>
-        <div class="flow-grid">
-          <div id="flowTabs" class="flow-tabs"></div>
-          <div id="flowDetail" class="flow-detail"></div>
+        <div class="timeline-reader">
+          <div class="timeline-control">
+            <div>
+              <strong id="aiTimelineTitle">2023：AI 客户先成为高强度客户</strong>
+              <p id="aiTimelineCaption">AI 先改变 Stripe 的客户压力，再改变交易链路。</p>
+            </div>
+            <div id="aiTimelineYear" class="timeline-year">2023</div>
+          </div>
+          <div class="timeline-track">
+            <input id="aiTimelineRange" type="range" min="0" max="5" value="0" aria-label="AI 交易链路时间轴" />
+            <div id="aiTimelinePills" class="timeline-pills"></div>
+          </div>
+          <div id="aiTimelineDetail" class="timeline-detail"></div>
+          <div id="aiTimelineLanes" class="dual-timeline"></div>
         </div>
         <div class="flow-synthesis">
-          <span class="stage-label">阶段性结论</span>
-          <strong>当前证据只能支持一个中间判断：Stripe 正在把支付、计费、风控、钱包和机器支付放到同一条 Agent 交易链路里。</strong>
-          <p>更强的判断还需要继续读伙伴公告、API changelog、客户案例和社区反馈，确认这些能力是发布叙事、试点能力，还是已经形成跨平台采用。</p>
+          <span class="stage-label">总括</span>
+          <strong>AI 后的主变化不是“支付按钮智能化”，而是交易从人类网页点击扩展到 Agent 发现、机器读商品、事件级计费、一次性钱包授权、稳定币/机器支付结算和新的风控对象。</strong>
+          <p>边界仍然保留：这些能力中有些已经是产品和伙伴案例，有些仍是协议、预览 API 或发布叙事，需要继续用 changelog、客户采用和社区反馈晋级。</p>
         </div>
       </div>
     </section>
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>证据索引：词条必须回到来源分桶</h2>
-        <p>这些词条不是风格装饰。它们是后续从证据库继续抽取来源、补齐论证的入口。</p>
+        <h2>全面看：词条、能力迁移和证据坐标</h2>
+        <p>这一层不是新增结论，而是把前两条时间线里的证据重新投到能力坐标上：哪些属于公司经营，哪些属于产品扩张，哪些进入 Agent、金融轨道、风险和组织能力。</p>
       </div>
       <div class="word-cloud" aria-label="Stripe AI finance signal cloud">
         <span class="xl">agentic commerce</span>
@@ -1179,10 +1187,15 @@
       </div>
     </section>
 
+    <section class="section-bridge wide">
+      <h2>能力迁移地图证明什么</h2>
+      <p>它只证明一件事：Stripe 的商业扩张和技术选择不是并列素材，而是在同一批证据中相互牵引。市场规模、并购和客户结构解释“为什么要做”；API、计费、钱包、风控和协议解释“怎么做”；AI 时间线解释“这些能力被推向哪段新交易”。</p>
+    </section>
+
     <aside class="control-panel">
       <div>
-        <h2>04 能力迁移地图</h2>
-        <p>地图负责定位：把时间轴事件和 AI 链路变化放到同一张能力迁移图里。</p>
+        <h2>全面看</h2>
+        <p>横向看能力从支付 API 和商户经营，迁移到 Agent 交易、token 计费、稳定币和机器支付。</p>
       </div>
       <div class="range-wrap">
         <div class="range-label"><span>公司路径</span><span id="scoreValue">55</span><span>AI 金融形态</span></div>
@@ -1202,7 +1215,7 @@
     <main>
       <section class="panel">
         <div class="panel-head">
-          <h2>来源节点</h2>
+          <h2>证据节点</h2>
           <p>点击节点查看它来自哪类证据、对应哪段时间、解释哪种能力迁移。</p>
         </div>
         <div id="spine" class="spine"></div>
@@ -1210,7 +1223,7 @@
 
       <section class="panel">
         <div class="panel-head">
-          <h2>迁移坐标</h2>
+          <h2>能力坐标</h2>
           <p>横轴：从支付 API 和商户经营，移动到 Agent 交易、token 计费、稳定币和机器支付。</p>
         </div>
         <div class="axis-labels"><span>支付 API / 商户增长</span><span>Agent / token / stablecoin / machine payment</span></div>
@@ -1296,6 +1309,16 @@
         url: "https://www.investors.com/news/technology/stripe-ipo-paypal-stock-nvidia-shopify-adyen/",
         note: "Analyst framing on share gains versus payment peers; not audited market-share percentage."
       },
+      acquisitionPaystack: {
+        title: "Paystack acquisition background",
+        url: "https://en.wikipedia.org/wiki/Paystack",
+        note: "Secondary compiled source for Paystack acquisition scale, business count, and Africa expansion context."
+      },
+      acquisitionHistory: {
+        title: "Stripe acquisition history background",
+        url: "https://en.wikipedia.org/wiki/Stripe,_Inc.",
+        note: "Secondary compiled route for Recko, BBPOS, OpenChannel, Lemon Squeezy, Bridge, Privy, and Metronome chronology."
+      },
       sessions2026: {
         title: "Stripe Sessions 2026 newsroom",
         url: "https://stripe.com/en-jp/newsroom/news/sessions-2026",
@@ -1380,7 +1403,7 @@
         caption: "早期材料先归到 API、SDK、文档、测试体验四类。",
         stage: "公司路径",
         event: "当前页面把这一阶段作为资料归档起点：在线收款 API、SDK、文档和测试体验是后续所有扩张的接口基础。",
-        meaning: "读这一段时不要先套“第一性原理”。先看 Stripe 当时把哪些金融动作做成了开发者可调用接口，再追这些接口如何被复用到 Connect、Billing、Radar。",
+        meaning: "这一段只看接口化起点：Stripe 把哪些金融动作做成开发者可调用接口，再追这些接口如何被复用到 Connect、Billing、Radar。",
         signals: ["API-first", "developer experience", "payments"],
         metrics: [
           { value: "2010", label: "公司成立，支付 API 成为最小入口" },
@@ -1576,6 +1599,123 @@
       }
     ];
 
+    const aiTimelineItems = [
+      {
+        year: "2023",
+        title: "AI 客户先改变收入系统压力",
+        caption: "AI 公司不是一个新支付场景，而是高增长、全球化、用量波动和风险成本同时出现的客户类型。",
+        stage: "客户压力",
+        event: "GPT-era AI 公司开始把全球收款、订阅、税务、欺诈和用量计费压力集中压到 Stripe 的既有收入栈。",
+        meaning: "这一年先看客户结构：AI 还没有成为 Stripe 的独立产品线，但它让 Billing、Tax、Radar 和 Revenue suite 的重要性上升。",
+        signals: ["AI companies", "usage billing", "tax", "fraud"],
+        metrics: [
+          { value: "$1T", label: "2023 处理规模成为 AI 前后的公司基线" },
+          { value: "$50B", label: "估值重置让经营质量和收入系统更重要" },
+          { value: "usage", label: "token/event 成本让固定订阅不够用" },
+          { value: "risk", label: "假注册和滥用成本开始前移" }
+        ],
+        chain: ["交易入口仍以商户网站/API 为主。", "变化发生在价格、订阅、税务、欺诈和收入核算。", "AI 客户把原有商户经营栈推到更高强度。"],
+        technology: ["Billing / Revenue suite 承接更复杂收入模型。", "Tax / Radar 成为 AI 全球化的默认配套。", "API-first 底座开始适配 AI coding tools 的使用方式。"],
+        impact: "商业先动：AI 客户密度上升，迫使 Stripe 把计费、税务、风控和开发者体验重新包装。",
+        refs: ["annual2023", "aiCompanies", "valuation2023"]
+      },
+      {
+        year: "2024",
+        title: "AI 商品开始要求机器可读",
+        caption: "AI 搜索和对话入口让商品、价格、库存、履约和审批从网页展示转成接口问题。",
+        stage: "商品表达",
+        event: "Agentic commerce 的前置条件出现：商户商品不只给人看，也要能被 AI app、搜索和 agent flow 读取。",
+        meaning: "这里的变化不在收款末端，而在交易前端。谁能把商品结构化给 Agent，谁就能进入新的分发界面。",
+        signals: ["catalog feed", "merchant controls", "approval hook", "AI surfaces"],
+        metrics: [
+          { value: "$1.4T", label: "2024 处理规模代理值显示主业务仍在增长" },
+          { value: "+38%", label: "二级报道口径的处理规模增长" },
+          { value: "share gain", label: "市场位置用份额获取信号表达，不写精确份额" },
+          { value: "Bridge", label: "稳定币轨道开始进入战略拼图" }
+        ],
+        chain: ["商品发现从站内流量扩到 AI surface。", "商品、价格、库存、履约和审批要机器可读。", "支付接口开始和商品目录、商户控制连接。"],
+        technology: ["Product catalog / seller docs 成为交易入口技术。", "Usage billing 和 Tax 继续支撑 AI 产品商业化。", "稳定币能力为跨境和机器交易预留结算路径。"],
+        impact: "技术反推商业：商品数据接口化后，Stripe 能卖的不只是 checkout，而是商户进入 AI 分发面的基础设施。",
+        refs: ["annual2024", "agenticCommerce", "marketShareProxy"]
+      },
+      {
+        year: "2025",
+        title: "并购补齐钱包、用量和稳定币",
+        caption: "Privy、Metronome、Bridge 把 Agent 交易最缺的三块能力放进 Stripe 主线。",
+        stage: "能力补齐",
+        event: "Stripe 把钱包抽象、事件级计费和稳定币编排接入经济基础设施叙事。",
+        meaning: "这不是普通并购列表，而是 AI 交易链路的缺口修补：谁代表买方、怎样按事件收费、如何跨境和高频结算。",
+        signals: ["Privy", "Metronome", "Bridge", "stablecoin"],
+        metrics: [
+          { value: "$1.9T", label: "2025 官方处理规模" },
+          { value: "5M+", label: "直接或经平台服务 businesses" },
+          { value: "$91.5B", label: "2025 tender 估值报道" },
+          { value: "100k+", label: "AI coding tools 创建 claimable sandboxes" }
+        ],
+        chain: ["钱包抽象让 Agent/应用持有交易授权更现实。", "用量计费让 token/event/outcome 收入可计量。", "稳定币编排让高频、跨境、机器交易有新结算轨道。"],
+        technology: ["Privy 对应 wallet abstraction。", "Metronome 对应 usage/event rating。", "Bridge 对应 stablecoin orchestration 与合规运营。"],
+        impact: "并购推动技术：Stripe 用外部能力补齐 Agent 交易链路的缺口，再把它们放回支付、计费和结算主栈。",
+        refs: ["annual2025", "stablecoin", "acquisitionHistory"]
+      },
+      {
+        year: "2025-09",
+        title: "Agentic commerce 成为产品包装",
+        caption: "New York Tour 把 Agent、商户控制、Open Issuance 和 AI monetization 放到同一交易叙事。",
+        stage: "产品化",
+        event: "Agentic Commerce Suite 出现后，AI 不再只是客户行业，而是商品发现和购买发起方式。",
+        meaning: "读这一段要看交易入口变化：商户不只等用户访问网页，还要让商品进入 AI app、搜索和对话界面。",
+        signals: ["Agentic Commerce Suite", "Open Issuance", "AI monetization", "merchant controls"],
+        metrics: [
+          { value: "Tour 2025", label: "agentic commerce 被正式打包" },
+          { value: "OpenAI / Google", label: "AI surface 成为合作入口" },
+          { value: "Open Issuance", label: "可编程资金工具进入同场发布" },
+          { value: "approval", label: "商户控制成为 Agent 购买前提" }
+        ],
+        chain: ["Agent 发现商品。", "商户用 catalog 和 controls 表达边界。", "支付从页面动作变成可调用交易能力。"],
+        technology: ["ProductCatalogImport、库存、价格和 approval hook 进入关键路径。", "Shared Payment Token 等设计开始处理凭据边界。", "AI monetization 从应用收入扩到交易入口。"],
+        impact: "产品包装反过来重组商业：Stripe 卖的是商户进入 Agent 经济的入口，而不只是支付按钮。",
+        refs: ["tour2025", "agenticCommerce"]
+      },
+      {
+        year: "2026-01/04",
+        title: "Copilot 与 Sessions 把链路拉长",
+        caption: "Copilot Checkout 和 Sessions 2026 说明 AI 后变化横跨入口、钱包、风控、计费和开发工具。",
+        stage: "链路拉长",
+        event: "Microsoft Copilot Checkout、Link wallets for agents、streaming payments、Radar token theft、Stripe Projects 同时把交易链路前后端拉长。",
+        meaning: "这不是一个新按钮，而是一组交易运行面：对话入口、一次性授权、token 级成本、AI 风控、开发者沙盒。",
+        signals: ["Copilot Checkout", "Link wallets", "streaming payments", "Radar token theft"],
+        metrics: [
+          { value: "288", label: "Sessions 2026 产品/功能发布数量" },
+          { value: "3.3M", label: "Radar 一个月拦截 AI 企业 risky sign-ups" },
+          { value: "SPT", label: "Shared Payment Token 处理凭据暴露" },
+          { value: "streaming", label: "Metronome + Tempo 指向实时收款" }
+        ],
+        chain: ["购买入口进入 Copilot/AI Mode。", "钱包授权变成任务级、一次性和可审批。", "风控对象从盗卡扩到 token theft、fake sign-up 和 tool misuse。"],
+        technology: ["Shared Payment Token / ACP 处理 Agent 场景授权。", "Radar 扩展到 AI 成本滥用。", "Projects、agent tools、wallets 连接开发和交易运行面。"],
+        impact: "技术开始决定商业边界：哪些商户能进 AI 入口，取决于商品数据、支付授权、风险控制和履约接口是否可协议化。",
+        refs: ["copilot", "sessions2026"]
+      },
+      {
+        year: "2026-06",
+        title: "机器支付把资源访问变成交易",
+        caption: "HTTP 402 / MPP / x402 让内容、API 和数据源可以在网络访问边界直接定价。",
+        stage: "机器支付",
+        event: "AWS WAF + Stripe 机器支付把 AI agent 访问资源的过程变成可定价、可授权、可结算协议。",
+        meaning: "这是 AI 交易链路最远的一段：交易不一定发生在 checkout，也可能发生在 API、内容、数据和基础设施访问边界。",
+        signals: ["HTTP 402", "MPP", "x402", "AI traffic monetization"],
+        metrics: [
+          { value: "HTTP 402", label: "资源访问可返回机器可读支付要求" },
+          { value: "$0.01 USDC", label: "docs 示例指向微额支付场景" },
+          { value: "AWS WAF", label: "网络访问控制层参与交易" },
+          { value: "license", label: "价格、许可、支付方式进入响应体" }
+        ],
+        chain: ["Agent 请求资源。", "资源方返回价格、license 和可接受支付方式。", "Agent 付款、重试并获得内容/API/数据访问。"],
+        technology: ["MPP / x402 协议化 agent 请求和支付。", "Stablecoin 支撑微额、高频和跨境结算可能性。", "WAF 位置说明机器支付可以前移到访问控制层。"],
+        impact: "协议推动商业：原本难定价的 AI 抓取、API 调用和数据访问，变成可交易资源。",
+        refs: ["awsWaf", "machinePayments"]
+      }
+    ];
+
     const aiDimensions = [
       {
         id: "actor",
@@ -1632,7 +1772,7 @@
         id: "api-first",
         step: "01",
         mode: "company",
-        title: "支付 API 是第一性原理",
+        title: "支付 API 是接口化起点",
         axis: 10,
         y: 4,
         kind: "company",
@@ -1952,11 +2092,15 @@
     const timelineTitleEl = document.getElementById("timelineTitle");
     const timelineCaptionEl = document.getElementById("timelineCaption");
     const timelineYearEl = document.getElementById("timelineYear");
-    const flowTabsEl = document.getElementById("flowTabs");
-    const flowDetailEl = document.getElementById("flowDetail");
+    const aiTimelineRangeEl = document.getElementById("aiTimelineRange");
+    const aiTimelinePillsEl = document.getElementById("aiTimelinePills");
+    const aiTimelineDetailEl = document.getElementById("aiTimelineDetail");
+    const aiTimelineLanesEl = document.getElementById("aiTimelineLanes");
+    const aiTimelineTitleEl = document.getElementById("aiTimelineTitle");
+    const aiTimelineCaptionEl = document.getElementById("aiTimelineCaption");
+    const aiTimelineYearEl = document.getElementById("aiTimelineYear");
     let activeId = chapters[0].id;
     let mode = "all";
-    let activeDimension = aiDimensions[0].id;
 
     function sourceLinks(ids) {
       return ids.map((id) => {
@@ -1973,7 +2117,7 @@
         </div>
         <h3>${chapter.title}</h3>
         <p>${chapter.summary}</p>
-        <h3>为什么放入地图</h3>
+        <h3>证明的关系</h3>
         <ul>${chapter.actions.map((item) => `<li>${item}</li>`).join("")}</ul>
         <div class="evidence-box">
           <h3>证据</h3>
@@ -1981,7 +2125,7 @@
           <p class="footnote">${sourceLinks(chapter.refs)}</p>
         </div>
         <div class="evidence-box">
-          <h3>后续问题</h3>
+          <h3>证据边界</h3>
           <p>${chapter.keywords.join(" / ")} 这一组线索需要继续扩展到 API changelog、partner announcement、GitHub package、社群讨论和二级媒体。</p>
         </div>
       `;
@@ -2024,6 +2168,10 @@
       `;
       timelineLanesEl.innerHTML = `
         <article class="lane-card">
+          <strong>市场 / 并购 / 指标轨</strong>
+          <ul>${metrics.map((metric) => `<li>${metric.value}：${metric.label}</li>`).join("")}</ul>
+        </article>
+        <article class="lane-card">
           <strong>公司运营轨</strong>
           <ul>${item.business.map((point) => `<li>${point}</li>`).join("")}</ul>
         </article>
@@ -2042,21 +2190,60 @@
       });
     }
 
-    function renderFlow() {
-      const item = aiDimensions.find((dimension) => dimension.id === activeDimension) || aiDimensions[0];
-      flowDetailEl.innerHTML = `
-        <span class="stage-label">分解</span>
-        <h3>${item.title}</h3>
-        <p>${item.summary}</p>
-        <ul>${item.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
-        <div class="evidence-box">
-          <h3>证据边界</h3>
-          <p>${item.evidence}</p>
+    function renderAiTimeline(index) {
+      const item = aiTimelineItems[index] || aiTimelineItems[0];
+      const metrics = item.metrics || [];
+      aiTimelineTitleEl.textContent = `${item.year}：${item.title}`;
+      aiTimelineCaptionEl.textContent = item.caption;
+      aiTimelineYearEl.textContent = item.year.split("-")[0];
+      aiTimelineDetailEl.innerHTML = `
+        <div>
+          <span class="stage-label">${item.stage}</span>
+          <h3>${item.title}</h3>
+          <p>${item.event}</p>
+        </div>
+        <div>
+          <h3>交易链路读法</h3>
+          <p>${item.meaning}</p>
+          <ul>${item.signals.map((signal) => `<li>${signal}</li>`).join("")}</ul>
+        </div>
+        <div class="evidence-strip">
+          ${metrics.map((metric) => `
+            <div class="evidence-item">
+              <strong>${metric.value}</strong>
+              <span>${metric.label}</span>
+            </div>
+          `).join("")}
+        </div>
+        <div>
+          <h3>来源</h3>
+          <p class="footnote">${sourceLinks(item.refs || [])}</p>
         </div>
       `;
+      aiTimelineLanesEl.innerHTML = `
+        <article class="lane-card">
+          <strong>交易变化</strong>
+          <ul>${item.chain.map((point) => `<li>${point}</li>`).join("")}</ul>
+        </article>
+        <article class="lane-card">
+          <strong>技术对象</strong>
+          <ul>${item.technology.map((point) => `<li>${point}</li>`).join("")}</ul>
+        </article>
+        <article class="impact-card">
+          <strong>商业含义</strong>
+          <p>${item.impact}</p>
+        </article>
+        <article class="lane-card">
+          <strong>仍需晋级</strong>
+          <ul>
+            <li>区分已上线产品、preview API、协议叙事和伙伴案例。</li>
+            <li>继续用 changelog、客户案例、GitHub/community 验证采用强度。</li>
+          </ul>
+        </article>
+      `;
 
-      flowTabsEl.querySelectorAll("button").forEach((button) => {
-        button.classList.toggle("active", button.dataset.dimension === activeDimension);
+      aiTimelinePillsEl.querySelectorAll("button").forEach((button, buttonIndex) => {
+        button.classList.toggle("active", buttonIndex === index);
       });
     }
 
@@ -2124,15 +2311,20 @@
       renderTimeline(Number(timelineRangeEl.value));
     });
 
-    flowTabsEl.innerHTML = aiDimensions.map((dimension) => `
-      <button data-dimension="${dimension.id}">${dimension.label}</button>
+    aiTimelinePillsEl.innerHTML = aiTimelineItems.map((item, index) => `
+      <button data-ai-timeline-index="${index}">${item.year}</button>
     `).join("");
 
-    flowTabsEl.querySelectorAll("button").forEach((button) => {
+    aiTimelinePillsEl.querySelectorAll("button").forEach((button) => {
       button.addEventListener("click", () => {
-        activeDimension = button.dataset.dimension;
-        renderFlow();
+        const index = Number(button.dataset.aiTimelineIndex);
+        aiTimelineRangeEl.value = index;
+        renderAiTimeline(index);
       });
+    });
+
+    aiTimelineRangeEl.addEventListener("input", () => {
+      renderAiTimeline(Number(aiTimelineRangeEl.value));
     });
 
     document.querySelectorAll(".mode-buttons button").forEach((btn) => {
@@ -2153,7 +2345,7 @@
 
     cursorEl.style.left = `${rangeEl.value}%`;
     renderTimeline(Number(timelineRangeEl.value));
-    renderFlow();
+    renderAiTimeline(Number(aiTimelineRangeEl.value));
     render();
   </script>
 </body>

@@ -20,6 +20,10 @@ commentary instead of a deep research output:
 - "AI 到底改变了哪些金融对象" sounded like an inconsistent framework label.
 - The page did not clearly answer what the 1000 sources were doing.
 - The visual/report style was not unified.
+- A later correction rejected the market/acquisition block as isolated and asked
+  for market position, acquisitions, company operations, technical events, AI
+  transaction changes, and capability migration to be placed into a coherent
+  system.
 
 ## Re-anchored North Star
 
@@ -44,27 +48,44 @@ The H5 should behave like a research control surface:
 
 ## Applied Correction
 
-- Reframed the H5 as `Stripe 研究控制台`.
-- Reframed the source section as evidence stratification rather than chatty
-  "materials" explanation.
-- Added an explicit reading path: evidence stratification -> timeline -> AI
-  transaction-chain chapter -> capability migration map.
-- Rewrote the main timeline as company operating path plus technology event
-  path.
+- Reframed the H5 as `Stripe：从支付 API 到 Agent 交易网络`.
+- Removed the isolated market-position/acquisition section and folded its
+  evidence into the main timeline.
+- Rewrote the main timeline as company operations, market position,
+  acquisitions, technology events, and commercial/technical mutual influence.
+- Split the AI transaction-chain chapter into its own draggable timeline from
+  2023 to 2026-06.
+- Reframed the capability migration map as part of a comprehensive evidence
+  view, not as an independent proof.
 - Replaced abstract "读法" and "核心判断" labels with evidence-oriented labels.
-- Recast AI content as a transaction-chain change analysis.
+- Recast AI content as a transaction-chain change analysis over time.
 - Changed the signal section into an evidence index tied to source buckets.
+- Moved processed volume, valuation/liquidity events, share-gain proxy, and
+  acquisition capability moves from source notes into visible timeline evidence.
 
 ## Relationship Rule For This H5
 
-The three main diagrams must not read as peer modules:
+The three main views must not read as peer modules:
 
-1. Timeline = what happened and when.
-2. AI transaction chain = which part of the transaction was changed by those
-   events.
-3. Capability migration map = where each event sits between payment API,
+1. Main timeline = what happened across company operations, market position,
+   acquisitions, and technology events.
+2. AI timeline = which part of the transaction chain was changed over time.
+3. Comprehensive view = where each event sits between payment API,
    merchant operations, Agent commerce, token billing, stablecoin, machine
    payments, and risk control.
+
+## Added Evidence Block
+
+The report now surfaces:
+
+- processed-volume markers: 2023 $1T, 2024 about $1.4T in secondary coverage,
+  and 2025 $1.9T official self-report
+- valuation/liquidity markers: $95B, $50B, $91.5B, and secondary 2026 tender
+  valuation coverage
+- market-share proxy wording: share-gain signal only, not a precise audited
+  market-share percentage
+- acquisition/event line now embedded in the timelines: Paystack, TaxJar/Recko,
+  OpenChannel/BBPOS, Lemon Squeezy, Bridge, Privy, and Metronome
 
 ## Residual Risk
 

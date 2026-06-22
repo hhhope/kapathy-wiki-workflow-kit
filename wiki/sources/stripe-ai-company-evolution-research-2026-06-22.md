@@ -36,7 +36,7 @@ Stripe 在 AI 后的变化不是简单多卖一个支付 API，而是把自身�
 
 | Period | Company path | AI/agent signal | Reading note |
 |---|---|---|---|
-| 2010-2014 | 从简化开发者收款开始，建立 API-first 支付入口。 | 还没有 AI 主线，核心是降低软件公司接入支付的摩擦。 | Stripe 的第一性原理是“让新业务更快上线并收钱”。 |
+| 2010-2014 | 从简化开发者收款开始，建立 API-first 支付入口。 | 还没有 AI 主线，核心是降低软件公司接入支付的摩擦。 | 先看接口化起点：API、SDK、文档、测试和错误处理如何成为支付产品本体。 |
 | 2015-2019 | 全球化、Connect、Atlas、Radar、Terminal、Billing 等产品加深。 | 产品从单点支付进入商户生命周期和平台型企业。 | 这阶段形成后续 AI 公司最需要的底座：全球收款、订阅、风控、税务、平台分账。 |
 | 2020-2022 | 疫情后互联网经济加速后又遇到利率和估值修正。 | AI 尚未成为主叙事，Stripe 更强调韧性、长期产品投资和互联网经济。 | 这给后面“AI 公司高速起量”提供对照。 |
 | 2023 | 年信披露用户处理 $1T，约等于全球 GDP 1%。 | GPT-4 后 AI 公司进入 Stripe 叙事，但主线仍是互联网经济恢复。 | AI 成为客户结构变化，而不是独立产品线。 |
@@ -54,25 +54,21 @@ summary or a finished opinion piece.
 
 Current structure:
 
-1. Source organization first: the H5 now explicitly separates promoted evidence from the 1000-source queue and candidate material.
-2. Company path: 2010-2014 API/SDK/docs/testing, 2015-2019 merchant operating system, 2020-2022 financial products and resilience, 2023-2024 AI customer pressure, 2025-2026 agent commerce / machine payment / stablecoin expansion.
-3. Recent event timeline: 2023 volume baseline, 2024 AI-customer pressure, 2025 Privy/Metronome/Bridge, 2025 New York Tour, 2026 Copilot Checkout, Sessions 2026, preview API changes, and AWS WAF + machine payments.
-4. AI-after dimensions: transaction entry, product representation, billing granularity, settlement rail, risk position, and organization capability.
-5. Evidence index: agentic commerce, stablecoin, usage billing, machine payments, HTTP 402, Shared Payment Token, ProductCatalogImport, Link wallets, MCP, llms.txt, agent toolkit, claimable sandbox, catalog feed, approval hook, Radar, token theft, prompt injection, KYC/KYB, Capital underwriting, AI Conversation Platform, Developer Productivity AI, and Stablecoin Audit.
-6. Timeline reader: company evolution is now controlled by a draggable range plus year buttons, so the reader can move from 2010-2014 to 2026-06 instead of scanning static cards.
-7. AI change flow: the AI chapter is now framed as a transaction-chain change analysis, not as a loose "AI changes finance" claim.
-8. Interactive map: expanded from 8 nodes to 22 nodes, ordered by time and filterable by company path, product expansion, Agent, finance rail, risk, and organization capability. It is now a secondary map, not the only structure.
-9. Company/technology dual timeline: the main timeline now has a draggable year control plus three layers for each stage: company operating path, technical event path, and the two-way influence between commercial behavior and technical choices.
-10. Timeline evidence metrics: each timeline stage now carries indicator cards for valuation or liquidity events, processed volume, GDP-share proxy, acquisition/product events, partner proof, risk metrics, and machine-payment protocol signals where available.
-11. Market-share boundary: Stripe does not disclose a public audited global payment market-share percentage. This draft therefore uses proxies: processed volume, GDP share, businesses served, valuation/liquidity events, AI-customer coverage, acquisition direction, and secondary analyst "share gain" commentary. It should not be presented as a precise market-share estimate.
-12. Signal expansion: the H5 signal surface now separates technology interface, commercial behavior, finance rails, and risk/control signals so the reader can trace which words are source-backed evidence routes rather than decorative word-cloud terms.
+1. Five-stage company base map: 2010-2014 API/SDK/docs/testing, 2015-2019 merchant operating system, 2020-2022 financial products and resilience, 2023-2024 AI customer pressure, 2025-2026 agent commerce / machine payment / stablecoin expansion.
+2. Main draggable timeline: one company/market/acquisition/technology line from 2010-2014 to 2026-06. It carries processed volume, valuation/liquidity, acquisition/product events, partner proof, risk metrics, and machine-payment protocol signals in the same view.
+3. Main timeline lanes: market/acquisition/indicator track, company operating track, technology event track, and commercial/technical mutual influence.
+4. AI transaction-chain timeline: a separate draggable timeline from 2023 to 2026-06. It reads the AI shift by time: AI customer pressure, machine-readable product expression, wallet/usage/stablecoin capability fill, agentic commerce packaging, Copilot/Sessions expansion, and HTTP 402 / MPP / x402 machine payments.
+5. Evidence index and comprehensive view: agentic commerce, stablecoin, usage billing, machine payments, HTTP 402, Shared Payment Token, ProductCatalogImport, Link wallets, MCP, llms.txt, agent toolkit, claimable sandbox, catalog feed, approval hook, Radar, token theft, prompt injection, KYC/KYB, Capital underwriting, AI Conversation Platform, Developer Productivity AI, and Stablecoin Audit.
+6. Capability map: expanded from 8 nodes to 22 nodes, ordered by time and filterable by company path, product expansion, Agent, finance rail, risk, and organization capability. It now sits inside the comprehensive view and only proves how evidence nodes migrate across capabilities; it is not a standalone conclusion.
+7. Market-share boundary: Stripe does not disclose a public audited global payment market-share percentage. This draft therefore uses proxies: processed volume, GDP share, businesses served, valuation/liquidity events, AI-customer coverage, acquisition direction, and secondary analyst "share gain" commentary. It should not be presented as a precise market-share estimate.
+8. Signal expansion: the H5 signal surface separates technology interface, commercial behavior, finance rails, and risk/control signals so the reader can trace which words are source-backed evidence routes rather than decorative word-cloud terms.
 
 Style correction after live re-anchor:
 
-- Use evidence labels such as "证据怎么读", "来源节点", "能力迁移地图", and "阶段性判断".
+- Use evidence labels such as "公司运营、市场位置、并购与技术事件线", "AI 交易链路时间线", "全面看", and "证据边界".
 - Avoid unsupported broad claims like "第一性原理" in visible reader-facing copy.
 - Make the 1000-source queue state visible: organized queue yes; fully read corpus no.
-- Keep the section relationship explicit: evidence stratification defines claim eligibility; the timeline answers what happened; the AI transaction-chain chapter explains where the transaction changed; the capability map locates each event on the company-to-agent capability migration.
+- Keep the section relationship explicit: the main timeline answers what happened across company/market/acquisition/technology; the AI timeline explains where the transaction changed over time; the comprehensive view locates each event on the company-to-agent capability migration.
 - Avoid chatty meta-copy such as "这页不是..." or "这页现在要回答"; use compact report labels instead.
 
 ## High-Density Source Pool
@@ -177,6 +173,8 @@ This table is not the full quantity target. It is the evidence-grade source pool
 | S092 | https://www.investors.com/news/technology/stripe-ipo-paypal-stock-nvidia-shopify-adyen/ | secondary media / analyst coverage | 2024 $1.4T volume, 38% growth, profitability, analyst share-gain framing versus payment peers | Not audited market-share percentage |
 | S093 | https://www.axios.com/2024/10/24/inside-stripe-taxjar-deal | secondary media | TaxJar acquisition scale and tax-automation rationale | Secondary deal-price reporting |
 | S094 | https://docs.stripe.com/payments/machine | official docs | Machine payments, x402/MPP rails, low-value USDC examples | Product docs; availability varies |
+| S095 | https://en.wikipedia.org/wiki/Paystack | secondary compiled source | Paystack acquisition context, reported >$200M deal, 60,000+ organizations, Africa expansion | Use as route until direct original articles are promoted |
+| S096 | https://en.wikipedia.org/wiki/Stripe,_Inc. | secondary compiled source | Acquisition chronology for Recko, OpenChannel, BBPOS, Lemon Squeezy, Bridge, Privy, Metronome, and valuation/volume references | Use as route; public-ready version needs original source promotion |
 
 ## Evidence Matrix For H5 Claims
 
@@ -200,6 +198,8 @@ This table is not the full quantity target. It is the evidence-grade source pool
 | Analyst commentary describes Stripe gaining share versus payment peers, but no audited global share percentage is used. | S092 | Market-position proxy only. |
 | TaxJar, Paystack, Recko/OpenChannel/BBPOS, Bridge, Privy, and Metronome are treated as capability-expansion events, not only M&A trivia. | S002/S093 plus source queue routes | Deal terms vary by source; public-ready version needs separate acquisition source checks. |
 | Machine payments docs support a protocol-level reading: HTTP 402, MPP/x402, machine-readable price/license, and low-value USDC examples. | S094/S111-S113 | Product docs; availability and real adoption still need partner/customer checks. |
+| The H5 now folds market position into the main timeline: $1T/$1.4T/$1.9T processed-volume markers, $95B/$50B/$91.5B valuation/liquidity markers, and share-gain proxy wording appear as timeline evidence rather than a separate market block. | S001/S004/S089/S090/S091/S092/S096 | 2026 tender valuation coverage remains a secondary-source marker in the source pack, but the current H5 foregrounds the stronger 2021/2023/2025 valuation/liquidity sequence. |
+| The H5 now folds acquisition/event evidence into the main timeline and AI timeline: Paystack, TaxJar/Recko, OpenChannel/BBPOS, Lemon Squeezy, Bridge, Privy, and Metronome are treated as capability-expansion events. | S002/S093/S095/S096 | This is a capability and chronology map, not a completed M&A diligence table. |
 
 ## Research Buckets Toward 1000 Sources
 

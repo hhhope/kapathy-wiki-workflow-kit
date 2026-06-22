@@ -26,7 +26,7 @@ created: 2026-06-22
 |---|---|
 | Reader | 内部读者，需要快速理解 Stripe 为什么值得从 AI/金融基础设施角度研究 |
 | Reader decision or action | 判断 1000-source queue 中哪些来源应继续晋级到 PPT、长 H5 或专题研究 |
-| Main line | 先把 1000 条来源组织成证据层，再用公司运营线、技术事件线和 AI 交易链路解释 Stripe 的变化 |
+| Main line | 用一条公司/市场/并购/技术时间线解释 Stripe 发生了什么，再用一条 AI 交易链路时间线解释交易从哪里被改写，最后在全面看里定位能力迁移 |
 | Non-goals | 不做投资建议；不把官方产品声明当独立效果证明；不推导中国监管落地结论 |
 | User-owned judgments | 最终叙事强度、PPT 取舍、是否进入金融 AI 产品方案 |
 | Agent-allowed work | 公开来源收集、证据矩阵、H5 初稿、后续阅读队列 |
@@ -68,10 +68,14 @@ created: 2026-06-22
 | PyPI lists `stripe-agent-toolkit` 0.7.0, released Feb 12 2026, supporting OpenAI Agent SDK, LangChain, and CrewAI | https://pypi.org/project/stripe-agent-toolkit/ lines 23-31 and 81-119 | Verified | Registry snapshot |
 | PyPI release history shows `stripe-agent-toolkit` existed by Nov 14 2024 and has releases through Feb 12 2026 | https://pypi.org/project/stripe-agent-toolkit/ lines 175-220 | Verified | Registry snapshot |
 | `stripe-samples/machine-payments` demonstrates MPP and x402, with TypeScript/Python sample directories, Stripe Discord, and GitHub Issues as support routes | https://github.com/stripe-samples/machine-payments lines 255-305 | Verified | GitHub snapshot |
-| Timeline now separates company operating path, technology event path, and commercial/technical mutual influence | H5 timeline model and source addendum | Verified structurally | Narrative structure evidence; each factual claim still needs source boundary |
+| Main timeline now merges company operating path, market position, acquisitions, technology events, and commercial/technical mutual influence | H5 timeline model and source addendum | Verified structurally | Narrative structure evidence; each factual claim still needs source boundary |
 | Timeline now carries valuation/liquidity markers: $95B in 2021, $50B in 2023, $91.5B in 2025 | Axios/FT links added to source pack | Verified as secondary coverage | Private-company valuation/tender context, not public market cap |
 | Timeline now carries processed-volume markers: $1T in 2023, around $1.4T in 2024, $1.9T in 2025 | Stripe annual updates plus secondary coverage | Verified with boundary | 2024 figure remains secondary/proxy; 2025 is official self-report |
 | Market share is handled as a proxy, not a precise percentage | H5 metric note and source addendum | Verified wording | Public-ready version should add audited denominator or avoid "market share %" |
+| H5 now folds market-position evidence into the main timeline: processed volume, valuation/liquidity events, and share-gain proxy wording | Stripe annual updates, Axios/FT/IBD, secondary compiled sources | Verified with boundary | Not a precise market-share estimate |
+| H5 now folds acquisition/event evidence into the main timeline and AI timeline: Paystack, TaxJar/Recko, OpenChannel/BBPOS, Lemon Squeezy, Bridge, Privy, Metronome | Annual letter, Axios TaxJar, secondary compiled acquisition routes | Partial-pass | Original deal announcements still need promotion before public-ready use |
+| AI transaction-chain section is now a separate draggable timeline from 2023 to 2026-06 | H5 AI timeline model | Verified structurally | Interaction state still needs console-event QA before review-ready |
+| Capability migration map is now framed as a comprehensive evidence coordinate layer, not an independent proof | H5 comprehensive-view section | Verified wording | Map node details still depend on source-promotion strength |
 
 ## Hard Gate Results
 
@@ -79,7 +83,7 @@ created: 2026-06-22
 |---|---|
 | Reader intent | pass for internal draft |
 | Reference structure | pass |
-| Learning/source use | partial-pass: verified source pack created, 1000-row concrete-source queue added, JD signal scan promoted, and expanded H5 system map / dual timeline / AI flow added; not all rows are read materials |
+| Learning/source use | partial-pass: verified source pack created, 1000-row concrete-source queue added, JD signal scan promoted, and expanded H5 system map / merged company-market-acquisition-tech timeline / AI timeline added; not all rows are read materials |
 | Split strategy | pass: H5 for reading, source pack for material density |
 | Voice | pass for internal research draft |
 | Visual | partial-pass: standalone H5 created and screenshot-checked; console event check blocked by missing local Playwright module |
@@ -92,14 +96,15 @@ created: 2026-06-22
 - Recruitment coverage now includes 292 Stripe jobs/JD URLs, including 260 concrete job-description pages. A focused JD scan has been added to the source pack and H5, but historical JD change claims still need archived snapshots or dated job-board mirrors.
 - Several official claims are product-positioning or vendor metrics; they need partner/customer corroboration before stronger public claims.
 - API/version-change section now has concrete ACS/MPP/x402 preview headers and object routes, but is not yet fully mined from Stripe changelog or package diffs.
-- H5 has expanded desktop/mobile screenshots, but should still receive console-event QA and deeper interaction QA before review-ready.
+- H5 has expanded desktop/mobile screenshots after the timeline restructure, but should still receive console-event QA and deeper interaction QA before review-ready.
 - Community signals are still route-level for Discord, HN, Reddit, GitHub issues/PRs; next pass should sample actual discussions and classify friction.
 - Company-path and big-event sections are now expanded, but older pre-2023 company-path milestones still need tighter official date sourcing before a public-ready version.
 - Timeline now includes company/technology dual tracks and evidence metrics, but several valuation/acquisition details are secondary-source markers and must not be upgraded to investment-grade claims without independent checks.
 - Market share is intentionally framed as processed-volume/GDP/customer/valuation/share-gain proxy. Do not turn it into a precise market-share percentage without audited numerator and denominator.
+- Acquisition/event evidence now appears inside the timelines, but Paystack/Recko/OpenChannel/BBPOS/Lemon Squeezy/Bridge/Privy deal rows still need direct original-source promotion for a public-ready version.
 - A live re-anchor corrected the page style from abstract thesis language to research-control-surface language. Future edits should preserve this: source organization first, staged judgments second.
-- A follow-up structure pass corrected the relationship between modules: timeline is the factual sequence, AI transaction chain is the explanatory lens, and capability migration map is the positioning layer.
-- Timeline and AI-flow interactions are browser-rendered and screenshot-checked at initial state; drag/click state changes still need console-event QA before review-ready.
+- A follow-up structure pass corrected the relationship between modules: the main timeline is the company/market/acquisition/technology sequence, the AI timeline is the transaction-chain sequence, and the comprehensive view is the capability-positioning layer.
+- Main timeline and AI timeline interactions are browser-rendered and screenshot-checked at initial state; drag/click state changes still need console-event QA before review-ready.
 
 ## Verification Evidence
 
@@ -107,14 +112,15 @@ created: 2026-06-22
 |---|---|---|
 | HTML parser | pass | `python3 -m html.parser wiki/reports/stripe-ai-company-evolution-h5.html` |
 | Diff whitespace | pass | `git diff --check -- wiki/sources/stripe-ai-company-evolution-research-2026-06-22.md wiki/ops/stripe-ai-company-evolution-report-gate-review-2026-06-22.md wiki/reports/stripe-ai-company-evolution-h5.html` |
-| Desktop screenshot | pass after relationship repair | `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` full-page screenshot shows research-control title, evidence stratification, explicit reading path, company path, draggable dual timeline, AI transaction-chain flow, expanded signal groups, capability migration map, and source cards. |
-| Mobile screenshot | pass after relationship repair | `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` full-page screenshot shows evidence stratification, reading path, dual timeline, AI transaction-chain flow, signal groups, and map in a readable single-column layout. |
+| Desktop screenshot | pass after timeline restructure | `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` full-page screenshot shows five-stage company base map, merged company/market/acquisition/technology timeline, separate AI transaction-chain timeline, comprehensive evidence view, capability coordinate map, and source cards. |
+| Mobile screenshot | pass after timeline restructure | `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` full-page screenshot shows the same structure in a readable single-column layout with no obvious overlap. |
 | Chinese rendering | fixed | Initial screenshots showed missing CJK glyphs; H5 now imports Noto Sans SC and screenshots render Chinese correctly. |
 | Frontmatter precheck | inconclusive for target, blocked globally by legacy pages | `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target ...` returned existing unrelated legacy blockers and `target.entry_count: 0`; target pages include required fields from repair hints. |
 | Console event check | blocked | `node -e require('playwright')...` failed with `MODULE_NOT_FOUND`; CLI screenshot still worked. |
 | 1000-source queue row count | pass for concrete-source queue, not for read-material completion | `wiki/sources/stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv` has 1000 data rows, 0 empty URL fields, 0 duplicate URL fields, and 0 `SEARCH:` placeholder rows. |
 | Recruitment/JD coverage | pass for current-source queue and focused scan, partial for historical change evidence | CSV includes 292 `jobs-jd` rows: 260 concrete Stripe job-description pages and 32 Stripe jobs search pages. Focused read opened AI Security, AI Conversation Platform, Developer Productivity AI, ML Platform, Capital Underwriting, Crypto/Stablecoins, Privy, Stablecoin Audit/Reporting, and Radar/Fraud/Risk roles. Historical JD change analysis still needs archive or dated mirror evidence. |
 | H5 source reference integrity | pass | Inline source key/reference check found 24 source keys, 66 H5 refs, and 0 missing referenced source keys after timeline expansion. |
+| H5 source reference integrity after timeline restructure | pass | Inline source key/reference check found 26 source keys, 81 H5 refs, and 0 missing referenced source keys. |
 | CSV field correction | pass | Queue check uses `url_or_query`, not `url`: 1000 rows, 0 empty `url_or_query`, 0 duplicate `url_or_query`, 0 `SEARCH:` placeholders, 292 `jobs-jd` rows. |
 | Live re-anchor trace | pass | `wiki/ops/stripe-ai-company-evolution-h5-reanchor-2026-06-22.md` records the user's correction: source organization, unified style, and evidence-bound wording. |
 
