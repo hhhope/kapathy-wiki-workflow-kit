@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>从 Stripe 看 AI 之后的金融基础设施</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800;900&display=swap");
+
+    :root {
+      --ink: #111827;
+      --muted: #5b6472;
+      --paper: #f7f4ee;
+      --panel: #ffffff;
+      --line: #d9d4c8;
+      --blue: #2563eb;
+      --green: #0f766e;
+      --red: #b42318;
+      --gold: #a16207;
+      --slate: #273449;
+      --shadow: 0 18px 42px rgba(39, 52, 73, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.58;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .app {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 22px;
+    }
+
+    .hero {
+      min-height: 74vh;
+      display: grid;
+      align-content: end;
+      gap: 24px;
+      padding: clamp(24px, 5vw, 64px);
+      background:
+        linear-gradient(110deg, rgba(17, 24, 39, 0.92), rgba(15, 118, 110, 0.74)),
+        url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1800&q=80");
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .kicker,
+    .pill,
+    .tag,
+    .source-link {
+      font-size: 12px;
+      letter-spacing: 0;
+    }
+
+    .kicker {
+      color: #b8f3e8;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin-bottom: 18px;
+      font-size: clamp(38px, 7vw, 86px);
+      line-height: 1.03;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 820px;
+      margin-bottom: 0;
+      font-size: clamp(17px, 2.3vw, 25px);
+      color: #e8edf4;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #f6f7fb;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .metric {
+      min-height: 128px;
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(17, 24, 39, 0.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: clamp(24px, 4vw, 42px);
+      line-height: 1.1;
+      color: var(--slate);
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .control-panel,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 10px 26px rgba(39, 52, 73, 0.08);
+    }
+
+    .control-panel {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1.4fr;
+      gap: 18px;
+      align-items: center;
+      margin: 18px 0;
+      padding: 16px;
+    }
+
+    .control-panel h2 {
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+
+    .control-panel p,
+    .panel-head p,
+    .note,
+    .footnote {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .range-wrap {
+      display: grid;
+      gap: 8px;
+    }
+
+    .range-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--green);
+    }
+
+    .mode-buttons,
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: #f8fafc;
+      color: var(--slate);
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    button.active {
+      border-color: var(--green);
+      background: #e6fffa;
+      color: #0f766e;
+      font-weight: 700;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 0.92fr 1.18fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 18px;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    .panel-head h2 {
+      margin-bottom: 0;
+      font-size: 21px;
+    }
+
+    .spine {
+      display: grid;
+      gap: 10px;
+    }
+
+    .spine-card {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfbf9;
+      cursor: pointer;
+    }
+
+    .spine-card.active {
+      border-color: var(--green);
+      background: #f0fdfa;
+    }
+
+    .step {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--slate);
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .spine-card h3,
+    .detail h3 {
+      margin-bottom: 4px;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .spine-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .map {
+      position: relative;
+      min-height: 680px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(37, 99, 235, 0.08), rgba(15, 118, 110, 0.08), rgba(180, 35, 24, 0.08)),
+        repeating-linear-gradient(0deg, transparent, transparent 75px, rgba(39, 52, 73, 0.08) 76px);
+      overflow: hidden;
+    }
+
+    .axis-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cursor {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--green);
+      opacity: 0.76;
+      pointer-events: none;
+    }
+
+    .map-node {
+      position: absolute;
+      width: min(220px, 44%);
+      min-height: 70px;
+      transform: translate(-50%, -50%);
+      padding: 10px;
+      border: 1px solid rgba(39, 52, 73, 0.18);
+      border-left: 5px solid var(--blue);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 10px 20px rgba(39, 52, 73, 0.1);
+      cursor: pointer;
+    }
+
+    .map-node.finance {
+      border-left-color: var(--green);
+    }
+
+    .map-node.risk {
+      border-left-color: var(--red);
+    }
+
+    .map-node.protocol {
+      border-left-color: var(--gold);
+    }
+
+    .map-node.active {
+      outline: 3px solid rgba(15, 118, 110, 0.28);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-weight: 700;
+    }
+
+    .detail {
+      position: sticky;
+      top: 96px;
+      max-height: calc(100vh - 112px);
+      overflow: auto;
+    }
+
+    .detail ul {
+      margin: 8px 0 16px;
+      padding-left: 20px;
+    }
+
+    .detail li {
+      margin: 6px 0;
+    }
+
+    .evidence-box {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+    }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .source-link {
+      display: block;
+      min-height: 78px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfbf9;
+      text-decoration: none;
+    }
+
+    .source-link strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      color: var(--slate);
+    }
+
+    .source-link span {
+      color: var(--muted);
+    }
+
+    .closing {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .note {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff7ed;
+    }
+
+    @media (max-width: 1050px) {
+      main,
+      .control-panel,
+      .summary-grid,
+      .closing {
+        grid-template-columns: 1fr;
+      }
+
+      .detail {
+        position: static;
+        max-height: none;
+      }
+
+      .source-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .app {
+        padding: 12px;
+      }
+
+      .hero {
+        min-height: 82vh;
+        padding: 22px;
+      }
+
+      .map {
+        min-height: 760px;
+      }
+
+      .map-node {
+        width: 58%;
+      }
+
+      .source-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div>
+        <div class="kicker">内部 H5 草稿 · Stripe / AI / Finance Infrastructure · 2026-06-22</div>
+        <h1>从 Stripe 看 AI 之后的金融基础设施</h1>
+        <p class="lead">Stripe 的变化不是“支付公司也做 AI”。更关键的是：AI 正在改变交易主体、计费颗粒、风控对象和结算轨道，Stripe 把这些变化收束成新的经济基础设施。</p>
+      </div>
+      <div class="meta-row">
+        <span class="pill">结构参考：Anthropic 研发调研 PPT</span>
+        <span class="pill">交互参考：李想访谈精读板</span>
+        <span class="pill">状态：first draft, not review-ready</span>
+      </div>
+    </header>
+
+    <section class="summary-grid" aria-label="关键事实">
+      <div class="metric"><strong>$1.9T</strong><span>2025 年 Stripe 商户处理规模，官方称约等于全球 GDP 1.6%，同比 2024 增长 34%。</span></div>
+      <div class="metric"><strong>5M+</strong><span>Stripe 年信称直接或通过平台服务超过 500 万 businesses。</span></div>
+      <div class="metric"><strong>288</strong><span>Sessions 2026 发布的产品与功能数量，主题是 AI economic infrastructure。</span></div>
+      <div class="metric"><strong>100k+</strong><span>Stripe 年信称已有超过 10 万个 claimable sandboxes 从 AI coding tools 创建。</span></div>
+    </section>
+
+    <aside class="control-panel">
+      <div>
+        <h2>阅读控制</h2>
+        <p>拖动游标看 Stripe 从公司扩张到 AI 金融基础设施的重心变化；点击节点查看证据和后续判断。</p>
+      </div>
+      <div class="range-wrap">
+        <div class="range-label"><span>公司路径</span><span id="scoreValue">55</span><span>AI 金融形态</span></div>
+        <input id="axisRange" type="range" min="0" max="100" value="55" aria-label="研究重心游标" />
+      </div>
+      <div class="mode-buttons" aria-label="主题筛选">
+        <button class="active" data-mode="all">全部</button>
+        <button data-mode="company">公司路径</button>
+        <button data-mode="agent">Agent</button>
+        <button data-mode="finance">金融轨道</button>
+        <button data-mode="risk">风险</button>
+      </div>
+    </aside>
+
+    <main>
+      <section class="panel">
+        <div class="panel-head">
+          <h2>发展脊柱</h2>
+          <p>按公司演进顺序读。</p>
+        </div>
+        <div id="spine" class="spine"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>变化地图</h2>
+          <p>横轴：越右越接近 AI 后的新交易/结算形态。</p>
+        </div>
+        <div class="axis-labels"><span>支付 API / 商户增长</span><span>Agent / token / stablecoin / machine payment</span></div>
+        <div id="map" class="map"><div id="cursor" class="cursor"></div></div>
+      </section>
+
+      <aside class="panel detail" aria-label="章节展开">
+        <div id="detail"></div>
+      </aside>
+
+      <section class="panel wide">
+        <div class="panel-head">
+          <h2>可复用结论</h2>
+          <p>这部分服务后续 PPT 或长报告。</p>
+        </div>
+        <div class="closing">
+          <div class="note">
+            <strong>发展规律</strong>
+            <p>Stripe 每一轮扩张都在降低“新业务从想法到收钱”的摩擦。AI 后，这个摩擦不再只是开发者接入支付，而是 Agent 能否发现商品、理解价格、获得授权、完成支付、留下可追责记录。</p>
+          </div>
+          <div class="note">
+            <strong>后续形态</strong>
+            <p>金融领域 AI 的高价值形态不会只停在助手，而会进入协议和基础设施：agent wallet、machine payment、token streaming billing、稳定币微支付、内容/API 的 402 付费访问、实时风控和账务自动化。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel wide">
+        <div class="panel-head">
+          <h2>来源索引</h2>
+          <p>H5 只放负载最高的来源；完整材料池见 source pack。</p>
+        </div>
+        <div id="sources" class="source-grid"></div>
+        <p class="footnote">边界：本页为内部调研草稿。Stripe 官方数字、产品发布和客户案例均按官方口径处理，不等同于独立审计。未声明完成 1000 篇材料池。</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const sources = {
+      annual2025: {
+        title: "Stripe 2025 annual letter",
+        url: "https://stripe.com/annual-updates/2025",
+        note: "$1.9T, 5M+ businesses, AI startup acceleration, sandboxes, stablecoins."
+      },
+      sessions2026: {
+        title: "Stripe Sessions 2026 newsroom",
+        url: "https://stripe.com/en-jp/newsroom/news/sessions-2026",
+        note: "288 launches, Link wallets for agents, streaming payments, Radar token theft."
+      },
+      agenticCommerce: {
+        title: "Stripe Agentic Commerce",
+        url: "https://stripe.com/nz/use-cases/agentic-commerce",
+        note: "Agentic Commerce Suite, MPP, x402, merchant control, risk tokens."
+      },
+      aiCompanies: {
+        title: "Stripe for AI companies",
+        url: "https://stripe.com/nz/use-cases/ai",
+        note: "AI-company monetization, usage/outcome billing, agent toolkit example."
+      },
+      agentsDocs: {
+        title: "Agents and AI on Stripe docs",
+        url: "https://docs.stripe.com/agents.md",
+        note: "MCP, skills, CLI, llms.txt, Markdown docs, agentic commerce docs."
+      },
+      sellersDocs: {
+        title: "Sell through agents docs",
+        url: "https://docs.stripe.com/agentic-commerce/for-sellers",
+        note: "Catalog feed, pricing/inventory refresh, idempotent hooks, webhooks."
+      },
+      stripeAiRepo: {
+        title: "stripe/ai GitHub",
+        url: "https://github.com/stripe/ai",
+        note: "Agent toolkit, AI SDK, token-meter, MCP, framework integrations."
+      },
+      awsWaf: {
+        title: "AWS WAF and Stripe",
+        url: "https://stripe.com/en-jp/newsroom/news/aws-waf-and-stripe",
+        note: "HTTP 402, machine-readable price/license, AI traffic monetization."
+      },
+      copilot: {
+        title: "Microsoft Copilot and Stripe",
+        url: "https://stripe.com/en-jp/newsroom/news/microsoft-copilot-and-stripe",
+        note: "Copilot Checkout, Agentic Commerce Protocol, Shared Payment Tokens."
+      },
+      stablecoin: {
+        title: "Stripe crypto/stablecoin use case",
+        url: "https://stripe.com/nz/use-cases/crypto",
+        note: "Bridge, Privy, stablecoin payments, payouts, digital asset stack."
+      }
+    };
+
+    const chapters = [
+      {
+        id: "api-first",
+        step: "01",
+        mode: "company",
+        title: "先把在线收款变成开发者接口",
+        axis: 14,
+        y: 8,
+        kind: "company",
+        summary: "Stripe 的起点是降低互联网业务接入支付的难度。它不是从金融网点或账户体系出发，而是从开发者体验出发。",
+        actions: ["支付 API 成为产品入口。", "文档、SDK、测试环境和错误处理成为金融产品的一部分。", "后续所有产品扩张都继承这一条：让新业务更快上线并收钱。"],
+        evidence: "公司信息页把 Stripe 定义为 economic infrastructure for the internet；新闻页和文档体系持续强调开发者入口。",
+        refs: ["annual2025", "agentsDocs"],
+        keywords: ["API-first", "developer experience", "payments"]
+      },
+      {
+        id: "platform",
+        step: "02",
+        mode: "company",
+        title: "从支付入口扩成商户经营系统",
+        axis: 28,
+        y: 18,
+        kind: "company",
+        summary: "Billing、Tax、Radar、Connect、Treasury、Capital、Atlas、Link 把 Stripe 从 payment processor 推向 business stack。",
+        actions: ["收入：订阅、用量计费、发票、收入确认。", "平台：Connect、账户、分账、身份和市场。", "资金：Treasury、Capital、Issuing、Payouts。"],
+        evidence: "2025 年信列出 billing、tax、fraud prevention、embedded finance、treasury 等扩展能力。",
+        refs: ["annual2025", "aiCompanies"],
+        keywords: ["Revenue suite", "Connect", "Radar", "Treasury"]
+      },
+      {
+        id: "ai-customer",
+        step: "03",
+        mode: "agent",
+        title: "AI 公司成为 Stripe 的高强度客户群",
+        axis: 48,
+        y: 29,
+        kind: "agent",
+        summary: "AI 公司天生全球化、订阅化、用量化，正好压中 Stripe 的全球收款、Billing、Tax、Radar、usage billing 和金融账户能力。",
+        actions: ["AI 产品上线即面向全球用户。", "收入模型从订阅扩展到 usage、outcome 和 token。", "高增长客户需要同时解决收款、税、反欺诈、账务和跨境。"],
+        evidence: "Stripe 2025 年信写到 ChatGPT、Claude、Replit、Lovable、Vercel、Cursor 等 AI 产品全球默认；AI companies 页面称 75%+ Forbes AI 50 用 Stripe monetise。",
+        refs: ["annual2025", "aiCompanies"],
+        keywords: ["AI companies", "global by default", "usage billing"]
+      },
+      {
+        id: "agent-readable",
+        step: "04",
+        mode: "agent",
+        title: "文档开始从人读转向 Agent 可执行",
+        axis: 62,
+        y: 41,
+        kind: "agent",
+        summary: "Stripe 给 Agent 的不是一篇说明书，而是一组运行时入口：sandbox、CLI、MCP、skills、llms.txt、Markdown docs、agent toolkit。",
+        actions: ["AI coding tools 可以创建 claimable sandbox。", "MCP 让 agentic IDE 和 harness 访问 Stripe 资源。", "llms.txt 和 plain-text docs 把文档变成 LLM 可消费索引。"],
+        evidence: "Agents docs 明确列出 MCP server、Agent skills、Stripe CLI、llms.txt；GitHub stripe/ai 仓库提供 agent toolkit、AI SDK、token-meter。",
+        refs: ["agentsDocs", "stripeAiRepo"],
+        keywords: ["MCP", "skills", "llms.txt", "agent toolkit"]
+      },
+      {
+        id: "agentic-commerce",
+        step: "05",
+        mode: "agent",
+        title: "Agentic commerce 改写交易入口",
+        axis: 74,
+        y: 53,
+        kind: "protocol",
+        summary: "原来是人逛网站后进入 checkout；现在 Agent 可以在聊天、搜索、任务环境里发现商品并发起购买。",
+        actions: ["商户上传 catalog feed，让商品、价格、库存对 Agent 可见。", "Agent 内嵌 checkout，不必为每个商户做定制集成。", "商户仍保留 merchant of record、价格、履约和客户关系控制。"],
+        evidence: "Agentic Commerce Suite 页面和 seller docs 说明 catalog feed、15 分钟库存/价格刷新、order approval hook、webhook fulfillment。",
+        refs: ["agenticCommerce", "sellersDocs", "copilot"],
+        keywords: ["Agentic Commerce Suite", "catalog feed", "Copilot Checkout"]
+      },
+      {
+        id: "streaming",
+        step: "06",
+        mode: "finance",
+        title: "token 级成本推动 streaming payments",
+        axis: 86,
+        y: 65,
+        kind: "finance",
+        summary: "AI 产品的成本随 token 被机器速度消耗，传统月账单或一次性扣款不能准确贴合成本发生时间。",
+        actions: ["Metronome 负责精确 tracking。", "Tempo/stablecoin micropayments 负责更细颗粒 settlement。", "计费对象从 seat/month 扩展到 token/event/outcome。"],
+        evidence: "Sessions 2026 release 说 streaming payments 结合 Metronome 和 Tempo，使企业能在 token 使用发生时收款。",
+        refs: ["sessions2026", "stablecoin"],
+        keywords: ["Metronome", "Tempo", "token billing", "micropayments"]
+      },
+      {
+        id: "risk",
+        step: "07",
+        mode: "risk",
+        title: "风险对象从 stolen card 扩展到 stolen token",
+        axis: 78,
+        y: 77,
+        kind: "risk",
+        summary: "AI 服务的欺诈不只盗刷银行卡，还包括假注册、薅免费额度、恶意消耗推理成本和不打算支付的 usage bill。",
+        actions: ["Radar 需要在 sign-up 和 usage 阶段实时判断。", "Shared Payment Token 让购买凭据不直接暴露给 Agent。", "审批 hook、幂等和超时成为 agentic checkout 的风控接口。"],
+        evidence: "Sessions 2026 release 称八家 AI 公司一个月内被 Radar 拦截 330 万 risky sign-ups；Copilot release 说明 SPT 避免暴露买家凭据。",
+        refs: ["sessions2026", "copilot", "sellersDocs"],
+        keywords: ["Radar", "token theft", "SPT", "idempotency"]
+      },
+      {
+        id: "machine-payments",
+        step: "08",
+        mode: "finance",
+        title: "内容、API 和数据源进入机器支付",
+        axis: 92,
+        y: 89,
+        kind: "finance",
+        summary: "当 Agent 成为内容、API、数据源的消费者，资源本身需要机器可读价格、许可和支付协议。",
+        actions: ["AWS WAF 可返回 HTTP 402 Payment Required。", "响应包含价格、可接受支付方式和 license terms。", "Machine Payments Protocol 让 agent pay、publisher get paid。"],
+        evidence: "AWS WAF + Stripe release 直接描述 AI bot/agent 访问 protected resource 时返回 402，并通过 Stripe/MPP 付款。",
+        refs: ["awsWaf", "agenticCommerce"],
+        keywords: ["HTTP 402", "MPP", "AI traffic monetization", "x402"]
+      }
+    ];
+
+    const spineEl = document.getElementById("spine");
+    const mapEl = document.getElementById("map");
+    const detailEl = document.getElementById("detail");
+    const rangeEl = document.getElementById("axisRange");
+    const scoreEl = document.getElementById("scoreValue");
+    const cursorEl = document.getElementById("cursor");
+    const sourceEl = document.getElementById("sources");
+    let activeId = chapters[0].id;
+    let mode = "all";
+
+    function sourceLinks(ids) {
+      return ids.map((id) => {
+        const src = sources[id];
+        return `<a href="${src.url}" target="_blank" rel="noreferrer">${src.title}</a>`;
+      }).join(" · ");
+    }
+
+    function renderDetail(chapter) {
+      detailEl.innerHTML = `
+        <div class="tag-row">
+          <span class="tag">${chapter.step}</span>
+          <span class="tag">${chapter.mode}</span>
+        </div>
+        <h3>${chapter.title}</h3>
+        <p>${chapter.summary}</p>
+        <h3>读法</h3>
+        <ul>${chapter.actions.map((item) => `<li>${item}</li>`).join("")}</ul>
+        <div class="evidence-box">
+          <h3>证据</h3>
+          <p>${chapter.evidence}</p>
+          <p class="footnote">${sourceLinks(chapter.refs)}</p>
+        </div>
+        <div class="evidence-box">
+          <h3>后续问题</h3>
+          <p>${chapter.keywords.join(" / ")} 这一组线索需要继续扩展到 API changelog、partner announcement、GitHub package、社群讨论和二级媒体。</p>
+        </div>
+      `;
+    }
+
+    function render() {
+      const filtered = chapters.filter((item) => mode === "all" || item.mode === mode);
+      if (!filtered.some((item) => item.id === activeId)) {
+        activeId = filtered[0]?.id || chapters[0].id;
+      }
+
+      spineEl.innerHTML = filtered.map((chapter) => `
+        <article class="spine-card ${chapter.id === activeId ? "active" : ""}" data-id="${chapter.id}">
+          <div class="step">${chapter.step}</div>
+          <div>
+            <h3>${chapter.title}</h3>
+            <p>${chapter.summary}</p>
+          </div>
+        </article>
+      `).join("");
+
+      mapEl.querySelectorAll(".map-node").forEach((node) => node.remove());
+      filtered.forEach((chapter) => {
+        const node = document.createElement("button");
+        node.className = `map-node ${chapter.kind} ${chapter.id === activeId ? "active" : ""}`;
+        node.dataset.id = chapter.id;
+        node.style.left = `${chapter.axis}%`;
+        node.style.top = `${chapter.y}%`;
+        node.innerHTML = `<strong>${chapter.step} ${chapter.title}</strong><br><span>${chapter.keywords.slice(0, 2).join(" / ")}</span>`;
+        mapEl.appendChild(node);
+      });
+
+      const chapter = chapters.find((item) => item.id === activeId) || chapters[0];
+      renderDetail(chapter);
+      bindCards();
+    }
+
+    function bindCards() {
+      document.querySelectorAll("[data-id]").forEach((el) => {
+        el.addEventListener("click", () => {
+          activeId = el.dataset.id;
+          render();
+        });
+      });
+    }
+
+    rangeEl.addEventListener("input", () => {
+      const value = Number(rangeEl.value);
+      scoreEl.textContent = value;
+      cursorEl.style.left = `${value}%`;
+    });
+
+    document.querySelectorAll(".mode-buttons button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".mode-buttons button").forEach((item) => item.classList.remove("active"));
+        btn.classList.add("active");
+        mode = btn.dataset.mode;
+        render();
+      });
+    });
+
+    sourceEl.innerHTML = Object.entries(sources).map(([id, src]) => `
+      <a class="source-link" href="${src.url}" target="_blank" rel="noreferrer">
+        <strong>${id}: ${src.title}</strong>
+        <span>${src.note}</span>
+      </a>
+    `).join("");
+
+    cursorEl.style.left = `${rangeEl.value}%`;
+    render();
+  </script>
+</body>
+</html>
