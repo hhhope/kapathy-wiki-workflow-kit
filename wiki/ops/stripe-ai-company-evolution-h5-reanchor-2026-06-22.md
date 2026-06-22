@@ -229,3 +229,32 @@ Corrected requirements:
 Implementation remains stopped. The next H5 revision must rebuild the AI-era
 chapter around payment-industry recomposition, not around a loose list of AI
 features.
+
+## 2026-06-22 Sixth Drift Correction
+
+The user rejected the sentence "AI-era payments are not new finance, but the
+recomposition of existing primitives." The problem was not wording. It treated
+the conclusion as if listing old primitives were enough.
+
+Corrected requirement:
+
+- The H5 must state that preauthorization, issuing, co-branded benefits, tokens,
+  wallets, billing, risk, disputes, and clearing already exist in the payment
+  industry. The analytical question is where innovation can happen on top of
+  them.
+- The AI-era payment thesis must move from "old capabilities are recomposed" to
+  "new control points are being created above existing capabilities": AI entry,
+  scoped authority, machine-readable commercial objects, tool/API execution,
+  real-time risk, liability evidence, and settlement accountability.
+- The Stripe infrastructure argument must be explicit. Stripe does infrastructure
+  because AI entry providers can capture intent, card networks can capture
+  token/authorization rules, wallets can capture user credentials and benefits,
+  stablecoin protocols can capture settlement rails, and PSP peers can compress
+  Stripe back into fee competition.
+- The resulting judgment: Stripe must connect API, object models, docs, wallets,
+  issuing, billing, risk, stablecoins, and machine payments into a transaction
+  infrastructure layer, or it risks becoming only a background payment processor
+  in AI commerce.
+
+Implementation remains stopped until this corrected thesis is accepted and
+translated into the H5 design.

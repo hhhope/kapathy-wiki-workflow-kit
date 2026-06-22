@@ -45,7 +45,7 @@ Stripe 在 AI 后的变化不是简单多卖一个支付 API，而是把自身�
 | 2025-09 | New York Tour 发布 Open Issuance、agentic commerce、AI monetization 工具。 | Stripe 说自己的角色是把 stablecoins 和 AI 从实验带入主流。 | “agentic commerce”从概念进入产品包。 |
 | 2026-01 | Microsoft Copilot Checkout 由 Stripe 支撑。 | Copilot 内完成购物，Shared Payment Token 降低暴露支付凭据风险。 | Agent/聊天界面开始成为 commerce surface。 |
 | 2026-04 | Sessions 2026 发布 288 项产品/功能。 | Google AI Mode/Gemini、Link wallets for agents、streaming payments、Radar token theft、Stripe Projects。 | AI 不是单一产品，而是支付、风控、账务、开发工具、稳定币的横向重构。 |
-| 2026-06 | AWS WAF + Stripe 支持 AI agent traffic monetization。 | HTTP 402、机器可读价格/许可、Machine Payments Protocol。 | 内容、API、数据源被重新包装成 Agent 可购买资源。 |
+| 2026-06 | AWS WAF + Stripe 支持 AI agent traffic monetization。 | HTTP 402、机器可读价格/许可、Machine Payments Protocol。 | 内容、API、数据源上方新增了机器可读价格、许可、支付挑战和访问授权控制点。 |
 
 ## H5 Expansion Structure
 
