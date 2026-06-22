@@ -111,6 +111,7 @@ created: 2026-06-22
 - Main timeline and AI timeline interactions are browser-rendered and screenshot-checked at initial state; drag/click state changes still need console-event QA before review-ready.
 - 2026-06-22 A-direction rewrite replaced the rejected visible chapter grammar with a BVP-style trend report, a three-dimensional evidence timeline, a capability-gap acquisition map, and an AI transaction-chain section. This improves structure but still requires fresh screenshot QA and interaction checks.
 - 2026-06-22 follow-up repaired the remaining conversational headings into a unified `证据坐标` system, made the signal cloud clickable with 52 signal terms, and surfaced the 1000-source queue as grouped inventory rather than implying 22 proof nodes are the evidence limit.
+- 2026-06-22 reader-language repair removed remaining process-language from visible H5 copy: hero, section descriptions, trend cards, timeline labels, signal detail labels, synthesis copy, and evidence inventory now use report-language instead of conversation/process wording.
 
 ## Verification Evidence
 
@@ -133,6 +134,7 @@ created: 2026-06-22
 | Evidence-coordinate heading repair | pass | Rejected-heading grep returned no hits for the conversational headings flagged by the user. |
 | Signal index interaction structure | pass | Static JS check found 52 unique signal terms, `signalDetail`, and the 1000-source inventory block. |
 | Follow-up desktop/mobile screenshot | pass | Refreshed full-page screenshots show unified evidence-coordinate headings, clickable signal index region, and grouped source inventory with no obvious overlap. |
+| Reader-language cleanup | pass | Static check over H5 visible templates excluding raw `signalTerms` data found no hits for rejected process terms such as `不是`, `不能`, `proof`, `Evidence lane`, `Proof tag`, `来源路由`, or `证据边界`. |
 | CSV field correction | pass | Queue check uses `url_or_query`, not `url`: 1000 rows, 0 empty `url_or_query`, 0 duplicate `url_or_query`, 0 `SEARCH:` placeholders, 292 `jobs-jd` rows. |
 | Live re-anchor trace | pass | `wiki/ops/stripe-ai-company-evolution-h5-reanchor-2026-06-22.md` records the user's correction: source organization, unified style, and evidence-bound wording. |
 
