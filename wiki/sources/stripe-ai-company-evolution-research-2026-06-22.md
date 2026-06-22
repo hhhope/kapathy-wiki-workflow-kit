@@ -72,6 +72,8 @@ Style correction after live re-anchor:
 - Use evidence labels such as "证据怎么读", "来源节点", "能力迁移地图", and "阶段性判断".
 - Avoid unsupported broad claims like "第一性原理" in visible reader-facing copy.
 - Make the 1000-source queue state visible: organized queue yes; fully read corpus no.
+- Keep the section relationship explicit: evidence stratification defines claim eligibility; the timeline answers what happened; the AI transaction-chain chapter explains where the transaction changed; the capability map locates each event on the company-to-agent capability migration.
+- Avoid chatty meta-copy such as "这页不是..." or "这页现在要回答"; use compact report labels instead.
 
 ## High-Density Source Pool
 

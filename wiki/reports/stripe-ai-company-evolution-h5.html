@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stripe 正在迁移到 Agent 经济操作系统</title>
+  <title>Stripe 研究控制台：从支付 API 到 Agent 交易网络</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800;900&display=swap");
 
@@ -140,6 +140,7 @@
     }
 
     .path-grid,
+    .reading-flow,
     .dimension-grid {
       display: grid;
       gap: 12px;
@@ -149,7 +150,12 @@
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 
+    .reading-flow {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
     .path-card,
+    .relation-card,
     .dimension-card,
     .event-card {
       border: 1px solid var(--line);
@@ -162,7 +168,36 @@
       padding: 14px;
     }
 
+    .relation-card {
+      position: relative;
+      min-height: 188px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .relation-card::after {
+      content: ">";
+      position: absolute;
+      top: 18px;
+      right: -13px;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 24px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .relation-card:last-child::after {
+      display: none;
+    }
+
     .path-card strong,
+    .relation-card strong,
     .dimension-card strong,
     .event-date {
       display: block;
@@ -171,6 +206,7 @@
     }
 
     .path-card span,
+    .relation-card p,
     .dimension-card span,
     .event-card p {
       color: var(--muted);
@@ -178,6 +214,7 @@
     }
 
     .path-card ul,
+    .relation-card ul,
     .dimension-card ul {
       margin: 10px 0 0;
       padding-left: 18px;
@@ -775,6 +812,7 @@
       .control-panel,
       .summary-grid,
       .path-grid,
+      .reading-flow,
       .event-rail,
       .dimension-grid,
       .timeline-control,
@@ -799,6 +837,13 @@
 
       .timeline-year {
         text-align: left;
+      }
+
+      .relation-card::after {
+        top: auto;
+        right: 18px;
+        bottom: -12px;
+        transform: rotate(90deg);
       }
     }
 
@@ -832,11 +877,11 @@
       <div>
         <div class="kicker">内部 H5 草稿 · Stripe / AI / Finance Infrastructure · 2026-06-22</div>
         <h1>Stripe 研究控制台：从支付 API 到 Agent 交易网络</h1>
-        <p class="lead">这页不是结论稿，也不是词云展示。它的任务是把 1000 条候选来源拆成证据层，回答三个问题：Stripe 的公司路径怎么变，哪些技术事件改变了商业动作，AI 之后交易链路新增了哪些可验证对象。</p>
+        <p class="lead">研究目标：以 1000 条候选来源为证据底座，梳理 Stripe 的公司演进、技术事件与 AI 后交易链路变化，并标出哪些判断已经可用、哪些仍需继续晋级证据。</p>
       </div>
       <div class="meta-row">
-        <span class="pill">材料池：1000 rows / 292 JD rows</span>
-        <span class="pill">读法：先证据分层，再看时间轴</span>
+        <span class="pill">证据库：1000 rows / 292 JD rows</span>
+        <span class="pill">阅读顺序：证据分层 -> 时间轴 -> AI 链路 -> 能力地图</span>
         <span class="pill">状态：internal research draft</span>
       </div>
     </header>
@@ -850,40 +895,39 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>先把材料组织清楚：1000 条来源不是 1000 条结论</h2>
-        <p>本页只把已经能支撑 H5 的材料推到前台；其余来源保留在 source queue，继续按证据强度晋级。</p>
+        <h2>证据分层</h2>
+        <p>1000 条来源先作为研究底座管理，进入正文的只保留可回溯、可解释、可继续验证的证据。</p>
       </div>
-      <div class="path-grid">
-        <article class="path-card">
-          <strong>第一层：已核验主证据</strong>
-          <span>官方年信、新闻稿、docs/API、GitHub、重点 JD。</span>
+      <div class="reading-flow">
+        <article class="relation-card">
+          <strong>已晋级证据</strong>
+          <p>官方年信、新闻稿、docs/API、GitHub、重点 JD。</p>
           <ul>
-            <li>用于 H5 中的数字、产品发布、API 路径和招聘信号。</li>
-            <li>每条进入页面的结论都要能回到来源索引。</li>
-            <li>官方数据按自披露处理，不写成独立审计。</li>
+            <li>承载页面中的数字、发布、API 路径和招聘信号。</li>
+            <li>进入正文的判断必须能回到来源索引。</li>
           </ul>
         </article>
-        <article class="path-card">
-          <strong>第二层：1000-source queue</strong>
-          <span>1000 行具体 URL，不再用搜索占位。</span>
+        <article class="relation-card">
+          <strong>候选证据库</strong>
+          <p>1000 行具体 URL，不再使用搜索占位。</p>
           <ul>
             <li>487 条 docs/API/changelog。</li>
             <li>292 条招聘/JD，包括 260 条职位详情页。</li>
             <li>160 条 GitHub/code/community 路由。</li>
           </ul>
         </article>
-        <article class="path-card">
-          <strong>第三层：待晋级材料</strong>
-          <span>媒体、伙伴、监管、社区、竞品材料。</span>
+        <article class="relation-card">
+          <strong>待晋级证据</strong>
+          <p>媒体、伙伴、监管、社区、竞品材料。</p>
           <ul>
             <li>估值和份额判断只作为二级证据。</li>
             <li>市场份额没有公开审计分母，先用代理指标。</li>
             <li>历史 JD 变化还需要 archive 或 dated mirror。</li>
           </ul>
         </article>
-        <article class="path-card">
-          <strong>这页现在要回答</strong>
-          <span>不是“Stripe 很厉害”，而是证据怎么连接。</span>
+        <article class="relation-card">
+          <strong>正文组织轴</strong>
+          <p>正文只围绕三条轴展开。</p>
           <ul>
             <li>公司运营线：估值、交易量、并购、客户结构。</li>
             <li>技术事件线：API、文档、计费、风控、协议。</li>
@@ -895,8 +939,49 @@
 
     <section class="panel wide">
       <div class="panel-head">
-          <h2>公司路径：先按阶段归档，再做判断</h2>
-          <p>这里不下大结论，只把 Stripe 每阶段新增的经营能力和后续 AI 关联放在一条线上。</p>
+        <h2>阅读路径：三张图的关系</h2>
+        <p>后面的时间轴、AI 链路和能力地图不是并列素材，而是同一组证据的三次处理。</p>
+      </div>
+      <div class="reading-flow">
+        <article class="relation-card">
+          <strong>01 证据分层</strong>
+          <p>先判断一条信息处在已晋级、候选、还是待晋级状态。</p>
+          <ul>
+            <li>解决“哪些来源能支撑正文”。</li>
+            <li>控制口径和证据强度。</li>
+          </ul>
+        </article>
+        <article class="relation-card">
+          <strong>02 时间轴</strong>
+          <p>把公司运营事件和技术事件放回时间顺序。</p>
+          <ul>
+            <li>回答“发生了什么”。</li>
+            <li>连接估值、交易量、并购、API、风控和协议。</li>
+          </ul>
+        </article>
+        <article class="relation-card">
+          <strong>03 AI 交易链路</strong>
+          <p>从时间轴中抽出 AI 后真正被改写的交易环节。</p>
+          <ul>
+            <li>回答“改写了哪一段链路”。</li>
+            <li>交易入口、商品表达、计费、结算、风险、组织逐项拆开。</li>
+          </ul>
+        </article>
+        <article class="relation-card">
+          <strong>04 能力迁移地图</strong>
+          <p>把事件和链路变化定位到能力迁移上。</p>
+          <ul>
+            <li>回答“Stripe 从什么能力迁到什么能力”。</li>
+            <li>用于回看某个节点属于公司、产品、Agent、金融轨道还是风险控制。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <div class="panel-head">
+          <h2>背景层：公司路径按阶段归档</h2>
+          <p>这一层只建立阶段背景，后面的时间轴、AI 链路和能力地图都从这里取公司语境。</p>
       </div>
       <div class="path-grid">
         <article class="path-card">
@@ -949,8 +1034,8 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>时间轴：公司运营线和技术事件线并读</h2>
-        <p>拖动年份，先看证据指标，再看商业动作影响了哪些技术选择，或技术能力反过来打开了哪些商业动作。</p>
+        <h2>02 时间轴：公司运营线和技术事件线并读</h2>
+        <p>时间轴负责回答“发生了什么”。拖动年份，先看证据指标，再看商业动作影响了哪些技术选择，或技术能力反过来打开了哪些商业动作。</p>
       </div>
       <div class="timeline-reader">
         <div class="timeline-control">
@@ -975,8 +1060,8 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>AI 变化链路：交易从哪里被改写</h2>
-        <p>这一章只做链路拆解：谁发起交易，商品怎样给机器读取，费用怎样发生，钱走什么轨道，风险在哪里拦截，组织能力怎么跟上。</p>
+        <h2>03 AI 交易链路：这些事件改写了哪一段交易</h2>
+        <p>AI 链路负责解释时间轴。它把事件拆到交易入口、商品表达、计费、结算、风险、组织六个环节，说明变化发生在交易链条的哪里。</p>
       </div>
       <div class="ai-flow">
         <div class="flow-thesis">
@@ -984,7 +1069,7 @@
             <span class="stage-label">研究假设</span>
             <strong>AI 不是给支付加一个助手，而是让交易链路多了 Agent、机器可读商品、用量计费和机器支付协议。</strong>
           </div>
-          <p>下面六个标签不是概念框架，而是 source queue 的整理维度。每个维度都必须继续回到 docs、发布会、API、JD 和伙伴公告里补证据。</p>
+          <p>下面六个标签不是概念框架，而是证据库的整理维度。每个维度都必须继续回到 docs、发布会、API、JD 和伙伴公告里补证据。</p>
         </div>
         <div class="flow-grid">
           <div id="flowTabs" class="flow-tabs"></div>
@@ -1001,7 +1086,7 @@
     <section class="panel wide">
       <div class="panel-head">
         <h2>证据索引：词条必须回到来源分桶</h2>
-        <p>这些词条不是风格装饰。它们是后续从 1000-source queue 继续抽证据的入口。</p>
+        <p>这些词条不是风格装饰。它们是后续从证据库继续抽取来源、补齐论证的入口。</p>
       </div>
       <div class="word-cloud" aria-label="Stripe AI finance signal cloud">
         <span class="xl">agentic commerce</span>
@@ -1096,8 +1181,8 @@
 
     <aside class="control-panel">
       <div>
-        <h2>证据地图</h2>
-        <p>地图只做索引：左侧是公司/产品路径，右侧是 Agent、协议、稳定币和机器支付路径。</p>
+        <h2>04 能力迁移地图</h2>
+        <p>地图负责定位：把时间轴事件和 AI 链路变化放到同一张能力迁移图里。</p>
       </div>
       <div class="range-wrap">
         <div class="range-label"><span>公司路径</span><span id="scoreValue">55</span><span>AI 金融形态</span></div>
@@ -1118,14 +1203,14 @@
       <section class="panel">
         <div class="panel-head">
           <h2>来源节点</h2>
-          <p>按时间、能力和证据强度展开。</p>
+          <p>点击节点查看它来自哪类证据、对应哪段时间、解释哪种能力迁移。</p>
         </div>
         <div id="spine" class="spine"></div>
       </section>
 
       <section class="panel">
         <div class="panel-head">
-          <h2>能力迁移地图</h2>
+          <h2>迁移坐标</h2>
           <p>横轴：从支付 API 和商户经营，移动到 Agent 交易、token 计费、稳定币和机器支付。</p>
         </div>
         <div class="axis-labels"><span>支付 API / 商户增长</span><span>Agent / token / stablecoin / machine payment</span></div>

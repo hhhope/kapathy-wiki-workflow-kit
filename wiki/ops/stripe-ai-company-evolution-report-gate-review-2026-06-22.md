@@ -98,6 +98,7 @@ created: 2026-06-22
 - Timeline now includes company/technology dual tracks and evidence metrics, but several valuation/acquisition details are secondary-source markers and must not be upgraded to investment-grade claims without independent checks.
 - Market share is intentionally framed as processed-volume/GDP/customer/valuation/share-gain proxy. Do not turn it into a precise market-share percentage without audited numerator and denominator.
 - A live re-anchor corrected the page style from abstract thesis language to research-control-surface language. Future edits should preserve this: source organization first, staged judgments second.
+- A follow-up structure pass corrected the relationship between modules: timeline is the factual sequence, AI transaction chain is the explanatory lens, and capability migration map is the positioning layer.
 - Timeline and AI-flow interactions are browser-rendered and screenshot-checked at initial state; drag/click state changes still need console-event QA before review-ready.
 
 ## Verification Evidence
@@ -106,8 +107,8 @@ created: 2026-06-22
 |---|---|---|
 | HTML parser | pass | `python3 -m html.parser wiki/reports/stripe-ai-company-evolution-h5.html` |
 | Diff whitespace | pass | `git diff --check -- wiki/sources/stripe-ai-company-evolution-research-2026-06-22.md wiki/ops/stripe-ai-company-evolution-report-gate-review-2026-06-22.md wiki/reports/stripe-ai-company-evolution-h5.html` |
-| Desktop screenshot | pass after source-organization re-anchor | `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` full-page screenshot shows research-control title, 1000-source organization section, company path, draggable dual timeline, evidence metrics, company/technology lanes, AI transaction-chain flow, expanded signal groups, 22-node map, and source cards. |
-| Mobile screenshot | pass after source-organization re-anchor | `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` full-page screenshot shows the source organization section, dual timeline, evidence metrics, signal groups, and map in a readable single-column layout. |
+| Desktop screenshot | pass after relationship repair | `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` full-page screenshot shows research-control title, evidence stratification, explicit reading path, company path, draggable dual timeline, AI transaction-chain flow, expanded signal groups, capability migration map, and source cards. |
+| Mobile screenshot | pass after relationship repair | `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` full-page screenshot shows evidence stratification, reading path, dual timeline, AI transaction-chain flow, signal groups, and map in a readable single-column layout. |
 | Chinese rendering | fixed | Initial screenshots showed missing CJK glyphs; H5 now imports Noto Sans SC and screenshots render Chinese correctly. |
 | Frontmatter precheck | inconclusive for target, blocked globally by legacy pages | `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target ...` returned existing unrelated legacy blockers and `target.entry_count: 0`; target pages include required fields from repair hints. |
 | Console event check | blocked | `node -e require('playwright')...` failed with `MODULE_NOT_FOUND`; CLI screenshot still worked. |

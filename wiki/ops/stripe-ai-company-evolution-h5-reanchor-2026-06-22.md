@@ -45,12 +45,26 @@ The H5 should behave like a research control surface:
 ## Applied Correction
 
 - Reframed the H5 as `Stripe 研究控制台`.
-- Added a first visible source-organization section.
+- Reframed the source section as evidence stratification rather than chatty
+  "materials" explanation.
+- Added an explicit reading path: evidence stratification -> timeline -> AI
+  transaction-chain chapter -> capability migration map.
 - Rewrote the main timeline as company operating path plus technology event
   path.
 - Replaced abstract "读法" and "核心判断" labels with evidence-oriented labels.
 - Recast AI content as a transaction-chain change analysis.
 - Changed the signal section into an evidence index tied to source buckets.
+
+## Relationship Rule For This H5
+
+The three main diagrams must not read as peer modules:
+
+1. Timeline = what happened and when.
+2. AI transaction chain = which part of the transaction was changed by those
+   events.
+3. Capability migration map = where each event sits between payment API,
+   merchant operations, Agent commerce, token billing, stablecoin, machine
+   payments, and risk control.
 
 ## Residual Risk
 
