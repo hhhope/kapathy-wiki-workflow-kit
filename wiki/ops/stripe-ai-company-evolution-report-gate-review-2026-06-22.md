@@ -112,6 +112,7 @@ created: 2026-06-22
 - 2026-06-22 A-direction rewrite replaced the rejected visible chapter grammar with a BVP-style trend report, a three-dimensional evidence timeline, a capability-gap acquisition map, and an AI transaction-chain section. This improves structure but still requires fresh screenshot QA and interaction checks.
 - 2026-06-22 follow-up repaired the remaining conversational headings into a unified `证据坐标` system, made the signal cloud clickable with 52 signal terms, and surfaced the 1000-source queue as grouped inventory rather than implying 22 proof nodes are the evidence limit.
 - 2026-06-22 reader-language repair removed remaining process-language from visible H5 copy: hero, section descriptions, trend cards, timeline labels, signal detail labels, synthesis copy, and evidence inventory now use report-language instead of conversation/process wording.
+- 2026-06-22 Atlas refinement replaced the rejected `证据坐标` reader surface with `Stripe Evolution Atlas`: first-screen time spine, processed-volume line, transaction/credit rails, embedded-finance path, AI five-layer payment restructuring, standalone credit flow, competition-position grid, strategy-validation grid, and source-id quote cards.
 
 ## Verification Evidence
 
@@ -137,7 +138,10 @@ created: 2026-06-22
 | Reader-language cleanup | pass | Static check over H5 visible templates excluding raw `signalTerms` data found no hits for rejected process terms such as `不是`, `不能`, `proof`, `Evidence lane`, `Proof tag`, `来源路由`, or `证据边界`. |
 | CSV field correction | pass | Queue check uses `url_or_query`, not `url`: 1000 rows, 0 empty `url_or_query`, 0 duplicate `url_or_query`, 0 `SEARCH:` placeholders, 292 `jobs-jd` rows. |
 | Live re-anchor trace | pass | `wiki/ops/stripe-ai-company-evolution-h5-reanchor-2026-06-22.md` records the user's correction: source organization, unified style, and evidence-bound wording. |
+| Atlas refinement static checks | pass | `python3 -c "HTMLParser().feed(...)"` returned `html_parse_ok 119287`; `git diff --check -- wiki/reports/stripe-ai-company-evolution-h5.html openspec/changes/refine-stripe-h5-visual-atlas/* wiki/ops/stripe-ai-company-evolution-report-gate-review-2026-06-22.md` returned clean. |
+| Rejected visible-label check after Atlas refinement | pass | H5-only grep found no hits for `证据坐标`, `能力迁移`, `核心判断`, `原有能力底座`, `市场位置计算面板`, `AI 交易基础设施`, `AI 交易链路`, `结论坐标`, `chain thesis`, `学法`, `Agent 任务卡`, or `总分总`. |
+| Atlas desktop/mobile smoke screenshots | pass | `playwright screenshot file:///mnt/d/cloud/account-meeting-lore/wiki/reports/stripe-ai-company-evolution-h5.html /tmp/stripe-atlas-desktop.png --viewport-size=1440,1200` and the matching mobile command with `390,1200` both completed; visual readback showed the first-screen title, line chart, time spine, relationship rails, and metric cards without obvious overlap. |
 
 ## Decision
 
-Use as an internal first draft and research control surface. The latest version follows the selected A direction but is not review-ready until fresh screenshot QA and interaction checks pass. Do not claim final PPT, Feishu sync, public publication, or completed 1000-source read pack. The 1000-row CSV is a concrete-source triage queue; only read and promoted rows should become H5/PPT evidence.
+Use as an internal first draft and research control surface. The latest Atlas refinement has fresh static and first-screen visual smoke checks, but is still not a final PPT, Feishu sync, public publication, or completed 1000-source read pack. The 1000-row CSV is a concrete-source triage queue; only read and promoted rows should become H5/PPT evidence.

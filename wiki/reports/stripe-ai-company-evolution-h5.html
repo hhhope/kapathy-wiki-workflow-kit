@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stripe：从支付 API 到 Agent 交易网络</title>
+  <title>Stripe 公司演进与 AI 时代支付变革</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800;900&display=swap");
 
@@ -44,17 +44,16 @@
     }
 
     .hero {
-      min-height: 74vh;
+      min-height: 84vh;
       display: grid;
-      align-content: end;
-      gap: 24px;
+      gap: 26px;
       padding: clamp(24px, 5vw, 64px);
       background:
-        linear-gradient(110deg, rgba(17, 24, 39, 0.92), rgba(15, 118, 110, 0.74)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 244, 238, 0.94)),
         url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1800&q=80");
       background-size: cover;
       background-position: center;
-      color: #fff;
+      border: 1px solid var(--line);
       border-radius: 8px;
       box-shadow: var(--shadow);
     }
@@ -68,7 +67,7 @@
     }
 
     .kicker {
-      color: #b8f3e8;
+      color: var(--green);
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -92,7 +91,7 @@
       max-width: 820px;
       margin-bottom: 0;
       font-size: clamp(17px, 2.3vw, 25px);
-      color: #e8edf4;
+      color: var(--slate);
     }
 
     .meta-row {
@@ -103,10 +102,10 @@
 
     .pill {
       padding: 8px 10px;
-      border: 1px solid rgba(255, 255, 255, 0.34);
+      border: 1px solid rgba(39, 52, 73, 0.18);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      color: #f6f7fb;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--slate);
     }
 
     .summary-grid {
@@ -137,6 +136,269 @@
       margin-top: 8px;
       color: var(--muted);
       font-size: 13px;
+    }
+
+    .atlas-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 24px;
+      align-items: end;
+    }
+
+    .atlas-card {
+      padding: 16px;
+      border: 1px solid rgba(39, 52, 73, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 12px 30px rgba(39, 52, 73, 0.1);
+    }
+
+    .time-spine {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .time-spine div {
+      min-height: 112px;
+      padding: 12px;
+      border-right: 1px solid var(--line);
+    }
+
+    .time-spine div:last-child {
+      border-right: 0;
+    }
+
+    .time-spine strong {
+      display: block;
+      color: var(--slate);
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .time-spine span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .relationship-rails {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .rail {
+      display: grid;
+      grid-template-columns: 110px repeat(5, minmax(0, 1fr));
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .rail strong {
+      display: grid;
+      place-items: center;
+      background: var(--slate);
+      color: #fff;
+      font-size: 13px;
+    }
+
+    .rail span {
+      display: grid;
+      place-items: center;
+      padding: 8px;
+      border-left: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .rail.credit strong {
+      background: var(--red);
+    }
+
+    .volume-spark {
+      display: grid;
+      gap: 12px;
+    }
+
+    .spark-line {
+      position: relative;
+      height: 150px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(15, 118, 110, 0.08), transparent),
+        repeating-linear-gradient(0deg, transparent, transparent 36px, rgba(39, 52, 73, 0.08) 37px);
+      overflow: hidden;
+    }
+
+    .spark-line svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .spark-stat {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .spark-stat div,
+    .source-status div {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfbf9;
+    }
+
+    .spark-stat strong,
+    .source-status strong {
+      display: block;
+      color: var(--green);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .spark-stat span,
+    .source-status span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .source-status {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .lens-grid,
+    .system-stack,
+    .credit-flow,
+    .validation-grid,
+    .evidence-drawer-grid,
+    .competition-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .lens-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .lens-card,
+    .system-layer,
+    .credit-step,
+    .validation-card,
+    .quote-card,
+    .competition-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .lens-card strong,
+    .system-layer strong,
+    .credit-step strong,
+    .validation-card strong,
+    .quote-card strong,
+    .competition-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--slate);
+      font-size: 15px;
+    }
+
+    .lens-card p,
+    .system-layer p,
+    .credit-step p,
+    .validation-card p,
+    .quote-card p,
+    .competition-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .system-stack {
+      grid-template-columns: 1fr;
+    }
+
+    .system-layer {
+      display: grid;
+      grid-template-columns: 180px 1fr 0.9fr;
+      gap: 12px;
+      align-items: center;
+      border-left: 6px solid var(--green);
+    }
+
+    .system-layer.entry {
+      border-left-color: var(--blue);
+    }
+
+    .system-layer.credential {
+      border-left-color: #6d5bd0;
+    }
+
+    .system-layer.protocol {
+      border-left-color: var(--gold);
+    }
+
+    .system-layer.risk {
+      border-left-color: var(--red);
+    }
+
+    .credit-flow {
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+
+    .credit-step {
+      min-height: 142px;
+      background: #fff7f5;
+    }
+
+    .validation-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .quote-card {
+      background: #fbfbf9;
+    }
+
+    .quote-card q {
+      display: block;
+      margin: 8px 0;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .source-id {
+      display: inline-flex;
+      width: fit-content;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .competition-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 
     .path-grid,
@@ -1130,6 +1392,14 @@
       .inventory-grid,
       .flow-thesis,
       .flow-grid,
+      .atlas-grid,
+      .time-spine,
+      .lens-grid,
+      .system-layer,
+      .credit-flow,
+      .validation-grid,
+      .evidence-drawer-grid,
+      .competition-grid,
       .closing {
         grid-template-columns: 1fr;
       }
@@ -1152,6 +1422,15 @@
         right: 18px;
         bottom: -12px;
         transform: rotate(90deg);
+      }
+
+      .rail {
+        grid-template-columns: 1fr;
+      }
+
+      .rail span {
+        border-left: 0;
+        border-top: 1px solid var(--line);
       }
     }
 
@@ -1182,74 +1461,115 @@
 <body>
   <div class="app">
     <header class="hero">
-      <div>
-        <div class="kicker">Stripe / AI / Finance Infrastructure · 2026-06-22</div>
-        <h1>Stripe 的 AI 交易基础设施路径</h1>
-        <p class="lead">AI 将交易入口推向 Agent surface，将商品表达推向机器可读目录，将计费推向 token 与 event，将结算推向钱包、稳定币和机器支付，也将风险控制前移到授权、工具调用与资源消耗环节。</p>
+      <div class="atlas-grid">
+        <div>
+          <div class="kicker">Stripe Evolution Atlas · 2010-2026</div>
+          <h1>Stripe 公司演进与 AI 时代支付变革</h1>
+          <p class="lead">这页从时间维度看 Stripe 如何从支付 API 走向嵌入式支付、嵌入式金融，再进入 Agent 工作流里的交易与信用执行。AI 不是主角，主角仍是商户、平台、用户、卡网络、银行和监管之间的交易关系与信用关系。</p>
+        </div>
+        <aside class="atlas-card volume-spark" aria-label="Stripe 处理规模折线">
+          <strong>处理规模曲线</strong>
+          <div class="spark-line">
+            <svg viewBox="0 0 420 150" role="img" aria-label="Stripe processed volume 2023 to 2025">
+              <polyline points="36,104 198,76 372,28" fill="none" stroke="#0f766e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+              <g fill="#0f766e">
+                <circle cx="36" cy="104" r="6" />
+                <circle cx="198" cy="76" r="6" />
+                <circle cx="372" cy="28" r="6" />
+              </g>
+              <g fill="#273449" font-size="13" font-weight="700">
+                <text x="20" y="128">2023 $1.0T</text>
+                <text x="158" y="100">2024 ~$1.4T</text>
+                <text x="318" y="52">2025 $1.9T</text>
+              </g>
+            </svg>
+          </div>
+          <div class="spark-stat">
+            <div><strong>1.0%</strong><span>2023 GDP 等价口径</span></div>
+            <div><strong>1.6%</strong><span>2025 GDP 等价口径</span></div>
+            <div><strong>34%</strong><span>2025 处理规模同比增长</span></div>
+          </div>
+          <div class="source-status">
+            <div><strong>175</strong><span>已整理 source pack</span></div>
+            <div><strong>1000</strong><span>URL queue，不等于已读结论</span></div>
+            <div><strong>5</strong><span>本页强引用原文</span></div>
+          </div>
+        </aside>
+      </div>
+      <div class="time-spine" aria-label="Stripe 公司位置迁移">
+        <div><strong>2010-2014</strong><span>支付 API：把在线收款做成开发者可接入接口。</span></div>
+        <div><strong>2015-2019</strong><span>嵌入式支付：平台分账、订阅、风控、线下入口进入经营系统。</span></div>
+        <div><strong>2020-2022</strong><span>嵌入式金融：账户、发卡、融资、税务、身份和数据能力扩张。</span></div>
+        <div><strong>2023-2025</strong><span>AI 客户压力：用量计费、全球税务、钱包、稳定币、开发者工具被放大。</span></div>
+        <div><strong>2026</strong><span>Agent 工作流：商品发现、授权、机器支付、风险和责任链被协议化。</span></div>
+      </div>
+      <div class="relationship-rails" aria-label="交易关系与信用关系双轨">
+        <div class="rail transaction"><strong>交易关系</strong><span>商品发现</span><span>价格表达</span><span>授权与履约</span><span>分账结算</span><span>争议责任</span></div>
+        <div class="rail credit"><strong>信用关系</strong><span>经营数据</span><span>授信判断</span><span>额度/期限/价格</span><span>还款来源</span><span>风险再评估</span></div>
       </div>
       <div class="meta-row">
-        <span class="pill">趋势报告</span>
-        <span class="pill">时间 · 证据维度 · 结论坐标</span>
-        <span class="pill">研究版</span>
+        <span class="pill">内部研究草案</span>
+        <span class="pill">时间轴 · 关系线 · 来源原文</span>
+        <span class="pill">不把 1000 条 queue 写成 1000 条结论</span>
       </div>
     </header>
 
     <section class="summary-grid" aria-label="关键事实">
-      <div class="metric"><strong>$1.9T</strong><span>2025 年 Stripe 商户处理规模，官方称约等于全球 GDP 1.6%，同比 2024 增长 34%。</span></div>
-      <div class="metric"><strong>5M+</strong><span>Stripe 年信称直接或通过平台服务超过 500 万 businesses。</span></div>
-      <div class="metric"><strong>288</strong><span>Sessions 2026 发布的产品与功能数量，主题是 AI economic infrastructure。</span></div>
-      <div class="metric"><strong>100k+</strong><span>Stripe 年信称已有超过 10 万个 claimable sandboxes 从 AI coding tools 创建。</span></div>
+      <div class="metric"><strong>$1.0T</strong><span>2023 年 Stripe 自披露处理规模，约等于全球 GDP 1.0%，是本页规模曲线基线。</span></div>
+      <div class="metric"><strong>$1.9T</strong><span>2025 年 Stripe 自披露处理规模，约等于全球 GDP 1.6%，同比增长 34%。</span></div>
+      <div class="metric"><strong>5M+</strong><span>Stripe 年信称直接或经平台服务超过 500 万 businesses，说明它已经不是单点支付按钮。</span></div>
+      <div class="metric"><strong>288</strong><span>Sessions 2026 发布产品与功能，AI、钱包、计费、风控、稳定币和工具链同场出现。</span></div>
     </section>
 
     <section class="panel wide">
       <div class="panel-head">
-          <h2>五个趋势定义 Stripe 的 AI 交易基础设施路径</h2>
-          <p>五个趋势构成主线：交易入口、商品表达、计费颗粒、结算轨道、风险对象同步迁移，Stripe 的产品和并购动作沿着这些坐标展开。</p>
+          <h2>公司路径：五次位置迁移</h2>
+          <p>Stripe 的核心不是“做支付”，而是持续把复杂金融关系设计成对象、接口、规则和生态。AI 时代只是把这个能力重新推到更高频、更自动化、更需要责任边界的位置。</p>
       </div>
       <div class="path-grid">
         <article class="path-card">
-          <strong>01 交易入口迁移</strong>
-          <span>需求入口从商户网站进入 Copilot、Gemini、ChatGPT 和 agent surface。</span>
+          <strong>01 支付 API</strong>
+          <span>把在线收款、测试、错误处理、webhook 和文档做成开发者入口。</span>
           <ul>
-            <li>数据点：Copilot Checkout、Agentic Commerce Suite、Google AI Mode。</li>
-            <li>定位：Stripe 承接 agent commerce 的授权、商户接入和支付控制。</li>
-            <li>来源：Copilot release、Sessions 2026、agentic commerce docs。</li>
+            <li>战略：从接入摩擦切入，而不是先做完整金融公司。</li>
+            <li>能力：API、SDK、docs、test mode。</li>
+            <li>AI 复用：agents.md、MCP、llms.txt、claimable sandbox。</li>
           </ul>
         </article>
         <article class="path-card">
-          <strong>02 商品表达机器可读</strong>
-          <span>网页商品卡转向 catalog feed、价格、库存、订单审批和 webhook。</span>
+          <strong>02 嵌入式支付</strong>
+          <span>Connect、Billing、Radar、Terminal 把支付嵌入平台和商户经营。</span>
           <ul>
-            <li>数据点：ProductCatalogImport、15-minute inventory/pricing refresh。</li>
-            <li>定位：商户商品进入 Agent 可读取、可比较、可下单的数据层。</li>
-            <li>来源：seller docs、preview API、Checkout Session。</li>
+            <li>战略：用平台客户和订阅客户扩大交易场景。</li>
+            <li>能力：分账、计费、风控、线下入口。</li>
+            <li>AI 复用：agent commerce 仍要回到商户控制、履约和风控。</li>
           </ul>
         </article>
         <article class="path-card">
-          <strong>03 计费颗粒变细</strong>
-          <span>AI 产品成本随 token 和 event 发生，计费颗粒继续下探。</span>
+          <strong>03 嵌入式金融</strong>
+          <span>账户、发卡、融资、身份、税务和数据能力让 Stripe 进入金融经营层。</span>
           <ul>
-            <li>数据点：Metronome、streaming payments、usage/outcome billing。</li>
-            <li>定位：Stripe 将计量、账单和结算连接到实时收入模型。</li>
-            <li>来源：2025 annual letter、Sessions 2026。</li>
+            <li>战略：从交易处理走向资金和合规对象。</li>
+            <li>能力：Treasury、Issuing、Capital、Identity、Tax。</li>
+            <li>AI 复用：钱包、授信、账期、实时风控都有金融底座。</li>
           </ul>
         </article>
         <article class="path-card">
-          <strong>04 结算轨道扩张</strong>
-          <span>资金轨道从 card rails 扩到 wallet、stablecoin、MPP 和 x402。</span>
+          <strong>04 AI 客户压力</strong>
+          <span>AI 公司把全球化、用量计费、税务、欺诈、token 成本和开发者工具同时压到 Stripe。</span>
           <ul>
-            <li>数据点：Bridge、Privy、Tempo、machine payments docs。</li>
-            <li>定位：Stripe 补齐 wallet abstraction 与 stablecoin orchestration。</li>
-            <li>来源：annual letter、crypto page、machine payment docs。</li>
+            <li>战略：不是卖 AI 功能，而是承接 AI 公司的收入和风险系统。</li>
+            <li>能力：Revenue suite、Metronome、Radar、Tax。</li>
+            <li>AI 复用：实现成本下降后，计费和评估设计变得更重要。</li>
           </ul>
         </article>
         <article class="path-card">
-          <strong>05 风险对象迁移</strong>
-          <span>风险对象从盗卡和拒付扩到 token theft、假注册、tool misuse。</span>
+          <strong>05 Agent 工作流</strong>
+          <span>商品发现、凭据、权益、MCP 调用、协议支付和责任链进入机器可执行流程。</span>
           <ul>
-            <li>数据点：Radar token theft、3.3M risky sign-ups、AI Security JD。</li>
-            <li>定位：风控前移到注册、推理路径、工具调用和审批接口。</li>
-            <li>来源：Sessions 2026、AI Security JD、seller docs。</li>
+            <li>战略：谁定义更好用的 API 和对象模型，谁更容易成为第一接入点。</li>
+            <li>能力：Link wallets、Issuing、MCP、x402、MPP。</li>
+            <li>AI 复用：Agent 不是替人付款，而是让交易边界需要重新设计。</li>
           </ul>
         </article>
       </div>
@@ -1257,12 +1577,12 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>证据坐标 01｜规模与市场位置</h2>
-        <p>规模坐标呈现 Stripe 的可见处理面：处理规模、GDP 等价份额、同业参照和增长曲线共同构成市场位置判断。</p>
+        <h2>市场位置：用处理规模、GDP 等价口径和同业参照看增长</h2>
+        <p>Stripe 没有披露可审计的全球支付份额，本页不用一句话替代计算。可见市场位置由处理规模曲线、GDP 等价份额、同业 TPV 参照、估值流动性事件和分析师 share-gain 判断共同校准。</p>
       </div>
       <div class="market-board">
         <article class="chart-card">
-          <strong>可见处理面：$1T -> ~$1.4T -> $1.9T</strong>
+          <strong>Stripe 自身增长：$1T -> ~$1.4T -> $1.9T</strong>
           <p class="footnote">2023 和 2025 为 Stripe 年信官方口径；2024 为二级报道口径，用于连接增长曲线，不当作审计值。</p>
           <div class="bar-chart">
             <div class="bar-row">
@@ -1300,8 +1620,8 @@
           <p class="footnote">来源：<a href="https://stripe.com/annual-updates/2023" target="_blank" rel="noreferrer">Stripe 2023 annual letter</a> · <a href="https://stripe.com/annual-updates/2025" target="_blank" rel="noreferrer">Stripe 2025 annual letter</a> · <a href="https://www.investors.com/news/technology/stripe-ipo-paypal-stock-nvidia-shopify-adyen/" target="_blank" rel="noreferrer">IBD Stripe coverage</a></p>
         </article>
         <article class="chart-card">
-          <strong>同业参照呈现相对量级</strong>
-          <p>PayPal、Adyen、Worldpay/Global Payments 用于校准处理规模的相对位置。不同公司收入定义和处理口径不同，revenue / TPV 仅保留为方法参考。</p>
+          <strong>同业参照：不是全球份额，而是相对量级</strong>
+          <p>PayPal、Adyen、Worldpay/Global Payments 只用于校准处理规模和商业模式差异。不同公司的 revenue、net revenue、processed volume 和 TPV 口径不同，不能直接拼成全球份额图。</p>
           <div class="bar-chart">
             <div class="bar-row">
               <span>PayPal 2024</span>
@@ -1324,27 +1644,27 @@
       </div>
       <div class="formula-grid">
         <article class="formula-card">
-          <strong>GDP 等价份额变化</strong>
+          <strong>规模穿透力</strong>
           <span class="formula-number">+0.6pp</span>
-          <p>按 Stripe 自披露 GDP 等价口径，2023 的 1.0% 到 2025 的 1.6%，说明它在全球经济活动中的可见处理面扩大。</p>
+          <p>按 Stripe 自披露 GDP 等价口径，2023 的 1.0% 到 2025 的 1.6%，说明它进入更多经济活动场景。</p>
         </article>
         <article class="formula-card">
-          <strong>同业对照口径</strong>
+          <strong>竞争判断</strong>
           <span class="formula-number">proxy</span>
-          <p>公开同业数据用于相对位置判断；Stripe 收入和全球支付份额留在未披露口径之外。</p>
+          <p>公开同业数据只能说明量级和模式差异；Stripe 收入和全球支付份额仍留在未披露口径之外。</p>
         </article>
         <article class="formula-card">
-          <strong>纳入时间轴</strong>
+          <strong>放回时间线</strong>
           <span class="formula-number">axis</span>
-          <p>市场位置与并购、产品、AI 交易变化一起解释 Stripe 的定位变化。</p>
+          <p>规模增长必须和并购、产品、客户结构、AI 入口、稳定币与信用能力一起读。</p>
         </article>
       </div>
     </section>
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>证据坐标 02｜时间轴：公司、市场、并购、技术、AI</h2>
-        <p>拖动年份查看公司规模、市场位置、并购补位、技术事件和 AI 交易变化的同步演进。</p>
+        <h2>公司演进时间轴：战略、市场、并购、技术并读</h2>
+        <p>拖动年份看同一阶段里的战略押注、规模/估值、并购补位、技术对象和 AI 时代复用。重点不是事件堆叠，而是商业动作如何逼出技术选择，技术对象又如何打开下一段商业边界。</p>
       </div>
       <div class="timeline-reader">
         <div class="timeline-control">
@@ -1369,8 +1689,8 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>证据坐标 03｜能力缺口：并购补位</h2>
-        <p>并购坐标呈现能力补位关系：区域支付、税务对账、线下硬件、MOR、稳定币、钱包和用量计费分别进入交易系统的不同环节。</p>
+        <h2>并购与能力补位：补的是嵌入式金融缺口</h2>
+        <p>并购不是大事列表。Paystack、TaxJar、Recko、BBPOS、Lemon Squeezy、Bridge、Privy、Metronome 分别补区域支付、税务对账、线下硬件、MOR、稳定币、钱包和用量计费，使 Stripe 能继续向商户经营、资金、信用和 Agent 工作流延展。</p>
       </div>
       <div class="deal-grid">
         <article class="deal-card"><span>local payment network</span><strong>Paystack</strong><p>补区域支付和本地支付网络，支撑全球化商户进入更多市场。</p></article>
@@ -1380,22 +1700,49 @@
         <article class="deal-card"><span>stablecoin orchestration</span><strong>Bridge</strong><p>补稳定币编排、跨境和合规运营，是 machine payment 和 global settlement 的关键拼图。</p></article>
         <article class="deal-card"><span>wallet abstraction</span><strong>Privy</strong><p>补钱包抽象和开发者体验，让 agent/app 钱包不再只是 crypto 前端问题。</p></article>
         <article class="deal-card"><span>usage / event rating</span><strong>Metronome</strong><p>补 token、event、outcome 计费和 rating，支撑 AI 产品实时收入模型。</p></article>
-        <article class="deal-card"><span>capability system</span><strong>缺口闭合</strong><p>这些节点共同呈现 Stripe 从支付 API 走向 AI 交易基础设施的能力补位路径。</p></article>
+        <article class="deal-card"><span>embedded finance system</span><strong>缺口闭合</strong><p>这些节点共同支撑 Stripe 从支付 API 走向嵌入式金融，再进入 Agent 工作流里的交易和信用执行。</p></article>
       </div>
     </section>
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>证据坐标 04｜AI 交易链路</h2>
-        <p>交易链路坐标按照入口、商品表达、计费、授权、结算、风险六个环节组织 AI 后的变化。</p>
+        <h2>AI 时代支付重组：交易关系与信用关系被重新设计</h2>
+        <p>AI 没有重新发明支付行业。真正变化是实现和集成成本下降后，交易关系、信用关系、权益入口、工具调用、协议授权和风控责任可以被重新组合；设计、评估、合规和责任归因反而更重。</p>
       </div>
       <div class="ai-flow">
         <div class="flow-thesis">
           <div>
-            <span class="stage-label">chain thesis</span>
-            <strong>AI 同时改变交易系统的六个对象。</strong>
+            <span class="stage-label">industry thesis</span>
+            <strong>支付公司融合 AI，不是做模型转发，而是把金融对象做成可配置、可调用、可审计的系统。</strong>
           </div>
-          <p>先有 AI 客户对 billing / risk / global tax 的压力，再有 agentic commerce、Copilot、Sessions 2026，最后进入 HTTP 402、MPP、x402 的机器支付问题。</p>
+          <p>AI Hub 更像批发商逻辑，用流量、路由、计量换议价权。支付公司的打法不同：把账期、订阅、用量计费、授信、风控、争议、清结算、钱包和发卡这些金融对象重新设计进客户流程。</p>
+        </div>
+        <div class="system-stack" aria-label="AI 时代支付五层结构">
+          <article class="system-layer">
+            <strong>底层：交易 / 信用关系</strong>
+            <p>先判断一件事是即时交易，还是先享受商品、服务、库存、广告、算力或经营资金，未来再付款。</p>
+            <p>Stripe 相关：Payments、Connect、Billing、Capital、Financial Connections、Radar。</p>
+          </article>
+          <article class="system-layer entry">
+            <strong>入口层</strong>
+            <p>商品发现从商户网页扩到 AI 对话、搜索、Copilot、agent marketplace。</p>
+            <p>Stripe 相关：Agentic Commerce、Copilot Checkout、Google AI Mode / Gemini 合作。</p>
+          </article>
+          <article class="system-layer credential">
+            <strong>凭据 / 权益层</strong>
+            <p>预授权、发卡、联名权益、token、钱包和 spending controls 被包装成任务级边界。</p>
+            <p>Stripe 相关：Link wallets、Issuing、virtual cards、Shared Payment Token、Privy。</p>
+          </article>
+          <article class="system-layer protocol">
+            <strong>工具 / 协议层</strong>
+            <p>MCP / skills 解决“Agent 如何调用支付能力”；AP2 / ACP / MPP / x402 解决“交易如何可追责”。</p>
+            <p>Stripe 相关：agents.md、MCP、agent toolkit、machine payments docs、AWS WAF + Stripe。</p>
+          </article>
+          <article class="system-layer risk">
+            <strong>责任 / 风险层</strong>
+            <p>授权证据、风控信号、争议材料、清结算状态、审计轨迹进入交易过程，而不是事后补材料。</p>
+            <p>Stripe 相关：Radar token theft、AI Security JD、stablecoin audit JD、seller approval hook。</p>
+          </article>
         </div>
         <div class="reading-flow">
           <article class="relation-card"><strong>01 demand appears</strong><p>网站/APP -> Copilot、Gemini、ChatGPT、agent surface。</p></article>
@@ -1414,7 +1761,7 @@
             <div id="aiTimelineYear" class="timeline-year">2023</div>
           </div>
           <div class="timeline-track">
-            <input id="aiTimelineRange" type="range" min="0" max="5" value="0" aria-label="AI 交易链路时间轴" />
+            <input id="aiTimelineRange" type="range" min="0" max="5" value="0" aria-label="AI 时代支付变革时间轴" />
             <div id="aiTimelinePills" class="timeline-pills"></div>
           </div>
           <div id="aiTimelineDetail" class="timeline-detail"></div>
@@ -1422,16 +1769,73 @@
         </div>
         <div class="flow-synthesis">
           <span class="stage-label">evidence status</span>
-          <strong>当前证据支持链路重写方向，采用强度继续由客户案例、changelog 和社区反馈补强。</strong>
-          <p>产品、伙伴案例、协议和预览 API 分层呈现，避免把发布叙事直接写成市场结果。</p>
+          <strong>当前证据支持“关系和对象被重新设计”，不支持把每个发布都写成成熟市场结果。</strong>
+          <p>产品、伙伴案例、协议、preview API、JD 和社区材料分层呈现。发布叙事只证明方向，采用强度继续由客户案例、changelog、交易数据和争议/风险案例补强。</p>
         </div>
       </div>
     </section>
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>证据坐标 05｜信号索引：技术、商业、金融、风险</h2>
-        <p>信号索引汇总技术接口、商业行为、金融轨道、风险控制和组织能力五类证据，选择词条可查看对应的来源、规模和使用口径。</p>
+        <h2>信用关系线：赊、信用付和贷款不能被埋在风控里</h2>
+        <p>支付行业还有一条与即时交易并行的线：当下先获得商品、服务、库存、广告、算力或经营资金，未来再付款或还款。AI 让配置和测试变快，但授信、价格、解释、审计、消费者保护和回收设计更重。</p>
+      </div>
+      <div class="credit-flow" aria-label="信用关系流程">
+        <article class="credit-step"><strong>交易数据</strong><p>支付量、经营历史、银行连接、身份和平台关系进入判断。</p></article>
+        <article class="credit-step"><strong>授信判断</strong><p>Capital、BNPL、Financial Connections、Identity 和 ML 风控共同决定可授信边界。</p></article>
+        <article class="credit-step"><strong>额度 / 期限 / 价格</strong><p>额度、账期、分期、费率和风险缓释设计决定产品是否可持续。</p></article>
+        <article class="credit-step"><strong>使用场景</strong><p>经营资金、库存、广告、算力、订阅服务、企业采购都可能形成信用关系。</p></article>
+        <article class="credit-step"><strong>还款来源</strong><p>从未来销售、账户余额、应收款或绑定支付方式回收。</p></article>
+        <article class="credit-step"><strong>逾期 / 争议 / 风控</strong><p>逾期、滥用、争议、欺诈和责任归属进入实时监控。</p></article>
+        <article class="credit-step"><strong>再评估</strong><p>还款表现和新交易数据回流，更新额度、价格和准入。</p></article>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <div class="panel-head">
+        <h2>战略正确性验证：选择如何变成复利</h2>
+        <p>这张表回答“Stripe 为什么能做到现在这个规模”。不是把能力堆成清单，而是看战略选择如何沉淀能力，能力如何被指标和事件验证，又如何在 AI 时代被重新调用。</p>
+      </div>
+      <div class="validation-grid">
+        <article class="validation-card"><strong>开发者入口</strong><p>API、SDK、docs、test mode 和 webhook 先成为分发方式；AI 时代复用到 MCP、llms.txt、agent toolkit 和 sandbox。</p></article>
+        <article class="validation-card"><strong>平台经营</strong><p>Connect、Billing、Tax、Radar、Terminal 把商户经营结构化；AI 时代复用到 agent commerce 的商户控制、履约和风险。</p></article>
+        <article class="validation-card"><strong>嵌入式金融</strong><p>Issuing、Treasury、Capital、Financial Connections 让账户、发卡、融资和数据进入平台；AI 时代复用到受限凭据、权益卡、动态授信和账期设计。</p></article>
+        <article class="validation-card"><strong>新结算轨道</strong><p>Bridge、Privy、Tempo、x402 / MPP 把钱包、稳定币和机器支付接进主线；AI 时代复用到跨境、高频、微额和资源访问付费。</p></article>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <div class="panel-head">
+        <h2>竞争位置：谁在争夺 AI 时代的支付入口</h2>
+        <p>Stripe 必须做基础设施，不是因为 AI 很热，而是因为交易控制点正在被不同玩家重新分配。它要把竞争从费率和通道上移到对象模型、授权边界、风控规则、账务能力和生态接入。</p>
+      </div>
+      <div class="competition-grid">
+        <article class="competition-card"><strong>AI 入口</strong><p>OpenAI、Google、Microsoft 等掌握用户意图、商品发现和购买入口；Stripe 若只做处理通道，会被压到幕后。</p></article>
+        <article class="competition-card"><strong>卡组织</strong><p>Visa、Mastercard 掌握 token、授权、发卡规则、争议和网络级信任；Stripe 要在发卡、token 和商户控制上保持系统位置。</p></article>
+        <article class="competition-card"><strong>钱包 / 平台</strong><p>钱包、超级 App、平台掌握买方凭据、权益、会员关系和默认支付方式；Link、Privy、Issuing 是 Stripe 接近买方侧的方式。</p></article>
+        <article class="competition-card"><strong>协议 / 稳定币</strong><p>AP2、ACP、MPP、x402、稳定币轨道可能绕开旧结算路径；Bridge、Tempo 和 machine payments 是 Stripe 接入新轨道的动作。</p></article>
+        <article class="competition-card"><strong>PSP / SaaS</strong><p>同业和商户 SaaS 争夺商户运营、税务、计费、风控、对账和报表；Stripe 用 API、对象模型和套件化能力避免只打费率战。</p></article>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <div class="panel-head">
+        <h2>原文引用：关键判断必须能回到来源</h2>
+        <p>本页用 source_id 管理强引用。队列里的 1000 条 URL 是待晋级材料，不被写成 1000 条已经完成的结论。</p>
+      </div>
+      <div class="evidence-drawer-grid">
+        <article class="quote-card"><span class="source-id">S172</span><strong>嵌入式金融主线</strong><p>source_type：official product page</p><q>embedding financial services into your platform, including accounts, cards and financing</q><p>supports：Stripe 明确把 accounts、cards、financing 做成平台嵌入能力。boundary：官方产品页，不是独立市场审计。</p></article>
+        <article class="quote-card"><span class="source-id">S008</span><strong>任务级受限支付凭据</strong><p>source_type：official product / docs</p><q>a one-time-use card is issued per task</q><p>supports：Agent 场景下的凭据可以按任务生成并限制。boundary：证明机制，不证明全市场采用。</p></article>
+        <article class="quote-card"><span class="source-id">S008</span><strong>授权仍由人和规则定义</strong><p>source_type：official product / docs</p><q>you approve each payment</q><p>supports：Agent 不是无限制替人付款，审批和授权边界仍是交易系统核心。boundary：引用限于该产品机制。</p></article>
+        <article class="quote-card"><span class="source-id">S167</span><strong>信用判断来自交易历史</strong><p>source_type：official docs</p><q>eligibility is based on factors like your payment volume and history on Stripe</q><p>supports：Capital 信用线依赖支付量和经营历史。boundary：不能推出所有授信模型细节。</p></article>
+        <article class="quote-card"><span class="source-id">S167</span><strong>还款回到销售现金流</strong><p>source_type：official docs</p><q>Stripe deducts a fixed percentage of your sales</q><p>supports：信用关系的回收可以绑定未来销售。boundary：这是 Capital 产品机制，不等同所有贷款产品。</p></article>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <div class="panel-head">
+        <h2>信号矩阵：技术、商业、金融、风险和组织</h2>
+        <p>下面不是词云装饰，而是可点击的信号矩阵。每个词条都说明它属于哪类证据、来自哪类来源、能支撑什么、边界在哪里。</p>
       </div>
       <div class="word-cloud" aria-label="Stripe AI finance signal cloud">
       </div>
@@ -1483,17 +1887,17 @@
     </section>
 
     <section class="section-bridge wide">
-      <h2>证据坐标 06｜能力迁移</h2>
-      <p>能力迁移坐标把市场规模、并购、客户结构、API、计费、钱包、风控和协议放在同一张图中，呈现商业动作与技术选择之间的牵引关系。</p>
+      <h2>全面看：商业动作如何影响技术选择</h2>
+      <p>下方互动图把市场规模、并购、客户结构、API、计费、钱包、风控、信用和协议放在同一张图里。读法是横向比较：哪些商业压力逼出了哪些对象模型，哪些技术对象又打开了新的交易或信用场景。</p>
     </section>
 
     <aside class="control-panel">
       <div>
-        <h2>证据坐标</h2>
-        <p>横向看能力从支付 API 和商户经营，迁移到 Agent 交易、token 计费、稳定币和机器支付。</p>
+        <h2>阶段筛选</h2>
+        <p>横向看 Stripe 从支付 API、嵌入式支付、嵌入式金融，进入 Agent 工作流里的交易和信用执行。</p>
       </div>
       <div class="range-wrap">
-        <div class="range-label"><span>公司路径</span><span id="scoreValue">55</span><span>AI 金融形态</span></div>
+        <div class="range-label"><span>API / 支付</span><span id="scoreValue">55</span><span>Agent / 信用 / 协议</span></div>
         <input id="axisRange" type="range" min="0" max="100" value="55" aria-label="研究重心游标" />
       </div>
       <div class="mode-buttons" aria-label="主题筛选">
@@ -1510,18 +1914,18 @@
     <main>
       <section class="panel">
         <div class="panel-head">
-          <h2>证据节点</h2>
-          <p>节点按证据类别、时间位置和能力迁移方向组织。</p>
+          <h2>阶段节点</h2>
+          <p>节点按时间阶段、商业压力、技术对象和来源强度组织。</p>
         </div>
         <div id="spine" class="spine"></div>
       </section>
 
       <section class="panel">
         <div class="panel-head">
-          <h2>能力坐标</h2>
-          <p>横轴：从支付 API 和商户经营，移动到 Agent 交易、token 计费、稳定币和机器支付。</p>
+          <h2>战略验证图</h2>
+          <p>横轴：从支付 API 和商户经营，移动到 Agent 交易、信用设计、token 计费、稳定币和机器支付。</p>
         </div>
-        <div class="axis-labels"><span>支付 API / 商户增长</span><span>Agent / token / stablecoin / machine payment</span></div>
+        <div class="axis-labels"><span>支付 API / 嵌入式支付</span><span>嵌入式金融 / Agent 工作流 / 机器支付</span></div>
         <div id="map" class="map"><div id="cursor" class="cursor"></div></div>
       </section>
 
@@ -1531,25 +1935,25 @@
 
       <section class="panel wide">
         <div class="panel-head">
-          <h2>Stripe 的定位：从支付 API 到 AI 交易基础设施</h2>
+          <h2>Stripe 的定位：嵌入式金融进入 Agent 工作流</h2>
           <p>综合判断限定在当前已晋级证据范围内。</p>
         </div>
         <div class="closing">
           <div class="note">
             <strong>已能支撑</strong>
-            <p>Stripe 的变化呈现为支付、计费、风控、钱包、稳定币和机器支付在 Agent 交易链路中的重新组合。</p>
+            <p>Stripe 的变化不是“支付 + AI”，而是把支付、计费、发卡、钱包、稳定币、信用、风控和争议处理继续做成可嵌入、可调用、可审计的金融基础设施。</p>
           </div>
           <div class="note">
             <strong>后续证据</strong>
-            <p>agent wallet、machine payment、token streaming billing、稳定币微支付和实时风控的采用强度，继续由 partner、customer、community 材料补强。</p>
+            <p>Agent wallet、machine payment、token streaming billing、稳定币微支付、动态授信和实时风控的采用强度，继续由 partner、customer、community、监管和争议材料补强。</p>
           </div>
         </div>
       </section>
 
       <section class="panel wide">
         <div class="panel-head">
-          <h2>证据坐标 07｜证据库存与边界</h2>
-          <p>1000-source 库按来源类型分层管理；页面坐标节点承载高阶判断，底层来源继续按证据强度晋级。</p>
+          <h2>来源队列与引用边界</h2>
+          <p>1000-source 队列按来源类型分层管理；页面节点只承载已经能支撑 H5 的主证据和关键候选证据，底层来源继续按证据强度晋级。</p>
         </div>
         <div class="inventory-grid">
           <article class="inventory-card"><strong>1000</strong><span>concrete URL rows</span><p>具体 URL 队列，不再用搜索占位。</p></article>
@@ -1560,10 +1964,10 @@
           <article class="inventory-card"><strong>17</strong><span>verified / promoted rows</span><p>当前已晋级为页面高负载证据的核心来源。</p></article>
         </div>
         <div class="signal-groups">
-          <article class="signal-group"><strong>学法 1</strong><ul><li>看基础设施公司，不只看产品名，要看它把哪些复杂操作做成了可编程接口。</li></ul></article>
-          <article class="signal-group"><strong>学法 2</strong><ul><li>AI 改写的不只是支付，而是 demand、catalog、pricing、authorization、settlement、risk。</li></ul></article>
-          <article class="signal-group"><strong>学法 3</strong><ul><li>并购要放在能力缺口里看：钱包、稳定币、用量计费、税务和对账。</li></ul></article>
-          <article class="signal-group"><strong>学法 4</strong><ul><li>评估 AI 金融基础设施，要同时看规模、市场位置、接口、协议、组织和证据强度。</li></ul></article>
+          <article class="signal-group"><strong>结论 1</strong><ul><li>看基础设施公司，不只看产品名，要看它把哪些复杂金融关系做成了可编程接口。</li></ul></article>
+          <article class="signal-group"><strong>结论 2</strong><ul><li>AI 时代支付变革的主线是交易关系和信用关系的重新设计，不是单点 AI 功能。</li></ul></article>
+          <article class="signal-group"><strong>结论 3</strong><ul><li>并购要放在能力缺口里看：钱包、稳定币、用量计费、税务、对账、MOR 和区域支付。</li></ul></article>
+          <article class="signal-group"><strong>结论 4</strong><ul><li>评估支付公司在 AI 时代的位置，要同时看规模、市场位置、API、领域模型、协议、组织和证据强度。</li></ul></article>
         </div>
         <div id="sources" class="source-grid"></div>
         <p class="footnote">口径：Stripe 官方数字、产品发布和客户案例按自披露处理；1000 条来源按候选、已读、已标注、已晋级分层进入后续版本。</p>
@@ -2028,7 +2432,7 @@
         caption: "Privy、Metronome、Bridge 把 Agent 交易最缺的三块能力放进 Stripe 主线。",
         stage: "能力补齐",
         event: "Stripe 把钱包抽象、事件级计费和稳定币编排接入经济基础设施叙事。",
-        meaning: "并购节点对应 AI 交易链路的缺口修补：买方代表、事件计费、跨境结算和高频结算。",
+        meaning: "并购节点对应 Agent 工作流交易系统的缺口修补：买方代表、事件计费、跨境结算和高频结算。",
         signals: ["Privy", "Metronome", "Bridge", "stablecoin"],
         metrics: [
           { value: "$1.9T", label: "2025 官方处理规模" },
@@ -2085,7 +2489,7 @@
         caption: "HTTP 402 / MPP / x402 让内容、API 和数据源可以在网络访问边界直接定价。",
         stage: "机器支付",
         event: "AWS WAF + Stripe 机器支付把 AI agent 访问资源的过程变成可定价、可授权、可结算协议。",
-        meaning: "这是 AI 交易链路最远的一段：交易不一定发生在 checkout，也可能发生在 API、内容、数据和基础设施访问边界。",
+        meaning: "这是机器支付最远的一段：交易不一定发生在 checkout，也可能发生在 API、内容、数据和基础设施访问边界。",
         signals: ["HTTP 402", "MPP", "x402", "AI traffic monetization"],
         metrics: [
           { value: "HTTP 402", label: "资源访问可返回机器可读支付要求" },
@@ -2578,7 +2982,7 @@
           <ul>${item.technology.map((point) => `<li>${point}</li>`).join("")}</ul>
         </article>
         <article class="impact-card">
-          <strong>结论坐标</strong>
+          <strong>战略含义</strong>
           <p>${item.impact}</p>
         </article>
       `;
@@ -2628,7 +3032,7 @@
           <ul>${item.technology.map((point) => `<li>${point}</li>`).join("")}</ul>
         </article>
         <article class="impact-card">
-          <strong>结论坐标</strong>
+          <strong>交易链位置</strong>
           <p>${item.impact}</p>
         </article>
         <article class="lane-card">
@@ -2656,7 +3060,7 @@
           <dt>证据规模</dt>
           <dd>${signal.count}</dd>
           <dt>口径</dt>
-          <dd>${signal.category === "organization" ? "组织信号" : signal.category === "risk" ? "风险信号" : signal.category === "technology" ? "技术接口信号" : signal.category === "finance" ? "金融轨道信号" : "商业行为信号"}，按来源等级进入结论坐标。</dd>
+          <dd>${signal.category === "organization" ? "组织信号" : signal.category === "risk" ? "风险信号" : signal.category === "technology" ? "技术接口信号" : signal.category === "finance" ? "金融轨道信号" : "商业行为信号"}，按来源等级进入页面判断。</dd>
         </dl>
       `;
     }
