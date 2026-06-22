@@ -1,20 +1,27 @@
 ---
 name: visual-agent
-description: Use when the user asks for 制图, 出图, 配图, visual routing, knowledge cards, infographic pages, H5 visual pages, SVG diagrams, image-model output, or a choice between SVG, H5/HTML, direct image generation, and hybrid visual production.
+description: Use when the user asks in formal or casual language to make, draw, add, polish, convert, or generate a visual artifact, including diagrams, H5 visual pages, knowledge cards, infographics, image-model output, visual assets, or SVG/H5/image/hybrid mode choices.
 ---
 
 # Visual Agent
 
-Use this as the normal user-facing controller for visual production requests in
-this repo. It is modeled after the `cr-agent` and `wiki-medical-agent`
-controller pattern: classify first, expose state, route to bounded workers, and
-do not become the renderer itself.
+Runtime card for visual production. Load this before any visual worker or image
+tool.
 
-## Response Contract
+## Trigger
 
-Every normal response MUST show these fields when routing or executing visual
-work:
+Use for any request to create, add, improve, transform, or choose a visual
+deliverable. Casual wording counts: "弄个图", "画一下", "整张图", "做成卡片",
+"配几张图", "图像化一下", and similar phrasing are examples, not a closed list.
 
+Do not use only because the wording is casual; a visual deliverable must be
+requested.
+
+## Response
+
+Start visual work with a compact route block:
+
+```text
 - `Using visual-agent`
 - `Intent`
 - `Visual Case`
@@ -25,121 +32,48 @@ work:
 - `Blocked Action`
 - `Next Action`
 - `Evidence`
+```
 
-Keep the fields compact. Use `Blocked Action: none` only when the route is ready.
-If a visual response lacks `Using visual-agent`, treat it as a controller bypass
-unless the task is explicitly a debug review of another skill.
+If the block lacks `Using visual-agent`, treat the response as a controller
+bypass unless the user is debugging another visual skill.
 
-## Intent Classes
-
-- `mode_fork`: user wants help choosing SVG, H5/HTML, image-model, or hybrid.
-- `article_visual_package`: reader-facing report, Feishu article, H5 share page,
-  or multi-section visual package.
-- `single_infographic`: one card, one poster, one long image, one teaching page,
-  or one-page summary.
-- `flow_svg`: payment flow, fund flow, account flow, process, state, sequence,
-  Mermaid-like source, or other deterministic flow diagram.
-- `architecture_diagram`: system architecture, interface architecture,
-  deployment, topology, data pipeline, or component relationship diagram.
-- `h5_onepager`: interactive/scrolling HTML visual board or one-page H5.
-- `image_generation`: bitmap-first illustration, cover, style exploration, or
-  image prompt execution.
-- `whiteboard_visual`: Feishu whiteboard creation or editing.
-- `status_or_review`: user asks what visual skill or route should be used.
-
-## Output Modes
+## Modes
 
 - `svg`: exact structure, editable diagram, reliable Chinese labels, fund/account
   flows, architecture, tables, or compliance text.
-- `h5_html`: interactive or scrollable report page, dashboard-like explanation,
-  long-form H5, or browser-verifiable visual artifact.
-- `image_model`: visual richness, illustration, mood, cover art, or bitmap-first
-  exploration where exact text is not the source of truth.
-- `hybrid`: image-model asset plus deterministic text/layout overlay. Prefer
-  this when image quality and Chinese/text accuracy both matter.
-- `prompts_only`: user only asks for image prompts or art direction.
-- `ask_human`: no explicit preference and source shape does not strongly select
-  a mode.
+- `h5_html`: interactive or scrollable explainer, dashboard, or browser-verified
+  report page.
+- `image_model`: visual richness, illustration, cover, or bitmap-first output
+  where exact text is not the source of truth.
+- `hybrid`: image-model visual layer plus deterministic text/layout overlay.
 
-## Mode Decision Rules
+If the user did not choose a mode and the content does not strongly choose one,
+ask this fork before production: `SVG`, `H5/HTML`, `Image model`, `Hybrid`.
 
-Honor an explicit user preference unless it conflicts with the source material.
-If preference and content conflict, state the tradeoff and offer a deterministic
-or hybrid alternative before production.
+Do not default casual or ambiguous visual requests to H5/HTML, SVG, browser
+screenshots, or deterministic cards just because they are easier to render or
+safer for Chinese text. If the user rejects prior H5/SVG-like output or asks for
+image-model-like quality, treat `image_model` or `hybrid` as the active route
+pressure until they choose deterministic SVG/H5.
 
-If no preference is given, choose from strong content evidence:
+## Routes
 
-- Mermaid, sequence, fund flow, process flow, state machine, compliance process,
-  or architecture-like material -> `svg`.
-- Reader-facing H5, share page, interactive explainer, or report/dashboard
-  material -> `h5_html` or `hybrid`.
-- Article visual package or multiple section images -> `article_visual_package`
-  first, then choose mode.
-- Single poster, one-page graphic, teaching card, or long image -> `single_infographic`
-  first, then choose mode.
-- Visual style, cover image, illustration, or atmosphere-first request ->
-  `image_model` or `hybrid`.
+Named visual workers are child routes, not entry points, unless the user is
+debugging that worker.
 
-If neither preference nor content shape is decisive, ask a bounded fork:
+- Reader-facing report/H5/share/Feishu visual:
+  `public-report-quality-gate -> visual-agent -> child worker`.
+- Article or multi-section visual package: `knowledge-article-visual`.
+- Single card, poster, long image, or per-image script: `infographic-onepager`.
+- Flow, process, state, payment/fund/account sequence: `svg-flow-diagram`.
+- System, deployment, integration, topology, pipeline: `architecture-diagram`.
+- Direct bitmap generation: `imagegen` only after mode, source, prompt/script,
+  and verification boundary are set.
+- Feishu whiteboard: `lark-whiteboard`.
 
-1. `SVG`: precise, editable, text-safe.
-2. `H5/HTML`: interactive, scrollable, browser-verifiable.
-3. `Image model`: higher visual richness, weaker exact Chinese text control.
-4. `Hybrid`: generated visual assets with deterministic text and layout.
+## Stops
 
-Do not default ambiguous visual requests to H5/HTML, SVG, browser screenshots,
-or deterministic cards only because those routes are easier to render or safer
-for Chinese text. If the user complains that prior output became H5/SVG-like, or
-uses direct image terms such as 图片模型, 生图, 跑图, 出图, or 图片, treat
-`image_model` or `hybrid` as the active route pressure until the user explicitly
-chooses deterministic SVG/H5 output.
-
-If the user names a worker directly, such as `knowledge-article-visual`,
-`infographic-onepager`, `svg-flow-diagram`, `architecture-diagram`, or
-`imagegen`, still enter through `visual-agent` first unless the user is asking
-for debug review of that worker. Confirm the mode/evidence, then delegate to the
-named worker only if it matches the route.
-
-## Worker Routing
-
-Route to the smallest bounded worker that owns the next action:
-
-- Reader-facing H5/share/report/Feishu visual output:
-  `public-report-quality-gate -> visual-agent`.
-- Article or report visual package:
-  `public-report-quality-gate -> visual-agent -> knowledge-article-visual`
-  when reader-facing; otherwise `visual-agent -> knowledge-article-visual`.
-- Single infographic, one-card summary, poster, or per-image script:
-  `visual-agent -> infographic-onepager`, or
-  `public-report-quality-gate -> visual-agent -> infographic-onepager` when the
-  asset is reader-facing.
-- Business flow, payment flow, fund flow, state, process, or Mermaid sequence:
-  `visual-agent -> svg-flow-diagram`.
-- System architecture, deployment, topology, technical integration, or data
-  pipeline: `visual-agent -> architecture-diagram`.
-- H5/HTML one-page visual board: `visual-agent -> visual-knowledge-onepager` if
-  available; otherwise use the repo's frontend/H5 workflow under the
-  public-report gate.
-- Direct bitmap execution: `visual-agent -> imagegen` only after source, mode,
-  prompt/script, and verification boundary are established.
-- Feishu whiteboard work: `visual-agent -> lark-whiteboard`.
-
-## Hard Boundaries
-
-- Do not bypass the public-report quality gate for reader-facing artifacts.
-- Do not copy detailed prompts or implementation rules from worker skills into
-  this controller.
-- Do not treat `imagegen`, browser tools, Feishu tools, or whiteboard tools as
-  planning owners; they are executors after route selection.
-- Do not claim visual quality without screenshot/readback or equivalent
-  verification when a visual artifact is produced.
+- Do not claim visual quality without screenshot/readback or equivalent visual
+  verification.
 - Do not insert generated images into Feishu or whiteboards without explicit
   user approval.
-- Do not create global skill behavior from a single example; keep this route
-  repo-local unless a separate migration is approved.
-
-## Evidence Notes
-
-When explaining a route, cite the source signal: user preference, content shape,
-target medium, text-density risk, verification need, or named worker. If the
-route is blocked, ask only for the missing source or preference.

@@ -8,6 +8,10 @@
 - Plain visual request: "帮我制图 / 出图 / 配图" without explicit mode. Expected:
   no silent H5/SVG default; ask the bounded mode fork unless strong content
   evidence selects a mode.
+- Colloquial visual request: "弄个图", "画一下", "整张图", "做成卡片",
+  "配几张图", or "图像化一下". Expected: trigger `visual-agent`, expose
+  `Using visual-agent`, and ask the mode fork unless strong content evidence
+  selects a route.
 - Flow source: Mermaid sequence, payment clearing flow, or fund flow. Expected:
   route to `svg-flow-diagram` with `Output Mode: svg` unless the user overrides.
 - Architecture source: system architecture, interface topology, or deployment
@@ -29,16 +33,18 @@ could jump directly to image generation, confuse SVG workers, or skip the human
 mode fork. Before the entry-route hardening, public-report delegation also
 listed `knowledge-article-visual`, `infographic-onepager`, and `imagegen`
 directly, and normal visual responses had no required `Using visual-agent`
-marker.
+marker. Before compacting the runtime card, `visual-agent/SKILL.md` was 917
+words and mixed route rules with governance-style explanation. Trigger wording
+also leaned on fixed examples instead of the broader colloquial visual request
+class.
 
 ## GREEN Result
 
-The skill now defines a single controller, fixed response fields, mode routing,
-bounded worker mapping, public-report gate preservation, and explicit
-boundaries for image-model execution. The hardening adds an observable
-`Using visual-agent` entry marker, treats named visual workers as child routes,
-and blocks ambiguous H5/SVG defaulting without a mode fork or strong content
-evidence.
+The skill now defines a compact runtime controller: `Using visual-agent`, mode
+fork, no silent H5/SVG fallback, child worker routes, public-report gate
+preservation, and verification/Feishu stops. The trigger model covers formal
+and colloquial visual-deliverable requests as a class, with examples treated as
+non-exhaustive.
 
 ## Residual Risks
 

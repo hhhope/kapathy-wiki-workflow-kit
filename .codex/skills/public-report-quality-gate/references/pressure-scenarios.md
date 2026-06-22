@@ -20,6 +20,7 @@ Use these scenarios to validate trigger and gate behavior.
 | User asks "这篇分享稿每家公司一张知识卡，最终一张总览图" | Preserve Article Intent, Judgment Ownership, Visual Gate, and Publish Gate while routing visual production through `visual-agent` before child workers | PASS |
 | User asks "`agentic-product-engineering-collaboration-company-playbook.html` 要增加一图流，每个公司要增加章节知识卡" | Do not edit only in-page HTML sections; stop and route through `visual-agent` for output-mode selection or inference, then visual package scripting and standalone visual asset production/planning before optional HTML embedding | PASS |
 | User asks "这个 H5 加一组章节配图，别再做成 H5/SVG 卡片" | Enter `visual-agent`; treat prior H5/SVG rejection as image-model or hybrid routing pressure; do not use deterministic HTML/SVG unless the user explicitly re-chooses it | PASS |
+| User asks "这个 H5 再弄几张图" or "这篇分享稿做得更图像化一点" | Treat the casual wording as a visual deliverable request; keep public-report-quality-gate as the outer gate and route visual production through `visual-agent` before child workers | PASS |
 
 ## Should Not Trigger
 
@@ -117,6 +118,7 @@ Use these scenarios to validate trigger and gate behavior.
 | A new visual skill is added for public materials but its evaluation does not test bypassing the public report gate | Skill Authoring Boundary + Outer Gate Role | FAIL until pressure evidence shows the parent gate is preserved |
 | A request names an existing `.html` report and asks for `一图流` / `知识卡`, and the agent completes the task by adding only HTML cards or sections | HTML-Target Visual Route + Visual Gate | FAIL; direct HTML editing must stop until visual script and standalone asset route are produced or explicitly declined |
 | A request names `knowledge-article-visual`, `infographic-onepager`, `svg-flow-diagram`, or `imagegen` for ordinary visual production and the agent starts that worker without `visual-agent` mode confirmation | Visual-Agent Entry Gate | FAIL; named visual workers are child routes unless the user is debugging that worker |
+| A casual request such as "弄个图" or "图像化一下" is ignored because it does not contain `一图流`, `知识卡`, or `图片模型` | Colloquial Visual Request Gate | FAIL; colloquial visual-deliverable wording is a trigger class, not a fixed phrase list |
 
 ## Tool Executor Bypass Replay
 

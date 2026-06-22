@@ -134,10 +134,12 @@ implementation reports unless the user asks for a reader-facing deliverable.
   production. This route does not replace this gate's reader intent, reference,
   visual, judgment, publish, or sync blockers.
 - When a reader-facing `.html` report or H5 page needs standalone visual
-  deliverables or section-level visual assets, do not satisfy the request by
-  editing only in-page HTML sections. Stop direct HTML body edits first, route
-  to visual package scripting and output-mode selection or inference, and
-  produce or plan standalone visual assets before any optional HTML embedding.
+  deliverables or section-level visual assets, including casual asks to make it
+  more visual, add some images, turn sections into cards, or otherwise produce
+  visual assets, do not satisfy the request by editing only in-page HTML
+  sections. Stop direct HTML body edits first, route through `visual-agent` for
+  output-mode selection or inference, and produce or plan standalone visual
+  assets before any optional HTML embedding.
 - Generate required report visuals as local assets when requested, but do not
   insert images into Feishu by default. If the user will add images manually,
   keep Feishu sync text-only and preserve local asset paths.
