@@ -228,7 +228,7 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
    Paystack、TaxJar、Recko、BBPOS 等动作不是并购新闻，而是补全球化、本地支付、税务、对账和线下场景的缺口。
 
 6. **发卡、钱包和权益入口战略**
-   Issuing、virtual cards、spending controls、card personalization、tokens、Link wallets 和 Privy 说明 Stripe 不只处理商户收款，也在构建买方凭据、平台权益和受限授权能力。AI 时代的联名卡、权益卡、Agent 任务卡和钱包，会重新使用这些能力。
+   Issuing、virtual cards、spending controls、card personalization、tokens、Link wallets 和 Privy 说明 Stripe 不只处理商户收款，也在构建买方凭据、平台权益和受限授权能力。AI 时代的联名卡、权益卡、任务级受限支付凭据和钱包，会重新使用这些能力。
 
 7. **新金融轨道接入战略**
    Bridge、Privy、Metronome、Tempo、MPP、x402 表明 Stripe 正在把稳定币、钱包、用量计费和机器支付接入自己的主线。
@@ -361,7 +361,7 @@ Stripe 相关证据要这样组织：
 | 联名卡 / 权益卡 | AI 应用绑定卡、平台权益卡、Agent 可用凭据 | 入口方用权益和分润绑定支付关系 |
 | 预授权 | Agent 预算、单次任务授权、购物条件授权 | 用户不是每次点击付款，而是提前定义边界 |
 | tokenized card-on-file | Agentic Token、Shared Payment Token、数字钱包 token | 不把原始卡号暴露给 Agent 或商户 |
-| virtual card / commercial card | Agent 任务卡、企业采购 Agent、一次性卡 | 把支付责任限制在场景、金额、商户和时间内 |
+| virtual card / commercial card | 任务级受限支付凭据、企业采购虚拟卡、一次性卡 | 把支付责任限制在场景、金额、商户和时间内 |
 | spending controls | 预算、MCC、地域、商户白名单、审批流 | 支付公司把“人类意图”转成机器可执行规则 |
 | rewards / offers | 个性化 bundle、平台权益、AI 推荐返佣 | 入口从搜索/广告转向 Agent 推荐与交易分发 |
 
@@ -369,7 +369,7 @@ Stripe 相关证据要这样组织：
 
 - Visa 把 Visa 网络接入 ChatGPT，核心在于卡网络把持卡人授权、消费限额、商户限制、审批和争议处理带进 AI 入口。
 - Mastercard Agent Pay 使用 tokenization / Agentic Token 思路，把 AI 发起的支付请求变成可追踪、带权限规则的支付凭据。
-- Stripe Issuing 不是 AI 新产品，但它已经具备发卡、虚拟卡、卡面/卡函个性化、实时授权、spending controls、digital wallet token 等机制；这些机制解释了“权益类/联名卡/Agent 任务卡”为什么不是另一个平行话题。
+- Stripe Issuing 不是 AI 新产品，但它已经具备发卡、虚拟卡、卡面/卡函个性化、实时授权、spending controls、digital wallet token 等机制；这些机制解释了“权益类/联名卡/任务级受限支付凭据”为什么属于同一条凭据和授权主线。
 - Stripe Link wallets for agents 和 Privy 钱包能力，应被解释为买方授权和钱包抽象，不只是“又一个钱包产品”。
 
 这一层回答：
@@ -491,7 +491,7 @@ Stripe 的对应动作：
 | Bridge | 稳定币编排和跨境结算 | 新金融轨道 | stablecoin settlement 进入主线 |
 | Privy | 钱包抽象 | 买方/应用授权基础设施 | agent/app wallet 基础设施 |
 | Metronome | usage/event/token 计费 | 收入运营 | AI 产品实时收入模型 |
-| Issuing / card personalization / tokens | 发卡、权益、数字钱包 token、实时授权 | 发卡和权益入口 | agent task card、联名权益、受限凭据和预算控制 |
+| Issuing / card personalization / tokens | 发卡、权益、数字钱包 token、实时授权 | 发卡和权益入口 | 任务级受限支付凭据、联名权益、受限凭据和预算控制 |
 
 ### 9. 技术事件时间线
 
@@ -538,7 +538,7 @@ Stripe 的对应动作：
 | 平台商户 | Connect、account model、分账、平台风控 | 平台/SaaS/marketplace 客户、处理规模增长 | agent commerce、merchant control、catalog integration |
 | 收入运营 | Billing、Tax、Revenue suite、Invoicing | usage billing、global tax、AI 客户需求 | Metronome、streaming payments、token/event billing |
 | 风险基础设施 | Radar、Identity、KYC/KYB、review、risk graph | Radar token theft、risk JD、fraud/risk roles | fake signup、token theft、tool misuse、approval hook |
-| 发卡和权益入口 | Issuing、virtual cards、personalization designs、tokens、spending controls、real-time authorization | 发卡 API、卡面/卡函个性化、digital wallet token、授权控制 | AI 联名卡、agent task card、权益化支付入口、受限凭据 |
+| 发卡和权益入口 | Issuing、virtual cards、personalization designs、tokens、spending controls、real-time authorization | 发卡 API、卡面/卡函个性化、digital wallet token、授权控制 | AI 联名卡、任务级受限支付凭据、权益化支付入口、受限凭据 |
 | 信用和赊账 | Capital、BNPL payment methods、Financial Connections、Capital underwriting、ML risk | Stripe Capital、Capital underwriting JD、BNPL docs、Financial Connections docs | Agent 受限信用、消费分期、商户营运资金、动态授信、实时还款和风险控制 |
 | 全球化补位 | Paystack、TaxJar、Recko、BBPOS、本地支付 | 国际客户、新市场、税务/对账能力 | AI 公司 global-by-default |
 | 新金融轨道 | Bridge、Privy、Tempo、MPP、x402 | stablecoin/wallet/machine payment product signals | machine payment、agent wallet、stablecoin settlement |
@@ -644,6 +644,39 @@ Stripe 的对应动作：
 - JD 是组织信号，不是战略事实本身。
 - GitHub/community 是采用和摩擦线索，不是市场份额证明。
 
+## 章节原文引用规则
+
+每个可见章节必须带一个“原文依据条”。它不是脚注装饰，而是进入正文的硬门槛。
+
+原文依据条字段：
+
+| 字段 | 要求 |
+|---|---|
+| source_id | 对应 source pack 的来源编号 |
+| source_type | official annual / newsroom / docs / API / JD / partner / media |
+| original_quote | 原文摘引，单条来源不超过 25 个英文词或对应长度中文摘引 |
+| supports | 这句原文支撑本节哪一个判断 |
+| boundary | 自披露、二级报道、地区可用性、产品 preview、JD 信号等限制 |
+
+章节规则：
+
+- 每个一级章节至少 2 条原文依据，其中至少 1 条来自官方年信、newsroom、docs、API 或 JD。
+- 每个数据图必须把数据点映射到来源编号，不能只写“来源：Stripe”。
+- 每个产品或机制名第一次出现时，必须能点开来源依据。
+- 分析词可以使用，但必须标注为分析词。例如“任务级受限支付凭据”可以作为归纳词，但页面要同时展示 Stripe 原文：`a one-time-use card is issued per task`。
+- 无法找到原文依据的词，不进入 reader-facing 正文，只能放在内部草稿或待核验队列。
+- 每章末尾设置 `证据边界`，说明哪些是已核验事实，哪些是分析推断，哪些需要后续 provider/source follow-up。
+
+首批必须前置的原文依据：
+
+| 章节 | 原文摘引 | 来源 |
+|---|---|---|
+| 嵌入式金融主线 | `embedding financial services into your platform, including accounts, cards and financing` | S172 |
+| Agent 受限支付凭据 | `a one-time-use card is issued per task` | S008 |
+| Agent 受限支付凭据 | `you approve each payment` | S008 |
+| Stripe Capital 信用线 | `eligibility is based on factors like your payment volume and history on Stripe` | S167 |
+| Stripe Capital 回收线 | `Stripe deducts a fixed percentage of your sales` | S167 |
+
 ## 验收标准
 
 - 标题回到 Stripe 公司发展路径与 AI 时代变革。
@@ -660,6 +693,8 @@ Stripe 的对应动作：
 - 页面解释 Stripe 如何通过 API、领域模型、文档、对象和规则，把竞争从费率竞争上移到系统能力竞争。
 - 并购以时间和能力补位组织，不是列表。
 - 技术事件有独立视角，并说明商业战略与技术选择的相互影响。
+- 每个可见章节都有原文依据条；没有原文引用的判断不能进入正文。
+- 无来源产品化词不得出现；使用“任务级受限支付凭据”等分析词时，必须同步展示原文依据和来源边界。
 - 有一张战略正确性验证图，说明战略选择如何转化为能力沉淀、指标结果和 AI 时代复用。
 - 1000 条来源以热力图或矩阵表达，不再用词云。
 - 页面不使用 `交易控制面` 作为读者标题或核心概念。

@@ -346,3 +346,28 @@ Corrected requirement:
 
 Implementation remains stopped. The next visible H5 draft must put embedded
 payments / embedded finance in the first-screen story.
+
+## 2026-06-22 Tenth Drift Correction
+
+The user rejected an unsupported product-like card label and required every
+chapter to carry original-source quotations to validate source correctness.
+
+Corrected requirement:
+
+- Do not use product-like labels without sources. Unsupported product-like
+  labels must not appear in reader-facing copy.
+- If the analysis needs that concept, use a clearly marked analytical label such
+  as "task-scoped restricted payment credential" / `任务级受限支付凭据`, and show
+  the original Stripe wording beside it.
+- The supporting Stripe wording for the concept is from Sessions 2026: a
+  one-time-use card is issued per task and the user approves each payment.
+- Every visible chapter must include original quotation evidence:
+  source_id, source_type, original_quote, supports, and boundary.
+- Product names are evidence nodes, not conclusions. A section can only state a
+  conclusion after mapping quoted source text to the conclusion.
+- Source pack summaries are not enough for the H5. The H5 must expose selected
+  original quotes so the reader can verify the source basis without opening the
+  internal queue.
+
+Implementation remains stopped. The next H5 draft must include quotation strips
+or evidence drawers for every chapter.
