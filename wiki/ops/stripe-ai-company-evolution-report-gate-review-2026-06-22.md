@@ -25,8 +25,8 @@ created: 2026-06-22
 | Field | Value |
 |---|---|
 | Reader | 内部读者，需要快速理解 Stripe 为什么值得从 AI/金融基础设施角度研究 |
-| Reader decision or action | 判断后续是否扩展成 2-3 页 PPT、长 H5 或 1000-source research pack |
-| Main line | Stripe 正把支付公司进化为 AI 时代经济基础设施：agentic commerce、machine payments、token billing、stablecoins、agent-readable developer surface 汇合在一起 |
+| Reader decision or action | 判断 1000-source queue 中哪些来源应继续晋级到 PPT、长 H5 或专题研究 |
+| Main line | 先把 1000 条来源组织成证据层，再用公司运营线、技术事件线和 AI 交易链路解释 Stripe 的变化 |
 | Non-goals | 不做投资建议；不把官方产品声明当独立效果证明；不推导中国监管落地结论 |
 | User-owned judgments | 最终叙事强度、PPT 取舍、是否进入金融 AI 产品方案 |
 | Agent-allowed work | 公开来源收集、证据矩阵、H5 初稿、后续阅读队列 |
@@ -97,6 +97,7 @@ created: 2026-06-22
 - Company-path and big-event sections are now expanded, but older pre-2023 company-path milestones still need tighter official date sourcing before a public-ready version.
 - Timeline now includes company/technology dual tracks and evidence metrics, but several valuation/acquisition details are secondary-source markers and must not be upgraded to investment-grade claims without independent checks.
 - Market share is intentionally framed as processed-volume/GDP/customer/valuation/share-gain proxy. Do not turn it into a precise market-share percentage without audited numerator and denominator.
+- A live re-anchor corrected the page style from abstract thesis language to research-control-surface language. Future edits should preserve this: source organization first, staged judgments second.
 - Timeline and AI-flow interactions are browser-rendered and screenshot-checked at initial state; drag/click state changes still need console-event QA before review-ready.
 
 ## Verification Evidence
@@ -105,8 +106,8 @@ created: 2026-06-22
 |---|---|---|
 | HTML parser | pass | `python3 -m html.parser wiki/reports/stripe-ai-company-evolution-h5.html` |
 | Diff whitespace | pass | `git diff --check -- wiki/sources/stripe-ai-company-evolution-research-2026-06-22.md wiki/ops/stripe-ai-company-evolution-report-gate-review-2026-06-22.md wiki/reports/stripe-ai-company-evolution-h5.html` |
-| Desktop screenshot | pass after dual timeline / signal expansion | `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` full-page screenshot shows company path, draggable dual timeline, evidence metrics, company/technology lanes, AI-after flow, expanded signal groups, 22-node map, and source cards. |
-| Mobile screenshot | pass after dual timeline / signal expansion | `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` full-page screenshot shows the dual timeline, evidence metrics, signal groups, and map in a readable single-column layout. |
+| Desktop screenshot | pass after source-organization re-anchor | `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` full-page screenshot shows research-control title, 1000-source organization section, company path, draggable dual timeline, evidence metrics, company/technology lanes, AI transaction-chain flow, expanded signal groups, 22-node map, and source cards. |
+| Mobile screenshot | pass after source-organization re-anchor | `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` full-page screenshot shows the source organization section, dual timeline, evidence metrics, signal groups, and map in a readable single-column layout. |
 | Chinese rendering | fixed | Initial screenshots showed missing CJK glyphs; H5 now imports Noto Sans SC and screenshots render Chinese correctly. |
 | Frontmatter precheck | inconclusive for target, blocked globally by legacy pages | `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target ...` returned existing unrelated legacy blockers and `target.entry_count: 0`; target pages include required fields from repair hints. |
 | Console event check | blocked | `node -e require('playwright')...` failed with `MODULE_NOT_FOUND`; CLI screenshot still worked. |
@@ -114,6 +115,7 @@ created: 2026-06-22
 | Recruitment/JD coverage | pass for current-source queue and focused scan, partial for historical change evidence | CSV includes 292 `jobs-jd` rows: 260 concrete Stripe job-description pages and 32 Stripe jobs search pages. Focused read opened AI Security, AI Conversation Platform, Developer Productivity AI, ML Platform, Capital Underwriting, Crypto/Stablecoins, Privy, Stablecoin Audit/Reporting, and Radar/Fraud/Risk roles. Historical JD change analysis still needs archive or dated mirror evidence. |
 | H5 source reference integrity | pass | Inline source key/reference check found 24 source keys, 66 H5 refs, and 0 missing referenced source keys after timeline expansion. |
 | CSV field correction | pass | Queue check uses `url_or_query`, not `url`: 1000 rows, 0 empty `url_or_query`, 0 duplicate `url_or_query`, 0 `SEARCH:` placeholders, 292 `jobs-jd` rows. |
+| Live re-anchor trace | pass | `wiki/ops/stripe-ai-company-evolution-h5-reanchor-2026-06-22.md` records the user's correction: source organization, unified style, and evidence-bound wording. |
 
 ## Decision
 

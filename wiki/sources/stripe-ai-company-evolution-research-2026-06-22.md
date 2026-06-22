@@ -49,21 +49,29 @@ Stripe 在 AI 后的变化不是简单多卖一个支付 API，而是把自身�
 
 ## H5 Expansion Structure
 
-The expanded H5 should be read as a system map, not an eight-point summary.
+The expanded H5 should be read as a research control surface, not an eight-point
+summary or a finished opinion piece.
 
 Current structure:
 
-1. Company path: 2010-2014 API-first payments, 2015-2019 merchant operating system, 2020-2022 financial products and resilience, 2023-2024 AI customer pressure, 2025-2026 AI economic infrastructure.
-2. Recent event timeline: 2023 volume baseline, 2024 AI-customer pressure, 2025 Privy/Metronome/Bridge, 2025 New York Tour, 2026 Copilot Checkout, Sessions 2026, preview API changes, and AWS WAF + machine payments.
-3. AI-after dimensions: transaction actor, product representation, billing granularity, settlement rail, risk object, and organization capability.
-4. Signal cloud: agentic commerce, stablecoin, usage billing, machine payments, HTTP 402, Shared Payment Token, ProductCatalogImport, Link wallets, MCP, llms.txt, agent toolkit, claimable sandbox, catalog feed, approval hook, Radar, token theft, prompt injection, KYC/KYB, Capital underwriting, AI Conversation Platform, Developer Productivity AI, and Stablecoin Audit.
-5. Timeline reader: company evolution is now controlled by a draggable range plus year buttons, so the reader can move from 2010-2014 to 2026-06 instead of scanning static cards.
-6. AI-after flow: the AI change chapter now follows a `总论 -> 六个维度分解 -> 总括` flow. The six dimensions are transaction actor, product representation, billing granularity, settlement rail, risk object, and organization capability.
-7. Interactive map: expanded from 8 nodes to 22 nodes, ordered by time and filterable by company path, product expansion, Agent, finance rail, risk, and organization capability. It is now a secondary map, not the only structure.
-8. Company/technology dual timeline: the main timeline now has a draggable year control plus three layers for each stage: company operating path, technical event path, and the two-way influence between commercial behavior and technical choices.
-9. Timeline evidence metrics: each timeline stage now carries indicator cards for valuation or liquidity events, processed volume, GDP-share proxy, acquisition/product events, partner proof, risk metrics, and machine-payment protocol signals where available.
-10. Market-share boundary: Stripe does not disclose a public audited global payment market-share percentage. This draft therefore uses proxies: processed volume, GDP share, businesses served, valuation/liquidity events, AI-customer coverage, acquisition direction, and secondary analyst "share gain" commentary. It should not be presented as a precise market-share estimate.
-11. Signal expansion: the H5 signal surface now separates technology interface, commercial behavior, finance rails, and risk/control signals so the reader can trace which words are source-backed evidence routes rather than decorative word-cloud terms.
+1. Source organization first: the H5 now explicitly separates promoted evidence from the 1000-source queue and candidate material.
+2. Company path: 2010-2014 API/SDK/docs/testing, 2015-2019 merchant operating system, 2020-2022 financial products and resilience, 2023-2024 AI customer pressure, 2025-2026 agent commerce / machine payment / stablecoin expansion.
+3. Recent event timeline: 2023 volume baseline, 2024 AI-customer pressure, 2025 Privy/Metronome/Bridge, 2025 New York Tour, 2026 Copilot Checkout, Sessions 2026, preview API changes, and AWS WAF + machine payments.
+4. AI-after dimensions: transaction entry, product representation, billing granularity, settlement rail, risk position, and organization capability.
+5. Evidence index: agentic commerce, stablecoin, usage billing, machine payments, HTTP 402, Shared Payment Token, ProductCatalogImport, Link wallets, MCP, llms.txt, agent toolkit, claimable sandbox, catalog feed, approval hook, Radar, token theft, prompt injection, KYC/KYB, Capital underwriting, AI Conversation Platform, Developer Productivity AI, and Stablecoin Audit.
+6. Timeline reader: company evolution is now controlled by a draggable range plus year buttons, so the reader can move from 2010-2014 to 2026-06 instead of scanning static cards.
+7. AI change flow: the AI chapter is now framed as a transaction-chain change analysis, not as a loose "AI changes finance" claim.
+8. Interactive map: expanded from 8 nodes to 22 nodes, ordered by time and filterable by company path, product expansion, Agent, finance rail, risk, and organization capability. It is now a secondary map, not the only structure.
+9. Company/technology dual timeline: the main timeline now has a draggable year control plus three layers for each stage: company operating path, technical event path, and the two-way influence between commercial behavior and technical choices.
+10. Timeline evidence metrics: each timeline stage now carries indicator cards for valuation or liquidity events, processed volume, GDP-share proxy, acquisition/product events, partner proof, risk metrics, and machine-payment protocol signals where available.
+11. Market-share boundary: Stripe does not disclose a public audited global payment market-share percentage. This draft therefore uses proxies: processed volume, GDP share, businesses served, valuation/liquidity events, AI-customer coverage, acquisition direction, and secondary analyst "share gain" commentary. It should not be presented as a precise market-share estimate.
+12. Signal expansion: the H5 signal surface now separates technology interface, commercial behavior, finance rails, and risk/control signals so the reader can trace which words are source-backed evidence routes rather than decorative word-cloud terms.
+
+Style correction after live re-anchor:
+
+- Use evidence labels such as "证据怎么读", "来源节点", "能力迁移地图", and "阶段性判断".
+- Avoid unsupported broad claims like "第一性原理" in visible reader-facing copy.
+- Make the 1000-source queue state visible: organized queue yes; fully read corpus no.
 
 ## High-Density Source Pool
 

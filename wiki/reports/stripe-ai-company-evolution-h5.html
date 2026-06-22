@@ -831,13 +831,13 @@
     <header class="hero">
       <div>
         <div class="kicker">内部 H5 草稿 · Stripe / AI / Finance Infrastructure · 2026-06-22</div>
-        <h1>Stripe 正在迁移到 Agent 经济操作系统</h1>
-        <p class="lead">这不是“支付公司也做 AI”的故事。更像是 Stripe 沿着自己的老路径继续前进：先把收款 API 化，再把商户经营系统化，现在开始把 Agent 交易、机器计费、稳定币结算和实时风控协议化。</p>
+        <h1>Stripe 研究控制台：从支付 API 到 Agent 交易网络</h1>
+        <p class="lead">这页不是结论稿，也不是词云展示。它的任务是把 1000 条候选来源拆成证据层，回答三个问题：Stripe 的公司路径怎么变，哪些技术事件改变了商业动作，AI 之后交易链路新增了哪些可验证对象。</p>
       </div>
       <div class="meta-row">
-        <span class="pill">结构参考：Anthropic 研发调研 PPT</span>
-        <span class="pill">交互参考：李想访谈精读板</span>
-        <span class="pill">状态：first draft, not review-ready</span>
+        <span class="pill">材料池：1000 rows / 292 JD rows</span>
+        <span class="pill">读法：先证据分层，再看时间轴</span>
+        <span class="pill">状态：internal research draft</span>
       </div>
     </header>
 
@@ -850,17 +850,62 @@
 
     <section class="panel wide">
       <div class="panel-head">
-          <h2>研究主线：Stripe 不是突然进入 AI</h2>
-          <p>先看它一直在做什么，再判断 AI 之后它为什么顺势扩张。</p>
+        <h2>先把材料组织清楚：1000 条来源不是 1000 条结论</h2>
+        <p>本页只把已经能支撑 H5 的材料推到前台；其余来源保留在 source queue，继续按证据强度晋级。</p>
+      </div>
+      <div class="path-grid">
+        <article class="path-card">
+          <strong>第一层：已核验主证据</strong>
+          <span>官方年信、新闻稿、docs/API、GitHub、重点 JD。</span>
+          <ul>
+            <li>用于 H5 中的数字、产品发布、API 路径和招聘信号。</li>
+            <li>每条进入页面的结论都要能回到来源索引。</li>
+            <li>官方数据按自披露处理，不写成独立审计。</li>
+          </ul>
+        </article>
+        <article class="path-card">
+          <strong>第二层：1000-source queue</strong>
+          <span>1000 行具体 URL，不再用搜索占位。</span>
+          <ul>
+            <li>487 条 docs/API/changelog。</li>
+            <li>292 条招聘/JD，包括 260 条职位详情页。</li>
+            <li>160 条 GitHub/code/community 路由。</li>
+          </ul>
+        </article>
+        <article class="path-card">
+          <strong>第三层：待晋级材料</strong>
+          <span>媒体、伙伴、监管、社区、竞品材料。</span>
+          <ul>
+            <li>估值和份额判断只作为二级证据。</li>
+            <li>市场份额没有公开审计分母，先用代理指标。</li>
+            <li>历史 JD 变化还需要 archive 或 dated mirror。</li>
+          </ul>
+        </article>
+        <article class="path-card">
+          <strong>这页现在要回答</strong>
+          <span>不是“Stripe 很厉害”，而是证据怎么连接。</span>
+          <ul>
+            <li>公司运营线：估值、交易量、并购、客户结构。</li>
+            <li>技术事件线：API、文档、计费、风控、协议。</li>
+            <li>AI 变化线：交易入口、商品表达、计费、结算、风险、组织。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <div class="panel-head">
+          <h2>公司路径：先按阶段归档，再做判断</h2>
+          <p>这里不下大结论，只把 Stripe 每阶段新增的经营能力和后续 AI 关联放在一条线上。</p>
       </div>
       <div class="path-grid">
         <article class="path-card">
           <strong>2010-2014：支付 API 起点</strong>
-          <span>把收款从银行/网关工程变成开发者接口。</span>
+          <span>材料显示：早期核心是在线收款 API、SDK、文档和测试。</span>
           <ul>
             <li>API、SDK、文档、测试环境成为产品核心。</li>
             <li>客户是互联网业务和开发者团队。</li>
-            <li>底层逻辑：让新业务更快上线并收钱。</li>
+            <li>后续要用官方早期材料继续补强日期和客户案例。</li>
           </ul>
         </article>
         <article class="path-card">
@@ -904,14 +949,14 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>证据一：公司运营与技术路径的双轨时间轴</h2>
-        <p>拖动年份，看商业事件、估值/交易量/并购指标，以及技术接口如何互相推动。</p>
+        <h2>时间轴：公司运营线和技术事件线并读</h2>
+        <p>拖动年份，先看证据指标，再看商业动作影响了哪些技术选择，或技术能力反过来打开了哪些商业动作。</p>
       </div>
       <div class="timeline-reader">
         <div class="timeline-control">
           <div>
             <strong id="timelineTitle">2010-2014：支付 API 起点</strong>
-            <p id="timelineCaption">Stripe 的第一性原理是把复杂金融接入变成开发者能复制的接口。</p>
+            <p id="timelineCaption">早期证据先归到 API、SDK、文档、测试体验四类，不先做宏大判断。</p>
           </div>
           <div id="timelineYear" class="timeline-year">2010</div>
         </div>
@@ -930,33 +975,33 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>证据二：AI 到底改变了哪些金融对象</h2>
-        <p>不是泛泛说 AI，而是拆解交易、商品、计费、结算、风险、组织六个对象。</p>
+        <h2>AI 变化链路：交易从哪里被改写</h2>
+        <p>这一章只做链路拆解：谁发起交易，商品怎样给机器读取，费用怎样发生，钱走什么轨道，风险在哪里拦截，组织能力怎么跟上。</p>
       </div>
       <div class="ai-flow">
         <div class="flow-thesis">
           <div>
-            <span class="stage-label">核心判断</span>
-            <strong>AI 没有只改变“支付入口”，它改变的是经济活动里的对象和协议。</strong>
+            <span class="stage-label">研究假设</span>
+            <strong>AI 不是给支付加一个助手，而是让交易链路多了 Agent、机器可读商品、用量计费和机器支付协议。</strong>
           </div>
-          <p>Stripe 的变化要从一个系统看：谁发起交易、商品如何被机器读取、费用如何按 token/event 发生、用什么轨道结算、风险如何前置、组织能力如何跟上。</p>
+          <p>下面六个标签不是概念框架，而是 source queue 的整理维度。每个维度都必须继续回到 docs、发布会、API、JD 和伙伴公告里补证据。</p>
         </div>
         <div class="flow-grid">
           <div id="flowTabs" class="flow-tabs"></div>
           <div id="flowDetail" class="flow-detail"></div>
         </div>
         <div class="flow-synthesis">
-          <span class="stage-label">回到主线</span>
-          <strong>结论：Stripe 的机会不在“AI 功能”，而在成为 Agent 经济的操作系统层。</strong>
-          <p>它试图占住四个关键协议面：交易入口、计费颗粒、风险控制、结算轨道。后续判断要看这些协议面能否从 Stripe 自有生态扩展到跨平台标准。</p>
+          <span class="stage-label">阶段性结论</span>
+          <strong>当前证据只能支持一个中间判断：Stripe 正在把支付、计费、风控、钱包和机器支付放到同一条 Agent 交易链路里。</strong>
+          <p>更强的判断还需要继续读伙伴公告、API changelog、客户案例和社区反馈，确认这些能力是发布叙事、试点能力，还是已经形成跨平台采用。</p>
         </div>
       </div>
     </section>
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>证据三：高频信号和待验证假设</h2>
-        <p>这些词不是装饰词云，而是后续 PPT/H5 应继续展开的证据入口。</p>
+        <h2>证据索引：词条必须回到来源分桶</h2>
+        <p>这些词条不是风格装饰。它们是后续从 1000-source queue 继续抽证据的入口。</p>
       </div>
       <div class="word-cloud" aria-label="Stripe AI finance signal cloud">
         <span class="xl">agentic commerce</span>
@@ -1051,8 +1096,8 @@
 
     <aside class="control-panel">
       <div>
-        <h2>辅助地图</h2>
-        <p>地图只做定位：横轴看它离传统支付 API 还是 Agent 经济协议更近，按钮用于切换证据面。</p>
+        <h2>证据地图</h2>
+        <p>地图只做索引：左侧是公司/产品路径，右侧是 Agent、协议、稳定币和机器支付路径。</p>
       </div>
       <div class="range-wrap">
         <div class="range-label"><span>公司路径</span><span id="scoreValue">55</span><span>AI 金融形态</span></div>
@@ -1072,16 +1117,16 @@
     <main>
       <section class="panel">
         <div class="panel-head">
-          <h2>证据节点</h2>
-          <p>按时间和能力迁移顺序读。</p>
+          <h2>来源节点</h2>
+          <p>按时间、能力和证据强度展开。</p>
         </div>
         <div id="spine" class="spine"></div>
       </section>
 
       <section class="panel">
         <div class="panel-head">
-          <h2>协议迁移地图</h2>
-          <p>横轴：越右越接近 Agent 经济操作系统。</p>
+          <h2>能力迁移地图</h2>
+          <p>横轴：从支付 API 和商户经营，移动到 Agent 交易、token 计费、稳定币和机器支付。</p>
         </div>
         <div class="axis-labels"><span>支付 API / 商户增长</span><span>Agent / token / stablecoin / machine payment</span></div>
         <div id="map" class="map"><div id="cursor" class="cursor"></div></div>
@@ -1093,17 +1138,17 @@
 
       <section class="panel wide">
         <div class="panel-head">
-          <h2>可复用结论</h2>
-          <p>这部分服务后续 PPT 或长报告。</p>
+          <h2>当前只保留两个阶段性判断</h2>
+          <p>这部分服务后续 PPT 或长报告，但还不是公开结论。</p>
         </div>
         <div class="closing">
           <div class="note">
-            <strong>主判断</strong>
-            <p>Stripe 每一轮扩张都在降低“新业务从想法到收钱”的摩擦。AI 后，这个摩擦变成 Agent 能否发现商品、理解价格、获得授权、完成支付、留下可追责记录。</p>
+            <strong>已能支撑的判断</strong>
+            <p>从现有来源看，Stripe 的变化不是单点 AI 功能，而是把支付、计费、风控、钱包、稳定币和机器支付放进同一条 Agent 交易链路。</p>
           </div>
           <div class="note">
-            <strong>待验证</strong>
-            <p>关键问题不是 Stripe 能否发布更多 AI 功能，而是 agent wallet、machine payment、token streaming billing、稳定币微支付和实时风控能否形成跨平台网络效应。</p>
+            <strong>还不能下结论的部分</strong>
+            <p>agent wallet、machine payment、token streaming billing、稳定币微支付和实时风控是否形成跨平台网络效应，还需要 partner/customer/community 证据继续晋级。</p>
           </div>
         </div>
       </section>
@@ -1111,10 +1156,10 @@
       <section class="panel wide">
         <div class="panel-head">
           <h2>来源索引</h2>
-          <p>H5 只放负载最高的来源；完整材料池见 source pack。</p>
+          <p>这里是进入 H5 的高负载来源；1000-source queue 负责保存未晋级材料。</p>
         </div>
         <div id="sources" class="source-grid"></div>
-        <p class="footnote">边界：本页为内部调研草稿。Stripe 官方数字、产品发布和客户案例均按官方口径处理，不等同于独立审计。未声明完成 1000 篇材料池。</p>
+        <p class="footnote">边界：本页为内部调研草稿。Stripe 官方数字、产品发布和客户案例均按官方口径处理，不等同于独立审计。1000 条来源已经组织为候选队列，但只有已读、已标注、已晋级的来源能支撑页面结论。</p>
       </section>
     </main>
   </div>
@@ -1247,10 +1292,10 @@
       {
         year: "2010-2014",
         title: "支付 API 起点",
-        caption: "先把复杂金融接入变成开发者能复制的接口。",
+        caption: "早期材料先归到 API、SDK、文档、测试体验四类。",
         stage: "公司路径",
-        event: "Stripe 从在线收款 API、SDK、文档和测试体验切入，建立 API-first 支付入口。",
-        meaning: "第一性原理不是“做支付”，而是降低新业务上线收钱的摩擦。",
+        event: "当前页面把这一阶段作为资料归档起点：在线收款 API、SDK、文档和测试体验是后续所有扩张的接口基础。",
+        meaning: "读这一段时不要先套“第一性原理”。先看 Stripe 当时把哪些金融动作做成了开发者可调用接口，再追这些接口如何被复用到 Connect、Billing、Radar。",
         signals: ["API-first", "developer experience", "payments"],
         metrics: [
           { value: "2010", label: "公司成立，支付 API 成为最小入口" },
@@ -1258,9 +1303,9 @@
           { value: "API / SDK", label: "技术选择先于大规模销售组织" },
           { value: "市场代理", label: "无公开份额；看开发者采用和客户扩散" }
         ],
-        business: ["以开发者为第一客户，不从传统收单销售切入。", "把复杂金融接入卖给互联网创业公司和软件公司。", "公司运营重点是降低上线收款时间。"],
+        business: ["以开发者和互联网业务为主要入口。", "商业动作是把在线收款接入做成可复制流程。", "公开份额不足，先用产品扩散和开发者采用作为早期代理。"],
         technology: ["API、SDK、测试卡、错误处理和文档成为产品本体。", "Payment object、webhook、dashboard 共同形成可编程支付接口。", "技术路线决定了后续可复制到 Billing、Connect、Radar。"],
-        impact: "技术推动商业：API-first 让 Stripe 可以先占开发者心智，再把商业边界从收款扩到经营系统。",
+        impact: "技术推动商业：支付接口、文档和测试体系先形成分发方式，后续商业边界才逐步扩到平台、订阅、风控和金融产品。",
         majorEvents: ["2010 founded", "2011 public launch", "developer-first payments"],
         refs: ["companyInfo"]
       },
@@ -1450,24 +1495,24 @@
       {
         id: "actor",
         label: "交易主体",
-        title: "交易主体：Agent 成为交易发起者",
-        summary: "过去是人或商户发起支付；AI 后，Agent 可以在对话、搜索、任务流中发起购买或访问付费资源。",
+        title: "交易入口：Agent 开始参与发起购买",
+        summary: "这一维度看交易入口是否从商户网站和人类点击，扩展到 Copilot、AI Mode、agent task flow 等界面。",
         bullets: ["Copilot Checkout 把购物放进对话界面。", "Agentic commerce 让 Agent 发现商品并触发 checkout。", "Link wallets for agents 暗示钱包也要为 Agent 场景服务。"],
         evidence: "Copilot release、Agentic Commerce Suite、Sessions 2026。"
       },
       {
         id: "product",
         label: "商品表达",
-        title: "商品表达：商品、价格、库存要机器可读",
-        summary: "Agent 不能只看网页，它需要结构化 catalog feed、价格、库存、履约和审批接口。",
+        title: "商品表达：商品、价格、库存进入机器可读格式",
+        summary: "这一维度看商品数据是否从网页展示，转成 catalog feed、价格、库存、履约和审批接口。",
         bullets: ["ProductCatalogImport 把商品导入变成 API 对象。", "库存和价格需要频繁刷新。", "Approval hook 是商户控制交易边界的位置。"],
         evidence: "Agentic commerce seller docs 和 preview API routes。"
       },
       {
         id: "billing",
         label: "计费颗粒",
-        title: "计费颗粒：从 seat/month 到 token/event/outcome",
-        summary: "AI 产品的成本以 token 速度发生，传统订阅账单无法完全匹配真实成本和收入。",
+        title: "计费颗粒：从订阅账单扩到 token / event / outcome",
+        summary: "这一维度看 AI 产品成本和收入是否从固定订阅，转向更细颗粒的 usage、event、token、outcome。",
         bullets: ["Usage billing 成为 AI 产品基础能力。", "Metronome 提供更精细 tracking。", "Streaming payments 把计费和结算推向实时。"],
         evidence: "AI companies page、2025 annual letter、Sessions 2026。"
       },
@@ -1475,15 +1520,15 @@
         id: "rail",
         label: "结算轨道",
         title: "结算轨道：卡、钱包、稳定币、机器支付并存",
-        summary: "AI 后不是简单换一种支付方式，而是根据金额、频率、地域和自动化程度选择不同轨道。",
+        summary: "这一维度看不同交易频率、金额、地域和自动化程度下，Stripe 如何组合卡、钱包、稳定币、MPP/x402。",
         bullets: ["SPT 处理 Agent 场景下的凭据暴露。", "Stablecoin 支撑跨境和微额高频场景。", "MPP / x402 把资源访问变成机器支付协议。"],
         evidence: "Copilot release、crypto use case、AWS WAF + Stripe。"
       },
       {
         id: "risk",
         label: "风控对象",
-        title: "风控对象：从 stolen card 到 stolen token / tool misuse",
-        summary: "当 Agent 可以花钱和调用工具，风险从支付末端前移到注册、推理、工具调用、商品数据和审批接口。",
+        title: "风险位置：从盗卡扩到 token theft / tool misuse",
+        summary: "这一维度看风险是否从支付末端前移到注册、推理、工具调用、商品数据和订单审批接口。",
         bullets: ["Radar token theft 针对 AI 公司假注册和推理成本滥用。", "AI Security JD 指向 prompt injection、jailbreak、tool misuse。", "Idempotency 和 hook timeout 成为交易安全问题。"],
         evidence: "Sessions 2026、AI Security JD、seller docs。"
       },
@@ -1491,7 +1536,7 @@
         id: "org",
         label: "组织能力",
         title: "组织能力：AI 进入产品、平台、风控、财务和 GTM",
-        summary: "招聘信号显示 Stripe 不是只建一个 AI 组，而是在多个职能里补能力。",
+        summary: "这一维度只使用 JD 作为当前组织信号，不把招聘文字直接当作产品发布。",
         bullets: ["AI Conversation Platform 改变商户操作界面。", "Developer Productivity AI 改变内部工程效率。", "Stablecoin audit / regulatory / finance roles 把新轨道纳入控制体系。"],
         evidence: "292 条 jobs/JD URL 和重点 JD 抽样。"
       }
@@ -1843,7 +1888,7 @@
         </div>
         <h3>${chapter.title}</h3>
         <p>${chapter.summary}</p>
-        <h3>读法</h3>
+        <h3>为什么放入地图</h3>
         <ul>${chapter.actions.map((item) => `<li>${item}</li>`).join("")}</ul>
         <div class="evidence-box">
           <h3>证据</h3>
@@ -1871,7 +1916,7 @@
           <p>${item.event}</p>
         </div>
         <div>
-          <h3>读法</h3>
+          <h3>证据怎么读</h3>
           <p>${item.meaning}</p>
           <ul>${item.signals.map((signal) => `<li>${signal}</li>`).join("")}</ul>
         </div>
