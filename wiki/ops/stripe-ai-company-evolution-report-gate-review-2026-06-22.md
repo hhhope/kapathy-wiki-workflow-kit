@@ -75,7 +75,7 @@ created: 2026-06-22
 |---|---|
 | Reader intent | pass for internal draft |
 | Reference structure | pass |
-| Learning/source use | partial-pass: verified source pack created, 1000-row concrete-source queue added, and JD signal scan promoted; not all rows are read materials |
+| Learning/source use | partial-pass: verified source pack created, 1000-row concrete-source queue added, JD signal scan promoted, and expanded H5 system map added; not all rows are read materials |
 | Split strategy | pass: H5 for reading, source pack for material density |
 | Voice | pass for internal research draft |
 | Visual | partial-pass: standalone H5 created and screenshot-checked; console event check blocked by missing local Playwright module |
@@ -88,8 +88,9 @@ created: 2026-06-22
 - Recruitment coverage now includes 292 Stripe jobs/JD URLs, including 260 concrete job-description pages. A focused JD scan has been added to the source pack and H5, but historical JD change claims still need archived snapshots or dated job-board mirrors.
 - Several official claims are product-positioning or vendor metrics; they need partner/customer corroboration before stronger public claims.
 - API/version-change section now has concrete ACS/MPP/x402 preview headers and object routes, but is not yet fully mined from Stripe changelog or package diffs.
-- H5 has desktop/mobile screenshots, but should still receive console-event QA and deeper interaction QA before review-ready.
+- H5 has expanded desktop/mobile screenshots, but should still receive console-event QA and deeper interaction QA before review-ready.
 - Community signals are still route-level for Discord, HN, Reddit, GitHub issues/PRs; next pass should sample actual discussions and classify friction.
+- Company-path and big-event sections are now expanded, but older pre-2023 company-path milestones still need tighter official date sourcing before a public-ready version.
 
 ## Verification Evidence
 
@@ -97,8 +98,8 @@ created: 2026-06-22
 |---|---|---|
 | HTML parser | pass | `python3 -m html.parser wiki/reports/stripe-ai-company-evolution-h5.html` |
 | Diff whitespace | pass | `git diff --check -- wiki/sources/stripe-ai-company-evolution-research-2026-06-22.md wiki/ops/stripe-ai-company-evolution-report-gate-review-2026-06-22.md wiki/reports/stripe-ai-company-evolution-h5.html` |
-| Desktop screenshot | pass after JD node update | `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` full-page screenshot shows the new JD radar node without obvious overlap. |
-| Mobile screenshot | pass after JD node update | `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` full-page screenshot shows the new JD radar node and source cards in a readable single-column layout. |
+| Desktop screenshot | pass after system-map expansion | `wiki/reports/assets/stripe-ai-company-evolution/desktop.png` full-page screenshot shows company path, recent event timeline, AI-after dimensions, signal cloud, 22-node map, and source cards. |
+| Mobile screenshot | pass after system-map expansion | `wiki/reports/assets/stripe-ai-company-evolution/mobile.png` full-page screenshot shows the expanded sections in a readable single-column layout. |
 | Chinese rendering | fixed | Initial screenshots showed missing CJK glyphs; H5 now imports Noto Sans SC and screenshots render Chinese correctly. |
 | Frontmatter precheck | inconclusive for target, blocked globally by legacy pages | `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target ...` returned existing unrelated legacy blockers and `target.entry_count: 0`; target pages include required fields from repair hints. |
 | Console event check | blocked | `node -e require('playwright')...` failed with `MODULE_NOT_FOUND`; CLI screenshot still worked. |

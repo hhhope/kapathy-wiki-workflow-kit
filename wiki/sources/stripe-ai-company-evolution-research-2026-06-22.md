@@ -47,6 +47,18 @@ Stripe 在 AI 后的变化不是简单多卖一个支付 API，而是把自身�
 | 2026-04 | Sessions 2026 发布 288 项产品/功能。 | Google AI Mode/Gemini、Link wallets for agents、streaming payments、Radar token theft、Stripe Projects。 | AI 不是单一产品，而是支付、风控、账务、开发工具、稳定币的横向重构。 |
 | 2026-06 | AWS WAF + Stripe 支持 AI agent traffic monetization。 | HTTP 402、机器可读价格/许可、Machine Payments Protocol。 | 内容、API、数据源被重新包装成 Agent 可购买资源。 |
 
+## H5 Expansion Structure
+
+The expanded H5 should be read as a system map, not an eight-point summary.
+
+Current structure:
+
+1. Company path: 2010-2014 API-first payments, 2015-2019 merchant operating system, 2020-2022 financial products and resilience, 2023-2024 AI customer pressure, 2025-2026 AI economic infrastructure.
+2. Recent event timeline: 2023 volume baseline, 2024 AI-customer pressure, 2025 Privy/Metronome/Bridge, 2025 New York Tour, 2026 Copilot Checkout, Sessions 2026, preview API changes, and AWS WAF + machine payments.
+3. AI-after dimensions: transaction actor, product representation, billing granularity, settlement rail, risk object, and organization capability.
+4. Signal cloud: agentic commerce, stablecoin, usage billing, machine payments, HTTP 402, Shared Payment Token, ProductCatalogImport, Link wallets, MCP, llms.txt, agent toolkit, claimable sandbox, catalog feed, approval hook, Radar, token theft, prompt injection, KYC/KYB, Capital underwriting, AI Conversation Platform, Developer Productivity AI, and Stablecoin Audit.
+5. Interactive map: expanded from 8 nodes to 22 nodes, ordered by time and filterable by company path, product expansion, Agent, finance rail, risk, and organization capability.
+
 ## High-Density Source Pool
 
 Admission rule for this pass: official Stripe/partner docs and newsroom items are load-bearing; secondary media are route leads only until opened and checked. The current source pool is intentionally broader than the H5 can display.
