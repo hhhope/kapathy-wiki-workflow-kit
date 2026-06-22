@@ -420,3 +420,34 @@ Corrected thesis:
 
 Implementation remains stopped. The next design and H5 draft must make this
 thesis visible in the conclusion, not only in Section 6.
+
+## 2026-06-22 Twelfth Drift Correction
+
+The user approved continuing but emphasized that the visual scheme must be done
+well. The prior design still had visual requirements as generic bullet points
+instead of an implementable visual system.
+
+Corrected visual direction:
+
+- Treat the H5 as a `Stripe Evolution Atlas`, not a dashboard dump or article
+  with decorative charts.
+- Use one time spine across the page, with three coordinates layered onto it:
+  embedded position, financial relationship, and evidence strength.
+- The first screen must show time, embedded-position migration, processed-volume
+  trend, and source status together.
+- The main timeline must have synchronized lanes: strategy, market, M&A,
+  technology, AI/Agent, and evidence.
+- AI payment restructuring must be a five-layer system diagram: transaction /
+  credit base, entrance, credential/benefit, tool/API, protocol/liability.
+- Credit relationship must have its own visual chain: transaction data,
+  underwriting, limit/term/price, usage, repayment source, delinquency/dispute,
+  and reevaluation.
+- Market visuals must use small multiples and口径 separation. Do not mix TPV,
+  revenue, net revenue, and valuation in one chart.
+- Each chapter needs a visible evidence rail or evidence drawer. Source proof
+  cannot be hidden at the bottom.
+- Mobile must keep the time axis and evidence drawer; it must not collapse into
+  plain stacked text cards.
+
+Implementation remains stopped. The next H5 implementation must start from this
+visual system, not from ad hoc section cards.
