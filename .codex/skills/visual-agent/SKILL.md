@@ -10,9 +10,29 @@ tool.
 
 ## Trigger
 
-Use for any request to create, add, improve, transform, or choose a visual
-deliverable. Casual wording counts: "弄个图", "画一下", "整张图", "做成卡片",
-"配几张图", "图像化一下", and similar phrasing are examples, not a closed list.
+Trigger on visual-deliverable intent, not on fixed phrases.
+
+Use this skill when the requested output is meant to be seen as a designed,
+spatial, graphical, image-like, or browser-rendered artifact. This includes
+requests to create, transform, polish, choose the medium for, or add visual
+presentation to content.
+
+Classify the intent by role:
+
+- Visual artifact requested: diagram, map, card, poster, cover, image,
+  illustration, infographic, chart, whiteboard, H5/HTML visual page, screenshot,
+  slide-like page, layout, asset set, or visual package.
+- Visual transformation requested: turn text/data/notes/process/source material
+  into something visual, scannable, spatial, interactive, shareable, or
+  presentation-ready.
+- Visual decision requested: choose between SVG, H5/HTML, image model, hybrid,
+  screenshot, generated image, or another visual medium.
+- Visual repair requested: improve composition, visual hierarchy, readability,
+  image quality, rendering, layout, labels, or visual consistency.
+
+Casual, incomplete, or shorthand language still triggers when the intended
+deliverable is visual. Do not require the user to say "visual", "diagram",
+"SVG", "H5", or any exact keyword.
 
 Do not use only because the wording is casual; a visual deliverable must be
 requested.
@@ -61,15 +81,62 @@ pressure until they choose deterministic SVG/H5.
 Named visual workers are child routes, not entry points, unless the user is
 debugging that worker.
 
-- Reader-facing report/H5/share/Feishu visual:
-  `public-report-quality-gate -> visual-agent -> child worker`.
-- Article or multi-section visual package: `knowledge-article-visual`.
-- Single card, poster, long image, or per-image script: `infographic-onepager`.
+Before naming a child worker in `Next Action`, verify that the child skill is
+available in the current runtime. If it is not available, do not pretend to
+route to it; keep ownership in `visual-agent`, ask the mode fork or state the
+missing worker in `Blocked Action`.
+
+Bundled visual workers in this repository:
+
+- Article visual packages and card series: `knowledge-article-visual`.
+- Single poster, long image, teaching card, or per-image script:
+  `infographic-onepager`.
+- Dense concept one-pager, governance visual, H5/HTML long infographic, or
+  carousel-style knowledge visual: `visual-knowledge-onepager`.
 - Flow, process, state, payment/fund/account sequence: `svg-flow-diagram`.
-- System, deployment, integration, topology, pipeline: `architecture-diagram`.
-- Direct bitmap generation: `imagegen` only after mode, source, prompt/script,
-  and verification boundary are set.
-- Feishu whiteboard: `lark-whiteboard`.
+- Service interaction order, call sequence, or Mermaid sequence diagram:
+  `sequence-diagram`.
+- System architecture, infrastructure, security, integration, topology, or
+  deployment diagram: `architecture-diagram`.
+- Frontend visual polish, dashboard UX, chart/widget/icon/layout quality, or UI
+  visual repair: `frontend-visual-governor`.
+- Management-facing Gantt, capability map, roadmap/milestone visual, or weekly
+  project update H5/HTML brief: `project-weekly-report-gantt-map`.
+- Feishu whiteboard output: `lark-whiteboard`.
+
+Runtime/system routes:
+
+- Direct bitmap generation or image-model visual layer: `imagegen` only when the
+  current runtime provides the image tool/skill, and only after mode, source,
+  prompt/script, and verification boundary are set.
+- Reader-facing reports, H5/share pages, Feishu-facing visuals, or public
+  materials: preserve `public-report-quality-gate` when the host runtime
+  provides it, then route through `visual-agent` to the selected visual worker.
+
+Use this route matrix after the mode decision:
+
+- Knowledge article visuals, multi-section visual packages, card series,
+  article-learning visuals, or report visual asset sets:
+  `knowledge-article-visual`.
+- Single infographic, one-page poster, long image, horizontal teaching card,
+  screenshot-friendly HTML, carousel-like visual, or image prompt/script:
+  `infographic-onepager`.
+- Dense retro-grid one-pager, Xiaohongshu-style carousel, governance concept
+  card, or abstract framework visual: `visual-knowledge-onepager` when present.
+- Flow, process, state, payment/fund/account sequence, Mermaid sequence source,
+  or information/fund flow: `svg-flow-diagram`.
+- Service interaction order, call sequence, or Mermaid sequence diagram
+  authoring before final visual conversion: `sequence-diagram` when present.
+- System architecture, infrastructure, security, integration, topology,
+  deployment, component relationship, or technical architecture diagram:
+  `architecture-diagram`.
+- Frontend visual polish, dashboard UX, chart/widget/icon/layout quality, or
+  existing UI visual repair: `frontend-visual-governor`.
+- Management-facing Gantt, capability map, roadmap/milestone visual, or weekly
+  project update H5/HTML brief: `project-weekly-report-gantt-map`.
+- Feishu whiteboard output: `lark-whiteboard`.
+- Direct bitmap generation or image-model visual layer: runtime/system
+  `imagegen`.
 
 ## Stops
 

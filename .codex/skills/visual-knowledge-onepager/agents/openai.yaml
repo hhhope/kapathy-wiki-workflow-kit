@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual Knowledge One-Pager"
+  short_description: "Create dense visual one-pagers, H5 infographics, retro-grid cards, or Xiaohongshu-style carousels"
+  default_prompt: "Use this skill when the user wants to turn a concept, article, report, governance idea, learning note, or abstract framework into a dense visual one-pager, H5, long infographic, retro-grid knowledge card, or Xiaohongshu-style carousel."
