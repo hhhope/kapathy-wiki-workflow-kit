@@ -371,3 +371,51 @@ Corrected requirement:
 
 Implementation remains stopped. The next H5 draft must include quotation strips
 or evidence drawers for every chapter.
+
+## 2026-06-22 Eleventh Drift Correction
+
+The user accepted parts of Section 6.0 but rejected the conclusion direction:
+the draft still implied AI itself creates the need for infrastructure. The user
+clarified that embedded payments, embedded finance, object models, billing,
+risk, compliance, and settlement should evolve even without AI.
+
+Corrected thesis:
+
+- AI changes the cost curve; it is not the subject of financial survival. It
+  lowers coding, integration, testing, and customization costs, which makes
+  design quality more important.
+- Avoid the phrase "AI is downgraded." The clearer framing is: AI is not the
+  subject of survival. The subject is human, organizational, merchant,
+  platform, regulatory, network, and user relationships; AI changes the cost
+  curve for implementation and coordination.
+- The durable problem is design under complexity: transaction relationships and
+  credit relationships need to be decomposed into objects, APIs, billing rules,
+  authorization boundaries, risk controls, settlement paths, dispute handling,
+  and compliance boundaries.
+- Design is entropy reduction. The strategic value is not "adding AI"; it is
+  compressing merchants, platforms, consumers, banks, card networks, stablecoin
+  rails, regulation, and exception cases into a usable, auditable system.
+- AI Hub / traffic-forwarding platforms and payment companies follow different
+  strategies. AI Hub is closer to wholesale routing: aggregate traffic, route
+  model usage, meter consumption, and earn spread or bargaining power. Payment
+  companies need an ecosystem-combination strategy: AI plus object models,
+  compliance, risk, billing, settlement, and partner networks.
+- In payment scenarios, customers can use AI to assemble their own flows, but a
+  payment company that fuses AI into payments, billing, credit, risk, and
+  compliance can offer smoother and more reliable outcomes. This is the
+  "combination punch" and ecosystem integration argument.
+- Billing, custom payment terms, usage billing, merchant credit, receivables,
+  repayment, tax, risk, and dispute workflows are the practical imagination
+  space. The public conclusion should not stop at agent payments or wallets.
+- Financial innovation is not unconstrained breakthrough. The stronger claim is
+  innovation within regulation and toward new consensus: authorization,
+  liability, consumer/merchant protection, risk control, settlement, and dispute
+  rules must become acceptable to networks, regulators, platforms, merchants,
+  and users.
+- Do not claim the whole web has been exhaustively searched. Use representative
+  external anchors instead: NIST AI RMF for risk/design context, OECD AI
+  Principles for human-centred accountability, and AP2/payment protocols for
+  authorization and accountability in agent payments.
+
+Implementation remains stopped. The next design and H5 draft must make this
+thesis visible in the conclusion, not only in Section 6.
