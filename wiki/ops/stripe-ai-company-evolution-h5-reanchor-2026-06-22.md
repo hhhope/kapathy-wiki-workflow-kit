@@ -294,3 +294,55 @@ Corrected requirement:
 Implementation remains stopped. The next H5 revision must make the transaction
 relationship line and credit relationship line visible in the structure, timeline,
 visual design, and acceptance criteria.
+
+## 2026-06-22 Eighth Drift Correction
+
+The user rejected the subtitle sentence that listed merchant acquiring,
+platform splits, subscriptions, issuing, risk, tax, wallets, stablecoins, and
+machine payments as "callable financial interfaces." The problem was that it
+stacked product nouns without stating the strategic claim.
+
+Corrected requirement:
+
+- The top-line claim must not be a product inventory.
+- The subtitle and lead must state Stripe's position change in financial
+  relationships: transaction relationships and credit relationships are being
+  decomposed into programmable objects, rules, evidence, and interfaces.
+- Product names such as Radar, Link, Issuing, Capital, stablecoins, MCP, and
+  machine payments should appear later as evidence under that claim, not as the
+  claim itself.
+- AI-era change should be phrased as Agent/model/automation systems reading,
+  combining, and executing those objects under permission, risk, and repayment
+  constraints.
+
+Implementation remains stopped until the design language passes this reader
+logic check.
+
+## 2026-06-22 Ninth Drift Correction
+
+The user rejected the first-screen paragraph that described API-first, platform
+splits, subscriptions, risk, tax, financial accounts, global operations, usage
+billing, product data, wallet authorization, stablecoins, machine payments, and
+real-time risk as separate growth clues. The missing strategic abstraction was
+embedded payments / embedded finance.
+
+Corrected requirement:
+
+- The first-screen company path must be framed as embedded-position migration:
+  payment API -> embedded payments in platforms/marketplaces/SaaS -> embedded
+  finance for platform customers -> embedded transaction and credit execution
+  inside AI entrances and Agent workflows.
+- Connect is not just "platform split." It is the mechanism that lets platforms
+  embed onboarding, payments, settlement, compliance, and merchant fund flows.
+- Treasury, Issuing, Capital, Financial Connections, and Identity are not a
+  loose list of financial products. They explain how Stripe moves from embedded
+  payments toward embedded finance: accounts, cards, financing, identity,
+  cash-flow data, and repayment control inside platform operations.
+- AI-era framing should extend this embedded-finance logic: Agent workflows
+  embed transaction relationships and credit relationships under authorization,
+  budget, merchant-scope, underwriting, repayment, risk, and dispute rules.
+- Product names should be evidence nodes under this embedded-position thesis,
+  not the lead paragraph's main logic.
+
+Implementation remains stopped. The next visible H5 draft must put embedded
+payments / embedded finance in the first-screen story.
