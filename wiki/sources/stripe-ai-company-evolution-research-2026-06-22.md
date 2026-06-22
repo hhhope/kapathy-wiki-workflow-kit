@@ -17,7 +17,9 @@ target:
 
 - Topic: 从 Stripe 的公司发展路径观察 AI 后的金融基础设施变化。
 - User target: 先做一个类似李想访谈 H5 的高密度调研材料，后续可扩展到 1000 篇上限的材料池。
-- Draft boundary: 本页是首轮公开信源底稿，不是最终 PPT，也不声称已经完成 1000 篇阅读。
+- Draft boundary: 本页是已核验/高优先级公开信源底稿，不是最终 PPT，也不声称已经完成 1000 篇阅读。
+- 1000-source queue: `wiki/sources/stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv`.
+- Quantity correction: the original 155 entries are not enough for the user's target. They are treated as the verified/high-priority source pack; the separate CSV expands the working queue to 1000 rows and marks each row by status.
 - Reference shapes:
   - `inbox/Anthropic研发调研报告.pptx`: 公司发展、产品演进、内部实践、核心能力、落地启示。
   - `wiki/reports/lixiang-luoyonghao-ai-agent-reading-board.html`: 脊柱、温度地图、详情展开。
@@ -48,6 +50,8 @@ Stripe 在 AI 后的变化不是简单多卖一个支付 API，而是把自身�
 ## High-Density Source Pool
 
 Admission rule for this pass: official Stripe/partner docs and newsroom items are load-bearing; secondary media are route leads only until opened and checked. The current source pool is intentionally broader than the H5 can display.
+
+This table is not the full quantity target. It is the evidence-grade source pool. The 1000-row candidate/discovery queue lives in `stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv` so that route-only items do not pollute verified claims.
 
 | ID | Source | Type | What it contributes | Use boundary |
 |---|---|---|---|---|
@@ -174,6 +178,23 @@ The source pool should grow by bucket, not by random search volume.
 | Secondary media and analyst coverage | 120 | 7 | Reuters, Bloomberg, CNBC, TechCrunch, The Information, Stratechery, Fintech Takes |
 | Regulatory and risk context | 80 | 2 | PCI, card network rules, US/EU stablecoin rules, consumer protection |
 | Peer comparison | 80 | 4 | Adyen, PayPal, Visa, Mastercard, Coinbase, Shopify, OpenAI, Anthropic |
+
+Current queue state after the correction pass:
+
+| Queue layer | Count | Meaning |
+|---|---:|---|
+| Verified/high-priority source pack | 155 | Opened or routed sources with explicit notes in this file; only these should support H5 claims without further promotion. |
+| 1000-source CSV rows | 1000 | Working queue for discovery and triage. Includes concrete URLs, GitHub/package routes, and search routes. |
+| Concrete URL/package/repo routes in CSV | 426 | Direct pages or repo/package/community routes that can be opened next. |
+| Search discovery routes in CSV | 574 | Query routes that must be promoted to concrete source URLs before they can count as read material. |
+| Verified rows marked in CSV | 17 | Highest-load sources already proven in the current gate review; the rest require promotion/checking. |
+
+The next source-counting standard should be stricter:
+
+1. `verified`: opened, cited, and summarized with boundary.
+2. `candidate-url`: concrete URL exists but has not been read.
+3. `candidate-search`: query route only; not a material until promoted.
+4. `rejected`: duplicate, irrelevant, inaccessible, or too weak.
 
 ## Second-Pass Expansion: API, Protocol, Package, Community
 

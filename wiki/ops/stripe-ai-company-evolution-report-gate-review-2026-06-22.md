@@ -75,7 +75,7 @@ created: 2026-06-22
 |---|---|
 | Reader intent | pass for internal draft |
 | Reference structure | pass |
-| Learning/source use | pass: source pack created |
+| Learning/source use | partial-pass: verified source pack created and 1000-row candidate queue added; not all rows are read materials |
 | Split strategy | pass: H5 for reading, source pack for material density |
 | Voice | pass for internal research draft |
 | Visual | partial-pass: standalone H5 created and screenshot-checked; console event check blocked by missing local Playwright module |
@@ -84,7 +84,7 @@ created: 2026-06-22
 
 ## Residual Risks
 
-- Current source pool is broad but still first-pass; it does not satisfy the requested 1000-source upper bound.
+- The previous 155-source pack was materially below the user's requested 1000-source ceiling. This pass adds `wiki/sources/stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv` with 1000 rows, but many rows are candidate/search routes rather than read materials.
 - Several official claims are product-positioning or vendor metrics; they need partner/customer corroboration before stronger public claims.
 - API/version-change section now has concrete ACS/MPP/x402 preview headers and object routes, but is not yet fully mined from Stripe changelog or package diffs.
 - H5 has desktop/mobile screenshots, but should still receive console-event QA and deeper interaction QA before review-ready.
@@ -101,7 +101,8 @@ created: 2026-06-22
 | Chinese rendering | fixed | Initial screenshots showed missing CJK glyphs; H5 now imports Noto Sans SC and screenshots render Chinese correctly. |
 | Frontmatter precheck | inconclusive for target, blocked globally by legacy pages | `python3 scripts/wiki_gate_precheck.py --mode frontmatter --target ...` returned existing unrelated legacy blockers and `target.entry_count: 0`; target pages include required fields from repair hints. |
 | Console event check | blocked | `node -e require('playwright')...` failed with `MODULE_NOT_FOUND`; CLI screenshot still worked. |
+| 1000-source queue row count | pass for queue, not for read-material completion | `wiki/sources/stripe-ai-company-evolution-1000-source-queue-2026-06-22.csv` has 1000 data rows, 0 empty URL/query fields, and 0 duplicate URL/query fields. |
 
 ## Decision
 
-Use as an internal first draft and research control surface. Do not claim final PPT, review-ready H5, Feishu sync, or completed 1000-source research pack.
+Use as an internal first draft and research control surface. Do not claim final PPT, review-ready H5, Feishu sync, or completed 1000-source read pack. The 1000-row CSV is a discovery queue; only promoted rows should become H5/PPT evidence.
