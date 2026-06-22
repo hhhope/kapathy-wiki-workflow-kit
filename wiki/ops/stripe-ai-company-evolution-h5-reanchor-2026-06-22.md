@@ -27,17 +27,26 @@ commentary instead of a deep research output:
 - A later correction rejected the market-share wording as too dry and too
   defensive. The user asked for calculated share lenses, fee/TPV conversion,
   growth visualization, color-coded timelines, and better reference material.
+- The user then invoked `$superpowers:brainstorming` and rejected the current
+  direction as increasingly disordered: the market-position panel was not
+  reader-comprehensible, the main timeline title still read like an unprocessed
+  bucket list, and implementation had continued without first redesigning the
+  argument.
 
 ## Re-anchored North Star
 
-The H5 should behave like a research control surface:
+Implementation is stopped. The H5 must be redesigned before further edits.
 
-1. Show how the 1000-source queue is organized.
-2. Promote only verified or explicitly bounded sources into visible claims.
-3. Read company operations and technical events together.
-4. Show how commercial behavior affects technical choices, and how technical
-   capabilities create new commercial behavior.
-5. Keep conclusions staged and evidence-bound.
+The H5 should behave like a research argument, not a pile of source categories:
+
+1. Start from one explicit reader question and one explicit thesis.
+2. Convert source material into a small number of analytical views that have
+   different jobs.
+3. Use timeline, market position, acquisition, technology, and AI transaction
+   evidence to support that thesis, not as parallel modules.
+4. Show growth and relative position through understandable visuals, with
+   calculation formulas hidden or secondary unless the reader needs them.
+5. Keep boundaries visible, but do not let disclaimers become the content.
 
 ## Rejected Framing
 
@@ -100,5 +109,7 @@ The report now surfaces:
 
 ## Residual Risk
 
-This is still an internal draft. The next quality pass should sample more rows
-from the 1000-source queue before claiming review-ready depth.
+This is still an internal draft. Further HTML/page implementation should not
+continue until a new design is approved through the brainstorming flow. The next
+design must first define the argument structure, visual grammar, market-position
+method, and where the 1000-source queue actually appears.
