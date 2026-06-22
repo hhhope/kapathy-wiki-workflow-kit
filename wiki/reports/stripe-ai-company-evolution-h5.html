@@ -691,7 +691,7 @@
       background: #f8fafc;
     }
 
-    .word-cloud span {
+    .word-cloud button {
       display: inline-flex;
       align-items: center;
       min-height: 32px;
@@ -701,6 +701,12 @@
       border: 1px solid rgba(39, 52, 73, 0.14);
       color: var(--slate);
       font-weight: 700;
+    }
+
+    .word-cloud button.active {
+      border-color: var(--green);
+      background: #e6fffa;
+      color: var(--green);
     }
 
     .word-cloud .xl {
@@ -726,6 +732,82 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin-top: 14px;
+    }
+
+    .signal-panel {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .signal-filters {
+      align-content: start;
+    }
+
+    .signal-detail,
+    .inventory-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .signal-detail h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .signal-detail p {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .signal-detail dl {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 6px 10px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .signal-detail dt {
+      color: var(--slate);
+      font-weight: 800;
+    }
+
+    .signal-detail dd {
+      margin: 0;
+    }
+
+    .inventory-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .inventory-card strong {
+      display: block;
+      color: var(--green);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .inventory-card span {
+      display: block;
+      margin: 6px 0;
+      color: var(--slate);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .inventory-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .control-panel,
@@ -1044,6 +1126,8 @@
       .evidence-strip,
       .dual-timeline,
       .signal-groups,
+      .signal-panel,
+      .inventory-grid,
       .flow-thesis,
       .flow-grid,
       .closing {
@@ -1173,8 +1257,8 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>Stripe 是否已经接近系统级入口？</h2>
-        <p>市场位置不单独做成“计算面板”。它是三维时间轴里的 scale / market lane：先看处理规模和 GDP 等价份额，再看同业参照，公式放进证据抽屉。</p>
+        <h2>证据坐标 01｜规模与市场位置</h2>
+        <p>这一坐标只回答 Stripe 的处理面是否足够进入“系统入口”讨论：处理规模、GDP 等价份额、同业参照和可见增长，而不是一句市场份额口号。</p>
       </div>
       <div class="market-board">
         <article class="chart-card">
@@ -1259,8 +1343,8 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>三维时间轴：时间 x 证据维度 x 证明任务</h2>
-        <p>拖动年份，不是看事件堆叠，而是看每个节点属于哪条 evidence lane，以及它证明了 Stripe 定位变化的哪一部分。</p>
+        <h2>证据坐标 02｜时间轴：公司、市场、并购、技术、AI</h2>
+        <p>拖动年份，看每个节点落在哪条 evidence lane，以及它支撑 Stripe 定位变化的哪一个 proof tag。</p>
       </div>
       <div class="timeline-reader">
         <div class="timeline-control">
@@ -1285,8 +1369,8 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>并购不是大事列表：它们补的是能力缺口</h2>
-        <p>把并购放进 AI 交易系统里看：Stripe 补的不是新闻标题，而是区域支付、税务对账、线下硬件、MOR、稳定币、钱包和用量计费能力。</p>
+        <h2>证据坐标 03｜能力缺口：并购补位</h2>
+        <p>这一坐标把并购放进 AI 交易系统里看：区域支付、税务对账、线下硬件、MOR、稳定币、钱包和用量计费分别补哪段能力。</p>
       </div>
       <div class="deal-grid">
         <article class="deal-card"><span>local payment network</span><strong>Paystack</strong><p>补区域支付和本地支付网络，支撑全球化商户进入更多市场。</p></article>
@@ -1302,8 +1386,8 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>AI 交易链：从商品发现到机器支付</h2>
-        <p>这一段不按年份堆事件，而按交易链路看 AI 改写了哪一环：入口、商品表达、计费、授权、结算、风险。</p>
+        <h2>证据坐标 04｜AI 交易链路</h2>
+        <p>这一坐标不按年份堆事件，而按交易链路看 AI 改写了哪一环：入口、商品表达、计费、授权、结算、风险。</p>
       </div>
       <div class="ai-flow">
         <div class="flow-thesis">
@@ -1346,63 +1430,21 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>词条密度：技术、商业、金融、风险四类信号</h2>
-        <p>词云只做导航，不做结论。它让读者快速看到证据密度来自哪些对象，而不是把四个词当成“AI 后变化”。</p>
+        <h2>证据坐标 05｜信号索引：技术、商业、金融、风险</h2>
+        <p>这里不是装饰词云。每个词条都是一个可点击证据路由，点击后查看它属于哪类信号、证明什么、来自多少来源路径、边界在哪里。</p>
       </div>
       <div class="word-cloud" aria-label="Stripe AI finance signal cloud">
-        <span class="xl">agentic commerce</span>
-        <span class="xl">stablecoin</span>
-        <span class="xl">usage billing</span>
-        <span class="lg">machine payments</span>
-        <span class="lg">HTTP 402</span>
-        <span class="lg">Shared Payment Token</span>
-        <span class="lg">ProductCatalogImport</span>
-        <span class="lg">Link wallets</span>
-        <span class="md">MCP</span>
-        <span class="md">llms.txt</span>
-        <span class="md">agent toolkit</span>
-        <span class="md">claimable sandbox</span>
-        <span class="md">catalog feed</span>
-        <span class="md">order approval hook</span>
-        <span class="md">Metronome</span>
-        <span class="md">Privy</span>
-        <span class="md">Bridge</span>
-        <span class="md">Tempo</span>
-        <span class="md risk-word">token theft</span>
-        <span class="md risk-word">prompt injection</span>
-        <span class="md risk-word">tool misuse</span>
-        <span class="md risk-word">KYC / KYB</span>
-        <span>Radar</span>
-        <span>Capital underwriting</span>
-        <span>Revenue suite</span>
-        <span>Connect</span>
-        <span>Treasury</span>
-        <span>AI Conversation Platform</span>
-        <span>Developer Productivity AI</span>
-        <span>Stablecoin Audit</span>
-        <span>PaymentIntents</span>
-        <span>Checkout Sessions</span>
-        <span>Accounts v2</span>
-        <span>Webhooks</span>
-        <span>Idempotency</span>
-        <span>Event Destinations</span>
-        <span>Data Pipeline</span>
-        <span>Issuing</span>
-        <span>Financial Accounts</span>
-        <span>Open Issuance</span>
-        <span>Bridge orchestration</span>
-        <span>Privy wallet abstraction</span>
-        <span>Tempo settlement</span>
-        <span>x402</span>
-        <span>USDC micropayments</span>
-        <span>Preview API</span>
-        <span>Stripe-Version</span>
-        <span>claimable sandbox</span>
-        <span>AI Mode / Gemini</span>
-        <span>Copilot surface</span>
-        <span>merchant approval</span>
-        <span>policy engine</span>
-        <span>reserve / audit</span>
+      </div>
+      <div class="signal-panel">
+        <div class="mode-buttons signal-filters" aria-label="信号分类筛选">
+          <button class="active" data-signal-filter="all">全部</button>
+          <button data-signal-filter="technology">技术接口</button>
+          <button data-signal-filter="business">商业行为</button>
+          <button data-signal-filter="finance">金融轨道</button>
+          <button data-signal-filter="risk">风险控制</button>
+          <button data-signal-filter="organization">组织能力</button>
+        </div>
+        <article id="signalDetail" class="signal-detail"></article>
       </div>
       <div class="signal-groups">
         <article class="signal-group">
@@ -1441,7 +1483,7 @@
     </section>
 
     <section class="section-bridge wide">
-      <h2>证据坐标证明什么</h2>
+      <h2>证据坐标 06｜能力迁移</h2>
       <p>它只证明一件事：Stripe 的商业扩张和技术选择不是并列素材，而是在同一批证据中相互牵引。市场规模、并购和客户结构解释“为什么要做”；API、计费、钱包、风控和协议解释“怎么做”；AI 交易链解释“这些能力被推向哪段新交易”。</p>
     </section>
 
@@ -1506,8 +1548,16 @@
 
       <section class="panel wide">
         <div class="panel-head">
-          <h2>我们能学什么，以及证据边界</h2>
-          <p>1000-source queue 是证据供应链，不是 1000 条结论。页面只展示已晋级来源，其他材料继续留在队列。</p>
+          <h2>证据坐标 07｜证据库存与边界</h2>
+          <p>1000-source queue 是证据供应链，不是 1000 条结论。坐标节点是高阶证明节点，不是来源数量上限。</p>
+        </div>
+        <div class="inventory-grid">
+          <article class="inventory-card"><strong>1000</strong><span>concrete URL rows</span><p>具体 URL 队列，不再用搜索占位。</p></article>
+          <article class="inventory-card"><strong>487</strong><span>docs / API / changelog</span><p>用于技术接口、preview header、对象模型和版本变化。</p></article>
+          <article class="inventory-card"><strong>292</strong><span>jobs / JD</span><p>包含 260 条职位详情页，用于组织能力与风险/稳定币/AI 平台信号。</p></article>
+          <article class="inventory-card"><strong>160</strong><span>GitHub / code / community</span><p>用于开发者工具、sample、package、issue/discussion 路由。</p></article>
+          <article class="inventory-card"><strong>45</strong><span>official / partner / media / protocol</span><p>用于年度信、新闻稿、伙伴、协议、监管与二级报道。</p></article>
+          <article class="inventory-card"><strong>17</strong><span>verified / promoted rows</span><p>当前已晋级为页面高负载证据的核心来源。</p></article>
         </div>
         <div class="signal-groups">
           <article class="signal-group"><strong>学法 1</strong><ul><li>看基础设施公司，不只看产品名，要看它把哪些复杂操作做成了可编程接口。</li></ul></article>
@@ -1674,6 +1724,61 @@
         note: "Stablecoin oversight, internal audit, blockchain analytics, reserve/accounting controls."
       }
     };
+
+    const signalTerms = [
+      { term: "agentic commerce", size: "xl", category: "business", proof: "交易入口从商户网站迁移到 AI surface，商户要进入 Agent 购物链路。", route: "official product / newsroom", count: "S008 / S010 / S012", boundary: "产品发布和伙伴叙事已成立，采用强度还要继续看客户案例和交易数据。" },
+      { term: "stablecoin", size: "xl", category: "finance", proof: "结算轨道从 card rails 扩到稳定币、跨境和机器支付。", route: "annual letter / crypto page / Bridge route", count: "45 official-partner-media routes", boundary: "稳定币能力是 Stripe 战略主线，但不等同于所有地区可用或规模化采用。" },
+      { term: "usage billing", size: "xl", category: "business", proof: "AI 产品从 seat/month 迁移到 token、event、outcome 计费。", route: "docs/API/changelog", count: "487 docs/API/changelog rows", boundary: "用量计费是方向，具体客户采用仍需案例晋级。" },
+      { term: "machine payments", size: "lg", category: "finance", proof: "Agent 和服务可以为 API、内容、数据资源触发机器支付。", route: "machine payments docs / samples", count: "GitHub/code/community routes", boundary: "协议和文档已出现，真实交易规模未公开。" },
+      { term: "HTTP 402", size: "lg", category: "technology", proof: "资源访问开始内置机器可读价格、许可和支付要求。", route: "AWS WAF + Stripe / MPP / x402", count: "protocol + partner routes", boundary: "AWS 侧和社区采用还需继续晋级。" },
+      { term: "Shared Payment Token", size: "lg", category: "risk", proof: "Agent checkout 需要降低买家支付凭据暴露。", route: "Microsoft Copilot release", count: "promoted official source", boundary: "伙伴 release 可支撑机制，不能证明全网采用。" },
+      { term: "ProductCatalogImport", size: "lg", category: "technology", proof: "商品从网页展示迁移到机器可读 catalog/API。", route: "seller docs / preview API", count: "docs/API rows", boundary: "Preview API 需要标注版本边界。" },
+      { term: "Link wallets", size: "lg", category: "finance", proof: "钱包授权成为 Agent 交易链的一环。", route: "Sessions 2026", count: "promoted official source", boundary: "产品声明，未做用户侧可用性测试。" },
+      { term: "MCP", size: "md", category: "technology", proof: "Stripe 文档和资源开始面向 agentic IDE / harness。", route: "agents docs / MCP endpoint", count: "docs + code routes", boundary: "入口存在，不代表所有工具链都已稳定采用。" },
+      { term: "llms.txt", size: "md", category: "technology", proof: "文档从人读页面扩展到 LLM 可索引材料。", route: "Stripe docs", count: "docs route", boundary: "是 developer surface 信号，不是商业结果。" },
+      { term: "agent toolkit", size: "md", category: "technology", proof: "支付和账单能力被包装给 AI framework 调用。", route: "stripe/ai GitHub / package registry", count: "160 GitHub/code/community rows", boundary: "代码/包信号需要下载量和 issue 质量补强。" },
+      { term: "claimable sandbox", size: "md", category: "technology", proof: "AI coding tools 可以直接创建 Stripe 开发环境。", route: "2025 annual letter", count: "100k+ official claim", boundary: "官方自披露，不等同独立审计。" },
+      { term: "catalog feed", size: "md", category: "technology", proof: "商户商品需要进入 Agent 可读取的 feed。", route: "seller docs", count: "docs/API rows", boundary: "需要继续看 merchant onboarding friction。" },
+      { term: "order approval hook", size: "md", category: "risk", proof: "Agent 下单仍需要商户审批、幂等和超时控制。", route: "seller docs", count: "promoted docs source", boundary: "机制成立，实际错误率和争议率未公开。" },
+      { term: "Metronome", size: "md", category: "business", proof: "补 usage/event rating 能力，支撑 token 级计费。", route: "annual letter / Sessions", count: "promoted official source", boundary: "并购后整合深度仍需后续产品证据。" },
+      { term: "Privy", size: "md", category: "finance", proof: "补 wallet abstraction，支持 app/agent 钱包。", route: "annual letter / crypto page", count: "promoted official source", boundary: "钱包能力不等于 agent wallet 网络已形成。" },
+      { term: "Bridge", size: "md", category: "finance", proof: "补 stablecoin orchestration 与跨境结算能力。", route: "annual letter / crypto page", count: "promoted official source", boundary: "交易量和客户结构还需独立来源。" },
+      { term: "Tempo", size: "md", category: "finance", proof: "支撑 streaming payments 的 stablecoin micropayment settlement。", route: "Sessions 2026", count: "promoted official source", boundary: "链路仍带产品发布和可用性边界。" },
+      { term: "token theft", size: "md", category: "risk", proof: "AI 服务欺诈从盗卡扩展到盗 token、薅额度和推理成本滥用。", route: "Sessions 2026 / Radar", count: "3.3M risky sign-ups claim", boundary: "官方指标，需客户或独立数据补强。" },
+      { term: "prompt injection", size: "md", category: "risk", proof: "AI 风险进入 inference path 和 tool calling。", route: "AI Security JD", count: "292 jobs/JD rows", boundary: "JD 是组织信号，不是产品发布。" },
+      { term: "tool misuse", size: "md", category: "risk", proof: "Agent 调用工具时的滥用成为支付/风控边界问题。", route: "AI Security JD / seller docs", count: "jobs + docs routes", boundary: "需要 incident 或 control case 晋级。" },
+      { term: "KYC / KYB", size: "md", category: "risk", proof: "稳定币、钱包和 agent merchant 场景仍要回到身份与商户审核。", route: "docs / JD / regulatory routes", count: "regulatory/risk routes", boundary: "本页不推导监管落地。" },
+      { term: "Radar", category: "risk", proof: "风控从交易末端扩到注册和 usage 实时判断。", route: "Sessions 2026 / Radar docs", count: "promoted official source", boundary: "供应商指标需边界标注。" },
+      { term: "Capital underwriting", category: "organization", proof: "交易数据和 AI/ML 进入融资/授信判断。", route: "JD queue / product docs", count: "jobs/JD rows", boundary: "组织信号，不升级为业务规模结论。" },
+      { term: "Revenue suite", category: "business", proof: "订阅、usage、发票、收入确认承接 AI 产品收入复杂度。", route: "annual letter / AI companies page", count: "promoted official source", boundary: "不等同于客户收入效果证明。" },
+      { term: "Connect", category: "business", proof: "平台/marketplace 分账和账户模型是后续 agent commerce 的底座。", route: "docs/source pack", count: "docs rows", boundary: "早期路径需要更强日期证据。" },
+      { term: "Treasury", category: "finance", proof: "Stripe 从收款进入资金账户和企业金融 stack。", route: "Sessions 2026 / docs", count: "docs + newsroom", boundary: "地区和产品可用性需标注。" },
+      { term: "AI Conversation Platform", category: "organization", proof: "商户操作界面从 dashboard 扩到自然语言任务。", route: "JD queue", count: "jobs/JD rows", boundary: "招聘信号，不是产品发布。" },
+      { term: "Developer Productivity AI", category: "organization", proof: "AI 也改写 Stripe 内部工程和平台能力。", route: "JD queue", count: "jobs/JD rows", boundary: "不作为用户侧产品结论。" },
+      { term: "Stablecoin Audit", category: "organization", proof: "稳定币进入审计、财务、监管和控制体系。", route: "JD queue", count: "jobs/JD rows", boundary: "组织能力信号，非审计结果。" },
+      { term: "PaymentIntents", category: "technology", proof: "支付授权仍是 agent/machine payment 的底层对象之一。", route: "API docs", count: "docs/API rows", boundary: "对象存在不代表 AI 场景已迁移完毕。" },
+      { term: "Checkout Sessions", category: "technology", proof: "Agentic commerce 履约仍复用 checkout/session/webhook 对象。", route: "seller docs / API docs", count: "docs/API rows", boundary: "Preview 字段需要版本标注。" },
+      { term: "Accounts v2", category: "technology", proof: "平台账户模型继续支撑复杂商户/agent 关系。", route: "docs/API rows", count: "docs/API/changelog", boundary: "需要继续挖 changelog。" },
+      { term: "Webhooks", category: "technology", proof: "事件通知是 Agent 订单履约和对账的连接点。", route: "docs/API rows", count: "docs/API/changelog", boundary: "只证明接口角色，不证明稳定性。" },
+      { term: "Idempotency", category: "risk", proof: "Agent retry 和 hook timeout 让幂等成为交易安全问题。", route: "seller docs / API docs", count: "docs/API rows", boundary: "需要实际错误案例补强。" },
+      { term: "Event Destinations", category: "technology", proof: "事件流进入 AI 交易链的观测和自动化层。", route: "docs/API rows", count: "docs/API rows", boundary: "仍是技术接口信号。" },
+      { term: "Data Pipeline", category: "technology", proof: "支付数据进入 BI/finance automation，用于经营和风险回路。", route: "docs/source pack", count: "docs/API rows", boundary: "未证明 AI 自动决策闭环。" },
+      { term: "Issuing", category: "finance", proof: "发卡能力连接钱包授权、agent cards 和资金控制。", route: "docs/API rows", count: "docs/API rows", boundary: "agent card 场景仍需产品证据。" },
+      { term: "Financial Accounts", category: "finance", proof: "企业资金账户把收款、持有、转账和结算接进同一层。", route: "docs/API rows", count: "docs/API rows", boundary: "地区可用性需标注。" },
+      { term: "Open Issuance", category: "finance", proof: "发卡和 stablecoin-backed card 能力进入可编程资金工具。", route: "Tour 2025 / docs", count: "official routes", boundary: "产品可用性和采用率待晋级。" },
+      { term: "Bridge orchestration", category: "finance", proof: "稳定币编排补跨境和链上/法币连接能力。", route: "Bridge / crypto page", count: "official + partner routes", boundary: "需要 Bridge 原始材料和客户证据。" },
+      { term: "Privy wallet abstraction", category: "finance", proof: "钱包 UX 和 key management 从 crypto 产品变成应用基础设施。", route: "Privy / annual letter", count: "official + partner routes", boundary: "仍需 SDK/客户案例晋级。" },
+      { term: "Tempo settlement", category: "finance", proof: "实时微额结算被包装进 AI token 计费场景。", route: "Sessions 2026", count: "promoted official source", boundary: "Tempo 生态采用需另看。" },
+      { term: "x402", category: "technology", proof: "HTTP 402 支付模式成为资源访问协议候选。", route: "machine payments docs", count: "protocol/docs routes", boundary: "协议采用不明，不能过度下结论。" },
+      { term: "USDC micropayments", category: "finance", proof: "微额机器支付需要稳定币 settlement 承接。", route: "machine payments docs / Sessions", count: "docs + newsroom", boundary: "规模和成本优势未独立验证。" },
+      { term: "Preview API", category: "technology", proof: "Agentic commerce 和 machine payment 仍有 preview header 边界。", route: "docs/API rows", count: "docs/API/changelog", boundary: "所有 preview 相关结论都不能写成稳定 GA。" },
+      { term: "Stripe-Version", category: "technology", proof: "版本 header 是判断 API 成熟度和变迁的关键证据。", route: "docs/API rows", count: "docs/API/changelog", boundary: "需要继续做 changelog 时间序列。" },
+      { term: "AI Mode / Gemini", category: "business", proof: "AI 搜索/助手入口成为 commerce surface。", route: "Sessions 2026", count: "partner/newsroom routes", boundary: "需要 Google/OpenAI/Microsoft 侧材料补强。" },
+      { term: "Copilot surface", category: "business", proof: "对话界面直接承接购买动作。", route: "Microsoft Copilot release", count: "promoted official source", boundary: "伙伴发布，不代表全部品类采用。" },
+      { term: "merchant approval", category: "risk", proof: "商户控制权不能消失，需审批 hook 和履约回路。", route: "seller docs", count: "promoted docs source", boundary: "需要商户实际配置案例。" },
+      { term: "policy engine", category: "risk", proof: "agent spending、商品准入、风险控制需要策略层。", route: "docs/JD routes", count: "jobs + docs routes", boundary: "本页仍是推断性结构。" },
+      { term: "reserve / audit", category: "organization", proof: "稳定币和数字资产进入审计、储备和监管控制。", route: "stablecoin audit JD", count: "jobs/JD rows", boundary: "JD 只能证明组织压力。" }
+    ];
 
     const timelineItems = [
       {
@@ -2364,6 +2469,8 @@
     const scoreEl = document.getElementById("scoreValue");
     const cursorEl = document.getElementById("cursor");
     const sourceEl = document.getElementById("sources");
+    const wordCloudEl = document.querySelector(".word-cloud");
+    const signalDetailEl = document.getElementById("signalDetail");
     const timelineRangeEl = document.getElementById("timelineRange");
     const timelinePillsEl = document.getElementById("timelinePills");
     const timelineDetailEl = document.getElementById("timelineDetail");
@@ -2380,6 +2487,8 @@
     const aiTimelineYearEl = document.getElementById("aiTimelineYear");
     let activeId = chapters[0].id;
     let mode = "all";
+    let activeSignal = signalTerms[0].term;
+    let signalFilter = "all";
 
     function sourceLinks(ids) {
       return ids.map((id) => {
@@ -2536,6 +2645,42 @@
       });
     }
 
+    function renderSignalDetail(signal) {
+      signalDetailEl.innerHTML = `
+        <span class="stage-label">${signal.category}</span>
+        <h3>${signal.term}</h3>
+        <p>${signal.proof}</p>
+        <dl>
+          <dt>来源路由</dt>
+          <dd>${signal.route}</dd>
+          <dt>证据规模</dt>
+          <dd>${signal.count}</dd>
+          <dt>边界</dt>
+          <dd>${signal.boundary}</dd>
+        </dl>
+      `;
+    }
+
+    function renderSignals() {
+      const filtered = signalTerms.filter((signal) => signalFilter === "all" || signal.category === signalFilter);
+      if (!filtered.some((signal) => signal.term === activeSignal)) {
+        activeSignal = filtered[0]?.term || signalTerms[0].term;
+      }
+      wordCloudEl.innerHTML = filtered.map((signal) => `
+        <button class="${signal.size || ""} ${signal.category === "risk" ? "risk-word" : ""} ${signal.term === activeSignal ? "active" : ""}" data-signal="${signal.term}">
+          ${signal.term}
+        </button>
+      `).join("");
+      const signal = signalTerms.find((item) => item.term === activeSignal) || signalTerms[0];
+      renderSignalDetail(signal);
+      wordCloudEl.querySelectorAll("[data-signal]").forEach((button) => {
+        button.addEventListener("click", () => {
+          activeSignal = button.dataset.signal;
+          renderSignals();
+        });
+      });
+    }
+
     function render() {
       const filtered = chapters.filter((item) => mode === "all" || item.mode === mode);
       if (!filtered.some((item) => item.id === activeId)) {
@@ -2616,12 +2761,21 @@
       renderAiTimeline(Number(aiTimelineRangeEl.value));
     });
 
-    document.querySelectorAll(".mode-buttons button").forEach((btn) => {
+    document.querySelectorAll("[data-mode]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        document.querySelectorAll(".mode-buttons button").forEach((item) => item.classList.remove("active"));
+        document.querySelectorAll("[data-mode]").forEach((item) => item.classList.remove("active"));
         btn.classList.add("active");
         mode = btn.dataset.mode;
         render();
+      });
+    });
+
+    document.querySelectorAll("[data-signal-filter]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-signal-filter]").forEach((item) => item.classList.remove("active"));
+        btn.classList.add("active");
+        signalFilter = btn.dataset.signalFilter;
+        renderSignals();
       });
     });
 
@@ -2635,6 +2789,7 @@
     cursorEl.style.left = `${rangeEl.value}%`;
     renderTimeline(Number(timelineRangeEl.value));
     renderAiTimeline(Number(aiTimelineRangeEl.value));
+    renderSignals();
     render();
   </script>
 </body>
