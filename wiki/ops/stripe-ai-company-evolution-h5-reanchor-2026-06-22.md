@@ -381,9 +381,10 @@ risk, compliance, and settlement should evolve even without AI.
 
 Corrected thesis:
 
-- AI changes the cost curve; it is not the subject of financial survival. It
-  lowers coding, integration, testing, and customization costs, which makes
-  design quality more important.
+- AI changes the cost structure; it is not the subject of financial survival.
+  It lowers coding, integration, testing, and customization implementation
+  costs, but raises or exposes the cost of product design, evaluation,
+  explainability, audit, and liability attribution.
 - Avoid the phrase "AI is downgraded." The clearer framing is: AI is not the
   subject of survival. The subject is human, organizational, merchant,
   platform, regulatory, network, and user relationships; AI changes the cost
