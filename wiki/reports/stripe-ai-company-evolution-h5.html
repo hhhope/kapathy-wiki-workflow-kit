@@ -191,6 +191,143 @@
       gap: 12px;
     }
 
+    .timeline-reader,
+    .ai-flow {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-control {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: end;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+
+    .timeline-control strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--slate);
+    }
+
+    .timeline-control p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .timeline-year {
+      min-width: 92px;
+      text-align: right;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--green);
+    }
+
+    .timeline-track {
+      display: grid;
+      gap: 10px;
+    }
+
+    .timeline-pills,
+    .flow-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .timeline-detail,
+    .flow-detail,
+    .flow-thesis,
+    .flow-synthesis {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfbf9;
+    }
+
+    .timeline-detail {
+      min-height: 210px;
+      display: grid;
+      grid-template-columns: 0.7fr 1fr;
+      gap: 16px;
+    }
+
+    .timeline-detail h3,
+    .flow-detail h3 {
+      margin-bottom: 8px;
+      font-size: 21px;
+      line-height: 1.25;
+    }
+
+    .timeline-detail ul,
+    .flow-detail ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .stage-label {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #e6fffa;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .flow-thesis {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 16px;
+      background: #f0fdfa;
+    }
+
+    .flow-thesis strong,
+    .flow-synthesis strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--slate);
+      font-size: 18px;
+    }
+
+    .flow-thesis p,
+    .flow-synthesis p,
+    .flow-detail p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .flow-tabs {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .flow-tabs button {
+      text-align: left;
+      min-height: 48px;
+    }
+
+    .flow-synthesis {
+      background: #fff7ed;
+    }
+
     .event-card {
       min-height: 172px;
       padding: 14px;
@@ -558,6 +695,10 @@
       .path-grid,
       .event-rail,
       .dimension-grid,
+      .timeline-control,
+      .timeline-detail,
+      .flow-thesis,
+      .flow-grid,
       .closing {
         grid-template-columns: 1fr;
       }
@@ -569,6 +710,10 @@
 
       .source-grid {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .timeline-year {
+        text-align: left;
       }
     }
 
@@ -674,89 +819,47 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>近年大事件时间轴</h2>
-        <p>按时间读变化，避免只看产品名。</p>
+        <h2>公司演进时间轴</h2>
+        <p>拖动年份，先看路径再看事件。</p>
       </div>
-      <div class="event-rail">
-        <article class="event-card">
-          <span class="event-date">2023</span>
-          <h3>$1T 处理规模成为新基线</h3>
-          <p>Stripe 年信把用户处理规模放到全球 GDP 视角，说明它已经不只是单个支付工具，而是互联网经济的测量面。</p>
-        </article>
-        <article class="event-card">
-          <span class="event-date">2024</span>
-          <h3>AI 公司需求变成 Stripe 叙事</h3>
-          <p>AI 产品全球上线、订阅化、用量化和高欺诈压力，让 Billing、Tax、Radar、Revenue suite 的价值重新上升。</p>
-        </article>
-        <article class="event-card">
-          <span class="event-date">2025</span>
-          <h3>Privy / Metronome / Bridge 进入主线</h3>
-          <p>钱包抽象、用量计费和稳定币编排被放进 Stripe 经济基础设施框架，AI 公司和稳定币同时被提升为战略对象。</p>
-        </article>
-        <article class="event-card">
-          <span class="event-date">2025-09</span>
-          <h3>New York Tour 推出 agentic commerce</h3>
-          <p>Open Issuance、agentic commerce 和 AI monetization 工具同场出现，标志 Stripe 开始公开包装 AI 后的交易形态。</p>
-        </article>
-        <article class="event-card">
-          <span class="event-date">2026-01</span>
-          <h3>Microsoft Copilot Checkout</h3>
-          <p>购物入口进入 Copilot；Shared Payment Token 把凭据风险从 Agent 环境里隔离出来。</p>
-        </article>
-        <article class="event-card">
-          <span class="event-date">2026-04</span>
-          <h3>Sessions 2026：288 项发布</h3>
-          <p>Google AI Mode/Gemini、Link wallets for agents、streaming payments、Radar token theft 和 Stripe Projects 共同出现。</p>
-        </article>
-        <article class="event-card">
-          <span class="event-date">2026-05</span>
-          <h3>Preview API 暴露新对象</h3>
-          <p>ACS、ProductCatalogImport、机器支付和 crypto deposit helper 进入 preview API，说明 agentic commerce 不只是营销词。</p>
-        </article>
-        <article class="event-card">
-          <span class="event-date">2026-06</span>
-          <h3>AWS WAF + Stripe 机器支付</h3>
-          <p>HTTP 402、机器可读价格/许可、Machine Payments Protocol，把内容、API、数据源变成 Agent 可购买资源。</p>
-        </article>
+      <div class="timeline-reader">
+        <div class="timeline-control">
+          <div>
+            <strong id="timelineTitle">2010-2014：支付 API 起点</strong>
+            <p id="timelineCaption">Stripe 的第一性原理是把复杂金融接入变成开发者能复制的接口。</p>
+          </div>
+          <div id="timelineYear" class="timeline-year">2010</div>
+        </div>
+        <div class="timeline-track">
+          <input id="timelineRange" type="range" min="0" max="9" value="0" aria-label="公司演进时间轴" />
+          <div id="timelinePills" class="timeline-pills"></div>
+        </div>
+        <div id="timelineDetail" class="timeline-detail"></div>
       </div>
     </section>
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>AI 之后的变化维度</h2>
-        <p>从“一个功能”改成“多个对象同时变化”。</p>
+        <h2>AI 之后的变化：总分总</h2>
+        <p>先看总论，再拆六个对象，最后回到金融基础设施判断。</p>
       </div>
-      <div class="dimension-grid">
-        <article class="dimension-card">
-          <strong>交易主体</strong>
-          <span>人、商户、平台之外，Agent 也成为交易发起者。</span>
-          <ul><li>Agentic commerce</li><li>Copilot Checkout</li><li>Link wallets for agents</li></ul>
-        </article>
-        <article class="dimension-card">
-          <strong>商品表达</strong>
-          <span>商品、库存、价格要变成 Agent 可读 feed。</span>
-          <ul><li>Catalog feed</li><li>ProductCatalogImport</li><li>15 分钟库存/价格刷新</li></ul>
-        </article>
-        <article class="dimension-card">
-          <strong>计费颗粒</strong>
-          <span>从 seat/month 扩到 token、event、outcome 和实时用量。</span>
-          <ul><li>Usage billing</li><li>Metronome</li><li>Streaming payments</li></ul>
-        </article>
-        <article class="dimension-card">
-          <strong>结算轨道</strong>
-          <span>卡、钱包、稳定币和机器支付协议并存。</span>
-          <ul><li>SPT</li><li>Stablecoin</li><li>MPP / x402</li></ul>
-        </article>
-        <article class="dimension-card">
-          <strong>风控对象</strong>
-          <span>从 stolen card 扩到 stolen token、fake sign-up、tool misuse。</span>
-          <ul><li>Radar token theft</li><li>AI Security</li><li>Approval hook</li></ul>
-        </article>
-        <article class="dimension-card">
-          <strong>组织能力</strong>
-          <span>招聘信号覆盖 AI、安全、ML 平台、稳定币、审计、GTM。</span>
-          <ul><li>AI Conversation Platform</li><li>Developer Productivity AI</li><li>Stablecoin Audit</li></ul>
-        </article>
+      <div class="ai-flow">
+        <div class="flow-thesis">
+          <div>
+            <span class="stage-label">总论</span>
+            <strong>AI 没有只改变“支付入口”，它改变的是经济活动对象。</strong>
+          </div>
+          <p>Stripe 的变化要从一个系统看：谁发起交易、商品如何被机器读取、费用如何按 token/event 发生、用什么轨道结算、风险如何前置、组织能力如何跟上。</p>
+        </div>
+        <div class="flow-grid">
+          <div id="flowTabs" class="flow-tabs"></div>
+          <div id="flowDetail" class="flow-detail"></div>
+        </div>
+        <div class="flow-synthesis">
+          <span class="stage-label">总括</span>
+          <strong>结论：Stripe 不是把 AI 当功能，而是在把交易协议、计费协议、风控协议和结算协议重新软件化。</strong>
+          <p>所以这份材料的主线不应是“Stripe 做了哪些 AI 功能”，而应是“AI 之后金融基础设施哪些对象被重写，Stripe 正在哪些层上占位”。</p>
+        </div>
       </div>
     </section>
 
@@ -957,6 +1060,150 @@
         note: "Stablecoin oversight, internal audit, blockchain analytics, reserve/accounting controls."
       }
     };
+
+    const timelineItems = [
+      {
+        year: "2010-2014",
+        title: "支付 API 起点",
+        caption: "先把复杂金融接入变成开发者能复制的接口。",
+        stage: "公司路径",
+        event: "Stripe 从在线收款 API、SDK、文档和测试体验切入，建立 API-first 支付入口。",
+        meaning: "第一性原理不是“做支付”，而是降低新业务上线收钱的摩擦。",
+        signals: ["API-first", "developer experience", "payments"]
+      },
+      {
+        year: "2015-2019",
+        title: "商户经营系统成形",
+        caption: "Connect、Atlas、Radar、Billing 等能力把 Stripe 推向 business stack。",
+        stage: "产品扩张",
+        event: "Stripe 从支付入口扩到平台分账、创业入口、风控、订阅计费、线下支付等商户生命周期能力。",
+        meaning: "AI 公司后来需要的全球收款、订阅、风控、税务、平台分账，很多都在这一阶段沉淀。",
+        signals: ["Connect", "Atlas", "Radar", "Billing", "Terminal"]
+      },
+      {
+        year: "2020-2022",
+        title: "金融产品和韧性阶段",
+        caption: "疫情增长、估值回调和长期产品投资并存。",
+        stage: "金融底座",
+        event: "Stripe 继续扩展 Treasury、Capital、Identity、Tax、Issuing、Data Pipeline 等资金、合规和数据能力。",
+        meaning: "这让 Stripe 从交易处理进一步靠近完整金融操作系统。",
+        signals: ["Treasury", "Capital", "Identity", "Tax"]
+      },
+      {
+        year: "2023",
+        title: "$1T 处理规模成为新基线",
+        caption: "Stripe 把处理规模放到全球 GDP 视角。",
+        stage: "规模基线",
+        event: "2023 年度更新披露用户处理规模达到 $1T，约等于全球 GDP 1%。",
+        meaning: "Stripe 不再只是支付插件，而是互联网经济活动的测量面和执行层。",
+        signals: ["$1T", "GDP lens", "internet economy"]
+      },
+      {
+        year: "2024",
+        title: "AI 公司需求变成 Stripe 叙事",
+        caption: "AI 产品的全球化、订阅化、用量化压力开始显性化。",
+        stage: "客户变化",
+        event: "AI 公司需要同时处理全球收款、用量计费、税务、欺诈、账务和跨境。",
+        meaning: "AI 先改变 Stripe 的客户结构，再推动它重组产品叙事。",
+        signals: ["AI companies", "usage billing", "global by default"]
+      },
+      {
+        year: "2025",
+        title: "Privy / Metronome / Bridge 进入主线",
+        caption: "钱包抽象、用量计费和稳定币编排被纳入经济基础设施框架。",
+        stage: "战略拼图",
+        event: "2025 年信把 $1.9T、5M+ businesses、100k+ claimable sandboxes、Privy、Metronome、Bridge、stablecoins 放在同一叙事里。",
+        meaning: "Stripe 开始显式把 AI 创业速度、用量计费、钱包和稳定币连接起来。",
+        signals: ["Privy", "Metronome", "Bridge", "stablecoin"]
+      },
+      {
+        year: "2025-09",
+        title: "New York Tour 推出 agentic commerce",
+        caption: "Agentic commerce 从概念进入产品包装。",
+        stage: "大事件",
+        event: "Open Issuance、agentic commerce、AI monetization 工具同场出现。",
+        meaning: "AI 不是客户行业标签，而开始成为交易入口和商品发现方式。",
+        signals: ["Agentic Commerce Suite", "AI monetization", "Open Issuance"]
+      },
+      {
+        year: "2026-01",
+        title: "Microsoft Copilot Checkout",
+        caption: "购物入口进入 Copilot 对话界面。",
+        stage: "大事件",
+        event: "Copilot Checkout 由 Stripe 支撑，Shared Payment Token 降低买家凭据暴露。",
+        meaning: "Agent/聊天界面开始成为 commerce surface。",
+        signals: ["Copilot Checkout", "ACP", "SPT"]
+      },
+      {
+        year: "2026-04",
+        title: "Sessions 2026：288 项发布",
+        caption: "AI economic infrastructure 成为横向主题。",
+        stage: "大事件",
+        event: "Google AI Mode/Gemini、Link wallets for agents、streaming payments、Radar token theft、Stripe Projects 等共同出现。",
+        meaning: "AI 后变化横跨支付、风控、账务、开发工具、稳定币和 agent wallets。",
+        signals: ["288 launches", "Link wallets", "streaming payments", "Radar token theft"]
+      },
+      {
+        year: "2026-06",
+        title: "AWS WAF + Stripe 机器支付",
+        caption: "内容、API、数据源开始被包装成 Agent 可购买资源。",
+        stage: "大事件",
+        event: "AWS WAF 可返回 HTTP 402，并通过 Stripe / Machine Payments Protocol 让 Agent 支付。",
+        meaning: "机器支付把“访问资源”变成可定价、可授权、可结算的协议问题。",
+        signals: ["HTTP 402", "MPP", "AI traffic monetization"]
+      }
+    ];
+
+    const aiDimensions = [
+      {
+        id: "actor",
+        label: "交易主体",
+        title: "交易主体：Agent 成为交易发起者",
+        summary: "过去是人或商户发起支付；AI 后，Agent 可以在对话、搜索、任务流中发起购买或访问付费资源。",
+        bullets: ["Copilot Checkout 把购物放进对话界面。", "Agentic commerce 让 Agent 发现商品并触发 checkout。", "Link wallets for agents 暗示钱包也要为 Agent 场景服务。"],
+        evidence: "Copilot release、Agentic Commerce Suite、Sessions 2026。"
+      },
+      {
+        id: "product",
+        label: "商品表达",
+        title: "商品表达：商品、价格、库存要机器可读",
+        summary: "Agent 不能只看网页，它需要结构化 catalog feed、价格、库存、履约和审批接口。",
+        bullets: ["ProductCatalogImport 把商品导入变成 API 对象。", "库存和价格需要频繁刷新。", "Approval hook 是商户控制交易边界的位置。"],
+        evidence: "Agentic commerce seller docs 和 preview API routes。"
+      },
+      {
+        id: "billing",
+        label: "计费颗粒",
+        title: "计费颗粒：从 seat/month 到 token/event/outcome",
+        summary: "AI 产品的成本以 token 速度发生，传统订阅账单无法完全匹配真实成本和收入。",
+        bullets: ["Usage billing 成为 AI 产品基础能力。", "Metronome 提供更精细 tracking。", "Streaming payments 把计费和结算推向实时。"],
+        evidence: "AI companies page、2025 annual letter、Sessions 2026。"
+      },
+      {
+        id: "rail",
+        label: "结算轨道",
+        title: "结算轨道：卡、钱包、稳定币、机器支付并存",
+        summary: "AI 后不是简单换一种支付方式，而是根据金额、频率、地域和自动化程度选择不同轨道。",
+        bullets: ["SPT 处理 Agent 场景下的凭据暴露。", "Stablecoin 支撑跨境和微额高频场景。", "MPP / x402 把资源访问变成机器支付协议。"],
+        evidence: "Copilot release、crypto use case、AWS WAF + Stripe。"
+      },
+      {
+        id: "risk",
+        label: "风控对象",
+        title: "风控对象：从 stolen card 到 stolen token / tool misuse",
+        summary: "当 Agent 可以花钱和调用工具，风险从支付末端前移到注册、推理、工具调用、商品数据和审批接口。",
+        bullets: ["Radar token theft 针对 AI 公司假注册和推理成本滥用。", "AI Security JD 指向 prompt injection、jailbreak、tool misuse。", "Idempotency 和 hook timeout 成为交易安全问题。"],
+        evidence: "Sessions 2026、AI Security JD、seller docs。"
+      },
+      {
+        id: "org",
+        label: "组织能力",
+        title: "组织能力：AI 进入产品、平台、风控、财务和 GTM",
+        summary: "招聘信号显示 Stripe 不是只建一个 AI 组，而是在多个职能里补能力。",
+        bullets: ["AI Conversation Platform 改变商户操作界面。", "Developer Productivity AI 改变内部工程效率。", "Stablecoin audit / regulatory / finance roles 把新轨道纳入控制体系。"],
+        evidence: "292 条 jobs/JD URL 和重点 JD 抽样。"
+      }
+    ];
 
     const chapters = [
       {
@@ -1276,8 +1523,17 @@
     const scoreEl = document.getElementById("scoreValue");
     const cursorEl = document.getElementById("cursor");
     const sourceEl = document.getElementById("sources");
+    const timelineRangeEl = document.getElementById("timelineRange");
+    const timelinePillsEl = document.getElementById("timelinePills");
+    const timelineDetailEl = document.getElementById("timelineDetail");
+    const timelineTitleEl = document.getElementById("timelineTitle");
+    const timelineCaptionEl = document.getElementById("timelineCaption");
+    const timelineYearEl = document.getElementById("timelineYear");
+    const flowTabsEl = document.getElementById("flowTabs");
+    const flowDetailEl = document.getElementById("flowDetail");
     let activeId = chapters[0].id;
     let mode = "all";
+    let activeDimension = aiDimensions[0].id;
 
     function sourceLinks(ids) {
       return ids.map((id) => {
@@ -1306,6 +1562,47 @@
           <p>${chapter.keywords.join(" / ")} 这一组线索需要继续扩展到 API changelog、partner announcement、GitHub package、社群讨论和二级媒体。</p>
         </div>
       `;
+    }
+
+    function renderTimeline(index) {
+      const item = timelineItems[index] || timelineItems[0];
+      timelineTitleEl.textContent = `${item.year}：${item.title}`;
+      timelineCaptionEl.textContent = item.caption;
+      timelineYearEl.textContent = item.year.split("-")[0];
+      timelineDetailEl.innerHTML = `
+        <div>
+          <span class="stage-label">${item.stage}</span>
+          <h3>${item.title}</h3>
+          <p>${item.event}</p>
+        </div>
+        <div>
+          <h3>读法</h3>
+          <p>${item.meaning}</p>
+          <ul>${item.signals.map((signal) => `<li>${signal}</li>`).join("")}</ul>
+        </div>
+      `;
+
+      timelinePillsEl.querySelectorAll("button").forEach((button, buttonIndex) => {
+        button.classList.toggle("active", buttonIndex === index);
+      });
+    }
+
+    function renderFlow() {
+      const item = aiDimensions.find((dimension) => dimension.id === activeDimension) || aiDimensions[0];
+      flowDetailEl.innerHTML = `
+        <span class="stage-label">分解</span>
+        <h3>${item.title}</h3>
+        <p>${item.summary}</p>
+        <ul>${item.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
+        <div class="evidence-box">
+          <h3>证据边界</h3>
+          <p>${item.evidence}</p>
+        </div>
+      `;
+
+      flowTabsEl.querySelectorAll("button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.dimension === activeDimension);
+      });
     }
 
     function render() {
@@ -1356,6 +1653,33 @@
       cursorEl.style.left = `${value}%`;
     });
 
+    timelinePillsEl.innerHTML = timelineItems.map((item, index) => `
+      <button data-timeline-index="${index}">${item.year}</button>
+    `).join("");
+
+    timelinePillsEl.querySelectorAll("button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const index = Number(button.dataset.timelineIndex);
+        timelineRangeEl.value = index;
+        renderTimeline(index);
+      });
+    });
+
+    timelineRangeEl.addEventListener("input", () => {
+      renderTimeline(Number(timelineRangeEl.value));
+    });
+
+    flowTabsEl.innerHTML = aiDimensions.map((dimension) => `
+      <button data-dimension="${dimension.id}">${dimension.label}</button>
+    `).join("");
+
+    flowTabsEl.querySelectorAll("button").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeDimension = button.dataset.dimension;
+        renderFlow();
+      });
+    });
+
     document.querySelectorAll(".mode-buttons button").forEach((btn) => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".mode-buttons button").forEach((item) => item.classList.remove("active"));
@@ -1373,6 +1697,8 @@
     `).join("");
 
     cursorEl.style.left = `${rangeEl.value}%`;
+    renderTimeline(Number(timelineRangeEl.value));
+    renderFlow();
     render();
   </script>
 </body>

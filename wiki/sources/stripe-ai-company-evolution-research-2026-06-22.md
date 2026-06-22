@@ -57,7 +57,9 @@ Current structure:
 2. Recent event timeline: 2023 volume baseline, 2024 AI-customer pressure, 2025 Privy/Metronome/Bridge, 2025 New York Tour, 2026 Copilot Checkout, Sessions 2026, preview API changes, and AWS WAF + machine payments.
 3. AI-after dimensions: transaction actor, product representation, billing granularity, settlement rail, risk object, and organization capability.
 4. Signal cloud: agentic commerce, stablecoin, usage billing, machine payments, HTTP 402, Shared Payment Token, ProductCatalogImport, Link wallets, MCP, llms.txt, agent toolkit, claimable sandbox, catalog feed, approval hook, Radar, token theft, prompt injection, KYC/KYB, Capital underwriting, AI Conversation Platform, Developer Productivity AI, and Stablecoin Audit.
-5. Interactive map: expanded from 8 nodes to 22 nodes, ordered by time and filterable by company path, product expansion, Agent, finance rail, risk, and organization capability.
+5. Timeline reader: company evolution is now controlled by a draggable range plus year buttons, so the reader can move from 2010-2014 to 2026-06 instead of scanning static cards.
+6. AI-after flow: the AI change chapter now follows a `总论 -> 六个维度分解 -> 总括` flow. The six dimensions are transaction actor, product representation, billing granularity, settlement rail, risk object, and organization capability.
+7. Interactive map: expanded from 8 nodes to 22 nodes, ordered by time and filterable by company path, product expansion, Agent, finance rail, risk, and organization capability. It is now a secondary map, not the only structure.
 
 ## High-Density Source Pool
 
