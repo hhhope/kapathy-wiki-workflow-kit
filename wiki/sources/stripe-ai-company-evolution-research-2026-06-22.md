@@ -175,6 +175,118 @@ The source pool should grow by bucket, not by random search volume.
 | Regulatory and risk context | 80 | 2 | PCI, card network rules, US/EU stablecoin rules, consumer protection |
 | Peer comparison | 80 | 4 | Adyen, PayPal, Visa, Mastercard, Coinbase, Shopify, OpenAI, Anthropic |
 
+## Second-Pass Expansion: API, Protocol, Package, Community
+
+This pass strengthens the weakest parts of the first draft: API/version evidence, package surfaces, machine-payment protocols, and community/secondary routes. It still does not claim the 1000-source ceiling is complete.
+
+### API And Object-Level Evidence
+
+| ID | Source | Type | What it contributes | Use boundary |
+|---|---|---|---|---|
+| S089 | https://docs.stripe.com/agentic-commerce/for-sellers | official docs | ACS seller operating model: US availability, catalog feed, agentic payments across multiple protocols, merchant control | Core API/ops source |
+| S090 | https://docs.stripe.com/agentic-commerce/product-feed.md | official docs | Product, inventory, pricing feed specification | Next deep read |
+| S091 | https://docs.stripe.com/api/v2/commerce/product-catalog-imports.md | official API | `ProductCatalogImport` object and import lifecycle | Core API source |
+| S092 | https://docs.stripe.com/api/v2/commerce/product-catalog-imports/object.md | official API | `v2.commerce.product_catalog_import` object fields | Field-level read pending |
+| S093 | https://docs.stripe.com/api/v2/commerce/product-catalog-imports/retrieve.md | official API | Retrieve import and error file URL refresh | Field-level read pending |
+| S094 | https://docs.stripe.com/api/events/types.md | official API | `v2.commerce.product_catalog.imports.*` terminal events | Event taxonomy read pending |
+| S095 | https://docs.stripe.com/api/checkout/sessions/object.md | official API | Checkout Session fields used for agentic order fulfillment | Core object source |
+| S096 | https://docs.stripe.com/api/checkout/sessions/list.md | official API | Batch fulfillment via list CheckoutSessions | Next deep read |
+| S097 | https://docs.stripe.com/api/payment_intents.md | official API | PaymentIntent for MPP/x402, crypto deposit mode, SPT settlement | Core object source |
+| S098 | https://docs.stripe.com/api/payment_intents/simulate_crypto_deposit.md?api-version=2026-05-27.preview | official API | Sandbox helper for crypto deposit simulation | Testing source |
+| S099 | https://docs.stripe.com/api/refunds.md | official API | Existing refund flow works for agentic checkouts | Ops source |
+| S100 | https://docs.stripe.com/api/expanding_objects.md | official API | Expanded Checkout Session retrieval for fulfillment fields | API pattern |
+| S101 | https://docs.stripe.com/webhooks.md | official docs | `checkout.session.completed` and product catalog terminal events | Ops source |
+| S102 | https://docs.stripe.com/keys.md#create-restricted-api-key | official docs | Restricted key permission for `Product Catalog Import` write access | Security source |
+| S103 | https://docs.stripe.com/radar.md | official docs | Fraud/risk layer for agentic checkout hooks | Next deep read |
+| S104 | https://docs.stripe.com/tax.md | official docs | Stripe Tax as ACS tax configuration layer | Next deep read |
+| S105 | https://docs.stripe.com/receipts.md | official docs | Default receipt after confirmed order | Ops source |
+| S106 | https://docs.stripe.com/get-started/account/profile.md | official docs | Stripe profile / network ID for agentic commerce and MPP SPT | Identity source |
+| S107 | https://docs.stripe.com/payment-method-configurations.md | official docs | Separate machine-payment payment method configuration | Finance ops source |
+| S108 | https://docs.stripe.com/payments/deposit-mode-stablecoin-payments.md | official docs | Crypto PaymentIntent deposit mode | Next deep read |
+| S109 | https://docs.stripe.com/sandboxes.md | official docs | Sandbox validation for ACS and MPP | Build/test source |
+| S110 | https://docs.stripe.com/development/dashboard.md | official docs | Developer dashboard and hook signing secrets | Ops source |
+
+### Version And Lifecycle Notes
+
+| Signal | Evidence | Why it matters |
+|---|---|---|
+| `2026-05-27.preview` | ACS seller docs use this header for `POST /v2/commerce/product_catalog/imports`, polling imports, inventory feeds, pricing feeds, and crypto-deposit test helper. | Agentic commerce is not just marketing; it introduces preview-version v2 commerce APIs and new import objects. |
+| `2025-12-15.preview` | ACS seller docs use this header when expanding Checkout Session sub-resources for fulfillment fields. | Agentic order fulfillment depends on richer checkout retrieval and field expansion. |
+| `2025-10-29.clover` | ACS webhook example shows `checkout.session.completed` event API version. | ACS rides on existing Checkout events while adding agent-originated order semantics. |
+| `2026-03-04.preview` | MPP/x402 docs require this API version for crypto PaymentIntents. | Machine payments/stablecoin deposits sit behind a newer preview path, not the ordinary card checkout path. |
+| `v2.core.event` | Product catalog import terminal webhook example uses `v2.core.event` with `related_object.url`. | Stripe's newer v2 event model appears in ACS feed operations. |
+
+### Protocol And Machine-Payment Evidence
+
+| ID | Source | Type | What it contributes | Use boundary |
+|---|---|---|---|---|
+| S111 | https://docs.stripe.com/payments/machine | official docs | Machine-to-machine payments with Stripe; agents pay for resources programmatically | Core machine-payment source |
+| S112 | https://docs.stripe.com/payments/machine/mpp | official docs | MPP flow: HTTP 402, payment challenge, crypto or SPT, retry with credential | Core protocol source |
+| S113 | https://docs.stripe.com/payments/machine/x402 | official docs | x402 flow: HTTP 402, payment-required header, crypto PaymentIntent, Base network | Core protocol source |
+| S114 | https://github.com/stripe-samples/machine-payments | official sample repo | MPP and x402 sample implementations in TypeScript/Python; Stripe Discord and GitHub Issues as support routes | Code/community source |
+| S115 | https://github.com/stripe/purl | Stripe GitHub | CLI used by x402 docs to test paid resource access | Next deep read |
+| S116 | https://mpp.dev | protocol site | MPP protocol reference | Next deep read |
+| S117 | https://x402.org | protocol site | x402 protocol reference | Next deep read |
+| S118 | https://github.com/stripe-samples/machine-payments/tree/main/mpp | official sample folder | MPP sample server | Next deep read |
+| S119 | https://github.com/stripe-samples/machine-payments/tree/main/x402 | official sample folder | x402 sample server | Next deep read |
+| S120 | https://link.com/agents | official Link tool page | Link CLI for test SPT issuance and agent/MCP setup | Next deep read |
+| S121 | https://www.npmjs.com/package/mppx | npm package | MPP testing/client package referenced by docs | Registry route; npm page may block scraping |
+| S122 | https://www.npmjs.com/package/@stripe/link-cli | npm package | Link CLI package referenced by MPP docs | Registry route; npm page may block scraping |
+| S123 | https://www.npmjs.com/package/@x402/hono | npm package | x402 middleware referenced by Stripe docs | Registry route; npm page may block scraping |
+| S124 | https://www.npmjs.com/package/@x402/core | npm package | x402 core server referenced by Stripe docs | Registry route; npm page may block scraping |
+
+### Package And Agent-Toolkit Evidence
+
+| ID | Source | Type | What it contributes | Use boundary |
+|---|---|---|---|---|
+| S125 | https://pypi.org/project/stripe-agent-toolkit/ | package registry | `stripe-agent-toolkit` 0.7.0, released 2026-02-12; OpenAI Agent SDK, LangChain, CrewAI; Python >=3.11 | Core package source |
+| S126 | https://github.com/stripe/ai | official GitHub repo | Source repo for Stripe Agent Toolkit and related AI packages | Core package source |
+| S127 | https://github.com/stripe/ai/tree/main/packages/agent-toolkit | official GitHub package path | Node/TypeScript agent toolkit | Next deep read |
+| S128 | https://github.com/stripe/ai/tree/main/packages/agent-toolkit-python | official GitHub package path | Python agent toolkit source route | Next deep read |
+| S129 | https://github.com/stripe/ai/tree/main/packages/mcp | official GitHub package path | Stripe MCP server/package route | Next deep read |
+| S130 | https://github.com/stripe/ai/tree/main/packages/token-meter | official GitHub package path | Token meter route | Next deep read |
+| S131 | https://github.com/stripe/ai/tree/main/examples | official GitHub examples | OpenAI/LangChain/CrewAI examples | Next deep read |
+| S132 | https://docs.stripe.com/mcp.md | official docs | MCP integration guidance | Needs direct open |
+| S133 | https://docs.stripe.com/skills.md | official docs | Agent skills installation/use guidance | Needs direct open |
+| S134 | https://docs.stripe.com/projects.md | official docs | Stripe Projects CLI appears in llms.txt | Next deep read |
+| S135 | https://docs.stripe.com/sdks.md | official docs | SDK version guidance and integration routes | Next deep read |
+| S136 | https://www.npmjs.com/package/@stripe/agent-toolkit | npm package | Node package route for agent toolkit | npm blocked in web fetch; use registry/API next |
+| S137 | https://pypi.org/project/stripe/ | package registry | Stripe Python SDK version route | Needed for current package state |
+| S138 | https://www.npmjs.com/package/stripe | npm package | Stripe Node SDK version route | Needed for current package state |
+
+### Partner, Media, Community, Risk Routes
+
+| ID | Source | Type | What it contributes | Use boundary |
+|---|---|---|---|---|
+| S139 | https://www.axios.com/2025/09/29/openai-shopping-chatgpt | secondary media | OpenAI Instant Checkout coverage; Etsy first, Shopify planned; ACP with Stripe | Secondary route |
+| S140 | https://apnews.com/article/3434f1b86b90b59de0baa43a8f28f380 | secondary media | AP coverage of ChatGPT shopping and Stripe collaboration | Secondary route |
+| S141 | https://www.techradar.com/pro/you-can-now-buy-things-through-chatgpt-with-a-single-click-if-youre-one-of-the-lucky-ones | secondary media | ChatGPT Instant Checkout feature/availability and ACP framing | Secondary route |
+| S142 | https://github.com/openai/agentic-commerce-protocol | protocol repo | ACP source route | Needs direct read |
+| S143 | https://www.axios.com/2026/01/20/mastercard-ai-checkout-agentic-commerce | secondary media | Mastercard agentic commerce trust/identity/payment standards push | Peer route |
+| S144 | https://www.axios.com/2025/10/14/visa-ai-shopping-agent-protocol-bot | secondary media | Visa Trusted Agent Protocol route | Peer route |
+| S145 | https://www.techradar.com/pro/google-is-going-all-out-on-agentic-shopping-with-new-ai-ecommerce-tools | secondary media | Google UCP route with Stripe/payment partners | Peer route |
+| S146 | https://arxiv.org/abs/2606.08790 | research paper | RAILS: clearing and verification layer for agentic commerce | Research route; not Stripe proof |
+| S147 | https://arxiv.org/abs/2605.11781 | research paper | Five attacks on x402; authorization/binding/replay/web-layer risks | Risk route; not Stripe-specific proof |
+| S148 | https://arxiv.org/abs/2605.30998 | research paper | Logic flaws in x402-enabled payment systems, atomicity/context binding risks | Risk route; not Stripe-specific proof |
+| S149 | https://discord.com/invite/stripe | community | Stripe Discord support route, linked from sample repo | Community route |
+| S150 | https://github.com/stripe-samples/machine-payments/issues | community | Issues for machine payments sample | Community route |
+| S151 | https://github.com/stripe/ai/issues | community | Issues for Stripe AI tooling | Community route |
+| S152 | https://github.com/stripe/ai/pulls | community | PR activity for Stripe AI tooling | Community route |
+| S153 | https://github.com/stripe-samples/machine-payments/pulls | community | PR activity for machine payments samples | Community route |
+| S154 | https://news.ycombinator.com | community search route | HN discussion route for Stripe AI/agentic commerce | Route only; query next |
+| S155 | https://www.reddit.com/r/stripe/ | community search route | Reddit Stripe route | Route only; query next |
+
+### API/Protocol Reading Notes
+
+1. Agentic commerce is operationally closer to a data-ingestion and fulfillment system than a button. The seller must publish product, inventory, and pricing feeds; inventory and pricing are expected every 15 minutes; uploads are asynchronous and not guaranteed to complete in submit order.
+2. The ACS catalog import path creates a `ProductCatalogImport` in `awaiting_upload`, returns a presigned upload URL that expires after five minutes, then transitions through `processing` to `succeeded`, `succeeded_with_errors`, or `failed`.
+3. ACS fulfillment keeps existing Checkout/webhook primitives but adds agent origin and preview fields. `checkout.session.completed` is still central, but the seller docs point to expanded Checkout Session retrieval and private-preview `agent_details`.
+4. Order approval hooks are the practical boundary where agentic commerce becomes seller-controlled. Stripe enforces a four-second timeout, declines if the hook does not respond, returns `424` to agents on non-2xx, and warns that some agents may retry, so hooks must be idempotent.
+5. Machine payments generalize the same thesis beyond retail: a paid resource can answer `402 Payment Required`, encode a payment challenge, let the agent/client pay, and then retry for access.
+6. MPP offers two settlement modes: crypto/on-chain for low-dollar transactions and SPT/card/wallet over Stripe rails for broader payment methods. x402 in Stripe docs is focused on crypto/stablecoin deposit mode and Base/USDC.
+7. The package surface confirms Stripe is building for agent frameworks directly, not only docs: PyPI lists `stripe-agent-toolkit` with OpenAI Agent SDK, LangChain, CrewAI, Strands extras, restricted-key guidance, and release history starting in November 2024.
+8. Security research around x402 should be treated as a risk lens, not a direct indictment of Stripe. The relevant H5 point is that AI finance protocols add new state-binding, replay, concurrency, finality, and clearing problems.
+
 ## Draft Conclusions
 
 1. Stripe 的 AI 转向最强的地方不是“用了 AI”，而是它看见了 AI 改变经济活动的四个底层对象：谁在交易、怎么发现商品、如何计费、用什么轨道结算。
@@ -190,3 +302,5 @@ The source pool should grow by bucket, not by random search volume.
 3. Read `stripe/ai` package subfolders: agent-toolkit, token-meter, MCP, skills.
 4. Pull partner announcements from AWS, Microsoft, OpenAI, Google, Meta, Shopify, Bridge, Privy, Metronome, Tempo.
 5. Build a 1000-source CSV with fields: date, source owner, source type, product, AI signal, finance signal, proof strength, H5 use, skip reason.
+6. Query GitHub issues/PRs and Stripe Discord entry points for real developer friction: ACS feed errors, SPT setup, MPP/x402 testnet failures, restricted-key permissions, `2026-05-27.preview` breakage.
+7. Separate peer protocols in the next H5 revision: ACP/Stripe, UCP/Google, TAP/Visa, Mastercard Agent Pay, x402/Coinbase, MPP/Stripe.
