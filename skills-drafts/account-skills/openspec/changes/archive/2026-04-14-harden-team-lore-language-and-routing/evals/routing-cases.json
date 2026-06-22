@@ -1,0 +1,88 @@
+[
+  {
+    "id": "process-01",
+    "query": "这个 follow-up change 的 tasks 准备好了吗",
+    "expected_route": ["openspec"],
+    "expected_surface": {}
+  },
+  {
+    "id": "process-02",
+    "query": "Can this follow-up change be applied from OpenSpec artifacts?",
+    "expected_route": ["openspec"],
+    "expected_surface": {}
+  },
+  {
+    "id": "lore-01",
+    "query": "默认读取 Lore 的启动路径是什么",
+    "expected_route": ["lore"],
+    "expected_surface": {
+      "lore": [
+        "drafts/wiki/index.md"
+      ]
+    }
+  },
+  {
+    "id": "lore-02",
+    "query": "修改 skills 但没有证据时该看哪个 pitfall",
+    "expected_route": ["lore"],
+    "expected_surface": {
+      "lore": [
+        "drafts/pitfalls/behavior-assets-without-evidence.md"
+      ]
+    }
+  },
+  {
+    "id": "lore-03",
+    "query": "Which page should I load first for governance-kit repo startup?",
+    "expected_route": ["lore"],
+    "expected_surface": {
+      "lore": [
+        "drafts/projects/account-skills/overview.md"
+      ]
+    }
+  },
+  {
+    "id": "graphify-01",
+    "query": "What code files or nodes connect Lore weekly review and retrieval pressure checks?",
+    "expected_route": ["graphify"],
+    "expected_surface": {},
+    "graphify_query": "What code files or nodes connect Lore weekly review and retrieval pressure checks?",
+    "graphify_markers": [
+      "run-pressure-checks.py",
+      "run_weekly_review()",
+      "run_retrieval()"
+    ]
+  },
+  {
+    "id": "mixed-01",
+    "query": "如果我要定位 Lore weekly review 和 retrieval pressure checks 的代码入口，先看什么再看什么",
+    "expected_route": ["lore", "graphify"],
+    "expected_surface": {
+      "lore": [
+        "drafts/projects/account-skills/overview.md"
+      ]
+    },
+    "graphify_query": "What code files or nodes connect Lore weekly review and retrieval pressure checks?",
+    "graphify_markers": [
+      "run-pressure-checks.py",
+      "run_weekly_review()",
+      "run_retrieval()"
+    ]
+  },
+  {
+    "id": "mixed-02",
+    "query": "For behavior-asset validation drift, which lore page sets the rule before I inspect the code structure?",
+    "expected_route": ["lore", "graphify"],
+    "expected_surface": {
+      "lore": [
+        "drafts/pitfalls/behavior-assets-without-evidence.md"
+      ]
+    },
+    "graphify_query": "What code files or nodes connect Lore weekly review and retrieval pressure checks?",
+    "graphify_markers": [
+      "run-pressure-checks.py",
+      "run_weekly_review()",
+      "run_retrieval()"
+    ]
+  }
+]

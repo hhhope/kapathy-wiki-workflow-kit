@@ -1,0 +1,107 @@
+[
+  {
+    "id": "startup-01",
+    "size": "simple",
+    "pages": [
+      "proposal.md",
+      "PROJECT.md",
+      "wiki/index.md"
+    ]
+  },
+  {
+    "id": "startup-02",
+    "size": "simple",
+    "pages": [
+      "proposal.md",
+      "wiki/index.md",
+      "projects/payments-core/overview.md"
+    ]
+  },
+  {
+    "id": "startup-03",
+    "size": "simple",
+    "pages": [
+      "proposal.md",
+      "design.md",
+      "wiki/index.md",
+      "projects/payments-core/domains/callback-processing.md"
+    ]
+  },
+  {
+    "id": "startup-04",
+    "size": "simple",
+    "pages": [
+      "proposal.md",
+      "design.md",
+      "wiki/index.md",
+      "pitfalls/idempotency-keys.md"
+    ]
+  },
+  {
+    "id": "startup-05",
+    "size": "medium",
+    "pages": [
+      "proposal.md",
+      "design.md",
+      "tasks.md",
+      "wiki/index.md"
+    ]
+  },
+  {
+    "id": "startup-06",
+    "size": "medium",
+    "pages": [
+      "proposal.md",
+      "design.md",
+      "tasks.md",
+      "wiki/index.md"
+    ]
+  },
+  {
+    "id": "startup-07",
+    "size": "medium",
+    "pages": [
+      "proposal.md",
+      "design.md",
+      "tasks.md",
+      "wiki/index.md",
+      "pitfalls/timeout-fallback.md"
+    ]
+  },
+  {
+    "id": "startup-08",
+    "size": "medium",
+    "pages": [
+      "proposal.md",
+      "design.md",
+      "tasks.md",
+      "wiki/index.md",
+      "projects/settlements-core/overview.md",
+      "projects/settlements-core/domains/reconciliation.md"
+    ]
+  },
+  {
+    "id": "startup-09",
+    "size": "large",
+    "pages": [
+      "proposal.md",
+      "design.md",
+      "tasks.md",
+      "wiki/index.md",
+      "projects/payments-core/overview.md",
+      "pitfalls/idempotency-keys.md"
+    ]
+  },
+  {
+    "id": "startup-10",
+    "size": "large",
+    "pages": [
+      "proposal.md",
+      "design.md",
+      "tasks.md",
+      "wiki/index.md",
+      "projects/payments-core/overview.md",
+      "principles/boundary-first.md"
+    ]
+  }
+]

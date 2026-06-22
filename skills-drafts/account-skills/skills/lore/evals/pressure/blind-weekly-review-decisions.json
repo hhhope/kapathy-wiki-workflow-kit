@@ -1,0 +1,62 @@
+[
+  {
+    "id": "log-01",
+    "decision": "absorb",
+    "destination_type": "domain",
+    "destination_path": "projects/payments-core/domains/payment-retry.md"
+  },
+  {
+    "id": "log-02",
+    "decision": "absorb",
+    "destination_type": "principle",
+    "destination_path": "principles/boundary-first.md"
+  },
+  {
+    "id": "log-03",
+    "decision": "absorb",
+    "destination_type": "pitfall",
+    "destination_path": "pitfalls/idempotency-keys.md"
+  },
+  {
+    "id": "log-04",
+    "decision": "absorb",
+    "destination_type": "domain",
+    "destination_path": "projects/settlements-core/domains/reconciliation.md"
+  },
+  {
+    "id": "log-05",
+    "decision": "absorb",
+    "destination_type": "overview",
+    "destination_path": "projects/payments-core/overview.md"
+  },
+  {
+    "id": "log-06",
+    "decision": "absorb",
+    "destination_type": "domain",
+    "destination_path": "projects/auth-core/domains/session-refresh.md"
+  },
+  {
+    "id": "log-07",
+    "decision": "absorb",
+    "destination_type": "principle",
+    "destination_path": "principles/boundary-first.md"
+  },
+  {
+    "id": "log-08",
+    "decision": "absorb",
+    "destination_type": "pitfall",
+    "destination_path": "pitfalls/timeout-fallback.md"
+  },
+  {
+    "id": "log-09",
+    "decision": "discard",
+    "destination_type": "discard",
+    "destination_path": ""
+  },
+  {
+    "id": "log-10",
+    "decision": "discard",
+    "destination_type": "discard",
+    "destination_path": ""
+  }
+]

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Diff CR"
+  short_description: "Compare origin/master with the latest reachable release version and generate CR reports"
+  default_prompt: "Compare origin/master with the latest reachable release tag on the same main branch, or compare explicit from/to versions when provided. Generate one project-format CR report plus per-author comparison files. When a non-merge commit is found on the origin/master first-parent mainline, mark it as a blocking CR issue and do not allow release."

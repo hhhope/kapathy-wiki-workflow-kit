@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1460" viewBox="0 0 1800 1460" role="img" aria-labelledby="title desc">
+  <title id="title">Account Harness System Map</title>
+  <desc id="desc">A high-density layered map showing how the user, governance layers, knowledge layers, execution tools, lifecycle stages, and future roadmap cooperate in the Account Harness system.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f5f3ee; }
+      .card { fill: #ffffff; stroke: #1f1f1f; stroke-width: 2; rx: 22; ry: 22; }
+      .yellow { fill: #fff6dc; stroke: #1f1f1f; stroke-width: 2; rx: 18; ry: 18; }
+      .blue { fill: #e8f1ff; stroke: #1f1f1f; stroke-width: 2; rx: 18; ry: 18; }
+      .green { fill: #eaf7ef; stroke: #1f1f1f; stroke-width: 2; rx: 18; ry: 18; }
+      .pink { fill: #fdecef; stroke: #1f1f1f; stroke-width: 2; rx: 18; ry: 18; }
+      .gray { fill: #f2f2f2; stroke: #1f1f1f; stroke-width: 2; rx: 18; ry: 18; }
+      .title { font: 700 40px 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111; }
+      .subtitle { font: 500 18px 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #444; }
+      .section { font: 700 24px 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111; }
+      .label { font: 700 20px 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #111; }
+      .body { font: 500 16px 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #222; }
+      .pill { fill: #111; rx: 15; ry: 15; }
+      .pill-text { font: 700 13px 'PingFang SC', 'Microsoft YaHei', sans-serif; fill: #fff; }
+      .line { fill: none; stroke: #1f1f1f; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#head); }
+      .dash { fill: none; stroke: #1f1f1f; stroke-width: 2.5; stroke-dasharray: 10 8; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#head); }
+      .rail { fill: none; stroke: #1f1f1f; stroke-width: 3; stroke-linecap: round; }
+    </style>
+    <marker id="head" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1,1 L11,6 L1,11" fill="none" stroke="#1f1f1f" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1800" height="1460"/>
+
+  <text class="title" x="80" y="70">Account Harness：你如何驾驭这套 AI 编码体系</text>
+  <text class="subtitle" x="80" y="104">控制关系、阶段方法、验证入口和路线图的统一视图。</text>
+
+  <rect class="yellow" x="80" y="140" width="1640" height="138"/>
+  <text class="section" x="108" y="176">1. 你掌握方向盘</text>
+  <text class="body" x="108" y="206">你定义目标、边界、优先级和是否继续；AI 不能替你决定 scope、放宽规则或跳过验收。</text>
+  <text class="body" x="108" y="232">你给 proceed signal，AI 才从分析进入实施；你也决定是否开子代理、是否进入同步发布和后续 rollout。</text>
+  <rect class="pill" x="1370" y="164" width="250" height="28"/>
+  <text class="pill-text" x="1415" y="182">goal / scope / priority</text>
+  <rect class="pill" x="1370" y="202" width="250" height="28"/>
+  <text class="pill-text" x="1412" y="220">proceed / redirect / stop</text>
+  <rect class="pill" x="1370" y="240" width="250" height="28"/>
+  <text class="pill-text" x="1414" y="258">review / accept / publish</text>
+
+  <rect class="card" x="80" y="308" width="470" height="520"/>
+  <text class="section" x="108" y="332">2. 控制层</text>
+  <text class="label" x="108" y="360">AI 必须先过这些门禁</text>
+
+  <rect class="blue" x="108" y="378" width="414" height="104"/>
+  <text class="label" x="130" y="410">AGENTS.md + PROJECT.md</text>
+  <text class="body" x="130" y="436">health check / git truth / route / completion gate</text>
+  <text class="body" x="130" y="460">开工条件、上下文入口、完成门槛。</text>
+
+  <rect class="blue" x="108" y="500" width="414" height="104"/>
+  <text class="label" x="130" y="532">rules/</text>
+  <text class="body" x="130" y="558">Git / Security / Testing / Python / Web</text>
+  <text class="body" x="130" y="582">长期常驻边界与禁止项。</text>
+
+  <rect class="blue" x="108" y="622" width="414" height="104"/>
+  <text class="label" x="130" y="654">skills/ + agents/</text>
+  <text class="body" x="130" y="680">lore / graphify / reviewer / install / writing</text>
+  <text class="body" x="130" y="704">按场景提供方法卡和角色模板。</text>
+
+  <rect class="blue" x="108" y="744" width="414" height="76"/>
+  <text class="label" x="130" y="772">继续条件</text>
+  <text class="body" x="130" y="796">只有通过门禁后，AI 才进入实施和验证。</text>
+
+  <rect class="pill" x="110" y="806" width="176" height="26"/>
+  <text class="pill-text" x="131" y="823">gate before action</text>
+
+  <rect class="card" x="590" y="308" width="620" height="520"/>
+  <text class="section" x="588" y="332">3. 知识与规划层</text>
+  <text class="label" x="588" y="360">让 AI 先知道在做什么</text>
+
+  <rect class="green" x="618" y="378" width="564" height="98"/>
+  <text class="label" x="640" y="410">OpenSpec</text>
+  <text class="body" x="640" y="436">proposal / design / tasks</text>
+  <text class="body" x="640" y="460">当前 change 的目标、设计、任务状态。</text>
+
+  <rect class="green" x="618" y="494" width="564" height="112"/>
+  <text class="label" x="640" y="526">Lore</text>
+  <text class="body" x="640" y="552">wiki / logs / weekly review</text>
+  <text class="body" x="640" y="576">默认读取：index -&gt; overview -&gt; domain / pitfall / principle</text>
+
+  <rect class="green" x="618" y="624" width="564" height="98"/>
+  <text class="label" x="640" y="656">Graphify</text>
+  <text class="body" x="640" y="682">graphify-out / report / query</text>
+  <text class="body" x="640" y="706">entry points / neighbors / bridges / code topology</text>
+
+  <rect class="green" x="618" y="744" width="270" height="76"/>
+  <text class="label" x="640" y="772">默认顺序</text>
+  <text class="body" x="640" y="796">Lore first -&gt; Graphify second</text>
+
+  <rect class="green" x="912" y="744" width="270" height="76"/>
+  <text class="label" x="934" y="772">验证方式</text>
+  <text class="body" x="934" y="796">routing checks / benchmark / fresh context</text>
+
+  <rect class="card" x="1250" y="308" width="470" height="520"/>
+  <text class="section" x="1278" y="332">4. 执行与验证层</text>
+
+  <rect class="pink" x="1278" y="358" width="414" height="104"/>
+  <text class="label" x="1300" y="390">Implement</text>
+  <text class="body" x="1300" y="416">code / docs / templates / config</text>
+  <text class="body" x="1300" y="440">按设计实施，避免盲改和大范围硬读。</text>
+
+  <rect class="pink" x="1278" y="480" width="414" height="104"/>
+  <text class="label" x="1300" y="512">CLI + Runtime</text>
+  <text class="body" x="1300" y="538">git / tests / graphify / lark-cli / benchmark</text>
+  <text class="body" x="1300" y="562">执行层负责运行、校验、同步。</text>
+
+  <rect class="pink" x="1278" y="602" width="414" height="104"/>
+  <text class="label" x="1300" y="634">Verify</text>
+  <text class="body" x="1300" y="660">TDD / checks / routing / readback</text>
+  <text class="body" x="1300" y="684">先有 failing case，再声明完成。</text>
+
+  <rect class="pink" x="1278" y="724" width="414" height="76"/>
+  <text class="label" x="1300" y="752">Publish</text>
+  <text class="body" x="1300" y="776">Feishu / wiki / rollout / readback</text>
+
+  <rect class="pill" x="1280" y="806" width="186" height="26"/>
+  <text class="pill-text" x="1300" y="823">verify before claim</text>
+
+  <rect class="card" x="80" y="872" width="1640" height="212"/>
+  <text class="section" x="108" y="910">5. 产出</text>
+
+  <rect class="gray" x="108" y="936" width="232" height="92"/>
+  <text class="label" x="128" y="968">代码产出</text>
+  <text class="body" x="128" y="992">repo truth</text>
+
+  <rect class="gray" x="364" y="936" width="232" height="92"/>
+  <text class="label" x="384" y="968">OpenSpec 资产</text>
+  <text class="body" x="384" y="992">proposal / design / tasks</text>
+
+  <rect class="gray" x="620" y="936" width="232" height="92"/>
+  <text class="label" x="640" y="968">Lore 资产</text>
+  <text class="body" x="640" y="992">wiki / logs / weekly review</text>
+
+  <rect class="gray" x="876" y="936" width="232" height="92"/>
+  <text class="label" x="896" y="968">Graphify 资产</text>
+  <text class="body" x="896" y="992">graphify-out / report / query</text>
+
+  <rect class="gray" x="1132" y="936" width="232" height="92"/>
+  <text class="label" x="1152" y="968">行为资产</text>
+  <text class="body" x="1152" y="992">AGENTS / rules / skills / agents</text>
+
+  <rect class="gray" x="1388" y="936" width="304" height="92"/>
+  <text class="label" x="1408" y="968">分享与发布</text>
+  <text class="body" x="1408" y="992">Feishu / wiki / rollout</text>
+
+  <rect class="card" x="80" y="1116" width="1640" height="262"/>
+  <text class="section" x="108" y="1154">6. 当前阶段和路线图</text>
+
+  <rect class="yellow" x="108" y="1180" width="496" height="162"/>
+  <text class="label" x="132" y="1210">当前阶段</text>
+  <text class="body" x="132" y="1238">L2 基本完成：有 gate、有知识层、有验证层，能稳定做单次任务。</text>
+  <text class="body" x="132" y="1264">当前重点：把 L2 -&gt; L3 的阶段协议固定下来。</text>
+  <text class="body" x="132" y="1290">研发、CR、验收、沉淀按阶段协作。</text>
+
+  <rect class="yellow" x="632" y="1180" width="496" height="162"/>
+  <text class="label" x="656" y="1210">L3 关键能力</text>
+  <text class="body" x="656" y="1238">brainstorm first / SDD first / CR shift-left</text>
+  <text class="body" x="656" y="1264">TDD inside OpenSpec / absorb continuously</text>
+  <text class="body" x="656" y="1290">每个阶段都要有入场条件、输出和验证。</text>
+
+  <rect class="yellow" x="1156" y="1180" width="536" height="162"/>
+  <text class="label" x="1180" y="1210">继续加硬</text>
+  <text class="body" x="1180" y="1238">pre-push / CI gate / query routing / knowledge absorb</text>
+  <text class="body" x="1180" y="1264">git metrics / feature map / release readback lint</text>
+  <text class="body" x="1180" y="1290">L4 是远期目标，建立在阶段协议稳定之后。</text>
+
+  <path class="line" d="M900 278 L900 304"/>
+  <path class="line" d="M550 568 L590 568"/>
+  <path class="line" d="M1210 568 L1250 568"/>
+  <path class="line" d="M315 828 C315 876 315 904 315 936"/>
+  <path class="line" d="M900 828 C900 876 900 904 900 936"/>
+  <path class="line" d="M1490 828 C1490 876 1490 904 1490 936"/>
+  <path class="line" d="M900 1028 C900 1072 900 1090 900 1116"/>
+  <path class="dash" d="M890 652 C1040 652 1190 652 1278 652"/>
+  <path class="dash" d="M1430 1028 C1430 1068 1430 1090 1430 1116"/>
+
+  <path class="rail" d="M1740 150 L1740 828"/>
+  <circle cx="1740" cy="198" r="14" fill="#111"/>
+  <circle cx="1740" cy="314" r="14" fill="#111"/>
+  <circle cx="1740" cy="430" r="14" fill="#111"/>
+  <circle cx="1740" cy="546" r="14" fill="#111"/>
+  <circle cx="1740" cy="662" r="14" fill="#111"/>
+  <circle cx="1740" cy="778" r="14" fill="#111"/>
+  <text class="pill-text" x="1703" y="203">start</text>
+  <text class="pill-text" x="1702" y="319">route</text>
+  <text class="pill-text" x="1673" y="435">build</text>
+  <text class="pill-text" x="1688" y="551">verify</text>
+  <text class="pill-text" x="1684" y="667">absorb</text>
+  <text class="pill-text" x="1688" y="783">publish</text>
+</svg>

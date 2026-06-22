@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "account-skills": {
+      "command": "npx",
+      "args": ["-y", "@your-org/account-skills-mcp"]
+    }
+  }
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "log-01",
+    "accepted": true,
+    "destination_type": "domain",
+    "destination_path": "projects/payments-core/domains/payment-retry.md",
+    "reviewed": true,
+    "absorbed_to": "projects/payments-core/domains/payment-retry.md"
+  },
+  {
+    "id": "log-02",
+    "accepted": true,
+    "destination_type": "principle",
+    "destination_path": "principles/boundary-first.md",
+    "reviewed": true,
+    "absorbed_to": "principles/boundary-first.md"
+  },
+  {
+    "id": "log-03",
+    "accepted": true,
+    "destination_type": "pitfall",
+    "destination_path": "pitfalls/idempotency-keys.md",
+    "reviewed": true,
+    "absorbed_to": "pitfalls/idempotency-keys.md"
+  },
+  {
+    "id": "log-04",
+    "accepted": true,
+    "destination_type": "domain",
+    "destination_path": "projects/settlements-core/domains/reconciliation.md",
+    "reviewed": true,
+    "absorbed_to": "projects/settlements-core/domains/reconciliation.md"
+  },
+  {
+    "id": "log-05",
+    "accepted": true,
+    "destination_type": "overview",
+    "destination_path": "projects/payments-core/overview.md",
+    "reviewed": true,
+    "absorbed_to": "projects/payments-core/overview.md"
+  },
+  {
+    "id": "log-06",
+    "accepted": true,
+    "destination_type": "domain",
+    "destination_path": "projects/auth-core/domains/session-refresh.md",
+    "reviewed": true,
+    "absorbed_to": "projects/auth-core/domains/session-refresh.md"
+  },
+  {
+    "id": "log-07",
+    "accepted": true,
+    "destination_type": "principle",
+    "destination_path": "principles/boundary-first.md",
+    "reviewed": true,
+    "absorbed_to": "principles/boundary-first.md"
+  },
+  {
+    "id": "log-08",
+    "accepted": true,
+    "destination_type": "pitfall",
+    "destination_path": "pitfalls/timeout-fallback.md",
+    "reviewed": true,
+    "absorbed_to": "pitfalls/timeout-fallback.md"
+  },
+  {
+    "id": "log-09",
+    "accepted": false,
+    "destination_type": "discard",
+    "destination_path": "",
+    "reviewed": true,
+    "absorbed_to": ""
+  },
+  {
+    "id": "log-10",
+    "accepted": false,
+    "destination_type": "discard",
+    "destination_path": "",
+    "reviewed": true,
+    "absorbed_to": ""
+  }
+]

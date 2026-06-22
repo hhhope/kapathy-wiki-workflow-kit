@@ -1,0 +1,14 @@
+[
+  {
+    "session_id": "weekly-review-01",
+    "log_ids": ["log-01", "log-02", "log-03"]
+  },
+  {
+    "session_id": "weekly-review-02",
+    "log_ids": ["log-04", "log-05", "log-06", "log-07"]
+  },
+  {
+    "session_id": "weekly-review-03",
+    "log_ids": ["log-08", "log-09", "log-10"]
+  }
+]

@@ -1,0 +1,230 @@
+[
+  {
+    "id": "similar-zh-01",
+    "category": "similar",
+    "query": "支付回调重复通知时如何避免重复入账？",
+    "expected_core_pages": [
+      "projects/payments-core/domains/callback-processing.md",
+      "pitfalls/idempotency-keys.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  },
+  {
+    "id": "similar-zh-02",
+    "category": "similar",
+    "query": "重试 worker 调外部渠道超时后应该怎么降级？",
+    "expected_core_pages": [
+      "pitfalls/timeout-fallback.md",
+      "principles/boundary-first.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  },
+  {
+    "id": "similar-zh-03",
+    "category": "similar",
+    "query": "对账重放时怎么避免重复结算？",
+    "expected_core_pages": [
+      "projects/settlements-core/domains/reconciliation.md",
+      "pitfalls/idempotency-keys.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  },
+  {
+    "id": "similar-zh-04",
+    "category": "similar",
+    "query": "设计里新增外部依赖前应该先看什么边界？",
+    "expected_core_pages": [
+      "principles/boundary-first.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  },
+  {
+    "id": "similar-zh-05",
+    "category": "similar",
+    "query": "支付回调幂等点应该放在哪？",
+    "expected_core_pages": [
+      "projects/payments-core/domains/callback-processing.md",
+      "pitfalls/idempotency-keys.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  },
+  {
+    "id": "similar-en-01",
+    "category": "similar",
+    "query": "How should repeated payment callbacks avoid duplicate ledger writes?",
+    "expected_core_pages": [
+      "pitfalls/idempotency-keys.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  },
+  {
+    "id": "similar-en-02",
+    "category": "similar",
+    "query": "What should retry workers do when provider calls hang and need fallback?",
+    "expected_core_pages": [
+      "pitfalls/timeout-fallback.md",
+      "principles/boundary-first.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  },
+  {
+    "id": "similar-en-03",
+    "category": "similar",
+    "query": "How should reconciliation replays avoid duplicate settlement?",
+    "expected_core_pages": [
+      "projects/settlements-core/domains/reconciliation.md",
+      "pitfalls/idempotency-keys.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  },
+  {
+    "id": "cross-01",
+    "category": "similar",
+    "query": "Settlement replay and payment callback both risk duplicate writes. What shared pattern applies?",
+    "expected_core_pages": [
+      "pitfalls/idempotency-keys.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  },
+  {
+    "id": "cross-02",
+    "category": "similar",
+    "query": "When auth and payment both call external services, what shared rule governs timeouts and approved boundaries?",
+    "expected_core_pages": [
+      "principles/boundary-first.md"
+    ],
+    "forbidden_pages": []
+  },
+  {
+    "id": "noise-zh-01",
+    "category": "noise",
+    "query": "前端登录态刷新循环怎么查？",
+    "expected_core_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ],
+    "forbidden_pages": [
+      "pitfalls/idempotency-keys.md",
+      "projects/payments-core/domains/payment-retry.md"
+    ]
+  },
+  {
+    "id": "noise-zh-02",
+    "category": "noise",
+    "query": "用户会话过期后静默刷新失败怎么办？",
+    "expected_core_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ],
+    "forbidden_pages": [
+      "pitfalls/idempotency-keys.md",
+      "pitfalls/timeout-fallback.md"
+    ]
+  },
+  {
+    "id": "noise-zh-03",
+    "category": "noise",
+    "query": "前端路由守卫反复跳转登录",
+    "expected_core_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ],
+    "forbidden_pages": [
+      "projects/payments-core/domains/callback-processing.md"
+    ]
+  },
+  {
+    "id": "noise-zh-04",
+    "category": "noise",
+    "query": "认证系统的 session refresh redirect loop",
+    "expected_core_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ],
+    "forbidden_pages": [
+      "projects/payments-core/domains/payment-retry.md"
+    ]
+  },
+  {
+    "id": "noise-zh-05",
+    "category": "noise",
+    "query": "登录后 refresh token 过期导致不断重定向",
+    "expected_core_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ],
+    "forbidden_pages": [
+      "pitfalls/timeout-fallback.md"
+    ]
+  },
+  {
+    "id": "noise-en-01",
+    "category": "noise",
+    "query": "Frontend login session refresh bug in auth flow.",
+    "expected_core_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ],
+    "forbidden_pages": [
+      "pitfalls/idempotency-keys.md",
+      "projects/payments-core/domains/callback-processing.md"
+    ]
+  },
+  {
+    "id": "noise-en-02",
+    "category": "noise",
+    "query": "Why does auth redirect loop after silent token refresh?",
+    "expected_core_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ],
+    "forbidden_pages": [
+      "pitfalls/timeout-fallback.md"
+    ]
+  },
+  {
+    "id": "noise-en-03",
+    "category": "noise",
+    "query": "Session refresh keeps bouncing users back to login.",
+    "expected_core_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ],
+    "forbidden_pages": [
+      "projects/payments-core/domains/payment-retry.md"
+    ]
+  },
+  {
+    "id": "edge-01",
+    "category": "edge",
+    "query": "worker retry and login refresh both mention timeout; for payment worker timeout what page should be loaded first?",
+    "expected_core_pages": [
+      "pitfalls/timeout-fallback.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  },
+  {
+    "id": "edge-02",
+    "category": "edge",
+    "query": "duplicate callback after settlement reconciliation replay",
+    "expected_core_pages": [
+      "pitfalls/idempotency-keys.md",
+      "projects/settlements-core/domains/reconciliation.md"
+    ],
+    "forbidden_pages": [
+      "projects/auth-core/domains/session-refresh.md"
+    ]
+  }
+]

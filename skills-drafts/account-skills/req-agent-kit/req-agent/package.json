@@ -1,0 +1,19 @@
+{
+  "name": "@account-skills/req-agent-installer",
+  "version": "0.1.0",
+  "description": "Installer for the req-agent requirements workflow from account-skills.",
+  "license": "MIT",
+  "bin": {
+    "req-agent-install": "./install.sh"
+  },
+  "files": [
+    "install.sh",
+    "README.md",
+    "MANIFEST.txt",
+    "AGENTS_SNIPPET.md",
+    "payload"
+  ],
+  "scripts": {
+    "smoke": "tmp=$(mktemp -d /tmp/req-agent-npm-smoke.XXXXXX) && mkdir -p \"$tmp/target\" && bash ./install.sh \"$tmp/target\" --mode codex-repo --update-agents --verify"
+  }
+}

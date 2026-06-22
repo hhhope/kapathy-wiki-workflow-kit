@@ -1,0 +1,6 @@
+# Codex Governance
+
+Read `AGENTS.md` and `PROJECT.md` before substantial work.
+If `rules/` exists, follow the matching rule files for git, security, testing, and stack-specific behavior.
+Treat `skills/` as task-triggered reference cards, not always-on prose.
+For semantic edits to `AGENTS.md`, `rules/*`, or `skills/*`, keep verification evidence traceable in repository files.

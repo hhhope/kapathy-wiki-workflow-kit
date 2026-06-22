@@ -1,0 +1,31 @@
+{
+  "id": "mandao-customer-keytype-mainline-direct",
+  "input_situation": "release_cr from previous online mainline version to production target contains first-parent non-merge commit 2c9793520 changing terminal keyType from 2 to 5",
+  "triggered_workers": [
+    "cr-branch-governance",
+    "cr-scope",
+    "cr-technical-review",
+    "cr-evidence",
+    "cr-gate"
+  ],
+  "expected_issues": [
+    {
+      "source_worker": "cr-branch-governance",
+      "title": "mainline direct commit without approval or validation evidence",
+      "blocking": true
+    },
+    {
+      "source_worker": "cr-scope",
+      "title": "certificate or keyType compatibility review required",
+      "blocking": false
+    },
+    {
+      "source_worker": "cr-evidence",
+      "title": "production commit not covered by UAT evidence",
+      "blocking": true
+    }
+  ],
+  "expected_gate": "blocked",
+  "proof_boundary": "Static diff can identify mainline direct keyType change and missing evidence requirements; it cannot prove the concrete downstream old-frontend decryption outage without domain evidence.",
+  "residual_risk": "Project-specific branch names and UAT evidence formats need configuration."
+}

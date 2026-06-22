@@ -1,0 +1,60 @@
+{
+  "skill_name": "lore",
+  "fixture_root": "skills/lore/evals/fixtures",
+  "evals": [
+    {
+      "id": "gate-propose-missing",
+      "category": "gate",
+      "prompt": "Large payment retry task with no approved OpenSpec change present.",
+      "expected_output": "Must block execution and route back to OpenSpec propose."
+    },
+    {
+      "id": "gate-propose-present",
+      "category": "gate",
+      "prompt": "Large payment retry task with proposal.md, design.md, and tasks.md present.",
+      "expected_output": "May continue to load project and wiki context."
+    },
+    {
+      "id": "retrieval-idempotency-zh",
+      "category": "retrieval",
+      "prompt": "支付回调重复通知时如何避免重复入账？",
+      "expected_output": "Should return pitfalls/idempotency-keys.md as a core page."
+    },
+    {
+      "id": "retrieval-idempotency-en",
+      "category": "retrieval",
+      "prompt": "How should repeated payment callbacks avoid duplicate ledger writes?",
+      "expected_output": "Should return pitfalls/idempotency-keys.md as a core page."
+    },
+    {
+      "id": "retrieval-timeout-en",
+      "category": "retrieval",
+      "prompt": "How should retry workers call notification providers when timeout and fallback matter?",
+      "expected_output": "Should return pitfalls/timeout-fallback.md and principles/boundary-first.md."
+    },
+    {
+      "id": "noise-auth-unrelated",
+      "category": "noise",
+      "prompt": "Frontend login session refresh bug in auth flow.",
+      "expected_output": "Should not return payment split or payment callback pages as top results."
+    },
+    {
+      "id": "absorb-log-project-domain",
+      "category": "absorption",
+      "prompt": "Review sample log 20260411-090000-yan-payment-retry-gap-a1b2.md.",
+      "expected_output": "Should map to projects/payments-core/domains/payment-retry.md."
+    },
+    {
+      "id": "absorb-log-principle",
+      "category": "absorption",
+      "prompt": "Review sample log 20260411-091500-yan-shared-boundary-gap-c3d4.md.",
+      "expected_output": "Should map to principles/boundary-first.md."
+    },
+    {
+      "id": "startup-budget-medium",
+      "category": "startup-budget",
+      "prompt": "Medium payment retry task startup using the fixture corpus.",
+      "expected_output": "Should load proposal/design/tasks + overview + one domain + one pitfall/principle page within budget."
+    }
+  ]
+}

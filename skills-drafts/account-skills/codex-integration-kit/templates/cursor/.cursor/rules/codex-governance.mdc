@@ -1,0 +1,29 @@
+---
+description: Codex governance entrypoint for Cursor projects using this kit
+globs:
+alwaysApply: true
+---
+
+# Codex Governance
+
+This project uses the Codex governance kit.
+
+## Startup Order
+
+1. Read `AGENTS.md` if it exists in the repository root.
+2. Read `PROJECT.md`.
+3. Read `rules/common/development-workflow.md` and `rules/common/git-workflow.md` when they exist.
+4. Load task-specific references from `skills/` only when the request clearly matches.
+
+## Execution Rules
+
+- Run the repository health check before substantial work.
+- Do not claim git state from memory.
+- Treat `AGENTS.md`, `rules/*`, and `skills/*` as behavior assets.
+- For semantic edits to behavior assets, keep verification evidence traceable in repository files.
+- Preserve unrelated local changes.
+
+## Platform Note
+
+- This Cursor rule is the project-side entrypoint.
+- If the project also installs the Codex global baseline, keep `~/.codex/AGENTS.md` and repository `AGENTS.md` aligned.

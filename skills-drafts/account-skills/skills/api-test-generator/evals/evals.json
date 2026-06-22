@@ -1,0 +1,20 @@
+{
+  "skill_name": "api-test-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我添加一个「交易流水查询」接口的测试代码，报文编号是 BJR1-8003-001-01，请求参数有：transDate（交易日期）、merchantId（商户号），响应参数有：transList（交易列表）、totalCount（总条数）",
+      "expected_output": "应该创建完整的 Request/Result DTO、Service 类、测试类，并修改 ApiEndpointEnum 和 ResponseProcessor"
+    },
+    {
+      "id": 2,
+      "prompt": "用户只说「我想添加一个新接口测试」，没有提供任何接口文档信息",
+      "expected_output": "应该先询问用户收集接口名称、报文编号、请求/响应参数等信息，而不是直接开始创建分支"
+    },
+    {
+      "id": 3,
+      "prompt": "我要添加一个商户创建的接口测试，报文编号是 BJR1-1001-001-01",
+      "expected_output": "应该识别为创建类接口，使用 CommonService 作为基类"
+    }
+  ]
+}

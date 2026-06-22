@@ -1,0 +1,889 @@
+openapi: 3.0.3
+info:
+  title: 钱包账户服务 API
+  description: |
+    【HTTP 备用稿，非 Dubbo】钱包账户若对外为 Dubbo RPC，请使用 wallet-account-dubbo-apifox.md，
+    在 Apifox 中新建「Dubbo 项目」手动维护或从 Nacos/IDEA 插件同步；本文件仅适用于 HTTP 项目导入。
+    - 字段命名与数据库表一致，采用驼峰（camelCase）
+    - 敏感字段请求体为明文，服务端加密落库
+    - 导入 Apifox HTTP 项目：项目设置 → 导入数据 → OpenAPI → 选择本文件
+  version: 1.0.0
+  contact:
+    name: 钱包账户项目组
+
+servers:
+  - url: https://{host}/wallet-account
+    description: 内网网关
+    variables:
+      host:
+        default: api-internal.example.com
+
+tags:
+  - name: 开户
+    description: 开户并绑卡、开户状态查询
+  - name: 协议
+    description: 绑卡、解绑、查询
+
+paths:
+  /api/v1/wallet-account/open-and-bind:
+    post:
+      tags: [开户]
+      summary: 开户并绑卡
+      description: |
+        H5 绑卡成功后，钱包前置调用。单事务创建：
+        - t_customer_base_info
+        - t_customer_account（返回 contractNo）
+        - t_customer_agreement（一条或多条，bindOrder 按请求卡列表顺序从 1 递增）
+        - t_customer_account_info（BALANCE 子账户）
+        - t_customer_account_balance（可用余额 0）
+        contractLevel 默认 I；账户状态 NORMAL。
+      operationId: openAndBind
+      parameters:
+        - $ref: '#/components/parameters/RequestIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpenAndBindRequest'
+            examples:
+              singleCard:
+                summary: 一键绑卡（单卡）
+                value:
+                  requestId: "req-20260518-0001"
+                  platformNo: "MCH400001"
+                  createdBy: "wallet-front"
+                  customerBaseInfo:
+                    customerType: "PERSON"
+                    customerName: "张三"
+                    certificateType: "ID"
+                    certificateNo: "110101199001011234"
+                    mobileNo: "13800138000"
+                  agreementList:
+                    - cardUserName: "张三"
+                      cardNo: "6222021234567890123"
+                      mobileNo: "13800138000"
+                      bankCode: "ICBC"
+                      bankName: "中国工商银行"
+                      cardType: "C"
+                      bindType: 1
+                      protocolNo: "PROT20260518001"
+              multiCard:
+                summary: 一键多绑（多卡）
+                value:
+                  requestId: "req-20260518-0002"
+                  platformNo: "MCH400001"
+                  createdBy: "wallet-front"
+                  customerBaseInfo:
+                    customerType: "PERSON"
+                    customerName: "李四"
+                    certificateType: "ID"
+                    certificateNo: "110101199002021234"
+                  agreementList:
+                    - cardUserName: "李四"
+                      cardNo: "6222021234567890123"
+                      bankCode: "ICBC"
+                      bankName: "中国工商银行"
+                      cardType: "C"
+                      bindType: 2
+                      protocolNo: "PROT001"
+                    - cardUserName: "李四"
+                      cardNo: "6228481234567890123"
+                      bankCode: "ABC"
+                      bankName: "中国农业银行"
+                      cardType: "C"
+                      bindType: 2
+                      protocolNo: "PROT002"
+      responses:
+        '200':
+          description: 业务响应（HTTP 200，以 code 判断成败）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseOpenAndBind'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/v1/wallet-account/bind-card:
+    post:
+      tags: [协议]
+      summary: 单独绑卡
+      description: |
+        4.0 绑卡成功后调用。在已有 contractNo 下新增 t_customer_agreement；
+        bindOrder = max(bindOrder)+1；status=0。
+      operationId: bindCard
+      parameters:
+        - $ref: '#/components/parameters/RequestIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BindCardRequest'
+            example:
+              requestId: "req-20260518-0101"
+              platformNo: "MCH400001"
+              contractNo: "WA2026051800001"
+              createdBy: "wallet-front"
+              agreement:
+                cardUserName: "张三"
+                cardNo: "6228481234567890123"
+                mobileNo: "13800138000"
+                bankCode: "ABC"
+                bankName: "中国农业银行"
+                cardType: "C"
+                bindType: 1
+                protocolNo: "PROT20260518099"
+      responses:
+        '200':
+          description: 业务响应
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseBindCard'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/v1/wallet-account/unbind-card:
+    post:
+      tags: [协议]
+      summary: 解绑卡
+      description: |
+        4.0 解绑成功后调用。更新 t_customer_agreement：status=1，写入 endDate、endReason。
+      operationId: unbindCard
+      parameters:
+        - $ref: '#/components/parameters/RequestIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnbindCardRequest'
+            example:
+              requestId: "req-20260518-0201"
+              contractNo: "WA2026051800001"
+              updatedBy: "wallet-front"
+              agreementNo: "AGR202605180001"
+              endReason: "用户主动解绑"
+      responses:
+        '200':
+          description: 业务响应
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseUnbindCard'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/v1/wallet-account/account/query-opened:
+    post:
+      tags: [开户]
+      summary: 查询是否已开户
+      description: |
+        根据 platformNo（4.0 商户号）与 certificateNo（用户证件号）查询该用户在该平台下是否已开户。
+        关联 t_customer_base_info 与 t_customer_account；客户/账户均为 NORMAL 时 accountOpened=true。
+        证件号入参明文，服务端按落库规则加密后查询。
+      operationId: queryAccountOpened
+      parameters:
+        - $ref: '#/components/parameters/RequestIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryAccountOpenedRequest'
+            example:
+              requestId: "req-20260518-0401"
+              platformNo: "MCH400001"
+              certificateType: "ID"
+              certificateNo: "110101199001011234"
+      responses:
+        '200':
+          description: 业务响应
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseQueryAccountOpened'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/v1/wallet-account/agreements/list:
+    post:
+      tags: [协议]
+      summary: 查询绑定卡列表（订阅扣款）
+      description: |
+        返回 contractNo 下 status=0 的协议列表，按 bindOrder 升序。
+        供钱包前置订阅扣款按顺序轮询 4.0 协议支付。
+      operationId: listAgreements
+      parameters:
+        - $ref: '#/components/parameters/RequestIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListAgreementsRequest'
+            example:
+              requestId: "req-20260518-0301"
+              contractNo: "WA2026051800001"
+      responses:
+        '200':
+          description: 业务响应
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseListAgreements'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+components:
+  parameters:
+    RequestIdHeader:
+      name: X-Request-Id
+      in: header
+      required: false
+      description: 链路追踪 ID，可与 body.requestId 一致
+      schema:
+        type: string
+        maxLength: 64
+
+  responses:
+    BadRequest:
+      description: 参数错误
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiResponseEmpty'
+    ServerError:
+      description: 系统异常
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiResponseEmpty'
+
+  schemas:
+    # ---------- 通用 ----------
+    ApiResponseEmpty:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          description: 业务码，0000=成功
+          example: "1001"
+        message:
+          type: string
+          example: "参数校验失败"
+        data:
+          type: object
+          nullable: true
+        requestId:
+          type: string
+
+    # ---------- 开户并绑卡 ----------
+    OpenAndBindRequest:
+      type: object
+      required:
+        - requestId
+        - platformNo
+        - createdBy
+        - customerBaseInfo
+        - agreementList
+      properties:
+        requestId:
+          type: string
+          maxLength: 64
+          description: 幂等键，前置生成全局唯一
+        platformNo:
+          type: string
+          maxLength: 32
+          description: 平台编号，4.0 商户号 → t_customer_account.platform_no
+        createdBy:
+          type: string
+          maxLength: 32
+          description: 创建人
+        customerBaseInfo:
+          $ref: '#/components/schemas/CustomerBaseInfoInput'
+        agreementList:
+          type: array
+          minItems: 1
+          maxItems: 10
+          description: 绑卡协议列表，顺序即 bindOrder（1..n）
+          items:
+            $ref: '#/components/schemas/CustomerAgreementInput'
+
+    CustomerBaseInfoInput:
+      type: object
+      required:
+        - customerType
+        - customerName
+        - certificateType
+        - certificateNo
+      description: 对应 t_customer_base_info（开户时写入）
+      properties:
+        customerType:
+          type: string
+          maxLength: 16
+          default: PERSON
+          description: 客户类型
+          enum: [PERSON]
+        customerName:
+          type: string
+          maxLength: 256
+          description: 客户名称（加密存储，name_is_encry 由服务端置 1）
+        nameIsEncry:
+          type: integer
+          format: int32
+          description: 是否加密，服务端写入，请求可省略
+          readOnly: true
+        certificateType:
+          type: string
+          maxLength: 16
+          description: 证件类型
+        certificateNo:
+          type: string
+          maxLength: 64
+          description: 证件号（加密存储）
+        certStartDate:
+          type: string
+          format: date
+          description: 证件生效日期 yyyy-MM-dd
+        certExpiryDate:
+          type: string
+          format: date
+          description: 证件失效日期
+        gender:
+          type: string
+          maxLength: 2
+        birth:
+          type: string
+          format: date
+        nation:
+          type: string
+          maxLength: 4
+        issuingAuthority:
+          type: string
+          maxLength: 64
+        address:
+          type: string
+          maxLength: 512
+        mobileNo:
+          type: string
+          maxLength: 64
+          description: 开户手机号（若表扩展；当前 DDL 无此列可放扩展字段或忽略）
+
+    CustomerAgreementInput:
+      type: object
+      required:
+        - cardUserName
+        - cardNo
+        - bankCode
+        - bankName
+        - cardType
+        - bindType
+        - protocolNo
+      description: 对应 t_customer_agreement 写入字段
+      properties:
+        cardUserName:
+          type: string
+          maxLength: 256
+          description: 持卡人姓名，加密存储
+        cardNo:
+          type: string
+          maxLength: 256
+          description: 银行卡号，加密存储；服务端生成 lastCardNo
+        lastCardNo:
+          type: string
+          maxLength: 4
+          description: 卡号后四位，服务端从 cardNo 截取，请求可省略
+          readOnly: true
+        mobileNo:
+          type: string
+          maxLength: 64
+          description: 银行预留手机号，加密存储
+        bankCode:
+          type: string
+          maxLength: 32
+        bankName:
+          type: string
+          maxLength: 64
+        cardType:
+          type: string
+          maxLength: 16
+          default: C
+          description: C-借记 D-贷记
+          enum: [C, D]
+        cnapsCode:
+          type: string
+          maxLength: 32
+          description: 联行号
+        publicFlag:
+          type: string
+          maxLength: 1
+          default: "0"
+          description: 0-对私 1-对公
+          enum: ["0", "1"]
+        bindType:
+          type: integer
+          format: int32
+          description: 1-正常绑卡 2-一键多绑
+          enum: [1, 2]
+        bindOrder:
+          type: integer
+          format: int32
+          description: 扣款顺序，开户接口由服务端按列表下标生成，请求勿传
+          readOnly: true
+        protocolNo:
+          type: string
+          maxLength: 32
+          description: 4.0 渠道协议号
+        remark:
+          type: string
+          maxLength: 128
+        depositBankProvince:
+          type: string
+          maxLength: 32
+        depositBankCity:
+          type: string
+          maxLength: 32
+        depositBankName:
+          type: string
+          maxLength: 128
+
+    OpenAndBindData:
+      type: object
+      properties:
+        customerNo:
+          type: string
+          maxLength: 32
+          description: 客户编号
+        contractNo:
+          type: string
+          maxLength: 32
+          description: 钱包账户号（客户账户编号）
+        accountNo:
+          type: string
+          maxLength: 32
+          description: 资金账号
+        contractLevel:
+          type: string
+          maxLength: 5
+          description: 账户级别，开户默认 I
+          example: I
+        agreementList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerAgreementVO'
+
+    ApiResponseOpenAndBind:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponseEmpty'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/OpenAndBindData'
+
+    # ---------- 单独绑卡 ----------
+    BindCardRequest:
+      type: object
+      required:
+        - requestId
+        - platformNo
+        - contractNo
+        - createdBy
+        - agreement
+      properties:
+        requestId:
+          type: string
+          maxLength: 64
+        platformNo:
+          type: string
+          maxLength: 32
+        contractNo:
+          type: string
+          maxLength: 32
+          description: 钱包账户号
+        createdBy:
+          type: string
+          maxLength: 32
+        agreement:
+          $ref: '#/components/schemas/CustomerAgreementInput'
+
+    BindCardData:
+      type: object
+      properties:
+        agreementNo:
+          type: string
+          maxLength: 32
+        bindOrder:
+          type: integer
+          format: int32
+        protocolNo:
+          type: string
+          maxLength: 32
+
+    ApiResponseBindCard:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponseEmpty'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/BindCardData'
+
+    # ---------- 解绑卡 ----------
+    UnbindCardRequest:
+      type: object
+      required:
+        - requestId
+        - contractNo
+        - updatedBy
+      description: agreementNo 与 (cardNo|protocolNo) 二选一定位协议
+      properties:
+        requestId:
+          type: string
+          maxLength: 64
+        contractNo:
+          type: string
+          maxLength: 32
+        updatedBy:
+          type: string
+          maxLength: 32
+        agreementNo:
+          type: string
+          maxLength: 32
+          description: 协议编号（推荐）
+        protocolNo:
+          type: string
+          maxLength: 32
+          description: 渠道协议号，与 agreementNo 二选一
+        cardNo:
+          type: string
+          maxLength: 256
+          description: 银行卡号明文，与 agreementNo 二选一
+        endReason:
+          type: string
+          maxLength: 256
+          description: 终止原因 → end_reason
+
+    UnbindCardData:
+      type: object
+      properties:
+        agreementNo:
+          type: string
+        status:
+          type: integer
+          format: int32
+          description: 1-已解绑
+          example: 1
+        endDate:
+          type: string
+          format: date-time
+          description: 终止日期
+
+    ApiResponseUnbindCard:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponseEmpty'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/UnbindCardData'
+
+    # ---------- 查询是否已开户 ----------
+    QueryAccountOpenedRequest:
+      type: object
+      required:
+        - requestId
+        - platformNo
+        - certificateNo
+      properties:
+        requestId:
+          type: string
+          maxLength: 64
+        platformNo:
+          type: string
+          maxLength: 32
+          description: 平台编号 → t_customer_account.platform_no
+        certificateType:
+          type: string
+          maxLength: 16
+          default: ID
+          description: 证件类型 → t_customer_base_info.certificate_type
+        certificateNo:
+          type: string
+          maxLength: 64
+          description: 证件号（明文入参，服务端加密匹配）→ certificate_no
+
+    QueryAccountOpenedData:
+      type: object
+      required:
+        - accountOpened
+        - platformNo
+      properties:
+        accountOpened:
+          type: boolean
+          description: 是否已开户（客户与账户均为 NORMAL）
+        platformNo:
+          type: string
+          maxLength: 32
+        certificateNo:
+          type: string
+          maxLength: 64
+          description: 回显，建议脱敏
+        customerNo:
+          type: string
+          maxLength: 32
+          description: 已开户时返回
+        contractNo:
+          type: string
+          maxLength: 32
+          description: 已开户时返回，钱包账户号
+        customerStatus:
+          type: string
+          maxLength: 16
+          description: 客户状态 NORMAL/CLOSED
+        contractStatus:
+          type: string
+          maxLength: 16
+          description: 账户状态 NORMAL/CLOSED
+        contractLevel:
+          type: string
+          maxLength: 5
+          description: 账户级别 I/II/III
+        createdAt:
+          type: string
+          format: date-time
+          description: 账户创建时间
+
+    ApiResponseQueryAccountOpened:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponseEmpty'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/QueryAccountOpenedData'
+
+    # ---------- 查询绑卡列表 ----------
+    ListAgreementsRequest:
+      type: object
+      required:
+        - requestId
+        - contractNo
+      properties:
+        requestId:
+          type: string
+          maxLength: 64
+        contractNo:
+          type: string
+          maxLength: 32
+
+    ListAgreementsData:
+      type: object
+      properties:
+        contractNo:
+          type: string
+        platformNo:
+          type: string
+        agreementList:
+          type: array
+          description: 按 bindOrder 升序
+          items:
+            $ref: '#/components/schemas/CustomerAgreementVO'
+
+    CustomerAgreementVO:
+      type: object
+      description: 对应 t_customer_agreement 查询结果（卡号脱敏返回）
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: 自增主键
+        agreementNo:
+          type: string
+          maxLength: 32
+        platformNo:
+          type: string
+          maxLength: 32
+        contractNo:
+          type: string
+          maxLength: 32
+        cardUserName:
+          type: string
+          description: 脱敏姓名
+        cardNo:
+          type: string
+          description: 脱敏卡号，如 ****1234
+        lastCardNo:
+          type: string
+          maxLength: 4
+        mobileNo:
+          type: string
+          description: 脱敏手机号
+        bankCode:
+          type: string
+        bankName:
+          type: string
+        cardType:
+          type: string
+        cnapsCode:
+          type: string
+        publicFlag:
+          type: string
+        bindType:
+          type: integer
+          format: int32
+        bindOrder:
+          type: integer
+          format: int32
+          description: 扣款顺序号，订阅轮询依据
+        protocolNo:
+          type: string
+          description: 4.0 协议支付必填
+        status:
+          type: integer
+          format: int32
+          description: 0-正常 1-解绑
+        remark:
+          type: string
+        depositBankProvince:
+          type: string
+        depositBankCity:
+          type: string
+        depositBankName:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    ApiResponseListAgreements:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponseEmpty'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/ListAgreementsData'
+
+    # ---------- 账户实体（查询/扩展用，可选） ----------
+    CustomerAccountVO:
+      type: object
+      description: 对应 t_customer_account
+      properties:
+        id:
+          type: integer
+          format: int64
+        customerNo:
+          type: string
+        contractNo:
+          type: string
+        contractType:
+          type: string
+          default: ALL
+          description: ALL-可收付 CR-收款 DR-付款
+        status:
+          type: string
+          description: NORMAL-正常 CLOSED-已注销
+        closeDate:
+          type: string
+          format: date-time
+        closeUser:
+          type: string
+        platformNo:
+          type: string
+        contractLevel:
+          type: string
+          description: I-一级 II-二级 III-三级
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+
+    CustomerAccountInfoVO:
+      type: object
+      description: 对应 t_customer_account_info
+      properties:
+        id:
+          type: integer
+          format: int64
+        contractNo:
+          type: string
+        accountType:
+          type: string
+          default: "00"
+        accountSubType:
+          type: string
+          default: BALANCE
+        accountNo:
+          type: string
+        ccy:
+          type: string
+          default: CNY
+        status:
+          type: string
+        closeDate:
+          type: string
+          format: date-time
+        closeUser:
+          type: string
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+
+    CustomerAccountBalanceVO:
+      type: object
+      description: 对应 t_customer_account_balance
+      properties:
+        id:
+          type: integer
+          format: int64
+        accountNo:
+          type: string
+        currency:
+          type: string
+          default: CNY
+        availableBalance:
+          type: number
+          format: double
+          description: 可用余额，开户默认 0.00
+        frozenBalance:
+          type: number
+          format: double
+          default: 0
+        version:
+          type: integer
+          format: int32
+          description: 乐观锁版本号
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedBy:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time

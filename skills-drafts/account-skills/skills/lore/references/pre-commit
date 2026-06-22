@@ -1,0 +1,86 @@
+#!/bin/sh
+# Lore wiki pre-commit hook
+# Install: cp references/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+
+WARN="\033[33m⚠️  LORE\033[0m"
+FAIL="\033[31m❌ LORE\033[0m"
+
+errors=0
+warnings=0
+
+# ── HARD BLOCKS ───────────────────────────────────────────────────────────────
+
+# 1. Skill changes must carry TDD / writing-skills evidence
+skill_changes=$(git diff --cached --name-only | grep "^skills/.*/SKILL\.md$" || true)
+if [ -n "$skill_changes" ]; then
+  skill_eval_changes=$(git diff --cached --name-only \
+    | grep -E "^skills/.*/(evals/|references/.*(EVAL|BASELINE|TDD|PRESSURE).*\.(md|json))" || true)
+  if [ -z "$skill_eval_changes" ]; then
+    echo "$FAIL semantic skill changes require writing-skills evidence"
+    echo "     Missing staged eval asset under skills/*/evals or skills/*/references/*(EVAL|BASELINE|TDD|PRESSURE)*"
+    errors=$((errors + 1))
+  fi
+fi
+
+# 2. Reviewed logs must record review outcome
+reviewed_logs=$(git diff --cached --name-only | grep "^logs/.*\.md$" || true)
+for log in $reviewed_logs; do
+  if git diff --cached -- "$log" | grep -q "^+reviewed: true"; then
+    has_action=$(git diff --cached -- "$log" | grep -c "^+review-action:")
+    has_absorbed=$(git diff --cached -- "$log" | grep -c "^+absorbed-to:")
+    if [ "$has_action" -eq 0 ] || [ "$has_absorbed" -eq 0 ]; then
+      echo "$FAIL reviewed log missing review-action or absorbed-to: $log"
+      errors=$((errors + 1))
+    fi
+  fi
+done
+
+# 3. Shared knowledge should cite at least two project links
+shared_pages=$(git diff --cached --name-only \
+  | grep "^wiki/\(pitfalls\|principles\)/.*\.md$" || true)
+for page in $shared_pages; do
+  project_refs=$(grep -c "\[\[projects/" "$page" 2>/dev/null || echo 0)
+  if [ "$project_refs" -lt 2 ]; then
+    echo "$FAIL shared knowledge needs evidence from at least two project pages: $page"
+    errors=$((errors + 1))
+  fi
+done
+
+# ── WARNINGS ──────────────────────────────────────────────────────────────────
+
+# 4. Code changed but neither wiki pages nor logs changed
+code_changes=$(git diff --cached --name-only \
+  | grep -v "^logs/" \
+  | grep -v "^wiki/" \
+  | grep -v "^PROJECT.md$" \
+  | grep -v "^docs/" \
+  | wc -l | tr -d ' ')
+
+knowledge_changes=$(git diff --cached --name-only \
+  | grep -E "^(logs/|wiki/)" \
+  | wc -l | tr -d ' ')
+
+if [ "$code_changes" -gt 0 ] && [ "$knowledge_changes" -eq 0 ]; then
+  echo "$WARN code changed but no lore log/wiki page changed — capture learnings or confirm none"
+  warnings=$((warnings + 1))
+fi
+
+# 5. Log backlog check
+if [ -d "logs" ] && ls logs/*.md > /dev/null 2>&1; then
+  unreviewed=$(grep -rl "reviewed: false" logs/ 2>/dev/null | wc -l | tr -d ' ')
+  if [ "$unreviewed" -gt 10 ]; then
+    echo "$WARN $unreviewed unreviewed logs — run 'weekly review' soon."
+    warnings=$((warnings + 1))
+  fi
+fi
+
+# ── RESULT ────────────────────────────────────────────────────────────────────
+
+if [ "$errors" -gt 0 ]; then
+  echo ""
+  echo "$FAIL $errors error(s) — commit blocked."
+  echo "     Emergency: git commit --no-verify"
+  exit 1
+fi
+
+exit 0

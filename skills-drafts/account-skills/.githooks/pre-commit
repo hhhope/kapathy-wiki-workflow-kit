@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+bash codex-integration-kit/scripts/check-feishu-sync.sh --staged

@@ -1,0 +1,35 @@
+{
+  "skill": "lore-bootstrap",
+  "scenarios": [
+    {
+      "id": "fresh-install",
+      "goal": "create a git-backed lore wiki and wire AGENTS path from scratch",
+      "checks": [
+        "shared repo has .git",
+        "wiki/index.md exists",
+        "project overview exists",
+        "starter domain exists",
+        "AGENTS.md team-lore points to wiki root"
+      ]
+    },
+    {
+      "id": "existing-repo-bootstrap",
+      "goal": "fill missing wiki structure without replacing existing git repo",
+      "checks": [
+        "existing .git preserved",
+        "missing wiki pages created",
+        "templates directory created"
+      ]
+    },
+    {
+      "id": "legacy-migration",
+      "goal": "copy flat lore into legacy snapshot and create migration notes",
+      "checks": [
+        "legacy/LORE-legacy.md exists",
+        "migration-notes.md exists",
+        "local project logs stay outside shared wiki"
+      ]
+    }
+  ]
+}
+

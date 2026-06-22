@@ -1,0 +1,799 @@
+version: 2
+authority: requirements-ddd-model
+independent_from:
+  - wiki/config/frontmatter-taxonomy.yaml
+
+business_ecosystems:
+  payment_ecosystem:
+    label: payment ecosystem
+    description: Primary ecosystem for payment requirements.
+    subdomains:
+      - merchant_platform_relationship
+      - billing_revenue
+      - payment_transaction
+      - account_balance
+      - funds_movement_settlement
+      - financial_operations
+      - risk_compliance
+      - embedded_financial_products
+  agent_service_ecosystem:
+    label: agent service ecosystem
+    description: Adjacent ecosystem for Agent service access, usage, seats, catalog, and delivery.
+    subdomains:
+      - agent_entitlement
+      - agent_usage_metering
+      - agent_workspace_seat
+      - agent_service_catalog
+      - agent_service_delivery
+
+subdomains:
+  merchant_platform_relationship:
+    business_ecosystem: payment_ecosystem
+    business_problem: Identify service providers, platforms, collection subjects, capability users, and responsibility boundaries.
+    bounded_contexts:
+      - merchant_identity_context
+      - merchant_onboarding_context
+      - merchant_capability_context
+      - merchant_service_offering_context
+      - platform_responsibility_context
+    aggregate_roots:
+      - merchant
+      - platform_account
+      - onboarding_application
+      - capability_grant
+      - service_offering
+      - platform_relationship
+    fact_owners:
+      - merchant_profile_owner
+      - onboarding_owner
+      - capability_owner
+      - platform_relationship_owner
+      - service_offering_owner
+    disambiguation:
+      - merchant_account is not payment_account.
+      - subscription_offering is not commercial_subscription.
+      - platform_account is not account_balance.
+    trigger_rules: []
+
+  billing_revenue:
+    business_ecosystem: payment_ecosystem
+    business_problem: Commercial charging relationships, pricing, invoices, billing cycles, receivables, and revenue recovery.
+    bounded_contexts:
+      - commercial_subscription_context
+      - billing_invoice_context
+      - usage_rating_context
+      - revenue_recovery_context
+    aggregate_roots:
+      - commercial_subscription
+      - subscription_item
+      - subscription_status
+      - invoice
+      - price_plan
+      - billing_schedule
+      - usage_record
+      - rating_rule
+      - seat_assignment
+      - dunning_case
+      - grace_period
+      - retry_schedule
+    fact_owners:
+      - subscription_owner
+      - subscription_policy_owner
+      - revenue_owner
+      - billing_ops_owner
+      - usage_rating_owner
+      - dunning_owner
+    disambiguation:
+      - commercial_subscription is the paid commercial relationship.
+      - merchant_subscription_offering belongs to merchant_platform_relationship.
+      - agent_entitlement belongs to agent_service_ecosystem.
+    trigger_rules:
+      - if: usage_based_billing=true
+        require_contexts:
+          - usage_rating_context
+          - agent_usage_metering_context
+      - if: seat_based_billing=true
+        require_contexts:
+          - usage_rating_context
+          - agent_workspace_seat_context
+
+  payment_transaction:
+    business_ecosystem: payment_ecosystem
+    business_problem: One payment intent, attempt, authorization, charge, refund, dispute, and payment status convergence.
+    bounded_contexts:
+      - payment_intent_context
+      - payment_attempt_authorization_context
+      - refund_context
+      - dispute_context
+      - payment_method_context
+    aggregate_roots:
+      - payment_intent
+      - payment_attempt
+      - payment_order
+      - payment_method_authorization
+      - charge
+      - refund
+      - dispute_case
+      - channel_transaction
+    fact_owners:
+      - payment_ops_owner
+      - payment_method_owner
+      - channel_owner
+      - refund_owner
+      - dispute_owner
+    disambiguation:
+      - payment_intent is not invoice.
+      - payment_attempt is not subscription renewal.
+      - Charge success is not funds availability.
+      - Refund is not settlement reversal.
+    trigger_rules: []
+
+  account_balance:
+    business_ecosystem: payment_ecosystem
+    business_problem: Real fund ownership, account capability, balance state, ledger posting, available funds, pending funds, reserved funds, and consistency between fund state and ledger facts.
+    bounded_contexts:
+      - financial_account_context
+      - balance_ledger_context
+      - fund_state_context
+      - reserve_limit_context
+    aggregate_roots:
+      - payment_account
+      - wallet
+      - balance
+      - ledger_entry
+      - fund_state
+      - reserve
+      - account_limit
+      - fund_reservation
+    fact_owners:
+      - funds_account_owner
+      - ledger_owner
+      - balance_state_owner
+      - reserve_owner
+      - finance_owner
+    disambiguation:
+      - account_balance is not a wallet page.
+      - ledger_entry is not a financial report.
+      - Available balance is not payment success.
+    trigger_rules:
+      - if: real_funds_processing=true
+        require_subdomains:
+          - account_balance
+        require_contexts:
+          - balance_ledger_context
+        require_role_archetypes:
+          - funds_account_owner
+          - ledger_owner
+          - balance_state_owner
+
+  funds_movement_settlement:
+    business_ecosystem: payment_ecosystem
+    business_problem: Moving funds to recipients through transfer, payout, split, settlement batch, and settlement schedule.
+    bounded_contexts:
+      - internal_transfer_context
+      - split_allocation_context
+      - settlement_batch_context
+      - payout_context
+      - payout_schedule_context
+    aggregate_roots:
+      - transfer
+      - split_rule
+      - allocation_result
+      - platform_fee
+      - settlement_batch
+      - settlement_item
+      - settlement_schedule
+      - payout
+      - payout_instruction
+      - payout_recipient
+    fact_owners:
+      - transfer_owner
+      - split_rule_owner
+      - platform_fee_owner
+      - settlement_owner
+      - payout_owner
+    disambiguation:
+      - transfer means platform or account internal movement.
+      - payout means movement to an external bank or card.
+      - settlement means settlement batch, schedule, or settlement accounting fact.
+      - split means allocation rule or result.
+    trigger_rules:
+      - if: merchant_settlement_in_scope=true
+        require_contexts:
+          - settlement_batch_context
+          - payout_context
+      - if: split_settlement_in_scope=true
+        require_contexts:
+          - split_allocation_context
+
+  financial_operations:
+    business_ecosystem: payment_ecosystem
+    business_problem: Auditable financial evidence, reconciliation, fee accounting, exception handling, reporting, and close support.
+    bounded_contexts:
+      - reconciliation_context
+      - fee_accounting_context
+      - financial_reporting_context
+      - exception_resolution_context
+      - close_support_context
+    aggregate_roots:
+      - reconciliation_record
+      - reconciliation_match
+      - reconciliation_exception
+      - fee_record
+      - fee_rule
+      - cost_allocation
+      - financial_report
+      - close_report
+      - audit_evidence
+    fact_owners:
+      - reconciliation_owner
+      - fee_accounting_owner
+      - financial_report_owner
+      - exception_owner
+      - audit_evidence_owner
+    disambiguation:
+      - Reconciliation is not payment_transaction.
+      - Reporting is not settlement.
+      - clearing_reconciliation is a process or capability, not a subdomain.
+    trigger_rules: []
+
+  risk_compliance:
+    business_ecosystem: payment_ecosystem
+    business_problem: Admission, KYC/KYB, AML, recurring payment consent, transaction risk, consumer protection, and compliance evidence.
+    bounded_contexts:
+      - compliance_profile_context
+      - risk_decision_context
+      - mandate_authorization_context
+      - transaction_monitoring_context
+      - compliance_review_context
+    aggregate_roots:
+      - kyb_profile
+      - kyc_profile
+      - aml_case
+      - risk_decision
+      - risk_signal
+      - risk_rule
+      - payment_mandate
+      - authorization_consent
+      - consent_record
+      - compliance_review
+    fact_owners:
+      - compliance_owner
+      - kyb_owner
+      - risk_owner
+      - mandate_owner
+      - monitoring_owner
+    disambiguation:
+      - Mandate and consent answer whether recurring payment is allowed.
+      - Payment authorization answers whether one payment attempt is authorized.
+      - Risk decision answers whether an action is allowed.
+    trigger_rules:
+      - if: recurring_payment=true
+        require_contexts:
+          - mandate_authorization_context
+
+  embedded_financial_products:
+    business_ecosystem: payment_ecosystem
+    business_problem: Regulated financial products adjacent to payments, including issuing, treasury, spend, and capital.
+    bounded_contexts:
+      - issuing_context
+      - treasury_context
+      - spend_management_context
+      - capital_context
+    aggregate_roots:
+      - card_account
+      - card
+      - authorization_control
+      - treasury_account
+      - cash_position
+      - spend_policy
+      - expense_transaction
+      - credit_offer
+      - repayment_schedule
+      - credit_account
+    fact_owners:
+      - issuing_owner
+      - treasury_owner
+      - spend_owner
+      - capital_owner
+      - regulated_product_owner
+    disambiguation:
+      - Embedded financial product scope is not ordinary payment processing.
+    trigger_rules:
+      - if: issuing_in_scope=true
+        require_subdomains:
+          - embedded_financial_products
+      - if: treasury_in_scope=true
+        require_subdomains:
+          - embedded_financial_products
+      - if: capital_in_scope=true
+        require_subdomains:
+          - embedded_financial_products
+
+  agent_entitlement:
+    business_ecosystem: agent_service_ecosystem
+    business_problem: Whether a customer can use an Agent service after commercial subscription, payment, suspension, cancellation, or quota change.
+    bounded_contexts:
+      - agent_entitlement_context
+    aggregate_roots:
+      - agent_entitlement
+      - access_state
+      - usage_quota
+      - seat_permission
+    fact_owners:
+      - agent_entitlement_owner
+      - access_policy_owner
+    disambiguation:
+      - agent_entitlement is service access, not commercial_subscription.
+    trigger_rules:
+      - if: paid_agent_service_access=true
+        require_contexts:
+          - agent_entitlement_context
+
+  agent_usage_metering:
+    business_ecosystem: agent_service_ecosystem
+    business_problem: Agent consumption measurement for usage-based billing or service controls.
+    bounded_contexts:
+      - agent_usage_metering_context
+    aggregate_roots:
+      - agent_usage_record
+      - metering_dimension
+      - usage_counter
+    fact_owners:
+      - agent_usage_owner
+      - metering_owner
+    disambiguation:
+      - Agent usage metering is not payment transaction evidence.
+    trigger_rules:
+      - if: usage_based_billing=true
+        require_contexts:
+          - agent_usage_metering_context
+
+  agent_workspace_seat:
+    business_ecosystem: agent_service_ecosystem
+    business_problem: Workspace seats, user assignment, and seat-based access for Agent services.
+    bounded_contexts:
+      - agent_workspace_seat_context
+    aggregate_roots:
+      - workspace
+      - seat_assignment
+      - workspace_member
+    fact_owners:
+      - workspace_owner
+      - seat_owner
+    disambiguation:
+      - Agent workspace seats are access and usage facts, not payment accounts.
+    trigger_rules:
+      - if: seat_based_billing=true
+        require_contexts:
+          - agent_workspace_seat_context
+
+  agent_service_catalog:
+    business_ecosystem: agent_service_ecosystem
+    business_problem: Which Agent services, plans, and capabilities can be offered to customers.
+    bounded_contexts:
+      - agent_service_catalog_context
+    aggregate_roots:
+      - agent_service
+      - agent_plan
+      - agent_capability
+    fact_owners:
+      - agent_service_owner
+      - agent_catalog_owner
+    disambiguation:
+      - Agent service catalog is not merchant service offering.
+    trigger_rules: []
+
+  agent_service_delivery:
+    business_ecosystem: agent_service_ecosystem
+    business_problem: Service availability and delivery state for Agent services.
+    bounded_contexts:
+      - agent_service_delivery_context
+    aggregate_roots:
+      - service_session
+      - delivery_state
+      - service_incident
+    fact_owners:
+      - agent_delivery_owner
+      - service_state_owner
+    disambiguation:
+      - Agent service delivery is runtime service state, not entitlement.
+    trigger_rules: []
+
+bounded_contexts:
+  merchant_identity_context:
+    subdomain: merchant_platform_relationship
+    aggregate_roots: [merchant, platform_account]
+    fact_owners: [merchant_profile_owner, platform_relationship_owner]
+  merchant_onboarding_context:
+    subdomain: merchant_platform_relationship
+    aggregate_roots: [onboarding_application, merchant]
+    fact_owners: [onboarding_owner, merchant_profile_owner]
+  merchant_capability_context:
+    subdomain: merchant_platform_relationship
+    aggregate_roots: [capability_grant, merchant]
+    fact_owners: [capability_owner]
+  merchant_service_offering_context:
+    subdomain: merchant_platform_relationship
+    aggregate_roots: [service_offering]
+    fact_owners: [service_offering_owner]
+  platform_responsibility_context:
+    subdomain: merchant_platform_relationship
+    aggregate_roots: [platform_relationship, platform_account]
+    fact_owners: [platform_relationship_owner]
+  commercial_subscription_context:
+    subdomain: billing_revenue
+    aggregate_roots: [commercial_subscription, subscription_item, subscription_status]
+    fact_owners: [subscription_owner, subscription_policy_owner, revenue_owner]
+  billing_invoice_context:
+    subdomain: billing_revenue
+    aggregate_roots: [invoice, billing_schedule]
+    fact_owners: [billing_ops_owner, revenue_owner]
+  usage_rating_context:
+    subdomain: billing_revenue
+    aggregate_roots: [usage_record, rating_rule, seat_assignment, price_plan]
+    fact_owners: [usage_rating_owner, subscription_policy_owner]
+  revenue_recovery_context:
+    subdomain: billing_revenue
+    aggregate_roots: [dunning_case, grace_period, retry_schedule]
+    fact_owners: [dunning_owner, revenue_owner]
+  payment_intent_context:
+    subdomain: payment_transaction
+    aggregate_roots: [payment_intent, payment_order]
+    fact_owners: [payment_ops_owner]
+  payment_attempt_authorization_context:
+    subdomain: payment_transaction
+    aggregate_roots: [payment_attempt, payment_method_authorization, charge, channel_transaction]
+    fact_owners: [payment_ops_owner, payment_method_owner, channel_owner]
+  refund_context:
+    subdomain: payment_transaction
+    aggregate_roots: [refund, payment_intent]
+    fact_owners: [refund_owner, payment_ops_owner]
+  dispute_context:
+    subdomain: payment_transaction
+    aggregate_roots: [dispute_case, channel_transaction]
+    fact_owners: [dispute_owner, channel_owner]
+  payment_method_context:
+    subdomain: payment_transaction
+    aggregate_roots: [payment_method_authorization]
+    fact_owners: [payment_method_owner]
+  financial_account_context:
+    subdomain: account_balance
+    aggregate_roots: [payment_account, wallet]
+    fact_owners: [funds_account_owner, finance_owner]
+  balance_ledger_context:
+    subdomain: account_balance
+    aggregate_roots: [payment_account, balance, ledger_entry, fund_state]
+    fact_owners: [funds_account_owner, ledger_owner, balance_state_owner]
+  fund_state_context:
+    subdomain: account_balance
+    aggregate_roots: [fund_state, fund_reservation, balance]
+    fact_owners: [balance_state_owner, reserve_owner]
+  reserve_limit_context:
+    subdomain: account_balance
+    aggregate_roots: [reserve, account_limit, fund_reservation]
+    fact_owners: [reserve_owner, funds_account_owner]
+  internal_transfer_context:
+    subdomain: funds_movement_settlement
+    aggregate_roots: [transfer]
+    fact_owners: [transfer_owner]
+  split_allocation_context:
+    subdomain: funds_movement_settlement
+    aggregate_roots: [split_rule, allocation_result, platform_fee]
+    fact_owners: [split_rule_owner, platform_fee_owner]
+  settlement_batch_context:
+    subdomain: funds_movement_settlement
+    aggregate_roots: [settlement_batch, settlement_item, settlement_schedule]
+    fact_owners: [settlement_owner]
+  payout_context:
+    subdomain: funds_movement_settlement
+    aggregate_roots: [payout, payout_instruction, payout_recipient]
+    fact_owners: [payout_owner]
+  payout_schedule_context:
+    subdomain: funds_movement_settlement
+    aggregate_roots: [settlement_schedule, payout_instruction]
+    fact_owners: [settlement_owner, payout_owner]
+  reconciliation_context:
+    subdomain: financial_operations
+    aggregate_roots: [reconciliation_record, reconciliation_match, reconciliation_exception]
+    fact_owners: [reconciliation_owner, exception_owner]
+  fee_accounting_context:
+    subdomain: financial_operations
+    aggregate_roots: [fee_record, fee_rule, cost_allocation]
+    fact_owners: [fee_accounting_owner]
+  financial_reporting_context:
+    subdomain: financial_operations
+    aggregate_roots: [financial_report, audit_evidence]
+    fact_owners: [financial_report_owner, audit_evidence_owner]
+  exception_resolution_context:
+    subdomain: financial_operations
+    aggregate_roots: [reconciliation_exception, audit_evidence]
+    fact_owners: [exception_owner, audit_evidence_owner]
+  close_support_context:
+    subdomain: financial_operations
+    aggregate_roots: [close_report, audit_evidence]
+    fact_owners: [financial_report_owner, audit_evidence_owner]
+  compliance_profile_context:
+    subdomain: risk_compliance
+    aggregate_roots: [kyb_profile, kyc_profile, aml_case]
+    fact_owners: [compliance_owner, kyb_owner]
+  risk_decision_context:
+    subdomain: risk_compliance
+    aggregate_roots: [risk_decision, risk_signal, risk_rule]
+    fact_owners: [risk_owner]
+  mandate_authorization_context:
+    subdomain: risk_compliance
+    aggregate_roots: [payment_mandate, authorization_consent, consent_record]
+    fact_owners: [mandate_owner, compliance_owner]
+  transaction_monitoring_context:
+    subdomain: risk_compliance
+    aggregate_roots: [risk_signal, aml_case]
+    fact_owners: [monitoring_owner, risk_owner]
+  compliance_review_context:
+    subdomain: risk_compliance
+    aggregate_roots: [compliance_review, audit_evidence]
+    fact_owners: [compliance_owner]
+  issuing_context:
+    subdomain: embedded_financial_products
+    aggregate_roots: [card_account, card, authorization_control]
+    fact_owners: [issuing_owner, regulated_product_owner]
+  treasury_context:
+    subdomain: embedded_financial_products
+    aggregate_roots: [treasury_account, cash_position]
+    fact_owners: [treasury_owner, regulated_product_owner]
+  spend_management_context:
+    subdomain: embedded_financial_products
+    aggregate_roots: [spend_policy, expense_transaction]
+    fact_owners: [spend_owner, regulated_product_owner]
+  capital_context:
+    subdomain: embedded_financial_products
+    aggregate_roots: [credit_offer, repayment_schedule, credit_account]
+    fact_owners: [capital_owner, regulated_product_owner]
+  agent_entitlement_context:
+    subdomain: agent_entitlement
+    aggregate_roots: [agent_entitlement, access_state, usage_quota, seat_permission]
+    fact_owners: [agent_entitlement_owner, access_policy_owner]
+  agent_usage_metering_context:
+    subdomain: agent_usage_metering
+    aggregate_roots: [agent_usage_record, metering_dimension, usage_counter]
+    fact_owners: [agent_usage_owner, metering_owner]
+  agent_workspace_seat_context:
+    subdomain: agent_workspace_seat
+    aggregate_roots: [workspace, seat_assignment, workspace_member]
+    fact_owners: [workspace_owner, seat_owner]
+  agent_service_catalog_context:
+    subdomain: agent_service_catalog
+    aggregate_roots: [agent_service, agent_plan, agent_capability]
+    fact_owners: [agent_service_owner, agent_catalog_owner]
+  agent_service_delivery_context:
+    subdomain: agent_service_delivery
+    aggregate_roots: [service_session, delivery_state, service_incident]
+    fact_owners: [agent_delivery_owner, service_state_owner]
+
+role_archetypes:
+  merchant_profile_owner: {required_by_contexts: [merchant_identity_context, merchant_onboarding_context]}
+  onboarding_owner: {required_by_contexts: [merchant_onboarding_context]}
+  capability_owner: {required_by_contexts: [merchant_capability_context]}
+  platform_relationship_owner: {required_by_contexts: [merchant_identity_context, platform_responsibility_context]}
+  service_offering_owner: {required_by_contexts: [merchant_service_offering_context]}
+  subscription_owner: {required_by_contexts: [commercial_subscription_context]}
+  subscription_policy_owner: {required_by_contexts: [commercial_subscription_context, usage_rating_context]}
+  revenue_owner: {required_by_contexts: [commercial_subscription_context, billing_invoice_context, revenue_recovery_context]}
+  billing_ops_owner: {required_by_contexts: [billing_invoice_context]}
+  usage_rating_owner: {required_by_contexts: [usage_rating_context]}
+  dunning_owner: {required_by_contexts: [revenue_recovery_context]}
+  payment_ops_owner: {required_by_contexts: [payment_intent_context, payment_attempt_authorization_context, refund_context]}
+  payment_method_owner: {required_by_contexts: [payment_attempt_authorization_context, payment_method_context]}
+  channel_owner: {required_by_contexts: [payment_attempt_authorization_context, dispute_context]}
+  refund_owner: {required_by_contexts: [refund_context]}
+  dispute_owner: {required_by_contexts: [dispute_context]}
+  funds_account_owner: {required_by_contexts: [financial_account_context, balance_ledger_context, reserve_limit_context]}
+  ledger_owner: {required_by_contexts: [balance_ledger_context]}
+  balance_state_owner: {required_by_contexts: [balance_ledger_context, fund_state_context]}
+  reserve_owner: {required_by_contexts: [fund_state_context, reserve_limit_context]}
+  finance_owner: {required_by_contexts: [financial_account_context]}
+  transfer_owner: {required_by_contexts: [internal_transfer_context]}
+  split_rule_owner: {required_by_contexts: [split_allocation_context]}
+  platform_fee_owner: {required_by_contexts: [split_allocation_context]}
+  settlement_owner: {required_by_contexts: [settlement_batch_context, payout_schedule_context]}
+  payout_owner: {required_by_contexts: [payout_context, payout_schedule_context]}
+  reconciliation_owner: {required_by_contexts: [reconciliation_context]}
+  fee_accounting_owner: {required_by_contexts: [fee_accounting_context]}
+  financial_report_owner: {required_by_contexts: [financial_reporting_context, close_support_context]}
+  exception_owner: {required_by_contexts: [reconciliation_context, exception_resolution_context]}
+  audit_evidence_owner: {required_by_contexts: [financial_reporting_context, exception_resolution_context, close_support_context]}
+  compliance_owner: {required_by_contexts: [compliance_profile_context, mandate_authorization_context, compliance_review_context]}
+  kyb_owner: {required_by_contexts: [compliance_profile_context]}
+  risk_owner: {required_by_contexts: [risk_decision_context, transaction_monitoring_context]}
+  mandate_owner: {required_by_contexts: [mandate_authorization_context]}
+  monitoring_owner: {required_by_contexts: [transaction_monitoring_context]}
+  issuing_owner: {required_by_contexts: [issuing_context]}
+  treasury_owner: {required_by_contexts: [treasury_context]}
+  spend_owner: {required_by_contexts: [spend_management_context]}
+  capital_owner: {required_by_contexts: [capital_context]}
+  regulated_product_owner: {required_by_contexts: [issuing_context, treasury_context, spend_management_context, capital_context]}
+  agent_entitlement_owner: {required_by_contexts: [agent_entitlement_context]}
+  access_policy_owner: {required_by_contexts: [agent_entitlement_context]}
+  agent_usage_owner: {required_by_contexts: [agent_usage_metering_context]}
+  metering_owner: {required_by_contexts: [agent_usage_metering_context]}
+  workspace_owner: {required_by_contexts: [agent_workspace_seat_context]}
+  seat_owner: {required_by_contexts: [agent_workspace_seat_context]}
+  agent_service_owner: {required_by_contexts: [agent_service_catalog_context]}
+  agent_catalog_owner: {required_by_contexts: [agent_service_catalog_context]}
+  agent_delivery_owner: {required_by_contexts: [agent_service_delivery_context]}
+  service_state_owner: {required_by_contexts: [agent_service_delivery_context]}
+
+context_map:
+  - id: merchant_offering_to_commercial_subscription
+    from_context: merchant_service_offering_context
+    to_context: commercial_subscription_context
+    handoff_type: domain_event
+    artifact: SubscriptionOfferingPublished
+  - id: commercial_subscription_to_billing_invoice
+    from_context: commercial_subscription_context
+    to_context: billing_invoice_context
+    handoff_type: command
+    artifact: GenerateInvoice
+  - id: billing_invoice_to_payment_intent
+    from_context: billing_invoice_context
+    to_context: payment_intent_context
+    handoff_type: command
+    artifact: ChargeInvoice
+  - id: payment_intent_to_authorization
+    from_context: payment_intent_context
+    to_context: payment_attempt_authorization_context
+    handoff_type: command
+    artifact: AuthorizeAndCapture
+  - id: authorization_to_balance_ledger
+    from_context: payment_attempt_authorization_context
+    to_context: balance_ledger_context
+    handoff_type: domain_event
+    artifact: PaymentSucceeded / RefundSucceeded / ChargebackCreated
+  - id: balance_ledger_to_reconciliation
+    from_context: balance_ledger_context
+    to_context: reconciliation_context
+    handoff_type: evidence
+    artifact: LedgerEntryPosted / BalanceSnapshotGenerated
+  - id: authorization_to_revenue_recovery
+    from_context: payment_attempt_authorization_context
+    to_context: revenue_recovery_context
+    handoff_type: domain_event
+    artifact: PaymentFailed
+  - id: risk_decision_to_authorization
+    from_context: risk_decision_context
+    to_context: payment_attempt_authorization_context
+    handoff_type: policy_decision
+    artifact: PaymentAllowed / PaymentBlocked
+  - id: commercial_subscription_to_agent_entitlement
+    from_context: commercial_subscription_context
+    to_context: agent_entitlement_context
+    handoff_type: domain_event
+    artifact: CommercialSubscriptionActivated / CommercialSubscriptionSuspended / CommercialSubscriptionCancelled
+
+case_classification:
+  examples:
+    agent_service_subscription_payments:
+      business_ecosystem: payment_ecosystem
+      adjacent_ecosystems:
+        - agent_service_ecosystem
+      primary_subdomain: billing_revenue
+      primary_contexts:
+        - commercial_subscription_context
+        - billing_invoice_context
+        - revenue_recovery_context
+      required_payment_subdomains:
+        - merchant_platform_relationship
+        - payment_transaction
+        - account_balance
+        - financial_operations
+        - risk_compliance
+      required_payment_contexts:
+        - merchant_identity_context
+        - merchant_capability_context
+        - merchant_service_offering_context
+        - payment_intent_context
+        - payment_attempt_authorization_context
+        - balance_ledger_context
+        - fund_state_context
+        - reconciliation_context
+        - risk_decision_context
+        - mandate_authorization_context
+      conditional_payment_subdomains:
+        - funds_movement_settlement
+      conditional_payment_contexts:
+        - split_allocation_context
+        - settlement_batch_context
+        - payout_context
+      required_agent_service_contexts:
+        - agent_entitlement_context
+      conditional_agent_service_contexts:
+        - agent_usage_metering_context
+        - agent_workspace_seat_context
+      trigger_rules:
+        - if: real_funds_processing=true
+          require_subdomains:
+            - account_balance
+          require_contexts:
+            - balance_ledger_context
+          require_role_archetypes:
+            - funds_account_owner
+            - ledger_owner
+            - balance_state_owner
+        - if: paid_agent_service_access=true
+          require_contexts:
+            - agent_entitlement_context
+          require_role_archetypes:
+            - agent_entitlement_owner
+            - access_policy_owner
+        - if: usage_based_billing=true
+          require_contexts:
+            - usage_rating_context
+            - agent_usage_metering_context
+          require_role_archetypes:
+            - usage_rating_owner
+            - agent_usage_owner
+            - metering_owner
+        - if: seat_based_billing=true
+          require_contexts:
+            - usage_rating_context
+            - agent_workspace_seat_context
+          require_role_archetypes:
+            - usage_rating_owner
+            - workspace_owner
+            - seat_owner
+        - if: merchant_settlement_in_scope=true
+          require_contexts:
+            - settlement_batch_context
+            - payout_context
+          require_role_archetypes:
+            - settlement_owner
+            - payout_owner
+        - if: split_settlement_in_scope=true
+          require_contexts:
+            - split_allocation_context
+          require_role_archetypes:
+            - split_rule_owner
+            - platform_fee_owner
+        - if: recurring_payment=true
+          require_contexts:
+            - mandate_authorization_context
+          require_role_archetypes:
+            - mandate_owner
+            - compliance_owner
+
+candidate_evolution:
+  candidate_types:
+    - candidate_subdomain
+    - candidate_context
+  rule: Existing ecosystem skeletons must be attempted before a new candidate becomes formal taxonomy.
+  promotion_required_fields:
+    - business_problem
+    - ubiquitous_language
+    - aggregate_roots
+    - lifecycle
+    - invariants
+    - fact_owners
+    - context_map
+    - why_existing_contexts_do_not_fit
+
+readiness_gate_model:
+  proof_boundary: Model-only change; readiness checker and req-agent runtime changes come later.
+  domain_model_gate:
+    required_fields:
+      - business_ecosystems
+      - primary_subdomain
+      - bounded_contexts
+      - aggregate_roots
+      - fact_owners
+      - role_obligations
+      - context_handoffs
+      - non_domain_terms
+      - open_questions
+  requirement_delivery_gate:
+    required_fields:
+      - roles_derived_from_role_obligations
+      - user_stories_bound_to_role_and_aggregate_lifecycle
+      - acceptance_functions_for_state_changes
+      - acceptance_functions_for_handoffs
+      - acceptance_functions_for_failure_paths
+      - acceptance_functions_for_evidence
