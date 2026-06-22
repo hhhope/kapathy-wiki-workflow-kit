@@ -211,6 +211,126 @@
       font-weight: 800;
     }
 
+    .market-board {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .chart-card,
+    .formula-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfbf9;
+    }
+
+    .chart-card strong,
+    .formula-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--slate);
+      font-size: 16px;
+    }
+
+    .bar-chart {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 72px 1fr 72px;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .bar-track {
+      height: 18px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e5e7eb;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: var(--green);
+    }
+
+    .bar-fill.volume {
+      background: var(--green);
+    }
+
+    .bar-fill.share {
+      background: var(--blue);
+    }
+
+    .bar-fill.fee {
+      background: var(--gold);
+    }
+
+    .formula-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .formula-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .formula-card .formula-number {
+      display: block;
+      margin: 8px 0 6px;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .legend-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .legend-chip::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .legend-chip.share::before {
+      background: var(--blue);
+    }
+
+    .legend-chip.fee::before {
+      background: var(--gold);
+    }
+
+    .legend-chip.deal::before {
+      background: var(--red);
+    }
+
     .reading-flow {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
@@ -385,6 +505,26 @@
       border-radius: 8px;
       border: 1px solid var(--line);
       background: #fff;
+    }
+
+    .evidence-item.volume {
+      border-left: 5px solid var(--green);
+    }
+
+    .evidence-item.valuation {
+      border-left: 5px solid var(--blue);
+    }
+
+    .evidence-item.deal {
+      border-left: 5px solid var(--red);
+    }
+
+    .evidence-item.tech {
+      border-left: 5px solid var(--gold);
+    }
+
+    .evidence-item.risk {
+      border-left: 5px solid var(--slate);
     }
 
     .evidence-item strong {
@@ -894,6 +1034,8 @@
       .path-grid,
       .reading-flow,
       .market-grid,
+      .market-board,
+      .formula-grid,
       .deal-grid,
       .event-rail,
       .dimension-grid,
@@ -1031,6 +1173,92 @@
 
     <section class="panel wide">
       <div class="panel-head">
+        <h2>市场位置计算面板</h2>
+        <p>这里不再用一句口径说明带过，而是拆成可计算口径：处理规模增长、GDP 等价份额、同业 TPV 参照、费率/take-rate 敏感性。</p>
+      </div>
+      <div class="market-board">
+        <article class="chart-card">
+          <strong>Stripe 处理规模和 GDP 等价份额</strong>
+          <p class="footnote">2023 和 2025 为 Stripe 年信官方口径；2024 为二级报道口径，用于连接增长曲线，不当作审计值。</p>
+          <div class="bar-chart">
+            <div class="bar-row">
+              <span>2023</span>
+              <div class="bar-track"><div class="bar-fill volume" style="width: 53%;"></div></div>
+              <span>$1.0T</span>
+            </div>
+            <div class="bar-row">
+              <span>2024</span>
+              <div class="bar-track"><div class="bar-fill volume" style="width: 74%;"></div></div>
+              <span>~$1.4T</span>
+            </div>
+            <div class="bar-row">
+              <span>2025</span>
+              <div class="bar-track"><div class="bar-fill volume" style="width: 100%;"></div></div>
+              <span>$1.9T</span>
+            </div>
+            <div class="bar-row">
+              <span>GDP 2023</span>
+              <div class="bar-track"><div class="bar-fill share" style="width: 63%;"></div></div>
+              <span>1.0%</span>
+            </div>
+            <div class="bar-row">
+              <span>GDP 2025</span>
+              <div class="bar-track"><div class="bar-fill share" style="width: 100%;"></div></div>
+              <span>1.6%</span>
+            </div>
+          </div>
+          <div class="legend-row">
+            <span class="legend-chip">处理规模</span>
+            <span class="legend-chip share">GDP 等价份额</span>
+            <span class="legend-chip fee">费率敏感性</span>
+            <span class="legend-chip deal">并购/能力补齐</span>
+          </div>
+          <p class="footnote">来源：<a href="https://stripe.com/annual-updates/2023" target="_blank" rel="noreferrer">Stripe 2023 annual letter</a> · <a href="https://stripe.com/annual-updates/2025" target="_blank" rel="noreferrer">Stripe 2025 annual letter</a> · <a href="https://www.investors.com/news/technology/stripe-ipo-paypal-stock-nvidia-shopify-adyen/" target="_blank" rel="noreferrer">IBD Stripe coverage</a></p>
+        </article>
+        <article class="chart-card">
+          <strong>同业和手续费换算怎么读</strong>
+          <p>公开公司能用 revenue / TPV 算 take rate。PayPal 2024 约 $31.8B revenue / $1.68T TPV，约 1.89%；Adyen 2024 Q1 约 EUR438M net revenue / EUR297.8B processed volume，约 14.7 bps。Stripe 不披露 revenue，所以只能做敏感性，不把它写成实际收入。</p>
+          <div class="bar-chart">
+            <div class="bar-row">
+              <span>PayPal</span>
+              <div class="bar-track"><div class="bar-fill fee" style="width: 100%;"></div></div>
+              <span>1.89%</span>
+            </div>
+            <div class="bar-row">
+              <span>Adyen Q1</span>
+              <div class="bar-track"><div class="bar-fill fee" style="width: 8%;"></div></div>
+              <span>0.147%</span>
+            </div>
+            <div class="bar-row">
+              <span>Stripe</span>
+              <div class="bar-track"><div class="bar-fill fee" style="width: 42%;"></div></div>
+              <span>敏感性</span>
+            </div>
+          </div>
+          <p class="footnote">来源：<a href="https://www.investopedia.com/how-paypal-makes-money-5094794" target="_blank" rel="noreferrer">PayPal TPV/revenue secondary summary</a> · <a href="https://www.adyen.com/investor-relations" target="_blank" rel="noreferrer">Adyen IR</a> · <a href="https://www.marketwatch.com/story/adyen-shares-slump-as-payments-processor-meets-revenue-estimates-1b6dc82e" target="_blank" rel="noreferrer">Adyen Q1 2024 coverage</a></p>
+        </article>
+      </div>
+      <div class="formula-grid">
+        <article class="formula-card">
+          <strong>增长份额</strong>
+          <span class="formula-number">+0.6pp</span>
+          <p>按 Stripe 自披露 GDP 等价口径，2023 的 1.0% 到 2025 的 1.6%，说明它在全球经济活动中的可见处理面扩大。</p>
+        </article>
+        <article class="formula-card">
+          <strong>两公司 TPV 参照</strong>
+          <span class="formula-number">45%</span>
+          <p>2024 Stripe 约 $1.4T 与 PayPal 2024 $1.68T 放在同一小样本里，Stripe 占约 45%。这是同业参照，不是全球份额。</p>
+        </article>
+        <article class="formula-card">
+          <strong>收入敏感性</strong>
+          <span class="formula-number">$2.8B-$35.9B</span>
+          <p>把 Adyen Q1 net take rate 到 PayPal 2024 revenue/TPV 区间套到 Stripe 2025 $1.9T，只能得到敏感性区间，不能当 Stripe 实际收入。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <div class="panel-head">
         <h2>公司运营、市场位置、并购与技术事件线</h2>
         <p>拖动年份，把处理规模、估值/流动性、并购、产品发布和技术选择放在同一条线上读。这里负责回答：商业行为怎样改变技术选择，技术能力又怎样打开新的商业动作。</p>
       </div>
@@ -1049,8 +1277,8 @@
         <div id="timelineDetail" class="timeline-detail"></div>
         <div id="timelineLanes" class="dual-timeline"></div>
         <div class="metric-note">
-          <strong>市场占有率读法</strong>
-          Stripe 未披露可审计的全球支付市场份额百分比；本稿不用精确份额冒充结论，而是用处理规模、全球 GDP 占比、客户数、估值/流动性事件、并购方向、AI 客户覆盖和分析师 share-gain 判断作为市场位置代理。
+          <strong>份额口径</strong>
+          本稿不把“全球支付市场份额”写成一个空泛百分比。可计算的口径有三层：Stripe 处理规模 / 全球 GDP、Stripe TPV / 同业可见 TPV 样本、公开公司 revenue / TPV 的 take-rate 参照。Stripe 不披露收入，所以手续费换算只做敏感性。
         </div>
       </div>
     </section>
@@ -1309,6 +1537,26 @@
         url: "https://www.investors.com/news/technology/stripe-ipo-paypal-stock-nvidia-shopify-adyen/",
         note: "Analyst framing on share gains versus payment peers; not audited market-share percentage."
       },
+      paypalTpv: {
+        title: "PayPal 2024 TPV and revenue reference",
+        url: "https://www.investopedia.com/how-paypal-makes-money-5094794",
+        note: "Secondary summary of PayPal 2024 TPV and revenue, used for take-rate comparison until direct 10-K extraction is promoted."
+      },
+      adyenIr: {
+        title: "Adyen investor relations",
+        url: "https://www.adyen.com/investor-relations",
+        note: "Investor report entry point for shareholder letters, processed volume, net revenue, and take-rate-style analysis."
+      },
+      adyenQ1: {
+        title: "MarketWatch: Adyen Q1 2024 processed volume and net revenue",
+        url: "https://www.marketwatch.com/story/adyen-shares-slump-as-payments-processor-meets-revenue-estimates-1b6dc82e",
+        note: "Q1 2024 processed volume, net revenue, and net take-rate discussion; secondary source."
+      },
+      worldpayGpn: {
+        title: "WSJ: Global Payments and Worldpay pro forma scale",
+        url: "https://www.wsj.com/business/deals/global-payments-to-acquire-worldpay-for-24-25-billion-12b29451",
+        note: "Scale benchmark for Global Payments + Worldpay: customer count, transaction count, and volume; pro forma deal context."
+      },
       acquisitionPaystack: {
         title: "Paystack acquisition background",
         url: "https://en.wikipedia.org/wiki/Paystack",
@@ -1409,7 +1657,7 @@
           { value: "2010", label: "公司成立，支付 API 成为最小入口" },
           { value: "2011", label: "公开推出，开发者体验成为增长渠道" },
           { value: "API / SDK", label: "技术选择先于大规模销售组织" },
-          { value: "市场代理", label: "无公开份额；看开发者采用和客户扩散" }
+          { value: "早期口径", label: "先看开发者采用、客户扩散和后续处理规模基线" }
         ],
         business: ["以开发者和互联网业务为主要入口。", "商业动作是把在线收款接入做成可复制流程。", "公开份额不足，先用产品扩散和开发者采用作为早期代理。"],
         technology: ["API、SDK、测试卡、错误处理和文档成为产品本体。", "Payment object、webhook、dashboard 共同形成可编程支付接口。", "技术路线决定了后续可复制到 Billing、Connect、Radar。"],
@@ -2131,6 +2379,16 @@
       `;
     }
 
+    function metricType(metric) {
+      const text = `${metric.value} ${metric.label}`.toLowerCase();
+      if (/paystack|taxjar|recko|bbpos|openchannel|bridge|privy|metronome|acquisition|收购|并购/.test(text)) return "deal";
+      if (/valuation|估值|share|份额|gdp|tender|series/.test(text)) return "valuation";
+      if (/risk|radar|token theft|fraud|风险|盗|滥用/.test(text)) return "risk";
+      if (/api|sdk|mcp|http|mpp|x402|protocol|checkout|spt|streaming|catalog|技术|协议|沙盒/.test(text)) return "tech";
+      if (/\$|volume|tpv|processed|businesses|处理规模|客户|增长/.test(text)) return "volume";
+      return "";
+    }
+
     function renderTimeline(index) {
       const item = timelineItems[index] || timelineItems[0];
       const metrics = item.metrics || [];
@@ -2151,7 +2409,7 @@
         </div>
         <div class="evidence-strip">
           ${metrics.map((metric) => `
-            <div class="evidence-item">
+            <div class="evidence-item ${metric.type || metricType(metric)}">
               <strong>${metric.value}</strong>
               <span>${metric.label}</span>
             </div>
@@ -2209,7 +2467,7 @@
         </div>
         <div class="evidence-strip">
           ${metrics.map((metric) => `
-            <div class="evidence-item">
+            <div class="evidence-item ${metric.type || metricType(metric)}">
               <strong>${metric.value}</strong>
               <span>${metric.label}</span>
             </div>

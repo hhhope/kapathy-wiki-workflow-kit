@@ -24,6 +24,9 @@ commentary instead of a deep research output:
   for market position, acquisitions, company operations, technical events, AI
   transaction changes, and capability migration to be placed into a coherent
   system.
+- A later correction rejected the market-share wording as too dry and too
+  defensive. The user asked for calculated share lenses, fee/TPV conversion,
+  growth visualization, color-coded timelines, and better reference material.
 
 ## Re-anchored North Star
 
@@ -55,6 +58,11 @@ The H5 should behave like a research control surface:
   acquisitions, technology events, and commercial/technical mutual influence.
 - Split the AI transaction-chain chapter into its own draggable timeline from
   2023 to 2026-06.
+- Added a market-position calculation panel before the main timeline: Stripe
+  processed-volume growth, GDP-equivalent share growth, PayPal/Adyen take-rate
+  examples, and revenue-sensitivity boundaries.
+- Added color semantics to timeline evidence cards: volume, valuation/share,
+  acquisition, technology, and risk.
 - Reframed the capability migration map as part of a comprehensive evidence
   view, not as an independent proof.
 - Replaced abstract "读法" and "核心判断" labels with evidence-oriented labels.
@@ -84,6 +92,9 @@ The report now surfaces:
   valuation coverage
 - market-share proxy wording: share-gain signal only, not a precise audited
   market-share percentage
+- calculated market lenses: GDP-equivalent share, visible TPV peer comparison,
+  and take-rate sensitivity using PayPal/Adyen as mechanics rather than direct
+  Stripe revenue proof
 - acquisition/event line now embedded in the timelines: Paystack, TaxJar/Recko,
   OpenChannel/BBPOS, Lemon Squeezy, Bridge, Privy, and Metronome
 
