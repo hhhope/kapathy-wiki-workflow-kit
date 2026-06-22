@@ -201,6 +201,45 @@ The next source-counting standard should be stricter:
 
 Recruitment/JD boundary: current Stripe job detail pages are valid sources for present organization and capability signals. Historical JD change analysis still needs archive snapshots, old job-board mirrors, or dated reposts before it can support a "how hiring changed over time" claim.
 
+## Recruitment / JD Signal Scan
+
+This scan promotes the JD line from URL inventory to current organization-signal evidence. It is still a current-snapshot scan, not a historical hiring-diff proof.
+
+Slug-cluster counts from the 260 concrete job-description URLs overlap because one role can carry multiple signals:
+
+| Role signal cluster | Slug-hit count | What it suggests |
+|---|---:|---|
+| GTM / sales / marketing | 77 | AI and new finance products are being packaged into sellable motions, not only platform engineering work. |
+| Risk / fraud / security | 61 | The AI-finance shift is treated as a risk, fraud, policy, security, and trust problem. |
+| Platform / developer / infrastructure | 57 | Stripe is hiring around internal platforms, developer surfaces, ML infrastructure, and product infrastructure. |
+| Payments / billing / revenue | 38 | Existing money movement and revenue products remain the base layer for AI-era expansion. |
+| Explicit AI / ML | 25 | AI appears as dedicated product, engineering, ML, developer productivity, finance operations, design, and marketing roles. |
+| Crypto / stablecoin / Bridge / Privy | 18 | Stablecoin and wallet infrastructure are becoming operational, finance, audit, design, product, and GTM surfaces. |
+
+Representative opened JD evidence:
+
+| Source | Role | Evidence signal | Use boundary |
+|---|---|---|---|
+| https://stripe.com/jobs/listing/backend-engineer-ai-security/7826765 | Backend Engineer, AI Security | AI adoption is creating a security primitives layer around inference-path tooling, prompt-injection/jailbreak defense, and tool misuse protection. | Current org signal; not a product launch claim. |
+| https://stripe.com/jobs/listing/engineering-manager-ai-conversation-platform/7943804 | Engineering Manager, AI Conversation Platform | Stripe is building merchant-facing conversation systems that automate easy tasks, help with difficult tasks, and let users command Stripe APIs in natural language. | Current JD source; product scope may evolve. |
+| https://stripe.com/jobs/listing/engineering-manager-developer-productivity-ai/7736943 | Engineering Manager, Developer Productivity AI | A new team is deploying LLM agents and tools to automate large parts of engineering workflow. | Current internal productivity signal. |
+| https://stripe.com/jobs/listing/staff-software-engineer-machine-learning-platform/7939868 | Staff Software Engineer, Machine Learning Platform | ML platform is described as shared infrastructure for Stripe product lines including Payments, Radar, Capital, and Billing. | Cross-product ML signal; not specific to one AI launch. |
+| https://stripe.com/jobs/listing/machine-learning-engineer-capital-underwriting/7952048 | Machine Learning Engineer, Capital Underwriting | Capital underwriting uses business activity inside/outside Stripe and ML models to tailor financing offers. | Shows finance-AI underwriting surface. |
+| https://stripe.com/jobs/listing/product-manager-growth-ai-outreach-motion/7809139 | Product Manager, Growth AI Outreach Motion | AI is being used to scale personalized guidance across signup, onboarding, activation, expansion, and retention. | GTM/product motion signal. |
+| https://stripe.com/jobs/listing/specialist-solutions-architect-crypto-stablecoins/7120766 | Specialist Solutions Architect, Crypto & Stablecoins | Crypto/stablecoin products, Bridge, and Privy are being turned into domain-specific sales architecture and roadmap feedback loops. | GTM/product-market signal. |
+| https://stripe.com/jobs/listing/head-of-connect-crypto-finance-strategy/7736640 | Head of Connect & Crypto, Finance & Strategy | Connect is a scaled platform product; crypto is a newer stablecoin-market product area needing pricing, unit economics, and investment frameworks. | Finance strategy signal. |
+| https://stripe.com/jobs/listing/infrastructure-engineer-privy/7462961 | Infrastructure Engineer, Privy | Privy is framed as abstractions and infrastructure above wallets, integrating across chains, third-party providers, Treasury, and Link. | Wallet-infra integration signal. |
+| https://stripe.com/jobs/listing/regulatory-reporting-program-manager-stablecoin/7650177 | Regulatory Reporting Program Manager, Stablecoin | Stablecoin work creates regulated reporting needs across Legal, Compliance, Accounting, Business, Product, and Data Analytics. | Governance/control signal. |
+| https://stripe.com/jobs/listing/internal-audit-lead-stablecoins-digital-assets/7997826 | Internal Audit Lead, Stablecoins & Digital Assets | Stablecoin/digital asset activities need an internal oversight framework, audit strategy, reserve/accounting literacy, and blockchain analytics. | Control and audit signal. |
+| https://stripe.com/jobs/listing/specialist-solutions-architect-radar-fraud-risk/7365914 | Specialist Solutions Architect, Radar (Fraud/Risk) | Radar is positioned beyond payment fraud toward broader risk, using rules engines, ML models, manual review queues, identity/device/behavioral signals, and graph analysis. | Risk-product evolution signal. |
+
+JD reading note:
+
+1. The product story and hiring story are aligned: AI is not isolated in one research team; it shows up in security, merchant conversation interfaces, developer productivity, ML platform, finance operations, growth, and design.
+2. Stablecoin/crypto hiring is not only engineering. It includes solutions architecture, finance strategy, regulatory reporting, internal audit, product design, Privy infrastructure, Bridge operations, KYC/KYB, and financial-crimes roles.
+3. Risk is becoming a unifying surface. Radar, AI Security, Capital underwriting, ecosystem risk, financial crimes, and stablecoin controls all point to the same future problem: machine-speed transactions require stronger identity, policy, model, audit, and recovery layers.
+4. Historical hiring-change claims remain pending. To claim "Stripe moved from X hiring pattern to Y hiring pattern", the next pass must compare current JDs against archived Stripe jobs pages or dated job-board mirrors.
+
 ## Second-Pass Expansion: API, Protocol, Package, Community
 
 This pass strengthens the weakest parts of the first draft: API/version evidence, package surfaces, machine-payment protocols, and community/secondary routes. It still does not claim the 1000-source ceiling is complete.
