@@ -12,63 +12,65 @@ artifact_type: report-gate-review
 
 - Target: `wiki/reports/agent-merchant-144-421-access-guide.md`
 - Source: `wiki/sources/agent-merchant-opening-product-144-421-2026-06-15.md`
-- Destination: new Feishu document.
-- Feishu URL: `https://www.feishu.cn/docx/Q5TCdjeIXoKO1DxuTYNc5Iasnuf`
-- Non-scope: 不直接同步飞书，不确认生产费率，不确认最终产品货架，不提供完整接口字段字典。
+- Feishu source/trunk URL: `https://my.feishu.cn/docx/Q5TCdjeIXoKO1DxuTYNc5Iasnuf`
+- This turn's operation: updated the repo draft as the Feishu access-guide trunk candidate.
+- Feishu write boundary: no Feishu update or copy was performed in this turn; writing back requires explicit confirmation of overwrite versus new copy.
 
 ## Article Intent Contract
 
 | Field | Contract |
 |---|---|
 | Reader | 入网、产品、接入、运营、技术同事 |
-| Reader decision or action | 明确该代理商开通 144 和 421 时的接口顺序、货架差异、分账接收方进件与绑定要求。 |
-| Main line | 该代理商不能把 144 和 421 混在一次普通产品开通里；144 按协议支付货架开，421 按 `10370560005` 单独开，分账前必须完成接收方绑定关系。 |
-| Non-goals | 不复制完整请求报文，不展示敏感身份信息，不替代接口文档，不替代生产参数审批。 |
-| User-owned judgments | 正式货架 ID、费率、生效时间、资质文件类型、分账比例、是否同步绑定关系。 |
-| Agent-allowed work | 基于本地样例和用户给出的接口清单，整理飞书式接入指引、流程、关键字段、验收清单和待确认事项。 |
+| Reader decision or action | 明确代运营商户开户、`144 + 421` 一次性产品开通、421 补充资料、分账接收方进件绑定、交易验证和结算核对的执行口径。 |
+| Main line | 以飞书原接入指引为主干：`144 + 421` 一次性产品开通，两个产品的 `productModelId` 均为 `10370560005`；421 补充资料不要求 `bankType` 和技术支持字段，分账类产品补充附件重点选择 `9915999`。 |
+| Non-goals | 不替代正式接口文档，不展示敏感身份信息，不确认最终合规准入资料，不直接写回飞书。 |
+| User-owned judgments | 合规资料最终必传清单、协议授权表述、分账比例、是否复用会员创建/修改阶段已上传资料、是否覆盖飞书原文档。 |
+| Agent-allowed work | 读取飞书主干，结合用户补充口径，整理可继续迭代的接入指引正文、验收清单、常见错误和待确认事项。 |
 
 ## Source Use Map
 
 | Source | Used for | Boundary |
 |---|---|---|
-| `C:\Users\yan\Desktop\1\开户及产品开通.txt` | 提取开户返回 `uid`、144/421 产品开通关键参数、421 成功响应和扩展字段。 | 不复制 PII、文件 UUID、签名报文和完整请求。 |
-| 用户提供的接口清单 | 确定入网、开货架、分账接收方进件、绑定代运营商户的流程范围。 | 在线文档正文当前未读取到，字段细节以正式接口文档为准。 |
-| Feishu 链接 | 作为“类似飞书”输出形态参考。 | 当前工具未取到正文，不声称已读取原文结构。 |
+| Feishu doc `Q5TCdjeIXoKO1DxuTYNc5Iasnuf` fetched via `lark-cli docs +fetch` | 确认主干标题、`144 + 421` 一次性产品开通、接口范围、交易验证、结算说明、验收清单和常见错误结构。 | 原文中 `bankType` 和技术支持字段已被新口径修正，不照搬旧字段。 |
+| 用户 2026-06-23 补充沟通口径 | 修正 421 是否传银行类型、技术支持字段、补充资料上传条件、`9915999` 文件类型选择。 | 合规准入资料仍需合规/姚世杰确认。 |
+| `wiki/sources/agent-merchant-opening-product-144-421-2026-06-15.md` | 保留本地样例来源、敏感信息不复制原则、产品开通响应判断依据。 | 不复制 PII、文件 UUID、签名报文和完整请求。 |
 
 ## Section Drift Review
 
 | Section | Objective | Result |
 |---|---|---|
-| 接入目标 | 说明本次不是普通开户，而是 144 + 421 + 分账接收方关系链路。 | PASS |
-| 涉及接口 | 保留用户给出的接口列表和用途。 | PASS |
-| 接入流程 | 给出开户、开 144、开 421、接收方进件、关系绑定的顺序。 | PASS |
-| 144 开通 | 强调协议支付货架，不混入 10370560005。 | PASS |
-| 421 开通 | 强调 `productModelId=10370560005` 和扩展字段。 | PASS |
-| 分账接收方 | 强调进件不等于可分账，必须绑定关系。 | PASS |
-| 验收和错误 | 给接入方可执行检查项。 | PASS |
-| 待确认 | 保留产品货架、费率、分账比例和绑定策略的不确定性。 | PASS |
+| 接入目标 | 保留飞书主干的一次性开通和完整交易验证链路。 | PASS |
+| 涉及接口 | 覆盖开户、开产品、绑卡扣款、接收方进件绑定、分账、查询、结算。 | PASS |
+| 接入流程 | 从开户到结算按执行顺序组织。 | PASS |
+| 开户资料 | 纳入代扣代运营开户资料 1 至 6，并标明合规确认边界。 | PASS |
+| 一次性开通 | 保留 `144 + 421` 同请求、`productModelId=10370560005` 主干。 | PASS |
+| 421 扩展信息 | 删除旧的 `bankType=HT` 和技术支持必传表达，保留分账比例和 `9915999` 条件口径。 | PASS |
+| 补充资料规则 | 明确已上传不重复、未上传且开分账类产品需补传、不开分账类产品通常不需产品补充材料。 | PASS |
+| 验收和错误 | 加入 `9915999`、不传 `bankType`、不收技术支持电话、避免重复上传的检查项。 | PASS |
+| 待确认 | 将合规资料、授权表述、资料复用、分账比例、绑定策略列为用户/业务确认项。 | PASS |
 
 ## Gate Results
 
 | Gate | Result |
 |---|---|
 | Article intent | PASS |
-| Reference output shape | PARTIAL: Feishu source link未读取到正文，但已按用户要求输出可贴飞书的接入指引结构。 |
+| Reference output shape | PASS for repo draft: Feishu trunk was fetched and its access-guide shape was preserved while updating incorrect 421 field口径。 |
 | Voice quality | PASS |
-| Judgment ownership | PASS: 未替用户确认生产货架、费率和绑定策略。 |
-| Publish gate | PASS for requested Feishu creation: user explicitly asked “直接写飞书”, and a new document was created rather than modifying the referenced Yeepay manual. |
+| Judgment ownership | PASS: 未替用户确认合规材料最终清单、分账比例或飞书覆盖策略。 |
+| Publish gate | PARTIAL: repo draft updated; Feishu write intentionally not performed without overwrite/new-copy confirmation。 |
 
 ## Residual Risks
 
-1. 在线 baofu 文档和飞书原文当前未通过工具读取到正文，正式字段约束仍需以接口文档为准。
-2. `M2503000004` 来自本地样例，正式 144 协议支付货架需产品侧确认。
-3. `shareProdRatio`、`bankType=HT`、资质文件类型等生产口径需产品/技术确认。
+1. 合规准入资料 2 至 6 的最终必传清单仍需合规/姚世杰确认。
+2. 委托划扣授权书的协议位置和法人授权表述仍需合规或法务确认。
+3. 资料已在会员创建/修改阶段上传时，产品开通审核是否可直接复用，需要产品/运营确认。
+4. 本次未写回飞书；飞书正文仍可能保留旧的 `bankType` 和技术支持字段，需用户确认后再覆盖或复制新文档。
 
-## Feishu Write Evidence
+## Verification Evidence
 
 | Item | Evidence |
 |---|---|
-| Operation | Created new Feishu document, did not edit the existing Yeepay manual. |
-| Title | `代运营商户开通 144 + 421 产品接入指引` |
-| URL | `https://www.feishu.cn/docx/Q5TCdjeIXoKO1DxuTYNc5Iasnuf` |
-| Read-back | `docs +fetch` returned the title, interface list, flow section, 144/421 sections, receiver onboarding, binding, acceptance checklist, common errors, and pending confirmations. |
+| Feishu read | `lark-cli docs +fetch --doc https://my.feishu.cn/docx/Q5TCdjeIXoKO1DxuTYNc5Iasnuf --format pretty` returned the source trunk title and body. |
+| Repo source update | `wiki/sources/agent-merchant-opening-product-144-421-2026-06-15.md` records the 2026-06-23 supplemental口径。 |
+| Repo draft update | `wiki/reports/agent-merchant-144-421-access-guide.md` now uses the Feishu trunk and updated 421 supplement rules. |
+| Feishu write | Not executed in this turn. |
