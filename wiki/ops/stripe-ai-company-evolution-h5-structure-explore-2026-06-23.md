@@ -226,3 +226,64 @@ to include:
 - a visual requirement for the Chapter 12 maturity chart;
 - an explicit rule that screenshots must read back the reader path, not merely
   prove the page is nonblank or keyword-complete.
+
+## 2026-06-23 Continuation: Strategy Topology And Acquisition Visual Drift
+
+The user flagged another related failure during `$superpowers:brainstorming`:
+
+- `哪些战略造就了 Stripe` still read like seven parallel product strategy rows.
+- The page did not tell whether the strategies were sequential, parallel, or
+  cross-reused.
+- The acquisition / capability lane still used card-list logic, while the
+  requested visual was a timeline / line / scatter view with colored behavior
+  nodes.
+- Several opening and timeline sentences sounded like internal analysis notes,
+  not reader-facing business narration.
+
+Root cause:
+
+- The detailed design named the strategic choices, but did not force the H5 to
+  draw their relationship as a topology.
+- Implementation could satisfy the old wording by placing products in rows or
+  cards, even though the reader needed causality and position change.
+- Acquisition examples were treated as independent events instead of evidence
+  nodes attached to the same strategic timeline.
+
+Corrected design model:
+
+- Main trunk: developer entry -> platform merchants -> revenue / financial
+  operations -> agent transaction infrastructure.
+- Horizontal capabilities: risk and compliance, global/local expansion, tax and
+  reconciliation, offline hardware, issuing / wallet / credential, stablecoin /
+  new rail access.
+- AI cross-reuse: usage billing, wallet abstraction, restricted credentials,
+  stablecoin settlement, protocol payment, and risk evidence recombine on top
+  of the earlier trunk.
+
+Required visual correction:
+
+- Replace the seven-row strategy card reading with a `strategy topology
+  timeline`.
+- X-axis: 2010-2026.
+- Y-axis: position layer, from developer access to platform operations, revenue
+  operations, buyer credential / wallet, new settlement rails, and agent
+  transaction / credit execution.
+- Draw one thick trunk line for the sequential strategy path.
+- Draw thinner horizontal capability lines for risk, global/localization,
+  issuing/wallet, and new rails.
+- Place product, acquisition, protocol, job, and metric nodes at the year and
+  layer where they changed the position.
+- Acquisition nodes should use color to show the missing capability they filled:
+  regional/local payment, tax/reconciliation, offline entry, MOR, stablecoin /
+  settlement, wallet / credential, usage rating.
+
+Reader-facing copy implication:
+
+- First explain the business question: who did Stripe choose to serve at this
+  stage, and what harder operating problem did that customer create?
+- Only after that introduce the capability object: API, Connect account,
+  invoice, tax, Radar signal, wallet credential, stablecoin route, or usage
+  meter.
+- Avoid labels that read like internal note-taking, such as standalone `lane`,
+  `证据维度`, `壁垒读法`, or broad lines that do not say whether they are a
+  problem, conclusion, or evidence.

@@ -113,17 +113,17 @@ Stripe 的公司路径要同时放入这两条线。Payments、Checkout、Connec
 
 推荐文案：
 
-> 本页从 2010 到 2026 追踪 Stripe 如何从支付 API 走向嵌入式支付与嵌入式金融基础设施。早期 Stripe 把在线收款嵌入开发者产品；Connect 把支付、分账、商户 onboarding 和合规嵌入平台、marketplace 与 SaaS；Treasury、Issuing、Capital、Financial Connections 把账户、卡、授信和资金管理嵌入平台经营。AI 时代的变化，是交易关系和信用关系继续被嵌入 Agent、模型和自动化工作流。
+> 这页讲 Stripe 过去十五年如何一步步进入交易链路更深的位置：先解决开发者接入支付的问题，再解决平台如何管理商户、分账、订阅、税务和风控，后来继续进入发卡、融资、钱包、稳定币和用量计费。AI 之后，变化不是“AI 成了金融主体”，而是交易发起位置变了：订单可能从对话、搜索和自动化任务开始，但授权、履约、风控、清结算和责任仍要回到商户、平台、银行、卡网络和监管规则里。
 
 改写后的首屏判断：
 
-> Stripe 的公司路径可以读成嵌入位置的迁移：从嵌入网站和 App 的收款接口，到嵌入平台经营系统的支付和金融服务，再到嵌入 AI 入口和 Agent workflow 的交易与信用执行层。AI 后的核心问题，是 Agent 在什么授权、预算、商品对象、授信和风控规则下完成交易，而不是支付按钮是否更智能。
+> Stripe 的主线不是产品越来越多，而是服务对象越来越复杂：从开发者，到平台商户，到全球化经营，再到 AI 公司和自动化交易场景。每一次客户问题变复杂，Stripe 都把新的金融动作做成对象、API、风控规则和结算能力。AI 阶段要看的不是“让 AI 付款”，而是谁能把商品、价格、授权、预算、信用、风险和清结算变成机器可执行、可审计、可追责的交易流程。
 
 首屏要让读者立刻知道：
 
 - 这是 Stripe 公司路径研究。
 - 核心视角是 2010-2026 的时间变化。
-- 主线是嵌入式支付到嵌入式金融，再到 Agent 嵌入式交易与信用。
+- 主线是 Stripe 如何从接入支付，走到平台经营、收入运营、买方凭据和新结算轨道。
 - 1000 条来源是底层材料，不是主叙事。
 
 首屏主图：
@@ -242,34 +242,49 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 
 作用：
 
-把“战略因果”讲清楚。不是列产品，而是解释长期选择如何造成今天的位置。
+把“战略因果”讲清楚。不是列产品，也不是把七个战略并排摆开，而是解释它们之间的先后、交叉和复用关系。
 
-七个战略选择：
+这一章的核心判断：
 
-1. **开发者入口战略**
-   Stripe 用 API、SDK、文档和测试体验进入市场。它不是先做大销售组织，而是把支付接入变成开发者体验。这造就了后续 docs、agent toolkit、MCP、llms.txt、sandbox 的分发基础。
+> Stripe 的战略不是七条平行线，而是一条位置上移的主干，叠加几类横向补位能力。开发者入口让 Stripe 进入新业务；平台商户让 Stripe 进入商户经营；收入运营和风险合规让 Stripe 进入经营后台；发卡、钱包、稳定币和机器支付把 Stripe 推到买方凭据与新结算轨道。AI 阶段不是另起一条线，而是把前面沉淀的 API、平台、计费、风险、凭据和结算能力重新组合。
 
-2. **平台商户战略**
-   Connect 让 Stripe 服务 marketplace、platform 和 SaaS，而不只是单个商户。平台客户带来更复杂的账户、分账、风控和合规问题，也让 Stripe 更深入商户经营层。
+#### 4.1 战略关系：主干递进 + 横向补位 + AI 复用
 
-3. **收入运营战略**
-   Billing、Revenue suite、Tax、Invoicing 让 Stripe 从收单扩到收入管理。AI 公司的 token、event、usage、outcome 计费需求，让这条战略线在 2023 之后变得更关键。
+这里说的不是七个“产品战略”同时展开，而是三种关系：
 
-4. **风险基础设施战略**
-   Radar、Identity、KYC/KYB、Capital underwriting、AI Security JD 和 token theft protection 说明风险不是支付之后的售后问题，而是交易系统基础能力。
+- 主干递进：服务对象一层层变复杂，Stripe 的位置随之上移。
+- 横向补位：风险、全球化、税务、对账、线下、钱包、稳定币等能力补齐主干缺口。
+- AI 复用：AI 阶段把前面沉淀的 API、对象、计费、钱包、凭据、风控和结算能力重新组合到新的交易入口里。
 
-5. **全球化和本地化补位战略**
-   Paystack、TaxJar、Recko、BBPOS 等动作不是并购新闻，而是补全球化、本地支付、税务、对账和线下场景的缺口。
+| 类型 | 战略 | 时间关系 | 作用 | AI 时代复用 |
+|---|---|---|---|---|
+| 主干递进 | 开发者入口 | 起点，2010-2014 最关键 | 把支付接入改成 API / docs / test mode 问题 | MCP、llms.txt、agent toolkit、sandbox 继续复用开发者入口 |
+| 主干递进 | 平台商户 | 开发者入口之后上移，2015-2019 加速 | Connect 把 Stripe 从单个商户收款推到 marketplace、platform、SaaS 的账户、分账和合规 | Agent commerce 仍要回到商户控制、履约、分账、争议 |
+| 主干递进 | 收入运营 | 平台客户复杂后自然出现，2020 以后更重 | Billing、Tax、Revenue suite、Invoicing 把 Stripe 从付款扩到收入管理 | AI 公司 token、event、usage、outcome 计费重新放大这条线 |
+| 横向基础设施 | 风险和合规 | 贯穿全程，不是某一年单独战略 | Radar、Identity、KYC/KYB、underwriting、token theft protection 把风险前移 | Agent 授权、工具调用、token theft、fake signup、争议责任都复用风险基础设施 |
+| 横向补位 | 全球化和本地化 | 跟随客户扩张持续补缺口 | Paystack、TaxJar、Recko、BBPOS 等补区域支付、税务、对账、线下硬件 | AI 公司 global-by-default，全球税务、对账、本地支付更早出现 |
+| 能力外扩 | 发卡、钱包和权益入口 | 平台和收入能力之后向买方侧延伸 | Issuing、virtual cards、spending controls、tokens、Link wallets、Privy 进入凭据和权益侧 | 任务级受限凭据、Agent wallet、权益卡、联名卡复用同一授权主线 |
+| 新轨道接入 | 稳定币、用量计费和机器支付 | 2024-2026 后显性进入主线 | Bridge、Privy、Metronome、Tempo、MPP、x402 接入稳定币、钱包、usage rating 和机器支付 | API、内容、数据、算力和服务可以被机器按规则购买 |
 
-6. **发卡、钱包和权益入口战略**
-   Issuing、virtual cards、spending controls、card personalization、tokens、Link wallets 和 Privy 说明 Stripe 不只处理商户收款，也在构建买方凭据、平台权益和受限授权能力。AI 时代的联名卡、权益卡、任务级受限支付凭据和钱包，会重新使用这些能力。
+#### 4.2 图应该怎么画
 
-7. **新金融轨道接入战略**
-   Bridge、Privy、Metronome、Tempo、MPP、x402 表明 Stripe 正在把稳定币、钱包、用量计费和机器支付接入自己的主线。
+这一章必须用一张“战略拓扑时间图”，不能再用七行并列表。
 
-这一章必须用图表示因果：
+图形要求：
 
-> 战略选择 -> 能力沉淀 -> 后续产品/并购 -> AI 时代复用。
+- 横轴：2010-2026。
+- 纵轴：Stripe 的位置层级，至少包括 `开发接入`、`平台经营`、`收入/金融运营`、`买方凭据/钱包`、`新结算轨道`、`Agent 交易/信用执行`。
+- 粗主线：开发者入口 -> 平台商户 -> 收入运营 / 金融运营 -> Agent 交易基础设施。
+- 横向能力线：风险合规、全球化本地化、发卡钱包、新金融轨道，以不同颜色穿插在主线周围。
+- 节点：产品、并购、协议、JD 或指标事件。节点必须落在具体年份和能力层上。
+- 并购节点必须叠加在这张图上或与它联动，而不是另开一排“大事卡片”。
+- 箭头：只能表示“依赖 / 复用 / 推高位置”，不能把所有战略画成同时并行。
+
+读者必须能一眼看出：
+
+- 哪些战略是前后递进：开发者入口、平台商户、收入运营、Agent 交易基础设施。
+- 哪些战略是横向补位：风险合规、全球化本地化、并购补缺口。
+- 哪些战略是在 AI 阶段交叉复用：计费、钱包、凭据、稳定币、风险证据、协议支付。
 
 ### 5. Stripe 为什么坚持做难事：API、规范和领域模型
 
@@ -516,9 +531,11 @@ Stripe 的对应动作：
 
 展示方式：
 
-- 放在时间轴上。
-- 同时提供能力补位视图。
-- 每个节点显示：时间、补的缺口、对应战略、AI 时代是否重新变重要、来源强度。
+- 放在时间轴上，用折线 / 散点节点表达，不做单独卡片 lane。
+- 横轴是时间，纵轴是能力层：区域支付、本地支付、税务/对账、线下硬件、MOR、稳定币、钱包、用量计费。
+- 不同颜色表示并购行为补的缺口类型：区域/本地化、税务/对账、线下入口、MOR、稳定币/结算、钱包/凭据、usage rating。
+- 点的形状表示证据状态：promoted 实心，classified 描边，queued 浅色。
+- 点击节点显示：时间、补的缺口、对应战略、AI 时代是否重新变重要、来源强度。
 
 初始映射：
 
@@ -570,22 +587,22 @@ Stripe 的对应动作：
 - `战略复利图`
 - `从战略选择到规模结果`
 
-图的结构：
+图的结构必须保留“时间关系”。不能把所有战略做成并列雷达或并列卡片。
 
-| 战略选择 | 能力沉淀 | 验证指标 | AI 时代复用 |
-|---|---|---|---|
-| 开发者入口 | API、SDK、docs、test mode、webhook | 开发者采用、客户扩散、文档/API source density | agents.md、MCP、llms.txt、agent toolkit、sandbox |
-| 平台商户 | Connect、account model、分账、平台风控 | 平台/SaaS/marketplace 客户、处理规模增长 | agent commerce、merchant control、catalog integration |
-| 收入运营 | Billing、Tax、Revenue suite、Invoicing | usage billing、global tax、AI 客户需求 | Metronome、streaming payments、token/event billing |
-| 风险基础设施 | Radar、Identity、KYC/KYB、review、risk graph | Radar token theft、risk JD、fraud/risk roles | fake signup、token theft、tool misuse、approval hook |
-| 发卡和权益入口 | Issuing、virtual cards、personalization designs、tokens、spending controls、real-time authorization | 发卡 API、卡面/卡函个性化、digital wallet token、授权控制 | AI 联名卡、任务级受限支付凭据、权益化支付入口、受限凭据 |
-| 信用和赊账 | Capital、BNPL payment methods、Financial Connections、Capital underwriting、ML risk | Stripe Capital、Capital underwriting JD、BNPL docs、Financial Connections docs | Agent 受限信用、消费分期、商户营运资金、动态授信、实时还款和风险控制 |
-| 全球化补位 | Paystack、TaxJar、Recko、BBPOS、本地支付 | 国际客户、新市场、税务/对账能力 | AI 公司 global-by-default |
-| 新金融轨道 | Bridge、Privy、Tempo、MPP、x402 | stablecoin/wallet/machine payment product signals | machine payment、agent wallet、stablecoin settlement |
+| 关系类型 | 战略选择 | 能力沉淀 | 验证指标 | AI 时代复用 |
+|---|---|---|---|---|
+| 主干起点 | 开发者入口 | API、SDK、docs、test mode、webhook | 开发者采用、客户扩散、文档/API source density | agents.md、MCP、llms.txt、agent toolkit、sandbox |
+| 主干上移 | 平台商户 | Connect、account model、分账、平台风控 | 平台/SaaS/marketplace 客户、处理规模增长 | agent commerce、merchant control、catalog integration |
+| 主干加深 | 收入运营 | Billing、Tax、Revenue suite、Invoicing | usage billing、global tax、AI 客户需求 | Metronome、streaming payments、token/event billing |
+| 横向基础设施 | 风险基础设施 | Radar、Identity、KYC/KYB、review、risk graph | Radar token theft、risk JD、fraud/risk roles | fake signup、token theft、tool misuse、approval hook |
+| 能力外扩 | 发卡和权益入口 | Issuing、virtual cards、personalization designs、tokens、spending controls、real-time authorization | 发卡 API、卡面/卡函个性化、digital wallet token、授权控制 | AI 联名卡、任务级受限支付凭据、权益化支付入口、受限凭据 |
+| 信用线外扩 | 信用和赊账 | Capital、BNPL payment methods、Financial Connections、Capital underwriting、ML risk | Stripe Capital、Capital underwriting JD、BNPL docs、Financial Connections docs | Agent 受限信用、消费分期、商户营运资金、动态授信、实时还款和风险控制 |
+| 横向补位 | 全球化补位 | Paystack、TaxJar、Recko、BBPOS、本地支付 | 国际客户、新市场、税务/对账能力 | AI 公司 global-by-default |
+| 新轨道接入 | 稳定币 / 钱包 / 机器支付 | Bridge、Privy、Tempo、MPP、x402 | stablecoin/wallet/machine payment product signals | machine payment、agent wallet、stablecoin settlement |
 
 这一章回答：
 
-> 不是“Stripe 做了很多事”，而是哪些选择形成了复利，并在 AI 时代继续有效。
+> 不是“Stripe 做了很多事”，而是哪些选择构成主干，哪些能力横向补位，哪些能力在 AI 时代交叉复用。
 
 ### 11. 1000 条来源如何进入判断
 
@@ -753,7 +770,7 @@ Stripe Billing、Revenue suite、Metronome、Capital 和 Financial Connections �
 | 双关系轨 | 表达交易关系线与信用关系线 | 两条并行轨道固定颜色，后续所有事件必须落到其中一条或两条 |
 | 证据抽屉 | 展示原文依据条 | 每个节点点击打开：source_id、原文摘引、支撑判断、边界 |
 | 小倍数图 | 对比市场指标、同业口径、阶段变化 | 不把 TPV、收入、估值混进一张图 |
-| 能力补位带 | 展示并购和能力缺口 | 并购节点只显示“补什么缺口”，不做新闻列表 |
+| 并购补位折线 / 散点层 | 展示并购和能力缺口 | 并购节点落在年份和能力层上，用颜色区分补位类型，不做独立新闻列表或卡片 lane |
 
 建议色彩：
 
