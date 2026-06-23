@@ -21,4 +21,4 @@
 
 - [x] 6. Run static checks and screenshot smoke checks.
 
-- [ ] 7. Commit only task-related files.
+- [x] 7. Commit only task-related files.

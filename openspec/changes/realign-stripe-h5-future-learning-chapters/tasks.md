@@ -38,4 +38,4 @@
   - Capture desktop and mobile screenshots and read them back for visual
     coherence.
 
-- [ ] 7. Commit only task-related files.
+- [x] 7. Commit only task-related files.
