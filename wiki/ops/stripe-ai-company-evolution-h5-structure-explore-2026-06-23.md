@@ -331,3 +331,55 @@ Required next visual direction:
   risk / liability layer.
 - Use edges to show what Stripe connects across layers, not just isolated
   cards.
+
+## 2026-06-23 Continuation: Chapter 5 / 6 / 12 Narrative Re-Anchor
+
+The user flagged that later chapters still had the same drift pattern:
+
+- Section 5 had correct material but rendered as `难事 01-06` cards, so it
+  looked like product inventory rather than explaining why domain objects are a
+  commercial moat.
+- Section 6 used a broad `AI payment reorganization` frame, but the visual did
+  not tell the reader what to inspect: transaction entry, merchant operations,
+  credentials, protocol rules, settlement rails, or liability.
+- Section 12 used `Agent 支付先过规则关，再过金融结果关`, which made the
+  future section sound like an AI-process slogan. The user wants the future
+  judgment to explain how AI actually fuses with payment and financial
+  infrastructure, and when that fusion changes measurable financial outcomes.
+- The sentence `Stripe 的定位：嵌入式金融进入 Agent 工作流` was too late and
+  too abstract. It starts from a conclusion instead of showing the prior
+  strategic reason: Stripe spent years standardizing fragmented financial rules
+  into APIs, objects, risk controls, credentials, settlement, and billing.
+
+Corrected framing:
+
+- Section 5 should be `碎片规则 -> Stripe 标准化层 -> 商业结果`, not a card
+  wall. The visual must show concrete fragmentation on the left, Stripe domain
+  objects in the middle, and developer default / platform embedding /
+  migration cost / AI reuse on the right.
+- Section 6 should be `交易入口外移，金融控制层重组`. The reader should first
+  see that AI moves the transaction starting point into conversation, search,
+  and automated tasks; then see why authorization, credentials, merchant
+  fulfillment, settlement, risk, disputes, and responsibility still require a
+  financial control layer.
+- Section 12 should be `AI 与支付金融如何真正融合`. The key threshold is not
+  fewer clicks or agent autonomy. The threshold is measurable financial
+  outcomes: higher conversion, smoother fulfillment, lower risk cost, more
+  stable cash flow, better credit terms, or faster working-capital turnover.
+
+Required next visual direction:
+
+- Section 5: horizontal conversion diagram with three zones:
+  fragmented rules, Stripe object layer, commercial effects. Use rows for
+  payments, platform accounts, revenue operations, risk, credentials, and new
+  rails.
+- Section 6: ecosystem control map. Layers must include purchase entry,
+  merchant operations, credential / authorization network, protocol / rules
+  layer, funding / settlement rails, and risk / liability. The center question
+  is not `AI`, but whether the transaction can be authorized, fulfilled,
+  settled, and defended.
+- Section 12: folded maturity curves from 2024 to 2031. Curves should separate
+  technical access, authorization / liability, regulation / network rules, and
+  business outcomes. Stripe should be placed on the control-layer capabilities
+  that make those curves converge, not summarized as `embedded finance enters
+  agent workflow`.
