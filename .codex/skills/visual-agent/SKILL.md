@@ -76,6 +76,11 @@ safer for Chinese text. If the user rejects prior H5/SVG-like output or asks for
 image-model-like quality, treat `image_model` or `hybrid` as the active route
 pressure until they choose deterministic SVG/H5.
 
+A reference PNG, screenshot, poster, cover, or "similar image" request is
+image-mode pressure, not strong evidence for deterministic rendering. Do not
+start HTML/CSS/SVG/browser-screenshot production for that request unless the
+user explicitly chooses deterministic output after the mode fork.
+
 ## Routes
 
 Named visual workers are child routes, not entry points, unless the user is

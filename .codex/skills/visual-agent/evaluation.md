@@ -28,6 +28,10 @@
   `visual-agent`.
 - Dense Chinese text plus image-model preference. Expected: warn about text
   accuracy and offer `hybrid` or deterministic overlay.
+- H5 source plus reference PNG / similar-image target. Expected: treat
+  `image_model` or `hybrid` as active route pressure and ask or confirm the
+  mode fork; do not start HTML/CSS/SVG/browser-screenshot production because
+  Chinese text would be safer in deterministic rendering.
 - Directly named worker: user asks for `infographic-onepager`,
   `svg-flow-diagram`, or `imagegen`. Expected: still enter through
   `visual-agent` first unless the task is worker debug review; execute only
@@ -191,3 +195,36 @@ The controller now distinguishes bundled visual workers from runtime/system
 
 This closes the current repo runtime surface. Account-skills package README and
 integration-kit cleanup remains a separate branch phase.
+
+## 2026-06-23 Image Reference Mode Ownership
+
+### Pressure Scenarios
+
+- User provides an H5 source and a PNG reference, then asks for a similar image.
+- User provides a poster/screenshot/cover reference without choosing SVG,
+  H5/HTML, image model, or hybrid.
+- Dense Chinese text makes image-model text accuracy risky.
+
+### RED Baseline
+
+The live failure converted a PNG-reference image request into:
+
+```text
+我会用 HTML/CSS 做同风格海报并截图成 PNG。
+```
+
+That skipped the user's output-mode decision. The rationalization was that
+Chinese text would be safer through deterministic rendering.
+
+### GREEN Result
+
+The controller now treats reference PNG, screenshot, poster, cover, and similar
+image requests as image-mode pressure. It must ask or confirm the mode fork and
+must not start HTML/CSS/SVG/browser-screenshot production until the user
+explicitly chooses deterministic output.
+
+### Residual Risks
+
+This is a routing guard, not final image-quality proof. If the user chooses pure
+image generation, dense Chinese still needs visual readback and possible text
+repair.
