@@ -258,6 +258,59 @@
       background: var(--red);
     }
 
+    .human-rails {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .relationship-card {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .relationship-card.transaction {
+      border-top: 6px solid var(--green);
+    }
+
+    .relationship-card.credit {
+      border-top: 6px solid var(--red);
+    }
+
+    .relationship-card strong {
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .relationship-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .relationship-steps {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      border: 1px solid var(--ink);
+      background: #fff;
+    }
+
+    .relationship-steps span {
+      padding: 8px 6px;
+      border-right: 1px solid var(--ink);
+      text-align: center;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .relationship-steps span:last-child {
+      border-right: 0;
+    }
+
     .volume-spark {
       display: grid;
       gap: 12px;
@@ -278,6 +331,90 @@
       width: 100%;
       height: 100%;
       display: block;
+    }
+
+    .scale-note {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .scale-snapshot {
+      display: grid;
+      gap: 10px;
+      padding: 12px;
+      border: 2px solid var(--ink);
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 34px, rgba(17, 17, 17, 0.1) 35px),
+        #fff;
+    }
+
+    .scale-bars {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      align-items: end;
+      min-height: 150px;
+    }
+
+    .scale-column {
+      display: grid;
+      grid-template-rows: auto 1fr auto auto;
+      gap: 6px;
+      min-height: 150px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .scale-column span,
+    .scale-column em {
+      color: var(--muted);
+      font-style: normal;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .scale-bar {
+      align-self: end;
+      min-height: 22px;
+      height: calc(var(--h) * 1%);
+      border: 2px solid var(--ink);
+      background: var(--green);
+    }
+
+    .scale-column:nth-child(2) .scale-bar {
+      background: var(--gold);
+    }
+
+    .scale-column:nth-child(3) .scale-bar {
+      background: var(--blue);
+    }
+
+    .scale-value {
+      display: block;
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    .growth-ribbon {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 9px 10px;
+      border: 2px solid var(--ink);
+      background: #f7f0de;
+      color: var(--ink);
+    }
+
+    .growth-ribbon strong {
+      font-size: 14px;
+    }
+
+    .growth-ribbon span {
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .spark-stat {
@@ -500,15 +637,51 @@
     }
 
     .quote-card {
-      background: #fbfbf9;
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      gap: 8px;
+      min-height: 250px;
+      border-top: 6px solid var(--ink);
+      background: #fff;
     }
 
     .quote-card q {
       display: block;
-      margin: 8px 0;
+      margin: 0;
+      padding: 10px;
+      border: 1px solid var(--ink);
+      background: #fbfbf9;
       color: var(--ink);
       font-size: 13px;
       font-weight: 700;
+    }
+
+    .quote-meta {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .quote-card dl {
+      display: grid;
+      gap: 6px;
+      margin: 0;
+    }
+
+    .quote-card dt {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .quote-card dd {
+      margin: 0;
+      color: var(--ink);
+      font-size: 13px;
     }
 
     .source-id {
@@ -526,6 +699,124 @@
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 
+    .ai-control-section .panel-head,
+    .timeline-feature .panel-head,
+    .signal-section .panel-head,
+    .source-section .panel-head {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.42fr) 1fr;
+      gap: 18px;
+      padding: 18px;
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .ai-control-section .panel-head h2,
+    .timeline-feature .panel-head h2,
+    .signal-section .panel-head h2,
+    .source-section .panel-head h2 {
+      margin-bottom: 0;
+      padding-top: 10px;
+      border-top: 8px solid var(--ink);
+      font-size: clamp(26px, 3.8vw, 50px);
+      line-height: 1.08;
+    }
+
+    .ai-control-section .panel-head p,
+    .timeline-feature .panel-head p,
+    .signal-section .panel-head p,
+    .source-section .panel-head p {
+      margin-bottom: 0;
+      padding: 14px;
+      border-left: 2px solid var(--ink);
+      background: #fbfbf9;
+      color: var(--ink);
+      font-size: clamp(15px, 1.4vw, 20px);
+    }
+
+    .control-map {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .control-card {
+      display: grid;
+      gap: 10px;
+      min-height: 230px;
+      padding: 14px;
+      border-right: 1px solid var(--ink);
+      border-top: 6px solid var(--green);
+      background: #fff;
+    }
+
+    .control-card:last-child {
+      border-right: 0;
+    }
+
+    .control-card:nth-child(2) {
+      border-top-color: var(--blue);
+    }
+
+    .control-card:nth-child(3) {
+      border-top-color: var(--gold);
+    }
+
+    .control-card:nth-child(4) {
+      border-top-color: var(--red);
+    }
+
+    .control-card:nth-child(5) {
+      border-top-color: var(--ink);
+    }
+
+    .control-card strong {
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .control-card dl {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+    }
+
+    .control-card dt {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .control-card dd {
+      margin: 0;
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .ai-reframe {
+      display: grid;
+      grid-template-columns: 0.36fr 1fr;
+      gap: 14px;
+      padding: 16px;
+      border: 2px solid var(--ink);
+      background: #f7f0de;
+    }
+
+    .ai-reframe strong {
+      color: var(--ink);
+      font-size: clamp(20px, 2.4vw, 34px);
+      line-height: 1.12;
+    }
+
+    .ai-reframe p {
+      margin-bottom: 0;
+      color: var(--ink);
+      font-size: 15px;
+    }
+
     .path-grid,
     .reading-flow,
     .dimension-grid {
@@ -535,6 +826,62 @@
 
     .path-grid {
       grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .migration-path {
+      gap: 0;
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .migration-path .path-card {
+      position: relative;
+      min-height: 280px;
+      border: 0;
+      border-right: 1px solid var(--ink);
+      border-top: 6px solid var(--green);
+      background: #fff;
+    }
+
+    .migration-path .path-card:nth-child(2) {
+      border-top-color: var(--blue);
+    }
+
+    .migration-path .path-card:nth-child(3) {
+      border-top-color: var(--gold);
+    }
+
+    .migration-path .path-card:nth-child(4) {
+      border-top-color: var(--red);
+    }
+
+    .migration-path .path-card:nth-child(5) {
+      border-top-color: var(--ink);
+      border-right: 0;
+    }
+
+    .migration-path .path-card:not(:last-child)::after {
+      content: ">";
+      position: absolute;
+      top: 18px;
+      right: -13px;
+      width: 26px;
+      height: 26px;
+      border: 2px solid var(--ink);
+      background: #fff;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 22px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .migration-path .path-card strong {
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--ink);
+      color: var(--ink);
+      font-size: 18px;
     }
 
     .market-grid {
@@ -1068,50 +1415,72 @@
     }
 
     .word-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0;
       padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #f8fafc;
+      border: 2px solid var(--ink);
+      background: #fff;
     }
 
     .word-cloud button {
-      display: inline-flex;
-      align-items: center;
-      min-height: 32px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: #ffffff;
-      border: 1px solid rgba(39, 52, 73, 0.14);
-      color: var(--slate);
+      display: grid;
+      gap: 6px;
+      min-height: 112px;
+      padding: 10px;
+      border: 0;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: #fff;
+      color: var(--ink);
+      text-align: left;
       font-weight: 700;
     }
 
     .word-cloud button.active {
-      border-color: var(--green);
-      background: #e6fffa;
-      color: var(--green);
+      outline: 4px solid rgba(17, 17, 17, 0.14);
+      outline-offset: -4px;
+      background: #f7f0de;
+      color: var(--ink);
     }
 
     .word-cloud .xl {
-      font-size: 24px;
-      color: var(--green);
+      font-size: 14px;
+      color: var(--ink);
     }
 
     .word-cloud .lg {
-      font-size: 19px;
-      color: var(--blue);
+      font-size: 14px;
+      color: var(--ink);
     }
 
     .word-cloud .md {
-      font-size: 16px;
+      font-size: 14px;
     }
 
     .word-cloud .risk-word {
-      color: var(--red);
+      color: var(--ink);
+    }
+
+    .word-cloud .signal-cell-category {
+      width: fit-content;
+      padding: 2px 5px;
+      border: 1px solid var(--ink);
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .word-cloud .signal-cell-term {
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+
+    .word-cloud .signal-cell-note {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.35;
     }
 
     .signal-groups {
@@ -1458,16 +1827,20 @@
     .source-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
+      gap: 0;
+      border: 2px solid var(--ink);
+      background: #fff;
     }
 
     .source-link {
-      display: block;
-      min-height: 78px;
+      display: grid;
+      gap: 8px;
+      min-height: 116px;
       padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fbfbf9;
+      border: 0;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: #fff;
       text-decoration: none;
     }
 
@@ -1475,11 +1848,22 @@
       display: block;
       margin-bottom: 4px;
       font-size: 13px;
-      color: var(--slate);
+      color: var(--ink);
     }
 
     .source-link span {
       color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .source-key {
+      width: fit-content;
+      padding: 2px 6px;
+      border: 1px solid var(--ink);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
     }
 
     .closing {
@@ -1647,6 +2031,32 @@
       border-top: 6px solid var(--ink);
     }
 
+    .word-cloud {
+      gap: 0;
+    }
+
+    .word-cloud button {
+      min-height: 112px;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      text-align: left;
+    }
+
+    .word-cloud button.active .signal-cell-category,
+    .word-cloud button.active .signal-cell-term,
+    .word-cloud button.active .signal-cell-note {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    .source-link,
+    .quote-card,
+    .control-card,
+    .relationship-card,
+    .migration-path .path-card {
+      background-color: #fff;
+    }
+
     @media (max-width: 1050px) {
       main,
       .control-panel,
@@ -1670,15 +2080,25 @@
       .flow-grid,
       .atlas-grid,
       .time-spine,
+      .human-rails,
+      .relationship-steps,
+      .scale-bars,
       .lens-grid,
       .causal-row,
       .hard-work-grid,
       .ai-subsection-grid,
       .system-layer,
+      .control-map,
+      .ai-reframe,
+      .ai-control-section .panel-head,
+      .timeline-feature .panel-head,
+      .signal-section .panel-head,
+      .source-section .panel-head,
       .credit-flow,
       .validation-grid,
       .evidence-drawer-grid,
       .competition-grid,
+      .word-cloud,
       .closing {
         grid-template-columns: 1fr;
       }
@@ -1718,6 +2138,36 @@
         border-left: 0;
         border-top: 1px solid var(--line);
       }
+
+      .migration-path .path-card {
+        border-right: 0;
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .migration-path .path-card:not(:last-child)::after {
+        top: auto;
+        right: 18px;
+        bottom: -13px;
+        transform: rotate(90deg);
+      }
+
+      .control-card {
+        border-right: 0;
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .source-link {
+        border-right: 0;
+      }
+
+      .scale-bars {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        min-height: 116px;
+      }
+
+      .scale-column {
+        min-height: 116px;
+      }
     }
 
     @media (max-width: 620px) {
@@ -1753,22 +2203,16 @@
           <h1>Stripe 公司演进与 AI 时代支付变革</h1>
           <p class="lead">这页从时间维度看 Stripe 如何从支付 API 走向嵌入式支付、嵌入式金融，再进入 Agent 工作流里的交易与信用执行。AI 不是主角，主角仍是商户、平台、用户、卡网络、银行和监管之间的交易关系与信用关系。</p>
         </div>
-        <aside class="atlas-card volume-spark" aria-label="Stripe 处理规模折线">
-          <strong>处理规模曲线</strong>
-          <div class="spark-line">
-            <svg viewBox="0 0 420 150" role="img" aria-label="Stripe processed volume 2023 to 2025">
-              <polyline points="36,104 198,76 372,28" fill="none" stroke="#0f766e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-              <g fill="#0f766e">
-                <circle cx="36" cy="104" r="6" />
-                <circle cx="198" cy="76" r="6" />
-                <circle cx="372" cy="28" r="6" />
-              </g>
-              <g fill="#273449" font-size="13" font-weight="700">
-                <text x="20" y="128">2023 $1.0T</text>
-                <text x="158" y="100">2024 ~$1.4T</text>
-                <text x="318" y="52">2025 $1.9T</text>
-              </g>
-            </svg>
+        <aside class="atlas-card volume-spark" aria-label="Stripe 处理规模增长">
+          <strong>处理规模从 1 万亿到 1.9 万亿美元</strong>
+          <p class="scale-note">先看 Stripe 自己披露的处理规模。2024 年用二级报道口径连接趋势，不把它当审计值。</p>
+          <div class="scale-snapshot" aria-label="Stripe processed volume scale snapshot">
+            <div class="scale-bars">
+              <div class="scale-column" style="--h: 53;"><span>2023</span><div class="scale-bar"></div><strong class="scale-value">$1.0T</strong><em>官方年信</em></div>
+              <div class="scale-column" style="--h: 74;"><span>2024</span><div class="scale-bar"></div><strong class="scale-value">~$1.4T</strong><em>二级报道</em></div>
+              <div class="scale-column" style="--h: 100;"><span>2025</span><div class="scale-bar"></div><strong class="scale-value">$1.9T</strong><em>官方年信</em></div>
+            </div>
+            <div class="growth-ribbon"><strong>两年接近翻倍</strong><span>2025 官方口径较 2024 年增长 34%。</span></div>
           </div>
           <div class="spark-stat">
             <div><strong>$1.0T</strong><span>2023 官方处理规模</span></div>
@@ -1786,12 +2230,20 @@
         <div><strong>2010-2014</strong><span>支付 API：把在线收款做成开发者可接入接口。</span></div>
         <div><strong>2015-2019</strong><span>嵌入式支付：平台分账、订阅、风控、线下入口进入经营系统。</span></div>
         <div><strong>2020-2022</strong><span>嵌入式金融：账户、发卡、融资、税务、身份和数据能力扩张。</span></div>
-        <div><strong>2023-2025</strong><span>AI 客户压力：用量计费、全球税务、钱包、稳定币、开发者工具被放大。</span></div>
+        <div><strong>2023-2025</strong><span>AI 公司把用量计费、全球税务、钱包、稳定币和开发者工具一起推到前台。</span></div>
         <div><strong>2026</strong><span>Agent 工作流：商品发现、授权、机器支付、风险和责任链被协议化。</span></div>
       </div>
-      <div class="relationship-rails" aria-label="交易关系与信用关系双轨">
-        <div class="rail transaction"><strong>交易关系</strong><span>商品发现</span><span>价格表达</span><span>授权与履约</span><span>分账结算</span><span>争议责任</span></div>
-        <div class="rail credit"><strong>信用关系</strong><span>经营数据</span><span>授信判断</span><span>额度/期限/价格</span><span>还款来源</span><span>风险再评估</span></div>
+      <div class="relationship-rails human-rails" aria-label="交易关系与信用关系双轨">
+        <article class="relationship-card transaction">
+          <strong>一笔生意怎么发生、交付和收尾</strong>
+          <p>这条线看商品怎么被发现，价格怎么表达，谁授权付款，商户怎么履约，钱如何分出去，出问题谁负责。</p>
+          <div class="relationship-steps"><span>发现</span><span>定价</span><span>授权</span><span>履约</span><span>追责</span></div>
+        </article>
+        <article class="relationship-card credit">
+          <strong>价值先给出去，钱后面怎么收回来</strong>
+          <p>这条线看谁能赊、能赊多少、怎么定价、用什么现金流还款，逾期和欺诈风险如何回到系统。</p>
+          <div class="relationship-steps"><span>数据</span><span>授信</span><span>额度</span><span>还款</span><span>再评估</span></div>
+        </article>
       </div>
       <div class="meta-row">
         <span class="pill">内部研究草案</span>
@@ -1810,9 +2262,9 @@
     <section class="panel wide">
       <div class="panel-head">
           <h2>公司路径：五次位置迁移</h2>
-          <p>Stripe 的核心不是“做支付”，而是持续把复杂金融关系设计成对象、接口、规则和生态。AI 时代只是把这个能力重新推到更高频、更自动化、更需要责任边界的位置。</p>
+          <p>Stripe 每次扩张都不是横向加产品，而是把自己嵌到更深的交易位置：先进入开发者接入点，再进入平台经营和资金账户，后来承接 AI 公司的收入运营，最后进入 Agent 工作流里的授权和结算。</p>
       </div>
-      <div class="path-grid">
+      <div class="path-grid migration-path">
         <article class="path-card">
           <strong>01 支付 API</strong>
           <span>把在线收款、测试、错误处理、webhook 和文档做成开发者入口。</span>
@@ -1841,10 +2293,10 @@
           </ul>
         </article>
         <article class="path-card">
-          <strong>04 AI 客户压力</strong>
-          <span>AI 公司把全球化、用量计费、税务、欺诈、token 成本和开发者工具同时压到 Stripe。</span>
+          <strong>04 AI 公司收入运营</strong>
+          <span>AI 公司把全球化、用量计费、税务、欺诈、token 成本和开发者工具放到同一个上线问题里。</span>
           <ul>
-            <li>战略：不是卖 AI 功能，而是承接 AI 公司的收入和风险系统。</li>
+            <li>战略：不是卖 AI 功能，而是承接 AI 公司的收入、税务和风险系统。</li>
             <li>能力：Revenue suite、Metronome、Radar、Tax。</li>
             <li>AI 复用：实现成本下降后，计费和评估设计变得更重要。</li>
           </ul>
@@ -1863,13 +2315,13 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>市场位置：先看处理规模增长，再看同年同业参照</h2>
-        <p>Stripe 没有披露可审计的全球支付份额。本页不把 Q1、全年、revenue、net revenue、TPV 混成一个图，只保留同年处理规模参照；GDP 等价口径降级为来源脚注，不作为主判断。</p>
+        <h2>Stripe 到了多大体量</h2>
+        <p>先看 Stripe 自己的处理规模，再用同一年口径找参照。这样能看清量级，不把全年交易规模、季度数据、收入和估值硬混成“市场份额”。</p>
       </div>
       <div class="market-board">
         <article class="chart-card">
-          <strong>Stripe 自身增长：$1T -> ~$1.4T -> $1.9T</strong>
-          <p class="footnote">2023 和 2025 为 Stripe 年信官方口径；2024 为二级报道口径，用于连接增长曲线，不当作审计值。Stripe 提到的 GDP 等价口径只作为传播口径保留，不进入主图。</p>
+          <strong>Stripe 自身规模先拉开：$1T -> ~$1.4T -> $1.9T</strong>
+          <p class="footnote">2023 和 2025 为 Stripe 年信官方口径；2024 为二级报道口径，只用于连接趋势。Stripe 自己提到的 GDP 类比保留在来源说明里，不作为本页主判断。</p>
           <div class="bar-chart">
             <div class="bar-row">
               <span>2023</span>
@@ -1889,14 +2341,14 @@
           </div>
           <div class="legend-row">
             <span class="legend-chip">处理规模</span>
-            <span class="legend-chip fee">同年同业参照</span>
+            <span class="legend-chip fee">同年口径参照</span>
             <span class="legend-chip deal">能力补齐</span>
           </div>
           <p class="footnote">来源：<a href="https://stripe.com/annual-updates/2023" target="_blank" rel="noreferrer">Stripe 2023 annual letter</a> · <a href="https://stripe.com/annual-updates/2025" target="_blank" rel="noreferrer">Stripe 2025 annual letter</a> · <a href="https://www.investors.com/news/technology/stripe-ipo-paypal-stock-nvidia-shopify-adyen/" target="_blank" rel="noreferrer">IBD Stripe coverage</a></p>
         </article>
         <article class="chart-card">
-          <strong>同业参照：只放同年 TPV / processed volume</strong>
-          <p>这里不再把 Adyen Q1 和 Stripe 全年放在同一张图。当前只保留 2024 年 Stripe 与 PayPal 的同年处理规模参照；Adyen、Worldpay/Global Payments 先进入待换全年口径的来源抽屉。</p>
+          <strong>同一年口径下找参照</strong>
+          <p>2024 年 Stripe 约 $1.4T，PayPal $1.68T。这个对比只说明 Stripe 已经进入同一量级，不把它写成全球支付份额。</p>
           <div class="bar-chart">
             <div class="bar-row">
               <span>PayPal 2024</span>
@@ -1914,27 +2366,27 @@
       </div>
       <div class="formula-grid">
         <article class="formula-card">
-          <strong>规模增长</strong>
+          <strong>两年接近翻倍</strong>
           <span class="formula-number">1.9x</span>
           <p>2023 到 2025，Stripe 官方处理规模从 $1.0T 增至 $1.9T。这个增长曲线比 GDP 等价口径更适合作为本页主图。</p>
         </article>
         <article class="formula-card">
-          <strong>竞争判断</strong>
+          <strong>进入同一量级</strong>
           <span class="formula-number">2024</span>
           <p>同业参照只看同年口径：Stripe 2024 约 $1.4T，PayPal 2024 $1.68T。它说明量级接近，不说明全球份额。</p>
         </article>
         <article class="formula-card">
-          <strong>放回时间线</strong>
-          <span class="formula-number">axis</span>
-          <p>规模增长必须和并购、产品、客户结构、AI 入口、稳定币与信用能力一起读。</p>
+          <strong>下一步看结构</strong>
+          <span class="formula-number">why</span>
+          <p>规模增长要和并购、产品、客户结构、AI 入口、稳定币与信用能力一起看，才知道增长来自哪里。</p>
         </article>
       </div>
     </section>
 
-    <section class="panel wide">
+    <section class="panel wide timeline-feature">
       <div class="panel-head">
-        <h2>公司演进时间轴：战略、市场、并购、技术并读</h2>
-        <p>拖动年份看同一阶段里的战略押注、规模/估值、并购补位、技术对象和 AI 时代复用。重点不是事件堆叠，而是商业动作如何逼出技术选择，技术对象又如何打开下一段商业边界。</p>
+        <h2>关键转折：Stripe 每次把自己嵌到更深的位置</h2>
+        <p>这条时间轴不是事件列表。它看每个阶段 Stripe 解决了谁的经营问题、补了什么能力、哪些并购补了缺口，以及这些能力怎样在 AI 交易场景里再次被使用。</p>
       </div>
       <div class="timeline-reader">
         <div class="timeline-control">
@@ -2036,35 +2488,32 @@
         <article class="hard-work-card"><span>难事 06</span><strong>新轨道接入</strong><p>Bridge、Privy、Metronome、MPP、x402、stablecoin、wallet 把新金融轨道纳入同一套商业基础设施。</p></article>
       </div>
       <div class="metric-note">
-        <strong>壁垒读法</strong>
-        Stripe 的正确性不是“产品多”，而是它把行业复杂性标准化，并把标准化能力变成开发者默认选择、迁移成本、复合能力、行业抽象层和 AI 新场景复用。
+        <strong>为什么这些选择难替代</strong>
+        开发者先接入，平台把经营数据带进来，计费、风控、发卡、钱包和结算继续叠加。到这个阶段，替换 Stripe 就不再只是换一个支付通道，而是要重接一整套收入、风险、凭据和清结算流程。
       </div>
     </section>
 
-    <section class="panel wide">
+    <section class="panel wide ai-control-section">
       <div class="panel-head">
-        <h2>AI 时代支付重组：交易关系与信用关系被重新设计</h2>
-        <p>支付行业已有预授权、发卡、联名权益、钱包、token、订阅、风控、授信、争议和清结算。AI 时代的创新不在于重新发明这些能力，而是把它们升级成 Agent 可以理解、调用、限制、审计和追责的交易系统。</p>
+        <h2>AI 支付重组：控制点从按钮前移到交易规则</h2>
+        <p>AI 入口把购物、订阅、API 调用和资金动作前移到对话、搜索和自动化工作流里。支付公司的问题不是“让 AI 付款”，而是把授权、预算、商户规则、授信、争议和清结算放回可执行的金融关系里。</p>
       </div>
       <div class="ai-flow">
-        <div class="flow-thesis">
-          <div>
-            <span class="stage-label">6.0 infrastructure pressure</span>
-            <strong>Stripe 必须做基础设施，是为了保住并扩大交易规则层的位置。</strong>
-          </div>
-          <p>AI 入口可能拿走用户意图和商品发现，卡网络可能拿走 token 和授权规则，钱包和平台可能拿走买方凭据和权益，稳定币协议可能拿走结算路径，PSP 和商户 SaaS 可能把 Stripe 压回费率竞争。Stripe 要把 API、对象模型、钱包、计费、风控、发卡和结算连成可被 AI 调用、商户承接、金融系统审计的基础设施。</p>
+        <div class="ai-reframe">
+          <strong>Stripe 做基础设施，是为了不被压回后台通道。</strong>
+          <p>用户意图可能被 AI 入口拿走，凭据规则可能被卡网络上收，买方关系可能落到钱包和平台，结算路径也可能被稳定币和新协议绕开。Stripe 要守住的位置，是把商户经营对象、买方授权、风险控制和资金结算接回同一套交易规则。</p>
         </div>
-        <div class="competition-grid" aria-label="AI 支付价值控制点">
-          <article class="competition-card"><strong>OpenAI / Google / Microsoft</strong><p>争夺用户意图、商品发现、购买入口和推荐分发。Stripe 若不接 AI surface，只剩后台处理价值。</p></article>
-          <article class="competition-card"><strong>Visa / Mastercard</strong><p>争夺 token、发卡规则、争议、授权和网络级信任。Stripe 必须把发卡、凭据和商户控制接入自身模型。</p></article>
-          <article class="competition-card"><strong>钱包 / 超级 App / 平台</strong><p>争夺用户凭据、会员权益和默认支付方式。Link、Privy、Issuing 是 Stripe 接近买方授权的路径。</p></article>
-          <article class="competition-card"><strong>稳定币 / x402 / 新协议</strong><p>争夺机器支付、跨境结算、微支付和 API 资源购买。Bridge、Tempo、MPP/x402 是新轨道入口。</p></article>
-          <article class="competition-card"><strong>商户 SaaS / PSP 同行</strong><p>争夺商户运营、计费、税务、风控和对账。Stripe 用对象模型和套件能力避免只打通道费率。</p></article>
+        <div class="control-map" aria-label="AI 支付价值控制点">
+          <article class="control-card"><strong>AI 入口</strong><dl><dt>谁在拿</dt><dd>OpenAI、Google、Microsoft</dd><dt>可能拿走</dt><dd>用户意图、商品发现、购买入口</dd><dt>Stripe 要接住</dt><dd>Checkout、catalog、Agentic Commerce</dd></dl></article>
+          <article class="control-card"><strong>卡网络</strong><dl><dt>谁在拿</dt><dd>Visa、Mastercard</dd><dt>可能拿走</dt><dd>token、授权、争议和网络信任</dd><dt>Stripe 要接住</dt><dd>Issuing、tokens、spending controls</dd></dl></article>
+          <article class="control-card"><strong>钱包和平台</strong><dl><dt>谁在拿</dt><dd>超级 App、平台、钱包</dd><dt>可能拿走</dt><dd>买方凭据、权益、默认支付方式</dd><dt>Stripe 要接住</dt><dd>Link wallets、Privy、Open Issuance</dd></dl></article>
+          <article class="control-card"><strong>新结算轨道</strong><dl><dt>谁在拿</dt><dd>稳定币、x402、MPP</dd><dt>可能拿走</dt><dd>机器支付、跨境、微支付、API 资源购买</dd><dt>Stripe 要接住</dt><dd>Bridge、Tempo、machine payments</dd></dl></article>
+          <article class="control-card"><strong>商户系统</strong><dl><dt>谁在拿</dt><dd>商户 SaaS、PSP 同行</dd><dt>可能拿走</dt><dd>商户运营、税务、计费、风控、对账</dd><dt>Stripe 要接住</dt><dd>Billing、Tax、Radar、Connect</dd></dl></article>
         </div>
         <div class="system-stack" aria-label="AI 时代支付五层结构">
           <article class="system-layer">
-            <strong>6.1 交易 / 信用关系</strong>
-            <p>交易关系回答商品如何被发现、确认、授权、履约、结算和追责；信用关系回答价值先发生后，额度、期限、价格、还款和风险如何被管理。</p>
+            <strong>6.1 两条金融关系先分清</strong>
+            <p>现在付款的一笔生意：谁买、谁卖、什么价格、谁授权、谁交付、钱怎么分、出问题谁负责。先给价值后收钱：谁能赊、额度多少、什么时候还、还款来源是什么。</p>
             <p>Stripe 相关：Payments、Checkout、Connect、Billing、Tax、Radar、Capital、BNPL、Financial Connections、Issuing。</p>
           </article>
           <article class="system-layer entry">
@@ -2074,7 +2523,7 @@
           </article>
           <article class="system-layer credential">
             <strong>6.3 工具化支付</strong>
-            <p>过去开发者读文档、写代码、调用 API；现在 Agent 通过 MCP、skills、plain-text docs、llms.txt、CLI、sandbox 和 toolkit 发现并组合支付能力。</p>
+            <p>过去是开发者读文档、写代码、调用 API。现在自动化工具也要读懂对象、创建测试环境、发起调用、处理错误，所以 MCP、skills、plain-text docs、llms.txt、CLI、sandbox 和 toolkit 变成入口的一部分。</p>
             <p>Stripe 相关：mcp.stripe.com、docs.stripe.com/mcp、agent skills、agent toolkit、claimable sandbox。</p>
           </article>
           <article class="system-layer protocol">
@@ -2090,10 +2539,10 @@
         </div>
         <div class="ai-subsection-grid" aria-label="AI 支付重组子主题">
           <article class="ai-subsection-card"><span>权益化入口</span><strong>联名卡 / 权益卡 / tokenized credential</strong><p>入口方用权益和分润绑定支付关系；任务级受限支付凭据把金额、商户、品类、时间和责任限制到可执行规则内。</p></article>
-          <article class="ai-subsection-card"><span>工具化支付</span><strong>MCP / skills / sandbox / API</strong><p>Agent 调用支付能力时，文档、工具描述、测试环境和对象模型变成分发基础，而不是开发者文档附属物。</p></article>
+          <article class="ai-subsection-card"><span>工具化支付</span><strong>MCP / skills / sandbox / API</strong><p>支付能力开始被包装成工具描述、测试环境和对象模型。文档不只是给人读，也变成自动化接入的索引。</p></article>
           <article class="ai-subsection-card"><span>协议化授权</span><strong>AP2 / ACP / MPP / x402</strong><p>支付问题从“能不能扣款”变成授权、真实性、责任、争议、清算和风控如何落地。</p></article>
-          <article class="ai-subsection-card"><span>交易关系线</span><strong>谁代表谁完成什么交易</strong><p>Agent 代表谁，执行什么交易，依据什么授权，履约状态如何确认，责任证据如何保存。</p></article>
-          <article class="ai-subsection-card"><span>信用关系线</span><strong>价值先发生，资金后偿付</strong><p>信用建立在身份、交易历史、现金流、商户经营数据、风控和还款控制之上。</p></article>
+          <article class="ai-subsection-card"><span>当下付款</span><strong>谁代表谁完成哪笔生意</strong><p>系统要说清买方、卖方、授权、履约、分账和争议材料，不能只留下一个支付成功结果。</p></article>
+          <article class="ai-subsection-card"><span>先用后付</span><strong>价值先发生，钱后面收回来</strong><p>授信要回到身份、交易历史、现金流、商户经营数据、风控和还款控制。</p></article>
           <article class="ai-subsection-card"><span>基础设施结论</span><strong>从支付通道到交易规则层</strong><p>Stripe 只有把 API、对象、钱包、计费、风控、发卡和结算连起来，才不会在 AI commerce 中被压缩成后台通道。</p></article>
         </div>
         <div class="reading-flow">
@@ -2107,8 +2556,8 @@
         <div class="timeline-reader">
           <div class="timeline-control">
             <div>
-              <strong id="aiTimelineTitle">2023：AI 客户先成为高强度客户</strong>
-              <p id="aiTimelineCaption">AI 先改变 Stripe 的客户压力，再改变交易链路。</p>
+              <strong id="aiTimelineTitle">2023：AI 公司先把收入运营用到极限</strong>
+              <p id="aiTimelineCaption">AI 公司先改变计费、税务、风控和全球收款的组合要求，再把交易链路推到 Agent 场景。</p>
             </div>
             <div id="aiTimelineYear" class="timeline-year">2023</div>
           </div>
@@ -2145,7 +2594,7 @@
 
     <section class="panel wide">
       <div class="panel-head">
-        <h2>战略正确性验证：选择如何变成复利</h2>
+        <h2>战略怎么变成复利</h2>
         <p>这张表回答“Stripe 为什么能做到现在这个规模”。不是把能力堆成清单，而是看战略选择如何沉淀能力，能力如何被指标和事件验证，又如何在 AI 时代被重新调用。</p>
       </div>
       <div class="validation-grid">
@@ -2170,24 +2619,24 @@
       </div>
     </section>
 
-    <section class="panel wide">
+    <section class="panel wide source-section">
       <div class="panel-head">
-        <h2>原文引用：关键判断必须能回到来源</h2>
-        <p>本页用 source_id 管理强引用。队列里的 1000 条 URL 是待晋级材料，不被写成 1000 条已经完成的结论。</p>
+        <h2>关键判断必须能回到来源</h2>
+        <p>这里统一用同一种来源卡：来源号、判断、短引文、支撑范围和边界。1000 条 URL 只是待晋级队列，不能写成已经完成的结论。</p>
       </div>
       <div class="evidence-drawer-grid">
-        <article class="quote-card"><span class="source-id">S172</span><strong>嵌入式金融主线</strong><p>source_type：official product page</p><q>embedding financial services into your platform, including accounts, cards and financing</q><p>supports：Stripe 明确把 accounts、cards、financing 做成平台嵌入能力。boundary：官方产品页，不是独立市场审计。</p></article>
-        <article class="quote-card"><span class="source-id">S008</span><strong>任务级受限支付凭据</strong><p>source_type：official product / docs</p><q>a one-time-use card is issued per task</q><p>supports：Agent 场景下的凭据可以按任务生成并限制。boundary：证明机制，不证明全市场采用。</p></article>
-        <article class="quote-card"><span class="source-id">S008</span><strong>授权仍由人和规则定义</strong><p>source_type：official product / docs</p><q>you approve each payment</q><p>supports：Agent 不是无限制替人付款，审批和授权边界仍是交易系统核心。boundary：引用限于该产品机制。</p></article>
-        <article class="quote-card"><span class="source-id">S167</span><strong>信用判断来自交易历史</strong><p>source_type：official docs</p><q>eligibility is based on factors like your payment volume and history on Stripe</q><p>supports：Capital 信用线依赖支付量和经营历史。boundary：不能推出所有授信模型细节。</p></article>
-        <article class="quote-card"><span class="source-id">S167</span><strong>还款回到销售现金流</strong><p>source_type：official docs</p><q>Stripe deducts a fixed percentage of your sales</q><p>supports：信用关系的回收可以绑定未来销售。boundary：这是 Capital 产品机制，不等同所有贷款产品。</p></article>
+        <article class="quote-card"><div class="quote-meta"><span class="source-id">S172</span><span>official product page</span></div><strong>嵌入式金融主线</strong><q>embedding financial services into your platform, including accounts, cards and financing</q><dl><dt>支撑</dt><dd>Stripe 明确把账户、发卡和融资做成平台嵌入能力。</dd><dt>边界</dt><dd>官方产品页，不是独立市场审计。</dd></dl></article>
+        <article class="quote-card"><div class="quote-meta"><span class="source-id">S008</span><span>official product / docs</span></div><strong>任务级受限支付凭据</strong><q>a one-time-use card is issued per task</q><dl><dt>支撑</dt><dd>Agent 场景下的凭据可以按任务生成并限制。</dd><dt>边界</dt><dd>证明机制，不证明全市场采用。</dd></dl></article>
+        <article class="quote-card"><div class="quote-meta"><span class="source-id">S008</span><span>official product / docs</span></div><strong>授权仍由人和规则定义</strong><q>you approve each payment</q><dl><dt>支撑</dt><dd>Agent 不是无限制替人付款，审批和授权边界仍是交易系统核心。</dd><dt>边界</dt><dd>引用限于该产品机制。</dd></dl></article>
+        <article class="quote-card"><div class="quote-meta"><span class="source-id">S167</span><span>official docs</span></div><strong>信用判断来自交易历史</strong><q>eligibility is based on factors like your payment volume and history on Stripe</q><dl><dt>支撑</dt><dd>Capital 信用线依赖支付量和经营历史。</dd><dt>边界</dt><dd>不能推出所有授信模型细节。</dd></dl></article>
+        <article class="quote-card"><div class="quote-meta"><span class="source-id">S167</span><span>official docs</span></div><strong>还款回到销售现金流</strong><q>Stripe deducts a fixed percentage of your sales</q><dl><dt>支撑</dt><dd>信用关系的回收可以绑定未来销售。</dd><dt>边界</dt><dd>这是 Capital 产品机制，不等同所有贷款产品。</dd></dl></article>
       </div>
     </section>
 
-    <section class="panel wide">
+    <section class="panel wide signal-section">
       <div class="panel-head">
-        <h2>信号矩阵：技术、商业、金融、风险和组织</h2>
-        <p>下面不是词云装饰，而是可点击的信号矩阵。每个词条都说明它属于哪类证据、来自哪类来源、能支撑什么、边界在哪里。</p>
+        <h2>证据矩阵：五类信号分开看</h2>
+        <p>这里不做散点关键词。每个信号都按技术接口、商业行为、金融轨道、风险控制和组织能力归类，点击后看它能支撑什么、不能支撑什么。</p>
       </div>
       <div class="word-cloud" aria-label="Stripe AI finance signal cloud">
       </div>
@@ -2216,7 +2665,7 @@
           <ul>
             <li>估值回调与反弹</li>
             <li>Paystack / TaxJar / Bridge / Privy / Metronome</li>
-            <li>AI 客户全球化与 usage billing</li>
+            <li>AI 公司全球化与 usage billing</li>
           </ul>
         </article>
         <article class="signal-group">
@@ -2502,7 +2951,7 @@
       { term: "Tempo", size: "md", category: "finance", meaning: "支撑 streaming payments 的 stablecoin micropayment settlement。", route: "Sessions 2026", count: "promoted official source", boundary: "链路仍带产品发布和可用性边界。" },
       { term: "token theft", size: "md", category: "risk", meaning: "AI 服务欺诈从盗卡扩展到盗 token、薅额度和推理成本滥用。", route: "Sessions 2026 / Radar", count: "3.3M risky sign-ups claim", boundary: "官方指标，需客户或独立数据补强。" },
       { term: "prompt injection", size: "md", category: "risk", meaning: "AI 风险进入 inference path 和 tool calling。", route: "AI Security JD", count: "292 jobs/JD rows", boundary: "JD 是组织信号，不是产品发布。" },
-      { term: "tool misuse", size: "md", category: "risk", meaning: "Agent 调用工具时的滥用成为支付/风控边界问题。", route: "AI Security JD / seller docs", count: "jobs + docs routes", boundary: "需要 incident 或 control case 晋级。" },
+      { term: "tool misuse", size: "md", category: "risk", meaning: "自动化工具被滥用时，支付和风控必须能限制动作并留下责任证据。", route: "AI Security JD / seller docs", count: "jobs + docs routes", boundary: "需要 incident 或 control case 晋级。" },
       { term: "KYC / KYB", size: "md", category: "risk", meaning: "稳定币、钱包和 agent merchant 场景仍要回到身份与商户审核。", route: "docs / JD / regulatory routes", count: "regulatory/risk routes", boundary: "本页不推导监管落地。" },
       { term: "Radar", category: "risk", meaning: "风控从交易末端扩到注册和 usage 实时判断。", route: "Sessions 2026 / Radar docs", count: "promoted official source", boundary: "供应商指标需边界标注。" },
       { term: "Capital underwriting", category: "organization", meaning: "交易数据和 AI/ML 进入融资/授信判断。", route: "JD queue / product docs", count: "jobs/JD rows", boundary: "组织信号，不升级为业务规模结论。" },
@@ -2609,12 +3058,12 @@
           { value: "$1T", label: "2023 用户处理规模，约等于全球 GDP 1%" },
           { value: "$50B", label: "2023 Series I 估值重置；流动性优先于 IPO" },
           { value: "$6.5B+", label: "Series I 融资额，用于员工流动性和税务义务" },
-          { value: "GPT-4", label: "AI 客户压力开始进入 Stripe 叙事背景" }
+          { value: "GPT-4", label: "AI 公司需求开始进入 Stripe 叙事背景" }
         ],
-        business: ["估值回调迫使公司从高估值叙事回到经营质量。", "处理规模成为衡量市场位置的核心代理指标。", "AI 公司开始从客户结构上改变需求密度。"],
+        business: ["估值回调迫使公司从高估值叙事回到经营质量。", "处理规模成为衡量公司体量的核心代理指标。", "AI 公司开始从客户结构上改变需求密度。"],
         technology: ["Revenue suite、Billing、Tax、Radar 的重要性被 AI 公司放大。", "更复杂的价格、用量和全球税务需求开始压到现有对象模型。", "AI 需求成为既有技术栈的压力测试。"],
         impact: "商业推动技术：AI 公司高速上线和全球化，把用量计费、税务、风控、收入核算推到同一个运行面。",
-        majorEvents: ["2023 annual update", "$1T processed volume", "Series I at $50B", "GPT-era AI demand"],
+        majorEvents: ["2023 annual update", "$1T processed volume", "Series I at $50B", "AI companies move into usage billing"],
         refs: ["annual2023", "valuation2023"]
       },
       {
@@ -2631,7 +3080,7 @@
           { value: "profitable", label: "2024 盈利信号强化长期 R&D 投入空间" },
           { value: "share gain", label: "分析师称 Stripe 对 Braintree / Adyen / Fiserv 有份额获取压力" }
         ],
-        business: ["AI 客户增长、企业大客户和国际化共同驱动处理体量。", "市场位置以处理规模、高增长客户覆盖和同业参照共同呈现。", "Bridge 等稳定币动作开始把跨境和新轨道推入公司主线。"],
+        business: ["AI 公司增长、企业大客户和国际化共同驱动处理体量。", "公司体量以处理规模、高增长客户覆盖和同年口径参照共同呈现。", "Bridge 等稳定币动作开始把跨境和新轨道推入公司主线。"],
         technology: ["Usage billing、Revenue Recognition、Tax、Radar 被 AI 产品成本结构重新放大。", "Agent toolkit、MCP、plain-text docs 的前置条件开始出现。", "稳定币能力连接钱包、KYC/KYB、结算和审计栈。"],
         impact: "技术反推商业：AI 产品的 token/event 成本结构，让 Stripe 必须从订阅账单走向更细颗粒的 usage、risk 和 settlement 产品。",
         majorEvents: ["2024 volume acceleration", "Bridge acquisition plan", "AI-company customer pressure", "market-share proxy coverage"],
@@ -2653,7 +3102,7 @@
         ],
         business: ["处理体量、客户数和估值反弹共同支撑“经济基础设施”叙事。", "Privy、Metronome、Bridge/Stablecoin 形成钱包、用量、结算三块拼图。", "AI 公司、稳定币和大客户被放进同一个增长解释里。"],
         technology: ["100,000+ claimable sandboxes 说明开发者接口开始适配 AI coding tools。", "Metronome 把 usage/event rating 变成 AI 产品计费底座。", "Privy / Bridge 把 wallet abstraction、stablecoin orchestration 接进 Stripe stack。"],
-        impact: "商业与技术互推：AI 客户让用量计费和钱包/稳定币有商业必要，并购补齐技术栈后又打开 agent commerce 和 machine payment 的产品空间。",
+        impact: "商业与技术互推：AI 公司让用量计费和钱包/稳定币有商业必要，并购补齐技术栈后又打开 agent commerce 和 machine payment 的产品空间。",
         majorEvents: ["2025 annual letter", "Bridge closed", "Privy acquisition", "Metronome acquisition", "claimable sandboxes"],
         refs: ["annual2025", "valuation2025", "stablecoin"]
       },
@@ -2742,10 +3191,10 @@
     const aiTimelineItems = [
       {
         year: "2023",
-        title: "AI 客户先改变收入系统压力",
-        caption: "AI 公司呈现高增长、全球化、用量波动和风险成本同步出现的客户类型。",
+        title: "AI 公司先把收入运营用到极限",
+        caption: "这类客户增长快、跨境早、用量波动大，计费、税务和风控不能再分开处理。",
         stage: "客户压力",
-        event: "GPT-era AI 公司开始把全球收款、订阅、税务、欺诈和用量计费压力集中压到 Stripe 的既有收入栈。",
+        event: "AI 公司不是只需要收款按钮。它们同时需要全球收款、订阅、税务、欺诈识别和用量计费，Stripe 的既有收入栈因此被更高频地使用。",
         meaning: "客户结构变化推动 Billing、Tax、Radar 和 Revenue suite 的重要性上升。",
         signals: ["AI companies", "usage billing", "tax", "fraud"],
         metrics: [
@@ -2754,9 +3203,9 @@
           { value: "usage", label: "token/event 成本让固定订阅不够用" },
           { value: "risk", label: "假注册和滥用成本开始前移" }
         ],
-        chain: ["交易入口仍以商户网站/API 为主。", "变化发生在价格、订阅、税务、欺诈和收入核算。", "AI 客户把原有商户经营栈推到更高强度。"],
+        chain: ["交易入口仍以商户网站/API 为主。", "变化发生在价格、订阅、税务、欺诈和收入核算。", "AI 公司把原有商户经营栈推到更高强度。"],
         technology: ["Billing / Revenue suite 承接更复杂收入模型。", "Tax / Radar 成为 AI 全球化的默认配套。", "API-first 底座开始适配 AI coding tools 的使用方式。"],
-        impact: "商业先动：AI 客户密度上升，迫使 Stripe 把计费、税务、风控和开发者体验重新包装。",
+        impact: "商业先动：AI 公司把计费、税务、风控和开发者体验放在同一个上线问题里，Stripe 必须把这些能力打包成收入运营方案。",
         refs: ["annual2023", "aiCompanies", "valuation2023"]
       },
       {
@@ -2770,7 +3219,7 @@
         metrics: [
           { value: "$1.4T", label: "2024 处理规模代理值显示主业务仍在增长" },
           { value: "+38%", label: "二级报道口径的处理规模增长" },
-          { value: "share gain", label: "市场位置用份额获取信号表达，不写精确份额" },
+          { value: "scale", label: "只表达同年量级参照，不写精确全球份额" },
           { value: "Bridge", label: "稳定币轨道开始进入战略拼图" }
         ],
         chain: ["商品发现从站内流量扩到 AI surface。", "商品、价格、库存、履约和审批要机器可读。", "支付接口开始和商品目录、商户控制连接。"],
@@ -3620,7 +4069,9 @@
       }
       wordCloudEl.innerHTML = filtered.map((signal) => `
         <button class="${signal.size || ""} ${signal.category === "risk" ? "risk-word" : ""} ${signal.term === activeSignal ? "active" : ""}" data-signal="${signal.term}">
-          ${signal.term}
+          <span class="signal-cell-category">${signal.category === "organization" ? "组织" : signal.category === "risk" ? "风险" : signal.category === "technology" ? "技术" : signal.category === "finance" ? "金融" : "商业"}</span>
+          <span class="signal-cell-term">${signal.term}</span>
+          <span class="signal-cell-note">${signal.route}</span>
         </button>
       `).join("");
       const signal = signalTerms.find((item) => item.term === activeSignal) || signalTerms[0];
@@ -3733,7 +4184,8 @@
 
     sourceEl.innerHTML = Object.entries(sources).map(([id, src]) => `
       <a class="source-link" href="${src.url}" target="_blank" rel="noreferrer">
-        <strong>${id}: ${src.title}</strong>
+        <span class="source-key">${id}</span>
+        <strong>${src.title}</strong>
         <span>${src.note}</span>
       </a>
     `).join("");
