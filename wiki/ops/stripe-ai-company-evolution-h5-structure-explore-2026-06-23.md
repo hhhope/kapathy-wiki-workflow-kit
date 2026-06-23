@@ -188,3 +188,41 @@ the H5 chapter repair, then implement only after the route moves from explore to
 apply. The implementation must also screenshot-read the changed sections; static
 grep is insufficient for this repair because the previous failure kept the
 right nouns while losing the reader path.
+
+## 2026-06-23 Continuation: Superpowers Brainstorming Re-Anchor
+
+The user invoked `$superpowers:brainstorming` and asked to revise the detailed
+design, then inspect why the H5 repeatedly failed to follow that design.
+
+Current count from repo-visible evidence: at least four visible drift rounds.
+
+| Drift round | Evidence | What drifted |
+|---|---|---|
+| Research-logic drift | `docs/superpowers/specs/2026-06-22-stripe-h5-research-logic-redesign.md` | The H5 used market / acquisition / technical / AI source buckets before fixing the business argument. |
+| Visual-atlas scope drift | `wiki/ops/stripe-h5-redesign-drift-retro-2026-06-23.md` and `openspec/changes/refine-stripe-h5-visual-atlas` | The implementation improved atlas visuals and source handles, but did not make the Superpowers redesign's chapter order the acceptance structure. |
+| Language / style patch drift | `openspec/changes/polish-stripe-h5-visual-language` and `openspec/changes/professionalize-stripe-h5-report-visuals` | The work repaired wording, quote style, signal sections, and screenshot smoke issues, but did not re-run a section-by-section reverse outline against the detailed design. |
+| Future / learning chapter drift | `openspec/changes/realign-stripe-h5-future-learning-chapters` | The current H5 ending still lacks the confirmed Chapter 12 future judgment and Chapter 13 learning synthesis. |
+
+The direct cause is now clear:
+
+- Superpowers design artifacts were used as supporting context instead of
+  reader-facing acceptance checklists.
+- OpenSpec changes had adjacent names and scopes, so visual/language repair
+  changes were allowed to proceed while the real design acceptance remained
+  unverified.
+- Verification accepted keyword presence, HTML parse, and screenshot smoke as
+  sufficient even though prior failures kept the right nouns and lost the
+  argument path.
+- The H5 file is oversized, so local patching encouraged card-level fixes
+  instead of reverse-outline validation.
+
+The detailed design was updated in
+`docs/superpowers/specs/2026-06-22-stripe-ai-transaction-control-plane-redesign.md`
+to include:
+
+- a drift review section before implementation guidance;
+- Chapter 12 as future judgment, with L1-L4 and a 2024-2031 folded line chart;
+- Chapter 13 as `我们能学什么`;
+- a visual requirement for the Chapter 12 maturity chart;
+- an explicit rule that screenshots must read back the reader path, not merely
+  prove the page is nonblank or keyword-complete.
