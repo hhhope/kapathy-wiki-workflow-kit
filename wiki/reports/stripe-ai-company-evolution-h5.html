@@ -311,6 +311,115 @@
       border-right: 0;
     }
 
+    .relationship-model {
+      display: grid;
+      grid-template-columns: 0.34fr 1fr;
+      gap: 0;
+      margin-top: 14px;
+      border: 2px solid var(--ink);
+      background: #fff;
+    }
+
+    .model-thesis {
+      display: grid;
+      align-content: center;
+      gap: 10px;
+      padding: 18px;
+      border-right: 2px solid var(--ink);
+      background: #f7f0de;
+    }
+
+    .model-thesis strong {
+      color: var(--ink);
+      font-size: clamp(20px, 2vw, 30px);
+      line-height: 1.1;
+    }
+
+    .model-thesis p {
+      margin-bottom: 0;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .model-rails {
+      display: grid;
+    }
+
+    .model-rail {
+      display: grid;
+      grid-template-columns: 160px 1fr 0.56fr;
+      min-height: 112px;
+      border-bottom: 1px solid var(--ink);
+      background: #fff;
+    }
+
+    .model-rail:last-child {
+      border-bottom: 0;
+    }
+
+    .rail-label {
+      display: grid;
+      align-content: center;
+      gap: 4px;
+      padding: 14px;
+      border-right: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .model-rail.credit .rail-label {
+      background: var(--red);
+    }
+
+    .rail-label span {
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .rail-label strong {
+      font-size: 20px;
+      line-height: 1.1;
+    }
+
+    .rail-label em {
+      color: rgba(255, 255, 255, 0.78);
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .rail-flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      align-items: stretch;
+      border-right: 1px solid var(--ink);
+    }
+
+    .rail-flow span {
+      display: grid;
+      place-items: center;
+      padding: 10px 8px;
+      border-right: 1px solid var(--ink);
+      text-align: center;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .rail-flow span:last-child {
+      border-right: 0;
+    }
+
+    .rail-note {
+      display: grid;
+      align-content: center;
+      padding: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
     .volume-spark {
       display: grid;
       gap: 12px;
@@ -641,16 +750,16 @@
       grid-template-rows: auto auto auto 1fr;
       gap: 8px;
       min-height: 250px;
-      border-top: 6px solid var(--ink);
-      background: #fff;
+      border-top: 0;
+      background: #f3f4f1;
     }
 
     .quote-card q {
       display: block;
       margin: 0;
-      padding: 10px;
-      border: 1px solid var(--ink);
-      background: #fbfbf9;
+      padding: 12px;
+      border-left: 5px solid var(--ink);
+      background: #e5e7eb;
       color: var(--ink);
       font-size: 13px;
       font-weight: 700;
@@ -1414,7 +1523,7 @@
       padding: 14px;
     }
 
-    .word-cloud {
+    .signal-lanes {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 0;
@@ -1423,7 +1532,7 @@
       background: #fff;
     }
 
-    .word-cloud button {
+    .signal-lanes button {
       display: grid;
       gap: 6px;
       min-height: 112px;
@@ -1437,32 +1546,77 @@
       font-weight: 700;
     }
 
-    .word-cloud button.active {
+    .signal-lanes button.active {
       outline: 4px solid rgba(17, 17, 17, 0.14);
       outline-offset: -4px;
       background: #f7f0de;
       color: var(--ink);
     }
 
-    .word-cloud .xl {
+    .signal-lane {
+      display: grid;
+      align-content: start;
+      gap: 8px;
+      min-height: 260px;
+      padding: 12px;
+      border-right: 1px solid var(--ink);
+      background: #fff;
+    }
+
+    .signal-lane:last-child {
+      border-right: 0;
+    }
+
+    .signal-lane h3 {
+      margin: 0 0 4px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--ink);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .signal-lanes .signal-row {
+      min-height: 78px;
+      border: 1px solid var(--ink);
+      border-left: 6px solid var(--green);
+    }
+
+    .signal-lane[data-category="business"] .signal-row {
+      border-left-color: var(--blue);
+    }
+
+    .signal-lane[data-category="finance"] .signal-row {
+      border-left-color: var(--gold);
+    }
+
+    .signal-lane[data-category="risk"] .signal-row {
+      border-left-color: var(--red);
+    }
+
+    .signal-lane[data-category="organization"] .signal-row {
+      border-left-color: var(--ink);
+    }
+
+    .signal-lanes .xl {
       font-size: 14px;
       color: var(--ink);
     }
 
-    .word-cloud .lg {
+    .signal-lanes .lg {
       font-size: 14px;
       color: var(--ink);
     }
 
-    .word-cloud .md {
+    .signal-lanes .md {
       font-size: 14px;
     }
 
-    .word-cloud .risk-word {
+    .signal-lanes .risk-word {
       color: var(--ink);
     }
 
-    .word-cloud .signal-cell-category {
+    .signal-lanes .signal-cell-category {
       width: fit-content;
       padding: 2px 5px;
       border: 1px solid var(--ink);
@@ -1471,13 +1625,13 @@
       font-weight: 900;
     }
 
-    .word-cloud .signal-cell-term {
+    .signal-lanes .signal-cell-term {
       font-size: 15px;
       line-height: 1.2;
       font-weight: 900;
     }
 
-    .word-cloud .signal-cell-note {
+    .signal-lanes .signal-cell-note {
       color: var(--muted);
       font-size: 11px;
       line-height: 1.35;
@@ -1958,7 +2112,7 @@
     .time-spine,
     .rail,
     .map,
-    .word-cloud,
+    .signal-lanes,
     .spark-line {
       border: 2px solid var(--ink);
       border-radius: 0;
@@ -1978,7 +2132,7 @@
 
     .bar-track,
     .bar-fill,
-    .word-cloud button,
+    .signal-lanes button,
     .tag,
     .stage-label,
     .source-id,
@@ -1986,14 +2140,14 @@
       border-radius: 0;
     }
 
-    .word-cloud button,
+    .signal-lanes button,
     button {
       border-color: var(--ink);
       background: #fff;
       color: var(--ink);
     }
 
-    .word-cloud button.active,
+    .signal-lanes button.active,
     button.active {
       border-color: var(--ink);
       background: var(--ink);
@@ -2031,20 +2185,20 @@
       border-top: 6px solid var(--ink);
     }
 
-    .word-cloud {
+    .signal-lanes {
       gap: 0;
     }
 
-    .word-cloud button {
+    .signal-lanes button {
       min-height: 112px;
       border-right: 1px solid var(--ink);
       border-bottom: 1px solid var(--ink);
       text-align: left;
     }
 
-    .word-cloud button.active .signal-cell-category,
-    .word-cloud button.active .signal-cell-term,
-    .word-cloud button.active .signal-cell-note {
+    .signal-lanes button.active .signal-cell-category,
+    .signal-lanes button.active .signal-cell-term,
+    .signal-lanes button.active .signal-cell-note {
       color: #fff;
       border-color: #fff;
     }
@@ -2055,6 +2209,16 @@
     .relationship-card,
     .migration-path .path-card {
       background-color: #fff;
+    }
+
+    .quote-card {
+      background-color: #f3f4f1;
+      border-top-width: 1px;
+    }
+
+    .quote-card q {
+      background: #e5e7eb;
+      border-left: 5px solid var(--ink);
     }
 
     @media (max-width: 1050px) {
@@ -2081,7 +2245,10 @@
       .atlas-grid,
       .time-spine,
       .human-rails,
+      .relationship-model,
+      .model-rail,
       .relationship-steps,
+      .rail-flow,
       .scale-bars,
       .lens-grid,
       .causal-row,
@@ -2098,7 +2265,7 @@
       .validation-grid,
       .evidence-drawer-grid,
       .competition-grid,
-      .word-cloud,
+      .signal-lanes,
       .closing {
         grid-template-columns: 1fr;
       }
@@ -2160,6 +2327,30 @@
         border-right: 0;
       }
 
+      .model-thesis {
+        border-right: 0;
+        border-bottom: 2px solid var(--ink);
+      }
+
+      .rail-label,
+      .rail-flow {
+        border-right: 0;
+        border-bottom: 1px solid var(--ink);
+      }
+
+      .rail-flow {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .rail-flow span:nth-child(3n) {
+        border-right: 0;
+      }
+
+      .signal-lane {
+        border-right: 0;
+        border-bottom: 1px solid var(--ink);
+      }
+
       .scale-bars {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         min-height: 116px;
@@ -2204,7 +2395,7 @@
           <p class="lead">这页从时间维度看 Stripe 如何从支付 API 走向嵌入式支付、嵌入式金融，再进入 Agent 工作流里的交易与信用执行。AI 不是主角，主角仍是商户、平台、用户、卡网络、银行和监管之间的交易关系与信用关系。</p>
         </div>
         <aside class="atlas-card volume-spark" aria-label="Stripe 处理规模增长">
-          <strong>处理规模从 1 万亿到 1.9 万亿美元</strong>
+          <strong>官方处理规模：2023 $1.0T，2025 $1.9T</strong>
           <p class="scale-note">先看 Stripe 自己披露的处理规模。2024 年用二级报道口径连接趋势，不把它当审计值。</p>
           <div class="scale-snapshot" aria-label="Stripe processed volume scale snapshot">
             <div class="scale-bars">
@@ -2221,7 +2412,7 @@
           </div>
           <div class="source-status">
             <div><strong>175</strong><span>已整理 source pack</span></div>
-            <div><strong>1000</strong><span>URL queue，不等于已读结论</span></div>
+            <div><strong>1000</strong><span>候选来源池，结论只取已晋级证据</span></div>
             <div><strong>5</strong><span>本页强引用原文</span></div>
           </div>
         </aside>
@@ -2233,22 +2424,28 @@
         <div><strong>2023-2025</strong><span>AI 公司把用量计费、全球税务、钱包、稳定币和开发者工具一起推到前台。</span></div>
         <div><strong>2026</strong><span>Agent 工作流：商品发现、授权、机器支付、风险和责任链被协议化。</span></div>
       </div>
-      <div class="relationship-rails human-rails" aria-label="交易关系与信用关系双轨">
-        <article class="relationship-card transaction">
-          <strong>一笔生意怎么发生、交付和收尾</strong>
-          <p>这条线看商品怎么被发现，价格怎么表达，谁授权付款，商户怎么履约，钱如何分出去，出问题谁负责。</p>
-          <div class="relationship-steps"><span>发现</span><span>定价</span><span>授权</span><span>履约</span><span>追责</span></div>
-        </article>
-        <article class="relationship-card credit">
-          <strong>价值先给出去，钱后面怎么收回来</strong>
-          <p>这条线看谁能赊、能赊多少、怎么定价、用什么现金流还款，逾期和欺诈风险如何回到系统。</p>
-          <div class="relationship-steps"><span>数据</span><span>授信</span><span>额度</span><span>还款</span><span>再评估</span></div>
-        </article>
+      <div class="relationship-model" aria-label="交易链路与信用链路">
+        <div class="model-thesis">
+          <strong>支付公司的底层不是扣款按钮，而是两套金融链路。</strong>
+          <p>交易链路决定一笔交换如何成立；信用链路决定价值先发生后如何定价、回收和控险。</p>
+        </div>
+        <div class="model-rails">
+          <article class="model-rail transaction">
+            <div class="rail-label"><span>transaction</span><strong>交易链路</strong><em>当下交换</em></div>
+            <div class="rail-flow"><span>需求</span><span>报价</span><span>授权</span><span>履约</span><span>清结算</span><span>争议</span></div>
+            <div class="rail-note">确认交易主体、价格条件、授权凭据、履约结果、资金分配和争议材料。</div>
+          </article>
+          <article class="model-rail credit">
+            <div class="rail-label"><span>credit</span><strong>信用链路</strong><em>时间错配</em></div>
+            <div class="rail-flow"><span>准入</span><span>额度</span><span>定价</span><span>使用</span><span>回收</span><span>复评</span></div>
+            <div class="rail-note">处理授信依据、额度期限、资金用途、还款来源、逾期处置和风险再评估。</div>
+          </article>
+        </div>
       </div>
       <div class="meta-row">
         <span class="pill">内部研究草案</span>
         <span class="pill">时间轴 · 关系线 · 来源原文</span>
-        <span class="pill">不把 1000 条 queue 写成 1000 条结论</span>
+        <span class="pill">1000 条候选来源，结论仅引用已晋级证据</span>
       </div>
     </header>
 
@@ -2386,7 +2583,7 @@
     <section class="panel wide timeline-feature">
       <div class="panel-head">
         <h2>关键转折：Stripe 每次把自己嵌到更深的位置</h2>
-        <p>这条时间轴不是事件列表。它看每个阶段 Stripe 解决了谁的经营问题、补了什么能力、哪些并购补了缺口，以及这些能力怎样在 AI 交易场景里再次被使用。</p>
+        <p>每一阶段都对应一次位置上移：从开发接入，到平台经营，到资金账户，再到 AI 公司收入运营和自动化交易。读这条线，是为了看商业压力如何沉淀成 API、账户、计费、风控、钱包和结算能力。</p>
       </div>
       <div class="timeline-reader">
         <div class="timeline-control">
@@ -2495,20 +2692,20 @@
 
     <section class="panel wide ai-control-section">
       <div class="panel-head">
-        <h2>AI 支付重组：控制点从按钮前移到交易规则</h2>
-        <p>AI 入口把购物、订阅、API 调用和资金动作前移到对话、搜索和自动化工作流里。支付公司的问题不是“让 AI 付款”，而是把授权、预算、商户规则、授信、争议和清结算放回可执行的金融关系里。</p>
+        <h2>AI 支付重组：交易发起权与金融控制权重新分配</h2>
+        <p>AI 应用不会替代支付系统本身，但会改变交易发起和分发的位置。新的竞争集中在五个环节：需求分发、支付凭据、商户系统、结算轨道、风险与信用。Stripe 的应对，是把这些环节重新接入自己的商户、钱包、计费、风控和结算能力。</p>
       </div>
       <div class="ai-flow">
         <div class="ai-reframe">
-          <strong>Stripe 做基础设施，是为了不被压回后台通道。</strong>
-          <p>用户意图可能被 AI 入口拿走，凭据规则可能被卡网络上收，买方关系可能落到钱包和平台，结算路径也可能被稳定币和新协议绕开。Stripe 要守住的位置，是把商户经营对象、买方授权、风险控制和资金结算接回同一套交易规则。</p>
+          <strong>Stripe 的防守点是交易规则层，不是单笔支付通道。</strong>
+          <p>当购买入口、支付凭据、商户经营和结算路径分散到不同玩家手里，真正的竞争不只是费率，而是谁定义授权、保存交易证据、处理争议、承担风控并控制回款。</p>
         </div>
         <div class="control-map" aria-label="AI 支付价值控制点">
-          <article class="control-card"><strong>AI 入口</strong><dl><dt>谁在拿</dt><dd>OpenAI、Google、Microsoft</dd><dt>可能拿走</dt><dd>用户意图、商品发现、购买入口</dd><dt>Stripe 要接住</dt><dd>Checkout、catalog、Agentic Commerce</dd></dl></article>
-          <article class="control-card"><strong>卡网络</strong><dl><dt>谁在拿</dt><dd>Visa、Mastercard</dd><dt>可能拿走</dt><dd>token、授权、争议和网络信任</dd><dt>Stripe 要接住</dt><dd>Issuing、tokens、spending controls</dd></dl></article>
-          <article class="control-card"><strong>钱包和平台</strong><dl><dt>谁在拿</dt><dd>超级 App、平台、钱包</dd><dt>可能拿走</dt><dd>买方凭据、权益、默认支付方式</dd><dt>Stripe 要接住</dt><dd>Link wallets、Privy、Open Issuance</dd></dl></article>
-          <article class="control-card"><strong>新结算轨道</strong><dl><dt>谁在拿</dt><dd>稳定币、x402、MPP</dd><dt>可能拿走</dt><dd>机器支付、跨境、微支付、API 资源购买</dd><dt>Stripe 要接住</dt><dd>Bridge、Tempo、machine payments</dd></dl></article>
-          <article class="control-card"><strong>商户系统</strong><dl><dt>谁在拿</dt><dd>商户 SaaS、PSP 同行</dd><dt>可能拿走</dt><dd>商户运营、税务、计费、风控、对账</dd><dt>Stripe 要接住</dt><dd>Billing、Tax、Radar、Connect</dd></dl></article>
+          <article class="control-card"><strong>需求分发</strong><dl><dt>竞争方</dt><dd>OpenAI、Google、Microsoft</dd><dt>控制环节</dt><dd>商品发现、推荐、购买入口</dd><dt>Stripe 接口</dt><dd>Checkout、catalog、Agentic Commerce</dd></dl></article>
+          <article class="control-card"><strong>支付凭据</strong><dl><dt>竞争方</dt><dd>Visa、Mastercard、钱包</dd><dt>控制环节</dt><dd>token、授权、权益、默认支付方式</dd><dt>Stripe 接口</dt><dd>Issuing、tokens、spending controls、Link</dd></dl></article>
+          <article class="control-card"><strong>商户系统</strong><dl><dt>竞争方</dt><dd>商户 SaaS、PSP 同行</dd><dt>控制环节</dt><dd>商品、价格、税务、计费、履约、对账</dd><dt>Stripe 接口</dt><dd>Connect、Billing、Tax、Revenue suite</dd></dl></article>
+          <article class="control-card"><strong>结算轨道</strong><dl><dt>竞争方</dt><dd>稳定币、x402、MPP</dd><dt>控制环节</dt><dd>跨境、微支付、API 资源购买、实时结算</dd><dt>Stripe 接口</dt><dd>Bridge、Tempo、machine payments</dd></dl></article>
+          <article class="control-card"><strong>风险与信用</strong><dl><dt>竞争方</dt><dd>网络、银行、平台风控系统</dd><dt>控制环节</dt><dd>身份、欺诈、授信、争议、回款</dd><dt>Stripe 接口</dt><dd>Radar、Identity、Capital、Financial Connections</dd></dl></article>
         </div>
         <div class="system-stack" aria-label="AI 时代支付五层结构">
           <article class="system-layer">
@@ -2621,8 +2818,8 @@
 
     <section class="panel wide source-section">
       <div class="panel-head">
-        <h2>关键判断必须能回到来源</h2>
-        <p>这里统一用同一种来源卡：来源号、判断、短引文、支撑范围和边界。1000 条 URL 只是待晋级队列，不能写成已经完成的结论。</p>
+        <h2>引用的作用：给关键判断划边界</h2>
+        <p>下面只放承重判断的短引文。它们支撑“嵌入式金融、受限凭据、信用回收”这些机制判断，不外推为市场规模或采用率。</p>
       </div>
       <div class="evidence-drawer-grid">
         <article class="quote-card"><div class="quote-meta"><span class="source-id">S172</span><span>official product page</span></div><strong>嵌入式金融主线</strong><q>embedding financial services into your platform, including accounts, cards and financing</q><dl><dt>支撑</dt><dd>Stripe 明确把账户、发卡和融资做成平台嵌入能力。</dd><dt>边界</dt><dd>官方产品页，不是独立市场审计。</dd></dl></article>
@@ -2635,10 +2832,10 @@
 
     <section class="panel wide signal-section">
       <div class="panel-head">
-        <h2>证据矩阵：五类信号分开看</h2>
-        <p>这里不做散点关键词。每个信号都按技术接口、商业行为、金融轨道、风险控制和组织能力归类，点击后看它能支撑什么、不能支撑什么。</p>
+        <h2>信号分层：哪些变化已经进入 Stripe 主线</h2>
+        <p>五类信号分开看：技术接口说明可接入性，商业行为说明客户压力，金融轨道说明资金路径，风险控制说明责任边界，组织信号说明 Stripe 是否投入长期能力。</p>
       </div>
-      <div class="word-cloud" aria-label="Stripe AI finance signal cloud">
+      <div class="signal-lanes" aria-label="Stripe AI finance signal lanes">
       </div>
       <div class="signal-panel">
         <div class="mode-buttons signal-filters" aria-label="信号分类筛选">
@@ -2954,13 +3151,13 @@
       { term: "tool misuse", size: "md", category: "risk", meaning: "自动化工具被滥用时，支付和风控必须能限制动作并留下责任证据。", route: "AI Security JD / seller docs", count: "jobs + docs routes", boundary: "需要 incident 或 control case 晋级。" },
       { term: "KYC / KYB", size: "md", category: "risk", meaning: "稳定币、钱包和 agent merchant 场景仍要回到身份与商户审核。", route: "docs / JD / regulatory routes", count: "regulatory/risk routes", boundary: "本页不推导监管落地。" },
       { term: "Radar", category: "risk", meaning: "风控从交易末端扩到注册和 usage 实时判断。", route: "Sessions 2026 / Radar docs", count: "promoted official source", boundary: "供应商指标需边界标注。" },
-      { term: "Capital underwriting", category: "organization", meaning: "交易数据和 AI/ML 进入融资/授信判断。", route: "JD queue / product docs", count: "jobs/JD rows", boundary: "组织信号，不升级为业务规模结论。" },
+      { term: "Capital underwriting", category: "organization", meaning: "交易数据和 AI/ML 进入融资/授信判断。", route: "招聘与产品文档", count: "jobs/JD rows", boundary: "组织信号，不升级为业务规模结论。" },
       { term: "Revenue suite", category: "business", meaning: "订阅、usage、发票、收入确认承接 AI 产品收入复杂度。", route: "annual letter / AI companies page", count: "promoted official source", boundary: "不等同于客户收入效果证明。" },
       { term: "Connect", category: "business", meaning: "平台/marketplace 分账和账户模型是后续 agent commerce 的底座。", route: "docs/source pack", count: "docs rows", boundary: "早期路径需要更强日期证据。" },
       { term: "Treasury", category: "finance", meaning: "Stripe 从收款进入资金账户和企业金融 stack。", route: "Sessions 2026 / docs", count: "docs + newsroom", boundary: "地区和产品可用性需标注。" },
-      { term: "AI Conversation Platform", category: "organization", meaning: "商户操作界面从 dashboard 扩到自然语言任务。", route: "JD queue", count: "jobs/JD rows", boundary: "招聘信号，不是产品发布。" },
-      { term: "Developer Productivity AI", category: "organization", meaning: "AI 也改写 Stripe 内部工程和平台能力。", route: "JD queue", count: "jobs/JD rows", boundary: "不作为用户侧产品结论。" },
-      { term: "Stablecoin Audit", category: "organization", meaning: "稳定币进入审计、财务、监管和控制体系。", route: "JD queue", count: "jobs/JD rows", boundary: "组织能力信号，非审计结果。" },
+      { term: "AI Conversation Platform", category: "organization", meaning: "商户操作界面从 dashboard 扩到自然语言任务。", route: "招聘与 JD 来源", count: "jobs/JD rows", boundary: "招聘信号，不是产品发布。" },
+      { term: "Developer Productivity AI", category: "organization", meaning: "AI 也改写 Stripe 内部工程和平台能力。", route: "招聘与 JD 来源", count: "jobs/JD rows", boundary: "不作为用户侧产品结论。" },
+      { term: "Stablecoin Audit", category: "organization", meaning: "稳定币进入审计、财务、监管和控制体系。", route: "招聘与 JD 来源", count: "jobs/JD rows", boundary: "组织能力信号，非审计结果。" },
       { term: "PaymentIntents", category: "technology", meaning: "支付授权仍是 agent/machine payment 的底层对象之一。", route: "API docs", count: "docs/API rows", boundary: "对象存在不代表 AI 场景已迁移完毕。" },
       { term: "Checkout Sessions", category: "technology", meaning: "Agentic commerce 履约仍复用 checkout/session/webhook 对象。", route: "seller docs / API docs", count: "docs/API rows", boundary: "Preview 字段需要版本标注。" },
       { term: "Accounts v2", category: "technology", meaning: "平台账户模型继续支撑复杂商户/agent 关系。", route: "docs/API rows", count: "docs/API/changelog", boundary: "需要继续挖 changelog。" },
@@ -3870,7 +4067,7 @@
     const scoreEl = document.getElementById("scoreValue");
     const cursorEl = document.getElementById("cursor");
     const sourceEl = document.getElementById("sources");
-    const wordCloudEl = document.querySelector(".word-cloud");
+    const signalMatrixEl = document.querySelector(".signal-lanes");
     const signalDetailEl = document.getElementById("signalDetail");
     const timelineRangeEl = document.getElementById("timelineRange");
     const timelinePillsEl = document.getElementById("timelinePills");
@@ -3944,7 +4141,7 @@
           <p>${item.event}</p>
         </div>
         <div>
-          <h3>证据维度</h3>
+          <h3>证据类型</h3>
           <p>${item.meaning}</p>
           <ul>${item.signals.map((signal) => `<li>${signal}</li>`).join("")}</ul>
         </div>
@@ -4067,16 +4264,34 @@
       if (!filtered.some((signal) => signal.term === activeSignal)) {
         activeSignal = filtered[0]?.term || signalTerms[0].term;
       }
-      wordCloudEl.innerHTML = filtered.map((signal) => `
-        <button class="${signal.size || ""} ${signal.category === "risk" ? "risk-word" : ""} ${signal.term === activeSignal ? "active" : ""}" data-signal="${signal.term}">
-          <span class="signal-cell-category">${signal.category === "organization" ? "组织" : signal.category === "risk" ? "风险" : signal.category === "technology" ? "技术" : signal.category === "finance" ? "金融" : "商业"}</span>
-          <span class="signal-cell-term">${signal.term}</span>
-          <span class="signal-cell-note">${signal.route}</span>
-        </button>
-      `).join("");
+      const categories = [
+        ["technology", "技术接口"],
+        ["business", "商业行为"],
+        ["finance", "金融轨道"],
+        ["risk", "风险控制"],
+        ["organization", "组织能力"]
+      ];
+      const groups = categories
+        .map(([category, label]) => {
+          const rows = filtered.filter((signal) => signal.category === category).slice(0, 5);
+          if (!rows.length) return "";
+          return `
+            <section class="signal-lane" data-category="${category}">
+              <h3>${label}</h3>
+              ${rows.map((signal) => `
+                <button class="signal-row ${signal.term === activeSignal ? "active" : ""}" data-signal="${signal.term}">
+                  <span class="signal-cell-term">${signal.term}</span>
+                  <span class="signal-cell-note">${signal.route}</span>
+                </button>
+              `).join("")}
+            </section>
+          `;
+        })
+        .join("");
+      signalMatrixEl.innerHTML = groups;
       const signal = signalTerms.find((item) => item.term === activeSignal) || signalTerms[0];
       renderSignalDetail(signal);
-      wordCloudEl.querySelectorAll("[data-signal]").forEach((button) => {
+      signalMatrixEl.querySelectorAll("[data-signal]").forEach((button) => {
         button.addEventListener("click", () => {
           activeSignal = button.dataset.signal;
           renderSignals();
