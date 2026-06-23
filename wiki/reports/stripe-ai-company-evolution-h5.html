@@ -993,6 +993,36 @@
       font-size: 18px;
     }
 
+    .path-era {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 10px;
+      padding: 3px 7px;
+      border: 1px solid var(--ink);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .path-card dl {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+
+    .path-card dt {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .path-card dd {
+      margin: 0;
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.42;
+    }
+
     .market-grid {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -2458,54 +2488,54 @@
 
     <section class="panel wide">
       <div class="panel-head">
-          <h2>公司路径：五次位置迁移</h2>
-          <p>Stripe 每次扩张都不是横向加产品，而是把自己嵌到更深的交易位置：先进入开发者接入点，再进入平台经营和资金账户，后来承接 AI 公司的收入运营，最后进入 Agent 工作流里的授权和结算。</p>
+          <h2>2010-2026：五次战略位置迁移</h2>
+          <p>这不是产品清单，而是 Stripe 每一阶段选择服务谁、因此沉淀什么能力、最后占住什么位置。</p>
       </div>
       <div class="path-grid migration-path">
         <article class="path-card">
+          <span class="path-era">2010-2014</span>
           <strong>01 支付 API</strong>
-          <span>把在线收款、测试、错误处理、webhook 和文档做成开发者入口。</span>
-          <ul>
-            <li>战略：从接入摩擦切入，而不是先做完整金融公司。</li>
-            <li>能力：API、SDK、docs、test mode。</li>
-            <li>AI 复用：agents.md、MCP、llms.txt、claimable sandbox。</li>
-          </ul>
+          <dl>
+            <dt>战略选择</dt><dd>从开发者接入摩擦切入，而不是先做完整金融公司。</dd>
+            <dt>能力沉淀</dt><dd>API、SDK、文档、测试环境、错误处理和 webhook。</dd>
+            <dt>成就位置</dt><dd>成为新互联网业务接入支付的默认入口。</dd>
+          </dl>
         </article>
         <article class="path-card">
+          <span class="path-era">2015-2019</span>
           <strong>02 嵌入式支付</strong>
-          <span>Connect、Billing、Radar、Terminal 把支付嵌入平台和商户经营。</span>
-          <ul>
-            <li>战略：用平台客户和订阅客户扩大交易场景。</li>
-            <li>能力：分账、计费、风控、线下入口。</li>
-            <li>AI 复用：agent commerce 仍要回到商户控制、履约和风控。</li>
-          </ul>
+          <dl>
+            <dt>战略选择</dt><dd>服务 marketplace、platform 和 SaaS，让平台客户带来更多商户。</dd>
+            <dt>能力沉淀</dt><dd>Connect、分账、订阅、账户 onboarding、Radar 和 Terminal。</dd>
+            <dt>成就位置</dt><dd>从收款按钮进入商户经营系统。</dd>
+          </dl>
         </article>
         <article class="path-card">
+          <span class="path-era">2020-2022</span>
           <strong>03 嵌入式金融</strong>
-          <span>账户、发卡、融资、身份、税务和数据能力让 Stripe 进入金融经营层。</span>
-          <ul>
-            <li>战略：从交易处理走向资金和合规对象。</li>
-            <li>能力：Treasury、Issuing、Capital、Identity、Tax。</li>
-            <li>AI 复用：钱包、授信、账期、实时风控都有金融底座。</li>
-          </ul>
+          <dl>
+            <dt>战略选择</dt><dd>从交易处理扩到平台资金账户、发卡、融资和合规运营。</dd>
+            <dt>能力沉淀</dt><dd>Treasury、Issuing、Capital、Identity、Tax 和 Financial Connections。</dd>
+            <dt>成就位置</dt><dd>进入平台资金流和信用关系的控制面。</dd>
+          </dl>
         </article>
         <article class="path-card">
+          <span class="path-era">2023-2025</span>
           <strong>04 AI 公司收入运营</strong>
-          <span>AI 公司把全球化、用量计费、税务、欺诈、token 成本和开发者工具放到同一个上线问题里。</span>
-          <ul>
-            <li>战略：不是卖 AI 功能，而是承接 AI 公司的收入、税务和风险系统。</li>
-            <li>能力：Revenue suite、Metronome、Radar、Tax。</li>
-            <li>AI 复用：实现成本下降后，计费和评估设计变得更重要。</li>
-          </ul>
+          <dl>
+            <dt>战略选择</dt><dd>承接 AI 公司高增长、跨境、用量波动和欺诈成本同步出现的收入问题。</dd>
+            <dt>能力沉淀</dt><dd>Revenue suite、Tax、Radar、Metronome、claimable sandbox 和稳定币能力。</dd>
+            <dt>成就位置</dt><dd>从支付服务商变成 AI 公司收入与风险运营底座。</dd>
+          </dl>
         </article>
         <article class="path-card">
+          <span class="path-era">2026</span>
           <strong>05 Agent 工作流</strong>
-          <span>商品发现、凭据、权益、MCP 调用、协议支付和责任链进入机器可执行流程。</span>
-          <ul>
-            <li>战略：谁定义更好用的 API 和对象模型，谁更容易成为第一接入点。</li>
-            <li>能力：Link wallets、Issuing、MCP、x402、MPP。</li>
-            <li>AI 复用：Agent 不是替人付款，而是让交易边界需要重新设计。</li>
-          </ul>
+          <dl>
+            <dt>战略选择</dt><dd>把自动化交易接回商户系统、买方凭据、授权证据和结算规则。</dd>
+            <dt>能力沉淀</dt><dd>Link wallets、Issuing、MCP、Agentic Commerce、MPP、x402 和 Bridge。</dd>
+            <dt>成就位置</dt><dd>竞争点从支付处理上移到交易规则层。</dd>
+          </dl>
         </article>
       </div>
     </section>
@@ -2582,8 +2612,8 @@
 
     <section class="panel wide timeline-feature">
       <div class="panel-head">
-        <h2>关键转折：Stripe 每次把自己嵌到更深的位置</h2>
-        <p>每一阶段都对应一次位置上移：从开发接入，到平台经营，到资金账户，再到 AI 公司收入运营和自动化交易。读这条线，是为了看商业压力如何沉淀成 API、账户、计费、风控、钱包和结算能力。</p>
+        <h2>选择如何变成能力：Stripe 的阶段转折</h2>
+        <p>这条线回答两个问题：Stripe 每一阶段选择服务谁，因此必须补出什么能力。开发者入口带来 API 和文档；平台客户逼出 Connect、分账和风控；资金账户把发卡、融资、税务和身份接进来；AI 公司放大用量计费和全球收入运营；Agent commerce 继续复用钱包、凭据、协议支付和风险证据。</p>
       </div>
       <div class="timeline-reader">
         <div class="timeline-control">
