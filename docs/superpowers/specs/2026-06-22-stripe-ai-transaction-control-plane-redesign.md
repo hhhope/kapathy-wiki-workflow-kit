@@ -113,11 +113,11 @@ Stripe 的公司路径要同时放入这两条线。Payments、Checkout、Connec
 
 推荐文案：
 
-> 这页讲 Stripe 过去十五年如何一步步进入交易链路更深的位置：先解决开发者接入支付的问题，再解决平台如何管理商户、分账、订阅、税务和风控，后来继续进入发卡、融资、钱包、稳定币和用量计费。AI 之后，变化不是“AI 成了金融主体”，而是交易发起位置变了：订单可能从对话、搜索和自动化任务开始，但授权、履约、风控、清结算和责任仍要回到商户、平台、银行、卡网络和监管规则里。
+> 看 Stripe，不能只数它上线了多少产品。更关键的是，它一路往交易链路更深处走：先帮开发者把收款接进产品，再帮平台管理商户、分账、订阅、税务和风控，后来又进入发卡、融资、钱包、稳定币和用量计费。今天新的购买入口可能是对话、搜索或自动化任务，但 Stripe 要守住的仍然是交易能不能被授权、履约、风控、清算，并且出问题能追责。
 
 改写后的首屏判断：
 
-> Stripe 的主线不是产品越来越多，而是服务对象越来越复杂：从开发者，到平台商户，到全球化经营，再到 AI 公司和自动化交易场景。每一次客户问题变复杂，Stripe 都把新的金融动作做成对象、API、风控规则和结算能力。AI 阶段要看的不是“让 AI 付款”，而是谁能把商品、价格、授权、预算、信用、风险和清结算变成机器可执行、可审计、可追责的交易流程。
+> Stripe 的主线不是“支付 + AI”，而是从接入层进入规则层。它每服务一类更复杂的客户，就把新的交易动作沉淀成对象、API、计费、风控、凭据和结算能力。新入口出现后，谁能把商品、价格、授权、预算、信用、风险和清结算组织成一套可执行流程，谁就更接近交易规则层。
 
 首屏要让读者立刻知道：
 
@@ -268,23 +268,45 @@ BVP `State of the Cloud 2024` 给我们的不是标题，也不是配色，而�
 
 #### 4.2 图应该怎么画
 
-这一章必须用一张“战略拓扑时间图”，不能再用七行并列表。
+这一章必须用一张“按年份 × 生态位层”的战略地图，不能再做七行并列表，也不能做表格感很重的拓扑表。
 
 图形要求：
 
 - 横轴：2010-2026。
-- 纵轴：Stripe 的位置层级，至少包括 `开发接入`、`平台经营`、`收入/金融运营`、`买方凭据/钱包`、`新结算轨道`、`Agent 交易/信用执行`。
-- 粗主线：开发者入口 -> 平台商户 -> 收入运营 / 金融运营 -> Agent 交易基础设施。
-- 横向能力线：风险合规、全球化本地化、发卡钱包、新金融轨道，以不同颜色穿插在主线周围。
-- 节点：产品、并购、协议、JD 或指标事件。节点必须落在具体年份和能力层上。
+- 纵轴：生态位层，而不是抽象战略名。至少包括 `开发者接入`、`平台商户经营`、`收入 / 风险运营`、`买方凭据 / 钱包`、`资金 / 结算轨道`、`协议 / 规则层`。
+- 粗主线：用一条明显的路径表示 Stripe 从开发者接入 -> 平台经营 -> 收入 / 风险运营 -> 买方凭据 / 钱包 -> 资金 / 结算轨道 -> 协议 / 规则层。
+- 横向补位：用散点或短横线表示风险合规、全球化本地化、发卡钱包、新金融轨道，不再做成大块表格。
+- 节点：产品、并购、协议、JD 或指标事件。节点必须落在具体年份和生态位层上。
 - 并购节点必须叠加在这张图上或与它联动，而不是另开一排“大事卡片”。
 - 箭头：只能表示“依赖 / 复用 / 推高位置”，不能把所有战略画成同时并行。
+- 视觉语言：更接近“并购补位：按年份和能力层看”的散点/路线图，而不是二维表格。主线像路线，补位像能力节点，AI 复用像回流箭头。
 
 读者必须能一眼看出：
 
 - 哪些战略是前后递进：开发者入口、平台商户、收入运营、Agent 交易基础设施。
 - 哪些战略是横向补位：风险合规、全球化本地化、并购补缺口。
 - 哪些战略是在 AI 阶段交叉复用：计费、钱包、凭据、稳定币、风险证据、协议支付。
+
+#### 4.3 视觉草案：战略生态位地图
+
+建议直接把本章画成 `战略生态位地图`：
+
+| 生态位层 | 2010-2014 | 2015-2019 | 2020-2022 | 2023-2025 | 2026 |
+|---|---|---|---|---|---|
+| 开发者接入 | API、SDK、docs、test mode | webhook、CLI | docs/API 扩展 | agent toolkit、llms.txt | MCP / skills |
+| 平台商户经营 | online payment | Connect、marketplace、SaaS | platform finance | seller catalog / approval | Agentic Commerce |
+| 收入 / 风险运营 | payment object | Billing、Radar | Tax、Identity、Revenue suite | token theft、usage billing | approval / dispute evidence |
+| 买方凭据 / 钱包 | card-on-file | issuing foundation | Issuing、spending controls | Link wallets、Privy | task credential / agent wallet |
+| 资金 / 结算轨道 | card rails | payouts / balance | Treasury、Capital | Bridge、stablecoin | Tempo / machine settlement |
+| 协议 / 规则层 | API versioning | webhook / idempotency | compliance objects | ACS / preview API | AP2、ACP、MPP、x402、HTTP 402 |
+
+图上不需要显示成表格。表格只是数据骨架。H5 应该画成层级路线图：
+
+- 每个生态位层是一条水平泳道。
+- Stripe 主线用粗线跨层上移。
+- 并购、产品和协议是节点，不是卡片。
+- 节点颜色区分 `主干递进`、`横向补位`、`AI 复用`。
+- 悬浮或点击节点显示：服务对象、解决的问题、沉淀能力、AI 时代复用。
 
 ### 5. Stripe 为什么坚持做难事：API、规范和领域模型
 
@@ -358,7 +380,7 @@ Stripe 做基础设施的动因，在于 AI 时代会把支付价值拆到不同
 | OpenAI / Google / Microsoft 等 AI 入口 | 用户意图、商品发现、购买入口、推荐分发 | Stripe 退回幕后处理通道，只拿支付处理价值 |
 | Visa / Mastercard 等网络 | token、发卡规则、争议、授权和网络级信任 | Stripe 的授权和风险能力被卡网络上收 |
 | 钱包 / 超级 App / 平台 | 用户凭据、权益、会员关系、默认支付方式 | Stripe 失去买方关系和权益分发位置 |
-| 稳定币 / x402 / 新协议 | 机器支付、跨境结算、微支付、API 资源购买 | Stripe 的结算轨道被新协议绕开 |
+| 稳定币基础设施 / 链上网络 / 新协议生态 | 机器支付、跨境结算、微支付、API 资源购买 | Stripe 的结算轨道可能被新轨道分流；x402、MPP、AP2 这类协议是规则层，不是竞争主体 |
 | 商户 SaaS / PSP 同行 | 商户运营、税务、计费、风控、对账 | Stripe 被压回费率竞争 |
 
 所以 Stripe 必须把自己从“支付处理商”推进到“交易基础设施商”。它要把支付行业已有能力做成一套可被 AI 入口调用、可被商户运营承接、可被金融系统审计的基础设施：
@@ -455,7 +477,7 @@ Stripe 的对应动作：
 
 要补上的核心点：
 
-当 Agent 真正替用户或企业花钱时，支付问题不只是“能不能扣款”，而是授权、真实性、责任、争议、清算和风控如何落地。Google AP2、OpenAI/Stripe ACP、Stripe MPP、x402、Visa Intelligent Commerce、Mastercard Agent Pay 都在争夺这个层。
+当 Agent 真正替用户或企业花钱时，支付问题不只是“能不能扣款”，而是授权、真实性、责任、争议、清算和风控如何落地。Google AP2、OpenAI/Stripe ACP、Stripe MPP、x402、Visa Intelligent Commerce、Mastercard Agent Pay 都与这个层有关，但要区分玩家和规则：Visa / Mastercard / Stripe / Coinbase / OpenAI / Google 是生态玩家，AP2 / ACP / MPP / x402 / HTTP 402 是协议或规则表达，不应画成竞争方。
 
 协议层要解释的对象：
 
@@ -515,13 +537,34 @@ Stripe 的对应动作：
 - 政策/监管/央行类基础设施：它们决定边界，不是商业竞争对手。
 - PSP / gateway / acquirer / processor：Adyen、Worldpay、Checkout.com、Global Payments 等，是支付处理和企业商户竞争层。
 - 钱包和超级 App：PayPal、Block/Square、Apple Pay、Shopify Payments 等，是商户、消费者和生态入口竞争层。
-- AI 入口和协议层：OpenAI、Google、Microsoft、Anthropic/Claude ecosystem、AP2、ACP、MCP/A2A。它们可能不直接做清结算，但会争夺商品发现、意图捕获和 Agent 工具入口。
+- AI 入口层：OpenAI、Google、Microsoft、Anthropic/Claude ecosystem。它们可能不直接做清结算，但会争夺商品发现、意图捕获和 Agent 工具入口。
+- 协议 / 规则层：AP2、ACP、MPP、x402、HTTP 402、MCP/A2A。它们不是普通竞争方，而是生态玩家用来表达授权、工具调用、支付要求、争议和结算的规则格式。
 - 发卡/权益/凭据层：Visa Intelligent Commerce、Mastercard Agent Pay、Stripe Issuing、虚拟卡、tokenized credential、联名权益和平台卡。它们争夺的是“用户授权和支付关系”。
 - 新金融轨道：stablecoin、crypto wallet、machine payment、agent commerce protocol 相关公司，是 AI 时代新增竞争层。
 
 这一章回答：
 
-> Stripe 不是在同一个平面上和所有公司竞争。它的策略是从支付处理层往开发者接口、商户经营、发卡/授权、收入运营、风险和新金融轨道上移，把竞争从费率变成系统能力。AI 时代的关键问题，是 Stripe 能否在 OpenAI/Google 这类入口、Visa/Mastercard 这类网络、Adyen/PayPal 这类支付同行、以及稳定币/钱包新轨道之间，保住自己的接口层位置。
+> Stripe 不是在同一个平面上和所有公司竞争。它的策略是从支付处理层往开发者接口、商户经营、发卡/授权、收入运营、风险和新金融轨道上移，把竞争从费率变成系统能力。AI 时代的关键问题，是 Stripe 能否在 OpenAI/Google 这类入口、Visa/Mastercard 这类网络、Adyen/PayPal 这类支付同行、Coinbase/x402 facilitator 这类协议和稳定币生态、以及钱包平台之间，保住自己的接口层位置。
+
+#### 7.1 生态位图怎么画
+
+竞争章节不要用“竞争方 / 控制环节 / Stripe 接口”的卡片表格。改成一张 `AI 支付生态位图`：
+
+| 生态位 | 生态玩家 | 协议 / 规则 | Stripe 位置 |
+|---|---|---|---|
+| 商品发现 / 购买入口 | OpenAI、Google、Microsoft、Meta、商户平台 | catalog feed、agent skill、seller approval | Agentic Commerce、Checkout、catalog integration |
+| 商户经营系统 | Shopify、商户 SaaS、PSP / gateway / acquirer | order、inventory、tax、invoice、webhook | Connect、Billing、Tax、Radar、Revenue suite |
+| 凭据 / 授权网络 | Visa、Mastercard、Apple Pay、wallets、platform cards | token、SPT、spending controls、pre-authorization | Issuing、Link wallets、tokens、Privy |
+| 协议 / 规则层 | Google、OpenAI、Stripe、Coinbase、standards ecosystem | AP2、ACP、MPP、x402、HTTP 402、MCP | support / participate / route, not own every rule |
+| 资金 / 结算轨道 | banks、card networks、stablecoin infra、chains、facilitators | card settlement、USDC、on-chain settlement、PaymentIntent | Bridge、stablecoin payments、Tempo、machine payments |
+| 风险 / 责任层 | networks、banks、regulators、fraud vendors、platform trust systems | disputes、KYC/KYB、audit trail、risk rules | Radar、Identity、review、dispute evidence |
+
+图形要求：
+
+- 中心不是 `AI`，中心是 `交易能否成立`。
+- 每一层画出：谁控制入口 / 规则 / 数据 / 资金；Stripe 在这一层靠什么能力接入。
+- AP2、MPP、x402 只放在 `协议 / 规则层`，不能出现在 `竞争方` 标签里。
+- x402 的准确关系：Coinbase 文档称 x402 是 Coinbase developed 的 open payment protocol；Stripe docs 是支持 x402 machine payments，并通过 PaymentIntent、crypto deposit address 和 facilitator 完成支付生命周期。因此 H5 应写 `Stripe 支持 / 接入 x402`，不能写 `x402 竞争方`，也不能写成 `Stripe 独家推出 x402`。
 
 ### 8. 并购与能力补位
 

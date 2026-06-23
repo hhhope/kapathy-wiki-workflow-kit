@@ -287,3 +287,47 @@ Reader-facing copy implication:
 - Avoid labels that read like internal note-taking, such as standalone `lane`,
   `证据维度`, `壁垒读法`, or broad lines that do not say whether they are a
   problem, conclusion, or evidence.
+
+## 2026-06-23 Continuation: Ecosystem Position Map Re-Anchor
+
+The user flagged three new problems after seeing the implemented H5:
+
+- The hero sentence still sounded AI-generated and over-explained the AI turn.
+- The `哪些战略造就了 Stripe` visual still looked like a table, even though it
+  now encoded main trunk / horizontal fill / AI reuse.
+- The competition section incorrectly treated `x402` as a competitor. x402 is
+  a protocol / rules-layer object, not a market actor.
+
+Corrected framing:
+
+- The hero should say the business line first: Stripe moved from payment access
+  to transaction-rule depth. AI should enter only as a change in purchase
+  entry, not as the subject of the paragraph.
+- The strategy visual should use the same design logic as the acquisition
+  scatter: year on one axis, ecosystem layer on the other, with product /
+  acquisition / protocol nodes. It should not be rendered as a heavy grid table.
+- The ecosystem-position chapter must separate actors from rules:
+  - actors: OpenAI, Google, Microsoft, Visa, Mastercard, wallets, banks, PSPs,
+    stablecoin infrastructure providers, Coinbase facilitators, Stripe;
+  - rules / protocols: AP2, ACP, MPP, x402, HTTP 402, MCP/A2A;
+  - Stripe position: support, participate, route, package, or control depending
+    on layer.
+
+Source boundary for x402:
+
+- Coinbase docs describe x402 as a Coinbase-developed open payment protocol.
+- Stripe docs describe x402 payments as a machine-payment route where Stripe
+  handles deposit addresses and captures PaymentIntents after on-chain
+  settlement.
+- Therefore H5 wording should be `Stripe supports / integrates x402` and
+  should not label x402 as a competitor or as Stripe's exclusive protocol.
+
+Required next visual direction:
+
+- Replace the table-like strategy topology with `战略生态位地图`.
+- Replace the competition cards with `AI 支付生态位图`.
+- Use layers: purchase entry, merchant operating system, credential /
+  authorization network, protocol / rules layer, funding / settlement rails,
+  risk / liability layer.
+- Use edges to show what Stripe connects across layers, not just isolated
+  cards.
