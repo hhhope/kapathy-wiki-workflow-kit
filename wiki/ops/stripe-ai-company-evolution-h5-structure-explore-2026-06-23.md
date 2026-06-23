@@ -357,7 +357,7 @@ Corrected framing:
   wall. The visual must show concrete fragmentation on the left, Stripe domain
   objects in the middle, and developer default / platform embedding /
   migration cost / AI reuse on the right.
-- Section 6 should be `交易入口外移，金融控制层重组`. The reader should first
+- Section 6 should be `入口外移，落地规则变重`. The reader should first
   see that AI moves the transaction starting point into conversation, search,
   and automated tasks; then see why authorization, credentials, merchant
   fulfillment, settlement, risk, disputes, and responsibility still require a
@@ -380,6 +380,32 @@ Required next visual direction:
   settled, and defended.
 - Section 12: folded maturity curves from 2024 to 2031. Curves should separate
   technical access, authorization / liability, regulation / network rules, and
-  business outcomes. Stripe should be placed on the control-layer capabilities
-  that make those curves converge, not summarized as `embedded finance enters
-  agent workflow`.
+  business outcomes. Stripe should be placed on the transaction landing
+  capabilities that make those curves converge, not summarized as `embedded
+  finance enters agent workflow`.
+
+## 2026-06-23 Continuation: Remove Abstract Control-Layer Wording
+
+The user rejected the sentence:
+
+`Stripe 要把已有对象、API、计费、风控、发卡、钱包、稳定币和信用能力，变成 AI 入口可调用、金融系统可承认的控制层`
+
+Why it drifted:
+
+- It stacks capability nouns and ends with `控制层`, which reads like generated
+  strategy prose.
+- It does not show the business scene: an order starts somewhere new, then must
+  still land in merchant accounting, authorization, tax, risk, settlement,
+  dispute evidence, and credit recovery.
+- It names AI as the interface too early, instead of naming the transaction
+  steps Stripe must remain inside.
+
+Corrected wording principle:
+
+- Avoid `AI 入口可调用`, `金融系统可承认`, and generic `控制层` when writing
+  reader-facing conclusions.
+- Use concrete transaction landing points: merchant ledger, pricing / tax,
+  authorization credential, risk decision, settlement, dispute evidence, and
+  credit repayment.
+- Express Stripe's position as `交易落地的位置`, not as an abstract platform
+  layer.
