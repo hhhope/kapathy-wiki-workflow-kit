@@ -13,8 +13,10 @@ artifact_type: report-gate-review
 - Target: `wiki/reports/agent-merchant-144-421-access-guide.md`
 - Source: `wiki/sources/agent-merchant-opening-product-144-421-2026-06-15.md`
 - Feishu source/trunk URL: `https://my.feishu.cn/docx/Q5TCdjeIXoKO1DxuTYNc5Iasnuf`
-- This turn's operation: updated the repo draft as the Feishu access-guide trunk candidate.
-- Feishu write boundary: no Feishu update or copy was performed in this turn; writing back requires explicit confirmation of overwrite versus new copy.
+- 2026-06-23 draft operation: updated the repo draft as the Feishu access-guide trunk candidate.
+- 2026-06-23 Feishu operation: after user confirmed "新建一个副本", created a new Feishu copy.
+- New Feishu copy URL: `https://www.feishu.cn/docx/PY1edrP3woApWOxwLfCcst7Ongg`
+- Feishu overwrite boundary: the original `Q5TC...` document was not modified.
 
 ## Article Intent Contract
 
@@ -57,14 +59,14 @@ artifact_type: report-gate-review
 | Reference output shape | PASS for repo draft: Feishu trunk was fetched and its access-guide shape was preserved while updating incorrect 421 field口径。 |
 | Voice quality | PASS |
 | Judgment ownership | PASS: 未替用户确认合规材料最终清单、分账比例或飞书覆盖策略。 |
-| Publish gate | PARTIAL: repo draft updated; Feishu write intentionally not performed without overwrite/new-copy confirmation。 |
+| Publish gate | PASS for new-copy creation: user explicitly selected 新建副本; original Feishu source document was not overwritten. |
 
 ## Residual Risks
 
 1. 合规准入资料 2 至 6 的最终必传清单仍需合规/姚世杰确认。
 2. 委托划扣授权书的协议位置和法人授权表述仍需合规或法务确认。
 3. 资料已在会员创建/修改阶段上传时，产品开通审核是否可直接复用，需要产品/运营确认。
-4. 本次未写回飞书；飞书正文仍可能保留旧的 `bankType` 和技术支持字段，需用户确认后再覆盖或复制新文档。
+4. 原始飞书 `Q5TC...` 文档未被覆盖，仍可能保留旧的 `bankType` 和技术支持字段；后续如需替换原文档，需要单独确认覆盖操作。
 
 ## Verification Evidence
 
@@ -73,4 +75,6 @@ artifact_type: report-gate-review
 | Feishu read | `lark-cli docs +fetch --doc https://my.feishu.cn/docx/Q5TCdjeIXoKO1DxuTYNc5Iasnuf --format pretty` returned the source trunk title and body. |
 | Repo source update | `wiki/sources/agent-merchant-opening-product-144-421-2026-06-15.md` records the 2026-06-23 supplemental口径。 |
 | Repo draft update | `wiki/reports/agent-merchant-144-421-access-guide.md` now uses the Feishu trunk and updated 421 supplement rules. |
-| Feishu write | Not executed in this turn. |
+| Feishu create | Created new document with `lark-cli docs +create --title "代运营商户协议支付 + 余额分账产品接入指引（主干版）"`. |
+| New Feishu URL | `https://www.feishu.cn/docx/PY1edrP3woApWOxwLfCcst7Ongg` |
+| Feishu read-back | `lark-cli docs +fetch --doc https://www.feishu.cn/docx/PY1edrP3woApWOxwLfCcst7Ongg --format pretty` returned the title, `9915999`, 不传 `bankType`, 不传技术支持字段, 421 补充资料上传规则, 验收清单, and 待确认事项. |
