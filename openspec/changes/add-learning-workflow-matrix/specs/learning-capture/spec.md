@@ -1,6 +1,6 @@
 # learning-capture Specification
 
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Learning capture SHALL classify learning level before deep work
 

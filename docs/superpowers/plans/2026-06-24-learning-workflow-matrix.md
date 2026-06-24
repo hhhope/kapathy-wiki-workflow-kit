@@ -203,7 +203,7 @@ Create `openspec/changes/add-learning-workflow-matrix/specs/learning-capture/spe
 ```markdown
 # learning-capture Specification
 
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Learning capture SHALL classify learning level before deep work
 
