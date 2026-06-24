@@ -53,6 +53,48 @@ Open Code Review 不是 LangGraph 项目。
 - 未发现 LangGraph / Python graph runtime 依赖；其“agent”是 Go 编排的
   LLM tool-use loop。
 
+## `ocr` 入口和规范分层
+
+`ocr` 不是一个独立脚本文件，也不是一个单点规范文件。它的入口和 review
+规范分散在几层：
+
+命令入口：
+
+- npm 包入口：`bin/ocr.js`，负责解析平台二进制并启动 native executable。
+- Go CLI 入口：`cmd/opencodereview/main.go`。
+- `review` 命令实现：`cmd/opencodereview/review_cmd.go`。
+- `review` 命令参数：`cmd/opencodereview/flags.go`，包括 `--from`、`--to`、
+  `--commit`、`--format`、`--audience`、`--background`、`--model`、
+  `--concurrency`、`--preview`、`--rule`、`--tools` 等。
+
+review 规范 / 约束来源：
+
+- agent 任务模板：`internal/config/template/task_template.json`，定义
+  `MAIN_TASK`、`PLAN_TASK`、`MEMORY_COMPRESSION_TASK`、`REVIEW_FILTER_TASK`、
+  `RE_LOCATION_TASK` 等阶段。
+- prompt 规范：`internal/config/template/prompts/*.md`，分别约束主 review、
+  plan、filter、relocation、memory compression 的输入输出行为。
+- 工具规范：`internal/config/toolsconfig/tools.json` 和 `internal/tool/*.go`，
+  定义 `file_read`、`file_find`、`file_read_diff`、`code_search`、
+  `code_comment`、`task_done` 的可用边界。
+- 文件类型规则映射：`internal/config/rules/system_rules.json`，按路径或文件
+  类型选择规则。
+- 规则文档：`internal/config/rules/rule_docs/*.md`，包括 default、Java、
+  TS/JS/React、MyBatis XML、package/build/yaml/workflow、Rust、C/C++ 等
+  专项规则。
+- 文件准入和过滤：`internal/config/allowlist/supported_file_types.json`、
+  `internal/config/allowlist/default_exclude_patterns.json`、`internal/agent/preview.go`。
+- 输出结构：`internal/model/review.go` 和 `cmd/opencodereview/output.go`。
+- 行号重定位：`internal/diff/resolver.go` 和 `re_location` 相关 prompt。
+- agent / plugin 集成说明：`skills/open-code-review/SKILL.md`、
+  `plugins/open-code-review/commands/review.md`、`.codex-plugin/plugin.json`、
+  `.claude-plugin/plugin.json`。
+
+所以这里的“规范”不是只有代码质量那一点。代码质量规则只是 rule docs
+中的一层；真正可迁移到本地 `cr-agent` 的，是“确定性准入 / 规则匹配 /
+专用工具 / 模型评论 / deterministic relocation / filter / 结构化输出”的整套
+review contract。
+
 ## 核心设计
 
 README 的主线是 `Deterministic Engineering × Agent Hybrid`：
