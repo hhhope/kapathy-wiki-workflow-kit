@@ -23,7 +23,7 @@ type: intake
 ## Focus
 
 - 检查 `learning-capture` skill 和相关 agent / OpenSpec 资产是否已经覆盖这些要求。
-- 判断当前问题是规范缺口、执行缺口，还是两者都有。
+- 判断当前问题属于学习规范 / 流程缺口，还是单次执行缺口。
 - 不直接修改 skill 或 agent 行为；如果需要行为变更，后续走 OpenSpec change。
 
 ## Working Hypotheses
@@ -31,7 +31,7 @@ type: intake
 - 现有 learning capture 已有 source kind、topic anchor、score、adoption boundary
   等字段，但对 `input -> processing -> output -> value judgment` 的说明合同不够硬。
 - `openspec-explore` 的自由探索姿态可能与本仓库对学习输出的可追溯要求存在张力。
-- 本轮 OCR repo 学习暴露的问题更像“学习结果解释层缺失”，不只是少读了一个文件。
+- 本轮 OCR repo 学习暴露的问题更像“学习流程规范缺失”，解释层缺失只是其中一部分。
 
 ## Open Questions
 
@@ -45,6 +45,19 @@ type: intake
 缺口判断和候选修复路径。
 
 ## Findings
+
+### User Correction / Reframing
+
+用户进一步澄清：不应主要把这次问题归因到 agent 单次执行，而是他一直缺少一套
+“学习这件事情”的规范和流程。
+
+这改变了诊断重心：
+
+- OCR repo 学习不是根因，只是暴露缺口的样本。
+- 根因不是“某次输出漏了一个章节”，而是学习流程没有先定义清楚：
+  输入如何分解、source 如何分层、产出如何组织、价值如何判断、什么时候停止、
+  什么时候进入下一轮学习或 OpenSpec。
+- `Learning Explanation Contract` 应被看成学习流程中的输出解释层，而不是完整流程本身。
 
 ### Existing Coverage
 
@@ -87,24 +100,25 @@ learned、local usefulness、adoption boundary、next target。它没有强制�
 
 ### Runtime Failure Mode
 
-本轮 OCR repo 学习暴露的失败方式：
+本轮 OCR repo 学习暴露出的流程缺失样本：
 
 - 回答先给了技术栈判断和对 `cr-agent` 的帮助，但没有先声明输入拆解：
   README、go.mod、package.json、CLI entry、agent loop、rules、prompt、tools、
   output schema。
 - 后续补了代码质量能力，但仍让用户误以为“规范只有这一点”。
 - 真实对象应是整套 review contract，而不是某个 code-quality rule。
-- 这属于输出解释层失败：source grounding 做了，但没有把 grounding 转成用户可见的
-  `input -> output` map。
+- 这说明学习流程缺少一个先行阶段：当材料复杂时，先声明学习对象、输入分解、
+  输出切片和价值判断维度，再进入正文结论。
 
 ### Skill / Agent Assessment
 
-`learning-capture` skill 有问题，但不是入口路由问题。
+`learning-capture` skill 的入口路由基本成立，但它还不是完整的学习流程规范。
 
 - 路由层基本成立：什么时候触发、什么时候不触发、按什么 source kind 分模块。
 - score/admission 层基本成立：repo/README 学习已有 admission gate 和 scorecard。
 - 输出复用层基本成立：reader-facing output 有 learning-use-map。
-- 缺的是 durable learning note 和聊天答复的解释合同。
+- 缺的是学习执行流程：如何拆输入、如何组织中间判断、如何决定输出形态、如何说明
+  价值、如何在篇幅不足时拆成多轮。
 
 `openspec-explore` 也有张力：它强调自由探索、没有固定输出，而本仓库的学习线程
 需要可追溯输出。对于学习 / 治理 / agent 自进化线程，不能完全沿用“summary
@@ -115,7 +129,8 @@ optional”。如果探索对象是学习机制本身，至少应留下 trace，
 
 后续如果做成 OpenSpec change，建议范围是：
 
-- 新增或修改 `learning-capture` reference，定义 `Learning Explanation Contract`。
+- 新增或修改 `learning-capture` reference，定义 `Learning Workflow Contract`，
+  其中包含 `Learning Explanation Contract` 作为输出解释层。
 - 对 75+ deep-read、复杂 repo、批量来源、或会影响 skill / agent / OpenSpec 的学习，
   强制输出：
   - `Input Inventory`：读了什么、没读什么、source grounding 状态。
@@ -124,6 +139,8 @@ optional”。如果探索对象是学习机制本身，至少应留下 trace，
   - `Derivation Map`：每个输出从哪些输入和判断步骤来。
   - `Value Judgment`：核心价值、评分理由、扣分项、local transfer path。
   - `Boundary`：不复用、不晋升、待验证或待 OpenSpec 的部分。
+- 增加 `Stop / Continue Rule`：当学习材料多、输出会超篇幅、或价值判断需要拆解时，
+  先告诉用户需要分解，而不是压缩成一个过度概括的结论。
 - 更新 pressure scenarios，加入 OCR 这种 repo-learning case：
   “用户追问规范是不是只有一点时，系统必须能回放入口文件、规范分层、推导链和
   价值边界。”
