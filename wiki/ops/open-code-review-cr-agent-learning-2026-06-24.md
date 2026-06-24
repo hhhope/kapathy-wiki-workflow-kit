@@ -93,6 +93,40 @@ Open Code Review 对我们的补强点主要是工程化 executor，而不是替
 7. review filter phase：对模型 comments 再做一次过滤，降低误报。
 8. JSON output / agent audience：为上层 agent 提供稳定机器输出，而不是只给人类 UI。
 
+## 代码质量能力
+
+Open Code Review 有代码质量相关能力，而且是它最直接可复用的部分之一。
+它不是只做 diff 工程化，也内置了一组按文件类型匹配的 review rules。
+
+内置通用维度：
+
+- correctness：逻辑正确性、边界条件、异常处理、并发线程安全；
+- security：SQL injection、XSS、敏感信息、权限校验；
+- performance：N+1 查询、循环内查询、大数据无分页、资源释放；
+- maintainability：命名、可读性、架构风格、重复代码；
+- test coverage：关键路径和边界条件测试覆盖。
+
+语言 / 文件类型专项：
+
+- Java：拼写、死代码、if 条件、边界检查、布尔表达式、NPE、switch
+  fall-through、数据库循环查询、N+1、分页、线程安全；
+- TypeScript / JavaScript / React：重复代码、注释、硬编码、`var`、
+  `==`、`any`、空值检查、嵌套三元、Hooks、useEffect cleanup、render
+  side effect、innerHTML / eval / sensitive data；
+- MyBatis mapper / DAO XML：SQL 条件、JOIN 条件、动态 SQL、语法错误、
+  全表扫描、大查询无分页、重复子查询、`${}` 注入风险；
+- package / build / yaml / workflow / Rust / C / C++ 等也有独立规则文档。
+
+这里对 `cr-agent` 的转化方式应该是：
+
+- 把 OCR 的 code-quality output 接到 `cr-technical-review`；
+- 每条 finding 进入 `cr-issues`，带 path、line、evidence、severity、rule
+  category；
+- 代码质量问题不能直接改写 `cr-gate`，除非命中本地 gate 的阻断条件，例如
+  critical security、生产风险、缺少验证证据；
+- 对低置信度、纯风格、上下文不足的问题，要保持 candidate / conditional，
+  不要污染 release CR 结论。
+
 ## 不直接复用的部分
 
 - 不把它当 LangGraph 或状态机框架学习。
