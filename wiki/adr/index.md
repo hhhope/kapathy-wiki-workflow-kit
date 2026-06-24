@@ -50,6 +50,7 @@ artifact_type: index
 - [ADR-0031 Root Capability Extraction Boundary](0031-root-capability-extraction-boundary.md)
 - [ADR-0033 Wiki React / Eval / Apply / OpenSpec 边界](0033-wiki-react-eval-apply-openspec-boundary.md)
 - [ADR-0034 README Capability Map Is Project Description](0034-readme-capability-map-is-project-description.md)
+- [ADR-0035 Visual Reference Source Is Style Source, Not Content Source](0035-visual-reference-style-source-not-content-source.md)
 
 ## 非目标
 
