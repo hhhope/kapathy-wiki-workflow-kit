@@ -40,7 +40,7 @@ Routing ownership:
 
 ## Pressure Scenarios
 
-### Scenario: reference image source-role drift
+### Positive Scenario: reference image source-role drift
 
 - Input or situation shape: user asks for three image-model knowledge cards
   based on a current article and provides old hand-drawn images as references.
@@ -53,11 +53,11 @@ Routing ownership:
   OpenSpec change.
 - Expected output or non-output: prompt/script does not reuse old reference
   topics as new content unless the user explicitly asks for that.
-- Promotion boundary: targeted negative prompts are repair tools only after
-  observed generation drift.
+- Promotion or non-promotion boundary: targeted negative prompts are repair
+  tools only after observed generation drift.
 - Proof boundary: text replay proves route behavior, not final image quality.
 
-### Scenario: Codex CLI image artifact has no local file
+### Negative Scenario: Codex CLI image artifact has no local file
 
 - Input or situation shape: user says "directly generate files" for image-model
   output in Codex CLI.
@@ -71,11 +71,11 @@ Routing ownership:
   this OpenSpec change.
 - Expected output or non-output: no "generated PNG file" claim; prompt md
   includes reference paths, source-role map, prompt, and verification checklist.
-- Promotion boundary: this does not declare a Codex CLI bug root cause or API
-  implementation fix.
+- Promotion or non-promotion boundary: this does not declare a Codex CLI bug
+  root cause or API implementation fix.
 - Proof boundary: local credential/artifact evidence is runtime-specific.
 
-### Scenario: valid delivery capability exists
+### Positive Scenario: valid delivery capability exists
 
 - Input or situation shape: selected mode is image-model and a valid local
   artifact export path or Images API credential is available.
@@ -85,8 +85,8 @@ Routing ownership:
 - Repo-visible artifact: `.codex/skills/visual-agent/SKILL.md`.
 - Expected output or non-output: local file claim is allowed only after delivery
   capability is verified.
-- Promotion boundary: valid credentials do not remove public-report, Feishu, or
-  visual verification gates.
+- Promotion or non-promotion boundary: valid credentials do not remove
+  public-report, Feishu, or visual verification gates.
 - Proof boundary: this change does not test a live successful Images API call.
 
 ## RED Baseline

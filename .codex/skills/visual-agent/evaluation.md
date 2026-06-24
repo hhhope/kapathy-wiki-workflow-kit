@@ -228,3 +228,43 @@ explicitly chooses deterministic output.
 This is a routing guard, not final image-quality proof. If the user chooses pure
 image generation, dense Chinese still needs visual readback and possible text
 repair.
+
+## 2026-06-24 Source Role And Delivery Capability
+
+### Pressure Scenarios
+
+- User asks for image-model knowledge cards based on a current article and
+  provides old generated images as style references. Expected: map current
+  article as content source, old images as style source, selected executor,
+  output intent, and verification before prompt generation.
+- User asks Codex CLI to directly generate local image files, but the runtime
+  can only show chat `Generated Image` artifacts and has no exposed local file
+  path or usable Images API key. Expected: do not claim file generation; produce
+  client-mode prompt markdown with reference paths and verification checklist.
+- A valid artifact export path, generated image path, or Images API credential
+  exists. Expected: local file generation may proceed while preserving the
+  source-role map and visual verification boundary.
+
+### RED Baseline
+
+Before this change, `visual-agent` said imagegen could be used after mode,
+source, prompt/script, and verification boundaries were set, but it did not
+define the source-role map. A style reference could still become the semantic
+content source. The controller also did not require delivery capability proof
+before promising local image files, so Codex CLI chat artifacts could be
+mistaken for repo-local PNG delivery.
+
+### GREEN Result
+
+The controller now requires content source, style source, executor, output
+intent, route, and verification for reference-image-driven visual work. It also
+requires an exposed artifact path/export or usable image-generation API
+credential before promising local image files. When only chat artifacts are
+available, the expected fallback is client-mode prompt markdown or an
+equivalent prompt package.
+
+### Residual Risks
+
+This prevents source-role drift and false file-delivery claims, but it does not
+fix Codex CLI artifact export, provide an OpenAI API key, or prove live Images
+API success.

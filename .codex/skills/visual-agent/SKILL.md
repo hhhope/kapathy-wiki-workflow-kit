@@ -81,6 +81,37 @@ image-mode pressure, not strong evidence for deterministic rendering. Do not
 start HTML/CSS/SVG/browser-screenshot production for that request unless the
 user explicitly chooses deterministic output after the mode fork.
 
+## Source Roles
+
+For reference-image-driven visual work, map source roles before prompt/script
+generation:
+
+- content source: current article, draft, markdown, oral brief, or user input
+  that owns the message.
+- style source: reference images that only provide layout, composition, palette,
+  texture, density, and visual grammar unless the user explicitly asks to reuse
+  their content.
+- executor: image model, hybrid overlay, deterministic renderer, whiteboard, or
+  another production tool.
+
+The route or visual brief must state what each output communicates, which
+current content section it comes from, which style source only supplies visual
+grammar, the selected route, and what must be verified after generation. Do not
+repair source-role confusion with brittle forbidden-noun lists unless an actual
+generated output already drifted and needs a targeted repair pass.
+
+## Delivery Capability
+
+Before promising repo-local image files for `image_model` or image-model visual
+layers, verify that delivery is possible through an exposed artifact export/path
+or a usable image-generation API credential. Codex login tokens are not OpenAI
+Platform image API keys unless image-generation scope is verified.
+
+If the current runtime can only show a chat `Generated Image` artifact and
+cannot expose a local file, do not claim file generation. Produce client-mode
+prompt markdown or an equivalent prompt package with reference image paths,
+source-role map, copyable prompt, and verification checklist.
+
 ## Routes
 
 Named visual workers are child routes, not entry points, unless the user is
