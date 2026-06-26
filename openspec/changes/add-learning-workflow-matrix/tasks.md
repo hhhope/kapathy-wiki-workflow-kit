@@ -7,6 +7,6 @@
 - [x] Add checker tests before checker implementation.
 - [x] Implement `scripts/check_learning_record.py`.
 - [x] Add checker fixtures under `scripts/examples/`.
-- [ ] Update pressure scenarios and evaluation evidence.
-- [ ] Run focused tests.
-- [ ] Run behavior asset and repo health checks.
+- [x] Update pressure scenarios and evaluation evidence.
+- [x] Run focused tests.
+- [x] Run behavior asset and repo health checks.

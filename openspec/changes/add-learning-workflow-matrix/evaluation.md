@@ -31,16 +31,56 @@ RED result: FAIL. The old wording cannot route the approved matrix.
 
 ## GREEN Result
 
-Planned GREEN evidence commands:
+Focused checks:
 
 ```bash
-python3 -m pytest tests/test_learning_capture_consolidation.py tests/test_learning_record_checker.py -q
+PYTHONPATH=. .venv-taxonomy/bin/pytest tests/test_learning_capture_consolidation.py tests/test_learning_record_checker.py -q
+```
+
+Result:
+
+```text
+7 passed in 4.51s
+```
+
+Checker fixtures:
+
+```bash
+python3 scripts/check_learning_record.py scripts/examples/learning-record-l2-valid.yaml
+python3 scripts/check_learning_record.py scripts/examples/learning-record-l3-missing-proof-boundary.yaml
+```
+
+Result:
+
+- L2 valid fixture exited `0` with no output.
+- L3 missing proof-boundary fixture exited `1` and printed `missing required field: proof_boundary`.
+
+Behavior asset gate:
+
+```bash
 python3 scripts/check_behavior_assets.py
+```
+
+Result: exited `1` only because unrelated active changes fail the existing repository gate. The failures are listed under `Residual Risks`; no `add-learning-workflow-matrix` behavior-asset error was reported.
+
+Repo health gate:
+
+```bash
 python3 scripts/repo_health_check.py
 ```
 
-Planned manual replay result: each pressure scenario above must be updated
-with observed GREEN behavior before implementation is claimed complete.
+Result: exited `1` because of pre-existing draft skill runtime surface failures and the same unrelated behavior-asset evaluation failures. The failures are listed under `Residual Risks`; no new failure for `add-learning-workflow-matrix` was reported.
+
+Manual replay:
+
+| Case | Result |
+|---|---|
+| positive technical OCR learning | GREEN: controller links levels, learning types, research methods, evidence strength, output contract, and distinguishes technical learning from code-quality promotion |
+| positive Stripe research | GREEN: L3 level, company-case type, source queue, evidence matrix, saturation, and proof-boundary references exist |
+| positive public writing | GREEN: public-writing reference exists and states learning notes are not publish-ready without citation surface |
+| positive governance workflow | GREEN: OpenSpec and behavior-asset promotion boundary remains explicit |
+| negative should-not-trigger quick lookup | GREEN: existing no-learning rule remains in `SKILL.md` |
+| negative should-not-trigger raw fetch | GREEN: existing raw-fetch / `weixin-reader` rule remains in `SKILL.md` |
 
 ## Prior-Art / Common-Rule Dedupe
 
@@ -82,7 +122,7 @@ Rejects:
 - The checker validates structure, not judgment correctness.
 - Public citation verification remains a separate future capability.
 - Parent gate preservation evidence: public report readiness remains owned by the public-report gate and is not replaced by `learning-capture`.
-- Unrelated checker drift observed:
+- Unrelated behavior-asset checker drift observed:
   - `ERROR missing_required_section openspec/changes/initialize-llm-wiki-seed-repo/evaluation.md: Missing required evaluation section: ## Pressure Scenarios`
   - `ERROR missing_required_section openspec/changes/initialize-llm-wiki-seed-repo/evaluation.md: Missing required evaluation section: ## RED Baseline`
   - `ERROR missing_required_section openspec/changes/initialize-llm-wiki-seed-repo/evaluation.md: Missing required evaluation section: ## GREEN Result`
@@ -97,3 +137,7 @@ Rejects:
   - `ERROR weak_replay_evidence openspec/changes/initialize-llm-wiki-seed-repo/evaluation.md: Replay evidence does not mention: proof boundary`
   - `ERROR missing_prior_art_dedupe openspec/changes/initialize-llm-wiki-seed-repo/evaluation.md: Behavior-asset change requires prior-art/common-rule dedupe evidence. Missing: ## Prior-Art / Common-Rule Dedupe, Scanned:, Owns:, References:, Rejects:`
   - `ERROR missing_evaluation openspec/changes/realign-stripe-h5-redesign-sections: Behavior-asset change requires evaluation.md.`
+- Unrelated repo health drift observed:
+  - `FAIL draft-skill-runtime-surface` for existing `skills-drafts/account-skills/**/SKILL.md` files.
+  - `FAIL skill-evaluation-evidence` for `openspec/changes/initialize-llm-wiki-seed-repo`.
+  - `FAIL behavior-asset-evaluation` for `openspec/changes/initialize-llm-wiki-seed-repo` and `openspec/changes/realign-stripe-h5-redesign-sections`.
