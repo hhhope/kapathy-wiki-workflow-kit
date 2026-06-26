@@ -1,0 +1,15 @@
+learning_level: L3
+learning_type: Company Case
+methods_used:
+  - process tracing
+input_inventory:
+  - annual letters
+research_reconstruction_model:
+  object: Stripe
+evidence_matrix:
+  - claim_id: C1
+    status: promoted
+    evidence_ids: [S1]
+value_judgment: Capability accumulated.
+output_transformation_plan:
+  article_intent_contract: Explain the path.
