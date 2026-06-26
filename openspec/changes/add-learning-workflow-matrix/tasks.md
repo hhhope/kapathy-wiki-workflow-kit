@@ -2,7 +2,7 @@
 
 - [x] Create OpenSpec change skeleton and spec delta.
 - [x] Record RED baseline pressure scenarios before semantic skill edits.
-- [ ] Add learning matrix reference files under `.codex/skills/learning-capture/references/`.
+- [x] Add learning matrix reference files under `.codex/skills/learning-capture/references/`.
 - [ ] Update `.codex/skills/learning-capture/SKILL.md` as a compact controller.
 - [ ] Add checker tests before checker implementation.
 - [ ] Implement `scripts/check_learning_record.py`.
