@@ -39,6 +39,9 @@ def test_learning_capture_controller_links_matrix_references_and_stays_compact()
 
     assert "references/levels.md" in text
     assert "references/learning-types.md" in text
+    assert "references/research-methods.md" in text
+    assert "references/evidence-strength.md" in text
     assert "references/output-contract.md" in text
+    assert "references/source-queue.md" in text
     assert "references/public-writing-method.md" in text
     assert len(text.splitlines()) <= 140
