@@ -77,6 +77,20 @@ short abstracts, or one-off digestion with no local reuse intent.
 | Writing, visual, output-shape, structure, or method example | `references/example-reference.md` |
 | Unclear source or mixed source | `references/routing.md` |
 
+## Learning Matrix Routing
+
+For non-trivial learning requests, classify level and type before deep work:
+
+1. Load `references/levels.md` to choose L0/L1/L2/L3.
+2. Load `references/learning-types.md` to choose technical, business,
+   company-case, industry-trend, output-expression, or governance learning.
+3. For L2/L3, load `references/research-methods.md`,
+   `references/evidence-strength.md`, and `references/output-contract.md`.
+4. For L3 source pools, load `references/source-queue.md`.
+5. For reader-facing articles, H5, PPT, or public reports, load
+   `references/public-writing-method.md` after learning capture; do not treat
+   learning notes as publish-ready output.
+
 ## References
 
 - Routing: `references/routing.md`

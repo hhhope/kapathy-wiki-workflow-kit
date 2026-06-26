@@ -31,3 +31,14 @@ def test_active_manifests_do_not_require_retired_readme_skill() -> None:
     combined = "\n".join(path.read_text(encoding="utf-8") for path in active_paths)
 
     assert ".codex/skills/readme-learning-capture" not in combined
+
+
+def test_learning_capture_controller_links_matrix_references_and_stays_compact() -> None:
+    skill = Path(".codex/skills/learning-capture/SKILL.md")
+    text = skill.read_text(encoding="utf-8")
+
+    assert "references/levels.md" in text
+    assert "references/learning-types.md" in text
+    assert "references/output-contract.md" in text
+    assert "references/public-writing-method.md" in text
+    assert len(text.splitlines()) <= 140

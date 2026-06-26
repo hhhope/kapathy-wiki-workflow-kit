@@ -44,3 +44,13 @@ Use these scenarios when validating `learning-capture`.
 | User provides a GitHub README for reuse | Load `learning-capture`, route to repo/README module |
 | User provides an output-shape example | Load `learning-capture`, route to example/reference module |
 | User asks for an English public README update | Keep the target artifact English-first |
+
+## Learning Matrix Scenarios
+
+| Scenario | Expected behavior |
+|---|---|
+| User asks what OpenCodeReview teaches local `cr-agent` | Trigger `learning-capture`, classify as technical L2, distinguish architecture/tooling from code-quality claims |
+| User asks for Stripe-style company path research with source queue | Trigger `learning-capture`, classify as company-case L3, use source queue, evidence matrix, and proof boundary |
+| User asks to turn research into H5/public article/PPT | Use learning capture first, then public-writing method; do not claim publish-ready without citation surface |
+| User asks whether a learning insight should change a skill or AGENTS | Classify as governance/agent workflow, preserve OpenSpec and behavior-asset gates |
+| User asks a latest-fact lookup with no local reuse intent | Do not trigger learning capture |
