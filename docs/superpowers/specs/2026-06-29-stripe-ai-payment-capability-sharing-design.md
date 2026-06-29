@@ -1,455 +1,826 @@
-# Stripe AI Payment Capability Sharing Design
+# Stripe AI 支付能力建设分享设计稿
 
-## Route
+## 0. 这次重写解决什么问题
 
-Route: `$superpowers:brainstorming` -> `writing-method-composer` -> public report
-gate -> visual route.
+上一版失败点：
 
-This is a design spec for a future H5/share draft. It is not an H5
-implementation, Feishu draft, or review-ready public artifact.
+- 用英文写，用户无法直接审。
+- 写成了方法登记表，没有写成分享设计稿。
+- 章节太泛，只说“第 2 章讲为什么看 Stripe，第 3 章讲五层能力，第 4 章讲能力累积”，没有细到每章到底怎么讲。
+- `writing-method-composer` 的方法论没有进入内容，只停留在文件里的 schema。
 
-Confirmed user decisions:
+本版修正：
 
-- Target audience: about 80 people.
-- Target direction: use Stripe to explain how we should understand payment and
-  financial capability building in the AI era.
-- Rejected direction: a Stripe company biography or a generic "Stripe is strong"
-  case study.
-- Core repair: LinkedIn and JD must stay as evidence. LinkedIn maps current
-  people capability. JD maps capability-building intent.
+- 全中文。
+- 每一章都写清楚：章节任务、开场句、核心判断、展开顺序、屏幕内容、证据用法、不能怎么写。
+- 把方法论显性落到内容里：**主线问题 -> 证明模块 -> 分析框架 -> 表达方式 -> 证据边界 -> 听众带走的判断**。
+- 重点展开第 2/3/4 章，因为这三章决定整场分享能不能立住。
 
-## Writing Method Contract
+## 1. 写作方法契约
 
-```yaml
-target_artifact:
-  kind: h5_share
-  audience: "80-person internal sharing audience"
-  delivery_surface: h5
-reader_decision:
-  reader_needs_to_understand_or_decide: >
-    AI-era payment competition is not mainly about adding an AI checkout
-    feature. It is about building financial transaction capabilities that can
-    make authorization, risk, settlement, responsibility, and audit executable
-    by software.
-  non_goals:
-    - "Do not make Stripe a hero biography."
-    - "Do not claim Stripe will certainly win AI payments."
-    - "Do not turn source quantity into the story."
-mainline:
-  question: "How should we understand payment and financial capability building in the AI era through Stripe?"
-  thesis: >
-    AI payment is not about letting an Agent click a payment button. It is about
-    turning financial rules, authorization, risk controls, settlement, and
-    responsibility boundaries into a transaction control plane that software can
-    call, limit, audit, and settle. Stripe matters because its long company path
-    accumulated many of those capabilities before the AI wave made them more
-    visible.
-  reader_takeaway: >
-    AI lowers feature implementation cost, but raises the cost of financial
-    design: rules, responsibility, risk, audit, and cross-party settlement.
-  primary_frameworks:
-    - company_evolution_case
-    - trend_report
-    - capability_gap_analysis
-proof_modules:
-  - module_id: "sample_selection"
-    article_position: "body"
-    proof_task: "Explain why Stripe is a valid sample for observing AI-era payment infrastructure."
-    analysis_frameworks:
-      - source_layering
-      - process_tracing
-    expression_frameworks:
-      - layered_reveal
-      - contrast_table
-    required_evidence:
-      - Stripe product/docs/newsroom
-      - public company scale claims
-      - AI payment and agent commerce product signals
-    l_level: "L2"
-    proof_boundary: "Proves Stripe is a useful observation sample, not a guaranteed winner."
-  - module_id: "ai_payment_capability_framework"
-    article_position: "turning_point"
-    proof_task: "Define the five capability layers needed for AI-era payment."
-    analysis_frameworks:
-      - capability_gap_analysis
-      - source_layering
-    expression_frameworks:
-      - layered_reveal
-      - contrast_table
-    required_evidence:
-      - transaction intent examples
-      - authorization and identity examples
-      - risk and settlement examples
-      - responsibility and audit examples
-    l_level: "L3"
-    proof_boundary: "Framework for analysis, not an audited market taxonomy."
-  - module_id: "stripe_capability_accumulation"
-    article_position: "body"
-    proof_task: "Show that Stripe's AI-era positioning extends from accumulated payment infrastructure capabilities."
-    analysis_frameworks:
-      - process_tracing
-      - source_layering
-    expression_frameworks:
-      - timeline
-      - layered_reveal
-    required_evidence:
-      - dated product launches
-      - company scale milestones
-      - acquisitions or capability gap closures
-      - AI/agent/stablecoin payment moves
-    l_level: "L3"
-    proof_boundary: "Shows capability accumulation; does not prove causal inevitability."
-  - module_id: "people_capability_map"
-    article_position: "evidence_panel"
-    proof_task: "Map what kind of people and expertise Stripe has assembled around this capability stack."
-    analysis_frameworks:
-      - people_background_mapping
-      - source_layering
-    expression_frameworks:
-      - contrast_table
-    required_evidence:
-      - LinkedIn current employee backgrounds
-      - role clusters
-      - prior company and domain experience
-    l_level: "L2"
-    proof_boundary: "Supports capability profile; does not independently prove strategy success."
-  - module_id: "hiring_intent"
-    article_position: "evidence_panel"
-    proof_task: "Show what capabilities Stripe is still building or reinforcing."
-    analysis_frameworks:
-      - capability_gap_analysis
-      - source_layering
-    expression_frameworks:
-      - contrast_table
-    required_evidence:
-      - Stripe JD pages
-      - team names
-      - role requirements
-      - location or seniority patterns
-    l_level: "L2"
-    proof_boundary: "Indicates capability investment intent; not proof of shipped product outcome."
-source_roles:
-  content_sources:
-    - "Existing repo Stripe H5 specs and H5 report"
-  evidence_sources:
-    - "Stripe first-party docs, newsroom, annual letters, product pages"
-    - "LinkedIn people profiles and role clusters"
-    - "Stripe job descriptions"
-    - "Secondary media and analyst material with source boundaries"
-  style_references:
-    - "WeChat RICE/KANO skill article as method-expression reference only"
-  excluded_sources:
-    - "Unsupported claims that only prove source volume"
-collaboration_mode:
-  id: "h5_share_contract_visual_route"
-  stages:
-    - contract
-    - public_report_gate
-    - visual_route
-    - source_learning
-    - draft_or_asset_plan
-quality_gates:
-  required_checkers:
-    - "Section objective review"
-    - "Evidence role review"
-    - "Visual mode review"
-  downstream_gates:
-    - public-report-quality-gate
-    - visual-agent
-```
+### 1.1 目标不是讲 Stripe 传记
 
-## Recommended Frame
+这场 80 人分享的目标不是：
 
-Use the capability reconstruction frame.
+> Stripe 很强，Stripe 做了很多产品，Stripe 现在也在做 AI。
 
-Do not make the structure:
+目标是：
 
-> Stripe company history -> Stripe products -> Stripe AI products -> lessons.
+> 借 Stripe 这个案例，讲清楚 AI 时代支付和金融能力建设到底在变什么。
 
-Use this structure instead:
+所以 Stripe 在这篇里不是主角本身，而是一个高质量观察样本。真正主角是：
 
-> AI changes financial transaction capability requirements -> Stripe is a useful
-> sample -> Stripe's history proves the capability stack was accumulated over
-> time -> people and hiring evidence show the organizational capability behind
-> the stack -> lessons for our own financial capability design.
+> AI 时代，金融交易能力如何从“人手动操作”转向“软件在规则内执行”。
 
-The headline argument:
+### 1.2 全篇主线
 
-> Stripe is the case. AI-era payment capability building is the subject.
+一句话主线：
 
-## Chapter Map
+> AI 支付不是让 Agent 替人点支付按钮，而是把授权、身份、风控、资金流、清结算、责任和审计做成一套软件可以调用、限制、追踪和结算的金融交易控制平面。Stripe 值得看，是因为它过去十几年一直在把支付复杂性沉淀成 API、对象、规则、风控、账务和结算能力。
 
-### 1. AI Payment Is Often Misread
+这句话要贯穿全文。每个章节都必须回到它。
 
-Reader job: break the shallow frame.
+### 1.3 读者最后要带走什么
 
-Core claim:
+听众听完后，应该能带走三个判断：
 
-> The important question is not whether an Agent can click pay. The important
-> question is whether software can initiate transactions inside bounded,
-> auditable, risk-controlled financial rules.
+1. **AI 支付的核心不是入口变化，而是交易能力重构。**
+   入口可以从网站、App、收银台变成对话、搜索、Agent 或自动化任务，但真正难的是后面的授权、风控、结算和责任。
 
-Visual shape:
+2. **Stripe 的 AI 价值不是突然冒出来的 AI 功能，而是长期金融基础设施能力的延伸。**
+   API-first、Connect、Billing、Radar、Tax、Identity、Issuing、Capital、stablecoin、wallet、agent commerce 是一条能力累积线。
 
-- left: human clicks checkout
-- right: software acts inside rules
-- middle: authorization, limits, risk, settlement, audit
+3. **我们要学的不是 Stripe 的某个产品，而是金融系统的关系设计能力。**
+   谁能做什么、用谁的钱、在什么规则内、出错谁负责、证据怎么留存，这些才是 AI 时代金融系统的长期门槛。
 
-### 2. Why Stripe Is the Sample
+### 1.4 方法论怎么用在这篇里
 
-Reader job: understand why Stripe is a valid observation object, not just a
-famous company.
+这篇文章采用四个方法模块：
 
-Core claim:
-
-> Stripe is worth studying not because it launched AI features, but because it
-> has long occupied critical transaction-chain positions: developer access,
-> merchant operations, platform split payment, subscription billing, risk,
-> identity, settlement, stablecoin, and now Agent-facing transaction entry.
-
-Talk track:
-
-1. Start with the common misunderstanding: AI payment sounds like an Agent
-   paying on behalf of a user.
-2. Reframe the sample question: which company already touches the rules,
-   identity, money movement, and responsibility boundaries behind payment?
-3. Place Stripe across the transaction chain, from developer integration to
-   merchant operations and AI-era transaction entry.
-4. State the evidence boundary: this makes Stripe a high-quality sample, not a
-   guaranteed winner.
-
-Visual shape:
-
-```text
-developer access
-  -> merchant operations
-  -> platform split payment
-  -> subscription / usage billing
-  -> risk / identity
-  -> settlement / stablecoin
-  -> agent transaction entry
-```
-
-Chapter acceptance:
-
-- The chapter must answer "why this sample" before "what Stripe did."
-- It must not read like a company introduction.
-- It must include a proof boundary.
-
-### 3. The Five-Layer AI Payment Capability Framework
-
-Reader job: get the reusable method.
-
-Core claim:
-
-> AI payment is a shift from direct human operation to software agents executing
-> transactions inside rules. That requires five layers of financial capability.
-
-Five layers:
-
-| Layer | Question It Answers | What To Explain |
+| 方法模块 | 用在哪 | 作用 |
 |---|---|---|
-| Transaction intent | What is the buyer trying to accomplish? | Search, compare, order, renew, replenish, procure, or trigger a task. |
-| Authorization and identity | Who allowed the action, for whom, and within what boundary? | User, company, platform, sub-account, one-time approval, standing approval, budget. |
-| Rules and risk | Under what conditions can the transaction proceed or be blocked? | Limits, fraud, misuse, compliance, refund, dispute, policy exceptions. |
-| Money movement and settlement | Where does money come from, where does it go, and how is it reconciled? | Funding source, split payment, merchant settlement, cross-border, stablecoin, reconciliation. |
-| Responsibility and audit | Who is accountable when something goes wrong? | User, merchant, platform, Agent provider, payment provider, logs, evidence, recovery path. |
+| 公司演进分析 | 第 2、4 章 | 看 Stripe 如何一步步积累能力，而不是按年份流水账。 |
+| 能力分层框架 | 第 3 章 | 把 AI 支付拆成五层能力，让听众获得可复用框架。 |
+| 证据分层 | 全篇 | 区分官方产品事实、规模指标、人员画像、招聘意图、媒体解读和未来判断。 |
+| 组织能力画像 | 第 5、6 章 | 用 LinkedIn/JD 说明能力不是产品清单，而是人、团队和投入结构。 |
 
-Reusable formula:
+表达上使用四种形式：
 
-```text
-AI payment capability = intent + authorization + rules + money movement + responsibility
-```
-
-Talk track:
-
-1. Define the difference between "payment action" and "transaction capability."
-2. Walk through the five layers in order.
-3. For each layer, name the failure mode if it is missing.
-4. Only after the framework is clear, bring Stripe back as the company that has
-   accumulated pieces of the stack.
-
-Visual shape:
-
-- A five-layer control-plane diagram.
-- Each layer has one question, one failure mode, and one Stripe evidence handle.
-
-Chapter acceptance:
-
-- This chapter must be understandable without Stripe product names.
-- It must become the audience's reusable framework.
-- It must not collapse into a Stripe product catalog.
-
-### 4. How Stripe Accumulated the Five Layers
-
-Reader job: see that the AI-era position is accumulated, not improvised.
-
-Core claim:
-
-> Stripe's AI payment position is not a sudden AI feature. It extends from a
-> long accumulation of programmable payment, merchant, risk, billing, settlement,
-> and developer-interface capabilities.
-
-Use a capability timeline instead of a flat history.
-
-| Era | What Stripe Solved | Capability Accumulated | AI-Era Reuse |
-|---|---|---|---|
-| Developer payment access | Make online payment easier to integrate. | API, SDK, docs, dashboard, webhook, test mode. | Agents and developers still need programmable transaction interfaces. |
-| Platform and merchant operations | Support platforms, marketplaces, subscriptions, and offline/online operations. | Connect, Billing, Radar, Terminal, merchant operating model. | Agent commerce still needs merchant controls, split payment, billing, and risk rules. |
-| Financial operations stack | Expand into tax, identity, issuing, treasury, capital, reconciliation, and global operations. | Wider transaction lifecycle and financial operations layer. | AI transactions need more than checkout: identity, risk, reconciliation, funding, and accountability. |
-| AI customer and usage pressure | Serve high-growth AI customers with usage, global revenue, risk, and billing complexity. | Usage/event billing, revenue operations, risk tooling. | AI-native business models pressure pricing, usage, fraud, and cash-flow systems. |
-| Agent, wallet, stablecoin, and machine payment | Move toward new transaction entry and settlement surfaces. | Agent commerce, wallet abstraction, stablecoin orchestration, machine-readable payment protocols. | The five-layer framework becomes visible as a transaction control plane. |
-
-Talk track:
-
-1. Do not narrate year by year.
-2. Narrate by capability accumulation.
-3. For every era, answer: what was the business problem, what reusable ability
-   remained, and how AI reuses it.
-4. End by returning to Chapter 3: the five-layer framework is not theoretical;
-   Stripe's path provides a concrete case.
-
-Visual shape:
-
-```text
-time axis: 2010 -> 2026
-capability axis:
-  developer access
-  platform / merchant operations
-  billing / revenue operations
-  risk / identity / compliance
-  money movement / settlement
-  agent / wallet / machine payment
-```
-
-Chapter acceptance:
-
-- The chapter must prove accumulation, not recite chronology.
-- Each Stripe event must carry a proof tag.
-- It must explain why AI-era moves depend on prior capabilities.
-
-### 5. People Capability Map
-
-Reader job: see the organizational capability behind the infrastructure.
-
-Core claim:
-
-> This kind of financial infrastructure is not built by one AI feature team. It
-> requires a capability mix across platform engineering, financial operations,
-> risk, compliance, data, product, enterprise sales, stablecoin, and AI tooling.
-
-LinkedIn evidence role:
-
-- Map current employee backgrounds and role clusters.
-- Look for prior companies, domain expertise, seniority, and cross-functional
-  mixes.
-- Show what kind of people Stripe has assembled around the capability stack.
-
-Boundary:
-
-- LinkedIn supports a people-capability profile.
-- It does not independently prove strategic success or product outcome.
-
-### 6. Hiring Intent And Capability Gaps
-
-Reader job: see what Stripe is still building.
-
-Core claim:
-
-> JD evidence shows where capability investment is continuing: what roles are
-> being added, which teams are named, and what requirements are emphasized.
-
-JD evidence role:
-
-- Map role titles, teams, requirements, locations, seniority, and repeated
-  capability language.
-- Compare JD signals to the five-layer framework.
-- Use JD as capability-building intent, not as proof of shipped outcome.
-
-LinkedIn + JD relation:
-
-```text
-LinkedIn: what kind of people Stripe already has
-JD: what kind of capability Stripe is still adding
-```
-
-### 7. Future Judgment
-
-Reader job: understand the forward-looking conclusion without overclaim.
-
-Core claim:
-
-> Agent payment will pass through the rules layer before it passes through the
-> financial results layer. The winners will not simply make the best AI demo;
-> they will make authorization, limits, risk, settlement, and accountability
-> machine-readable and operationally reliable.
-
-Evidence boundary:
-
-- Treat future claims as structured judgment, not source fact.
-- Attach each future claim to the five-layer framework.
-
-### 8. What We Learn
-
-Reader job: apply the lesson beyond Stripe.
-
-Core claim:
-
-> AI reduces implementation friction, but raises financial design cost. In
-> financial systems, the durable work is relationship design: who can do what,
-> with whose money, under which rules, with what evidence, and who is
-> responsible afterward.
-
-End with a callback to the opening misunderstanding:
-
-> The question was never "can an Agent pay?" The real question is whether the
-> financial system can make the Agent's action bounded, auditable, reversible,
-> and settleable.
-
-## Visual System
-
-Recommended output mode: H5/HTML, with deterministic diagrams and expandable
-evidence panels.
-
-Required visuals:
-
-1. Transaction-chain sample map for Chapter 2.
-2. Five-layer AI payment capability framework for Chapter 3.
-3. Capability accumulation timeline for Chapter 4.
-4. People capability map for Chapter 5.
-5. JD capability gap table for Chapter 6.
-
-Visual boundary:
-
-- Do not add decorative images.
-- Each visual must carry one proof task.
-- Evidence handles can be expandable, but load-bearing claims need visible
-  citation routes before review-ready or share-ready status.
-
-## Source And Evidence Plan
-
-| Source Type | Role | Use Boundary |
+| 表达形式 | 用在哪 | 作用 |
 |---|---|---|
-| Stripe first-party docs/product/newsroom | Product and capability evidence | Strong for shipped surface; weak for independent outcome claims. |
-| Annual letters/company scale claims | Scale and narrative evidence | Use with date and source boundary. |
-| LinkedIn | Current people capability map | Analyze backgrounds and capability clusters, not generic talent flow. |
-| JD | Hiring intent and capability-building direction | Shows investment pressure, not shipped results. |
-| Secondary media/analysts | Context and interpretation | Must be separated from first-party proof. |
-| WeChat RICE/KANO skill article | Expression-method reference | Useful for method operationalization only; not Stripe evidence. |
+| 误解开场 | 第 1 章 | 先打掉“Agent 点付款按钮”的浅层理解。 |
+| 样本选择图 | 第 2 章 | 解释为什么选 Stripe，而不是直接夸 Stripe。 |
+| 五层能力图 | 第 3 章 | 形成全篇方法论核心。 |
+| 能力累积时间线 | 第 4 章 | 证明 Stripe 的 AI 支付不是临时拼装。 |
 
-## Review Checklist
+## 2. 总章节结构
 
-- Does the draft make AI-era payment capability building the subject and Stripe
-  the case?
-- Does Chapter 2 answer "why Stripe" before describing Stripe?
-- Does Chapter 3 stand as a reusable framework without product-name dependency?
-- Does Chapter 4 prove capability accumulation rather than recite history?
-- Are LinkedIn and JD preserved as separate evidence modules?
-- Are proof boundaries visible for sample selection, people evidence, hiring
-  evidence, and future judgment?
-- Does every visual carry a proof task?
+建议全篇 8 章：
 
-## Next Step
+| 章 | 标题 | 这一章证明什么 |
+|---|---|---|
+| 1 | AI 支付最容易被误读 | AI 支付不是 Agent 点按钮，而是交易规则被软件执行。 |
+| 2 | 为什么用 Stripe 做观察样本 | Stripe 横跨交易链路多个关键节点，所以适合观察 AI 支付能力重构。 |
+| 3 | AI 支付需要哪五层金融能力 | 给出全篇方法论：意图、授权、规则、资金、责任。 |
+| 4 | Stripe 是怎么把这些能力攒出来的 | 用能力累积线证明 Stripe 的 AI 布局不是突然出现。 |
+| 5 | LinkedIn：Stripe 的人员能力画像 | 看它现在拥有什么样的人和能力簇。 |
+| 6 | JD：Stripe 还在补什么能力 | 看它正在投入哪些能力方向。 |
+| 7 | 未来五年：先过规则关，再过金融结果关 | Agent 支付会先被规则、责任、风控约束，再谈大规模金融结果。 |
+| 8 | 我们能学什么 | AI 降低实现成本，但抬高金融关系设计成本。 |
 
-After user review, create the implementation plan or H5 rewrite plan. Do not
-edit the H5 directly from this design without the next gate approval.
+第 2/3/4 章是主梁：
+
+```text
+第 2 章：为什么选 Stripe 这个样本
+第 3 章：用什么方法理解 AI 支付
+第 4 章：Stripe 的历史如何证明这个方法
+```
+
+## 3. 第 1 章：AI 支付最容易被误读
+
+### 3.1 章节任务
+
+开场先纠偏。不要一上来讲 Stripe，也不要一上来堆 AI 支付新闻。
+
+这一章要让听众意识到：
+
+> 如果我们只把 AI 支付理解成“Agent 帮我买东西”，就会漏掉支付行业真正难的部分。
+
+### 3.2 屏幕内容
+
+首屏可以写：
+
+> 很多人一听 AI 支付，脑子里出现的是：我对 Agent 说一句“帮我订机票”，它自动搜索、下单、付款。
+>
+> 但支付行业真正关心的不是这一下“付款动作”，而是：
+>
+> 它能不能被授权？
+> 金额有没有边界？
+> 商户是不是可信？
+> 风险怎么拦？
+> 资金怎么清算？
+> 出错谁负责？
+> 事后能不能审计？
+
+### 3.3 这一章的关键句
+
+> AI 支付的难点，不在于让软件发起一个支付动作，而在于让这个动作进入金融规则体系。
+
+### 3.4 视觉建议
+
+做一张左右对照图：
+
+```text
+浅层理解：Agent -> 点击支付 -> 交易完成
+
+真实问题：Agent -> 授权 -> 限额 -> 风控 -> 清结算 -> 责任 -> 审计
+```
+
+### 3.5 不能怎么写
+
+不能写成：
+
+> AI 时代来了，Agent 会改变支付，所以我们来看 Stripe。
+
+这太泛。正确写法是先提出金融问题：
+
+> 当付款动作从人转移给软件，金融系统必须重新回答“谁授权、谁担责、怎么风控、怎么结算”。
+
+## 4. 第 2 章：为什么用 Stripe 做观察样本
+
+### 4.1 章节任务
+
+第 2 章不是公司介绍。它的任务是证明：
+
+> Stripe 是观察 AI 支付能力重构的好样本。
+
+不是证明：
+
+> Stripe 一定会赢。
+
+也不是证明：
+
+> Stripe 什么都做得最好。
+
+### 4.2 开场句
+
+可以这样开：
+
+> 看 AI 支付，为什么要看 Stripe？不是因为它最近也在讲 AI，而是因为它长期站在交易链路的多个关键位置。
+
+### 4.3 这一章要讲的核心逻辑
+
+讲法分四步：
+
+1. **AI 支付会把交易入口前移。**
+   过去交易入口是网站、App、收银台；未来可能是对话框、搜索结果、企业工作流、自动采购 Agent。
+
+2. **入口前移之后，底层金融问题不会消失，反而更复杂。**
+   机器发起交易后，系统更需要知道：谁允许它买，买什么，多少钱，怎么买，失败怎么处理。
+
+3. **所以我们要找一个横跨交易链路的公司做样本。**
+   只看钱包公司，会偏入口；只看卡组织，会偏网络；只看大模型公司，会偏流量和交互；Stripe 的特殊性在于它同时接近开发者、商户、平台、计费、风控、身份和结算。
+
+4. **Stripe 适合做样本，但不是结论本身。**
+   本文不是预测 Stripe 必胜，而是借它观察 AI 时代金融能力会如何重组。
+
+### 4.4 屏幕 2-1：样本选择图
+
+标题：
+
+> 为什么 Stripe 适合作为 AI 支付观察样本？
+
+正文：
+
+> 因为它不只在支付动作上，而是在交易链路的多个节点上都有能力沉淀。
+
+视觉内容：
+
+```text
+交易入口
+  开发者接入 / Checkout / Link / Agent commerce
+
+商户经营
+  Connect / Billing / Tax / Revenue Recognition
+
+风险与身份
+  Radar / Identity / KYC / KYB / fraud tooling
+
+资金与结算
+  Treasury / Issuing / Capital / stablecoin / Bridge
+
+开发者与机器接口
+  API / docs / test mode / MCP / agent toolkit
+```
+
+旁边放一句判断：
+
+> AI 支付会把这些节点重新连接起来，所以 Stripe 是一个能观察“交易链路重组”的样本。
+
+### 4.5 屏幕 2-2：为什么不是只看大模型公司
+
+标题：
+
+> 大模型公司能改变入口，但未必掌握金融闭环
+
+内容：
+
+| 观察对象 | 能看到什么 | 看不到什么 |
+|---|---|---|
+| 大模型公司 | 对话入口、需求分发、Agent 行为 | 商户接入、风控、清结算、争议、合规责任 |
+| 钱包/卡组织 | 支付凭据、网络、账户关系 | 商户经营、开发者对象、完整收入运营 |
+| Stripe | 商户、开发者、计费、风控、身份、结算、稳定币、Agent 接口 | 不能单独证明它会赢，需要竞争和结果证据 |
+
+这一屏的目的：
+
+> 让听众知道“为什么看 Stripe”是经过选择的，不是因为我们刚好手里有 Stripe 材料。
+
+### 4.6 屏幕 2-3：样本边界
+
+标题：
+
+> Stripe 是样本，不是答案
+
+正文：
+
+> 本文用 Stripe 证明的是：AI 支付能力建设会越来越像一套交易控制平面。
+> 本文不证明：Stripe 一定战胜 Visa、Mastercard、PayPal、Adyen、OpenAI、Google、钱包公司或稳定币公司。
+
+这一屏很重要。它能防止分享听起来像公司吹捧。
+
+### 4.7 第 2 章验收标准
+
+这章写完后，听众应该能回答：
+
+- 为什么不是泛泛讲 AI 支付？
+- 为什么不是只看 OpenAI/Google？
+- 为什么 Stripe 适合作为样本？
+- Stripe 作为样本的边界是什么？
+
+如果听众只记住“Stripe 产品很多”，这一章就是失败的。
+
+## 5. 第 3 章：AI 支付需要哪五层金融能力
+
+### 5.1 章节任务
+
+第 3 章是全篇方法论核心。
+
+这一章要把 Stripe 先放下，抽象出一个通用框架：
+
+> 当交易动作交给软件代理后，支付系统必须具备五层能力：意图、授权、规则、资金、责任。
+
+这章一定不能写成 Stripe 产品介绍。
+
+### 5.2 开场句
+
+可以这样开：
+
+> 如果把 AI 支付理解成“多一个支付入口”，我们只会关心谁拿到流量。
+> 但如果把它理解成“软件开始替人执行交易”，我们就会看到五个更底层的问题。
+
+### 5.3 五层能力总图
+
+屏幕标题：
+
+> AI 支付能力 = 意图 + 授权 + 规则 + 资金 + 责任
+
+五层：
+
+```text
+1. 交易意图：软件到底要完成什么交易？
+2. 授权与身份：谁允许它做，权限多大？
+3. 规则与风控：什么情况下能做，什么情况下必须拦？
+4. 资金与清结算：钱从哪里来，到哪里去，怎么对账？
+5. 责任与审计：出错谁负责，证据怎么留下？
+```
+
+这一屏要让听众先记住框架，而不是记产品名。
+
+### 5.4 第一层：交易意图
+
+要讲的问题：
+
+> 过去支付发生在用户已经选好商品之后。AI 时代，软件可能参与搜索、比较、下单、续费、补货、采购和预算执行。
+
+举例：
+
+- 个人：Agent 帮我订酒店、买机票、续订软件。
+- 企业：系统自动补货、自动采购 SaaS、自动购买云资源。
+- 平台：商家把商品和价格开放给机器读取。
+
+这一层的关键不是“付款”，而是：
+
+> 交易从哪里被触发，意图如何被表达，系统怎么知道它要买什么。
+
+缺失后果：
+
+> 如果交易意图不能被结构化表达，后面的授权、风控、计费和责任都无法可靠执行。
+
+Stripe 证据可以放在这里，但不要抢主线：
+
+- Agent commerce / product catalog / developer docs / merchant tooling 作为证据 handle。
+
+### 5.5 第二层：授权与身份
+
+要讲的问题：
+
+> 软件能不能花钱，首先取决于谁授权它、授权到什么范围。
+
+需要拆清楚：
+
+- 是个人授权，还是企业授权？
+- 是一次性授权，还是长期授权？
+- 是固定金额，还是预算范围？
+- 是某个商户，还是一类商品？
+- 是主账户，还是子账户/部门/项目？
+
+关键句：
+
+> AI 支付不是“让 Agent 有一张卡”这么简单，而是要把授权边界产品化。
+
+缺失后果：
+
+> 授权边界不清，交易越自动化，风险越不可控。
+
+Stripe 证据 handle：
+
+- Link、Identity、Financial Connections、Issuing、Connect、wallet/Privy 等。
+
+### 5.6 第三层：规则与风控
+
+要讲的问题：
+
+> 人类付款时，很多风控依赖人的最后确认；软件付款时，规则必须提前写进系统。
+
+要覆盖的规则：
+
+- 金额限制
+- 频率限制
+- 商户白名单/黑名单
+- 商品类别限制
+- 地域和币种限制
+- 异常行为识别
+- 欺诈、盗用、资源滥用
+- 退款、争议、拒付
+
+关键句：
+
+> AI 时代的风控不是只防盗卡，还要防 token theft、fake signup、tool misuse、resource abuse。
+
+缺失后果：
+
+> 只要规则不能机器执行，Agent 支付就只能停留在低额度、低风险、强人工确认场景。
+
+Stripe 证据 handle：
+
+- Radar、Identity、risk docs、token theft/fraud prevention 相关材料。
+
+### 5.7 第四层：资金与清结算
+
+要讲的问题：
+
+> 支付动作只是表面，金融系统最终要回答钱从哪里来、到哪里去、中间怎么分、什么时候结算、如何对账。
+
+要拆的场景：
+
+- 一个用户直接向一个商户付款。
+- 平台撮合多方交易后分账。
+- 企业部门预算支付。
+- 订阅/用量计费。
+- 跨境和多币种。
+- stablecoin 或钱包结算。
+
+关键句：
+
+> Agent 可以发起交易，但金融系统必须完成资金归集、分账、清算、结算和对账。
+
+缺失后果：
+
+> 如果没有资金和清结算能力，AI 支付只能停在“发起订单”，无法成为可靠金融基础设施。
+
+Stripe 证据 handle：
+
+- Connect、Billing、Treasury、Issuing、Capital、Bridge、stablecoin、x402/MPP 等。
+
+### 5.8 第五层：责任与审计
+
+要讲的问题：
+
+> 当软件替人交易，出错以后不能只说“模型做的”。金融系统必须知道谁授权、谁执行、谁受益、谁担责。
+
+要回答的问题：
+
+- Agent 买错了，谁负责？
+- 商户履约失败，谁赔？
+- 平台规则写错，谁改？
+- 用户授权不清，谁承担？
+- 支付机构风控漏拦，谁承担？
+- 事后证据在哪里？
+
+关键句：
+
+> AI 支付的成熟标志，不是能自动付款，而是能自动留下责任证据。
+
+缺失后果：
+
+> 没有审计和责任链，Agent 支付无法进入高金额、高频、企业级场景。
+
+Stripe 证据 handle：
+
+- Dashboard logs、webhook、dispute、chargeback、identity verification、compliance docs、audit trail 类材料。
+
+### 5.9 第 3 章收束
+
+这一章最后要回到一句话：
+
+> 所以，AI 支付不是一个入口产品，而是一套金融交易控制平面。
+
+屏幕可以写：
+
+```text
+入口决定交易从哪里开始。
+控制平面决定交易能不能被授权、限制、风控、结算和追责。
+```
+
+### 5.10 第 3 章验收标准
+
+这章写完后，听众应该能复述：
+
+> AI 支付能力 = 意图 + 授权 + 规则 + 资金 + 责任。
+
+如果听众只记住了一堆 Stripe 产品名，这章就是失败的。
+
+## 6. 第 4 章：Stripe 是怎么把这些能力攒出来的
+
+### 6.1 章节任务
+
+第 4 章用 Stripe 的公司路径证明第 3 章不是空想。
+
+这一章不是普通时间线。它要证明：
+
+> Stripe 今天讲 AI 支付，不是临时做了几个 AI 功能，而是过去十几年积累的支付、商户、风控、计费、资金和开发者能力，在 AI 场景下被重新调用。
+
+### 6.2 开场句
+
+可以这样开：
+
+> 如果只看 2025、2026 年的 Agent commerce、stablecoin、wallet 和 machine payment，会觉得 Stripe 是突然追 AI 热点。
+> 但把时间线拉回 2010 年，会发现它一直在做同一件事：把金融交易中的复杂动作拆成开发者和商户可以调用的对象。
+
+### 6.3 不按年份流水账，按能力累积讲
+
+第 4 章建议分成五个能力阶段：
+
+```text
+开发者接入能力
+-> 平台和商户经营能力
+-> 金融运营能力
+-> AI 客户压力下的收入和风险能力
+-> Agent / 钱包 / stablecoin / machine payment 能力
+```
+
+每个阶段都按同一组问题讲：
+
+1. 当时 Stripe 解决了什么商业问题？
+2. 它沉淀了什么可复用能力？
+3. 这个能力在 AI 支付五层框架里对应哪一层？
+4. AI 时代为什么会重新用到它？
+
+### 6.4 阶段一：开发者接入能力
+
+时间：2010-2014。
+
+这一段不要写成：
+
+> Stripe 成立于 2010 年，提供 API 支付。
+
+要写成：
+
+> Stripe 最早解决的不是“支付价格更低”，而是“开发者怎么把收款嵌进产品”。它把银行、支付机构、卡网络背后的复杂流程，封装成 API、文档、测试环境和 Dashboard。
+
+沉淀能力：
+
+- API-first
+- SDK
+- 文档
+- 测试卡
+- webhook
+- Dashboard
+- developer trust
+
+对应第 3 章框架：
+
+- 交易意图：让业务系统可以发起交易。
+- 责任与审计：Dashboard、日志、webhook 让交易可追踪。
+
+AI 时代复用：
+
+> Agent 支付也需要同样的东西：不是给人看的页面，而是给软件调用的接口、测试环境、事件回调和状态追踪。
+
+这一屏结论：
+
+> Stripe 的第一层能力，是把支付变成可编程接口。
+
+### 6.5 阶段二：平台和商户经营能力
+
+时间：2015-2019。
+
+核心讲法：
+
+> 当 Stripe 服务的不再只是单一网站，而是平台、Marketplace、SaaS 和线下商户时，它开始进入商户经营层。支付不再是一笔收款，而是商户入驻、分账、订阅、计费、线下终端、风控和经营数据的组合。
+
+沉淀能力：
+
+- Connect
+- Billing
+- Radar
+- Terminal
+- Atlas
+- platform onboarding
+- merchant controls
+
+对应第 3 章框架：
+
+- 授权与身份：平台、商户、子账户、入驻关系。
+- 规则与风控：商户风险、交易风险、欺诈检测。
+- 资金与清结算：分账、结算、平台账户关系。
+
+AI 时代复用：
+
+> Agent commerce 不是单一消费者买单，而是要接入大量商户、平台和商品目录。商户控制、平台分账、风险规则和结算关系会再次变成核心。
+
+这一屏结论：
+
+> Stripe 的第二层能力，是从“支付接入”进入“商户经营系统”。
+
+### 6.6 阶段三：金融运营能力
+
+时间：2020-2022。
+
+核心讲法：
+
+> 随着客户全球化、平台化、金融动作变复杂，Stripe 继续向税务、身份、发卡、账户、融资、对账和全球运营扩展。它服务的已经不是一笔支付，而是一家公司如何管理收入、资金和风险。
+
+沉淀能力：
+
+- Tax
+- Identity
+- Issuing
+- Treasury
+- Capital
+- Revenue Recognition
+- reconciliation
+- regional/local payment coverage
+
+对应第 3 章框架：
+
+- 授权与身份：Identity、KYC/KYB、账户关系。
+- 资金与清结算：Treasury、Issuing、对账、结算。
+- 责任与审计：税务、收入确认、争议、合规边界。
+
+AI 时代复用：
+
+> AI 业务往往全球化、高频、小额、用量波动大，背后需要税务、身份、发卡、融资、对账和收入确认能力。没有金融运营层，AI 支付只能是入口，不能成为基础设施。
+
+这一屏结论：
+
+> Stripe 的第三层能力，是把支付扩展成金融运营栈。
+
+### 6.7 阶段四：AI 客户带来的收入和风险压力
+
+时间：2023-2024。
+
+核心讲法：
+
+> AI 公司增长快、用量波动大、全球化早、欺诈和资源滥用风险高。它们对支付公司的要求，不只是收款，而是用量计费、收入管理、风控、税务和全球收款一起工作。
+
+可以讲的内容：
+
+- AI 公司需要按 token、usage、event、seat 或 outcome 收费。
+- 成本和收入都跟用量强相关。
+- 免费试用、盗用、fake signup、资源滥用风险变大。
+- 全球客户带来税务、币种、支付方式和合规复杂度。
+
+对应第 3 章框架：
+
+- 交易意图：AI 服务的消费动作可能不是传统商品购买。
+- 规则与风控：资源滥用和欺诈模式变化。
+- 资金与清结算：用量计费、收入确认、全球结算。
+
+AI 时代复用：
+
+> 这一步让 Stripe 发现，AI 客户不是普通软件客户。它们把计费、风控、收入和基础设施能力的压力提前暴露出来。
+
+这一屏结论：
+
+> Stripe 的第四层能力，是在 AI 客户压力下重组收入和风险基础设施。
+
+### 6.8 阶段五：Agent、钱包、stablecoin 和机器支付
+
+时间：2025-2026。
+
+核心讲法：
+
+> 到这一阶段，AI 支付不再只是 AI 公司怎么收钱，而是软件代理、钱包、stablecoin、机器支付协议开始改变交易本身。Stripe 过去积累的 API、商户、风控、计费、身份和结算能力，被放到新的交易入口和结算方式里。
+
+可以讲的内容：
+
+- Agent commerce：交易入口从人操作页面，进入软件代理场景。
+- wallet / Privy：软件和应用需要管理新的凭据和账户抽象。
+- Bridge / stablecoin：结算轨道从传统卡和银行网络扩展。
+- Metronome / usage billing：AI 服务的计费粒度变细。
+- MCP / agent toolkit / machine payment：开发者接口继续变重要。
+
+对应第 3 章框架：
+
+- 交易意图：Agent 发起交易。
+- 授权与身份：wallet、凭据、账户抽象。
+- 规则与风控：机器行为和 token 风险。
+- 资金与清结算：stablecoin、machine payment。
+- 责任与审计：交易日志、协议、争议和责任边界。
+
+这一屏结论：
+
+> Stripe 的 AI 支付布局，不是从 AI 开始，而是从交易控制平面的缺口开始。
+
+### 6.9 第 4 章主视觉
+
+建议做“双轴能力累积时间线”：
+
+横轴：
+
+```text
+2010-2014 -> 2015-2019 -> 2020-2022 -> 2023-2024 -> 2025-2026
+```
+
+纵轴：
+
+```text
+开发者接入
+平台/商户经营
+计费/收入运营
+风控/身份/合规
+资金/清结算
+Agent/钱包/stablecoin/机器支付
+```
+
+每个节点必须有一个 proof tag：
+
+- 证明可编程接口
+- 证明商户经营层
+- 证明金融运营层
+- 证明 AI 客户压力
+- 证明新交易入口和结算轨道
+
+### 6.10 第 4 章验收标准
+
+这章写完后，听众应该能说出：
+
+> Stripe 不是突然做 AI 支付，而是把过去积累的交易、商户、计费、风控、资金和开发者能力，迁移到 Agent、钱包、stablecoin 和机器支付场景。
+
+如果这章只是列年份和产品，就是失败的。
+
+## 7. 第 5 章：LinkedIn 人员能力画像
+
+### 7.1 章节任务
+
+这一章回答：
+
+> 这种能力栈需要什么样的人来做？
+
+LinkedIn 不是“人才流向信号”这么泛。这里要分析的是 Stripe 当前在职人员的背景和能力图。
+
+### 7.2 分析维度
+
+看五类信息：
+
+| 维度 | 看什么 |
+|---|---|
+| 岗位族群 | 工程、产品、风控、合规、数据、金融运营、企业销售、稳定币、AI 工具。 |
+| 过往公司 | 金融科技、银行、卡组织、云厂商、大模型公司、风控安全公司、企业软件公司。 |
+| 专业能力 | 支付、清结算、KYC/KYB、fraud、ledger、billing、stablecoin、developer platform。 |
+| 资深度 | 是否有 principal、staff、director、head、GM 级别角色。 |
+| 组合关系 | 是否能同时覆盖技术、金融、合规、商户和增长。 |
+
+### 7.3 这一章要下的判断
+
+> Stripe 的能力不是一组产品名，而是一组组织能力。它需要懂开发者平台的人、懂支付网络的人、懂商户经营的人、懂风控合规的人、懂资金账务的人、懂 AI 工具和新入口的人一起工作。
+
+### 7.4 边界
+
+不能说：
+
+> LinkedIn 证明 Stripe 会赢。
+
+只能说：
+
+> LinkedIn 支持我们观察 Stripe 的人员能力结构。
+
+## 8. 第 6 章：JD 招聘意图和能力补位
+
+### 8.1 章节任务
+
+这一章回答：
+
+> Stripe 还在补什么能力？
+
+LinkedIn 看“已有能力”，JD 看“新增投入”。
+
+### 8.2 分析维度
+
+| 维度 | 看什么 |
+|---|---|
+| 岗位标题 | 是否集中在 AI、risk、payments、stablecoin、wallet、billing、infra、enterprise。 |
+| 团队归属 | 是产品团队、基础设施团队、风控团队、金融运营团队，还是 GTM 团队。 |
+| 任职要求 | 是否反复出现 ledger、settlement、compliance、ML、fraud、developer platform、API。 |
+| 地点和级别 | 是全球扩张、区域补位，还是核心团队高阶岗位。 |
+| 与五层框架对应 | 这些岗位补的是意图、授权、规则、资金，还是责任。 |
+
+### 8.3 这一章要下的判断
+
+> JD 不证明产品已经成功，但能说明 Stripe 正在把哪些能力当作下一阶段投入重点。
+
+### 8.4 LinkedIn 和 JD 怎么合用
+
+一张表：
+
+| 信源 | 回答的问题 | 证明强度 |
+|---|---|---|
+| LinkedIn | Stripe 已经有什么样的人和能力簇？ | 支持组织能力画像。 |
+| JD | Stripe 还在补什么岗位和能力？ | 支持投入方向判断。 |
+| 产品/docs | Stripe 已经发布了什么能力？ | 支持产品事实。 |
+| 规模指标 | 这些能力是否处在足够大的交易表面？ | 支持样本重要性。 |
+
+## 9. 第 7 章：未来五年判断
+
+### 9.1 核心判断
+
+> Agent 支付会先过规则关，再过金融结果关。
+
+意思是：
+
+> 在大规模交易结果出现之前，行业会先解决授权、限额、风控、责任、结算和审计问题。
+
+### 9.2 不能过度预测
+
+不要写：
+
+> 未来五年 Stripe 会成为 AI 支付最大赢家。
+
+要写：
+
+> 如果 Agent 支付要进入高频、高金额、企业级场景，交易控制平面会成为基础设施竞争焦点。Stripe 是值得观察的候选者之一。
+
+## 10. 第 8 章：我们能学什么
+
+### 10.1 落点
+
+这章要把分享从 Stripe 拉回我们自己：
+
+> AI 降低了功能实现成本，但提高了金融关系设计成本。
+
+### 10.2 具体启发
+
+1. 不要只看入口，要看交易闭环。
+2. 不要只看产品名，要看对象、规则、账务和责任边界。
+3. 不要只看 AI demo，要看它能否进入真实金融约束。
+4. 不要只看技术实现，要看组织里有没有对应能力。
+5. 不要只学 Stripe 做了什么，要学它如何长期把复杂金融动作产品化。
+
+### 10.3 结尾句
+
+> 所以这场分享最后不是问“我们要不要做 AI 支付”，而是问：当软件开始替人执行交易，我们有没有能力定义清楚谁能做什么、用谁的钱、在什么规则内、出错谁负责。
+
+## 11. 证据分层规则
+
+| 信源 | 在本文中的角色 | 不能证明什么 |
+|---|---|---|
+| Stripe docs/product/newsroom | 产品事实、能力存在、接口方式 | 不能单独证明市场成功。 |
+| Annual letters/规模数据 | 交易表面、公司叙事、增长位置 | 不能精确证明全球份额。 |
+| LinkedIn | 在职人员背景、能力簇、组织能力画像 | 不能单独证明战略成败。 |
+| JD | 招聘意图、能力补位、投入方向 | 不能证明岗位最终产出。 |
+| 媒体/分析文章 | 解释背景、竞争语境、外部观察 | 不能替代一手证据。 |
+| 微信 RICE/KANO 文章 | 方法表达参考：把方法工具化、流程化 | 不是 Stripe 事实信源。 |
+
+## 12. H5 改写验收清单
+
+后续改 H5 时必须逐项验收：
+
+- 第 1 章是否先打掉“Agent 点按钮”的误解？
+- 第 2 章是否解释了为什么 Stripe 是样本，而不是直接讲公司介绍？
+- 第 3 章是否让听众记住五层能力框架？
+- 第 4 章是否按能力累积讲，而不是按年份流水账？
+- LinkedIn 是否被写成“人员能力画像”，而不是泛泛人才流向？
+- JD 是否被写成“能力补位和投入方向”，而不是可有可无的招聘信息？
+- 每个未来判断是否有边界，不把推测写成事实？
+- 每张图是否有证明任务，而不是装饰？
+
+## 13. 下一步
+
+这份设计稿通过后，下一步不是直接大改 H5，而是先写 implementation plan：
+
+1. 把现有 H5 反向映射到这 8 章。
+2. 标出哪些段落保留、压缩、重写、删除。
+3. 先改第 2/3/4 章，因为它们决定主线。
+4. 再补 LinkedIn/JD 两个证据模块。
+5. 最后做视觉和引用验收。
