@@ -85,7 +85,7 @@
   <div class="header">
     <h1>零售商户接入攻坚视图（Q4 前）</h1>
     <p>本次视图从“涅槃项目全景”调整为“Q4 前解决零售商户接入难”。Q4 前按 2026-09-30 前处理；原目标中的 20260931 不是有效日期，需要在里程碑调整时改成 2026-09-30 或 2026-10-01。</p>
-    <p>主线从单点协议支付闭环升级为：统一会员入网统一字段、流程和风控；按客户和产品条件触发电子户工作流；交易侧统一网关、统一证书秘钥、多渠道复用一套接口；能力地图按瞭望塔产品门户口径组织为会员、入网、多渠道收款、控台、货架、商户入网、直销和代销。</p>
+    <p>主线从单点协议支付闭环升级为：商户只交一套开通资料，缺什么资料、谁审核、哪些产品开通、什么场景需要电子户都要说清楚；交易侧统一网关、统一证书秘钥、多渠道复用一套接口；能力地图按瞭望塔产品门户口径组织为会员、入网、多渠道收款、控台、货架、商户入网、直销和代销。</p>
   </div>
 
   <div class="cards">
@@ -166,47 +166,26 @@
         <div class="bar-cell"><div class="bar todo">终端/B2B</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
-        <div class="cell left">账户 7 月支持项</div>
+        <div class="cell left">账户/结算范围收口</div>
         <div class="cell phase m2">S3</div>
-        <div class="cell sub">7 月先支持冻结、解冻和待分账户场景；剩余账户工作聚焦余额查询、收支明细查询、账单查询和对账管理</div>
+        <div class="cell sub">只冻结本轮边界：7 月账户做冻结/解冻和待分账户；查询保留余额、收支、账单、对账；宝财通只走 2.0 余额支付，不迁 3.0</div>
         <div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar doing">冻结/解冻</div></div>
-        <div class="bar-cell"><div class="bar doing">待分账户</div></div>
-        <div class="bar-cell"><div class="bar todo">余额查询</div></div>
-        <div class="bar-cell"><div class="bar todo">收支明细</div></div>
-        <div class="bar-cell"><div class="bar todo">账单查询</div></div>
-        <div class="bar-cell"><div class="bar todo">对账管理</div></div>
+        <div class="bar-cell"><div class="bar doing risk">边界确认</div></div>
+        <div class="bar-cell"><div class="bar doing">冻结/待分</div></div>
+        <div class="bar-cell"><div class="bar todo">查询清单</div></div>
+        <div class="bar-cell"><div class="bar todo">宝财通2.0</div></div>
+        <div class="bar-cell"><div class="bar todo">结算对账</div></div>
+        <div class="bar-cell"><div class="bar todo">验收口径</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
-        <div class="cell left">宝财通余额支付</div>
-        <div class="cell phase m2">S3</div>
-        <div class="cell sub">宝财通采用 2.0 方案即可支撑余额支付；3.0 本轮没有迁移意义，不放进 Q4 前交付承诺</div>
-        <div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar doing">2.0方案</div></div>
-        <div class="bar-cell"><div class="bar doing">余额支付</div></div>
-        <div class="bar-cell"><div class="bar todo">查询兼容</div></div>
-        <div class="bar-cell"><div class="bar todo risk">排除3.0</div></div>
-        <div class="bar-cell"><div class="bar todo">验证口径</div></div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
-
-        <div class="cell left">结算 / 对账管理</div>
-        <div class="cell phase m2">S3</div>
-        <div class="cell sub">结算接口按 2 个计算：自主结算、自主结算查询；对账按 1 个文件下载接口计算，和账户查询类工作分开表达</div>
-        <div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar todo">结算2个</div></div>
-        <div class="bar-cell"><div class="bar todo">对账1个</div></div>
-        <div class="bar-cell"><div class="bar todo">账单文件</div></div>
-        <div class="bar-cell"><div class="bar todo">管理口径</div></div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
-
-        <div class="cell left">会员入网 / 电子户</div>
+        <div class="cell left">商户开通资料补齐</div>
         <div class="cell phase m2">S4</div>
-        <div class="cell sub">统一会员管控入网字段、流程、风控和补充材料；按柜台或产品条件触发电子户创建工作流</div>
-        <div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">字段收口</div></div>
-        <div class="bar-cell"><div class="bar todo">流程配置</div></div>
-        <div class="bar-cell"><div class="bar todo">补充机制</div></div>
-        <div class="bar-cell"><div class="bar todo risk">电子户工作流</div></div>
-        <div class="bar-cell"><div class="bar todo">多渠道入网</div></div>
+        <div class="cell sub">把零售商户开通要交哪些资料、缺件怎么补、谁审核、通过后开哪些产品写清楚；电子户只保留触发条件和验收项</div>
+        <div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">资料清单</div></div>
+        <div class="bar-cell"><div class="bar todo">缺件补传</div></div>
+        <div class="bar-cell"><div class="bar todo">审核节点</div></div>
+        <div class="bar-cell"><div class="bar todo risk">电子户触发</div></div>
+        <div class="bar-cell"><div class="bar todo">开通验证</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
         <div class="cell left">慧收钱网关迁移</div>
@@ -221,7 +200,7 @@
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">Q4前验收</div></div>
       </div>
     </div>
-    <div class="note">时间轴从 2026-06-29 所在周开始。账户不再写成全量迁移：7 月只看冻结/解冻、待分账户、余额查询、收支明细、账单查询和对账管理；宝财通只按 2.0 余额支付方案处理。</div>
+    <div class="note">时间轴从 2026-06-29 所在周开始。账户/结算在甘特图里只保留一条范围收口线；接口数量、结算 2 个、对账 1 个、宝财通 2.0/3.0 边界放到验证表里，不重复铺成交付主线。</div>
   </div>
 
   <div class="section">
@@ -239,17 +218,17 @@
       <tbody>
         <tr>
           <td><b>统一会员</b></td>
-          <td>统一会员入网、客户主体、层级关系</td>
+          <td>同一个零售商户只维护一套主体资料，避免多产品重复录入</td>
           <td>里程碑版记录统一会员用于形成会员模型雏形</td>
-          <td>作为统一入网的客户主数据底座，承接字段、流程、风控和补充材料</td>
-          <td>渠道差异字段与补充材料触发规则</td>
+          <td>先把主体、联系人、证照、结算信息、产品开通资料收成一套清单</td>
+          <td>哪些渠道字段可复用，哪些必须补交</td>
         </tr>
         <tr>
           <td><b>快速入网</b></td>
-          <td>多渠道入网、信息不足补充机制、电子户工作流</td>
+          <td>资料缺失时怎么补、谁审核、什么时候开通电子户</td>
           <td>里程碑版写明“针对多渠道收款业务开通流程上线”</td>
-          <td>电子户应纳入入网编排，而不是作为独立账户接口单独推进</td>
-          <td>电子户和渠道入网的先后顺序</td>
+          <td>先落资料补传和审核规则；电子户只是符合条件后的开户动作</td>
+          <td>哪些产品必须触发电子户</td>
         </tr>
         <tr>
           <td><b>多渠道收款控台+API</b></td>
@@ -323,22 +302,10 @@
           <td>先冻结“已完成 7 个”的名单和测试排期，再把剩余接口按交易、查询、分账、商户服务、终端/B2B 拆批</td>
         </tr>
         <tr>
-          <td><b>账户查询与账单</b></td>
+          <td><b>账户/结算范围</b></td>
           <td>账户组对外接口文档汇总.xlsx</td>
-          <td>账户网关表有 31 条，资金付款表有 12 条；Q4 前不按全量迁移表达，先收口余额查询、收支明细查询、账单查询和对账管理</td>
-          <td>核对 4.0 账户相关查询的来源表和字段映射，避免把开户、归集、付款、代付等非本轮诉求一起塞入交付范围</td>
-        </tr>
-        <tr>
-          <td><b>宝财通余额支付</b></td>
-          <td>账户组对外接口文档汇总.xlsx</td>
-          <td>宝财通 2.0 表有 22 条，宝财通 3.0 表有 25 条；本轮只采用 2.0 方案支撑余额支付</td>
-          <td>明确 3.0 不迁移，验证 2.0 余额支付和必要查询即可，不把 3.0 存量接口纳入 Q4 前承诺</td>
-        </tr>
-        <tr>
-          <td><b>结算与对账</b></td>
-          <td>账户组对外接口文档汇总.xlsx</td>
-          <td>结算接口 2 个：自主结算、自主结算查询；对账接口 1 个：文件下载接口</td>
-          <td>结算、账单文件、对账管理单独形成验收清单，不再和账户网关全量接口混写</td>
+          <td>交付边界：冻结/解冻、待分账户、余额查询、收支明细、账单查询、对账管理；宝财通只走 2.0 余额支付，不迁 3.0</td>
+          <td>数量只作为核对依据：结算 2 个、对账 1 个、账户网关 31 条、资金付款 12 条、宝财通 2.0 22 条、宝财通 3.0 25 条；不要再拆成多条交付主线</td>
         </tr>
         <tr>
           <td><b>统一网关 / ASL</b></td>
