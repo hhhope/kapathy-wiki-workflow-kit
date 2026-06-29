@@ -34,6 +34,11 @@ learning workflow matrix artifacts.
   `.codex/skills/learning-capture/SKILL.md`.
 - Learning workflow matrix design found:
   `docs/superpowers/specs/2026-06-24-learning-workflow-matrix-design.md`.
+- Earlier Superpowers split design found:
+  `docs/superpowers/specs/2026-05-19-learning-capture-article-module-retirement-design.md`.
+- Matching Superpowers implementation plans found:
+  `docs/superpowers/plans/2026-05-19-learning-capture-article-module-retirement.md`
+  and `docs/superpowers/plans/2026-06-24-learning-workflow-matrix.md`.
 - Current OpenSpec implementation evidence:
   `openspec/changes/add-learning-workflow-matrix/`.
 
@@ -44,3 +49,13 @@ agent in `skills-drafts`. The published repo runtime path is
 `learning-capture`; the many learning methods are implemented as references
 under `.codex/skills/learning-capture/references/`, not as separate top-level
 skills.
+
+The learning split happened in two repo-visible Superpowers designs:
+
+1. `2026-05-19-learning-capture-article-module-retirement-design.md` split the
+   learning runtime entry from article-specific workflow content: keep
+   `learning-capture` as the only active learning entry and move article SOP,
+   scorecard, template, and pressure scenarios under references.
+2. `2026-06-24-learning-workflow-matrix-design.md` split the learning workflow
+   itself into level, type, method, evidence strength, source queue, output
+   contract, public-writing transformation, and structural checker layers.
