@@ -40,7 +40,29 @@ Observed RED result:
 
 ## GREEN Result
 
-Pending until tests and validation pass.
+Commands run on 2026-06-29:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_native_superpowers_openspec_workflow -v
+openspec validate preserve-superpowers-plan-tdd-overlay --strict
+python3 scripts/check_behavior_assets.py
+```
+
+Observed GREEN result:
+
+- `tests.test_native_superpowers_openspec_workflow`: 4 tests passed.
+- `openspec validate preserve-superpowers-plan-tdd-overlay --strict`: valid.
+- `scripts/check_behavior_assets.py`: non-zero due existing unrelated active
+  changes; this change was not reported in the checker output.
+
+Behavior proof:
+
+- The apply skill now states that the Superpowers plan is the implementation
+  plan.
+- The apply skill now states that OpenSpec tasks are the check/archive ledger.
+- The active change defines plan-check as Superpowers plan review, not an
+  OpenSpec progress step or second plan.
+- The active change keeps `tasks.md` out of block-level implementation progress.
 
 ## Prior-Art / Common-Rule Dedupe
 
@@ -68,5 +90,10 @@ Rejects:
 
 ## Residual Risks
 
-- Final `evaluation.md` can still be written late; mitigation is block-level plan evidence and commits.
+- `scripts/check_behavior_assets.py` remains non-zero because
+  `openspec/changes/initialize-llm-wiki-seed-repo/evaluation.md` lacks the
+  required behavior-evaluation sections and
+  `openspec/changes/realign-stripe-h5-redesign-sections` lacks
+  `evaluation.md`. Those are pre-existing or unrelated active-change issues and
+  were not modified here.
 - Future agents must load repo guidance.
