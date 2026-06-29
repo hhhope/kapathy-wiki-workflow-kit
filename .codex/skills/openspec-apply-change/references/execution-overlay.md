@@ -36,11 +36,12 @@ Why this drifts:
 Applies to OpenSpec change: `add-product-status-contract`
 
 Authority:
-- `tasks.md` is the only progress and completion ledger.
-- This file records execution strategy only.
-- This file must not define independent task ids.
-- This file must not use progress checkboxes.
-- If this file conflicts with `tasks.md`, follow `tasks.md`.
+- Superpowers plan is the implementation plan.
+- OpenSpec tasks are the check/archive ledger.
+- Do not track block progress in OpenSpec tasks.
+- Summarize block evidence into OpenSpec evaluation after implementation.
+- If scope changes, stop implementation and update or create OpenSpec before
+  continuing.
 
 ## TDD Strategy
 

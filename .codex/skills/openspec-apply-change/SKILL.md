@@ -15,6 +15,23 @@ Implement tasks from an OpenSpec change.
 
 Use OpenSpec status and apply instructions to read context files, implement pending tasks, and keep `tasks.md` in sync.
 
+## Superpowers-Native Check/Archive Boundary
+
+When a Superpowers design spec and writing-plan are active:
+
+- Superpowers plan is the implementation plan.
+- OpenSpec tasks are the check/archive ledger.
+- do not track Superpowers block progress in tasks.md.
+- Run plan-check during Superpowers plan review, not as OpenSpec progress.
+- During implementation, resume from the Superpowers plan and git state.
+- Use OpenSpec during implementation only when scope changes.
+- scope changes stop implementation.
+- After all Superpowers blocks complete, use OpenSpec for acceptance evidence,
+  validation, and archive review.
+
+If scope changes, stop implementation and update or create OpenSpec before
+continuing.
+
 ## OpenSpec / Superpowers Execution Overlay
 
 When a detailed Superpowers plan is useful during an OpenSpec change, treat it
