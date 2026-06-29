@@ -85,7 +85,7 @@
   <div class="header">
     <h1>零售商户接入攻坚视图（Q4 前）</h1>
     <p>本次视图从“涅槃项目全景”调整为“Q4 前解决零售商户接入难”。Q4 前按 2026-09-30 前处理；原目标中的 20260931 不是有效日期，需要在里程碑调整时改成 2026-09-30 或 2026-10-01。</p>
-    <p>主线从单点协议支付闭环升级为：统一会员入网统一字段、流程和风控；按客户和产品条件触发电子户工作流；交易侧统一网关、统一证书秘钥、多渠道复用一套接口；结算、分账、查询、商户服务和代理商能力同步补齐。</p>
+    <p>主线从单点协议支付闭环升级为：统一会员入网统一字段、流程和风控；按客户和产品条件触发电子户工作流；交易侧统一网关、统一证书秘钥、多渠道复用一套接口；能力地图按瞭望塔产品门户口径组织为会员、入网、多渠道收款、控台、货架、商户入网、直销和代销。</p>
   </div>
 
   <div class="cards">
@@ -101,8 +101,8 @@
     </div>
     <div class="card">
       <h3>迁移存量</h3>
-      <div class="big">聚合 7 个完成，剩余 50 个</div>
-      <div class="muted">聚合接口已启动迁移，台账覆盖统一下单、退款、分账、查询、商户服务、终端与 B2B 等接口族</div>
+      <div class="big">聚合 7 个完成，慧收钱 7/1 启动</div>
+      <div class="muted">聚合接口仍有剩余拆批；0629 排期明确慧收钱网关迁移为 2026-07-01 至 2026-07-30</div>
     </div>
     <div class="card">
       <h3>关键风险</h3>
@@ -186,23 +186,23 @@
         <div class="bar-cell"><div class="bar todo">多渠道入网</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
-        <div class="cell left">慧收钱 / 商户服务 / 代理商</div>
-        <div class="cell phase m3">S5</div>
-        <div class="cell sub">承接 PC、小程序、商户服务工具、设备绑定、退款/交易查询和代理商拓客 APP 的后续入口</div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar todo">范围确认</div></div>
-        <div class="bar-cell"><div class="bar todo">服务工具</div></div>
-        <div class="bar-cell"><div class="bar todo">代理商</div></div>
-        <div class="bar-cell"><div class="bar todo risk">慧收钱迁移</div></div>
-        <div class="bar-cell"><div class="bar todo">验证</div></div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">Q4前验收</div></div>
+        <div class="cell left">慧收钱网关迁移</div>
+        <div class="cell phase m2">S5</div>
+        <div class="cell sub">0629 排期表：慧收钱网关迁移为统一网关接口集成，2026-07-01 启动，2026-07-30 完成开发</div>
+        <div class="bar-cell"></div>
+        <div class="bar-cell"><div class="bar doing">7/1启动</div></div>
+        <div class="bar-cell"><div class="bar doing">接口集成</div></div>
+        <div class="bar-cell"><div class="bar doing">联调</div></div>
+        <div class="bar-cell"><div class="bar doing risk">7/30开发完成</div></div>
+        <div class="bar-cell"><div class="bar todo">测试验证</div></div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">Q4前验收</div></div>
       </div>
     </div>
     <div class="note">时间轴从 2026-06-29 所在周开始，目的不是重画所有历史，而是把 Q4 前必须收口的迁移、验证、评审和文档站点工作放到一张图里。</div>
   </div>
 
   <div class="section">
-    <h2>二、零售商户接入能力地图</h2>
+    <h2>二、瞭望塔产品能力地图对齐</h2>
     <div class="legend">
       <span><span class="tag t-done">已支持</span></span>
       <span><span class="tag t-doing">再建设</span></span>
@@ -211,73 +211,73 @@
     <table>
       <thead>
         <tr>
-          <th style="width:12%">零售诉求</th>
-          <th style="width:22%">目标口径</th>
-          <th style="width:22%">当前基础</th>
-          <th style="width:24%">本次调整</th>
-          <th style="width:20%">风险 / 待确认</th>
+          <th style="width:16%">瞭望塔能力</th>
+          <th style="width:20%">对应零售诉求</th>
+          <th style="width:22%">0629 排期口径</th>
+          <th style="width:24%">本次页面表达</th>
+          <th style="width:18%">风险 / 待确认</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><b>入网</b></td>
-          <td>统一会员入网，统一管理渠道字段、流程、风控与补充材料</td>
-          <td><span class="tag t-done">已有基础</span><br>会员建设 M1 已上线，产品上架与产品开通形成底座</td>
-          <td><span class="tag t-doing">再建设</span><br>把宝付、国通、银行等多渠道入网差异沉到配置和工作流，不让商户重复对接</td>
-          <td><span class="tag t-risk">待评审</span><br>字段边界、补充机制、风控触发条件需冻结</td>
+          <td><b>统一会员</b></td>
+          <td>统一会员入网、客户主体、层级关系</td>
+          <td><span class="tag t-done">历史底座</span><br>里程碑版记录统一会员用于形成会员模型雏形</td>
+          <td><span class="tag t-doing">对齐瞭望塔</span><br>能力地图不再只写“入网”，而是挂到统一会员能力下，承接字段、流程、风控和补充材料</td>
+          <td><span class="tag t-risk">待冻结</span><br>渠道差异字段与补充材料触发规则</td>
         </tr>
         <tr>
-          <td><b>电子户</b></td>
-          <td>按柜台或产品判断是否创建电子户，创建流程与渠道入网强关联</td>
-          <td><span class="tag t-done">已有接口</span><br>账户网关、老前置和宝财通接口中已有电子户、开户、加白、查询、通知类能力</td>
-          <td><span class="tag t-doing">再建设</span><br>补工作流设置，把电子户创建从单接口动作变成入网编排的一环</td>
-          <td><span class="tag t-risk">强耦合</span><br>电子户与多渠道入网的先后顺序需要产品和技术共同确认</td>
+          <td><b>快速入网</b></td>
+          <td>多渠道入网、信息不足补充机制、电子户工作流</td>
+          <td><span class="tag t-doing">规划能力</span><br>里程碑版写明“针对多渠道收款业务开通流程上线”</td>
+          <td><span class="tag t-doing">对齐瞭望塔</span><br>把电子户放到快速入网链路里表达，避免看成独立账户接口</td>
+          <td><span class="tag t-risk">强耦合</span><br>电子户和渠道入网先后顺序需评审</td>
         </tr>
         <tr>
-          <td><b>交易</b></td>
-          <td>统一网关、统一证书秘钥，一套接口按已入网渠道发起交易</td>
-          <td><span class="tag t-done">开发完成</span><br>协议支付与一键绑卡相关 12 个接口完成迁移开发；ASL 完成流量验证</td>
-          <td><span class="tag t-doing">再建设</span><br>下周重点做统一网关验证、准生产 Nacos 验证和提测闭环</td>
-          <td><span class="tag t-risk">待评审</span><br>协议支付对接方式仍未评审，不能直接宣称可对客</td>
+          <td><b>多渠道收款控台+API</b></td>
+          <td>统一网关、统一证书秘钥、多渠道交易一套接口</td>
+          <td><span class="tag t-doing">核心节点</span><br>里程碑版写明“多渠道收款业务上线”；统一网关 sheet 记录接口规范、签名、加密、Nacos 等能力</td>
+          <td><span class="tag t-doing">对齐瞭望塔</span><br>协议支付、聚合、慧收钱都放入多渠道收款 API 视角，不再拆成孤立系统线</td>
+          <td><span class="tag t-risk">待评审</span><br>协议支付对接方式仍未评审</td>
         </tr>
         <tr>
-          <td><b>结算</b></td>
-          <td>支持渠道自行结算和统一宝付结算</td>
-          <td><span class="tag t-done">已有接口</span><br>自主结算、自主结算查询、资金划拨、代付、电子户余额等接口已在汇总表中列出</td>
-          <td><span class="tag t-todo">待迁移</span><br>S3 需要把结算和账户接口迁移拆成批次，并明确统一结算与渠道结算的适用条件</td>
-          <td><span class="tag t-risk">口径风险</span><br>退款、结算、分账之间的资金流和账期口径需联动评审</td>
+          <td><b>新控台框架</b></td>
+          <td>商户服务工具、PC/小程序服务台、设备与交易查询</td>
+          <td><span class="tag t-doing">规划能力</span><br>里程碑版写明支持多渠道业务相关的新控台功能</td>
+          <td><span class="tag t-doing">对齐瞭望塔</span><br>商户服务不只列接口，落到控台能力：交易查询、退款、设备绑定、投诉和商户信息采集</td>
+          <td><span class="tag t-risk">体验风险</span><br>只迁接口不能解决商户使用难</td>
         </tr>
         <tr>
-          <td><b>分账</b></td>
-          <td>支持渠道能力分账和宝付能力分账，覆盖多渠道入金后的分账</td>
-          <td><span class="tag t-doing">再建设</span><br>聚合台账包含付款后分账、分账查询；涅槃 M3 分账产品建设目标仍指向 2026-09-11</td>
-          <td><span class="tag t-doing">再建设</span><br>把分账作为零售接入后的资金分配能力，不再只看单一产品交付</td>
-          <td><span class="tag t-risk">方案风险</span><br>分账退款和退款产品方案需要评审</td>
+          <td><b>产品货架模型</b></td>
+          <td>按产品/解决方案组合开通协议支付、聚合、分账、慧收钱</td>
+          <td><span class="tag t-done">已建设</span><br>里程碑版记录产品货架模型支撑多产品管理；测试问题集中在产品货架、子服务和协议配置</td>
+          <td><span class="tag t-doing">对齐瞭望塔</span><br>页面用货架承接“零售解决方案”组合，不把能力散落到单接口清单</td>
+          <td><span class="tag t-risk">配置风险</span><br>产品、协议、子服务和计费口径要一致</td>
         </tr>
         <tr>
-          <td><b>数据查询</b></td>
-          <td>统一交易、退款、绑卡、结算、账户数据查询能力</td>
-          <td><span class="tag t-done">已有范围</span><br>查单、查绑卡、查退款单、订单查询、退款查询、账户余额和收支明细均有接口基础</td>
-          <td><span class="tag t-doing">再建设</span><br>查询接口迁移要和开发者站点文档同步，避免只迁代码不迁对接指引</td>
-          <td><span class="tag t-risk">数据口径</span><br>多渠道返回状态、单号、退款状态和对账口径需要统一</td>
+          <td><b>商户入网流程</b></td>
+          <td>新增产品/协议支付上线、资料补充、风控和审核编排</td>
+          <td><span class="tag t-done">已上线基础</span><br>里程碑版记录 2026-02-02 至 2026-03-30 已接入新增产品申请、配置环节和直销卡类协议支付</td>
+          <td><span class="tag t-doing">对齐瞭望塔</span><br>入网从“统一会员”落到具体商户入网流程，和协议支付上线能力连接</td>
+          <td><span class="tag t-risk">流程风险</span><br>不同产品流程需要继续梳理</td>
         </tr>
         <tr>
-          <td><b>商户服务</b></td>
-          <td>PC、小程序端等服务工具支持交易查询、交易、退款、设备绑定</td>
-          <td><span class="tag t-doing">再建设</span><br>聚合台账包含投诉、商户信息采集、终端信息采集、图片上传下载、B2B 门店等商户服务接口</td>
-          <td><span class="tag t-todo">待规划</span><br>需要把商户服务从“接口清单”转成面向商户的服务台和对接指南</td>
-          <td><span class="tag t-risk">体验风险</span><br>只完成接口迁移，不能解决商户使用难</td>
+          <td><b>直销模式业务支持</b></td>
+          <td>零售直销场景：卡类支付、钱包支付、分账、账户基础服务</td>
+          <td><span class="tag t-doing">当前主线</span><br>里程碑版记录 2026-02-02 至 2026-06-30 支持直销模式业务；0629 表中协议支付、统一网关、账户、分账均围绕这条线推进</td>
+          <td><span class="tag t-doing">对齐瞭望塔</span><br>Q4 前目标先以直销零售接入难为主，不把复杂代销/金融场景提前承诺</td>
+          <td><span class="tag t-risk">范围风险</span><br>直销未闭环会拖累后续代销和存量迁移</td>
         </tr>
         <tr>
-          <td><b>代理商</b></td>
-          <td>支持代理商体系与代理商拓客 APP</td>
-          <td><span class="tag t-doing">再建设</span><br>会员和产品货架已提供层级与权限基础，零售会议口径倾向优先覆盖 70%-80% 标准场景</td>
-          <td><span class="tag t-todo">待规划</span><br>S5 需明确代理商场景是否进入 Q4 前范围，还是作为后续增强</td>
+          <td><b>代销模式业务支持</b></td>
+          <td>代理商体系、渠道商-商户链路、代理商拓客 APP</td>
+          <td><span class="tag t-todo">后续能力</span><br>里程碑版记录 2026-06-01 至 2026-09-30 支持代销模式的渠道商-商户业务链路及流程配置</td>
+          <td><span class="tag t-todo">对齐瞭望塔</span><br>代理商放入代销模式能力，不再混在慧收钱网关迁移里</td>
           <td><span class="tag t-risk">范围风险</span><br>复杂代理商、金融、二级户混合场景不能默认纳入首版</td>
         </tr>
       </tbody>
     </table>
-    <div class="note">能力地图的读法：不是按系统归属看，而是按零售商户接入时会遇到的八类阻塞看。每一行都要能回答“商户少接几次、少配几套、少等几个环节”。</div>
+    <div class="note">能力地图的读法：按瞭望塔产品门户的能力对象组织，再映射到零售诉求。当前只能验证瞭望塔静态入口标题，具体登录态能力树以产品门户实际配置为准。</div>
   </div>
 
   <div class="section">
@@ -312,9 +312,9 @@
         </tr>
         <tr>
           <td><b>统一网关 / ASL</b></td>
-          <td>上周周报</td>
-          <td>ASL 完成流量验证；本周计划包括协议支付迁移统一网关验证和网关 Nacos 准生产验证</td>
-          <td>验证结果需要区分：开发完成、提测通过、准生产通过、可对客文档完成四种状态</td>
+          <td>上周周报、0629 统一网关 sheet</td>
+          <td>ASL 完成流量验证；Nacos 注册中心测试完成；慧收钱网关迁移排期为 2026-07-01 至 2026-07-30</td>
+          <td>验证结果需要区分：开发完成、提测通过、准生产通过、可对客文档完成四种状态；慧收钱按 7 月在做处理</td>
         </tr>
         <tr>
           <td><b>开发者站点</b></td>
@@ -330,7 +330,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="source-note">来源边界：本页使用用户提供的上周周报口径、`账户组对外接口文档汇总.xlsx`、`聚合业务接入统一网关接口梳理.xlsx`、`协议支付涅槃需求文档` 和零售需求描述。没有把未评审产品方案写成已决结论。</div>
+    <div class="source-note">来源边界：本页使用用户提供的上周周报口径、`涅槃产品上架梳理0629.xlsx`、`账户组对外接口文档汇总.xlsx`、`聚合业务接入统一网关接口梳理.xlsx`、`协议支付涅槃需求文档` 和零售需求描述。瞭望塔 URL 可访问静态门户入口，但未读取登录态能力树；未评审产品方案仍不写成已决结论。</div>
   </div>
 </div>
 </body>
