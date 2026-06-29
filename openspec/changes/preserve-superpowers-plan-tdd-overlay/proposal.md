@@ -1,40 +1,32 @@
-# Preserve Superpowers Plan TDD Overlay
+# Native Superpowers With OpenSpec Check/Archive
 
 ## Why
 
-The repository already has two adjacent safeguards:
+The repository needs Superpowers-native design and implementation planning to
+remain uninterrupted. OpenSpec is still useful for acceptance, evidence,
+scope-change stops, validation, and archive review, but it must not become a
+second implementation plan.
 
-- `openspec-router` prevents OpenSpec edits while `$superpowers:brainstorming`
-  is still waiting on written-spec review.
-- `openspec-apply-change` treats a detailed Superpowers plan as an execution
-  overlay rather than a second progress ledger.
-
-The remaining failure is different: after brainstorming and `writing-plans`
-produce a detailed Superpowers plan, the follow-up OpenSpec artifacts can
-rewrite the work at a higher level. Implementation then follows the narrower
-OpenSpec wording and loses detailed acceptance structure, RED/GREEN sequence,
-module strategy, or verification intent from the Superpowers plan.
-
-The Stripe H5 repair recorded this exact class of drift: Superpowers design was
-used as supporting context rather than an acceptance checklist, and later
-OpenSpec changes verified keywords, screenshots, or adjacent visual work while
-the intended reader path stayed unverified.
+The observed failure is not lack of OpenSpec. The failure is letting OpenSpec
+rewrite or replace the approved Superpowers spec/plan. The Stripe H5 repair
+recorded the same class of drift: Superpowers design was used as supporting
+context rather than an acceptance checklist, and verification accepted keywords
+and screenshots while the intended reader path stayed unverified.
 
 ## What Changes
 
-- Require OpenSpec changes that derive from an approved Superpowers design or
-  plan to preserve it as an acceptance and TDD overlay.
-- Require an explicit overlay mapping from Superpowers design/plan sections to
-  OpenSpec tasks, spec scenarios, and verification evidence.
-- Keep `tasks.md` as the only progress ledger, while making the overlay a
-  required implementation input when it exists.
-- Require completion evidence to include overlay conformance checks, not only
-  OpenSpec checkbox completion.
+- Keep Superpowers design spec and writing-plan as the implementation
+  authority during native Superpowers execution.
+- Treat OpenSpec tasks as check/archive lifecycle items only.
+- Put the Acceptance Spec inside the Superpowers design spec.
+- Run plan-check as part of Superpowers plan review, not as OpenSpec progress.
+- Use OpenSpec during execution only when scope changes; otherwise use it after
+  implementation for acceptance evidence, validation, and archive review.
 
 ## Out Of Scope
 
 - Do not edit the upstream Superpowers plugin.
-- Do not make Superpowers artifacts the lifecycle source of truth.
-- Do not require every OpenSpec change to create a Superpowers plan.
-- Do not reopen completed implementation changes.
-- Do not archive this change in the proposal step.
+- Do not change OpenSpec CLI behavior.
+- Do not continuously sync OpenSpec progress during Superpowers execution.
+- Do not require OpenSpec for small one-session work.
+- Do not turn OpenSpec `tasks.md` into a second implementation plan.

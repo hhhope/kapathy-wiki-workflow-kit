@@ -1,48 +1,52 @@
 ## ADDED Requirements
 
-### Requirement: Derived OpenSpec changes SHALL preserve Superpowers plan overlays
+### Requirement: Superpowers-native execution SHALL remain uninterrupted
 
-The repository SHALL preserve an approved Superpowers design or writing-plan artifact as an implementation overlay when an OpenSpec change is derived from it.
+The repository SHALL execute from the approved Superpowers plan when a Superpowers design spec and writing-plan are active.
 
-The overlay preserves acceptance details, TDD strategy, module strategy, and
-verification intent.
+#### Scenario: Superpowers plan is active during implementation
 
-#### Scenario: OpenSpec change derives from Superpowers design and plan
+- **WHEN** a user-approved Superpowers design spec and writing-plan exist
+- **AND** implementation begins or resumes
+- **THEN** the agent SHALL use the Superpowers plan as the implementation plan
+- **AND** OpenSpec `tasks.md` SHALL NOT track Superpowers block progress
+- **AND** OpenSpec `tasks.md` SHALL NOT replace the Superpowers plan with a
+  second implementation plan.
 
-- **WHEN** a Superpowers design or writing-plan artifact exists for the same
-  implementation scope
-- **AND** an OpenSpec change is created from it
-- **THEN** the OpenSpec change SHALL reference the Superpowers source artifact
-- **AND** it SHALL include an overlay mapping from key Superpowers acceptance
-  and TDD details to OpenSpec tasks, spec scenarios, or verification evidence
-- **AND** `tasks.md` SHALL remain the only progress and completion ledger.
+### Requirement: OpenSpec tasks SHALL be check and archive lifecycle items
 
-#### Scenario: TDD details exist in the Superpowers plan
+OpenSpec tasks SHALL stay limited to check, evidence, validation, and archive lifecycle items when the implementation is driven by a Superpowers plan.
 
-- **WHEN** the Superpowers plan defines RED/GREEN steps, failing evidence,
-  checker fixtures, test commands, or TDD sequencing
-- **THEN** the OpenSpec change SHALL preserve those details as mapped
-  implementation or verification obligations
-- **AND** it SHALL NOT collapse them into generic "run tests" or "verify"
-  wording without citing the original TDD detail.
+#### Scenario: OpenSpec is used after Superpowers implementation
 
-#### Scenario: Implementation resumes from an OpenSpec change with overlay
+- **WHEN** all Superpowers plan blocks are complete
+- **THEN** OpenSpec MAY be used to check acceptance, summarize evidence, run
+  validation, and perform archive review
+- **AND** OpenSpec tasks SHALL NOT introduce implementation steps such as RED,
+  GREEN, file edits, or block execution.
 
-- **WHEN** implementation starts or resumes for a change with a mapped
-  Superpowers overlay
-- **THEN** the agent SHALL read `tasks.md` for progress state
-- **AND** it SHALL read the mapped Superpowers overlay for acceptance and TDD
-  tactics before editing implementation files
-- **AND** it SHALL stop and re-anchor if the overlay and OpenSpec artifacts
-  conflict.
+### Requirement: Scope changes SHALL stop Superpowers implementation
 
-#### Scenario: Completion is claimed for a derived OpenSpec change
+The repository SHALL stop Superpowers plan execution when implementation discovers scope outside the approved plan or acceptance spec.
 
-- **WHEN** a derived OpenSpec change is claimed complete
-- **THEN** completion evidence SHALL include OpenSpec validation and task
-  status
-- **AND** it SHALL include overlay conformance evidence for mapped acceptance
-  and TDD details
+#### Scenario: Implementation discovers new scope
+
+- **WHEN** a Superpowers plan block requires behavior, files, or acceptance
+  criteria outside the approved plan
+- **THEN** the agent SHALL stop implementation
+- **AND** the agent SHALL update or create OpenSpec scope before continuing
+- **AND** the agent SHALL NOT silently merge the new scope into the current
+  Superpowers plan.
+
+### Requirement: Completion evidence SHALL summarize Superpowers block evidence
+
+Completion evidence SHALL summarize evidence from completed Superpowers blocks instead of replacing the Superpowers plan.
+
+#### Scenario: OpenSpec check/archive follows Superpowers completion
+
+- **WHEN** OpenSpec check/archive starts after Superpowers implementation
+- **THEN** `evaluation.md` SHALL cite the source Superpowers spec and plan
+- **AND** it SHALL summarize acceptance evidence from completed plan blocks
 - **AND** keyword presence, screenshot smoke, or generic validation SHALL NOT
-  count as sufficient evidence when the mapped overlay requires structure-level
-  or RED/GREEN verification.
+  count as sufficient evidence when the Superpowers Acceptance Spec requires
+  structure-level, reader-path, behavior, RED/GREEN, or replay verification.
