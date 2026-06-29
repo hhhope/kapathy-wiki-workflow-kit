@@ -139,68 +139,83 @@
         <div class="cell head">09W2</div>
         <div class="cell head">09W3-4</div>
 
-        <div class="cell left">里程碑重排</div>
+        <div class="cell left">口径与边界确认</div>
         <div class="cell phase m2">M2</div>
-        <div class="cell sub">把 M2 更新为“统一网关与会员建设”，目标改到 2026-09-30 前；明确各 sprint 的验收口径</div>
-        <div class="bar-cell"><div class="bar doing risk">调整目标</div></div>
-        <div class="bar-cell"><div class="bar doing">冻结排期</div></div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">Q4前验收</div></div>
+        <div class="cell sub">先确认 8 条零售能力不是口号：入网、电子户、交易、结算、分账、查询、商户服务、代理商都要暴露缺口和责任边界</div>
+        <div class="bar-cell"><div class="bar doing risk">口径校准</div></div>
+        <div class="bar-cell"><div class="bar doing">问题暴露</div></div>
+        <div class="bar-cell"><div class="bar todo">责任确认</div></div>
+        <div class="bar-cell"><div class="bar todo">验收口径</div></div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">Q4前验收</div></div>
 
-        <div class="cell left">协议支付 / 一键绑卡</div>
+        <div class="cell left">入网 / 会员域</div>
         <div class="cell phase m2">S1</div>
-        <div class="cell sub">12 个接口迁移：预绑卡、H5 绑卡收银台、协议支付收单、退款、查单、查绑卡、查退款单等</div>
-        <div class="bar-cell"><div class="bar done">开发完成</div></div>
-        <div class="bar-cell"><div class="bar doing risk">提测/网关验证</div></div>
-        <div class="bar-cell"><div class="bar doing">联调</div></div>
-        <div class="bar-cell"><div class="bar todo">准生产</div></div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
+        <div class="cell sub">会员迁移 2 项未开始；统一会员要管控宝付、国通、银行入网字段、流程、风控；补充材料看渠道侧，审核要联动 BOS</div>
+        <div class="bar-cell"></div>
+        <div class="bar-cell"><div class="bar todo risk">会员2项</div></div>
+        <div class="bar-cell"><div class="bar todo">渠道字段</div></div>
+        <div class="bar-cell"><div class="bar todo">补材料</div></div>
+        <div class="bar-cell"><div class="bar todo risk">BOS联动</div></div>
+        <div class="bar-cell"><div class="bar todo">入网验收</div></div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
-        <div class="cell left">聚合支付接口迁移</div>
+        <div class="cell left">电子户 / 渠道报备</div>
         <div class="cell phase m2">S2</div>
-        <div class="cell sub">已完成 7 个接口开发，剩余 50 个接口；台账覆盖统一下单、退款、分账、查询、签约、商户服务、终端与 B2B</div>
-        <div class="bar-cell"><div class="bar done">7个开发</div></div>
-        <div class="bar-cell"><div class="bar doing">排测试</div></div>
-        <div class="bar-cell"><div class="bar todo risk">50个拆批</div></div>
-        <div class="bar-cell"><div class="bar todo">聚合交易</div></div>
-        <div class="bar-cell"><div class="bar todo">商户服务</div></div>
-        <div class="bar-cell"><div class="bar todo">终端/B2B</div></div>
+        <div class="cell sub">电子户在入网基础上触发：先开电子户，再作为其他渠道报备的结算账户；这是强耦合工作流，不是单独账户接口</div>
+        <div class="bar-cell"></div>
+        <div class="bar-cell"><div class="bar todo risk">触发规则</div></div>
+        <div class="bar-cell"><div class="bar todo">电子户创建</div></div>
+        <div class="bar-cell"><div class="bar todo">报备账户</div></div>
+        <div class="bar-cell"><div class="bar todo risk">工作流</div></div>
+        <div class="bar-cell"><div class="bar todo">联动验证</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
-        <div class="cell left">账户/结算范围收口</div>
+        <div class="cell left">交易 / 统一网关</div>
         <div class="cell phase m2">S3</div>
-        <div class="cell sub">本轮账户接口池 56 个；新增/待做 7 个接口项，另有 2 个兼容项。补上多渠道收款账户承接：待分账户、分账接收户、查询、账单、对账；宝财通 3.0 不迁</div>
-        <div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar doing risk">接口池56</div></div>
-        <div class="bar-cell"><div class="bar doing">新增7</div></div>
-        <div class="bar-cell"><div class="bar todo">兼容2</div></div>
-        <div class="bar-cell"><div class="bar todo">多渠道收款</div></div>
-        <div class="bar-cell"><div class="bar todo">查询账单</div></div>
-        <div class="bar-cell"><div class="bar todo">验收口径</div></div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
-
-        <div class="cell left">会员迁移接口</div>
-        <div class="cell phase m2">S4</div>
-        <div class="cell sub">0629 统一网关 sheet 会员迁移 2 项：会员入网集成、会员领域迁移 merchant-api 开发；状态均为未开始</div>
-        <div class="bar-cell"></div><div class="bar-cell"><div class="bar todo risk">会员2项</div></div>
-        <div class="bar-cell"><div class="bar todo">入网集成</div></div>
-        <div class="bar-cell"><div class="bar todo">merchant-api</div></div>
-        <div class="bar-cell"><div class="bar todo">联调验证</div></div>
-        <div class="bar-cell"><div class="bar todo">验收口径</div></div>
+        <div class="cell sub">统一证书秘钥和一套接口只是基础；协议支付 12 个完成，聚合 7 个完成剩余 50 个，慧收钱 7 月迁移，仍要按已入网渠道发起交易验证</div>
+        <div class="bar-cell"><div class="bar done">协议12</div></div>
+        <div class="bar-cell"><div class="bar doing">提测</div></div>
+        <div class="bar-cell"><div class="bar todo risk">聚合50</div></div>
+        <div class="bar-cell"><div class="bar doing">慧收钱</div></div>
+        <div class="bar-cell"><div class="bar todo">渠道交易</div></div>
+        <div class="bar-cell"><div class="bar todo">准生产</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
-        <div class="cell left">慧收钱网关迁移</div>
-        <div class="cell phase m2">S5</div>
-        <div class="cell sub">0629 排期表：慧收钱网关迁移为统一网关接口集成，2026-07-01 启动，2026-07-30 完成开发</div>
+        <div class="cell left">结算 / 分账</div>
+        <div class="cell phase m2">S4</div>
+        <div class="cell sub">必须确认渠道自结算还是宝付结算；宝付结算依赖电子户、渠道结算到电子户、线下打款到宝付备付金，再由宝付结算给商户；分账要区分渠道能力和宝付能力</div>
         <div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar doing">7/1启动</div></div>
-        <div class="bar-cell"><div class="bar doing">接口集成</div></div>
-        <div class="bar-cell"><div class="bar doing">联调</div></div>
-        <div class="bar-cell"><div class="bar doing risk">7/30开发完成</div></div>
-        <div class="bar-cell"><div class="bar todo">测试验证</div></div>
+        <div class="bar-cell"><div class="bar todo risk">结算选择</div></div>
+        <div class="bar-cell"><div class="bar todo">电子户路径</div></div>
+        <div class="bar-cell"><div class="bar todo">备付金</div></div>
+        <div class="bar-cell"><div class="bar todo risk">分账边界</div></div>
+        <div class="bar-cell"><div class="bar todo">资金验收</div></div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
+
+        <div class="cell left">查询 / 商户服务</div>
+        <div class="cell phase m2">S5</div>
+        <div class="cell sub">账户接口池 56 个，新增/待做 7 个接口项和 2 个兼容项；商户服务不能只写查询退款，还要覆盖 PC/小程序、收款流水、设备绑定、收款、营销</div>
+        <div class="bar-cell"></div>
+        <div class="bar-cell"><div class="bar doing">接口池56</div></div>
+        <div class="bar-cell"><div class="bar doing">新增7</div></div>
+        <div class="bar-cell"><div class="bar todo">账单对账</div></div>
+        <div class="bar-cell"><div class="bar todo risk">服务范围</div></div>
+        <div class="bar-cell"><div class="bar todo">工具验收</div></div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
+
+        <div class="cell left">代理商 / 代销链路</div>
+        <div class="cell phase m2">S6</div>
+        <div class="cell sub">代销模式排期到 2026-09-30，但代理商拓客 APP、渠道商分润、复杂代销/金融/二级户混合场景是否进首版还没冻结</div>
+        <div class="bar-cell"></div>
+        <div class="bar-cell"></div>
+        <div class="bar-cell"><div class="bar todo">范围确认</div></div>
+        <div class="bar-cell"><div class="bar todo">拓客APP</div></div>
+        <div class="bar-cell"><div class="bar todo risk">首版边界</div></div>
+        <div class="bar-cell"><div class="bar todo">代销验收</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">Q4前验收</div></div>
       </div>
     </div>
-    <div class="note">时间轴从 2026-06-29 所在周开始。账户/结算只保留一条范围收口线，但必须写清接口数量和多渠道收款账户承接；会员单独保留迁移接口数量。</div>
+    <div class="note">管理判断：甘特图不再只列接口开发进度，而是暴露 Q4 前会卡住的管理问题：会员/BOS/渠道入网、电子户工作流、宝付结算路径、分账边界、商户服务范围和代理商首版边界。</div>
   </div>
 
   <div class="section">
