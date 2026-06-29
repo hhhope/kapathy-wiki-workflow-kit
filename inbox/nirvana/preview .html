@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>项目全景图（甘特图 + 能力地图）</title>
+  <title>零售商户接入攻坚视图（统一网关 + 会员入网 + 多渠道交易）</title>
   <style>
     :root{
       --bg:#f7f9fc;
@@ -30,13 +30,13 @@
     *{box-sizing:border-box}
     body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}
     .wrap{max-width:1560px;margin:0 auto;padding:24px}
-    .header{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;border-radius:20px;padding:24px 28px;margin-bottom:20px;box-shadow:0 10px 24px rgba(15,23,42,.18)}
+    .header{background:linear-gradient(135deg,#12372f,#1f4f46);color:#fff;border-radius:20px;padding:24px 28px;margin-bottom:20px;box-shadow:0 10px 24px rgba(15,23,42,.18)}
     .header h1{margin:0 0 8px;font-size:30px}
     .header p{margin:6px 0;color:#cbd5e1;line-height:1.7}
     .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
     .card h3{margin:0 0 8px;font-size:15px}
-    .big{font-size:24px;font-weight:700}
+    .big{font-size:24px;font-weight:700;line-height:1.25}
     .muted{color:var(--muted)}
     .section{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px;margin-bottom:20px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
     .section h2{margin:0 0 8px;font-size:22px}
@@ -69,6 +69,7 @@
     th{background:#f8fafc}
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
     .note{margin-top:10px;padding:12px 14px;border-radius:14px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-size:14px;line-height:1.7}
+    .source-note{margin-top:10px;padding:10px 12px;border-radius:12px;background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-size:13px;line-height:1.7}
     .foot{color:var(--muted);font-size:13px;line-height:1.8}
     .tag{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
     .t-done{background:var(--done-bg);color:var(--done-text)}
@@ -82,38 +83,38 @@
 <body>
 <div class="wrap">
   <div class="header">
-    <h1>项目全景图（甘特图 + 能力地图 + 技术建设）</h1>
-    <p>统一网关 / 防腐层从 2026 年 3 月启动；协议支付当前已推进一步支付，但清结算、计费、结果通知、订单更新、对账仍待闭环；会员事项本周已与泽哥、卢珊完成沟通；账户改造包含统一动账、结算、账期与统一账户管理。</p>
-    <p>五月完成分账上量，六月启动慧收钱；涅槃分账产品因涉及分账核心需求整体由曹阳承接并重新评审。技术建设的价值不只是升级组件，而是解决历史账单、数据孤岛和历史交接割裂问题，支撑系统向高可用、高性能、高扩展演进。</p>
+    <h1>零售商户接入攻坚视图（Q4 前）</h1>
+    <p>本次视图从“涅槃项目全景”调整为“Q4 前解决零售商户接入难”。Q4 前按 2026-09-30 前处理；原目标中的 20260931 不是有效日期，需要在里程碑调整时改成 2026-09-30 或 2026-10-01。</p>
+    <p>主线从单点协议支付闭环升级为：统一会员入网统一字段、流程和风控；按客户和产品条件触发电子户工作流；交易侧统一网关、统一证书秘钥、多渠道复用一套接口；结算、分账、查询、商户服务和代理商能力同步补齐。</p>
   </div>
 
   <div class="cards">
     <div class="card">
-      <h3>基础已成型</h3>
-      <div class="big">产品 / 会员 / 账户底座</div>
-      <div class="muted">M1 已完成产品货架、会员入网/签约、4.0 账户关系与开户能力；会员事项本周已完成对齐</div>
+      <h3>目标重心</h3>
+      <div class="big">Q4 前降低零售接入复杂度</div>
+      <div class="muted">用统一会员入网 + 统一网关 + 多渠道交易，把商户从多套接口、多套证书、多套入网资料里解出来</div>
     </div>
     <div class="card">
-      <h3>当前推进主线</h3>
-      <div class="big">统一网关 + 协议支付闭环</div>
-      <div class="muted">网关从 2026-03 启动；对客对接方式、商用范围仍未完全闭环；协议支付仍待补清结算、计费、通知、订单更新、对账</div>
+      <h3>本周进展</h3>
+      <div class="big">12 个接口完成迁移开发</div>
+      <div class="muted">协议支付与一键绑卡相关接口已完成迁移开发，预计下周一提测；ASL 防腐层完成流量验证</div>
     </div>
     <div class="card">
-      <h3>账户改造</h3>
-      <div class="big">框架完成，结算扩展中</div>
-      <div class="muted">待分账户、分账接收户、统一动账已成型；M2 / M3 进入账期、结算与统一账户管理</div>
+      <h3>迁移存量</h3>
+      <div class="big">聚合 7 个完成，剩余 50 个</div>
+      <div class="muted">聚合接口已启动迁移，台账覆盖统一下单、退款、分账、查询、商户服务、终端与 B2B 等接口族</div>
     </div>
     <div class="card">
       <h3>关键风险</h3>
-      <div class="big">分账重评审 + 网关未闭环</div>
-      <div class="muted">曹阳承接分账核心需求后需要重新评审；五月分账、六月慧收钱会放大网关和协议支付未闭环风险</div>
+      <div class="big">产品方案与文档站点未闭环</div>
+      <div class="muted">协议支付对接方式、退款产品方案未评审；开发者站点还要补接口梳理和对接指引</div>
     </div>
   </div>
 
-  <div class="note">本周补充口径：一号位当前由严鹏承接对单；AI 提效本周结论为“安装”；网关对客方式、商用范围仍待明确。</div>
+  <div class="note">本周决策口径：本页不再只汇报网关或协议支付进度，而是把“零售商户怎么更容易接进来”作为主判断线。已完成开发不等于可对客，需要用准生产 Nacos、统一网关验证、接口文档和产品方案评审一起收口。</div>
 
   <div class="section">
-    <h2>一、整体项目甘特图</h2>
+    <h2>一、Q4 前交付路径</h2>
     <div class="legend">
       <span><i class="dot done"></i>已完成 / 已上线</span>
       <span><i class="dot doing"></i>开发中 / 测试中 / 联调中</span>
@@ -125,94 +126,83 @@
         <div class="cell head">主线</div>
         <div class="cell head">阶段</div>
         <div class="cell head">说明</div>
-        <div class="cell head">2025-10</div>
-        <div class="cell head">2025-11</div>
-        <div class="cell head">2025-12</div>
-        <div class="cell head">2026-01</div>
-        <div class="cell head">2026-02</div>
-        <div class="cell head">2026-03</div>
-        <div class="cell head">2026-04</div>
-        <div class="cell head">2026-05</div>
-        <div class="cell head">2026-06</div>
-        <div class="cell head">2026-07</div>
-        <div class="cell head">2026-08</div>
-        <div class="cell head">2026-09</div>
+        <div class="cell head">06W4</div>
+        <div class="cell head">07W1</div>
+        <div class="cell head">07W2</div>
+        <div class="cell head">07W3</div>
+        <div class="cell head">07W4</div>
+        <div class="cell head">08W1</div>
+        <div class="cell head">08W2</div>
+        <div class="cell head">08W3</div>
+        <div class="cell head">08W4</div>
+        <div class="cell head">09W1</div>
+        <div class="cell head">09W2</div>
+        <div class="cell head">09W3-4</div>
 
-        <div class="cell left">产品 / 会员基础</div>
-        <div class="cell phase m1">M1</div>
-        <div class="cell sub">货架、入网、签约、会员角色与层级、产品权限；会员事项本周已与泽哥、卢珊对齐</div>
-        <div class="bar-cell"><div class="bar done">货架</div></div>
-        <div class="bar-cell"><div class="bar done">配置</div></div>
-        <div class="bar-cell"><div class="bar done">入网</div></div>
-        <div class="bar-cell"><div class="bar done">签约</div></div>
-        <div class="bar-cell"><div class="bar done">上线</div></div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"><div class="bar doing">慧收钱准备</div></div><div class="bar-cell"><div class="bar todo">慧收钱启动</div></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
-
-        <div class="cell left">统一网关 / 防腐层</div>
+        <div class="cell left">里程碑重排</div>
         <div class="cell phase m2">M2</div>
-        <div class="cell sub">承接接口规范、路由、鉴权、限流、注册发现、错误码治理；当前对客方式、商用范围、Nacos 回归仍未闭环</div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar doing">路由/校验</div></div>
-        <div class="bar-cell"><div class="bar doing">限流/错误码</div></div>
-        <div class="bar-cell"><div class="bar todo">IP白名单</div></div>
-        <div class="bar-cell"><div class="bar doing risk">Nacos/对客</div></div>
-        <div class="bar-cell"><div class="bar todo risk">商用范围</div></div><div class="bar-cell"></div><div class="bar-cell"></div>
+        <div class="cell sub">把 M2 更新为“统一网关与会员建设”，目标改到 2026-09-30 前；明确各 sprint 的验收口径</div>
+        <div class="bar-cell"><div class="bar doing risk">调整目标</div></div>
+        <div class="bar-cell"><div class="bar doing">冻结排期</div></div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">Q4前验收</div></div>
 
-        <div class="cell left">协议支付</div>
-        <div class="cell phase m2">M2-M3</div>
-        <div class="cell sub">一步支付已推进；清结算、计费、结果通知、订单更新、对账仍待闭环，再推进查询、退款、绑卡</div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar doing">一步支付</div></div>
-        <div class="bar-cell"><div class="bar doing risk">清结算/通知</div></div>
-        <div class="bar-cell"><div class="bar doing risk">计费/订单更新</div></div>
-        <div class="bar-cell"><div class="bar todo risk">对账/查询</div></div>
-        <div class="bar-cell"><div class="bar todo">退款/绑卡</div></div>
-        <div class="bar-cell"><div class="bar todo">补单/补发</div></div><div class="bar-cell"></div>
+        <div class="cell left">协议支付 / 一键绑卡</div>
+        <div class="cell phase m2">S1</div>
+        <div class="cell sub">12 个接口迁移：预绑卡、H5 绑卡收银台、协议支付收单、退款、查单、查绑卡、查退款单等</div>
+        <div class="bar-cell"><div class="bar done">开发完成</div></div>
+        <div class="bar-cell"><div class="bar doing risk">提测/网关验证</div></div>
+        <div class="bar-cell"><div class="bar doing">联调</div></div>
+        <div class="bar-cell"><div class="bar todo">准生产</div></div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
-        <div class="cell left">账户改造 / 结算</div>
-        <div class="cell phase m1">M1-M3</div>
-        <div class="cell sub">账户关系、开户、统一动账已成型；后续扩展账期、结算、冻结与统一账户管理</div>
-        <div class="bar-cell"></div><div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar done">账户模型</div></div>
-        <div class="bar-cell"><div class="bar done">开户</div></div>
-        <div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar done">动账/分录</div></div>
-        <div class="bar-cell"><div class="bar doing">查询解耦</div></div>
-        <div class="bar-cell"><div class="bar todo">账户结算支持新分账</div></div>
-        <div class="bar-cell"><div class="bar todo">冻结/解冻出款</div></div>
-        <div class="bar-cell"><div class="bar todo">账户路由</div></div>
-        <div class="bar-cell"><div class="bar todo">统一账户</div></div>
-        <div class="bar-cell"></div>
-
-        <div class="cell left">分账</div>
-        <div class="cell phase m2">M2-M3</div>
-        <div class="cell sub">分账执行、关系、通知、查询、退回、退款形成闭环；当前由曹阳承接核心需求并重新评审，五月完成后六月接慧收钱</div>
-        <div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar todo">模型分析</div></div>
-        <div class="bar-cell"><div class="bar todo">早期排期</div></div>
-        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar doing risk">重评审</div></div>
-        <div class="bar-cell"><div class="bar doing risk">五月分账</div></div>
-        <div class="bar-cell"><div class="bar todo risk">六月慧收钱</div></div>
-        <div class="bar-cell"><div class="bar todo risk">补发清算</div></div><div class="bar-cell"></div>
-
-        <div class="cell left">AD / BM</div>
-        <div class="cell phase m2">M2-M3</div>
-        <div class="cell sub">BM 先查单再管钱；AD 先查单再配置；最终统一承接运营与商户资金视图</div>
+        <div class="cell left">聚合支付接口迁移</div>
+        <div class="cell phase m2">S2</div>
+        <div class="cell sub">已完成 7 个接口开发，剩余 50 个接口；台账覆盖统一下单、退款、分账、查询、签约、商户服务、终端与 B2B</div>
+        <div class="bar-cell"><div class="bar done">7个开发</div></div>
+        <div class="bar-cell"><div class="bar doing">排测试</div></div>
+        <div class="bar-cell"><div class="bar todo risk">50个拆批</div></div>
+        <div class="bar-cell"><div class="bar todo">聚合交易</div></div>
+        <div class="bar-cell"><div class="bar todo">商户服务</div></div>
+        <div class="bar-cell"><div class="bar todo">终端/B2B</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar todo">BM查询</div></div>
-        <div class="bar-cell"><div class="bar todo">AD查询</div></div>
-        <div class="bar-cell"><div class="bar todo risk">退款/配置/划拨</div></div>
-        <div class="bar-cell"><div class="bar todo">统一承接</div></div>
-        <div class="bar-cell"></div>
-        <div class="bar-cell"></div>
+
+        <div class="cell left">结算 / 账户接口迁移</div>
+        <div class="cell phase m2">S3</div>
+        <div class="cell sub">围绕自主结算、余额查询、资金划拨、代付、电子户余额、账户开通/查询/通知等接口形成统一接入口径</div>
+        <div class="bar-cell"></div><div class="bar-cell"></div>
+        <div class="bar-cell"><div class="bar todo">接口梳理</div></div>
+        <div class="bar-cell"><div class="bar todo">账户联动</div></div>
+        <div class="bar-cell"><div class="bar todo risk">电子户耦合</div></div>
+        <div class="bar-cell"><div class="bar todo">结算方案</div></div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
+
+        <div class="cell left">会员入网 / 电子户</div>
+        <div class="cell phase m2">S4</div>
+        <div class="cell sub">统一会员管控入网字段、流程、风控和补充材料；按柜台或产品条件触发电子户创建工作流</div>
+        <div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">字段收口</div></div>
+        <div class="bar-cell"><div class="bar todo">流程配置</div></div>
+        <div class="bar-cell"><div class="bar todo">补充机制</div></div>
+        <div class="bar-cell"><div class="bar todo risk">电子户工作流</div></div>
+        <div class="bar-cell"><div class="bar todo">多渠道入网</div></div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
+
+        <div class="cell left">慧收钱 / 商户服务 / 代理商</div>
+        <div class="cell phase m3">S5</div>
+        <div class="cell sub">承接 PC、小程序、商户服务工具、设备绑定、退款/交易查询和代理商拓客 APP 的后续入口</div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
+        <div class="bar-cell"><div class="bar todo">范围确认</div></div>
+        <div class="bar-cell"><div class="bar todo">服务工具</div></div>
+        <div class="bar-cell"><div class="bar todo">代理商</div></div>
+        <div class="bar-cell"><div class="bar todo risk">慧收钱迁移</div></div>
+        <div class="bar-cell"><div class="bar todo">验证</div></div>
+        <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">Q4前验收</div></div>
       </div>
     </div>
-    <div class="note">这一页保持原甘特图风格，只在同一视觉体系里增加能力地图和技术建设，避免风格割裂。</div>
+    <div class="note">时间轴从 2026-06-29 所在周开始，目的不是重画所有历史，而是把 Q4 前必须收口的迁移、验证、评审和文档站点工作放到一张图里。</div>
   </div>
 
   <div class="section">
-    <h2>二、能力地图</h2>
+    <h2>二、零售商户接入能力地图</h2>
     <div class="legend">
       <span><span class="tag t-done">已支持</span></span>
       <span><span class="tag t-doing">再建设</span></span>
@@ -221,138 +211,126 @@
     <table>
       <thead>
         <tr>
-          <th style="width:12%">领域</th>
-          <th style="width:18%">能力主题</th>
-          <th style="width:23%">已支持</th>
-          <th style="width:23%">再建设</th>
-          <th style="width:24%">待规划</th>
+          <th style="width:12%">零售诉求</th>
+          <th style="width:22%">目标口径</th>
+          <th style="width:22%">当前基础</th>
+          <th style="width:24%">本次调整</th>
+          <th style="width:20%">风险 / 待确认</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><b>会员域</b></td>
-          <td>会员主体、层级关系、代销模式</td>
-          <td><span class="tag t-done">已支持</span><br>会员角色新增、服务商/代理商/门店总关系、会员下商户查询、会员签约权限</td>
-          <td><span class="tag t-doing">再建设</span><br>本周已与泽哥、卢珊完成会员事项沟通；继续补齐会员开通结果通知、产品开通结果通知、会员与产品结果链路</td>
-          <td><span class="tag t-todo">待规划</span><br>按层级复用代理商密钥、代销模式统一映射、代销模式下分账关联；六月启动慧收钱体系承接</td>
+          <td><b>入网</b></td>
+          <td>统一会员入网，统一管理渠道字段、流程、风控与补充材料</td>
+          <td><span class="tag t-done">已有基础</span><br>会员建设 M1 已上线，产品上架与产品开通形成底座</td>
+          <td><span class="tag t-doing">再建设</span><br>把宝付、国通、银行等多渠道入网差异沉到配置和工作流，不让商户重复对接</td>
+          <td><span class="tag t-risk">待评审</span><br>字段边界、补充机制、风控触发条件需冻结</td>
         </tr>
         <tr>
-          <td><b>交易域</b></td>
-          <td>协议支付、查询、退款、绑卡</td>
-          <td><span class="tag t-done">已支持</span><br>一步支付、协议支付结果通知、协议支付核心测试推进</td>
-          <td><span class="tag t-doing">再建设</span><br>推进清结算、计费、结果通知、订单更新、对账闭环；配置迁移和运营类订单查询继续补齐</td>
-          <td><span class="tag t-todo">待规划</span><br>预支付、确认支付、补单、补发、退款、绑卡/解绑/绑卡查询、接口原子化拆分</td>
+          <td><b>电子户</b></td>
+          <td>按柜台或产品判断是否创建电子户，创建流程与渠道入网强关联</td>
+          <td><span class="tag t-done">已有接口</span><br>账户网关、老前置和宝财通接口中已有电子户、开户、加白、查询、通知类能力</td>
+          <td><span class="tag t-doing">再建设</span><br>补工作流设置，把电子户创建从单接口动作变成入网编排的一环</td>
+          <td><span class="tag t-risk">强耦合</span><br>电子户与多渠道入网的先后顺序需要产品和技术共同确认</td>
         </tr>
         <tr>
-          <td><b>账户域</b></td>
-          <td>账户关系、开户、动账、余额、冻结</td>
-          <td><span class="tag t-done">已支持</span><br>4.0账户关系、账户开户、待分账户/分账接收户、统一动账、分录、未结算明细</td>
-          <td><span class="tag t-doing">再建设</span><br>借一贷多、出金、转账、结算记账、订单查询、查询与交易解耦</td>
-          <td><span class="tag t-todo">待规划</span><br>冻结能力、账户路由、统一余额、统一账户查询、统一账户管理</td>
+          <td><b>交易</b></td>
+          <td>统一网关、统一证书秘钥，一套接口按已入网渠道发起交易</td>
+          <td><span class="tag t-done">开发完成</span><br>协议支付与一键绑卡相关 12 个接口完成迁移开发；ASL 完成流量验证</td>
+          <td><span class="tag t-doing">再建设</span><br>下周重点做统一网关验证、准生产 Nacos 验证和提测闭环</td>
+          <td><span class="tag t-risk">待评审</span><br>协议支付对接方式仍未评审，不能直接宣称可对客</td>
         </tr>
         <tr>
-          <td><b>分账域</b></td>
-          <td>分账执行、关系、通知、异常闭环</td>
-          <td><span class="tag t-done">已支持</span><br>分账模式分析、分账接收户能力、基础分润规则承接</td>
-          <td><span class="tag t-doing">再建设</span><br>曹阳承接分账核心需求并重新评审；五月完成分账上量，退款中心继续推进分账退款、退款补单、透传出款账户</td>
-          <td><span class="tag t-todo">待规划</span><br>六月承接慧收钱；继续补齐分账执行、关系管理、通知清算、查询、退回、补发清算全链路闭环</td>
+          <td><b>结算</b></td>
+          <td>支持渠道自行结算和统一宝付结算</td>
+          <td><span class="tag t-done">已有接口</span><br>自主结算、自主结算查询、资金划拨、代付、电子户余额等接口已在汇总表中列出</td>
+          <td><span class="tag t-todo">待迁移</span><br>S3 需要把结算和账户接口迁移拆成批次，并明确统一结算与渠道结算的适用条件</td>
+          <td><span class="tag t-risk">口径风险</span><br>退款、结算、分账之间的资金流和账期口径需联动评审</td>
         </tr>
         <tr>
-          <td><b>结算域</b></td>
-          <td>账期、未结算、结算批次、结算出款</td>
-          <td><span class="tag t-done">已支持</span><br>未结算明细、账期字段基础、分录账期维护、分账接收户结算支持</td>
-          <td><span class="tag t-doing">再建设</span><br>新老结算兼容、未结算明细兼容、结算链路扩展</td>
-          <td><span class="tag t-todo">待规划</span><br>账期批次处理、结算订单、人工介入、结算出款、账期与收单/分账统一标识</td>
+          <td><b>分账</b></td>
+          <td>支持渠道能力分账和宝付能力分账，覆盖多渠道入金后的分账</td>
+          <td><span class="tag t-doing">再建设</span><br>聚合台账包含付款后分账、分账查询；涅槃 M3 分账产品建设目标仍指向 2026-09-11</td>
+          <td><span class="tag t-doing">再建设</span><br>把分账作为零售接入后的资金分配能力，不再只看单一产品交付</td>
+          <td><span class="tag t-risk">方案风险</span><br>分账退款和退款产品方案需要评审</td>
         </tr>
         <tr>
-          <td><b>收益域</b></td>
-          <td>计费、分润、手续费承担</td>
-          <td><span class="tag t-done">已支持</span><br>创建计费规则、创建分润规则、分账接收户支持内扣、费率修改同步调整</td>
-          <td><span class="tag t-doing">再建设</span><br>产品价格上限校验、三方计费配置、商户费率修改 API</td>
-          <td><span class="tag t-todo">待规划</span><br>支付计费、第三方计费、分账计费、实时分润策略、收益规则中心</td>
+          <td><b>数据查询</b></td>
+          <td>统一交易、退款、绑卡、结算、账户数据查询能力</td>
+          <td><span class="tag t-done">已有范围</span><br>查单、查绑卡、查退款单、订单查询、退款查询、账户余额和收支明细均有接口基础</td>
+          <td><span class="tag t-doing">再建设</span><br>查询接口迁移要和开发者站点文档同步，避免只迁代码不迁对接指引</td>
+          <td><span class="tag t-risk">数据口径</span><br>多渠道返回状态、单号、退款状态和对账口径需要统一</td>
         </tr>
         <tr>
-          <td><b>资金管理域</b></td>
-          <td>AD / BM 查询、配置、划拨、商户视图</td>
-          <td><span class="tag t-done">已支持</span><br>产品配置运营、产品签约申请页、部分产品配置与页面能力</td>
-          <td><span class="tag t-doing">再建设</span><br>BM订单查询、退款、充值记录、资金划拨、线下打款；AD订单查询、退款改造</td>
-          <td><span class="tag t-todo">待规划</span><br>分账接收户余额/收支查询、待分账户可见性、账单文件兼容、统一资金视图、统一运营治理台</td>
+          <td><b>商户服务</b></td>
+          <td>PC、小程序端等服务工具支持交易查询、交易、退款、设备绑定</td>
+          <td><span class="tag t-doing">再建设</span><br>聚合台账包含投诉、商户信息采集、终端信息采集、图片上传下载、B2B 门店等商户服务接口</td>
+          <td><span class="tag t-todo">待规划</span><br>需要把商户服务从“接口清单”转成面向商户的服务台和对接指南</td>
+          <td><span class="tag t-risk">体验风险</span><br>只完成接口迁移，不能解决商户使用难</td>
         </tr>
         <tr>
-          <td><b>合规域</b></td>
-          <td>报备、签约、权限、链路校验</td>
-          <td><span class="tag t-done">已支持</span><br>特约商户两联报备、法大大签约、产品前置校验、上报两联/人行账号</td>
-          <td><span class="tag t-doing">再建设</span><br>产品权限查询、账户可见性权限、结算链路与出款户校验</td>
-          <td><span class="tag t-todo">待规划</span><br>分账链路合规表达、账单/凭证一致性、三流合一、权限精细化控制</td>
+          <td><b>代理商</b></td>
+          <td>支持代理商体系与代理商拓客 APP</td>
+          <td><span class="tag t-doing">再建设</span><br>会员和产品货架已提供层级与权限基础，零售会议口径倾向优先覆盖 70%-80% 标准场景</td>
+          <td><span class="tag t-todo">待规划</span><br>S5 需明确代理商场景是否进入 Q4 前范围，还是作为后续增强</td>
+          <td><span class="tag t-risk">范围风险</span><br>复杂代理商、金融、二级户混合场景不能默认纳入首版</td>
         </tr>
       </tbody>
     </table>
-    <div class="note">已经能做什么、正在补什么、后面还缺什么</div>
+    <div class="note">能力地图的读法：不是按系统归属看，而是按零售商户接入时会遇到的八类阻塞看。每一行都要能回答“商户少接几次、少配几套、少等几个环节”。</div>
   </div>
 
   <div class="section">
-    <h2>三、技术目标</h2>
+    <h2>三、接口迁移与验证口径</h2>
     <table>
       <thead>
         <tr>
-          <th style="width:16%">技术层</th>
-          <th style="width:22%">组件 / 改造项</th>
-          <th style="width:28%">当前作用</th>
-          <th style="width:34%">目标</th>
+          <th style="width:16%">接口族 / 工作项</th>
+          <th style="width:22%">来源材料</th>
+          <th style="width:28%">当前状态</th>
+          <th style="width:34%">下一步验证</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><b>接入层</b></td>
-          <td>统一网关 / 防腐层</td>
-          <td>接口规范、签名、加密、路由、权限、限流、错误码、IP 白名单、Nacos、对客接入方式与商用范围澄清</td>
-          <td>统一入口、统一治理、统一接入标准，并把对客方式、商用范围和 Nacos 回归一起闭环，支撑 <b>高可用</b> 与 <b>高扩展</b></td>
+          <td><b>协议支付与一键绑卡</b></td>
+          <td>协议支付涅槃需求文档、周报口径</td>
+          <td>12 个接口完成迁移开发，覆盖预绑卡、H5 绑卡收银台、协议支付收单、退款、查单、查绑卡、查退款单等</td>
+          <td>下周一提测后，按统一网关验签、路由、错误码、通知、查单收敛和退款状态逐项验证</td>
         </tr>
         <tr>
-          <td><b>事件层</b></td>
-          <td>事件中心</td>
-          <td>替代单纯通知思路，承接开户通知、会员状态变更，账户状态变更等分润通知、渠道成本、状态推进、补偿处理</td>
-          <td>实现解耦、削峰、补偿与异步化，支撑 <b>高可用</b> 与 <b>高性能</b></td>
+          <td><b>聚合支付</b></td>
+          <td>聚合业务接入统一网关接口梳理.xlsx</td>
+          <td>周报口径为 7 个接口完成迁移开发，剩余 50 个；台账记录统一下单、退款、退款查询、分账、订单查询、签约、商户服务等 60 条接口记录</td>
+          <td>先冻结“已完成 7 个”的名单和测试排期，再把剩余接口按交易、查询、分账、商户服务、终端/B2B 拆批</td>
         </tr>
         <tr>
-          <td><b>账务层</b></td>
-          <td>统一动账 / 会计事件驱动</td>
-          <td>分录、余额变更、未结算、账期、结算记账、账务接口统一</td>
-          <td>统一账务口径，降低重复开发，支撑 <b>高一致性</b> 与 <b>高扩展</b></td>
+          <td><b>结算与账户</b></td>
+          <td>账户组对外接口文档汇总.xlsx</td>
+          <td>接口汇总覆盖自主结算、对账文件下载、资金付款、账户网关、宝财通 2.0/3.0、宝户通等入口</td>
+          <td>围绕“统一会员入网后是否需要电子户、走哪类结算、是否触发账户工作流”补接口映射和对接说明</td>
         </tr>
         <tr>
-          <td><b>数据层</b></td>
-          <td>分库分表 / 新数据源</td>
-          <td>fi-hub 分库分表迁移、在线表 + SR、新旧链路兼容</td>
-          <td>提升容量与吞吐，支撑 <b>高性能</b>；同时为后续统一查询提供底座</td>
+          <td><b>统一网关 / ASL</b></td>
+          <td>上周周报</td>
+          <td>ASL 完成流量验证；本周计划包括协议支付迁移统一网关验证和网关 Nacos 准生产验证</td>
+          <td>验证结果需要区分：开发完成、提测通过、准生产通过、可对客文档完成四种状态</td>
         </tr>
         <tr>
-          <td><b>数据治理</b></td>
-          <td>账单统一 / 历史债务治理</td>
-          <td>解决账单问题、历史交接造成的数据割裂、查询口径不一致</td>
-          <td>这块的核心价值不是“技术升级”，而是清理历史债务，解决账单与查询可信度问题</td>
+          <td><b>开发者站点</b></td>
+          <td>风险项：接口梳理 + 对接指引</td>
+          <td>当前仍是风险，不应在页面里写成已完成</td>
+          <td>按入网、绑卡、交易、退款、查询、结算、分账、商户服务输出对接路径；负责人需继续跟进 yanpeng、caoyang</td>
         </tr>
         <tr>
-          <td><b>配置治理</b></td>
-          <td>配置中心 / 配置迁移</td>
-          <td>关系配置、计费配置、AD/BM 配置、历史配置迁移</td>
-          <td>解决数据孤岛、配置分散、历史系统交接问题，支撑 <b>高扩展</b> 与高运营效率</td>
-        </tr>
-        <tr>
-          <td><b>运营层</b></td>
-          <td>AD / BM</td>
-          <td>查询、退款、充值记录、划拨、线下打款、关系配置、人工介入</td>
-          <td>把分散在各系统里的资金操作与运营动作收口，形成统一运营与商户资金管理承接层，避免在分账和协议支付后段形成承接空档</td>
-        </tr>
-        <tr>
-          <td><b>保障层</b></td>
-          <td>压测 / 切流 / 灰度</td>
-          <td>压测、切流比对预案、新老结算兼容、流量验证</td>
-          <td>降低迁移风险，支撑 <b>高可用</b> 与上线稳定性</td>
+          <td><b>产品方案评审</b></td>
+          <td>风险项：任利利</td>
+          <td>协议支付对接方式与退款产品方案未评审</td>
+          <td>评审前只写“待评审 / 需冻结”，不要把退款、分账退款、对客接入方式写成已决结论</td>
         </tr>
       </tbody>
     </table>
-    <div class="note">技术组件换新不是目的，真正的价值是：一边支撑高可用、高性能、高扩展，一边解决历史账单、数据孤岛、历史交接割裂这些老问题。</div>
+    <div class="source-note">来源边界：本页使用用户提供的上周周报口径、`账户组对外接口文档汇总.xlsx`、`聚合业务接入统一网关接口梳理.xlsx`、`协议支付涅槃需求文档` 和零售需求描述。没有把未评审产品方案写成已决结论。</div>
   </div>
 </div>
 </body>

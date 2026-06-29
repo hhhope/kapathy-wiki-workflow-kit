@@ -17,6 +17,7 @@ Source pages represent upstream evidence such as Feishu documents, meeting notes
 - [从 Claude Code 到 Claude Cowork：Anthropic 与宝付启发 PPT 重写稿](anthropic-claude-code-cowork-baofu-payment-ppt-rewrite-2026-06-09.md): 基于桌面 PPT、李想访谈和 Anthropic 公开信源整理的 review draft，聚焦强模型进入真实工作场及支付公司受控 agent 落地
 - [涅槃项目周报 2026-04-13](nirvana-weekly-2026-04-13.md): 第一条真实项目周推进来源页，承接 `inbox/nirvana/涅槃焕新周报.xlsx`
 - [涅槃项目周视图 2026-04-13](nirvana-weekly-view-2026-04-13.md): 对应 `preview .html` 的周视图来源页，承接甘特图、能力地图和技术建设视角
+- [涅槃零售商户接入统一网关接口迁移视图 2026-06-29](nirvana-retail-gateway-interface-migration-2026-06-29.md): 承接新增接口材料、上周涅槃周报和 Q4 前零售商户接入攻坚视图
 
 ## Usage Notes
 

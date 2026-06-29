@@ -87,6 +87,7 @@ artifact_type: index
 
 - [涅槃项目周推进 intake 2026-04-13](nirvana-weekly-intake-2026-04-13.md)
 - [涅槃项目本周跟进提醒 2026-04-13](nirvana-weekly-reminder-2026-04-13.md)
+- [涅槃零售商户接入统一网关接口迁移 intake 2026-06-29](nirvana-retail-gateway-interface-migration-intake-2026-06-29.md)
 - [Agent 治理 gate 缺口探索 2026-04-18](agent-governance-gate-gap-explore-2026-04-18.md)
 
 ## 推荐流转
