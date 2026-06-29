@@ -168,6 +168,62 @@ created: 2026-06-22
 | 2026-06-23 strategy topology and future chapters | pass | Static grep found `战略拓扑时间图`, `主干递进`, `横向补位`, `AI 复用`, `并购补位：按年份和能力层看`, `未来五年：Agent 支付先过规则关`, `2026 / L2.5`, L1-L4 labels, and `我们能学什么：金融创新最终比的是关系设计`; rejected visible phrase grep returned no hits for `并购 / 能力补位 lane`, `壁垒读法`, `证据维度`, `AI 公司把用量计费`, `这页从时间维度看`, or `Agent 工作流：商品发现`. |
 | 2026-06-23 strategy topology visual screenshots | pass | Playwright screenshots were captured for desktop first screen, full desktop, full mobile, `#acquisition-scatter`, `#strategy-topology`, `#future-judgment`, and mobile `#strategy-topology`. Visual readback confirmed the acquisition timeline/scatter, strategy topology, Chapter 12 maturity line chart, and Chapter 13 learning board render without blank regions or obvious overlap. A CSS class collision with existing `.rail` was found in screenshot readback and repaired by renaming the new class to `.newrail`. |
 
+## 2026-06-29 Domain-Language Realignment
+
+### Article Intent Contract Update
+
+| Field | Value |
+|---|---|
+| Reader | 80 人内部分享读者，需要从 Stripe 案例理解 AI 时代支付/金融能力建设 |
+| Reader decision or action | 看到 AI 降低 coding 和对接成本后，真正稀缺的是把复杂金融交易设计成清晰、稳定、可组合的领域语言 |
+| Main line | Stripe 切入 AI 支付快，不是因为临时追 AI，而是过去十五年持续做支付行业难而正确的工作：把商户、价格、订单、订阅、分账、身份、权限、风控、资金、结算和争议收敛成对象、接口和规则 |
+| Non-goals | 不做 Stripe 必胜判断；不把 LinkedIn/JD 当成产品成功证据；不做 Feishu 同步、公开发布或 review-ready claim |
+| User-owned judgments | 主线词改为 `金融交易设计语言`；LinkedIn 看在职人员能力图；JD 看能力补位 |
+| Agent-allowed work | 将批准的主线落到 H5 章节、视觉模块、证据边界和验证记录 |
+
+### Section And Paragraph Drift Review
+
+| Section | Objective | Result | Action |
+|---|---|---|---|
+| 首屏 | 把主线从 AI 支付入口/控制层改为 `coding 成本下降后，领域设计语言成为壁垒` | pass | 已重写 lead、time spine 和交易/信用关系入口 |
+| Chapter 2 | 解释为什么 Stripe 是观察样本，而不是公司介绍 | pass | 新增 `为什么用 Stripe 做观察样本`，比较大模型、钱包/卡组织、商户 SaaS/PSP、Stripe |
+| Chapter 3 | 给出金融交易设计语言公式和零售/供应链类比 | pass | 新增 `AI 支付需要一套金融交易设计语言`，拆成对象、接口、权限、规则、资金关系、责任证据 |
+| Chapter 4 | 证明 Stripe 的速度来自长期做难事的能力累积 | pass | `哪些战略造就了 Stripe` 改为 `Stripe 是怎么把这套语言攒出来的`，拓扑图改为领域语言累积图 |
+| LinkedIn | 保留为人员能力画像，而不是泛泛人才流向 | pass with boundary | 新增显式章节；目前是能力画像框架，不升级为战略成功证据 |
+| JD | 保留为能力补位和投入方向 | pass with boundary | 新增显式章节；保留 AI Security / AI Conversation Platform / Stablecoins Audit 的组织信号边界 |
+
+### Hard Gate Results
+
+| Gate | Result | Note |
+|---|---|---|
+| Narrative Gate | pass | 主线已统一为 `金融交易设计语言` |
+| Paragraph Drift Gate | pass for changed sections | 2/3/4、LinkedIn、JD、未来判断、学习章节均按新主线修复 |
+| Judgment Ownership Gate | pass | 新主线来自用户确认；LinkedIn/JD 证据边界明确 |
+| Visual Gate | partial-pass | H5/HTML 可渲染结构已更新；还需桌面/移动截图读回后才能作为视觉完成证据 |
+| Publish Gate | not applicable | 仍是内部本地 H5 草案，不做 review-ready、发布或 Feishu 同步声明 |
+
+### Verification Evidence
+
+| Check | Result | Evidence |
+|---|---|---|
+| Required thesis grep | pass | H5 grep found `金融交易设计语言`, `为什么用 Stripe 做观察样本`, `AI 支付需要一套金融交易设计语言`, `Stripe 是怎么把这套语言攒出来的`, `LinkedIn：Stripe 的人员能力画像`, and `JD：Stripe 还在补什么能力` |
+| Rejected thesis grep | pass after repair | H5 grep no longer has reader-facing `可信交易执行层`, `控制平面`, `交易控制面`, `交易控制点`, or `交易规则层` as thesis language |
+| HTML parser | pass | `python3 -m html.parser wiki/reports/stripe-ai-company-evolution-h5.html` |
+| Diff whitespace | pass | `git diff --check -- wiki/reports/stripe-ai-company-evolution-h5.html` |
+| Desktop screenshot | pass | `wiki/reports/assets/stripe-ai-company-evolution/domain-language-desktop-top-2026-06-29.png` and `wiki/reports/assets/stripe-ai-company-evolution/domain-language-desktop-2026-06-29.png`; visual readback confirmed the new H1, mainline, 2/3/4 section group, LinkedIn/JD modules, and full-page continuity without obvious overlap or blank regions. |
+| Mobile screenshot | pass | `wiki/reports/assets/stripe-ai-company-evolution/domain-language-mobile-top-2026-06-29.png` and `wiki/reports/assets/stripe-ai-company-evolution/domain-language-mobile-2026-06-29.png`; visual readback confirmed the new H1 and first-screen content stack cleanly on narrow viewport. |
+| OpenSpec strict validation | pass | `openspec validate realign-stripe-h5-domain-design-language --strict` returned `Change 'realign-stripe-h5-domain-design-language' is valid`; PostHog telemetry flush failed on network/DNS and is not part of local validation. |
+
+### Residual Risks
+
+- LinkedIn section is currently a people-capability-map framework. It requires
+  promoted LinkedIn/person-profile evidence before stronger statements about
+  actual employee composition.
+- JD section uses existing JD scan categories and focused examples, but still
+  proves capability investment intent only, not shipped product outcomes.
+- Console-event QA for lower interactive timeline/filter controls remains
+  uncovered; this local draft should not be claimed review-ready.
+
 ## Decision
 
-Use as an internal first draft and research control surface. The latest section realignment fixes the known chapter-structure drift against the 2026-06-22 redesign, but this is still not a final PPT, Feishu sync, public publication, review-ready claim, or completed 1000-source read pack. The 1000-row CSV is a concrete-source triage queue; only read and promoted rows should become H5/PPT evidence.
+Use as an internal first draft and research control surface. The latest section realignment now centers the user-confirmed `金融交易设计语言` thesis and repairs the 2/3/4 chapter group, LinkedIn, and JD evidence roles. This is still not a final PPT, Feishu sync, public publication, review-ready claim, or completed 1000-source read pack. The 1000-row CSV is a concrete-source triage queue; only read and promoted rows should become H5/PPT evidence.
