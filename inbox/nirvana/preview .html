@@ -168,13 +168,13 @@
 
         <div class="cell left">账户/结算范围收口</div>
         <div class="cell phase m2">S3</div>
-        <div class="cell sub">只冻结本轮边界：7 月账户做冻结/解冻和待分账户；查询保留余额、收支、账单、对账；宝财通只走 2.0 余额支付，不迁 3.0</div>
+        <div class="cell sub">本轮账户接口池 56 个；新增/待做 7 个接口项，另有 2 个兼容项。7 月先做冻结/解冻、待分账户、查询、账单、对账；宝财通 3.0 不迁</div>
         <div class="bar-cell"></div>
-        <div class="bar-cell"><div class="bar doing risk">边界确认</div></div>
-        <div class="bar-cell"><div class="bar doing">冻结/待分</div></div>
-        <div class="bar-cell"><div class="bar todo">查询清单</div></div>
-        <div class="bar-cell"><div class="bar todo">宝财通2.0</div></div>
-        <div class="bar-cell"><div class="bar todo">结算对账</div></div>
+        <div class="bar-cell"><div class="bar doing risk">接口池56</div></div>
+        <div class="bar-cell"><div class="bar doing">新增7</div></div>
+        <div class="bar-cell"><div class="bar todo">兼容2</div></div>
+        <div class="bar-cell"><div class="bar todo">冻结/待分</div></div>
+        <div class="bar-cell"><div class="bar todo">查询账单</div></div>
         <div class="bar-cell"><div class="bar todo">验收口径</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
@@ -304,8 +304,8 @@
         <tr>
           <td><b>账户/结算范围</b></td>
           <td>账户组对外接口文档汇总.xlsx</td>
-          <td>交付边界：冻结/解冻、待分账户、余额查询、收支明细、账单查询、对账管理；宝财通只走 2.0 余额支付，不迁 3.0</td>
-          <td>数量只作为核对依据：结算 2 个、对账 1 个、账户网关 31 条、资金付款 12 条、宝财通 2.0 22 条、宝财通 3.0 25 条；不要再拆成多条交付主线</td>
+          <td>本轮账户接口池 56 个：4.0 账户/账户网关 31 条、宝财通 2.0 22 条、结算 2 个、对账 1 个；若把资金付款 12 条也算入账户相关，则扩展口径为 68 个</td>
+          <td>新增/待做按 0629 账户二阶段为 7 个接口项；另有账户 API 查询兼容、账单查询兼容 2 个兼容项。宝财通 3.0 的 25 条不迁移</td>
         </tr>
         <tr>
           <td><b>统一网关 / ASL</b></td>
