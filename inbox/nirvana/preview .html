@@ -168,24 +168,24 @@
 
         <div class="cell left">账户/结算范围收口</div>
         <div class="cell phase m2">S3</div>
-        <div class="cell sub">本轮账户接口池 56 个；新增/待做 7 个接口项，另有 2 个兼容项。7 月先做冻结/解冻、待分账户、查询、账单、对账；宝财通 3.0 不迁</div>
+        <div class="cell sub">本轮账户接口池 56 个；新增/待做 7 个接口项，另有 2 个兼容项。补上多渠道收款账户承接：待分账户、分账接收户、查询、账单、对账；宝财通 3.0 不迁</div>
         <div class="bar-cell"></div>
         <div class="bar-cell"><div class="bar doing risk">接口池56</div></div>
         <div class="bar-cell"><div class="bar doing">新增7</div></div>
         <div class="bar-cell"><div class="bar todo">兼容2</div></div>
-        <div class="bar-cell"><div class="bar todo">冻结/待分</div></div>
+        <div class="bar-cell"><div class="bar todo">多渠道收款</div></div>
         <div class="bar-cell"><div class="bar todo">查询账单</div></div>
         <div class="bar-cell"><div class="bar todo">验收口径</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
-        <div class="cell left">商户开通资料补齐</div>
+        <div class="cell left">会员迁移接口</div>
         <div class="cell phase m2">S4</div>
-        <div class="cell sub">把零售商户开通要交哪些资料、缺件怎么补、谁审核、通过后开哪些产品写清楚；电子户只保留触发条件和验收项</div>
-        <div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">资料清单</div></div>
-        <div class="bar-cell"><div class="bar todo">缺件补传</div></div>
-        <div class="bar-cell"><div class="bar todo">审核节点</div></div>
-        <div class="bar-cell"><div class="bar todo risk">电子户触发</div></div>
-        <div class="bar-cell"><div class="bar todo">开通验证</div></div>
+        <div class="cell sub">0629 统一网关 sheet 会员迁移 2 项：会员入网集成、会员领域迁移 merchant-api 开发；状态均为未开始</div>
+        <div class="bar-cell"></div><div class="bar-cell"><div class="bar todo risk">会员2项</div></div>
+        <div class="bar-cell"><div class="bar todo">入网集成</div></div>
+        <div class="bar-cell"><div class="bar todo">merchant-api</div></div>
+        <div class="bar-cell"><div class="bar todo">联调验证</div></div>
+        <div class="bar-cell"><div class="bar todo">验收口径</div></div>
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div>
 
         <div class="cell left">慧收钱网关迁移</div>
@@ -200,7 +200,7 @@
         <div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"></div><div class="bar-cell"><div class="bar todo">Q4前验收</div></div>
       </div>
     </div>
-    <div class="note">时间轴从 2026-06-29 所在周开始。账户/结算在甘特图里只保留一条范围收口线；接口数量、结算 2 个、对账 1 个、宝财通 2.0/3.0 边界放到验证表里，不重复铺成交付主线。</div>
+    <div class="note">时间轴从 2026-06-29 所在周开始。账户/结算只保留一条范围收口线，但必须写清接口数量和多渠道收款账户承接；会员单独保留迁移接口数量。</div>
   </div>
 
   <div class="section">
@@ -305,7 +305,13 @@
           <td><b>账户/结算范围</b></td>
           <td>账户组对外接口文档汇总.xlsx</td>
           <td>本轮账户接口池 56 个：4.0 账户/账户网关 31 条、宝财通 2.0 22 条、结算 2 个、对账 1 个；若把资金付款 12 条也算入账户相关，则扩展口径为 68 个</td>
-          <td>新增/待做按 0629 账户二阶段为 7 个接口项；另有账户 API 查询兼容、账单查询兼容 2 个兼容项。宝财通 3.0 的 25 条不迁移</td>
+          <td>新增/待做按 0629 账户二阶段为 7 个接口项，另有账户 API 查询兼容、账单查询兼容 2 个兼容项；多渠道收款需承接待分账户、分账接收户和账户查询/账单/对账</td>
+        </tr>
+        <tr>
+          <td><b>会员迁移</b></td>
+          <td>涅槃产品上架梳理0629.xlsx / 统一网关 sheet</td>
+          <td>会员迁移 2 项：会员入网集成、会员领域迁移 merchant-api 开发；两项状态均为未开始</td>
+          <td>不要再写成资料补齐；按会员接口迁移、联调和验收口径推进</td>
         </tr>
         <tr>
           <td><b>统一网关 / ASL</b></td>
