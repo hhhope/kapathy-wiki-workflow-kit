@@ -1197,9 +1197,11 @@ LinkedIn / 人员库补样标准：
 
 > 组织能力往哪里补，通常说明下一场仗在哪里。
 >
-> 对 Stripe 来说，下一场仗不是“AI 做一个付款按钮”，而是 Agent、stablecoin、machine payment 把商品、授权、风控、计费、资金和责任这些旧问题重新推到前台。
+> 第 6 章我们看到的招聘火力，集中在 GTM、工程平台、风险合规、资金财税、AI 数据和 stablecoin 新轨道。它不是一个“AI 团队扩张”的故事。
 >
-> 第 7 章，我们看新战线。
+> 它说明新战线正在重新抬高一批老能力的价值：商品要被机器读懂，授权要能被程序验证，资金轨道要能处理机器请求，风控和责任要能跟上自动化速度。
+>
+> 所以第 7 章不是看 Stripe 又追了哪些热点，而是看旧能力在哪些新场景里重新变贵。
 
 ## 10. 第 7 章：新战线展开：旧能力重新变贵
 
@@ -1217,55 +1219,59 @@ LinkedIn / 人员库补样标准：
 
 > AI 没有绕过支付复杂性，反而让过去那些“老问题”重新变贵：商品怎么被机器读懂，谁授权，钱从哪里走，风险怎么拦，出错怎么追责。
 
-### 10.2 屏幕 7-1：Agentic Commerce 重新调用商户和商品系统
+### 10.2 屏幕 7-1：第一条战线：商品系统重新变贵
 
 屏幕内容：
 
 ```text
-Agent 交易不是“点击付款”
+Agent 交易不是点击付款。
 
-它需要：
+它先要求商户系统机器可读：
 商品目录
-库存
 价格
+库存
 订单
 履约
-approval hook
 商户控制
-webhook / logs
+approval hook
+webhook / logs / idempotency
 ```
 
 屏幕主句：
 
-> Agent 进入交易，不是绕过商户系统，而是要求商户系统更机器可读。
+> Agent 进入交易，先打贵的不是支付按钮，而是商品、价格、库存和履约的可读性。
 
 屏幕 7-1 话术：
 
-> Agentic Commerce 不是 Agent 替你点一下付款按钮。
+> 第一条新战线，是商品系统。
 >
-> 它真正改变的是交易前面的发现和执行方式：Agent 要能发现商品、读取价格、理解库存、创建订单、触发履约，还要给商户保留控制权。
+> 如果我们把 Agentic Commerce 理解成“Agent 帮用户点一下付款”，这个问题就看浅了。
 >
-> 这就意味着，商户系统要更机器可读。商品目录、价格、库存、订单状态、approval hook、webhook、日志都变重要。
+> Agent 真正要做交易，先要读懂商户。它要知道商品是什么，价格是不是最新，库存是否存在，订单怎么生成，履约怎么触发，商户在哪个点可以拒绝或放行。
 >
-> 所以它不是绕过 Stripe 过去的能力，反而重新调用了商户系统、Checkout、webhook、风控和责任留痕。
+> 这就是为什么 catalog feed、inventory、pricing、Checkout Session field mapping、approval hook、webhook、idempotency 会变重要。
+>
+> 这些听起来都不是新概念，但 Agent 把它们重新推到前台。因为人可以看页面、问客服、点确认；机器不行，机器需要结构化对象、状态和回调。
+>
+> 所以 Agentic Commerce 不是绕过商户系统，而是要求商户系统变得更可读、更可控、更可追踪。
 
 转场到屏幕 7-2：
 
-> 商品和订单能被机器读懂，只是第一步。真正交易起来，还要解决授权、凭据和资金路径。
+> 商品和订单能被机器读懂，只是第一步。交易一旦开始，第二个问题更敏感：谁授权机器花钱，用什么凭据，钱走哪条轨道。
 
-### 10.3 屏幕 7-2：Token、wallet 和 stablecoin 重新调用授权与资金轨道
+### 10.3 屏幕 7-2：第二条战线：授权和资金轨道重新变贵
 
 屏幕内容：
 
 ```text
-授权与凭据：
+机器交易需要可验证授权：
 Shared Payment Token
 Link wallet
 Privy
-spend limit
 consent
+spend limit
 
-资金轨道：
+机器支付需要可编排资金轨道：
 Bridge
 stablecoin
 MPP
@@ -1275,71 +1281,71 @@ machine payment
 
 屏幕主句：
 
-> Agent 支付的核心不是“能不能付”，而是谁授权、用什么凭据、走哪条资金轨道。
+> Agent 支付的硬问题不是能不能付，而是谁授权、凭据如何暴露、资金如何结算。
 
 屏幕 7-2 话术：
 
-> 当软件替人交易，凭据不能随便交出去。
+> 第二条新战线，是授权和资金轨道。
 >
-> 谁授权？授权多久？能花多少钱？能在哪些商户花？用的是卡、钱包、账户，还是稳定币？这些都要进入系统。
+> 当软件替人交易，凭据不能随便交出去。过去很多支付体验默认人在场，人会看页面、确认金额、判断商户。Agent 交易里，这些判断要被系统化。
 >
-> 这就是为什么 Shared Payment Token、Link wallet、Privy、spend limit、consent 这些东西会变重要。
+> 谁授权？授权多久？能花多少钱？能在哪些商户花？用的是卡、钱包、账户，还是稳定币？这些问题都要进入支付系统。
 >
-> 同时，stablecoin、MPP、x402、HTTP 402 也不是单纯换一条支付轨道。它们把资金结算、合规、低价值支付、协议化访问重新拉进来。
+> 这就是为什么 Shared Payment Token、Link wallet、Privy、spend limit、consent 会变重要。它们不是装饰性的用户体验，而是在控制“机器到底能代表人做到什么程度”。
 >
-> 所以 Agent 支付的核心不是能不能付，而是谁授权、用什么凭据、走哪条资金轨道。
+> 同时，stablecoin、MPP、x402、HTTP 402 也不是单纯换一条支付轨道。它们把低价值支付、协议化访问、链上或卡网络结算、凭据重试这些问题重新拉进来。
+>
+> 所以 Agent 支付的核心不是能不能付，而是谁授权、凭据怎么暴露、资金怎么结算、失败后怎么恢复。
 
 转场到屏幕 7-3：
 
-> 授权和资金解决了，还不够。自动化越强，风险和责任问题越突出。
+> 商品、授权和资金路径能跑起来以后，第三条战线会更难：自动化越强，风险越快，责任越不能模糊。
 
-### 10.4 屏幕 7-3：AI 风险重新调用风控和责任体系
+### 10.4 屏幕 7-3：第三条战线：风控和责任体系重新变贵
 
 屏幕内容：
 
 ```text
-新风险：
-stolen token
-fake signup
-tool misuse
-resource abuse
-replay
-concurrency
-approval timeout
-idempotency
+机器速度放大的风险：
+凭据被盗 / 虚假注册
+工具误用 / 资源滥用
+重放 / 并发 / 终态不一致
+审批超时 / 幂等失败
 
-对应能力：
+重新变贵的能力：
 Radar
 Identity
 AI Security
 disputes
-audit trail
+logs / audit trail
 ```
 
 屏幕主句：
 
-> 自动化越强，风控越要前置，责任越要可追溯。
+> 自动化越强，风控越要前置；机器越像执行者，责任越要可追溯。
 
 屏幕 7-3 话术：
 
-> AI 时代的风险不只是盗卡。
+> 第三条新战线，是风控和责任。
 >
-> 还会有 stolen token、fake signup、tool misuse、资源滥用、replay、并发、approval timeout、幂等问题。
+> AI 时代的风险不只是盗卡。机器能自动注册、自动请求、自动调用工具、自动消耗资源，也就会放大凭据被盗、虚假注册、工具误用、资源滥用这些问题。
 >
-> 所以风控不能只做交易后的补救。它要变成规则、限额、审批、日志、争议证据的一部分。
+> 到协议层，还会出现重放、并发、终态不一致、审批超时、幂等失败这类问题。它们不是传统 checkout 页面里最显眼的问题，但机器交易会把这些边界放大。
 >
-> 这就是为什么 Stripe 过去做的 Radar、Identity、disputes、audit trail，在 Agent 和 machine payment 场景里会重新变重要。
+> 所以风控不能只做交易后的补救。它要前置到规则、限额、审批、日志、争议证据和审计链路里。
 >
-> Agent 越像交易执行者，支付系统越要把商品、授权、规则、资金和责任全部系统化。
+> 这就是为什么 Radar、Identity、AI Security、disputes、logs、audit trail 会重新变贵。Agent 越像交易执行者，支付系统越要回答：为什么这笔交易发生了？谁允许的？当时系统看到什么？为什么放行或拦截？出错后谁负责？
+>
+> 这其实又回到了第 3 章的金融交易语言：意图、授权、规则、资金、责任。AI 没有跳过这五层，只是把五层都推到了机器执行速度下。
 
 ### 10.5 证据边界
 
 可用证据：
 
-- Agentic Commerce docs：catalog、inventory、pricing、approval hook、webhook、agent origin。
-- SPT / Link wallet / Privy：凭据、授权、钱包抽象。
-- Bridge / stablecoin / MPP / x402：资金轨道、machine payment、HTTP 402。
-- Radar / AI Security：token theft、fake signup、风险识别。
+- Agentic Commerce docs：catalog、inventory、pricing、approval hook、webhook、agent origin、idempotency。
+- SPT / Link wallet / Privy：凭据暴露、授权边界、钱包抽象。
+- Bridge / stablecoin / MPP / x402：资金轨道、machine payment、HTTP 402 challenge、retry flow。
+- Radar / AI Security：token theft、fake signup、prompt injection、jailbreak、tool misuse。
 - 本地时间线：2025-2026 agentic commerce、machine payment、stablecoin、risk 事件。
 
 证据锚点：
@@ -1347,9 +1353,11 @@ audit trail
 | 证据 | 放在哪一屏 | 支撑什么 | 证明强度 |
 |---|---|---|---|
 | Agentic Commerce seller docs：catalog feed、inventory/pricing refresh、Checkout Session field mapping、hooks、idempotency。来源：`https://docs.stripe.com/agentic-commerce/for-sellers`。 | 屏幕 7-1 | Agent 交易要求商户系统更机器可读，不是简单替人点击付款。 | `promoted` for product/docs fact；不证明采用规模。 |
+| 本地 source pack API reading note：Agentic Commerce approval hook 是 seller-controlled 边界；Stripe enforces a four-second timeout, declines if hook does not respond, returns `424` to agents on non-2xx, and warns some agents may retry, so hooks must be idempotent。来源：`wiki/sources/stripe-ai-company-evolution-research-2026-06-22.md`。 | 屏幕 7-1 / 7-3 | Agent 交易会把商户控制、超时、重试、幂等和责任边界显性化。 | `promoted` as local source-pack synthesis from official docs；public output should cite original docs. |
 | Agentic Commerce / Microsoft Copilot / Shared Payment Token。来源：`https://stripe.com/en-jp/newsroom/news/microsoft-copilot-and-stripe`。 | 屏幕 7-2 | Agent 交易需要凭据、授权、商户和订单责任链。 | `promoted` for official release；不证明大规模成熟。 |
 | Machine payments docs：HTTP 402、MPP、x402、crypto 或 SPT 凭据、retry flow。来源：`https://docs.stripe.com/payments/machine`、`https://docs.stripe.com/payments/machine/mpp`、`https://docs.stripe.com/payments/machine/x402`。 | 屏幕 7-2 | machine payment 是协议化访问、凭据和资金轨道问题。 | `promoted` for docs fact；协议采用仍是边界。 |
 | Sessions 2026：Link wallets for agents、streaming payments、Radar token theft、Treasury、Projects。来源：`https://stripe.com/en-jp/newsroom/news/sessions-2026`。 | 屏幕 7-2 / 7-3 | AI 让钱包、资金、风控、账务和开发环境一起被重新调用。 | `promoted` for official announcement；不等于商业成功。 |
+| Sessions 2026 / source pack claim：Radar token-theft protection blocked 3.3M risky sign-ups across eight AI businesses in one month。来源：`https://stripe.com/en-jp/newsroom/news/sessions-2026`。 | 屏幕 7-3 | AI 公司场景里，风险对象已经从单笔盗卡扩展到 token theft、fake signup 和资源滥用。 | `promoted` for official metric；未独立审计。 |
 | Backend Engineer, AI Security JD：inference-path tooling、prompt injection、jailbreak、tool misuse。来源：`https://stripe.com/jobs/listing/backend-engineer-ai-security/7826765`。 | 屏幕 7-3 | AI 风险不只是盗卡，还包括模型/工具调用路径上的新风险。 | `promoted` for current JD signal；不证明风险产品已完整交付。 |
 | Specialist Solutions Architect, Radar (Fraud/Risk) JD：account takeover、first-party misuse、policy abuse、rules engine、ML model、manual review、identity/device/behavioral/graph signals。来源：`https://stripe.com/jobs/listing/specialist-solutions-architect-radar-fraud-risk/7365914`。 | 屏幕 7-3 | 风控从 payment fraud 扩展到更完整的风险智能平台。 | `promoted` for org/product-market signal。 |
 
@@ -1362,7 +1370,7 @@ audit trail
 
 ### 10.6 第 7 章收束句
 
-> AI 没有绕过支付复杂性。它只是把商品、授权、凭据、风控、资金和责任这些老问题，变成机器也必须读懂、调用和执行的对象。
+> AI 没有绕过支付复杂性。它只是把商品系统、授权凭据、资金轨道、风控规则和责任证据这些老能力，放进了机器执行速度里。速度越快，旧能力越贵。
 
 ### 10.7 7 -> 8 转场
 
