@@ -106,7 +106,7 @@
 | 3 | 真正的壁垒：谁来定义金融交易语言 | locked | 功能可以生成，关系必须设计。 |
 | 4 | 第一场战略选择：把难事留给自己 | pending | Stripe 用开发者入口切入，但真正吸收的是新业务最怕碰的金融复杂性。 |
 | 5 | 纵深推进：客户越复杂，Stripe 打得越深 | accepted | 客户复杂性升级后，Stripe 继续把平台、收入、风控、资金问题吸收到自己这一侧。 |
-| 6 | 组织亮出底牌：这场仗需要什么样的人 | evidence-partial | JD 已能支撑增量投入方向；LinkedIn 人员样本仍需补齐后再锁定。 |
+| 6 | 组织亮出底牌：这场仗需要什么样的人 | evidence-partial | JD 已能支撑当前招聘火力方向；LinkedIn/公开人员库还要补职能占比、资深度和变化趋势后再锁定。 |
 | 7 | 新战线展开：旧能力重新变贵 | evidence-partial | 证据锚点已补到 Agentic Commerce、SPT、MPP/x402、Sessions 2026、AI Security、Radar JD。 |
 | 8 | 最后回到我们：复杂行业先统一语言，再追求速度 | pending | 回收方法论：AI 降低执行成本，但不会自动降低理解成本。 |
 
@@ -153,7 +153,7 @@
 - `evidence-strength`：Stripe、Adyen、PayPal、Agentic Commerce、MPP/x402 等材料只在对应证明强度内使用。
 - `public-writing-method`：每一章有读者问题、主判断、证据位置、屏幕表达、边界和转场。
 
-当前仍不是整篇 `review-ready` 状态，因为第 4、8 章仍需用户继续审核，第 6 章还缺 LinkedIn 人员样本，最终 citation surface 也尚未完成。
+当前仍不是整篇 `review-ready` 状态，因为第 4、8 章仍需用户继续审核，第 6 章还缺 LinkedIn 职能占比、资深度和变化趋势的聚合证据，最终 citation surface 也尚未完成。
 
 ## 4. 第 1 章：入口只是烟雾弹
 
@@ -1061,25 +1061,25 @@ enterprise / platform GTM
 
 > 那 LinkedIn 和 JD 在这里的作用，不是证明 Stripe 成功，而是看这些能力有没有在组织里显影。
 
-### 9.3 屏幕 6-2：LinkedIn 看存量，JD 看增量
+### 9.3 屏幕 6-2：看组织，不看几张名片
 
 屏幕内容：
 
 ```text
-LinkedIn：存量能力
-看人员背景、岗位族群、资深度、能力覆盖
+组织规模：
+全公司人数 / 增长目标 / 裁撤调整 / 区域分布
 
-JD：增量战线
-看下一轮补位方向
+职能结构：
+工程 / 产品 / 数据 / AI
+风控 / 欺诈 / 安全 / 合规
+资金 / 财务 / 账务 / 审计
+销售 / 解决方案 / 客户成功 / 运营
+稳定币 / 钱包 / crypto / 新轨道
 
-需要重点看：
-AI security
-risk / fraud
-Bridge / stablecoin / AML
-Billing / revenue automation
-Agentic Commerce
-enterprise platform
-product sales
+变化方向：
+LinkedIn 看存量结构
+JD 看当前补位
+组织任命和并购看关键能力进入方式
 ```
 
 屏幕补充证据：
@@ -1099,19 +1099,23 @@ Radar / Fraud / Risk
 
 屏幕主句：
 
-> LinkedIn 不是胜负证据，JD 也不是战略公告；它们只是组织投入信号。
+> 组织证据不是“几个人很强”，而是能力是否成规模、成结构、成变化。
 
 屏幕 6-2 话术：
 
-> 这里要非常克制。
+> 这里要非常克制，也要比“看几个 LinkedIn 牛人”更扎实。
 >
-> LinkedIn 不能证明 Stripe 会赢，JD 也不能当战略公告。
+> 如果只找 5 到 8 个代表人物，最多只能说明这家公司有一些强背景的人。这个样本太小，撑不起“组织能力”这个判断。
 >
-> LinkedIn 看的是存量：这家公司已经拥有什么样的人，背景来自哪里，能力集中在哪些岗位族群，是否有足够 senior 的工程、产品、风控、合规、资金、GTM 角色。
+> 第 6 章真正要看三件事。
 >
-> JD 看的是增量：公司下一阶段还在补什么能力。比如 AI security、risk、Bridge、stablecoin、AML、Billing、Agentic Commerce、enterprise platform、product sales。
+> 第一，看规模。Stripe 到底是一个多大体量的组织？这个体量能不能支撑它同时做支付、平台、风控、资金、稳定币和 AI 工具？
 >
-> 如果这些组织信号和第 4、5 章的产品路径对得上，我们至少可以说：Stripe 不只是在发产品，它也在为复杂交易这场仗配置组织能力。
+> 第二，看结构。它的人是不是只集中在收单和 checkout，还是覆盖工程、产品、数据、风控、合规、资金、财务、解决方案、销售和运营？
+>
+> 第三，看变化。最近的招聘火力、组织任命、并购整合，到底往哪里补？如果新岗位集中在 AI security、stablecoin、Radar、Bridge、Billing、enterprise GTM，这就说明下一阶段的复杂性正在往这些地方冒出来。
+>
+> 所以 LinkedIn 不是拿来找几个名片好看的人，JD 也不是拿来证明公司一定成功。它们要合在一起看：存量组织有没有底盘，增量招聘有没有方向，变化趋势是否和第 4、5 章的战略路径咬合。
 >
 > 但边界也要讲清楚：这些信号只能证明投入方向，不能证明最终胜负。
 
@@ -1121,18 +1125,37 @@ Radar / Fraud / Risk
 
 | 证据 | 支撑什么 | 证明强度 |
 |---|---|---|
+| LinkedIn 公司页当前公开口径显示：Stripe 有 1,515,224 followers、`Discover all 15,944 employees`，公司规模区间为 `5,001-10,000 employees`。来源：`https://www.linkedin.com/company/stripe/`。 | 提供组织规模和全球办公分布的公开入口，也提示 LinkedIn 关联员工数与公司规模区间不是同一口径。 | `candidate` for scale signal；不能把关联员工数直接当正式 headcount。 |
+| Business Insider 2025-01 报道：Stripe 裁撤 300 人，约占 3.5%，主要涉及 product、engineering、operations；同一报道称公司仍计划年底将 headcount 增至约 10,000。来源：`https://www.businessinsider.com/stripe-layoffs-duck-email-error-2025-1`。 | 提供组织规模和调整方向的外部口径：Stripe 已是接近万人级组织，且在增长中重配 product / engineering / operations。 | `candidate` for headcount/change signal；媒体基于内部 memo，不等于官方年度披露。 |
 | 本地 source pack 对 260 个 Stripe JD URL 做了 slug-cluster 扫描：GTM 77、risk/fraud/security 61、platform/developer/infrastructure 57、payments/billing/revenue 38、AI/ML 25、crypto/stablecoin/Bridge/Privy 18。 | 说明 JD 增量不是单点 AI 岗位，而是围绕风险、平台、收入、稳定币和 GTM 同时展开。 | `promoted` for organization-signal；不能证明历史招聘变化。 |
 | 2026-06-30 复核官方页：Backend Engineer, AI Security。岗位写明要做 AI security primitives、inference-path tooling、prompt injection / jailbreak / tool misuse 防护。来源：`https://stripe.com/jobs/listing/backend-engineer-ai-security/7826765`。 | 支撑“AI 带来的不是付款入口，而是安全和风控前置”。 | `promoted` for current JD signal；不能证明产品已成熟。 |
 | 2026-06-30 复核官方页：Specialist Solutions Architect, Crypto & Stablecoins。岗位覆盖 Bridge、Privy、stablecoin protocols、digital asset infrastructure、regulatory landscape、reference architectures、Voice of Customer。来源：`https://stripe.com/jobs/listing/specialist-solutions-architect-crypto-stablecoins/7120766`。 | 支撑 stablecoin / wallet 已进入 GTM、架构和产品反馈闭环。 | `promoted` for GTM/product-market signal。 |
 | 2026-06-30 复核官方页：Internal Audit Lead, Stablecoins & Digital Assets。岗位覆盖 stablecoin oversight framework、treasury/reserve、custody/key management、on/off-ramp、ledger risk、OCC-regulated trust bank audit。来源：`https://stripe.com/jobs/listing/internal-audit-lead-stablecoins-digital-assets/7997826`。 | 支撑 stablecoin 不只是工程问题，也是审计、监管、储备、账务和治理问题。 | `promoted` for control/audit signal。 |
 | 2026-06-30 复核官方页：Specialist Solutions Architect, Radar (Fraud/Risk)。岗位把 Radar 从 payment fraud 扩展到 account takeover、first-party misuse、policy abuse、rules engine、ML model、manual review、identity/device/behavioral/graph signals。来源：`https://stripe.com/jobs/listing/specialist-solutions-architect-radar-fraud-risk/7365914`。 | 支撑风险能力从单笔欺诈走向统一风险智能平台。 | `promoted` for risk-product evolution signal。 |
 
-仍需补实后才能最终锁定：
+LinkedIn / 人员库补样标准：
 
-- LinkedIn：5-8 个代表性人员或背景样本，用来做能力雷达。
-- LinkedIn 样本必须看在职人员背景和能力组合，例如：payments/network、platform/Connect、risk/fraud、billing/revenue、treasury/ledger、stablecoin/Bridge/Privy、enterprise/GTM。不能只看人才流向。
-- JD：当前已有岗位簇可支撑“投入方向”，但还不能声称“Stripe 已完成组织转型”。
-- 产品/docs：用于对照组织能力是否服务于第 4-5 章路径。
+| 要补什么 | 采样口径 | 用途 | 不能怎么用 |
+|---|---|---|---|
+| 组织规模 | LinkedIn company page、公司披露、媒体 headcount 口径交叉验证。 | 判断 Stripe 是几千人级还是万人级组织，能否支撑多战线展开。 | 不能把 LinkedIn 关联员工数直接等同于 FTE。 |
+| 职能占比 | 优先用 LinkedIn People 聚合口径；如果无法导出聚合，至少按职能分层采样 80-120 个当前员工 profile。 | 看工程、产品、风控、合规、资金、GTM、运营、AI/数据、新轨道等能力是否成结构。 | 不能用 5-8 个 profile 推全公司占比。 |
+| 资深度结构 | 按 exec / VP / director / manager / staff / senior IC / IC 分层。 | 判断能力是否只停留在执行层，还是进入负责人和架构层。 | 不能用个别高管证明基层能力充足。 |
+| 背景来源 | payments network、bank/fintech、big tech、enterprise SaaS、risk/compliance、crypto/wallet、developer platform。 | 看 Stripe 是在补哪类外部能力。 | 不能把“来自大厂”直接等同于能力有效。 |
+| 变化趋势 | 对比 2025-2026 当前人员、公开任命、并购团队、JD 热点；历史变化需要 archived LinkedIn/JD 或 dated mirrors。 | 说明组织火力往哪里移动。 | 没有历史快照时，不能声称职能占比已经发生确定变化。 |
+
+当前本章能说：
+
+- Stripe 是接近万人级组织；公开 LinkedIn 页面和媒体 headcount 口径都支持“这是大规模组织问题”，但两者口径不同，不能混用。
+- Stripe 仍在调整与增长中配置 product、engineering、operations 等能力。
+- 当前 JD 火力集中在 GTM、risk/fraud/security、platform/developer/infrastructure、payments/billing/revenue、AI/ML、crypto/stablecoin/Bridge/Privy。
+- 这些增量方向和第 4、5 章的产品路径相互咬合，能支撑“组织能力正在围绕复杂交易继续配置”。
+
+当前本章不能说：
+
+- Stripe 的全公司职能占比已经被我们完整证明。
+- LinkedIn 已证明 Stripe 人才结构优于 PayPal、Adyen 或 Visa/Mastercard。
+- JD 占比等于全公司人员占比。
+- 公开任命或个别人员背景能代表公司战略成败。
 
 不能证明：
 
@@ -1489,5 +1512,5 @@ AI 会让这些变快：
 1. 把现有 H5 反向映射到这 8 章。
 2. 标出哪些段落保留、压缩、重写、删除。
 3. 先改第 2/3/4 章，因为它们决定主线。
-4. 再补 LinkedIn 人员样本，并把 JD 证据转成 H5 可见引用面。
+4. 再补 LinkedIn 职能占比、资深度和变化趋势聚合证据，并把 JD 证据转成 H5 可见引用面。
 5. 最后做视觉和引用验收。
