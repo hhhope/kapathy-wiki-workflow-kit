@@ -106,8 +106,8 @@
 | 3 | 真正的壁垒：谁来定义金融交易语言 | locked | 功能可以生成，关系必须设计。 |
 | 4 | 第一场战略选择：把难事留给自己 | pending | Stripe 用开发者入口切入，但真正吸收的是新业务最怕碰的金融复杂性。 |
 | 5 | 纵深推进：客户越复杂，Stripe 打得越深 | accepted | 客户复杂性升级后，Stripe 继续把平台、收入、风控、资金问题吸收到自己这一侧。 |
-| 6 | 组织亮出底牌：这场仗需要什么样的人 | pending | 用 LinkedIn/JD 验证复杂交易能力是否反映成组织能力结构。 |
-| 7 | 新战线展开：旧能力重新变贵 | pending | AI/Agent/stablecoin 重新调用商品、授权、风控、计费、资金和责任能力。 |
+| 6 | 组织亮出底牌：这场仗需要什么样的人 | evidence-partial | JD 已能支撑增量投入方向；LinkedIn 人员样本仍需补齐后再锁定。 |
+| 7 | 新战线展开：旧能力重新变贵 | evidence-partial | 证据锚点已补到 Agentic Commerce、SPT、MPP/x402、Sessions 2026、AI Security、Radar JD。 |
 | 8 | 最后回到我们：复杂行业先统一语言，再追求速度 | pending | 回收方法论：AI 降低执行成本，但不会自动降低理解成本。 |
 
 第 1-3 章的证明关系已经锁定：
@@ -153,7 +153,7 @@
 - `evidence-strength`：Stripe、Adyen、PayPal、Agentic Commerce、MPP/x402 等材料只在对应证明强度内使用。
 - `public-writing-method`：每一章有读者问题、主判断、证据位置、屏幕表达、边界和转场。
 
-当前仍不是整篇 `review-ready` 状态，因为第 4、6、7、8 章仍需用户继续审核，最终 citation surface 也尚未完成。
+当前仍不是整篇 `review-ready` 状态，因为第 4、8 章仍需用户继续审核，第 6 章还缺 LinkedIn 人员样本，最终 citation surface 也尚未完成。
 
 ## 4. 第 1 章：入口只是烟雾弹
 
@@ -1082,6 +1082,21 @@ enterprise platform
 product sales
 ```
 
+屏幕补充证据：
+
+```text
+JD 已看到的增量能力：
+
+AI Security
+AI Conversation Platform
+Developer Productivity AI
+ML Platform
+Capital Underwriting
+Crypto & Stablecoins
+Stablecoin Internal Audit
+Radar / Fraud / Risk
+```
+
 屏幕主句：
 
 > LinkedIn 不是胜负证据，JD 也不是战略公告；它们只是组织投入信号。
@@ -1102,10 +1117,21 @@ product sales
 
 ### 9.4 证据边界
 
-需要补实后才能最终落地：
+已可用证据：
+
+| 证据 | 支撑什么 | 证明强度 |
+|---|---|---|
+| 本地 source pack 对 260 个 Stripe JD URL 做了 slug-cluster 扫描：GTM 77、risk/fraud/security 61、platform/developer/infrastructure 57、payments/billing/revenue 38、AI/ML 25、crypto/stablecoin/Bridge/Privy 18。 | 说明 JD 增量不是单点 AI 岗位，而是围绕风险、平台、收入、稳定币和 GTM 同时展开。 | `promoted` for organization-signal；不能证明历史招聘变化。 |
+| 2026-06-30 复核官方页：Backend Engineer, AI Security。岗位写明要做 AI security primitives、inference-path tooling、prompt injection / jailbreak / tool misuse 防护。来源：`https://stripe.com/jobs/listing/backend-engineer-ai-security/7826765`。 | 支撑“AI 带来的不是付款入口，而是安全和风控前置”。 | `promoted` for current JD signal；不能证明产品已成熟。 |
+| 2026-06-30 复核官方页：Specialist Solutions Architect, Crypto & Stablecoins。岗位覆盖 Bridge、Privy、stablecoin protocols、digital asset infrastructure、regulatory landscape、reference architectures、Voice of Customer。来源：`https://stripe.com/jobs/listing/specialist-solutions-architect-crypto-stablecoins/7120766`。 | 支撑 stablecoin / wallet 已进入 GTM、架构和产品反馈闭环。 | `promoted` for GTM/product-market signal。 |
+| 2026-06-30 复核官方页：Internal Audit Lead, Stablecoins & Digital Assets。岗位覆盖 stablecoin oversight framework、treasury/reserve、custody/key management、on/off-ramp、ledger risk、OCC-regulated trust bank audit。来源：`https://stripe.com/jobs/listing/internal-audit-lead-stablecoins-digital-assets/7997826`。 | 支撑 stablecoin 不只是工程问题，也是审计、监管、储备、账务和治理问题。 | `promoted` for control/audit signal。 |
+| 2026-06-30 复核官方页：Specialist Solutions Architect, Radar (Fraud/Risk)。岗位把 Radar 从 payment fraud 扩展到 account takeover、first-party misuse、policy abuse、rules engine、ML model、manual review、identity/device/behavioral/graph signals。来源：`https://stripe.com/jobs/listing/specialist-solutions-architect-radar-fraud-risk/7365914`。 | 支撑风险能力从单笔欺诈走向统一风险智能平台。 | `promoted` for risk-product evolution signal。 |
+
+仍需补实后才能最终锁定：
 
 - LinkedIn：5-8 个代表性人员或背景样本，用来做能力雷达。
-- JD：5-8 个岗位簇，用来观察下一轮能力投入。
+- LinkedIn 样本必须看在职人员背景和能力组合，例如：payments/network、platform/Connect、risk/fraud、billing/revenue、treasury/ledger、stablecoin/Bridge/Privy、enterprise/GTM。不能只看人才流向。
+- JD：当前已有岗位簇可支撑“投入方向”，但还不能声称“Stripe 已完成组织转型”。
 - 产品/docs：用于对照组织能力是否服务于第 4-5 章路径。
 
 不能证明：
@@ -1267,6 +1293,17 @@ audit trail
 - Bridge / stablecoin / MPP / x402：资金轨道、machine payment、HTTP 402。
 - Radar / AI Security：token theft、fake signup、风险识别。
 - 本地时间线：2025-2026 agentic commerce、machine payment、stablecoin、risk 事件。
+
+证据锚点：
+
+| 证据 | 放在哪一屏 | 支撑什么 | 证明强度 |
+|---|---|---|---|
+| Agentic Commerce seller docs：catalog feed、inventory/pricing refresh、Checkout Session field mapping、hooks、idempotency。来源：`https://docs.stripe.com/agentic-commerce/for-sellers`。 | 屏幕 7-1 | Agent 交易要求商户系统更机器可读，不是简单替人点击付款。 | `promoted` for product/docs fact；不证明采用规模。 |
+| Agentic Commerce / Microsoft Copilot / Shared Payment Token。来源：`https://stripe.com/en-jp/newsroom/news/microsoft-copilot-and-stripe`。 | 屏幕 7-2 | Agent 交易需要凭据、授权、商户和订单责任链。 | `promoted` for official release；不证明大规模成熟。 |
+| Machine payments docs：HTTP 402、MPP、x402、crypto 或 SPT 凭据、retry flow。来源：`https://docs.stripe.com/payments/machine`、`https://docs.stripe.com/payments/machine/mpp`、`https://docs.stripe.com/payments/machine/x402`。 | 屏幕 7-2 | machine payment 是协议化访问、凭据和资金轨道问题。 | `promoted` for docs fact；协议采用仍是边界。 |
+| Sessions 2026：Link wallets for agents、streaming payments、Radar token theft、Treasury、Projects。来源：`https://stripe.com/en-jp/newsroom/news/sessions-2026`。 | 屏幕 7-2 / 7-3 | AI 让钱包、资金、风控、账务和开发环境一起被重新调用。 | `promoted` for official announcement；不等于商业成功。 |
+| Backend Engineer, AI Security JD：inference-path tooling、prompt injection、jailbreak、tool misuse。来源：`https://stripe.com/jobs/listing/backend-engineer-ai-security/7826765`。 | 屏幕 7-3 | AI 风险不只是盗卡，还包括模型/工具调用路径上的新风险。 | `promoted` for current JD signal；不证明风险产品已完整交付。 |
+| Specialist Solutions Architect, Radar (Fraud/Risk) JD：account takeover、first-party misuse、policy abuse、rules engine、ML model、manual review、identity/device/behavioral/graph signals。来源：`https://stripe.com/jobs/listing/specialist-solutions-architect-radar-fraud-risk/7365914`。 | 屏幕 7-3 | 风控从 payment fraud 扩展到更完整的风险智能平台。 | `promoted` for org/product-market signal。 |
 
 不能证明：
 
@@ -1452,5 +1489,5 @@ AI 会让这些变快：
 1. 把现有 H5 反向映射到这 8 章。
 2. 标出哪些段落保留、压缩、重写、删除。
 3. 先改第 2/3/4 章，因为它们决定主线。
-4. 再补 LinkedIn/JD 两个证据模块。
+4. 再补 LinkedIn 人员样本，并把 JD 证据转成 H5 可见引用面。
 5. 最后做视觉和引用验收。
