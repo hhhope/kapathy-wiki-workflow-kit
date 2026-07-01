@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stripe：把难事留给自己</title>
+  <style>
+    :root {
+      --ink: #0d0f13;
+      --muted: #5c6672;
+      --paper: #f7f4ed;
+      --panel: #fffaf0;
+      --line: #d9d0bd;
+      --gold: #c79a36;
+      --teal: #08786f;
+      --blue: #245c9d;
+      --red: #aa3a30;
+      --green: #557a3f;
+      --shadow: 0 18px 50px rgba(13, 15, 19, 0.12);
+    }
+
+    @font-face {
+      font-family: "StripeH5CN";
+      src:
+        local("Microsoft YaHei"),
+        local("DengXian"),
+        url("file:///mnt/c/Windows/Fonts/msyh.ttc") format("truetype");
+      font-weight: 300 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "StripeH5CN", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "DengXian", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .draft-ribbon {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      display: flex;
+      justify-content: center;
+      padding: 8px 16px;
+      background: var(--ink);
+      color: #fffaf0;
+      font-size: 13px;
+      letter-spacing: 0;
+    }
+
+    .progress {
+      position: fixed;
+      top: 35px;
+      left: 0;
+      z-index: 31;
+      width: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      min-height: 100vh;
+      padding-top: 36px;
+    }
+
+    .rail {
+      position: sticky;
+      top: 36px;
+      height: calc(100vh - 36px);
+      padding: 28px 18px;
+      border-right: 1px solid var(--line);
+      background: rgba(247, 244, 237, 0.92);
+      backdrop-filter: blur(12px);
+      overflow: auto;
+    }
+
+    .rail-title {
+      margin: 0 0 18px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .rail small {
+      display: block;
+      margin-bottom: 20px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .nav {
+      display: grid;
+      gap: 7px;
+    }
+
+    .nav a {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 8px;
+      align-items: start;
+      padding: 9px 8px;
+      border-radius: 6px;
+      color: #2c3138;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .nav a.active,
+    .nav a:hover {
+      background: #eee5d3;
+    }
+
+    .nav b {
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .main {
+      min-width: 0;
+    }
+
+    .hero,
+    .chapter,
+    .evidence,
+    .closing {
+      padding: 78px 56px;
+    }
+
+    .inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: calc(100vh - 36px);
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(13, 15, 19, 0.06) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(13, 15, 19, 0.04) 1px, transparent 1px),
+        var(--paper);
+      background-size: 56px 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--red);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--red);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 20px;
+      font-size: 64px;
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 710px;
+      margin-bottom: 28px;
+      color: #2e3842;
+      font-size: 23px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .hero-copy {
+      max-width: 730px;
+      color: #303640;
+      font-size: 18px;
+    }
+
+    .status-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 250, 240, 0.78);
+      color: #313941;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero-board,
+    .visual-panel,
+    .source-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 250, 240, 0.92);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-board {
+      padding: 22px;
+    }
+
+    .control-map {
+      display: grid;
+      gap: 16px;
+    }
+
+    .control-row {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+    }
+
+    .control-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .control-track {
+      position: relative;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fffdf7;
+      overflow: hidden;
+    }
+
+    .control-track span {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      color: #182029;
+      font-weight: 800;
+    }
+
+    .control-track::after {
+      content: "";
+      display: block;
+      width: var(--w);
+      height: 100%;
+      background: var(--c);
+      opacity: 0.18;
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .chapter {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .chapter:nth-child(odd) {
+      background: #fbf7ee;
+    }
+
+    .chapter-head {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 30px;
+      align-items: start;
+      margin-bottom: 34px;
+    }
+
+    .chapter-no {
+      display: grid;
+      place-items: center;
+      width: 86px;
+      height: 86px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 42px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .chapter-lead {
+      max-width: 900px;
+      color: #313941;
+      font-size: 18px;
+      font-weight: 650;
+    }
+
+    .misread {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--red);
+      background: #fff7ef;
+      color: #38312d;
+      font-size: 15px;
+    }
+
+    .screen-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.95fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .text-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .screen {
+      padding: 18px 18px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 250, 240, 0.76);
+    }
+
+    .screen h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .screen p,
+    .screen li {
+      color: #3c444d;
+      font-size: 15px;
+    }
+
+    .screen p:last-child,
+    .screen ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .screen ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .quote {
+      margin: 18px 0 0;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #11161c;
+      color: #fff8e8;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    .visual-panel {
+      padding: 20px;
+    }
+
+    .visual-title {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .split-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .bucket {
+      min-height: 260px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf7;
+    }
+
+    .bucket h4 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .bucket .big {
+      display: block;
+      margin: 6px 0 14px;
+      font-size: 34px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: 7px 9px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: #f7f1e5;
+      color: #303740;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .route-map {
+      display: grid;
+      gap: 10px;
+    }
+
+    .route {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf7;
+    }
+
+    .route strong {
+      font-size: 16px;
+    }
+
+    .route p {
+      margin: 0;
+      color: #46515d;
+      font-size: 14px;
+    }
+
+    .route.stripe {
+      border-color: rgba(36, 92, 157, 0.55);
+      background: #f2f7ff;
+    }
+
+    .language-stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .layer {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf7;
+    }
+
+    .layer b {
+      display: grid;
+      place-items: center;
+      min-height: 54px;
+      border-radius: 6px;
+      background: var(--ink);
+      color: #fff8e8;
+      font-size: 18px;
+    }
+
+    .layer p {
+      margin: 0;
+      color: #3c444d;
+    }
+
+    .battle-lines {
+      display: grid;
+      gap: 12px;
+    }
+
+    .battle-line {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf7;
+    }
+
+    .battle-line strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+
+    .battle-line p {
+      margin: 0;
+      color: #46515d;
+      font-size: 14px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 9px;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf7;
+      font-weight: 800;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 24px;
+      bottom: -10px;
+      width: 2px;
+      height: 10px;
+      background: var(--line);
+    }
+
+    .depth-map {
+      display: grid;
+      gap: 12px;
+    }
+
+    .depth-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .depth-time {
+      display: grid;
+      place-items: center;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #11161c;
+      color: #fff8e8;
+      font-weight: 900;
+    }
+
+    .depth-body {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf7;
+    }
+
+    .depth-body strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .radar-bars {
+      display: grid;
+      gap: 10px;
+    }
+
+    .bar {
+      display: grid;
+      grid-template-columns: 178px 1fr 38px;
+      gap: 10px;
+      align-items: center;
+      color: #313941;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .bar-track {
+      height: 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #f3ead8;
+      overflow: hidden;
+    }
+
+    .bar-track i {
+      display: block;
+      width: var(--w);
+      height: 100%;
+      background: var(--c);
+    }
+
+    .war-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .war {
+      min-height: 250px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf7;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .war h4 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .war p {
+      color: #46515d;
+      font-size: 14px;
+    }
+
+    .judgment-card {
+      display: grid;
+      gap: 12px;
+      counter-reset: q;
+    }
+
+    .question {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf7;
+    }
+
+    .question::before {
+      counter-increment: q;
+      content: counter(q);
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .question strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 17px;
+    }
+
+    .question span {
+      color: #46515d;
+      font-size: 14px;
+    }
+
+    .transition {
+      margin-top: 24px;
+      padding: 16px 18px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: #29313a;
+      font-size: 16px;
+      font-weight: 750;
+    }
+
+    .evidence {
+      background: #10151b;
+      color: #fff8e8;
+    }
+
+    .evidence h2 {
+      color: #fff8e8;
+    }
+
+    .evidence .chapter-lead {
+      color: #d8d0bd;
+    }
+
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .source-box {
+      min-height: 210px;
+      padding: 18px;
+      background: #171d24;
+      border-color: #303945;
+      color: #efe5d2;
+      box-shadow: none;
+    }
+
+    .source-box h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .source-box p,
+    .source-box li {
+      color: #d8d0bd;
+      font-size: 14px;
+    }
+
+    .source-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .closing {
+      background: #f3ead8;
+    }
+
+    .closing h2 {
+      max-width: 850px;
+    }
+
+    .closing p {
+      max-width: 850px;
+      color: #303740;
+      font-size: 18px;
+      font-weight: 650;
+    }
+
+    @media (max-width: 1100px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .rail {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .hero-grid,
+      .screen-grid,
+      .chapter-head {
+        grid-template-columns: 1fr;
+      }
+
+      .chapter-no {
+        width: 70px;
+        height: 70px;
+      }
+
+      .source-grid,
+      .war-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero,
+      .chapter,
+      .evidence,
+      .closing {
+        padding: 54px 18px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      .subtitle {
+        font-size: 18px;
+      }
+
+      .hero-copy,
+      .chapter-lead,
+      .closing p {
+        font-size: 16px;
+      }
+
+      .nav {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-grid {
+        gap: 24px;
+      }
+
+      .split-visual,
+      .depth-row,
+      .route,
+      .control-row,
+      .bar,
+      .question {
+        grid-template-columns: 1fr;
+      }
+
+      .bar {
+        gap: 6px;
+      }
+
+      .hero-board,
+      .visual-panel {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="draft-ribbon">内部分享 H5 草稿 · 基于 SS 设计稿新建 · 尚未 review-ready / 未同步 Feishu</div>
+  <div class="progress" id="progress"></div>
+  <div class="shell">
+    <aside class="rail" aria-label="章节导航">
+      <p class="rail-title">Stripe 分享结构</p>
+      <small>55-58 分钟。前三章已锁定，4-8 章按当前 SS 校准稿落地，证据边界在页面末尾公开。</small>
+      <nav class="nav">
+        <a href="#chapter-1"><b>1</b><span>入口只是烟雾弹</span></a>
+        <a href="#chapter-2"><b>2</b><span>Stripe 站在战场中央</span></a>
+        <a href="#chapter-3"><b>3</b><span>真正的壁垒</span></a>
+        <a href="#chapter-4"><b>4</b><span>第一场战略选择</span></a>
+        <a href="#chapter-5"><b>5</b><span>纵深推进</span></a>
+        <a href="#chapter-6"><b>6</b><span>组织亮出底牌</span></a>
+        <a href="#chapter-7"><b>7</b><span>新战线展开</span></a>
+        <a href="#chapter-8"><b>8</b><span>回到我们</span></a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <section class="hero" id="top">
+        <div class="inner hero-grid">
+          <div>
+            <div class="kicker">80 人内部分享 · Stripe AI 支付能力建设</div>
+            <h1>Stripe：把难事留给自己</h1>
+            <p class="subtitle">AI 时代，支付公司真正争夺的是金融交易语言。</p>
+            <p class="hero-copy">这不是一场 Stripe 产品传记，也不是 AI 支付热点合集。主线是：当 coding 和接入成本下降，真正稀缺的能力变成谁能把复杂金融交易定义清楚、边界划清楚、责任留下来。</p>
+            <div class="status-strip" aria-label="当前状态">
+              <span class="pill">1-3 章 locked</span>
+              <span class="pill">4 / 8 章仍需复审</span>
+              <span class="pill">LinkedIn 聚合未完成</span>
+              <span class="pill">草稿，不可声明 review-ready</span>
+            </div>
+          </div>
+          <div class="hero-board" aria-label="主线视觉图">
+            <div class="visual-title">Mainline</div>
+            <div class="control-map">
+              <div class="control-row">
+                <div class="control-label">AI 压低</div>
+                <div class="control-track" style="--w: 84%; --c: var(--teal);"><span>代码 / 接口 / 页面 / demo 成本</span></div>
+              </div>
+              <div class="control-row">
+                <div class="control-label">仍需设计</div>
+                <div class="control-track" style="--w: 100%; --c: var(--red);"><span>对象 / 权限 / 规则 / 资金 / 责任</span></div>
+              </div>
+              <div class="control-row">
+                <div class="control-label">Stripe 样本</div>
+                <div class="control-track" style="--w: 92%; --c: var(--blue);"><span>把客户金融复杂性吸收到系统侧</span></div>
+              </div>
+              <div class="control-row">
+                <div class="control-label">听众带走</div>
+                <div class="control-track" style="--w: 76%; --c: var(--gold);"><span>复杂行业先统一语言，再追求速度</span></div>
+              </div>
+            </div>
+            <p class="hero-note">视觉任务：不是装饰，而是把“成本下降”和“关系仍需设计”的冲突放在第一页。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="chapter-1">
+        <div class="inner">
+          <header class="chapter-head">
+            <div class="chapter-no">01</div>
+            <div>
+              <h2>入口只是烟雾弹</h2>
+              <p class="chapter-lead">不要从“Agent 会不会帮用户点付款按钮”开始。入口最显眼，但支付公司的商业问题更硬：凭什么收这个费率？</p>
+              <div class="misread">先砍掉的误解：AI 支付不是多一个付款入口。真正的问题是，商户为什么愿意为支付公司支付服务溢价。</div>
+            </div>
+          </header>
+          <div class="screen-grid">
+            <div class="text-stack">
+              <article class="screen">
+                <h3>屏幕 1-1：费率背后买的是什么</h3>
+                <p>商户表面上比较费率、扣款、收款、通道和结算周期。但商户真正愿意长期付费买的，是更高转化、更少欺诈、更低拒付和争议、更低合规与对账成本，以及更稳定的平台分账和订阅计费。</p>
+                <p>讲者要先问一个朴素问题：支付公司凭什么收这个费率？如果只帮商户收钱，支付就会被放进费率表里比较。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 1-2：AI 让什么变便宜，什么不会自动变清楚</h3>
+                <p>AI 会让写代码、接 API、搭页面、生成测试、搭 demo、试错流程变便宜。但它不会自动理清谁能交易、能买什么、谁授权、钱怎么走、什么要拦、出错谁负责、证据怎么留下。</p>
+                <p>这一章要把听众从入口视角拉回费率溢价逻辑。</p>
+              </article>
+              <div class="quote">费率是价格标签，复杂性管理能力决定溢价权。</div>
+              <div class="transition">转场：如果接受这个判断，Stripe 就不是因为“也做 AI”才值得看，而是因为它长期回答同一个问题：如何让新业务用更低成本管理更复杂的金融交易。</div>
+            </div>
+            <div class="visual-panel">
+              <div class="visual-title">Fee Premium Conflict</div>
+              <div class="split-visual">
+                <div class="bucket">
+                  <h4>商户表面看到</h4>
+                  <span class="big">费率</span>
+                  <ul class="tag-list">
+                    <li>扣款</li><li>收款</li><li>通道</li><li>成功率</li><li>结算周期</li>
+                  </ul>
+                </div>
+                <div class="bucket">
+                  <h4>商户真正购买</h4>
+                  <span class="big">少碰难事</span>
+                  <ul class="tag-list">
+                    <li>转化</li><li>欺诈</li><li>拒付</li><li>税务</li><li>分账</li><li>对账</li><li>订阅</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="chapter-2">
+        <div class="inner">
+          <header class="chapter-head">
+            <div class="chapter-no">02</div>
+            <div>
+              <h2>Stripe 站在战场中央</h2>
+              <p class="chapter-lead">Stripe 的价值不是“API 好”或“产品多”。它适合作为样本，是因为它展示了支付公司如何把复杂金融场景变成低成本管理框架，并由此获得持续服务价值。</p>
+              <div class="misread">先砍掉的误解：不能把 Stripe 写成唯一答案，也不能贬低 PayPal、Adyen、Visa/Mastercard。它们回答的是不同问题。</div>
+            </div>
+          </header>
+          <div class="screen-grid">
+            <div class="text-stack">
+              <article class="screen">
+                <h3>屏幕 2-1：不同支付公司的价值位置</h3>
+                <p>PayPal 强在消费者账户、买家信任和 checkout 转化；Adyen 强在全球收单、企业支付处理、成本透明和全渠道；Visa/Mastercard 掌握网络规则、授权、token、清算和争议。</p>
+                <p>Stripe 路线更适合回答这场分享的问题：当支付接入成本越来越低，支付公司如何继续证明自己的服务价值。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 2-2：Stripe 降低的是哪几类管理成本</h3>
+                <p>开发者接入成本、平台管理成本、收入管理成本、风险管理成本、资金管理成本、新交易接入成本，沿着客户复杂性被持续压低。</p>
+                <p>重点不是 Stripe 产品很多，而是这些产品分别吃下了不同金融场景的管理成本。</p>
+              </article>
+              <div class="quote">这些公司都强，但回答的问题不同。</div>
+              <div class="transition">转场：复杂性不能靠功能堆出来。如果对象、边界、权限、规则、资金和责任没有被说清楚，系统只会越来越复杂。所以第三章进入方法论。</div>
+            </div>
+            <div class="visual-panel">
+              <div class="visual-title">Battlefield Position</div>
+              <div class="route-map">
+                <div class="route"><strong>PayPal</strong><p>消费者账户、买家信任、checkout 转化。</p></div>
+                <div class="route"><strong>Adyen</strong><p>全球收单、企业支付处理、成本透明、全渠道。</p></div>
+                <div class="route"><strong>Visa / MC</strong><p>网络规则、授权、token、清算、争议体系。</p></div>
+                <div class="route stripe"><strong>Stripe</strong><p>把新业务金融复杂性做成可接入、可管理、可组合的产品语言。</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="chapter-3">
+        <div class="inner">
+          <header class="chapter-head">
+            <div class="chapter-no">03</div>
+            <div>
+              <h2>真正的壁垒：谁来定义金融交易语言</h2>
+              <p class="chapter-lead">AI 会让支付功能变便宜，但不代表支付能力变便宜。一个支付按钮可以生成，一套金融交易语言不能自动生成。</p>
+              <div class="misread">先砍掉的误解：支付能力不是“能生成一个功能”。功能可以生成，关系必须设计。</div>
+            </div>
+          </header>
+          <div class="screen-grid">
+            <div class="text-stack">
+              <article class="screen">
+                <h3>屏幕 3-1：功能可以生成，关系必须设计</h3>
+                <p>AI 可以帮你写代码、接接口、搭页面、生成测试，甚至很快做出 demo。但它不会自动帮你把交易对象、授权边界、风险规则、资金路径和责任证据定义清楚。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 3-2：金融交易语言五层图</h3>
+                <p>意图、授权、规则、资金、责任，是这场分享后面所有 Stripe 材料的解释框架。Agent、自动化、协议、钱包、稳定币，都绕不开这五层。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 3-3：为什么这套语言会被付费</h3>
+                <p>平台分账、订阅计费、Agent 交易的难点都不是付款按钮，而是边界、周期、规则、资金和责任。谁能低成本管理这些关系，谁才可能被持续付费。</p>
+              </article>
+              <div class="transition">转场：接下来不是问 Stripe 为什么 API 好，而是看它为什么能从一开始把新业务最怕碰、最容易拖慢增长的金融复杂性留在自己这一侧。</div>
+            </div>
+            <div class="visual-panel">
+              <div class="visual-title">Financial Transaction Language</div>
+              <div class="language-stack">
+                <div class="layer"><b>意图</b><p>系统到底要完成什么交易。</p></div>
+                <div class="layer"><b>授权</b><p>谁允许它做，权限多大。</p></div>
+                <div class="layer"><b>规则</b><p>什么情况下能做，什么情况下必须拦。</p></div>
+                <div class="layer"><b>资金</b><p>钱从哪里来，到哪里去，怎么分、怎么结、怎么对。</p></div>
+                <div class="layer"><b>责任</b><p>出错谁负责，证据怎么留下。</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="chapter-4">
+        <div class="inner">
+          <header class="chapter-head">
+            <div class="chapter-no">04</div>
+            <div>
+              <h2>第一场战略选择：把难事留给自己</h2>
+              <p class="chapter-lead">Stripe 用开发者入口进入市场，但真正的战略不是“接入方便”，而是把新业务里的金融复杂性吸收到自己这一侧。</p>
+              <div class="misread">先砍掉的误解：Stripe 开发者体验好，所以成功。这太低，也看不出和 PayPal、Adyen 的区别。</div>
+            </div>
+          </header>
+          <div class="screen-grid">
+            <div class="text-stack">
+              <article class="screen">
+                <h3>屏幕 4-1：三条路线，不是同一场仗</h3>
+                <p>PayPal 从买家账户和 checkout 信任切入；Adyen 从企业收单和全球支付运营切入；Stripe 从新业务和开发者切入。差异不在能不能接支付，而在替客户吃下哪一类难题。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 4-2：新业务最怕碰的金融复杂性</h3>
+                <p>支付状态、失败处理、订阅、发票、用量、平台入驻、分账、payout、争议、欺诈、身份、KYC、证据留痕，都会拖慢一个新业务。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 4-3：真实交易反馈如何变成能力沉淀</h3>
+                <p>一次失败暴露状态设计，一次拒付暴露责任边界，一次分账暴露账户关系和资金路径，一次订阅变更暴露收入周期和确认规则。真实反馈会持续校准对象模型、风险规则和运营流程。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 4-4：为什么这条路能继续打深</h3>
+                <p>客户少自建，能更快上线，工程、财务、风控、合规少扯皮。Stripe 则进入客户的交易系统、收入系统、平台系统和资金系统。</p>
+              </article>
+              <div class="quote">Stripe 的溢价，不来自“我能收款”，而来自“我替你少碰一堆难事”。</div>
+              <div class="transition">转场：第一场战略选择只是起点。客户长大后，平台、订阅、税务、身份、资金、AI 用量和风险会继续升级。</div>
+            </div>
+            <div class="visual-panel">
+              <div class="visual-title">Complexity Absorption Loop</div>
+              <div class="flow">
+                <div class="flow-step">复杂交易进入系统</div>
+                <div class="flow-step">状态、失败、退款、拒付、分账、订阅、争议形成反馈</div>
+                <div class="flow-step">对象模型被修正</div>
+                <div class="flow-step">风控规则被校准</div>
+                <div class="flow-step">运营流程被固化</div>
+                <div class="flow-step">下一类复杂交易处理成本下降</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="chapter-5">
+        <div class="inner">
+          <header class="chapter-head">
+            <div class="chapter-no">05</div>
+            <div>
+              <h2>纵深推进：客户越复杂，Stripe 打得越深</h2>
+              <p class="chapter-lead">Stripe 的产品扩张不是横向铺货，而是客户复杂性升级后，它继续把更深的金融问题吸收到自己这一侧。</p>
+              <div class="misread">先砍掉的误解：Stripe 产品越来越多，所以越来越强。这会把战略路径写成产品货架。</div>
+            </div>
+          </header>
+          <div class="screen-grid">
+            <div class="text-stack">
+              <article class="screen">
+                <h3>屏幕 5-1：平台复杂性</h3>
+                <p>单一商户变成平台、marketplace、SaaS 后，支付不再是一笔收款，而是多主体交易关系：谁入驻、谁收钱、谁分账、谁承担风险、谁处理退款和争议。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 5-2：收入复杂性</h3>
+                <p>SaaS 不是每月扣一次款。试用、升级降级、周期、用量、欠费、退款、发票、税务、收入确认，把支付推向收入运营。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 5-3：运营复杂性</h3>
+                <p>全球化和平台化以后，身份、KYC/KYB、本地支付方式、发卡、资金账户、融资、对账都会出现。支付越来越不像一个支付问题。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 5-4：AI 客户复杂性</h3>
+                <p>AI 公司先改变的不是付款入口，而是收入和风险模型：token、event、usage 计费，成本收入强绑定，免费试用滥用、fake signup、资源盗用和实时风控一起出现。</p>
+              </article>
+              <div class="transition">转场：产品路径背后一定是组织能力。复杂交易这场仗，不可能只靠产品页面长出来。</div>
+            </div>
+            <div class="visual-panel">
+              <div class="visual-title">Depth Campaign</div>
+              <div class="depth-map">
+                <div class="depth-row"><div class="depth-time">平台</div><div class="depth-body"><strong>Connect</strong>多主体、入驻、分账、payout、争议。</div></div>
+                <div class="depth-row"><div class="depth-time">收入</div><div class="depth-body"><strong>Billing / Tax / Revenue Recognition / Metronome</strong>订阅、用量、发票、税务、收入确认。</div></div>
+                <div class="depth-row"><div class="depth-time">运营</div><div class="depth-body"><strong>Radar / Identity / Treasury / Issuing / Capital</strong>风控、身份、资金账户、发卡、融资。</div></div>
+                <div class="depth-row"><div class="depth-time">AI</div><div class="depth-body"><strong>Usage / Risk / Global Payments</strong>用量、成本、税务、资源滥用、全球收款。</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="chapter-6">
+        <div class="inner">
+          <header class="chapter-head">
+            <div class="chapter-no">06</div>
+            <div>
+              <h2>组织亮出底牌：这场仗需要什么样的人</h2>
+              <p class="chapter-lead">如果 Stripe 的战略是吸收复杂金融交易，它的人才结构就必须覆盖这些复杂性的来源。</p>
+              <div class="misread">先砍掉的误解：不能用几张 LinkedIn 名片证明战略成功，也不能把 JD 当全公司人员占比。</div>
+            </div>
+          </header>
+          <div class="screen-grid">
+            <div class="text-stack">
+              <article class="screen">
+                <h3>屏幕 6-1：产品路径背后，需要一张能力雷达</h3>
+                <p>新业务交易系统、平台、SaaS、风控、身份、资金、AI、stablecoin、machine payment，对应 developer platform、payments、risk、AML、treasury、ledger、GTM、solutions 等不同能力。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 6-2：看组织，不看几张名片</h3>
+                <p>真正要看三件事：组织规模是否支撑多战线展开，职能结构是否覆盖复杂交易链路，变化方向是否和战略路径咬合。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 6-3：JD 火力雷达</h3>
+                <p>当前 260 条 JD 标题信号显示，GTM、工程平台、风险安全合规、运营支持、产品设计、AI 数据、资金财税、crypto/stablecoin 同时出现。这不是 AI 团队单独扩张。</p>
+              </article>
+              <div class="quote">组织证据不是“几个人很强”，而是能力是否成规模、成结构、成变化。</div>
+              <div class="transition">转场：组织能力往哪里补，通常说明下一场仗在哪里。旧能力在机器执行速度下重新变贵。</div>
+            </div>
+            <div class="visual-panel">
+              <div class="visual-title">JD Signal Radar · 260 titles</div>
+              <div class="radar-bars">
+                <div class="bar"><span>GTM / sales / solutions</span><div class="bar-track"><i style="--w: 100%; --c: var(--gold);"></i></div><span>88</span></div>
+                <div class="bar"><span>engineering / platform</span><div class="bar-track"><i style="--w: 80%; --c: var(--blue);"></i></div><span>70</span></div>
+                <div class="bar"><span>risk / fraud / security</span><div class="bar-track"><i style="--w: 75%; --c: var(--red);"></i></div><span>66</span></div>
+                <div class="bar"><span>operations / support</span><div class="bar-track"><i style="--w: 63%; --c: var(--green);"></i></div><span>55</span></div>
+                <div class="bar"><span>product / design</span><div class="bar-track"><i style="--w: 51%; --c: var(--teal);"></i></div><span>45</span></div>
+                <div class="bar"><span>AI / ML / data</span><div class="bar-track"><i style="--w: 47%; --c: var(--blue);"></i></div><span>41</span></div>
+                <div class="bar"><span>finance / treasury / tax</span><div class="bar-track"><i style="--w: 45%; --c: var(--gold);"></i></div><span>40</span></div>
+                <div class="bar"><span>crypto / stablecoin</span><div class="bar-track"><i style="--w: 20%; --c: var(--red);"></i></div><span>18</span></div>
+              </div>
+              <p class="hero-note">边界：一个岗位可命中多个能力簇，这是信号命中，不是岗位占比；LinkedIn 职能、资深度和变化趋势仍待补证。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="chapter-7">
+        <div class="inner">
+          <header class="chapter-head">
+            <div class="chapter-no">07</div>
+            <div>
+              <h2>新战线展开：旧能力重新变贵</h2>
+              <p class="chapter-lead">AI 没有绕过支付复杂性，反而让商品、授权、资金、风控和责任这些老问题放进机器执行速度里。</p>
+              <div class="misread">先砍掉的误解：不能写成 Stripe 也做 Agentic Commerce、stablecoin、x402，所以追上 AI 了。这会变成热点合集。</div>
+            </div>
+          </header>
+          <div class="screen-grid">
+            <div class="text-stack">
+              <article class="screen">
+                <h3>屏幕 7-1：商品系统重新变贵</h3>
+                <p>Agent 交易不是点击付款。它先要求商户系统机器可读：商品目录、价格、库存、订单、履约、商户控制、approval hook、webhook、logs、idempotency。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 7-2：授权和资金轨道重新变贵</h3>
+                <p>硬问题不是能不能付，而是谁授权、凭据如何暴露、授权多久、预算多少、钱走卡、钱包、账户还是 stablecoin，以及失败后如何恢复。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 7-3：风控和责任体系重新变贵</h3>
+                <p>机器速度放大凭据被盗、虚假注册、工具误用、资源滥用、重放、并发、终态不一致、审批超时和幂等失败。风控必须前置，责任必须可追溯。</p>
+              </article>
+              <div class="quote">AI 没有跳过金融交易语言，只是把五层都推到了机器执行速度下。</div>
+              <div class="transition">转场：最后不是问 Stripe 做了什么 AI 产品，而是问复杂行业里什么能力会在 AI 时代重新变贵。</div>
+            </div>
+            <div class="visual-panel">
+              <div class="visual-title">New Battle Lines</div>
+              <div class="war-grid">
+                <div class="war">
+                  <h4>商品系统</h4>
+                  <p>catalog、inventory、pricing、order、fulfillment、approval hook。</p>
+                  <ul class="tag-list"><li>机器可读</li><li>商户可控</li></ul>
+                </div>
+                <div class="war">
+                  <h4>授权与资金</h4>
+                  <p>SPT、Link、Privy、consent、spend limit、Bridge、stablecoin、MPP/x402。</p>
+                  <ul class="tag-list"><li>凭据边界</li><li>轨道编排</li></ul>
+                </div>
+                <div class="war">
+                  <h4>风控与责任</h4>
+                  <p>Radar、Identity、AI Security、disputes、logs、audit trail。</p>
+                  <ul class="tag-list"><li>规则前置</li><li>证据留痕</li></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="chapter-8">
+        <div class="inner">
+          <header class="chapter-head">
+            <div class="chapter-no">08</div>
+            <div>
+              <h2>最后回到我们：复杂行业先统一语言，再追求速度</h2>
+              <p class="chapter-lead">Stripe 给我们的不是产品抄作业清单，而是一套判断题：当 AI 让执行变快，哪些复杂关系反而更需要被定义清楚？</p>
+              <div class="misread">先砍掉的误解：不是学习 Stripe 就要做一堆产品，也不是 AI 让所有行业都能快速自动化。</div>
+            </div>
+          </header>
+          <div class="screen-grid">
+            <div class="text-stack">
+              <article class="screen">
+                <h3>屏幕 8-1：AI 降低执行成本，不降低理解成本</h3>
+                <p>写代码、接接口、做页面、搭 demo、生成流程都会变快。但复杂行业真正慢的地方，是关系没说清、对象没定义、规则没统一、权限没边界、结果没验收、责任没证据。</p>
+              </article>
+              <article class="screen">
+                <h3>屏幕 8-2：带走一张判断卡</h3>
+                <p>以后看任何 AI + 行业机会，不要先问它能不能 demo。demo 太容易了。先问它有没有把复杂关系说清楚。</p>
+              </article>
+              <div class="quote">AI 会压低执行成本，但不会自动压低理解成本。</div>
+            </div>
+            <div class="visual-panel">
+              <div class="visual-title">Judgment Card</div>
+              <div class="judgment-card">
+                <div class="question"><div><strong>入口</strong><span>只是换入口，还是重写关系？</span></div></div>
+                <div class="question"><div><strong>对象</strong><span>关键对象有没有定义清楚？</span></div></div>
+                <div class="question"><div><strong>规则</strong><span>授权、权限、限额和拦截在哪里？</span></div></div>
+                <div class="question"><div><strong>结果</strong><span>能不能形成可验收的业务 / 金融结果？</span></div></div>
+                <div class="question"><div><strong>责任</strong><span>出错以后证据和责任能不能追溯？</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="evidence" id="evidence">
+        <div class="inner">
+          <h2>证据边界</h2>
+          <p class="chapter-lead">这页是内部分享草稿。读者可见证据面已经先放出分类和边界，但最终引用面仍需补齐后才能声明 review-ready。</p>
+          <div class="source-grid">
+            <article class="source-box">
+              <h3>官方产品与文档</h3>
+              <ul>
+                <li>Stripe docs / product / newsroom：产品事实、接口方式、能力存在。</li>
+                <li>Agentic Commerce、machine payments、SPT、MPP/x402、Radar、Bridge、Privy：只证明进入相关能力，不证明市场胜负。</li>
+              </ul>
+            </article>
+            <article class="source-box">
+              <h3>规模与组织信号</h3>
+              <ul>
+                <li>Stripe 2025 annual update 的 $1.9T 与 5M+ businesses：证明样本规模足够，不证明全球份额。</li>
+                <li>260 条 JD 标题信号：证明招聘火力，不等于全公司人员占比。</li>
+              </ul>
+            </article>
+            <article class="source-box">
+              <h3>竞品与外部材料</h3>
+              <ul>
+                <li>PayPal、Adyen、Visa/Mastercard：用于说明路线差异，不用于贬低或判断胜负。</li>
+                <li>LinkedIn：要补职能占比、资深度、背景类型和变化趋势后，才能承接更强组织判断。</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div class="inner">
+          <h2>这版 H5 的实现边界</h2>
+          <p>这是一个新建的独立 H5，不基于旧页面 DOM、CSS、隐藏内容或章节顺序改造。旧 H5 后续只能作为素材池和证据池；本页的验收标准来自 SS 设计稿的 8 章分享结构。</p>
+          <p>当前仍是内部草稿：第 4、8 章需要继续审，第 6 章 LinkedIn 聚合证据未完成，最终 citation surface 未完成，所以不能声明 review-ready、share-ready 或同步 Feishu。</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const navLinks = Array.from(document.querySelectorAll('.nav a'));
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    function updateProgress() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      progress.style.width = `${pct}%`;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+        });
+      });
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
+
+    sections.forEach((section) => observer.observe(section));
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+</body>
+</html>
