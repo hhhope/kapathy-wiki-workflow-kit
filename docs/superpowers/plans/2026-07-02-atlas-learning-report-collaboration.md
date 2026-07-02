@@ -398,7 +398,7 @@ Commit after this task.
 
 - Modify: `.codex/skills/atlas/evaluation.md`
 
-- [ ] **Step 1: Run behavior asset checker**
+- [x] **Step 1: Run behavior asset checker**
 
 Run:
 
@@ -408,7 +408,7 @@ python3 scripts/check_behavior_assets.py
 
 Record the result in `.codex/skills/atlas/evaluation.md`.
 
-- [ ] **Step 2: Run text checks**
+- [x] **Step 2: Run text checks**
 
 Run:
 
@@ -422,7 +422,7 @@ Expected:
 - required Atlas route markers appear
 - no whitespace errors
 
-- [ ] **Step 3: Record GREEN result**
+- [x] **Step 3: Record GREEN result**
 
 For each pressure scenario, record:
 

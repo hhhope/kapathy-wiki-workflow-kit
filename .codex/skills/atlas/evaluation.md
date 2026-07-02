@@ -275,12 +275,147 @@ Proof boundary:
 
 - This scenario proves the non-trigger boundary.
 
+## GREEN Result
+
+The GREEN result is based on local artifact inspection after adding
+`SKILL.md`, references, and minimal worker integration.
+
+### Scenario 1: Locked Chapters + Continue
+
+Expected Atlas state block:
+
+- `Current Object`: the active report or sharing draft
+- `Current Phase`: `structure_lock` or the smallest fitting phase
+- `Confirmed Anchors`: locked chapter and section names, talk-track shape,
+  evidence boundary, and transition format
+- `Blocked Actions`: rename, merge, reorder, or compress confirmed structure
+
+Expected worker route:
+
+- `public-report-quality-gate`
+
+Expected blocker or allowed output:
+
+- allowed output is only the next approved section or repair target
+- blocked output is a new outline or compressed summary
+
+Proof boundary:
+
+- This proves the route contract exists in Atlas files. It is local replay
+  evidence, not proof from a future live session.
+
+### Scenario 2: Per-Section Visuals + H5 Continuation
+
+Expected Atlas state block:
+
+- `Current Phase`: `visual_binding`
+- `Confirmed Anchors`: per-section visual decisions and visual proof tasks
+- `Blocked Actions`: generic visual package or one composite visual unless
+  approved
+
+Expected worker route:
+
+- `public-report-quality-gate -> visual-agent`
+
+Expected blocker or allowed output:
+
+- allowed output is a visual binding table, repair plan, or narrow H5 visual
+  fix
+- blocked output is direct H5 implementation that compresses approved visuals
+
+Proof boundary:
+
+- This proves skill wording and worker integration. It does not prove browser
+  screenshots, bitmap generation, or final H5 quality.
+
+### Scenario 3: Incomplete LinkedIn/JD Evidence
+
+Expected Atlas state block:
+
+- `Open Gaps`: sample size, profile/JD source role, historical distribution, or
+  proof-boundary gap
+- `Blocked Actions`: broad organization or strategy claims from weak samples
+
+Expected worker route:
+
+- `learning-capture`
+
+Expected blocker or allowed output:
+
+- allowed output states source role, claim strength, and proof boundary
+- blocked output claims organization-wide capability, tenure structure, or
+  strategic success without support
+
+Proof boundary:
+
+- This proves the evidence-boundary wording exists. It does not create or verify
+  a LinkedIn/JD dataset.
+
+### Scenario 4: Skill Behavior Change After Retro
+
+Expected Atlas state block:
+
+- `Current Object`: active skill or behavior asset
+- `Current Phase`: `implementation`, `review_or_reanchor`, or `unclear`
+- `Blocked Actions`: unrelated behavior edits, OpenSpec route when SS is active,
+  or runtime claims without replay evidence
+
+Expected worker route:
+
+- skill-authoring and TDD gates before semantic skill edits
+
+Expected blocker or allowed output:
+
+- allowed output is the current checked plan task only
+- blocked output is direct governance expansion from conversation state
+
+Proof boundary:
+
+- This proves Atlas references the route boundary. It does not replace repo
+  OpenSpec governance.
+
+### Scenario 5: Simple One-Off Task
+
+Expected Atlas state block:
+
+- no Atlas state block
+
+Expected worker route:
+
+- no Atlas route; use the normal direct or narrow skill path
+
+Expected blocker or allowed output:
+
+- allowed output is the direct answer or command result
+- blocked output is heavy state routing without a durable artifact
+
+Proof boundary:
+
+- This proves the non-trigger rule is documented. Live routing still depends on
+  future sessions loading the skill correctly.
+
+## Command Results
+
+- `rg -n "Atlas|Final Drift|confirmed anchors|visual anchors|evidence blocker"
+  ...`: passed; required route markers appear in Atlas files and worker skill
+  integrations.
+- `git diff --check -- .codex/skills/atlas ...`: passed.
+- `python3 /home/yan/.codex/skills/.system/skill-creator/scripts/quick_validate.py
+  .codex/skills/atlas`: passed with `Skill is valid!`.
+- `python3 scripts/check_behavior_assets.py`: failed because of unrelated
+  existing OpenSpec evaluation issues in
+  `openspec/changes/enforce-named-skill-gate`,
+  `openspec/changes/initialize-llm-wiki-seed-repo`, and
+  `openspec/changes/realign-stripe-h5-redesign-sections`. No Atlas-specific
+  failure was reported in the observed output.
+
 ## Residual Risks
 
-- This Task 1 file is evidence only; it does not create runtime behavior.
+- This evaluation is local replay evidence; it does not prove future live
+  sessions will always load or apply Atlas correctly.
 - Chat-memory reconstruction can still be incomplete. Atlas v1 intentionally
   avoids a persistent state file until replay evidence proves it is necessary.
-- Worker skill integration is still pending, so current worker skills do not yet
-  preserve Atlas state.
+- Worker skill integration is minimal. It preserves Atlas routing boundaries but
+  does not prove future live sessions will always route correctly.
 - The repository still has many unrelated dirty files. Atlas implementation
   commits must stage only task-related files.
