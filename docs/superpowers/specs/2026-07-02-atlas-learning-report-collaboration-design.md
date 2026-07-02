@@ -1,132 +1,120 @@
-# Atlas Learning / Report Collaboration Design
+# Atlas 学习 / 汇报协作控制器设计
 
-## Route Status
+## 路由状态
 
-Route: `$superpowers:brainstorming` -> Superpowers design spec.
+路由：`$superpowers:brainstorming` -> Superpowers design spec。
 
-This document is a brainstorming design artifact. It does not implement Atlas,
-does not modify repo-local skills, and does not change OpenSpec lifecycle state.
+本文是 brainstorming 阶段的设计稿，只用于审核 Atlas 的目标、范围和未来变更边界。本文不实现 Atlas，不修改 repo-local skills，也不改变 OpenSpec 生命周期状态。
 
-## 1. Problem
+## 1. 问题
 
-The Stripe AI payment sharing work exposed a repeatable collaboration failure.
+Stripe AI 支付分享稿和 H5 工作暴露了一个反复出现的协作问题。
 
-The repo already has useful workers and gates:
+仓库里已经有不少可用能力：
 
-- `learning-capture` for source learning and evidence strength.
-- `public-report-quality-gate` for reader-facing report/H5/share quality.
-- `visual-agent` for visual mode, visual routing, and visual verification.
-- `material-collaboration-defaults` for source-first material processing.
-- `wiki-medical-agent`, `req-agent`, and `openspec-router` as examples of
-  controller-style skills.
+- `learning-capture`：负责学习材料、证据分层和输出复用。
+- `public-report-quality-gate`：负责 reader-facing 报告、H5、分享稿的质量门禁。
+- `visual-agent`：负责视觉模式、视觉路由和视觉验证。
+- `material-collaboration-defaults`：负责材料默认处理流。
+- `wiki-medical-agent`、`req-agent`、`openspec-router`：提供了 controller / router 型 skill 的已有范式。
 
-The missing layer is not another writing-method worker. The missing layer is a
-stateful collaboration controller for learning/reporting work.
+缺的不是另一个写作方法 worker。缺的是一个面向学习/汇报类多轮协作的状态控制器。
 
-In the Stripe run, confirmed chapter titles, section structures, speaker notes,
-transitions, evidence boundaries, and per-section visuals were repeatedly lost
-after the user said "continue", "confirm", or asked for repair. The failure was
-not that a reference file was missing. The failure was that confirmed state did
-not control the next action.
+Stripe 这轮失败里，章节标题、小节结构、话术、转场、证据边界和逐节视觉都曾经被确认过，但用户说“继续”“确认”“修复”以后，后续输出仍反复丢掉这些已确认内容。问题不是没有 reference，而是已确认状态没有控制下一步动作。
 
-## 2. Why Not `writing-method-composer`
+## 2. 为什么不是 `writing-method-composer`
 
-`writing-method-composer` is still useful, but it solves a different problem.
+`writing-method-composer` 仍然有价值，但它解决的是另一个问题。
 
-It answers:
+它回答：
 
 ```text
-What kind of article/share artifact is this?
-What is the mainline?
-Which proof modules and writing methods are needed?
-Which evidence depth is required?
+这是什么类型的文章 / 分享 / H5？
+主线是什么？
+需要哪些 proof modules 和写作方法？
+需要多深的证据？
 ```
 
-Atlas answers:
+Atlas 回答：
 
 ```text
-What has already been confirmed?
-What phase is the collaboration in?
-What is allowed in this continuation?
-What is blocked?
-Which worker skill should run next?
-Can the result claim completion, or did it drift?
+哪些内容已经确认？
+当前协作处于哪个阶段？
+本轮允许做什么？
+本轮禁止做什么？
+下一步应该路由到哪个 worker skill？
+产物能不能说完成，还是已经漂移？
 ```
 
-Therefore Atlas should not be merged into `writing-method-composer`, and
-`writing-method-composer` should not become a state controller.
+因此 Atlas 不应该并入 `writing-method-composer`，`writing-method-composer` 也不应该承担多轮协作状态控制。
 
-## 3. Design Goal
+## 3. 设计目标
 
-Add a repo-local controller skill named `atlas`.
+新增一个 repo-local controller skill，名称：
 
-Display name:
+```text
+atlas
+```
+
+显示名：
 
 ```text
 Atlas：学习汇报协作图谱
 ```
 
-One-line role:
+一句话定位：
 
 ```text
-Atlas coordinates stateful learning/report collaborations by preserving
-confirmed anchors, routing worker skills, and checking final drift before
-completion.
+Atlas coordinates stateful learning/report collaborations by preserving confirmed anchors, routing worker skills, and checking final drift before completion.
 ```
 
-Chinese intent:
+中文解释：
 
 ```text
-Atlas 管学习/汇报类多轮协作：守住确认锚点，路由学习、报告和视觉
-skill，并在完成前检查是否漂移。
+Atlas 管学习/汇报类多轮协作：守住确认锚点，路由学习、报告和视觉 skill，并在完成前检查是否漂移。
 ```
 
-## 4. Scope
+## 4. 范围
 
-Atlas applies to learning/reporting collaboration, especially:
+Atlas 只管学习/汇报类协作，尤其是：
 
-- source learning that will shape a report, H5, share draft, speech, wiki output,
-  or public-facing artifact;
-- multi-turn report, H5, PPT, share, speaking script, visual package, or
-  material-processing work;
-- tasks with confirmed anchors, user corrections, locked structure, selected
-  output shape, evidence boundaries, or drift history;
-- continuation after the user has approved, corrected, or rejected a prior
-  artifact.
+- 学习材料会进入报告、H5、分享稿、演讲稿、wiki 输出或其他 reader-facing artifact。
+- 报告、H5、PPT、分享稿、演讲稿、视觉包、材料处理发生多轮协作。
+- 当前任务已经有确认锚点、用户纠偏、locked 结构、选定输出形态、证据边界或漂移历史。
+- 用户在已经确认/纠偏/拒绝过某个产物后要求继续。
 
-Atlas does not apply to:
+Atlas 不管：
 
-- one-off shell commands;
-- ordinary code implementation without learning/report output state;
-- OpenSpec lifecycle state;
-- full-repo governance;
-- global agent behavior;
-- writing prose, drawing visuals, fetching sources, or publishing artifacts.
+- 一次性 shell 命令。
+- 普通代码实现，且没有学习/汇报输出状态。
+- OpenSpec 生命周期。
+- 全 repo 治理。
+- 全局 agent 行为。
+- 直接写正文、画图、抓材料、发布内容。
 
-## 5. Core Decision
+## 5. 核心决策
 
-Use B+C:
+采用 B+C：
 
 ```text
 B = Continuation State Gate
 C = Final Drift Gate
 ```
 
-Atlas should not start with a heavy state machine. It should use a lightweight
-state model plus hard continuation/final gates.
+Atlas 第一版不做重型状态机，而是采用轻量 phase + 硬继续门 + 硬完成门。
 
-This keeps the scope narrow while solving the actual failure:
+它要解决的真实失败链路是：
 
 ```text
-confirmed anchors existed
-  -> continuation skipped read-back
-  -> worker skill produced a new shape
-  -> final output looked complete but had drifted
+已确认锚点存在
+  -> 继续时没有 read-back
+  -> worker skill 生成了新结构
+  -> 产物看起来完成了，但已经偏离确认内容
 ```
 
-## 6. Architecture
+## 6. 架构
 
-Atlas is a controller. It routes to workers but does not replace them.
+Atlas 是 controller，只路由和控状态，不替代 worker。
 
 ```text
                     User
@@ -169,39 +157,33 @@ Atlas is a controller. It routes to workers but does not replace them.
           +----------------------+
 ```
 
-## 7. Trigger Model
+## 7. 触发模型
 
-Atlas must trigger by situation, not fixed phrases.
+Atlas 按场景触发，不按固定短语触发。
 
-Trigger when both are true:
+两个条件同时满足时触发：
 
 ```text
-1. The user signals continuation, repair, confirmation, approval, implementation,
-   or asks to keep going.
-2. The current task is stateful learning/report collaboration.
+1. 用户表达继续、修复、确认、认可、执行、落地或继续推进。
+2. 当前任务是 stateful learning/report collaboration。
 ```
 
-Stateful learning/report collaboration means the thread already has at least one
-of:
+`stateful learning/report collaboration` 指当前线程至少具备以下之一：
 
-- confirmed titles, chapters, sections, speaker notes, transitions, or visual
-  designs;
-- selected output shape such as report, H5, share, PPT, speaking script, or wiki
-  output;
-- user-owned judgments or corrections;
-- evidence boundaries, source roles, or missing-evidence constraints;
-- prior drift/reanchor history;
-- a named reader-facing target.
+- 已确认标题、章节、小节、话术、转场或视觉设计。
+- 已选择输出形态：报告、H5、分享稿、PPT、演讲稿、wiki、Feishu 等。
+- 用户拥有的判断或纠偏。
+- 证据边界、source role、缺证约束。
+- 既有 drift / reanchor 历史。
+- 明确的 reader-facing 目标。
 
-Atlas must also trigger before completion claims when a reader-facing or
-delivery-sensitive output has confirmed anchors or drift history.
+当 reader-facing 或交付敏感产物存在确认锚点或漂移历史时，完成前也必须触发 Atlas 的 Final Drift Gate。
 
 ## 8. Continuation State Gate
 
-Before a worker skill continues a stateful learning/report task, Atlas emits a
-compact state block.
+worker skill 继续处理 stateful learning/report 任务前，Atlas 必须输出紧凑状态块。
 
-Minimum shape:
+最小格式：
 
 ```text
 - `Using atlas`
@@ -215,29 +197,25 @@ Minimum shape:
 - `Next Output`
 ```
 
-Example:
+示例：
 
 ```text
 - `Using atlas`
 - `Current Object`: Stripe AI payment sharing H5
 - `Current Phase`: visual_binding
-- `Confirmed Anchors`: chapter 1-3 locked; chapter 7 has five battle lines;
-  each section needs its own visual
-- `Allowed Actions`: repair chapter 7 visual mapping
-- `Blocked Actions`: rename chapters; merge sections; compress visuals into one
-  overview; change the mainline
-- `Open Gaps`: market/regulation timeline still needs source verification
+- `Confirmed Anchors`: 第 1-3 章 locked；第 7 章五条战线；每节需要自己的视觉
+- `Allowed Actions`: 修复第 7 章视觉映射
+- `Blocked Actions`: 改章节名；合并小节；把逐节视觉压成一张总览；改变主线
+- `Open Gaps`: 市场/监管时间轴仍需来源复核
 - `Worker Route`: public-report-quality-gate -> visual-agent
-- `Next Output`: chapter 7 visual re-anchor table only
+- `Next Output`: 只输出第 7 章视觉重锚表
 ```
 
-If the state block exposes a blocker, Atlas stops and asks for the missing
-confirmation or returns a repair target. It must not continue into drafting,
-H5 implementation, visual generation, or skill edits.
+如果状态块暴露 blocker，Atlas 必须停止，要求补确认或返回最小修复目标。它不能继续进入写稿、H5 实现、视觉生成或 skill 编辑。
 
-## 9. Lightweight Phase Model
+## 9. 轻量阶段模型
 
-Atlas starts with a small phase set:
+Atlas 第一版使用小阶段集合：
 
 ```text
 intent_calibration
@@ -249,10 +227,9 @@ implementation
 review_or_reanchor
 ```
 
-These phases are not a full workflow engine. They are a shared vocabulary for
-allowed/blocked action decisions.
+这些 phase 不是完整工作流引擎，只是用于判断 allowed / blocked actions 的共享词表。
 
-If a task does not fit these phases, Atlas should use:
+如果任务无法归入这些阶段，Atlas 使用：
 
 ```text
 phase: unclear
@@ -262,31 +239,27 @@ blocked_actions: produce or edit delivery artifact
 
 ## 10. Confirmed Anchors
 
-Confirmed anchors are user-approved or user-corrected facts that cannot be
-silently changed.
+Confirmed anchors 是用户确认过或纠偏过、后续不能静默修改的内容。
 
-Anchor categories:
+锚点类型：
 
 ```text
-content_anchor       = mainline, thesis, argument, user-owned judgment
-structure_anchor     = chapter, section, subsection, order, time allocation
-voice_anchor         = speaker-note style, professional drama, wording level
-evidence_anchor      = source role, evidence strength, missing evidence, boundary
-visual_anchor        = per-section visual, visual form, visual proof task
-output_shape_anchor  = report, H5, share, PPT, wiki, Feishu, markdown
-boundary_anchor      = allowed action, blocked action, non-goal
+content_anchor       = 主线、论点、判断、用户拥有的结论
+structure_anchor     = 章节、小节、顺序、时间分配
+voice_anchor         = 话术风格、professional drama、表达颗粒度
+evidence_anchor      = source role、证据强度、缺证点、边界
+visual_anchor        = 逐节视觉、视觉形式、视觉证明任务
+output_shape_anchor  = 报告、H5、分享稿、PPT、wiki、Feishu、markdown
+boundary_anchor      = 允许动作、禁止动作、非目标
 ```
 
-Atlas does not need to persist a database in v1. It can recover anchors from the
-current chat and repo-visible records. Future versions may add structured state
-files if replay proves chat recovery is insufficient.
+Atlas v1 不需要持久状态数据库。它可以从当前对话和 repo-visible records 中恢复锚点。未来如果 replay 证明聊天恢复不够，再考虑结构化 state file。
 
 ## 11. Acceptance Scorecard
 
-Atlas owns a collaboration scorecard registry, not a fixed 11-item checklist.
+Atlas 拥有协作评分卡 registry，但不把 Stripe 事故里的 11 个点固化成永久清单。
 
-The Stripe retro produced the first signal set, but future work will add more.
-Therefore scorecards must use progressive disclosure:
+Stripe retro 只是第一批 signal，未来还会增长。因此评分卡必须渐进式披露。
 
 ```text
 Core Gates
@@ -315,13 +288,13 @@ Boundary Gates
   - user-owned judgment
 ```
 
-Atlas loads only the relevant gate families.
+Atlas 只加载相关 gate family。
 
-Examples:
+示例：
 
 ```text
-simple material cleanup       -> Core only
-complex report                -> Core + Reader + Evidence
+simple material cleanup                 -> Core only
+complex report                          -> Core + Reader + Evidence
 H5/share visual draft                   -> Core + Reader + Visual
 source-heavy strategy report            -> Core + Reader + Evidence + Final Drift
 learning/report workflow behavior talk  -> Core + Boundary, not Reader
@@ -329,85 +302,82 @@ learning/report workflow behavior talk  -> Core + Boundary, not Reader
 
 ## 12. Final Drift Gate
 
-Before claiming completion for a stateful learning/report artifact, Atlas runs a
-final drift check.
+对 stateful learning/report artifact 声称完成前，Atlas 必须执行最终漂移检查。
 
-Minimum checks:
+最小检查项：
 
 ```text
-- Did any confirmed anchor disappear?
-- Did chapter/section count or names change without approval?
-- Did speaker notes, transitions, or evidence boundaries get compressed away?
-- Did a load-bearing claim lack the required evidence status?
-- Did visual output merge per-section visuals into a composite without approval?
-- Did the output shape change from the selected shape?
-- Did a custom Stripe-specific rule get promoted into a generic rule?
-- Did a generic collaboration rule get omitted from the candidate governance
-  layer?
+- 有没有确认锚点消失？
+- 章节/小节数量或名称有没有未经批准改变？
+- 话术、转场、证据边界有没有被压缩掉？
+- 承重判断是否缺少要求的证据状态？
+- 视觉产物是否未经批准把逐节视觉合成一张综合图？
+- 输出形态是否从已选择形态变成另一个形态？
+- Stripe 定制规则是否被误升格为通用规则？
+- 可泛化协作规则是否没有进入候选治理层？
 ```
 
-Failure behavior:
+失败行为：
 
 ```text
-Do not claim done.
-Report the failed gate.
-Return to the relevant phase.
-Name the smallest repair target.
+不能说 done。
+必须报告失败 gate。
+返回对应 phase。
+命名最小修复目标。
 ```
 
 ## 13. Worker Ownership
 
-Atlas owns:
+Atlas owns：
 
-- stateful learning/report detection;
-- phase selection;
-- confirmed anchor read-back;
-- allowed/blocked action decisions;
-- worker routing;
-- final drift gate;
-- re-anchor decision when drift is found.
+- stateful learning/report detection；
+- phase selection；
+- confirmed anchor read-back；
+- allowed / blocked action decisions；
+- worker routing；
+- final drift gate；
+- drift 后的 re-anchor decision。
 
-Atlas does not own:
+Atlas does not own：
 
-- source reading or evidence scoring owned by `learning-capture`;
-- reader-facing report quality owned by `public-report-quality-gate`;
-- visual mode and visual verification owned by `visual-agent`;
-- material intake defaults owned by `material-collaboration-defaults`;
-- OpenSpec lifecycle owned by repo OpenSpec skills;
-- final prose style owned by future writing workers or the current drafting
-  context.
+- `learning-capture` 拥有的 source reading / evidence scoring；
+- `public-report-quality-gate` 拥有的 reader-facing report quality；
+- `visual-agent` 拥有的 visual mode / visual verification；
+- `material-collaboration-defaults` 拥有的 material intake defaults；
+- repo OpenSpec skills 拥有的 OpenSpec lifecycle；
+- 最终文风执行。
 
-## 14. Skill Collaboration Rules
+## 14. Skill 协作规则
 
-Atlas should be the first skill for stateful learning/report continuation.
+对 stateful learning/report continuation，Atlas 应该是第一个 skill。
 
-Worker skills must preserve Atlas state when routed by Atlas:
+worker skill 被 Atlas 路由时必须保留 Atlas 状态：
 
 ```text
 Atlas -> learning-capture
-  learning-capture handles source roles, levels, evidence strength, and output
-  use. It must not widen the allowed action.
+  learning-capture 处理 source role、learning level、evidence strength、
+  output use。它不能扩大 Atlas 的 allowed action。
 
 Atlas -> public-report-quality-gate
-  public-report-quality-gate handles Article Intent Contract, Reference Output
-  Shape, paragraph drift, judgment ownership, and publish/review boundaries. It
-  must not drop confirmed anchors.
+  public-report-quality-gate 处理 Article Intent Contract、Reference Output
+  Shape、paragraph drift、judgment ownership、publish/review boundary。它不能
+  丢 confirmed anchors。
 
 Atlas -> visual-agent
-  visual-agent handles mode choice, task classification, visual proof binding,
-  output verification, and visual worker routing. It must not merge per-section
-  visuals unless Atlas state or the user explicitly allows it.
+  visual-agent 处理 mode choice、task classification、visual proof binding、
+  output verification、visual worker routing。除非 Atlas state 或用户明确允许，
+  否则不能把逐节视觉合并成综合图。
 ```
 
-If a worker identifies a new blocker, the route returns to Atlas:
+如果 worker 发现新 blocker，路由回 Atlas：
 
 ```text
 worker blocker -> Atlas re-anchor -> user confirmation or narrowed next output
 ```
 
-## 15. First Implementation Scope
+## 15. 第一轮实现范围
 
-Future implementation should create a compact repo-local skill:
+未来实现应新增一个紧凑 repo-local skill：
 
 ```text
 .codex/skills/atlas/
@@ -421,49 +391,47 @@ Future implementation should create a compact repo-local skill:
   evaluation.md
 ```
 
-Expected skill changes after OpenSpec approval:
+OpenSpec 批准后，预期改动：
 
 ```text
 add .codex/skills/atlas/*
 
 update .codex/skills/learning-capture/SKILL.md
-  - recognize Atlas-routed learning/report collaboration
-  - preserve Atlas allowed/blocked actions
-  - return evidence blockers to Atlas
+  - 识别 Atlas-routed learning/report collaboration
+  - 保留 Atlas allowed/blocked actions
+  - 把 evidence blocker 返回给 Atlas
 
 update .codex/skills/public-report-quality-gate/SKILL.md
-  - preserve Atlas confirmed anchors
-  - call out Atlas final drift failures for stateful outputs
+  - 保留 Atlas confirmed anchors
+  - 对 stateful output 暴露 Atlas final drift failure
 
 update .codex/skills/visual-agent/SKILL.md
-  - preserve Atlas visual anchors
-  - reject per-section visual compression without approval
+  - 保留 Atlas visual anchors
+  - 未经批准时拒绝 per-section visual compression
 
 optionally update .codex/skills/material-collaboration-defaults/SKILL.md
-  - route rich material/report continuation through Atlas when confirmed
-    anchors or drift history exist
+  - 当 rich material/report continuation 已有 confirmed anchors 或 drift history
+    时，路由到 Atlas
 ```
 
-## 16. Explicit Non-Goals
+## 16. 明确不做
 
-Do not implement these in the first Atlas change:
+第一轮 Atlas change 不做：
 
-- global AGENTS changes;
-- full skill governance knowledge base;
-- code task state machine;
-- OpenSpec lifecycle replacement;
-- `writing-method-composer`;
-- persistent state database;
-- broad rewrite of `learning-capture`, `public-report-quality-gate`, or
-  `visual-agent`;
-- automatic Feishu sync or publish behavior.
+- global AGENTS changes；
+- full skill governance knowledge base；
+- code task state machine；
+- OpenSpec lifecycle replacement；
+- `writing-method-composer`；
+- persistent state database；
+- 大范围重写 `learning-capture`、`public-report-quality-gate` 或 `visual-agent`；
+- 自动 Feishu sync 或 publish behavior。
 
-## 17. Checker And Evaluation Expectations
+## 17. Checker 与 Evaluation 预期
 
-Reference text alone is not enough. Future implementation must include replay
-evidence.
+Reference text alone is not enough。未来实现必须有 replay evidence。
 
-Minimum evaluation scenarios:
+最小 evaluation scenarios：
 
 ```text
 1. User says "continue" after chapters are locked.
@@ -490,19 +458,19 @@ Minimum evaluation scenarios:
    GREEN: Atlas does not trigger because there is no stateful collaboration.
 ```
 
-Minimum acceptance criteria:
+最小验收标准：
 
-- Atlas has a compact `SKILL.md`.
+- Atlas has a compact `SKILL.md`。
 - Atlas route block includes current object, phase, anchors, allowed actions,
-  blocked actions, worker route, and next output.
-- Atlas does not duplicate worker skill bodies.
-- Worker skills preserve Atlas state when routed by Atlas.
-- Final Drift Gate prevents completion claims after anchor loss.
-- Evaluation includes RED/GREEN replay from the Stripe H5 failure.
+  blocked actions, worker route, and next output。
+- Atlas does not duplicate worker skill bodies。
+- Worker skills preserve Atlas state when routed by Atlas。
+- Final Drift Gate prevents completion claims after anchor loss。
+- Evaluation includes RED/GREEN replay from the Stripe H5 failure。
 
-## 18. Migration Path
+## 18. 迁移路径
 
-Use staged rollout:
+采用分阶段迁移：
 
 ```text
 Stage 0: This design only.
@@ -513,15 +481,14 @@ Stage 4: Use Stripe sharing/H5 as acceptance replay.
 Stage 5: Decide whether writing-method-composer is still needed separately.
 ```
 
-Do not move to Stage 2 from this design document alone.
+不能仅凭本文进入 Stage 2。
 
-## 19. Self-Review Notes
+## 19. 自检
 
-- Scope is limited to learning/report stateful collaboration.
-- Atlas is a controller, not a worker.
-- The design uses B+C: Continuation State Gate plus Final Drift Gate.
-- The design does not depend on fixed trigger phrases.
-- The design preserves `learning-capture`, `public-report-quality-gate`, and
-  `visual-agent` ownership.
-- The first implementation scope is explicit and excludes global governance.
-- Replay evidence is required before future runtime behavior claims.
+- Scope 限定在 learning/report stateful collaboration。
+- Atlas 是 controller，不是 worker。
+- 设计采用 B+C：Continuation State Gate + Final Drift Gate。
+- 触发不依赖固定短语。
+- 设计保留 `learning-capture`、`public-report-quality-gate` 和 `visual-agent` 的 ownership。
+- 第一轮实现范围明确，不扩成全局治理。
+- 未来 runtime behavior claim 必须有 replay evidence。
