@@ -443,7 +443,7 @@ Commit after this task.
 - Read: `docs/superpowers/plans/2026-07-02-atlas-learning-report-collaboration.md`
 - Read: `.codex/skills/atlas/evaluation.md`
 
-- [ ] **Step 1: Check scope**
+- [x] **Step 1: Check scope**
 
 Confirm the implementation still does not include:
 
@@ -454,12 +454,12 @@ Confirm the implementation still does not include:
 - H5/report artifact rewrite
 - persistent state DB
 
-- [ ] **Step 2: Check acceptance**
+- [x] **Step 2: Check acceptance**
 
 Confirm all Acceptance Spec items are covered by skill wording or evaluation
 evidence.
 
-- [ ] **Step 3: Check git boundary**
+- [x] **Step 3: Check git boundary**
 
 Run:
 
@@ -470,7 +470,7 @@ git log -1 --oneline
 
 Classify unrelated dirty files and do not stage them.
 
-- [ ] **Step 4: Completion statement**
+- [x] **Step 4: Completion statement**
 
 Completion may only claim:
 
