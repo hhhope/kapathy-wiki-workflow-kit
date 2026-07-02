@@ -122,7 +122,7 @@ Atlas passes only if these behaviors are true:
 - Read: `.codex/skills/material-collaboration-defaults/SKILL.md`
 - Read: repo skill-authoring / TDD guidance required by `AGENTS.md`
 
-- [ ] **Step 1: Confirm SS source spec**
+- [x] **Step 1: Confirm SS source spec**
 
 Read the Atlas design spec. Confirm these source decisions are preserved:
 
@@ -133,7 +133,7 @@ Read the Atlas design spec. Confirm these source decisions are preserved:
 - no persistent state database in v1
 - no `writing-method-composer` merge
 
-- [ ] **Step 2: Confirm worker ownership**
+- [x] **Step 2: Confirm worker ownership**
 
 Read worker skills and record this mapping in `.codex/skills/atlas/evaluation.md`:
 
@@ -152,7 +152,7 @@ Worker skills own:
 - material-collaboration-defaults: material intake defaults
 ```
 
-- [ ] **Step 3: Record prior-art dedupe**
+- [x] **Step 3: Record prior-art dedupe**
 
 In `.codex/skills/atlas/evaluation.md`, record why Atlas is not:
 
