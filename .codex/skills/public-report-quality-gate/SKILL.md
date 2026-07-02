@@ -121,6 +121,10 @@ implementation reports unless the user asks for a reader-facing deliverable.
   escalation signals are true.
 - Treat voice quality as a hard gate, not a small style score.
 - Preserve the core narrative. If the stated story changes, stop and re-anchor.
+- When routed by `atlas`, preserve Atlas confirmed anchors and expose Final
+  Drift Gate failures before claiming stateful output is complete.
+- Do not replace Atlas-confirmed section structure with a generic report
+  template unless the user explicitly approves the structure change.
 - State what each diagram or visual carries; do not add decorative diagrams. If
   the reference uses essential visuals, missing matching visuals are a hard
   Visual Gate failure for reference-shaped output.

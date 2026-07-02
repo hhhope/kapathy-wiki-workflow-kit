@@ -60,6 +60,10 @@ short abstracts, or one-off digestion with no local reuse intent.
   rules, or archive-ready claims without the repository evidence-backed gate.
 - When a learned point is expected to shape a later report, H5, Feishu draft,
   skill, or OpenSpec change, preserve an output-use hint or skip reason.
+- When routed by `atlas`, preserve Atlas allowed and blocked actions, and return
+  evidence blockers to Atlas instead of continuing or widening the output.
+- Do not turn incomplete LinkedIn, JD, profile, or weak sample data into broad
+  organization capability claims; mark the proof boundary first.
 - Durable internal wiki learning notes default to Chinese output for
   `wiki/sources` and `wiki/ops` unless the user, target artifact, or audience
   requires English.

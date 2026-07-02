@@ -22,6 +22,8 @@ Do not use this skill for pure coding tasks or when the user explicitly limits t
 - Start with `source`. Do not stop at placeholder text if readable conclusions can be written.
 - Add `ops` outputs when the material already contains actions, owners, blockers, or dates.
 - Process incrementally. Update existing linked pages instead of re-running the whole inbox.
+- When rich material/report continuation already has confirmed anchors or drift
+  history, route to `atlas` before changing the delivery artifact.
 - Ask only at real output forks, especially whether editable `html/h5/preview` assets should be updated in addition to wiki pages.
 - Follow repo workflow boundaries from [AGENTS.md](../../../AGENTS.md); do not restate the full repo policy here.
 

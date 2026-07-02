@@ -142,6 +142,9 @@ Bundled visual workers in this repository:
 
 Runtime/system routes:
 
+- When routed by `atlas`, preserve Atlas visual anchors. Do not compress
+  approved per-section visuals into a generic visual package without user
+  approval, and verify the visual proof task rather than layout alone.
 - Direct bitmap generation or image-model visual layer: `imagegen` only when the
   current runtime provides the image tool/skill, and only after mode, source,
   prompt/script, and verification boundary are set.

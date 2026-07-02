@@ -348,7 +348,7 @@ Commit after this task.
 - Modify: `.codex/skills/visual-agent/SKILL.md`
 - Optionally modify: `.codex/skills/material-collaboration-defaults/SKILL.md`
 
-- [ ] **Step 1: Integrate learning-capture**
+- [x] **Step 1: Integrate learning-capture**
 
 Add only minimal wording:
 
@@ -356,7 +356,7 @@ Add only minimal wording:
 - return evidence blockers to Atlas
 - do not turn incomplete LinkedIn/JD data into organization-wide claims
 
-- [ ] **Step 2: Integrate public-report-quality-gate**
+- [x] **Step 2: Integrate public-report-quality-gate**
 
 Add only minimal wording:
 
@@ -364,7 +364,7 @@ Add only minimal wording:
 - report Final Drift Gate failure for stateful output
 - do not rewrite confirmed section structure as a new generic template
 
-- [ ] **Step 3: Integrate visual-agent**
+- [x] **Step 3: Integrate visual-agent**
 
 Add only minimal wording:
 
@@ -373,7 +373,7 @@ Add only minimal wording:
   without user approval
 - visual verification must check the visual proof task, not only layout
 
-- [ ] **Step 4: Decide material-collaboration-defaults**
+- [x] **Step 4: Decide material-collaboration-defaults**
 
 Modify only if needed. If modified, wording must be limited to:
 
