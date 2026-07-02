@@ -172,7 +172,7 @@ Commit after this task if files were created.
 
 - Create: `.codex/skills/atlas/SKILL.md`
 
-- [ ] **Step 1: Create compact trigger body**
+- [x] **Step 1: Create compact trigger body**
 
 `SKILL.md` must include only:
 
@@ -186,7 +186,7 @@ Commit after this task if files were created.
 
 Do not put long examples, scorecards, or replay tables in `SKILL.md`.
 
-- [ ] **Step 2: Include route block**
+- [x] **Step 2: Include route block**
 
 The route block must contain:
 
@@ -202,7 +202,7 @@ The route block must contain:
 - `Next Output`
 ```
 
-- [ ] **Step 3: Include hard stops**
+- [x] **Step 3: Include hard stops**
 
 Hard stops must include:
 
