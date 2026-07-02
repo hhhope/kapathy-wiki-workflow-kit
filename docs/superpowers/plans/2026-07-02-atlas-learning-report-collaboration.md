@@ -309,7 +309,7 @@ Commit after this task.
 
 - Create/modify: `.codex/skills/atlas/evaluation.md`
 
-- [ ] **Step 1: Write pressure scenarios**
+- [x] **Step 1: Write pressure scenarios**
 
 For each scenario, include:
 
@@ -322,7 +322,7 @@ Expected output or non-output
 Proof boundary
 ```
 
-- [ ] **Step 2: Write RED baseline**
+- [x] **Step 2: Write RED baseline**
 
 Document the old failure based on the Stripe collaboration retro:
 

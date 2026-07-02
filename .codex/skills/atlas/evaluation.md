@@ -111,11 +111,169 @@ collaboration:
 The GREEN result is not claimed yet. Later tasks must prove these cases after
 `SKILL.md` and references exist:
 
-1. User says `continue` after chapters are locked.
-2. User approved per-section visuals before H5 continuation.
-3. LinkedIn/JD evidence is incomplete.
-4. User asks for skill behavior changes after a retro.
-5. User asks a simple one-off task that should not trigger Atlas.
+### Scenario 1: Locked Chapters + Continue
+
+Input shape:
+
+- A report or sharing稿 has confirmed chapter names, section names, talk track,
+  evidence boundary, and transition format.
+- The user says `继续`, `可以`, or `确认`.
+
+Old failure:
+
+- The agent keeps drafting from memory.
+- Confirmed names and section shape are compressed, renamed, or replaced.
+
+Expected Atlas route:
+
+- Atlas emits the Continuation State Gate block.
+- Worker route is `public-report-quality-gate` only after anchors are visible.
+
+Expected blocked action:
+
+- Rename locked chapters.
+- Merge confirmed sections.
+- Drop talk track, transition, or evidence boundary.
+
+Expected output or non-output:
+
+- Output only the next approved section or a narrowed repair target.
+
+Proof boundary:
+
+- This scenario proves continuation state inheritance for report-like artifacts;
+  it does not prove visual or source evidence handling.
+
+### Scenario 2: Per-Section Visuals + H5 Continuation
+
+Input shape:
+
+- The user confirmed that every section needs its own visual.
+- The current artifact is an H5/share draft or visual report package.
+- The user asks to continue implementation or visual repair.
+
+Old failure:
+
+- The agent treats H5 as a visual-only implementation task.
+- Approved per-section visuals are collapsed into one generic visual system.
+
+Expected Atlas route:
+
+- Atlas emits state with visual anchors.
+- Worker route is `public-report-quality-gate -> visual-agent`.
+
+Expected blocked action:
+
+- Compress per-section visuals into one composite visual.
+- Verify layout while ignoring the visual proof task.
+
+Expected output or non-output:
+
+- Output a visual binding table, repair plan, or blocked-action note before
+  touching H5 implementation.
+
+Proof boundary:
+
+- This scenario proves route and visual-anchor preservation; it does not prove
+  bitmap quality or browser rendering.
+
+### Scenario 3: Incomplete LinkedIn/JD Evidence
+
+Input shape:
+
+- The artifact needs organization capability, talent background, hiring
+  direction, or strategic inference from LinkedIn/JD data.
+- The profile/JD sample is incomplete, has no historical distribution, or lacks
+  a clear sample size.
+
+Old failure:
+
+- The agent overclaims company capability from weak profile/JD evidence.
+- Or the agent drops the requested people/JD analysis and replaces it with
+  generic strategic commentary.
+
+Expected Atlas route:
+
+- Atlas marks the evidence gap in `Open Gaps`.
+- Worker route is `learning-capture` for evidence boundary.
+
+Expected blocked action:
+
+- Claim organization-wide staff composition, tenure structure, background mix,
+  or strategic success without sample support.
+
+Expected output or non-output:
+
+- Output source role, sample size, claim strength, and proof boundary before
+  drafting the claim.
+
+Proof boundary:
+
+- JD can indicate current hiring firepower and investment direction. It cannot
+  by itself prove product adoption or strategic success.
+
+### Scenario 4: Skill Behavior Change After Retro
+
+Input shape:
+
+- A collaboration retro identifies repeated drift.
+- The user asks to continue toward a skill or behavior change.
+
+Old failure:
+
+- The agent edits behavior assets directly from conversation state.
+- Or the agent jumps into OpenSpec before the Superpowers design/plan route is
+  approved.
+
+Expected Atlas route:
+
+- Atlas names the active plan and phase.
+- Skill-authoring/TDD guidance is loaded before semantic skill edits.
+
+Expected blocked action:
+
+- Edit unrelated behavior assets.
+- Start OpenSpec artifacts when the SS route is still active.
+- Claim future runtime behavior without replay evidence.
+
+Expected output or non-output:
+
+- Output the smallest allowed plan block or implement the current checked task
+  only.
+
+Proof boundary:
+
+- This proves Atlas respects current route boundaries. It does not make Atlas
+  an OpenSpec lifecycle controller.
+
+### Scenario 5: Simple One-Off Task
+
+Input shape:
+
+- The user asks for a direct command result, narrow lookup, small grammar edit,
+  or isolated code task.
+- No durable learning/report artifact, confirmed anchors, or worker
+  collaboration need exists.
+
+Old failure:
+
+- A controller over-applies and emits a heavy state block.
+
+Expected Atlas route:
+
+- No Atlas route.
+
+Expected blocked action:
+
+- Do not force a state block or multi-skill routing.
+
+Expected output or non-output:
+
+- Use the normal direct response or applicable narrow skill.
+
+Proof boundary:
+
+- This scenario proves the non-trigger boundary.
 
 ## Residual Risks
 
