@@ -234,7 +234,7 @@ Commit after this task.
 - Create: `.codex/skills/atlas/references/final-drift-gate.md`
 - Create: `.codex/skills/atlas/references/replay-scenarios.md`
 
-- [ ] **Step 1: Write continuation-state-gate**
+- [x] **Step 1: Write continuation-state-gate**
 
 Include:
 
@@ -244,7 +244,7 @@ Include:
 - how to handle blocked action
 - examples for report, H5, skill-change, and one-off negative case
 
-- [ ] **Step 2: Write scorecard-registry**
+- [x] **Step 2: Write scorecard-registry**
 
 Use progressive disclosure:
 
@@ -258,7 +258,7 @@ Boundary Gates
 
 Do not freeze the Stripe-specific eleven-point list as universal behavior.
 
-- [ ] **Step 3: Write worker-routing**
+- [x] **Step 3: Write worker-routing**
 
 Preserve the ownership boundaries from the design spec:
 
@@ -268,7 +268,7 @@ Preserve the ownership boundaries from the design spec:
 - visual-agent for visual classification and verification
 - worker blocker routes back to Atlas
 
-- [ ] **Step 4: Write final-drift-gate**
+- [x] **Step 4: Write final-drift-gate**
 
 Include checks for:
 
@@ -281,7 +281,7 @@ Include checks for:
 - Stripe-specific rule promoted to generic rule
 - generic rule not captured as candidate governance
 
-- [ ] **Step 5: Write replay-scenarios**
+- [x] **Step 5: Write replay-scenarios**
 
 Include the five required scenarios from the source spec:
 
