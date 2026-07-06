@@ -75,13 +75,13 @@ Body slide structure:
 
 - title: one presentation claim, not only the H5 heading;
 - left side: one sentence takeaway + up to three short supporting bullets;
-- right side: one large image-model visual, with deterministic overlay only where exact Chinese text is required;
+- right side: one large image-model finished visual, carrying its own readable Chinese labels/dates/numbers when the visual needs them;
 - footer/page mark: retained but unobtrusive;
 - no long body paragraphs copied directly from H5.
 
 ## Visual Design Direction
 
-Mode: image_model for the right-side visual layer, with deterministic PPT text/layout overlay for exact labels where needed.
+Mode: image_model for the complete right-side finished visual, including Chinese labels, dates, numbers, and evidence-boundary text when the page needs them. Do not default to deterministic PPT overlay for precise text.
 
 Visual source roles:
 
@@ -99,7 +99,7 @@ Visual style:
 - refined internal strategy memo tone;
 - no cartoon mascot, no sci-fi glow, no fake dashboard UI, no dense microtext;
 - no invented logos, metrics, dates, or percentages;
-- enough blank/quiet areas for deterministic Chinese labels.
+- enough quiet areas around the model-rendered labels so the visual remains readable after insertion into PPT.
 
 Template integration:
 
@@ -112,15 +112,15 @@ Template integration:
 
 Critical text policy:
 
-- Image model may carry simple large labels when visually inspectable.
-- Exact dates, numbers, evidence boundaries, company/product names, and long Chinese labels should be deterministic overlay in PPT, not trusted to the model.
-- Each image is a candidate until image-text QA passes.
-- If model text is garbled or cramped, the repair path is deterministic overlay, not accepting the flawed bitmap.
+- Image model should render the complete right-side finished visual, including readable Chinese labels when the page needs text.
+- Exact dates, numbers, evidence boundaries, company/product names, and Chinese labels should be attempted directly in the image-model output.
+- Each image is a candidate until image-text QA passes by visual inspection/readback.
+- If model text is garbled, cramped, or wrong, the repair path is regenerate or image-model/local image repair first. Deterministic PPT overlay is only an emergency fallback after repeated model-text failure and must be explicitly called out.
 
 Delivery policy:
 
 - Prefer repo-local image files.
-- If the runtime image tool only returns chat artifacts without reliable file export, produce a prompt package and use deterministic placeholder-free overlay until local files are available.
+- If the runtime image tool only returns chat artifacts without reliable file export, stop and produce a prompt package plus delivery-gap note; do not pretend local model-generated files exist.
 - Do not claim image-model local asset delivery unless files exist and are inspectable.
 
 ## Visual Task Scope
@@ -195,7 +195,7 @@ Chapter copy should be one short transition line, not an H5 paragraph.
 - Generate the visual assets in batches, starting with the high-priority ten pages.
 - Save or bridge generated assets into `ppt-v6-image-model-visuals-2026-07-06/`.
 - Run image QA after each batch: style consistency, no garbled text, no unsupported numbers, enough whitespace, and readable main composition.
-- If the image model cannot reliably emit exact text, generate mostly text-light images and use PPT overlay labels.
+- If the image model cannot reliably emit exact text after repeated attempts, stop and report the specific failed fields before using any deterministic overlay fallback.
 
 ### Phase 3 — PPT text and layout rebuild
 
@@ -213,7 +213,7 @@ Chapter copy should be one short transition line, not an H5 paragraph.
 - Confirm slide count and image count.
 - Confirm all H3/evidence sections remain represented.
 - Confirm no template guide text or placeholders remain.
-- Confirm image-text QA for all critical text and deterministic overlays.
+- Confirm image-text QA for all critical text rendered inside the model-generated visuals.
 - Write a v6 gate review artifact with pass/fail evidence and residual risks.
 
 ## Acceptance Criteria
@@ -222,7 +222,7 @@ V6 is acceptable only if all of the following pass:
 
 1. All 32 H3/evidence content sections remain covered.
 2. Right-side visuals are regenerated or replaced by image-model-driven visuals, not reused v5 script diagrams.
-3. Critical text, dates, numbers, and evidence labels are readable and correct.
+3. Critical text, dates, numbers, and evidence labels are rendered inside the model-generated visual and are readable and correct after image-text QA.
 4. The PPT body text is presentation-oriented, not H5 paragraph copy.
 5. Chapter pages have clear transition statements.
 6. Template placeholders and guide text are absent from slide, layout, and master XML.
@@ -234,7 +234,8 @@ V6 is acceptable only if all of the following pass:
 
 Resolved:
 
-- Use image-model route for the right-side visuals.
+- Use image-model route for the complete right-side visuals.
+- Let the model render Chinese labels, dates, numbers, and evidence-boundary text directly when those elements belong in the visual.
 - Preserve full content coverage.
 - Do v6 as a refinement, not a full research rewrite.
 
@@ -242,7 +243,6 @@ Still needs review before implementation:
 
 - Whether to add an agenda/route page.
 - Whether evidence-boundary pages should stay as three pages or be compressed to a stronger one/two-page evidence matrix.
-- Whether image-model text should be attempted directly for short labels, or whether all labels should be deterministic overlay by default.
 
 ## Spec Self-Review
 
@@ -252,4 +252,6 @@ Internal consistency: the design keeps v5 content coverage while replacing the w
 
 Scope check: this is a single implementation project: v6 PPT refinement with regenerated right-side visuals, not a broader H5/report rewrite.
 
-Ambiguity check: image model is the visual source for right-side images; exact text and claims are verified through deterministic overlay and screenshot QA.
+Ambiguity check: image model is the visual source for the complete right-side finished visuals, including exact text where needed; correctness is verified through image-text QA and screenshot QA.
+
+
