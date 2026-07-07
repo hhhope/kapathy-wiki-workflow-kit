@@ -5,6 +5,8 @@ description: Use only inside cr-agent to produce the final allow, conditional, o
 
 Own the final gate conclusion.
 
+Read coverage artifacts; do not re-review code or trust report wording.
+
 Conclusions:
 
 - `allow`
@@ -14,6 +16,12 @@ Conclusions:
 Hard rules:
 
 - any open blocking issue => `blocked`
+- wrong or stale range metadata => `blocked`
+- open diff unit => `blocked`
+- open required check => `blocked`
+- blocked checker result => `blocked`
+- invalid N/A without accepted reason and evidence => `blocked`
+- stale checker result after range, config, diff ledger, or agent version change => `blocked`
 - wrong baseline => `blocked`
 - release range unclear => `blocked`
 - feature-branch CR presented as release gate => `blocked`

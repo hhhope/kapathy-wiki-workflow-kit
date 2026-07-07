@@ -28,6 +28,42 @@ applicable worker/skill, whether it executed, the evidence produced, and any
 gap or risk. If worker execution evidence is missing, mark the gap explicitly;
 do not infer worker completion from the final report wording.
 
+Coverage gate is mandatory for `gate`, `report`, `replay`, and `full CR` modes:
+
+- Load rule config from `<this-skill>/rules/global.yaml`, `CR/<project>/cr-agent.yaml`,
+  and `CR/<project>/cases/<case-id>/cr-agent.yaml`.
+- Missing or invalid global config blocks the CR. Repo and case config may add
+  terms or stricter checks, but must not weaken global required checks.
+- Build coverage artifacts before technical conclusions: `state.json`,
+  `diff-units.jsonl`, `facts.jsonl`, `review-groups.jsonl`, `checks.jsonl`,
+  `checker-results.jsonl`, `issues.jsonl`, `gate.json`, and `report.md`.
+- Every diff unit must close through a check, valid N/A, or blocked status.
+  Unmatched hunks still require a general logic check.
+- Any open diff unit, open required check, blocked check, invalid N/A, high
+  issue, high-risk unresolved question, wrong range, or stale artifact blocks
+  the gate.
+- Manually confirmed findings must be persisted before report completion:
+  write a structured issue registry entry, link it to check IDs and diff unit
+  IDs when available, write a checker result with `issue` or `blocked` status,
+  and re-evaluate the gate from the updated artifacts. If the finding cannot
+  yet be mapped, record a `manual_review_gap` and keep the CR blocked.
+- Use `scripts/coverage_gate.py` for artifact generation and
+  `scripts/eval_cr_replay.py` for replay validation.
+
+Case coverage artifacts and formal human CR reports are separate outputs:
+
+- `CR/<project>/cases/<case-id>/report.md` is the coverage artifact summary.
+- `CR/<project>/<report-target>.md` is the formal human CR report.
+
+Do not claim `report`, `gate`, or `full CR` complete when only the case coverage
+artifact exists.
+
+Formal reports must state `Report State: stage_report` when any required check
+is open or blocked, any manual review gap exists, or checker/issue linkage is
+incomplete. Use `complete_cr_report` only after required checks are closed or
+waived and the gate has been re-evaluated from the final issue/checker
+artifacts.
+
 Every normal response must show:
 
 - Intent
@@ -79,10 +115,18 @@ Boundaries:
 - Do not treat feature-branch CR as release CR.
 - Do not compare a release using a guessed branch diff when previous online version is required.
 - Do not let branch, technical, or evidence findings bypass `cr-issues`.
+- Do not leave confirmed findings only in prose or chat. If a finding appears
+  in the formal report, it must also exist in `issues.jsonl` or be called out
+  as a blocked persistence/linkage gap.
 - Do not let report wording override `cr-gate`.
+- Do not claim CR coverage from prose. The coverage ledger and checks are the
+  source of truth.
+- Do not treat the case coverage artifact as the formal human CR report.
 - Do not hard-code local reference-report paths in CR skills or reports.
 - Do not infer concrete downstream outages from static diff alone; require compatibility evidence instead.
 - Do not claim CR complete when required review dependencies are missing.
 - Do not stop after only the first blocking issue when other CR dimensions were triggered.
-- Do not use wiki/Obsidian wrappers in CR reports: no YAML frontmatter,
-  `[[wiki links]]`, `[!tip]`, `[!todo]`, or tag callouts.
+- Do not use wiki/Obsidian wrappers for `plugin_plain` CR reports: no YAML
+  frontmatter, `[[wiki links]]`, `[!tip]`, `[!todo]`, or tag callouts.
+- For `repo_existing`, preserve wiki/Obsidian wrappers only when a chosen
+  repository reference report already uses them.

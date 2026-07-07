@@ -1,0 +1,31 @@
+{
+  "id": "known-good-empty-range",
+  "input_situation": "A merge CR with a trusted range and no changed diff content should not be over-blocked by the coverage gate.",
+  "input_diff_artifacts": [],
+  "input_diff_text": "",
+  "coverage_config": {
+    "settings": {
+      "oversized_hunk_line_threshold": 80
+    },
+    "rules": {
+      "state": {
+        "title": "State machine and result code",
+        "match": {
+          "any": ["status"]
+        },
+        "create_checks": {
+          "required": ["Known states and result codes are mapped explicitly"]
+        }
+      }
+    }
+  },
+  "triggered_workers": [
+    "cr-diff",
+    "cr-gate"
+  ],
+  "expected_checks": [],
+  "expected_issues": [],
+  "expected_gate": "allow",
+  "proof_boundary": "This fixture only proves the gate does not block an empty trusted diff. It is not a substitute for known-good non-empty domain reviews.",
+  "residual_risk": "A richer known-good replay with closed checks should be added when historical accepted CR artifacts are available."
+}

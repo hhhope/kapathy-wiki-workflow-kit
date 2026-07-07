@@ -1,0 +1,127 @@
+settings:
+  oversized_hunk_line_threshold: 80
+rules:
+  money:
+    title: Money and numeric units
+    match:
+      any:
+        - amount
+        - balance
+        - fee
+        - rate
+        - percent
+        - BigDecimal
+        - yuanToCent
+        - centToYuan
+        - rounding
+        - currency
+    create_checks:
+      required:
+        - Input unit is clear
+        - Internal storage or transfer unit is clear
+        - Output unit is clear
+        - Repeated or missing conversion is checked
+        - Precision and rounding match the business contract
+        - At least one normal numeric example closes the flow
+      conditional:
+        - Zero, negative, very large amount, and over-scale decimals are handled when relevant
+        - Null, empty string, and absent numeric fields cannot be silently converted to zero
+        - Currency and scale are not mixed across external interface, internal model, DB, report, or display fields
+      evidence:
+        - Unit flow from input to internal representation to output
+        - Numeric example such as 88.88 -> 8888 when the target unit is cent
+        - Test evidence or an explicit blocked reason
+  state:
+    title: State machine and result code
+    match:
+      any: [status, state, result, code, success, fail, processing]
+    create_checks:
+      required:
+        - Known states and result codes are mapped explicitly
+        - Unknown states have a safe fallback
+        - Terminal states are idempotent
+        - Failure and processing semantics are not inverted
+  external_interface:
+    title: External interface, callback, SDK, and MQ
+    match:
+      any: [HTTP, callback, SDK, MQ, request, response, DTO, timeout, retry, sign]
+    create_checks:
+      required:
+        - Field contract and raw payload unit or type are clear
+        - Timeout, retry, and failure mapping are reviewed
+        - Signature or authentication behavior is preserved when applicable
+  db_transaction:
+    title: DB, transaction, and persistence
+    match:
+      any: [SQL, Mapper, DO, transaction, lock, unique, update, insert]
+    create_checks:
+      required:
+        - Transaction boundary and rollback behavior are clear
+        - Idempotency and concurrent update behavior are reviewed
+        - Historical data compatibility is considered
+  security_compliance:
+    title: Security, compliance, and sensitive data
+    match:
+      any: [secret, token, password, certificate, key, sign, mobile, idCard, accountNo]
+    create_checks:
+      required:
+        - Sensitive data is not logged or stored in plaintext
+        - Authentication, authorization, and signature checks remain valid
+        - Certificate and key material are not committed
+  compatibility:
+    title: Compatibility and rollout
+    match:
+      any: [compatible, default, switch, gray, migration, old, new]
+    create_checks:
+      required:
+        - Existing callers and historical data remain compatible
+        - Rollout, rollback, and switch defaults are clear
+  exception_handling:
+    title: Exception handling and degradation semantics
+    match:
+      any: [catch, Exception, errorCode, fallback, degrade, ack, retry]
+    create_checks:
+      required:
+        - Exceptions are not swallowed as success
+        - Error code mapping preserves the original failure semantics
+        - Retry or ACK behavior cannot lose the original failure
+  time_date:
+    title: Time, date, timezone, and expiry
+    match:
+      any: [Date, LocalDateTime, format, expire, timeout, timezone, tradeDate]
+    create_checks:
+      required:
+        - Timezone, format, and expiry boundary are explicit
+        - Transaction day or scheduling window is preserved
+  pagination_batch:
+    title: Collection, pagination, cursor, and batch
+    match:
+      any: [pageNo, pageSize, lastFlag, list, stream, batch, cursor]
+    create_checks:
+      required:
+        - Pagination cannot skip or duplicate records
+        - Empty collection and partial batch failure are handled
+  config_environment:
+    title: Configuration, environment, and switch
+    match:
+      any: [Apollo, yml, properties, whitelist, switch, URL, path, profile]
+    create_checks:
+      required:
+        - Production default and rollback behavior are clear
+        - Environment-specific value evidence exists when applicable
+  concurrency_idempotency:
+    title: Concurrency, idempotency, and re-entry
+    match:
+      any: [lock, duplicate, idempotent, compensate, schedule, repeat]
+    create_checks:
+      required:
+        - Idempotency key or unique constraint is clear
+        - Duplicate execution cannot create duplicate side effects
+  test_evidence:
+    title: Test and evidence contract
+    match:
+      any: [test, UAT, evidence, rollback, raw payload, fixture]
+    create_checks:
+      required:
+        - High-risk changes include matching test or UAT evidence
+        - Missing evidence is recorded as blocked instead of assumed

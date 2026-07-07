@@ -1,0 +1,63 @@
+{
+  "id": "yqt-formal-report-repo-existing-template",
+  "input_situation": "YQT repository historical CR reports use YAML frontmatter, Obsidian callouts, tag metadata, and the Chinese report title. The repo_existing profile must preserve that established wrapper style while still rendering the coverage matrix and reader-first CR sections.",
+  "input_diff_text": "diff --git a/src/Balance.java b/src/Balance.java\nindex 1111111..2222222 100644\n--- a/src/Balance.java\n+++ b/src/Balance.java\n@@ -1 +1 @@\n-oldBalance\n+amountBalance\n",
+  "coverage_config": {
+    "settings": {
+      "oversized_hunk_line_threshold": 80
+    },
+    "rules": {
+      "money": {
+        "title": "Money and numeric units",
+        "match": {
+          "any": ["amount", "balance"]
+        },
+        "create_checks": {
+          "required": [
+            "Input unit is clear"
+          ]
+        }
+      }
+    }
+  },
+  "formal_report": {
+    "project": "yqt-trade",
+    "report_target": "RCYW-16690",
+    "report_profile": "repo_existing",
+    "case_report_path": "CR/yqt-trade/cases/RCYW-16690/report.md",
+    "reference_report_text": "---\ntitle: 代码评审报告 — yqt-trade 2026-07-01\ntags: [CR, 代码评审, yqt-trade]\nrelated:\n  - [[checkpoints/common|通用检查点]]\n---\n\n# 代码评审报告 — yqt-trade 2026-07-01\n\n> [!tip] 本报告可关联到 [[README|项目 CR 索引页]]\n\n> 标签：`#CR` `#代码评审` `#门禁` `#Account-CR-Agent`\n",
+    "expected_starts_with": "---\n",
+    "expected_contains": [
+      "title: 代码评审报告 — yqt-trade RCYW-16690",
+      "# 代码评审报告 — yqt-trade RCYW-16690",
+      "[!tip]",
+      "标签：`#CR`",
+      "## 最终结论（是否可发布）",
+      "Report State: `stage_report`",
+      "## 覆盖矩阵",
+      "## Open Check Drilldown",
+      "Full checks list:",
+      "money: open="
+    ],
+    "expected_not_contains": [
+      "# CR Report:"
+    ]
+  },
+  "triggered_workers": [
+    "cr-gate",
+    "cr-report"
+  ],
+  "expected_checks": [
+    "Input unit is clear"
+  ],
+  "expected_issues": [
+    {
+      "source_worker": "coverage_gate",
+      "title": "coverage check open",
+      "blocking": true
+    }
+  ],
+  "expected_gate": "blocked",
+  "proof_boundary": "This replay verifies report rendering shape and profile scoping. It does not prove human technical findings are complete.",
+  "residual_risk": "Future repository-specific wrappers require additional replay fixtures when their style differs from the yqt historical report."
+}

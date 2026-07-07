@@ -1,0 +1,65 @@
+{
+  "id": "webank-split-balance-yuan-cent-double-conversion",
+  "input_situation": "2026-07-02 Webank split-account balance query displayed balances as 100x because one hunk converted bank yuan amounts to cents and another output path converted the value again.",
+  "input_diff_artifacts": [
+    {
+      "path": "trade-biz/src/main/java/com/yqt/trade/biz/channel/wzbank/service/WZOpenBankLedgerListService.java",
+      "summary": "ledger list amount, availableBalance, and freezeBalance are converted from bank yuan payload into cent values"
+    }
+  ],
+  "required_consumer_evidence": [
+    {
+      "path": "trade-web/src/main/java/com/yqt/trade/web/handle/QueryBalanceHandle.java",
+      "summary": "unchanged downstream balance response consumer converts ledger availableBalance with AmountUtil.yuanToCent before display"
+    }
+  ],
+  "input_diff_text": "diff --git a/trade-biz/src/main/java/com/yqt/trade/biz/channel/wzbank/service/WZOpenBankLedgerListService.java b/trade-biz/src/main/java/com/yqt/trade/biz/channel/wzbank/service/WZOpenBankLedgerListService.java\nindex 1111111..2222222 100644\n--- a/trade-biz/src/main/java/com/yqt/trade/biz/channel/wzbank/service/WZOpenBankLedgerListService.java\n+++ b/trade-biz/src/main/java/com/yqt/trade/biz/channel/wzbank/service/WZOpenBankLedgerListService.java\n@@ -10,3 +10,7 @@ public class WZOpenBankLedgerListService {\n-  ledger.setAvailableBalance(bankBalance);\n+  BigDecimal amount = bankLedger.getAmount();\n+  ledger.setAmount(AmountUtil.yuanToCent(amount));\n+  ledger.setAvailableBalance(AmountUtil.yuanToCent(bankLedger.getAvailableBalance()));\n+  ledger.setFreezeBalance(AmountUtil.yuanToCent(bankLedger.getFreezeBalance()));\n }\n",
+  "coverage_config": {
+    "settings": {
+      "oversized_hunk_line_threshold": 80
+    },
+    "rules": {
+      "money": {
+        "title": "Money and numeric units",
+        "match": {
+          "any": ["amount", "balance", "BigDecimal", "yuanToCent"]
+        },
+        "create_checks": {
+          "required": [
+            "Input unit is clear",
+            "Internal storage or transfer unit is clear",
+            "Output unit is clear",
+            "Repeated or missing conversion is checked",
+            "At least one normal numeric example closes the flow"
+          ]
+        }
+      }
+    }
+  },
+  "triggered_workers": [
+    "cr-diff",
+    "cr-scope",
+    "cr-technical-review",
+    "cr-gate"
+  ],
+  "expected_checks": [
+    "Input unit is clear",
+    "Internal storage or transfer unit is clear",
+    "Output unit is clear",
+    "Repeated or missing conversion is checked",
+    "At least one normal numeric example closes the flow"
+  ],
+  "expected_issues": [
+    {
+      "source_worker": "coverage_gate",
+      "title": "money/unit check missing affected consumer evidence",
+      "blocking": true
+    }
+  ],
+  "money_checker_consumer_evidence": [],
+  "expected_money_checker_status": "blocked",
+  "expected_money_checker_question_contains": "QueryBalanceHandle",
+  "expected_gate": "blocked",
+  "proof_boundary": "Static diff and rule matching can require money-flow closure and block when unit-chain evidence is missing; it cannot prove the real bank balance without raw bank payload or UAT evidence.",
+  "residual_risk": "Project-specific field names and channel terminology should be added through repo or case config when replay shows missing triggers."
+}
