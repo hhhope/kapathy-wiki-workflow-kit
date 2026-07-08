@@ -88,6 +88,77 @@ inbox / chat / Feishu / meeting note
   -> wiki/ops when the material contains workflow, governance, or action signals
 ```
 
+## Process Architecture
+
+The repository process has three connected tracks: material processing,
+behavior/change lifecycle, and verification. README describes the shape only;
+OpenSpec, ADRs, skills, CR artifacts, and generated status files remain the
+authoritative records for execution.
+
+```text
+                 +--------------------+
+                 | incoming material  |
+                 | chat / Feishu /    |
+                 | meeting / inbox    |
+                 +---------+----------+
+                           |
+                           v
+                 +--------------------+
+                 | source capture     |
+                 | wiki/sources       |
+                 +---------+----------+
+                           |
+          +----------------+----------------+
+          |                                 |
+          v                                 v
++--------------------+            +--------------------+
+| knowledge views    |            | workflow signals   |
+| domains/timeline   |            | wiki/ops           |
++---------+----------+            +---------+----------+
+          |                                 |
+          v                                 v
++--------------------+            +--------------------+
+| reader outputs     |            | OpenSpec / ADR     |
+| reports/examples   |            | scoped decisions   |
++---------+----------+            +---------+----------+
+          |                                 |
+          +----------------+----------------+
+                           |
+                           v
+                 +--------------------+
+                 | verification       |
+                 | tests / scripts /  |
+                 | CR / status        |
+                 +--------------------+
+```
+
+Material processing flow:
+
+```text
+raw input
+  -> source record
+  -> durable domain or timeline understanding
+  -> reader-facing report or reusable example
+  -> ops trace only when the material contains action, workflow, or governance signals
+```
+
+Behavior and skill-change flow:
+
+```text
+workflow / runtime / skill change request
+  -> OpenSpec proposal, design, tasks, and spec delta when scoped behavior changes
+  -> implementation in repo-local assets or mirrors
+  -> RED/GREEN evaluation evidence for behavior assets
+  -> tests, replay, behavior-asset checks, and CR evidence
+  -> commit only task-related files
+  -> archive review after the active change is complete
+```
+
+Skill mirrors such as `skills-drafts/account-skills/` are repository evidence
+and draft/reference material. Syncing them to external `account-skills` or
+local Codex caches requires explicit verification; the mirror alone does not
+publish a plugin or reload a running session.
+
 ## Frontmatter Taxonomy
 
 Wiki frontmatter is governed by:
