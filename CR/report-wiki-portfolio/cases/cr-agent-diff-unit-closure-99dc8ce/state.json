@@ -1,0 +1,22 @@
+{
+  "stage": "gate",
+  "cr_type": "merge_cr",
+  "base": "f0f360b",
+  "head": "99dc8ce",
+  "merge_base": "f0f360b96fb6cfeebd6c00b913044c224811395e",
+  "range_hash": "43aa29e86dea1e37ae6a572b12cd1aba56812c4b5fefdeddc2995fe05da995cd",
+  "config_hash": "33711742a22d322c83339ca473d604c3b75adcfb6555882730ef747197e1bfa9",
+  "agent_version": "coverage-gate-v1",
+  "coverage_counters": {
+    "diff_units_total": 25,
+    "diff_units_closed": 25,
+    "checks_total": 209,
+    "checks_closed": 209
+  },
+  "current_diff_unit_cursor": null,
+  "current_check_cursor": null,
+  "config_sources": [
+    "skills-drafts/account-skills/account-cr-agent/skills/cr-agent/rules/global.yaml"
+  ],
+  "diff_ledger_hash": "a7c75cbce6ee7fb6aa7255c3cca25ef1ffcc10c3974e9904b23bb07565b230dc"
+}

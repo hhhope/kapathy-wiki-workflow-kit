@@ -1,0 +1,209 @@
+{"diff_unit_ids": ["file-6258a4d37324"], "id": "check-df6b2f6c67d1", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "High-risk changes include matching test or UAT evidence"}
+{"diff_unit_ids": ["file-6258a4d37324"], "id": "check-7eb84ff05abb", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "Missing evidence is recorded as blocked instead of assumed"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-af1b68bac08b", "required": true, "rule_id": "money", "status": "satisfied", "title": "Input unit is clear"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-a2cce9c8f13e", "required": true, "rule_id": "money", "status": "satisfied", "title": "Internal storage or transfer unit is clear"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-9a5071380ce3", "required": true, "rule_id": "money", "status": "satisfied", "title": "Output unit is clear"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-b06349ea7521", "required": true, "rule_id": "money", "status": "satisfied", "title": "Repeated or missing conversion is checked"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-98ccb91299dc", "required": true, "rule_id": "money", "status": "satisfied", "title": "Precision and rounding match the business contract"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-5d0520aba6a0", "required": true, "rule_id": "money", "status": "satisfied", "title": "At least one normal numeric example closes the flow"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-39c142b09060", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-d148ebc13454", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-c99344761867", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-b2af5089af07", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-1c86a2558838", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-1c0ad712b703", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-63bcab99e5f8", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-4cbbcbcb1d35", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Timezone, format, and expiry boundary are explicit"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-3fb76085ad21", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Transaction day or scheduling window is preserved"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-aa97a7a19a64", "required": true, "rule_id": "config_environment", "status": "satisfied", "title": "Production default and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-b026bcaa9f71", "required": true, "rule_id": "config_environment", "status": "satisfied", "title": "Environment-specific value evidence exists when applicable"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-eaee6f70b507", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "High-risk changes include matching test or UAT evidence"}
+{"diff_unit_ids": ["hunk-03550bf872df"], "id": "check-e6cc7d05bc1a", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "Missing evidence is recorded as blocked instead of assumed"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-c5931aaca353", "required": true, "rule_id": "money", "status": "satisfied", "title": "Input unit is clear"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-7e2ebba3244a", "required": true, "rule_id": "money", "status": "satisfied", "title": "Internal storage or transfer unit is clear"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-bee7b28001e9", "required": true, "rule_id": "money", "status": "satisfied", "title": "Output unit is clear"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-8b0ae5948ba9", "required": true, "rule_id": "money", "status": "satisfied", "title": "Repeated or missing conversion is checked"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-42c6dee72942", "required": true, "rule_id": "money", "status": "satisfied", "title": "Precision and rounding match the business contract"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-36d33bc981f5", "required": true, "rule_id": "money", "status": "satisfied", "title": "At least one normal numeric example closes the flow"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-c84f33f32f3c", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-9891ccf47616", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-2f6b80fe835c", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-7443573e9f28", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-ad4b4cfbc024", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-18763990eb61", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-7c9ca40eccae", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-5d0da99d7d1e", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Idempotency key or unique constraint is clear"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-1a6fb1666c20", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Duplicate execution cannot create duplicate side effects"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-559d5f6535e7", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "High-risk changes include matching test or UAT evidence"}
+{"diff_unit_ids": ["hunk-471670d48b54"], "id": "check-2ec5fccac522", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "Missing evidence is recorded as blocked instead of assumed"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-11493bfaff6f", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-3c243b26f542", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-7e840aa52426", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-632ec1249350", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-76b009f5ee55", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-970cec5ce1fd", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-c7150081be30", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-c3d381da6c7e", "required": true, "rule_id": "compatibility", "status": "satisfied", "title": "Existing callers and historical data remain compatible"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-4a66f9900c4c", "required": true, "rule_id": "compatibility", "status": "satisfied", "title": "Rollout, rollback, and switch defaults are clear"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-bdf3b6c104c7", "required": true, "rule_id": "exception_handling", "status": "satisfied", "title": "Exceptions are not swallowed as success"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-5754ebf3b380", "required": true, "rule_id": "exception_handling", "status": "satisfied", "title": "Error code mapping preserves the original failure semantics"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-cd5dbda572bf", "required": true, "rule_id": "exception_handling", "status": "satisfied", "title": "Retry or ACK behavior cannot lose the original failure"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-338680123d7c", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Idempotency key or unique constraint is clear"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-75a72d11fca6", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Duplicate execution cannot create duplicate side effects"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-a0ce641cebcf", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "High-risk changes include matching test or UAT evidence"}
+{"diff_unit_ids": ["hunk-c73d2d0c1f61"], "id": "check-63d1f736eb2f", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "Missing evidence is recorded as blocked instead of assumed"}
+{"diff_unit_ids": ["file-c316f361a006"], "id": "check-72967daaa120", "required": true, "rule_id": "general_logic", "status": "satisfied", "title": "General logic, failure path, and compatibility impact are reviewed"}
+{"diff_unit_ids": ["hunk-7907c720f3be"], "id": "check-e095ffa700f4", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-7907c720f3be"], "id": "check-156ef364b78b", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-7907c720f3be"], "id": "check-f0d088c2ee33", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-7907c720f3be"], "id": "check-918d460f00c0", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-7907c720f3be"], "id": "check-029068677edc", "required": true, "rule_id": "exception_handling", "status": "satisfied", "title": "Exceptions are not swallowed as success"}
+{"diff_unit_ids": ["hunk-7907c720f3be"], "id": "check-68e2091e3051", "required": true, "rule_id": "exception_handling", "status": "satisfied", "title": "Error code mapping preserves the original failure semantics"}
+{"diff_unit_ids": ["hunk-7907c720f3be"], "id": "check-8d44f26a2b8f", "required": true, "rule_id": "exception_handling", "status": "satisfied", "title": "Retry or ACK behavior cannot lose the original failure"}
+{"diff_unit_ids": ["hunk-7907c720f3be"], "id": "check-773a59f64a6d", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "High-risk changes include matching test or UAT evidence"}
+{"diff_unit_ids": ["hunk-7907c720f3be"], "id": "check-e92775c9d21f", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "Missing evidence is recorded as blocked instead of assumed"}
+{"diff_unit_ids": ["hunk-6d69e6cb78d6"], "id": "check-9018901f3761", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-6d69e6cb78d6"], "id": "check-4bcdc2de1619", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-6d69e6cb78d6"], "id": "check-e9bb8badcd59", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-6d69e6cb78d6"], "id": "check-ac16dce2df3c", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-6d69e6cb78d6"], "id": "check-49fe0242214b", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-6d69e6cb78d6"], "id": "check-d253a1f0516e", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-6d69e6cb78d6"], "id": "check-742014cbd3fb", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-6d69e6cb78d6"], "id": "check-4aa9e2f2ad15", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "High-risk changes include matching test or UAT evidence"}
+{"diff_unit_ids": ["hunk-6d69e6cb78d6"], "id": "check-9a3e0efe23ec", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "Missing evidence is recorded as blocked instead of assumed"}
+{"diff_unit_ids": ["file-a192162e1ceb"], "id": "check-768674a7e3e4", "required": true, "rule_id": "general_logic", "status": "satisfied", "title": "General logic, failure path, and compatibility impact are reviewed"}
+{"diff_unit_ids": ["hunk-26b7c5be091e"], "id": "check-3f89a7630355", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-26b7c5be091e"], "id": "check-e9fb6f974003", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-26b7c5be091e"], "id": "check-3f3769a72d1e", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-26b7c5be091e"], "id": "check-d2b5d1343ecb", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["file-421570eb5429"], "id": "check-681a137dbcc8", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["file-421570eb5429"], "id": "check-6f68455caf34", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["file-421570eb5429"], "id": "check-641cd4655608", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["file-421570eb5429"], "id": "check-2508c4baeb13", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-aec01c5d0bc0"], "id": "check-40aa2bd23c5e", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-aec01c5d0bc0"], "id": "check-429bbc0536fe", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-aec01c5d0bc0"], "id": "check-51c98471f011", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-aec01c5d0bc0"], "id": "check-f3b3f4f50bfb", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-aec01c5d0bc0"], "id": "check-78a9aa72f503", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-aec01c5d0bc0"], "id": "check-d92c4313ac83", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-aec01c5d0bc0"], "id": "check-22dce7da6dbc", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-aec01c5d0bc0"], "id": "check-22585a1e5027", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Idempotency key or unique constraint is clear"}
+{"diff_unit_ids": ["hunk-aec01c5d0bc0"], "id": "check-4ea0deb6d907", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Duplicate execution cannot create duplicate side effects"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-b07c39753f76", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-e0220c9643cb", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-8eee5f69889b", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-2343e8f13617", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-8c3b0eaa216a", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-66f99e21c994", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-be31220f8813", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-b9313ca6bbac", "required": true, "rule_id": "compatibility", "status": "satisfied", "title": "Existing callers and historical data remain compatible"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-55a07b56718f", "required": true, "rule_id": "compatibility", "status": "satisfied", "title": "Rollout, rollback, and switch defaults are clear"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-b6499648e1ed", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Timezone, format, and expiry boundary are explicit"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-9dfaaa3de674", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Transaction day or scheduling window is preserved"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-14121286c1a6", "required": true, "rule_id": "pagination_batch", "status": "satisfied", "title": "Pagination cannot skip or duplicate records"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-b0464d35f827", "required": true, "rule_id": "pagination_batch", "status": "satisfied", "title": "Empty collection and partial batch failure are handled"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-bfdf86116d00", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Idempotency key or unique constraint is clear"}
+{"diff_unit_ids": ["hunk-c310365cf151"], "id": "check-0a1060114f6a", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Duplicate execution cannot create duplicate side effects"}
+{"diff_unit_ids": ["hunk-688c0ac0edd2"], "id": "check-eff7c54760d4", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-688c0ac0edd2"], "id": "check-52001c03a2a0", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-688c0ac0edd2"], "id": "check-adb2bf3f7a25", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-688c0ac0edd2"], "id": "check-dedc6455f523", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-688c0ac0edd2"], "id": "check-e2e09190a75b", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-688c0ac0edd2"], "id": "check-baca44390dc4", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-688c0ac0edd2"], "id": "check-f05f44a433ae", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-688c0ac0edd2"], "id": "check-d77311901e73", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Timezone, format, and expiry boundary are explicit"}
+{"diff_unit_ids": ["hunk-688c0ac0edd2"], "id": "check-296a71461df5", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Transaction day or scheduling window is preserved"}
+{"diff_unit_ids": ["hunk-d19fb1a945f9"], "id": "check-c06de9453d25", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-d19fb1a945f9"], "id": "check-9ad4704b8d02", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-d19fb1a945f9"], "id": "check-7fe3ee8f581b", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-d19fb1a945f9"], "id": "check-5bef8636e024", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-d19fb1a945f9"], "id": "check-2c96e64f4246", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-d19fb1a945f9"], "id": "check-2a093925e5b9", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-d19fb1a945f9"], "id": "check-4aab7327a6e4", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-d19fb1a945f9"], "id": "check-9f503cbcee91", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Timezone, format, and expiry boundary are explicit"}
+{"diff_unit_ids": ["hunk-d19fb1a945f9"], "id": "check-cef41c7af6a9", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Transaction day or scheduling window is preserved"}
+{"diff_unit_ids": ["file-a4f10d270357"], "id": "check-0800ed01b527", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["file-a4f10d270357"], "id": "check-5a265bcac290", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["file-a4f10d270357"], "id": "check-0beb12e88464", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["file-a4f10d270357"], "id": "check-971cd4434d90", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["file-a4f10d270357"], "id": "check-911a561acf1c", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "High-risk changes include matching test or UAT evidence"}
+{"diff_unit_ids": ["file-a4f10d270357"], "id": "check-64d08de30f5b", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "Missing evidence is recorded as blocked instead of assumed"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-c7c1e981c515", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-c90fafc16f49", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-28d9017a5584", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-28544ae8c709", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-2cc49c4fa0c6", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-21073ca825ab", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-432feb16c7bb", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-f2689be90faf", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Timezone, format, and expiry boundary are explicit"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-5221bb4d9fcb", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Transaction day or scheduling window is preserved"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-23229d5ccd89", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "High-risk changes include matching test or UAT evidence"}
+{"diff_unit_ids": ["hunk-73d671319897"], "id": "check-4e36aaee76fa", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "Missing evidence is recorded as blocked instead of assumed"}
+{"diff_unit_ids": ["file-5cff70a5b123"], "id": "check-c20442971d59", "required": true, "rule_id": "general_logic", "status": "satisfied", "title": "General logic, failure path, and compatibility impact are reviewed"}
+{"diff_unit_ids": ["hunk-9d0d1523702d"], "id": "check-b52edb7a8c35", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-9d0d1523702d"], "id": "check-09eb3f29c8b0", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-9d0d1523702d"], "id": "check-280b32d88459", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-9d0d1523702d"], "id": "check-b798b25a45d7", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["file-ede6c49fd3b5"], "id": "check-f568e90910a2", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["file-ede6c49fd3b5"], "id": "check-eb447df724ae", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["file-ede6c49fd3b5"], "id": "check-7b3962c16860", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["file-ede6c49fd3b5"], "id": "check-4709eab49409", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-b40cc5ee3bbe"], "id": "check-fe1569af57fa", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-b40cc5ee3bbe"], "id": "check-a22d8d046dde", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-b40cc5ee3bbe"], "id": "check-707ad83ebaf8", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-b40cc5ee3bbe"], "id": "check-0b30539cf3e5", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-b40cc5ee3bbe"], "id": "check-fdcf40341e36", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-b40cc5ee3bbe"], "id": "check-3d5c51fe5bc7", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-b40cc5ee3bbe"], "id": "check-c9193e1f5404", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-b40cc5ee3bbe"], "id": "check-c9770e5f6a73", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Idempotency key or unique constraint is clear"}
+{"diff_unit_ids": ["hunk-b40cc5ee3bbe"], "id": "check-b27703681321", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Duplicate execution cannot create duplicate side effects"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-28f2d85cd1a8", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-930135df2266", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-de7d969e5e0e", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-56c420b97287", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-165a052a3722", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-9b9375977b0f", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-3615bc2fd044", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-5f0e9a854afd", "required": true, "rule_id": "compatibility", "status": "satisfied", "title": "Existing callers and historical data remain compatible"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-6c826a9a2ebc", "required": true, "rule_id": "compatibility", "status": "satisfied", "title": "Rollout, rollback, and switch defaults are clear"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-a541b6038a64", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Timezone, format, and expiry boundary are explicit"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-8c7835fed4ee", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Transaction day or scheduling window is preserved"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-c3ae4a170b15", "required": true, "rule_id": "pagination_batch", "status": "satisfied", "title": "Pagination cannot skip or duplicate records"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-4dc29196c18c", "required": true, "rule_id": "pagination_batch", "status": "satisfied", "title": "Empty collection and partial batch failure are handled"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-a0a8be440480", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Idempotency key or unique constraint is clear"}
+{"diff_unit_ids": ["hunk-aac9304b66a9"], "id": "check-2b87e0f686a0", "required": true, "rule_id": "concurrency_idempotency", "status": "satisfied", "title": "Duplicate execution cannot create duplicate side effects"}
+{"diff_unit_ids": ["hunk-2c9ec6e016b4"], "id": "check-ad921ff8cf7a", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-2c9ec6e016b4"], "id": "check-a66a28d66b8f", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-2c9ec6e016b4"], "id": "check-bfc6f4c07521", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-2c9ec6e016b4"], "id": "check-404f49d0c70f", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-2c9ec6e016b4"], "id": "check-2992a6cced25", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-2c9ec6e016b4"], "id": "check-384a3da56a6b", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-2c9ec6e016b4"], "id": "check-6f7ede97958b", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-2c9ec6e016b4"], "id": "check-05edadbd6534", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Timezone, format, and expiry boundary are explicit"}
+{"diff_unit_ids": ["hunk-2c9ec6e016b4"], "id": "check-c4b5bd2e17e8", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Transaction day or scheduling window is preserved"}
+{"diff_unit_ids": ["hunk-f05fa4d9a924"], "id": "check-caac3e20c58a", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-f05fa4d9a924"], "id": "check-4f5addafdd38", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-f05fa4d9a924"], "id": "check-8ff995cf12f3", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-f05fa4d9a924"], "id": "check-0b8908b9af50", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-f05fa4d9a924"], "id": "check-8d656378a50a", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-f05fa4d9a924"], "id": "check-637a2bcf436d", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-f05fa4d9a924"], "id": "check-88582e3e83f4", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-f05fa4d9a924"], "id": "check-301ea62d43c1", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Timezone, format, and expiry boundary are explicit"}
+{"diff_unit_ids": ["hunk-f05fa4d9a924"], "id": "check-a1230305aec7", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Transaction day or scheduling window is preserved"}
+{"diff_unit_ids": ["file-a153ee7d5372"], "id": "check-d2dba502be05", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["file-a153ee7d5372"], "id": "check-e08929fc1e13", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["file-a153ee7d5372"], "id": "check-fe95e73434eb", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["file-a153ee7d5372"], "id": "check-59e4c75d529d", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["file-a153ee7d5372"], "id": "check-828a32af6b65", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "High-risk changes include matching test or UAT evidence"}
+{"diff_unit_ids": ["file-a153ee7d5372"], "id": "check-45048cd7e487", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "Missing evidence is recorded as blocked instead of assumed"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-31eb7c588307", "required": true, "rule_id": "state", "status": "satisfied", "title": "Known states and result codes are mapped explicitly"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-24ee2cb26214", "required": true, "rule_id": "state", "status": "satisfied", "title": "Unknown states have a safe fallback"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-d0e95d9978e1", "required": true, "rule_id": "state", "status": "satisfied", "title": "Terminal states are idempotent"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-5919853327d8", "required": true, "rule_id": "state", "status": "satisfied", "title": "Failure and processing semantics are not inverted"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-0092757f915c", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Transaction boundary and rollback behavior are clear"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-69c412055eb2", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Idempotency and concurrent update behavior are reviewed"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-d92fb0316f05", "required": true, "rule_id": "db_transaction", "status": "satisfied", "title": "Historical data compatibility is considered"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-502d01f4596e", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Timezone, format, and expiry boundary are explicit"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-2c79a3d6b4dc", "required": true, "rule_id": "time_date", "status": "satisfied", "title": "Transaction day or scheduling window is preserved"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-f68dfc9f5326", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "High-risk changes include matching test or UAT evidence"}
+{"diff_unit_ids": ["hunk-1bd2a5628f6f"], "id": "check-7ee6e0b7902f", "required": true, "rule_id": "test_evidence", "status": "satisfied", "title": "Missing evidence is recorded as blocked instead of assumed"}
