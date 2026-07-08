@@ -105,6 +105,27 @@ index 1111111..2222222 100644
         self.assertIn("Checks:", report)
         self.assertIn("Waivers: 1", report)
 
+    def test_satisfied_checker_results_close_linked_diff_units_and_allow_gate(self):
+        result = self._state_result()
+        checker_results = [
+            {
+                "check_id": check["id"],
+                "status": "satisfied",
+                "conclusion": "reviewed",
+                "evidence_refs": ["manual-review:1"],
+                "risk": "low",
+                "unresolved_questions": [],
+                "linked_diff_units": check["diff_unit_ids"],
+            }
+            for check in result["checks"]
+        ]
+
+        updated = coverage_gate.apply_checker_results(result, checker_results)
+
+        self.assertEqual(updated["gate"]["decision"], "allow")
+        self.assertTrue(updated["diff_units"])
+        self.assertTrue(all(unit["status"] != "open" for unit in updated["diff_units"]))
+
     def test_resume_invalidates_stale_checker_results(self):
         result = self._state_result()
         result["state"].update(

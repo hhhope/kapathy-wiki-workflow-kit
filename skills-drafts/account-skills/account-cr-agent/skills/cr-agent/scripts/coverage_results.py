@@ -19,6 +19,7 @@ REQUIRED_RESULT_FIELDS = {
 }
 REQUIRED_WAIVER_FIELDS = {"owner", "reason", "expiry", "affected_checks", "residual_risk"}
 HIGH_SEVERITIES = {"critical", "severe", "high", "严重", "高"}
+CLOSED_CHECK_STATUSES = {"satisfied", "not_applicable", "waived", "issue", "blocked"}
 
 
 def _blocked_result(raw: dict[str, Any], reason: str) -> dict[str, Any]:
@@ -65,6 +66,46 @@ def _issue_from_result(index: int, result: dict[str, Any]) -> dict[str, Any]:
         "related_diff_units": result.get("linked_diff_units", []),
         "related_review_groups": result.get("review_group_ids", []),
     }
+
+
+def _refresh_coverage_counters(updated: dict[str, Any]) -> None:
+    state = updated.setdefault("state", {})
+    state["coverage_counters"] = {
+        "diff_units_total": len(updated.get("diff_units", [])),
+        "diff_units_closed": sum(1 for unit in updated.get("diff_units", []) if unit.get("status") != "open"),
+        "checks_total": len(updated.get("checks", [])),
+        "checks_closed": sum(1 for check in updated.get("checks", []) if check.get("status") != "open"),
+    }
+
+
+def _closed_unit_status(check_statuses: list[str]) -> str:
+    if any(status == "blocked" for status in check_statuses):
+        return "blocked"
+    if any(status == "issue" for status in check_statuses):
+        return "issue"
+    if check_statuses and all(status == "not_applicable" for status in check_statuses):
+        return "not_applicable"
+    if check_statuses and all(status == "waived" for status in check_statuses):
+        return "waived"
+    return "satisfied"
+
+
+def _sync_diff_unit_statuses(updated: dict[str, Any]) -> None:
+    checks_by_unit: dict[str, list[dict[str, Any]]] = {}
+    for check in updated.get("checks", []):
+        for unit_id in check.get("diff_unit_ids", []):
+            checks_by_unit.setdefault(unit_id, []).append(check)
+
+    for unit in updated.get("diff_units", []):
+        linked_checks = checks_by_unit.get(unit.get("id"), [])
+        if not linked_checks:
+            continue
+        statuses = [check.get("status", "open") for check in linked_checks]
+        if all(status in CLOSED_CHECK_STATUSES for status in statuses):
+            unit["status"] = _closed_unit_status(statuses)
+        else:
+            unit["status"] = "open"
+    _refresh_coverage_counters(updated)
 
 
 def _normalize_confirmed_issue(index: int, issue: dict[str, Any]) -> dict[str, Any]:
@@ -136,6 +177,7 @@ def apply_confirmed_issues(
         check = checks_by_id.get(checker_result.get("check_id"))
         if check:
             check["status"] = checker_result["status"]
+    _sync_diff_unit_statuses(updated)
 
     existing_issues = [dict(item) for item in updated.get("issues", [])]
     existing_ids = {item.get("CR-ID") for item in existing_issues}
@@ -176,6 +218,7 @@ def apply_checker_results(
         for check_id in waiver["affected_checks"]:
             if check_id in checks_by_id:
                 checks_by_id[check_id]["status"] = "waived"
+    _sync_diff_unit_statuses(updated)
     updated["gate"] = evaluate_gate(
         updated.get("state", {}),
         updated["diff_units"],

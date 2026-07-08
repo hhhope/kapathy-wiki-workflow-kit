@@ -251,7 +251,7 @@ def analyze_diff_text(diff_text: str, config: dict[str, Any], range_metadata: di
     checks, groups = checks_and_groups(units, facts, config)
     gate = evaluate_gate(range_metadata, units, checks)
     return {
-        "state": {"stage": "gate", "coverage_counters": {
+        "state": {"stage": "gate", **range_metadata, "coverage_counters": {
             "diff_units_total": len(units),
             "diff_units_closed": sum(1 for unit in units if unit.get("status") != "open"),
             "checks_total": len(checks),

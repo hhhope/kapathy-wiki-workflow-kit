@@ -63,6 +63,32 @@ the runtime agent will refuse every future ambiguous edit request.
 relationships; it does not make mirrored draft folders active runtime routes in
 this repository.
 
+### Repair scenario: satisfied checks close diff units
+
+Input or situation shape: a non-empty diff produces file and hunk diff units,
+all linked checks are closed by checker results with `status: satisfied`, and
+the gate is re-evaluated from artifacts.
+
+Trigger condition: `apply_checker_results()` receives checker results that
+close every generated check linked to those diff units.
+
+Expected route: update check status, close linked diff units, refresh coverage
+counters, and then re-run `evaluate_gate()`.
+
+Repo-visible artifact: `test_satisfied_checker_results_close_linked_diff_units_and_allow_gate`
+in `skills-drafts/account-skills/*/cr-agent/tests/test_coverage_results.py`.
+
+Expected output: the re-evaluated gate returns `allow` and no diff unit remains
+`open`.
+
+Promotion or non-promotion boundary: this repairs the mirrored CR coverage gate
+source in this repo. It does not by itself publish a plugin release or prove
+runtime-session reload.
+
+Proof boundary: the unit test proves local artifact re-evaluation behavior for
+the mirrored code path. End-to-end runtime use still depends on syncing or
+installing the desired account-skills source.
+
 ## RED Baseline
 
 - File inventory before sync:
@@ -83,6 +109,14 @@ this repository.
 - Baseline conclusion: repo mirror was not a faithful copy of the currently
   installed CR agent source and could not be used as accurate promotion or
   diagnosis evidence.
+- CR review RED baseline after the mirror sync:
+  - Added `test_satisfied_checker_results_close_linked_diff_units_and_allow_gate`
+    before production repair.
+  - Command:
+    `env PYTHONDONTWRITEBYTECODE=1 python3 -m unittest skills-drafts.account-skills.account-cr-agent.skills.cr-agent.tests.test_coverage_results.CoverageResultsTest.test_satisfied_checker_results_close_linked_diff_units_and_allow_gate`
+  - Result before fix: failed because the gate remained `blocked` after every
+    generated check was marked `satisfied`; linked file/hunk diff units stayed
+    `open`.
 
 ## GREEN Result
 
@@ -104,13 +138,36 @@ this repository.
   - Result: exit 0, no output.
 - Coverage tests:
   - `env PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills-drafts/account-skills/account-cr-agent/skills/cr-agent/tests`
-  - Result: 21 tests passed.
+  - Result after CR repair: 22 tests passed.
+  - `env PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills-drafts/account-skills/skills/cr-agent/tests`
+  - Result after CR repair: 22 tests passed.
+- CR repair GREEN:
+  - The new test now passes.
+  - `apply_checker_results()` closes linked diff units when all linked checks
+    have terminal statuses (`satisfied`, `not_applicable`, `waived`, `issue`, or
+    `blocked`), refreshes coverage counters, and then re-evaluates the gate.
+  - `analyze_diff_text()` now preserves the supplied range metadata in
+    `state`, so later artifact re-evaluation has the required range fields.
 - Replay fixtures:
   - `env PYTHONDONTWRITEBYTECODE=1 python3 skills-drafts/account-skills/account-cr-agent/skills/cr-agent/scripts/eval_cr_replay.py ...`
   - Result: validated 4 replay fixture(s).
 - Release diff tests:
   - `env PYTHONDONTWRITEBYTECODE=1 python3 -m unittest skills-drafts.account-skills.account-cr-agent.skills.release-diff-cr.tests.test_release_diff_report`
   - Result: 3 tests passed.
+- External account-skills sync after CR repair:
+  - Synced `cr-agent`, `cr-gate`, `cr-report`, and `release-diff-cr` from the
+    repo mirror back to `/mnt/d/skills/account-skills/` in both
+    `skills/` and `account-cr-agent/skills/` layouts.
+  - Synced the repaired `cr-agent` files into
+    `/home/yan/.codex/skills/cr-agent` and
+    `/home/yan/.codex/plugins/cache/account-skills/account-cr-agent/0.1.1/skills/cr-agent`.
+  - `diff -qr --exclude='__pycache__' ...` for those synced directories
+    returned exit 0 with no output.
+  - `/mnt/d/skills/account-skills/skills/cr-agent/tests`: 22 tests passed.
+  - `/mnt/d/skills/account-skills/account-cr-agent/skills/cr-agent/tests`: 22
+    tests passed.
+  - `/mnt/d/skills/account-skills/account-cr-agent/skills/release-diff-cr/tests`:
+    3 tests passed.
 - Key mirrored terms:
   - `rg -n "Coverage gate is mandatory|Report State: stage_report|plugin_plain|repo_existing|rules/global.yaml|known-good-empty-range|webank-split-balance-unit|yqt-formal-report-repo-existing" skills-drafts/account-skills/account-cr-agent/skills/cr-agent skills-drafts/account-skills/account-cr-agent/skills/cr-report`
   - Result: expected installed coverage/profile/replay terms found.
