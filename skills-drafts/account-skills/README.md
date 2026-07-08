@@ -24,6 +24,36 @@ repo's `AGENTS.md`, and is not automatically loaded by the runtime.
 - `.codex/hooks.json` and `.githooks/`: source hook/config material preserved as
   reference, not enabled by this mirror.
 
+## Mirror Architecture
+
+This mirror keeps the source package visible in the repo without making it an
+active runtime install:
+
+```text
+/mnt/d/skills/account-skills
+  |
+  |  sync ordinary source files
+  |  exclude plugin/local/generated state
+  v
+skills-drafts/account-skills
+  |
+  +-- skills/                 reusable source skill folders
+  +-- account-cr-agent/       CR agent bundle source, plugin metadata excluded
+  +-- codex-integration-kit/  governance docs, scripts, templates, support skills
+  +-- req-agent-kit/          requirement workflow kit and payload
+  +-- openspec/               source change/spec history
+  +-- tests/                  source tests that do not require excluded plugins
+  |
+  v
+review / adapt / validate in a separate OpenSpec change
+  |
+  v
+optional promotion to active runtime paths
+```
+
+Promotion is one-way and explicit. Reading this mirror does not load skills,
+register routes, publish plugins, or update a running Codex session.
+
 ## Excluded
 
 The mirror intentionally excludes plugin, generated, and local-state content:
