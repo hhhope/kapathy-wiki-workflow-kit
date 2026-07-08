@@ -52,8 +52,8 @@ If the request includes both writing quality and real document I/O, do not choos
 
 When the request also needs a visual summary, pair deliberately instead of improvising:
 
-- `feishu-doc-writing` + `xiaohongshu-retro-grid-content`
-  Use for high-density infographic blocks, one-page HTML, or poster-like summary visuals.
+- `feishu-doc-writing` + `visual-agent` + `visual-knowledge-onepager`
+  Use for high-density infographic blocks, one-page HTML, long-image, or poster-like summary visuals.
 - `feishu-doc-writing` + `lark-whiteboard`
   Use for editable architecture / flow / layer diagrams that should stay native in Feishu.
 - `feishu-doc-writing` + `lark-doc` + one visual skill
@@ -277,7 +277,9 @@ When the page is an overview page, add:
 When the page needs a visual companion, load:
 
 - `references/template.md`
-- then decide whether the visual should be an infographic (`xiaohongshu-retro-grid-content`) or an editable Feishu whiteboard (`lark-whiteboard`)
+- then use `visual-agent` to decide whether the visual should be an infographic
+  or long-image (`visual-knowledge-onepager`) or an editable Feishu whiteboard
+  (`lark-whiteboard`)
 
 For deeper structure and split guidance, load:
 

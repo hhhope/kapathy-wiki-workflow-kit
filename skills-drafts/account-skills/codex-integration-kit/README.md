@@ -61,7 +61,7 @@
 - 如果同时涉及共享 Lore Wiki，保持对话式安装，不把用户打回 shell；wiki 位置要显式确认，当前环境推荐 `/mnt/d/team-lore`
 - 如果用户要产出或更新飞书分享稿、知识总览页、治理说明文档，优先使用 `skills/feishu-doc-writing/SKILL.md`
 - 如果用户还要求对真实飞书文档执行创建、读取、搜索、更新，必须同时配合 `lark-doc`；前者管内容结构，后者管 CLI 写入/读取
-- 如果文档还需要一张高信息密度总结图，优先让 `feishu-doc-writing` 决定结构，再按图的类型配 `xiaohongshu-retro-grid-content` 或 `lark-whiteboard`
+- 如果文档还需要一张高信息密度总结图，优先让 `feishu-doc-writing` 决定结构，再走 `visual-agent` 判断 SVG / H5 HTML / image model / hybrid；一图流/长图配 `visual-knowledge-onepager`，可编辑画布配 `lark-whiteboard` 或对应图形 worker
 
 ### Shell Install
 
@@ -158,7 +158,7 @@ bash codex-integration-kit/scripts/check-feishu-sync.sh --staged
 安装这个 kit 之前，先判断你是在做 `install`、`migration`、`adaptation`，还是只想拿它做治理参考：
 
 - `mirror`：内容已经适配你的本地治理，可以原样安装
-- `adapt`：核心方法可用，但命名、路径、触发条件、权限边界需要改成你的本地约束
+- `adapt`：核心方法可用，但命名、路径、适用条件、权限边界需要改成你的本地约束
 - `wrapper`：只需要其中一小段方法时，写一张更窄的本地 skill 包一层，不要把整套外部语义直接暴露出去
 - `reject`：如果和现有治理、目录结构、团队流程冲突，就不要导入
 

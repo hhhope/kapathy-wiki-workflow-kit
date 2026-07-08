@@ -1,6 +1,6 @@
 ---
 name: agent-task-collaboration
-description: agent-task 与项目放在一起（项目根下），按分支+作者在 agent-task 下建立 Role/Task、协作流程、需确认项与进度跟踪，支持目标变更即时同步、时间精确到时分秒、中断恢复。当用户提到 agent-task、协作流程、role task、进度跟踪、分支+作者归档、确认后再执行 时使用。
+description: Use when project work needs repo-local agent-task collaboration records, role/task files, confirmation-before-execution notes, progress tracking, branch-and-author archiving, goal-change synchronization, or interruption recovery.
 ---
 
 # Agent-Task 协作流程 Skill

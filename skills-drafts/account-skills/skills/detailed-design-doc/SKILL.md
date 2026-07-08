@@ -1,6 +1,6 @@
 ---
 name: detailed-design-doc
-description: 使用此 skill 生成或辅助填写软件详细设计文档（详设文档）。当用户提到"详设"、"详细设计"、"设计文档"、"需要写技术方案"、"帮我做详设"、"技术详设"、"ADR"、"架构设计文档"时触发。也适用于用户提供了需求或用户故事、涉及系统列表、约束条件等上下文并希望生成结构化技术文档的场景。触发后必须先收集必要的 context，再基于五问框架逐步引导用户完成文档。
+description: Use when creating or filling a software detailed design, technical design, ADR-like architecture decision document, or structured engineering plan from requirements, user stories, system scope, and constraints.
 ---
 
 # 详细设计文档 Skill

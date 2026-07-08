@@ -1,13 +1,13 @@
 ---
 name: svg-flow-diagram
-description: 根据时序图（Mermaid sequenceDiagram）自动生成信息流和资金流的 SVG 一图流。当用户提到"画信息流"、"画资金流"、"一图流"、"流程 SVG"、"根据时序图生成"、"信息流和资金流"、"流向图"、"把时序图变成 SVG"时立即触发。也适用于用户提供了 Mermaid 时序图并希望生成简洁可视化图表的场景，即使用户没有明确说"SVG"也应触发。生成的 SVG 风格遵循 Apple 设计语言：F2F2F7 背景、白色圆角卡片、开口箭头、PingFang SC 字体。每次生成包含信息流和资金流上下合并的单张 SVG。
+description: Use when source material describes ordered interactions, payment/clearing movement, request-response paths, Mermaid sequenceDiagram content, or information/fund flow that should become a single SVG flow diagram.
 ---
 
 # SVG 一图流 Skill
 
 ## 概述
 
-从 Mermaid 时序图中提取关键参与方和交互逻辑，生成**信息流 + 资金流**上下合并的单张 Apple 风格 SVG。
+从时序、交互、支付/清结算、请求响应、信息流或资金流材料中提取关键参与方和交互逻辑，生成**信息流 + 资金流**上下合并的单张 Apple 风格 SVG。
 
 输出固定为一张图，包含：
 - **上半部分：信息流** — 展示请求/响应的来回路径
@@ -37,18 +37,18 @@ description: 根据时序图（Mermaid sequenceDiagram）自动生成信息流�
 扫描时序图中的 `->>` 和 `-->>` 连线：
 - 实线 `->>` = 请求/正向信息流（实线箭头）
 - 虚线 `-->>` = 返回/响应（虚线箭头）
-- `alt` 块中的分支 = 条件路径（需标注触发条件）
+- `alt` 块中的分支 = 条件路径（需标注进入条件）
 
 ### 1.3 识别资金流路径
 
-根据业务语义判断资金流向（不是信息流），关键词匹配：
+根据业务语义判断资金流向（不是信息流），使用上下文语义线索：
 - `代付`、`付款`、`转账`、`打款` → 资金从支付机构流向银行（绿色粗实线）
 - `退款`、`退还`、`冲正` → 资金回流路径（橙色实线，通常经清算机构）
 - `委托`、`授权` → 非资金流转，用蓝色细虚线表示授权关系
 
 ### 1.4 识别异常/退款路径
 
-扫描 `else`、`alt 失败`、`refund`、`退款` 关键词，这些触发：
+根据异常分支、失败路径、退款语义或回退路径等结构信号判断：
 - 信息流中：橙色路径（退款代付流程）
 - 资金流中：橙色路径（资金经清算机构退回）
 

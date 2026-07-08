@@ -39,7 +39,7 @@ Without a dedicated skill, the agent can still rationalize all of these:
 2. “只改目标页就行，父页和子页之后再补”
 3. “先留 TODO，后面再继续”
 4. “事实都对，行文体验以后再优化”
-5. “先画个时序图顶一下，之后再讲体系怎么协作”
+5. The agent jumps to an ad hoc diagram before explaining how the system layers collaborate
 6. “这个信息也很重要，所以再加一节”
 
 That baseline is exactly what caused prior Feishu updates to drift away from reader-facing quality.
@@ -55,7 +55,7 @@ The new skill blocks those rationalizations by requiring:
 - no unresolved TODO in published updates
 - document-set naming consistency across overview / child docs
 - stale visual cleanup after reframing
-- explicit routing to `xiaohongshu-retro-grid-content` or `lark-whiteboard` when a visual companion is needed
+- explicit routing through `visual-agent` to `visual-knowledge-onepager` or `lark-whiteboard` when a visual companion is needed
 - dialogue-like wording to be rewritten into document language
 - table-first formatting for list-shaped comparisons, metrics, steps, and boundaries
 - post-update readback as part of the publish gate

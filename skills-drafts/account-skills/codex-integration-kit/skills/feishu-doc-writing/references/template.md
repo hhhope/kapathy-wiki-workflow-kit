@@ -115,7 +115,7 @@ Choose one:
 1. `No visual`
    Use when the text is already light and the structure is obvious.
 2. `Infographic / long-image / one-page HTML`
-   Pair with `xiaohongshu-retro-grid-content` when the content needs a condensed visual summary.
+   Pair through `visual-agent` with `visual-knowledge-onepager` when the content needs a condensed visual summary.
 3. `Editable diagram`
    Pair with `lark-whiteboard` when the content needs a layer diagram, flow diagram, or architecture map inside Feishu.
 

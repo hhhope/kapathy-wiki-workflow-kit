@@ -1,6 +1,6 @@
 ---
 name: exception-handler
-description: 生成基于 DDD + Spring Boot 3 + JDK 21 的异常处理组件代码和配置；模块结构基于当前项目，通过 QA 确认落位到现有模块与包名后再生成。当用户提到"异常处理"、"ErrorCode"、"全局异常"、"GlobalExceptionHandler"、"错误码设计"、"异常模块"、"异常转换"时触发。也适用于需要生成异常类、ErrorCode Enum、DB 配置表、MQ 消费异常处理、Dubbo 异常传递、Feign 错误解码等具体实现的场景。
+description: Use when implementing or adapting DDD Spring Boot exception handling, ErrorCode models, global exception handlers, error-code tables, MQ consumer exception handling, Dubbo exception propagation, or Feign error decoding.
 ---
 
 # 异常处理组件 Skill

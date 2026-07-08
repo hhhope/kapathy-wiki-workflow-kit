@@ -1,11 +1,12 @@
 ---
 name: exception-scanner
-description: Exception 代码审查 skill - 扫描项目中的异常代码是否符合 exception-handler 规范。扫描结果通过 cr-dated-output 模板输出。
+description: Use when scanning exception-related code for compliance with exception-handler rules, ErrorCode interfaces, DomainException factories, BC prefixes, or exception CR findings.
 ---
 
 # Exception Scanner Skill
 
-当用户提到 "exception 扫描"、"exception 问题"、"检查 exception 代码"、"exception CR" 时触发。
+Use this when the work is to review or scan exception-related code rather than
+to generate the exception framework itself.
 
 ## 执行流程
 

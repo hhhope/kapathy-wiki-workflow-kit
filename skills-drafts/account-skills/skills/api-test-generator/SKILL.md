@@ -1,6 +1,6 @@
 ---
 name: api-test-generator
-description: 根据接口文档生成测试用例代码（Request/Result DTO、Service、Test类）。触发条件：用户提到需要生成接口测试代码、添加新的API接口、或者提供接口报文编号/接口文档时使用。
+description: Use when generating API test code from interface documentation, request/result DTOs, service contracts, message numbers, or new API interface specs.
 ---
 
 # API 测试代码生成 Skill

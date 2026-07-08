@@ -78,6 +78,21 @@ taxonomy 的主线是“分类 -> 建模 -> 标准 -> 讨论 -> 复利”：分�
 
 `req-agent-kit/req-agent/README.md` 已改成中文说明，并补了 taxonomy / DDD / 支付生态解构 / 需求分析流程的 ASCII 图示，便于直接作为 kit 入口文档阅读。
 
+### CR agent kit 加硬了什么
+
+`account-cr-agent` 现在不再只输出“发现了哪些问题”，而是把 CR 范围、diff 单元、规则命中、checker 关闭状态和报告渲染分开治理。
+
+| 关注点 | 现在怎么处理 |
+|--------|--------------|
+| 覆盖账本 | `cr-agent` 为 CR 生成 `diff-units.jsonl`、`checks.jsonl`、`checker-results.jsonl`、`gate.json` 等 artifact；任何 open diff unit 或 open required check 都会 block |
+| 强触发规则 | money/state/interface/DB/security/config/concurrency 等规则由 YAML 配置驱动，repo/case 只能加严或补充，不能静默削弱全局 required check |
+| 资金单位 checker | money/unit checker 必须关闭输入单位、内部单位、输出单位、重复转换、精度/舍入和下游 consumer 证据；缺少类似 `QueryBalanceHandle` 的 consumer evidence 时直接 blocked |
+| 报告边界 | `CR/<project>/cases/<case-id>/report.md` 是 coverage artifact；正式人工 CR 报告必须走 `cr-report`，保留中文读者模板、评分卡、CR 执行审计和 coverage matrix |
+| 多轮 CR | 同 ticket / 日期重复评审时必须显式选择 `append_round`、`ticket_version` 或 `date_version`，不能静默覆盖旧结论 |
+| replay 验收 | Webank 分账通余额 100 倍事故被收成 replay：原始引入 diff 只改 service，未扩到下游 consumer 时 money checker 必须 block |
+
+这个改动解决的是“CR 看起来扫过了，但 open check 没有被证据关闭、报告也没有把未覆盖项显式打出来”的问题。以后高风险资金/状态/外部接口变更，不允许只靠自然语言结论包装成完整 CR。
+
 ### 我们一起构建了什么
 
 我们现在构建出来的不是一个单点工具，而是一套 `Account Harness`：
@@ -237,12 +252,12 @@ taxonomy 的主线是“分类 -> 建模 -> 标准 -> 讨论 -> 复利”：分�
 
 我们参考了 `skill-creator` 的写法，把 skill 做成“查表 + 错误索引”：
 
-- `description` 用三段式：触发词 + 隐含触发 + 排除条件
+- `description` 写触发场景、隐含意图和排除条件，不靠固定口语词表
 - 顶部先写 `Do Not`，拦高代价错误
 - 核心用 `Intent Routing` 查表：意图 → 产物/工具 → 必填字段/必查项
 - 再补 `Error / Risk Index`：症状 → 根因 → 修复方式
 
-当前保留的三个 skill：
+当前代表性的 governance skill：
 
 | Skill | 解决什么 |
 |-------|----------|
@@ -250,6 +265,34 @@ taxonomy 的主线是“分类 -> 建模 -> 标准 -> 讨论 -> 复利”：分�
 | `skills/jira-integration/SKILL.md` | 业务-研发对齐后，从 Jira ticket / 会议结论抽需求、验收标准、测试场景、Jira 回写评论 |
 | `skills/governance-install/SKILL.md` | 识别用户是要装到 Codex 还是 Cursor，并直接执行 dry-run / apply，而不是先让用户跳去看 shell 文档 |
 | `skills/feishu-doc-writing/SKILL.md` | 飞书分享稿、知识总览页、治理说明文档的渐进式编排、拆文和上下文联动更新 |
+
+视觉类 skill 现在按 controller + worker 的方式打包，不走 plugin 模式：
+
+| Skill | 解决什么 |
+|-------|----------|
+| `skills/visual-agent/SKILL.md` | 视觉请求统一入口；先判断 SVG / H5 HTML / image model / hybrid，不再因为用户说得口语化就默认做 H5 或 SVG |
+| `skills/knowledge-article-visual/SKILL.md` | 文章、报告、知识内容的多图/卡片/视觉资产包 |
+| `skills/infographic-onepager/SKILL.md` | 单张长图、海报、横向教学卡、图片 prompt 或可导出视觉稿 |
+| `skills/visual-knowledge-onepager/SKILL.md` | 抽象概念、治理模型、学习笔记的一图流、长图、H5 视觉页 |
+| `skills/svg-flow-diagram/SKILL.md` | 支付、清结算、账户、信息流/资金流的单张 SVG 流程图 |
+| `skills/sequence-diagram/SKILL.md` | 服务调用、接口交互、支付/补偿链路的 Mermaid 时序图 |
+| `skills/architecture-diagram/SKILL.md` | 架构、拓扑、部署、安全和组件关系图 |
+| `skills/frontend-visual-governor/SKILL.md` | 已有前端页面、看板、图表、组件和交互的视觉修复；它是 `visual-agent` 子 worker，不是视觉入口 |
+| `skills/project-weekly-report-gantt-map/SKILL.md` | 管理层周报、甘特图、能力地图、里程碑 H5/HTML 简报 |
+| `skills/lark-whiteboard/SKILL.md` | 飞书/Lark 画板图表和画布型可视化 |
+
+这组视觉 skill 的关键规则是：先识别“是否要视觉交付物”，再由 `visual-agent`
+控路由；worker 只作为子路由使用。`frontend-visual-governor` 只处理已有前端
+UI/看板/图表的视觉修复，不接管普通制图、出图、卡片、海报、信息图、image-model
+或模式选择。参考 PNG、截图、海报、封面或“做成类似图片”的请求属于 image-mode
+压力，不能因为中文文字更稳就默认改成 HTML/CSS/SVG 截图；必须先确认 SVG /
+H5 HTML / image model / hybrid。`imagegen` 是运行时系统图像工具，不是这个 repo
+里伪造出来的 worker；`public-report-quality-gate` 是宿主仓库的父门禁，只有目标
+环境提供时才保留。
+
+同时清理了包内 skill discovery 写法：顶层 `description` 不再教“当用户提到
+固定词就触发”，而是用 `Use when...` 描述意图、产物、风险和排除边界。验证记录见
+`docs/skill-discovery-routing-evaluation-20260622.md`。
 
 最近又补了一条很实用的约束：
 
@@ -683,8 +726,11 @@ CR Agent 的报告现在有两个硬边界：
 
 如果还需要图，不应临时手搓：
 
-- 高信息密度总结图 / 一图流 / 长图 HTML → 配 `xiaohongshu-retro-grid-content`
-- 可编辑的分层图 / 架构图 / 流程图 → 配 `lark-whiteboard`
+- 先走 `visual-agent` 判断 SVG / H5 HTML / image model / hybrid
+- 高信息密度总结图 / 一图流 / 长图 HTML → 子路由配 `visual-knowledge-onepager`
+- 可编辑的分层图 / 架构图 / 流程图 → 子路由配 `lark-whiteboard` 或对应图形 worker
+- 已有前端页面 / 看板 / 图表视觉修复 → 子路由配 `frontend-visual-governor`，但入口仍然是 `visual-agent`
+- 参考 PNG / 截图 / 海报 / 封面 / 类似图片 → 先确认 image model 或 hybrid，不直接改成 HTML/SVG 截图
 
 现在这张 skill 还补了一个更硬的发布门槛：
 

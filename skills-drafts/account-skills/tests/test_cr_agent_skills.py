@@ -38,6 +38,46 @@ class CRAgentSkillPackageTest(unittest.TestCase):
         ]:
             self.assertIn(marker, text)
 
+    def test_cr_agent_coverage_gate_contract_is_packaged(self):
+        cr_agent = read_skill("cr-agent")
+        cr_report = read_skill("cr-report")
+        cr_gate = read_skill("cr-gate")
+        for marker in [
+            "Coverage gate is mandatory",
+            "diff-units.jsonl",
+            "checker-results.jsonl",
+            "Do not claim CR coverage from prose",
+        ]:
+            self.assertIn(marker, cr_agent)
+        for marker in [
+            "case coverage artifact",
+            "formal human CR report",
+            "coverage matrix by rule",
+            "append a new review round",
+            "ticket_version",
+            "date_version",
+        ]:
+            self.assertIn(marker, cr_report)
+        for marker in [
+            "open diff unit",
+            "open required check",
+            "blocked checker result",
+            "invalid N/A",
+            "stale checker result",
+        ]:
+            self.assertIn(marker, cr_gate)
+        for relative in [
+            "rules/global.yaml",
+            "rules/rule-schema.json",
+            "scripts/coverage_gate.py",
+            "scripts/coverage_results.py",
+            "scripts/coverage_model.py",
+            "tests/test_coverage_results.py",
+            "replay/webank-split-balance-unit.json",
+            "replay/known-good-empty-range.json",
+        ]:
+            self.assertTrue((SKILLS / "cr-agent" / relative).exists(), relative)
+
     def test_worker_skill_package_exists(self):
         for name in [
             "cr-intake",
@@ -121,8 +161,10 @@ class CRAgentSkillPackageTest(unittest.TestCase):
             "复杂度 / 重复 / 死代码 / 耦合",
             "技术审查结果",
             "TODO 跟踪",
-            "same project/date report already exists",
-            "overwrite or update that same",
+            "same ticket and same release range",
+            "append a new review round",
+            "ticket_version",
+            "date_version",
             "idempotent by TODO-ID",
         ]:
             self.assertIn(marker, text)
@@ -182,7 +224,7 @@ class CRAgentSkillPackageTest(unittest.TestCase):
             proc = subprocess.run(["python3", str(script), str(fixture)], text=True, capture_output=True)
         self.assertEqual(proc.returncode, 1, proc.stderr + proc.stdout)
         self.assertIn("triggered_workers must be a non-empty list", proc.stderr)
-        self.assertIn("expected_issues must be a non-empty list", proc.stderr)
+        self.assertIn("expected_issues must be non-empty unless expected_gate is allow", proc.stderr)
 
     def test_cr_replay_reports_missing_fixture_without_traceback(self):
         import subprocess

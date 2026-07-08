@@ -1,6 +1,6 @@
 ---
 name: api-inventory
-description: 对指定接口/方法做资产梳理：厘清调用链、对外服务、数据库对象、内部对象、技术依赖（幂等/Redis锁/Apollo/缓存）、校验规则、远程调用。当用户提到「接口梳理」「迁移梳理」「校验与远程调用」「对外服务」「数据库对象」「内部对象」「调用流程」「幂等」「Redis锁」或「按方法梳理」时使用。
+description: Use when inventorying a specific API or service method for migration, refactor, domain split, or review, including call chains, external services, database objects, internal objects, idempotency, Redis locks, Apollo/cache dependencies, validations, and remote calls.
 ---
 
 # 接口资产梳理 Skill

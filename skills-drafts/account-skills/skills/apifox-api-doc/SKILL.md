@@ -1,6 +1,6 @@
 ---
 name: apifox-api-doc
-description: 生成可导入 Apifox 的接口文档，严格区分 HTTP（OpenAPI 3）与 Dubbo 两种模式。当用户提到 Apifox、接口文档、OpenAPI、Dubbo 接口、API 文档导入、生成接口定义时使用。触发后必须先询问协议模式并收集项目约定（baseUrl、包名、类名等），禁止在未确认模式前生成文档或混用格式。
+description: Use when producing Apifox-importable API documentation, OpenAPI 3 HTTP specs, Dubbo API docs, API import assets, or interface definitions that must keep HTTP and Dubbo modes separate.
 ---
 
 # Apifox 接口文档生成 Skill

@@ -1,6 +1,6 @@
 ---
 name: sequence-diagram
-description: 生成高质量的 Mermaid 时序图，适用于详细设计文档中的流程描述。当用户提到"时序图"、"流程图"、"调用关系"、"接口交互"、"sequenceDiagram"、"画个时序图"、"帮我生成时序图"、"设计文档"、"系统交互流程"等场景时，必须触发本 Skill。也适用于用户描述服务间调用链路、支付流程、异常补偿、新增功能标注等场景，即使用户没有明确说"时序图"，只要涉及多个系统/服务之间的交互顺序，都应主动触发本 Skill 生成时序图。
+description: Use when source material describes ordered service, system, interface, payment, compensation, or request-response interactions that should become a Mermaid sequence diagram.
 ---
 
 # 时序图生成 Skill
@@ -38,7 +38,7 @@ description: 生成高质量的 Mermaid 时序图，适用于详细设计文档�
 
 #### 场景识别规则
 
-| 场景关键词 | 识别场景 | 必须澄清的问题 |
+| 场景线索 | 识别场景 | 必须澄清的问题 |
 |-----------|---------|--------------|
 | 支付、代付、出款、转账、收款 | **资金流转场景** | 见下方《资金流转澄清清单》 |
 | 账户、余额、扣款、充值、核销 | **账务处理场景** | 见下方《账务处理澄清清单》 |

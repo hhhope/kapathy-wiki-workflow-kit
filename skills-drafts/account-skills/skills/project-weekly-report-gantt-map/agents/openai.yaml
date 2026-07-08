@@ -1,0 +1,7 @@
+interface:
+  display_name: "Project Weekly Report"
+  short_description: "Gantt, capability map, milestones, and tech construction"
+  default_prompt: "Use $project-weekly-report-gantt-map to turn the latest schedule, MVP milestones, capability map, and technical construction updates into a single-file HTML H5 weekly report, and first ask whether the final output should be in Chinese or English."
+
+policy:
+  allow_implicit_invocation: true
