@@ -134,6 +134,53 @@ class RdDigitalEmployeeH5VerifierTest(unittest.TestCase):
         self.assertEqual(1, result, output)
         self.assertIn("FAIL: missing local resource: assets/missing.png", output)
 
+    def test_root_absolute_loading_resource_is_rejected(self) -> None:
+        result, output = self._run_fixture(
+            '<video src="/Windows/win.ini"></video>'
+        )
+
+        self.assertEqual(1, result, output)
+        self.assertIn("FAIL: unsupported loading resource: /Windows/win.ini", output)
+
+    def test_unc_loading_resource_is_rejected(self) -> None:
+        result, output = self._run_fixture(
+            r'<video src="\\server\share\asset.png"></video>'
+        )
+
+        self.assertEqual(1, result, output)
+        self.assertIn(
+            r"FAIL: unsupported loading resource: \\server\share\asset.png", output
+        )
+
+    def test_file_scheme_loading_resource_is_rejected(self) -> None:
+        result, output = self._run_fixture(
+            '<video src="file:///C:/Windows/win.ini"></video>'
+        )
+
+        self.assertEqual(1, result, output)
+        self.assertIn(
+            "FAIL: unsupported loading resource: file:///C:/Windows/win.ini", output
+        )
+
+    def test_windows_drive_loading_resource_is_rejected(self) -> None:
+        result, output = self._run_fixture(
+            r'<video src="C:\Windows\win.ini"></video>'
+        )
+
+        self.assertEqual(1, result, output)
+        self.assertIn(
+            r"FAIL: unsupported loading resource: C:\Windows\win.ini", output
+        )
+
+    def test_blob_and_same_document_fragment_resources_are_allowed(self) -> None:
+        result, output = self._run_fixture(
+            '<video src="blob:https://example.invalid/runtime-id"></video>'
+            '<svg><use href="#local-symbol"></use></svg>'
+        )
+
+        self.assertEqual(0, result, output)
+        self.assertIn("PASS: rd-digital-employee-profile-v1-h5", output)
+
     def test_ordinary_link_does_not_count_as_a_resource_dependency(self) -> None:
         result, output = self._run_fixture(
             '<a href="https://example.com/reference">reference</a>'

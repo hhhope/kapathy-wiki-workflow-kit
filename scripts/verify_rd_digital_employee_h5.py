@@ -41,6 +41,7 @@ RESOURCE_ATTRIBUTES = {
 RESOURCE_LINK_RELS = {"icon", "manifest", "mask-icon", "modulepreload", "preload", "stylesheet"}
 CSS_URL_PATTERN = re.compile(r"url\(\s*(['\"]?)(.*?)\1\s*\)", re.IGNORECASE)
 CSS_IMPORT_PATTERN = re.compile(r"@import\s+(['\"])(.*?)\1", re.IGNORECASE)
+INLINE_RESOURCE_SCHEMES = {"blob", "data"}
 
 
 class H5Parser(HTMLParser):
@@ -111,6 +112,18 @@ def is_external_http_resource(resource: str) -> bool:
     return normalized.startswith("//") or urlparse(normalized).scheme.lower() in {"http", "https"}
 
 
+def is_inline_resource(resource: str) -> bool:
+    """Return whether a loading URL is an explicitly allowed inline resource."""
+
+    parsed = urlparse(resource.strip())
+    return parsed.scheme.lower() in INLINE_RESOURCE_SCHEMES or (
+        not parsed.scheme
+        and not parsed.netloc
+        and not parsed.path
+        and bool(parsed.fragment)
+    )
+
+
 def srcset_urls(srcset: str) -> list[str]:
     """Extract image candidate URLs without treating data-URL commas as separators."""
 
@@ -175,13 +188,16 @@ def validate_resource(
     if is_external_http_resource(resource):
         failures.append(f"external resource dependency: {resource}")
         return None
-    if not is_local_relative(resource):
+    if is_inline_resource(resource):
         return None
-    try:
-        return resolve_local_resource(base, report_root, resource)
-    except LocalResourceError as error:
-        failures.append(str(error))
-        return None
+    if is_local_relative(resource):
+        try:
+            return resolve_local_resource(base, report_root, resource)
+        except LocalResourceError as error:
+            failures.append(str(error))
+            return None
+    failures.append(f"unsupported loading resource: {resource}")
+    return None
 
 
 def main() -> int:
@@ -209,17 +225,10 @@ def main() -> int:
 
     if not parser.images:
         failures.append("missing infographic image")
-    else:
-        for image in parser.images:
-            if not is_local_relative(image):
-                failures.append(f"infographic image is not local relative: {image}")
 
     for label, resources in (("CSS", parser.stylesheets), ("JS", parser.scripts)):
         if not resources:
             failures.append(f"missing local {label}")
-        for resource in resources:
-            if not is_local_relative(resource):
-                failures.append(f"{label} is not local relative: {resource}")
 
     report_root = HTML_PATH.parent
     resolved_resources: dict[str, Path] = {}
