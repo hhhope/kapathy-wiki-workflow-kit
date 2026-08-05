@@ -4,7 +4,8 @@ from __future__ import annotations
 
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlparse
+import re
+from urllib.parse import unquote, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,9 +35,11 @@ RESOURCE_ATTRIBUTES = {
     "source": ("src",),
     "track": ("src",),
     "use": ("href", "xlink:href"),
-    "video": ("src",),
+    "video": ("src", "poster"),
 }
 RESOURCE_LINK_RELS = {"icon", "manifest", "mask-icon", "modulepreload", "preload", "stylesheet"}
+CSS_URL_PATTERN = re.compile(r"url\(\s*(['\"]?)(.*?)\1\s*\)", re.IGNORECASE)
+CSS_IMPORT_PATTERN = re.compile(r"@import\s+(['\"])(.*?)\1", re.IGNORECASE)
 
 
 class H5Parser(HTMLParser):
@@ -51,10 +54,14 @@ class H5Parser(HTMLParser):
         self.scripts: list[str] = []
         self.images: list[str] = []
         self.resource_urls: list[str] = []
+        self.inline_styles: list[str] = []
+        self._in_style_tag = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         self.tags.add(tag)
         attributes = dict(attrs)
+        if attributes.get("style"):
+            self.inline_styles.append(attributes["style"])
         if "data-chapter" in attributes:
             self.chapters.append(attributes["data-chapter"])
         if "data-content-page" in attributes:
@@ -70,10 +77,22 @@ class H5Parser(HTMLParser):
             for attribute in RESOURCE_ATTRIBUTES.get(tag, ()):
                 if attributes.get(attribute):
                     self.resource_urls.append(attributes[attribute])
+            if tag in {"img", "source"} and attributes.get("srcset"):
+                self.resource_urls.extend(srcset_urls(attributes["srcset"]))
         if tag == "script" and attributes.get("src"):
             self.scripts.append(attributes["src"])
         if tag == "img" and attributes.get("src"):
             self.images.append(attributes["src"])
+        if tag == "style":
+            self._in_style_tag = True
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "style":
+            self._in_style_tag = False
+
+    def handle_data(self, data: str) -> None:
+        if self._in_style_tag:
+            self.inline_styles.append(data)
 
 
 def is_local_relative(resource: str) -> bool:
@@ -88,6 +107,40 @@ def is_external_http_resource(resource: str) -> bool:
 
     normalized = resource.strip()
     return normalized.startswith("//") or urlparse(normalized).scheme.lower() in {"http", "https"}
+
+
+def srcset_urls(srcset: str) -> list[str]:
+    """Extract image candidate URLs without treating data-URL commas as separators."""
+
+    urls: list[str] = []
+    position = 0
+    while position < len(srcset):
+        while position < len(srcset) and srcset[position] in " ,\t\n\r\f":
+            position += 1
+        start = position
+        while position < len(srcset) and not srcset[position].isspace():
+            position += 1
+        if start < position:
+            urls.append(srcset[start:position].rstrip(","))
+        while position < len(srcset) and srcset[position] != ",":
+            position += 1
+        if position < len(srcset):
+            position += 1
+    return urls
+
+
+def css_urls(css: str) -> list[str]:
+    """Return URLs used by CSS url() and quoted @import rules."""
+
+    urls = [match.group(2).strip() for match in CSS_URL_PATTERN.finditer(css)]
+    urls.extend(match.group(2).strip() for match in CSS_IMPORT_PATTERN.finditer(css))
+    return urls
+
+
+def local_path(base: Path, resource: str) -> Path:
+    """Resolve a local relative URL's filesystem path, ignoring query and fragment."""
+
+    return base / unquote(urlparse(resource).path)
 
 
 def main() -> int:
@@ -132,6 +185,20 @@ def main() -> int:
     for resource in parser.resource_urls:
         if is_external_http_resource(resource):
             failures.append(f"external resource dependency: {resource}")
+    for css in parser.inline_styles:
+        for resource in css_urls(css):
+            if is_external_http_resource(resource):
+                failures.append(f"external resource dependency: {resource}")
+    for stylesheet in parser.stylesheets:
+        if not is_local_relative(stylesheet):
+            continue
+        stylesheet_path = local_path(HTML_PATH.parent, stylesheet)
+        if not stylesheet_path.is_file():
+            failures.append(f"missing local CSS file: {stylesheet}")
+            continue
+        for resource in css_urls(stylesheet_path.read_text(encoding="utf-8")):
+            if is_external_http_resource(resource):
+                failures.append(f"external resource dependency: {resource}")
     for phrase in REQUIRED_PHRASES:
         if phrase not in html:
             failures.append(f"missing required phrase: {phrase}")
