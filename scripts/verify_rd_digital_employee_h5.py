@@ -23,6 +23,20 @@ REQUIRED_PHRASES = (
     "如何考核",
     "数字员工的一天",
 )
+RESOURCE_ATTRIBUTES = {
+    "audio": ("src",),
+    "embed": ("src",),
+    "iframe": ("src",),
+    "img": ("src",),
+    "image": ("href", "xlink:href"),
+    "object": ("data",),
+    "script": ("src",),
+    "source": ("src",),
+    "track": ("src",),
+    "use": ("href", "xlink:href"),
+    "video": ("src",),
+}
+RESOURCE_LINK_RELS = {"icon", "manifest", "mask-icon", "modulepreload", "preload", "stylesheet"}
 
 
 class H5Parser(HTMLParser):
@@ -36,6 +50,7 @@ class H5Parser(HTMLParser):
         self.stylesheets: list[str] = []
         self.scripts: list[str] = []
         self.images: list[str] = []
+        self.resource_urls: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         self.tags.add(tag)
@@ -47,6 +62,14 @@ class H5Parser(HTMLParser):
         if tag == "link" and "stylesheet" in (attributes.get("rel") or "").lower():
             if attributes.get("href"):
                 self.stylesheets.append(attributes["href"])
+        if tag == "link":
+            rels = set((attributes.get("rel") or "").lower().split())
+            if attributes.get("href") and rels & RESOURCE_LINK_RELS:
+                self.resource_urls.append(attributes["href"])
+        else:
+            for attribute in RESOURCE_ATTRIBUTES.get(tag, ()):
+                if attributes.get(attribute):
+                    self.resource_urls.append(attributes[attribute])
         if tag == "script" and attributes.get("src"):
             self.scripts.append(attributes["src"])
         if tag == "img" and attributes.get("src"):
@@ -58,6 +81,13 @@ def is_local_relative(resource: str) -> bool:
 
     parsed = urlparse(resource)
     return not parsed.scheme and not parsed.netloc and not resource.startswith(("/", "\\"))
+
+
+def is_external_http_resource(resource: str) -> bool:
+    """Return whether a resource uses HTTP(S), including protocol-relative URLs."""
+
+    normalized = resource.strip()
+    return normalized.startswith("//") or urlparse(normalized).scheme.lower() in {"http", "https"}
 
 
 def main() -> int:
@@ -99,8 +129,9 @@ def main() -> int:
             if not is_local_relative(resource):
                 failures.append(f"{label} is not local relative: {resource}")
 
-    if "http://" in html.lower() or "https://" in html.lower():
-        failures.append("external http(s) resource dependency")
+    for resource in parser.resource_urls:
+        if is_external_http_resource(resource):
+            failures.append(f"external resource dependency: {resource}")
     for phrase in REQUIRED_PHRASES:
         if phrase not in html:
             failures.append(f"missing required phrase: {phrase}")
