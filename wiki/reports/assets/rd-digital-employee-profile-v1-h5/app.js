@@ -114,6 +114,7 @@ function initSelectablePanel(triggerSelector, triggerAttribute, panelSelector, p
   if (tablist && triggers.every((trigger) => tablist.contains(trigger))) {
     tablist.setAttribute("role", "tablist");
     tablist.setAttribute("aria-orientation", "horizontal");
+    tablist.removeAttribute("tabindex");
   }
 
   const activate = (activeKey, focus = false) => {
@@ -187,8 +188,10 @@ function initLightbox() {
   if (!dialog || !triggers.length || !closeButton) return;
 
   let lastTrigger = null;
+  let fallbackOpen = false;
 
   const finishClose = () => {
+    fallbackOpen = false;
     dialog.hidden = true;
     dialog.removeAttribute("open");
     if (lastTrigger?.isConnected) lastTrigger.focus();
@@ -211,6 +214,7 @@ function initLightbox() {
       if (typeof dialog.showModal === "function") {
         if (!dialog.open) dialog.showModal();
       } else {
+        fallbackOpen = true;
         dialog.setAttribute("open", "");
       }
       closeButton.focus();
@@ -228,6 +232,11 @@ function initLightbox() {
   dialog.addEventListener("close", finishClose);
   dialog.addEventListener("click", (event) => {
     if (event.target === dialog) closeDialog();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !fallbackOpen || dialog.hidden) return;
+    event.preventDefault();
+    closeDialog();
   });
 }
 
