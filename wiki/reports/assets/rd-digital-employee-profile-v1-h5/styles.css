@@ -116,6 +116,11 @@ main > [data-chapter] { padding: 0 0 40px; border-top: 4px solid var(--ink); }
 .concept-axis li::before { content: "0" counter(concept); position: absolute; top: 18px; color: var(--blue); font-size: 12px; font-weight: 750; }
 .concept-axis li:not(:last-child)::after { content: "→"; position: absolute; z-index: 2; right: -12px; top: 71px; width: 24px; color: var(--blue); background: var(--paper); text-align: center; }
 .concept-axis strong { margin-bottom: 12px; font-size: 19px; }
+.workflow-agent-contrast__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.workflow-agent-contrast article { padding: 24px; border: 1px solid var(--line); border-top: 4px solid #94a6ba; }
+.workflow-agent-contrast article:last-child { border-top-color: var(--blue); background: var(--blue-soft); }
+.workflow-agent-contrast h5 { margin-bottom: 12px; }
+.workflow-agent-contrast p { margin-bottom: 0; color: #4d586d; }
 .composition-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: 0 0 22px; padding: 1px; background: var(--line); list-style: none; }
 .composition-grid li { min-height: 142px; padding: 20px; background: var(--paper); }
 .composition-grid strong { display: block; margin-bottom: 8px; font-size: 14px; }
@@ -264,6 +269,7 @@ dialog img { margin: 0 auto; }
   .hero { min-height: auto; padding-block: 112px 80px; }
   .chapter-heading { grid-template-columns: 1fr; gap: 20px; }
   .onepager-frame figcaption, .use-and-evaluation { grid-template-columns: 1fr; }
+  .workflow-agent-contrast__grid { grid-template-columns: 1fr; }
   .composition-grid { grid-template-columns: repeat(2, 1fr); }
   .distinction-cards, .behavior-profile ul { grid-template-columns: 1fr; }
   .identity-card dl { grid-template-columns: 1fr; }

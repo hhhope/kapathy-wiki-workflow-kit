@@ -13,6 +13,7 @@ HTML_PATH = ROOT / "wiki/reports/rd-digital-employee-profile-v1-h5.html"
 EXPECTED_PAGE_IDS = {f"page-{number:02d}" for number in range(1, 7)}
 REQUIRED_PHRASES = (
     "Agent 是什么",
+    "固定工作流",
     "研发 Agent",
     "Orchestration",
     "SOP",
