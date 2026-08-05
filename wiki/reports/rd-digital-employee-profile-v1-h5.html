@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="研发数字员工画像 V1.0：从 Agent、研发 Agent 到岗位化数字工作单元的两章六页研究型 H5。" />
+  <title>研发数字员工画像 V1.0</title>
+  <link rel="stylesheet" href="assets/rd-digital-employee-profile-v1-h5/styles.css" />
+  <script src="assets/rd-digital-employee-profile-v1-h5/app.js" defer></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true">
+    <span class="reading-progress__bar" data-reading-progress></span>
+  </div>
+
+  <header class="hero" id="top">
+    <h1>研发数字员工画像 V1.0</h1>
+    <p class="hero__conclusion">不是“会写代码的 Agent”，而是具有岗位契约、可靠交付链与工程治理的 Agent 工作系统。</p>
+    <ul class="hero__keywords" aria-label="三个关键词">
+      <li>可交付</li>
+      <li>可治理</li>
+      <li>可进化</li>
+    </ul>
+    <div class="hero__actions" aria-label="阅读入口">
+      <a href="#chapter-1">开始阅读</a>
+      <a href="#overview">查看整体一图流</a>
+    </div>
+  </header>
+
+  <nav class="chapter-nav" aria-label="主导航">
+    <a href="#chapter-1" data-chapter-link="chapter-1">从 Agent 到研发数字员工</a>
+    <a href="#chapter-2" data-chapter-link="chapter-2">画像、使用与评价</a>
+  </nav>
+
+  <main>
+    <section class="overview" id="overview" aria-labelledby="overview-title">
+      <header class="section-heading">
+        <p>整体概览</p>
+        <h2 id="overview-title">先看全局地图，再进入分章解释</h2>
+      </header>
+      <figure class="onepager-frame">
+        <img
+          src="assets/rd-digital-employee-profile-v1/rd-digital-employee-profile-v1-onepager.png"
+          alt="研发数字员工画像 V1.0 整体一图流：从 Agent 与研发 Agent 的能力系统出发，经过岗位契约、九项必要条件、十维能力、A0 到 A4 自治等级、人机 Gate、适用场景和指标体系，形成可交付、可治理、可进化的研发数字员工。"
+          data-onepager-image
+        />
+        <figcaption>
+          <p>图片加载失败时仍可阅读本摘要：研发数字员工以带验收条件的工作单为基本单元，由岗位责任、Agent 能力与工程治理共同构成；V1.0 聚焦 A2–A3，并在人类 Gate 下形成可验证、可审查、可追溯的候选变更。</p>
+          <button type="button" data-lightbox-open aria-controls="onepager-lightbox">放大查看一图流</button>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="chapter-1" data-chapter="chapter-1" aria-labelledby="chapter-1-title">
+      <header class="chapter-heading">
+        <p>第一章</p>
+        <h2 id="chapter-1-title">从 Agent 到研发数字员工</h2>
+        <p>先厘清能力系统、市场覆盖与人机边界，再讨论一个 Agent 如何获得岗位责任。</p>
+      </header>
+
+      <ol class="page-progress" aria-label="第一章内容进度">
+        <li><a href="#page-01">01 Agent 与研发 Agent</a></li>
+        <li><a href="#page-02">02 同业与人机分工</a></li>
+        <li><a href="#page-03">03 定位与必要条件</a></li>
+      </ol>
+
+      <section id="page-01" data-content-page="01" aria-labelledby="page-01-title">
+        <header class="page-heading">
+          <p>内容页 01</p>
+          <h3 id="page-01-title">Agent 是什么：组成、运行闭环与研发 Agent</h3>
+          <p>Agent 是有目标、有状态、有行动能力，并能根据观察结果验证、纠正或升级的受约束执行体；研发 Agent 则把这种能力嵌入研发交付链。</p>
+        </header>
+
+        <div class="horizontal-diagram" tabindex="0" role="group" aria-label="从大模型到研发数字员工的概念递进轴，可横向滚动">
+          <ol class="concept-axis">
+            <li><strong>大模型</strong><span>提供推理与生成能力</span></li>
+            <li><strong>Agent</strong><span>围绕目标观察、行动与纠正</span></li>
+            <li><strong>研发 Agent</strong><span>处理有验收条件的研发变更</span></li>
+            <li><strong>研发数字员工</strong><span>获得岗位契约、权限、考核与责任链</span></li>
+          </ol>
+        </div>
+
+        <section class="agent-composition" aria-labelledby="composition-title">
+          <h4 id="composition-title">Agent 的八类组成</h4>
+          <ul class="composition-grid">
+            <li><strong>Model</strong><span>推理、生成与理解能力</span></li>
+            <li><strong>Identity / Context / Memory</strong><span>角色、当前环境与持续状态</span></li>
+            <li><strong>Tools / MCP</strong><span>连接并操作外部系统</span></li>
+            <li><strong>Skill / SOP</strong><span>复用知识与标准做法</span></li>
+            <li><strong>Orchestration</strong><span>动态编排角色、顺序与工具</span></li>
+            <li><strong>Gate / Permission</strong><span>限制动作并保留人工放行</span></li>
+            <li><strong>Recovery</strong><span>检查点、重试、回退与升级</span></li>
+            <li><strong>Evaluation / Evolution</strong><span>用证据评测并改进</span></li>
+          </ul>
+          <p><strong>研发 Agent：</strong>嵌入研发链路、以“有验收条件的变更”为工作对象的专业 Agent；代码生成只是其中一个节点。</p>
+        </section>
+
+        <section class="runtime-loop" aria-labelledby="runtime-loop-title">
+          <h4 id="runtime-loop-title">运行闭环</h4>
+          <div class="horizontal-diagram" tabindex="0" role="group" aria-label="Agent 运行闭环，可横向滚动">
+            <ol>
+              <li>目标</li>
+              <li>理解上下文</li>
+              <li>制定计划</li>
+              <li>调用工具</li>
+              <li>验证结果</li>
+              <li>继续 / 纠正 / 升级</li>
+            </ol>
+          </div>
+          <p class="key-judgment"><strong>Model 决定能力上限，Harness 决定可交付下限。</strong></p>
+        </section>
+
+        <section class="distinction-cards" aria-labelledby="distinction-title">
+          <h4 id="distinction-title">SOP、Orchestration 与状态机如何协作</h4>
+          <article>
+            <h5>SOP</h5>
+            <p>规定在一类常见情形下通常应该怎么做，稳定输入、步骤、产物和质量要求。</p>
+          </article>
+          <article>
+            <h5>Orchestration</h5>
+            <p>根据当前任务动态决定由谁、按什么顺序、调用什么工具，并在观察结果后继续、纠正或升级。</p>
+          </article>
+          <article>
+            <h5>状态机</h5>
+            <p>承载状态与跳转规则，是 Orchestration 的一种实现机制，而不是 Orchestration 本身。</p>
+          </article>
+        </section>
+      </section>
+
+      <section id="page-02" data-content-page="02" aria-labelledby="page-02-title">
+        <header class="page-heading">
+          <p>内容页 02</p>
+          <h3 id="page-02-title">同业现状与人机分工</h3>
+          <p>市场上的研发 Agent 已从编码辅助延伸到任务执行、全流程协同和企业治理，但其公开能力不等于组织授权，也不等于无需人审。</p>
+        </header>
+
+        <figure class="peer-landscape" aria-labelledby="peer-landscape-title">
+          <figcaption id="peer-landscape-title">同业覆盖范围图：按公开资料可确认的研发链路覆盖形态归类，不代表产品成熟度或 A0–A4 自治等级。</figcaption>
+          <div class="horizontal-diagram" tabindex="0" role="group" aria-label="四类研发 Agent 同业覆盖范围，可横向滚动">
+            <ol class="coverage-axis">
+              <li>
+                <strong>编码辅助型</strong>
+                <p><a href="https://docs.github.com/en/copilot/concepts/chat">GitHub Copilot Chat</a></p>
+                <p>在对话式编码环境中提供代码建议、代码解释、单元测试生成与缺陷修复建议。</p>
+                <small>边界：不能据此称其可以独立完成整个研发交付或替代评审。</small>
+              </li>
+              <li>
+                <strong>任务执行型</strong>
+                <p><a href="https://openai.com/index/introducing-codex/">OpenAI Codex</a>；<a href="https://jules.google/docs/">Google Jules</a></p>
+                <p>在隔离环境或虚拟机中围绕代码库执行有界任务：读取上下文、修改文件，并形成待审查的候选变更。</p>
+                <small>边界：不能据此称其可以自动合并、自动生产发布，或对业务目标与风险负责。</small>
+              </li>
+              <li>
+                <strong>全流程协同型</strong>
+                <p><a href="https://docs.gitlab.com/user/duo_agent_platform/">GitLab Duo Agent Platform</a></p>
+                <p>将多个专长 Agent 嵌入研发生命周期，并连接 Issue、合并请求、提交和 CI/CD 上下文以支持异步协同。</p>
+                <small>边界：“贯穿生命周期”不等于每个阶段均无需人审，也不等于默认获得部署或生产操作权限。</small>
+              </li>
+              <li>
+                <strong>企业研发平台型</strong>
+                <p><a href="https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/code-reviews.html">Amazon Q Developer</a></p>
+                <p>在企业 IAM 权限管理约束下提供研发辅助与代码审查，可检查安全、质量、IaC、部署风险和依赖项。</p>
+                <small>边界：不能据此称其已具备组织级多 Agent 编排、全流程自动交付或自动放行生产。</small>
+              </li>
+            </ol>
+          </div>
+          <p class="source-note">官方能力核验日期：2026-08-05。产品名称链接到厂商官方文档；分类仅用于说明覆盖形态。</p>
+        </figure>
+
+        <section class="human-loop" aria-labelledby="human-loop-title">
+          <h4 id="human-loop-title">Human on the Loop：Agent 执行，人类掌舵</h4>
+          <div class="horizontal-diagram" tabindex="0" role="group" aria-label="Human on the Loop 双泳道，可横向滚动">
+            <div class="swimlane">
+              <h5>Agent 主导</h5>
+              <p>上下文检索 → 候选方案 → 标准实现 → 自动测试 → 证据整理 → 状态同步 → 可恢复重试</p>
+            </div>
+            <div class="shared-gates">
+              <h5>共同 Gate</h5>
+              <p>需求定稿 · 高风险变更 · 发布放行 · 质量阻断 · 事故复盘</p>
+            </div>
+            <div class="swimlane">
+              <h5>人类主导</h5>
+              <p>业务目标 → 优先级 → 模糊需求取舍 → 跨团队承诺 → 架构例外 → 生产风险接受 → 人员决策</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="page-03" data-content-page="03" aria-labelledby="page-03-title">
+        <header class="page-heading">
+          <p>内容页 03</p>
+          <h3 id="page-03-title">研发数字员工的定位与必要条件</h3>
+          <p><strong>Agent 是能力系统，研发数字员工是被组织赋予岗位契约、权限、考核和责任链的数字工作单元。</strong></p>
+        </header>
+
+        <div class="horizontal-diagram" tabindex="0" role="group" aria-label="研发数字员工定位成熟度轴，可横向滚动">
+          <ol class="maturity-axis">
+            <li><strong>工具</strong><span>被动执行单点操作</span></li>
+            <li><strong>助手</strong><span>提供信息与建议</span></li>
+            <li><strong>Agent</strong><span>围绕目标自主循环</span></li>
+            <li><strong>研发 Agent</strong><span>承担专业研发任务</span></li>
+            <li><strong>研发数字员工</strong><span>进入岗位、治理与责任体系</span></li>
+          </ol>
+        </div>
+
+        <section class="condition-strip" aria-labelledby="condition-title">
+          <h4 id="condition-title">成为研发数字员工的九项必要条件</h4>
+          <ol>
+            <li><strong>稳定岗位使命</strong><span>不是任意聊天入口。</span></li>
+            <li><strong>可接收的工作单与准入条件</strong><span>输入有边界，开始前可判断。</span></li>
+            <li><strong>职责、拒绝范围和升级条件</strong><span>知道什么时候不做、停下或交给人。</span></li>
+            <li><strong>企业上下文、岗位知识和持续状态</strong><span>连续工作但不过度采集。</span></li>
+            <li><strong>最小化工具与权限</strong><span>只获得完成当前工作所需的能力。</span></li>
+            <li><strong>SOP、产物契约和质量标准</strong><span>过程可复用，结果可验收。</span></li>
+            <li><strong>KPI / SLA</strong><span>考核交付结果与服务表现。</span></li>
+            <li><strong>人类主管、关键 Gate 和事故路径</strong><span>高风险判断由人承担。</span></li>
+            <li><strong>审计、成本、反馈和迭代机制</strong><span>让工作可追溯、可复盘、可改进。</span></li>
+          </ol>
+        </section>
+      </section>
+    </section>
+
+    <section id="chapter-2" data-chapter="chapter-2" aria-labelledby="chapter-2-title">
+      <header class="chapter-heading">
+        <p>第二章</p>
+        <h2 id="chapter-2-title">画像、使用与评价</h2>
+        <p>把岗位定义落到身份、行为、能力、自治等级、适用任务、考核方式与一天的交付轨迹。</p>
+      </header>
+
+      <ol class="page-progress" aria-label="第二章内容进度">
+        <li><a href="#page-04">04 画像与定级</a></li>
+        <li><a href="#page-05">05 使用与考核</a></li>
+        <li><a href="#page-06">06 数字员工的一天</a></li>
+      </ol>
+
+      <section id="page-04" data-content-page="04" aria-labelledby="page-04-title">
+        <header class="page-heading">
+          <p>内容页 04</p>
+          <h3 id="page-04-title">完整员工画像与定级</h3>
+          <p>定级依据是可承担的责任与所需的人类 Gate，而不是模型版本或拟人程度。</p>
+        </header>
+
+        <section class="identity-card" aria-labelledby="identity-title">
+          <h4 id="identity-title">身份卡</h4>
+          <dl>
+            <div><dt>名称</dt><dd>研发交付数字员工（R&amp;D Delivery Digital Employee）</dd></div>
+            <div><dt>岗位使命</dt><dd>把已准入的研发需求转化为可验证、可审查、可发布、可追溯的变更</dd></div>
+            <div><dt>服务对象</dt><dd>产品经理、研发人员、测试 / 质量、平台与运维、研发管理者</dd></div>
+            <div><dt>基本工作单元</dt><dd>带验收条件和风险等级的 Issue / Change Request</dd></div>
+            <div><dt>默认自治等级</dt><dd>A2–A3：可在隔离环境执行，在边界内连续交付，关键 Gate 由人放行</dd></div>
+            <div><dt>责任主体</dt><dd>指定的人类岗位 Owner；数字员工保留全量执行证据但不承担法律 / 组织责任</dd></div>
+            <div><dt>成功标准</dt><dd>被接受的变更结果，而不是代码行数、对话轮次或任务“自报完成”</dd></div>
+          </dl>
+        </section>
+
+        <section class="behavior-profile" aria-labelledby="behavior-title">
+          <h4 id="behavior-title">七项行为特征</h4>
+          <ul>
+            <li><strong>证据优先</strong><span>先读现状，以测试、日志、差异和可复现结果说话。</span></li>
+            <li><strong>边界清晰</strong><span>明确能做、不能做与何时升级。</span></li>
+            <li><strong>交付闭环</strong><span>追踪到验收结果，不停在建议或代码生成。</span></li>
+            <li><strong>克制变更</strong><span>优先最小可行修改，不把窄任务扩成重构。</span></li>
+            <li><strong>可恢复</strong><span>保存状态、中间产物和失败原因。</span></li>
+            <li><strong>可协作</strong><span>用结构化产物交接，保留分歧、未决项和责任人。</span></li>
+            <li><strong>可审计</strong><span>记录每个外部动作的来源、目的、权限和结果。</span></li>
+          </ul>
+        </section>
+
+        <section class="capability-profile" aria-labelledby="capability-title">
+          <h4 id="capability-title">十维能力带：用可观察行为与证据描述，不做无依据的数值评分</h4>
+          <div class="horizontal-diagram" tabindex="0" role="group" aria-label="研发数字员工十维能力带，可横向滚动">
+            <div class="capability-group">
+              <h5>理解</h5>
+              <button class="capability-trigger" type="button" data-capability="requirements" aria-controls="capability-requirements">需求理解</button>
+              <button class="capability-trigger" type="button" data-capability="system" aria-controls="capability-system">仓库 / 系统理解</button>
+            </div>
+            <div class="capability-group">
+              <h5>交付</h5>
+              <button class="capability-trigger" type="button" data-capability="planning" aria-controls="capability-planning">规划拆解</button>
+              <button class="capability-trigger" type="button" data-capability="implementation" aria-controls="capability-implementation">工程实现</button>
+              <button class="capability-trigger" type="button" data-capability="verification" aria-controls="capability-verification">测试验证</button>
+            </div>
+            <div class="capability-group">
+              <h5>协作</h5>
+              <button class="capability-trigger" type="button" data-capability="tools" aria-controls="capability-tools">工具操作</button>
+              <button class="capability-trigger" type="button" data-capability="handoff" aria-controls="capability-handoff">协作交接</button>
+            </div>
+            <div class="capability-group">
+              <h5>治理</h5>
+              <button class="capability-trigger" type="button" data-capability="risk" aria-controls="capability-risk">风险治理</button>
+              <button class="capability-trigger" type="button" data-capability="recovery" aria-controls="capability-recovery">恢复连续性</button>
+              <button class="capability-trigger" type="button" data-capability="learning" aria-controls="capability-learning">评测学习</button>
+            </div>
+          </div>
+
+          <div class="capability-details" aria-label="十维能力静态详情">
+            <article id="capability-requirements" class="capability-detail" data-capability-panel="requirements">
+              <h5>需求理解与澄清</h5><p><strong>可观察行为：</strong>识别目标、验收、约束和缺口，不臆补高影响需求。</p><p><strong>典型证据：</strong>需求规格、待确认项、决策记录。</p>
+            </article>
+            <article id="capability-system" class="capability-detail" data-capability-panel="system">
+              <h5>仓库 / 系统理解</h5><p><strong>可观察行为：</strong>定位相关代码、依赖、历史决策和影响面。</p><p><strong>典型证据：</strong>上下文清单、影响分析。</p>
+            </article>
+            <article id="capability-planning" class="capability-detail" data-capability-panel="planning">
+              <h5>规划与拆解</h5><p><strong>可观察行为：</strong>形成可执行步骤、依赖、门禁和停止条件。</p><p><strong>典型证据：</strong>计划、状态机、风险表。</p>
+            </article>
+            <article id="capability-implementation" class="capability-detail" data-capability-panel="implementation">
+              <h5>工程实现</h5><p><strong>可观察行为：</strong>按规范做最小、可维护的修改。</p><p><strong>典型证据：</strong>差异、构建结果、静态检查。</p>
+            </article>
+            <article id="capability-verification" class="capability-detail" data-capability-panel="verification">
+              <h5>测试与验证</h5><p><strong>可观察行为：</strong>设计并运行与风险匹配的验证，失败不虚报。</p><p><strong>典型证据：</strong>测试结果、手工回放、未验证边界。</p>
+            </article>
+            <article id="capability-tools" class="capability-detail" data-capability-panel="tools">
+              <h5>工具与系统操作</h5><p><strong>可观察行为：</strong>正确选择工具，遵循最小权限和审批。</p><p><strong>典型证据：</strong>工具调用记录、权限记录。</p>
+            </article>
+            <article id="capability-handoff" class="capability-detail" data-capability-panel="handoff">
+              <h5>协作与交接</h5><p><strong>可观察行为：</strong>向人和其他 Agent 交付结构化上下文。</p><p><strong>典型证据：</strong>交接包、评审回应、状态更新。</p>
+            </article>
+            <article id="capability-risk" class="capability-detail" data-capability-panel="risk">
+              <h5>风险与治理</h5><p><strong>可观察行为：</strong>识别安全、数据、合规、生产和组织风险。</p><p><strong>典型证据：</strong>风险分级、升级 / 拒绝记录。</p>
+            </article>
+            <article id="capability-recovery" class="capability-detail" data-capability-panel="recovery">
+              <h5>恢复与连续性</h5><p><strong>可观察行为：</strong>重试、回退、断点续作，不重复破坏现场。</p><p><strong>典型证据：</strong>检查点、恢复日志、回滚方案。</p>
+            </article>
+            <article id="capability-learning" class="capability-detail" data-capability-panel="learning">
+              <h5>评测与学习</h5><p><strong>可观察行为：</strong>用失败样本改进，只沉淀已验证、可复用经验。</p><p><strong>典型证据：</strong>评测集、复盘、候选 Skill / 规则提案。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="autonomy-levels" aria-labelledby="autonomy-title">
+          <h4 id="autonomy-title">A0–A4 自治等级轴</h4>
+          <p>风险升高时，自治等级必须动态下降。V1.0 聚焦 A2–A3，A4 不是默认建设目标。</p>
+          <div class="horizontal-diagram" tabindex="0" role="group" aria-label="A0 到 A4 自治等级轴，可横向滚动">
+            <ol>
+              <li><strong>A0 信息助手</strong><span>允许：回答、解释、检索</span><span>Gate：人执行所有动作</span><span>适用：信息查询</span><span>禁止：任何外部写入</span></li>
+              <li><strong>A1 建议者</strong><span>允许：计划、方案、差异草案</span><span>Gate：人批准并执行</span><span>适用：方案比较</span><span>禁止：代人实施</span></li>
+              <li><strong>A2 受控执行者</strong><span>允许：在分支 / 沙箱修改并验证</span><span>Gate：外部写入、合并、发布由人批准</span><span>适用：清晰的低中风险变更</span><span>禁止：自行越过边界</span></li>
+              <li><strong>A3 有界交付者</strong><span>允许：对标准低中风险任务端到端执行</span><span>Gate：需求、例外、生产、质量由人放行</span><span>适用：有稳定契约的连续交付</span><span>禁止：批准自己的高风险交付</span></li>
+              <li class="future-level"><strong>A4 持续运营者</strong><span>允许：监控队列、自动接单、连续优化</span><span>Gate：策略监督、抽检、熔断和事故治理</span><span>适用：经长期验证的稳定队列</span><span>禁止：无监督扩大策略或权限</span></li>
+            </ol>
+          </div>
+        </section>
+      </section>
+
+      <section id="page-05" data-content-page="05" aria-labelledby="page-05-title">
+        <header class="page-heading">
+          <p>内容页 05</p>
+          <h3 id="page-05-title">使用场景与如何考核</h3>
+          <p>把“适合做什么”与“怎样证明做得好”放在一起：考核被接受的交付结果，不考核代码行数、对话次数或 Token 数量。</p>
+        </header>
+
+        <div class="horizontal-diagram outcome-axis" tabindex="0" role="group" aria-label="从工作单输入到运行反馈的交付横轴，可横向滚动">
+          <ol>
+            <li>工作单输入</li>
+            <li>Agent 过程</li>
+            <li>Gate</li>
+            <li>被接受的变更</li>
+            <li>运行反馈</li>
+          </ol>
+        </div>
+
+        <div class="use-and-evaluation">
+          <section aria-labelledby="fit-title">
+            <h4 id="fit-title">任务适配轴与场景卡</h4>
+            <div class="horizontal-diagram" tabindex="0" role="group" aria-label="任务适配轴，可横向滚动">
+              <ol class="fit-axis">
+                <li><strong>优先试点</strong><span>范围清晰、验收可自动化、测试完备、环境隔离的标准变更。</span></li>
+                <li><strong>谨慎使用</strong><span>跨模块、涉及部分生产依赖或需要业务取舍的任务。</span></li>
+                <li><strong>拒绝或人类主导</strong><span>目标不稳定、不可逆数据变更、核心生产权限、安全合规后果和人员决策。</span></li>
+              </ol>
+            </div>
+            <ul class="scenario-cards">
+              <li><strong>缺陷修复</strong><span>复现清楚、影响面可定位、验收可自动化。</span></li>
+              <li><strong>标准接口 / 数据任务</strong><span>输入输出契约明确，可在隔离环境验证。</span></li>
+              <li><strong>测试与文档补齐</strong><span>以现有实现和质量基线为边界。</span></li>
+              <li><strong>依赖分析</strong><span>形成影响清单、风险与待确认项。</span></li>
+              <li><strong>发布准备</strong><span>整理候选变更与证据，不自行放行生产。</span></li>
+              <li><strong>质量巡检</strong><span>执行标准检查并把异常升级给人。</span></li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="metrics-title">
+            <h4 id="metrics-title">如何考核：七组结果指标</h4>
+            <dl class="metric-groups">
+              <div><dt>交付</dt><dd>需求前置时间、首次验收通过率、按期完成率。</dd></div>
+              <div><dt>质量</dt><dd>逃逸缺陷率、回滚率、验证覆盖和审查发现率。</dd></div>
+              <div><dt>人效</dt><dd>人工介入分钟数、澄清轮次和返工时间。</dd></div>
+              <div><dt>可靠性</dt><dd>断点恢复率、升级及时率和审计完整率。</dd></div>
+              <div><dt>经济性</dt><dd>每个被接受变更的总成本。</dd></div>
+              <div><dt>学习</dt><dd>同类错误复发率和评测趋势。</dd></div>
+              <div><dt>治理</dt><dd>越权、未经批准外部写入和生产事故。</dd></div>
+            </dl>
+          </section>
+        </div>
+      </section>
+
+      <section id="page-06" data-content-page="06" aria-labelledby="page-06-title">
+        <header class="page-heading">
+          <p>内容页 06</p>
+          <h3 id="page-06-title">数字员工的一天</h3>
+          <p><strong>任务：</strong>修复一个有明确复现步骤、测试环境和验收条件的后端接口缺陷，并准备可评审的候选变更；不自动合并或发布生产。</p>
+        </header>
+
+        <div class="horizontal-diagram" tabindex="0" role="group" aria-label="数字员工从 09:00 到 17:00 的一天时间轴，可横向滚动">
+          <ol class="day-timeline">
+            <li><button class="state-trigger" type="button" data-state="intake" aria-controls="state-intake"><time datetime="09:00">09:00</time><span>接单</span></button></li>
+            <li><button class="state-trigger" type="button" data-state="understand" aria-controls="state-understand"><time datetime="09:15">09:15</time><span>理解</span></button></li>
+            <li><button class="state-trigger" type="button" data-state="plan" aria-controls="state-plan"><time datetime="10:00">10:00</time><span>规划</span></button></li>
+            <li><button class="state-trigger" type="button" data-state="implement" aria-controls="state-implement"><time datetime="10:30">10:30</time><span>实现</span></button></li>
+            <li><button class="state-trigger" type="button" data-state="verify" aria-controls="state-verify"><time datetime="13:30">13:30</time><span>验证</span></button></li>
+            <li><button class="state-trigger" type="button" data-state="human-gate" aria-controls="state-human-gate"><time datetime="15:00">15:00</time><span>人类 Gate</span></button></li>
+            <li><button class="state-trigger" type="button" data-state="deliver" aria-controls="state-deliver"><time datetime="16:00">16:00</time><span>交付</span></button></li>
+            <li><button class="state-trigger" type="button" data-state="retrospect" aria-controls="state-retrospect"><time datetime="17:00">17:00</time><span>复盘</span></button></li>
+          </ol>
+        </div>
+
+        <p class="noscript-note">以下八个状态的 SOP 与证据默认完整呈现；交互仅用于改变选中态和展示密度。</p>
+
+        <div class="state-details" aria-label="一天八个状态的静态详情">
+          <article id="state-intake" class="state-detail" data-state-panel="intake">
+            <h4><time datetime="09:00">09:00</time> 接单</h4>
+            <dl><div><dt>状态</dt><dd>待准入 → 已准入 / 拒绝 / 待澄清</dd></div><div><dt>SOP</dt><dd>检查准入、目标、风险与验收条件。</dd></div><div><dt>工具</dt><dd>工作单、需求规范、风险模板。</dd></div><div><dt>权限</dt><dd>只读任务与项目上下文。</dd></div><div><dt>Gate</dt><dd>目标或验收不清时由人定稿。</dd></div><div><dt>恢复</dt><dd>保留缺口清单，暂停而不猜测。</dd></div><div><dt>指标</dt><dd>需求前置时间、澄清轮次。</dd></div></dl>
+          </article>
+          <article id="state-understand" class="state-detail" data-state-panel="understand">
+            <h4><time datetime="09:15">09:15</time> 理解</h4>
+            <dl><div><dt>状态</dt><dd>已准入 → 上下文就绪 / 证据不足</dd></div><div><dt>SOP</dt><dd>读取代码、历史决策、日志和测试，区分事实、推断和未知项。</dd></div><div><dt>工具</dt><dd>代码检索、日志查询、测试浏览、决策记录。</dd></div><div><dt>权限</dt><dd>仓库和测试环境只读。</dd></div><div><dt>Gate</dt><dd>发现跨模块或生产依赖时重新分级。</dd></div><div><dt>恢复</dt><dd>记录已读范围与断点，缺证据则升级。</dd></div><div><dt>指标</dt><dd>影响分析完整度、人工介入分钟数。</dd></div></dl>
+          </article>
+          <article id="state-plan" class="state-detail" data-state-panel="plan">
+            <h4><time datetime="10:00">10:00</time> 规划</h4>
+            <dl><div><dt>状态</dt><dd>上下文就绪 → 方案待执行 / 方案待确认</dd></div><div><dt>SOP</dt><dd>形成最小修改方案、验证计划、停止条件与回滚边界。</dd></div><div><dt>工具</dt><dd>计划模板、依赖分析、风险清单。</dd></div><div><dt>权限</dt><dd>可写计划，不修改生产资源。</dd></div><div><dt>Gate</dt><dd>架构例外、范围扩大或风险升高需人确认。</dd></div><div><dt>恢复</dt><dd>退回理解状态，补齐缺失上下文。</dd></div><div><dt>指标</dt><dd>规划返工时间、升级及时率。</dd></div></dl>
+          </article>
+          <article id="state-implement" class="state-detail" data-state-panel="implement">
+            <h4><time datetime="10:30">10:30</time> 实现</h4>
+            <dl><div><dt>状态</dt><dd>方案待执行 → 修改中 / 实现受阻</dd></div><div><dt>SOP</dt><dd>在隔离分支做最小修改，保存中间状态与操作证据。</dd></div><div><dt>工具</dt><dd>编辑器、版本控制、静态检查、构建工具。</dd></div><div><dt>权限</dt><dd>仅隔离分支和沙箱写入；无合并、生产权限。</dd></div><div><dt>Gate</dt><dd>外部写入、范围扩张或敏感文件触发审批。</dd></div><div><dt>恢复</dt><dd>从检查点继续，或回退未验证的修改。</dd></div><div><dt>指标</dt><dd>按期完成率、越权次数。</dd></div></dl>
+          </article>
+          <article id="state-verify" class="state-detail" data-state-panel="verify">
+            <h4><time datetime="13:30">13:30</time> 验证</h4>
+            <dl><div><dt>状态</dt><dd>修改完成 → 验证通过 / 修复 / 回退 / 升级</dd></div><div><dt>SOP</dt><dd>运行测试、审查差异，核对验收条件并声明未验证边界。</dd></div><div><dt>工具</dt><dd>测试框架、lint、类型检查、diff 审查。</dd></div><div><dt>权限</dt><dd>测试环境执行与只读结果收集。</dd></div><div><dt>Gate</dt><dd>质量阻断、验证环境异常或风险变化时由人决策。</dd></div><div><dt>恢复</dt><dd>修复后重跑、回退到检查点；不无限重试。</dd></div><div><dt>指标</dt><dd>首次验收通过率、验证覆盖、断点恢复率。</dd></div></dl>
+          </article>
+          <article id="state-human-gate" class="state-detail" data-state-panel="human-gate">
+            <h4><time datetime="15:00">15:00</time> 人类 Gate</h4>
+            <dl><div><dt>状态</dt><dd>证据就绪 → 放行 / 退回 / 拒绝</dd></div><div><dt>SOP</dt><dd>提交差异、测试、风险、未决项和回滚方案组成的证据包。</dd></div><div><dt>工具</dt><dd>评审系统、证据包、风险记录。</dd></div><div><dt>权限</dt><dd>可提交评审，不可自批。</dd></div><div><dt>Gate</dt><dd>由人确认例外、交付范围与职责分离。</dd></div><div><dt>恢复</dt><dd>按评审意见回到规划、实现或验证状态。</dd></div><div><dt>指标</dt><dd>审查发现率、人工介入分钟数、审计完整率。</dd></div></dl>
+          </article>
+          <article id="state-deliver" class="state-detail" data-state-panel="deliver">
+            <h4><time datetime="16:00">16:00</time> 交付</h4>
+            <dl><div><dt>状态</dt><dd>已放行 → 候选变更已交付</dd></div><div><dt>SOP</dt><dd>形成可评审候选变更与结构化交接，不自行批准生产发布。</dd></div><div><dt>工具</dt><dd>版本控制、候选 PR / 变更单、交接模板。</dd></div><div><dt>权限</dt><dd>创建候选变更；合并与发布权限仍由人持有。</dd></div><div><dt>Gate</dt><dd>合并、发布和生产风险接受必须由人放行。</dd></div><div><dt>恢复</dt><dd>交付失败时保留分支与证据，回到评审或实现。</dd></div><div><dt>指标</dt><dd>被接受变更、按期完成率、回滚率。</dd></div></dl>
+          </article>
+          <article id="state-retrospect" class="state-detail" data-state-panel="retrospect">
+            <h4><time datetime="17:00">17:00</time> 复盘</h4>
+            <dl><div><dt>状态</dt><dd>候选变更已交付 → 已记录反馈</dd></div><div><dt>SOP</dt><dd>记录结果、成本、人工介入、运行反馈和可复用失败样本。</dd></div><div><dt>工具</dt><dd>审计日志、成本记录、评测集、复盘模板。</dd></div><div><dt>权限</dt><dd>写入任务复盘；经验仅作为候选，不直接升级为组织规则。</dd></div><div><dt>Gate</dt><dd>组织规则、Skill 或权限变更需另行评审。</dd></div><div><dt>恢复</dt><dd>发现逃逸缺陷时关联原任务、触发事故或修复路径。</dd></div><div><dt>指标</dt><dd>总成本、同类错误复发率、评测趋势、生产事故。</dd></div></dl>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="conclusion" aria-labelledby="conclusion-title">
+      <h2 id="conclusion-title">研发数字员工 = 岗位责任 + Agent 能力 + 工程治理</h2>
+      <p>下一步用 10–20 个真实、低到中风险研发任务回放画像；只有本地证据能够预测成功与失败，才进入下一版。</p>
+      <p>本页用于内部概念对齐、试点设计和评价框架，不是人员替代、组织缩编、采购或生产授权依据。</p>
+      <div class="conclusion__actions">
+        <a href="#top">返回顶部</a>
+        <button type="button" data-lightbox-open aria-controls="onepager-lightbox">查看完整一图流</button>
+        <a href="../sources/rd-digital-employee-h5-peer-landscape-2026-08-05.md">查看同业研究页</a>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="onepager-lightbox" aria-labelledby="onepager-lightbox-title">
+    <header>
+      <h2 id="onepager-lightbox-title">研发数字员工画像 V1.0 整体一图流</h2>
+      <form method="dialog"><button type="submit" aria-label="关闭一图流大图">关闭</button></form>
+    </header>
+    <img
+      src="assets/rd-digital-employee-profile-v1/rd-digital-employee-profile-v1-onepager.png"
+      alt="研发数字员工画像 V1.0 整体一图流大图：涵盖概念递进、岗位契约、必要条件、能力、自治等级、场景、人机边界和指标。"
+    />
+  </dialog>
+</body>
+</html>
