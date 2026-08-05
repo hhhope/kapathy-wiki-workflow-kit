@@ -65,12 +65,28 @@ function initReveal() {
     return;
   }
 
+  const revealWithMotion = (page) => {
+    page.classList.add("is-revealed");
+    if (typeof page.animate !== "function") return;
+    try {
+      page.animate(
+        [
+          { opacity: 0.15, transform: "translateY(14px)" },
+          { opacity: 1, transform: "translateY(0)" },
+        ],
+        { duration: 520, easing: "cubic-bezier(.2, .7, .2, 1)" },
+      );
+    } catch (_error) {
+      // The page remains readable when Web Animations is unavailable or rejected.
+    }
+  };
+
   try {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-revealed");
+          revealWithMotion(entry.target);
           observer.unobserve(entry.target);
         });
       },
