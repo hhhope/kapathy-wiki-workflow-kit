@@ -44,8 +44,8 @@ ol, ul { margin-top: 0; }
 ::selection { background: #cfe4ff; }
 
 :focus-visible {
-  outline: 3px solid rgb(40 120 225 / 42%);
-  outline-offset: 4px;
+  outline: 3px solid #0b4f9c;
+  outline-offset: 3px;
   border-radius: 4px;
 }
 .reading-progress { position: fixed; z-index: 40; inset: 0 0 auto; height: 3px; background: #edf0f4; }
@@ -103,7 +103,7 @@ main > [data-chapter] { padding: 0 0 40px; border-top: 4px solid var(--ink); }
 [data-content-page] > section, [data-content-page] > figure, [data-content-page] > div + section, .use-and-evaluation { margin-top: 64px; }
 
 .horizontal-diagram { position: relative; width: 100%; padding: 4px; outline: none; scrollbar-color: #9fb3cb #edf1f5; scrollbar-width: thin; }
-.horizontal-diagram:focus-visible { outline: 3px solid rgb(40 120 225 / 35%); outline-offset: 6px; }
+.horizontal-diagram:focus-visible { outline: 3px solid #0b4f9c; outline-offset: 4px; }
 .horizontal-diagram ol { margin: 0; padding: 0; list-style: none; }
 .horizontal-diagram li { min-width: 0; }
 .horizontal-diagram strong, .horizontal-diagram span { display: block; }
@@ -157,6 +157,7 @@ main > [data-chapter] { padding: 0 0 40px; border-top: 4px solid var(--ink); }
 .maturity-axis li:last-child { background: var(--blue-soft); }
 .maturity-axis li:last-child::before { background: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
 .condition-strip ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 0; padding: 1px; background: var(--line); list-style: none; }
+.condition-strip__diagram { padding: 0; }
 .condition-strip li { position: relative; min-height: 128px; padding: 20px 22px 20px 52px; background: var(--paper); counter-increment: condition; }
 .condition-strip ol { counter-reset: condition; }
 .condition-strip li::before { content: counter(condition); position: absolute; left: 20px; top: 20px; color: var(--blue); font-size: 12px; font-weight: 750; }
@@ -246,18 +247,16 @@ dialog form, dialog button { margin: 0; }
 dialog button { padding: 8px 12px; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--paper); cursor: pointer; }
 dialog img { margin: 0 auto; }
 
-@media (max-width: 1280px) {
-  .hero, main { width: min(var(--content), calc(100% - 120px)); }
-  .chapter-nav { right: 12px; width: 112px; }
+@media (max-width: 1428px) {
+  .chapter-nav { position: sticky; top: 3px; right: auto; width: 100%; transform: none; grid-template-columns: repeat(2, 1fr); background: rgb(255 255 255 / 96%); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
+  .chapter-nav a { padding: 12px 18px; border-left: 0; border-bottom: 2px solid transparent; text-align: center; }
+  .chapter-nav a::before { display: none; }
+  .chapter-nav a.is-active, .chapter-nav a[aria-current="true"] { border-bottom-color: var(--blue); }
 }
 
 @media (max-width: 900px) {
   .hero, main { width: min(100% - 40px, 720px); }
   .hero { min-height: auto; padding-block: 112px 80px; }
-  .chapter-nav { position: sticky; top: 3px; right: auto; width: 100%; transform: none; grid-template-columns: repeat(2, 1fr); background: rgb(255 255 255 / 96%); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
-  .chapter-nav a { padding: 12px 18px; border-left: 0; border-bottom: 2px solid transparent; text-align: center; }
-  .chapter-nav a::before { display: none; }
-  .chapter-nav a.is-active, .chapter-nav a[aria-current="true"] { border-bottom-color: var(--blue); }
   .chapter-heading { grid-template-columns: 1fr; gap: 20px; }
   .onepager-frame figcaption, .use-and-evaluation { grid-template-columns: 1fr; }
   .composition-grid { grid-template-columns: repeat(2, 1fr); }
@@ -288,7 +287,7 @@ dialog img { margin: 0 auto; }
   .page-heading { margin-bottom: 38px; }
   .page-heading h3 { font-size: 30px; }
   [data-content-page] > section, [data-content-page] > figure, [data-content-page] > div + section, .use-and-evaluation { margin-top: 48px; }
-  .horizontal-diagram, .condition-strip ol { overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x proximity; padding: 4px 4px 14px; }
+  .horizontal-diagram { overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x proximity; padding: 4px 4px 14px; }
   .horizontal-diagram::after { content: "横向滑动查看完整关系 →"; position: sticky; left: 4px; display: block; width: max-content; margin-top: 10px; color: var(--muted); font-size: 11px; letter-spacing: .04em; }
   .horizontal-diagram ol > li { scroll-snap-align: start; }
   .concept-axis { min-width: 820px; }
