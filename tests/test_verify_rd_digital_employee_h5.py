@@ -3,21 +3,36 @@ import io
 import tempfile
 import unittest
 from pathlib import Path
+from typing import Callable
 
 from scripts import verify_rd_digital_employee_h5 as verifier
 
 
 class RdDigitalEmployeeH5VerifierTest(unittest.TestCase):
     def _run_fixture(
-        self, extra_markup: str, stylesheet_css: str = "body {}"
+        self,
+        extra_markup: str,
+        stylesheet_css: str = "body {}",
+        *,
+        script_src: str = "app.js",
+        create_script: bool = True,
+        prepare: Callable[[Path, Path], None] | None = None,
     ) -> tuple[int, str]:
         with tempfile.TemporaryDirectory() as directory:
-            html_path = Path(directory) / "profile.html"
+            fixture_root = Path(directory)
+            report_root = fixture_root / "report"
+            report_root.mkdir()
+            html_path = report_root / "profile.html"
             (html_path.parent / "assets").mkdir()
             (html_path.parent / "assets" / "infographic.svg").write_text(
                 "<svg />", encoding="utf-8"
             )
             (html_path.parent / "styles.css").write_text(stylesheet_css, encoding="utf-8")
+            if create_script:
+                script_path = html_path.parent / "app.js"
+                script_path.write_text("// fixture", encoding="utf-8")
+            if prepare is not None:
+                prepare(fixture_root, report_root)
             pages = "".join(
                 f'<section data-content-page id="page-{number:02d}"></section>'
                 for number in range(1, 7)
@@ -31,7 +46,7 @@ class RdDigitalEmployeeH5VerifierTest(unittest.TestCase):
                 f"{pages}"
                 "</main><nav></nav>"
                 '<img src="assets/infographic.svg">'
-                '<script src="app.js"></script>'
+                f'<script src="{script_src}"></script>'
                 f"<p>{' '.join(verifier.REQUIRED_PHRASES)}</p>{extra_markup}"
                 "</body></html>",
                 encoding="utf-8",
@@ -45,6 +60,79 @@ class RdDigitalEmployeeH5VerifierTest(unittest.TestCase):
             finally:
                 verifier.HTML_PATH = previous_path
             return result, output.getvalue()
+
+    def test_existing_url_encoded_script_with_query_and_fragment_is_accepted(self) -> None:
+        def prepare(_fixture_root: Path, report_root: Path) -> None:
+            (report_root / "assets" / "app bundle.js").write_text(
+                "// fixture", encoding="utf-8"
+            )
+
+        result, output = self._run_fixture(
+            "",
+            script_src="assets/app%20bundle.js?v=1#module",
+            create_script=False,
+            prepare=prepare,
+        )
+
+        self.assertEqual(0, result, output)
+        self.assertIn("PASS: rd-digital-employee-profile-v1-h5", output)
+
+    def test_missing_local_script_is_rejected(self) -> None:
+        result, output = self._run_fixture("", create_script=False)
+
+        self.assertEqual(1, result, output)
+        self.assertIn("FAIL: missing local resource: app.js", output)
+
+    def test_url_encoded_traversal_escape_is_rejected(self) -> None:
+        def prepare(fixture_root: Path, _report_root: Path) -> None:
+            (fixture_root / "outside.js").write_text("// outside", encoding="utf-8")
+
+        result, output = self._run_fixture(
+            "",
+            script_src="..%2Foutside.js",
+            create_script=False,
+            prepare=prepare,
+        )
+
+        self.assertEqual(1, result, output)
+        self.assertIn("FAIL: local resource escapes report root: ..%2Foutside.js", output)
+
+    def test_symlink_escape_is_rejected_when_supported(self) -> None:
+        def prepare(fixture_root: Path, report_root: Path) -> None:
+            outside = fixture_root / "outside"
+            outside.mkdir()
+            (outside / "app.js").write_text("// outside", encoding="utf-8")
+            linked = report_root / "linked"
+            try:
+                linked.symlink_to(outside, target_is_directory=True)
+            except (NotImplementedError, OSError) as symlink_error:
+                try:
+                    import _winapi
+
+                    _winapi.CreateJunction(str(outside), str(linked))
+                except (ImportError, OSError) as junction_error:
+                    self.skipTest(
+                        "directory-link creation is unavailable: "
+                        f"symlink={symlink_error}; junction={junction_error}"
+                    )
+
+        result, output = self._run_fixture(
+            "",
+            script_src="linked/app.js",
+            create_script=False,
+            prepare=prepare,
+        )
+
+        self.assertEqual(1, result, output)
+        self.assertIn("FAIL: local resource escapes report root: linked/app.js", output)
+
+    def test_missing_local_resource_referenced_from_css_is_rejected(self) -> None:
+        result, output = self._run_fixture(
+            "", 'body { background-image: url("assets/missing.png"); }'
+        )
+
+        self.assertEqual(1, result, output)
+        self.assertIn("FAIL: missing local resource: assets/missing.png", output)
 
     def test_ordinary_link_does_not_count_as_a_resource_dependency(self) -> None:
         result, output = self._run_fixture(

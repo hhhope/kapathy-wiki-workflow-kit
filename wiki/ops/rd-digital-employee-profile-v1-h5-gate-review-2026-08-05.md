@@ -112,7 +112,7 @@ ai_generated: true
 
 ## Desktop Visual Gate — 1440×1000
 
-- **页面边界：**`innerWidth=1440`，`documentElement.scrollWidth=1440`，整页无水平溢出；页面高度 `12052px`。
+- **页面边界：**`innerWidth=1440`，`documentElement.scrollWidth=1440`，整页无水平溢出；最终修复波次页面高度 `12307px`。
 - **导航与总进度：**右侧 fixed 导航仅两章；滚动到第二章时 `aria-current=true`，页底进度为 `100%`。
 - **Hero / 一图流：**Hero 的主结论、三个关键词和双入口层级清楚；一图流实际加载尺寸 `866×1817`，画框无裁切，灯箱不会空白。
 - **页面 01：**四级概念轴之后补充“固定工作流 vs Agent”双卡对照；桌面双列等高、移动单列，随后八类组成、六步运行闭环和 SOP/Orchestration/状态机三卡对齐，箭头不压字。
@@ -125,11 +125,11 @@ ai_generated: true
 
 ## Mobile Visual Gate — 390×844
 
-- **页面边界：**`innerWidth=390`，`documentElement.scrollWidth=390`，不存在整页横滚；页面高度 `14845px`。
-- **正文与导航：**正文单列；顶部 sticky 导航仅两章，每个导航触控高度至少 `44px`。
+- **页面边界：**`innerWidth=390`，`documentElement.scrollWidth=390`，不存在整页横滚；最终修复波次页面高度 `15274px`。
+- **正文与导航：**正文单列；顶部 sticky 导航仅保留两个章节切换和 3px 总阅读进度，六页 `.page-progress` 在移动断点全部隐藏；桌面仍保留六个弱化页进度点。
 - **横向关系图：**11 个 `.horizontal-diagram` 均为 `overflow-x:auto`；不再只根据 geometry 推断可滚动，而是在 Edge 中逐个调用实际 scroll API 并读取 `scrollLeft`。全部 11 个容器的 after 均大于 before 且到达各自 maximum。
 - **长词与卡片：**`R&D Delivery Digital Employee`、`Orchestration`、`Issue / Change Request` 等在容器内换行，无容器外溢。
-- **时间轴与触控：**时间轴卡可触控横滑；页面主要触控目标最小高度 `44px`。
+- **时间轴与触控：**时间轴卡可触控横滑；QA 遍历移动端全部 26 个可见、非行内导航/控件目标并同时检查宽高，最小尺寸为 `112×44px`。
 - **灯箱：**触控打开后遮罩、图像和标题均可见；关闭按钮为 `56×44.25px` 且保持横向“关闭”，不再拆成竖排两字。
 - **Console：**`console.error=0`，`pageerror=0`，warning `0`。
 
@@ -187,7 +187,9 @@ ai_generated: true
 5. 桌面增强态的当前“一天状态”详情跨两列并在内部按两列排证据，修复半宽卡带来的大块误导性空白；无 JavaScript 的八卡双列降级保持不变。
 6. Fix round 1 在内容页 01 内补回“固定工作流 vs Agent”双卡对照和导语：固定工作流是预先定义路径、适合稳定重复任务；Agent 根据目标/上下文动态选择步骤和工具并能验证、纠正或升级，仍受 Gate/权限约束。两章六页保持不变。
 7. Fix round 1 承认 public-report reviewer 为 required，补全五项 Learning Use Map，并同步 Article Intent Contract 与 reverse outline；修复前 Score 明确为 `INVALID`。
-8. Fix round 1 将浏览器 QA 从抽样与 geometry 推断升级为：11/11 横轴真实 scrollLeft 前后证据、10/10 能力与 8/8 状态两端遍历、no-JS 逐映射与详情字段验证。
+8. 最终修复波次在 `620px` 移动断点隐藏六页 `.page-progress`，桌面六页弱进度保持可见；Task 6 同时新增桌面保留、移动隐藏和全部可见非行内控件 `44×44px` 双维触控检查。
+9. 最终修复波次统一 CSS、JS、图像及其他本地加载资源的 canonical resolver：先去 query/fragment、URL decode，再约束到报告根目录并拒绝缺失文件、遍历和 symlink escape；普通外部导航链接仍允许。
+10. Fix round 1 将浏览器 QA 从抽样与 geometry 推断升级为：11/11 横轴真实 scrollLeft 前后证据、10/10 能力与 8/8 状态两端遍历、no-JS 逐映射与详情字段验证。
 
 ## Hard Gate Results
 
@@ -226,11 +228,11 @@ ai_generated: true
 
 | 命令 | 退出码 / 原始摘要 |
 |---|---|
-| Public-report post-fix reviewer | `PASS`；三个原始阻断全部关闭，23 项 QA 结构化证据抽查一致，无剩余 hard blocker |
-| Task 6 real-browser QA | `0`；23 项断言全部 `PASS`，新增 11/11 实滚、10/10 能力、8/8 状态和 no-JS 全映射验证；环境 Edge `151.0.4129.59` / Playwright `1.61.0` / headless |
+| Public-report post-fix reviewer | `PASS`；三个原始阻断全部关闭；其 23 项 QA 抽查是最终修复波次前历史证据，当前浏览器门禁见下一行 |
+| Task 6 real-browser QA（最终修复波次） | `0`；25 项断言全部 `PASS`：桌面 6/6 页进度可见、移动 0/6 可见，26/26 个移动端可见非行内导航/控件目标均至少 `44×44px`，并保留 11/11 实滚、10/10 能力、8/8 状态和 no-JS 全映射验证；环境 Edge `151.0.4129.59` / Playwright `1.61.0` / headless |
 | Task 5 browser regression | `0`；`Ran 7 tests ... OK` |
 | `python scripts/verify_rd_digital_employee_h5.py` | `0`；`PASS: rd-digital-employee-profile-v1-h5` |
-| `python -m unittest tests.test_verify_rd_digital_employee_h5 -v` | `0`；`Ran 7 tests ... OK` |
+| `python -m unittest tests.test_verify_rd_digital_employee_h5 -v` | `0`；`Ran 12 tests ... OK`；Windows 无文件 symlink 权限时以 directory junction 执行同一 link-escape 负例，当前环境已实际通过 |
 | `node --check .../app.js` | `0`；无语法错误输出 |
 | Task 6 target `git diff --check` | `0`；无 whitespace error；仅 PowerShell 提示工作区 LF 后续可能由 Git 转为 CRLF |
 | Targeted frontmatter precheck | exit `1`（仓库基线）；全库 `29 errors / 6 warnings`，target `entry_count: 0`，没有目标页违规条目 |

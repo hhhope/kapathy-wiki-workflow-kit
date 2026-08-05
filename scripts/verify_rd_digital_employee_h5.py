@@ -99,8 +99,9 @@ class H5Parser(HTMLParser):
 def is_local_relative(resource: str) -> bool:
     """Return whether a resource has no scheme, host, or root-relative path."""
 
-    parsed = urlparse(resource)
-    return not parsed.scheme and not parsed.netloc and not resource.startswith(("/", "\\"))
+    normalized = resource.strip()
+    parsed = urlparse(normalized)
+    return not parsed.scheme and not parsed.netloc and not normalized.startswith(("/", "\\"))
 
 
 def is_external_http_resource(resource: str) -> bool:
@@ -138,10 +139,49 @@ def css_urls(css: str) -> list[str]:
     return urls
 
 
-def local_path(base: Path, resource: str) -> Path:
-    """Resolve a local relative URL's filesystem path, ignoring query and fragment."""
+class LocalResourceError(ValueError):
+    """Report a local resource that is missing or outside the report boundary."""
 
-    return base / unquote(urlparse(resource).path)
+
+def resolve_local_resource(base: Path, report_root: Path, resource: str) -> Path | None:
+    """Resolve one local URL canonically and constrain it to the report root."""
+
+    decoded_path = unquote(urlparse(resource.strip()).path)
+    if not decoded_path:
+        # Same-document fragments (for example SVG <use href="#icon">) do not load a file.
+        return None
+    try:
+        allowed_root = report_root.resolve(strict=True)
+        candidate = (base / decoded_path).resolve(strict=False)
+        candidate.relative_to(allowed_root)
+    except (OSError, RuntimeError, ValueError) as error:
+        raise LocalResourceError(
+            f"local resource escapes report root: {resource}"
+        ) from error
+    if not candidate.is_file():
+        raise LocalResourceError(f"missing local resource: {resource}")
+    return candidate
+
+
+def validate_resource(
+    resource: str,
+    *,
+    base: Path,
+    report_root: Path,
+    failures: list[str],
+) -> Path | None:
+    """Validate a loading resource and return its canonical local file when present."""
+
+    if is_external_http_resource(resource):
+        failures.append(f"external resource dependency: {resource}")
+        return None
+    if not is_local_relative(resource):
+        return None
+    try:
+        return resolve_local_resource(base, report_root, resource)
+    except LocalResourceError as error:
+        failures.append(str(error))
+        return None
 
 
 def main() -> int:
@@ -173,8 +213,6 @@ def main() -> int:
         for image in parser.images:
             if not is_local_relative(image):
                 failures.append(f"infographic image is not local relative: {image}")
-            elif not (HTML_PATH.parent / image).is_file():
-                failures.append(f"missing infographic image: {image}")
 
     for label, resources in (("CSS", parser.stylesheets), ("JS", parser.scripts)):
         if not resources:
@@ -183,23 +221,38 @@ def main() -> int:
             if not is_local_relative(resource):
                 failures.append(f"{label} is not local relative: {resource}")
 
-    for resource in parser.resource_urls:
-        if is_external_http_resource(resource):
-            failures.append(f"external resource dependency: {resource}")
+    report_root = HTML_PATH.parent
+    resolved_resources: dict[str, Path] = {}
+    for resource in dict.fromkeys(parser.resource_urls):
+        resolved = validate_resource(
+            resource,
+            base=HTML_PATH.parent,
+            report_root=report_root,
+            failures=failures,
+        )
+        if resolved is not None:
+            resolved_resources[resource] = resolved
     for css in parser.inline_styles:
         for resource in css_urls(css):
-            if is_external_http_resource(resource):
-                failures.append(f"external resource dependency: {resource}")
+            validate_resource(
+                resource,
+                base=HTML_PATH.parent,
+                report_root=report_root,
+                failures=failures,
+            )
     for stylesheet in parser.stylesheets:
         if not is_local_relative(stylesheet):
             continue
-        stylesheet_path = local_path(HTML_PATH.parent, stylesheet)
-        if not stylesheet_path.is_file():
-            failures.append(f"missing local CSS file: {stylesheet}")
+        stylesheet_path = resolved_resources.get(stylesheet)
+        if stylesheet_path is None:
             continue
         for resource in css_urls(stylesheet_path.read_text(encoding="utf-8")):
-            if is_external_http_resource(resource):
-                failures.append(f"external resource dependency: {resource}")
+            validate_resource(
+                resource,
+                base=stylesheet_path.parent,
+                report_root=report_root,
+                failures=failures,
+            )
     for phrase in REQUIRED_PHRASES:
         if phrase not in html:
             failures.append(f"missing required phrase: {phrase}")

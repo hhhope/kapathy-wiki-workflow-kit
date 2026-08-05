@@ -293,7 +293,7 @@ dialog img { margin: 0 auto; }
   .chapter-heading { padding-block: 54px 44px; }
   .chapter-heading h2 { font-size: 38px; }
   .chapter-heading > p:last-child, .page-heading > p:last-child { font-size: 16px; }
-  .page-progress { margin: -12px 0 26px; }
+  .page-progress { display: none; }
   [data-content-page] { padding-block: 76px 88px; scroll-margin-top: 52px; }
   .page-heading { margin-bottom: 38px; }
   .page-heading h3 { font-size: 30px; }
