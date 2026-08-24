@@ -1,0 +1,160 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light">
+<title>宝财通收单与分账方案演进</title><link rel="stylesheet" href="assets/baocaitong-2-3-review-h5/styles.css"></head>
+<body><div class="progress" aria-hidden="true"></div><div class="draft">内部评审稿</div>
+<div class="shell"><aside class="rail" aria-label="章节导航"><div class="rail-brand">
+<strong>宝财通收单与分账方案演进</strong><span>产品 × 研发联合评审</span></div><nav class="nav"><a href="#hero"><b>01</b><span>评审目标</span></a><a href="#core-changes"><b>02</b><span>核心变化</span></a><a href="#flow-2"><b>03</b><span>2.0 现状</span></a><a href="#flow-3"><b>04</b><span>3.0 目标</span></a><a href="#difference-matrix"><b>05</b><span>差异矩阵</span></a><a href="#change-areas"><b>06</b><span>七项改造</span></a><a href="#business-rules"><b>07</b><span>业务规则</span></a><a href="#open-questions"><b>08</b><span>风险与待确认</span></a><a href="#review-decision"><b>09</b><span>评审结论</span></a></nav></aside><main class="main"><section id="hero" class="section hero"><div class="inner hero-grid"><div>
+<p class="eyebrow">BAOCAITONG · REVIEW 2026</p><h1>宝财通收单与分账方案演进</h1>
+<p class="hero-copy">从账户关系、资金路径与实施影响三个层面，统一评审宝财通 2.0 现状与 3.0 目标方案。</p><div class="hero-meta">
+<span class="pill">内部评审稿</span><span class="pill">产品 × 研发</span>
+<span class="pill">离线可审阅</span><span class="pill">事实可追溯</span></div></div>
+<div class="evolution" aria-label="方案演进"><div class="evolution-row">
+<div class="evo-card"><b>2.0</b><span>收单商户号</span><small>二级户升级与分账</small></div>
+<div class="evo-arrow" aria-hidden="true">→</div>
+<div class="evo-card v3"><b>3.0</b><span>代付商户号</span><small>批量开通、模式切换、调账</small></div>
+</div><small>阅读顺序：现状 → 目标 → 差异 → 改造 → 风险 → 决策</small></div>
+</div></section><section id="core-changes" class="section"><div class="inner">
+<div class="section-head"><div><p class="section-kicker">01 · CORE CHANGES</p>
+<h2>一分钟看懂核心变化</h2></div><p class="section-copy">先建立共同判断，再进入接口与规则细节；收益不预设，事实与待确认项分开呈现。</p></div>
+<div class="cards"><article class="summary-card" data-index="01" data-fact="F-031">
+<span class="fact">F-031</span><h3>开户与升级</h3><p>从单点升级扩展为批量开户、产品开通、状态留痕和材料补齐。</p></article><article class="summary-card" data-index="02" data-fact="F-021">
+<span class="fact">F-021</span><h3>收单识别</h3><p>交易仍传二级户，但必须识别其升级状态并选择新旧收单路径。</p></article><article class="summary-card" data-index="03" data-fact="F-035">
+<span class="fact">F-035</span><h3>分账关系</h3><p>新增分账商户关系批量绑定、批次记录、导出与审计字段。</p></article><article class="summary-card" data-index="04" data-fact="F-030">
+<span class="fact">F-030</span><h3>资金处理</h3><p>退款、提现和余额调账需区分账户主体及已分账/未分账状态。</p></article></div></div></section><section id="flow-2" class="section"><div class="inner">
+<div class="section-head"><div><p class="section-kicker">02 · CURRENT STATE</p>
+<h2>现状：宝财通 2.0</h2></div><p class="section-copy">先看账户主体、升级关系，再看收单、分账与提现出口。点击节点可展开解释。</p></div>
+<div class="controls" role="group" aria-label="版本显示方式">
+<button class="control" type="button" data-compare-mode="2" aria-pressed="false">只看 2.0</button>
+<button class="control" type="button" data-compare-mode="3" aria-pressed="false">只看 3.0</button>
+<button class="control" type="button" data-compare-mode="compare" aria-pressed="true">并排对照</button></div><div class="compare-grid"><article class="flow-panel version-2" data-version-panel="2">
+<div class="flow-title"><div><h3>宝财通 2.0</h3><p>去电子户 · 二级户升级为待约商户</p></div><span class="fact">F-001</span></div>
+<div class="hub">宝财通 2.0 收单商户号</div><div class="flow-bridge"><span>下挂账户</span></div>
+<div class="flow-step"><button class="flow-node" type="button" data-node-button aria-expanded="false" data-fact="F-009">
+<strong>二级户 a</strong><span>升级入口</span>
+<span class="node-detail" hidden>升级为收单商户 A，用于承接平台收单。</span></button><button class="flow-node" type="button" data-node-button aria-expanded="false" data-fact="F-009">
+<strong>二级户 b</strong><span>升级入口</span>
+<span class="node-detail" hidden>升级为分账接收方 B，并保留绑定卡提现路径。</span></button></div>
+<div class="flow-bridge"><span>升级</span></div><div class="flow-step"><button class="flow-node" type="button" data-node-button aria-expanded="false" data-fact="F-012">
+<strong>收单商户 A</strong><span>收单主体</span>
+<span class="node-detail" hidden>100 元收单资金进入基本户语义路径。</span></button><button class="flow-node" type="button" data-node-button aria-expanded="false" data-fact="F-013">
+<strong>分账接收方 B</strong><span>分账主体</span>
+<span class="node-detail" hidden>接收来自收单商户 A 的分账资金。</span></button></div>
+<div class="money-strip"><span>未结算资金</span><i></i><span>收单商户 A</span><i></i><span>分账接收方 B</span></div>
+<div class="card-row"><div class="bank-card">二级户 b → 绑定卡</div><div class="bank-card">分账接收方 B → 结算卡</div></div>
+<div class="edge-list"><div class="edge" data-flow-kind="relation" data-fact="F-008">
+<b>账户关系</b><span>宝财通 2.0 收单商户号 → 二级户 a / b</span><span class="fact">F-008</span></div><div class="edge" data-flow-kind="upgrade" data-fact="F-010">
+<b>升级</b><span>二级户 a / b → 升级后商户</span><span class="fact">F-010</span></div><div class="edge" data-flow-kind="fund" data-fact="F-012">
+<b>1. 收单 100 元</b><span>未结算资金 → 收单商户 A</span><span class="fact">F-012</span></div><div class="edge" data-flow-kind="fund" data-fact="F-013">
+<b>2. 分账</b><span>收单商户 A → 分账接收方 B</span><span class="fact">F-013</span></div><div class="edge" data-flow-kind="withdrawal" data-fact="F-014">
+<b>3. 提现</b><span>二级户 b → 绑定卡</span><span class="fact">F-014</span></div><div class="edge" data-flow-kind="withdrawal" data-fact="F-014">
+<b>3.1 提现</b><span>分账接收方 B → 结算卡</span><span class="fact">F-014</span></div></div></article><article class="flow-panel version-3" data-version-panel="3">
+<div class="flow-title"><div><h3>宝财通 3.0</h3><p>代付商户号承载升级关系 · 新旧路径需显式切换</p></div><span class="fact">F-002</span></div>
+<div class="hub">宝财通 3.0 代付商户号</div><div class="flow-bridge"><span>下挂账户</span></div>
+<div class="flow-step"><button class="flow-node" type="button" data-node-button aria-expanded="false" data-fact="F-019">
+<strong>二级户 a</strong><span>升级入口</span>
+<span class="node-detail" hidden>升级为收单商户 A；开户和产品状态需留痕。</span></button><button class="flow-node" type="button" data-node-button aria-expanded="false" data-fact="F-019">
+<strong>二级户 b</strong><span>升级入口</span>
+<span class="node-detail" hidden>升级为分账接收方 B；支持批量绑定关系。</span></button></div>
+<div class="flow-bridge"><span>升级</span></div><div class="flow-step"><button class="flow-node" type="button" data-node-button aria-expanded="false" data-fact="F-021">
+<strong>收单商户 A</strong><span>收单主体</span>
+<span class="node-detail" hidden>接口仍传二级户，并根据升级状态进入相应路径。</span></button><button class="flow-node" type="button" data-node-button aria-expanded="false" data-fact="F-020">
+<strong>分账接收方 B</strong><span>分账主体</span>
+<span class="node-detail" hidden>按新分账逻辑接收资金并提现至结算卡。</span></button></div>
+<div class="money-strip"><span>未结算资金</span><i></i><span>收单商户 A</span><i></i><span>分账接收方 B</span></div>
+<div class="card-row"><div class="bank-card">二级户 b → 绑定卡</div><div class="bank-card">分账接收方 B → 结算卡</div></div>
+<div class="edge-list"><div class="edge" data-flow-kind="relation" data-fact="F-018">
+<b>账户关系</b><span>宝财通 3.0 代付商户号 → 二级户 a / b</span><span class="fact">F-018</span></div><div class="edge" data-flow-kind="upgrade" data-fact="F-019">
+<b>升级 + 产品开通</b><span>二级户 a / b → 升级后商户</span><span class="fact">F-019</span></div><div class="edge" data-flow-kind="fund" data-fact="F-020">
+<b>1. 收单 100 元</b><span>未结算资金 → 收单商户 A</span><span class="fact">F-020</span></div><div class="edge" data-flow-kind="fund" data-fact="F-020">
+<b>2. 分账</b><span>收单商户 A → 分账接收方 B</span><span class="fact">F-020</span></div><div class="edge" data-flow-kind="withdrawal" data-fact="F-020">
+<b>3. 提现</b><span>二级户 b → 绑定卡</span><span class="fact">F-020</span></div><div class="edge" data-flow-kind="withdrawal" data-fact="F-020">
+<b>3.1 提现</b><span>分账接收方 B → 结算卡</span><span class="fact">F-020</span></div></div></article></div></div></section>
+<section id="flow-3" class="section"><div class="inner">
+<div class="section-head"><div><p class="section-kicker">03 · TARGET STATE</p>
+<h2>目标：宝财通 3.0</h2></div><p class="section-copy">3.0 是本次评审的推荐方向；推荐不等于业务收益已经验证，待确认边界仍需在后文决策。</p></div>
+<div class="evolution"><div class="evolution-row"><div class="evo-card"><b>2.0</b><span>单点升级</span></div><div class="evo-arrow">→</div><div class="evo-card v3"><b>3.0</b><span>批量开通 · 状态留痕 · 模式切换</span></div></div>
+<small>备选的“保留电子户 + 平台”模式仅作为历史/过渡背景，不默认为最终路径。 <span class="fact">F-023</span></small></div>
+</div></section><section id="difference-matrix" class="section"><div class="inner">
+<div class="section-head"><div><p class="section-kicker">04 · DIFFERENCE MATRIX</p>
+<h2>2.0 / 3.0 差异矩阵</h2></div><p class="section-copy">每一行同时回答：方案差在哪里、研发受什么影响、当前结论是否足够明确。</p></div>
+<div class="table-wrap"><table class="matrix"><thead><tr><th>维度</th><th>2.0</th><th>3.0</th><th>研发影响</th><th>状态</th><th>来源</th></tr></thead><tbody><tr data-fact="F-008"><td><strong>顶层主体</strong></td>
+<td>宝财通 2.0 收单商户号</td><td>宝财通 3.0 代付商户号</td><td>主体配置与映射需调整</td>
+<td class="status">明确</td><td><span class="fact">F-008</span></td></tr><tr data-fact="F-019"><td><strong>账户升级</strong></td>
+<td>二级户升级为收单/分账商户</td><td>保留升级语义并增加开通留痕</td><td>升级接口和状态机</td>
+<td class="status">部分明确</td><td><span class="fact">F-019</span></td></tr><tr data-fact="F-031"><td><strong>开户方式</strong></td>
+<td>线下 UUID + 材料补查</td><td>批量开户、H5、OCR 补齐</td><td>新增批次与材料流程</td>
+<td class="status">部分明确</td><td><span class="fact">F-031</span></td></tr><tr data-fact="F-031"><td><strong>产品开通</strong></td>
+<td>随升级配置产品/协议</td><td>独立记录产品开通结果</td><td>产品状态与审计记录</td>
+<td class="status">明确</td><td><span class="fact">F-031</span></td></tr><tr data-fact="F-024"><td><strong>收单识别</strong></td>
+<td>识别升级待约商户</td><td>二级户入参 + 模式/升级状态路由</td><td>收单路由兼容</td>
+<td class="status">待确认</td><td><span class="fact pending">F-024</span></td></tr><tr data-fact="F-025"><td><strong>分账逻辑</strong></td>
+<td>按新分账标识定位接收方</td><td>批量关系 + 新旧订单兼容</td><td>订单、关系和解冻周期</td>
+<td class="status">待确认</td><td><span class="fact pending">F-025</span></td></tr><tr data-fact="F-027"><td><strong>退款出口</strong></td>
+<td>分账前后使用不同资金来源</td><td>保留兼容路径并按状态判断</td><td>退款路由和余额校验</td>
+<td class="status">待确认</td><td><span class="fact pending">F-027</span></td></tr><tr data-fact="F-028"><td><strong>提现账户</strong></td>
+<td>绑定卡 / 结算卡双路径</td><td>继续区分商户角色提现</td><td>提现主体映射</td>
+<td class="status">明确</td><td><span class="fact">F-028</span></td></tr><tr data-fact="F-037"><td><strong>余额调账</strong></td>
+<td>查询及人工划转语义</td><td>新增余额转账入口和校验</td><td>在途、可用余额与权限</td>
+<td class="status">待确认</td><td><span class="fact pending">F-037</span></td></tr><tr data-fact="F-029"><td><strong>查收支 / 对账</strong></td>
+<td>按待升级商户查询</td><td>支持升级商户和分账接收方</td><td>查询维度和账单映射</td>
+<td class="status">部分明确</td><td><span class="fact">F-029</span></td></tr><tr data-fact="F-036"><td><strong>模式切换</strong></td>
+<td>单一配置路径</td><td>收单/代付商户号 + 新模式开关</td><td>灰度、回滚和历史兼容</td>
+<td class="status">待确认</td><td><span class="fact pending">F-036</span></td></tr></tbody></table></div>
+</div></section><section id="change-areas" class="section"><div class="inner">
+<div class="section-head"><div><p class="section-kicker">05 · CHANGE SCOPE</p>
+<h2>七个业务环节的改造</h2></div><p class="section-copy">评审时先确认范围，再下钻字段和接口；所有小字号字段仍以权威文档复核。</p></div>
+<div class="accordion-grid"><details data-fact="F-031"><summary><span class="num">01</span>
+<span>宝财通开户</span><span class="fact">F-031</span></summary><div class="detail-body"><p>批量导入商户、发起升级和产品开通，记录完整执行状态。</p>
+<ul><li>新增二级升待约商户入口</li><li>Excel 导入非必填邮箱、法人手机号等</li><li>记录批次、商户、开通状态、创建及更新时间</li></ul></div></details><details data-fact="F-032"><summary><span class="num">02</span>
+<span>材料补查</span><span class="fact">F-032</span></summary><div class="detail-body"><p>由二级户窗口返回材料补查 H5，结合 OCR 与平台信息完成补齐。</p>
+<ul><li>生成材料补查链接</li><li>复用证件 OCR 识别结果</li><li>保留人工确认边界</li></ul></div></details><details data-fact="F-033"><summary><span class="num">03</span>
+<span>开户 H5</span><span class="fact">F-033</span></summary><div class="detail-body"><p>从二级户窗口进入开户流程，减少重复录入但不绕过必填校验。</p>
+<ul><li>二级户上下文带入</li><li>非必填字段自动补齐</li><li>失败状态可回查</li></ul></div></details><details data-fact="F-034"><summary><span class="num">04</span>
+<span>升待约接口简化</span><span class="fact">F-034</span></summary><div class="detail-body"><p>复用已有平台与 OCR 信息；最终字段集合以接口原文为准。</p>
+<ul><li>减少重复传值</li><li>保留必要商户校验</li><li>字段级边界待原文确认</li></ul></div></details><details data-fact="F-035"><summary><span class="num">05</span>
+<span>分账关系批量绑定</span><span class="fact">F-035</span></summary><div class="detail-body"><p>按批次导入分账方和被分账方，执行绑定并可导出结果。</p>
+<ul><li>批次记录与状态</li><li>批量绑定接口</li><li>创建人和更新时间审计</li></ul></div></details><details data-fact="F-036"><summary><span class="num">06</span>
+<span>平台模式切换</span><span class="fact">F-036</span></summary><div class="detail-body"><p>配置收单商户号、代付商户号和新模式开关，显式控制迁移。</p>
+<ul><li>平台收单商户号</li><li>平台代付商户号</li><li>新模式启停和回滚</li></ul></div></details><details data-fact="F-037"><summary><span class="num">07</span>
+<span>余额调账</span><span class="fact">F-037</span></summary><div class="detail-body"><p>区分已分账与未分账资金，在余额与主体校验通过后执行划转。</p>
+<ul><li>新增余额转账入口</li><li>标识资金类型</li><li>校验可用余额和目标主体</li></ul></div></details></div></div></section><section id="business-rules" class="section"><div class="inner">
+<div class="section-head"><div><p class="section-kicker">06 · BUSINESS RULES</p>
+<h2>关键规则与异常路径</h2></div><p class="section-copy">默认只看结论；展开后核对触发条件、主体边界与兼容路径。</p></div>
+<div class="rule-grid"><details data-fact="F-024"><summary><span class="num">01</span><span>收单</span><span class="fact">F-024</span></summary>
+<div class="detail-body"><p><strong>识别交易商户的升级状态，并选择对应收单和待分账路径。</strong></p><ul><li>接口仍传二级户</li><li>判断是否为升级待约商户</li><li>新旧模式由配置控制</li></ul></div></details><details data-fact="F-025"><summary><span class="num">02</span><span>分账</span><span class="fact">F-025</span></summary>
+<div class="detail-body"><p><strong>定位原支付订单、分账关系与可分资金，再进入新分账处理。</strong></p><ul><li>历史订单兼容待确认</li><li>关系不得串扰</li><li>解冻周期可配置</li></ul></div></details><details data-fact="F-027"><summary><span class="num">03</span><span>退款</span><span class="fact">F-027</span></summary>
+<div class="detail-body"><p><strong>退款来源取决于分账状态和订单路径，不能统一从单一账户出款。</strong></p><ul><li>分账前优先收单侧</li><li>分账后涉及接收方</li><li>旧订单路径需兼容</li></ul></div></details><details data-fact="F-028"><summary><span class="num">04</span><span>提现</span><span class="fact">F-028</span></summary>
+<div class="detail-body"><p><strong>升级商户与分账接收方使用不同卡出口。</strong></p><ul><li>二级户/升级商户 → 绑定卡</li><li>分账接收方 → 结算卡</li><li>主体映射需校验</li></ul></div></details><details data-fact="F-029"><summary><span class="num">05</span><span>余额查询</span><span class="fact">F-029</span></summary>
+<div class="detail-body"><p><strong>按升级商户号或分账接收方查询对应余额。</strong></p><ul><li>区分电子户、二级户和商户余额</li><li>展示可用与在途边界</li><li>统一口径待确认</li></ul></div></details><details data-fact="F-029"><summary><span class="num">06</span><span>查收支</span><span class="fact">F-029</span></summary>
+<div class="detail-body"><p><strong>按升级主体查询收支与分账结果，支持新模式核对。</strong></p><ul><li>查询维度包含待升级商户</li><li>关联交易订单</li><li>历史查询兼容</li></ul></div></details><details data-fact="F-030"><summary><span class="num">07</span><span>对账</span><span class="fact">F-030</span></summary>
+<div class="detail-body"><p><strong>收单订单和分账订单需挂在正确主体，并与代理商对账文件核对。</strong></p><ul><li>收单/分账订单主体明确</li><li>支持差异定位</li><li>BM 侧可查询升级商户交易</li></ul></div></details></div></div></section><section id="open-questions" class="section"><div class="inner">
+<div class="section-head"><div><p class="section-kicker">07 · OPEN QUESTIONS</p>
+<h2>风险、依赖与待确认事项</h2></div><p class="section-copy">这些问题不阻塞内部评审稿，但会阻塞最终业务结论。评审需要为每项指定负责人和权威依据。</p></div>
+<div class="controls" role="group" aria-label="按负责人筛选待确认项">
+<button class="control" type="button" data-owner-filter="all" aria-pressed="true">全部</button>
+<button class="control" type="button" data-owner-filter="product" aria-pressed="false">产品</button>
+<button class="control" type="button" data-owner-filter="engineering" aria-pressed="false">研发</button>
+<button class="control" type="button" data-owner-filter="qa-compliance" aria-pressed="false">测试 / 合规</button></div><div class="question-grid"><article class="question" data-question-owner="product" data-fact="F-038">
+<span class="owner">产品</span><h3>Q-01 · 历史订单如何跨模式分账？</h3>
+<p>需要明确切换时点、可兼容订单范围和无法兼容时的处理策略。</p><span class="fact pending">F-038</span></article><article class="question" data-question-owner="product" data-fact="F-044">
+<span class="owner">产品</span><h3>Q-02 · 三种模式是否并行存在？</h3>
+<p>保留电子户、2.0 去电子户和 3.0 模式的适用商户范围待确认。</p><span class="fact pending">F-044</span></article><article class="question" data-question-owner="engineering" data-fact="F-040">
+<span class="owner">研发</span><h3>Q-03 · 退款资金来源的权威路由是什么？</h3>
+<p>需要按订单、分账和账户状态给出唯一可执行规则。</p><span class="fact pending">F-040</span></article><article class="question" data-question-owner="engineering" data-fact="F-041">
+<span class="owner">研发</span><h3>Q-04 · 账户映射与幂等键如何定义？</h3>
+<p>UUID、二级户、升级商户、产品状态之间的唯一关系待接口文档确认。</p><span class="fact pending">F-041</span></article><article class="question" data-question-owner="qa-compliance" data-fact="F-039">
+<span class="owner">测试/合规</span><h3>Q-05 · 余额能否跨主体划转？</h3>
+<p>已分账/未分账资金的主体边界和合规依据待确认。</p><span class="fact pending">F-039</span></article><article class="question" data-question-owner="qa-compliance" data-fact="F-042">
+<span class="owner">测试/合规</span><h3>Q-06 · 余额校验公式是什么？</h3>
+<p>电子户、二级户在途户和平台待分账账户之间的等式待确认。</p><span class="fact pending">F-042</span></article><article class="question" data-question-owner="qa-compliance" data-fact="F-043">
+<span class="owner">测试/合规</span><h3>Q-07 · 小字号字段对应哪个权威文档？</h3>
+<p>04 流程、协议号、ACS 账户等内容需要以原始需求或接口文档复核。</p><span class="fact pending">F-043</span></article></div></div></section><section id="review-decision" class="section"><div class="inner">
+<div class="section-head"><div><p class="section-kicker">08 · REVIEW DECISION</p>
+<h2>把评审结果落到可执行动作</h2></div><p class="section-copy">H5 不替评审会做业务判断；会中只需要把结论、负责人、时间和证据补齐。</p></div>
+<div class="decision"><article class="decision-card"><b>已确认项</b><span>会中填写：范围、规则与接口结论</span></article>
+<article class="decision-card"><b>待确认项</b><span>会中填写：问题编号和权威依据</span></article>
+<article class="decision-card"><b>负责人</b><span>产品 / 研发 / 测试 / 合规</span></article>
+<article class="decision-card"><b>下一步</b><span>动作、目标时间、回查方式</span></article></div>
+<div class="ledger" aria-label="来源事实台账"><span class="fact">F-001</span><span class="fact">F-002</span><span class="fact">F-003</span><span class="fact">F-004</span><span class="fact">F-005</span><span class="fact">F-006</span><span class="fact pending">F-007</span><span class="fact">F-008</span><span class="fact">F-009</span><span class="fact">F-010</span><span class="fact">F-011</span><span class="fact">F-012</span><span class="fact">F-013</span><span class="fact">F-014</span><span class="fact">F-015</span><span class="fact">F-016</span><span class="fact">F-017</span><span class="fact">F-018</span><span class="fact">F-019</span><span class="fact">F-020</span><span class="fact">F-021</span><span class="fact">F-022</span><span class="fact">F-023</span><span class="fact">F-024</span><span class="fact">F-025</span><span class="fact">F-026</span><span class="fact">F-027</span><span class="fact">F-028</span><span class="fact">F-029</span><span class="fact">F-030</span><span class="fact">F-031</span><span class="fact">F-032</span><span class="fact">F-033</span><span class="fact pending">F-034</span><span class="fact">F-035</span><span class="fact">F-036</span><span class="fact">F-037</span><span class="fact pending">F-038</span><span class="fact pending">F-039</span><span class="fact pending">F-040</span><span class="fact pending">F-041</span><span class="fact pending">F-042</span><span class="fact pending">F-043</span><span class="fact pending">F-044</span></div></div></section>
+<footer class="footer"><div class="inner"><strong>宝财通收单与分账方案演进</strong><span>No Feishu sync · 本地评审材料</span></div></footer>
+</main></div><script src="assets/baocaitong-2-3-review-h5/app.js"></script></body></html>

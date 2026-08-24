@@ -1,0 +1,97 @@
+{
+  "report_id": "baocaitong-2-3-review",
+  "title": "宝财通收单与分账方案演进",
+  "subtitle": "2.0 → 3.0 产品与研发联合评审",
+  "status": "内部评审稿",
+  "summary": "从账户关系、资金路径与实施影响三个层面，统一评审宝财通 2.0 现状与 3.0 目标方案。",
+  "versions": {
+    "2.0": {
+      "hub": "宝财通 2.0 收单商户号",
+      "tagline": "去电子户 · 二级户升级为待约商户",
+      "nodes": [
+        {"id":"v2-a","label":"二级户 a","role":"升级入口","detail":"升级为收单商户 A，用于承接平台收单。","fact":"F-009"},
+        {"id":"v2-b","label":"二级户 b","role":"升级入口","detail":"升级为分账接收方 B，并保留绑定卡提现路径。","fact":"F-009"},
+        {"id":"v2-merchant","label":"收单商户 A","role":"收单主体","detail":"100 元收单资金进入基本户语义路径。","fact":"F-012"},
+        {"id":"v2-receiver","label":"分账接收方 B","role":"分账主体","detail":"接收来自收单商户 A 的分账资金。","fact":"F-013"}
+      ],
+      "cards": ["绑定卡", "结算卡"],
+      "edges": [
+        {"from":"宝财通 2.0 收单商户号","to":"二级户 a / b","label":"账户关系","kind":"relation","fact":"F-008"},
+        {"from":"二级户 a / b","to":"升级后商户","label":"升级","kind":"upgrade","fact":"F-010"},
+        {"from":"未结算资金","to":"收单商户 A","label":"1. 收单 100 元","kind":"fund","fact":"F-012"},
+        {"from":"收单商户 A","to":"分账接收方 B","label":"2. 分账","kind":"fund","fact":"F-013"},
+        {"from":"二级户 b","to":"绑定卡","label":"3. 提现","kind":"withdrawal","fact":"F-014"},
+        {"from":"分账接收方 B","to":"结算卡","label":"3.1 提现","kind":"withdrawal","fact":"F-014"}
+      ]
+    },
+    "3.0": {
+      "hub": "宝财通 3.0 代付商户号",
+      "tagline": "代付商户号承载升级关系 · 新旧路径需显式切换",
+      "nodes": [
+        {"id":"v3-a","label":"二级户 a","role":"升级入口","detail":"升级为收单商户 A；开户和产品状态需留痕。","fact":"F-019"},
+        {"id":"v3-b","label":"二级户 b","role":"升级入口","detail":"升级为分账接收方 B；支持批量绑定关系。","fact":"F-019"},
+        {"id":"v3-merchant","label":"收单商户 A","role":"收单主体","detail":"接口仍传二级户，并根据升级状态进入相应路径。","fact":"F-021"},
+        {"id":"v3-receiver","label":"分账接收方 B","role":"分账主体","detail":"按新分账逻辑接收资金并提现至结算卡。","fact":"F-020"}
+      ],
+      "cards": ["绑定卡", "结算卡"],
+      "edges": [
+        {"from":"宝财通 3.0 代付商户号","to":"二级户 a / b","label":"账户关系","kind":"relation","fact":"F-018"},
+        {"from":"二级户 a / b","to":"升级后商户","label":"升级 + 产品开通","kind":"upgrade","fact":"F-019"},
+        {"from":"未结算资金","to":"收单商户 A","label":"1. 收单 100 元","kind":"fund","fact":"F-020"},
+        {"from":"收单商户 A","to":"分账接收方 B","label":"2. 分账","kind":"fund","fact":"F-020"},
+        {"from":"二级户 b","to":"绑定卡","label":"3. 提现","kind":"withdrawal","fact":"F-020"},
+        {"from":"分账接收方 B","to":"结算卡","label":"3.1 提现","kind":"withdrawal","fact":"F-020"}
+      ]
+    }
+  },
+  "core_changes": [
+    {"index":"01","title":"开户与升级","summary":"从单点升级扩展为批量开户、产品开通、状态留痕和材料补齐。","fact":"F-031"},
+    {"index":"02","title":"收单识别","summary":"交易仍传二级户，但必须识别其升级状态并选择新旧收单路径。","fact":"F-021"},
+    {"index":"03","title":"分账关系","summary":"新增分账商户关系批量绑定、批次记录、导出与审计字段。","fact":"F-035"},
+    {"index":"04","title":"资金处理","summary":"退款、提现和余额调账需区分账户主体及已分账/未分账状态。","fact":"F-030"}
+  ],
+  "difference_rows": [
+    {"dimension":"顶层主体","v2":"宝财通 2.0 收单商户号","v3":"宝财通 3.0 代付商户号","impact":"主体配置与映射需调整","status":"明确","fact":"F-008"},
+    {"dimension":"账户升级","v2":"二级户升级为收单/分账商户","v3":"保留升级语义并增加开通留痕","impact":"升级接口和状态机","status":"部分明确","fact":"F-019"},
+    {"dimension":"开户方式","v2":"线下 UUID + 材料补查","v3":"批量开户、H5、OCR 补齐","impact":"新增批次与材料流程","status":"部分明确","fact":"F-031"},
+    {"dimension":"产品开通","v2":"随升级配置产品/协议","v3":"独立记录产品开通结果","impact":"产品状态与审计记录","status":"明确","fact":"F-031"},
+    {"dimension":"收单识别","v2":"识别升级待约商户","v3":"二级户入参 + 模式/升级状态路由","impact":"收单路由兼容","status":"待确认","fact":"F-024"},
+    {"dimension":"分账逻辑","v2":"按新分账标识定位接收方","v3":"批量关系 + 新旧订单兼容","impact":"订单、关系和解冻周期","status":"待确认","fact":"F-025"},
+    {"dimension":"退款出口","v2":"分账前后使用不同资金来源","v3":"保留兼容路径并按状态判断","impact":"退款路由和余额校验","status":"待确认","fact":"F-027"},
+    {"dimension":"提现账户","v2":"绑定卡 / 结算卡双路径","v3":"继续区分商户角色提现","impact":"提现主体映射","status":"明确","fact":"F-028"},
+    {"dimension":"余额调账","v2":"查询及人工划转语义","v3":"新增余额转账入口和校验","impact":"在途、可用余额与权限","status":"待确认","fact":"F-037"},
+    {"dimension":"查收支 / 对账","v2":"按待升级商户查询","v3":"支持升级商户和分账接收方","impact":"查询维度和账单映射","status":"部分明确","fact":"F-029"},
+    {"dimension":"模式切换","v2":"单一配置路径","v3":"收单/代付商户号 + 新模式开关","impact":"灰度、回滚和历史兼容","status":"待确认","fact":"F-036"}
+  ],
+  "change_areas": [
+    {"number":"01","title":"宝财通开户","summary":"批量导入商户、发起升级和产品开通，记录完整执行状态。","items":["新增二级升待约商户入口","Excel 导入非必填邮箱、法人手机号等","记录批次、商户、开通状态、创建及更新时间"],"fact":"F-031"},
+    {"number":"02","title":"材料补查","summary":"由二级户窗口返回材料补查 H5，结合 OCR 与平台信息完成补齐。","items":["生成材料补查链接","复用证件 OCR 识别结果","保留人工确认边界"],"fact":"F-032"},
+    {"number":"03","title":"开户 H5","summary":"从二级户窗口进入开户流程，减少重复录入但不绕过必填校验。","items":["二级户上下文带入","非必填字段自动补齐","失败状态可回查"],"fact":"F-033"},
+    {"number":"04","title":"升待约接口简化","summary":"复用已有平台与 OCR 信息；最终字段集合以接口原文为准。","items":["减少重复传值","保留必要商户校验","字段级边界待原文确认"],"fact":"F-034"},
+    {"number":"05","title":"分账关系批量绑定","summary":"按批次导入分账方和被分账方，执行绑定并可导出结果。","items":["批次记录与状态","批量绑定接口","创建人和更新时间审计"],"fact":"F-035"},
+    {"number":"06","title":"平台模式切换","summary":"配置收单商户号、代付商户号和新模式开关，显式控制迁移。","items":["平台收单商户号","平台代付商户号","新模式启停和回滚"],"fact":"F-036"},
+    {"number":"07","title":"余额调账","summary":"区分已分账与未分账资金，在余额与主体校验通过后执行划转。","items":["新增余额转账入口","标识资金类型","校验可用余额和目标主体"],"fact":"F-037"}
+  ],
+  "business_rules": [
+    {"title":"收单","conclusion":"识别交易商户的升级状态，并选择对应收单和待分账路径。","conditions":["接口仍传二级户","判断是否为升级待约商户","新旧模式由配置控制"],"fact":"F-024"},
+    {"title":"分账","conclusion":"定位原支付订单、分账关系与可分资金，再进入新分账处理。","conditions":["历史订单兼容待确认","关系不得串扰","解冻周期可配置"],"fact":"F-025"},
+    {"title":"退款","conclusion":"退款来源取决于分账状态和订单路径，不能统一从单一账户出款。","conditions":["分账前优先收单侧","分账后涉及接收方","旧订单路径需兼容"],"fact":"F-027"},
+    {"title":"提现","conclusion":"升级商户与分账接收方使用不同卡出口。","conditions":["二级户/升级商户 → 绑定卡","分账接收方 → 结算卡","主体映射需校验"],"fact":"F-028"},
+    {"title":"余额查询","conclusion":"按升级商户号或分账接收方查询对应余额。","conditions":["区分电子户、二级户和商户余额","展示可用与在途边界","统一口径待确认"],"fact":"F-029"},
+    {"title":"查收支","conclusion":"按升级主体查询收支与分账结果，支持新模式核对。","conditions":["查询维度包含待升级商户","关联交易订单","历史查询兼容"],"fact":"F-029"},
+    {"title":"对账","conclusion":"收单订单和分账订单需挂在正确主体，并与代理商对账文件核对。","conditions":["收单/分账订单主体明确","支持差异定位","BM 侧可查询升级商户交易"],"fact":"F-030"}
+  ],
+  "open_questions": [
+    {"id":"Q-01","owner":"product","owner_label":"产品","title":"历史订单如何跨模式分账？","detail":"需要明确切换时点、可兼容订单范围和无法兼容时的处理策略。","fact":"F-038"},
+    {"id":"Q-02","owner":"product","owner_label":"产品","title":"三种模式是否并行存在？","detail":"保留电子户、2.0 去电子户和 3.0 模式的适用商户范围待确认。","fact":"F-044"},
+    {"id":"Q-03","owner":"engineering","owner_label":"研发","title":"退款资金来源的权威路由是什么？","detail":"需要按订单、分账和账户状态给出唯一可执行规则。","fact":"F-040"},
+    {"id":"Q-04","owner":"engineering","owner_label":"研发","title":"账户映射与幂等键如何定义？","detail":"UUID、二级户、升级商户、产品状态之间的唯一关系待接口文档确认。","fact":"F-041"},
+    {"id":"Q-05","owner":"qa-compliance","owner_label":"测试/合规","title":"余额能否跨主体划转？","detail":"已分账/未分账资金的主体边界和合规依据待确认。","fact":"F-039"},
+    {"id":"Q-06","owner":"qa-compliance","owner_label":"测试/合规","title":"余额校验公式是什么？","detail":"电子户、二级户在途户和平台待分账账户之间的等式待确认。","fact":"F-042"},
+    {"id":"Q-07","owner":"qa-compliance","owner_label":"测试/合规","title":"小字号字段对应哪个权威文档？","detail":"04 流程、协议号、ACS 账户等内容需要以原始需求或接口文档复核。","fact":"F-043"}
+  ],
+  "facts": [
+    {"id":"F-001","confidence":"confirmed"},{"id":"F-002","confidence":"confirmed"},{"id":"F-003","confidence":"transcribed"},{"id":"F-004","confidence":"transcribed"},{"id":"F-005","confidence":"transcribed"},{"id":"F-006","confidence":"confirmed"},{"id":"F-007","confidence":"needs_confirmation"},
+    {"id":"F-008","confidence":"confirmed"},{"id":"F-009","confidence":"confirmed"},{"id":"F-010","confidence":"confirmed"},{"id":"F-011","confidence":"confirmed"},{"id":"F-012","confidence":"confirmed"},{"id":"F-013","confidence":"confirmed"},{"id":"F-014","confidence":"confirmed"},{"id":"F-015","confidence":"transcribed"},{"id":"F-016","confidence":"transcribed"},{"id":"F-017","confidence":"transcribed"},{"id":"F-018","confidence":"confirmed"},{"id":"F-019","confidence":"confirmed"},{"id":"F-020","confidence":"confirmed"},{"id":"F-021","confidence":"transcribed"},{"id":"F-022","confidence":"confirmed"},{"id":"F-023","confidence":"transcribed"},{"id":"F-024","confidence":"transcribed"},{"id":"F-025","confidence":"transcribed"},{"id":"F-026","confidence":"transcribed"},{"id":"F-027","confidence":"transcribed"},{"id":"F-028","confidence":"confirmed"},{"id":"F-029","confidence":"transcribed"},{"id":"F-030","confidence":"transcribed"},{"id":"F-031","confidence":"transcribed"},{"id":"F-032","confidence":"transcribed"},{"id":"F-033","confidence":"transcribed"},{"id":"F-034","confidence":"needs_confirmation"},{"id":"F-035","confidence":"transcribed"},{"id":"F-036","confidence":"transcribed"},{"id":"F-037","confidence":"transcribed"},{"id":"F-038","confidence":"needs_confirmation"},{"id":"F-039","confidence":"needs_confirmation"},{"id":"F-040","confidence":"needs_confirmation"},{"id":"F-041","confidence":"needs_confirmation"},{"id":"F-042","confidence":"needs_confirmation"},{"id":"F-043","confidence":"needs_confirmation"},{"id":"F-044","confidence":"needs_confirmation"}
+  ]
+}
