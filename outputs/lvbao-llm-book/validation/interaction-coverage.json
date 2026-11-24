@@ -1,0 +1,4486 @@
+[
+  {
+    "page": "assets/diagrams/01.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/02.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/03.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/04.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/05.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/06.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/07.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/08.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/09.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/10.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/11.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/12.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/13.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/14.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/15.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/16.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/block.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/decoder.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport",
+      "typography_baseline": "Computed body font matches sampled buttons, inline SVG text and figure captions where present; no document overflow at 1280px/390px."
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/qkv.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-01.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-02.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-03.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-04.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-05.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-06.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-07.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-08.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-09.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-10.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-11.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-12.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-13.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-14.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-15.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/route-16.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/softmax-basics.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "assets/diagrams/vector-basics.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "last_node": "Selected and verified pressed state and nonempty detail in browser",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "diagram_navigation": "Chrome 390px, normal motion: End selected last node and return link located the same embedded SVG."
+    }
+  },
+  {
+    "page": "chapters/01.html",
+    "svg_count": 3,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "network": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "目标y=1，平方损失=0.0400",
+          "after": "目标y=1，平方损失=0.6400",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/02.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "cosine": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "当前余弦相似度=0.707（参考：0°为1，90°为0，180°为−1）",
+          "after": "当前余弦相似度=-1.000（参考：0°为1，90°为0，180°为−1）",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/03.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "loss": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "单位置困惑度 exp(L)=2.000",
+          "after": "单位置困惑度 exp(L)=1.010",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/04.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "gradient": "Changed input, checked saved baseline and reset result",
+        "adam": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "第0步：θ=0.0000；L=9.0000",
+          "after": "第1步：θ=6.6000；L=12.9600",
+          "reset": true
+        },
+        {
+          "before": "Adam Δθ=-0.1000；SGD Δθ=-0.2000",
+          "after": "Adam Δθ=-0.1000；SGD Δθ=-0.5000",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/05.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "early": "Changed input, checked saved baseline and reset result",
+        "dropout": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "第5轮后停止，并恢复第3轮权重",
+          "after": "给定6轮以内尚未触发早停",
+          "reset": true
+        },
+        {
+          "before": "本次保留时=8.000，丢弃时=0；平均输出=6",
+          "after": "本次保留时=6.000，丢弃时=0；平均输出=6",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/06.html",
+    "svg_count": 5,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "attention": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "输出=Σ权重×value=14.248",
+          "after": "输出=Σ权重×value=10.310",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/07.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "temperature": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 2,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "66.5% / 24.5% / 9.0%",
+          "after": "50.6% / 30.7% / 18.6%",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 2,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/08.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "distill": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport",
+      "typography_baseline": "Computed body font matches sampled buttons, inline SVG text and figure captions where present; no document overflow at 1280px/390px."
+    },
+    "implementation": {
+      "deferred_video_templates": 2,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "KL = 0.02160",
+          "after": "KL = 0.15366",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 2,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/09.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "discount": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 4,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "当前折现回报=8.100",
+          "after": "当前折现回报=10.000",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 4,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/10.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "reward": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "calculation_controls": {
+          "start": "0.7",
+          "endpoints": {
+            "0": "代理目标选择B\nR(A)=0.00；R(B)=1.00\n\n目标定义改变偏好的行为。这只是二维线性示意，不是真实奖励模型，也不能证明所有迎合都来自这一机制。",
+            "1": "代理目标选择A\nR(A)=1.00；R(B)=0.00\n\n目标定义改变偏好的行为。这只是二维线性示意，不是真实奖励模型，也不能证明所有迎合都来自这一机制。"
+          },
+          "reset": true
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "calculation_controls": {
+          "start": "0.7",
+          "endpoints": {
+            "0": "代理目标选择B\nR(A)=0.00；R(B)=1.00\n\n目标定义改变偏好的行为。这只是二维线性示意，不是真实奖励模型，也不能证明所有迎合都来自这一机制。",
+            "1": "代理目标选择A\nR(A)=1.00；R(B)=0.00\n\n目标定义改变偏好的行为。这只是二维线性示意，不是真实奖励模型，也不能证明所有迎合都来自这一机制。"
+          },
+          "reset": true
+        }
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/11.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "ewc": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "w*=0.500；旧损失=0.250；新损失=2.250",
+          "after": "w*=0.800；旧损失=0.040；新损失=3.240",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/12.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "contrastive": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 2,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "正例概率=0.6652；损失=0.4076",
+          "after": "正例概率=0.1173；损失=2.1429",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 2,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/13.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "convolution": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 4,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "输出=[-1.00, -1.00, -1.00]",
+          "after": "输出=[5.00, 8.00, 11.00]",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 4,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/14.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "bayes": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 2,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "后验=66.67%",
+          "after": "后验=99.87%",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 2,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/15.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "growth": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "平均乘数=1.050；对数增长=-0.0527",
+          "after": "平均乘数=1.250；对数增长=0.2027",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "chapters/16.html",
+    "svg_count": 2,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/atlas.js",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "retrieval": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "calculation_controls": {
+          "start": "0.95",
+          "endpoints": {
+            "1": "相似度第一：A（旧）；有效依据仍为B\nB相似度固定0.85；适用性与版本独立检查\n\n此例假设B明确适用且替代A。真实情况必须核对对象、有效期与替代关系，不能永远选最新文件。",
+            "0.1": "相似度第一：B（新）；有效依据仍为B\nB相似度固定0.85；适用性与版本独立检查\n\n此例假设B明确适用且替代A。真实情况必须核对对象、有效期与替代关系，不能永远选最新文件。"
+          },
+          "reset": true
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "calculation_controls": {
+          "start": "0.95",
+          "endpoints": {
+            "1": "相似度第一：A（旧）；有效依据仍为B\nB相似度固定0.85；适用性与版本独立检查\n\n此例假设B明确适用且替代A。真实情况必须核对对象、有效期与替代关系，不能永远选最新文件。",
+            "0.1": "相似度第一：B（新）；有效依据仍为B\nB相似度固定0.85；适用性与版本独立检查\n\n此例假设B明确适用且替代A。真实情况必须核对对象、有效期与替代关系，不能永远选最新文件。"
+          },
+          "reset": true
+        }
+      }
+    }
+  },
+  {
+    "page": "course/01.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/generation-demo.js",
+      "../assets/generation-story.js?v=reset-focus-1",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=structure-2",
+      "../assets/course-example-player.js?v=structure-3"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "standalone_diagram_link": "Resolved rendered caption link and verified interactive node controls at destination",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references.",
+      "first_fact_check": "Disclosure and contradicted source text confirmed in markup; browser interaction pending."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 周二闭馆"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 周二闭馆"
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/02.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../assets/course-demos.js",
+      "../assets/embedding-story.js?v=interest-1",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=structure-2",
+      "../assets/course-example-player.js?v=structure-3"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport",
+      "typography_baseline": "Computed body font matches sampled buttons, inline SVG text and figure captions where present; no document overflow at 1280px/390px.",
+      "redesign_sample": "390px: selected 18, keyboard revealed nearest 900, reset hid the graph, width stayed 390px."
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css",
+      "redesign_sample": "Interest map and token-lookup bridge"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 900"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 900"
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/03.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/vector-demo.js",
+      "../assets/dot-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=related-cases-1",
+      "../assets/course-example-player.js?v=reset-1"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 小林"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 小林"
+      }
+    }
+  },
+  {
+    "page": "course/04.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/sampling-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=temperature-steps",
+      "../assets/course-example-player.js?v=reset-1"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "standalone_diagram_link": "Resolved rendered caption link and verified interactive node controls at destination",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references.",
+      "temperature_steps": "T=1 and T=2 probability outputs checked against implementation; browser interaction pending."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 18.6%"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 18.6%"
+      },
+      "calculation_controls": [
+        {
+          "before": "66.5% / 24.5% / 9.0%",
+          "after": "50.6% / 30.7% / 18.6%",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/05.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/context-story.js?v=semantic-2",
+      "../assets/attention-studio.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=structure-2",
+      "../assets/course-example-player.js?v=structure-3"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport",
+      "typography_baseline": "Computed body font matches sampled buttons, inline SVG text and figure captions where present; no document overflow at 1280px/390px.",
+      "redesign_sample": "390px keyboard: pronoun output 2, object output 2.25 and book highlighted; reset clears selection; document width 390."
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css",
+      "redesign_sample": "Question switches drive one graph and calculation, with evidence boundary."
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 书",
+        "motion_frames": {
+          "animation": "attention-trace",
+          "durationMs": [
+            280
+          ],
+          "reducedMotionSameResult": true
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 书",
+        "motion_frames": {
+          "animation": "attention-trace",
+          "durationMs": [
+            280
+          ],
+          "reducedMotionSameResult": true
+        }
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/06.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../assets/heads-story.js",
+      "../assets/multihead.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=related-cases-1",
+      "../assets/course-example-player.js?v=reset-1"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "standalone_diagram_link": "Resolved rendered caption link and verified interactive node controls at destination",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 2 + 6 = 8"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 2 + 6 = 8"
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/07.html",
+    "svg_count": 4,
+    "interaction_scripts": [
+      "../assets/residual-demo.js",
+      "../assets/block-studio.js?v=book-context-2",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=book-context-2",
+      "../assets/course-example-player.js?v=reset-1"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport",
+      "deferred_video": "1280px click and 390px Enter: closed 54px, iframe mounted on expand and removed on close; 390px page width unchanged",
+      "typography_baseline": "Computed body font matches sampled buttons, inline SVG text and figure captions where present; no document overflow at 1280px/390px."
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 3 个位置 × 8 维"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 3 个位置 × 8 维"
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/08.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/generation-demo.js",
+      "../assets/cache-story.js?v=book-prefix-1",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=structure-2",
+      "../assets/course-example-player.js?v=structure-3"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 旧三组",
+        "motion_frames": {
+          "animation": "example-arrival",
+          "durationMs": [
+            280,
+            280
+          ],
+          "reducedMotionSameResult": true
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 旧三组",
+        "motion_frames": {
+          "animation": "example-arrival",
+          "durationMs": [
+            280,
+            280
+          ],
+          "reducedMotionSameResult": true
+        }
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/09.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../assets/price-story.js",
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=structure-2",
+      "../assets/course-example-player.js?v=structure-3",
+      "../assets/gradient-story.js"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 3.9204"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 3.9204"
+      },
+      "calculation_controls": [
+        {
+          "before": "单位置困惑度 exp(L)=2.000",
+          "after": "单位置困惑度 exp(L)=1.010",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/10.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/lab-visuals.js",
+      "../assets/valve-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=structure-2",
+      "../assets/course-example-player.js?v=structure-3",
+      "../assets/gradient-story.js"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 36.0000",
+        "motion_frames": {
+          "animation": "attention-trace",
+          "durationMs": [
+            280
+          ],
+          "reducedMotionSameResult": true
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 36.0000",
+        "motion_frames": {
+          "animation": "attention-trace",
+          "durationMs": [
+            280
+          ],
+          "reducedMotionSameResult": true
+        }
+      },
+      "calculation_controls": [
+        {
+          "before": "第0步：θ=0.0000；L=9.0000",
+          "after": "第1步：θ=6.6000；L=12.9600",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/11.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/generalization-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=structure-2",
+      "../assets/course-example-player.js?v=structure-3",
+      "../assets/reimbursement-case.js",
+      "../assets/reimbursement-training.js"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 12/20"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 12/20"
+      },
+      "calculation_controls": [
+        {
+          "before": "第5轮后停止，并恢复第3轮权重",
+          "after": "给定6轮以内尚未触发早停",
+          "reset": true
+        },
+        {
+          "before": "本次保留时=8.000，丢弃时=0；平均输出=6",
+          "after": "本次保留时=6.000，丢弃时=0；平均输出=6",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/12.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/lab-visuals.js",
+      "../assets/distill-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=structure-2",
+      "../assets/course-example-player.js?v=structure-3",
+      "../assets/scale-experiments.js"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 2,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 0、0、100%"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 0、0、100%"
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 2,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/13.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/preference-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=structure-2",
+      "../assets/course-example-player.js?v=structure-3",
+      "../assets/reimbursement-case.js",
+      "../assets/reimbursement-training.js"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: A 排第一"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: A 排第一"
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/14.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/multihead.js",
+      "../assets/reimbursement-case.js",
+      "../assets/evidence-story.js?v=receipts-1",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2",
+      "../assets/course-examples.js?v=structure-2",
+      "../assets/course-example-player.js?v=structure-3"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport",
+      "typography_baseline": "Computed body font matches sampled buttons, inline SVG text and figure captions where present; no document overflow at 1280px/390px.",
+      "redesign_sample": "390px keyboard: invented clause 9 resolves to clause 4; verified/missing/reset produce satisfied/pending/initial verdicts; width stays 390px."
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css",
+      "redesign_sample": "Reimbursement citation and tool-state evidence lab"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 虚构引用, 仍需核验凭证",
+        "motion_frames": {
+          "animation": "evidence-trace",
+          "durationMs": [
+            280
+          ],
+          "reducedMotionSameResult": true
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "main_interaction": "Keyboard activation and expected result verified: 虚构引用, 仍需核验凭证",
+        "motion_frames": {
+          "animation": "evidence-trace",
+          "durationMs": [
+            280
+          ],
+          "reducedMotionSameResult": true
+        }
+      }
+    }
+  },
+  {
+    "page": "course/deep/04.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/multihead.js",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "temperature": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "66.5% / 24.5% / 9.0%",
+          "after": "50.6% / 30.7% / 18.6%",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/05.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/multihead.js",
+      "../../assets/attention-steps.js",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "attention": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "加权输出 = 2.250",
+          "after": "加权输出 = 2.167",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/06.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/multihead.js",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/07.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/residual-demo.js",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/09.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/multihead.js",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "loss": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport",
+      "typography_baseline": "Computed body font matches sampled buttons, inline SVG text and figure captions where present; no document overflow at 1280px/390px."
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "单位置困惑度 exp(L)=2.000",
+          "after": "单位置困惑度 exp(L)=1.010",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/10.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/multihead.js",
+      "../../assets/lab-visuals.js",
+      "../../assets/valve-story.js",
+      "../../assets/scene-responsive.js?v=prediction-focus-1",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "gradient": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "第0步：单价 5.00 元；总价 10.00 元；损失 4.0000",
+          "after": "第1步：单价 9.00 元；总价 18.00 元；损失 36.0000",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/11.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/multihead.js",
+      "../../assets/generalization-story.js",
+      "../../assets/scene-responsive.js?v=prediction-focus-1",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "early": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "第5轮后停止，并恢复第3轮权重",
+          "after": "给定6轮以内尚未触发早停",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/12.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/multihead.js",
+      "../../assets/lab-visuals.js",
+      "../../assets/distill-story.js",
+      "../../assets/scene-responsive.js?v=prediction-focus-1",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "distill": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 2,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "KL = 0.02160",
+          "after": "KL = 0.15366",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 2,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/13.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/multihead.js",
+      "../../assets/preference-story.js",
+      "../../assets/scene-responsive.js?v=prediction-focus-1",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "reward": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 1,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "calculation_controls": {
+          "start": "0.7",
+          "endpoints": {
+            "0": "代理目标选择B\nR(A)=0.00；R(B)=1.00\n\n分数越偏重无条件表态，越容易奖励缺乏证据的回答。这里使用教学评分。",
+            "1": "代理目标选择A\nR(A)=1.00；R(B)=0.00\n\n分数越偏重无条件表态，越容易奖励缺乏证据的回答。这里使用教学评分。"
+          },
+          "reset": true
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "calculation_controls": {
+          "start": "0.7",
+          "endpoints": {
+            "0": "代理目标选择B\nR(A)=0.00；R(B)=1.00\n\n分数越偏重无条件表态，越容易奖励缺乏证据的回答。这里使用教学评分。",
+            "1": "代理目标选择A\nR(A)=1.00；R(B)=0.00\n\n分数越偏重无条件表态，越容易奖励缺乏证据的回答。这里使用教学评分。"
+          },
+          "reset": true
+        }
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 1,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/14.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/multihead.js",
+      "../../assets/atlas.js",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2",
+      "../../assets/reimbursement-case.js",
+      "../../assets/reimbursement-ranking.js"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "retrieval": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      }
+    }
+  },
+  {
+    "page": "course/deep/extension-09.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/rl-story.js",
+      "../../assets/scene-responsive.js?v=prediction-focus-1",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "discount": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 4,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "当前折现回报=8.100",
+          "after": "当前折现回报=10.000",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 4,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/extension-11.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/forget-story.js",
+      "../../assets/scene-responsive.js?v=prediction-focus-1",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "ewc": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "w*=0.500；旧损失=0.250；新损失=2.250",
+          "after": "w*=0.800；旧损失=0.040；新损失=3.240",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/extension-12.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/clip-story.js",
+      "../../assets/scene-responsive.js?v=prediction-focus-1",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "contrastive": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 2,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "正例概率=0.6652；损失=0.4076",
+          "after": "正例概率=0.1173；损失=2.1429",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 2,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/extension-13.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/convolution-story.js",
+      "../../assets/scene-responsive.js?v=prediction-focus-1",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "convolution": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 4,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "输出=[-1.00, -1.00, -1.00]",
+          "after": "输出=[5.00, 8.00, 11.00]",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 4,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/extension-14.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/bayes-story.js",
+      "../../assets/scene-responsive.js?v=prediction-focus-1",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "bayes": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 2,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "后验=66.67%",
+          "after": "后验=99.87%",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 2,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/deep/extension-15.html",
+    "svg_count": 1,
+    "interaction_scripts": [
+      "../../assets/labs.js?v=keyboard-reset-4",
+      "../../assets/selftrain-story.js",
+      "../../assets/scene-responsive.js?v=prediction-focus-1",
+      "../../assets/atlas.js?v=video-template-2",
+      "../../assets/atlas-motion.js?v=visible-content-3",
+      "../../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "calculations": {
+        "growth": "Changed input, checked saved baseline and reset result"
+      },
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "calculation_controls": [
+        {
+          "before": "平均乘数=1.050；对数增长=-0.0527",
+          "after": "平均乘数=1.250；对数增长=0.2027",
+          "reset": true
+        }
+      ],
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/extension-09.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/rl-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "changes": [
+      "prediction prompt and answer disclosure",
+      "keyboard focus restored on experiment redraw"
+    ],
+    "browser_checks": {
+      "experiment": "Three right moves reach reward 10; initial discounted return 8.100",
+      "deep_link": "Clicked; one calculation panel rendered at destination",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 4,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": null,
+          "after": "终点奖励10，折扣γ=0.9\n成功到达\n\n按Gₜ=rₜ₊₁＋γrₜ₊₂＋…计算，第一个动作的回报为10×0.9^2=8.100。奖励虽然最后才来，前面动作仍能分到折扣回报。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-09.html"
+        },
+        "extension_no-preference": {
+          "before": null,
+          "after": "终点奖励10，折扣γ=0.9\n成功到达\n\n按Gₜ=rₜ₊₁＋γrₜ₊₂＋…计算，第一个动作的回报为10×0.9^2=8.100。奖励虽然最后才来，前面动作仍能分到折扣回报。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-09.html"
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": null,
+          "after": "终点奖励10，折扣γ=0.9\n成功到达\n\n按Gₜ=rₜ₊₁＋γrₜ₊₂＋…计算，第一个动作的回报为10×0.9^2=8.100。奖励虽然最后才来，前面动作仍能分到折扣回报。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-09.html"
+        },
+        "extension_no-preference": {
+          "before": null,
+          "after": "终点奖励10，折扣γ=0.9\n成功到达\n\n按Gₜ=rₜ₊₁＋γrₜ₊₂＋…计算，第一个动作的回报为10×0.9^2=8.100。奖励虽然最后才来，前面动作仍能分到折扣回报。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-09.html"
+        }
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 4,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/extension-11.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/forget-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "changes": [
+      "prediction prompt and answer disclosure",
+      "keyboard focus restored on experiment redraw"
+    ],
+    "browser_checks": {
+      "experiment": "Deleting a source record leaves the illustrated training influence",
+      "deep_link": "Clicked; one calculation panel rendered at destination",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": "本次操作范围\n文件与已学影响是两层状态\n\n真正的机器遗忘需要定义目标影响、处理模型，并用保留能力和遗忘效果一起验收。某次拒答也不能单独证明彻底遗忘。",
+          "after": "本次操作范围\n文件已删 ≠ 学习影响已移除\n\n真正的机器遗忘需要定义目标影响、处理模型，并用保留能力和遗忘效果一起验收。某次拒答也不能单独证明彻底遗忘。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-11.html"
+        },
+        "extension_no-preference": {
+          "before": "本次操作范围\n文件与已学影响是两层状态\n\n真正的机器遗忘需要定义目标影响、处理模型，并用保留能力和遗忘效果一起验收。某次拒答也不能单独证明彻底遗忘。",
+          "after": "本次操作范围\n文件已删 ≠ 学习影响已移除\n\n真正的机器遗忘需要定义目标影响、处理模型，并用保留能力和遗忘效果一起验收。某次拒答也不能单独证明彻底遗忘。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-11.html"
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": "本次操作范围\n文件与已学影响是两层状态\n\n真正的机器遗忘需要定义目标影响、处理模型，并用保留能力和遗忘效果一起验收。某次拒答也不能单独证明彻底遗忘。",
+          "after": "本次操作范围\n文件已删 ≠ 学习影响已移除\n\n真正的机器遗忘需要定义目标影响、处理模型，并用保留能力和遗忘效果一起验收。某次拒答也不能单独证明彻底遗忘。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-11.html"
+        },
+        "extension_no-preference": {
+          "before": "本次操作范围\n文件与已学影响是两层状态\n\n真正的机器遗忘需要定义目标影响、处理模型，并用保留能力和遗忘效果一起验收。某次拒答也不能单独证明彻底遗忘。",
+          "after": "本次操作范围\n文件已删 ≠ 学习影响已移除\n\n真正的机器遗忘需要定义目标影响、处理模型，并用保留能力和遗忘效果一起验收。某次拒答也不能单独证明彻底遗忘。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-11.html"
+        }
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/extension-12.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/clip-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "changes": [
+      "prediction prompt and answer disclosure",
+      "keyboard focus restored on experiment redraw"
+    ],
+    "browser_checks": {
+      "experiment": "Selecting airplane ranks airplane first at 75.1%",
+      "deep_link": "Clicked; one calculation panel rendered at destination",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 2,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": "图片1这一行经softmax后的份额\n狗在草地上\n\n狗在草地上：76.1% ／ 飞机在天空中：12.6% ／ 一杯热咖啡：11.4%",
+          "after": "图片2这一行经softmax后的份额\n飞机在天空中\n\n狗在草地上：11.2% ／ 飞机在天空中：75.1% ／ 一杯热咖啡：13.7%",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-12.html"
+        },
+        "extension_no-preference": {
+          "before": "图片1这一行经softmax后的份额\n狗在草地上\n\n狗在草地上：76.1% ／ 飞机在天空中：12.6% ／ 一杯热咖啡：11.4%",
+          "after": "图片2这一行经softmax后的份额\n飞机在天空中\n\n狗在草地上：11.2% ／ 飞机在天空中：75.1% ／ 一杯热咖啡：13.7%",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-12.html"
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": "图片1这一行经softmax后的份额\n狗在草地上\n\n狗在草地上：76.1% ／ 飞机在天空中：12.6% ／ 一杯热咖啡：11.4%",
+          "after": "图片2这一行经softmax后的份额\n飞机在天空中\n\n狗在草地上：11.2% ／ 飞机在天空中：75.1% ／ 一杯热咖啡：13.7%",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-12.html"
+        },
+        "extension_no-preference": {
+          "before": "图片1这一行经softmax后的份额\n狗在草地上\n\n狗在草地上：76.1% ／ 飞机在天空中：12.6% ／ 一杯热咖啡：11.4%",
+          "after": "图片2这一行经softmax后的份额\n飞机在天空中\n\n狗在草地上：11.2% ／ 飞机在天空中：75.1% ／ 一杯热咖啡：13.7%",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-12.html"
+        }
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 2,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/extension-13.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/convolution-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "changes": [
+      "prediction prompt and answer disclosure",
+      "keyboard focus restored on experiment redraw"
+    ],
+    "browser_checks": {
+      "experiment": "Moving one window changes response from −1 to 2; keyboard focus retained in separate run",
+      "deep_link": "Clicked; one calculation panel rendered at destination",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport",
+      "typography_baseline": "Computed body font matches sampled buttons, inline SVG text and figure captions where present; no document overflow at 1280px/390px."
+    },
+    "implementation": {
+      "deferred_video_templates": 4,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": "输出位置[0,0]的响应\n0×(1)＋1×(-1)＋1×(1)＋1×(-1)＝-1",
+          "after": "输出位置[0,1]的响应\n1×(1)＋0×(-1)＋1×(1)＋0×(-1)＝2",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-13.html"
+        },
+        "extension_no-preference": {
+          "before": "输出位置[0,0]的响应\n0×(1)＋1×(-1)＋1×(1)＋1×(-1)＝-1",
+          "after": "输出位置[0,1]的响应\n1×(1)＋0×(-1)＋1×(1)＋0×(-1)＝2",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-13.html"
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": "输出位置[0,0]的响应\n0×(1)＋1×(-1)＋1×(1)＋1×(-1)＝-1",
+          "after": "输出位置[0,1]的响应\n1×(1)＋0×(-1)＋1×(1)＋0×(-1)＝2",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-13.html"
+        },
+        "extension_no-preference": {
+          "before": "输出位置[0,0]的响应\n0×(1)＋1×(-1)＋1×(1)＋1×(-1)＝-1",
+          "after": "输出位置[0,1]的响应\n1×(1)＋0×(-1)＋1×(1)＋0×(-1)＝2",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-13.html"
+        }
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 4,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/extension-14.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/bayes-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "changes": [
+      "prediction prompt and answer disclosure",
+      "keyboard focus restored on experiment redraw"
+    ],
+    "browser_checks": {
+      "experiment": "Filtering on evidence shows 16 of 24, approximately 66.7%",
+      "deep_link": "Clicked; one calculation panel rendered at destination",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 2,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": "先验：全部样本里，H占多少\n20 / 100 = 20%\n\n先验在看到这份证据之前定义，尚未按E筛选。",
+          "after": "后验：出现E的样本里，H占多少\n16 / 24 ≈ 66.7%\n\n分母变成出现E的24个，而不是原来的100个；也不是H组的20个。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-14.html"
+        },
+        "extension_no-preference": {
+          "before": "先验：全部样本里，H占多少\n20 / 100 = 20%\n\n先验在看到这份证据之前定义，尚未按E筛选。",
+          "after": "后验：出现E的样本里，H占多少\n16 / 24 ≈ 66.7%\n\n分母变成出现E的24个，而不是原来的100个；也不是H组的20个。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-14.html"
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": "先验：全部样本里，H占多少\n20 / 100 = 20%\n\n先验在看到这份证据之前定义，尚未按E筛选。",
+          "after": "后验：出现E的样本里，H占多少\n16 / 24 ≈ 66.7%\n\n分母变成出现E的24个，而不是原来的100个；也不是H组的20个。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-14.html"
+        },
+        "extension_no-preference": {
+          "before": "先验：全部样本里，H占多少\n20 / 100 = 20%\n\n先验在看到这份证据之前定义，尚未按E筛选。",
+          "after": "后验：出现E的样本里，H占多少\n16 / 24 ≈ 66.7%\n\n分母变成出现E的24个，而不是原来的100个；也不是H组的20个。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-14.html"
+        }
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 2,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/extension-15.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/labs.js?v=keyboard-reset-4",
+      "../assets/selftrain-story.js",
+      "../assets/scene-responsive.js?v=prediction-focus-1",
+      "../assets/atlas.js?v=video-template-2",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "changes": [
+      "prediction prompt and answer disclosure",
+      "keyboard focus restored on experiment redraw"
+    ],
+    "browser_checks": {
+      "experiment": "One unverified update raises wrong dog prediction to 67%",
+      "deep_link": "Clicked; one calculation panel rendered at destination",
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "deferred_video_templates": 3,
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": "已演示0轮\n模型给“狗”的概率 60%\n\n没有新核验，训练标签来自自己的旧预测；示意中错误判断反而更自信。",
+          "after": "已演示1轮\n模型给“狗”的概率 67%\n\n没有新核验，训练标签来自自己的旧预测；示意中错误判断反而更自信。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-15.html"
+        },
+        "extension_no-preference": {
+          "before": "已演示0轮\n模型给“狗”的概率 60%\n\n没有新核验，训练标签来自自己的旧预测；示意中错误判断反而更自信。",
+          "after": "已演示1轮\n模型给“狗”的概率 67%\n\n没有新核验，训练标签来自自己的旧预测；示意中错误判断反而更自信。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-15.html"
+        }
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "extension_reduce": {
+          "before": "已演示0轮\n模型给“狗”的概率 60%\n\n没有新核验，训练标签来自自己的旧预测；示意中错误判断反而更自信。",
+          "after": "已演示1轮\n模型给“狗”的概率 67%\n\n没有新核验，训练标签来自自己的旧预测；示意中错误判断反而更自信。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-15.html"
+        },
+        "extension_no-preference": {
+          "before": "已演示0轮\n模型给“狗”的概率 60%\n\n没有新核验，训练标签来自自己的旧预测；示意中错误判断反而更自信。",
+          "after": "已演示1轮\n模型给“狗”的概率 67%\n\n没有新核验，训练标签来自自己的旧预测；示意中错误判断反而更自信。",
+          "keyboardFocus": true,
+          "reset": true,
+          "deepLink": "/course/deep/extension-15.html"
+        }
+      },
+      "video_disclosures": {
+        "keyboardOpenAndClose": 3,
+        "externalNetwork": "blocked for deterministic embed lifecycle test"
+      }
+    }
+  },
+  {
+    "page": "course/index.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/home.js",
+      "../assets/atlas.js",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "temperature": "Keyboard End and visible reset passed"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "temperature": "Keyboard End and visible reset passed"
+      }
+    }
+  },
+  {
+    "page": "course/sources.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/atlas.js",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      }
+    }
+  },
+  {
+    "page": "index.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "assets/course-examples.js?v=temperature-steps",
+      "assets/home.js?v=shared-temperature-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport",
+      "typography_baseline": "Computed body font matches sampled buttons, inline SVG text and figure captions where present; no document overflow at 1280px/390px."
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "temperature": "Keyboard End and visible reset passed"
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": [],
+        "temperature": "Keyboard End and visible reset passed"
+      }
+    }
+  },
+  {
+    "page": "sources/index.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "../assets/atlas.js",
+      "../assets/atlas-motion.js?v=visible-content-3",
+      "../assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport"
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      }
+    }
+  },
+  {
+    "page": "videos.html",
+    "svg_count": 0,
+    "interaction_scripts": [
+      "assets/videos.js?v=compact-index-2",
+      "assets/atlas.js",
+      "assets/atlas-motion.js?v=visible-content-3",
+      "assets/diagram-studio.js?v=boundary-focus-2"
+    ],
+    "status": "inventoried",
+    "browser_checks": {
+      "mobile_width_390": "No page-level horizontal overflow at 390 px viewport",
+      "typography_baseline": "Computed body font matches sampled buttons, inline SVG text and figure captions where present; no document overflow at 1280px/390px."
+    },
+    "implementation": {
+      "typography": "Shared atlas-type.css"
+    },
+    "static_checks": {
+      "local_references": "Paths and static fragments resolved across 94 pages and 2457 internal references."
+    },
+    "browser_check_scope": "Recorded checks are point-in-time observations; changed cases and assets require fresh interactive verification.",
+    "current_browser_checks": {
+      "390": {
+        "http": 200,
+        "width": 390,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      },
+      "1280": {
+        "http": 200,
+        "width": 1280,
+        "players": 0,
+        "tours": true,
+        "errors": []
+      }
+    }
+  }
+]

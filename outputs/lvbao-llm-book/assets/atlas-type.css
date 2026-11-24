@@ -1,0 +1,40 @@
+:root {
+  --atlas-sans: Inter, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --atlas-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+
+body, body.diagram-standalone { font-family: var(--atlas-sans); }
+body button, body input, body select, body textarea, body summary,
+body .diagram-tabs button, body .diagram-actions button,
+body svg text, body svg tspan, body svg foreignObject {
+  font-family: var(--atlas-sans);
+}
+
+main table, main figcaption, main .meta,
+body .diagram-tabs button, body .diagram-actions button {
+  font-size: 14px;
+}
+main :is(pre, code, kbd), body .diagram-status, body .code-label {
+  font-family: var(--atlas-mono);
+}
+body :is(output, .calculation-bar, .example-bars, .diagram-status) {
+  font-variant-numeric: tabular-nums;
+}
+
+:is(.example-controls, .diagram-actions, .diagram-tabs, .calculation-actions) button,
+:is(.generation-reset, .training-reset, #video-reset, #temperature-reset),
+[data-reimbursement-ranking] button {
+  min-height: 44px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+:is(.example-controls, .diagram-tabs) button[aria-pressed="true"] {
+  box-shadow: inset 3px 0 #c8aaff;
+}
+
+:is(.course-example, .atlas-diagram, .atlas-calculation, .atlas-video, .playground, .video-filter, .video-item)
+  :is(button, input, select, summary, a):focus-visible {
+  outline: 2px solid #d4bdff;
+  outline-offset: 3px;
+}

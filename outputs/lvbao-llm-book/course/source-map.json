@@ -1,0 +1,266 @@
+[
+  {
+    "series": "机器学习不会emo",
+    "episode": 22,
+    "title": "神经网络与训练闭环",
+    "video": "https://www.douyin.com/video/7698403895143419145",
+    "destination": "01.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 23,
+    "title": "损失函数：把目标变成可优化的数字",
+    "video": "https://www.douyin.com/video/7700926010677579059",
+    "destination": "09.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 4,
+    "title": "梯度下降、局部极小与鞍点",
+    "video": "https://www.douyin.com/video/7644342359068609802",
+    "destination": "10.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 26,
+    "title": "学习率：每次更新走多远",
+    "video": "https://www.douyin.com/video/7706005148270759183",
+    "destination": "10.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 29,
+    "title": "优化器：SGD、Adagrad 与 Adam",
+    "video": "https://www.douyin.com/video/7709562854927650067",
+    "destination": "10.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 1,
+    "title": "过拟合与泛化：会做旧题还不够",
+    "video": "https://www.douyin.com/video/7641154209705938211",
+    "destination": "11.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 10,
+    "title": "Early Stopping与最佳检查点",
+    "video": "https://www.douyin.com/video/7658800538812714276",
+    "destination": "11.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 21,
+    "title": "Dropout：训练时随机屏蔽部分通路",
+    "video": "https://www.douyin.com/video/7695551813482777906",
+    "destination": "11.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 25,
+    "title": "Embedding：从编号走向可学习的表示",
+    "video": "https://www.douyin.com/video/7703724303358905650",
+    "destination": "02.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 2,
+    "title": "Attention：按当前查询汇总上下文",
+    "video": "https://www.douyin.com/video/7642506250864856346",
+    "destination": "05.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 11,
+    "title": "暴露偏差：真前缀与自生成前缀",
+    "video": "https://www.douyin.com/video/7661438594468302107",
+    "destination": "08.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 16,
+    "title": "Scaling Law：模型、数据与计算预算",
+    "video": "https://www.douyin.com/video/7675886161268690185",
+    "destination": "12.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 3,
+    "title": "知识蒸馏：学习教师的输出行为",
+    "video": "https://www.douyin.com/video/7643587512195239178",
+    "destination": "12.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 5,
+    "title": "强化学习与LLM对齐",
+    "video": "https://www.douyin.com/video/7647620737188056362",
+    "destination": "extension-09.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 27,
+    "title": "Reward Hacking与迎合：得高分不一定做对事",
+    "video": "https://www.douyin.com/video/7707299534350699803",
+    "destination": "13.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 28,
+    "title": "信用分配与奖励塑形",
+    "video": "https://www.douyin.com/video/7707733393433283867",
+    "destination": "extension-09.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 13,
+    "title": "离线强化学习与CQL",
+    "video": "https://www.douyin.com/video/7668876200181271808",
+    "destination": "extension-09.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 6,
+    "title": "灾难性遗忘与持续学习",
+    "video": "https://www.douyin.com/video/7649364431008271659",
+    "destination": "extension-11.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 12,
+    "title": "机器遗忘与可验证的删除",
+    "video": "https://www.douyin.com/video/7666580818038459711",
+    "destination": "extension-11.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 7,
+    "title": "反事实、选择偏差与支持覆盖",
+    "video": "https://www.douyin.com/video/7651434592901025039",
+    "destination": "extension-14.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 9,
+    "title": "对比学习、正样本与假负样本",
+    "video": "https://www.douyin.com/video/7656105003718921515",
+    "destination": "extension-12.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 17,
+    "title": "自训练、伪标签与确认偏误",
+    "video": "https://www.douyin.com/video/7679699562323348774",
+    "destination": "extension-15.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 8,
+    "title": "卷积、局部特征与捷径学习",
+    "video": "https://www.douyin.com/video/7653291774223387955",
+    "destination": "extension-13.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 15,
+    "title": "GAN：两个模型、两个目标",
+    "video": "https://www.douyin.com/video/7673972833478823218",
+    "destination": "extension-13.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 18,
+    "title": "扩散模型：加噪过程与学习的反向过程",
+    "video": "https://www.douyin.com/video/7681025617046834451",
+    "destination": "extension-13.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 19,
+    "title": "FGSM、PGD与对抗鲁棒性",
+    "video": "https://www.douyin.com/video/7685312970863201570",
+    "destination": "extension-13.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 20,
+    "title": "CLIP：图像与文字共享检索空间",
+    "video": "https://www.douyin.com/video/7689815337759526178",
+    "destination": "extension-12.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 14,
+    "title": "吸收态与乘法过程",
+    "video": "https://www.douyin.com/video/7670311399142313270",
+    "destination": "extension-15.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "机器学习不会emo",
+    "episode": 24,
+    "title": "Temperature：改变下一token的采样分布",
+    "video": "https://www.douyin.com/video/7703328821344275775",
+    "destination": "04.html",
+    "route": "主线课程"
+  },
+  {
+    "series": "爱，死亡，与机器学习",
+    "episode": 1,
+    "title": "策略与结果：优化长期期望",
+    "video": "https://www.douyin.com/video/7683670248897154355",
+    "destination": "extension-09.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "爱，死亡，与机器学习",
+    "episode": 2,
+    "title": "机器遗忘：删除记录不等于撤销训练影响",
+    "video": "https://www.douyin.com/video/7687481352232406281",
+    "destination": "extension-11.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "爱，死亡，与机器学习",
+    "episode": 3,
+    "title": "归纳偏置：模型靠哪些假设推广",
+    "video": "https://www.douyin.com/video/7690556743444712742",
+    "destination": "extension-15.html",
+    "route": "扩展专题"
+  },
+  {
+    "series": "爱，死亡，与机器学习",
+    "episode": 4,
+    "title": "贝叶斯：用新证据更新判断",
+    "video": "https://www.douyin.com/video/7697654018465746202",
+    "destination": "extension-14.html",
+    "route": "扩展专题"
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "01_pipeline": {
+    "exit": 0,
+    "stdout": "input IDs: [0, 1]\nhidden: [0.330238, 1.669762]\nprobabilities: [0.2, 0.2, 0.2, 0.2, 0.2]\ntarget: 很 loss: 1.609438\n",
+    "stderr": ""
+  },
+  "02_embeddings": {
+    "exit": 0,
+    "stdout": "IDs: [0, 1] embeddings: [[1.0, 0.0], [0.0, 1.0]]\ncosine: 0.707107\nscaled cosine: 0.707107\n",
+    "stderr": ""
+  },
+  "03_train_step": {
+    "exit": 0,
+    "stdout": "hidden: [0.330238, 1.669762]\ndL/dlogits: [0.2, 0.2, -0.8, 0.2, 0.2]\nbefore: 1.609438 after: 0.662489\ntarget probability: 0.515567\n",
+    "stderr": ""
+  },
+  "04_optimizers": {
+    "exit": 0,
+    "stdout": "step gradient SGD Adagrad Adam m_hat v_hat\n1 2.0 -0.2 -0.1 -0.1 2.0 4.0\n2 -2.0 0.0 -0.029289 -0.094737 -0.105263 4.0\n3 2.0 -0.2 -0.087024 -0.128316 0.671587 4.0\n4 -2.0 0.0 -0.037024 -0.123053 -0.105263 4.0\n",
+    "stderr": ""
+  },
+  "05_generalization": {
+    "exit": 0,
+    "stdout": "stop at: 5 restore: 3 loss: 0.65\ndropout retained: 8.0 expected: 6.0\n",
+    "stderr": ""
+  },
+  "06_attention": {
+    "exit": 0,
+    "stdout": "query: [0.0, 1.0]\nscores: [0.0, 0.707107]\nweights: [0.330238, 0.669762]\nweighted value: [0.330238, 0.669762]\nafter residual: [0.330238, 1.669762]\nfirst position causal weights: [1.0] output: [1.0, 0.0]\n",
+    "stderr": ""
+  },
+  "07_sampling": {
+    "exit": 0,
+    "stdout": "T: 0.5 p: [0.866813, 0.11731, 0.015876]\nT: 1.0 p: [0.665241, 0.244728, 0.090031]\nT: 2.0 p: [0.50648, 0.307196, 0.186324]\ntop-p=.8 retained IDs: [0, 1]\nrenormalized: [0.731059, 0.268941]\n",
+    "stderr": ""
+  },
+  "08_scale_distill": {
+    "exit": 0,
+    "stdout": "N: 500000 D under same compute: 40000000\nN: 1000000 D under same compute: 20000000\nN: 2000000 D under same compute: 10000000\nKL(teacher || student): 0.026812\n",
+    "stderr": ""
+  },
+  "09_reinforcement": {
+    "exit": 0,
+    "stdout": "two-step discounted final reward: 8.100000000000001\nmax-based Bellman target: 10.0\nif unsupported action is excluded: 2.8\ndiscounted shaping: 2.24\nboundary term: 2.24\n",
+    "stderr": ""
+  },
+  "10_preferences": {
+    "exit": 0,
+    "stdout": "reward gap: -2 P(prefer A): 0.119203\nreward gap: 0 P(prefer A): 0.5\nreward gap: 2 P(prefer A): 0.880797\ntruth weight: 0.3 reward A: 0.3 reward B: 0.7\ntruth weight: 0.7 reward A: 0.7 reward B: 0.30000000000000004\nlabels: [-100, -100, -100, 3, 4] effective targets: 2\n",
+    "stderr": ""
+  },
+  "11_memory": {
+    "exit": 0,
+    "stdout": "protection: 0 w: -1.0 old loss: 4.0 new loss: 0.0\nprotection: 1 w: 0.0 old loss: 1.0 new loss: 1.0\nprotection: 3 w: 0.5 old loss: 0.25 new loss: 2.25\nprotection: 9 w: 0.8 old loss: 0.04 new loss: 3.24\nbefore quantization: 1.234 1.231\nrounded to 2 decimal places: 1.23 1.23\n",
+    "stderr": ""
+  },
+  "12_contrastive": {
+    "exit": 0,
+    "stdout": "image-to-text loss: 0.407606\ntext-to-image loss: 0.407606\nsymmetric loss: 0.407606\n",
+    "stderr": ""
+  },
+  "13_generation_robustness": {
+    "exit": 0,
+    "stdout": "ideal GAN discriminator: 0.5\nideal GAN discriminator: 0.8\nideal GAN discriminator: 0.2\ndiffusion noisy sample: 1.866025\nFGSM example: [0.6, 0.4]\n",
+    "stderr": ""
+  },
+  "14_bayes_causal": {
+    "exit": 0,
+    "stdout": "posterior: 0.666667\npropensity: 0.2 IPS weight: 5.0\npropensity: 0.8 IPS weight: 1.25\npropensity: 0.0 IPS weight: undefined\none observation posterior remains: 0.666667\n",
+    "stderr": ""
+  },
+  "15_bias_risk": {
+    "exit": 0,
+    "stdout": "expected one-step multiplier: 1.05\none-up-one-down multiplier: 0.8999999999999999\nexpected log growth: -0.05268\nx: 0 f: 0 g: 0\nx: 1 f: 1 g: 1\nx: 2 f: 2 g: 6\n",
+    "stderr": ""
+  },
+  "16_rag": {
+    "exit": 0,
+    "stdout": "highest similarity: A\nanswer with version condition: 200 source: B year: 2026\n",
+    "stderr": ""
+  }
+}

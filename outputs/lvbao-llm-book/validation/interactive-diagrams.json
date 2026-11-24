@@ -1,0 +1,200 @@
+{
+  "diagrams": [
+    {
+      "diagram": "10.svg",
+      "nodes": 3,
+      "title": "高分答案，可能只是在迎合"
+    },
+    {
+      "diagram": "04.svg",
+      "nodes": 3,
+      "title": "同样方向，步子太大也会过头"
+    },
+    {
+      "diagram": "softmax-basics.svg",
+      "nodes": 0,
+      "title": "softmax-basics"
+    },
+    {
+      "diagram": "05.svg",
+      "nodes": 3,
+      "title": "最新一轮，不一定最好"
+    },
+    {
+      "diagram": "11.svg",
+      "nodes": 3,
+      "title": "删除文件，不等于撤销学习"
+    },
+    {
+      "diagram": "07.svg",
+      "nodes": 3,
+      "title": "训练与生成，下一步接的是什么？"
+    },
+    {
+      "diagram": "13.svg",
+      "nodes": 3,
+      "title": "模型认出猫，还是记住草地？"
+    },
+    {
+      "diagram": "decoder.svg",
+      "nodes": 6,
+      "title": "生成式LLM：一枚token走过的路径"
+    },
+    {
+      "diagram": "12.svg",
+      "nodes": 3,
+      "title": "正例没变，份额也可能下降"
+    },
+    {
+      "diagram": "06.svg",
+      "nodes": 3,
+      "title": "注意力：先分份额，再取内容"
+    },
+    {
+      "diagram": "qkv.svg",
+      "nodes": 7,
+      "title": "Q、K、V：每个箭头都对应一次计算"
+    },
+    {
+      "diagram": "02.svg",
+      "nodes": 3,
+      "title": "编号、向量、相似度是三件事"
+    },
+    {
+      "diagram": "16.svg",
+      "nodes": 3,
+      "title": "相似度最高，也可能已经过期"
+    },
+    {
+      "diagram": "03.svg",
+      "nodes": 3,
+      "title": "点击预测更准，不等于用户更满意"
+    },
+    {
+      "diagram": "15.svg",
+      "nodes": 3,
+      "title": "涨50%再跌50%，没有回原点"
+    },
+    {
+      "diagram": "01.svg",
+      "nodes": 3,
+      "title": "一次学习，哪里真的变了？"
+    },
+    {
+      "diagram": "route-09.svg",
+      "nodes": 6,
+      "title": "强化学习：动作会改变下次输入"
+    },
+    {
+      "diagram": "route-08.svg",
+      "nodes": 6,
+      "title": "蒸馏的双重学习信号"
+    },
+    {
+      "diagram": "14.svg",
+      "nodes": 3,
+      "title": "一条证据，怎样改变判断？"
+    },
+    {
+      "diagram": "vector-basics.svg",
+      "nodes": 3,
+      "title": "vector-basics"
+    },
+    {
+      "diagram": "route-11.svg",
+      "nodes": 6,
+      "title": "保留旧能力与主动遗忘不同"
+    },
+    {
+      "diagram": "route-05.svg",
+      "nodes": 6,
+      "title": "训练与验证为什么要分开"
+    },
+    {
+      "diagram": "route-04.svg",
+      "nodes": 6,
+      "title": "梯度与历史怎样共同决定一步"
+    },
+    {
+      "diagram": "route-10.svg",
+      "nodes": 6,
+      "title": "RLHF的一种常见流程"
+    },
+    {
+      "diagram": "route-06.svg",
+      "nodes": 6,
+      "title": "多头注意力：并行分支，再拼接投影"
+    },
+    {
+      "diagram": "route-12.svg",
+      "nodes": 6,
+      "title": "CLIP：两种输入，共同空间"
+    },
+    {
+      "diagram": "route-13.svg",
+      "nodes": 6,
+      "title": "GAN：交替训练的两方"
+    },
+    {
+      "diagram": "route-07.svg",
+      "nodes": 6,
+      "title": "自回归生成的循环"
+    },
+    {
+      "diagram": "route-03.svg",
+      "nodes": 6,
+      "title": "目标怎样影响每个参数"
+    },
+    {
+      "diagram": "route-16.svg",
+      "nodes": 6,
+      "title": "RAG：先找证据，再组织回答"
+    },
+    {
+      "diagram": "route-02.svg",
+      "nodes": 6,
+      "title": "从文字到向量的查表路径"
+    },
+    {
+      "diagram": "block.svg",
+      "nodes": 5,
+      "title": "一个常见的Pre-Norm decoder块（从上往下读）"
+    },
+    {
+      "diagram": "08.svg",
+      "nodes": 3,
+      "title": "硬标签与软目标，信息差在哪？"
+    },
+    {
+      "diagram": "route-14.svg",
+      "nodes": 6,
+      "title": "贝叶斯：先验乘似然，再归一化"
+    },
+    {
+      "diagram": "route-01.svg",
+      "nodes": 6,
+      "title": "训练的反馈回路"
+    },
+    {
+      "diagram": "route-15.svg",
+      "nodes": 6,
+      "title": "自训练：伪标签可能放大旧错误"
+    },
+    {
+      "diagram": "09.svg",
+      "nodes": 3,
+      "title": "奖励来得晚，前面步骤怎么计功？"
+    }
+  ],
+  "inline_instances": 96,
+  "local_links": "passed",
+  "svg_xml": "37 passed",
+  "javascript_syntax": "passed",
+  "browser_checks": [
+    "standalone decoder next selects Embedding",
+    "course/01 inline mounted",
+    "automatic walkthrough advanced to node 03",
+    "six flow particles rendered"
+  ],
+  "publication": "local only"
+}

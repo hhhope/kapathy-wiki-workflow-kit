@@ -1,0 +1,87 @@
+.diagram-standalone{margin:0;background:radial-gradient(ellipse at 30% 0,#31205155,transparent 60%),#080c18;color:#e2e8fc;font:16px/1.8 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}.diagram-standalone main{max-width:1250px;margin:auto;padding:32px}.diagram-standalone figure{margin:0}
+.teaching-figure.atlas-diagram{background:radial-gradient(ellipse at 40% 0,#39255d44,transparent 60%),#0d1223;border:1px solid #a78bfa3b;border-radius:18px;padding:0;overflow:hidden;box-shadow:0 20px 65px #0003;margin:28px 0;color:#dce5fc}
+.diagram-toolbar{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:18px 22px;border-bottom:1px solid #b29bea24;background:#ffffff02}.diagram-kicker{font:10px ui-monospace,monospace;letter-spacing:.12em;color:#b5a0ed}.diagram-kicker:before{content:"";display:inline-block;width:6px;height:6px;margin-right:9px;border-radius:50%;background:#a78bff;box-shadow:0 0 14px #a78bff}.diagram-actions{display:flex;gap:7px}.diagram-actions button,.diagram-tabs button{background:#a78bfa10;color:#d6c7ff;border:1px solid #ae92f33b;border-radius:7px;padding:8px 12px;cursor:pointer;font:12px/1.5 inherit}.diagram-actions button:hover,.diagram-tabs button:hover{background:#ac86ff28}.diagram-actions button:disabled{opacity:.35;cursor:default}.diagram-viewport{overflow:auto;padding:12px}.diagram-viewport svg{min-width:570px;max-height:none!important}.diagram-detail{border-top:1px solid #a78bfa26;background:linear-gradient(110deg,#a78bfa0d,#65c8ee08);padding:20px 24px;min-height:100px;display:grid;gap:7px}.diagram-detail strong{font-size:17px;color:#e5dcff}.diagram-detail p{font-size:14px;line-height:1.8;margin:0!important;color:#aebbd7}.diagram-tabs{display:flex;gap:7px;flex-wrap:wrap;padding:15px 22px;border-top:1px solid #ffffff0d}.diagram-tabs button[aria-pressed=true]{background:#a78bfa30;border-color:#b399f3;color:#f1eaff}.diagram-status{font:11px ui-monospace,monospace;color:#9c8aba}.atlas-diagram figcaption{padding:12px 22px;background:#0b101f;color:#8b9bbd;font-size:12px;border-top:1px solid #ffffff0a}.atlas-diagram a{color:#bda6fa}.diagram-actions button:focus-visible,.diagram-tabs button:focus-visible{outline:2px solid #c9b4ff;outline-offset:3px}.diagram-node-enter{animation:diagram-focus .45s ease}@keyframes diagram-focus{from{transform:translateY(6px);opacity:.4}to{transform:none;opacity:1}}@media(max-width:650px){.diagram-standalone main{padding:12px}.diagram-toolbar{padding:15px}.diagram-viewport{padding:6px}.diagram-detail{padding:18px}.diagram-tabs{padding:12px}.diagram-tabs button{padding:7px 10px}.diagram-detail strong{font-size:16px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media(prefers-reduced-motion:reduce){.diagram-flow-dot{display:none}}
+
+/* Shared shell for live lesson experiments and diagram walkthroughs. */
+main .lab,
+main .course-example {
+  max-width: 100%;
+  min-width: 0;
+  margin-block: 28px;
+  border: 1px solid #a78bfa3b;
+  border-radius: 18px;
+  background: radial-gradient(ellipse at 40% 0, #39255d44, transparent 60%), #0d1223;
+  box-shadow: 0 20px 65px #0003;
+}
+
+main .lab:has(> .atlas-diagram) {
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+main .lab:has(> .atlas-diagram)::before { display: none; }
+main .lab > .atlas-diagram { margin: 0; }
+
+main .lab :is(.story-switch, .example-controls) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+main .lab .story-switch button,
+.diagram-actions button,
+.diagram-tabs button {
+  min-height: 44px;
+  font: inherit;
+  font-size: 13px;
+}
+main .lab .story-switch button:is(.active, [aria-pressed="true"]) {
+  background: #3c2d60;
+  border-color: #b399f3;
+  color: #f1eaff;
+}
+main .lab .scene-diagram-scroll { max-width: 100%; overflow-x: auto; }
+main .lab .scene-diagram-scroll:focus-visible,
+.diagram-viewport:focus-visible { outline: 2px solid #c9b4ff; outline-offset: -2px; }
+
+.diagram-motion-paused svg path[marker-end] { animation-play-state: paused; }
+
+@media (max-width: 650px) {
+  main .course-example { padding: 16px; }
+  .diagram-actions { flex-wrap: wrap; }
+  .diagram-tabs button { max-width: 100%; overflow-wrap: anywhere; }
+}
+
+main .atlas-calculation h3 { margin-top: 0; }
+.atlas-calculation input[type="range"] { display: block; width: 100%; margin: 12px 0; }
+.calculation-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.calculation-prediction, .calculation-baseline { color: #dbcaff; }
+.atlas-calculation .lab-result { padding: 16px 0 0; border-top: 1px solid #a78bfa3b; overflow-wrap: anywhere; }
+.calculation-bar { display: grid; grid-template-columns: minmax(4em, auto) minmax(24px, 1fr) 4em; gap: 8px; align-items: center; font-size: 13px; }
+.calculation-bar progress { width: 100%; accent-color: #ad92ee; }
+.calculation-bar span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 760px) {
+  body > main table { display: block !important; max-width: 100%; overflow-x: auto; }
+}
+
+/* Shared SVG presentation. */
+.atlas-interactive-svg text { fill: #dce6f8; }
+.atlas-interactive-svg [data-node] { cursor: pointer; }
+.atlas-interactive-svg [data-node]:is(:focus-visible,.is-selected) rect {
+  stroke: #c3a9ff;
+  stroke-width: 2.5;
+  fill: #382951;
+}
+.diagram-viewport svg { display: block; width: 100%; height: auto; }
+.diagram-viewport svg[data-atlas-inline] { min-width: 580px; }
+
+.diagram-return { margin-bottom: 16px; }
+.diagram-return a { display:inline-flex; align-items:center; min-height:44px; color:#d8c7ff; }
+
+figure[id^="diagram-"]:target {
+  outline: 2px solid #ad92ee;
+  outline-offset: 3px;
+}

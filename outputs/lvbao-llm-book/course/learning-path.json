@@ -1,0 +1,98 @@
+[
+  {
+    "lesson": 1,
+    "title": "先看懂一次回答",
+    "prerequisites": []
+  },
+  {
+    "lesson": 2,
+    "title": "先切片段，再查出一排数字",
+    "prerequisites": [
+      1
+    ]
+  },
+  {
+    "lesson": 3,
+    "title": "只学够用的向量与矩阵",
+    "prerequisites": [
+      2
+    ]
+  },
+  {
+    "lesson": 4,
+    "title": "分数、Softmax与温度",
+    "prerequisites": [
+      3
+    ]
+  },
+  {
+    "lesson": 5,
+    "title": "一次注意力，从头算到底",
+    "prerequisites": [
+      4
+    ]
+  },
+  {
+    "lesson": 6,
+    "title": "多头注意力：并行看关系",
+    "prerequisites": [
+      5
+    ]
+  },
+  {
+    "lesson": 7,
+    "title": "把注意力，装进一台会续写的机器",
+    "prerequisites": [
+      6
+    ]
+  },
+  {
+    "lesson": 8,
+    "title": "逐个生成与KV Cache",
+    "prerequisites": [
+      7
+    ]
+  },
+  {
+    "lesson": 9,
+    "title": "损失与反向传播",
+    "prerequisites": [
+      8
+    ]
+  },
+  {
+    "lesson": 10,
+    "title": "学习率、SGD与Adam",
+    "prerequisites": [
+      9
+    ]
+  },
+  {
+    "lesson": 11,
+    "title": "泛化、验证与早停",
+    "prerequisites": [
+      10
+    ]
+  },
+  {
+    "lesson": 12,
+    "title": "规模、蒸馏与涌现",
+    "prerequisites": [
+      11
+    ]
+  },
+  {
+    "lesson": 13,
+    "title": "从续写到助手：SFT与对齐",
+    "prerequisites": [
+      12
+    ]
+  },
+  {
+    "lesson": 14,
+    "title": "RAG、工具与证据",
+    "prerequisites": [
+      13
+    ]
+  }
+]

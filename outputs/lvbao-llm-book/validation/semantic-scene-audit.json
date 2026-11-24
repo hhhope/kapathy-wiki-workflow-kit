@@ -1,0 +1,12 @@
+{
+  "server": "absolute root on port8879",
+  "lesson5QuestionSwitch": true,
+  "lesson6RelationToggle": true,
+  "lesson9Price6": {
+    "prediction": 12,
+    "target": 12,
+    "loss": 0,
+    "gradient": 0
+  },
+  "previousFailure": "prior browser session returned stale document; verified current HTTP includes updated script and retested fresh session"
+}

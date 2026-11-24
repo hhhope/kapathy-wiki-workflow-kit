@@ -1,0 +1,29 @@
+{
+  "unified_pages": 56,
+  "missing_local_links": [],
+  "js_syntax": "passed",
+  "browser_checks": [
+    "course/01 desktop and mobile",
+    "mobile directory expanded",
+    "generation experiment appended token",
+    "chapters/08 desktop"
+  ],
+  "publication": "local only",
+  "motion": {
+    "pages": 56,
+    "features": [
+      "animated starfield and constellation",
+      "aurora drift",
+      "chapter signal animation",
+      "scroll reveal",
+      "experiment flow animation",
+      "click response and token entrance"
+    ],
+    "verification": [
+      "JavaScript syntax passed",
+      "course/01 interaction appends token",
+      "mobile screenshot inspected"
+    ],
+    "publication": "local only"
+  }
+}

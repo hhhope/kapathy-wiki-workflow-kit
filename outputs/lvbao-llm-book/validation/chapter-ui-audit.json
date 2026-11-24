@@ -1,0 +1,182 @@
+[
+  {
+    "chapter": 1,
+    "folds": 0,
+    "labs": 1,
+    "answers": 1,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 2,
+    "folds": 0,
+    "labs": 1,
+    "answers": 2,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 3,
+    "folds": 0,
+    "labs": 1,
+    "answers": 1,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 4,
+    "folds": 0,
+    "labs": 2,
+    "answers": 3,
+    "rendered": 2,
+    "changes": [
+      true,
+      true
+    ],
+    "step": "第1步：θ=6.6000；L=12.9600",
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 5,
+    "folds": 0,
+    "labs": 2,
+    "answers": 3,
+    "rendered": 2,
+    "changes": [
+      true,
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 6,
+    "folds": 0,
+    "labs": 1,
+    "answers": 2,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 7,
+    "folds": 0,
+    "labs": 1,
+    "answers": 2,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 8,
+    "folds": 0,
+    "labs": 1,
+    "answers": 2,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 9,
+    "folds": 0,
+    "labs": 1,
+    "answers": 4,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 10,
+    "folds": 0,
+    "labs": 1,
+    "answers": 2,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 11,
+    "folds": 0,
+    "labs": 1,
+    "answers": 3,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 12,
+    "folds": 0,
+    "labs": 1,
+    "answers": 2,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 13,
+    "folds": 0,
+    "labs": 1,
+    "answers": 4,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 14,
+    "folds": 0,
+    "labs": 1,
+    "answers": 2,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 15,
+    "folds": 0,
+    "labs": 1,
+    "answers": 3,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false
+  },
+  {
+    "chapter": 16,
+    "folds": 0,
+    "labs": 1,
+    "answers": 1,
+    "rendered": 1,
+    "changes": [
+      true
+    ],
+    "mobileOverflow": false,
+    "followup": "min端点复测：排序从A变B，版本依据仍为B"
+  }
+]
