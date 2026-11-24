@@ -1,0 +1,22 @@
+{
+  "brokenPaths": [
+    [
+      "course/deep/14.html",
+      "../videos.html"
+    ],
+    [
+      "course/deep/14.html",
+      "../sources/index.html"
+    ],
+    [
+      "course/deep/09.html",
+      "../videos.html"
+    ],
+    [
+      "course/deep/04.html",
+      "../videos.html"
+    ]
+  ],
+  "missingVideoMappings": [],
+  "sourceCount": 33
+}

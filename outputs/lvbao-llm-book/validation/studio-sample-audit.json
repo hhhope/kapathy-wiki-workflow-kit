@@ -1,0 +1,43 @@
+{
+  "scope": [
+    5,
+    6,
+    7
+  ],
+  "mobileOverflow": [
+    false,
+    false,
+    false
+  ],
+  "videoEmbeds": [
+    1,
+    1,
+    1
+  ],
+  "multiheadStateChanged": true,
+  "attentionUnmasked": [
+    8.044,
+    3.911
+  ],
+  "attentionMasked": [
+    10,
+    0
+  ],
+  "homepageConnectionFill": "none",
+  "userReview": "pending",
+  "independentCalculation": {
+    "weights": [
+      0.8044296825069569,
+      0.1955703174930431
+    ],
+    "output": [
+      8.04429682506957,
+      3.911406349860862
+    ],
+    "maskedOutput": [
+      10,
+      0
+    ]
+  },
+  "reviewGate": "等待用户对当前5—7课连续样章确认；未授权推广"
+}

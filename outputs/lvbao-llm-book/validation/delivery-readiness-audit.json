@@ -1,0 +1,197 @@
+{
+  "pages": [
+    {
+      "page": "01.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 0,
+      "videoEmbed": 1,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 0
+    },
+    {
+      "page": "02.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 0,
+      "videoEmbed": 1,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 2
+    },
+    {
+      "page": "03.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 0,
+      "videoEmbed": 0,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 0
+    },
+    {
+      "page": "04.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 0,
+      "videoEmbed": 1,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 1
+    },
+    {
+      "page": "05.html",
+      "semanticScene": 2,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 1,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 3
+    },
+    {
+      "page": "06.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 1,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 1
+    },
+    {
+      "page": "07.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 0,
+      "videoEmbed": 1,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 3
+    },
+    {
+      "page": "08.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 0,
+      "videoEmbed": 1,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 2
+    },
+    {
+      "page": "09.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 0,
+      "videoEmbed": 1,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 2
+    },
+    {
+      "page": "10.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 3,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 5
+    },
+    {
+      "page": "11.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 3,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 2
+    },
+    {
+      "page": "12.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 2,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 6
+    },
+    {
+      "page": "13.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 1,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 6
+    },
+    {
+      "page": "14.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 0,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 2
+    },
+    {
+      "page": "extension-09.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 4,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 9
+    },
+    {
+      "page": "extension-11.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 3,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 6
+    },
+    {
+      "page": "extension-12.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 2,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 4
+    },
+    {
+      "page": "extension-13.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 4,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 5
+    },
+    {
+      "page": "extension-14.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 2,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 2
+    },
+    {
+      "page": "extension-15.html",
+      "semanticScene": 1,
+      "sceneCheck": 1,
+      "deepRoute": 1,
+      "videoEmbed": 3,
+      "staticFallback": 1,
+      "paperOrCodeLinks": 3
+    }
+  ],
+  "counts": {
+    "pages": 20,
+    "scene": 20,
+    "checks": 20,
+    "deepRoutes": 13,
+    "video": 18,
+    "staticFallback": 20
+  },
+  "boundaries": [
+    "自动检查不能证明小白理解",
+    "抖音播放器可能受平台验证",
+    "未发布、未提交、未推送"
+  ]
+}

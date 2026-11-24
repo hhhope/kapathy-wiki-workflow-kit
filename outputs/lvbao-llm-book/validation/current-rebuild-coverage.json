@@ -1,0 +1,142 @@
+[
+  {
+    "page": "01.html",
+    "newSemanticScene": [],
+    "studioStyle": false,
+    "needsFullRewrite": true
+  },
+  {
+    "page": "02.html",
+    "newSemanticScene": [
+      "embedding-story"
+    ],
+    "studioStyle": true,
+    "needsFullRewrite": false
+  },
+  {
+    "page": "03.html",
+    "newSemanticScene": [],
+    "studioStyle": false,
+    "needsFullRewrite": true
+  },
+  {
+    "page": "04.html",
+    "newSemanticScene": [
+      "sampling-story"
+    ],
+    "studioStyle": true,
+    "needsFullRewrite": false
+  },
+  {
+    "page": "05.html",
+    "newSemanticScene": [
+      "context-story"
+    ],
+    "studioStyle": true,
+    "needsFullRewrite": false
+  },
+  {
+    "page": "06.html",
+    "newSemanticScene": [
+      "heads-story"
+    ],
+    "studioStyle": true,
+    "needsFullRewrite": false
+  },
+  {
+    "page": "07.html",
+    "newSemanticScene": [],
+    "studioStyle": true,
+    "needsFullRewrite": true
+  },
+  {
+    "page": "08.html",
+    "newSemanticScene": [],
+    "studioStyle": false,
+    "needsFullRewrite": true
+  },
+  {
+    "page": "09.html",
+    "newSemanticScene": [
+      "price-story"
+    ],
+    "studioStyle": true,
+    "needsFullRewrite": false
+  },
+  {
+    "page": "10.html",
+    "newSemanticScene": [
+      "valve-story"
+    ],
+    "studioStyle": true,
+    "needsFullRewrite": false
+  },
+  {
+    "page": "11.html",
+    "newSemanticScene": [
+      "generalization-story"
+    ],
+    "studioStyle": true,
+    "needsFullRewrite": false
+  },
+  {
+    "page": "12.html",
+    "newSemanticScene": [
+      "distill-story"
+    ],
+    "studioStyle": true,
+    "needsFullRewrite": false
+  },
+  {
+    "page": "13.html",
+    "newSemanticScene": [
+      "preference-story"
+    ],
+    "studioStyle": true,
+    "needsFullRewrite": false
+  },
+  {
+    "page": "14.html",
+    "newSemanticScene": [
+      "evidence-story"
+    ],
+    "studioStyle": true,
+    "needsFullRewrite": false
+  },
+  {
+    "page": "extension-09.html",
+    "newSemanticScene": [],
+    "studioStyle": false,
+    "needsFullRewrite": true
+  },
+  {
+    "page": "extension-11.html",
+    "newSemanticScene": [],
+    "studioStyle": false,
+    "needsFullRewrite": true
+  },
+  {
+    "page": "extension-12.html",
+    "newSemanticScene": [],
+    "studioStyle": false,
+    "needsFullRewrite": true
+  },
+  {
+    "page": "extension-13.html",
+    "newSemanticScene": [],
+    "studioStyle": false,
+    "needsFullRewrite": true
+  },
+  {
+    "page": "extension-14.html",
+    "newSemanticScene": [],
+    "studioStyle": false,
+    "needsFullRewrite": true
+  },
+  {
+    "page": "extension-15.html",
+    "newSemanticScene": [],
+    "studioStyle": false,
+    "needsFullRewrite": true
+  }
+]

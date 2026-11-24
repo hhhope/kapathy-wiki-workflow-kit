@@ -1,0 +1,142 @@
+[
+  {
+    "page": "01.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 1,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "02.html",
+    "tables": 4,
+    "diagrams": 1,
+    "videoEmbeds": 1,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "03.html",
+    "tables": 2,
+    "diagrams": 1,
+    "videoEmbeds": 0,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "04.html",
+    "tables": 2,
+    "diagrams": 1,
+    "videoEmbeds": 1,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "05.html",
+    "tables": 2,
+    "diagrams": 1,
+    "videoEmbeds": 1,
+    "interactiveMounts": 2
+  },
+  {
+    "page": "06.html",
+    "tables": 2,
+    "diagrams": 1,
+    "videoEmbeds": 0,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "07.html",
+    "tables": 6,
+    "diagrams": 5,
+    "videoEmbeds": 1,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "08.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 1,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "09.html",
+    "tables": 3,
+    "diagrams": 1,
+    "videoEmbeds": 1,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "10.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 3,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "11.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 3,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "12.html",
+    "tables": 2,
+    "diagrams": 1,
+    "videoEmbeds": 2,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "13.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 1,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "14.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 0,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "extension-09.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 4,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "extension-11.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 3,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "extension-12.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 2,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "extension-13.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 4,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "extension-14.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 2,
+    "interactiveMounts": 1
+  },
+  {
+    "page": "extension-15.html",
+    "tables": 1,
+    "diagrams": 1,
+    "videoEmbeds": 3,
+    "interactiveMounts": 1
+  }
+]

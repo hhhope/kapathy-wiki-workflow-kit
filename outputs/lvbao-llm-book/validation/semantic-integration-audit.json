@@ -1,0 +1,151 @@
+[
+  {
+    "page": "01.html",
+    "removedDeadOutlineTargets": [],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "02.html",
+    "removedDeadOutlineTargets": [],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "03.html",
+    "removedDeadOutlineTargets": [],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "04.html",
+    "removedDeadOutlineTargets": [
+      "interactive"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "05.html",
+    "removedDeadOutlineTargets": [],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "06.html",
+    "removedDeadOutlineTargets": [],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "07.html",
+    "removedDeadOutlineTargets": [],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "08.html",
+    "removedDeadOutlineTargets": [
+      "lesson-section-0"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "09.html",
+    "removedDeadOutlineTargets": [
+      "lesson-section-0",
+      "lesson-section-1"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "10.html",
+    "removedDeadOutlineTargets": [
+      "lesson-section-0"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "11.html",
+    "removedDeadOutlineTargets": [
+      "lesson-section-0"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "12.html",
+    "removedDeadOutlineTargets": [
+      "lesson-section-0"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "13.html",
+    "removedDeadOutlineTargets": [
+      "lesson-section-0"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "14.html",
+    "removedDeadOutlineTargets": [
+      "lesson-section-0"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "extension-09.html",
+    "removedDeadOutlineTargets": [
+      "story"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "extension-11.html",
+    "removedDeadOutlineTargets": [
+      "story"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "extension-12.html",
+    "removedDeadOutlineTargets": [
+      "story"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "extension-13.html",
+    "removedDeadOutlineTargets": [
+      "story"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "extension-14.html",
+    "removedDeadOutlineTargets": [
+      "story"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  },
+  {
+    "page": "extension-15.html",
+    "removedDeadOutlineTargets": [
+      "story"
+    ],
+    "duplicateIds": [],
+    "darkStyle": true
+  }
+]
